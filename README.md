@@ -2,7 +2,7 @@ Open the cmd prompt as admin
 
 cd tools
 
-In ntuser.cmd set your INCLUDE and LIB environment varibles, then run razzle.cmd
+In ntenv.cmd set your PROJDIR INCLUDE and LIB environment varibles, then run razzle.cmd
 
 razzle win32 offline
 
