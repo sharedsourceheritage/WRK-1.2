@@ -1,0 +1,12 @@
+BUILD: Examining d:\_ntroot\depot\lab00_n\sdktools\debuggers\windbg directory for files to compile.
+Compiling d:\_ntroot\depot\lab00_n\sdktools\debuggers\windbg directory ********************
+'nmake.exe /c BUILDMSG=Stop. -i NTTEST= UMTEST= NOLINK=1 AMD64=1'
+1>BUILDMSG: Processing d:\_ntroot\depot\lab00_n\sdktools\debuggers\windbg
+1>makefile(5) :  U1052: file 'C:\NT\Tools\makefile.def' not found
+1>Stop.
+BUILD: nmake.exe /c BUILDMSG=Stop. -i NTTEST= UMTEST= NOLINK=1 AMD64=1 failed - rc = 2
+Linking d:\_ntroot\depot\lab00_n\sdktools\debuggers\windbg directory ********************
+'nmake.exe /c BUILDMSG=Stop. -i LINKONLY=1 NOPASS0=1 NTTEST= UMTEST= AMD64=1'
+1>makefile(5) :  U1052: file 'C:\NT\Tools\makefile.def' not found
+1>Stop.
+BUILD: nmake.exe /c BUILDMSG=Stop. -i LINKONLY=1 NOPASS0=1 NTTEST= UMTEST= AMD64=1 failed - rc = 2

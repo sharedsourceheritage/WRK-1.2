@@ -1,0 +1,104 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\windbg.res \
+    $(_OBJ_DIR)\i386\arrange.obj \
+    $(_OBJ_DIR)\i386\callswin.obj \
+    $(_OBJ_DIR)\i386\cmdwin.obj \
+    $(_OBJ_DIR)\i386\cmnwin.obj \
+    $(_OBJ_DIR)\i386\cwcreate.obj \
+    $(_OBJ_DIR)\i386\docwin.obj \
+    $(_OBJ_DIR)\i386\dualwin.obj \
+    $(_OBJ_DIR)\i386\engine.obj \
+    $(_OBJ_DIR)\i386\format.obj \
+    $(_OBJ_DIR)\i386\memopts.obj \
+    $(_OBJ_DIR)\i386\memwin.obj \
+    $(_OBJ_DIR)\i386\menu.obj \
+    $(_OBJ_DIR)\i386\miscdbg.obj \
+    $(_OBJ_DIR)\i386\prcdlg.obj \
+    $(_OBJ_DIR)\i386\prcmain.obj \
+    $(_OBJ_DIR)\i386\statebuf.obj \
+    $(_OBJ_DIR)\i386\status.obj \
+    $(_OBJ_DIR)\i386\toolbar.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\windbg.obj \
+    $(_OBJ_DIR)\i386\wrkspace.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\windbg.res \
+    $(_OBJ_DIR)\ia64\arrange.obj \
+    $(_OBJ_DIR)\ia64\callswin.obj \
+    $(_OBJ_DIR)\ia64\cmdwin.obj \
+    $(_OBJ_DIR)\ia64\cmnwin.obj \
+    $(_OBJ_DIR)\ia64\cwcreate.obj \
+    $(_OBJ_DIR)\ia64\docwin.obj \
+    $(_OBJ_DIR)\ia64\dualwin.obj \
+    $(_OBJ_DIR)\ia64\engine.obj \
+    $(_OBJ_DIR)\ia64\format.obj \
+    $(_OBJ_DIR)\ia64\memopts.obj \
+    $(_OBJ_DIR)\ia64\memwin.obj \
+    $(_OBJ_DIR)\ia64\menu.obj \
+    $(_OBJ_DIR)\ia64\miscdbg.obj \
+    $(_OBJ_DIR)\ia64\prcdlg.obj \
+    $(_OBJ_DIR)\ia64\prcmain.obj \
+    $(_OBJ_DIR)\ia64\statebuf.obj \
+    $(_OBJ_DIR)\ia64\status.obj \
+    $(_OBJ_DIR)\ia64\toolbar.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\windbg.obj \
+    $(_OBJ_DIR)\ia64\wrkspace.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\windbg.res \
+    $(_OBJ_DIR)\amd64\arrange.obj \
+    $(_OBJ_DIR)\amd64\callswin.obj \
+    $(_OBJ_DIR)\amd64\cmdwin.obj \
+    $(_OBJ_DIR)\amd64\cmnwin.obj \
+    $(_OBJ_DIR)\amd64\cwcreate.obj \
+    $(_OBJ_DIR)\amd64\docwin.obj \
+    $(_OBJ_DIR)\amd64\dualwin.obj \
+    $(_OBJ_DIR)\amd64\engine.obj \
+    $(_OBJ_DIR)\amd64\format.obj \
+    $(_OBJ_DIR)\amd64\memopts.obj \
+    $(_OBJ_DIR)\amd64\memwin.obj \
+    $(_OBJ_DIR)\amd64\menu.obj \
+    $(_OBJ_DIR)\amd64\miscdbg.obj \
+    $(_OBJ_DIR)\amd64\prcdlg.obj \
+    $(_OBJ_DIR)\amd64\prcmain.obj \
+    $(_OBJ_DIR)\amd64\statebuf.obj \
+    $(_OBJ_DIR)\amd64\status.obj \
+    $(_OBJ_DIR)\amd64\toolbar.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\windbg.obj \
+    $(_OBJ_DIR)\amd64\wrkspace.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\windbg.res \
+    $(_OBJ_DIR)\arm\arrange.obj \
+    $(_OBJ_DIR)\arm\callswin.obj \
+    $(_OBJ_DIR)\arm\cmdwin.obj \
+    $(_OBJ_DIR)\arm\cmnwin.obj \
+    $(_OBJ_DIR)\arm\cwcreate.obj \
+    $(_OBJ_DIR)\arm\docwin.obj \
+    $(_OBJ_DIR)\arm\dualwin.obj \
+    $(_OBJ_DIR)\arm\engine.obj \
+    $(_OBJ_DIR)\arm\format.obj \
+    $(_OBJ_DIR)\arm\memopts.obj \
+    $(_OBJ_DIR)\arm\memwin.obj \
+    $(_OBJ_DIR)\arm\menu.obj \
+    $(_OBJ_DIR)\arm\miscdbg.obj \
+    $(_OBJ_DIR)\arm\prcdlg.obj \
+    $(_OBJ_DIR)\arm\prcmain.obj \
+    $(_OBJ_DIR)\arm\statebuf.obj \
+    $(_OBJ_DIR)\arm\status.obj \
+    $(_OBJ_DIR)\arm\toolbar.obj \
+    $(_OBJ_DIR)\arm\util.obj \
+    $(_OBJ_DIR)\arm\windbg.obj \
+    $(_OBJ_DIR)\arm\wrkspace.obj
+
+PASS0_ARM_OBJECTS=
+
