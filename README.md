@@ -7,6 +7,8 @@ which is on my GitHub.
 
 Simply setting the 2005 VC8 tools and the ENV.BAT and Building the PAL first.
 
+Use the razzle.new to avoid the URT Install and a reinstallation of the Opeteraing System
+
 razzle win32 offline
 
 Supports Windows 10 2019 Enterprise LTSC 
