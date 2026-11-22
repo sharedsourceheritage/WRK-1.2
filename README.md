@@ -9,6 +9,8 @@ Simply setting the 2005 VC8 tools and the ENV.BAT and Building the PAL first.
 
 Use the razzle.new to avoid the URT Install and a reinstallation of the Opeteraing System
 
+Build the IDW first in particular the ztools project first with nmake
+
 razzle win32 offline
 
 Supports Windows 10 2019 Enterprise LTSC 

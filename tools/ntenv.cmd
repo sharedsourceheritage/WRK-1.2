@@ -25,8 +25,8 @@ set _NTUSER=%USERNAME%
 @rem and linkers.
 @rem
 set PROJDIR=d:\VS
-set LIB=
-set INCLUDE=%projdir%\public\nonship\inc;%projdir%\tools\common\vcLKG\inc;%projdir%\tools\common\win32sdk\include;%projdir%\tools\common\vcLKG\inc\atlmfc
+set LIB=J:\MICROSOFT.RESEARCH\Lab00_n\VC8\lib;J:\MICROSOFT.RESEARCH\Lab00_n\public\halkit\lib\i386;
+set INCLUDE=J:\MICROSOFT.RESEARCH\Lab00_n\VC8\include;J:\MICROSOFT.RESEARCH\Lab00_n\public\halkit\inc;J:\MICROSOFT.RESEARCH\Lab00_n\public\ifskit\inc;J:\MICROSOFT.RESEARCH\Lab00_n\public\oak\inc;J:\MICROSOFT.RESEARCH\Lab00_n\public\sdk\inc;J:\MICROSOFT.RESEARCH\Lab00_n\public\oak\inc;J:\MICROSOFT.RESEARCH\Lab00_n\public\internal\windows\inc
 @rem
 @rem Setup default build parameters.
 @rem
