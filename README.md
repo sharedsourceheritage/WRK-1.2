@@ -13,7 +13,7 @@ Build the IDW first in particular the ztools project first with nmake
 
 razzle win32 offline
 
-Supports Windows 10 2019 Enterprise LTSC 
+Supports Windows 10 2019 Enterprise LTSC, USE AT YOU OWN RISK! Works on my Machine.
 
 ![lab00_n](lab00_n.png)
 
