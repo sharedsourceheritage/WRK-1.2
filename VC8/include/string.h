@@ -22,7 +22,7 @@
 #include <crtdefs.h>
 
 #ifdef  __cplusplus
-extern "C" {
+
 #endif
 
 #ifndef _NLSCMP_DEFINED
@@ -67,7 +67,7 @@ _CRT_NONSTDC_DEPRECATE(_memicmp) _CRTIMP __checkReturn int __cdecl memicmp(__in_
         _CRT_INSECURE_DEPRECATE(_strset_s) char *  __cdecl _strset(__inout_z char * _Str, __in int _Val);
 _CRTIMP_ALTERNATIVE __checkReturn_wat errno_t __cdecl _strset_s(__inout_ecount_z(_DstSize) char * _Dst, __in size_t _DstSize, __in int _Value);
 #if __STDC_WANT_SECURE_LIB__
-_CRTIMP_ALTERNATIVE __checkReturn_wat errno_t __cdecl strcpy_s(__out_ecount_z(_DstSize) char * _Dst, __in rsize_t _DstSize, __in_z const char * _Src);
+_CRTIMP_ALTERNATIVE __checkReturn_wat errno_t __cdecl strcpy(__out_ecount_z(_DstSize) char * _Dst, __in rsize_t _DstSize, __in_z const char * _Src);
 #endif
 __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, strcpy_s, __out_ecount_z(_Size) char, _Dest, __in_z const char *, _Source)
 __DEFINE_CPP_OVERLOAD_STANDARD_FUNC_0_1(char *, __RETURN_POLICY_DST, __EMPTY_DECLSPEC, strcpy, __out_z char, _Dest, __in_z const char *, _Source)
@@ -192,7 +192,7 @@ inline __checkReturn char * __CRTDECL strstr(__in_z char * _Str, __in_z const ch
 inline __checkReturn void * __CRTDECL memchr(__in_bcount_opt(_N) void * _Pv, __in int _C, __in size_t _N)
 	{ return (void*)memchr((const void*)_Pv, _C, _N); }
 #endif
-}
+
 #endif
 
 #if     !__STDC__

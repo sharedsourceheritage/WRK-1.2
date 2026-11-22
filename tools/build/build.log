@@ -1,6 +1,6 @@
 
-Microsoft (R) Program Maintenance Utility Version 8.00.50727.762
-Copyright (C) Microsoft Corporation.  All rights reserved.
+Microsoft (R) Program Maintenance Utility   Version 7.00.8882
+Copyright (C) Microsoft Corp 1988-2000. All rights reserved.
 
-makefile.win(20) : fatal error U1052: file '\devdiv.def' not found
+J:\MICROSOFT.RESEARCH\Lab00_n\Tools\devdiv.def(117) : fatal error U1052: file 'devdiv2.def' not found
 Stop.

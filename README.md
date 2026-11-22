@@ -5,6 +5,10 @@ cd tools
 In ntenv.cmd set your PROJDIR INCLUDE and LIB environment varibles, then run razzle.cmd They use VC7 or VC8
 which is on my GitHub.
 
+set PROCESSOR_ARCHITECTURE=x86
+
+set msvcdir=J:\MICROSOFT.RESEARCH\Lab00_n\VC8
+
 Simply setting the 2005 VC8 tools and the ENV.BAT and Building the PAL first.
 
 Use the razzle.new to avoid the URT Install and a reinstallation of the Opeteraing System

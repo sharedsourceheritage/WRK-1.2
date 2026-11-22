@@ -25,8 +25,9 @@ set _NTUSER=%USERNAME%
 @rem and linkers.
 @rem
 set PROJDIR=d:\VS
-set LIB=J:\MICROSOFT.RESEARCH\Lab00_n\VC8\lib;J:\MICROSOFT.RESEARCH\Lab00_n\public\halkit\lib\i386;
-set INCLUDE=J:\MICROSOFT.RESEARCH\Lab00_n\VC8\include;J:\MICROSOFT.RESEARCH\Lab00_n\public\halkit\inc;J:\MICROSOFT.RESEARCH\Lab00_n\public\ifskit\inc;J:\MICROSOFT.RESEARCH\Lab00_n\public\oak\inc;J:\MICROSOFT.RESEARCH\Lab00_n\public\sdk\inc;J:\MICROSOFT.RESEARCH\Lab00_n\public\oak\inc;J:\MICROSOFT.RESEARCH\Lab00_n\public\internal\windows\inc
+set MSR=J:\MICROSOFT.RESEARCH\Lab00_n
+set LIB=%MSR%\VC8\lib;%MSR%\public\halkit\lib\i386;%MSR%\com\detours\lib
+set INCLUDE=%MSR%\VC8\include;%MSR%\public\halkit\inc;%MSR%\public\ifskit\inc;%MSR%\public\oak\inc;%MSR%\public\sdk\inc;%MSR%\public\oak\inc;%MSR%\public\internal\windows\inc;%MSR%\com\detours\include;%MSR%\VC8\PlatformSDK\Include
 @rem
 @rem Setup default build parameters.
 @rem
