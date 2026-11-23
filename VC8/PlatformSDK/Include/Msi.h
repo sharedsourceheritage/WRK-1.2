@@ -3,7 +3,7 @@
 *                                                                             *
 * msi.h - - Interface for external access to Installer Service                *
 *                                                                             *
-* Version 3.1                                                                 *
+* Version 3.0                                                                 *
 *                                                                             *
 * NOTES:  All buffers sizes are TCHAR count, null included only on input      *
 *         Return argument pointers may be null if not interested in value     *
@@ -15,32 +15,15 @@
 #ifndef _MSI_H_
 #define _MSI_H_
 
-#ifndef NTDDI_WIN2K
-#define NTDDI_WIN2K                         0x05000000
-#endif
-#ifndef NTDDI_WINXP
-#define NTDDI_WINXP                         0x05010000
-#endif
-#ifndef NTDDI_WINXPSP2
-#define NTDDI_WINXPSP2                      0x05010200
-#endif
-#ifndef NTDDI_WS03SP1
-#define NTDDI_WS03SP1                       0x05020100
-#endif
-
 #ifndef _WIN32_MSI
-#if (_WIN32_WINNT >= 0x0501 || (defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_WINXP))
-  #if (defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_WS03SP1)
-    #define _WIN32_MSI   310
-  #elif (defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_WINXPSP2)
-    #define _WIN32_MSI   300
-  #else
-    #define _WIN32_MSI   200
-  #endif
-#elif (_WIN32_WINNT >= 0x0500 || (defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_WIN2K))
-  #define _WIN32_MSI   110
+#if (_WIN32_WINNT > 0x0502)
+#define _WIN32_MSI   300
+#elif (_WIN32_WINNT >= 0x0501)
+#define _WIN32_MSI   200
+#elif (_WIN32_WINNT >= 0x0500)
+#define _WIN32_MSI   110
 #else
-  #define _WIN32_MSI   100
+#define _WIN32_MSI   100
 #endif //_WIN32_WINNT
 #endif // !_WIN32_MSI
 
@@ -127,10 +110,6 @@ typedef int (WINAPI *INSTALLUI_HANDLERW)(LPVOID pvContext, UINT iMessageType, LP
 #else
 #define INSTALLUI_HANDLER  INSTALLUI_HANDLERA
 #endif // !UNICODE
-#if (_WIN32_MSI >= 310)
-typedef int (WINAPI *INSTALLUI_HANDLER_RECORD)(LPVOID pvContext, UINT iMessageType, MSIHANDLE hRecord);
-typedef INSTALLUI_HANDLER_RECORD* PINSTALLUI_HANDLER_RECORD;
-#endif // (_WIN32_MSI >= 310)
 
 typedef enum tagINSTALLUILEVEL
 {
@@ -471,15 +450,6 @@ INSTALLUI_HANDLERW WINAPI MsiSetExternalUIW(
 #define MsiSetExternalUI  MsiSetExternalUIA
 #endif // !UNICODE
 
-#if (_WIN32_MSI >= 310)
-
-UINT WINAPI MsiSetExternalUIRecord(
-	INSTALLUI_HANDLER_RECORD puiHandler, // for progress and error handling 
-	DWORD              dwMessageFilter,  // bit flags designating messages to handle
-	LPVOID             pvContext,        // application context
-	PINSTALLUI_HANDLER_RECORD ppuiPrevHandler); // pointer to the previously set handler
-	
-#endif // (_WIN32_MSI >= 310)
 
 // Enable logging to a file for all install sessions for the client process,
 // with control over which log messages are passed to the specified log file.
@@ -2018,26 +1988,6 @@ UINT WINAPI MsiIsProductElevatedW(
 #endif // !UNICODE
 
 #endif //(_WIN32_MSI >=  110)
-
-
-#if (_WIN32_MSI >= 310)
-
-// Caller notifies us of a user who's been moved and results in a sid change.
-
-UINT WINAPI MsiNotifySidChangeA(LPCSTR pOldSid,
-                                LPCSTR pNewSid);
-UINT WINAPI MsiNotifySidChangeW(LPCWSTR pOldSid,
-                                LPCWSTR pNewSid);
-#ifdef UNICODE
-#define MsiNotifySidChange  MsiNotifySidChangeW
-#else
-#define MsiNotifySidChange  MsiNotifySidChangeA
-#endif // !UNICODE
-
-#else // _WIN32_MSI < 310
-
-
-#endif // (_WIN32_MSI >= 310)
 
 
 #ifdef __cplusplus

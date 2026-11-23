@@ -72,17 +72,13 @@ extern "C" {
 #endif
 
 //
-// Define maximum string length constants
+// Define maximum string length constants as specified by
+// Windows 95.
 //
-#define LINE_LEN                    256 // Windows 9x-compatible maximum for
-                                        // displayable strings coming from a
-                                        // device INF.
+#define LINE_LEN                    256 // Win95-compatible maximum for displayable
+                                        // strings coming from a device INF.
 #define MAX_INF_STRING_LENGTH      4096 // Actual maximum size of an INF string
                                         // (including string substitutions).
-#define MAX_INF_SECTION_NAME_LENGTH 255 // For Windows 9x compatibility, INF
-                                        // section names should be constrained
-                                        // to 32 characters.
-
 #define MAX_TITLE_LEN                60
 #define MAX_INSTRUCTION_LEN         256
 #define MAX_LABEL_LEN                30
@@ -137,7 +133,8 @@ typedef struct _SP_ALTPLATFORM_INFO_V2 {
     DWORD MinorVersion;
     //
     // processor architecture to use (PROCESSOR_ARCHITECTURE_INTEL,
-    // PROCESSOR_ARCHITECTURE_AMD64, or PROCESSOR_ARCHITECTURE_IA64.
+    // PROCESSOR_ARCHITECTURE_ALPHA, PROCESSOR_ARCHITECTURE_IA64, or
+    // PROCESSOR_ARCHITECTURE_ALPHA64)
     //
     WORD  ProcessorArchitecture;
 
@@ -179,7 +176,8 @@ typedef struct _SP_ALTPLATFORM_INFO_V1 {
     DWORD MinorVersion;
     //
     // processor architecture to use (PROCESSOR_ARCHITECTURE_INTEL,
-    // PROCESSOR_ARCHITECTURE_AMD64, or PROCESSOR_ARCHITECTURE_IA64.
+    // PROCESSOR_ARCHITECTURE_ALPHA, PROCESSOR_ARCHITECTURE_IA64, or
+    // PROCESSOR_ARCHITECTURE_ALPHA64)
     //
     WORD  ProcessorArchitecture;
 
@@ -242,9 +240,6 @@ typedef PSP_ORIGINAL_FILE_INFO_A PSP_ORIGINAL_FILE_INFO;
 //
 #define INF_STYLE_CACHE_ENABLE   0x00000010 // always cache INF, even outside of %windir%\Inf
 #define INF_STYLE_CACHE_DISABLE  0x00000020 // delete cached INF information
-#if _SETUPAPI_VER >= 0x0502
-#define INF_STYLE_CACHE_IGNORE   0x00000040 // ignore any cached INF information
-#endif
 
 
 //
@@ -796,6 +791,7 @@ typedef PSP_DEVINFO_LIST_DETAIL_DATA_A PSP_DEVINFO_LIST_DETAIL_DATA;
 #define DIF_CALCDISKSPACE                   0x0000000B
 #define DIF_DESTROYPRIVATEDATA              0x0000000C
 #define DIF_VALIDATEDRIVER                  0x0000000D
+#define DIF_MOVEDEVICE                      0x0000000E
 #define DIF_DETECT                          0x0000000F
 #define DIF_INSTALLWIZARD                   0x00000010
 #define DIF_DESTROYWIZARDDATA               0x00000011
@@ -824,12 +820,6 @@ typedef PSP_DEVINFO_LIST_DETAIL_DATA_A PSP_DEVINFO_LIST_DETAIL_DATA;
 #define DIF_ADDREMOTEPROPERTYPAGE_ADVANCED  0x00000028
 #define DIF_UPDATEDRIVER_UI                 0x00000029
 #define DIF_RESERVED2                       0x00000030
-
-//
-// Obsoleted DIF codes (do not use)
-//
-#define DIF_MOVEDEVICE                      0x0000000E
-
 
 typedef UINT        DI_FUNCTION;    // Function type for device installer
 
@@ -958,7 +948,7 @@ typedef PSP_DEVINSTALL_PARAMS_A PSP_DEVINSTALL_PARAMS;
 // SP_DEVINSTALL_PARAMS.FlagsEx values
 //
 #define DI_FLAGSEX_USEOLDINFSEARCH          0x00000001L  // Inf Search functions should not use Index Search
-#define DI_FLAGSEX_RESERVED2                0x00000002L  // DI_FLAGSEX_AUTOSELECTRANK0 is obsolete
+#define DI_FLAGSEX_AUTOSELECTRANK0          0x00000002L  // SetupDiSelectDevice doesn't prompt user if rank 0 match
 #define DI_FLAGSEX_CI_FAILED                0x00000004L  // Failed to Load/Call class installer
 
 #define DI_FLAGSEX_DIDINFOLIST              0x00000010L  // Did the Class Info List
@@ -974,7 +964,7 @@ typedef PSP_DEVINSTALL_PARAMS_A PSP_DEVINSTALL_PARAMS;
 #define DI_FLAGSEX_NOUIONQUERYREMOVE        0x00001000L
 #define DI_FLAGSEX_USECLASSFORCOMPAT        0x00002000L  // Use the device's class when building compat drv list.
                                                          // (Ignored if DI_COMPAT_FROM_CLASS flag is specified.)
-#define DI_FLAGSEX_RESERVED3                0x00004000L
+#define DI_FLAGSEX_OLDINF_IN_CLASSLIST      0x00004000L  // Search legacy INFs when building class driver list.
 #define DI_FLAGSEX_NO_DRVREG_MODIFY         0x00008000L  // Don't run AddReg and DelReg for device's software (driver) key.
 #define DI_FLAGSEX_IN_SYSTEM_SETUP          0x00010000L  // Installation is occurring during initial system setup.
 #define DI_FLAGSEX_INET_DRIVER              0x00020000L  // Driver came from Windows Update
@@ -1032,6 +1022,15 @@ typedef struct _SP_ENABLECLASS_PARAMS {
 #define ENABLECLASS_QUERY   0
 #define ENABLECLASS_SUCCESS 1
 #define ENABLECLASS_FAILURE 2
+
+
+//
+// Structure corresponding to a DIF_MOVEDEVICE install function.
+//
+typedef struct _SP_MOVEDEV_PARAMS {
+    SP_CLASSINSTALL_HEADER ClassInstallHeader;
+    SP_DEVINFO_DATA        SourceDeviceInfoData;
+} SP_MOVEDEV_PARAMS, *PSP_MOVEDEV_PARAMS;
 
 
 //
@@ -1311,14 +1310,7 @@ typedef struct _SP_NEWDEVICEWIZARD_DATA {
     HWND                   hwndWizardDlg;
 } SP_NEWDEVICEWIZARD_DATA, *PSP_NEWDEVICEWIZARD_DATA;
 
-//
-// The same structure is also used for retrieval of property pages via the
-// following install functions:
-//
-//     DIF_ADDPROPERTYPAGE_ADVANCED
-//     DIF_ADDPROPERTYPAGE_BASIC
-//     DIF_ADDREMOTEPROPERTYPAGE_ADVANCED
-//
+
 typedef SP_NEWDEVICEWIZARD_DATA SP_ADDPROPERTYPAGE_DATA;
 typedef PSP_NEWDEVICEWIZARD_DATA PSP_ADDPROPERTYPAGE_DATA;
 
@@ -1506,7 +1498,7 @@ typedef struct _SP_DRVINSTALL_PARAMS {
                                             // displayed in any driver select dialogs.
 #define DNF_NODRIVER            0x00000008  // if we want to install no driver
                                             // (e.g no mouse drv)
-#define DNF_LEGACYINF           0x00000010  // Driver node came from an old-style INF (obsolete)
+#define DNF_LEGACYINF           0x00000010  // this driver node comes from an old-style INF
 #define DNF_CLASS_DRIVER        0x00000020  // Driver node represents a class driver
 #define DNF_COMPATIBLE_DRIVER   0x00000040  // Driver node represents a compatible driver
 #define DNF_INET_DRIVER         0x00000080  // Driver comes from an internet source
@@ -1525,11 +1517,6 @@ typedef struct _SP_DRVINSTALL_PARAMS {
 #define DNF_BASIC_DRIVER        0x00010000  // Driver provides basic functionality, but should
                                             // not be chosen if other signed drivers exist.
 #endif // _SETUPAPI_VER >= 0x0501
-
-#if _SETUPAPI_VER >= 0x0502
-#define DNF_AUTHENTICODE_SIGNED 0x00020000  // Inf file is signed by an Authenticode(tm) catalog.
-#endif // _SETUPAPI_VER >= 0x0502
-
 
 //
 // Rank values (the lower the Rank number, the better the Rank)
@@ -1564,7 +1551,7 @@ typedef struct _SP_DRVINSTALL_PARAMS {
                                                       // (a) it isn't signed, and (b) there
                                                       // is no NT-specific decoration to
                                                       // explicitly indicate that the INF
-                                                      // supports Windows NT/2000/XP
+                                                      // supports Windows NT/200x
 
 #define DRIVER_W9X_SUSPECT_HARDWAREID_RANK 0x0000CFFF // Any rank less than or equal to this
                                                       // (and greater than or equal to
@@ -1723,82 +1710,64 @@ typedef PSP_BACKUP_QUEUE_PARAMS_V2 PSP_BACKUP_QUEUE_PARAMS;
 //
 // Device Installer/other errors
 //
-#define ERROR_NO_ASSOCIATED_CLASS                (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x200)
-#define ERROR_CLASS_MISMATCH                     (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x201)
-#define ERROR_DUPLICATE_FOUND                    (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x202)
-#define ERROR_NO_DRIVER_SELECTED                 (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x203)
-#define ERROR_KEY_DOES_NOT_EXIST                 (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x204)
-#define ERROR_INVALID_DEVINST_NAME               (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x205)
-#define ERROR_INVALID_CLASS                      (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x206)
-#define ERROR_DEVINST_ALREADY_EXISTS             (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x207)
-#define ERROR_DEVINFO_NOT_REGISTERED             (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x208)
-#define ERROR_INVALID_REG_PROPERTY               (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x209)
-#define ERROR_NO_INF                             (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20A)
-#define ERROR_NO_SUCH_DEVINST                    (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20B)
-#define ERROR_CANT_LOAD_CLASS_ICON               (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20C)
-#define ERROR_INVALID_CLASS_INSTALLER            (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20D)
-#define ERROR_DI_DO_DEFAULT                      (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20E)
-#define ERROR_DI_NOFILECOPY                      (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20F)
-#define ERROR_INVALID_HWPROFILE                  (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x210)
-#define ERROR_NO_DEVICE_SELECTED                 (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x211)
-#define ERROR_DEVINFO_LIST_LOCKED                (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x212)
-#define ERROR_DEVINFO_DATA_LOCKED                (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x213)
-#define ERROR_DI_BAD_PATH                        (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x214)
-#define ERROR_NO_CLASSINSTALL_PARAMS             (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x215)
-#define ERROR_FILEQUEUE_LOCKED                   (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x216)
-#define ERROR_BAD_SERVICE_INSTALLSECT            (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x217)
-#define ERROR_NO_CLASS_DRIVER_LIST               (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x218)
-#define ERROR_NO_ASSOCIATED_SERVICE              (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x219)
-#define ERROR_NO_DEFAULT_DEVICE_INTERFACE        (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21A)
-#define ERROR_DEVICE_INTERFACE_ACTIVE            (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21B)
-#define ERROR_DEVICE_INTERFACE_REMOVED           (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21C)
-#define ERROR_BAD_INTERFACE_INSTALLSECT          (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21D)
-#define ERROR_NO_SUCH_INTERFACE_CLASS            (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21E)
-#define ERROR_INVALID_REFERENCE_STRING           (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21F)
-#define ERROR_INVALID_MACHINENAME                (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x220)
-#define ERROR_REMOTE_COMM_FAILURE                (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x221)
-#define ERROR_MACHINE_UNAVAILABLE                (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x222)
-#define ERROR_NO_CONFIGMGR_SERVICES              (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x223)
-#define ERROR_INVALID_PROPPAGE_PROVIDER          (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x224)
-#define ERROR_NO_SUCH_DEVICE_INTERFACE           (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x225)
-#define ERROR_DI_POSTPROCESSING_REQUIRED         (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x226)
-#define ERROR_INVALID_COINSTALLER                (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x227)
-#define ERROR_NO_COMPAT_DRIVERS                  (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x228)
-#define ERROR_NO_DEVICE_ICON                     (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x229)
-#define ERROR_INVALID_INF_LOGCONFIG              (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22A)
-#define ERROR_DI_DONT_INSTALL                    (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22B)
-#define ERROR_INVALID_FILTER_DRIVER              (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22C)
-#define ERROR_NON_WINDOWS_NT_DRIVER              (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22D)
-#define ERROR_NON_WINDOWS_DRIVER                 (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22E)
-#define ERROR_NO_CATALOG_FOR_OEM_INF             (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22F)
-#define ERROR_DEVINSTALL_QUEUE_NONNATIVE         (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x230)
-#define ERROR_NOT_DISABLEABLE                    (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x231)
-#define ERROR_CANT_REMOVE_DEVINST                (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x232)
-#define ERROR_INVALID_TARGET                     (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x233)
-#define ERROR_DRIVER_NONNATIVE                   (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x234)
-#define ERROR_IN_WOW64                           (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x235)
-#define ERROR_SET_SYSTEM_RESTORE_POINT           (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x236)
-#define ERROR_INCORRECTLY_COPIED_INF             (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x237)
-#define ERROR_SCE_DISABLED                       (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x238)
-#define ERROR_UNKNOWN_EXCEPTION                  (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x239)
-#define ERROR_PNP_REGISTRY_ERROR                 (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x23A)
-#define ERROR_REMOTE_REQUEST_UNSUPPORTED         (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x23B)
-#define ERROR_NOT_AN_INSTALLED_OEM_INF           (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x23C)
-#define ERROR_INF_IN_USE_BY_DEVICES              (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x23D)
-#define ERROR_DI_FUNCTION_OBSOLETE               (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x23E)
-#define ERROR_NO_AUTHENTICODE_CATALOG            (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x23F)
-#define ERROR_AUTHENTICODE_DISALLOWED            (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x240)
-#define ERROR_AUTHENTICODE_TRUSTED_PUBLISHER     (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x241)
-#define ERROR_AUTHENTICODE_TRUST_NOT_ESTABLISHED (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x242)
-#define ERROR_AUTHENTICODE_PUBLISHER_NOT_TRUSTED (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x243)
-#define ERROR_SIGNATURE_OSATTRIBUTE_MISMATCH     (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x244)
-#define ERROR_ONLY_VALIDATE_VIA_AUTHENTICODE     (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x245)
+#define ERROR_NO_ASSOCIATED_CLASS         (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x200)
+#define ERROR_CLASS_MISMATCH              (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x201)
+#define ERROR_DUPLICATE_FOUND             (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x202)
+#define ERROR_NO_DRIVER_SELECTED          (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x203)
+#define ERROR_KEY_DOES_NOT_EXIST          (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x204)
+#define ERROR_INVALID_DEVINST_NAME        (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x205)
+#define ERROR_INVALID_CLASS               (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x206)
+#define ERROR_DEVINST_ALREADY_EXISTS      (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x207)
+#define ERROR_DEVINFO_NOT_REGISTERED      (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x208)
+#define ERROR_INVALID_REG_PROPERTY        (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x209)
+#define ERROR_NO_INF                      (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20A)
+#define ERROR_NO_SUCH_DEVINST             (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20B)
+#define ERROR_CANT_LOAD_CLASS_ICON        (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20C)
+#define ERROR_INVALID_CLASS_INSTALLER     (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20D)
+#define ERROR_DI_DO_DEFAULT               (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20E)
+#define ERROR_DI_NOFILECOPY               (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x20F)
+#define ERROR_INVALID_HWPROFILE           (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x210)
+#define ERROR_NO_DEVICE_SELECTED          (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x211)
+#define ERROR_DEVINFO_LIST_LOCKED         (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x212)
+#define ERROR_DEVINFO_DATA_LOCKED         (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x213)
+#define ERROR_DI_BAD_PATH                 (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x214)
+#define ERROR_NO_CLASSINSTALL_PARAMS      (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x215)
+#define ERROR_FILEQUEUE_LOCKED            (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x216)
+#define ERROR_BAD_SERVICE_INSTALLSECT     (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x217)
+#define ERROR_NO_CLASS_DRIVER_LIST        (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x218)
+#define ERROR_NO_ASSOCIATED_SERVICE       (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x219)
+#define ERROR_NO_DEFAULT_DEVICE_INTERFACE (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21A)
+#define ERROR_DEVICE_INTERFACE_ACTIVE     (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21B)
+#define ERROR_DEVICE_INTERFACE_REMOVED    (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21C)
+#define ERROR_BAD_INTERFACE_INSTALLSECT   (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21D)
+#define ERROR_NO_SUCH_INTERFACE_CLASS     (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21E)
+#define ERROR_INVALID_REFERENCE_STRING    (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x21F)
+#define ERROR_INVALID_MACHINENAME         (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x220)
+#define ERROR_REMOTE_COMM_FAILURE         (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x221)
+#define ERROR_MACHINE_UNAVAILABLE         (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x222)
+#define ERROR_NO_CONFIGMGR_SERVICES       (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x223)
+#define ERROR_INVALID_PROPPAGE_PROVIDER   (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x224)
+#define ERROR_NO_SUCH_DEVICE_INTERFACE    (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x225)
+#define ERROR_DI_POSTPROCESSING_REQUIRED  (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x226)
+#define ERROR_INVALID_COINSTALLER         (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x227)
+#define ERROR_NO_COMPAT_DRIVERS           (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x228)
+#define ERROR_NO_DEVICE_ICON              (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x229)
+#define ERROR_INVALID_INF_LOGCONFIG       (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22A)
+#define ERROR_DI_DONT_INSTALL             (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22B)
+#define ERROR_INVALID_FILTER_DRIVER       (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22C)
+#define ERROR_NON_WINDOWS_NT_DRIVER       (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22D)
+#define ERROR_NON_WINDOWS_DRIVER          (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22E)
+#define ERROR_NO_CATALOG_FOR_OEM_INF      (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x22F)
+#define ERROR_DEVINSTALL_QUEUE_NONNATIVE  (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x230)
+#define ERROR_NOT_DISABLEABLE             (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x231)
+#define ERROR_CANT_REMOVE_DEVINST         (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x232)
+#define ERROR_INVALID_TARGET              (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x233)
+#define ERROR_DRIVER_NONNATIVE            (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x234)
+#define ERROR_IN_WOW64                    (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x235)
+#define ERROR_SET_SYSTEM_RESTORE_POINT    (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x236)
+#define ERROR_INCORRECTLY_COPIED_INF      (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x237)
+#define ERROR_SCE_DISABLED                (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x238)
 
-//
-// Setupapi exception codes
-//
-#define ERROR_UNRECOVERABLE_STACK_OVERFLOW (APPLICATION_ERROR_MASK|ERROR_SEVERITY_ERROR|0x300)
-#define EXCEPTION_SPAPI_UNRECOVERABLE_STACK_OVERFLOW ERROR_UNRECOVERABLE_STACK_OVERFLOW
 
 //
 // Backward compatibility--do not use.
@@ -1819,22 +1788,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetInfInformationA(
-    __in LPCVOID InfSpec,
-    __in DWORD SearchControl,
-    __out_bcount_opt(ReturnBufferSize) PSP_INF_INFORMATION ReturnBuffer, 
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  LPCVOID             InfSpec,
+    IN  DWORD               SearchControl,
+    OUT PSP_INF_INFORMATION ReturnBuffer,     OPTIONAL
+    IN  DWORD               ReturnBufferSize,
+    OUT PDWORD              RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetInfInformationW(
-    __in LPCVOID InfSpec,
-    __in DWORD SearchControl,
-    __out_bcount_opt(ReturnBufferSize) PSP_INF_INFORMATION ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  LPCVOID             InfSpec,
+    IN  DWORD               SearchControl,
+    OUT PSP_INF_INFORMATION ReturnBuffer,     OPTIONAL
+    IN  DWORD               ReturnBufferSize,
+    OUT PDWORD              RequiredSize      OPTIONAL
     );
 
 //
@@ -1857,22 +1826,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueryInfFileInformationA(
-    __in PSP_INF_INFORMATION InfInformation,
-    __in UINT InfIndex,
-    __out_ecount_opt(ReturnBufferSize) PSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize 
+    IN  PSP_INF_INFORMATION InfInformation,
+    IN  UINT                InfIndex,
+    OUT PSTR                ReturnBuffer,     OPTIONAL
+    IN  DWORD               ReturnBufferSize,
+    OUT PDWORD              RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueryInfFileInformationW(
-    __in PSP_INF_INFORMATION InfInformation,
-    __in UINT InfIndex,
-    __out_ecount_opt(ReturnBufferSize) PWSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  PSP_INF_INFORMATION InfInformation,
+    IN  UINT                InfIndex,
+    OUT PWSTR               ReturnBuffer,     OPTIONAL
+    IN  DWORD               ReturnBufferSize,
+    OUT PDWORD              RequiredSize      OPTIONAL
     );
 
 #ifdef UNICODE
@@ -1886,20 +1855,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueryInfOriginalFileInformationA(
-    __in PSP_INF_INFORMATION InfInformation,
-    __in UINT InfIndex,
-    __in_opt PSP_ALTPLATFORM_INFO AlternatePlatformInfo,
-    __out PSP_ORIGINAL_FILE_INFO_A OriginalFileInfo
+    IN  PSP_INF_INFORMATION      InfInformation,
+    IN  UINT                     InfIndex,
+    IN  PSP_ALTPLATFORM_INFO     AlternatePlatformInfo, OPTIONAL
+    OUT PSP_ORIGINAL_FILE_INFO_A OriginalFileInfo
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueryInfOriginalFileInformationW(
-    __in PSP_INF_INFORMATION InfInformation,
-    __in UINT InfIndex,
-    __in_opt PSP_ALTPLATFORM_INFO AlternatePlatformInfo,
-    __out PSP_ORIGINAL_FILE_INFO_W OriginalFileInfo
+    IN  PSP_INF_INFORMATION      InfInformation,
+    IN  UINT                     InfIndex,
+    IN  PSP_ALTPLATFORM_INFO     AlternatePlatformInfo, OPTIONAL
+    OUT PSP_ORIGINAL_FILE_INFO_W OriginalFileInfo
     );
 
 #ifdef UNICODE
@@ -1913,24 +1882,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueryInfVersionInformationA(
-    __in PSP_INF_INFORMATION InfInformation,
-    __in UINT InfIndex,
-    __in_opt PCSTR Key,
-    __out_ecount_opt(ReturnBufferSize) PSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  PSP_INF_INFORMATION InfInformation,
+    IN  UINT                InfIndex,
+    IN  PCSTR               Key,              OPTIONAL
+    OUT PSTR                ReturnBuffer,     OPTIONAL
+    IN  DWORD               ReturnBufferSize,
+    OUT PDWORD              RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueryInfVersionInformationW(
-    __in PSP_INF_INFORMATION InfInformation,
-    __in UINT InfIndex,
-    __in_opt PCWSTR Key,
-    __out_ecount_opt(ReturnBufferSize) PWSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  PSP_INF_INFORMATION InfInformation,
+    IN  UINT                InfIndex,
+    IN  PCWSTR              Key,              OPTIONAL
+    OUT PWSTR               ReturnBuffer,     OPTIONAL
+    IN  DWORD               ReturnBufferSize,
+    OUT PDWORD              RequiredSize      OPTIONAL
     );
 
 #ifdef UNICODE
@@ -1944,22 +1913,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetInfFileListA(
-    __in_opt PCSTR DirectoryPath,
-    __in DWORD InfStyle,
-    __out_ecount_opt(ReturnBufferSize) PSTR ReturnBuffer, 
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  PCSTR  DirectoryPath,    OPTIONAL
+    IN  DWORD  InfStyle,
+    OUT PSTR   ReturnBuffer,     OPTIONAL
+    IN  DWORD  ReturnBufferSize,
+    OUT PDWORD RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetInfFileListW(
-    __in_opt PCWSTR DirectoryPath,
-    __in DWORD InfStyle,
-    __out_ecount(ReturnBufferSize) PWSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  PCWSTR DirectoryPath,    OPTIONAL
+    IN  DWORD  InfStyle,
+    OUT PWSTR  ReturnBuffer,     OPTIONAL
+    IN  DWORD  ReturnBufferSize,
+    OUT PDWORD RequiredSize      OPTIONAL
     );
 
 #ifdef UNICODE
@@ -1973,20 +1942,20 @@ WINSETUPAPI
 HINF
 WINAPI
 SetupOpenInfFileW(
-    __in PCWSTR FileName,
-    __in_opt PCWSTR InfClass,
-    __in DWORD InfStyle,
-    __out_opt PUINT ErrorLine
+    IN  PCWSTR FileName,
+    IN  PCWSTR InfClass,    OPTIONAL
+    IN  DWORD  InfStyle,
+    OUT PUINT  ErrorLine    OPTIONAL
     );
 
 WINSETUPAPI
 HINF
 WINAPI
 SetupOpenInfFileA(
-    __in PCSTR FileName,
-    __in_opt PCSTR InfClass,
-    __in DWORD InfStyle,
-    __out_opt PUINT ErrorLine
+    IN  PCSTR FileName,
+    IN  PCSTR InfClass,     OPTIONAL
+    IN  DWORD InfStyle,
+    OUT PUINT ErrorLine     OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2008,18 +1977,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupOpenAppendInfFileW(
-    __in_opt PCWSTR FileName,
-    __in HINF InfHandle,
-    __out_opt PUINT ErrorLine
+    IN  PCWSTR FileName,    OPTIONAL
+    IN  HINF   InfHandle,
+    OUT PUINT  ErrorLine    OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupOpenAppendInfFileA(
-    __in_opt PCSTR FileName,
-    __in HINF InfHandle,
-    __out_opt PUINT ErrorLine
+    IN  PCSTR FileName,     OPTIONAL
+    IN  HINF  InfHandle,
+    OUT PUINT ErrorLine     OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2033,7 +2002,7 @@ WINSETUPAPI
 VOID
 WINAPI
 SetupCloseInfFile(
-    __in HINF InfHandle
+    IN HINF InfHandle
     );
 
 
@@ -2041,20 +2010,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupFindFirstLineA(
-    __in HINF InfHandle,
-    __in PCSTR Section,
-    __in_opt PCSTR Key,
-    __out PINFCONTEXT Context
+    IN  HINF        InfHandle,
+    IN  PCSTR       Section,
+    IN  PCSTR       Key,          OPTIONAL
+    OUT PINFCONTEXT Context
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupFindFirstLineW(
-    __in HINF InfHandle,
-    __in PCWSTR Section,
-    __in_opt PCWSTR Key,
-    __out PINFCONTEXT Context
+    IN  HINF        InfHandle,
+    IN  PCWSTR      Section,
+    IN  PCWSTR      Key,          OPTIONAL
+    OUT PINFCONTEXT Context
     );
 
 #ifdef UNICODE
@@ -2068,8 +2037,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupFindNextLine(
-    __in PINFCONTEXT ContextIn,
-    __out PINFCONTEXT ContextOut
+    IN  PINFCONTEXT ContextIn,
+    OUT PINFCONTEXT ContextOut
     );
 
 
@@ -2077,18 +2046,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupFindNextMatchLineA(
-    __in PINFCONTEXT ContextIn,
-    __in_opt PCSTR Key,
-    __out PINFCONTEXT ContextOut
+    IN  PINFCONTEXT ContextIn,
+    IN  PCSTR       Key,        OPTIONAL
+    OUT PINFCONTEXT ContextOut
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupFindNextMatchLineW(
-    __in PINFCONTEXT ContextIn,
-    __in_opt PCWSTR Key,
-    __out PINFCONTEXT ContextOut
+    IN  PINFCONTEXT ContextIn,
+    IN  PCWSTR      Key,        OPTIONAL
+    OUT PINFCONTEXT ContextOut
     );
 
 #ifdef UNICODE
@@ -2102,20 +2071,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetLineByIndexA(
-    __in HINF InfHandle,
-    __in PCSTR Section,
-    __in DWORD Index,
-    __out PINFCONTEXT Context
+    IN  HINF        InfHandle,
+    IN  PCSTR       Section,
+    IN  DWORD       Index,
+    OUT PINFCONTEXT Context
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetLineByIndexW(
-    __in HINF InfHandle,
-    __in PCWSTR Section,
-    __in DWORD Index,
-    __out PINFCONTEXT Context
+    IN  HINF        InfHandle,
+    IN  PCWSTR      Section,
+    IN  DWORD       Index,
+    OUT PINFCONTEXT Context
     );
 
 #ifdef UNICODE
@@ -2129,16 +2098,16 @@ WINSETUPAPI
 LONG
 WINAPI
 SetupGetLineCountA(
-    __in HINF InfHandle,
-    __in PCSTR Section
+    IN HINF  InfHandle,
+    IN PCSTR Section
     );
 
 WINSETUPAPI
 LONG
 WINAPI
 SetupGetLineCountW(
-    __in HINF InfHandle,
-    __in PCWSTR Section
+    IN HINF   InfHandle,
+    IN PCWSTR Section
     );
 
 #ifdef UNICODE
@@ -2152,26 +2121,26 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetLineTextA(
-    __in_opt PINFCONTEXT Context,
-    __in_opt HINF InfHandle,
-    __in_opt PCSTR Section,
-    __in_opt PCSTR Key,
-    __out_ecount_opt(ReturnBufferSize) PSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  PINFCONTEXT Context,          OPTIONAL
+    IN  HINF        InfHandle,        OPTIONAL
+    IN  PCSTR       Section,          OPTIONAL
+    IN  PCSTR       Key,              OPTIONAL
+    OUT PSTR        ReturnBuffer,     OPTIONAL
+    IN  DWORD       ReturnBufferSize,
+    OUT PDWORD      RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetLineTextW(
-    __in_opt PINFCONTEXT Context,
-    __in_opt HINF InfHandle,
-    __in_opt PCWSTR Section,
-    __in_opt PCWSTR Key,
-    __out_ecount_opt(ReturnBufferSize) PWSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  PINFCONTEXT Context,          OPTIONAL
+    IN  HINF        InfHandle,        OPTIONAL
+    IN  PCWSTR      Section,          OPTIONAL
+    IN  PCWSTR      Key,              OPTIONAL
+    OUT PWSTR       ReturnBuffer,     OPTIONAL
+    IN  DWORD       ReturnBufferSize,
+    OUT PDWORD      RequiredSize      OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2185,7 +2154,7 @@ WINSETUPAPI
 DWORD
 WINAPI
 SetupGetFieldCount(
-    __in PINFCONTEXT Context
+    IN PINFCONTEXT Context
     );
 
 
@@ -2193,22 +2162,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetStringFieldA(
-    __in PINFCONTEXT Context,
-    __in DWORD FieldIndex,
-    __out_ecount_opt(ReturnBufferSize) PSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  PINFCONTEXT Context,
+    IN  DWORD       FieldIndex,
+    OUT PSTR        ReturnBuffer,     OPTIONAL
+    IN  DWORD       ReturnBufferSize,
+    OUT PDWORD      RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetStringFieldW(
-    __in PINFCONTEXT Context,
-    __in DWORD FieldIndex,
-    __out_ecount_opt(ReturnBufferSize) PWSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  PINFCONTEXT Context,
+    IN  DWORD       FieldIndex,
+    OUT PWSTR       ReturnBuffer,     OPTIONAL
+    IN  DWORD       ReturnBufferSize,
+    OUT PDWORD      RequiredSize      OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2222,9 +2191,9 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetIntField(
-    __in PINFCONTEXT Context,
-    __in DWORD FieldIndex,
-    __out PINT IntegerValue
+    IN  PINFCONTEXT Context,
+    IN  DWORD       FieldIndex,
+    OUT PINT        IntegerValue
     );
 
 
@@ -2232,22 +2201,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetMultiSzFieldA(
-    __in PINFCONTEXT Context,
-    __in DWORD FieldIndex,
-    __out_ecount_opt(ReturnBufferSize) PSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt LPDWORD RequiredSize 
+    IN  PINFCONTEXT Context,
+    IN  DWORD       FieldIndex,
+    OUT PSTR        ReturnBuffer,     OPTIONAL
+    IN  DWORD       ReturnBufferSize,
+    OUT LPDWORD     RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetMultiSzFieldW(
-    __in PINFCONTEXT Context,
-    __in DWORD FieldIndex,
-    __out_ecount_opt(ReturnBufferSize) PWSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt LPDWORD RequiredSize 
+    IN  PINFCONTEXT Context,
+    IN  DWORD       FieldIndex,
+    OUT PWSTR       ReturnBuffer,     OPTIONAL
+    IN  DWORD       ReturnBufferSize,
+    OUT LPDWORD     RequiredSize      OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2261,11 +2230,11 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetBinaryField(
-    __in PINFCONTEXT Context,
-    __in DWORD FieldIndex,
-    __out_bcount_opt(ReturnBufferSize) PBYTE ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt LPDWORD RequiredSize 
+    IN  PINFCONTEXT Context,
+    IN  DWORD       FieldIndex,
+    OUT PBYTE       ReturnBuffer,     OPTIONAL
+    IN  DWORD       ReturnBufferSize,
+    OUT LPDWORD     RequiredSize      OPTIONAL
     );
 
 //
@@ -2280,22 +2249,22 @@ WINSETUPAPI
 DWORD
 WINAPI
 SetupGetFileCompressionInfoA(
-    __in PCSTR SourceFileName,
-    __out PSTR *ActualSourceFileName,
-    __out PDWORD SourceFileSize,
-    __out PDWORD TargetFileSize,
-    __out PUINT CompressionType
+    IN  PCSTR   SourceFileName,
+    OUT PSTR   *ActualSourceFileName,
+    OUT PDWORD  SourceFileSize,
+    OUT PDWORD  TargetFileSize,
+    OUT PUINT   CompressionType
     );
 
 WINSETUPAPI
 DWORD
 WINAPI
 SetupGetFileCompressionInfoW(
-    __in PCWSTR SourceFileName,
-    __out PWSTR *ActualSourceFileName,
-    __out PDWORD SourceFileSize,
-    __out PDWORD TargetFileSize,
-    __out PUINT CompressionType
+    IN  PCWSTR  SourceFileName,
+    OUT PWSTR  *ActualSourceFileName,
+    OUT PDWORD  SourceFileSize,
+    OUT PDWORD  TargetFileSize,
+    OUT PUINT   CompressionType
     );
 
 #ifdef UNICODE
@@ -2317,26 +2286,26 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetFileCompressionInfoExA(
-    __in PCSTR SourceFileName,
-    __in_ecount_opt(ActualSourceFileNameBufferLen) PSTR ActualSourceFileNameBuffer,
-    __in DWORD ActualSourceFileNameBufferLen,
-    __out_opt PDWORD RequiredBufferLen, 
-    __out PDWORD SourceFileSize,
-    __out PDWORD TargetFileSize,
-    __out PUINT CompressionType
+    IN  PCSTR   SourceFileName,
+    IN  PSTR    ActualSourceFileNameBuffer,
+    IN  DWORD   ActualSourceFileNameBufferLen,
+    OUT PDWORD  RequiredBufferLen,              OPTIONAL
+    OUT PDWORD  SourceFileSize,
+    OUT PDWORD  TargetFileSize,
+    OUT PUINT   CompressionType
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetFileCompressionInfoExW(
-    __in PCWSTR SourceFileName,
-    __in_ecount_opt(ActualSourceFileNameBufferLen) PWSTR ActualSourceFileNameBuffer,
-    __in DWORD ActualSourceFileNameBufferLen,
-    __out_opt PDWORD RequiredBufferLen,
-    __out PDWORD SourceFileSize,
-    __out PDWORD TargetFileSize,
-    __out PUINT CompressionType
+    IN  PCWSTR  SourceFileName,
+    IN  PWSTR   ActualSourceFileNameBuffer,
+    IN  DWORD   ActualSourceFileNameBufferLen,
+    OUT PDWORD  RequiredBufferLen,              OPTIONAL
+    OUT PDWORD  SourceFileSize,
+    OUT PDWORD  TargetFileSize,
+    OUT PUINT   CompressionType
     );
 
 #ifdef UNICODE
@@ -2360,18 +2329,18 @@ WINSETUPAPI
 DWORD
 WINAPI
 SetupDecompressOrCopyFileA(
-    __in PCSTR SourceFileName,
-    __in PCSTR TargetFileName,
-    __in_opt PUINT CompressionType
+    IN PCSTR SourceFileName,
+    IN PCSTR TargetFileName,
+    IN PUINT CompressionType OPTIONAL
     );
 
 WINSETUPAPI
 DWORD
 WINAPI
 SetupDecompressOrCopyFileW(
-    __in PCWSTR SourceFileName,
-    __in PCWSTR TargetFileName,
-    __in_opt PUINT CompressionType
+    IN PCWSTR SourceFileName,
+    IN PCWSTR TargetFileName,
+    IN PUINT  CompressionType OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2385,26 +2354,26 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetSourceFileLocationA(
-    __in HINF InfHandle,
-    __in_opt PINFCONTEXT InfContext,
-    __in_opt PCSTR FileName,
-    __out PUINT SourceId,
-    __out_ecount_opt(ReturnBufferSize) PSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HINF        InfHandle,
+    IN  PINFCONTEXT InfContext,       OPTIONAL
+    IN  PCSTR       FileName,         OPTIONAL
+    OUT PUINT       SourceId,
+    OUT PSTR        ReturnBuffer,     OPTIONAL
+    IN  DWORD       ReturnBufferSize,
+    OUT PDWORD      RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetSourceFileLocationW(
-    __in HINF InfHandle,
-    __in_opt PINFCONTEXT InfContext,
-    __in_opt PCWSTR FileName,
-    __out PUINT SourceId,
-    __out_ecount_opt(ReturnBufferSize) PWSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HINF        InfHandle,
+    IN  PINFCONTEXT InfContext,       OPTIONAL
+    IN  PCWSTR      FileName,         OPTIONAL
+    OUT PUINT       SourceId,
+    OUT PWSTR       ReturnBuffer,     OPTIONAL
+    IN  DWORD       ReturnBufferSize,
+    OUT PDWORD      RequiredSize      OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2418,24 +2387,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetSourceFileSizeA(
-    __in HINF InfHandle,
-    __in_opt PINFCONTEXT InfContext,
-    __in_opt PCSTR FileName,
-    __in_opt PCSTR Section,
-    __out PDWORD FileSize,
-    __in UINT RoundingFactor
+    IN  HINF        InfHandle,
+    IN  PINFCONTEXT InfContext,     OPTIONAL
+    IN  PCSTR       FileName,       OPTIONAL
+    IN  PCSTR       Section,        OPTIONAL
+    OUT PDWORD      FileSize,
+    IN  UINT        RoundingFactor  OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetSourceFileSizeW(
-    __in HINF InfHandle,
-    __in_opt PINFCONTEXT InfContext,
-    __in_opt PCWSTR FileName,
-    __in_opt PCWSTR Section,
-    __out PDWORD FileSize,
-    __in UINT RoundingFactor
+    IN  HINF        InfHandle,
+    IN  PINFCONTEXT InfContext,     OPTIONAL
+    IN  PCWSTR      FileName,       OPTIONAL
+    IN  PCWSTR      Section,        OPTIONAL
+    OUT PDWORD      FileSize,
+    IN  UINT        RoundingFactor  OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2449,24 +2418,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetTargetPathA(
-    __in HINF InfHandle,
-    __in_opt PINFCONTEXT InfContext,
-    __in_opt PCSTR Section,
-    __out_ecount_opt(ReturnBufferSize) PSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HINF        InfHandle,
+    IN  PINFCONTEXT InfContext,       OPTIONAL
+    IN  PCSTR       Section,          OPTIONAL
+    OUT PSTR        ReturnBuffer,     OPTIONAL
+    IN  DWORD       ReturnBufferSize,
+    OUT PDWORD      RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetTargetPathW(
-    __in HINF InfHandle,
-    __in_opt PINFCONTEXT InfContext,
-    __in_opt PCWSTR Section,
-    __out_ecount_opt(ReturnBufferSize) PWSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HINF        InfHandle,
+    IN  PINFCONTEXT InfContext,       OPTIONAL
+    IN  PCWSTR      Section,          OPTIONAL
+    OUT PWSTR       ReturnBuffer,     OPTIONAL
+    IN  DWORD       ReturnBufferSize,
+    OUT PDWORD      RequiredSize      OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2493,18 +2462,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupSetSourceListA(
-    __in DWORD Flags,
-    __in_ecount(SourceCount) PCSTR *SourceList,
-    __in UINT SourceCount
+    IN DWORD  Flags,
+    IN PCSTR *SourceList,
+    IN UINT   SourceCount
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupSetSourceListW(
-    __in DWORD Flags,
-    __in_ecount(SourceCount) PCWSTR *SourceList,
-    __in UINT SourceCount
+    IN DWORD   Flags,
+    IN PCWSTR *SourceList,
+    IN UINT    SourceCount
     );
 
 #ifdef UNICODE
@@ -2526,16 +2495,16 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupAddToSourceListA(
-    __in DWORD Flags,
-    __in PCSTR Source
+    IN DWORD Flags,
+    IN PCSTR Source
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupAddToSourceListW(
-    __in DWORD Flags,
-    __in PCWSTR Source
+    IN DWORD  Flags,
+    IN PCWSTR Source
     );
 
 #ifdef UNICODE
@@ -2549,16 +2518,16 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupRemoveFromSourceListA(
-    __in DWORD Flags,
-    __in PCSTR Source
+    IN DWORD Flags,
+    IN PCSTR Source
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupRemoveFromSourceListW(
-    __in DWORD Flags,
-    __in PCWSTR Source
+    IN DWORD  Flags,
+    IN PCWSTR Source
     );
 
 #ifdef UNICODE
@@ -2572,18 +2541,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQuerySourceListA(
-    __in DWORD Flags,
-    __deref_out_ecount(*Count) PCSTR **List,
-    __out PUINT Count
+    IN  DWORD   Flags,
+    OUT PCSTR **List,
+    OUT PUINT   Count
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQuerySourceListW(
-    __in DWORD Flags,
-    __deref_out_ecount(*Count) PCWSTR **List,
-    __out PUINT Count
+    IN  DWORD    Flags,
+    OUT PCWSTR **List,
+    OUT PUINT    Count
     );
 
 #ifdef UNICODE
@@ -2597,16 +2566,16 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupFreeSourceListA(
-    __deref_inout_ecount(Count) PCSTR **List,
-    __in UINT Count
+    IN OUT PCSTR **List,
+    IN     UINT    Count
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupFreeSourceListW(
-    __deref_inout_ecount(Count) PCWSTR **List,
-    __in UINT Count
+    IN OUT PCWSTR **List,
+    IN     UINT     Count
     );
 
 #ifdef UNICODE
@@ -2620,32 +2589,32 @@ WINSETUPAPI
 UINT
 WINAPI
 SetupPromptForDiskA(
-    __in HWND hwndParent,
-    __in_opt PCSTR DialogTitle,
-    __in_opt PCSTR DiskName,
-    __in_opt PCSTR PathToSource,
-    __in PCSTR FileSought,
-    __in_opt PCSTR TagFile,
-    __in DWORD DiskPromptStyle,
-    __out_ecount_opt(PathBufferSize) PSTR PathBuffer,
-    __in DWORD PathBufferSize,
-    __out_opt PDWORD PathRequiredSize
+    IN  HWND   hwndParent,
+    IN  PCSTR  DialogTitle,      OPTIONAL
+    IN  PCSTR  DiskName,         OPTIONAL
+    IN  PCSTR  PathToSource,     OPTIONAL
+    IN  PCSTR  FileSought,
+    IN  PCSTR  TagFile,          OPTIONAL
+    IN  DWORD  DiskPromptStyle,
+    OUT PSTR   PathBuffer,
+    IN  DWORD  PathBufferSize,
+    OUT PDWORD PathRequiredSize
     );
 
 WINSETUPAPI
 UINT
 WINAPI
 SetupPromptForDiskW(
-    __in HWND hwndParent,
-    __in_opt PCWSTR DialogTitle,
-    __in_opt PCWSTR DiskName,
-    __in_opt PCWSTR PathToSource,
-    __in PCWSTR FileSought,
-    __in_opt PCWSTR TagFile,
-    __in DWORD DiskPromptStyle,
-    __out_ecount_opt(PathBufferSize) PWSTR PathBuffer,
-    __in DWORD PathBufferSize,
-    __out_opt PDWORD PathRequiredSize
+    IN  HWND   hwndParent,
+    IN  PCWSTR DialogTitle,      OPTIONAL
+    IN  PCWSTR DiskName,         OPTIONAL
+    IN  PCWSTR PathToSource,     OPTIONAL
+    IN  PCWSTR FileSought,
+    IN  PCWSTR TagFile,          OPTIONAL
+    IN  DWORD  DiskPromptStyle,
+    OUT PWSTR  PathBuffer,
+    IN  DWORD  PathBufferSize,
+    OUT PDWORD PathRequiredSize
     );
 
 #ifdef UNICODE
@@ -2659,34 +2628,34 @@ WINSETUPAPI
 UINT
 WINAPI
 SetupCopyErrorA(
-    __in HWND hwndParent,
-    __in_opt PCSTR DialogTitle,
-    __in_opt PCSTR DiskName,
-    __in PCSTR PathToSource,
-    __in PCSTR SourceFile,
-    __in_opt PCSTR TargetPathFile,
-    __in UINT Win32ErrorCode,
-    __in DWORD Style,
-    __out_ecount_opt(PathBufferSize) PSTR PathBuffer,
-    __in DWORD PathBufferSize,
-    __out_opt PDWORD PathRequiredSize
+    IN  HWND   hwndParent,
+    IN  PCSTR  DialogTitle,     OPTIONAL
+    IN  PCSTR  DiskName,        OPTIONAL
+    IN  PCSTR  PathToSource,
+    IN  PCSTR  SourceFile,
+    IN  PCSTR  TargetPathFile,  OPTIONAL
+    IN  UINT   Win32ErrorCode,
+    IN  DWORD  Style,
+    OUT PSTR   PathBuffer,      OPTIONAL
+    IN  DWORD  PathBufferSize,
+    OUT PDWORD PathRequiredSize OPTIONAL
     );
 
 WINSETUPAPI
 UINT
 WINAPI
 SetupCopyErrorW(
-    __in HWND hwndParent,
-    __in_opt PCWSTR DialogTitle,
-    __in_opt PCWSTR DiskName,
-    __in PCWSTR PathToSource,
-    __in PCWSTR SourceFile,
-    __in_opt PCWSTR TargetPathFile,
-    __in UINT Win32ErrorCode,
-    __in DWORD Style,
-    __out_ecount_opt(PathBufferSize) PWSTR PathBuffer,
-    __in DWORD PathBufferSize,
-    __out_opt PDWORD PathRequiredSize
+    IN  HWND   hwndParent,
+    IN  PCWSTR DialogTitle,     OPTIONAL
+    IN  PCWSTR DiskName,        OPTIONAL
+    IN  PCWSTR PathToSource,
+    IN  PCWSTR SourceFile,
+    IN  PCWSTR TargetPathFile,  OPTIONAL
+    IN  UINT   Win32ErrorCode,
+    IN  DWORD  Style,
+    OUT PWSTR  PathBuffer,      OPTIONAL
+    IN  DWORD  PathBufferSize,
+    OUT PDWORD PathRequiredSize OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2700,24 +2669,24 @@ WINSETUPAPI
 UINT
 WINAPI
 SetupRenameErrorA(
-    __in HWND hwndParent,
-    __in_opt PCSTR DialogTitle,
-    __in PCSTR SourceFile,
-    __in PCSTR TargetFile,
-    __in UINT Win32ErrorCode,
-    __in DWORD Style
+    IN  HWND   hwndParent,
+    IN  PCSTR  DialogTitle,     OPTIONAL
+    IN  PCSTR  SourceFile,
+    IN  PCSTR  TargetFile,
+    IN  UINT   Win32ErrorCode,
+    IN  DWORD  Style
     );
 
 WINSETUPAPI
 UINT
 WINAPI
 SetupRenameErrorW(
-    __in HWND hwndParent,
-    __in_opt PCWSTR DialogTitle,
-    __in PCWSTR SourceFile,
-    __in PCWSTR TargetFile,
-    __in UINT Win32ErrorCode,
-    __in DWORD Style
+    IN  HWND   hwndParent,
+    IN  PCWSTR DialogTitle,     OPTIONAL
+    IN  PCWSTR SourceFile,
+    IN  PCWSTR TargetFile,
+    IN  UINT   Win32ErrorCode,
+    IN  DWORD  Style
     );
 
 #ifdef UNICODE
@@ -2731,22 +2700,22 @@ WINSETUPAPI
 UINT
 WINAPI
 SetupDeleteErrorA(
-    __in HWND hwndParent,
-    __in_opt PCSTR DialogTitle,
-    __in PCSTR File,
-    __in UINT Win32ErrorCode,
-    __in DWORD Style
+    IN  HWND   hwndParent,
+    IN  PCSTR  DialogTitle,     OPTIONAL
+    IN  PCSTR  File,
+    IN  UINT   Win32ErrorCode,
+    IN  DWORD  Style
     );
 
 WINSETUPAPI
 UINT
 WINAPI
 SetupDeleteErrorW(
-    __in HWND hwndParent,
-    __in_opt PCWSTR DialogTitle,
-    __in PCWSTR File,
-    __in UINT Win32ErrorCode,
-    __in DWORD Style
+    IN  HWND   hwndParent,
+    IN  PCWSTR DialogTitle,     OPTIONAL
+    IN  PCWSTR File,
+    IN  UINT   Win32ErrorCode,
+    IN  DWORD  Style
     );
 
 #ifdef UNICODE
@@ -2759,24 +2728,24 @@ WINSETUPAPI
 UINT
 WINAPI
 SetupBackupErrorA(
-    __in HWND hwndParent,
-    __in_opt PCSTR DialogTitle,
-    __in PCSTR SourceFile,
-    __in_opt PCSTR TargetFile,
-    __in UINT Win32ErrorCode,
-    __in DWORD Style
+    IN  HWND   hwndParent,
+    IN  PCSTR  DialogTitle,     OPTIONAL
+    IN  PCSTR  SourceFile,
+    IN  PCSTR  TargetFile,      OPTIONAL
+    IN  UINT   Win32ErrorCode,
+    IN  DWORD  Style
     );
 
 WINSETUPAPI
 UINT
 WINAPI
 SetupBackupErrorW(
-    __in HWND hwndParent,
-    __in_opt PCWSTR DialogTitle,
-    __in PCWSTR SourceFile,
-    __in_opt PCWSTR TargetFile,
-    __in UINT Win32ErrorCode,
-    __in DWORD Style
+    IN  HWND   hwndParent,
+    IN  PCWSTR DialogTitle,     OPTIONAL
+    IN  PCWSTR SourceFile,
+    IN  PCWSTR TargetFile,      OPTIONAL
+    IN  UINT   Win32ErrorCode,
+    IN  DWORD  Style
     );
 
 #ifdef UNICODE
@@ -2822,18 +2791,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupSetDirectoryIdA(
-    __in HINF InfHandle,
-    __in DWORD Id, 
-    __in_opt PCSTR Directory 
+    IN HINF  InfHandle,
+    IN DWORD Id,            OPTIONAL
+    IN PCSTR Directory      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupSetDirectoryIdW(
-    __in HINF InfHandle,
-    __in DWORD Id, 
-    __in_opt PCWSTR Directory 
+    IN HINF   InfHandle,
+    IN DWORD  Id,           OPTIONAL
+    IN PCWSTR Directory     OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2847,24 +2816,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupSetDirectoryIdExA(
-    __in HINF InfHandle,
-    __in DWORD Id, 
-    __in_opt PCSTR Directory, 
-    __in DWORD Flags,
-    __reserved DWORD Reserved1,
-    __reserved PVOID Reserved2
+    IN HINF  InfHandle,
+    IN DWORD Id,            OPTIONAL
+    IN PCSTR Directory,     OPTIONAL
+    IN DWORD Flags,
+    IN DWORD Reserved1,
+    IN PVOID Reserved2
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupSetDirectoryIdExW(
-    __in HINF InfHandle,
-    __in DWORD Id, 
-    __in_opt PCWSTR Directory,
-    __in DWORD Flags,
-    __reserved DWORD Reserved1,
-    __reserved PVOID Reserved2
+    IN HINF   InfHandle,
+    IN DWORD  Id,           OPTIONAL
+    IN PCWSTR Directory,    OPTIONAL
+    IN DWORD  Flags,
+    IN DWORD  Reserved1,
+    IN PVOID  Reserved2
     );
 
 #ifdef UNICODE
@@ -2883,24 +2852,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetSourceInfoA(
-    __in HINF InfHandle,
-    __in UINT SourceId,
-    __in UINT InfoDesired,
-    __out_ecount_opt(ReturnBufferSize) PSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HINF   InfHandle,
+    IN  UINT   SourceId,
+    IN  UINT   InfoDesired,
+    OUT PSTR   ReturnBuffer,     OPTIONAL
+    IN  DWORD  ReturnBufferSize,
+    OUT PDWORD RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetSourceInfoW(
-    __in HINF InfHandle,
-    __in UINT SourceId,
-    __in UINT InfoDesired,
-    __out_ecount_opt(ReturnBufferSize) PWSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HINF   InfHandle,
+    IN  UINT   SourceId,
+    IN  UINT   InfoDesired,
+    OUT PWSTR  ReturnBuffer,     OPTIONAL
+    IN  DWORD  ReturnBufferSize,
+    OUT PDWORD RequiredSize      OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2934,28 +2903,28 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallFileA(
-    __in_opt HINF InfHandle,
-    __in_opt PINFCONTEXT InfContext,
-    __in_opt PCSTR SourceFile,
-    __in_opt PCSTR SourcePathRoot,
-    __in_opt PCSTR DestinationName,
-    __in DWORD CopyStyle,
-    __in_opt PSP_FILE_CALLBACK_A CopyMsgHandler,
-    __in_opt PVOID Context
+    IN HINF                InfHandle,         OPTIONAL
+    IN PINFCONTEXT         InfContext,        OPTIONAL
+    IN PCSTR               SourceFile,        OPTIONAL
+    IN PCSTR               SourcePathRoot,    OPTIONAL
+    IN PCSTR               DestinationName,   OPTIONAL
+    IN DWORD               CopyStyle,
+    IN PSP_FILE_CALLBACK_A CopyMsgHandler,    OPTIONAL
+    IN PVOID               Context            OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallFileW(
-    __in_opt HINF InfHandle,
-    __in_opt PINFCONTEXT InfContext,
-    __in_opt PCWSTR SourceFile,
-    __in_opt PCWSTR SourcePathRoot,
-    __in_opt PCWSTR DestinationName,
-    __in DWORD CopyStyle,
-    __in_opt PSP_FILE_CALLBACK_W CopyMsgHandler,
-    __in_opt PVOID Context
+    IN HINF                InfHandle,         OPTIONAL
+    IN PINFCONTEXT         InfContext,        OPTIONAL
+    IN PCWSTR              SourceFile,        OPTIONAL
+    IN PCWSTR              SourcePathRoot,    OPTIONAL
+    IN PCWSTR              DestinationName,   OPTIONAL
+    IN DWORD               CopyStyle,
+    IN PSP_FILE_CALLBACK_W CopyMsgHandler,    OPTIONAL
+    IN PVOID               Context            OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2968,30 +2937,30 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallFileExA(
-    __in_opt HINF InfHandle,
-    __in_opt PINFCONTEXT InfContext,
-    __in_opt PCSTR SourceFile,
-    __in_opt PCSTR SourcePathRoot,
-    __in_opt PCSTR DestinationName,
-    __in DWORD CopyStyle,
-    __in_opt PSP_FILE_CALLBACK_A CopyMsgHandler,
-    __in_opt PVOID Context,
-    __out PBOOL FileWasInUse
+    IN  HINF                InfHandle,         OPTIONAL
+    IN  PINFCONTEXT         InfContext,        OPTIONAL
+    IN  PCSTR               SourceFile,        OPTIONAL
+    IN  PCSTR               SourcePathRoot,    OPTIONAL
+    IN  PCSTR               DestinationName,   OPTIONAL
+    IN  DWORD               CopyStyle,
+    IN  PSP_FILE_CALLBACK_A CopyMsgHandler,    OPTIONAL
+    IN  PVOID               Context,           OPTIONAL
+    OUT PBOOL               FileWasInUse
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallFileExW(
-    __in_opt HINF InfHandle,
-    __in_opt PINFCONTEXT InfContext,
-    __in_opt PCWSTR SourceFile,
-    __in_opt PCWSTR SourcePathRoot,
-    __in_opt PCWSTR DestinationName,
-    __in DWORD CopyStyle,
-    __in_opt PSP_FILE_CALLBACK_W CopyMsgHandler,
-    __in_opt PVOID Context,
-    __out PBOOL FileWasInUse
+    IN  HINF                InfHandle,         OPTIONAL
+    IN  PINFCONTEXT         InfContext,        OPTIONAL
+    IN  PCWSTR              SourceFile,        OPTIONAL
+    IN  PCWSTR              SourcePathRoot,    OPTIONAL
+    IN  PCWSTR              DestinationName,   OPTIONAL
+    IN  DWORD               CopyStyle,
+    IN  PSP_FILE_CALLBACK_W CopyMsgHandler,    OPTIONAL
+    IN  PVOID               Context,           OPTIONAL
+    OUT PBOOL               FileWasInUse
     );
 
 #ifdef UNICODE
@@ -3058,25 +3027,25 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupCloseFileQueue(
-    __in HSPFILEQ QueueHandle
+    IN HSPFILEQ QueueHandle
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupSetFileQueueAlternatePlatformA(
-    __in HSPFILEQ QueueHandle,
-    __in_opt PSP_ALTPLATFORM_INFO AlternatePlatformInfo,
-    __in_opt PCSTR AlternateDefaultCatalogFile
+    IN HSPFILEQ             QueueHandle,
+    IN PSP_ALTPLATFORM_INFO AlternatePlatformInfo,      OPTIONAL
+    IN PCSTR                AlternateDefaultCatalogFile OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupSetFileQueueAlternatePlatformW(
-    __in HSPFILEQ QueueHandle,
-    __in_opt PSP_ALTPLATFORM_INFO AlternatePlatformInfo,
-    __in_opt PCWSTR AlternateDefaultCatalogFile
+    IN HSPFILEQ             QueueHandle,
+    IN PSP_ALTPLATFORM_INFO AlternatePlatformInfo,      OPTIONAL
+    IN PCWSTR               AlternateDefaultCatalogFile OPTIONAL
     );
 
 #ifdef UNICODE
@@ -3090,14 +3059,14 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupSetPlatformPathOverrideA(
-    __in_opt PCSTR Override
+    IN PCSTR Override   OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupSetPlatformPathOverrideW(
-    __in_opt PCWSTR Override
+    IN PCWSTR Override  OPTIONAL
     );
 
 #ifdef UNICODE
@@ -3111,30 +3080,30 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueCopyA(
-    __in HSPFILEQ QueueHandle,
-    __in_opt PCSTR SourceRootPath, 
-    __in_opt PCSTR SourcePath, 
-    __in PCSTR SourceFilename,
-    __in_opt PCSTR SourceDescription, 
-    __in_opt PCSTR SourceTagfile, 
-    __in PCSTR TargetDirectory,
-    __in_opt PCSTR TargetFilename, 
-    __in DWORD CopyStyle
+    IN HSPFILEQ QueueHandle,
+    IN PCSTR    SourceRootPath,     OPTIONAL
+    IN PCSTR    SourcePath,         OPTIONAL
+    IN PCSTR    SourceFilename,
+    IN PCSTR    SourceDescription,  OPTIONAL
+    IN PCSTR    SourceTagfile,      OPTIONAL
+    IN PCSTR    TargetDirectory,
+    IN PCSTR    TargetFilename,     OPTIONAL
+    IN DWORD    CopyStyle
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueCopyW(
-    __in HSPFILEQ QueueHandle,
-    __in_opt PCWSTR SourceRootPath, 
-    __in_opt PCWSTR SourcePath, 
-    __in PCWSTR SourceFilename,
-    __in_opt PCWSTR SourceDescription, 
-    __in_opt PCWSTR SourceTagfile, 
-    __in PCWSTR TargetDirectory,
-    __in_opt PCWSTR TargetFilename, 
-    __in DWORD CopyStyle
+    IN HSPFILEQ QueueHandle,
+    IN PCWSTR   SourceRootPath,     OPTIONAL
+    IN PCWSTR   SourcePath,         OPTIONAL
+    IN PCWSTR   SourceFilename,
+    IN PCWSTR   SourceDescription,  OPTIONAL
+    IN PCWSTR   SourceTagfile,      OPTIONAL
+    IN PCWSTR   TargetDirectory,
+    IN PCWSTR   TargetFilename,     OPTIONAL
+    IN DWORD    CopyStyle
     );
 
 #ifdef UNICODE
@@ -3148,14 +3117,14 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueCopyIndirectA(
-    __in PSP_FILE_COPY_PARAMS_A CopyParams
+    IN PSP_FILE_COPY_PARAMS_A CopyParams
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueCopyIndirectW(
-    __in PSP_FILE_COPY_PARAMS_W CopyParams
+    IN PSP_FILE_COPY_PARAMS_W CopyParams
     );
 
 #ifdef UNICODE
@@ -3169,24 +3138,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueDefaultCopyA(
-    __in HSPFILEQ QueueHandle,
-    __in HINF InfHandle,
-    __in PCSTR SourceRootPath,
-    __in PCSTR SourceFilename,
-    __in PCSTR TargetFilename,
-    __in DWORD CopyStyle
+    IN HSPFILEQ QueueHandle,
+    IN HINF     InfHandle,
+    IN PCSTR    SourceRootPath,
+    IN PCSTR    SourceFilename,
+    IN PCSTR    TargetFilename,
+    IN DWORD    CopyStyle
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueDefaultCopyW(
-    __in HSPFILEQ QueueHandle,
-    __in HINF InfHandle,
-    __in PCWSTR SourceRootPath,
-    __in PCWSTR SourceFilename,
-    __in PCWSTR TargetFilename,
-    __in DWORD CopyStyle
+    IN HSPFILEQ QueueHandle,
+    IN HINF     InfHandle,
+    IN PCWSTR   SourceRootPath,
+    IN PCWSTR   SourceFilename,
+    IN PCWSTR   TargetFilename,
+    IN DWORD    CopyStyle
     );
 
 #ifdef UNICODE
@@ -3200,24 +3169,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueCopySectionA(
-    __in HSPFILEQ QueueHandle,
-    __in PCSTR SourceRootPath,
-    __in HINF InfHandle,
-    __in_opt HINF ListInfHandle,
-    __in PCSTR Section,
-    __in DWORD CopyStyle
+    IN HSPFILEQ QueueHandle,
+    IN PCSTR    SourceRootPath,
+    IN HINF     InfHandle,
+    IN HINF     ListInfHandle,   OPTIONAL
+    IN PCSTR    Section,
+    IN DWORD    CopyStyle
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueCopySectionW(
-    __in HSPFILEQ QueueHandle,
-    __in PCWSTR SourceRootPath,
-    __in HINF InfHandle,
-    __in_opt HINF ListInfHandle,
-    __in PCWSTR Section,
-    __in DWORD CopyStyle
+    IN HSPFILEQ QueueHandle,
+    IN PCWSTR   SourceRootPath,
+    IN HINF     InfHandle,
+    IN HINF     ListInfHandle,   OPTIONAL
+    IN PCWSTR   Section,
+    IN DWORD    CopyStyle
     );
 
 #ifdef UNICODE
@@ -3231,18 +3200,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueDeleteA(
-    __in HSPFILEQ QueueHandle,
-    __in PCSTR PathPart1,
-    __in_opt PCSTR PathPart2
+    IN HSPFILEQ QueueHandle,
+    IN PCSTR    PathPart1,
+    IN PCSTR    PathPart2       OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueDeleteW(
-    __in HSPFILEQ QueueHandle,
-    __in PCWSTR PathPart1,
-    __in_opt PCWSTR PathPart2
+    IN HSPFILEQ QueueHandle,
+    IN PCWSTR   PathPart1,
+    IN PCWSTR   PathPart2       OPTIONAL
     );
 
 #ifdef UNICODE
@@ -3256,20 +3225,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueDeleteSectionA(
-    __in HSPFILEQ QueueHandle,
-    __in HINF InfHandle,
-    __in_opt HINF ListInfHandle,
-    __in PCSTR Section
+    IN HSPFILEQ QueueHandle,
+    IN HINF     InfHandle,
+    IN HINF     ListInfHandle,   OPTIONAL
+    IN PCSTR    Section
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueDeleteSectionW(
-    __in HSPFILEQ QueueHandle,
-    __in HINF InfHandle,
-    __in_opt HINF ListInfHandle,
-    __in PCWSTR Section
+    IN HSPFILEQ QueueHandle,
+    IN HINF     InfHandle,
+    IN HINF     ListInfHandle,   OPTIONAL
+    IN PCWSTR   Section
     );
 
 #ifdef UNICODE
@@ -3283,22 +3252,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueRenameA(
-    __in HSPFILEQ QueueHandle,
-    __in PCSTR SourcePath,
-    __in_opt PCSTR SourceFilename,
-    __in_opt PCSTR TargetPath,
-    __in PCSTR TargetFilename
+    IN HSPFILEQ QueueHandle,
+    IN PCSTR    SourcePath,
+    IN PCSTR    SourceFilename, OPTIONAL
+    IN PCSTR    TargetPath,     OPTIONAL
+    IN PCSTR    TargetFilename
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueRenameW(
-    __in HSPFILEQ QueueHandle,
-    __in PCWSTR SourcePath,
-    __in_opt PCWSTR SourceFilename, 
-    __in_opt PCWSTR TargetPath,
-    __in PCWSTR TargetFilename
+    IN HSPFILEQ QueueHandle,
+    IN PCWSTR   SourcePath,
+    IN PCWSTR   SourceFilename, OPTIONAL
+    IN PCWSTR   TargetPath,     OPTIONAL
+    IN PCWSTR   TargetFilename
     );
 
 #ifdef UNICODE
@@ -3312,20 +3281,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueRenameSectionA(
-    __in HSPFILEQ QueueHandle,
-    __in HINF InfHandle,
-    __in_opt HINF ListInfHandle,
-    __in PCSTR Section
+    IN HSPFILEQ QueueHandle,
+    IN HINF     InfHandle,
+    IN HINF     ListInfHandle,   OPTIONAL
+    IN PCSTR    Section
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueueRenameSectionW(
-    __in HSPFILEQ QueueHandle,
-    __in HINF InfHandle,
-    __in_opt HINF ListInfHandle,
-    __in PCWSTR Section
+    IN HSPFILEQ QueueHandle,
+    IN HINF     InfHandle,
+    IN HINF     ListInfHandle,   OPTIONAL
+    IN PCWSTR   Section
     );
 
 #ifdef UNICODE
@@ -3339,20 +3308,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupCommitFileQueueA(
-    __in_opt HWND Owner,
-    __in HSPFILEQ QueueHandle,
-    __in PSP_FILE_CALLBACK_A MsgHandler,
-    __in PVOID Context
+    IN HWND                Owner,         OPTIONAL
+    IN HSPFILEQ            QueueHandle,
+    IN PSP_FILE_CALLBACK_A MsgHandler,
+    IN PVOID               Context
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupCommitFileQueueW(
-    __in_opt HWND Owner,
-    __in HSPFILEQ QueueHandle,
-    __in PSP_FILE_CALLBACK_W MsgHandler,
-    __in PVOID Context
+    IN HWND                Owner,         OPTIONAL
+    IN HSPFILEQ            QueueHandle,
+    IN PSP_FILE_CALLBACK_W MsgHandler,
+    IN PVOID               Context
     );
 
 #ifdef UNICODE
@@ -3366,24 +3335,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupScanFileQueueA(
-    __in HSPFILEQ FileQueue,
-    __in DWORD Flags,
-    __in_opt HWND Window,
-    __in_opt PSP_FILE_CALLBACK_A CallbackRoutine,
-    __in_opt PVOID CallbackContext,
-    __out PDWORD Result
+    IN  HSPFILEQ            FileQueue,
+    IN  DWORD               Flags,
+    IN  HWND                Window,            OPTIONAL
+    IN  PSP_FILE_CALLBACK_A CallbackRoutine,   OPTIONAL
+    IN  PVOID               CallbackContext,   OPTIONAL
+    OUT PDWORD              Result
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupScanFileQueueW(
-    __in HSPFILEQ FileQueue,
-    __in DWORD Flags,
-    __in_opt HWND Window,
-    __in_opt PSP_FILE_CALLBACK_W CallbackRoutine,
-    __in_opt PVOID CallbackContext,
-    __out PDWORD Result
+    IN  HSPFILEQ            FileQueue,
+    IN  DWORD               Flags,
+    IN  HWND                Window,            OPTIONAL
+    IN  PSP_FILE_CALLBACK_W CallbackRoutine,   OPTIONAL
+    IN  PVOID               CallbackContext,   OPTIONAL
+    OUT PDWORD              Result
     );
 
 #ifdef UNICODE
@@ -3420,26 +3389,26 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetFileQueueCount(
-    __in HSPFILEQ FileQueue,
-    __in UINT SubQueueFileOp,
-    __out PUINT NumOperations
+    IN  HSPFILEQ            FileQueue,
+    IN  UINT                SubQueueFileOp,
+    OUT PUINT               NumOperations
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetFileQueueFlags(
-    __in HSPFILEQ FileQueue,
-    __out PDWORD Flags
+    IN  HSPFILEQ            FileQueue,
+    OUT PDWORD              Flags
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupSetFileQueueFlags(
-    __in HSPFILEQ FileQueue,
-    __in DWORD FlagMask,
-    __in DWORD Flags
+    IN  HSPFILEQ            FileQueue,
+    IN  DWORD               FlagMask,
+    IN  DWORD               Flags
     );
 
 //
@@ -3474,28 +3443,28 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupCopyOEMInfA(
-    __in PCSTR SourceInfFileName,
-    __in_opt PCSTR OEMSourceMediaLocation,
-    __in DWORD OEMSourceMediaType,
-    __in DWORD CopyStyle,
-    __out_ecount_opt(DestinationInfFileNameSize) PSTR DestinationInfFileName,
-    __in DWORD DestinationInfFileNameSize,
-    __out_opt PDWORD RequiredSize,
-    __out_opt PSTR *DestinationInfFileNameComponent
+    IN  PCSTR   SourceInfFileName,
+    IN  PCSTR   OEMSourceMediaLocation,         OPTIONAL
+    IN  DWORD   OEMSourceMediaType,
+    IN  DWORD   CopyStyle,
+    OUT PSTR    DestinationInfFileName,         OPTIONAL
+    IN  DWORD   DestinationInfFileNameSize,
+    OUT PDWORD  RequiredSize,                   OPTIONAL
+    OUT PSTR   *DestinationInfFileNameComponent OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupCopyOEMInfW(
-    __in PCWSTR SourceInfFileName,
-    __in_opt PCWSTR OEMSourceMediaLocation,
-    __in DWORD OEMSourceMediaType,
-    __in DWORD CopyStyle,
-    __out_ecount_opt(DestinationInfFileNameSize) PWSTR DestinationInfFileName,
-    __in DWORD DestinationInfFileNameSize,
-    __out_opt PDWORD RequiredSize,
-    __out_opt PWSTR  *DestinationInfFileNameComponent
+    IN  PCWSTR  SourceInfFileName,
+    IN  PCWSTR  OEMSourceMediaLocation,         OPTIONAL
+    IN  DWORD   OEMSourceMediaType,
+    IN  DWORD   CopyStyle,
+    OUT PWSTR   DestinationInfFileName,         OPTIONAL
+    IN  DWORD   DestinationInfFileNameSize,
+    OUT PDWORD  RequiredSize,                   OPTIONAL
+    OUT PWSTR  *DestinationInfFileNameComponent OPTIONAL
     );
 
 #ifdef UNICODE
@@ -3516,18 +3485,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupUninstallOEMInfA(
-    __in PCSTR InfFileName,
-    __in DWORD Flags,
-    __reserved PVOID Reserved
+    IN PCSTR InfFileName,
+    IN DWORD Flags,
+    IN PVOID Reserved
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupUninstallOEMInfW(
-    __in PCWSTR InfFileName,
-    __in DWORD Flags,
-    __reserved PVOID Reserved
+    IN PCWSTR InfFileName,
+    IN DWORD  Flags,
+    IN PVOID  Reserved
     );
 
 #ifdef UNICODE
@@ -3541,9 +3510,9 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupUninstallNewlyCopiedInfs(
-    __in HSPFILEQ FileQueue,
-    __in DWORD Flags,
-    __reserved PVOID Reserved
+    IN HSPFILEQ FileQueue,
+    IN DWORD Flags,
+    IN PVOID Reserved
     );
 
 #endif // _SETUPAPI_VER >= 0x0501
@@ -3556,18 +3525,18 @@ WINSETUPAPI
 HDSKSPC
 WINAPI
 SetupCreateDiskSpaceListA(
-    __reserved PVOID Reserved1,
-    __reserved DWORD Reserved2,
-    __in UINT Flags
+    IN PVOID Reserved1,
+    IN DWORD Reserved2,
+    IN UINT  Flags
     );
 
 WINSETUPAPI
 HDSKSPC
 WINAPI
 SetupCreateDiskSpaceListW(
-    __reserved PVOID Reserved1,
-    __reserved DWORD Reserved2,
-    __in UINT Flags
+    IN PVOID Reserved1,
+    IN DWORD Reserved2,
+    IN UINT  Flags
     );
 
 #ifdef UNICODE
@@ -3587,20 +3556,20 @@ WINSETUPAPI
 HDSKSPC
 WINAPI
 SetupDuplicateDiskSpaceListA(
-    __in HDSKSPC DiskSpace,
-    __reserved PVOID Reserved1,
-    __reserved DWORD Reserved2,
-    __in UINT Flags
+    IN HDSKSPC DiskSpace,
+    IN PVOID   Reserved1,
+    IN DWORD   Reserved2,
+    IN UINT    Flags
     );
 
 WINSETUPAPI
 HDSKSPC
 WINAPI
 SetupDuplicateDiskSpaceListW(
-    __in HDSKSPC DiskSpace,
-    __reserved PVOID Reserved1,
-    __reserved DWORD Reserved2,
-    __in UINT Flags
+    IN HDSKSPC DiskSpace,
+    IN PVOID   Reserved1,
+    IN DWORD   Reserved2,
+    IN UINT    Flags
     );
 
 #ifdef UNICODE
@@ -3614,7 +3583,7 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDestroyDiskSpaceList(
-    __inout HDSKSPC DiskSpace
+    IN OUT HDSKSPC DiskSpace
     );
 
 
@@ -3622,20 +3591,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueryDrivesInDiskSpaceListA(
-    __in HDSKSPC DiskSpace,
-    __out_ecount_opt(ReturnBufferSize) PSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HDSKSPC DiskSpace,
+    OUT PSTR    ReturnBuffer,       OPTIONAL
+    IN  DWORD   ReturnBufferSize,
+    OUT PDWORD  RequiredSize        OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueryDrivesInDiskSpaceListW(
-    __in HDSKSPC DiskSpace,
-    __out_ecount_opt(ReturnBufferSize) PWSTR ReturnBuffer,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HDSKSPC DiskSpace,
+    OUT PWSTR   ReturnBuffer,       OPTIONAL
+    IN  DWORD   ReturnBufferSize,
+    OUT PDWORD  RequiredSize        OPTIONAL
     );
 
 #ifdef UNICODE
@@ -3649,22 +3618,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQuerySpaceRequiredOnDriveA(
-    __in HDSKSPC DiskSpace,
-    __in PCSTR DriveSpec,
-    __out LONGLONG *SpaceRequired,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN  HDSKSPC   DiskSpace,
+    IN  PCSTR     DriveSpec,
+    OUT LONGLONG *SpaceRequired,
+    IN  PVOID     Reserved1,
+    IN  UINT      Reserved2
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQuerySpaceRequiredOnDriveW(
-    __in HDSKSPC DiskSpace,
-    __in PCWSTR DriveSpec,
-    __out LONGLONG *SpaceRequired,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN  HDSKSPC   DiskSpace,
+    IN  PCWSTR    DriveSpec,
+    OUT LONGLONG *SpaceRequired,
+    IN  PVOID     Reserved1,
+    IN  UINT      Reserved2
     );
 
 #ifdef UNICODE
@@ -3678,22 +3647,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupAdjustDiskSpaceListA(
-    __in HDSKSPC DiskSpace,
-    __in LPCSTR DriveRoot,
-    __in LONGLONG Amount,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC  DiskSpace,
+    IN LPCSTR   DriveRoot,
+    IN LONGLONG Amount,
+    IN PVOID    Reserved1,
+    IN UINT     Reserved2
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupAdjustDiskSpaceListW(
-    __in HDSKSPC DiskSpace,
-    __in LPCWSTR DriveRoot,
-    __in LONGLONG Amount,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC  DiskSpace,
+    IN LPCWSTR  DriveRoot,
+    IN LONGLONG Amount,
+    IN PVOID    Reserved1,
+    IN UINT     Reserved2
     );
 
 #ifdef UNICODE
@@ -3707,24 +3676,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupAddToDiskSpaceListA(
-    __in HDSKSPC DiskSpace,
-    __in PCSTR TargetFilespec,
-    __in LONGLONG FileSize,
-    __in UINT Operation,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC  DiskSpace,
+    IN PCSTR    TargetFilespec,
+    IN LONGLONG FileSize,
+    IN UINT     Operation,
+    IN PVOID    Reserved1,
+    IN UINT     Reserved2
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupAddToDiskSpaceListW(
-    __in HDSKSPC DiskSpace,
-    __in PCWSTR TargetFilespec,
-    __in LONGLONG FileSize,
-    __in UINT Operation,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC  DiskSpace,
+    IN PCWSTR   TargetFilespec,
+    IN LONGLONG FileSize,
+    IN UINT     Operation,
+    IN PVOID    Reserved1,
+    IN UINT     Reserved2
     );
 
 #ifdef UNICODE
@@ -3738,26 +3707,26 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupAddSectionToDiskSpaceListA(
-    __in HDSKSPC DiskSpace,
-    __in HINF InfHandle,
-    __in_opt HINF ListInfHandle,
-    __in PCSTR SectionName,
-    __in UINT Operation,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC DiskSpace,
+    IN HINF    InfHandle,
+    IN HINF    ListInfHandle,  OPTIONAL
+    IN PCSTR   SectionName,
+    IN UINT    Operation,
+    IN PVOID   Reserved1,
+    IN UINT    Reserved2
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupAddSectionToDiskSpaceListW(
-    __in HDSKSPC DiskSpace,
-    __in HINF InfHandle,
-    __in_opt HINF ListInfHandle,
-    __in PCWSTR SectionName,
-    __in UINT Operation,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC DiskSpace,
+    IN HINF    InfHandle,
+    IN HINF    ListInfHandle,  OPTIONAL
+    IN PCWSTR  SectionName,
+    IN UINT    Operation,
+    IN PVOID   Reserved1,
+    IN UINT    Reserved2
     );
 
 #ifdef UNICODE
@@ -3771,24 +3740,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupAddInstallSectionToDiskSpaceListA(
-    __in HDSKSPC DiskSpace,
-    __in HINF InfHandle,
-    __in_opt HINF LayoutInfHandle,
-    __in PCSTR SectionName,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC DiskSpace,
+    IN HINF    InfHandle,
+    IN HINF    LayoutInfHandle,     OPTIONAL
+    IN PCSTR   SectionName,
+    IN PVOID   Reserved1,
+    IN UINT    Reserved2
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupAddInstallSectionToDiskSpaceListW(
-    __in HDSKSPC DiskSpace,
-    __in HINF InfHandle,
-    __in_opt HINF LayoutInfHandle,
-    __in PCWSTR SectionName,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC DiskSpace,
+    IN HINF    InfHandle,
+    IN HINF    LayoutInfHandle,     OPTIONAL
+    IN PCWSTR  SectionName,
+    IN PVOID   Reserved1,
+    IN UINT    Reserved2
     );
 
 #ifdef UNICODE
@@ -3802,22 +3771,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupRemoveFromDiskSpaceListA(
-    __in HDSKSPC DiskSpace,
-    __in PCSTR TargetFilespec,
-    __in UINT Operation,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC DiskSpace,
+    IN PCSTR   TargetFilespec,
+    IN UINT    Operation,
+    IN PVOID   Reserved1,
+    IN UINT    Reserved2
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupRemoveFromDiskSpaceListW(
-    __in HDSKSPC DiskSpace,
-    __in PCWSTR TargetFilespec,
-    __in UINT Operation,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC DiskSpace,
+    IN PCWSTR  TargetFilespec,
+    IN UINT    Operation,
+    IN PVOID   Reserved1,
+    IN UINT    Reserved2
     );
 
 #ifdef UNICODE
@@ -3831,26 +3800,26 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupRemoveSectionFromDiskSpaceListA(
-    __in HDSKSPC DiskSpace,
-    __in HINF InfHandle,
-    __in_opt HINF ListInfHandle,
-    __in PCSTR SectionName,
-    __in UINT Operation,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC DiskSpace,
+    IN HINF    InfHandle,
+    IN HINF    ListInfHandle,  OPTIONAL
+    IN PCSTR   SectionName,
+    IN UINT    Operation,
+    IN PVOID   Reserved1,
+    IN UINT    Reserved2
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupRemoveSectionFromDiskSpaceListW(
-    __in HDSKSPC DiskSpace,
-    __in HINF InfHandle,
-    __in_opt HINF ListInfHandle,
-    __in PCWSTR SectionName,
-    __in UINT Operation,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC DiskSpace,
+    IN HINF    InfHandle,
+    IN HINF    ListInfHandle,  OPTIONAL
+    IN PCWSTR  SectionName,
+    IN UINT    Operation,
+    IN PVOID   Reserved1,
+    IN UINT    Reserved2
     );
 
 #ifdef UNICODE
@@ -3864,24 +3833,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupRemoveInstallSectionFromDiskSpaceListA(
-    __in HDSKSPC DiskSpace,
-    __in HINF InfHandle,
-    __in_opt HINF LayoutInfHandle,
-    __in PCSTR SectionName,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC DiskSpace,
+    IN HINF    InfHandle,
+    IN HINF    LayoutInfHandle,     OPTIONAL
+    IN PCSTR   SectionName,
+    IN PVOID   Reserved1,
+    IN UINT    Reserved2
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupRemoveInstallSectionFromDiskSpaceListW(
-    __in HDSKSPC DiskSpace,
-    __in HINF InfHandle,
-    __in_opt HINF LayoutInfHandle,
-    __in PCWSTR SectionName,
-    __reserved PVOID Reserved1,
-    __reserved UINT Reserved2
+    IN HDSKSPC DiskSpace,
+    IN HINF    InfHandle,
+    IN HINF    LayoutInfHandle,     OPTIONAL
+    IN PCWSTR  SectionName,
+    IN PVOID   Reserved1,
+    IN UINT    Reserved2
     );
 
 #ifdef UNICODE
@@ -3899,20 +3868,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupIterateCabinetA(
-    __in PCSTR CabinetFile,
-    __reserved DWORD Reserved,
-    __in PSP_FILE_CALLBACK_A MsgHandler,
-    __in PVOID Context
+    IN  PCSTR               CabinetFile,
+    IN  DWORD               Reserved,
+    IN  PSP_FILE_CALLBACK_A MsgHandler,
+    IN  PVOID               Context
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupIterateCabinetW(
-    __in PCWSTR CabinetFile,
-    __reserved DWORD Reserved,
-    __in PSP_FILE_CALLBACK_W MsgHandler,
-    __in PVOID Context
+    IN  PCWSTR              CabinetFile,
+    IN  DWORD               Reserved,
+    IN  PSP_FILE_CALLBACK_W MsgHandler,
+    IN  PVOID               Context
     );
 
 #ifdef UNICODE
@@ -3926,9 +3895,9 @@ WINSETUPAPI
 INT
 WINAPI
 SetupPromptReboot(
-    __in_opt HSPFILEQ FileQueue,
-    __in HWND Owner,
-    __in BOOL ScanOnly
+    IN HSPFILEQ FileQueue,  OPTIONAL
+    IN HWND     Owner,
+    IN BOOL     ScanOnly
     );
 
 //
@@ -3943,45 +3912,45 @@ WINSETUPAPI
 PVOID
 WINAPI
 SetupInitDefaultQueueCallback(
-    __in HWND OwnerWindow
+    IN HWND OwnerWindow
     );
 
 WINSETUPAPI
 PVOID
 WINAPI
 SetupInitDefaultQueueCallbackEx(
-    __in HWND OwnerWindow,
-    __in_opt HWND AlternateProgressWindow,
-    __in UINT ProgressMessage,
-    __reserved DWORD Reserved1,
-    __reserved PVOID Reserved2
+    IN HWND  OwnerWindow,
+    IN HWND  AlternateProgressWindow, OPTIONAL
+    IN UINT  ProgressMessage,
+    IN DWORD Reserved1,
+    IN PVOID Reserved2
     );
 
 WINSETUPAPI
 VOID
 WINAPI
 SetupTermDefaultQueueCallback(
-    __in PVOID Context
+    IN PVOID Context
     );
 
 WINSETUPAPI
 UINT
 WINAPI
 SetupDefaultQueueCallbackA(
-    __in PVOID Context,
-    __in UINT Notification,
-    __in UINT_PTR Param1,
-    __in UINT_PTR Param2
+    IN PVOID Context,
+    IN UINT  Notification,
+    IN UINT_PTR Param1,
+    IN UINT_PTR Param2
     );
 
 WINSETUPAPI
 UINT
 WINAPI
 SetupDefaultQueueCallbackW(
-    __in PVOID Context,
-    __in UINT Notification,
-    __in UINT_PTR Param1,
-    __in UINT_PTR Param2
+    IN PVOID Context,
+    IN UINT  Notification,
+    IN UINT_PTR Param1,
+    IN UINT_PTR Param2
     );
 
 #ifdef UNICODE
@@ -4126,34 +4095,34 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallFromInfSectionA(
-    __in_opt HWND Owner,
-    __in HINF InfHandle,
-    __in PCSTR SectionName,
-    __in UINT Flags,
-    __in_opt HKEY RelativeKeyRoot,
-    __in_opt PCSTR SourceRootPath,
-    __in UINT CopyFlags,
-    __in_opt PSP_FILE_CALLBACK_A MsgHandler,
-    __in_opt PVOID Context,
-    __in_opt HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN HWND                Owner,
+    IN HINF                InfHandle,
+    IN PCSTR               SectionName,
+    IN UINT                Flags,
+    IN HKEY                RelativeKeyRoot,   OPTIONAL
+    IN PCSTR               SourceRootPath,    OPTIONAL
+    IN UINT                CopyFlags,         OPTIONAL
+    IN PSP_FILE_CALLBACK_A MsgHandler,        OPTIONAL
+    IN PVOID               Context,           OPTIONAL
+    IN HDEVINFO            DeviceInfoSet,     OPTIONAL
+    IN PSP_DEVINFO_DATA    DeviceInfoData     OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallFromInfSectionW(
-    __in_opt HWND Owner,
-    __in HINF InfHandle,
-    __in PCWSTR SectionName,
-    __in UINT Flags,
-    __in_opt HKEY RelativeKeyRoot,
-    __in_opt PCWSTR SourceRootPath,
-    __in UINT CopyFlags,
-    __in_opt PSP_FILE_CALLBACK_W MsgHandler,
-    __in_opt PVOID Context,
-    __in_opt HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN HWND                Owner,
+    IN HINF                InfHandle,
+    IN PCWSTR              SectionName,
+    IN UINT                Flags,
+    IN HKEY                RelativeKeyRoot,   OPTIONAL
+    IN PCWSTR              SourceRootPath,    OPTIONAL
+    IN UINT                CopyFlags,         OPTIONAL
+    IN PSP_FILE_CALLBACK_W MsgHandler,        OPTIONAL
+    IN PVOID               Context,           OPTIONAL
+    IN HDEVINFO            DeviceInfoSet,     OPTIONAL
+    IN PSP_DEVINFO_DATA    DeviceInfoData     OPTIONAL
     );
 
 #ifdef UNICODE
@@ -4201,24 +4170,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallFilesFromInfSectionA(
-    __in HINF InfHandle,
-    __in_opt HINF LayoutInfHandle,
-    __in HSPFILEQ FileQueue,
-    __in PCSTR SectionName,
-    __in_opt PCSTR SourceRootPath,
-    __in UINT CopyFlags
+    IN HINF     InfHandle,
+    IN HINF     LayoutInfHandle,    OPTIONAL
+    IN HSPFILEQ FileQueue,
+    IN PCSTR    SectionName,
+    IN PCSTR    SourceRootPath,     OPTIONAL
+    IN UINT     CopyFlags
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallFilesFromInfSectionW(
-    __in HINF InfHandle,
-    __in_opt HINF LayoutInfHandle,
-    __in HSPFILEQ FileQueue,
-    __in PCWSTR SectionName,
-    __in_opt PCWSTR SourceRootPath,
-    __in UINT CopyFlags
+    IN HINF     InfHandle,
+    IN HINF     LayoutInfHandle,    OPTIONAL
+    IN HSPFILEQ FileQueue,
+    IN PCWSTR   SectionName,
+    IN PCWSTR   SourceRootPath,     OPTIONAL
+    IN UINT     CopyFlags
     );
 
 #ifdef UNICODE
@@ -4301,18 +4270,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallServicesFromInfSectionA(
-    __in HINF InfHandle,
-    __in PCSTR SectionName,
-    __in DWORD Flags
+    IN HINF   InfHandle,
+    IN PCSTR  SectionName,
+    IN DWORD  Flags
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallServicesFromInfSectionW(
-    __in HINF InfHandle,
-    __in PCWSTR SectionName,
-    __in DWORD Flags
+    IN HINF   InfHandle,
+    IN PCWSTR SectionName,
+    IN DWORD  Flags
     );
 
 #ifdef UNICODE
@@ -4326,26 +4295,26 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallServicesFromInfSectionExA(
-    __in HINF InfHandle,
-    __in PCSTR SectionName,
-    __in DWORD Flags,
-    __in_opt HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __reserved PVOID Reserved1,
-    __reserved PVOID Reserved2
+    IN HINF             InfHandle,
+    IN PCSTR            SectionName,
+    IN DWORD            Flags,
+    IN HDEVINFO         DeviceInfoSet,  OPTIONAL
+    IN PSP_DEVINFO_DATA DeviceInfoData, OPTIONAL
+    IN PVOID            Reserved1,
+    IN PVOID            Reserved2
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupInstallServicesFromInfSectionExW(
-    __in HINF InfHandle,
-    __in PCWSTR SectionName,
-    __in DWORD Flags,
-    __in_opt HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __reserved PVOID Reserved1,
-    __reserved PVOID Reserved2
+    IN HINF             InfHandle,
+    IN PCWSTR           SectionName,
+    IN DWORD            Flags,
+    IN HDEVINFO         DeviceInfoSet,  OPTIONAL
+    IN PSP_DEVINFO_DATA DeviceInfoData, OPTIONAL
+    IN PVOID            Reserved1,
+    IN PVOID            Reserved2
     );
 
 #ifdef UNICODE
@@ -4367,19 +4336,19 @@ SetupInstallServicesFromInfSectionExW(
 VOID
 WINAPI
 InstallHinfSectionA(
-    __in HWND Window,
-    __in HINSTANCE ModuleHandle,
-    __in PCSTR CommandLine,
-    __in INT ShowCommand
+    IN HWND      Window,
+    IN HINSTANCE ModuleHandle,
+    IN PCSTR     CommandLine,
+    IN INT       ShowCommand
     );
 
 VOID
 WINAPI
 InstallHinfSectionW(
-    __in HWND Window,
-    __in HINSTANCE ModuleHandle,
-    __in PCWSTR CommandLine,
-    __in INT ShowCommand
+    IN HWND      Window,
+    IN HINSTANCE ModuleHandle,
+    IN PCWSTR    CommandLine,
+    IN INT       ShowCommand
     );
 
 #ifdef UNICODE
@@ -4401,16 +4370,16 @@ WINSETUPAPI
 HSPFILELOG
 WINAPI
 SetupInitializeFileLogA(
-    __in_opt PCSTR LogFileName,
-    __in DWORD Flags
+    IN PCSTR LogFileName,   OPTIONAL
+    IN DWORD Flags
     );
 
 WINSETUPAPI
 HSPFILELOG
 WINAPI
 SetupInitializeFileLogW(
-    __in_opt PCWSTR LogFileName,
-    __in DWORD Flags
+    IN PCWSTR LogFileName,  OPTIONAL
+    IN DWORD  Flags
     );
 
 #ifdef UNICODE
@@ -4431,7 +4400,7 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupTerminateFileLog(
-    __in HSPFILELOG FileLogHandle
+    IN HSPFILELOG FileLogHandle
     );
 
 
@@ -4439,30 +4408,30 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupLogFileA(
-    __in HSPFILELOG FileLogHandle,
-    __in_opt PCSTR LogSectionName,
-    __in PCSTR SourceFilename,
-    __in PCSTR TargetFilename,
-    __in DWORD Checksum,
-    __in_opt PCSTR DiskTagfile,
-    __in_opt PCSTR DiskDescription,
-    __in_opt PCSTR OtherInfo,
-    __in DWORD Flags
+    IN HSPFILELOG FileLogHandle,
+    IN PCSTR      LogSectionName,   OPTIONAL
+    IN PCSTR      SourceFilename,
+    IN PCSTR      TargetFilename,
+    IN DWORD      Checksum,         OPTIONAL
+    IN PCSTR      DiskTagfile,      OPTIONAL
+    IN PCSTR      DiskDescription,  OPTIONAL
+    IN PCSTR      OtherInfo,        OPTIONAL
+    IN DWORD      Flags
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupLogFileW(
-    __in HSPFILELOG FileLogHandle,
-    __in_opt PCWSTR LogSectionName,
-    __in PCWSTR SourceFilename,
-    __in PCWSTR TargetFilename,
-    __in DWORD Checksum,
-    __in_opt PCWSTR DiskTagfile,
-    __in_opt PCWSTR DiskDescription,
-    __in_opt PCWSTR OtherInfo,
-    __in DWORD Flags
+    IN HSPFILELOG FileLogHandle,
+    IN PCWSTR     LogSectionName,   OPTIONAL
+    IN PCWSTR     SourceFilename,
+    IN PCWSTR     TargetFilename,
+    IN DWORD      Checksum,         OPTIONAL
+    IN PCWSTR     DiskTagfile,      OPTIONAL
+    IN PCWSTR     DiskDescription,  OPTIONAL
+    IN PCWSTR     OtherInfo,        OPTIONAL
+    IN DWORD      Flags
     );
 
 #ifdef UNICODE
@@ -4481,18 +4450,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupRemoveFileLogEntryA(
-    __in HSPFILELOG FileLogHandle,
-    __in_opt PCSTR LogSectionName,
-    __in_opt PCSTR TargetFilename
+    IN HSPFILELOG FileLogHandle,
+    IN PCSTR      LogSectionName,   OPTIONAL
+    IN PCSTR      TargetFilename    OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupRemoveFileLogEntryW(
-    __in HSPFILELOG FileLogHandle,
-    __in_opt PCWSTR LogSectionName,
-    __in_opt PCWSTR TargetFilename
+    IN HSPFILELOG FileLogHandle,
+    IN PCWSTR     LogSectionName,   OPTIONAL
+    IN PCWSTR     TargetFilename    OPTIONAL
     );
 
 #ifdef UNICODE
@@ -4518,26 +4487,26 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupQueryFileLogA(
-    __in HSPFILELOG FileLogHandle,
-    __in_opt PCSTR LogSectionName,
-    __in PCSTR TargetFilename,
-    __in SetupFileLogInfo DesiredInfo,
-    __out_ecount_opt(ReturnBufferSize) PSTR DataOut,
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HSPFILELOG       FileLogHandle,
+    IN  PCSTR            LogSectionName,   OPTIONAL
+    IN  PCSTR            TargetFilename,
+    IN  SetupFileLogInfo DesiredInfo,
+    OUT PSTR             DataOut,          OPTIONAL
+    IN  DWORD            ReturnBufferSize,
+    OUT PDWORD           RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupQueryFileLogW(
-    __in HSPFILELOG FileLogHandle,
-    __in_opt PCWSTR LogSectionName, 
-    __in PCWSTR TargetFilename,
-    __in SetupFileLogInfo DesiredInfo,
-    __out_ecount_opt(ReturnBufferSize) PWSTR DataOut, 
-    __in DWORD ReturnBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HSPFILELOG       FileLogHandle,
+    IN  PCWSTR           LogSectionName,   OPTIONAL
+    IN  PCWSTR           TargetFilename,
+    IN  SetupFileLogInfo DesiredInfo,
+    OUT PWSTR            DataOut,          OPTIONAL
+    IN  DWORD            ReturnBufferSize,
+    OUT PDWORD           RequiredSize      OPTIONAL
     );
 
 #ifdef UNICODE
@@ -4560,23 +4529,23 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupOpenLog (
-    __in BOOL Erase
+    BOOL Erase
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupLogErrorA (
-    __in LPCSTR MessageString,
-    __in LogSeverity Severity
+    IN  LPCSTR              MessageString,
+    IN  LogSeverity         Severity
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupLogErrorW (
-    __in LPCWSTR MessageString,
-    __in LogSeverity Severity
+    IN  LPCWSTR             MessageString,
+    IN  LogSeverity         Severity
     );
 
 #ifdef UNICODE
@@ -4601,16 +4570,16 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupGetBackupInformationA(
-    __in HSPFILEQ QueueHandle,
-    __out PSP_BACKUP_QUEUE_PARAMS_A BackupParams
+    IN     HSPFILEQ                     QueueHandle,
+    OUT    PSP_BACKUP_QUEUE_PARAMS_A    BackupParams
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupGetBackupInformationW(
-    __in HSPFILEQ QueueHandle,
-    __out PSP_BACKUP_QUEUE_PARAMS_W BackupParams
+    IN     HSPFILEQ                     QueueHandle,
+    OUT    PSP_BACKUP_QUEUE_PARAMS_W    BackupParams
     );
 
 #ifdef UNICODE
@@ -4625,18 +4594,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupPrepareQueueForRestoreA(
-    __in HSPFILEQ QueueHandle,
-    __in PCSTR BackupPath,
-    __in DWORD RestoreFlags
+    IN     HSPFILEQ                     QueueHandle,
+    IN     PCSTR                        BackupPath,
+    IN     DWORD                        RestoreFlags
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupPrepareQueueForRestoreW(
-    __in HSPFILEQ QueueHandle,
-    __in PCWSTR BackupPath,
-    __in DWORD RestoreFlags
+    IN     HSPFILEQ                     QueueHandle,
+    IN     PCWSTR                       BackupPath,
+    IN     DWORD                        RestoreFlags
     );
 
 #ifdef UNICODE
@@ -4658,7 +4627,7 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupSetNonInteractiveMode(
-    __in BOOL NonInteractiveFlag
+    IN BOOL NonInteractiveFlag
     );
 
 WINSETUPAPI
@@ -4678,8 +4647,8 @@ WINSETUPAPI
 HDEVINFO
 WINAPI
 SetupDiCreateDeviceInfoList(
-    __in_opt CONST GUID *ClassGuid,
-    __in_opt HWND hwndParent
+    IN CONST GUID *ClassGuid, OPTIONAL
+    IN HWND        hwndParent OPTIONAL
     );
 
 
@@ -4687,20 +4656,20 @@ WINSETUPAPI
 HDEVINFO
 WINAPI
 SetupDiCreateDeviceInfoListExA(
-    __in_opt CONST GUID *ClassGuid,
-    __in_opt HWND hwndParent,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    IN CONST GUID *ClassGuid,   OPTIONAL
+    IN HWND        hwndParent,  OPTIONAL
+    IN PCSTR       MachineName, OPTIONAL
+    IN PVOID       Reserved
     );
 
 WINSETUPAPI
 HDEVINFO
 WINAPI
 SetupDiCreateDeviceInfoListExW(
-    __in_opt CONST GUID *ClassGuid,
-    __in_opt HWND hwndParent, 
-    __in_opt PCWSTR MachineName, 
-    __reserved PVOID Reserved
+    IN CONST GUID *ClassGuid,   OPTIONAL
+    IN HWND        hwndParent,  OPTIONAL
+    IN PCWSTR      MachineName, OPTIONAL
+    IN PVOID       Reserved
     );
 
 #ifdef UNICODE
@@ -4714,24 +4683,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceInfoListClass(
-    __in HDEVINFO DeviceInfoSet,
-    __out LPGUID ClassGuid
+    IN  HDEVINFO DeviceInfoSet,
+    OUT LPGUID   ClassGuid
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceInfoListDetailA(
-    __in HDEVINFO DeviceInfoSet,
-    __out PSP_DEVINFO_LIST_DETAIL_DATA_A DeviceInfoSetDetailData
+    IN  HDEVINFO                       DeviceInfoSet,
+    OUT PSP_DEVINFO_LIST_DETAIL_DATA_A DeviceInfoSetDetailData
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceInfoListDetailW(
-    __in HDEVINFO DeviceInfoSet,
-    __out PSP_DEVINFO_LIST_DETAIL_DATA_W DeviceInfoSetDetailData
+    IN  HDEVINFO                       DeviceInfoSet,
+    OUT PSP_DEVINFO_LIST_DETAIL_DATA_W DeviceInfoSetDetailData
     );
 
 #ifdef UNICODE
@@ -4751,26 +4720,26 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiCreateDeviceInfoA(
-    __in HDEVINFO DeviceInfoSet,
-    __in PCSTR DeviceName,
-    __in CONST GUID *ClassGuid,
-    __in_opt PCSTR DeviceDescription,
-    __in_opt HWND hwndParent,
-    __in DWORD CreationFlags,
-    __out_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN  HDEVINFO          DeviceInfoSet,
+    IN  PCSTR             DeviceName,
+    IN  CONST GUID       *ClassGuid,
+    IN  PCSTR             DeviceDescription, OPTIONAL
+    IN  HWND              hwndParent,        OPTIONAL
+    IN  DWORD             CreationFlags,
+    OUT PSP_DEVINFO_DATA  DeviceInfoData     OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiCreateDeviceInfoW(
-    __in HDEVINFO DeviceInfoSet,
-    __in PCWSTR DeviceName,
-    __in CONST GUID *ClassGuid,
-    __in_opt PCWSTR DeviceDescription,
-    __in_opt HWND hwndParent,
-    __in DWORD CreationFlags,
-    __out_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN  HDEVINFO          DeviceInfoSet,
+    IN  PCWSTR            DeviceName,
+    IN  CONST GUID       *ClassGuid,
+    IN  PCWSTR            DeviceDescription, OPTIONAL
+    IN  HWND              hwndParent,        OPTIONAL
+    IN  DWORD             CreationFlags,
+    OUT PSP_DEVINFO_DATA  DeviceInfoData     OPTIONAL
     );
 
 #ifdef UNICODE
@@ -4790,22 +4759,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiOpenDeviceInfoA(
-    __in HDEVINFO DeviceInfoSet,
-    __in PCSTR DeviceInstanceId,
-    __in_opt HWND hwndParent,
-    __in DWORD OpenFlags,
-    __out_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN  HDEVINFO         DeviceInfoSet,
+    IN  PCSTR            DeviceInstanceId,
+    IN  HWND             hwndParent,       OPTIONAL
+    IN  DWORD            OpenFlags,
+    OUT PSP_DEVINFO_DATA DeviceInfoData    OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiOpenDeviceInfoW(
-    __in HDEVINFO DeviceInfoSet,
-    __in PCWSTR DeviceInstanceId,
-    __in_opt HWND hwndParent,
-    __in DWORD OpenFlags,
-    __out_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN  HDEVINFO         DeviceInfoSet,
+    IN  PCWSTR           DeviceInstanceId,
+    IN  HWND             hwndParent,       OPTIONAL
+    IN  DWORD            OpenFlags,
+    OUT PSP_DEVINFO_DATA DeviceInfoData    OPTIONAL
     );
 
 #ifdef UNICODE
@@ -4819,22 +4788,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceInstanceIdA(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __out_ecount_opt(DeviceInstanceIdSize) PSTR DeviceInstanceId,
-    __in DWORD DeviceInstanceIdSize,
-    __out_opt PDWORD RequiredSize
+    IN  HDEVINFO         DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA DeviceInfoData,
+    OUT PSTR             DeviceInstanceId,
+    IN  DWORD            DeviceInstanceIdSize,
+    OUT PDWORD           RequiredSize          OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceInstanceIdW(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __out_ecount_opt(DeviceInstanceIdSize) PWSTR DeviceInstanceId,
-    __in DWORD DeviceInstanceIdSize,
-    __out_opt PDWORD RequiredSize
+    IN  HDEVINFO         DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA DeviceInfoData,
+    OUT PWSTR            DeviceInstanceId,
+    IN  DWORD            DeviceInstanceIdSize,
+    OUT PDWORD           RequiredSize          OPTIONAL
     );
 
 #ifdef UNICODE
@@ -4848,8 +4817,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiDeleteDeviceInfo(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData
     );
 
 
@@ -4857,9 +4826,9 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiEnumDeviceInfo(
-    __in HDEVINFO DeviceInfoSet,
-    __in DWORD MemberIndex,
-    __out PSP_DEVINFO_DATA DeviceInfoData
+    IN  HDEVINFO         DeviceInfoSet,
+    IN  DWORD            MemberIndex,
+    OUT PSP_DEVINFO_DATA DeviceInfoData
     );
 
 
@@ -4867,7 +4836,7 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiDestroyDeviceInfoList(
-    __in HDEVINFO DeviceInfoSet
+    IN HDEVINFO DeviceInfoSet
     );
 
 
@@ -4875,11 +4844,11 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiEnumDeviceInterfaces(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in CONST GUID *InterfaceClassGuid,
-    __in DWORD MemberIndex,
-    __out PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData
+    IN  HDEVINFO                   DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA           DeviceInfoData,     OPTIONAL
+    IN  CONST GUID                *InterfaceClassGuid,
+    IN  DWORD                      MemberIndex,
+    OUT PSP_DEVICE_INTERFACE_DATA  DeviceInterfaceData
     );
 
 //
@@ -4892,24 +4861,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiCreateDeviceInterfaceA(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __in CONST GUID *InterfaceClassGuid,
-    __in_opt PCSTR ReferenceString,
-    __in DWORD CreationFlags,
-    __out_opt PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData
+    IN  HDEVINFO                   DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA           DeviceInfoData,
+    IN  CONST GUID                *InterfaceClassGuid,
+    IN  PCSTR                      ReferenceString,    OPTIONAL
+    IN  DWORD                      CreationFlags,
+    OUT PSP_DEVICE_INTERFACE_DATA  DeviceInterfaceData OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiCreateDeviceInterfaceW(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __in CONST GUID *InterfaceClassGuid,
-    __in_opt PCWSTR ReferenceString,
-    __in DWORD CreationFlags,
-    __out_opt PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData 
+    IN  HDEVINFO                   DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA           DeviceInfoData,
+    IN  CONST GUID                *InterfaceClassGuid,
+    IN  PCWSTR                     ReferenceString,    OPTIONAL
+    IN  DWORD                      CreationFlags,
+    OUT PSP_DEVICE_INTERFACE_DATA  DeviceInterfaceData OPTIONAL
     );
 
 #ifdef UNICODE
@@ -4939,20 +4908,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiOpenDeviceInterfaceA(
-    __in HDEVINFO DeviceInfoSet,
-    __in PCSTR DevicePath,
-    __in DWORD OpenFlags,
-    __out_opt PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData
+    IN  HDEVINFO                  DeviceInfoSet,
+    IN  PCSTR                     DevicePath,
+    IN  DWORD                     OpenFlags,
+    OUT PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiOpenDeviceInterfaceW(
-    __in HDEVINFO DeviceInfoSet,
-    __in PCWSTR DevicePath,
-    __in DWORD OpenFlags,
-    __out_opt PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData
+    IN  HDEVINFO                  DeviceInfoSet,
+    IN  PCWSTR                    DevicePath,
+    IN  DWORD                     OpenFlags,
+    OUT PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData OPTIONAL
     );
 
 #ifdef UNICODE
@@ -4977,10 +4946,10 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceInterfaceAlias(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
-    __in CONST GUID *AliasInterfaceClassGuid,
-    __out PSP_DEVICE_INTERFACE_DATA AliasDeviceInterfaceData
+    IN  HDEVINFO                   DeviceInfoSet,
+    IN  PSP_DEVICE_INTERFACE_DATA  DeviceInterfaceData,
+    IN  CONST GUID                *AliasInterfaceClassGuid,
+    OUT PSP_DEVICE_INTERFACE_DATA  AliasDeviceInterfaceData
     );
 
 //
@@ -4993,8 +4962,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiDeleteDeviceInterfaceData(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData
+    IN HDEVINFO                  DeviceInfoSet,
+    IN PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData
     );
 
 //
@@ -5007,8 +4976,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiRemoveDeviceInterface(
-    __in HDEVINFO DeviceInfoSet,
-    __inout PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData
+    IN     HDEVINFO                  DeviceInfoSet,
+    IN OUT PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData
     );
 
 //
@@ -5021,24 +4990,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceInterfaceDetailA(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
-    __out_bcount_opt(DeviceInterfaceDetailDataSize) PSP_DEVICE_INTERFACE_DETAIL_DATA_A DeviceInterfaceDetailData, 
-    __in DWORD DeviceInterfaceDetailDataSize,
-    __out_opt PDWORD RequiredSize,
-    __out_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN  HDEVINFO                           DeviceInfoSet,
+    IN  PSP_DEVICE_INTERFACE_DATA          DeviceInterfaceData,
+    OUT PSP_DEVICE_INTERFACE_DETAIL_DATA_A DeviceInterfaceDetailData,     OPTIONAL
+    IN  DWORD                              DeviceInterfaceDetailDataSize,
+    OUT PDWORD                             RequiredSize,                  OPTIONAL
+    OUT PSP_DEVINFO_DATA                   DeviceInfoData                 OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceInterfaceDetailW(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
-    __out_bcount_opt(DeviceInterfaceDetailDataSize) PSP_DEVICE_INTERFACE_DETAIL_DATA_W DeviceInterfaceDetailData,
-    __in DWORD DeviceInterfaceDetailDataSize,
-    __out_opt PDWORD RequiredSize, 
-    __out_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN  HDEVINFO                           DeviceInfoSet,
+    IN  PSP_DEVICE_INTERFACE_DATA          DeviceInterfaceData,
+    OUT PSP_DEVICE_INTERFACE_DETAIL_DATA_W DeviceInterfaceDetailData,     OPTIONAL
+    IN  DWORD                              DeviceInterfaceDetailDataSize,
+    OUT PDWORD                             RequiredSize,                  OPTIONAL
+    OUT PSP_DEVINFO_DATA                   DeviceInfoData                 OPTIONAL
     );
 
 #ifdef UNICODE
@@ -5066,8 +5035,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiInstallDeviceInterfaces(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData
     );
 
 //
@@ -5082,10 +5051,10 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetDeviceInterfaceDefault(
-    __in HDEVINFO DeviceInfoSet,
-    __inout PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
-    __in DWORD Flags,
-    __reserved PVOID Reserved
+    IN HDEVINFO DeviceInfoSet,
+    IN OUT PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
+    IN DWORD Flags,
+    IN PVOID Reserved
     );
 
 #endif // _SETUPAPI_VER >= 0x0501
@@ -5104,12 +5073,12 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiRegisterDeviceInfo(
-    __in HDEVINFO DeviceInfoSet,
-    __inout PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD Flags,
-    __in_opt PSP_DETSIG_CMPPROC CompareProc,
-    __in_opt PVOID CompareContext,
-    __out_opt PSP_DEVINFO_DATA DupDeviceInfoData
+    IN     HDEVINFO           DeviceInfoSet,
+    IN OUT PSP_DEVINFO_DATA   DeviceInfoData,
+    IN     DWORD              Flags,
+    IN     PSP_DETSIG_CMPPROC CompareProc,      OPTIONAL
+    IN     PVOID              CompareContext,   OPTIONAL
+    OUT    PSP_DEVINFO_DATA   DupDeviceInfoData OPTIONAL
     );
 
 
@@ -5126,9 +5095,9 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiBuildDriverInfoList(
-    __in HDEVINFO DeviceInfoSet,
-    __inout_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD DriverType
+    IN     HDEVINFO         DeviceInfoSet,
+    IN OUT PSP_DEVINFO_DATA DeviceInfoData, OPTIONAL
+    IN     DWORD            DriverType
     );
 
 
@@ -5136,7 +5105,7 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiCancelDriverInfoSearch(
-    __in HDEVINFO DeviceInfoSet
+    IN HDEVINFO DeviceInfoSet
     );
 
 
@@ -5144,22 +5113,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiEnumDriverInfoA(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD DriverType,
-    __in DWORD MemberIndex,
-    __out PSP_DRVINFO_DATA_A DriverInfoData
+    IN  HDEVINFO           DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA   DeviceInfoData, OPTIONAL
+    IN  DWORD              DriverType,
+    IN  DWORD              MemberIndex,
+    OUT PSP_DRVINFO_DATA_A DriverInfoData
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiEnumDriverInfoW(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD DriverType,
-    __in DWORD MemberIndex,
-    __out PSP_DRVINFO_DATA_W DriverInfoData
+    IN  HDEVINFO           DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA   DeviceInfoData, OPTIONAL
+    IN  DWORD              DriverType,
+    IN  DWORD              MemberIndex,
+    OUT PSP_DRVINFO_DATA_W DriverInfoData
     );
 
 #ifdef UNICODE
@@ -5173,18 +5142,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetSelectedDriverA(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __out PSP_DRVINFO_DATA_A DriverInfoData
+    IN  HDEVINFO           DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA   DeviceInfoData, OPTIONAL
+    OUT PSP_DRVINFO_DATA_A DriverInfoData
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetSelectedDriverW(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __out PSP_DRVINFO_DATA_W DriverInfoData
+    IN  HDEVINFO           DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA   DeviceInfoData, OPTIONAL
+    OUT PSP_DRVINFO_DATA_W DriverInfoData
     );
 
 #ifdef UNICODE
@@ -5198,18 +5167,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetSelectedDriverA(
-    __in HDEVINFO DeviceInfoSet,
-    __inout_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __inout_opt PSP_DRVINFO_DATA_A DriverInfoData
+    IN     HDEVINFO           DeviceInfoSet,
+    IN     PSP_DEVINFO_DATA   DeviceInfoData, OPTIONAL
+    IN OUT PSP_DRVINFO_DATA_A DriverInfoData  OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetSelectedDriverW(
-    __in HDEVINFO DeviceInfoSet,
-    __inout_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __inout_opt PSP_DRVINFO_DATA_W DriverInfoData
+    IN     HDEVINFO           DeviceInfoSet,
+    IN     PSP_DEVINFO_DATA   DeviceInfoData, OPTIONAL
+    IN OUT PSP_DRVINFO_DATA_W DriverInfoData  OPTIONAL
     );
 
 #ifdef UNICODE
@@ -5223,24 +5192,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDriverInfoDetailA(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in PSP_DRVINFO_DATA_A DriverInfoData,
-    __inout_bcount_opt(DriverInfoDetailDataSize) PSP_DRVINFO_DETAIL_DATA_A DriverInfoDetailData, 
-    __in DWORD DriverInfoDetailDataSize,
-    __out_opt PDWORD RequiredSize
+    IN  HDEVINFO                  DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA          DeviceInfoData,           OPTIONAL
+    IN  PSP_DRVINFO_DATA_A        DriverInfoData,
+    OUT PSP_DRVINFO_DETAIL_DATA_A DriverInfoDetailData,     OPTIONAL
+    IN  DWORD                     DriverInfoDetailDataSize,
+    OUT PDWORD                    RequiredSize              OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDriverInfoDetailW(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in PSP_DRVINFO_DATA_W DriverInfoData,
-    __inout_bcount_opt(DriverInfoDetailDataSize) PSP_DRVINFO_DETAIL_DATA_W DriverInfoDetailData,
-    __in DWORD DriverInfoDetailDataSize,
-    __out_opt PDWORD RequiredSize
+    IN  HDEVINFO                  DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA          DeviceInfoData,           OPTIONAL
+    IN  PSP_DRVINFO_DATA_W        DriverInfoData,
+    OUT PSP_DRVINFO_DETAIL_DATA_W DriverInfoDetailData,     OPTIONAL
+    IN  DWORD                     DriverInfoDetailDataSize,
+    OUT PDWORD                    RequiredSize              OPTIONAL
     );
 
 #ifdef UNICODE
@@ -5254,9 +5223,9 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiDestroyDriverInfoList(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD DriverType
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData, OPTIONAL
+    IN DWORD            DriverType
     );
 
 
@@ -5280,20 +5249,20 @@ WINSETUPAPI
 HDEVINFO
 WINAPI
 SetupDiGetClassDevsA(
-    __in_opt CONST GUID *ClassGuid,
-    __in_opt PCSTR Enumerator,
-    __in_opt HWND hwndParent,
-    __in DWORD Flags
+    IN CONST GUID *ClassGuid,  OPTIONAL
+    IN PCSTR       Enumerator, OPTIONAL
+    IN HWND        hwndParent, OPTIONAL
+    IN DWORD       Flags
     );
 
 WINSETUPAPI
 HDEVINFO
 WINAPI
 SetupDiGetClassDevsW(
-    __in_opt CONST GUID *ClassGuid,
-    __in_opt PCWSTR Enumerator,
-    __in_opt HWND hwndParent,
-    __in DWORD Flags
+    IN CONST GUID *ClassGuid,  OPTIONAL
+    IN PCWSTR      Enumerator, OPTIONAL
+    IN HWND        hwndParent, OPTIONAL
+    IN DWORD       Flags
     );
 
 #ifdef UNICODE
@@ -5307,26 +5276,26 @@ WINSETUPAPI
 HDEVINFO
 WINAPI
 SetupDiGetClassDevsExA(
-    __in_opt CONST GUID *ClassGuid,
-    __in_opt PCSTR Enumerator,
-    __in_opt HWND hwndParent,
-    __in DWORD Flags,
-    __in_opt HDEVINFO DeviceInfoSet,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    IN CONST GUID *ClassGuid,     OPTIONAL
+    IN PCSTR       Enumerator,    OPTIONAL
+    IN HWND        hwndParent,    OPTIONAL
+    IN DWORD       Flags,
+    IN HDEVINFO    DeviceInfoSet, OPTIONAL
+    IN PCSTR       MachineName,   OPTIONAL
+    IN PVOID       Reserved
     );
 
 WINSETUPAPI
 HDEVINFO
 WINAPI
 SetupDiGetClassDevsExW(
-    __in_opt CONST GUID *ClassGuid,
-    __in_opt PCWSTR Enumerator,
-    __in_opt HWND hwndParent,
-    __in DWORD Flags,
-    __in_opt HDEVINFO DeviceInfoSet,
-    __in_opt PCWSTR MachineName,
-    __reserved PVOID Reserved
+    IN CONST GUID *ClassGuid,     OPTIONAL
+    IN PCWSTR      Enumerator,    OPTIONAL
+    IN HWND        hwndParent,    OPTIONAL
+    IN DWORD       Flags,
+    IN HDEVINFO    DeviceInfoSet, OPTIONAL
+    IN PCWSTR      MachineName,   OPTIONAL
+    IN PVOID       Reserved
     );
 
 #ifdef UNICODE
@@ -5340,22 +5309,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetINFClassA(
-    __in PCSTR InfName,
-    __out LPGUID ClassGuid,
-    __out_ecount(ClassNameSize) PSTR ClassName,
-    __in DWORD ClassNameSize,
-    __out_opt PDWORD RequiredSize
+    IN  PCSTR  InfName,
+    OUT LPGUID ClassGuid,
+    OUT PSTR   ClassName,
+    IN  DWORD  ClassNameSize,
+    OUT PDWORD RequiredSize   OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetINFClassW(
-    __in PCWSTR InfName,
-    __out LPGUID ClassGuid,
-    __out_ecount(ClassNameSize) PWSTR ClassName,
-    __in DWORD ClassNameSize,
-    __out_opt PDWORD RequiredSize
+    IN  PCWSTR InfName,
+    OUT LPGUID ClassGuid,
+    OUT PWSTR  ClassName,
+    IN  DWORD  ClassNameSize,
+    OUT PDWORD RequiredSize   OPTIONAL
     );
 
 #ifdef UNICODE
@@ -5376,10 +5345,10 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiBuildClassInfoList(
-    __in DWORD Flags,
-    __out_ecount_opt(ClassGuidListSize) LPGUID ClassGuidList,
-    __in DWORD ClassGuidListSize,
-    __out PDWORD RequiredSize
+    IN  DWORD  Flags,
+    OUT LPGUID ClassGuidList,
+    IN  DWORD  ClassGuidListSize,
+    OUT PDWORD RequiredSize
     );
 
 
@@ -5387,24 +5356,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiBuildClassInfoListExA(
-    __in DWORD Flags,
-    __out_ecount_opt(ClassGuidListSize) LPGUID ClassGuidList,
-    __in DWORD ClassGuidListSize,
-    __out PDWORD RequiredSize,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    IN  DWORD  Flags,
+    OUT LPGUID ClassGuidList,
+    IN  DWORD  ClassGuidListSize,
+    OUT PDWORD RequiredSize,
+    IN  PCSTR  MachineName,       OPTIONAL
+    IN  PVOID  Reserved
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiBuildClassInfoListExW(
-    __in DWORD Flags,
-    __out_ecount_opt(ClassGuidListSize) LPGUID ClassGuidList,
-    __in DWORD ClassGuidListSize,
-    __out PDWORD RequiredSize,
-    __in_opt PCWSTR MachineName,
-    __reserved PVOID Reserved
+    IN  DWORD  Flags,
+    OUT LPGUID ClassGuidList,
+    IN  DWORD  ClassGuidListSize,
+    OUT PDWORD RequiredSize,
+    IN  PCWSTR MachineName,       OPTIONAL
+    IN  PVOID  Reserved
     );
 
 #ifdef UNICODE
@@ -5418,20 +5387,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassDescriptionA(
-    __in CONST GUID *ClassGuid,
-    __out_ecount(ClassDescriptionSize) PSTR ClassDescription,
-    __in DWORD ClassDescriptionSize,
-    __out_opt PDWORD RequiredSize
+    IN  CONST GUID *ClassGuid,
+    OUT PSTR        ClassDescription,
+    IN  DWORD       ClassDescriptionSize,
+    OUT PDWORD      RequiredSize          OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassDescriptionW(
-    __in CONST GUID *ClassGuid,
-    __out_ecount(ClassDescriptionSize) PWSTR ClassDescription,
-    __in DWORD ClassDescriptionSize,
-    __out_opt PDWORD RequiredSize
+    IN  CONST GUID *ClassGuid,
+    OUT PWSTR       ClassDescription,
+    IN  DWORD       ClassDescriptionSize,
+    OUT PDWORD      RequiredSize          OPTIONAL
     );
 
 #ifdef UNICODE
@@ -5445,24 +5414,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassDescriptionExA(
-    __in CONST GUID *ClassGuid,
-    __out_ecount(ClassDescriptionSize) PSTR ClassDescription,
-    __in DWORD ClassDescriptionSize,
-    __out_opt PDWORD RequiredSize,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    IN  CONST GUID *ClassGuid,
+    OUT PSTR        ClassDescription,
+    IN  DWORD       ClassDescriptionSize,
+    OUT PDWORD      RequiredSize,         OPTIONAL
+    IN  PCSTR       MachineName,          OPTIONAL
+    IN  PVOID       Reserved
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassDescriptionExW(
-    __in CONST GUID *ClassGuid,
-    __out_ecount(ClassDescriptionSize) PWSTR ClassDescription,
-    __in DWORD ClassDescriptionSize,
-    __out_opt PDWORD RequiredSize,
-    __in_opt PCWSTR MachineName,
-    __reserved PVOID Reserved
+    IN  CONST GUID *ClassGuid,
+    OUT PWSTR       ClassDescription,
+    IN  DWORD       ClassDescriptionSize,
+    OUT PDWORD      RequiredSize,         OPTIONAL
+    IN  PCWSTR      MachineName,          OPTIONAL
+    IN  PVOID       Reserved
     );
 
 #ifdef UNICODE
@@ -5476,9 +5445,9 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiCallClassInstaller(
-    __in DI_FUNCTION InstallFunction,
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN DI_FUNCTION      InstallFunction,
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData OPTIONAL
     );
 
 
@@ -5489,8 +5458,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSelectDevice(
-    __in HDEVINFO DeviceInfoSet,
-    __inout_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN     HDEVINFO         DeviceInfoSet,
+    IN OUT PSP_DEVINFO_DATA DeviceInfoData OPTIONAL
     );
 
 
@@ -5501,8 +5470,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSelectBestCompatDrv(
-    __in HDEVINFO DeviceInfoSet,
-    __inout_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN     HDEVINFO         DeviceInfoSet,
+    IN OUT PSP_DEVINFO_DATA DeviceInfoData OPTIONAL
     );
 
 
@@ -5513,8 +5482,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiInstallDevice(
-    __in HDEVINFO DeviceInfoSet,
-    __inout PSP_DEVINFO_DATA DeviceInfoData
+    IN     HDEVINFO         DeviceInfoSet,
+    IN OUT PSP_DEVINFO_DATA DeviceInfoData
     );
 
 
@@ -5525,8 +5494,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiInstallDriverFiles(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData
     );
 
 
@@ -5537,8 +5506,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiRegisterCoDeviceInstallers(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData
     );
 
 
@@ -5549,8 +5518,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiRemoveDevice(
-    __in HDEVINFO DeviceInfoSet,
-    __inout PSP_DEVINFO_DATA DeviceInfoData
+    IN     HDEVINFO         DeviceInfoSet,
+    IN OUT PSP_DEVINFO_DATA DeviceInfoData
     );
 
 
@@ -5561,21 +5530,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiUnremoveDevice(
-    __in HDEVINFO DeviceInfoSet,
-    __inout PSP_DEVINFO_DATA DeviceInfoData
+    IN     HDEVINFO         DeviceInfoSet,
+    IN OUT PSP_DEVINFO_DATA DeviceInfoData
     );
 
-#if _SETUPAPI_VER >= 0x0502
 
+//
+// Default install handler for DIF_MOVEDEVICE
+//
 WINSETUPAPI
 BOOL
 WINAPI
-SetupDiRestartDevices(
-    __in HDEVINFO DeviceInfoSet,
-    __inout PSP_DEVINFO_DATA DeviceInfoData
+SetupDiMoveDuplicateDevice(
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DestinationDeviceInfoData
     );
 
-#endif // _SETUPAPI_VER >= 0x0502
 
 //
 // Default install handler for DIF_PROPERTYCHANGE
@@ -5584,8 +5554,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiChangeState(
-    __in HDEVINFO DeviceInfoSet,
-    __inout PSP_DEVINFO_DATA DeviceInfoData
+    IN     HDEVINFO         DeviceInfoSet,
+    IN OUT PSP_DEVINFO_DATA DeviceInfoData
     );
 
 
@@ -5593,20 +5563,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiInstallClassA(
-    __in_opt HWND hwndParent,
-    __in PCSTR InfFileName,
-    __in DWORD Flags,
-    __in_opt HSPFILEQ FileQueue
+    IN HWND     hwndParent,  OPTIONAL
+    IN PCSTR    InfFileName,
+    IN DWORD    Flags,
+    IN HSPFILEQ FileQueue    OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiInstallClassW(
-    __in_opt HWND hwndParent,
-    __in PCWSTR InfFileName,
-    __in DWORD Flags,
-    __in_opt HSPFILEQ FileQueue
+    IN HWND     hwndParent,  OPTIONAL
+    IN PCWSTR   InfFileName,
+    IN DWORD    Flags,
+    IN HSPFILEQ FileQueue    OPTIONAL
     );
 
 #ifdef UNICODE
@@ -5620,26 +5590,26 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiInstallClassExA(
-    __in_opt HWND hwndParent,
-    __in_opt PCSTR InfFileName,
-    __in DWORD Flags,
-    __in_opt HSPFILEQ FileQueue,
-    __in_opt CONST GUID *InterfaceClassGuid,
-    __reserved PVOID Reserved1,
-    __reserved PVOID Reserved2
+    IN HWND        hwndParent,         OPTIONAL
+    IN PCSTR       InfFileName,        OPTIONAL
+    IN DWORD       Flags,
+    IN HSPFILEQ    FileQueue,          OPTIONAL
+    IN CONST GUID *InterfaceClassGuid, OPTIONAL
+    IN PVOID       Reserved1,
+    IN PVOID       Reserved2
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiInstallClassExW(
-    __in_opt HWND hwndParent,
-    __in_opt PCWSTR InfFileName,
-    __in DWORD Flags,
-    __in_opt HSPFILEQ FileQueue,
-    __in_opt CONST GUID *InterfaceClassGuid,
-    __reserved PVOID Reserved1,
-    __reserved PVOID Reserved2
+    IN HWND        hwndParent,         OPTIONAL
+    IN PCWSTR      InfFileName,        OPTIONAL
+    IN DWORD       Flags,
+    IN HSPFILEQ    FileQueue,          OPTIONAL
+    IN CONST GUID *InterfaceClassGuid, OPTIONAL
+    IN PVOID       Reserved1,
+    IN PVOID       Reserved2
     );
 
 #ifdef UNICODE
@@ -5653,8 +5623,8 @@ WINSETUPAPI
 HKEY
 WINAPI
 SetupDiOpenClassRegKey(
-    __in_opt CONST GUID *ClassGuid,
-    __in REGSAM samDesired
+    IN CONST GUID *ClassGuid, OPTIONAL
+    IN REGSAM      samDesired
     );
 
 
@@ -5668,22 +5638,22 @@ WINSETUPAPI
 HKEY
 WINAPI
 SetupDiOpenClassRegKeyExA(
-    __in_opt CONST GUID *ClassGuid,
-    __in REGSAM samDesired,
-    __in DWORD Flags,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    IN CONST GUID *ClassGuid,   OPTIONAL
+    IN REGSAM      samDesired,
+    IN DWORD       Flags,
+    IN PCSTR       MachineName, OPTIONAL
+    IN PVOID       Reserved
     );
 
 WINSETUPAPI
 HKEY
 WINAPI
 SetupDiOpenClassRegKeyExW(
-    __in_opt CONST GUID *ClassGuid,
-    __in REGSAM samDesired,
-    __in DWORD Flags,
-    __in_opt PCWSTR MachineName,
-    __reserved PVOID Reserved
+    IN CONST GUID *ClassGuid,   OPTIONAL
+    IN REGSAM      samDesired,
+    IN DWORD       Flags,
+    IN PCWSTR      MachineName, OPTIONAL
+    IN PVOID       Reserved
     );
 
 #ifdef UNICODE
@@ -5697,24 +5667,24 @@ WINSETUPAPI
 HKEY
 WINAPI
 SetupDiCreateDeviceInterfaceRegKeyA(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
-    __reserved DWORD Reserved,
-    __in REGSAM samDesired,
-    __in_opt HINF InfHandle,
-    __in_opt PCSTR InfSectionName
+    IN HDEVINFO                  DeviceInfoSet,
+    IN PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
+    IN DWORD                     Reserved,
+    IN REGSAM                    samDesired,
+    IN HINF                      InfHandle,           OPTIONAL
+    IN PCSTR                     InfSectionName       OPTIONAL
     );
 
 WINSETUPAPI
 HKEY
 WINAPI
 SetupDiCreateDeviceInterfaceRegKeyW(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
-    __reserved DWORD Reserved,
-    __in REGSAM samDesired,
-    __in_opt HINF InfHandle,
-    __in_opt PCWSTR InfSectionName
+    IN HDEVINFO                  DeviceInfoSet,
+    IN PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
+    IN DWORD                     Reserved,
+    IN REGSAM                    samDesired,
+    IN HINF                      InfHandle,           OPTIONAL
+    IN PCWSTR                    InfSectionName       OPTIONAL
     );
 
 #ifdef UNICODE
@@ -5739,10 +5709,10 @@ WINSETUPAPI
 HKEY
 WINAPI
 SetupDiOpenDeviceInterfaceRegKey(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
-    __reserved DWORD Reserved,
-    __in REGSAM samDesired
+    IN HDEVINFO                  DeviceInfoSet,
+    IN PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
+    IN DWORD                     Reserved,
+    IN REGSAM                    samDesired
     );
 
 //
@@ -5755,9 +5725,9 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiDeleteDeviceInterfaceRegKey(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
-    __reserved DWORD Reserved
+    IN HDEVINFO                  DeviceInfoSet,
+    IN PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData,
+    IN DWORD                     Reserved
     );
 
 //
@@ -5778,26 +5748,26 @@ WINSETUPAPI
 HKEY
 WINAPI
 SetupDiCreateDevRegKeyA(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD Scope,
-    __in DWORD HwProfile,
-    __in DWORD KeyType,
-    __in_opt HINF InfHandle,
-    __in_opt PCSTR InfSectionName
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData,
+    IN DWORD            Scope,
+    IN DWORD            HwProfile,
+    IN DWORD            KeyType,
+    IN HINF             InfHandle,      OPTIONAL
+    IN PCSTR            InfSectionName  OPTIONAL
     );
 
 WINSETUPAPI
 HKEY
 WINAPI
 SetupDiCreateDevRegKeyW(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD Scope,
-    __in DWORD HwProfile,
-    __in DWORD KeyType,
-    __in_opt HINF InfHandle,
-    __in_opt PCWSTR InfSectionName
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData,
+    IN DWORD            Scope,
+    IN DWORD            HwProfile,
+    IN DWORD            KeyType,
+    IN HINF             InfHandle,      OPTIONAL
+    IN PCWSTR           InfSectionName  OPTIONAL
     );
 
 #ifdef UNICODE
@@ -5811,12 +5781,12 @@ WINSETUPAPI
 HKEY
 WINAPI
 SetupDiOpenDevRegKey(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD Scope,
-    __in DWORD HwProfile,
-    __in DWORD KeyType,
-    __in REGSAM samDesired
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData,
+    IN DWORD            Scope,
+    IN DWORD            HwProfile,
+    IN DWORD            KeyType,
+    IN REGSAM           samDesired
     );
 
 
@@ -5824,11 +5794,11 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiDeleteDevRegKey(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD Scope,
-    __in DWORD HwProfile,
-    __in DWORD KeyType
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData,
+    IN DWORD            Scope,
+    IN DWORD            HwProfile,
+    IN DWORD            KeyType
     );
 
 
@@ -5836,10 +5806,10 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetHwProfileList(
-    __out_ecount(HwProfileListSize) PDWORD HwProfileList,
-    __in DWORD HwProfileListSize,
-    __out PDWORD RequiredSize,
-    __out_opt PDWORD CurrentlyActiveIndex
+    OUT PDWORD HwProfileList,
+    IN  DWORD  HwProfileListSize,
+    OUT PDWORD RequiredSize,
+    OUT PDWORD CurrentlyActiveIndex OPTIONAL
     );
 
 
@@ -5847,24 +5817,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetHwProfileListExA(
-    __out_ecount(HwProfileListSize) PDWORD HwProfileList,
-    __in DWORD HwProfileListSize,
-    __out PDWORD RequiredSize,
-    __out_opt PDWORD CurrentlyActiveIndex,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    OUT PDWORD HwProfileList,
+    IN  DWORD  HwProfileListSize,
+    OUT PDWORD RequiredSize,
+    OUT PDWORD CurrentlyActiveIndex, OPTIONAL
+    IN  PCSTR  MachineName,          OPTIONAL
+    IN  PVOID  Reserved
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetHwProfileListExW(
-    __out_ecount(HwProfileListSize) PDWORD HwProfileList,
-    __in DWORD HwProfileListSize,
-    __out PDWORD RequiredSize,
-    __out_opt PDWORD CurrentlyActiveIndex,
-    __in_opt PCWSTR MachineName,
-    __reserved PVOID Reserved
+    OUT PDWORD HwProfileList,
+    IN  DWORD  HwProfileListSize,
+    OUT PDWORD RequiredSize,
+    OUT PDWORD CurrentlyActiveIndex, OPTIONAL
+    IN  PCWSTR MachineName,          OPTIONAL
+    IN  PVOID  Reserved
     );
 
 #ifdef UNICODE
@@ -5919,9 +5889,8 @@ SetupDiGetHwProfileListExW(
 #define SPDRP_REMOVAL_POLICY_HW_DEFAULT   (0x00000020)  // Hardware Removal Policy (R)
 #define SPDRP_REMOVAL_POLICY_OVERRIDE     (0x00000021)  // Removal Policy Override (RW)
 #define SPDRP_INSTALL_STATE               (0x00000022)  // Device Install State (R)
-#define SPDRP_LOCATION_PATHS              (0x00000023)  // Device Location Paths (R)
 
-#define SPDRP_MAXIMUM_PROPERTY            (0x00000024)  // Upper bound on ordinals
+#define SPDRP_MAXIMUM_PROPERTY            (0x00000023)  // Upper bound on ordinals
 
 //
 // Class registry property codes
@@ -5945,26 +5914,26 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceRegistryPropertyA(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD Property,
-    __out_opt PDWORD PropertyRegDataType, 
-    __out_bcount_opt(PropertyBufferSize) PBYTE PropertyBuffer,
-    __in DWORD PropertyBufferSize,
-    __out_opt PDWORD RequiredSize 
+    IN  HDEVINFO         DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA DeviceInfoData,
+    IN  DWORD            Property,
+    OUT PDWORD           PropertyRegDataType, OPTIONAL
+    OUT PBYTE            PropertyBuffer,
+    IN  DWORD            PropertyBufferSize,
+    OUT PDWORD           RequiredSize         OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceRegistryPropertyW(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD Property,
-    __out_opt PDWORD PropertyRegDataType,
-    __out_bcount_opt(PropertyBufferSize) PBYTE PropertyBuffer,
-    __in DWORD PropertyBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HDEVINFO         DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA DeviceInfoData,
+    IN  DWORD            Property,
+    OUT PDWORD           PropertyRegDataType, OPTIONAL
+    OUT PBYTE            PropertyBuffer,
+    IN  DWORD            PropertyBufferSize,
+    OUT PDWORD           RequiredSize         OPTIONAL
     );
 
 #ifdef UNICODE
@@ -5978,28 +5947,28 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassRegistryPropertyA(
-    __in CONST GUID *ClassGuid,
-    __in DWORD Property,
-    __out_opt PDWORD PropertyRegDataType,
-    __out_bcount(PropertyBufferSize) PBYTE PropertyBuffer,
-    __in DWORD PropertyBufferSize,
-    __out_opt PDWORD RequiredSize,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    IN  CONST GUID      *ClassGuid,
+    IN  DWORD            Property,
+    OUT PDWORD           PropertyRegDataType, OPTIONAL
+    OUT PBYTE            PropertyBuffer,
+    IN  DWORD            PropertyBufferSize,
+    OUT PDWORD           RequiredSize,        OPTIONAL
+    IN  PCSTR            MachineName,         OPTIONAL
+    IN  PVOID            Reserved
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassRegistryPropertyW(
-    __in CONST GUID *ClassGuid,
-    __in DWORD Property,
-    __out_opt PDWORD PropertyRegDataType,
-    __out_bcount(PropertyBufferSize) PBYTE PropertyBuffer,
-    __in DWORD PropertyBufferSize,
-    __out_opt PDWORD RequiredSize,
-    __in_opt PCWSTR MachineName, 
-    __reserved PVOID Reserved
+    IN  CONST GUID      *ClassGuid,
+    IN  DWORD            Property,
+    OUT PDWORD           PropertyRegDataType, OPTIONAL
+    OUT PBYTE            PropertyBuffer,
+    IN  DWORD            PropertyBufferSize,
+    OUT PDWORD           RequiredSize,        OPTIONAL
+    IN  PCWSTR           MachineName,         OPTIONAL
+    IN  PVOID            Reserved
     );
 
 #ifdef UNICODE
@@ -6013,22 +5982,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetDeviceRegistryPropertyA(
-    __in HDEVINFO DeviceInfoSet,
-    __inout PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD Property,
-    __in_bcount_opt(PropertyBufferSize) CONST BYTE *PropertyBuffer,
-    __in DWORD PropertyBufferSize
+    IN     HDEVINFO         DeviceInfoSet,
+    IN OUT PSP_DEVINFO_DATA DeviceInfoData,
+    IN     DWORD            Property,
+    IN     CONST BYTE*      PropertyBuffer,    OPTIONAL
+    IN     DWORD            PropertyBufferSize
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetDeviceRegistryPropertyW(
-    __in HDEVINFO DeviceInfoSet,
-    __inout PSP_DEVINFO_DATA DeviceInfoData,
-    __in DWORD Property,
-    __in_bcount_opt(PropertyBufferSize) CONST BYTE *PropertyBuffer,
-    __in DWORD PropertyBufferSize
+    IN     HDEVINFO         DeviceInfoSet,
+    IN OUT PSP_DEVINFO_DATA DeviceInfoData,
+    IN     DWORD            Property,
+    IN     CONST BYTE*      PropertyBuffer,    OPTIONAL
+    IN     DWORD            PropertyBufferSize
     );
 
 #ifdef UNICODE
@@ -6041,24 +6010,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetClassRegistryPropertyA(
-    __in CONST GUID *ClassGuid,
-    __in DWORD Property,
-    __in_bcount_opt(PropertyBufferSize) CONST BYTE *PropertyBuffer, 
-    __in DWORD PropertyBufferSize,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    IN     CONST GUID      *ClassGuid,
+    IN     DWORD            Property,
+    IN     CONST BYTE*      PropertyBuffer,    OPTIONAL
+    IN     DWORD            PropertyBufferSize,
+    IN     PCSTR            MachineName,       OPTIONAL
+    IN     PVOID            Reserved
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetClassRegistryPropertyW(
-    __in CONST GUID *ClassGuid,
-    __in DWORD Property,
-    __in_bcount_opt(PropertyBufferSize) CONST BYTE *PropertyBuffer,
-    __in DWORD PropertyBufferSize,
-    __in_opt PCWSTR MachineName,
-    __reserved PVOID Reserved
+    IN     CONST GUID      *ClassGuid,
+    IN     DWORD            Property,
+    IN     CONST BYTE*      PropertyBuffer,    OPTIONAL
+    IN     DWORD            PropertyBufferSize,
+    IN     PCWSTR           MachineName,       OPTIONAL
+    IN     PVOID            Reserved
     );
 
 #ifdef UNICODE
@@ -6072,18 +6041,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceInstallParamsA(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __out PSP_DEVINSTALL_PARAMS_A DeviceInstallParams
+    IN  HDEVINFO                DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA        DeviceInfoData,          OPTIONAL
+    OUT PSP_DEVINSTALL_PARAMS_A DeviceInstallParams
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDeviceInstallParamsW(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __out PSP_DEVINSTALL_PARAMS_W DeviceInstallParams
+    IN  HDEVINFO                DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA        DeviceInfoData,          OPTIONAL
+    OUT PSP_DEVINSTALL_PARAMS_W DeviceInstallParams
     );
 
 #ifdef UNICODE
@@ -6097,22 +6066,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassInstallParamsA(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData, 
-    __out_bcount_opt(ClassInstallParamsSize) PSP_CLASSINSTALL_HEADER ClassInstallParams,
-    __in DWORD ClassInstallParamsSize,
-    __out_opt PDWORD RequiredSize
+    IN  HDEVINFO                DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA        DeviceInfoData,         OPTIONAL
+    OUT PSP_CLASSINSTALL_HEADER ClassInstallParams,     OPTIONAL
+    IN  DWORD                   ClassInstallParamsSize,
+    OUT PDWORD                  RequiredSize            OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassInstallParamsW(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __out_bcount_opt(ClassInstallParamsSize) PSP_CLASSINSTALL_HEADER ClassInstallParams,
-    __in DWORD ClassInstallParamsSize,
-    __out_opt PDWORD RequiredSize
+    IN  HDEVINFO                DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA        DeviceInfoData,         OPTIONAL
+    OUT PSP_CLASSINSTALL_HEADER ClassInstallParams,     OPTIONAL
+    IN  DWORD                   ClassInstallParamsSize,
+    OUT PDWORD                  RequiredSize            OPTIONAL
     );
 
 #ifdef UNICODE
@@ -6126,18 +6095,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetDeviceInstallParamsA(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in PSP_DEVINSTALL_PARAMS_A DeviceInstallParams
+    IN HDEVINFO                DeviceInfoSet,
+    IN PSP_DEVINFO_DATA        DeviceInfoData,     OPTIONAL
+    IN PSP_DEVINSTALL_PARAMS_A DeviceInstallParams
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetDeviceInstallParamsW(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in PSP_DEVINSTALL_PARAMS_W DeviceInstallParams
+    IN HDEVINFO                DeviceInfoSet,
+    IN PSP_DEVINFO_DATA        DeviceInfoData,     OPTIONAL
+    IN PSP_DEVINSTALL_PARAMS_W DeviceInstallParams
     );
 
 #ifdef UNICODE
@@ -6151,20 +6120,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetClassInstallParamsA(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in_bcount_opt(ClassInstallParamsSize) PSP_CLASSINSTALL_HEADER ClassInstallParams,
-    __in DWORD ClassInstallParamsSize
+    IN HDEVINFO                DeviceInfoSet,
+    IN PSP_DEVINFO_DATA        DeviceInfoData,        OPTIONAL
+    IN PSP_CLASSINSTALL_HEADER ClassInstallParams,    OPTIONAL
+    IN DWORD                   ClassInstallParamsSize
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetClassInstallParamsW(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in_bcount_opt(ClassInstallParamsSize) PSP_CLASSINSTALL_HEADER ClassInstallParams,
-    __in DWORD ClassInstallParamsSize
+    IN HDEVINFO                DeviceInfoSet,
+    IN PSP_DEVINFO_DATA        DeviceInfoData,        OPTIONAL
+    IN PSP_CLASSINSTALL_HEADER ClassInstallParams,    OPTIONAL
+    IN DWORD                   ClassInstallParamsSize
     );
 
 #ifdef UNICODE
@@ -6178,20 +6147,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDriverInstallParamsA(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in PSP_DRVINFO_DATA_A DriverInfoData,
-    __out PSP_DRVINSTALL_PARAMS DriverInstallParams
+    IN  HDEVINFO              DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA      DeviceInfoData,     OPTIONAL
+    IN  PSP_DRVINFO_DATA_A    DriverInfoData,
+    OUT PSP_DRVINSTALL_PARAMS DriverInstallParams
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetDriverInstallParamsW(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in PSP_DRVINFO_DATA_W DriverInfoData,
-    __out PSP_DRVINSTALL_PARAMS DriverInstallParams
+    IN  HDEVINFO              DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA      DeviceInfoData,     OPTIONAL
+    IN  PSP_DRVINFO_DATA_W    DriverInfoData,
+    OUT PSP_DRVINSTALL_PARAMS DriverInstallParams
     );
 
 #ifdef UNICODE
@@ -6205,20 +6174,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetDriverInstallParamsA(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in PSP_DRVINFO_DATA_A DriverInfoData,
-    __in PSP_DRVINSTALL_PARAMS DriverInstallParams
+    IN HDEVINFO              DeviceInfoSet,
+    IN PSP_DEVINFO_DATA      DeviceInfoData,     OPTIONAL
+    IN PSP_DRVINFO_DATA_A    DriverInfoData,
+    IN PSP_DRVINSTALL_PARAMS DriverInstallParams
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetDriverInstallParamsW(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in PSP_DRVINFO_DATA_W DriverInfoData,
-    __in PSP_DRVINSTALL_PARAMS DriverInstallParams
+    IN HDEVINFO              DeviceInfoSet,
+    IN PSP_DEVINFO_DATA      DeviceInfoData,     OPTIONAL
+    IN PSP_DRVINFO_DATA_W    DriverInfoData,
+    IN PSP_DRVINSTALL_PARAMS DriverInstallParams
     );
 
 #ifdef UNICODE
@@ -6232,9 +6201,9 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiLoadClassIcon(
-    __in CONST GUID *ClassGuid,
-    __out_opt HICON *LargeIcon,
-    __out_opt PINT MiniIconIndex 
+    IN  CONST GUID *ClassGuid,
+    OUT HICON      *LargeIcon,    OPTIONAL
+    OUT PINT        MiniIconIndex OPTIONAL
     );
 
 
@@ -6249,10 +6218,10 @@ WINSETUPAPI
 INT
 WINAPI
 SetupDiDrawMiniIcon(
-    __in HDC hdc,
-    __in RECT rc,
-    __in INT MiniIconIndex,
-    __in DWORD Flags
+    IN HDC   hdc,
+    IN RECT  rc,
+    IN INT   MiniIconIndex,
+    IN DWORD Flags
     );
 
 
@@ -6260,8 +6229,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassBitmapIndex(
-    __in_opt CONST GUID *ClassGuid,
-    __out PINT MiniIconIndex
+    IN  CONST GUID *ClassGuid,    OPTIONAL
+    OUT PINT        MiniIconIndex
     );
 
 
@@ -6269,7 +6238,7 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassImageList(
-    __out PSP_CLASSIMAGELIST_DATA ClassImageListData
+    OUT PSP_CLASSIMAGELIST_DATA ClassImageListData
     );
 
 
@@ -6277,18 +6246,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassImageListExA(
-    __out PSP_CLASSIMAGELIST_DATA ClassImageListData,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    OUT PSP_CLASSIMAGELIST_DATA ClassImageListData,
+    IN  PCSTR                   MachineName,        OPTIONAL
+    IN  PVOID                   Reserved
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassImageListExW(
-    __out PSP_CLASSIMAGELIST_DATA ClassImageListData,
-    __in_opt PCWSTR MachineName,
-    __reserved PVOID Reserved
+    OUT PSP_CLASSIMAGELIST_DATA ClassImageListData,
+    IN  PCWSTR                  MachineName,        OPTIONAL
+    IN  PVOID                   Reserved
     );
 
 #ifdef UNICODE
@@ -6302,9 +6271,9 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassImageIndex(
-    __in PSP_CLASSIMAGELIST_DATA ClassImageListData,
-    __in CONST GUID *ClassGuid,
-    __out PINT ImageIndex
+    IN  PSP_CLASSIMAGELIST_DATA  ClassImageListData,
+    IN  CONST GUID              *ClassGuid,
+    OUT PINT                     ImageIndex
     );
 
 
@@ -6312,7 +6281,7 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiDestroyClassImageList(
-    __in PSP_CLASSIMAGELIST_DATA ClassImageListData
+    IN PSP_CLASSIMAGELIST_DATA ClassImageListData
     );
 
 
@@ -6324,7 +6293,7 @@ SetupDiDestroyClassImageList(
 
 #if _SETUPAPI_VER >= 0x0501
 
-#define DIGCDP_FLAG_REMOTE_BASIC    0x00000003  // not presently implemented
+#define DIGCDP_FLAG_REMOTE_BASIC    0x00000003
 #define DIGCDP_FLAG_REMOTE_ADVANCED 0x00000004
 
 #endif // _SETUPAPI_VER >= 0x0501
@@ -6333,24 +6302,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassDevPropertySheetsA(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in LPPROPSHEETHEADERA PropertySheetHeader,
-    __in DWORD PropertySheetHeaderPageListSize,
-    __out_opt PDWORD RequiredSize,
-    __in DWORD PropertySheetType
+    IN  HDEVINFO           DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA   DeviceInfoData,                  OPTIONAL
+    IN  LPPROPSHEETHEADERA PropertySheetHeader,
+    IN  DWORD              PropertySheetHeaderPageListSize,
+    OUT PDWORD             RequiredSize,                    OPTIONAL
+    IN  DWORD              PropertySheetType
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetClassDevPropertySheetsW(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in LPPROPSHEETHEADERW PropertySheetHeader,
-    __in DWORD PropertySheetHeaderPageListSize,
-    __out_opt PDWORD RequiredSize,
-    __in DWORD PropertySheetType
+    IN  HDEVINFO           DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA   DeviceInfoData,                  OPTIONAL
+    IN  LPPROPSHEETHEADERW PropertySheetHeader,
+    IN  DWORD              PropertySheetHeaderPageListSize,
+    OUT PDWORD             RequiredSize,                    OPTIONAL
+    IN  DWORD              PropertySheetType
     );
 
 #ifdef UNICODE
@@ -6381,8 +6350,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiAskForOEMDisk(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData OPTIONAL
     );
 
 
@@ -6390,9 +6359,9 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSelectOEMDrv(
-    __in_opt HWND hwndParent,
-    __in HDEVINFO DeviceInfoSet,
-    __inout_opt PSP_DEVINFO_DATA DeviceInfoData
+    IN     HWND             hwndParent,    OPTIONAL
+    IN     HDEVINFO         DeviceInfoSet,
+    IN OUT PSP_DEVINFO_DATA DeviceInfoData OPTIONAL
     );
 
 
@@ -6400,20 +6369,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiClassNameFromGuidA(
-    __in CONST GUID *ClassGuid,
-    __out_ecount(ClassNameSize) PSTR ClassName,
-    __in DWORD ClassNameSize,
-    __out_opt PDWORD RequiredSize
+    IN  CONST GUID *ClassGuid,
+    OUT PSTR        ClassName,
+    IN  DWORD       ClassNameSize,
+    OUT PDWORD      RequiredSize   OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiClassNameFromGuidW(
-    __in CONST GUID *ClassGuid,
-    __out_ecount(ClassNameSize) PWSTR ClassName,
-    __in DWORD ClassNameSize,
-    __out_opt PDWORD RequiredSize
+    IN  CONST GUID *ClassGuid,
+    OUT PWSTR       ClassName,
+    IN  DWORD       ClassNameSize,
+    OUT PDWORD      RequiredSize   OPTIONAL
     );
 
 #ifdef UNICODE
@@ -6427,24 +6396,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiClassNameFromGuidExA(
-    __in CONST GUID *ClassGuid,
-    __out_ecount(ClassNameSize) PSTR ClassName,
-    __in DWORD ClassNameSize,
-    __out_opt PDWORD RequiredSize,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    IN  CONST GUID *ClassGuid,
+    OUT PSTR        ClassName,
+    IN  DWORD       ClassNameSize,
+    OUT PDWORD      RequiredSize,  OPTIONAL
+    IN  PCSTR       MachineName,   OPTIONAL
+    IN  PVOID       Reserved
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiClassNameFromGuidExW(
-    __in CONST GUID *ClassGuid,
-    __out_ecount(ClassNameSize) PWSTR ClassName,
-    __in DWORD ClassNameSize,
-    __out_opt PDWORD RequiredSize,
-    __in_opt PCWSTR MachineName,
-    __reserved PVOID Reserved
+    IN  CONST GUID *ClassGuid,
+    OUT PWSTR       ClassName,
+    IN  DWORD       ClassNameSize,
+    OUT PDWORD      RequiredSize,  OPTIONAL
+    IN  PCWSTR      MachineName,   OPTIONAL
+    IN  PVOID       Reserved
     );
 
 #ifdef UNICODE
@@ -6458,20 +6427,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiClassGuidsFromNameA(
-    __in PCSTR ClassName,
-    __out_ecount(ClassGuidListSize) LPGUID ClassGuidList,
-    __in DWORD ClassGuidListSize,
-    __out PDWORD RequiredSize
+    IN  PCSTR  ClassName,
+    OUT LPGUID ClassGuidList,
+    IN  DWORD  ClassGuidListSize,
+    OUT PDWORD RequiredSize
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiClassGuidsFromNameW(
-    __in PCWSTR ClassName,
-    __out_ecount(ClassGuidListSize) LPGUID ClassGuidList,
-    __in DWORD ClassGuidListSize,
-    __out PDWORD RequiredSize
+    IN  PCWSTR ClassName,
+    OUT LPGUID ClassGuidList,
+    IN  DWORD  ClassGuidListSize,
+    OUT PDWORD RequiredSize
     );
 
 #ifdef UNICODE
@@ -6485,24 +6454,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiClassGuidsFromNameExA(
-    __in PCSTR ClassName,
-    __out_ecount(ClassGuidListSize) LPGUID ClassGuidList,
-    __in DWORD ClassGuidListSize,
-    __out PDWORD RequiredSize,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    IN  PCSTR  ClassName,
+    OUT LPGUID ClassGuidList,
+    IN  DWORD  ClassGuidListSize,
+    OUT PDWORD RequiredSize,
+    IN  PCSTR  MachineName,       OPTIONAL
+    IN  PVOID  Reserved
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiClassGuidsFromNameExW(
-    __in PCWSTR ClassName,
-    __out_ecount(ClassGuidListSize) LPGUID ClassGuidList,
-    __in DWORD ClassGuidListSize,
-    __out PDWORD RequiredSize,
-    __in_opt PCWSTR MachineName,
-    __reserved PVOID Reserved
+    IN  PCWSTR ClassName,
+    OUT LPGUID ClassGuidList,
+    IN  DWORD  ClassGuidListSize,
+    OUT PDWORD RequiredSize,
+    IN  PCWSTR MachineName,       OPTIONAL
+    IN  PVOID  Reserved
     );
 
 #ifdef UNICODE
@@ -6516,20 +6485,20 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetHwProfileFriendlyNameA(
-    __in DWORD HwProfile,
-    __out_ecount(FriendlyNameSize) PSTR FriendlyName,
-    __in DWORD FriendlyNameSize,
-    __out_opt PDWORD RequiredSize
+    IN  DWORD  HwProfile,
+    OUT PSTR   FriendlyName,
+    IN  DWORD  FriendlyNameSize,
+    OUT PDWORD RequiredSize      OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetHwProfileFriendlyNameW(
-    __in DWORD HwProfile,
-    __out_ecount(FriendlyNameSize) PWSTR FriendlyName,
-    __in DWORD FriendlyNameSize,
-    __out_opt PDWORD RequiredSize
+    IN  DWORD  HwProfile,
+    OUT PWSTR  FriendlyName,
+    IN  DWORD  FriendlyNameSize,
+    OUT PDWORD RequiredSize      OPTIONAL
     );
 
 #ifdef UNICODE
@@ -6543,24 +6512,24 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetHwProfileFriendlyNameExA(
-    __in DWORD HwProfile,
-    __out_ecount(FriendlyNameSize) PSTR FriendlyName,
-    __in DWORD FriendlyNameSize,
-    __out_opt PDWORD RequiredSize,
-    __in_opt PCSTR MachineName,
-    __reserved PVOID Reserved
+    IN  DWORD  HwProfile,
+    OUT PSTR   FriendlyName,
+    IN  DWORD  FriendlyNameSize,
+    OUT PDWORD RequiredSize,     OPTIONAL
+    IN  PCSTR  MachineName,      OPTIONAL
+    IN  PVOID  Reserved
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetHwProfileFriendlyNameExW(
-    __in DWORD HwProfile,
-    __out_ecount(FriendlyNameSize) PWSTR FriendlyName,
-    __in DWORD FriendlyNameSize,
-    __out_opt PDWORD RequiredSize,
-    __in_opt PCWSTR MachineName,
-    __reserved PVOID Reserved
+    IN  DWORD  HwProfile,
+    OUT PWSTR  FriendlyName,
+    IN  DWORD  FriendlyNameSize,
+    OUT PDWORD RequiredSize,     OPTIONAL
+    IN  PCWSTR MachineName,      OPTIONAL
+    IN  PVOID  Reserved
     );
 
 #ifdef UNICODE
@@ -6584,11 +6553,11 @@ WINSETUPAPI
 HPROPSHEETPAGE
 WINAPI
 SetupDiGetWizardPage(
-    __in HDEVINFO DeviceInfoSet,
-    __in_opt PSP_DEVINFO_DATA DeviceInfoData,
-    __in PSP_INSTALLWIZARD_DATA InstallWizardData,
-    __in DWORD PageType,
-    __in DWORD Flags
+    IN HDEVINFO               DeviceInfoSet,
+    IN PSP_DEVINFO_DATA       DeviceInfoData,    OPTIONAL
+    IN PSP_INSTALLWIZARD_DATA InstallWizardData,
+    IN DWORD                  PageType,
+    IN DWORD                  Flags
     );
 
 
@@ -6596,8 +6565,8 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetSelectedDevice(
-    __in HDEVINFO DeviceInfoSet,
-    __out PSP_DEVINFO_DATA DeviceInfoData
+    IN  HDEVINFO         DeviceInfoSet,
+    OUT PSP_DEVINFO_DATA DeviceInfoData
     );
 
 
@@ -6605,68 +6574,32 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiSetSelectedDevice(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData
+    IN HDEVINFO         DeviceInfoSet,
+    IN PSP_DEVINFO_DATA DeviceInfoData
     );
-
-
-#if _SETUPAPI_VER >= 0x0502
-
-WINSETUPAPI
-BOOL
-WINAPI
-SetupDiGetActualModelsSectionA(
-    __in PINFCONTEXT Context,
-    __in_opt PSP_ALTPLATFORM_INFO AlternatePlatformInfo,
-    __out_ecount_opt(InfSectionWithExtSize) PSTR InfSectionWithExt,
-    __in DWORD InfSectionWithExtSize,
-    __out_opt PDWORD RequiredSize,
-    __reserved PVOID Reserved
-    );
-
-WINSETUPAPI
-BOOL
-WINAPI
-SetupDiGetActualModelsSectionW(
-    __in PINFCONTEXT Context,
-    __in_opt PSP_ALTPLATFORM_INFO AlternatePlatformInfo,
-    __out_ecount_opt(InfSectionWithExtSize) PWSTR InfSectionWithExt,
-    __in DWORD InfSectionWithExtSize,
-    __out_opt PDWORD RequiredSize,
-    __reserved PVOID Reserved
-    );
-
-#ifdef UNICODE
-#define SetupDiGetActualModelsSection SetupDiGetActualModelsSectionW
-#else
-#define SetupDiGetActualModelsSection SetupDiGetActualModelsSectionA
-#endif
-
-#endif // _SETUPAPI_VER >= 0x0502
-
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetActualSectionToInstallA(
-    __in HINF InfHandle,
-    __in PCSTR InfSectionName,
-    __out_ecount_opt(InfSectionWithExtSize) PSTR InfSectionWithExt,
-    __in DWORD InfSectionWithExtSize,
-    __out_opt PDWORD RequiredSize,
-    __out_opt PSTR *Extension
+    IN  HINF    InfHandle,
+    IN  PCSTR   InfSectionName,
+    OUT PSTR    InfSectionWithExt,     OPTIONAL
+    IN  DWORD   InfSectionWithExtSize,
+    OUT PDWORD  RequiredSize,          OPTIONAL
+    OUT PSTR   *Extension              OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetActualSectionToInstallW(
-    __in HINF InfHandle,
-    __in PCWSTR InfSectionName,
-    __out_ecount_opt(InfSectionWithExtSize) PWSTR InfSectionWithExt,
-    __in DWORD InfSectionWithExtSize,
-    __out_opt PDWORD RequiredSize,
-    __out_opt PWSTR *Extension
+    IN  HINF    InfHandle,
+    IN  PCWSTR  InfSectionName,
+    OUT PWSTR   InfSectionWithExt,     OPTIONAL
+    IN  DWORD   InfSectionWithExtSize,
+    OUT PDWORD  RequiredSize,          OPTIONAL
+    OUT PWSTR  *Extension              OPTIONAL
     );
 
 #ifdef UNICODE
@@ -6682,28 +6615,28 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetActualSectionToInstallExA(
-    __in HINF InfHandle,
-    __in PCSTR InfSectionName,
-    __in_opt PSP_ALTPLATFORM_INFO AlternatePlatformInfo,
-    __out_ecount_opt(InfSectionWithExtSize) PSTR InfSectionWithExt,
-    __in DWORD InfSectionWithExtSize,
-    __out_opt PDWORD RequiredSize,
-    __out_opt PSTR *Extension,
-    __reserved PVOID Reserved
+    IN  HINF                  InfHandle,
+    IN  PCSTR                 InfSectionName,
+    IN  PSP_ALTPLATFORM_INFO  AlternatePlatformInfo, OPTIONAL
+    OUT PSTR                  InfSectionWithExt,     OPTIONAL
+    IN  DWORD                 InfSectionWithExtSize,
+    OUT PDWORD                RequiredSize,          OPTIONAL
+    OUT PSTR                 *Extension,             OPTIONAL
+    IN  PVOID                 Reserved
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetActualSectionToInstallExW(
-    __in HINF InfHandle,
-    __in PCWSTR InfSectionName,
-    __in_opt PSP_ALTPLATFORM_INFO AlternatePlatformInfo,
-    __out_ecount_opt(InfSectionWithExtSize) PWSTR InfSectionWithExt,
-    __in DWORD InfSectionWithExtSize,
-    __out_opt PDWORD RequiredSize,
-    __out_opt PWSTR *Extension,
-    __reserved PVOID Reserved
+    IN  HINF                  InfHandle,
+    IN  PCWSTR                InfSectionName,
+    IN  PSP_ALTPLATFORM_INFO  AlternatePlatformInfo, OPTIONAL
+    OUT PWSTR                 InfSectionWithExt,     OPTIONAL
+    IN  DWORD                 InfSectionWithExtSize,
+    OUT PDWORD                RequiredSize,          OPTIONAL
+    OUT PWSTR                *Extension,             OPTIONAL
+    IN  PVOID                 Reserved
     );
 
 #ifdef UNICODE
@@ -6724,22 +6657,22 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupEnumInfSectionsA (
-    __in HINF InfHandle,
-    __in UINT Index,
-    __out_ecount_opt(Size) PSTR Buffer, 
-    __in UINT Size,
-    __out_opt UINT *SizeNeeded
+    IN  HINF        InfHandle,
+    IN  UINT        Index,
+    OUT PSTR        Buffer,         OPTIONAL
+    IN  UINT        Size,           OPTIONAL
+    OUT UINT        *SizeNeeded     OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupEnumInfSectionsW (
-    __in HINF InfHandle,
-    __in UINT Index,
-    __out_ecount_opt(Size) PWSTR Buffer, 
-    __in UINT Size,
-    __out_opt UINT *SizeNeeded
+    IN  HINF        InfHandle,
+    IN  UINT        Index,
+    OUT PWSTR       Buffer,         OPTIONAL
+    IN  UINT        Size,           OPTIONAL
+    OUT UINT        *SizeNeeded     OPTIONAL
     );
 
 #ifdef UNICODE
@@ -6778,18 +6711,18 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupVerifyInfFileA(
-    __in PCSTR InfName,
-    __in_opt PSP_ALTPLATFORM_INFO AltPlatformInfo,
-    __out PSP_INF_SIGNER_INFO_A InfSignerInfo
+    IN  PCSTR                   InfName,
+    IN  PSP_ALTPLATFORM_INFO    AltPlatformInfo,                OPTIONAL
+    OUT PSP_INF_SIGNER_INFO_A   InfSignerInfo
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupVerifyInfFileW(
-    __in PCWSTR InfName,
-    __in_opt PSP_ALTPLATFORM_INFO AltPlatformInfo,
-    __out PSP_INF_SIGNER_INFO_W InfSignerInfo
+    IN  PCWSTR                  InfName,
+    IN  PSP_ALTPLATFORM_INFO    AltPlatformInfo,                OPTIONAL
+    OUT PSP_INF_SIGNER_INFO_W   InfSignerInfo
     );
 
 #ifdef UNICODE
@@ -6811,28 +6744,28 @@ WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetCustomDevicePropertyA(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __in PCSTR CustomPropertyName,
-    __in DWORD Flags,
-    __out_opt PDWORD PropertyRegDataType,
-    __out_bcount(PropertyBufferSize) PBYTE PropertyBuffer,
-    __in DWORD PropertyBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HDEVINFO         DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA DeviceInfoData,
+    IN  PCSTR            CustomPropertyName,
+    IN  DWORD            Flags,
+    OUT PDWORD           PropertyRegDataType, OPTIONAL
+    OUT PBYTE            PropertyBuffer,
+    IN  DWORD            PropertyBufferSize,
+    OUT PDWORD           RequiredSize         OPTIONAL
     );
 
 WINSETUPAPI
 BOOL
 WINAPI
 SetupDiGetCustomDevicePropertyW(
-    __in HDEVINFO DeviceInfoSet,
-    __in PSP_DEVINFO_DATA DeviceInfoData,
-    __in PCWSTR CustomPropertyName,
-    __in DWORD Flags,
-    __out_opt PDWORD PropertyRegDataType,
-    __out_bcount(PropertyBufferSize) PBYTE PropertyBuffer,
-    __in DWORD PropertyBufferSize,
-    __out_opt PDWORD RequiredSize
+    IN  HDEVINFO         DeviceInfoSet,
+    IN  PSP_DEVINFO_DATA DeviceInfoData,
+    IN  PCWSTR           CustomPropertyName,
+    IN  DWORD            Flags,
+    OUT PDWORD           PropertyRegDataType, OPTIONAL
+    OUT PBYTE            PropertyBuffer,
+    IN  DWORD            PropertyBufferSize,
+    OUT PDWORD           RequiredSize         OPTIONAL
     );
 
 #ifdef UNICODE
@@ -6842,46 +6775,6 @@ SetupDiGetCustomDevicePropertyW(
 #endif
 
 #endif // _SETUPAPI_VER >= 0x0501
-
-
-#if _SETUPAPI_VER >= 0x0502
-
-//
-// To configure WMI security for downlevel platforms where the [DDInstall.WMI]
-// section isn't natively supported by setupapi, a redistributable co-installer
-// is supplied in the DDK for use on those platforms.
-//
-
-//
-// Flags for use by SetupConfigureWmiFromInfSection
-//
-#define SCWMI_CLOBBER_SECURITY  0x00000001
-
-WINSETUPAPI
-BOOL
-WINAPI
-SetupConfigureWmiFromInfSectionA(
-    __in HINF InfHandle,
-    __in PCSTR SectionName,
-    __in DWORD Flags
-    );
-
-WINSETUPAPI
-BOOL
-WINAPI
-SetupConfigureWmiFromInfSectionW(
-    __in HINF InfHandle,
-    __in PCWSTR SectionName,
-    __in DWORD Flags
-    );
-
-#ifdef UNICODE
-#define SetupConfigureWmiFromInfSection SetupConfigureWmiFromInfSectionW
-#else
-#define SetupConfigureWmiFromInfSection SetupConfigureWmiFromInfSectionA
-#endif
-
-#endif // _SETUPAPI_VER >= 0x0502
 
 
 #ifdef __cplusplus

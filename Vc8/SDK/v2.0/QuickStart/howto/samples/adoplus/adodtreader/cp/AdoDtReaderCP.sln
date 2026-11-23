@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AdoDtReader", "AdoDtReader\AdoDtReader.vcproj", "{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Debug|Itanium = Debug|Itanium
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+		Release|Itanium = Release|Itanium
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Debug|Win32.Build.0 = Debug|Win32
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Debug|x64.ActiveCfg = Debug|x64
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Debug|x64.Build.0 = Debug|x64
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Debug|Itanium.ActiveCfg = Debug|Itanium
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Debug|Itanium.Build.0 = Debug|Itanium
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Release|Win32.ActiveCfg = Release|Win32
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Release|Win32.Build.0 = Release|Win32
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Release|x64.ActiveCfg = Release|x64
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Release|x64.Build.0 = Release|x64
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Release|Itanium.ActiveCfg = Release|Itanium
+		{BB9A32AE-D92D-4CA6-B3D7-0C84F63858DA}.Release|Itanium.Build.0 = Release|Itanium
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

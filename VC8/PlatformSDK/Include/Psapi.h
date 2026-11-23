@@ -130,14 +130,6 @@ QueryWorkingSet(
 
 BOOL
 WINAPI
-QueryWorkingSetEx(
-    HANDLE hProcess,
-    PVOID pv,
-    DWORD cb
-    );
-
-BOOL
-WINAPI
 InitializeProcessForWsWatch(
     HANDLE hProcess
     );
@@ -277,7 +269,7 @@ GetProcessMemoryInfo(
     DWORD cb
     );
 
-typedef struct _PERFORMANCE_INFORMATION {
+typedef struct _PERFORMACE_INFORMATION {
     DWORD cb;
     SIZE_T CommitTotal;
     SIZE_T CommitLimit;
@@ -292,7 +284,7 @@ typedef struct _PERFORMANCE_INFORMATION {
     DWORD HandleCount;
     DWORD ProcessCount;
     DWORD ThreadCount;
-} PERFORMANCE_INFORMATION, *PPERFORMANCE_INFORMATION, PERFORMACE_INFORMATION, *PPERFORMACE_INFORMATION;
+} PERFORMACE_INFORMATION, *PPERFORMACE_INFORMATION;
 
 BOOL
 WINAPI

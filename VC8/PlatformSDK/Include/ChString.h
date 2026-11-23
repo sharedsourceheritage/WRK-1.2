@@ -78,7 +78,7 @@ class POLARITY CHString
         void AllocBeforeWrite(int nLen) throw ( CHeap_Exception ) ;
         void Release();
         static void WINAPI Release(CHStringData* pData);
-        static inline int WINAPI_INLINE SafeStrlen(LPCWSTR lpsz)   { return (lpsz == NULL) ? 0 : (int)wcslen(lpsz); }
+        static inline int WINAPI SafeStrlen(LPCWSTR lpsz)   { return (lpsz == NULL) ? 0 : (int)wcslen(lpsz); }
 
         // Helper function used to load resource into lpszBuf buffer.
 #ifdef FRAMEWORK_ALLOW_DEPRECATED

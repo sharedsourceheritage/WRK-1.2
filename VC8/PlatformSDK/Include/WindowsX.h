@@ -147,7 +147,7 @@ LONG MwMapWindowRect(HWND, HWND, RECT *);
 #define     IsMButtonDown()  (GetKeyState(VK_MBUTTON) < 0)
 
 #define     SubclassDialog(hwndDlg, lpfn) \
-             (SetWindowLongPtr(hwndDlg, DWLP_DLGPROC, (LPARAM)(lpfn)))
+             ((DLGPROC)SetWindowLongPtr(hwndDlg, DWLP_DLGPROC, (LPARAM)(DLGPROC)(lpfn)))
 
 #define     SetDlgMsgResult(hwnd, msg, result) (( \
         (msg) == WM_CTLCOLORMSGBOX      || \
@@ -550,7 +550,7 @@ LONG MwMapWindowRect(HWND, HWND, RECT *);
 
 /* void Cls_OnMouseWheel(HWND hwnd, int xPos, int yPos, int zDelta, UINT fwKeys) */
 #define HANDLE_WM_MOUSEWHEEL(hwnd, wParam, lParam, fn) \
-    ((fn)((hwnd), (int)(short)LOWORD(lParam), (int)(short)HIWORD(lParam), (int)(short)HIWORD(wParam), (UINT)(short)LOWORD(wParam)), 0L)
+    ((fn)((hwnd), (int)(short)LOWORD(lParam), (int)(short)HIWORD(lParam), (int)(short)HIWORD(wParam), (UINT)(short)LOWORD(wParam)))
 #define FORWARD_WM_MOUSEWHEEL(hwnd, xPos, yPos, zDelta, fwKeys, fn) \
     (void)(fn)((hwnd), WM_MOUSEWHEEL, MAKEWPARAM((fwKeys),(zDelta)), MAKELPARAM((x),(y)))
 

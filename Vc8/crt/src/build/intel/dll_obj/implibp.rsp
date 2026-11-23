@@ -1,0 +1,3 @@
+-out:build\intel\sample_p.lib
+build\intel\dll_obj\tmpp.lib
+build\intel\dll_obj\nothrow.obj    build\intel\dll_obj\newaop_s.obj

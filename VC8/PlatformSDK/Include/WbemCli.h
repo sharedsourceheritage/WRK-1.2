@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for wbemcli.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -745,7 +744,6 @@ enum tag_WBEMSTATUS
 	WBEM_E_PROVIDER_DISABLED	= 0x8004108a,
 	WBEMESS_E_REGISTRATION_TOO_BROAD	= 0x80042001,
 	WBEMESS_E_REGISTRATION_TOO_PRECISE	= 0x80042002,
-	WBEMESS_E_AUTHZ_NOT_PRIVILEGED	= 0x80042003,
 	WBEMMOF_E_EXPECTED_QUALIFIER_NAME	= 0x80044001,
 	WBEMMOF_E_EXPECTED_SEMI	= 0x80044002,
 	WBEMMOF_E_EXPECTED_OPEN_BRACE	= 0x80044003,
@@ -5095,14 +5093,14 @@ WbemObjectTextSrc;
 extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0000_v0_0_c_ifspec;
 extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0000_v0_0_s_ifspec;
 
-/* interface __MIDL_itf_wbemcli_0116 */
+/* interface __MIDL_itf_wbemcli_0112 */
 /* [local] */ 
 
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0116_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0116_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0112_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0112_v0_0_s_ifspec;
 
 #ifndef __IWbemShutdown_INTERFACE_DEFINED__
 #define __IWbemShutdown_INTERFACE_DEFINED__
@@ -5200,7 +5198,7 @@ void __RPC_STUB IWbemShutdown_Shutdown_Stub(
 #endif 	/* __IWbemShutdown_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wbemcli_0123 */
+/* interface __MIDL_itf_wbemcli_0119 */
 /* [local] */ 
 
 typedef /* [v1_enum] */ 
@@ -5222,8 +5220,8 @@ enum tag_WMI_OBJ_TEXT
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0123_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0123_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0119_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0119_v0_0_s_ifspec;
 
 #ifndef __IWbemObjectTextSrc_INTERFACE_DEFINED__
 #define __IWbemObjectTextSrc_INTERFACE_DEFINED__
@@ -5361,7 +5359,7 @@ void __RPC_STUB IWbemObjectTextSrc_CreateFromText_Stub(
 #endif 	/* __IWbemObjectTextSrc_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wbemcli_0125 */
+/* interface __MIDL_itf_wbemcli_0121 */
 /* [local] */ 
 
 typedef struct tag_CompileStatusInfo
@@ -5394,8 +5392,8 @@ enum tag_WBEM_CONNECT_OPTIONS
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0125_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0125_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0121_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0121_v0_0_s_ifspec;
 
 #ifndef __IMofCompiler_INTERFACE_DEFINED__
 #define __IMofCompiler_INTERFACE_DEFINED__
@@ -5600,7 +5598,7 @@ void __RPC_STUB IMofCompiler_CreateBMOF_Stub(
 #endif 	/* __IMofCompiler_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wbemcli_0127 */
+/* interface __MIDL_itf_wbemcli_0123 */
 /* [local] */ 
 
 typedef /* [v1_enum] */ 
@@ -5612,10 +5610,10 @@ enum tag_WBEM_UNSECAPP_FLAG_TYPE
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0127_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0127_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0123_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0123_v0_0_s_ifspec;
 
-/* interface __MIDL_itf_wbemcli_0128 */
+/* interface __MIDL_itf_wbemcli_0124 */
 /* [local] */ 
 
 typedef /* [v1_enum] */ 
@@ -5626,8 +5624,8 @@ enum tag_WBEM_INFORMATION_FLAG_TYPE
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0128_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0128_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0124_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemcli_0124_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

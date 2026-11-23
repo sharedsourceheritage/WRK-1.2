@@ -230,17 +230,6 @@ protected:
     HRESULT ReleaseSink();
 
 
-    //
-    // we want to have control over our addref and release logic: we need to do
-    // special tricks to avoid stream being accessed by the event sink while
-    // the stream is being deleted.
-    //
-
-    ULONG InternalAddRef();
-
-    ULONG InternalRelease();
-
-
 public:
 
     
@@ -283,30 +272,8 @@ protected:
     // that might lock.
     CMSPCritSection             m_lock;
 
-    // The lock that protects refcounting on the stream object. this is a 
-    // workaround needed to sync against event sink attempting to access the 
-    // stream object while it is being deleted.
-
-    CMSPCritSection             m_lockRefCount;
-
     // The Event Sink for pluggable terminals
     ITPluggableTerminalEventSink* m_pPTEventSink;
-
-
-    //
-    // we have to implement our own reference counting to work around the 
-    // problem of event sink addreffing us after we saw our last release
-    //
-
-    long                        m_lMyPersonalRefcount;
-
-    
-    //
-    // this is a flag that we use to distingush between first addref and the 
-    // addref on the object whose refcount has gone down to 0.
-    //
-
-    BOOL                        m_bFirstAddRef;
 
 };
 

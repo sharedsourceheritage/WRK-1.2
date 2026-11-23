@@ -572,12 +572,12 @@ FreeAddrInfoW(
 typedef
 void
 (WSAAPI * LPFN_FREEADDRINFO)(
-    IN  struct addrinfo FAR * ai
+    IN struct addrinfo FAR * ai
     );
 typedef
 void
 (WSAAPI * LPFN_FREEADDRINFOW)(
-    IN  PADDRINFOW      pAddrInfo
+    IN  PADDRINFOW * pAddrInfo
     );
 
 #define LPFN_FREEADDRINFOA      LPFN_FREEADDRINFO

@@ -1,12 +1,13 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for ads.odl:
-    Oicf, W1, Zp8, env=Win32 (32b run)
-    protocol : dce , ms_ext, c_ext, robust
+    Os, W1, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
@@ -14,21 +15,14 @@
 */
 //@@MIDL_FILE_HEADING(  )
 
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
-
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
 #ifndef __REQUIRED_RPCNDR_H_VERSION__
-#define __REQUIRED_RPCNDR_H_VERSION__ 475
+#define __REQUIRED_RPCNDR_H_VERSION__ 440
 #endif
 
 #include "rpc.h"
 #include "rpcndr.h"
-
-#ifndef __RPCNDR_H_VERSION__
-#error this stub requires an updated version of <rpcndr.h>
-#endif // __RPCNDR_H_VERSION__
-
 
 #ifndef __iads_h__
 #define __iads_h__
@@ -1134,9 +1128,7 @@ enum __MIDL___MIDL_itf_ads_0000_0025
 	ADS_SEARCHPREF_TOMBSTONE	= ADS_SEARCHPREF_DIRSYNC + 1,
 	ADS_SEARCHPREF_VLV	= ADS_SEARCHPREF_TOMBSTONE + 1,
 	ADS_SEARCHPREF_ATTRIBUTE_QUERY	= ADS_SEARCHPREF_VLV + 1,
-	ADS_SEARCHPREF_SECURITY_MASK	= ADS_SEARCHPREF_ATTRIBUTE_QUERY + 1,
-	ADS_SEARCHPREF_DIRSYNC_FLAG	= ADS_SEARCHPREF_SECURITY_MASK + 1,
-	ADS_SEARCHPREF_EXTENDED_DN	= ADS_SEARCHPREF_DIRSYNC_FLAG + 1
+	ADS_SEARCHPREF_SECURITY_MASK	= ADS_SEARCHPREF_ATTRIBUTE_QUERY + 1
     } 	ADS_SEARCHPREF_ENUM;
 
 typedef /* [public] */ 
@@ -1243,7 +1235,7 @@ enum __MIDL___MIDL_itf_ads_0000_0027
     } 	ADS_PROPERTY_OPERATION_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0130_0001
+enum __MIDL___MIDL_itf_ads_0126_0001
     {	ADS_SYSTEMFLAG_DISALLOW_DELETE	= 0x80000000,
 	ADS_SYSTEMFLAG_CONFIG_ALLOW_RENAME	= 0x40000000,
 	ADS_SYSTEMFLAG_CONFIG_ALLOW_MOVE	= 0x20000000,
@@ -1257,7 +1249,7 @@ enum __MIDL___MIDL_itf_ads_0130_0001
     } 	ADS_SYSTEMFLAG_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0136_0001
+enum __MIDL___MIDL_itf_ads_0132_0001
     {	ADS_GROUP_TYPE_GLOBAL_GROUP	= 0x2,
 	ADS_GROUP_TYPE_DOMAIN_LOCAL_GROUP	= 0x4,
 	ADS_GROUP_TYPE_LOCAL_GROUP	= 0x4,
@@ -1291,7 +1283,7 @@ enum ADS_USER_FLAG
     } 	ADS_USER_FLAG_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0158_0001
+enum __MIDL___MIDL_itf_ads_0154_0001
     {	ADS_RIGHT_DELETE	= 0x10000,
 	ADS_RIGHT_READ_CONTROL	= 0x20000,
 	ADS_RIGHT_WRITE_DAC	= 0x40000,
@@ -1314,7 +1306,7 @@ enum __MIDL___MIDL_itf_ads_0158_0001
     } 	ADS_RIGHTS_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0158_0002
+enum __MIDL___MIDL_itf_ads_0154_0002
     {	ADS_ACETYPE_ACCESS_ALLOWED	= 0,
 	ADS_ACETYPE_ACCESS_DENIED	= 0x1,
 	ADS_ACETYPE_SYSTEM_AUDIT	= 0x2,
@@ -1333,7 +1325,7 @@ enum __MIDL___MIDL_itf_ads_0158_0002
     } 	ADS_ACETYPE_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0158_0003
+enum __MIDL___MIDL_itf_ads_0154_0003
     {	ADS_ACEFLAG_INHERIT_ACE	= 0x2,
 	ADS_ACEFLAG_NO_PROPAGATE_INHERIT_ACE	= 0x4,
 	ADS_ACEFLAG_INHERIT_ONLY_ACE	= 0x8,
@@ -1344,13 +1336,13 @@ enum __MIDL___MIDL_itf_ads_0158_0003
     } 	ADS_ACEFLAG_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0158_0004
+enum __MIDL___MIDL_itf_ads_0154_0004
     {	ADS_FLAG_OBJECT_TYPE_PRESENT	= 0x1,
 	ADS_FLAG_INHERITED_OBJECT_TYPE_PRESENT	= 0x2
     } 	ADS_FLAGTYPE_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0158_0005
+enum __MIDL___MIDL_itf_ads_0154_0005
     {	ADS_SD_CONTROL_SE_OWNER_DEFAULTED	= 0x1,
 	ADS_SD_CONTROL_SE_GROUP_DEFAULTED	= 0x2,
 	ADS_SD_CONTROL_SE_DACL_PRESENT	= 0x4,
@@ -1367,12 +1359,12 @@ enum __MIDL___MIDL_itf_ads_0158_0005
     } 	ADS_SD_CONTROL_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0158_0006
+enum __MIDL___MIDL_itf_ads_0154_0006
     {	ADS_SD_REVISION_DS	= 4
     } 	ADS_SD_REVISION_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0159_0001
+enum __MIDL___MIDL_itf_ads_0155_0001
     {	ADS_NAME_TYPE_1779	= 1,
 	ADS_NAME_TYPE_CANONICAL	= 2,
 	ADS_NAME_TYPE_NT4	= 3,
@@ -1388,14 +1380,14 @@ enum __MIDL___MIDL_itf_ads_0159_0001
     } 	ADS_NAME_TYPE_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0159_0002
+enum __MIDL___MIDL_itf_ads_0155_0002
     {	ADS_NAME_INITTYPE_DOMAIN	= 1,
 	ADS_NAME_INITTYPE_SERVER	= 2,
 	ADS_NAME_INITTYPE_GC	= 3
     } 	ADS_NAME_INITTYPE_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0173_0001
+enum __MIDL___MIDL_itf_ads_0169_0001
     {	ADS_OPTION_SERVERNAME	= 0,
 	ADS_OPTION_REFERRALS	= ADS_OPTION_SERVERNAME + 1,
 	ADS_OPTION_PAGE_SIZE	= ADS_OPTION_REFERRALS + 1,
@@ -1408,7 +1400,7 @@ enum __MIDL___MIDL_itf_ads_0173_0001
     } 	ADS_OPTION_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0173_0002
+enum __MIDL___MIDL_itf_ads_0169_0002
     {	ADS_SECURITY_INFO_OWNER	= 0x1,
 	ADS_SECURITY_INFO_GROUP	= 0x2,
 	ADS_SECURITY_INFO_DACL	= 0x4,
@@ -1416,7 +1408,7 @@ enum __MIDL___MIDL_itf_ads_0173_0002
     } 	ADS_SECURITY_INFO_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0174_0001
+enum __MIDL___MIDL_itf_ads_0170_0001
     {	ADS_SETTYPE_FULL	= 1,
 	ADS_SETTYPE_PROVIDER	= 2,
 	ADS_SETTYPE_SERVER	= 3,
@@ -1424,7 +1416,7 @@ enum __MIDL___MIDL_itf_ads_0174_0001
     } 	ADS_SETTYPE_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0174_0002
+enum __MIDL___MIDL_itf_ads_0170_0002
     {	ADS_FORMAT_WINDOWS	= 1,
 	ADS_FORMAT_WINDOWS_NO_SERVER	= 2,
 	ADS_FORMAT_WINDOWS_DN	= 3,
@@ -1439,13 +1431,13 @@ enum __MIDL___MIDL_itf_ads_0174_0002
     } 	ADS_FORMAT_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0174_0003
+enum __MIDL___MIDL_itf_ads_0170_0003
     {	ADS_DISPLAY_FULL	= 1,
 	ADS_DISPLAY_VALUE_ONLY	= 2
     } 	ADS_DISPLAY_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0174_0004
+enum __MIDL___MIDL_itf_ads_0170_0004
     {	ADS_ESCAPEDMODE_DEFAULT	= 1,
 	ADS_ESCAPEDMODE_ON	= 2,
 	ADS_ESCAPEDMODE_OFF	= 3,
@@ -1453,14 +1445,14 @@ enum __MIDL___MIDL_itf_ads_0174_0004
     } 	ADS_ESCAPE_MODE_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0179_0001
+enum __MIDL___MIDL_itf_ads_0175_0001
     {	ADS_PATH_FILE	= 1,
 	ADS_PATH_FILESHARE	= 2,
 	ADS_PATH_REGISTRY	= 3
     } 	ADS_PATHTYPE_ENUM;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_ads_0179_0002
+enum __MIDL___MIDL_itf_ads_0175_0002
     {	ADS_SD_FORMAT_IID	= 1,
 	ADS_SD_FORMAT_RAW	= 2,
 	ADS_SD_FORMAT_HEXSTRING	= 3

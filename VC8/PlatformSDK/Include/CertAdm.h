@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for certadm.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -531,7 +530,7 @@ void __RPC_STUB ICertAdmin_ImportCertificate_Stub(
 #endif 	/* __ICertAdmin_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_certadm_0129 */
+/* interface __MIDL_itf_certadm_0125 */
 /* [local] */ 
 
 #define	CA_CRL_BASE	( 0x1 )
@@ -550,8 +549,8 @@ void __RPC_STUB ICertAdmin_ImportCertificate_Stub(
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_certadm_0129_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_certadm_0129_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_certadm_0125_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_certadm_0125_v0_0_s_ifspec;
 
 #ifndef __ICertAdmin2_INTERFACE_DEFINED__
 #define __ICertAdmin2_INTERFACE_DEFINED__

@@ -28,14 +28,6 @@
 
 #define DXASSERT_VALID( pObj )
 
-#ifndef PASCAL_INLINE
-#ifdef _M_CEE_PURE
-#define PASCAL_INLINE  __clrcall
-#else
-#define PASCAL_INLINE  PASCAL
-#endif
-#endif
-
 /////////////////////////////////////////////////////////////////////////////
 typedef void* DXLISTPOS;
 typedef DWORD DXLISTHANDLE;
@@ -110,7 +102,7 @@ struct CDXPlex    // warning variable length structure
     /* BYTE data[maxNum*elementSize]; */
     void* data() { return this+1; }
 
-    static CDXPlex* PASCAL_INLINE Create( CDXPlex*& pHead, UINT nMax, UINT cbElement )
+    static CDXPlex* PASCAL Create( CDXPlex*& pHead, UINT nMax, UINT cbElement )
     {
         CDXPlex* p = (CDXPlex*) new BYTE[sizeof(CDXPlex) + nMax * cbElement];
         if (p == NULL)
@@ -129,7 +121,7 @@ struct CDXPlex    // warning variable length structure
         {
             BYTE* bytes = (BYTE*) p;
             CDXPlex* pNext = p->pNext;
-            delete [] bytes;
+            delete bytes;
             p = pNext;
         }
     }

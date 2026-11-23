@@ -36,11 +36,11 @@ typedef EFaultRepRetVal (APIENTRY *pfn_ADDEREXCLUDEDAPPLICATIONA)(LPCSTR);
 typedef EFaultRepRetVal (APIENTRY *pfn_ADDEREXCLUDEDAPPLICATIONW)(LPCWSTR);
 
 #ifdef UNICODE
-#define AddERExcludedApplication AddERExcludedApplicationW
-#define pfn_ADDEREXCLUDEDAPPLICATION pfn_ADDEREXCLUDEDAPPLICATIONW
-#else
 #define AddERExcludedApplication AddERExcludedApplicationA
 #define pfn_ADDEREXCLUDEDAPPLICATION pfn_ADDEREXCLUDEDAPPLICATIONA
+#else
+#define AddERExcludedApplication AddERExcludedApplicationW
+#define pfn_ADDEREXCLUDEDAPPLICATION pfn_ADDEREXCLUDEDAPPLICATIONW
 #endif
 
 #endif

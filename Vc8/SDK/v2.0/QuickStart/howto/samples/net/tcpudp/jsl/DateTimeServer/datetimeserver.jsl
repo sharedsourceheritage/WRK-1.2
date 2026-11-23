@@ -1,0 +1,66 @@
+package Microsoft.Samples.QuickStart.HowTo.Net.TcpUdp;
+//-----------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//-----------------------------------------------------------------------
+import System.*;
+import System.Net.*;
+import System.Net.Sockets.*;
+import System.Text.*;
+import System.Threading.*;
+import System.Globalization.*;
+
+class Server
+{
+    public static void main(String[] args)
+    {
+        DateTime now;
+        String strDateLine;
+        Encoding ascii = Encoding.get_ASCII();
+        Socket s = null;
+
+        try {
+            TcpListener tcpl = new TcpListener(IPAddress.Any, 13);
+            // listen on port 13
+            tcpl.Start();
+
+            Console.WriteLine("Waiting for clients to connect");
+            Console.WriteLine("Press Ctrl+c to Quit...");
+
+            while (true) {
+                // Accept will block until someone connects
+                s = tcpl.AcceptSocket();
+                // Get the current date and time then concatenate it
+                // into a String
+                now = DateTime.get_Now();
+                strDateLine = now.ToShortDateString() + " " + now.
+                    ToLongTimeString();
+                // Convert the string to a Byte Array and send it
+                ubyte byteDateLine[] = ascii.GetBytes(strDateLine.ToCharArray());
+                s.Send(byteDateLine, byteDateLine.get_Length(),(SocketFlags)0);
+                Console.WriteLine("Sent {0}", strDateLine);
+            }
+        }
+        catch (SocketException socketError) {
+            if (socketError.get_ErrorCode() == 10048) {
+                Console.WriteLine("Connection to this port failed.  "
+                    + "There is another server is listening on this port.");
+            }
+        }
+        finally {
+            if (s != null) {
+                s.Close();
+            }
+        }
+    } //main
+} //Server

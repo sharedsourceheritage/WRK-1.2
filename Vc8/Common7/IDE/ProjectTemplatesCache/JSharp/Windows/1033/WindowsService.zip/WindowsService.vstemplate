@@ -1,0 +1,19 @@
+<VSTemplate Version="2.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2349" />
+    <Description Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2350" />
+    <Icon Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="4556" />
+    <ProjectType>JSharp</ProjectType>
+    <SortOrder>80</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>WindowsService</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="WindowsService.vjsproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.jsl">AssemblyInfo.jsl</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">Service1.jsl</ProjectItem>
+      <ProjectItem ReplaceParameters="true">Program.jsl</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

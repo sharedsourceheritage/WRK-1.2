@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+	<siteMapNode url="~/aspnet/doc/validation/default.aspx" title="Validating Form Input Controls">
+
+            <siteMapNode title="Validation Controls">
+               <siteMapNode url="~/aspnet/doc/validation/default.aspx#types" title="Types of Validation Controls"/>
+               <siteMapNode url="~/aspnet/doc/validation/default.aspx#client" title="Client-Side Validation"/>
+               <siteMapNode url="~/aspnet/doc/validation/default.aspx#errors" title="Displaying Validation Errors"/>
+               <siteMapNode url="~/aspnet/doc/validation/default.aspx#compare" title="Working with CompareValidator"/>
+               <siteMapNode url="~/aspnet/doc/validation/default.aspx#range" title="Working with RangeValidator"/>
+               <siteMapNode url="~/aspnet/doc/validation/default.aspx#regex" title="Working with Regular Expressions"/>
+               <siteMapNode url="~/aspnet/doc/validation/default.aspx#custom" title="Performing Custom Validation"/>
+            </siteMapNode>
+            <siteMapNode title="New Features in ASP.NET 2.0">
+               <siteMapNode url="~/aspnet/doc/validation/default.aspx#validateemptytext" title="ValidateEmptyText"/>
+               <siteMapNode url="~/aspnet/doc/validation/default.aspx#validationgroups" title="Validation Groups"/>
+               <siteMapNode url="~/aspnet/doc/validation/default.aspx#setfocusonerror" title="SetFocusOnError"/>
+            </siteMapNode>
+            <siteMapNode url="~/aspnet/doc/validation/default.aspx#together" title="A Typical Validation Form"/>
+        </siteMapNode>
+</siteMap>

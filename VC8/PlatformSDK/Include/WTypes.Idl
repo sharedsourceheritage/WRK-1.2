@@ -426,16 +426,17 @@ cpp_quote("#endif // !SECURITY_DESCRIPTOR_REVISION")
 
 cpp_quote("#endif //_WINBASE_")
 
+
 typedef struct _COAUTHIDENTITY
 {
-  // User and Password length from lmcons.h
-  // Domain length === FQDN length which is 256
+  // User and Password lenght from lmcons.h
+  // Domain lenght === FQDN length which is 256
   [size_is(UserLength+1)] USHORT *      User;
-  [range(0,256)]ULONG                   UserLength;
+  [range (0, 256)] ULONG                UserLength;
   [size_is(DomainLength+1)] USHORT *    Domain;
-  [range(0,256)]ULONG                    DomainLength;
+  [range (0, 256)] ULONG                DomainLength;
   [size_is(PasswordLength+1)] USHORT *  Password;
-  [range(0,256)]ULONG                   PasswordLength;
+  [range (0, 256)] ULONG                PasswordLength;
   ULONG                                 Flags;
 } COAUTHIDENTITY;
 
@@ -550,21 +551,19 @@ typedef enum tagCLSCTX
     CLSCTX_INPROC_SERVER16 = 0x08,   // 16-bit server dll (runs in same process as caller)
     CLSCTX_REMOTE_SERVER = 0x10,     // remote server exe (runs on different machine)
     CLSCTX_INPROC_HANDLER16 = 0x20,  // 16-bit handler dll (runs in same process as caller)
-    CLSCTX_RESERVED1 = 0x40,         // formerly INPROC_SERVERX86, deprectated
-    CLSCTX_RESERVED2 = 0x80,         // formerly INPROC_HANDLERX86, deprectated
-    CLSCTX_RESERVED3 = 0x100,        // formerly ESERVER_HANDLER, deprecated
-    CLSCTX_RESERVED4 = 0x200,        // reserved
+    CLSCTX_INPROC_SERVERX86 = 0x40,  // Wx86 server dll (runs in same process as caller)
+    CLSCTX_INPROC_HANDLERX86 = 0x80, // Wx86 handler dll (runs in same process as caller)
+    CLSCTX_ESERVER_HANDLER = 0x100,  // handler dll (runs in the server process)
+    CLSCTX_RESERVED = 0x200,         // reserved
     CLSCTX_NO_CODE_DOWNLOAD = 0x400, // disallow code download from the Directory Service (if any) or the internet   -rahulth
-    CLSCTX_RESERVED5 = 0x800,        // formerly NO_WX86_TRANSLATION, deprecated
+    CLSCTX_NO_WX86_TRANSLATION = 0x800,
     CLSCTX_NO_CUSTOM_MARSHAL = 0x1000,
     CLSCTX_ENABLE_CODE_DOWNLOAD = 0x2000,
                                      // allow code download from the Directory Service (if any) or the internet
     CLSCTX_NO_FAILURE_LOG = 0x4000,  // do not log messages about activation failure (should one occur) to Event Log
-    CLSCTX_DISABLE_AAA   = 0x8000,   // Disable activate-as-activator capability for this activation only
-    CLSCTX_ENABLE_AAA   = 0x10000,   // Enable activate-as-activator capability for this activation only
-    CLSCTX_FROM_DEFAULT_CONTEXT = 0x20000,    // Begin this activation from the default context of the current apartment
-    CLSCTX_ACTIVATE_32_BIT_SERVER = 0x40000,  // Pick 32 bit server over 64 bit server
-    CLSCTX_ACTIVATE_64_BIT_SERVER = 0x80000  // Pick 64 bit server over 32 bit server
+    CLSCTX_DISABLE_AAA   = 0x8000,   // Disable EOAC_DISABLE_AAA capability for this activation only
+    CLSCTX_ENABLE_AAA   = 0x10000,   // Enable EOAC_DISABLE_AAA capability for this activation only
+    CLSCTX_FROM_DEFAULT_CONTEXT = 0x20000    // Begin this activation from the default context of the current apartment
  } CLSCTX;
 
 

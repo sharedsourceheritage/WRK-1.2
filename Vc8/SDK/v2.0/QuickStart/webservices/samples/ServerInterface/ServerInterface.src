@@ -1,0 +1,3 @@
+C# Source:cs\Client\ServerInterfaceClient.aspx,cs\App_WebReferences\ServerInterfaceSample.wsdl,cs\Server\ServerInterface.asmx,cs\App_WebReferences\results.discomap
+VB Source:vb\Client\ServerInterfaceClient.aspx,vb\App_WebReferences\ServerInterfaceSample.wsdl,vb\Server\ServerInterface.asmx,vb\App_WebReferences\results.discomap
+J# Source:jsl\Client\ServerInterfaceClient.aspx,jsl\App_WebReferences\ServerInterfaceSample.wsdl,jsl\Server\ServerInterface.asmx,jsl\App_WebReferences\results.discomap

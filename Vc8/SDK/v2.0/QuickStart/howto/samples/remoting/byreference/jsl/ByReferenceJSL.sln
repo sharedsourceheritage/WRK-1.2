@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{E6FDF86B-F3D1-11D4-8576-0002A516ECE8}") = "Client", "Client\Client.vjsproj", "{2D6CB84C-51FA-4DCA-9797-2CAB453125E7}"
+EndProject
+Project("{E6FDF86B-F3D1-11D4-8576-0002A516ECE8}") = "Server", "Server\Server.vjsproj", "{6DC53F89-899D-448E-81F5-9D2277AFD648}"
+EndProject
+Project("{E6FDF86B-F3D1-11D4-8576-0002A516ECE8}") = "Share", "Share\Share.vjsproj", "{8B0C5991-28C2-46DF-816B-3878FA1A0574}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D6CB84C-51FA-4DCA-9797-2CAB453125E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D6CB84C-51FA-4DCA-9797-2CAB453125E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D6CB84C-51FA-4DCA-9797-2CAB453125E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D6CB84C-51FA-4DCA-9797-2CAB453125E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC53F89-899D-448E-81F5-9D2277AFD648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC53F89-899D-448E-81F5-9D2277AFD648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC53F89-899D-448E-81F5-9D2277AFD648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC53F89-899D-448E-81F5-9D2277AFD648}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0C5991-28C2-46DF-816B-3878FA1A0574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0C5991-28C2-46DF-816B-3878FA1A0574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0C5991-28C2-46DF-816B-3878FA1A0574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0C5991-28C2-46DF-816B-3878FA1A0574}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

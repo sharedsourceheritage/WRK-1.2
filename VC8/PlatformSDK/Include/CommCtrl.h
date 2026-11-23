@@ -11,6 +11,7 @@
 
 
 
+
 #ifndef _INC_COMMCTRL
 #define _INC_COMMCTRL
 
@@ -501,7 +502,7 @@ typedef struct _IMAGELISTDRAWPARAMS
     COLORREF    rgbFg;
     UINT        fStyle;
     DWORD       dwRop;
-#if (_WIN32_IE >= 0x501)
+#if (_WIN32_WINNT >= 0x501)
     DWORD       fState;
     DWORD       Frame;
     COLORREF    crEffect;
@@ -7214,6 +7215,7 @@ typedef struct tagTRACKMOUSEEVENT {
 #endif // !TME_HOVER
 
 
+
 //
 // Declare _TrackMouseEvent.  This API tries to use the window manager's
 // implementation of TrackMouseEvent if it is present, otherwise it emulates.
@@ -7316,45 +7318,19 @@ int WINAPI DrawShadowText(HDC hdc, LPCWSTR pszText, UINT cch, RECT* prc, DWORD d
 
 
 #if !defined(RC_INVOKED) /* RC complains about long symbols in #ifs */
-#if defined(ISOLATION_AWARE_ENABLED) && (ISOLATION_AWARE_ENABLED != 0)
+#if ISOLATION_AWARE_ENABLED
 
-
-#if !defined(ISOLATION_AWARE_USE_STATIC_LIBRARY)
-#define ISOLATION_AWARE_USE_STATIC_LIBRARY 0
-#endif
-
-#if !defined(ISOLATION_AWARE_BUILD_STATIC_LIBRARY)
-#define ISOLATION_AWARE_BUILD_STATIC_LIBRARY 0
-#endif
 
 #if !defined(ISOLATION_AWARE_INLINE)
-#if ISOLATION_AWARE_BUILD_STATIC_LIBRARY
-#define ISOLATION_AWARE_INLINE /* nothing */
-#else
 #if defined(__cplusplus)
 #define ISOLATION_AWARE_INLINE inline
 #else
 #define ISOLATION_AWARE_INLINE __inline
 #endif
 #endif
-#endif
 
-#if !ISOLATION_AWARE_USE_STATIC_LIBRARY
-FARPROC WINAPI CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY(LPCSTR pszProcName);
+FARPROC WINAPI CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL(LPCSTR pszProcName);
 
-#endif /* ISOLATION_AWARE_USE_STATIC_LIBRARY */
-
-#if !defined(ISOLATIONAWARECOMMCTRL_LPSTREAM)
-#if !defined(__IStream_INTERFACE_DEFINED__)
-  #if defined(interface)
-    interface IStream; typedef interface IStream IStream;
-  #else
-    struct IStream; typedef struct IStream IStream;
-  #endif
-#endif
-typedef IStream *ISOLATIONAWARECOMMCTRL_LPSTREAM;
-#define ISOLATIONAWARECOMMCTRL_LPSTREAM ISOLATIONAWARECOMMCTRL_LPSTREAM
-#endif
 void WINAPI IsolationAwareInitCommonControls(void);
 BOOL WINAPI IsolationAwareInitCommonControlsEx(LPINITCOMMONCONTROLSEX unnamed1);
 HIMAGELIST WINAPI IsolationAwareImageList_Create(int cx,int cy,UINT flags,int cInitial,int cGrow);
@@ -7384,12 +7360,14 @@ BOOL WINAPI IsolationAwareImageList_DragMove(int x,int y);
 BOOL WINAPI IsolationAwareImageList_SetDragCursorImage(HIMAGELIST himlDrag,int iDrag,int dxHotspot,int dyHotspot);
 BOOL WINAPI IsolationAwareImageList_DragShowNolock(BOOL fShow);
 HIMAGELIST WINAPI IsolationAwareImageList_GetDragImage(POINT*ppt,POINT*pptHotspot);
-HIMAGELIST WINAPI IsolationAwareImageList_Read(ISOLATIONAWARECOMMCTRL_LPSTREAM pstm);
-BOOL WINAPI IsolationAwareImageList_Write(HIMAGELIST himl,ISOLATIONAWARECOMMCTRL_LPSTREAM pstm);
-#if (_WIN32_WINNT >= 0x0501)
-HRESULT WINAPI IsolationAwareImageList_ReadEx(DWORD dwFlags,ISOLATIONAWARECOMMCTRL_LPSTREAM pstm,REFIID riid,PVOID*ppv);
-HRESULT WINAPI IsolationAwareImageList_WriteEx(HIMAGELIST himl,DWORD dwFlags,ISOLATIONAWARECOMMCTRL_LPSTREAM pstm);
-#endif /* (_WIN32_WINNT >= 0x0501) */
+#if defined(__IStream_INTERFACE_DEFINED__)
+HIMAGELIST WINAPI IsolationAwareImageList_Read(LPSTREAM pstm);
+BOOL WINAPI IsolationAwareImageList_Write(HIMAGELIST himl,LPSTREAM pstm);
+#if defined(__IStream_INTERFACE_DEFINED__) &&  (_WIN32_WINNT >= 0x0501)
+HRESULT WINAPI IsolationAwareImageList_ReadEx(DWORD dwFlags,LPSTREAM pstm,REFIID riid,PVOID*ppv);
+HRESULT WINAPI IsolationAwareImageList_WriteEx(HIMAGELIST himl,DWORD dwFlags,LPSTREAM pstm);
+#endif /* defined(__IStream_INTERFACE_DEFINED__) &&  (_WIN32_WINNT >= 0x0501) */
+#endif /* defined(__IStream_INTERFACE_DEFINED__) */
 BOOL WINAPI IsolationAwareImageList_GetIconSize(HIMAGELIST himl,int*cx,int*cy);
 BOOL WINAPI IsolationAwareImageList_SetIconSize(HIMAGELIST himl,int cx,int cy);
 BOOL WINAPI IsolationAwareImageList_GetImageInfo(HIMAGELIST himl,int i,IMAGEINFO*pImageInfo);
@@ -7451,14 +7429,6 @@ BOOL WINAPI IsolationAwareRemoveWindowSubclass(HWND hWnd,SUBCLASSPROC pfnSubclas
 LRESULT WINAPI IsolationAwareDefSubclassProc(HWND hWnd,UINT uMsg,WPARAM wParam,LPARAM lParam);
 int WINAPI IsolationAwareDrawShadowText(HDC hdc,LPCWSTR pszText,UINT cch,RECT*prc,DWORD dwFlags,COLORREF crText,COLORREF crShadow,int ixOffset,int iyOffset);
 
-ISOLATION_AWARE_INLINE HRESULT CommctrlIsolationAwarePrivateJVaQPGbueRfhYg(void)
-{
-    DWORD dwLastError = GetLastError();
-    if (dwLastError == NO_ERROR)
-        dwLastError = ERROR_INTERNAL_ERROR;
-    return HRESULT_FROM_WIN32(dwLastError);
-}
-
 #if defined(UNICODE)
 
 #define IsolationAwareCreateStatusWindow IsolationAwareCreateStatusWindowW
@@ -7473,20 +7443,19 @@ ISOLATION_AWARE_INLINE HRESULT CommctrlIsolationAwarePrivateJVaQPGbueRfhYg(void)
 
 #endif /* UNICODE */
 
-#if !ISOLATION_AWARE_USE_STATIC_LIBRARY
 ISOLATION_AWARE_INLINE void WINAPI IsolationAwareInitCommonControls(void)
 {
     typedef void (WINAPI* PFN)(void);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("InitCommonControls");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("InitCommonControls");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7494,7 +7463,7 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareInitCommonControls(void)
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
         }
@@ -7508,14 +7477,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareInitCommonControlsEx(LPINITCOMM
     typedef BOOL (WINAPI* PFN)(LPINITCOMMONCONTROLSEX unnamed1);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("InitCommonControlsEx");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("InitCommonControlsEx");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7523,7 +7492,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareInitCommonControlsEx(LPINITCOMM
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7541,14 +7510,14 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_Create(int cx,i
     typedef HIMAGELIST (WINAPI* PFN)(int cx,int cy,UINT flags,int cInitial,int cGrow);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return imagelistResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_Create");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_Create");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7556,7 +7525,7 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_Create(int cx,i
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (imagelistResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7574,14 +7543,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Destroy(HIMAGELIST hi
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himl);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_Destroy");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_Destroy");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7589,7 +7558,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Destroy(HIMAGELIST hi
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7607,14 +7576,14 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareImageList_GetImageCount(HIMAGELI
     typedef int (WINAPI* PFN)(HIMAGELIST himl);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_GetImageCount");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_GetImageCount");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7622,7 +7591,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareImageList_GetImageCount(HIMAGELI
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7640,14 +7609,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_SetImageCount(HIMAGEL
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himl,UINT uNewCount);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_SetImageCount");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_SetImageCount");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7655,7 +7624,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_SetImageCount(HIMAGEL
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7673,14 +7642,14 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareImageList_Add(HIMAGELIST himl,HB
     typedef int (WINAPI* PFN)(HIMAGELIST himl,HBITMAP hbmImage,HBITMAP hbmMask);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_Add");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_Add");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7688,7 +7657,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareImageList_Add(HIMAGELIST himl,HB
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == -1);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7706,14 +7675,14 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareImageList_ReplaceIcon(HIMAGELIST
     typedef int (WINAPI* PFN)(HIMAGELIST himl,int i,HICON hicon);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_ReplaceIcon");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_ReplaceIcon");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7721,7 +7690,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareImageList_ReplaceIcon(HIMAGELIST
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == -1);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7739,14 +7708,14 @@ ISOLATION_AWARE_INLINE COLORREF WINAPI IsolationAwareImageList_SetBkColor(HIMAGE
     typedef COLORREF (WINAPI* PFN)(HIMAGELIST himl,COLORREF clrBk);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return colorResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_SetBkColor");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_SetBkColor");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7754,7 +7723,7 @@ ISOLATION_AWARE_INLINE COLORREF WINAPI IsolationAwareImageList_SetBkColor(HIMAGE
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (colorResult == RGB(0,0,0));
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7772,14 +7741,14 @@ ISOLATION_AWARE_INLINE COLORREF WINAPI IsolationAwareImageList_GetBkColor(HIMAGE
     typedef COLORREF (WINAPI* PFN)(HIMAGELIST himl);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return colorResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_GetBkColor");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_GetBkColor");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7787,7 +7756,7 @@ ISOLATION_AWARE_INLINE COLORREF WINAPI IsolationAwareImageList_GetBkColor(HIMAGE
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (colorResult == RGB(0,0,0));
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7805,14 +7774,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_SetOverlayImage(HIMAG
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himl,int iImage,int iOverlay);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_SetOverlayImage");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_SetOverlayImage");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7820,7 +7789,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_SetOverlayImage(HIMAG
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7838,14 +7807,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Draw(HIMAGELIST himl,
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himl,int i,HDC hdcDst,int x,int y,UINT fStyle);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_Draw");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_Draw");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7853,7 +7822,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Draw(HIMAGELIST himl,
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7871,14 +7840,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Replace(HIMAGELIST hi
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himl,int i,HBITMAP hbmImage,HBITMAP hbmMask);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_Replace");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_Replace");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7886,7 +7855,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Replace(HIMAGELIST hi
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7904,14 +7873,14 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareImageList_AddMasked(HIMAGELIST h
     typedef int (WINAPI* PFN)(HIMAGELIST himl,HBITMAP hbmImage,COLORREF crMask);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_AddMasked");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_AddMasked");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7919,7 +7888,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareImageList_AddMasked(HIMAGELIST h
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == -1);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7937,14 +7906,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DrawEx(HIMAGELIST him
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himl,int i,HDC hdcDst,int x,int y,int dx,int dy,COLORREF rgbBk,COLORREF rgbFg,UINT fStyle);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_DrawEx");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_DrawEx");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7952,7 +7921,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DrawEx(HIMAGELIST him
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -7970,14 +7939,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DrawIndirect(IMAGELIS
     typedef BOOL (WINAPI* PFN)(IMAGELISTDRAWPARAMS*pimldp);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_DrawIndirect");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_DrawIndirect");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -7985,7 +7954,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DrawIndirect(IMAGELIS
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8003,14 +7972,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Remove(HIMAGELIST him
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himl,int i);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_Remove");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_Remove");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8018,7 +7987,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Remove(HIMAGELIST him
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8036,14 +8005,14 @@ ISOLATION_AWARE_INLINE HICON WINAPI IsolationAwareImageList_GetIcon(HIMAGELIST h
     typedef HICON (WINAPI* PFN)(HIMAGELIST himl,int i,UINT flags);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return iconResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_GetIcon");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_GetIcon");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8051,7 +8020,7 @@ ISOLATION_AWARE_INLINE HICON WINAPI IsolationAwareImageList_GetIcon(HIMAGELIST h
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (iconResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8069,14 +8038,14 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_LoadImageA(HINS
     typedef HIMAGELIST (WINAPI* PFN)(HINSTANCE hi,LPCSTR lpbmp,int cx,int cGrow,COLORREF crMask,UINT uType,UINT uFlags);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return imagelistResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_LoadImageA");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_LoadImageA");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8084,7 +8053,7 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_LoadImageA(HINS
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (imagelistResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8102,14 +8071,14 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_LoadImageW(HINS
     typedef HIMAGELIST (WINAPI* PFN)(HINSTANCE hi,LPCWSTR lpbmp,int cx,int cGrow,COLORREF crMask,UINT uType,UINT uFlags);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return imagelistResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_LoadImageW");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_LoadImageW");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8117,7 +8086,7 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_LoadImageW(HINS
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (imagelistResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8135,14 +8104,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Copy(HIMAGELIST himlD
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himlDst,int iDst,HIMAGELIST himlSrc,int iSrc,UINT uFlags);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_Copy");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_Copy");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8150,7 +8119,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Copy(HIMAGELIST himlD
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8168,14 +8137,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_BeginDrag(HIMAGELIST 
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himlTrack,int iTrack,int dxHotspot,int dyHotspot);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_BeginDrag");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_BeginDrag");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8183,7 +8152,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_BeginDrag(HIMAGELIST 
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8200,14 +8169,14 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareImageList_EndDrag(void)
     typedef void (WINAPI* PFN)(void);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_EndDrag");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_EndDrag");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8215,7 +8184,7 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareImageList_EndDrag(void)
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
         }
@@ -8229,14 +8198,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DragEnter(HWND hwndLo
     typedef BOOL (WINAPI* PFN)(HWND hwndLock,int x,int y);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_DragEnter");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_DragEnter");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8244,7 +8213,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DragEnter(HWND hwndLo
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8262,14 +8231,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DragLeave(HWND hwndLo
     typedef BOOL (WINAPI* PFN)(HWND hwndLock);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_DragLeave");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_DragLeave");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8277,7 +8246,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DragLeave(HWND hwndLo
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8295,14 +8264,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DragMove(int x,int y)
     typedef BOOL (WINAPI* PFN)(int x,int y);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_DragMove");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_DragMove");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8310,7 +8279,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DragMove(int x,int y)
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8328,14 +8297,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_SetDragCursorImage(HI
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himlDrag,int iDrag,int dxHotspot,int dyHotspot);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_SetDragCursorImage");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_SetDragCursorImage");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8343,7 +8312,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_SetDragCursorImage(HI
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8361,14 +8330,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DragShowNolock(BOOL f
     typedef BOOL (WINAPI* PFN)(BOOL fShow);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_DragShowNolock");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_DragShowNolock");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8376,7 +8345,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_DragShowNolock(BOOL f
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8394,14 +8363,14 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_GetDragImage(PO
     typedef HIMAGELIST (WINAPI* PFN)(POINT*ppt,POINT*pptHotspot);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return imagelistResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_GetDragImage");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_GetDragImage");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8409,7 +8378,7 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_GetDragImage(PO
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (imagelistResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8421,20 +8390,22 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_GetDragImage(PO
     return imagelistResult;
 }
 
-ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_Read(ISOLATIONAWARECOMMCTRL_LPSTREAM pstm)
+#if defined(__IStream_INTERFACE_DEFINED__)
+
+ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_Read(LPSTREAM pstm)
 {
     HIMAGELIST imagelistResult = NULL;
-    typedef HIMAGELIST (WINAPI* PFN)(ISOLATIONAWARECOMMCTRL_LPSTREAM pstm);
+    typedef HIMAGELIST (WINAPI* PFN)(LPSTREAM pstm);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return imagelistResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_Read");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_Read");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8442,7 +8413,7 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_Read(ISOLATIONA
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (imagelistResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8454,20 +8425,20 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_Read(ISOLATIONA
     return imagelistResult;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Write(HIMAGELIST himl,ISOLATIONAWARECOMMCTRL_LPSTREAM pstm)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Write(HIMAGELIST himl,LPSTREAM pstm)
 {
     BOOL fResult = FALSE;
-    typedef BOOL (WINAPI* PFN)(HIMAGELIST himl,ISOLATIONAWARECOMMCTRL_LPSTREAM pstm);
+    typedef BOOL (WINAPI* PFN)(HIMAGELIST himl,LPSTREAM pstm);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_Write");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_Write");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8475,7 +8446,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Write(HIMAGELIST himl
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8487,73 +8458,86 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_Write(HIMAGELIST himl
     return fResult;
 }
 
-#if (_WIN32_WINNT >= 0x0501)
+#if defined(__IStream_INTERFACE_DEFINED__) &&  (_WIN32_WINNT >= 0x0501)
 
-ISOLATION_AWARE_INLINE HRESULT WINAPI IsolationAwareImageList_ReadEx(DWORD dwFlags,ISOLATIONAWARECOMMCTRL_LPSTREAM pstm,REFIID riid,PVOID*ppv)
+ISOLATION_AWARE_INLINE HRESULT WINAPI IsolationAwareImageList_ReadEx(DWORD dwFlags,LPSTREAM pstm,REFIID riid,PVOID*ppv)
 {
     HRESULT result = S_OK;
-    typedef HRESULT (WINAPI* PFN)(DWORD dwFlags,ISOLATIONAWARECOMMCTRL_LPSTREAM pstm,REFIID riid,PVOID*ppv);
+    typedef HRESULT (WINAPI* PFN)(DWORD dwFlags,LPSTREAM pstm,REFIID riid,PVOID*ppv);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
-        return CommctrlIsolationAwarePrivateJVaQPGbueRfhYg();
+        goto ExitWin32ToHresult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_ReadEx");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_ReadEx");
             if (s_pfn == NULL)
-            {
-                result = CommctrlIsolationAwarePrivateJVaQPGbueRfhYg();
-                __leave;
-            }
+                goto ExitWin32ToHresult;
         }
         result = s_pfn(dwFlags,pstm,riid,ppv);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
         }
     }
     return result;
+
+ExitWin32ToHresult:
+    {
+        DWORD dwLastError = GetLastError();
+        if (dwLastError == NO_ERROR)
+            dwLastError = ERROR_INTERNAL_ERROR;
+        result = HRESULT_FROM_WIN32(dwLastError);
+        return result;
+    }
 }
 
-ISOLATION_AWARE_INLINE HRESULT WINAPI IsolationAwareImageList_WriteEx(HIMAGELIST himl,DWORD dwFlags,ISOLATIONAWARECOMMCTRL_LPSTREAM pstm)
+ISOLATION_AWARE_INLINE HRESULT WINAPI IsolationAwareImageList_WriteEx(HIMAGELIST himl,DWORD dwFlags,LPSTREAM pstm)
 {
     HRESULT result = S_OK;
-    typedef HRESULT (WINAPI* PFN)(HIMAGELIST himl,DWORD dwFlags,ISOLATIONAWARECOMMCTRL_LPSTREAM pstm);
+    typedef HRESULT (WINAPI* PFN)(HIMAGELIST himl,DWORD dwFlags,LPSTREAM pstm);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
-        return CommctrlIsolationAwarePrivateJVaQPGbueRfhYg();
+        goto ExitWin32ToHresult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_WriteEx");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_WriteEx");
             if (s_pfn == NULL)
-            {
-                result = CommctrlIsolationAwarePrivateJVaQPGbueRfhYg();
-                __leave;
-            }
+                goto ExitWin32ToHresult;
         }
         result = s_pfn(himl,dwFlags,pstm);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
         }
     }
     return result;
+
+ExitWin32ToHresult:
+    {
+        DWORD dwLastError = GetLastError();
+        if (dwLastError == NO_ERROR)
+            dwLastError = ERROR_INTERNAL_ERROR;
+        result = HRESULT_FROM_WIN32(dwLastError);
+        return result;
+    }
 }
 
-#endif /* (_WIN32_WINNT >= 0x0501) */
+#endif /* defined(__IStream_INTERFACE_DEFINED__) &&  (_WIN32_WINNT >= 0x0501) */
+#endif /* defined(__IStream_INTERFACE_DEFINED__) */
 
 ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_GetIconSize(HIMAGELIST himl,int*cx,int*cy)
 {
@@ -8561,14 +8545,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_GetIconSize(HIMAGELIS
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himl,int*cx,int*cy);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_GetIconSize");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_GetIconSize");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8576,7 +8560,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_GetIconSize(HIMAGELIS
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8594,14 +8578,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_SetIconSize(HIMAGELIS
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himl,int cx,int cy);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_SetIconSize");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_SetIconSize");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8609,7 +8593,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_SetIconSize(HIMAGELIS
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8627,14 +8611,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_GetImageInfo(HIMAGELI
     typedef BOOL (WINAPI* PFN)(HIMAGELIST himl,int i,IMAGEINFO*pImageInfo);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_GetImageInfo");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_GetImageInfo");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8642,7 +8626,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareImageList_GetImageInfo(HIMAGELI
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8660,14 +8644,14 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_Merge(HIMAGELIS
     typedef HIMAGELIST (WINAPI* PFN)(HIMAGELIST himl1,int i1,HIMAGELIST himl2,int i2,int dx,int dy);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return imagelistResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_Merge");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_Merge");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8675,7 +8659,7 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_Merge(HIMAGELIS
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (imagelistResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8693,14 +8677,14 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_Duplicate(HIMAG
     typedef HIMAGELIST (WINAPI* PFN)(HIMAGELIST himl);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return imagelistResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ImageList_Duplicate");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ImageList_Duplicate");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8708,7 +8692,7 @@ ISOLATION_AWARE_INLINE HIMAGELIST WINAPI IsolationAwareImageList_Duplicate(HIMAG
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (imagelistResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8726,14 +8710,14 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateToolbarEx(HWND hwnd,DWORD
     typedef HWND (WINAPI* PFN)(HWND hwnd,DWORD ws,UINT wID,int nBitmaps,HINSTANCE hBMInst,UINT_PTR wBMID,LPCTBBUTTON lpButtons,int iNumButtons,int dxButton,int dyButton,int dxBitmap,int dyBitmap,UINT uStructSize);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return windowResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("CreateToolbarEx");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("CreateToolbarEx");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8741,7 +8725,7 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateToolbarEx(HWND hwnd,DWORD
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (windowResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8759,14 +8743,14 @@ ISOLATION_AWARE_INLINE HBITMAP WINAPI IsolationAwareCreateMappedBitmap(HINSTANCE
     typedef HBITMAP (WINAPI* PFN)(HINSTANCE hInstance,INT_PTR idBitmap,UINT wFlags,LPCOLORMAP lpColorMap,int iNumMaps);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return bitmapResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("CreateMappedBitmap");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("CreateMappedBitmap");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8774,7 +8758,7 @@ ISOLATION_AWARE_INLINE HBITMAP WINAPI IsolationAwareCreateMappedBitmap(HINSTANCE
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (bitmapResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8791,14 +8775,14 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareDrawStatusTextA(HDC hDC,LPRECT 
     typedef void (WINAPI* PFN)(HDC hDC,LPRECT lprc,LPCSTR pszText,UINT uFlags);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DrawStatusTextA");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DrawStatusTextA");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8806,7 +8790,7 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareDrawStatusTextA(HDC hDC,LPRECT 
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
         }
@@ -8819,14 +8803,14 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareDrawStatusTextW(HDC hDC,LPRECT 
     typedef void (WINAPI* PFN)(HDC hDC,LPRECT lprc,LPCWSTR pszText,UINT uFlags);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DrawStatusTextW");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DrawStatusTextW");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8834,7 +8818,7 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareDrawStatusTextW(HDC hDC,LPRECT 
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
         }
@@ -8848,14 +8832,14 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateStatusWindowA(long style,
     typedef HWND (WINAPI* PFN)(long style,LPCSTR lpszText,HWND hwndParent,UINT wID);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return windowResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("CreateStatusWindowA");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("CreateStatusWindowA");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8863,7 +8847,7 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateStatusWindowA(long style,
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (windowResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8881,14 +8865,14 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateStatusWindowW(long style,
     typedef HWND (WINAPI* PFN)(long style,LPCWSTR lpszText,HWND hwndParent,UINT wID);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return windowResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("CreateStatusWindowW");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("CreateStatusWindowW");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8896,7 +8880,7 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateStatusWindowW(long style,
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (windowResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8913,14 +8897,14 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareMenuHelp(UINT uMsg,WPARAM wPara
     typedef void (WINAPI* PFN)(UINT uMsg,WPARAM wParam,LPARAM lParam,HMENU hMainMenu,HINSTANCE hInst,HWND hwndStatus,UINT*lpwIDs);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("MenuHelp");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("MenuHelp");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8928,7 +8912,7 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareMenuHelp(UINT uMsg,WPARAM wPara
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
         }
@@ -8942,14 +8926,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareShowHideMenuCtl(HWND hWnd,UINT_
     typedef BOOL (WINAPI* PFN)(HWND hWnd,UINT_PTR uFlags,LPINT lpInfo);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("ShowHideMenuCtl");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("ShowHideMenuCtl");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8957,7 +8941,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareShowHideMenuCtl(HWND hWnd,UINT_
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -8974,14 +8958,14 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareGetEffectiveClientRect(HWND hWn
     typedef void (WINAPI* PFN)(HWND hWnd,LPRECT lprc,LPINT lpInfo);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("GetEffectiveClientRect");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("GetEffectiveClientRect");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -8989,7 +8973,7 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareGetEffectiveClientRect(HWND hWn
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
         }
@@ -9003,14 +8987,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareMakeDragList(HWND hLB)
     typedef BOOL (WINAPI* PFN)(HWND hLB);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("MakeDragList");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("MakeDragList");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9018,7 +9002,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareMakeDragList(HWND hLB)
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -9035,14 +9019,14 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareDrawInsert(HWND handParent,HWND
     typedef void (WINAPI* PFN)(HWND handParent,HWND hLB,int nItem);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DrawInsert");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DrawInsert");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9050,7 +9034,7 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareDrawInsert(HWND handParent,HWND
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
         }
@@ -9064,14 +9048,14 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareLBItemFromPt(HWND hLB,POINT pt,B
     typedef int (WINAPI* PFN)(HWND hLB,POINT pt,BOOL bAutoScroll);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("LBItemFromPt");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("LBItemFromPt");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9079,7 +9063,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareLBItemFromPt(HWND hLB,POINT pt,B
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == -1);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -9097,14 +9081,14 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateUpDownControl(DWORD dwSty
     typedef HWND (WINAPI* PFN)(DWORD dwStyle,int x,int y,int cx,int cy,HWND hParent,int nID,HINSTANCE hInst,HWND hBuddy,int nUpper,int nLower,int nPos);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return windowResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("CreateUpDownControl");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("CreateUpDownControl");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9112,7 +9096,7 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateUpDownControl(DWORD dwSty
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (windowResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -9129,14 +9113,14 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareInitMUILanguage(LANGID uiLang)
     typedef void (WINAPI* PFN)(LANGID uiLang);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("InitMUILanguage");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("InitMUILanguage");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9144,7 +9128,7 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareInitMUILanguage(LANGID uiLang)
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
         }
@@ -9158,14 +9142,14 @@ ISOLATION_AWARE_INLINE LANGID WINAPI IsolationAwareGetMUILanguage(void)
     typedef LANGID (WINAPI* PFN)(void);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return languageIdResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("GetMUILanguage");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("GetMUILanguage");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9173,7 +9157,7 @@ ISOLATION_AWARE_INLINE LANGID WINAPI IsolationAwareGetMUILanguage(void)
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (languageIdResult == MAKELANGID(LANG_NEUTRAL, SUBLANG_NEUTRAL));
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -9190,31 +9174,13 @@ ISOLATION_AWARE_INLINE HDSA WINAPI IsolationAwareDSA_Create(int cbItem,int cItem
     HDSA result = NULL;
     typedef HDSA (WINAPI* PFN)(int cbItem,int cItemGrow);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return result;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DSA_Create");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DSA_Create");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        result = s_pfn(cbItem,cItemGrow);
+            return result;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (result == NULL);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    result = s_pfn(cbItem,cItemGrow);
     return result;
 }
 
@@ -9223,31 +9189,13 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareDSA_Destroy(HDSA hdsa)
     BOOL fResult = FALSE;
     typedef BOOL (WINAPI* PFN)(HDSA hdsa);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return fResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DSA_Destroy");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DSA_Destroy");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        fResult = s_pfn(hdsa);
+            return fResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (fResult == FALSE);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    fResult = s_pfn(hdsa);
     return fResult;
 }
 
@@ -9255,27 +9203,13 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareDSA_DestroyCallback(HDSA hdsa,P
 {
     typedef void (WINAPI* PFN)(HDSA hdsa,PFNDSAENUMCALLBACK pfnCB,void*pData);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DSA_DestroyCallback");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DSA_DestroyCallback");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        s_pfn(hdsa,pfnCB,pData);
+            return;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-        }
-    }
+    s_pfn(hdsa,pfnCB,pData);
     return;
 }
 
@@ -9284,31 +9218,13 @@ ISOLATION_AWARE_INLINE PVOID WINAPI IsolationAwareDSA_GetItemPtr(HDSA hdsa,int i
     PVOID vResult = NULL;
     typedef PVOID (WINAPI* PFN)(HDSA hdsa,int i);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return vResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DSA_GetItemPtr");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DSA_GetItemPtr");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        vResult = s_pfn(hdsa,i);
+            return vResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (vResult == NULL);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    vResult = s_pfn(hdsa,i);
     return vResult;
 }
 
@@ -9317,31 +9233,13 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareDSA_InsertItem(HDSA hdsa,int i,v
     int nResult = -1;
     typedef int (WINAPI* PFN)(HDSA hdsa,int i,void*pitem);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return nResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DSA_InsertItem");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DSA_InsertItem");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        nResult = s_pfn(hdsa,i,pitem);
+            return nResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (nResult == -1);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    nResult = s_pfn(hdsa,i,pitem);
     return nResult;
 }
 
@@ -9350,31 +9248,13 @@ ISOLATION_AWARE_INLINE HDPA WINAPI IsolationAwareDPA_Create(int cItemGrow)
     HDPA result = NULL;
     typedef HDPA (WINAPI* PFN)(int cItemGrow);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return result;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DPA_Create");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DPA_Create");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        result = s_pfn(cItemGrow);
+            return result;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (result == NULL);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    result = s_pfn(cItemGrow);
     return result;
 }
 
@@ -9383,31 +9263,13 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareDPA_Destroy(HDPA hdpa)
     BOOL fResult = FALSE;
     typedef BOOL (WINAPI* PFN)(HDPA hdpa);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return fResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DPA_Destroy");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DPA_Destroy");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        fResult = s_pfn(hdpa);
+            return fResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (fResult == FALSE);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    fResult = s_pfn(hdpa);
     return fResult;
 }
 
@@ -9416,31 +9278,13 @@ ISOLATION_AWARE_INLINE PVOID WINAPI IsolationAwareDPA_DeletePtr(HDPA hdpa,int i)
     PVOID vResult = NULL;
     typedef PVOID (WINAPI* PFN)(HDPA hdpa,int i);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return vResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DPA_DeletePtr");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DPA_DeletePtr");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        vResult = s_pfn(hdpa,i);
+            return vResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (vResult == NULL);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    vResult = s_pfn(hdpa,i);
     return vResult;
 }
 
@@ -9449,31 +9293,13 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareDPA_DeleteAllPtrs(HDPA hdpa)
     BOOL fResult = FALSE;
     typedef BOOL (WINAPI* PFN)(HDPA hdpa);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return fResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DPA_DeleteAllPtrs");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DPA_DeleteAllPtrs");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        fResult = s_pfn(hdpa);
+            return fResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (fResult == FALSE);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    fResult = s_pfn(hdpa);
     return fResult;
 }
 
@@ -9481,27 +9307,13 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareDPA_EnumCallback(HDPA hdpa,PFND
 {
     typedef void (WINAPI* PFN)(HDPA hdpa,PFNDPAENUMCALLBACK pfnCB,void*pData);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DPA_EnumCallback");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DPA_EnumCallback");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        s_pfn(hdpa,pfnCB,pData);
+            return;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-        }
-    }
+    s_pfn(hdpa,pfnCB,pData);
     return;
 }
 
@@ -9509,27 +9321,13 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareDPA_DestroyCallback(HDPA hdpa,P
 {
     typedef void (WINAPI* PFN)(HDPA hdpa,PFNDPAENUMCALLBACK pfnCB,void*pData);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DPA_DestroyCallback");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DPA_DestroyCallback");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        s_pfn(hdpa,pfnCB,pData);
+            return;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-        }
-    }
+    s_pfn(hdpa,pfnCB,pData);
     return;
 }
 
@@ -9538,31 +9336,13 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareDPA_SetPtr(HDPA hdpa,int i,void
     BOOL fResult = FALSE;
     typedef BOOL (WINAPI* PFN)(HDPA hdpa,int i,void*p);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return fResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DPA_SetPtr");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DPA_SetPtr");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        fResult = s_pfn(hdpa,i,p);
+            return fResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (fResult == FALSE);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    fResult = s_pfn(hdpa,i,p);
     return fResult;
 }
 
@@ -9571,31 +9351,13 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareDPA_InsertPtr(HDPA hdpa,int i,vo
     int nResult = -1;
     typedef int (WINAPI* PFN)(HDPA hdpa,int i,void*p);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return nResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DPA_InsertPtr");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DPA_InsertPtr");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        nResult = s_pfn(hdpa,i,p);
+            return nResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (nResult == -1);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    nResult = s_pfn(hdpa,i,p);
     return nResult;
 }
 
@@ -9604,31 +9366,13 @@ ISOLATION_AWARE_INLINE PVOID WINAPI IsolationAwareDPA_GetPtr(HDPA hdpa,INT_PTR i
     PVOID vResult = NULL;
     typedef PVOID (WINAPI* PFN)(HDPA hdpa,INT_PTR i);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return vResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DPA_GetPtr");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DPA_GetPtr");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        vResult = s_pfn(hdpa,i);
+            return vResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (vResult == NULL);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    vResult = s_pfn(hdpa,i);
     return vResult;
 }
 
@@ -9637,31 +9381,13 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareDPA_Sort(HDPA hdpa,PFNDPACOMPAR
     BOOL fResult = FALSE;
     typedef BOOL (WINAPI* PFN)(HDPA hdpa,PFNDPACOMPARE pfnCompare,LPARAM lParam);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return fResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DPA_Sort");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DPA_Sort");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        fResult = s_pfn(hdpa,pfnCompare,lParam);
+            return fResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (fResult == FALSE);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    fResult = s_pfn(hdpa,pfnCompare,lParam);
     return fResult;
 }
 
@@ -9670,31 +9396,13 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareDPA_Search(HDPA hdpa,void*pFind,
     int nResult = -1;
     typedef int (WINAPI* PFN)(HDPA hdpa,void*pFind,int iStart,PFNDPACOMPARE pfnCompare,LPARAM lParam,UINT options);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return nResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DPA_Search");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DPA_Search");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        nResult = s_pfn(hdpa,pFind,iStart,pfnCompare,lParam,options);
+            return nResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (nResult == -1);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    nResult = s_pfn(hdpa,pFind,iStart,pfnCompare,lParam,options);
     return nResult;
 }
 
@@ -9703,31 +9411,13 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareStr_SetPtrW(LPWSTR*ppsz,LPCWSTR
     BOOL fResult = FALSE;
     typedef BOOL (WINAPI* PFN)(LPWSTR*ppsz,LPCWSTR psz);
     static PFN s_pfn;
-    ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-    if (!fActivateActCtxSuccess)
-        return fResult;
-    __try
+    if (s_pfn == NULL)
     {
+        s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("Str_SetPtrW");
         if (s_pfn == NULL)
-        {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("Str_SetPtrW");
-            if (s_pfn == NULL)
-                __leave;
-        }
-        fResult = s_pfn(ppsz,psz);
+            return fResult;
     }
-    __finally
-    {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
-        {
-            const BOOL fPreserveLastError = (fResult == FALSE);
-            const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
-            (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
-            if (fPreserveLastError)
-                SetLastError(dwLastError);
-        }
-    }
+    fResult = s_pfn(ppsz,psz);
     return fResult;
 }
 
@@ -9739,14 +9429,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAware_TrackMouseEvent(LPTRACKMOUSEEV
     typedef BOOL (WINAPI* PFN)(LPTRACKMOUSEEVENT lpEventTrack);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("_TrackMouseEvent");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("_TrackMouseEvent");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9754,7 +9444,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAware_TrackMouseEvent(LPTRACKMOUSEEV
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -9774,14 +9464,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_EnableScrollBar(HWND unn
     typedef BOOL (WINAPI* PFN)(HWND unnamed1,int unnamed2,UINT unnamed3);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("FlatSB_EnableScrollBar");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("FlatSB_EnableScrollBar");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9789,7 +9479,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_EnableScrollBar(HWND unn
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -9807,14 +9497,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_ShowScrollBar(HWND unnam
     typedef BOOL (WINAPI* PFN)(HWND unnamed1,int code,BOOL unnamed2);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("FlatSB_ShowScrollBar");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("FlatSB_ShowScrollBar");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9822,7 +9512,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_ShowScrollBar(HWND unnam
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -9840,14 +9530,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_GetScrollRange(HWND unna
     typedef BOOL (WINAPI* PFN)(HWND unnamed1,int code,LPINT unnamed2,LPINT unnamed3);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("FlatSB_GetScrollRange");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("FlatSB_GetScrollRange");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9855,7 +9545,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_GetScrollRange(HWND unna
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -9873,14 +9563,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_GetScrollInfo(HWND unnam
     typedef BOOL (WINAPI* PFN)(HWND unnamed1,int code,LPSCROLLINFO unnamed2);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("FlatSB_GetScrollInfo");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("FlatSB_GetScrollInfo");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9888,7 +9578,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_GetScrollInfo(HWND unnam
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -9906,14 +9596,14 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareFlatSB_GetScrollPos(HWND unnamed
     typedef int (WINAPI* PFN)(HWND unnamed1,int code);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("FlatSB_GetScrollPos");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("FlatSB_GetScrollPos");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9921,7 +9611,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareFlatSB_GetScrollPos(HWND unnamed
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -9939,14 +9629,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_GetScrollProp(HWND unnam
     typedef BOOL (WINAPI* PFN)(HWND unnamed1,int propIndex,LPINT unnamed2);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("FlatSB_GetScrollProp");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("FlatSB_GetScrollProp");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -9954,7 +9644,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_GetScrollProp(HWND unnam
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -9972,14 +9662,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_GetScrollPropPtr(HWND un
     typedef BOOL (WINAPI* PFN)(HWND unnamed1,int propIndex,PINT_PTR unnamed2);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY(
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL(
 #if defined(_WIN64)
             "FlatSB_GetScrollPropPtr"
 #else
@@ -9993,7 +9683,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_GetScrollPropPtr(HWND un
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -10011,14 +9701,14 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareFlatSB_SetScrollPos(HWND unnamed
     typedef int (WINAPI* PFN)(HWND unnamed1,int code,int pos,BOOL fRedraw);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("FlatSB_SetScrollPos");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("FlatSB_SetScrollPos");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -10026,7 +9716,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareFlatSB_SetScrollPos(HWND unnamed
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -10044,14 +9734,14 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareFlatSB_SetScrollInfo(HWND unname
     typedef int (WINAPI* PFN)(HWND unnamed1,int code,LPSCROLLINFO unnamed2,BOOL fRedraw);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("FlatSB_SetScrollInfo");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("FlatSB_SetScrollInfo");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -10059,7 +9749,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareFlatSB_SetScrollInfo(HWND unname
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -10077,14 +9767,14 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareFlatSB_SetScrollRange(HWND unnam
     typedef int (WINAPI* PFN)(HWND unnamed1,int code,int min,int max,BOOL fRedraw);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("FlatSB_SetScrollRange");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("FlatSB_SetScrollRange");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -10092,7 +9782,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareFlatSB_SetScrollRange(HWND unnam
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -10110,14 +9800,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_SetScrollProp(HWND unnam
     typedef BOOL (WINAPI* PFN)(HWND unnamed1,UINT index,INT_PTR newValue,BOOL unnamed2);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("FlatSB_SetScrollProp");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("FlatSB_SetScrollProp");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -10125,7 +9815,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFlatSB_SetScrollProp(HWND unnam
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -10143,14 +9833,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareInitializeFlatSB(HWND unnamed1)
     typedef BOOL (WINAPI* PFN)(HWND unnamed1);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("InitializeFlatSB");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("InitializeFlatSB");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -10158,7 +9848,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareInitializeFlatSB(HWND unnamed1)
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -10176,30 +9866,36 @@ ISOLATION_AWARE_INLINE HRESULT WINAPI IsolationAwareUninitializeFlatSB(HWND unna
     typedef HRESULT (WINAPI* PFN)(HWND unnamed1);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
-        return CommctrlIsolationAwarePrivateJVaQPGbueRfhYg();
+        goto ExitWin32ToHresult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("UninitializeFlatSB");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("UninitializeFlatSB");
             if (s_pfn == NULL)
-            {
-                result = CommctrlIsolationAwarePrivateJVaQPGbueRfhYg();
-                __leave;
-            }
+                goto ExitWin32ToHresult;
         }
         result = s_pfn(unnamed1);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
         }
     }
     return result;
+
+ExitWin32ToHresult:
+    {
+        DWORD dwLastError = GetLastError();
+        if (dwLastError == NO_ERROR)
+            dwLastError = ERROR_INTERNAL_ERROR;
+        result = HRESULT_FROM_WIN32(dwLastError);
+        return result;
+    }
 }
 
 #if (_WIN32_IE >= 0x560)
@@ -10210,14 +9906,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareSetWindowSubclass(HWND hWnd,SUB
     typedef BOOL (WINAPI* PFN)(HWND hWnd,SUBCLASSPROC pfnSubclass,UINT_PTR uIdSubclass,DWORD_PTR dwRefData);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("SetWindowSubclass");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("SetWindowSubclass");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -10225,7 +9921,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareSetWindowSubclass(HWND hWnd,SUB
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -10243,14 +9939,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetWindowSubclass(HWND hWnd,SUB
     typedef BOOL (WINAPI* PFN)(HWND hWnd,SUBCLASSPROC pfnSubclass,UINT_PTR uIdSubclass,DWORD_PTR*pdwRefData);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("GetWindowSubclass");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("GetWindowSubclass");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -10258,7 +9954,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetWindowSubclass(HWND hWnd,SUB
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -10276,14 +9972,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareRemoveWindowSubclass(HWND hWnd,
     typedef BOOL (WINAPI* PFN)(HWND hWnd,SUBCLASSPROC pfnSubclass,UINT_PTR uIdSubclass);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("RemoveWindowSubclass");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("RemoveWindowSubclass");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -10291,7 +9987,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareRemoveWindowSubclass(HWND hWnd,
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -10311,14 +10007,14 @@ ISOLATION_AWARE_INLINE LRESULT WINAPI IsolationAwareDefSubclassProc(HWND hWnd,UI
     typedef LRESULT (WINAPI* PFN)(HWND hWnd,UINT uMsg,WPARAM wParam,LPARAM lParam);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return result;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DefSubclassProc");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DefSubclassProc");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -10326,7 +10022,7 @@ ISOLATION_AWARE_INLINE LRESULT WINAPI IsolationAwareDefSubclassProc(HWND hWnd,UI
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (result == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -10344,14 +10040,14 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareDrawShadowText(HDC hdc,LPCWSTR p
     typedef int (WINAPI* PFN)(HDC hdc,LPCWSTR pszText,UINT cch,RECT*prc,DWORD dwFlags,COLORREF crText,COLORREF crShadow,int ixOffset,int iyOffset);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DrawShadowText");
+            s_pfn = (PFN)CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DrawShadowText");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -10359,7 +10055,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareDrawShadowText(HDC hdc,LPCWSTR p
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == -1);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -10371,30 +10067,38 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareDrawShadowText(HDC hdc,LPCWSTR p
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE FARPROC WINAPI CommctrlIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY(LPCSTR pszProcName)
+ISOLATION_AWARE_INLINE FARPROC WINAPI CommctrlIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL(LPCSTR pszProcName)
 /* This function is shared by the other stubs in this header. */
 {
     FARPROC proc = NULL;
     static HMODULE s_module;
     BOOL fActivateActCtxSuccess = FALSE;
     ULONG_PTR ulpCookie = 0;
-    const static IsolationAwarePrivatepBAFGnAG_zBqHyr_vAsB
-        c = { IsolationAwarePrivatezlybNQyVOeNeln, IsolationAwarePrivatezlybNQyVOeNelJ, "Comctl32.dll", L"Comctl32.dll" };
-    static IsolationAwarePrivatezHGnoyr_zBqHyr_vAsB m;
-
     __try
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (s_module == NULL)
         {
-            fActivateActCtxSuccess = IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-            if (!fActivateActCtxSuccess)
-                __leave;
+            if (!IsolationAwarePrivateG_FqbjaLEiEL)
+            {
+                fActivateActCtxSuccess = IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
+                if (!fActivateActCtxSuccess)
+                    __leave;
+            }
+            s_module = LoadLibraryW(L"Comctl32.dll");
+            if (s_module == NULL)
+            {
+                if (GetLastError() != ERROR_CALL_NOT_IMPLEMENTED)
+                    __leave;
+                s_module = LoadLibraryA("Comctl32.dll");
+                if (s_module == NULL)
+                    __leave;
+            }
         }
-        proc = IsolationAwarePrivatezltRgCebPnQQeRff(&c, &m, pszProcName);
+        proc = GetProcAddress(s_module, pszProcName);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY && fActivateActCtxSuccess)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL && fActivateActCtxSuccess)
         {
             const DWORD dwLastError = (proc == NULL) ? GetLastError() : NO_ERROR;
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
@@ -10404,8 +10108,6 @@ ISOLATION_AWARE_INLINE FARPROC WINAPI CommctrlIsolationAwarePrivatetRgCebPnQQeRf
     }
     return proc;
 }
-
-#endif /* ISOLATION_AWARE_USE_STATIC_LIBRARY */
 
 #define CreateMappedBitmap IsolationAwareCreateMappedBitmap
 #define CreateStatusWindowA IsolationAwareCreateStatusWindowA

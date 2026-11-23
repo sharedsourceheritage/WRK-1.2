@@ -1,0 +1,34 @@
+
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadXmlStream", "ReadXmlStream\ReadXmlStream.vcproj", "{B7D23611-848C-4A2A-944B-027DA0325044}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		Debug|x64 = Debug|x64
+		Debug|Itanium = Debug|Itanium
+		Release|x64 = Release|x64
+		Release|Itanium = Release|Itanium
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Debug|Win32.Build.0 = Debug|Win32
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Debug|Win32.Deploy.0 = Debug|Win32
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Release|Win32.ActiveCfg = Release|Win32
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Release|Win32.Build.0 = Release|Win32
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Release|Win32.Deploy.0 = Release|Win32
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Debug|x64.ActiveCfg = Debug|x64
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Debug|x64.Build.0 = Debug|x64
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Debug|Itanium.ActiveCfg = Debug|Itanium
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Debug|Itanium.Build.0 = Debug|Itanium
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Release|x64.ActiveCfg = Release|x64
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Release|x64.Build.0 = Release|x64
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Release|Itanium.ActiveCfg = Release|Itanium
+		{B7D23611-848C-4A2A-944B-027DA0325044}.Release|Itanium.Build.0 = Release|Itanium
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

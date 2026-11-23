@@ -254,7 +254,6 @@ typedef struct _ATA_PASS_THROUGH_DIRECT32 {
 #define ATA_FLAGS_48BIT_COMMAND         (1 << 3)
 #define ATA_FLAGS_USE_DMA               (1 << 4)
 
-
 //
 // Define SCSI information.
 // Used with the IOCTL_SCSI_GET_INQUIRY_DATA IOCTL.

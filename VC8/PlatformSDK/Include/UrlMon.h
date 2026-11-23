@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for urlmon.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -89,12 +88,6 @@ typedef interface IHttpNegotiate IHttpNegotiate;
 #define __IHttpNegotiate2_FWD_DEFINED__
 typedef interface IHttpNegotiate2 IHttpNegotiate2;
 #endif 	/* __IHttpNegotiate2_FWD_DEFINED__ */
-
-
-#ifndef __IWinInetFileStream_FWD_DEFINED__
-#define __IWinInetFileStream_FWD_DEFINED__
-typedef interface IWinInetFileStream IWinInetFileStream;
-#endif 	/* __IWinInetFileStream_FWD_DEFINED__ */
 
 
 #ifndef __IWindowForBindingUI_FWD_DEFINED__
@@ -302,7 +295,6 @@ void __RPC_USER MIDL_user_free( void * );
 
 //---------------------------------------------------------------------------=
 // URL Moniker Interfaces.
-
 
 
 
@@ -737,7 +729,7 @@ void __RPC_STUB IPersistMoniker_GetCurMoniker_Stub(
 #endif 	/* __IPersistMoniker_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0178 */
+/* interface __MIDL_itf_urlmon_0174 */
 /* [local] */ 
 
 #endif
@@ -745,8 +737,8 @@ void __RPC_STUB IPersistMoniker_GetCurMoniker_Stub(
 #define _LPMONIKERPROP_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0178_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0178_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0174_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0174_v0_0_s_ifspec;
 
 #ifndef __IMonikerProp_INTERFACE_DEFINED__
 #define __IMonikerProp_INTERFACE_DEFINED__
@@ -852,7 +844,7 @@ void __RPC_STUB IMonikerProp_PutProperty_Stub(
 #endif 	/* __IMonikerProp_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0179 */
+/* interface __MIDL_itf_urlmon_0175 */
 /* [local] */ 
 
 #endif
@@ -860,8 +852,8 @@ void __RPC_STUB IMonikerProp_PutProperty_Stub(
 #define _LPBINDPROTOCOL_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0179_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0179_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0175_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0175_v0_0_s_ifspec;
 
 #ifndef __IBindProtocol_INTERFACE_DEFINED__
 #define __IBindProtocol_INTERFACE_DEFINED__
@@ -961,7 +953,7 @@ void __RPC_STUB IBindProtocol_CreateBinding_Stub(
 #endif 	/* __IBindProtocol_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0180 */
+/* interface __MIDL_itf_urlmon_0176 */
 /* [local] */ 
 
 #endif
@@ -969,8 +961,8 @@ void __RPC_STUB IBindProtocol_CreateBinding_Stub(
 #define _LPBINDING_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0180_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0180_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0176_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0176_v0_0_s_ifspec;
 
 #ifndef __IBinding_INTERFACE_DEFINED__
 #define __IBinding_INTERFACE_DEFINED__
@@ -1174,7 +1166,7 @@ void __RPC_STUB IBinding_RemoteGetBindResult_Stub(
 #endif 	/* __IBinding_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0181 */
+/* interface __MIDL_itf_urlmon_0177 */
 /* [local] */ 
 
 #endif
@@ -1182,8 +1174,8 @@ void __RPC_STUB IBinding_RemoteGetBindResult_Stub(
 #define _LPBINDSTATUSCALLBACK_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0181_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0181_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0177_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0177_v0_0_s_ifspec;
 
 #ifndef __IBindStatusCallback_INTERFACE_DEFINED__
 #define __IBindStatusCallback_INTERFACE_DEFINED__
@@ -1647,7 +1639,7 @@ void __RPC_STUB IBindStatusCallback_OnObjectAvailable_Stub(
 #endif 	/* __IBindStatusCallback_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0182 */
+/* interface __MIDL_itf_urlmon_0178 */
 /* [local] */ 
 
 #endif
@@ -1655,8 +1647,8 @@ void __RPC_STUB IBindStatusCallback_OnObjectAvailable_Stub(
 #define _LPAUTHENTICATION_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0182_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0182_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0178_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0178_v0_0_s_ifspec;
 
 #ifndef __IAuthenticate_INTERFACE_DEFINED__
 #define __IAuthenticate_INTERFACE_DEFINED__
@@ -1756,7 +1748,7 @@ void __RPC_STUB IAuthenticate_Authenticate_Stub(
 #endif 	/* __IAuthenticate_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0183 */
+/* interface __MIDL_itf_urlmon_0179 */
 /* [local] */ 
 
 #endif
@@ -1764,8 +1756,8 @@ void __RPC_STUB IAuthenticate_Authenticate_Stub(
 #define _LPHTTPNEGOTIATE_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0183_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0183_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0179_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0179_v0_0_s_ifspec;
 
 #ifndef __IHttpNegotiate_INTERFACE_DEFINED__
 #define __IHttpNegotiate_INTERFACE_DEFINED__
@@ -1899,7 +1891,7 @@ void __RPC_STUB IHttpNegotiate_OnResponse_Stub(
 #endif 	/* __IHttpNegotiate_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0184 */
+/* interface __MIDL_itf_urlmon_0180 */
 /* [local] */ 
 
 #endif
@@ -1907,8 +1899,8 @@ void __RPC_STUB IHttpNegotiate_OnResponse_Stub(
 #define _LPHTTPNEGOTIATE2_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0184_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0184_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0180_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0180_v0_0_s_ifspec;
 
 #ifndef __IHttpNegotiate2_INTERFACE_DEFINED__
 #define __IHttpNegotiate2_INTERFACE_DEFINED__
@@ -2029,135 +2021,7 @@ void __RPC_STUB IHttpNegotiate2_GetRootSecurityId_Stub(
 #endif 	/* __IHttpNegotiate2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0185 */
-/* [local] */ 
-
-#endif
-#ifndef _LPWININETFILESTREAM_DEFINED
-#define _LPWININETFILESTREAM_DEFINED
-
-
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0185_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0185_v0_0_s_ifspec;
-
-#ifndef __IWinInetFileStream_INTERFACE_DEFINED__
-#define __IWinInetFileStream_INTERFACE_DEFINED__
-
-/* interface IWinInetFileStream */
-/* [unique][uuid][object] */ 
-
-typedef /* [unique] */ IWinInetFileStream *LPWININETFILESTREAM;
-
-
-EXTERN_C const IID IID_IWinInetFileStream;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("F134C4B7-B1F8-4e75-B886-74B90943BECB")
-    IWinInetFileStream : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE SetHandleForUnlock( 
-            /* [in] */ DWORD_PTR hWinInetLockHandle,
-            /* [in] */ DWORD_PTR dwReserved) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetDeleteFile( 
-            /* [in] */ DWORD_PTR dwReserved) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IWinInetFileStreamVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IWinInetFileStream * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IWinInetFileStream * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IWinInetFileStream * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetHandleForUnlock )( 
-            IWinInetFileStream * This,
-            /* [in] */ DWORD_PTR hWinInetLockHandle,
-            /* [in] */ DWORD_PTR dwReserved);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetDeleteFile )( 
-            IWinInetFileStream * This,
-            /* [in] */ DWORD_PTR dwReserved);
-        
-        END_INTERFACE
-    } IWinInetFileStreamVtbl;
-
-    interface IWinInetFileStream
-    {
-        CONST_VTBL struct IWinInetFileStreamVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IWinInetFileStream_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IWinInetFileStream_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IWinInetFileStream_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IWinInetFileStream_SetHandleForUnlock(This,hWinInetLockHandle,dwReserved)	\
-    (This)->lpVtbl -> SetHandleForUnlock(This,hWinInetLockHandle,dwReserved)
-
-#define IWinInetFileStream_SetDeleteFile(This,dwReserved)	\
-    (This)->lpVtbl -> SetDeleteFile(This,dwReserved)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IWinInetFileStream_SetHandleForUnlock_Proxy( 
-    IWinInetFileStream * This,
-    /* [in] */ DWORD_PTR hWinInetLockHandle,
-    /* [in] */ DWORD_PTR dwReserved);
-
-
-void __RPC_STUB IWinInetFileStream_SetHandleForUnlock_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IWinInetFileStream_SetDeleteFile_Proxy( 
-    IWinInetFileStream * This,
-    /* [in] */ DWORD_PTR dwReserved);
-
-
-void __RPC_STUB IWinInetFileStream_SetDeleteFile_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IWinInetFileStream_INTERFACE_DEFINED__ */
-
-
-/* interface __MIDL_itf_urlmon_0186 */
+/* interface __MIDL_itf_urlmon_0181 */
 /* [local] */ 
 
 #endif
@@ -2165,8 +2029,8 @@ void __RPC_STUB IWinInetFileStream_SetDeleteFile_Stub(
 #define _LPWINDOWFORBINDINGUI_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0186_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0186_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0181_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0181_v0_0_s_ifspec;
 
 #ifndef __IWindowForBindingUI_INTERFACE_DEFINED__
 #define __IWindowForBindingUI_INTERFACE_DEFINED__
@@ -2263,7 +2127,7 @@ void __RPC_STUB IWindowForBindingUI_GetWindow_Stub(
 #endif 	/* __IWindowForBindingUI_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0187 */
+/* interface __MIDL_itf_urlmon_0182 */
 /* [local] */ 
 
 #endif
@@ -2271,8 +2135,8 @@ void __RPC_STUB IWindowForBindingUI_GetWindow_Stub(
 #define _LPCODEINSTALL_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0187_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0187_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0182_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0182_v0_0_s_ifspec;
 
 #ifndef __ICodeInstall_INTERFACE_DEFINED__
 #define __ICodeInstall_INTERFACE_DEFINED__
@@ -2398,7 +2262,7 @@ void __RPC_STUB ICodeInstall_OnCodeInstallProblem_Stub(
 #endif 	/* __ICodeInstall_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0188 */
+/* interface __MIDL_itf_urlmon_0183 */
 /* [local] */ 
 
 #endif
@@ -2406,8 +2270,8 @@ void __RPC_STUB ICodeInstall_OnCodeInstallProblem_Stub(
 #define _LPWININETINFO_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0188_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0188_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0183_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0183_v0_0_s_ifspec;
 
 #ifndef __IWinInetInfo_INTERFACE_DEFINED__
 #define __IWinInetInfo_INTERFACE_DEFINED__
@@ -2507,7 +2371,7 @@ void __RPC_STUB IWinInetInfo_RemoteQueryOption_Stub(
 #endif 	/* __IWinInetInfo_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0189 */
+/* interface __MIDL_itf_urlmon_0184 */
 /* [local] */ 
 
 #endif
@@ -2516,8 +2380,8 @@ void __RPC_STUB IWinInetInfo_RemoteQueryOption_Stub(
 #define _LPHTTPSECURITY_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0189_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0189_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0184_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0184_v0_0_s_ifspec;
 
 #ifndef __IHttpSecurity_INTERFACE_DEFINED__
 #define __IHttpSecurity_INTERFACE_DEFINED__
@@ -2620,7 +2484,7 @@ void __RPC_STUB IHttpSecurity_OnSecurityProblem_Stub(
 #endif 	/* __IHttpSecurity_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0190 */
+/* interface __MIDL_itf_urlmon_0185 */
 /* [local] */ 
 
 #endif
@@ -2628,8 +2492,8 @@ void __RPC_STUB IHttpSecurity_OnSecurityProblem_Stub(
 #define _LPWININETHTTPINFO_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0190_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0190_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0185_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0185_v0_0_s_ifspec;
 
 #ifndef __IWinInetHttpInfo_INTERFACE_DEFINED__
 #define __IWinInetHttpInfo_INTERFACE_DEFINED__
@@ -2745,7 +2609,7 @@ void __RPC_STUB IWinInetHttpInfo_RemoteQueryInfo_Stub(
 #endif 	/* __IWinInetHttpInfo_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0191 */
+/* interface __MIDL_itf_urlmon_0186 */
 /* [local] */ 
 
 #endif
@@ -2753,8 +2617,8 @@ void __RPC_STUB IWinInetHttpInfo_RemoteQueryInfo_Stub(
 #define _LPWININETCACHEHINTS_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0191_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0191_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0186_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0186_v0_0_s_ifspec;
 
 #ifndef __IWinInetCacheHints_INTERFACE_DEFINED__
 #define __IWinInetCacheHints_INTERFACE_DEFINED__
@@ -2860,7 +2724,7 @@ void __RPC_STUB IWinInetCacheHints_SetCacheExtension_Stub(
 #endif 	/* __IWinInetCacheHints_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0192 */
+/* interface __MIDL_itf_urlmon_0187 */
 /* [local] */ 
 
 #endif
@@ -2871,8 +2735,8 @@ void __RPC_STUB IWinInetCacheHints_SetCacheExtension_Stub(
 EXTERN_C const GUID SID_BindHost;
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0192_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0192_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0187_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0187_v0_0_s_ifspec;
 
 #ifndef __IBindHost_INTERFACE_DEFINED__
 #define __IBindHost_INTERFACE_DEFINED__
@@ -3043,7 +2907,7 @@ void __RPC_STUB IBindHost_RemoteMonikerBindToObject_Stub(
 #endif 	/* __IBindHost_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0193 */
+/* interface __MIDL_itf_urlmon_0188 */
 /* [local] */ 
 
 #endif
@@ -3122,8 +2986,8 @@ STDAPI HlinkNavigateMoniker(IUnknown *pUnk, IMoniker *pmkTarget);
 #define _LPIINTERNET
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0193_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0193_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0188_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0188_v0_0_s_ifspec;
 
 #ifndef __IInternet_INTERFACE_DEFINED__
 #define __IInternet_INTERFACE_DEFINED__
@@ -3195,7 +3059,7 @@ EXTERN_C const IID IID_IInternet;
 #endif 	/* __IInternet_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0194 */
+/* interface __MIDL_itf_urlmon_0189 */
 /* [local] */ 
 
 #endif
@@ -3203,8 +3067,8 @@ EXTERN_C const IID IID_IInternet;
 #define _LPIINTERNETBINDINFO
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0194_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0194_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0189_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0189_v0_0_s_ifspec;
 
 #ifndef __IInternetBindInfo_INTERFACE_DEFINED__
 #define __IInternetBindInfo_INTERFACE_DEFINED__
@@ -3353,7 +3217,7 @@ void __RPC_STUB IInternetBindInfo_GetBindString_Stub(
 #endif 	/* __IInternetBindInfo_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0195 */
+/* interface __MIDL_itf_urlmon_0190 */
 /* [local] */ 
 
 #endif
@@ -3361,8 +3225,8 @@ void __RPC_STUB IInternetBindInfo_GetBindString_Stub(
 #define _LPIINTERNETPROTOCOLROOT_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0195_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0195_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0190_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0190_v0_0_s_ifspec;
 
 #ifndef __IInternetProtocolRoot_INTERFACE_DEFINED__
 #define __IInternetProtocolRoot_INTERFACE_DEFINED__
@@ -3609,7 +3473,7 @@ void __RPC_STUB IInternetProtocolRoot_Resume_Stub(
 #endif 	/* __IInternetProtocolRoot_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0196 */
+/* interface __MIDL_itf_urlmon_0191 */
 /* [local] */ 
 
 #endif
@@ -3617,8 +3481,8 @@ void __RPC_STUB IInternetProtocolRoot_Resume_Stub(
 #define _LPIINTERNETPROTOCOL_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0196_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0196_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0191_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0191_v0_0_s_ifspec;
 
 #ifndef __IInternetProtocol_INTERFACE_DEFINED__
 #define __IInternetProtocol_INTERFACE_DEFINED__
@@ -3833,7 +3697,7 @@ void __RPC_STUB IInternetProtocol_UnlockRequest_Stub(
 #endif 	/* __IInternetProtocol_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0197 */
+/* interface __MIDL_itf_urlmon_0192 */
 /* [local] */ 
 
 #endif
@@ -3841,8 +3705,8 @@ void __RPC_STUB IInternetProtocol_UnlockRequest_Stub(
 #define _LPIINTERNETPROTOCOLSINK_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0197_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0197_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0192_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0192_v0_0_s_ifspec;
 
 #ifndef __IInternetProtocolSink_INTERFACE_DEFINED__
 #define __IInternetProtocolSink_INTERFACE_DEFINED__
@@ -4017,7 +3881,7 @@ void __RPC_STUB IInternetProtocolSink_ReportResult_Stub(
 #endif 	/* __IInternetProtocolSink_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0198 */
+/* interface __MIDL_itf_urlmon_0193 */
 /* [local] */ 
 
 #endif
@@ -4025,8 +3889,8 @@ void __RPC_STUB IInternetProtocolSink_ReportResult_Stub(
 #define _LPIINTERNETPROTOCOLSINKSTACKABLE_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0198_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0198_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0193_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0193_v0_0_s_ifspec;
 
 #ifndef __IInternetProtocolSinkStackable_INTERFACE_DEFINED__
 #define __IInternetProtocolSinkStackable_INTERFACE_DEFINED__
@@ -4158,7 +4022,7 @@ void __RPC_STUB IInternetProtocolSinkStackable_RollbackSwitch_Stub(
 #endif 	/* __IInternetProtocolSinkStackable_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0199 */
+/* interface __MIDL_itf_urlmon_0194 */
 /* [local] */ 
 
 #endif
@@ -4166,8 +4030,8 @@ void __RPC_STUB IInternetProtocolSinkStackable_RollbackSwitch_Stub(
 #define _LPIINTERNETSESSION_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0199_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0199_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0194_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0194_v0_0_s_ifspec;
 
 #ifndef __IInternetSession_INTERFACE_DEFINED__
 #define __IInternetSession_INTERFACE_DEFINED__
@@ -4459,7 +4323,7 @@ void __RPC_STUB IInternetSession_GetSessionOption_Stub(
 #endif 	/* __IInternetSession_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0200 */
+/* interface __MIDL_itf_urlmon_0195 */
 /* [local] */ 
 
 #endif
@@ -4467,8 +4331,8 @@ void __RPC_STUB IInternetSession_GetSessionOption_Stub(
 #define _LPIINTERNETTHREADSWITCH_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0200_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0200_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0195_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0195_v0_0_s_ifspec;
 
 #ifndef __IInternetThreadSwitch_INTERFACE_DEFINED__
 #define __IInternetThreadSwitch_INTERFACE_DEFINED__
@@ -4578,7 +4442,7 @@ void __RPC_STUB IInternetThreadSwitch_Continue_Stub(
 #endif 	/* __IInternetThreadSwitch_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0201 */
+/* interface __MIDL_itf_urlmon_0196 */
 /* [local] */ 
 
 #endif
@@ -4586,8 +4450,8 @@ void __RPC_STUB IInternetThreadSwitch_Continue_Stub(
 #define _LPIINTERNETPRIORITY_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0201_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0201_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0196_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0196_v0_0_s_ifspec;
 
 #ifndef __IInternetPriority_INTERFACE_DEFINED__
 #define __IInternetPriority_INTERFACE_DEFINED__
@@ -4703,7 +4567,7 @@ void __RPC_STUB IInternetPriority_GetPriority_Stub(
 #endif 	/* __IInternetPriority_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0202 */
+/* interface __MIDL_itf_urlmon_0197 */
 /* [local] */ 
 
 #endif
@@ -4711,8 +4575,8 @@ void __RPC_STUB IInternetPriority_GetPriority_Stub(
 #define _LPIINTERNETPROTOCOLINFO_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0202_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0202_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0197_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0197_v0_0_s_ifspec;
 
 #ifndef __IInternetProtocolInfo_INTERFACE_DEFINED__
 #define __IInternetProtocolInfo_INTERFACE_DEFINED__
@@ -4979,7 +4843,7 @@ void __RPC_STUB IInternetProtocolInfo_QueryInfo_Stub(
 #endif 	/* __IInternetProtocolInfo_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0203 */
+/* interface __MIDL_itf_urlmon_0198 */
 /* [local] */ 
 
 #endif
@@ -5191,8 +5055,8 @@ EXTERN_C const IID CLSID_PersistentZoneIdentifier;
 #define _LPINTERNETSECURITYMGRSITE_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0203_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0203_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0198_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0198_v0_0_s_ifspec;
 
 #ifndef __IInternetSecurityMgrSite_INTERFACE_DEFINED__
 #define __IInternetSecurityMgrSite_INTERFACE_DEFINED__
@@ -5306,7 +5170,7 @@ void __RPC_STUB IInternetSecurityMgrSite_EnableModeless_Stub(
 #endif 	/* __IInternetSecurityMgrSite_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0204 */
+/* interface __MIDL_itf_urlmon_0199 */
 /* [local] */ 
 
 #endif
@@ -5314,8 +5178,8 @@ void __RPC_STUB IInternetSecurityMgrSite_EnableModeless_Stub(
 #define _LPINTERNETSECURITYMANANGEREX_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0204_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0204_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0199_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0199_v0_0_s_ifspec;
 
 #ifndef __IInternetSecurityManager_INTERFACE_DEFINED__
 #define __IInternetSecurityManager_INTERFACE_DEFINED__
@@ -5328,7 +5192,6 @@ extern RPC_IF_HANDLE __MIDL_itf_urlmon_0204_v0_0_s_ifspec;
 #define MUTZ_ACCEPT_WILDCARD_SCHEME  0x00000080 // Accept a wildcard scheme
 #define MUTZ_ENFORCERESTRICTED       0x00000100 // enforce restricted zone independent of URL
 #define MUTZ_REQUIRESAVEDFILECHECK   0x00000400 // always check the file for MOTW (overriding FEATURE_UNC_SAVEDFILECHECK)
-#define MUTZ_DONT_UNESCAPE           0x00000800 // Do not unescape the url
 // MapUrlToZone returns the zone index given a URL
 #define MAX_SIZE_SECURITY_ID 512 // bytes
 typedef /* [public] */ 
@@ -5349,8 +5212,7 @@ enum __MIDL_IInternetSecurityManager_0001
 	PUAF_LMZ_LOCKED	= 0x20000,
 	PUAF_DEFAULTZONEPOL	= 0x40000,
 	PUAF_NPL_USE_LOCKED_IF_RESTRICTED	= 0x80000,
-	PUAF_NOUIIFLOCKED	= 0x100000,
-	PUAF_DRAGPROTOCOLCHECK	= 0x200000
+	PUAF_NOUIIFLOCKED	= 0x100000
     } 	PUAF;
 
 typedef /* [public] */ 
@@ -5887,7 +5749,7 @@ void __RPC_STUB IInternetSecurityManagerEx_ProcessUrlActionEx_Stub(
 #endif 	/* __IInternetSecurityManagerEx_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0205 */
+/* interface __MIDL_itf_urlmon_0200 */
 /* [local] */ 
 
 #endif
@@ -5895,8 +5757,8 @@ void __RPC_STUB IInternetSecurityManagerEx_ProcessUrlActionEx_Stub(
 #define _LPINTERNETSECURITYMANANGER_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0205_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0205_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0200_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0200_v0_0_s_ifspec;
 
 #ifndef __IZoneIdentifier_INTERFACE_DEFINED__
 #define __IZoneIdentifier_INTERFACE_DEFINED__
@@ -6029,7 +5891,7 @@ void __RPC_STUB IZoneIdentifier_Remove_Stub(
 #endif 	/* __IZoneIdentifier_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0207 */
+/* interface __MIDL_itf_urlmon_0202 */
 /* [local] */ 
 
 #endif
@@ -6040,8 +5902,8 @@ void __RPC_STUB IZoneIdentifier_Remove_Stub(
 //since MSHTML maintains the notion of the current URL
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0207_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0207_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0202_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0202_v0_0_s_ifspec;
 
 #ifndef __IInternetHostSecurityManager_INTERFACE_DEFINED__
 #define __IInternetHostSecurityManager_INTERFACE_DEFINED__
@@ -6216,7 +6078,7 @@ void __RPC_STUB IInternetHostSecurityManager_QueryCustomPolicy_Stub(
 #endif 	/* __IInternetHostSecurityManager_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0208 */
+/* interface __MIDL_itf_urlmon_0203 */
 /* [local] */ 
 
 #endif
@@ -6279,9 +6141,7 @@ void __RPC_STUB IInternetHostSecurityManager_QueryCustomPolicy_Stub(
 #define URLACTION_SHELL_EXECUTE_MODRISK                        0x00001807
 #define URLACTION_SHELL_EXECUTE_LOWRISK                        0x00001808
 #define URLACTION_SHELL_POPUPMGR                               0x00001809
-#define URLACTION_SHELL_RTF_OBJECTS_LOAD                       0x0000180A
-#define URLACTION_SHELL_ENHANCED_DRAGDROP_SECURITY             0x0000180B
-#define URLACTION_SHELL_CURR_MAX                               0x0000180B
+#define URLACTION_SHELL_CURR_MAX                               0x00001809
 #define URLACTION_SHELL_MAX                                    0x000019ff
 
 #define URLACTION_NETWORK_MIN                                  0x00001A00
@@ -6399,8 +6259,8 @@ EXTERN_C const GUID GUID_CUSTOM_LOCALMACHINEZONEUNLOCKED;
 #define _LPINTERNETZONEMANAGER_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0208_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0208_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0203_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0203_v0_0_s_ifspec;
 
 #ifndef __IInternetZoneManager_INTERFACE_DEFINED__
 #define __IInternetZoneManager_INTERFACE_DEFINED__
@@ -6423,8 +6283,6 @@ enum tagURLZONE
 	URLZONE_USER_MAX	= 10000
     } 	URLZONE;
 
-// Enhanced Security Configuration zone mapping flag for IInternetSecurityManager::SetZoneMapping
-#define URLZONE_ESC_FLAG     0x100
 typedef 
 enum tagURLTEMPLATE
     {	URLTEMPLATE_CUSTOM	= 0,
@@ -6940,7 +6798,7 @@ void __RPC_STUB IInternetZoneManager_CopyTemplatePoliciesToZone_Stub(
 #endif 	/* __IInternetZoneManager_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0209 */
+/* interface __MIDL_itf_urlmon_0204 */
 /* [local] */ 
 
 #endif
@@ -6948,8 +6806,8 @@ void __RPC_STUB IInternetZoneManager_CopyTemplatePoliciesToZone_Stub(
 #define _LPINTERNETZONEMANAGEREX_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0209_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0209_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0204_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0204_v0_0_s_ifspec;
 
 #ifndef __IInternetZoneManagerEx_INTERFACE_DEFINED__
 #define __IInternetZoneManagerEx_INTERFACE_DEFINED__
@@ -7217,7 +7075,7 @@ void __RPC_STUB IInternetZoneManagerEx_SetZoneActionPolicyEx_Stub(
 #endif 	/* __IInternetZoneManagerEx_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0210 */
+/* interface __MIDL_itf_urlmon_0205 */
 /* [local] */ 
 
 #endif
@@ -7269,8 +7127,8 @@ typedef struct _tagSOFTDISTINFO *LPSOFTDISTINFO;
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0210_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0210_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0205_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0205_v0_0_s_ifspec;
 
 #ifndef __ISoftDistExt_INTERFACE_DEFINED__
 #define __ISoftDistExt_INTERFACE_DEFINED__
@@ -7449,7 +7307,7 @@ void __RPC_STUB ISoftDistExt_AsyncInstallDistributionUnit_Stub(
 #endif 	/* __ISoftDistExt_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0211 */
+/* interface __MIDL_itf_urlmon_0206 */
 /* [local] */ 
 
 STDAPI GetSoftwareUpdateInfo( LPCWSTR szDistUnit, LPSOFTDISTINFO psdi );
@@ -7459,8 +7317,8 @@ STDAPI SetSoftwareUpdateAdvertisementState( LPCWSTR szDistUnit, DWORD dwAdState,
 #define _LPCATALOGFILEINFO_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0211_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0211_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0206_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0206_v0_0_s_ifspec;
 
 #ifndef __ICatalogFileInfo_INTERFACE_DEFINED__
 #define __ICatalogFileInfo_INTERFACE_DEFINED__
@@ -7576,7 +7434,7 @@ void __RPC_STUB ICatalogFileInfo_GetJavaTrust_Stub(
 #endif 	/* __ICatalogFileInfo_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0212 */
+/* interface __MIDL_itf_urlmon_0207 */
 /* [local] */ 
 
 #endif
@@ -7584,8 +7442,8 @@ void __RPC_STUB ICatalogFileInfo_GetJavaTrust_Stub(
 #define _LPDATAFILTER_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0212_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0212_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0207_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0207_v0_0_s_ifspec;
 
 #ifndef __IDataFilter_INTERFACE_DEFINED__
 #define __IDataFilter_INTERFACE_DEFINED__
@@ -7771,7 +7629,7 @@ void __RPC_STUB IDataFilter_SetEncodingLevel_Stub(
 #endif 	/* __IDataFilter_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0213 */
+/* interface __MIDL_itf_urlmon_0208 */
 /* [local] */ 
 
 #endif
@@ -7788,8 +7646,8 @@ typedef struct _tagPROTOCOLFILTERDATA
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0213_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0213_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0208_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0208_v0_0_s_ifspec;
 
 #ifndef __IEncodingFilterFactory_INTERFACE_DEFINED__
 #define __IEncodingFilterFactory_INTERFACE_DEFINED__
@@ -7928,7 +7786,7 @@ void __RPC_STUB IEncodingFilterFactory_GetDefaultFilter_Stub(
 #endif 	/* __IEncodingFilterFactory_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0214 */
+/* interface __MIDL_itf_urlmon_0209 */
 /* [local] */ 
 
 #endif
@@ -7967,8 +7825,8 @@ EXTERN_C const GUID GUID_CUSTOM_CONFIRMOBJECTSAFETY;
 #define _LPIWRAPPEDPROTOCOL_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0214_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0214_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0209_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0209_v0_0_s_ifspec;
 
 #ifndef __IWrappedProtocol_INTERFACE_DEFINED__
 #define __IWrappedProtocol_INTERFACE_DEFINED__
@@ -8065,14 +7923,14 @@ void __RPC_STUB IWrappedProtocol_GetWrapperCode_Stub(
 #endif 	/* __IWrappedProtocol_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlmon_0215 */
+/* interface __MIDL_itf_urlmon_0210 */
 /* [local] */ 
 
 #endif
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0215_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlmon_0215_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0210_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlmon_0210_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

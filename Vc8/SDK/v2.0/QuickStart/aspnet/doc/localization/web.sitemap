@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+	<siteMapNode url="~/aspnet/doc/localization/default.aspx" title="Internationalizing Your Application">
+           <siteMapNode url="~/aspnet/doc/localization/culture.aspx" title="Culture-sensitive Formatting">
+                <siteMapNode url="~/aspnet/doc/localization/culture.aspx#ielanguage" title="Setting a Preferred Language"/>
+                <siteMapNode url="~/aspnet/doc/localization/culture.aspx#autoculture" title="Auto-detecting the Browser Language"/>
+           </siteMapNode>
+           <siteMapNode url="~/aspnet/doc/localization/localization.aspx" title="Localization">
+               <siteMapNode url="~/aspnet/doc/localization/localization.aspx#simpleexample" title="A Simple Example"/>
+               <siteMapNode url="~/aspnet/doc/localization/localization.aspx#expressions" title="Resource Expressions"/>
+               <siteMapNode url="~/aspnet/doc/localization/localization.aspx#resources" title="Local and Global Resources"/>
+               <siteMapNode url="~/aspnet/doc/localization/localization.aspx#implicit" title="Implicit Expressions to Local Resources"/>
+               <siteMapNode url="~/aspnet/doc/localization/localization.aspx#explicit" title="Explicit Expressions to Local Resources"/>
+               <siteMapNode url="~/aspnet/doc/localization/localization.aspx#programmatic" title="Programmatic Access to Global Resources"/>
+               <siteMapNode url="~/aspnet/doc/localization/localization.aspx#static" title="Localizing Static Content"/>
+               <siteMapNode url="~/aspnet/doc/localization/localization.aspx#langprefs" title="Storing Language Preferences"/>
+           </siteMapNode>
+           <siteMapNode url="~/aspnet/doc/localization/encoding.aspx" title="Encoding"/>
+        </siteMapNode>
+</siteMap>
+

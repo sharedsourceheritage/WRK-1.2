@@ -22,11 +22,8 @@ Abstract:
     ua_lstrlen()
     ua_lstrlenW()
     ua_tcscpy()
-    ua_tcscpy_s()
     ua_wcschr()
     ua_wcscpy()
-    ua_wcscpy_s()
-    ua_wcsicmp()
     ua_wcslen()
     ua_wcsrchr()
 
@@ -46,22 +43,6 @@ Revision History:
 #if !defined(__STRALIGN_H_) && !defined(MIDL_PASS)
 #define __STRALIGN_H_
 
-#ifndef _STRALIGN_USE_SECURE_CRT
-#if defined(__GOT_SECURE_LIB__) && __GOT_SECURE_LIB__ >= 200402L
-#define _STRALIGN_USE_SECURE_CRT 1
-#else
-#define _STRALIGN_USE_SECURE_CRT 0
-#endif
-#endif
-
-#if !defined(_WINDOWS_INSECURE_DEPRECATE)
-#if defined(_WINDOWS_SECURE_NO_DEPRECATE) || !_STRALIGN_USE_SECURE_CRT
-#define _WINDOWS_INSECURE_DEPRECATE
-#else
-#define _WINDOWS_INSECURE_DEPRECATE __declspec(deprecated)
-#endif
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -79,28 +60,9 @@ extern "C" {
 #define ua_lstrcmpW   lstrcmpW
 #define ua_lstrlenW   lstrlenW
 #define ua_wcschr     wcschr
-#define ua_wcsicmp    wcsicmp
+#define ua_wcscpy     wcscpy
 #define ua_wcslen     wcslen
 #define ua_wcsrchr    wcsrchr
-#if _STRALIGN_USE_SECURE_CRT
-#define ua_wcscpy_s   wcscpy_s
-#endif
-
-
-__inline
-PUWSTR
-static
-_WINDOWS_INSECURE_DEPRECATE
-ua_wcscpy(
-    IN PUWSTR  Destination,
-    IN PCUWSTR Source
-    )
-{
-#pragma warning(push)
-#pragma warning(disable:4996)
-    return wcscpy(Destination, Source);
-#pragma warning(pop)
-}
 
 #else
 
@@ -161,13 +123,6 @@ _cdecl
 uaw_wcscpy(
     IN PUWSTR Destination,
     IN PCUWSTR Source
-    );
-
-int
-__cdecl
-uaw_wcsicmp(
-    IN PCUWSTR String1,
-    IN PCUWSTR String2
     );
 
 size_t
@@ -333,36 +288,15 @@ ua_wcsrchr(
 __inline
 PUWSTR
 static
-_WINDOWS_INSECURE_DEPRECATE
 ua_wcschr(
     IN PUWSTR String,
     IN WCHAR  Character
     )
 {
     if (WSTR_ALIGNED(String)) {
-#pragma warning(push)
-#pragma warning(disable:4996)
-        return wcscpy( (PWSTR)Destination, (PCWSTR)Source );
-#pragma warning(pop)
+        return wcschr(String, Character);
     } else {
-        return uaw_wcscpy( Destination, Source );
-    }
-}
-
-__inline
-PUWSTR
-static
-ua_wcscpy_s(
-    IN PUWSTR  Destination,
-    IN size_t  DestinationSize,
-    IN PCUWSTR Source
-    )
-{
-    if (WSTR_ALIGNED(Source) && WSTR_ALIGNED(Destination)) {
-        return (wcscpy_s( (PWSTR)Destination, DestinationSize, (PCWSTR)Source ) == 0 ? Destination : NULL);
-    } else {
-        /* TODO (alecont): Need to reference uaw_wcscpy_s */
-        return uaw_wcscpy((PCUWSTR)String, Character);
+        return uaw_wcschr((PCUWSTR)String, Character);
     }
 }
 
@@ -386,41 +320,17 @@ ua_wcsrchr(
 __inline
 PUWSTR
 static
-_WINDOWS_INSECURE_DEPRECATE
 ua_wcscpy(
     IN PUWSTR  Destination,
     IN PCUWSTR Source
     )
 {
     if (WSTR_ALIGNED(Source) && WSTR_ALIGNED(Destination)) {
-#pragma warning(push)
-#pragma warning(disable:4996)
         return wcscpy( (PWSTR)Destination, (PCWSTR)Source );
-#pragma warning(pop)	
     } else {
         return uaw_wcscpy( Destination, Source );
     }
 }
-
-
-#if _STRALIGN_USE_SECURE_CRT
-__inline
-PUWSTR
-static
-ua_wcscpy_s(
-    IN PUWSTR  Destination,
-    IN size_t  DestinationSize,
-    IN PCUWSTR Source
-    )
-{
-    if (WSTR_ALIGNED(Source) && WSTR_ALIGNED(Destination)) {
-        return (wcscpy_s( (PWSTR)Destination, DestinationSize, (PCWSTR)Source ) == 0 ? Destination : NULL);
-    } else {
-        /* TODO: Need to reference uaw_wcscpy_s */
-        return uaw_wcscpy( Destination, Source );
-    }
-}
-#endif
 
 __inline
 size_t
@@ -437,21 +347,6 @@ ua_wcslen(
 }
 
 #endif  // _WSTRING_DEFINED
-
-__inline
-int
-static
-ua_wcsicmp(
-    IN LPCUWSTR String1,
-    IN LPCUWSTR String2
-    )
-{
-    if (WSTR_ALIGNED(String1) && WSTR_ALIGNED(String2)) {
-        return _wcsicmp( (LPCWSTR)String1, (LPCWSTR)String2 );
-    } else {
-        return uaw_wcsicmp( String1, String2 );
-    }
-}
 
 #endif  // _X86_
 
@@ -620,9 +515,6 @@ ua_wcsicmp(
 #define ua_lstrcmpi                     ua_lstrcmpiW
 #define ua_lstrlen                      ua_lstrlenW
 #define ua_tcscpy                       ua_wcscpy
-#if _STRALIGN_USE_SECURE_CRT
-#define ua_tcscpy_s                     ua_wcscpy_s
-#endif
 
 #else
 
@@ -633,9 +525,6 @@ ua_wcsicmp(
 #define ua_lstrcmpi                     lstrcmpiA
 #define ua_lstrlen                      lstrlenA
 #define ua_tcscpy                       strcpy
-#if _STRALIGN_USE_SECURE_CRT
-#define ua_tcscpy_s                     strcpy_s
-#endif
 
 #endif  // UNICODE
 

@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for xenroll.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -83,18 +82,6 @@ typedef interface IEnroll2 IEnroll2;
 #define __IEnroll4_FWD_DEFINED__
 typedef interface IEnroll4 IEnroll4;
 #endif 	/* __IEnroll4_FWD_DEFINED__ */
-
-
-#ifndef __CEnroll2_FWD_DEFINED__
-#define __CEnroll2_FWD_DEFINED__
-
-#ifdef __cplusplus
-typedef class CEnroll2 CEnroll2;
-#else
-typedef struct CEnroll2 CEnroll2;
-#endif /* __cplusplus */
-
-#endif 	/* __CEnroll2_FWD_DEFINED__ */
 
 
 #ifndef __CEnroll_FWD_DEFINED__
@@ -8604,14 +8591,6 @@ void __RPC_STUB IEnroll4_get_IncludeSubjectKeyID_Stub(
 
 EXTERN_C const IID LIBID_XENROLLLib;
 
-EXTERN_C const CLSID CLSID_CEnroll2;
-
-#ifdef __cplusplus
-
-class DECLSPEC_UUID("127698e4-e730-4e5c-a2b1-21490a70c8a1")
-CEnroll2;
-#endif
-
 EXTERN_C const CLSID CLSID_CEnroll;
 
 #ifdef __cplusplus
@@ -8621,7 +8600,7 @@ CEnroll;
 #endif
 #endif /* __XENROLLLib_LIBRARY_DEFINED__ */
 
-/* interface __MIDL_itf_xenroll_0269 */
+/* interface __MIDL_itf_xenroll_0264 */
 /* [local] */ 
 
 extern "C" IEnroll * WINAPI PIEnrollGetNoCOM(void);
@@ -8659,8 +8638,8 @@ extern "C" IEnroll4 * WINAPI PIEnroll4GetNoCOM(void);
 #define XECI_CERTREQ     0x4
 
 
-extern RPC_IF_HANDLE __MIDL_itf_xenroll_0269_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_xenroll_0269_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_xenroll_0264_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_xenroll_0264_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

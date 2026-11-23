@@ -1,12 +1,13 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for autosvcs.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run)
-    protocol : dce , ms_ext, c_ext, robust
+    Os, W1, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
@@ -14,12 +15,10 @@
 */
 //@@MIDL_FILE_HEADING(  )
 
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
-
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
 #ifndef __REQUIRED_RPCNDR_H_VERSION__
-#define __REQUIRED_RPCNDR_H_VERSION__ 475
+#define __REQUIRED_RPCNDR_H_VERSION__ 440
 #endif
 
 #include "rpc.h"
@@ -469,6 +468,12 @@ typedef interface ICOMLBArguments ICOMLBArguments;
 #endif 	/* __ICOMLBArguments_FWD_DEFINED__ */
 
 
+#ifndef __ISendMethodEvents_FWD_DEFINED__
+#define __ISendMethodEvents_FWD_DEFINED__
+typedef interface ISendMethodEvents ISendMethodEvents;
+#endif 	/* __ISendMethodEvents_FWD_DEFINED__ */
+
+
 #ifndef __ICrmLogControl_FWD_DEFINED__
 #define __ICrmLogControl_FWD_DEFINED__
 typedef interface ICrmLogControl ICrmLogControl;
@@ -529,10 +534,10 @@ typedef interface IServiceSxsConfig IServiceSxsConfig;
 #endif 	/* __IServiceSxsConfig_FWD_DEFINED__ */
 
 
-#ifndef __ICheckSxsConfig_FWD_DEFINED__
-#define __ICheckSxsConfig_FWD_DEFINED__
-typedef interface ICheckSxsConfig ICheckSxsConfig;
-#endif 	/* __ICheckSxsConfig_FWD_DEFINED__ */
+#ifndef __ICheckFusionConfig_FWD_DEFINED__
+#define __ICheckFusionConfig_FWD_DEFINED__
+typedef interface ICheckFusionConfig ICheckFusionConfig;
+#endif 	/* __ICheckFusionConfig_FWD_DEFINED__ */
 
 
 #ifndef __IServiceInheritanceConfig_FWD_DEFINED__
@@ -625,94 +630,10 @@ typedef interface IProcessInitializer IProcessInitializer;
 #endif 	/* __IProcessInitializer_FWD_DEFINED__ */
 
 
-#ifndef __IServicePoolConfig_FWD_DEFINED__
-#define __IServicePoolConfig_FWD_DEFINED__
-typedef interface IServicePoolConfig IServicePoolConfig;
-#endif 	/* __IServicePoolConfig_FWD_DEFINED__ */
-
-
-#ifndef __IServicePool_FWD_DEFINED__
-#define __IServicePool_FWD_DEFINED__
-typedef interface IServicePool IServicePool;
-#endif 	/* __IServicePool_FWD_DEFINED__ */
-
-
-#ifndef __IManagedPooledObj_FWD_DEFINED__
-#define __IManagedPooledObj_FWD_DEFINED__
-typedef interface IManagedPooledObj IManagedPooledObj;
-#endif 	/* __IManagedPooledObj_FWD_DEFINED__ */
-
-
 #ifndef __IManagedPoolAction_FWD_DEFINED__
 #define __IManagedPoolAction_FWD_DEFINED__
 typedef interface IManagedPoolAction IManagedPoolAction;
 #endif 	/* __IManagedPoolAction_FWD_DEFINED__ */
-
-
-#ifndef __IManagedObjectInfo_FWD_DEFINED__
-#define __IManagedObjectInfo_FWD_DEFINED__
-typedef interface IManagedObjectInfo IManagedObjectInfo;
-#endif 	/* __IManagedObjectInfo_FWD_DEFINED__ */
-
-
-#ifndef __IAppDomainHelper_FWD_DEFINED__
-#define __IAppDomainHelper_FWD_DEFINED__
-typedef interface IAppDomainHelper IAppDomainHelper;
-#endif 	/* __IAppDomainHelper_FWD_DEFINED__ */
-
-
-#ifndef __IAssemblyLocator_FWD_DEFINED__
-#define __IAssemblyLocator_FWD_DEFINED__
-typedef interface IAssemblyLocator IAssemblyLocator;
-#endif 	/* __IAssemblyLocator_FWD_DEFINED__ */
-
-
-#ifndef __IManagedActivationEvents_FWD_DEFINED__
-#define __IManagedActivationEvents_FWD_DEFINED__
-typedef interface IManagedActivationEvents IManagedActivationEvents;
-#endif 	/* __IManagedActivationEvents_FWD_DEFINED__ */
-
-
-#ifndef __ISendMethodEvents_FWD_DEFINED__
-#define __ISendMethodEvents_FWD_DEFINED__
-typedef interface ISendMethodEvents ISendMethodEvents;
-#endif 	/* __ISendMethodEvents_FWD_DEFINED__ */
-
-
-#ifndef __ITransactionResourcePool_FWD_DEFINED__
-#define __ITransactionResourcePool_FWD_DEFINED__
-typedef interface ITransactionResourcePool ITransactionResourcePool;
-#endif 	/* __ITransactionResourcePool_FWD_DEFINED__ */
-
-
-#ifndef __IMTSCall_FWD_DEFINED__
-#define __IMTSCall_FWD_DEFINED__
-typedef interface IMTSCall IMTSCall;
-#endif 	/* __IMTSCall_FWD_DEFINED__ */
-
-
-#ifndef __IContextProperties_FWD_DEFINED__
-#define __IContextProperties_FWD_DEFINED__
-typedef interface IContextProperties IContextProperties;
-#endif 	/* __IContextProperties_FWD_DEFINED__ */
-
-
-#ifndef __IObjPool_FWD_DEFINED__
-#define __IObjPool_FWD_DEFINED__
-typedef interface IObjPool IObjPool;
-#endif 	/* __IObjPool_FWD_DEFINED__ */
-
-
-#ifndef __ITransactionProperty_FWD_DEFINED__
-#define __ITransactionProperty_FWD_DEFINED__
-typedef interface ITransactionProperty ITransactionProperty;
-#endif 	/* __ITransactionProperty_FWD_DEFINED__ */
-
-
-#ifndef __IMTSActivity_FWD_DEFINED__
-#define __IMTSActivity_FWD_DEFINED__
-typedef interface IMTSActivity IMTSActivity;
-#endif 	/* __IMTSActivity_FWD_DEFINED__ */
 
 
 #ifndef __SecurityIdentity_FWD_DEFINED__
@@ -845,30 +766,6 @@ typedef struct CServiceConfig CServiceConfig;
 #endif /* __cplusplus */
 
 #endif 	/* __CServiceConfig_FWD_DEFINED__ */
-
-
-#ifndef __ServicePool_FWD_DEFINED__
-#define __ServicePool_FWD_DEFINED__
-
-#ifdef __cplusplus
-typedef class ServicePool ServicePool;
-#else
-typedef struct ServicePool ServicePool;
-#endif /* __cplusplus */
-
-#endif 	/* __ServicePool_FWD_DEFINED__ */
-
-
-#ifndef __ServicePoolConfig_FWD_DEFINED__
-#define __ServicePoolConfig_FWD_DEFINED__
-
-#ifdef __cplusplus
-typedef class ServicePoolConfig ServicePoolConfig;
-#else
-typedef struct ServicePoolConfig ServicePoolConfig;
-#endif /* __cplusplus */
-
-#endif 	/* __ServicePoolConfig_FWD_DEFINED__ */
 
 
 #ifndef __SharedProperty_FWD_DEFINED__
@@ -1051,30 +948,6 @@ typedef struct EventServer EventServer;
 #endif 	/* __EventServer_FWD_DEFINED__ */
 
 
-#ifndef __AppDomainHelper_FWD_DEFINED__
-#define __AppDomainHelper_FWD_DEFINED__
-
-#ifdef __cplusplus
-typedef class AppDomainHelper AppDomainHelper;
-#else
-typedef struct AppDomainHelper AppDomainHelper;
-#endif /* __cplusplus */
-
-#endif 	/* __AppDomainHelper_FWD_DEFINED__ */
-
-
-#ifndef __ClrAssemblyLocator_FWD_DEFINED__
-#define __ClrAssemblyLocator_FWD_DEFINED__
-
-#ifdef __cplusplus
-typedef class ClrAssemblyLocator ClrAssemblyLocator;
-#else
-typedef struct ClrAssemblyLocator ClrAssemblyLocator;
-#endif /* __cplusplus */
-
-#endif 	/* __ClrAssemblyLocator_FWD_DEFINED__ */
-
-
 /* header files for imported files */
 #include "unknwn.h"
 #include "oaidl.h"
@@ -1103,7 +976,7 @@ void __RPC_USER MIDL_user_free( void * );
 // -----------------------------------------------------------------------
 #include <objbase.h>
 #ifndef DECLSPEC_UUID
-#if (_MSC_VER >= 1100) && defined (__cplusplus)
+#if _MSC_VER >= 1100
 #define DECLSPEC_UUID(x)    __declspec(uuid(x))
 #else
 #define DECLSPEC_UUID(x)
@@ -3387,7 +3260,7 @@ void __RPC_STUB ICreateWithTipTransactionEx_CreateInstance_Stub(
 #endif 	/* __ICreateWithTipTransactionEx_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_autosvcs_0304 */
+/* interface __MIDL_itf_autosvcs_0295 */
 /* [local] */ 
 
 typedef unsigned __int64 MTS_OBJID;
@@ -3398,7 +3271,7 @@ typedef unsigned __int64 ULONG64;
 
 #ifndef _COMSVCSEVENTINFO_
 #define _COMSVCSEVENTINFO_
-typedef /* [public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][hidden] */ struct __MIDL___MIDL_itf_autosvcs_0304_0001
+typedef /* [public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][public][hidden] */ struct __MIDL___MIDL_itf_autosvcs_0295_0001
     {
     DWORD cbSize;
     DWORD dwPid;
@@ -3412,8 +3285,8 @@ typedef /* [public][public][public][public][public][public][public][public][publ
 #endif _COMSVCSEVENTINFO_
 
 
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0304_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0304_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0295_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0295_v0_0_s_ifspec;
 
 #ifndef __IComUserEvent_INTERFACE_DEFINED__
 #define __IComUserEvent_INTERFACE_DEFINED__
@@ -7353,11 +7226,11 @@ void __RPC_STUB IComTrackingInfoEvents_OnNewTrackingInfo_Stub(
 #endif 	/* __IComTrackingInfoEvents_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_autosvcs_0325 */
+/* interface __MIDL_itf_autosvcs_0316 */
 /* [local] */ 
 
 typedef /* [public][public] */ 
-enum __MIDL___MIDL_itf_autosvcs_0325_0001
+enum __MIDL___MIDL_itf_autosvcs_0316_0001
     {	TRKCOLL_PROCESSES	= 0,
 	TRKCOLL_APPLICATIONS	= TRKCOLL_PROCESSES + 1,
 	TRKCOLL_COMPONENTS	= TRKCOLL_APPLICATIONS + 1
@@ -7365,8 +7238,8 @@ enum __MIDL___MIDL_itf_autosvcs_0325_0001
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0325_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0325_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0316_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0316_v0_0_s_ifspec;
 
 #ifndef __IComTrackingInfoCollection_INTERFACE_DEFINED__
 #define __IComTrackingInfoCollection_INTERFACE_DEFINED__
@@ -9876,7 +9749,7 @@ void __RPC_STUB IEventServerTrace_EnumTraceGuid_Stub(
 #endif 	/* __IEventServerTrace_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_autosvcs_0342 */
+/* interface __MIDL_itf_autosvcs_0333 */
 /* [local] */ 
 
 typedef /* [hidden] */ struct _RECYCLE_INFO
@@ -9966,7 +9839,7 @@ typedef /* [hidden] */ struct CCLSIDData2
 //  Copyright (C) 1995-1999 Microsoft Corporation.  All rights reserved.
  
 #ifndef DECLSPEC_UUID
-#if (_MSC_VER >= 1100) && defined (__cplusplus)
+#if _MSC_VER >= 1100
 #define DECLSPEC_UUID(x)    __declspec(uuid(x))
 #else
 #define DECLSPEC_UUID(x)
@@ -10001,8 +9874,8 @@ typedef DWORD_PTR TRANSID;
 //
 
 
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0342_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0342_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0333_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0333_v0_0_s_ifspec;
 
 #ifndef __IDispenserManager_INTERFACE_DEFINED__
 #define __IDispenserManager_INTERFACE_DEFINED__
@@ -10125,7 +9998,7 @@ void __RPC_STUB IDispenserManager_GetContext_Stub(
 #endif 	/* __IDispenserManager_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_autosvcs_0347 */
+/* interface __MIDL_itf_autosvcs_0338 */
 /* [local] */ 
 
 //
@@ -10134,8 +10007,8 @@ void __RPC_STUB IDispenserManager_GetContext_Stub(
 //
 
 
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0347_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0347_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0338_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0338_v0_0_s_ifspec;
 
 #ifndef __IHolder_INTERFACE_DEFINED__
 #define __IHolder_INTERFACE_DEFINED__
@@ -10387,7 +10260,7 @@ void __RPC_STUB IHolder_RequestDestroyResource_Stub(
 #endif 	/* __IHolder_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_autosvcs_0348 */
+/* interface __MIDL_itf_autosvcs_0339 */
 /* [local] */ 
 
 //
@@ -10396,8 +10269,8 @@ void __RPC_STUB IHolder_RequestDestroyResource_Stub(
 //
 
 
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0348_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0348_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0339_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0339_v0_0_s_ifspec;
 
 #ifndef __IDispenserDriver_INTERFACE_DEFINED__
 #define __IDispenserDriver_INTERFACE_DEFINED__
@@ -10617,7 +10490,7 @@ void __RPC_STUB IDispenserDriver_DestroyResourceS_Stub(
 #endif 	/* __IDispenserDriver_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_autosvcs_0349 */
+/* interface __MIDL_itf_autosvcs_0340 */
 /* [local] */ 
 
 #ifdef USE_UUIDOF_FOR_IID_
@@ -10653,8 +10526,8 @@ EXTERN_C const GUID  GUID_FinalizerCID;
 EXTERN_C const GUID  IID_IEnterActivityWithNoLock;
 
 
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0349_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0349_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0340_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0340_v0_0_s_ifspec;
 
 #ifndef __IObjectContext_INTERFACE_DEFINED__
 #define __IObjectContext_INTERFACE_DEFINED__
@@ -13143,7 +13016,7 @@ void __RPC_STUB IGetContextProperties_EnumNames_Stub(
 #endif 	/* __IGetContextProperties_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_autosvcs_0367 */
+/* interface __MIDL_itf_autosvcs_0358 */
 /* [local] */ 
 
 typedef 
@@ -13154,8 +13027,8 @@ enum tagTransactionVote
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0367_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0367_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0358_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0358_v0_0_s_ifspec;
 
 #ifndef __IContextState_INTERFACE_DEFINED__
 #define __IContextState_INTERFACE_DEFINED__
@@ -13716,7 +13589,137 @@ void __RPC_STUB ICOMLBArguments_SetMachineName_Stub(
 #endif 	/* __ICOMLBArguments_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_autosvcs_0371 */
+#ifndef __ISendMethodEvents_INTERFACE_DEFINED__
+#define __ISendMethodEvents_INTERFACE_DEFINED__
+
+/* interface ISendMethodEvents */
+/* [uuid][unique][object][local] */ 
+
+
+EXTERN_C const IID IID_ISendMethodEvents;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("2732fd59-b2b4-4d44-878c-8b8f09626008")
+    ISendMethodEvents : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE SendMethodCall( 
+            /* [in] */ const void *pIdentity,
+            /* [in] */ REFIID riid,
+            /* [in] */ DWORD dwMeth) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SendMethodReturn( 
+            /* [in] */ const void *pIdentity,
+            /* [in] */ REFIID riid,
+            /* [in] */ DWORD dwMeth,
+            /* [in] */ HRESULT hrCall,
+            /* [in] */ HRESULT hrServer) = 0;
+        
+    };
+    
+#else 	/* C style interface */
+
+    typedef struct ISendMethodEventsVtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ISendMethodEvents * This,
+            /* [in] */ REFIID riid,
+            /* [iid_is][out] */ void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ISendMethodEvents * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ISendMethodEvents * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *SendMethodCall )( 
+            ISendMethodEvents * This,
+            /* [in] */ const void *pIdentity,
+            /* [in] */ REFIID riid,
+            /* [in] */ DWORD dwMeth);
+        
+        HRESULT ( STDMETHODCALLTYPE *SendMethodReturn )( 
+            ISendMethodEvents * This,
+            /* [in] */ const void *pIdentity,
+            /* [in] */ REFIID riid,
+            /* [in] */ DWORD dwMeth,
+            /* [in] */ HRESULT hrCall,
+            /* [in] */ HRESULT hrServer);
+        
+        END_INTERFACE
+    } ISendMethodEventsVtbl;
+
+    interface ISendMethodEvents
+    {
+        CONST_VTBL struct ISendMethodEventsVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ISendMethodEvents_QueryInterface(This,riid,ppvObject)	\
+    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
+
+#define ISendMethodEvents_AddRef(This)	\
+    (This)->lpVtbl -> AddRef(This)
+
+#define ISendMethodEvents_Release(This)	\
+    (This)->lpVtbl -> Release(This)
+
+
+#define ISendMethodEvents_SendMethodCall(This,pIdentity,riid,dwMeth)	\
+    (This)->lpVtbl -> SendMethodCall(This,pIdentity,riid,dwMeth)
+
+#define ISendMethodEvents_SendMethodReturn(This,pIdentity,riid,dwMeth,hrCall,hrServer)	\
+    (This)->lpVtbl -> SendMethodReturn(This,pIdentity,riid,dwMeth,hrCall,hrServer)
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+HRESULT STDMETHODCALLTYPE ISendMethodEvents_SendMethodCall_Proxy( 
+    ISendMethodEvents * This,
+    /* [in] */ const void *pIdentity,
+    /* [in] */ REFIID riid,
+    /* [in] */ DWORD dwMeth);
+
+
+void __RPC_STUB ISendMethodEvents_SendMethodCall_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+HRESULT STDMETHODCALLTYPE ISendMethodEvents_SendMethodReturn_Proxy( 
+    ISendMethodEvents * This,
+    /* [in] */ const void *pIdentity,
+    /* [in] */ REFIID riid,
+    /* [in] */ DWORD dwMeth,
+    /* [in] */ HRESULT hrCall,
+    /* [in] */ HRESULT hrServer);
+
+
+void __RPC_STUB ISendMethodEvents_SendMethodReturn_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+
+#endif 	/* __ISendMethodEvents_INTERFACE_DEFINED__ */
+
+
+/* interface __MIDL_itf_autosvcs_0363 */
 /* [local] */ 
 
 #if (_WIN32_WINNT >= 0x0500)
@@ -13727,14 +13730,13 @@ extern HRESULT __cdecl GetObjectContext (IObjectContext** ppInstanceContext);
 EXTERN_C HRESULT __stdcall CoCreateActivity(IUnknown* pIUnknown, REFIID riid, void** ppObj );
 EXTERN_C HRESULT __stdcall CoEnterServiceDomain(IUnknown* pConfigObject);
 EXTERN_C void __stdcall CoLeaveServiceDomain(IUnknown *pUnkStatus);
-EXTERN_C HRESULT __stdcall GetManagedExtensions(DWORD* dwExts);
 extern void* __cdecl SafeRef(REFIID rid, IUnknown* pUnk);
 extern HRESULT __cdecl RecycleSurrogate(long lReasonCode);
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0371_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0371_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0363_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0363_v0_0_s_ifspec;
 
 #ifndef __ICrmLogControl_INTERFACE_DEFINED__
 #define __ICrmLogControl_INTERFACE_DEFINED__
@@ -14246,7 +14248,7 @@ void __RPC_STUB ICrmCompensatorVariants_EndAbortVariants_Stub(
 #endif 	/* __ICrmCompensatorVariants_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_autosvcs_0373 */
+/* interface __MIDL_itf_autosvcs_0365 */
 /* [local] */ 
 
 #ifndef _tagCrmLogRecordRead_
@@ -14261,8 +14263,8 @@ typedef struct tagCrmLogRecordRead
 #endif _tagCrmLogRecordRead_
 
 
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0373_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0373_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0365_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0365_v0_0_s_ifspec;
 
 #ifndef __ICrmCompensator_INTERFACE_DEFINED__
 #define __ICrmCompensator_INTERFACE_DEFINED__
@@ -14552,7 +14554,7 @@ void __RPC_STUB ICrmCompensator_EndAbort_Stub(
 #endif 	/* __ICrmCompensator_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_autosvcs_0374 */
+/* interface __MIDL_itf_autosvcs_0366 */
 /* [local] */ 
 
 #ifndef _tagCrmTransactionState_
@@ -14568,8 +14570,8 @@ enum tagCrmTransactionState
 #endif _tagCrmTransactionState_
 
 
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0374_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0374_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0366_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0366_v0_0_s_ifspec;
 
 #ifndef __ICrmMonitorLogRecords_INTERFACE_DEFINED__
 #define __ICrmMonitorLogRecords_INTERFACE_DEFINED__
@@ -15311,7 +15313,7 @@ void __RPC_STUB ICrmFormatLogRecords_GetColumnVariants_Stub(
 #endif 	/* __ICrmFormatLogRecords_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_autosvcs_0378 */
+/* interface __MIDL_itf_autosvcs_0370 */
 /* [local] */ 
 
 typedef 
@@ -15384,8 +15386,8 @@ enum tagCSC_SxsConfig
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0378_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0378_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0370_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0370_v0_0_s_ifspec;
 
 #ifndef __IServiceIISIntrinsicsConfig_INTERFACE_DEFINED__
 #define __IServiceIISIntrinsicsConfig_INTERFACE_DEFINED__
@@ -15701,57 +15703,55 @@ void __RPC_STUB IServiceSxsConfig_SxsDirectory_Stub(
 #endif 	/* __IServiceSxsConfig_INTERFACE_DEFINED__ */
 
 
-#ifndef __ICheckSxsConfig_INTERFACE_DEFINED__
-#define __ICheckSxsConfig_INTERFACE_DEFINED__
+#ifndef __ICheckFusionConfig_INTERFACE_DEFINED__
+#define __ICheckFusionConfig_INTERFACE_DEFINED__
 
-/* interface ICheckSxsConfig */
+/* interface ICheckFusionConfig */
 /* [local][unique][helpstring][uuid][object] */ 
 
 
-EXTERN_C const IID IID_ICheckSxsConfig;
+EXTERN_C const IID IID_ICheckFusionConfig;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
     MIDL_INTERFACE("0FF5A96F-11FC-47d1-BAA6-25DD347E7242")
-    ICheckSxsConfig : public IUnknown
+    ICheckFusionConfig : public IUnknown
     {
     public:
-        virtual HRESULT STDMETHODCALLTYPE IsSameSxsConfig( 
-            /* [string][in] */ LPCWSTR wszSxsName,
-            /* [string][in] */ LPCWSTR wszSxsDirectory,
-            /* [string][in] */ LPCWSTR wszSxsAppName) = 0;
+        virtual HRESULT STDMETHODCALLTYPE IsSameFusionConfig( 
+            /* [string][in] */ LPCWSTR wszFusionName,
+            /* [string][in] */ LPCWSTR wszFusionDirectory) = 0;
         
     };
     
 #else 	/* C style interface */
 
-    typedef struct ICheckSxsConfigVtbl
+    typedef struct ICheckFusionConfigVtbl
     {
         BEGIN_INTERFACE
         
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ICheckSxsConfig * This,
+            ICheckFusionConfig * This,
             /* [in] */ REFIID riid,
             /* [iid_is][out] */ void **ppvObject);
         
         ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ICheckSxsConfig * This);
+            ICheckFusionConfig * This);
         
         ULONG ( STDMETHODCALLTYPE *Release )( 
-            ICheckSxsConfig * This);
+            ICheckFusionConfig * This);
         
-        HRESULT ( STDMETHODCALLTYPE *IsSameSxsConfig )( 
-            ICheckSxsConfig * This,
-            /* [string][in] */ LPCWSTR wszSxsName,
-            /* [string][in] */ LPCWSTR wszSxsDirectory,
-            /* [string][in] */ LPCWSTR wszSxsAppName);
+        HRESULT ( STDMETHODCALLTYPE *IsSameFusionConfig )( 
+            ICheckFusionConfig * This,
+            /* [string][in] */ LPCWSTR wszFusionName,
+            /* [string][in] */ LPCWSTR wszFusionDirectory);
         
         END_INTERFACE
-    } ICheckSxsConfigVtbl;
+    } ICheckFusionConfigVtbl;
 
-    interface ICheckSxsConfig
+    interface ICheckFusionConfig
     {
-        CONST_VTBL struct ICheckSxsConfigVtbl *lpVtbl;
+        CONST_VTBL struct ICheckFusionConfigVtbl *lpVtbl;
     };
 
     
@@ -15759,18 +15759,18 @@ EXTERN_C const IID IID_ICheckSxsConfig;
 #ifdef COBJMACROS
 
 
-#define ICheckSxsConfig_QueryInterface(This,riid,ppvObject)	\
+#define ICheckFusionConfig_QueryInterface(This,riid,ppvObject)	\
     (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
 
-#define ICheckSxsConfig_AddRef(This)	\
+#define ICheckFusionConfig_AddRef(This)	\
     (This)->lpVtbl -> AddRef(This)
 
-#define ICheckSxsConfig_Release(This)	\
+#define ICheckFusionConfig_Release(This)	\
     (This)->lpVtbl -> Release(This)
 
 
-#define ICheckSxsConfig_IsSameSxsConfig(This,wszSxsName,wszSxsDirectory,wszSxsAppName)	\
-    (This)->lpVtbl -> IsSameSxsConfig(This,wszSxsName,wszSxsDirectory,wszSxsAppName)
+#define ICheckFusionConfig_IsSameFusionConfig(This,wszFusionName,wszFusionDirectory)	\
+    (This)->lpVtbl -> IsSameFusionConfig(This,wszFusionName,wszFusionDirectory)
 
 #endif /* COBJMACROS */
 
@@ -15779,14 +15779,13 @@ EXTERN_C const IID IID_ICheckSxsConfig;
 
 
 
-HRESULT STDMETHODCALLTYPE ICheckSxsConfig_IsSameSxsConfig_Proxy( 
-    ICheckSxsConfig * This,
-    /* [string][in] */ LPCWSTR wszSxsName,
-    /* [string][in] */ LPCWSTR wszSxsDirectory,
-    /* [string][in] */ LPCWSTR wszSxsAppName);
+HRESULT STDMETHODCALLTYPE ICheckFusionConfig_IsSameFusionConfig_Proxy( 
+    ICheckFusionConfig * This,
+    /* [string][in] */ LPCWSTR wszFusionName,
+    /* [string][in] */ LPCWSTR wszFusionDirectory);
 
 
-void __RPC_STUB ICheckSxsConfig_IsSameSxsConfig_Stub(
+void __RPC_STUB ICheckFusionConfig_IsSameFusionConfig_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -15794,7 +15793,7 @@ void __RPC_STUB ICheckSxsConfig_IsSameSxsConfig_Stub(
 
 
 
-#endif 	/* __ICheckSxsConfig_INTERFACE_DEFINED__ */
+#endif 	/* __ICheckFusionConfig_INTERFACE_DEFINED__ */
 
 
 #ifndef __IServiceInheritanceConfig_INTERFACE_DEFINED__
@@ -18052,7 +18051,7 @@ void __RPC_STUB IComStaThreadPoolKnobs2_SetWaitTimeForThreadCleanup_Stub(
 #define __IProcessInitializer_INTERFACE_DEFINED__
 
 /* interface IProcessInitializer */
-/* [oleautomation][uuid][unique][object] */ 
+/* [uuid][unique][object] */ 
 
 
 EXTERN_C const IID IID_IProcessInitializer;
@@ -18157,518 +18156,6 @@ void __RPC_STUB IProcessInitializer_Shutdown_Stub(
 #endif 	/* __IProcessInitializer_INTERFACE_DEFINED__ */
 
 
-#ifndef __IServicePoolConfig_INTERFACE_DEFINED__
-#define __IServicePoolConfig_INTERFACE_DEFINED__
-
-/* interface IServicePoolConfig */
-/* [object][uuid][unique][local] */ 
-
-
-EXTERN_C const IID IID_IServicePoolConfig;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("a9690656-5bca-470c-8451-250c1f43a33e")
-    IServicePoolConfig : public IUnknown
-    {
-    public:
-        virtual /* [propput] */ HRESULT STDMETHODCALLTYPE put_MaxPoolSize( 
-            /* [in] */ DWORD dwMaxPool) = 0;
-        
-        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_MaxPoolSize( 
-            /* [retval][out] */ DWORD *pdwMaxPool) = 0;
-        
-        virtual /* [propput] */ HRESULT STDMETHODCALLTYPE put_MinPoolSize( 
-            /* [in] */ DWORD dwMinPool) = 0;
-        
-        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_MinPoolSize( 
-            /* [retval][out] */ DWORD *pdwMinPool) = 0;
-        
-        virtual /* [propput] */ HRESULT STDMETHODCALLTYPE put_CreationTimeout( 
-            /* [in] */ DWORD dwCreationTimeout) = 0;
-        
-        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_CreationTimeout( 
-            /* [retval][out] */ DWORD *pdwCreationTimeout) = 0;
-        
-        virtual /* [propput] */ HRESULT STDMETHODCALLTYPE put_TransactionAffinity( 
-            /* [in] */ BOOL fTxAffinity) = 0;
-        
-        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_TransactionAffinity( 
-            /* [retval][out] */ BOOL *pfTxAffinity) = 0;
-        
-        virtual /* [propput] */ HRESULT STDMETHODCALLTYPE put_ClassFactory( 
-            /* [in] */ IClassFactory *pFactory) = 0;
-        
-        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_ClassFactory( 
-            /* [retval][out] */ IClassFactory **pFactory) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IServicePoolConfigVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IServicePoolConfig * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IServicePoolConfig * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IServicePoolConfig * This);
-        
-        /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_MaxPoolSize )( 
-            IServicePoolConfig * This,
-            /* [in] */ DWORD dwMaxPool);
-        
-        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_MaxPoolSize )( 
-            IServicePoolConfig * This,
-            /* [retval][out] */ DWORD *pdwMaxPool);
-        
-        /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_MinPoolSize )( 
-            IServicePoolConfig * This,
-            /* [in] */ DWORD dwMinPool);
-        
-        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_MinPoolSize )( 
-            IServicePoolConfig * This,
-            /* [retval][out] */ DWORD *pdwMinPool);
-        
-        /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_CreationTimeout )( 
-            IServicePoolConfig * This,
-            /* [in] */ DWORD dwCreationTimeout);
-        
-        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_CreationTimeout )( 
-            IServicePoolConfig * This,
-            /* [retval][out] */ DWORD *pdwCreationTimeout);
-        
-        /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_TransactionAffinity )( 
-            IServicePoolConfig * This,
-            /* [in] */ BOOL fTxAffinity);
-        
-        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_TransactionAffinity )( 
-            IServicePoolConfig * This,
-            /* [retval][out] */ BOOL *pfTxAffinity);
-        
-        /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_ClassFactory )( 
-            IServicePoolConfig * This,
-            /* [in] */ IClassFactory *pFactory);
-        
-        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_ClassFactory )( 
-            IServicePoolConfig * This,
-            /* [retval][out] */ IClassFactory **pFactory);
-        
-        END_INTERFACE
-    } IServicePoolConfigVtbl;
-
-    interface IServicePoolConfig
-    {
-        CONST_VTBL struct IServicePoolConfigVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IServicePoolConfig_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IServicePoolConfig_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IServicePoolConfig_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IServicePoolConfig_put_MaxPoolSize(This,dwMaxPool)	\
-    (This)->lpVtbl -> put_MaxPoolSize(This,dwMaxPool)
-
-#define IServicePoolConfig_get_MaxPoolSize(This,pdwMaxPool)	\
-    (This)->lpVtbl -> get_MaxPoolSize(This,pdwMaxPool)
-
-#define IServicePoolConfig_put_MinPoolSize(This,dwMinPool)	\
-    (This)->lpVtbl -> put_MinPoolSize(This,dwMinPool)
-
-#define IServicePoolConfig_get_MinPoolSize(This,pdwMinPool)	\
-    (This)->lpVtbl -> get_MinPoolSize(This,pdwMinPool)
-
-#define IServicePoolConfig_put_CreationTimeout(This,dwCreationTimeout)	\
-    (This)->lpVtbl -> put_CreationTimeout(This,dwCreationTimeout)
-
-#define IServicePoolConfig_get_CreationTimeout(This,pdwCreationTimeout)	\
-    (This)->lpVtbl -> get_CreationTimeout(This,pdwCreationTimeout)
-
-#define IServicePoolConfig_put_TransactionAffinity(This,fTxAffinity)	\
-    (This)->lpVtbl -> put_TransactionAffinity(This,fTxAffinity)
-
-#define IServicePoolConfig_get_TransactionAffinity(This,pfTxAffinity)	\
-    (This)->lpVtbl -> get_TransactionAffinity(This,pfTxAffinity)
-
-#define IServicePoolConfig_put_ClassFactory(This,pFactory)	\
-    (This)->lpVtbl -> put_ClassFactory(This,pFactory)
-
-#define IServicePoolConfig_get_ClassFactory(This,pFactory)	\
-    (This)->lpVtbl -> get_ClassFactory(This,pFactory)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-/* [propput] */ HRESULT STDMETHODCALLTYPE IServicePoolConfig_put_MaxPoolSize_Proxy( 
-    IServicePoolConfig * This,
-    /* [in] */ DWORD dwMaxPool);
-
-
-void __RPC_STUB IServicePoolConfig_put_MaxPoolSize_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [propget] */ HRESULT STDMETHODCALLTYPE IServicePoolConfig_get_MaxPoolSize_Proxy( 
-    IServicePoolConfig * This,
-    /* [retval][out] */ DWORD *pdwMaxPool);
-
-
-void __RPC_STUB IServicePoolConfig_get_MaxPoolSize_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [propput] */ HRESULT STDMETHODCALLTYPE IServicePoolConfig_put_MinPoolSize_Proxy( 
-    IServicePoolConfig * This,
-    /* [in] */ DWORD dwMinPool);
-
-
-void __RPC_STUB IServicePoolConfig_put_MinPoolSize_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [propget] */ HRESULT STDMETHODCALLTYPE IServicePoolConfig_get_MinPoolSize_Proxy( 
-    IServicePoolConfig * This,
-    /* [retval][out] */ DWORD *pdwMinPool);
-
-
-void __RPC_STUB IServicePoolConfig_get_MinPoolSize_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [propput] */ HRESULT STDMETHODCALLTYPE IServicePoolConfig_put_CreationTimeout_Proxy( 
-    IServicePoolConfig * This,
-    /* [in] */ DWORD dwCreationTimeout);
-
-
-void __RPC_STUB IServicePoolConfig_put_CreationTimeout_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [propget] */ HRESULT STDMETHODCALLTYPE IServicePoolConfig_get_CreationTimeout_Proxy( 
-    IServicePoolConfig * This,
-    /* [retval][out] */ DWORD *pdwCreationTimeout);
-
-
-void __RPC_STUB IServicePoolConfig_get_CreationTimeout_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [propput] */ HRESULT STDMETHODCALLTYPE IServicePoolConfig_put_TransactionAffinity_Proxy( 
-    IServicePoolConfig * This,
-    /* [in] */ BOOL fTxAffinity);
-
-
-void __RPC_STUB IServicePoolConfig_put_TransactionAffinity_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [propget] */ HRESULT STDMETHODCALLTYPE IServicePoolConfig_get_TransactionAffinity_Proxy( 
-    IServicePoolConfig * This,
-    /* [retval][out] */ BOOL *pfTxAffinity);
-
-
-void __RPC_STUB IServicePoolConfig_get_TransactionAffinity_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [propput] */ HRESULT STDMETHODCALLTYPE IServicePoolConfig_put_ClassFactory_Proxy( 
-    IServicePoolConfig * This,
-    /* [in] */ IClassFactory *pFactory);
-
-
-void __RPC_STUB IServicePoolConfig_put_ClassFactory_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [propget] */ HRESULT STDMETHODCALLTYPE IServicePoolConfig_get_ClassFactory_Proxy( 
-    IServicePoolConfig * This,
-    /* [retval][out] */ IClassFactory **pFactory);
-
-
-void __RPC_STUB IServicePoolConfig_get_ClassFactory_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IServicePoolConfig_INTERFACE_DEFINED__ */
-
-
-#ifndef __IServicePool_INTERFACE_DEFINED__
-#define __IServicePool_INTERFACE_DEFINED__
-
-/* interface IServicePool */
-/* [object][uuid][unique][local] */ 
-
-
-EXTERN_C const IID IID_IServicePool;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("b302df81-ea45-451e-99a2-09f9fd1b1e13")
-    IServicePool : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE Initialize( 
-            /* [in] */ IUnknown *pPoolConfig) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetObject( 
-            REFIID riid,
-            /* [iid_is][out] */ void **ppv) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Shutdown( void) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IServicePoolVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IServicePool * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IServicePool * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IServicePool * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Initialize )( 
-            IServicePool * This,
-            /* [in] */ IUnknown *pPoolConfig);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetObject )( 
-            IServicePool * This,
-            REFIID riid,
-            /* [iid_is][out] */ void **ppv);
-        
-        HRESULT ( STDMETHODCALLTYPE *Shutdown )( 
-            IServicePool * This);
-        
-        END_INTERFACE
-    } IServicePoolVtbl;
-
-    interface IServicePool
-    {
-        CONST_VTBL struct IServicePoolVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IServicePool_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IServicePool_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IServicePool_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IServicePool_Initialize(This,pPoolConfig)	\
-    (This)->lpVtbl -> Initialize(This,pPoolConfig)
-
-#define IServicePool_GetObject(This,riid,ppv)	\
-    (This)->lpVtbl -> GetObject(This,riid,ppv)
-
-#define IServicePool_Shutdown(This)	\
-    (This)->lpVtbl -> Shutdown(This)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IServicePool_Initialize_Proxy( 
-    IServicePool * This,
-    /* [in] */ IUnknown *pPoolConfig);
-
-
-void __RPC_STUB IServicePool_Initialize_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IServicePool_GetObject_Proxy( 
-    IServicePool * This,
-    REFIID riid,
-    /* [iid_is][out] */ void **ppv);
-
-
-void __RPC_STUB IServicePool_GetObject_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IServicePool_Shutdown_Proxy( 
-    IServicePool * This);
-
-
-void __RPC_STUB IServicePool_Shutdown_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IServicePool_INTERFACE_DEFINED__ */
-
-
-#ifndef __IManagedPooledObj_INTERFACE_DEFINED__
-#define __IManagedPooledObj_INTERFACE_DEFINED__
-
-/* interface IManagedPooledObj */
-/* [uuid][unique][object][local] */ 
-
-
-EXTERN_C const IID IID_IManagedPooledObj;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("c5da4bea-1b42-4437-8926-b6a38860a770")
-    IManagedPooledObj : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE SetHeld( 
-            /* [in] */ BOOL m_bHeld) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IManagedPooledObjVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IManagedPooledObj * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IManagedPooledObj * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IManagedPooledObj * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetHeld )( 
-            IManagedPooledObj * This,
-            /* [in] */ BOOL m_bHeld);
-        
-        END_INTERFACE
-    } IManagedPooledObjVtbl;
-
-    interface IManagedPooledObj
-    {
-        CONST_VTBL struct IManagedPooledObjVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IManagedPooledObj_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IManagedPooledObj_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IManagedPooledObj_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IManagedPooledObj_SetHeld(This,m_bHeld)	\
-    (This)->lpVtbl -> SetHeld(This,m_bHeld)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IManagedPooledObj_SetHeld_Proxy( 
-    IManagedPooledObj * This,
-    /* [in] */ BOOL m_bHeld);
-
-
-void __RPC_STUB IManagedPooledObj_SetHeld_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IManagedPooledObj_INTERFACE_DEFINED__ */
-
-
 #ifndef __IManagedPoolAction_INTERFACE_DEFINED__
 #define __IManagedPoolAction_INTERFACE_DEFINED__
 
@@ -18756,1916 +18243,6 @@ void __RPC_STUB IManagedPoolAction_LastRelease_Stub(
 #endif 	/* __IManagedPoolAction_INTERFACE_DEFINED__ */
 
 
-#ifndef __IManagedObjectInfo_INTERFACE_DEFINED__
-#define __IManagedObjectInfo_INTERFACE_DEFINED__
-
-/* interface IManagedObjectInfo */
-/* [uuid][unique][object][local] */ 
-
-
-EXTERN_C const IID IID_IManagedObjectInfo;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("1427c51a-4584-49d8-90a0-c50d8086cbe9")
-    IManagedObjectInfo : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE GetIUnknown( 
-            /* [out] */ IUnknown **pUnk) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetIObjectControl( 
-            /* [out] */ IObjectControl **pCtrl) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetInPool( 
-            /* [in] */ BOOL bInPool,
-            /* [in] */ IManagedPooledObj *pPooledObj) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetWrapperStrength( 
-            /* [in] */ BOOL bStrong) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IManagedObjectInfoVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IManagedObjectInfo * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IManagedObjectInfo * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IManagedObjectInfo * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetIUnknown )( 
-            IManagedObjectInfo * This,
-            /* [out] */ IUnknown **pUnk);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetIObjectControl )( 
-            IManagedObjectInfo * This,
-            /* [out] */ IObjectControl **pCtrl);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetInPool )( 
-            IManagedObjectInfo * This,
-            /* [in] */ BOOL bInPool,
-            /* [in] */ IManagedPooledObj *pPooledObj);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetWrapperStrength )( 
-            IManagedObjectInfo * This,
-            /* [in] */ BOOL bStrong);
-        
-        END_INTERFACE
-    } IManagedObjectInfoVtbl;
-
-    interface IManagedObjectInfo
-    {
-        CONST_VTBL struct IManagedObjectInfoVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IManagedObjectInfo_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IManagedObjectInfo_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IManagedObjectInfo_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IManagedObjectInfo_GetIUnknown(This,pUnk)	\
-    (This)->lpVtbl -> GetIUnknown(This,pUnk)
-
-#define IManagedObjectInfo_GetIObjectControl(This,pCtrl)	\
-    (This)->lpVtbl -> GetIObjectControl(This,pCtrl)
-
-#define IManagedObjectInfo_SetInPool(This,bInPool,pPooledObj)	\
-    (This)->lpVtbl -> SetInPool(This,bInPool,pPooledObj)
-
-#define IManagedObjectInfo_SetWrapperStrength(This,bStrong)	\
-    (This)->lpVtbl -> SetWrapperStrength(This,bStrong)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IManagedObjectInfo_GetIUnknown_Proxy( 
-    IManagedObjectInfo * This,
-    /* [out] */ IUnknown **pUnk);
-
-
-void __RPC_STUB IManagedObjectInfo_GetIUnknown_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IManagedObjectInfo_GetIObjectControl_Proxy( 
-    IManagedObjectInfo * This,
-    /* [out] */ IObjectControl **pCtrl);
-
-
-void __RPC_STUB IManagedObjectInfo_GetIObjectControl_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IManagedObjectInfo_SetInPool_Proxy( 
-    IManagedObjectInfo * This,
-    /* [in] */ BOOL bInPool,
-    /* [in] */ IManagedPooledObj *pPooledObj);
-
-
-void __RPC_STUB IManagedObjectInfo_SetInPool_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IManagedObjectInfo_SetWrapperStrength_Proxy( 
-    IManagedObjectInfo * This,
-    /* [in] */ BOOL bStrong);
-
-
-void __RPC_STUB IManagedObjectInfo_SetWrapperStrength_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IManagedObjectInfo_INTERFACE_DEFINED__ */
-
-
-#ifndef __IAppDomainHelper_INTERFACE_DEFINED__
-#define __IAppDomainHelper_INTERFACE_DEFINED__
-
-/* interface IAppDomainHelper */
-/* [uuid][unique][object][local] */ 
-
-
-EXTERN_C const IID IID_IAppDomainHelper;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("c7b67079-8255-42c6-9ec0-6994a3548780")
-    IAppDomainHelper : public IDispatch
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE Initialize( 
-            /* [in] */ IUnknown *pUnkAD,
-            /* [in] */ HRESULT ( STDMETHODCALLTYPE __MIDL_0028 )( 
-                void *pv),
-            /* [in] */ void *pPool) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE DoCallback( 
-            /* [in] */ IUnknown *pUnkAD,
-            /* [in] */ HRESULT ( STDMETHODCALLTYPE __MIDL_0029 )( 
-                void *pv),
-            /* [in] */ void *pPool) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IAppDomainHelperVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IAppDomainHelper * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IAppDomainHelper * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IAppDomainHelper * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetTypeInfoCount )( 
-            IAppDomainHelper * This,
-            /* [out] */ UINT *pctinfo);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetTypeInfo )( 
-            IAppDomainHelper * This,
-            /* [in] */ UINT iTInfo,
-            /* [in] */ LCID lcid,
-            /* [out] */ ITypeInfo **ppTInfo);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetIDsOfNames )( 
-            IAppDomainHelper * This,
-            /* [in] */ REFIID riid,
-            /* [size_is][in] */ LPOLESTR *rgszNames,
-            /* [in] */ UINT cNames,
-            /* [in] */ LCID lcid,
-            /* [size_is][out] */ DISPID *rgDispId);
-        
-        /* [local] */ HRESULT ( STDMETHODCALLTYPE *Invoke )( 
-            IAppDomainHelper * This,
-            /* [in] */ DISPID dispIdMember,
-            /* [in] */ REFIID riid,
-            /* [in] */ LCID lcid,
-            /* [in] */ WORD wFlags,
-            /* [out][in] */ DISPPARAMS *pDispParams,
-            /* [out] */ VARIANT *pVarResult,
-            /* [out] */ EXCEPINFO *pExcepInfo,
-            /* [out] */ UINT *puArgErr);
-        
-        HRESULT ( STDMETHODCALLTYPE *Initialize )( 
-            IAppDomainHelper * This,
-            /* [in] */ IUnknown *pUnkAD,
-            /* [in] */ HRESULT ( STDMETHODCALLTYPE __MIDL_0028 )( 
-                void *pv),
-            /* [in] */ void *pPool);
-        
-        HRESULT ( STDMETHODCALLTYPE *DoCallback )( 
-            IAppDomainHelper * This,
-            /* [in] */ IUnknown *pUnkAD,
-            /* [in] */ HRESULT ( STDMETHODCALLTYPE __MIDL_0029 )( 
-                void *pv),
-            /* [in] */ void *pPool);
-        
-        END_INTERFACE
-    } IAppDomainHelperVtbl;
-
-    interface IAppDomainHelper
-    {
-        CONST_VTBL struct IAppDomainHelperVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IAppDomainHelper_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IAppDomainHelper_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IAppDomainHelper_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IAppDomainHelper_GetTypeInfoCount(This,pctinfo)	\
-    (This)->lpVtbl -> GetTypeInfoCount(This,pctinfo)
-
-#define IAppDomainHelper_GetTypeInfo(This,iTInfo,lcid,ppTInfo)	\
-    (This)->lpVtbl -> GetTypeInfo(This,iTInfo,lcid,ppTInfo)
-
-#define IAppDomainHelper_GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)	\
-    (This)->lpVtbl -> GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)
-
-#define IAppDomainHelper_Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)	\
-    (This)->lpVtbl -> Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)
-
-
-#define IAppDomainHelper_Initialize(This,pUnkAD,__MIDL_0028,pPool)	\
-    (This)->lpVtbl -> Initialize(This,pUnkAD,__MIDL_0028,pPool)
-
-#define IAppDomainHelper_DoCallback(This,pUnkAD,__MIDL_0029,pPool)	\
-    (This)->lpVtbl -> DoCallback(This,pUnkAD,__MIDL_0029,pPool)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IAppDomainHelper_Initialize_Proxy( 
-    IAppDomainHelper * This,
-    /* [in] */ IUnknown *pUnkAD,
-    /* [in] */ HRESULT ( STDMETHODCALLTYPE __MIDL_0028 )( 
-        void *pv),
-    /* [in] */ void *pPool);
-
-
-void __RPC_STUB IAppDomainHelper_Initialize_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IAppDomainHelper_DoCallback_Proxy( 
-    IAppDomainHelper * This,
-    /* [in] */ IUnknown *pUnkAD,
-    /* [in] */ HRESULT ( STDMETHODCALLTYPE __MIDL_0029 )( 
-        void *pv),
-    /* [in] */ void *pPool);
-
-
-void __RPC_STUB IAppDomainHelper_DoCallback_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IAppDomainHelper_INTERFACE_DEFINED__ */
-
-
-#ifndef __IAssemblyLocator_INTERFACE_DEFINED__
-#define __IAssemblyLocator_INTERFACE_DEFINED__
-
-/* interface IAssemblyLocator */
-/* [object][oleautomation][unique][helpstring][uuid] */ 
-
-
-EXTERN_C const IID IID_IAssemblyLocator;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("391ffbb9-a8ee-432a-abc8-baa238dab90f")
-    IAssemblyLocator : public IDispatch
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE GetModules( 
-            /* [in] */ BSTR applicationDir,
-            /* [in] */ BSTR applicationName,
-            /* [in] */ BSTR assemblyName,
-            /* [retval][out] */ SAFEARRAY * *pModules) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IAssemblyLocatorVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IAssemblyLocator * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IAssemblyLocator * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IAssemblyLocator * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetTypeInfoCount )( 
-            IAssemblyLocator * This,
-            /* [out] */ UINT *pctinfo);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetTypeInfo )( 
-            IAssemblyLocator * This,
-            /* [in] */ UINT iTInfo,
-            /* [in] */ LCID lcid,
-            /* [out] */ ITypeInfo **ppTInfo);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetIDsOfNames )( 
-            IAssemblyLocator * This,
-            /* [in] */ REFIID riid,
-            /* [size_is][in] */ LPOLESTR *rgszNames,
-            /* [in] */ UINT cNames,
-            /* [in] */ LCID lcid,
-            /* [size_is][out] */ DISPID *rgDispId);
-        
-        /* [local] */ HRESULT ( STDMETHODCALLTYPE *Invoke )( 
-            IAssemblyLocator * This,
-            /* [in] */ DISPID dispIdMember,
-            /* [in] */ REFIID riid,
-            /* [in] */ LCID lcid,
-            /* [in] */ WORD wFlags,
-            /* [out][in] */ DISPPARAMS *pDispParams,
-            /* [out] */ VARIANT *pVarResult,
-            /* [out] */ EXCEPINFO *pExcepInfo,
-            /* [out] */ UINT *puArgErr);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetModules )( 
-            IAssemblyLocator * This,
-            /* [in] */ BSTR applicationDir,
-            /* [in] */ BSTR applicationName,
-            /* [in] */ BSTR assemblyName,
-            /* [retval][out] */ SAFEARRAY * *pModules);
-        
-        END_INTERFACE
-    } IAssemblyLocatorVtbl;
-
-    interface IAssemblyLocator
-    {
-        CONST_VTBL struct IAssemblyLocatorVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IAssemblyLocator_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IAssemblyLocator_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IAssemblyLocator_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IAssemblyLocator_GetTypeInfoCount(This,pctinfo)	\
-    (This)->lpVtbl -> GetTypeInfoCount(This,pctinfo)
-
-#define IAssemblyLocator_GetTypeInfo(This,iTInfo,lcid,ppTInfo)	\
-    (This)->lpVtbl -> GetTypeInfo(This,iTInfo,lcid,ppTInfo)
-
-#define IAssemblyLocator_GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)	\
-    (This)->lpVtbl -> GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)
-
-#define IAssemblyLocator_Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)	\
-    (This)->lpVtbl -> Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)
-
-
-#define IAssemblyLocator_GetModules(This,applicationDir,applicationName,assemblyName,pModules)	\
-    (This)->lpVtbl -> GetModules(This,applicationDir,applicationName,assemblyName,pModules)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IAssemblyLocator_GetModules_Proxy( 
-    IAssemblyLocator * This,
-    /* [in] */ BSTR applicationDir,
-    /* [in] */ BSTR applicationName,
-    /* [in] */ BSTR assemblyName,
-    /* [retval][out] */ SAFEARRAY * *pModules);
-
-
-void __RPC_STUB IAssemblyLocator_GetModules_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IAssemblyLocator_INTERFACE_DEFINED__ */
-
-
-#ifndef __IManagedActivationEvents_INTERFACE_DEFINED__
-#define __IManagedActivationEvents_INTERFACE_DEFINED__
-
-/* interface IManagedActivationEvents */
-/* [uuid][unique][object][local] */ 
-
-
-EXTERN_C const IID IID_IManagedActivationEvents;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("a5f325af-572f-46da-b8ab-827c3d95d99e")
-    IManagedActivationEvents : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE CreateManagedStub( 
-            /* [in] */ IManagedObjectInfo *pInfo,
-            /* [in] */ BOOL fDist) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE DestroyManagedStub( 
-            /* [in] */ IManagedObjectInfo *pInfo) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IManagedActivationEventsVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IManagedActivationEvents * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IManagedActivationEvents * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IManagedActivationEvents * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *CreateManagedStub )( 
-            IManagedActivationEvents * This,
-            /* [in] */ IManagedObjectInfo *pInfo,
-            /* [in] */ BOOL fDist);
-        
-        HRESULT ( STDMETHODCALLTYPE *DestroyManagedStub )( 
-            IManagedActivationEvents * This,
-            /* [in] */ IManagedObjectInfo *pInfo);
-        
-        END_INTERFACE
-    } IManagedActivationEventsVtbl;
-
-    interface IManagedActivationEvents
-    {
-        CONST_VTBL struct IManagedActivationEventsVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IManagedActivationEvents_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IManagedActivationEvents_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IManagedActivationEvents_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IManagedActivationEvents_CreateManagedStub(This,pInfo,fDist)	\
-    (This)->lpVtbl -> CreateManagedStub(This,pInfo,fDist)
-
-#define IManagedActivationEvents_DestroyManagedStub(This,pInfo)	\
-    (This)->lpVtbl -> DestroyManagedStub(This,pInfo)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IManagedActivationEvents_CreateManagedStub_Proxy( 
-    IManagedActivationEvents * This,
-    /* [in] */ IManagedObjectInfo *pInfo,
-    /* [in] */ BOOL fDist);
-
-
-void __RPC_STUB IManagedActivationEvents_CreateManagedStub_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IManagedActivationEvents_DestroyManagedStub_Proxy( 
-    IManagedActivationEvents * This,
-    /* [in] */ IManagedObjectInfo *pInfo);
-
-
-void __RPC_STUB IManagedActivationEvents_DestroyManagedStub_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IManagedActivationEvents_INTERFACE_DEFINED__ */
-
-
-#ifndef __ISendMethodEvents_INTERFACE_DEFINED__
-#define __ISendMethodEvents_INTERFACE_DEFINED__
-
-/* interface ISendMethodEvents */
-/* [uuid][unique][object][local] */ 
-
-
-EXTERN_C const IID IID_ISendMethodEvents;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("2732fd59-b2b4-4d44-878c-8b8f09626008")
-    ISendMethodEvents : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE SendMethodCall( 
-            /* [in] */ const void *pIdentity,
-            /* [in] */ REFIID riid,
-            /* [in] */ DWORD dwMeth) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SendMethodReturn( 
-            /* [in] */ const void *pIdentity,
-            /* [in] */ REFIID riid,
-            /* [in] */ DWORD dwMeth,
-            /* [in] */ HRESULT hrCall,
-            /* [in] */ HRESULT hrServer) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct ISendMethodEventsVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ISendMethodEvents * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ISendMethodEvents * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            ISendMethodEvents * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *SendMethodCall )( 
-            ISendMethodEvents * This,
-            /* [in] */ const void *pIdentity,
-            /* [in] */ REFIID riid,
-            /* [in] */ DWORD dwMeth);
-        
-        HRESULT ( STDMETHODCALLTYPE *SendMethodReturn )( 
-            ISendMethodEvents * This,
-            /* [in] */ const void *pIdentity,
-            /* [in] */ REFIID riid,
-            /* [in] */ DWORD dwMeth,
-            /* [in] */ HRESULT hrCall,
-            /* [in] */ HRESULT hrServer);
-        
-        END_INTERFACE
-    } ISendMethodEventsVtbl;
-
-    interface ISendMethodEvents
-    {
-        CONST_VTBL struct ISendMethodEventsVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define ISendMethodEvents_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define ISendMethodEvents_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define ISendMethodEvents_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define ISendMethodEvents_SendMethodCall(This,pIdentity,riid,dwMeth)	\
-    (This)->lpVtbl -> SendMethodCall(This,pIdentity,riid,dwMeth)
-
-#define ISendMethodEvents_SendMethodReturn(This,pIdentity,riid,dwMeth,hrCall,hrServer)	\
-    (This)->lpVtbl -> SendMethodReturn(This,pIdentity,riid,dwMeth,hrCall,hrServer)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE ISendMethodEvents_SendMethodCall_Proxy( 
-    ISendMethodEvents * This,
-    /* [in] */ const void *pIdentity,
-    /* [in] */ REFIID riid,
-    /* [in] */ DWORD dwMeth);
-
-
-void __RPC_STUB ISendMethodEvents_SendMethodCall_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE ISendMethodEvents_SendMethodReturn_Proxy( 
-    ISendMethodEvents * This,
-    /* [in] */ const void *pIdentity,
-    /* [in] */ REFIID riid,
-    /* [in] */ DWORD dwMeth,
-    /* [in] */ HRESULT hrCall,
-    /* [in] */ HRESULT hrServer);
-
-
-void __RPC_STUB ISendMethodEvents_SendMethodReturn_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __ISendMethodEvents_INTERFACE_DEFINED__ */
-
-
-/* interface __MIDL_itf_autosvcs_0406 */
-/* [local] */ 
-
-
-
-
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0406_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0406_v0_0_s_ifspec;
-
-#ifndef __ITransactionResourcePool_INTERFACE_DEFINED__
-#define __ITransactionResourcePool_INTERFACE_DEFINED__
-
-/* interface ITransactionResourcePool */
-/* [object][unique][local][helpstring][uuid] */ 
-
-
-EXTERN_C const IID IID_ITransactionResourcePool;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("C5FEB7C1-346A-11D1-B1CC-00AA00BA3258")
-    ITransactionResourcePool : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE PutResource( 
-            /* [in] */ IObjPool *pPool,
-            /* [in] */ IUnknown *pUnk) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetResource( 
-            /* [in] */ IObjPool *pPool,
-            /* [out] */ IUnknown **ppUnk) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct ITransactionResourcePoolVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ITransactionResourcePool * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ITransactionResourcePool * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            ITransactionResourcePool * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *PutResource )( 
-            ITransactionResourcePool * This,
-            /* [in] */ IObjPool *pPool,
-            /* [in] */ IUnknown *pUnk);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetResource )( 
-            ITransactionResourcePool * This,
-            /* [in] */ IObjPool *pPool,
-            /* [out] */ IUnknown **ppUnk);
-        
-        END_INTERFACE
-    } ITransactionResourcePoolVtbl;
-
-    interface ITransactionResourcePool
-    {
-        CONST_VTBL struct ITransactionResourcePoolVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define ITransactionResourcePool_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define ITransactionResourcePool_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define ITransactionResourcePool_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define ITransactionResourcePool_PutResource(This,pPool,pUnk)	\
-    (This)->lpVtbl -> PutResource(This,pPool,pUnk)
-
-#define ITransactionResourcePool_GetResource(This,pPool,ppUnk)	\
-    (This)->lpVtbl -> GetResource(This,pPool,ppUnk)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE ITransactionResourcePool_PutResource_Proxy( 
-    ITransactionResourcePool * This,
-    /* [in] */ IObjPool *pPool,
-    /* [in] */ IUnknown *pUnk);
-
-
-void __RPC_STUB ITransactionResourcePool_PutResource_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE ITransactionResourcePool_GetResource_Proxy( 
-    ITransactionResourcePool * This,
-    /* [in] */ IObjPool *pPool,
-    /* [out] */ IUnknown **ppUnk);
-
-
-void __RPC_STUB ITransactionResourcePool_GetResource_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __ITransactionResourcePool_INTERFACE_DEFINED__ */
-
-
-/* interface __MIDL_itf_autosvcs_0407 */
-/* [local] */ 
-
-EXTERN_C HRESULT __stdcall MTSCreateActivity ( REFIID riid, void** ppobj );
-
-
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0407_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_autosvcs_0407_v0_0_s_ifspec;
-
-#ifndef __IMTSCall_INTERFACE_DEFINED__
-#define __IMTSCall_INTERFACE_DEFINED__
-
-/* interface IMTSCall */
-/* [object][unique][uuid][local] */ 
-
-
-EXTERN_C const IID IID_IMTSCall;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("51372AEF-CAE7-11CF-BE81-00AA00A2FA25")
-    IMTSCall : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE OnCall( void) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IMTSCallVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IMTSCall * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IMTSCall * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IMTSCall * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *OnCall )( 
-            IMTSCall * This);
-        
-        END_INTERFACE
-    } IMTSCallVtbl;
-
-    interface IMTSCall
-    {
-        CONST_VTBL struct IMTSCallVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IMTSCall_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IMTSCall_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IMTSCall_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IMTSCall_OnCall(This)	\
-    (This)->lpVtbl -> OnCall(This)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IMTSCall_OnCall_Proxy( 
-    IMTSCall * This);
-
-
-void __RPC_STUB IMTSCall_OnCall_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IMTSCall_INTERFACE_DEFINED__ */
-
-
-#ifndef __IContextProperties_INTERFACE_DEFINED__
-#define __IContextProperties_INTERFACE_DEFINED__
-
-/* interface IContextProperties */
-/* [object][unique][uuid][local] */ 
-
-
-EXTERN_C const IID IID_IContextProperties;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("D396DA85-BF8F-11d1-BBAE-00C04FC2FA5F")
-    IContextProperties : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE Count( 
-            /* [retval][out] */ long *plCount) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetProperty( 
-            /* [in] */ BSTR name,
-            /* [retval][out] */ VARIANT *pProperty) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE EnumNames( 
-            /* [retval][out] */ IEnumNames **ppenum) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetProperty( 
-            /* [in] */ BSTR name,
-            /* [in] */ VARIANT property) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE RemoveProperty( 
-            /* [in] */ BSTR name) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IContextPropertiesVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IContextProperties * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IContextProperties * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IContextProperties * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Count )( 
-            IContextProperties * This,
-            /* [retval][out] */ long *plCount);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetProperty )( 
-            IContextProperties * This,
-            /* [in] */ BSTR name,
-            /* [retval][out] */ VARIANT *pProperty);
-        
-        HRESULT ( STDMETHODCALLTYPE *EnumNames )( 
-            IContextProperties * This,
-            /* [retval][out] */ IEnumNames **ppenum);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetProperty )( 
-            IContextProperties * This,
-            /* [in] */ BSTR name,
-            /* [in] */ VARIANT property);
-        
-        HRESULT ( STDMETHODCALLTYPE *RemoveProperty )( 
-            IContextProperties * This,
-            /* [in] */ BSTR name);
-        
-        END_INTERFACE
-    } IContextPropertiesVtbl;
-
-    interface IContextProperties
-    {
-        CONST_VTBL struct IContextPropertiesVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IContextProperties_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IContextProperties_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IContextProperties_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IContextProperties_Count(This,plCount)	\
-    (This)->lpVtbl -> Count(This,plCount)
-
-#define IContextProperties_GetProperty(This,name,pProperty)	\
-    (This)->lpVtbl -> GetProperty(This,name,pProperty)
-
-#define IContextProperties_EnumNames(This,ppenum)	\
-    (This)->lpVtbl -> EnumNames(This,ppenum)
-
-#define IContextProperties_SetProperty(This,name,property)	\
-    (This)->lpVtbl -> SetProperty(This,name,property)
-
-#define IContextProperties_RemoveProperty(This,name)	\
-    (This)->lpVtbl -> RemoveProperty(This,name)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IContextProperties_Count_Proxy( 
-    IContextProperties * This,
-    /* [retval][out] */ long *plCount);
-
-
-void __RPC_STUB IContextProperties_Count_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IContextProperties_GetProperty_Proxy( 
-    IContextProperties * This,
-    /* [in] */ BSTR name,
-    /* [retval][out] */ VARIANT *pProperty);
-
-
-void __RPC_STUB IContextProperties_GetProperty_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IContextProperties_EnumNames_Proxy( 
-    IContextProperties * This,
-    /* [retval][out] */ IEnumNames **ppenum);
-
-
-void __RPC_STUB IContextProperties_EnumNames_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IContextProperties_SetProperty_Proxy( 
-    IContextProperties * This,
-    /* [in] */ BSTR name,
-    /* [in] */ VARIANT property);
-
-
-void __RPC_STUB IContextProperties_SetProperty_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IContextProperties_RemoveProperty_Proxy( 
-    IContextProperties * This,
-    /* [in] */ BSTR name);
-
-
-void __RPC_STUB IContextProperties_RemoveProperty_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IContextProperties_INTERFACE_DEFINED__ */
-
-
-#ifndef __IObjPool_INTERFACE_DEFINED__
-#define __IObjPool_INTERFACE_DEFINED__
-
-/* interface IObjPool */
-/* [uuid][unique][object][local] */ 
-
-
-EXTERN_C const IID IID_IObjPool;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("7D8805A0-2EA7-11D1-B1CC-00AA00BA3258")
-    IObjPool : public IUnknown
-    {
-    public:
-        virtual void STDMETHODCALLTYPE Reserved1( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved2( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved3( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved4( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE PutEndTx( 
-            IUnknown *pObj) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved5( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved6( void) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IObjPoolVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IObjPool * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IObjPool * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IObjPool * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved1 )( 
-            IObjPool * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved2 )( 
-            IObjPool * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved3 )( 
-            IObjPool * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved4 )( 
-            IObjPool * This);
-        
-        void ( STDMETHODCALLTYPE *PutEndTx )( 
-            IObjPool * This,
-            IUnknown *pObj);
-        
-        void ( STDMETHODCALLTYPE *Reserved5 )( 
-            IObjPool * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved6 )( 
-            IObjPool * This);
-        
-        END_INTERFACE
-    } IObjPoolVtbl;
-
-    interface IObjPool
-    {
-        CONST_VTBL struct IObjPoolVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IObjPool_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IObjPool_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IObjPool_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IObjPool_Reserved1(This)	\
-    (This)->lpVtbl -> Reserved1(This)
-
-#define IObjPool_Reserved2(This)	\
-    (This)->lpVtbl -> Reserved2(This)
-
-#define IObjPool_Reserved3(This)	\
-    (This)->lpVtbl -> Reserved3(This)
-
-#define IObjPool_Reserved4(This)	\
-    (This)->lpVtbl -> Reserved4(This)
-
-#define IObjPool_PutEndTx(This,pObj)	\
-    (This)->lpVtbl -> PutEndTx(This,pObj)
-
-#define IObjPool_Reserved5(This)	\
-    (This)->lpVtbl -> Reserved5(This)
-
-#define IObjPool_Reserved6(This)	\
-    (This)->lpVtbl -> Reserved6(This)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-void STDMETHODCALLTYPE IObjPool_Reserved1_Proxy( 
-    IObjPool * This);
-
-
-void __RPC_STUB IObjPool_Reserved1_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE IObjPool_Reserved2_Proxy( 
-    IObjPool * This);
-
-
-void __RPC_STUB IObjPool_Reserved2_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE IObjPool_Reserved3_Proxy( 
-    IObjPool * This);
-
-
-void __RPC_STUB IObjPool_Reserved3_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE IObjPool_Reserved4_Proxy( 
-    IObjPool * This);
-
-
-void __RPC_STUB IObjPool_Reserved4_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE IObjPool_PutEndTx_Proxy( 
-    IObjPool * This,
-    IUnknown *pObj);
-
-
-void __RPC_STUB IObjPool_PutEndTx_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE IObjPool_Reserved5_Proxy( 
-    IObjPool * This);
-
-
-void __RPC_STUB IObjPool_Reserved5_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE IObjPool_Reserved6_Proxy( 
-    IObjPool * This);
-
-
-void __RPC_STUB IObjPool_Reserved6_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IObjPool_INTERFACE_DEFINED__ */
-
-
-#ifndef __ITransactionProperty_INTERFACE_DEFINED__
-#define __ITransactionProperty_INTERFACE_DEFINED__
-
-/* interface ITransactionProperty */
-/* [uuid][unique][object][local] */ 
-
-
-EXTERN_C const IID IID_ITransactionProperty;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("788ea814-87b1-11d1-bba6-00c04fc2fa5f")
-    ITransactionProperty : public IUnknown
-    {
-    public:
-        virtual void STDMETHODCALLTYPE Reserved1( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved2( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved3( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved4( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved5( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved6( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved7( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved8( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved9( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetTransactionResourcePool( 
-            /* [out] */ ITransactionResourcePool **ppTxPool) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved10( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved11( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved12( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved13( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved14( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved15( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved16( void) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved17( void) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct ITransactionPropertyVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ITransactionProperty * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ITransactionProperty * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved1 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved2 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved3 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved4 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved5 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved6 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved7 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved8 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved9 )( 
-            ITransactionProperty * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetTransactionResourcePool )( 
-            ITransactionProperty * This,
-            /* [out] */ ITransactionResourcePool **ppTxPool);
-        
-        void ( STDMETHODCALLTYPE *Reserved10 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved11 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved12 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved13 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved14 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved15 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved16 )( 
-            ITransactionProperty * This);
-        
-        void ( STDMETHODCALLTYPE *Reserved17 )( 
-            ITransactionProperty * This);
-        
-        END_INTERFACE
-    } ITransactionPropertyVtbl;
-
-    interface ITransactionProperty
-    {
-        CONST_VTBL struct ITransactionPropertyVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define ITransactionProperty_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define ITransactionProperty_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define ITransactionProperty_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define ITransactionProperty_Reserved1(This)	\
-    (This)->lpVtbl -> Reserved1(This)
-
-#define ITransactionProperty_Reserved2(This)	\
-    (This)->lpVtbl -> Reserved2(This)
-
-#define ITransactionProperty_Reserved3(This)	\
-    (This)->lpVtbl -> Reserved3(This)
-
-#define ITransactionProperty_Reserved4(This)	\
-    (This)->lpVtbl -> Reserved4(This)
-
-#define ITransactionProperty_Reserved5(This)	\
-    (This)->lpVtbl -> Reserved5(This)
-
-#define ITransactionProperty_Reserved6(This)	\
-    (This)->lpVtbl -> Reserved6(This)
-
-#define ITransactionProperty_Reserved7(This)	\
-    (This)->lpVtbl -> Reserved7(This)
-
-#define ITransactionProperty_Reserved8(This)	\
-    (This)->lpVtbl -> Reserved8(This)
-
-#define ITransactionProperty_Reserved9(This)	\
-    (This)->lpVtbl -> Reserved9(This)
-
-#define ITransactionProperty_GetTransactionResourcePool(This,ppTxPool)	\
-    (This)->lpVtbl -> GetTransactionResourcePool(This,ppTxPool)
-
-#define ITransactionProperty_Reserved10(This)	\
-    (This)->lpVtbl -> Reserved10(This)
-
-#define ITransactionProperty_Reserved11(This)	\
-    (This)->lpVtbl -> Reserved11(This)
-
-#define ITransactionProperty_Reserved12(This)	\
-    (This)->lpVtbl -> Reserved12(This)
-
-#define ITransactionProperty_Reserved13(This)	\
-    (This)->lpVtbl -> Reserved13(This)
-
-#define ITransactionProperty_Reserved14(This)	\
-    (This)->lpVtbl -> Reserved14(This)
-
-#define ITransactionProperty_Reserved15(This)	\
-    (This)->lpVtbl -> Reserved15(This)
-
-#define ITransactionProperty_Reserved16(This)	\
-    (This)->lpVtbl -> Reserved16(This)
-
-#define ITransactionProperty_Reserved17(This)	\
-    (This)->lpVtbl -> Reserved17(This)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved1_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved1_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved2_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved2_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved3_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved3_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved4_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved4_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved5_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved5_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved6_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved6_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved7_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved7_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved8_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved8_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved9_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved9_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE ITransactionProperty_GetTransactionResourcePool_Proxy( 
-    ITransactionProperty * This,
-    /* [out] */ ITransactionResourcePool **ppTxPool);
-
-
-void __RPC_STUB ITransactionProperty_GetTransactionResourcePool_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved10_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved10_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved11_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved11_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved12_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved12_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved13_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved13_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved14_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved14_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved15_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved15_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved16_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved16_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE ITransactionProperty_Reserved17_Proxy( 
-    ITransactionProperty * This);
-
-
-void __RPC_STUB ITransactionProperty_Reserved17_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __ITransactionProperty_INTERFACE_DEFINED__ */
-
-
-#ifndef __IMTSActivity_INTERFACE_DEFINED__
-#define __IMTSActivity_INTERFACE_DEFINED__
-
-/* interface IMTSActivity */
-/* [object][unique][uuid][local] */ 
-
-
-EXTERN_C const IID IID_IMTSActivity;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("51372AF0-CAE7-11CF-BE81-00AA00A2FA25")
-    IMTSActivity : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE SynchronousCall( 
-            /* [in] */ IMTSCall *pCall) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE AsyncCall( 
-            /* [in] */ IMTSCall *pCall) = 0;
-        
-        virtual void STDMETHODCALLTYPE Reserved1( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE BindToCurrentThread( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE UnbindFromThread( void) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IMTSActivityVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IMTSActivity * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IMTSActivity * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IMTSActivity * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *SynchronousCall )( 
-            IMTSActivity * This,
-            /* [in] */ IMTSCall *pCall);
-        
-        HRESULT ( STDMETHODCALLTYPE *AsyncCall )( 
-            IMTSActivity * This,
-            /* [in] */ IMTSCall *pCall);
-        
-        void ( STDMETHODCALLTYPE *Reserved1 )( 
-            IMTSActivity * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *BindToCurrentThread )( 
-            IMTSActivity * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *UnbindFromThread )( 
-            IMTSActivity * This);
-        
-        END_INTERFACE
-    } IMTSActivityVtbl;
-
-    interface IMTSActivity
-    {
-        CONST_VTBL struct IMTSActivityVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IMTSActivity_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IMTSActivity_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IMTSActivity_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IMTSActivity_SynchronousCall(This,pCall)	\
-    (This)->lpVtbl -> SynchronousCall(This,pCall)
-
-#define IMTSActivity_AsyncCall(This,pCall)	\
-    (This)->lpVtbl -> AsyncCall(This,pCall)
-
-#define IMTSActivity_Reserved1(This)	\
-    (This)->lpVtbl -> Reserved1(This)
-
-#define IMTSActivity_BindToCurrentThread(This)	\
-    (This)->lpVtbl -> BindToCurrentThread(This)
-
-#define IMTSActivity_UnbindFromThread(This)	\
-    (This)->lpVtbl -> UnbindFromThread(This)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IMTSActivity_SynchronousCall_Proxy( 
-    IMTSActivity * This,
-    /* [in] */ IMTSCall *pCall);
-
-
-void __RPC_STUB IMTSActivity_SynchronousCall_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IMTSActivity_AsyncCall_Proxy( 
-    IMTSActivity * This,
-    /* [in] */ IMTSCall *pCall);
-
-
-void __RPC_STUB IMTSActivity_AsyncCall_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-void STDMETHODCALLTYPE IMTSActivity_Reserved1_Proxy( 
-    IMTSActivity * This);
-
-
-void __RPC_STUB IMTSActivity_Reserved1_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IMTSActivity_BindToCurrentThread_Proxy( 
-    IMTSActivity * This);
-
-
-void __RPC_STUB IMTSActivity_BindToCurrentThread_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IMTSActivity_UnbindFromThread_Proxy( 
-    IMTSActivity * This);
-
-
-void __RPC_STUB IMTSActivity_UnbindFromThread_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IMTSActivity_INTERFACE_DEFINED__ */
-
-
 
 #ifndef __COMSVCSLib_LIBRARY_DEFINED__
 #define __COMSVCSLib_LIBRARY_DEFINED__
@@ -20676,7 +18253,7 @@ void __RPC_STUB IMTSActivity_UnbindFromThread_Stub(
 
 
 typedef /* [public][helpcontext][helpstring] */ 
-enum __MIDL___MIDL_itf_autosvcs_0412_0001
+enum __MIDL___MIDL_itf_autosvcs_0390_0001
     {	mtsErrCtxAborted	= 0x8004e002,
 	mtsErrCtxAborting	= 0x8004e003,
 	mtsErrCtxNoContext	= 0x8004e004,
@@ -20707,13 +18284,13 @@ enum __MIDL___MIDL_itf_autosvcs_0412_0001
 
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_autosvcs_0412_0002
+enum __MIDL___MIDL_itf_autosvcs_0390_0002
     {	LockSetGet	= 0,
 	LockMethod	= LockSetGet + 1
     } 	LockModes;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_autosvcs_0412_0003
+enum __MIDL___MIDL_itf_autosvcs_0390_0003
     {	Standard	= 0,
 	Process	= Standard + 1
     } 	ReleaseModes;
@@ -20817,22 +18394,6 @@ EXTERN_C const CLSID CLSID_CServiceConfig;
 
 class DECLSPEC_UUID("ecabb0c8-7f19-11d2-978e-0000f8757e2a")
 CServiceConfig;
-#endif
-
-EXTERN_C const CLSID CLSID_ServicePool;
-
-#ifdef __cplusplus
-
-class DECLSPEC_UUID("ecabb0c9-7f19-11d2-978e-0000f8757e2a")
-ServicePool;
-#endif
-
-EXTERN_C const CLSID CLSID_ServicePoolConfig;
-
-#ifdef __cplusplus
-
-class DECLSPEC_UUID("ecabb0ca-7f19-11d2-978e-0000f8757e2a")
-ServicePoolConfig;
 #endif
 
 EXTERN_C const CLSID CLSID_SharedProperty;
@@ -20954,22 +18515,6 @@ EXTERN_C const CLSID CLSID_EventServer;
 class DECLSPEC_UUID("ecabafbc-7f19-11d2-978e-0000f8757e2a")
 EventServer;
 #endif
-
-EXTERN_C const CLSID CLSID_AppDomainHelper;
-
-#ifdef __cplusplus
-
-class DECLSPEC_UUID("ef24f689-14f8-4d92-b4af-d7b1f0e70fd4")
-AppDomainHelper;
-#endif
-
-EXTERN_C const CLSID CLSID_ClrAssemblyLocator;
-
-#ifdef __cplusplus
-
-class DECLSPEC_UUID("458aa3b5-265a-4b75-bc05-9bea4630cf18")
-ClrAssemblyLocator;
-#endif
 #endif /* __COMSVCSLib_LIBRARY_DEFINED__ */
 
 /* Additional Prototypes for ALL interfaces */
@@ -20978,11 +18523,6 @@ unsigned long             __RPC_USER  BSTR_UserSize(     unsigned long *, unsign
 unsigned char * __RPC_USER  BSTR_UserMarshal(  unsigned long *, unsigned char *, BSTR * ); 
 unsigned char * __RPC_USER  BSTR_UserUnmarshal(unsigned long *, unsigned char *, BSTR * ); 
 void                      __RPC_USER  BSTR_UserFree(     unsigned long *, BSTR * ); 
-
-unsigned long             __RPC_USER  LPSAFEARRAY_UserSize(     unsigned long *, unsigned long            , LPSAFEARRAY * ); 
-unsigned char * __RPC_USER  LPSAFEARRAY_UserMarshal(  unsigned long *, unsigned char *, LPSAFEARRAY * ); 
-unsigned char * __RPC_USER  LPSAFEARRAY_UserUnmarshal(unsigned long *, unsigned char *, LPSAFEARRAY * ); 
-void                      __RPC_USER  LPSAFEARRAY_UserFree(     unsigned long *, LPSAFEARRAY * ); 
 
 unsigned long             __RPC_USER  VARIANT_UserSize(     unsigned long *, unsigned long            , VARIANT * ); 
 unsigned char * __RPC_USER  VARIANT_UserMarshal(  unsigned long *, unsigned char *, VARIANT * ); 

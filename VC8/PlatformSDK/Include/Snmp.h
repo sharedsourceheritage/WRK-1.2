@@ -165,8 +165,7 @@ typedef struct {
 #define ASN_TIMETICKS               (ASN_APPLICATION | ASN_PRIMITIVE | 0x03)
 #define ASN_OPAQUE                  (ASN_APPLICATION | ASN_PRIMITIVE | 0x04)
 #define ASN_COUNTER64               (ASN_APPLICATION | ASN_PRIMITIVE | 0x06)
-#define ASN_UINTEGER32              (ASN_APPLICATION | ASN_PRIMITIVE | 0x07)
-#define ASN_RFC2578_UNSIGNED32      ASN_GAUGE32
+#define ASN_UNSIGNED32              (ASN_APPLICATION | ASN_PRIMITIVE | 0x07)
 
 ///////////////////////////////////////////////////////////////////////////////
 //                                                                           //
@@ -658,7 +657,6 @@ SnmpUtilDbgPrint(
 #define AsnInteger                      AsnInteger32
 #define AsnCounter                      AsnCounter32
 #define AsnGauge                        AsnGauge32
-#define ASN_UNSIGNED32                  ASN_UINTEGER32
 
 #endif // SNMPSTRICT
 

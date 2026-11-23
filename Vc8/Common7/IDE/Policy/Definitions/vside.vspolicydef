@@ -1,0 +1,3145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- vside.vspolicydef -->
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. -->
+
+<!-- This file contains element and feature definitions for most standard Visual -->
+<!-- Studio Projects, Project Items, CodeTypes, VariableTypes and Features. -->
+<!--  -->
+<!-- Beta 1: This file is not yet complete -->
+<!--  -->
+<PolicyDefinitions Version="8.0" xmlns="http://schemas.microsoft.com/VSPolicy/PDLSchema">
+    <ElementDefs>
+        <CodeType Id="codeWinForm">
+            <Identifiers>
+                <Inherits>System.Windows.Forms.Form</Inherits>
+            </Identifiers>
+            <FeatureLinks>
+                <CommandLinks>
+                    <CommandLink>menuProject.AddWindowsForm</CommandLink>
+                </CommandLinks>
+            </FeatureLinks>
+            <Prototypes>
+                <Prototype Language="CSharp">windowsform.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">Form.vstemplate</Prototype>
+                <Prototype Language="JSharp">windowsform.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\AddMC++WinForm.vsz</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeComponent">
+            <Identifiers>
+                <Inherits>System.ComponentModel.Component</Inherits>
+            </Identifiers>
+            <FeatureLinks>
+                <CommandLinks>
+                    <CommandLink>menuProject.AddComponent</CommandLink>
+                </CommandLinks>
+            </FeatureLinks>
+            <Prototypes>
+                <Prototype Language="CSharp">Component.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">Component.vstemplate</Prototype>
+                <Prototype Language="JSharp">Component.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\AddMC++ComponentClass.vsz</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeUserControl">
+            <Identifiers>
+                <Inherits>System.Windows.Forms.UserControl</Inherits>
+            </Identifiers>
+            <FeatureLinks>
+                <CommandLinks>
+                    <CommandLink>menuProject.AddUserControl</CommandLink>
+                </CommandLinks>
+            </FeatureLinks>
+            <Prototypes>
+                <Prototype Language="CSharp">UserControl.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">UserControl.vstemplate</Prototype>
+                <Prototype Language="JSharp">UserControl.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\AddMC++UserControl.vsz</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeWebControlLibrary">
+            <Identifiers>
+                <Inherits>System.Web.UI.WebControls.WebControl</Inherits>
+            </Identifiers>
+			<FeatureLinks>
+				<CommandLinks>
+					<CommandLink>menuProject.AddWebUserControl</CommandLink>
+				</CommandLinks>
+			</FeatureLinks>
+			<Prototypes>
+                <Prototype Language="Web\CSharp">WebControlLibrary.vstemplate</Prototype>
+				<Prototype Language="Web\JSharp">WebControlLibary.vstemplate</Prototype>
+				<Prototype Language="Web\VisualBasic">WebControl.vstemplate</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeWebService">
+            <Identifiers>
+                <Inherits>System.Web.Services.WebService</Inherits>
+            </Identifiers>
+            <FeatureLinks>
+                <CommandLinks>
+                    <CommandLink>menuProject.AddWebService</CommandLink>
+                </CommandLinks>
+            </FeatureLinks>
+            <Prototypes>
+                <Prototype Language="Web\CSharp">WebService.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">WebService.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">WebService.vstemplate</Prototype>
+				<Prototype>[VC]\VCProjects\MC++WebService.vsz</Prototype>
+				<Prototype>[VC]\VCProjectItems\AddMC++WebSvc.vsz</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeUserService">
+            <Identifiers>
+                <Inherits>System.ServiceProcess.UserNTService</Inherits>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="VisualBasic">UserService.vstemplate</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeWebForm">
+            <Identifiers>
+                <Inherits>System.Web.UI.Page</Inherits>
+            </Identifiers>
+            <FeatureLinks>
+                <CommandLinks>
+                    <CommandLink>menuProject.AddWebForm</CommandLink>
+                </CommandLinks>
+            </FeatureLinks>
+            <Prototypes>
+                <Prototype Language="Web\CSharp">WebForm.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">WebForm.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">WebForm.vstemplate</Prototype>
+            </Prototypes>
+        </CodeType>
+		<CodeType Id ="codeWebMasterPage">
+			<Identifiers>
+				<Inherits>System.Web.UI.MasterPage</Inherits>
+			</Identifiers>
+			<FeatureLinks>
+				<CommandLinks>
+					<CommandLink>menuProject.AddMasterPage</CommandLink>
+				</CommandLinks>
+			</FeatureLinks>
+			<Prototypes>
+                <Prototype Language="Web\CSharp">MasterPage.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">MasterPage.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">MasterPage.vstemplate</Prototype>
+			</Prototypes>
+		</CodeType>
+        <CodeType Id="codeWebControl">
+            <Identifiers>
+                <Inherits>System.Web.UI.Control</Inherits>
+            </Identifiers>
+            <FeatureLinks>
+                <CommandLinks>
+                    <CommandLink>menuProject.AddWebUserControl</CommandLink>
+                </CommandLinks>
+            </FeatureLinks>
+			<Prototypes>
+                <Prototype Language="Web\CSharp">WebUserControl.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">WebUserControl.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">WebUserControl.vstemplate</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeWindowsService">
+            <Identifiers>
+                <Inherits>System.ServiceProcess.ServiceBase</Inherits>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">WindowsService.vstemplate</Prototype>
+                <Prototype Language="JSharp">WindowsService.vstemplate</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeCustomControl">
+            <Identifiers>
+                <Inherits>System.Windows.Forms.Control</Inherits>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">CustomControl.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">CustomControl.vstemplate</Prototype>
+                <Prototype Language="JSharp">CustomControl.vstemplate</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeInstallerClass">
+            <Identifiers>
+                <Inherits>System.Configuration.Install.Installer</Inherits>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">Installer.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">Installer.vstemplate</Prototype>
+                <Prototype Language="JSharp">Installer.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\Installer.vsz</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeGlobalApplicationClass">
+            <Identifiers>
+                <Inherits>System.Web.HttpPipeline</Inherits>
+            </Identifiers>
+			<Prototypes>
+				<Prototype>[WEBPROJ]\WebProjectItems\CSharp\GlobalApplicationClass.vsz</Prototype>
+				<Prototype>[WEBPROJ]\WebProjectItems\Vb\GlobalApplicationClass.vsz</Prototype>
+				<Prototype>[WEBPROJ]\WebProjectItems\VJSharp\GlobalApplicationClass.vsz</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeClass">
+            <Identifiers>
+                <Kind>vsCMElementClass</Kind>
+            </Identifiers>
+            <FeatureLinks>
+                <CommandLinks>
+                    <CommandLink>menuProject.AddClass</CommandLink>
+                </CommandLinks>
+            </FeatureLinks>
+            <Prototypes>
+                <Prototype Language="CSharp">Class.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">Class.vstemplate</Prototype>
+                <Prototype Language="JSharp">Class.vstemplate</Prototype>
+                <Prototype Language="Web\CSharp">Class.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">Class.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">Class.vstemplate</Prototype>
+            </Prototypes>
+        </CodeType>
+        <CodeType Id="codeNamespace">
+            <Identifiers>
+                <Kind>vsCMElementNamespace</Kind>
+            </Identifiers>
+        </CodeType>
+
+        <CodeVariable Id="codeWebFormsLabel">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.Label</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsLabel</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsTextBox">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.TextBox</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsTextBox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsButton">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.Button</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsButton</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsLinkButton">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.LinkButton</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsLinkButton</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsImageButton">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.ImageButton</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsImageButton</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsHyperLink">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.HyperLink</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsHyperLink</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsDropDownList">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.DropDownList</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsDropDownList</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsListBox">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.ListBox</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsListBox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsDataGrid">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.DataGrid</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsDataGrid</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsDataList">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.DataList</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsDataList</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsRepeater">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.Repeater</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsRepeater</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsCheckBox">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.CheckBox</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsCheckBox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsCheckBoxList">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.CheckBoxList</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsCheckBoxList</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsRadioButtonList">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.RadioButtonList</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsRadioButtonList</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsRadioButton">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.RadioButton</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsRadioButton</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsImage">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.Image</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsImage</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsPanel">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.Panel</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsPanel</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsPlaceHolder">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.PlaceHolder</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsPlaceHolder</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsCalendar">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.Calendar</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsCalendar</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsAdRotator">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.AdRotator</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsAdRotator</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsTable">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.Table</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsTable</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsRequiredFieldValidator">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.RequiredFieldValidator</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsRequiredFieldValidator</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsCompareValidator">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.CompareValidator</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsCompareValidator</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsRangeValidator">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.RangeValidator</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsRangeValidator</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsRegularExpressionValidator">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.RegularExpressionValidator</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsRegularExpressionValidator</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsCustomValidator">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.CustomValidator</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsCustomValidator</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsValidationSummary">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.ValidationSummary</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsValidationSummary</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsXml">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.Xml</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsXml</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsLiteral">
+            <Identifiers>
+                <TypeName>System.Web.UI.WebControls.Literal</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsLiteral</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsFolderBrowserDialog">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.FolderBrowserDialog</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsFolderBrowserDialog</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWebFormsCrystalReportViewer">
+            <Identifiers>
+                <TypeName>CrystalDecisions.Web.CrystalReportViewer</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWebFormsCrystalReportViewer</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataDataSet">
+            <Identifiers>
+                <TypeName>System.Data.DataSet</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataDataSet</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataOLEDbCommand">
+            <Identifiers>
+                <TypeName>System.Data.OleDb.OleDbCommand</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataOLEDbCommand</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataOLEDbConnection">
+            <Identifiers>
+                <TypeName>System.Data.OleDb.OleDbConnection</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataOLEDbConnection</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataOLEDbDataAdapter">
+            <Identifiers>
+                <TypeName>System.Data.OleDb.OleDbDataAdapter</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataOLEDbDataAdapter</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataOracleCommand">
+            <Identifiers>
+                <TypeName>System.Data.OracleClient.OracleCommand</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataOracleCommand</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataOracleConnection">
+            <Identifiers>
+                <TypeName>System.Data.OracleClient.OracleConnection</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataOracleConnection</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataOracleDataAdapter">
+            <Identifiers>
+                <TypeName>System.Data.OracleClient.OracleDataAdapter</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataOracleDataAdapter</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataSQLCommand">
+            <Identifiers>
+                <TypeName>System.Data.SqlClient.SqlCommand</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataSQLCommand</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataSQLConnection">
+            <Identifiers>
+                <TypeName>System.Data.SqlClient.SqlConnection</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataSQLConnection</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataSQLDataAdapter">
+            <Identifiers>
+                <TypeName>System.Data.SqlClient.SqlDataAdapter</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataSQLDataAdapter</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataOdbcCommand">
+            <Identifiers>
+                <TypeName>System.Data.Odbc.OdbcCommand</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataOdbcCommand</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataOdbcConnection">
+            <Identifiers>
+                <TypeName>System.Data.Odbc.OdbcConnection</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataOdbcConnection</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataOdbcDataAdapter">
+            <Identifiers>
+                <TypeName>System.Data.Odbc.OdbcDataAdapter</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataOdbcDataAdapter</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeDataDataView">
+            <Identifiers>
+                <TypeName>System.Data.DataView</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxDataDataView</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeComponentsFileSystemWatcher">
+            <Identifiers>
+                <TypeName>System.IO.FileSystemWatcher</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxComponentsFileSystemWatcher</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeComponentsEventLog">
+            <Identifiers>
+                <TypeName>System.Diagnostics.EventLog</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxComponentsEventLog</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeComponentsSerialPort">
+            <Identifiers>
+                <TypeName>System.IO.Ports.SerialPort</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxComponentsSerialPort</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeComponentsDirectoryEntry">
+            <Identifiers>
+                <TypeName>System.DirectoryServices.DirectoryEntry</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxComponentsDirectoryEntry</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeComponentsDirectorySearcher">
+            <Identifiers>
+                <TypeName>System.DirectoryServices.DirectorySearcher</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxComponentsDirectorySearcher</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeComponentsMessageQueue">
+            <Identifiers>
+                <TypeName>System.Messaging.MessageQueue</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxComponentsMessageQueue</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeComponentsPerformanceCounter">
+            <Identifiers>
+                <TypeName>System.Diagnostics.PerformanceCounter</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxComponentsPerformanceCounter</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeComponentsProcess">
+            <Identifiers>
+                <TypeName>System.Diagnostics.Process</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxComponentsProcess</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeComponentsServiceController">
+            <Identifiers>
+                <TypeName>System.ServiceProcess.ServiceController</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxComponentsServiceController</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeComponentsTimer">
+            <Identifiers>
+                <TypeName>System.Timers.Timer</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxComponentsTimer</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeComponentsReportDocument">
+            <Identifiers>
+                <TypeName>CrystalDecisions.CrystalReports.Engine.ReportDocument</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxComponentsReportDocument</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsLabel">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.Label</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsLabel</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsLinkLabel">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.LinkLabel</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsLinkLabel</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsButton">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.Button</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsButton</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsTextBox">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.TextBox</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsTextBox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsMainMenu">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.MainMenu</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsMainMenu</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsCheckBox">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.CheckBox</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsCheckBox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsRadioButton">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.RadioButton</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsRadioButton</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsGroupBox">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.GroupBox</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsGroupBox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsPictureBox">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.PictureBox</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsPictureBox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsPanel">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.Panel</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsPanel</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsDataGrid">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.DataGrid</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsDataGrid</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsListBox">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.ListBox</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsListBox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsCheckedListBox">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.CheckedListBox</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsCheckedListBox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsComboBox">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.ComboBox</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsComboBox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsListView">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.ListView</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsListView</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsTreeView">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.TreeView</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsTreeView</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsTabControl">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.TabControl</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsTabControl</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsDateTimePicker">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.DateTimePicker</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsDateTimePicker</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsMonthCalendar">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.MonthCalendar</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsMonthCalendar</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsHorizontalScrollBar">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.HScrollBar</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsHScrollBar</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsVerticalScrollBar">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.VScrollBar</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsVScrollBar</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsTimer">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.Timer</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsTimer</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsSplitter">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.Splitter</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsSplitter</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsDomainUpDown">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.DomainUpDown</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsDomainUpDown</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsNumericUpDown">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.NumericUpDown</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsNumericUpDown</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsTrackBar">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.TrackBar</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsTrackBar</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsProgressBar">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.ProgressBar</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsProgressBar</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsRichTextBox">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.RichTextBox</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsRichTextBox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsImageList">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.ImageList</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsImageList</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsHelpProvider">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.HelpProvider</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsHelpProvider</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsToolTip">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.ToolTip</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsToolTip</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsContextMenu">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.ContextMenu</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsContextMenu</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsToolBar">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.ToolBar</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsToolBar</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsStatusBar">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.StatusBar</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsStatusBar</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsNotifyIcon">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.NotifyIcon</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsNotifyIcon</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsOpenFileDialog">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.OpenFileDialog</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsOpenFileDialog</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsSaveFileDialog">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.SaveFileDialog</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsSaveFileDialog</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsFontDialog">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.FontDialog</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsFontDialog</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsColorDialog">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.ColorDialog</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsColorDialog</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsPrintDialog">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.PrintDialog</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsPrintDialog</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsPrintPreviewDialog">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.PrintPreviewDialog</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsPrintPreviewDialog</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsPrintPreviewControl">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.PrintPreviewControl</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsPrintPreviewControl</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsErrorProvider">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.ErrorProvider</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsErrorProvider</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsPrintDocument">
+            <Identifiers>
+                <TypeName>System.Drawing.Printing.PrintDocument</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsPrintDocument</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsPageSetupDialog">
+            <Identifiers>
+                <TypeName>System.Windows.Forms.PageSetupDialog</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsPageSetupDialog</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <CodeVariable Id="codeWinFormsCrystalReportViewer">
+            <Identifiers>
+                <TypeName>CrystalDecisions.Windows.Forms.CrystalReportViewer</TypeName>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxWinFormsCrystalReportViewer</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </CodeVariable>
+        <Reference Id="refSystem.Windows.Forms">
+            <Identifiers>
+                <Filename>System.Windows.Forms.dll</Filename>
+            </Identifiers>
+        </Reference>
+        <Reference Id="refSystem.Web">
+            <Identifiers>
+                <Filename>System.Web.dll</Filename>
+            </Identifiers>
+        </Reference>
+        <Reference Id="refSystem.Web.Services">
+            <Identifiers>
+                <Filename>System.Web.Services.dll</Filename>
+            </Identifiers>
+        </Reference>
+        <HtmlElement Id="codeHTMLBody">
+            <Identifiers>
+                <Tag>Body</Tag>
+            </Identifiers>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLButton">
+            <Identifiers>
+                <Tag>Input</Tag>
+                <Attribute Name="type" Value="button" />
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLButton</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLResetButton">
+            <Identifiers>
+                <Tag>Input</Tag>
+                <Attribute Name="type" Value="reset" />
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLResetButton</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLSubmitButton">
+            <Identifiers>
+                <Tag>Input</Tag>
+                <Attribute Name="type" Value="submit" />
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLSubmitButton</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLTextField">
+            <Identifiers>
+                <Tag>Input</Tag>
+                <Attribute Name="type" Value="text" />
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLTextField</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLTextArea">
+            <Identifiers>
+                <Tag>textarea</Tag>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLTextArea</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLFileField">
+            <Identifiers>
+                <Tag>Input</Tag>
+                <Attribute Name="type" Value="file" />
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLFileField</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLPasswordField">
+            <Identifiers>
+                <Tag>Input</Tag>
+                <Attribute Name="type" Value="password" />
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLPasswordField</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLCheckBox">
+            <Identifiers>
+                <Tag>Input</Tag>
+                <Attribute Name="type" Value="checkbox" />
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLCheckbox</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLRadioButton">
+            <Identifiers>
+                <Tag>Input</Tag>
+                <Attribute Name="type" Value="radio" />
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLRadioButton</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLHidden">
+            <Identifiers>
+                <Tag>Input</Tag>
+                <Attribute Name="type" Value="hidden" />
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLHidden</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLTable">
+            <Identifiers>
+                <Tag>table</Tag>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLTable</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLPanelFlowLayout">
+            <Identifiers>
+                <Tag>div</Tag>
+                <Attribute Name="vs:layout" Value="flow" />
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLPanelFlowLayout</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLPanelGridLayout">
+            <Identifiers>
+                <Tag>div</Tag>
+                <Attribute Name="vs:layout" Value="grid" />
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLPanelGridLayout</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLImage">
+            <Identifiers>
+                <Tag>img</Tag>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLImage</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLSelectControl">
+            <Identifiers>
+                <Tag>Select</Tag>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLListbox</ToolboxItemLink>
+                    <ToolboxItemLink>tboxHTMLDropdown</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+        <HtmlElement Id="codeHTMLHorizontalRule">
+            <Identifiers>
+                <Tag>hr</Tag>
+            </Identifiers>
+            <FeatureLinks>
+                <ToolboxItemLinks>
+                    <ToolboxItemLink>tboxHTMLHorizontalRule</ToolboxItemLink>
+                </ToolboxItemLinks>
+            </FeatureLinks>
+        </HtmlElement>
+
+        <!--<Project Id="projEnterpriseTemplateProject">
+            <Identifiers>
+                <FileExtension>.etp</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[EF]\Projects\Enterprise Templates Project\Enterprise Templates Project.etp</Prototype>
+            </Prototypes>
+        </Project>-->
+
+		<!--C# Projects-->
+        <Project Id="projCSharpProject">
+            <Identifiers>
+                <FileExtension>.csproj</FileExtension>
+            </Identifiers>
+        </Project>
+        <Project Id="projCSharpWinApp">
+            <Prototypes>
+                <Prototype Language="CSharp">WindowsApplication.zip\cswindowsapplication.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projCSharpConsoleApp">
+            <Prototypes>
+                <Prototype Language="CSharp">ConsoleApplication.zip\csconsoleapplication.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projCSharpClassLibrary">
+            <Prototypes>
+                <Prototype Language="CSharp">ClassLibrary.zip\csclasslibrary.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projCSharpControlClassLibrary">
+            <Prototypes>
+                <Prototype Language="CSharp">WindowsControlLibrary.zip\cswindowscontrollibrary.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projCSharpWinService">
+            <Prototypes>
+                <Prototype Language="CSharp">WindowsService.zip\cswindowsservice.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projCSharpWebApp">
+            <Prototypes>
+                <Prototype Language="Web\CSharp">WebApplication.zip\WebApplication.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projCSharpWebControlProject">
+            <Prototypes>
+                <Prototype Language="CSharp">WebControlLibrary.zip\cswebcontrollibrary.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projCSharpWebService">
+            <Prototypes>
+                <Prototype Language="Web\CSharp">WebService.zip\WebService.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projCSharpEmptyProject">
+            <Prototypes>
+                <Prototype Language="CSharp">EmptyProject.zip\csemptyproject.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projCSharpEmptyWeb">
+            <Prototypes>
+                <Prototype Language="Web\CSharp">EmptyWeb.zip\EmptyWeb.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+		<Project Id="starterCSharpScreenSaver">
+			<Prototypes>
+				<Prototype Language="CSharp">ScreenSaver.zip\ScreenSaver.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="starterCSharpPersonalWebSite">
+			<Prototypes>
+				<Prototype Language="Web\CSharp">PersonalWebSite.zip\PersonalWebSite.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="projCSharpCrystalReportsWindowsApplication">
+			<Prototypes>
+				<Prototype Language="CSharp">CRCSharp.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="projCSharpCrystalReportsWebApplication">
+			<Prototypes>
+				<Prototype Language="Web\CSharp">CRWebApplication.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+		
+        <!--VB Projects-->
+        <Project Id="projVBProject">
+            <Identifiers>
+                <FileExtension>.vbproj</FileExtension>
+            </Identifiers>
+        </Project>
+        <Project Id="projVBWindowsApp">
+            <Prototypes>
+                <Prototype Language="VisualBasic">windowsApplication.zip\WindowsApplication.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVBClassLibrary">
+            <Prototypes>
+                <Prototype Language="VisualBasic">classLibrary.zip\ClassLibrary.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVBWindowsControl">
+            <Prototypes>
+                <Prototype Language="VisualBasic">windowsControl.zip\WindowsControlLibrary.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVBWebApplication">
+            <Prototypes>
+                <Prototype Language="Web\VisualBasic">WebApplication.zip\WebApplication.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVBWebServiceProject">
+            <Prototypes>
+                <Prototype Language="Web\VisualBasic">WebService.zip\WebService.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVBWebControlProject">
+            <Prototypes>
+                <Prototype Language="VisualBasic">webControl.zip\WebControlLibrary.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVBConsoleApp">
+            <Prototypes>
+                <Prototype Language="VisualBasic">consoleApplication.zip\ConsoleApplication.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVBWindowsService">
+            <Prototypes>
+                <Prototype Language="VisualBasic">windowsService.zip\windowsservice.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVBEmptyProject">
+            <Prototypes>
+                <Prototype Language="VisualBasic">EmptyProject.zip\EmptyProject.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVBEmptyWebProject">
+            <Prototypes>
+                <Prototype Language="Web\VisualBasic">EmptyWeb.zip\EmptyWeb.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+		<Project Id="projVBCrystalReportsWindowsApplication">
+			<Prototypes>
+				<Prototype Language="VisualBasic">CRWindowsApplication.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="projVBCrystalReportsWebApplication">
+			<Prototypes>
+				<Prototype Language="Web\VisualBasic">CRWebApplication.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="starterVBPersonalWebSite">
+			<Prototypes>
+				<Prototype Language="Web\VisualBasic">PersonalWebSite.zip\PersonalWebSite.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+
+		<!--JSharp Projects-->
+		<Project Id="projVJSharpProject">
+            <Identifiers>
+                <FileExtension>.vjsproj</FileExtension>
+            </Identifiers>
+        </Project>
+        <Project Id="projVJSharpWinApp">
+            <Prototypes>
+                <Prototype Language="JSharp">WindowsApplication.zip\WindowsApplication.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVJSharpConsoleApp">
+            <Prototypes>
+                <Prototype Language="JSharp">ConsoleApplication.zip\ConsoleApplication.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVJSharpClassLibrary">
+            <Prototypes>
+                <Prototype Language="JSharp">ClassLibrary.zip\ClassLibrary.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVJSharpControlClassLibrary">
+            <Prototypes>
+                <Prototype Language="JSharp">WindowsControlLibrary.zip\WindowsControlLibrary.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVJSharpWinService">
+            <Prototypes>
+                <Prototype Language="JSharp">WindowsService.zip\WindowsService.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVJSharpWebControlProject">
+            <Prototypes>
+                <Prototype Language="JSharp">WebControlLibrary.zip\WebControlLibrary.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVJSharpEmptyProject">
+            <Prototypes>
+                <Prototype Language="JSharp">EmptyProject.zip\EmptyProject.vstemplate</Prototype>
+            </Prototypes>
+        </Project>
+		<Project Id="projJSharpCrystalReportsWindowsApplication">
+			<Prototypes>
+				<Prototype Language="JSharp">CRJSharp.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="projJSharpCrystalReportsWebApplication">
+			<Prototypes>
+				<Prototype Language="Web\JSharp">CRWebApplication.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="projJSharpEmptyWeb">
+			<Prototypes>
+				<Prototype Language="Web\JSharp">EmptyWeb.zip\EmptyWeb.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="starterJSharpPersonalWebSite">
+			<Prototypes>
+				<Prototype Language="Web\JSharp">PersonalWebSite.zip\PersonalWebSite.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="projJSharpWebApplication">
+			<Prototypes>
+				<Prototype Language="Web\JSharp">WebApplication.zip\WebApplication.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="projJSharpWebServiceProject">
+			<Prototypes>
+				<Prototype Language="Web\JSharp">WebService.zip\WebService.vstemplate</Prototype>
+			</Prototypes>
+		</Project>
+
+		<!--C++ Projects-->
+		<Project Id="projVCProject">
+            <Identifiers>
+                <FileExtension>.vcproj</FileExtension>
+            </Identifiers>
+        </Project>
+        <Project Id="projVCATL">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\ATLWiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVCATLServer">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\ATLSWiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVCATLServerWebService">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\ATLSWebSvcWiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+		<Project Id="projVCATLSmartDevice">
+			<Prototypes>
+				<Prototype>[VC]\VCProjects\SDATLWiz.vsz</Prototype>
+			</Prototypes>
+		</Project>		
+        <Project Id="projVCMFCAppWiz">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\MFCAppWiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+		<Project Id="projVCMFCSmartDeviceCtrlWiz">
+			<Prototypes>
+				<Prototype>[VC]\VCProjects\SDMFCCtlWiz.vsz</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="projVCMFCSmartDeviceDllWiz">
+			<Prototypes>
+				<Prototype>[VC]\VCProjects\SDMFCDllWiz.vsz</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="projVCMFCSmartDeviceAppWiz">
+			<Prototypes>
+				<Prototype>[VC]\VCProjects\SDMFCAppWiz.vsz</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="projVCSmartDeviceWin32Wiz">
+			<Prototypes>
+				<Prototype>[VC]\VCProjects\SDWin32Wiz.vsz</Prototype>
+			</Prototypes>
+		</Project>
+
+		<Project Id="projVCMFCDLL">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\MFCDLLWiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVCMFCActiveXControl">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\MFCCtlWiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVCISAPI">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\ISAPIWiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVCExtendedStoredProcedure">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\StoredProcWiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVCWin32Project">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\Win32Wiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVCWin32ConsoleAppWizard">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\Win32console.vsz</Prototype>
+            </Prototypes>
+        </Project>
+
+        <Project Id="projVCManagedCppApp">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\MC++AppWiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+		<Project Id="projVCManagedWindowsApplication">
+			<Prototypes>
+				<Prototype>[VC]\VCProjects\MC++WinApp.vsz</Prototype>
+			</Prototypes>
+		</Project>
+		<Project Id="projVCManagedCppClassLibrary">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\MC++ClassLib.vsz</Prototype>
+            </Prototypes>
+        </Project>
+		<Project Id="projVCManagedCppControlLibrary">
+			<Prototypes>
+				<Prototype>[VC]\VCProjects\MC++WinCtrlLib.vsz</Prototype>
+			</Prototypes>
+		</Project>
+        <Project Id="projVCManagedCppEmptyProject">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\MC++EmptyProj.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVCManagedCppWebService">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\MC++WebService.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVCManagedCppWindowsService">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\MC++WinService.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVCCustomAppWizard">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\CustomWiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        <Project Id="projVCMakefileProject">
+            <Prototypes>
+                <Prototype>[VC]\VCProjects\MakefileAppWiz.vsz</Prototype>
+            </Prototypes>
+        </Project>
+        
+        <!--Web Projects-->
+        <Project Id="projWeb">
+            <Identifiers>
+                <Kind>{E24C65DC-7377-472B-9ABA-BC803B73C61A}</Kind>
+            </Identifiers>
+        </Project>
+
+
+		<!--ProjectItems-->
+        <ProjectItem Id="projItemXMLDataSet">
+            <Prototypes>
+                <Prototype Language="CSharp">DataSet.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">Dataset.vstemplate</Prototype>
+                <Prototype Language="JSharp">DataSet.vstemplate</Prototype>
+                <Prototype Language="Web\CSharp">DataSet.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">Dataset.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">DataSet.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\AddMC++DataSet.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemWebInfoFile">
+            <Identifiers>
+                <FileExtension>.webinfo</FileExtension>
+           </Identifiers>
+        </ProjectItem>
+        <ProjectItem Id="projItemXMLSchema">
+            <Identifiers>
+                <FileExtension>.XSD</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">XMLSchema.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">XSDSchema.vstemplate</Prototype>
+                <Prototype Language="JSharp">XMLSchema.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\AddXMLSchema.vsz</Prototype>
+                <Prototype Language="Web\CSharp">XMLSchema.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">XMLSchema.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">XMLSchema.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemXMLFile">
+            <Identifiers>
+                <FileExtension>.xml</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">XMLFile.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">XMLFile.vstemplate</Prototype>
+                <Prototype Language="JSharp">XMLFile.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\NewXMLPage.xml</Prototype>
+                <Prototype Language="Web\CSharp">XMLFile.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">XMLFile.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">XMLFile.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemXSLTFile">
+            <Identifiers>
+                <FileExtension>.xslt</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">XSLTFile.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">XSLTFile.vstemplate</Prototype>
+                <Prototype Language="JSharp">XSLTFile.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\XSLTFile.xslt</Prototype>
+                <Prototype Language="Web\CSharp">XSLTFile.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">XSLTFile.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">XSLTFile.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemAssemblyResourceFile">
+            <Identifiers>
+                <FileExtension>.resx</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">Resource.zip\Resource.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">Resource.zip\Resource.vstemplate</Prototype>
+                <Prototype Language="JSharp">Resource.zip\Resource.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\newresx.resx</Prototype>
+                <Prototype Language="Web\CSharp">Resource.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">Resource.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">Resource.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemAssemblyInfoFile">
+            <Prototypes>
+                <Prototype Language="VisualBasic">AssemblyInfo.vstemplate</Prototype>
+                <Prototype Language="JSharp">AssemblyInfo.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemComClass">
+            <Prototypes>
+                <Prototype Language="VisualBasic">ComClass.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemTransactionalComponent">
+            <Prototypes>
+                <Prototype Language="VisualBasic">MTSTransactionClass.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemBitmapFile">
+            <Identifiers>
+                <FileExtension>.bmp</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">Bitmap.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">Bitmap.vstemplate</Prototype>
+                <Prototype Language="JSharp">Bitmap.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\Bitmap.bmp</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemCursorFile">
+            <Identifiers>
+                <FileExtension>.cur</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">Cursor.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">Cursor.vstemplate</Prototype>
+                <Prototype Language="JSharp">Cursor.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\Cursor.cur</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemIconFile">
+            <Identifiers>
+                <FileExtension>.ico</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">Icon.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">Icon.vstemplate</Prototype>
+                <Prototype Language="JSharp">Icon.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\Icon.ico</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemHTMLPage">
+            <Identifiers>
+                <FileExtension>.htm</FileExtension>
+            </Identifiers>
+            <FeatureLinks>
+                <CommandLinks>
+                    <CommandLink>menuProject.AddHTMLPage</CommandLink>
+                </CommandLinks>
+            </FeatureLinks>
+            <Prototypes>
+                <Prototype Language="CSharp">HTMLPage.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">HTMLPage.vstemplate</Prototype>
+                <Prototype Language="JSharp">HTMLPage.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\NewHTMLPage.htm</Prototype>
+                <Prototype Language="Web\CSharp">HTMLPage.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">HTMLPage.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">HTMLPage.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemFrameset">
+            <Prototypes>
+                <Prototype>[VC#]\CSharpProjectItems\Frameset.vsz</Prototype>
+                <Prototype>[VB]\VBProjectItems\Frameset.vsz</Prototype>
+                <Prototype>[VC]\VCProjectItems\frameset.htm</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemDynamicDiscoFile">
+            <Identifiers>
+                <FileExtension>.vsdisco</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC#]\CSharpProjectItems\DynamicDisco.vsdisco</Prototype>
+                <Prototype>[VC]\VCProjectItems\DynamicDisco.vsdisco</Prototype>
+                <Prototype>[JSHPROJ]\VJSharpProjectItems\DynamicDisco.vsdisco</Prototype>
+                <Prototype>[VB]\VBProjectItems\DynamicDisco.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemStaticDiscoFile">
+            <Identifiers>
+                <FileExtension>.disco</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC#]\CSharpProjectItems\StaticDisco.disco</Prototype>
+                <Prototype>[VC]\VCProjectItems\StaticDisco.disco</Prototype>
+                <Prototype>[JSHPROJ]\VJSharpProjectItems\StaticDisco.disco</Prototype>
+                <Prototype>[VB]\VBProjectItems\StaticDisco.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemJScript">
+            <Identifiers>
+                <FileExtension>.js</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">jscript.vstemplate</Prototype>
+                <Prototype Language="JSharp">jscript.vstemplate</Prototype>
+                <Prototype>[VB]\VBProjectItems\JScript.vsz</Prototype>
+                <Prototype Language="Web\CSharp">jscript.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">jscript.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">jscript.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVBScript">
+            <Identifiers>
+                <FileExtension>.vbs</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">VBScript.vstemplate</Prototype>
+                <Prototype Language="JSharp">VBScript.vstemplate</Prototype>
+                <Prototype>[VB]\VBProjectItems\VBScript.vsz</Prototype>
+                <Prototype Language="Web\CSharp">VBScript.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">VBScript.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">VBScript.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemWindowsScriptHostFile">
+            <Identifiers>
+                <FileExtension>.wsf</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC#]\CSharpProjectItems\WindowsScriptHost.wsf</Prototype>
+                <Prototype>[VB]\VBProjectItems\WindowsScriptHost.vsz</Prototype>
+                <Prototype>[JSHPROJ]\VJSharpProjectItems\WindowsScriptHost.wsf</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemWebConfigFile">
+            <Prototypes>
+                <Prototype>[VC#]\CSharpProjectItems\Web.Config</Prototype>
+                <Prototype>[VB]\VBProjectItems\WebConfiguration.vsz</Prototype>
+                <Prototype>[JSHPROJ]\VJSharpProjectItems\Web.Config</Prototype>
+                <Prototype Language="Web\CSharp">WebConfig.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">WebConfig.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">WebConfig.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemStyleSheet">
+            <Identifiers>
+                <FileExtension>.css</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">StyleSheet.vstemplate</Prototype>
+                <Prototype>[VB]\VBProjectItems\StyleSheet.vsz</Prototype>
+                <Prototype>[VC]\VCProjectItems\NewStyleSheet.css</Prototype>
+                <Prototype Language="JSharp">StyleSheet.vstemplate</Prototype>
+                <Prototype Language="Web\CSharp">StyleSheet.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">StyleSheet.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">StyleSheet.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemTextFile">
+            <Identifiers>
+                <FileExtension>.txt</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">TextFile.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">Text.vstemplate</Prototype>
+                <Prototype Language="JSharp">TextFile.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\Text.Txt</Prototype>
+                <Prototype Language="Web\CSharp">TextFile.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">Text.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">TextFile.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemCrystalReport">
+            <Identifiers>
+                <FileExtension>.rpt</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">CrystalReport.vstemplate</Prototype>
+                <Prototype Language="VisualBasic">CrystalReport.vstemplate</Prototype>
+                <Prototype Language="JSharp">CrystalReport.vstemplate</Prototype>
+                <Prototype>[VC]\VCProjectItems\New Report.rpt</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemGlobalApplicationClass">
+            <Identifiers>
+                <FileExtension>.asax</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="Web\CSharp">GlobalAsax.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">GlobalAsax.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">GlobalAsax.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemWebForm">
+            <Identifiers>
+                <FileExtension>.aspx</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="Web\CSharp">WebForm.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">WebFrom.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">WebFrom.vstemplate</Prototype>
+			</Prototypes>
+		</ProjectItem>
+		<ProjectItem Id="projItemWebService">
+            <Identifiers>
+                <FileExtension>.asmx</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="Web\CSharp">WebService.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">WebService.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">WebService.vstemplate</Prototype>
+				<Prototype>[VC]\VCProjectItems\AddMC++WebSvc.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemCSharpFile">
+            <Identifiers>
+                <FileExtension>.cs</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="CSharp">CodeFile.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVJSharpFile">
+            <Identifiers>
+                <FileExtension>.jsl</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="JSharp">CodeFile.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemCSharpInheritedForm">
+            <Prototypes>
+                <Prototype>[VC#]\CSharpProjectItems\CSFormInheritanceWizard.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemCSharpInheritedControl">
+            <Prototypes>
+                <Prototype>[VC#]\CSharpProjectItems\CSControlInheritanceWizard.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVJSharpInheritedForm">
+            <Prototypes>
+                <Prototype>[JSHPROJ]\VJSharpProjectItems\VJSharpFormInheritanceWizard.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVJSharpInheritedControl">
+            <Prototypes>
+                <Prototype>[JSHPROJ]\VJSharpProjectItems\VJSharpControlInheritanceWizard.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemLicenseFile">
+            <Identifiers>
+                <FileExtension>.licx</FileExtension>
+            </Identifiers>
+        </ProjectItem>
+        <ProjectItem Id="projItemVBInheritedForm">
+            <FeatureLinks>
+                <CommandLinks>
+                    <CommandLink>menuProject.AddInheritedForm</CommandLink>
+                </CommandLinks>
+            </FeatureLinks>
+            <Prototypes>
+                <Prototype>[VB]\VBProjectItems\InheritedForm.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVBInheritedControl">
+            <FeatureLinks>
+                <CommandLinks>
+                    <CommandLink>menuProject.AddInheritedControl</CommandLink>
+                </CommandLinks>
+            </FeatureLinks>
+            <Prototypes>
+                <Prototype>[VB]\VBProjectItems\InheritedControl.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVBModule">
+            <FeatureLinks>
+                <CommandLinks>
+                    <CommandLink>menuProject.AddModule</CommandLink>
+                </CommandLinks>
+            </FeatureLinks>
+            <Prototypes>
+                <Prototype Language="VisualBasic">Module.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVBCodeFile">
+            <Identifiers>
+                <FileExtension>.vb</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="VisualBasic">CodeFile.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemWebUserControl">
+            <Identifiers>
+                <FileExtension>.ascx</FileExtension>
+            </Identifiers>
+            <Prototypes>
+			    <Prototype Language="Web\CSharp">WebUserControl.vstemplate</Prototype>
+			    <Prototype Language="Web\VisualBasic">WebUserControl.vstemplate</Prototype>
+				<Prototype Language="Web\JSharp">WebUserControl.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+		<ProjectItem Id="projItemConfigFile">
+			<Identifiers>
+				<FileExtension>.config</FileExtension>
+			</Identifiers>
+			<Prototypes>
+			    <Prototype Language="CSharp">AppConfig.zip\App.vstemplate</Prototype>
+			    <Prototype Language="VisualBasic">AppConfiguration.zip\AppConfiguration.vstemplate</Prototype>
+				<Prototype Language="JSharp">AppConfig.zip\App.vstemplate</Prototype>
+				<Prototype>[VC]\VCProjectItems\App.config</Prototype>
+			</Prototypes>
+		</ProjectItem>
+		<ProjectItem Id="projItemMyAppFile">
+			<Identifiers>
+				<FileExtension>.myapp</FileExtension>
+			</Identifiers>
+		</ProjectItem>
+		<ProjectItem Id="projItemSettingsFile">
+			<Identifiers>
+				<FileExtension>.settings</FileExtension>
+			</Identifiers>
+			<Prototypes>
+   				<Prototype Language="VisualBasic">settings.zip\Settings.vstemplate</Prototype>
+				<Prototype Language="CSharp">settings.zip\Settings.vstemplate</Prototype>
+				<Prototype Language="JSharp">settings.zip\Settings.vstemplate</Prototype>
+			</Prototypes>
+		</ProjectItem>
+		<ProjectItem Id="projItemVCNewCppFile">
+            <Identifiers>
+                <FileExtension>.cpp</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC]\VCProjectItems\NewC++File.cpp</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVJSNewJslFile">
+            <Identifiers>
+                <FileExtension>.jsl</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="JSharp">CodeFile.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVCHFile">
+            <Identifiers>
+                <FileExtension>.h</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC]\VCProjectItems\HFile.h</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVCHppFile">
+            <Identifiers>
+                <FileExtension>.hpp</FileExtension>
+            </Identifiers>
+        </ProjectItem>
+        <ProjectItem Id="projItemVCIDLFile">
+            <Identifiers>
+                <FileExtension>.idl</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC]\VCProjectItems\IDLFile.idl</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVCResourceFile">
+            <Identifiers>
+                <FileExtension>.rc</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC]\VCProjectItems\RCFile.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVCSRFFile">
+            <Identifiers>
+                <FileExtension>.srf</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC]\VCProjectItems\NewSRFFile.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVCDEFFile">
+            <Identifiers>
+                <FileExtension>.def</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC]\VCProjectItems\DEFFile.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVCRegistrationScript">
+            <Identifiers>
+                <FileExtension>.rgs</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC]\VCProjectItems\RGSFile.rgs</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVCATLServerWebService">
+            <Prototypes>
+                <Prototype>[VC]\VCProjectItems\AddWebSvcWiz.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVCManagedCppWebService">
+            <Prototypes>
+                <Prototype>[VC]\VCProjectItems\AddMC++WebSvc.vsz</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVCResourceTemplate">
+            <Identifiers>
+                <FileExtension>.rct</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC]\VCProjectItems\ResTempl.rct</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemVCSqlScript">
+            <Identifiers>
+                <FileExtension>.sql</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype>[VC]\VCProjectItems\Script.sql</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemDesignerLayoutInformation">
+            <Identifiers>
+                <FileExtension>.xsx</FileExtension>
+            </Identifiers>
+        </ProjectItem>
+        <ProjectItem Id="projItemHTMLFile">
+            <Identifiers>
+                <FileExtension>.html</FileExtension>
+            </Identifiers>
+        </ProjectItem>
+        <ProjectItem Id="projItemGIFFile">
+            <Identifiers>
+                <FileExtension>.gif</FileExtension>
+            </Identifiers>
+        </ProjectItem>
+        <ProjectItem Id="projItemJPGFile">
+            <Identifiers>
+                <FileExtension>.jpg</FileExtension>
+            </Identifiers>
+        </ProjectItem>
+        <ProjectItem Id="projItemFolder">
+            <Identifiers>
+                <Kind>{6BB5F8EF-4483-11D3-8BCF-00C04F8EC28C}</Kind>
+            </Identifiers>
+        </ProjectItem>
+        <ProjectItem Id="projItemVirtualFolder">
+            <Identifiers>
+                <Kind>{6BB5F8F0-4483-11D3-8BCF-00C04F8EC28C}</Kind>
+            </Identifiers>
+        </ProjectItem>
+        <ProjectItem Id="projItemMapFile">
+            <Identifiers>
+                <FileExtension>.sitemap</FileExtension>
+            </Identifiers>
+            <Prototypes>
+                <Prototype Language="Web\CSharp">SiteMap.vstemplate</Prototype>
+                <Prototype Language="Web\VisualBasic">SiteMap.vstemplate</Prototype>
+                <Prototype Language="Web\JSharp">SiteMap.vstemplate</Prototype>
+            </Prototypes>
+        </ProjectItem>
+        <ProjectItem Id="projItemWSDLFile">
+            <Identifiers>
+                <FileExtension>.wsdl</FileExtension>
+            </Identifiers>
+        </ProjectItem>
+        
+        <SolutionFolder Id="sfFolder">
+            <Identifiers>
+            </Identifiers>
+        </SolutionFolder>
+    </ElementDefs>
+    
+    <!-- look at added elements, and add them to proper category -->
+    <CategoryDefs>
+        <Category Id="catCommonProjectItems">
+            <CategoryMember>projItemXMLFile</CategoryMember>
+            <CategoryMember>projItemTextFile</CategoryMember>
+            <CategoryMember>projItemCrystalReport</CategoryMember>
+            <CategoryMember>projItemXMLDataSet</CategoryMember>
+            <CategoryMember>projItemXMLSchema</CategoryMember>
+            <CategoryMember>projItemXSLTFile</CategoryMember>
+            <CategoryMember>projItemAssemblyResourceFile</CategoryMember>
+            <CategoryMember>projItemAssemblyInfoFile</CategoryMember>
+            <CategoryMember>projItemLicenseFile</CategoryMember>
+            <CategoryMember>projItemDesignerLayoutInformation</CategoryMember>
+            <CategoryMember>projItemHTMLFile</CategoryMember>
+            <CategoryMember>projItemGIFFile</CategoryMember>
+            <CategoryMember>projItemJPGFile</CategoryMember>
+            <CategoryMember>projItemFolder</CategoryMember>
+            <CategoryMember>projItemVirtualFolder</CategoryMember>
+			<CategoryMember>projItemSettingsFile</CategoryMember>
+		</Category>
+        <Category Id="catHTMLProjectItems">
+            <CategoryMember>projItemHTMLPage</CategoryMember>
+            <CategoryMember>projItemStyleSheet</CategoryMember>
+            <CategoryMember>projItemFrameset</CategoryMember>
+            <CategoryMember>projItemVBScript</CategoryMember>
+            <CategoryMember>projItemJScript</CategoryMember>
+            <CategoryMember>projItemWindowsScriptHostFile</CategoryMember>
+        </Category>
+        <Category Id="catWebConfigurationProjectItems">
+            <CategoryMember>projItemDynamicDiscoFile</CategoryMember>
+            <CategoryMember>projItemStaticDiscoFile</CategoryMember>
+            <CategoryMember>projItemWebConfigFile</CategoryMember>
+            <CategoryMember>projItemMapFile</CategoryMember>
+            <CategoryMember>projItemWSDLFile</CategoryMember>
+            <CategoryMember>projItemWebInfoFile</CategoryMember>
+        </Category>
+        <Category Id="catVBCommonProjectItems">
+            <CategoryMember>codeComponent</CategoryMember>
+            <CategoryMember>codeNamespace</CategoryMember>
+            <CategoryMember>codeClass</CategoryMember>
+            <CategoryMember>projItemVBModule</CategoryMember>
+            <CategoryMember>projItemVBCodeFile</CategoryMember>
+            <CategoryMember>codeInstallerClass</CategoryMember>
+            <CategoryMember>codeGlobalApplicationClass</CategoryMember>
+            <CategoryMember>projItemBitmapFile</CategoryMember>
+            <CategoryMember>projItemCursorFile</CategoryMember>
+            <CategoryMember>projItemIconFile</CategoryMember>
+            <CategoryMember>projItemAssemblyInfoFile</CategoryMember>
+            <CategoryMember>projItemComClass</CategoryMember>
+            <CategoryMember>projItemTransactionalComponent</CategoryMember>
+            <CategoryMember>projItemConfigFile</CategoryMember>
+            <CategoryMember>projItemMyAppFile</CategoryMember>
+        </Category>
+        <Category Id="catWebUIProjectItems">
+            <CategoryMember>codeWebControl</CategoryMember>
+			<CategoryMember>codeWebControlLibrary</CategoryMember>
+            <CategoryMember>codeWebForm</CategoryMember>
+            <CategoryMember>projItemGlobalApplicationClass</CategoryMember>
+            <CategoryMember>projItemWebForm</CategoryMember>
+            <CategoryMember>codeHTMLBody</CategoryMember>
+            <CategoryMember>projItemWebUserControl</CategoryMember>
+        </Category>
+        <Category Id="catWinUIProjectItems">
+            <CategoryMember>codeWinForm</CategoryMember>
+            <CategoryMember>projItemVBInheritedForm</CategoryMember>
+            <CategoryMember>codeUserControl</CategoryMember>
+            <CategoryMember>codeCustomControl</CategoryMember>
+        </Category>
+        <Category Id="catCSCommonProjectItems">
+            <CategoryMember>codeNamespace</CategoryMember>
+            <CategoryMember>codeClass</CategoryMember>
+            <CategoryMember>projItemCSharpFile</CategoryMember>
+            <CategoryMember>codeComponent</CategoryMember>
+            <CategoryMember>codeInstallerClass</CategoryMember>
+            <CategoryMember>codeGlobalApplicationClass</CategoryMember>
+        </Category>
+        <Category Id="catVJSCommonProjectItems">
+            <CategoryMember>codeClass</CategoryMember>
+            <CategoryMember>codeNamespace</CategoryMember>
+            <CategoryMember>projItemVJSharpFile</CategoryMember>
+            <CategoryMember>codeComponent</CategoryMember>
+            <CategoryMember>codeInstallerClass</CategoryMember>
+            <CategoryMember>codeGlobalApplicationClass</CategoryMember>
+            <CategoryMember>projItemVJSNewJslFile</CategoryMember>
+        </Category>
+        <Category Id="catVCCommonProjectItems">
+            <CategoryMember>codeNamespace</CategoryMember>
+            <CategoryMember>projItemBitmapFile</CategoryMember>
+            <CategoryMember>projItemCursorFile</CategoryMember>
+            <CategoryMember>projItemIconFile</CategoryMember>
+            <CategoryMember>projItemVCDEFFile</CategoryMember>
+            <CategoryMember>projItemVCHFile</CategoryMember>
+            <CategoryMember>projItemVCHppFile</CategoryMember>
+            <CategoryMember>projItemVCIDLFile</CategoryMember>
+            <CategoryMember>projItemVCNewCppFile</CategoryMember>
+            <CategoryMember>projItemVCResourceFile</CategoryMember>
+            <CategoryMember>projItemVCResourceTemplate</CategoryMember>
+        </Category>
+        <Category Id="catVCWebServices">
+            <CategoryMember>projItemVCATLServerWebService</CategoryMember>
+            <CategoryMember>projItemVCManagedCppWebService</CategoryMember>
+        </Category>
+        <Category Id="catWebFormsControls">
+            <CategoryMember>codeWebForm</CategoryMember>
+            <CategoryMember>codeWebControl</CategoryMember>
+			<CategoryMember>codeWebControlLibrary</CategoryMember>
+            <CategoryMember>codeWebFormsAdRotator</CategoryMember>
+            <CategoryMember>codeWebFormsButton</CategoryMember>
+            <CategoryMember>codeWebFormsCheckBox</CategoryMember>
+            <CategoryMember>codeWebFormsCheckBoxList</CategoryMember>
+            <CategoryMember>codeWebFormsDataGrid</CategoryMember>
+            <CategoryMember>codeWebFormsDataList</CategoryMember>
+            <CategoryMember>codeWebFormsDropDownList</CategoryMember>
+            <CategoryMember>codeWebFormsHyperLink</CategoryMember>
+            <CategoryMember>codeWebFormsImage</CategoryMember>
+            <CategoryMember>codeWebFormsImageButton</CategoryMember>
+            <CategoryMember>codeWebFormsLabel</CategoryMember>
+            <CategoryMember>codeWebFormsLinkButton</CategoryMember>
+            <CategoryMember>codeWebFormsPanel</CategoryMember>
+            <CategoryMember>codeWebFormsPlaceHolder</CategoryMember>
+            <CategoryMember>codeWebFormsRadioButton</CategoryMember>
+            <CategoryMember>codeWebFormsRadioButtonList</CategoryMember>
+            <CategoryMember>codeWebFormsTable</CategoryMember>
+            <CategoryMember>codeWebFormsTextBox</CategoryMember>
+            <CategoryMember>codeWebFormsCalendar</CategoryMember>
+            <CategoryMember>codeWebFormsRepeater</CategoryMember>
+            <CategoryMember>codeWebFormsRequiredFieldValidator</CategoryMember>
+            <CategoryMember>codeWebFormsRegularExpressionValidator</CategoryMember>
+            <CategoryMember>codeWebFormsCompareValidator</CategoryMember>
+            <CategoryMember>codeWebFormsRangeValidator</CategoryMember>
+            <CategoryMember>codeWebFormsCustomValidator</CategoryMember>
+            <CategoryMember>codeWebFormsValidationSummary</CategoryMember>
+            <CategoryMember>codeWebFormsXml</CategoryMember>
+            <CategoryMember>codeWebFormsLiteral</CategoryMember>
+            <CategoryMember>codeWebFormsListBox</CategoryMember>
+            <CategoryMember>codeWebFormsCrystalReportViewer</CategoryMember>
+        </Category>
+        <Category Id="catDataCodeItems">
+            <CategoryMember>codeDataDataSet</CategoryMember>
+            <CategoryMember>codeDataOLEDbCommand</CategoryMember>
+            <CategoryMember>codeDataOLEDbConnection</CategoryMember>
+            <CategoryMember>codeDataOleDbDataAdapter</CategoryMember>
+            <CategoryMember>codeDataOracleCommand</CategoryMember>
+            <CategoryMember>codeDataOracleConnection</CategoryMember>
+            <CategoryMember>codeDataOracleDataAdapter</CategoryMember>
+            <CategoryMember>codeDataSQLCommand</CategoryMember>
+            <CategoryMember>codeDataSQLConnection</CategoryMember>
+            <CategoryMember>codeDataSQLDataAdapter</CategoryMember>
+            <CategoryMember>codeDataOdbcCommand</CategoryMember>
+            <CategoryMember>codeDataOdbcConnection</CategoryMember>
+            <CategoryMember>codeDataOdbcDataAdapter</CategoryMember>
+            <CategoryMember>codeDataDataView</CategoryMember>
+        </Category>
+        <Category Id="catComponentCodeItems">
+            <CategoryMember>codeComponentsEventLog</CategoryMember>
+            <CategoryMember>codeComponentsSerialPort</CategoryMember>
+            <CategoryMember>codeComponentsDirectoryEntry</CategoryMember>
+            <CategoryMember>codeComponentsDirectorySearcher</CategoryMember>
+            <CategoryMember>codeComponentsMessageQueue</CategoryMember>
+            <CategoryMember>codeComponentsPerformanceCounter</CategoryMember>
+            <CategoryMember>codeComponentsProcess</CategoryMember>
+            <CategoryMember>codeComponentsServiceController</CategoryMember>
+            <CategoryMember>codeComponentsTimer</CategoryMember>
+            <CategoryMember>codeComponentsFileSystemWatcher</CategoryMember>
+            <CategoryMember>codeComponentsReportDocument</CategoryMember>
+        </Category>
+        <Category Id="catWinCodeItems">
+            <CategoryMember>codeWinFormsLabel</CategoryMember>
+            <CategoryMember>codeWinFormsLinkLabel</CategoryMember>
+            <CategoryMember>codeWinFormsButton</CategoryMember>
+            <CategoryMember>codeWinFormsTextBox</CategoryMember>
+            <CategoryMember>codeWinFormsMainMenu</CategoryMember>
+            <CategoryMember>codeWinFormsCheckBox</CategoryMember>
+            <CategoryMember>codeWinFormsRadioButton</CategoryMember>
+            <CategoryMember>codeWinFormsGroupBox</CategoryMember>
+            <CategoryMember>codeWinFormsPictureBox</CategoryMember>
+            <CategoryMember>codeWinFormsPanel</CategoryMember>
+            <CategoryMember>codeWinFormsDataGrid</CategoryMember>
+            <CategoryMember>codeWinFormsListBox</CategoryMember>
+            <CategoryMember>codeWinFormsCheckedListBox</CategoryMember>
+            <CategoryMember>codeWinFormsComboBox</CategoryMember>
+            <CategoryMember>codeWinFormsListView</CategoryMember>
+            <CategoryMember>codeWinFormsTreeView</CategoryMember>
+            <CategoryMember>codeWinFormsTabControl</CategoryMember>
+            <CategoryMember>codeWinFormsDateTimePicker</CategoryMember>
+            <CategoryMember>codeWinFormsMonthCalendar</CategoryMember>
+            <CategoryMember>codeWinFormsHorizontalScrollBar</CategoryMember>
+            <CategoryMember>codeWinFormsVerticalScrollBar</CategoryMember>
+            <CategoryMember>codeWinFormsTimer</CategoryMember>
+            <CategoryMember>codeWinFormsSplitter</CategoryMember>
+            <CategoryMember>codeWinFormsDomainUpDown</CategoryMember>
+            <CategoryMember>codeWinFormsNumericUpDown</CategoryMember>
+            <CategoryMember>codeWinFormsTrackBar</CategoryMember>
+            <CategoryMember>codeWinFormsRichTextBox</CategoryMember>
+            <CategoryMember>codeWinFormsImageList</CategoryMember>
+            <CategoryMember>codeWinFormsHelpProvider</CategoryMember>
+            <CategoryMember>codeWinFormsToolTip</CategoryMember>
+            <CategoryMember>codeWinFormsContextMenu</CategoryMember>
+            <CategoryMember>codeWinFormsToolBar</CategoryMember>
+            <CategoryMember>codeWinFormsStatusBar</CategoryMember>
+            <CategoryMember>codeWinFormsNotifyIcon</CategoryMember>
+            <CategoryMember>codeWinFormsOpenFileDialog</CategoryMember>
+            <CategoryMember>codeWinFormsSaveFileDialog</CategoryMember>
+            <CategoryMember>codeWinFormsFontDialog</CategoryMember>
+            <CategoryMember>codeWinFormsColorDialog</CategoryMember>
+            <CategoryMember>codeWinFormsPrintDialog</CategoryMember>
+            <CategoryMember>codeWinFormsPrintPreviewDialog</CategoryMember>
+            <CategoryMember>codeWinFormsPrintPreviewControl</CategoryMember>
+            <CategoryMember>codeWinFormsErrorProvider</CategoryMember>
+            <CategoryMember>codeWinFormsPrintDocument</CategoryMember>
+            <CategoryMember>codeWinFormsPageSetupDialog</CategoryMember>
+            <CategoryMember>codeWinFormsProgressBar</CategoryMember>
+            <CategoryMember>codeWinFormsFolderBrowserDialog</CategoryMember>
+            <CategoryMember>codeWinFormsCrystalReportViewer</CategoryMember>
+        </Category>
+        <Category Id="catVCProjects">
+            <CategoryMember>projVCATL</CategoryMember>
+            <CategoryMember>projVCATLServer</CategoryMember>
+            <CategoryMember>projVCATLServerWebService</CategoryMember>
+            <CategoryMember>projVCMFCAppWiz</CategoryMember>
+            <CategoryMember>projVCMFCDLL</CategoryMember>
+            <CategoryMember>projVCMFCActiveXControl</CategoryMember>
+            <CategoryMember>projVCISAPI</CategoryMember>
+            <CategoryMember>projVCExtendedStoredProcedure</CategoryMember>
+            <CategoryMember>projVCWin32Project</CategoryMember>
+            <CategoryMember>projVCManagedCppApp</CategoryMember>
+            <CategoryMember>projVCManagedCppClassLibrary</CategoryMember>
+            <CategoryMember>projVCManagedCppEmptyProject</CategoryMember>
+            <CategoryMember>projVCManagedCppWebService</CategoryMember>
+            <CategoryMember>projVCCustomAppWizard</CategoryMember>
+            <CategoryMember>projVCMakefileProject</CategoryMember>
+        </Category>
+        <Category Id="catHTMLItems">
+            <CategoryMember>codeHTMLBody</CategoryMember>
+            <CategoryMember>codeHTMLButton</CategoryMember>
+            <CategoryMember>codeHTMLResetButton</CategoryMember>
+            <CategoryMember>codeHTMLSubmitButton</CategoryMember>
+            <CategoryMember>codeHTMLTextField</CategoryMember>
+            <CategoryMember>codeHTMLTextArea</CategoryMember>
+            <CategoryMember>codeHTMLFileField</CategoryMember>
+            <CategoryMember>codeHTMLPasswordField</CategoryMember>
+            <CategoryMember>codeHTMLCheckBox</CategoryMember>
+            <CategoryMember>codeHTMLRadioButton</CategoryMember>
+            <CategoryMember>codeHTMLHidden</CategoryMember>
+            <CategoryMember>codeHTMLTable</CategoryMember>
+            <CategoryMember>codeHTMLPanelFlowLayout</CategoryMember>
+            <CategoryMember>codeHTMLPanelGridLayout</CategoryMember>
+            <CategoryMember>codeHTMLImage</CategoryMember>
+            <CategoryMember>codeHTMLSelectControl</CategoryMember>
+            <CategoryMember>codeHTMLHorizontalRule</CategoryMember>
+        </Category>
+    </CategoryDefs>
+    <FeatureDefs>
+        <Commands>
+            <Command Id="menuBuild.Deploy">
+                <CmdId>363</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuEdit.Copy">
+                <CmdId>15</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuEdit.Cut">
+                <CmdId>16</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuEdit.Delete">
+                <CmdId>17</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuFile.AddExistingItem">
+                <CmdId>244</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuFile.AddExistingProject">
+                <CmdId>773</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuFile.AddExistingProjectFromWeb">
+                <CmdId>774</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuFile.AddNewItem">
+                <CmdId>220</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuFile.AddNewProject">
+                <CmdId>772</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuFile.BrowseWith">
+                <CmdId>336</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuFile.BuildandBrowse">
+                <CmdId>439</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuFile.OpenFile">
+                <CmdId>222</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuFile.Rename">
+                <CmdId>150</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuFile.ViewinBrowser">
+                <CmdId>334</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuProject.AddClass">
+                <CmdId>946</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuProject.AddComponent">
+                <CmdId>442</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddInheritedControl">
+                <CmdId>436</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddInheritedForm">
+                <CmdId>434</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddModule">
+                <CmdId>402</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddReference">
+                <CmdId>1113</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddResource">
+                <CmdId>362</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddUserControl">
+                <CmdId>412</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddWebReference">
+                <CmdId>1114</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddWindowsForm">
+                <CmdId>406</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.CopyProject">
+                <CmdId>1107</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.ExcludeFromProject">
+                <CmdId>1110</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.NewFolder">
+                <CmdId>245</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuProject.RunCustomTool">
+                <CmdId>1117</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.ShowAllFiles">
+                <CmdId>600</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuView.Open">
+                <CmdId>261</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuView.OpenWith">
+                <CmdId>199</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuView.Refresh">
+                <CmdId>189</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuView.ViewCode">
+                <CmdId>333</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuView.ViewDesigner">
+                <CmdId>332</CmdId>
+                <Guid>{5EFC7975-14BC-11CF-9B2B-00AA00573819}</Guid>
+            </Command>
+            <Command Id="menuProject.AddWebForm">
+                <CmdId>410</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddMasterPage">
+                <CmdId>411</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddWebService">
+                <CmdId>444</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddWebUserControl">
+                <CmdId>438</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuProject.AddHTMLPage">
+                <CmdId>400</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+            <Command Id="menuContext.AddWebReference">
+                <CmdId>1115</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+			<Command Id="menuProject.StartOptions">
+				<CmdId>1124</CmdId>
+				<Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+			</Command>
+            <Command Id="menuProject.ASP.NETConfiguration">
+                <CmdId>1400</CmdId>
+                <Guid>{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}</Guid>
+            </Command>
+
+        </Commands>
+        <ToolboxItems>
+            <ToolboxItem Id="tboxHTMLLabel">
+                <Descriptor>&lt;div style="display: inline; width: 70px; height: 24px" vs:layout="flow"&gt;Label&lt;/div&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLButton">
+                <Descriptor>&lt;input id="Button1" type="button" value="button" /&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLResetButton">
+                <Descriptor>&lt;input id="Reset1" type="reset" value="Reset" /&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLSubmitButton">
+                <Descriptor>&lt;input id="Submit1" type="submit" value="Submit" /&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLTextField">
+                <Descriptor>&lt;input id="Text1" type="text" /&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLTextArea">
+                <Descriptor>&lt;textarea id="TextAria1" rows=2 cols=20&gt;&lt;/textarea&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLFileField">
+                <Descriptor>&lt;input id="File1" type="file" /&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLPasswordField">
+                <Descriptor>&lt;input id="PAssword1" type="password" /&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLCheckbox">
+                <Descriptor>&lt;input id="Checkbox1" type="checkbox" /&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLRadioButton">
+                <Descriptor>&lt;input id="Radio1" type="radio" /&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLHidden">
+                <Descriptor>&lt;input id="Hidden1" type="hidden" /&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLTable">
+                <Descriptor>&lt;table cellspacing=1 cellpadding=1 border=1&gt;&lt;tr&gt;&lt;td style="width: 100px"&gt;&lt;/td&gt;&lt;td style="width: 100px"&gt;&lt;/td&gt;&lt;td style="width: 100px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="width: 100px"&gt;&lt;/td&gt;&lt;td style="width: 100px"&gt;&lt;/td&gt;&lt;td style="width: 100px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="width: 100px"&gt;&lt;/td&gt;&lt;td style="width: 100px"&gt;&lt;/td&gt;&lt;td style="width: 100px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLImage">
+                <Descriptor>&lt;img alt="" src="" /&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLListbox">
+                <Descriptor>&lt;select id="ListBox1" size=2&gt;&lt;option&gt;&lt;/option&gt;&lt;/select&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLDropdown">
+                <Descriptor>&lt;select id="Dropdown1"&gt;&lt;option&gt;&lt;/option&gt;&lt;/select&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLHorizontalRule">
+                <Descriptor>&lt;hr /&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLPanelFlowLayout">
+                <Descriptor>&lt;div style="width: 100px; position: relative; height: 100px"&gt;&lt;/div&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxHTMLPanelGridLayout">
+                <Descriptor>&lt;div style="width: 100px; position: relative; height: 100px" vs:layout="grid"&gt;&lt;/div&gt;</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsLabel">
+                <Descriptor>System.Windows.Forms.Label</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsLinkLabel">
+                <Descriptor>System.Windows.Forms.LinkLabel</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsButton">
+                <Descriptor>System.Windows.Forms.Button</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsTextBox">
+                <Descriptor>System.Windows.Forms.TextBox</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsMainMenu">
+                <Descriptor>System.Windows.Forms.MainMenu</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsCheckBox">
+                <Descriptor>System.Windows.Forms.CheckBox</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsRadioButton">
+                <Descriptor>System.Windows.Forms.RadioButton</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsGroupBox">
+                <Descriptor>System.Windows.Forms.GroupBox</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsPictureBox">
+                <Descriptor>System.Windows.Forms.PictureBox</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsPanel">
+                <Descriptor>System.Windows.Forms.Panel</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsDataGrid">
+                <Descriptor>System.Windows.Forms.DataGrid</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsListBox">
+                <Descriptor>System.Windows.Forms.ListBox</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsCheckedListBox">
+                <Descriptor>System.Windows.Forms.CheckedListBox</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsComboBox">
+                <Descriptor>System.Windows.Forms.ComboBox</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsListView">
+                <Descriptor>System.Windows.Forms.ListView</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsTreeView">
+                <Descriptor>System.Windows.Forms.TreeView</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsTabControl">
+                <Descriptor>System.Windows.Forms.TabControl</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsDateTimePicker">
+                <Descriptor>System.Windows.Forms.DateTimePicker</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsMonthCalendar">
+                <Descriptor>System.Windows.Forms.MonthCalendar</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsHScrollBar">
+                <Descriptor>System.Windows.Forms.HScrollBar</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsVScrollBar">
+                <Descriptor>System.Windows.Forms.VScrollBar</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsTimer">
+                <Descriptor>System.Windows.Forms.Timer</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsSplitter">
+                <Descriptor>System.Windows.Forms.Splitter</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsDomainUpDown">
+                <Descriptor>System.Windows.Forms.DomainUpDown</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsNumericUpDown">
+                <Descriptor>System.Windows.Forms.NumericUpDown</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsTrackBar">
+                <Descriptor>System.Windows.Forms.TrackBar</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsProgressBar">
+                <Descriptor>System.Windows.Forms.ProgressBar</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsRichTextBox">
+                <Descriptor>System.Windows.Forms.RichTextBox</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsImageList">
+                <Descriptor>System.Windows.Forms.ImageList</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsHelpProvider">
+                <Descriptor>System.Windows.Forms.HelpProvider</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsToolTip">
+                <Descriptor>System.Windows.Forms.ToolTip</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsContextMenu">
+                <Descriptor>System.Windows.Forms.ContextMenu</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsToolBar">
+                <Descriptor>System.Windows.Forms.ToolBar</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsStatusBar">
+                <Descriptor>System.Windows.Forms.StatusBar</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsNotifyIcon">
+                <Descriptor>System.Windows.Forms.NotifyIcon</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsOpenFileDialog">
+                <Descriptor>System.Windows.Forms.OpenFileDialog</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsSaveFileDialog">
+                <Descriptor>System.Windows.Forms.SaveFileDialog</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsFontDialog">
+                <Descriptor>System.Windows.Forms.FontDialog</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsColorDialog">
+                <Descriptor>System.Windows.Forms.ColorDialog</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsPrintDialog">
+                <Descriptor>System.Windows.Forms.PrintDialog</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsPrintPreviewDialog">
+                <Descriptor>System.Windows.Forms.PrintPreviewDialog</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsPrintPreviewControl">
+                <Descriptor>System.Windows.Forms.PrintPreviewControl</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsErrorProvider">
+                <Descriptor>System.Windows.Forms.ErrorProvider</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsPrintDocument">
+                <Descriptor>System.Drawing.Printing.PrintDocument</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsPageSetupDialog">
+                <Descriptor>System.Windows.Forms.PageSetupDialog</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsFolderBrowserDialog">
+                <Descriptor>System.Windows.Forms.FolderBrowserDialog</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsCrystalReportViewer">
+                <Descriptor>CrystalDecisions.Windows.Forms.CrystalReportViewer</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsDataGridView">
+                <Descriptor>System.Windows.Forms.DataGridView</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsDataManager">
+                <Descriptor>System.Windows.Forms.DataManager</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsDataNavigator">
+                <Descriptor>System.Windows.Forms.DataNavigator</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsStatusStrip">
+                <Descriptor>System.Windows.Forms.StatusStrip</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsToolStripDropDownMenu">
+                <Descriptor>System.Windows.Forms.ToolStripDropDownMenu</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWinFormsDataContainer">
+                <Descriptor>System.Windows.Forms.DataContainer</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsFileSystemWatcher">
+                <Descriptor>System.IO.FileSystemWatcher</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsEventLog">
+                <Descriptor>System.Diagnostics.EventLog</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsSerialPort">
+                <Descriptor>System.IO.Ports.SerialPort</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsDirectoryEntry">
+                <Descriptor>System.DirectoryServices.DirectoryEntry</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsDirectorySearcher">
+                <Descriptor>System.DirectoryServices.DirectorySearcher</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsMessageQueue">
+                <Descriptor>System.Messaging.MessageQueue</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsPerformanceCounter">
+                <Descriptor>System.Diagnostics.PerformanceCounter</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsProcess">
+                <Descriptor>System.Diagnostics.Process</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsServiceController">
+                <Descriptor>System.ServiceProcess.ServiceController</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsTimer">
+                <Descriptor>System.Timers.Timer</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsBackgroundWorker">
+                <Descriptor>System.ComponentModel.BackgroundWorker</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxComponentsReportDocument">
+                <Descriptor>ReportDocument</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataDataSet">
+                <Descriptor>System.Data.DataSet</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataOLEDbDataAdapter">
+                <Descriptor>System.Data.OleDb.OleDbDataAdapter</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataOLEDbConnection">
+                <Descriptor>System.Data.OleDb.OleDbConnection</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataOLEDbCommand">
+                <Descriptor>System.Data.OleDb.OleDbCommand</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataOracleDataAdapter">
+                <Descriptor>System.Data.OracleClient.OracleDataAdapter</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataOracleConnection">
+                <Descriptor>System.Data.OracleClient.OracleConnection</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataOracleCommand">
+                <Descriptor>System.Data.OracleClient.OracleCommand</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataSQLDataAdapter">
+                <Descriptor>System.Data.SqlClient.SqlDataAdapter</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataSQLConnection">
+                <Descriptor>System.Data.SqlClient.SqlConnection</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataSQLCommand">
+                <Descriptor>System.Data.SqlClient.SqlCommand</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataOdbcDataAdapter">
+                <Descriptor>System.Data.Odbc.OdbcDataAdapter</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataOdbcConnection">
+                <Descriptor>System.Data.Odbc.OdbcConnection</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataOdbcCommand">
+                <Descriptor>System.Data.Odbc.OdbcCommand</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxDataDataView">
+                <Descriptor>System.Data.DataView</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsLabel">
+                <Descriptor>System.Web.UI.WebControls.Label</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsTextBox">
+                <Descriptor>System.Web.UI.WebControls.TextBox</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsButton">
+                <Descriptor>System.Web.UI.WebControls.Button</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsLinkButton">
+                <Descriptor>System.Web.UI.WebControls.LinkButton</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsImageButton">
+                <Descriptor>System.Web.UI.WebControls.ImageButton</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsHyperLink">
+                <Descriptor>System.Web.UI.WebControls.HyperLink</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsDropDownList">
+                <Descriptor>System.Web.UI.WebControls.DropDownList</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsListBox">
+                <Descriptor>System.Web.UI.WebControls.ListBox</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsDataGrid">
+                <Descriptor>System.Web.UI.WebControls.DataGrid</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsDataList">
+                <Descriptor>System.Web.UI.WebControls.DataList</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsRepeater">
+                <Descriptor>System.Web.UI.WebControls.Repeater</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsCheckBox">
+                <Descriptor>System.Web.UI.WebControls.CheckBox</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsCheckBoxList">
+                <Descriptor>System.Web.UI.WebControls.CheckBoxList</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsRadioButtonList">
+                <Descriptor>System.Web.UI.WebControls.RadioButtonList</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsRadioButton">
+                <Descriptor>System.Web.UI.WebControls.RadioButton</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsImage">
+                <Descriptor>System.Web.UI.WebControls.Image</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsPanel">
+                <Descriptor>System.Web.UI.WebControls.Panel</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsPlaceHolder">
+                <Descriptor>System.Web.UI.WebControls.PlaceHolder</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsCalendar">
+                <Descriptor>System.Web.UI.WebControls.Calendar</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsAdRotator">
+                <Descriptor>System.Web.UI.WebControls.AdRotator</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsTable">
+                <Descriptor>System.Web.UI.WebControls.Table</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsRequiredFieldValidator">
+                <Descriptor>System.Web.UI.WebControls.RequiredFieldValidator</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsCompareValidator">
+                <Descriptor>System.Web.UI.WebControls.CompareValidator</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsRangeValidator">
+                <Descriptor>System.Web.UI.WebControls.RangeValidator</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsRegularExpressionValidator">
+                <Descriptor>System.Web.UI.WebControls.RegularExpressionValidator</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsCustomValidator">
+                <Descriptor>System.Web.UI.WebControls.CustomValidator</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsValidationSummary">
+                <Descriptor>System.Web.UI.WebControls.ValidationSummary</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsXml">
+                <Descriptor>System.Web.UI.WebControls.Xml</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsLiteral">
+                <Descriptor>System.Web.UI.WebControls.Literal</Descriptor>
+            </ToolboxItem>
+            <ToolboxItem Id="tboxWebFormsCrystalReportViewer">
+                <Descriptor>CrystalDecisions.Web.CrystalReportViewer</Descriptor>
+            </ToolboxItem>
+        </ToolboxItems>
+    </FeatureDefs>
+</PolicyDefinitions>

@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for netprov.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -237,7 +236,7 @@ void __RPC_STUB IProvisioningDomain_Query_Stub(
 #endif 	/* __IProvisioningDomain_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_netprov_0154 */
+/* interface __MIDL_itf_netprov_0150 */
 /* [local] */ 
 
 //
@@ -284,8 +283,8 @@ void __RPC_STUB IProvisioningDomain_Query_Stub(
 #define     WZC_PROFILE_API_ERROR_INTERNAL                              36
 
 
-extern RPC_IF_HANDLE __MIDL_itf_netprov_0154_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_netprov_0154_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netprov_0150_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netprov_0150_v0_0_s_ifspec;
 
 #ifndef __IProvisioningProfileWireless_INTERFACE_DEFINED__
 #define __IProvisioningProfileWireless_INTERFACE_DEFINED__

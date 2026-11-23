@@ -1,0 +1,3 @@
+C# Source:cs\Client\SoapHeadersClient.aspx,cs\App_WebReferences\SoapHeaders.wsdl,cs\Server\SoapHeaders.asmx,cs\App_WebReferences\results.discomap
+VB Source:vb\Client\SoapHeadersClient.aspx,vb\App_WebReferences\SoapHeaders.wsdl,vb\Server\SoapHeaders.asmx,vb\App_WebReferences\results.discomap
+J# Source:jsl\Client\SoapHeadersClient.aspx,jsl\App_WebReferences\SoapHeaders.wsdl,jsl\Server\SoapHeaders.asmx,jsl\App_WebReferences\results.discomap

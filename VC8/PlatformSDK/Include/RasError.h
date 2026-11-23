@@ -1030,27 +1030,29 @@ Abstract:
 
 #define ERROR_VALIDATING_SERVER_CERT        (RASBASE+201)
 /*
-* This connection is configured to validate the identity of the access server, but Windows cannot verify the digital certificate sent by the server.%0
+* This connection is configured to validate the identity of the access server, but Windows cannot verify the digital certificate sent by the server. 
 */
 
 #define ERROR_READING_SCARD                 (RASBASE+202)
 /*
-* The card supplied was not recognized. Please check that the card is inserted correctly, and fits tightly.%0
+* The card supplied was not recognized. Please check that the card is inserted correctly, and fits tightly. 
 */
 
 #define ERROR_INVALID_PEAP_COOKIE_CONFIG    (RASBASE+203)
 /*
-* The PEAP configuration stored in the session cookie does not match the current session configuration.%0
+* The PEAP configuration stored in the session cookie does not match the current session configuration.
 */
 
 #define ERROR_INVALID_PEAP_COOKIE_USER      (RASBASE+204)
 /*
-* The PEAP identity stored in the session cookie does not match the current identity.%0
+* The PEAP identity stored in the session cookie does not match the current identity.
 */
 
 #define ERROR_INVALID_MSCHAPV2_CONFIG       (RASBASE+205)
 /*
-* You cannot dial using this connection at logon time, because it is configured to use logged on user's credentials.%0
+* You cannot dial using this connection at logon time, because it is configured to use logged on user's credentials.  If you want to use it
+ at logon time, you must edit the properties of this connection and reconfigure it to not use Windows logon name and password ( and domain
+if any ).
 */
 
 

@@ -1,0 +1,197 @@
+<VSTemplate Version="2.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+    <TemplateData>
+        <Name Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3326" />
+        <Description Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3327"/>
+        <Icon Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="4701"/>
+        <ProjectType>Web</ProjectType>
+        <ProjectSubType>CSharp</ProjectSubType>
+        <SortOrder>30</SortOrder>
+        <CreateNewFolder>true</CreateNewFolder>
+        <DefaultName>WebSite</DefaultName>
+        <ProvideDefaultName>true</ProvideDefaultName>
+        <PromptForSaveOnCreation>true</PromptForSaveOnCreation>
+        <EnableEditOfLocationField>true</EnableEditOfLocationField>
+        <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+        <LocationField>Hidden</LocationField>
+    </TemplateData>
+    <TemplateContent>
+        <Project File="PersonalWebSite.webproj" ReplaceParameters="false">
+            <Folder Name="Admin">
+                <ProjectItem>Albums.aspx</ProjectItem>
+                <ProjectItem>Albums.aspx.cs</ProjectItem>
+                <ProjectItem>Details.aspx</ProjectItem>
+                <ProjectItem>Details.aspx.cs</ProjectItem>
+                <ProjectItem>Photos.aspx</ProjectItem>
+                <ProjectItem>Photos.aspx.cs</ProjectItem>
+            </Folder>
+            <ProjectItem TargetFileName="Albums.aspx">1Albums.aspx</ProjectItem>
+            <ProjectItem TargetFileName="Albums.aspx.cs">1Albums.aspx.cs</ProjectItem>
+            <Folder Name="App_Code">
+                <ProjectItem>Album.cs</ProjectItem>
+                <ProjectItem>Photo.cs</ProjectItem>
+                <ProjectItem>PhotoManager.cs</ProjectItem>
+                <ProjectItem>PhotoSize.cs</ProjectItem>
+            </Folder>
+            <Folder Name="App_Data">
+                <ProjectItem>personal-add.sql</ProjectItem>
+                <ProjectItem>personal-remove.sql</ProjectItem>
+                <ProjectItem>Personal.mdf</ProjectItem>
+            </Folder>
+            <Folder Name="App_Themes">
+                <Folder Name="Black">
+                    <ProjectItem>Default.css</ProjectItem>
+                    <ProjectItem>Default.skin</ProjectItem>
+                    <ProjectItem>frame.css</ProjectItem>
+                    <Folder Name="Images">
+                        <ProjectItem>album-bstretch.gif</ProjectItem>
+                        <ProjectItem>album-l1.gif</ProjectItem>
+                        <ProjectItem>album-l2.gif</ProjectItem>
+                        <ProjectItem>album-l3.gif</ProjectItem>
+                        <ProjectItem>album-l4.gif</ProjectItem>
+                        <ProjectItem>album-lstretch.gif</ProjectItem>
+                        <ProjectItem>album-mbl.gif</ProjectItem>
+                        <ProjectItem>album-mbr.gif</ProjectItem>
+                        <ProjectItem>album-mtl.gif</ProjectItem>
+                        <ProjectItem>album-mtr.gif</ProjectItem>
+                        <ProjectItem>album-r1.gif</ProjectItem>
+                        <ProjectItem>album-r2.gif</ProjectItem>
+                        <ProjectItem>album-r3.gif</ProjectItem>
+                        <ProjectItem>album-r4.gif</ProjectItem>
+                        <ProjectItem>album-rstretch.gif</ProjectItem>
+                        <ProjectItem>album-tstretch.gif</ProjectItem>
+                        <ProjectItem>background.gif</ProjectItem>
+                        <ProjectItem>bullet-1.gif</ProjectItem>
+                        <ProjectItem>bullet-2.gif</ProjectItem>
+                        <ProjectItem>button-add.gif</ProjectItem>
+                        <ProjectItem>button-cancel.gif</ProjectItem>
+                        <ProjectItem>button-create.gif</ProjectItem>
+                        <ProjectItem>button-delete.gif</ProjectItem>
+                        <ProjectItem>button-download.gif</ProjectItem>
+                        <ProjectItem>button-dwn_res.gif</ProjectItem>
+                        <ProjectItem>button-edit.gif</ProjectItem>
+                        <ProjectItem>button-first.jpg</ProjectItem>
+                        <ProjectItem>button-gallery.jpg</ProjectItem>
+                        <ProjectItem>button-import.gif</ProjectItem>
+                        <ProjectItem>button-insert.gif</ProjectItem>
+                        <ProjectItem>button-last.jpg</ProjectItem>
+                        <ProjectItem>button-login.gif</ProjectItem>
+                        <ProjectItem>button-next.jpg</ProjectItem>
+                        <ProjectItem>button-play.jpg</ProjectItem>
+                        <ProjectItem>button-prev.jpg</ProjectItem>
+                        <ProjectItem>button-rename.gif</ProjectItem>
+                        <ProjectItem>button-save.gif</ProjectItem>
+                        <ProjectItem>button-tog24.jpg</ProjectItem>
+                        <ProjectItem>button-tog8.jpg</ProjectItem>
+                        <ProjectItem>footer.gif</ProjectItem>
+                        <ProjectItem>frame-bot--x.gif</ProjectItem>
+                        <ProjectItem>frame-bot-x-.gif</ProjectItem>
+                        <ProjectItem>frame-botx--.gif</ProjectItem>
+                        <ProjectItem>frame-mid--x.gif</ProjectItem>
+                        <ProjectItem>frame-midx--.gif</ProjectItem>
+                        <ProjectItem>frame-top--x.gif</ProjectItem>
+                        <ProjectItem>frame-top-x-.gif</ProjectItem>
+                        <ProjectItem>frame-topx--.gif</ProjectItem>
+                        <ProjectItem>header.gif</ProjectItem>
+                        <ProjectItem>photonav.gif</ProjectItem>
+                        <ProjectItem>spacer.gif</ProjectItem>
+                    </Folder>
+                </Folder>
+                <Folder Name="White">
+                    <ProjectItem TargetFileName="Default.css">1Default.css</ProjectItem>
+                    <ProjectItem TargetFileName="Default.skin">1Default.skin</ProjectItem>
+                    <ProjectItem TargetFileName="Frame.css">1Frame.css</ProjectItem>
+                    <Folder Name="Images">
+                        <ProjectItem TargetFileName="album-bstretch.gif">1album-bstretch.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-l1.gif">1album-l1.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-l2.gif">1album-l2.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-l3.gif">1album-l3.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-l4.gif">1album-l4.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-lstretch.gif">1album-lstretch.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-mbl.gif">1album-mbl.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-mbr.gif">1album-mbr.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-mtl.gif">1album-mtl.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-mtr.gif">1album-mtr.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-r1.gif">1album-r1.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-r2.gif">1album-r2.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-r3.gif">1album-r3.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-r4.gif">1album-r4.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-rstretch.gif">1album-rstretch.gif</ProjectItem>
+                        <ProjectItem TargetFileName="album-tstretch.gif">1album-tstretch.gif</ProjectItem>
+                        <ProjectItem TargetFileName="background.gif">1background.gif</ProjectItem>
+                        <ProjectItem>body-repeat-photo.gif</ProjectItem>
+                        <ProjectItem>body-repeat.gif</ProjectItem>
+                        <ProjectItem TargetFileName="bullet-1.gif">1bullet-1.gif</ProjectItem>
+                        <ProjectItem TargetFileName="bullet-2.gif">1bullet-2.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-add.gif">1button-add.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-cancel.gif">1button-cancel.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-create.gif">1button-create.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-delete.gif">1button-delete.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-download.gif">1button-download.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-dwn_res.gif">1button-dwn_res.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-edit.gif">1button-edit.gif</ProjectItem>
+                        <ProjectItem>button-first.gif</ProjectItem>
+                        <ProjectItem>button-gallery.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-import.gif">1button-import.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-insert.gif">1button-insert.gif</ProjectItem>
+                        <ProjectItem>button-last.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-login.gif">1button-login.gif</ProjectItem>
+                        <ProjectItem>button-next.gif</ProjectItem>
+                        <ProjectItem>button-play.gif</ProjectItem>
+                        <ProjectItem>button-prev.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-rename.gif">1button-rename.gif</ProjectItem>
+                        <ProjectItem TargetFileName="button-save.gif">1button-save.gif</ProjectItem>
+                        <ProjectItem>button-tog24.gif</ProjectItem>
+                        <ProjectItem>button-tog8.gif</ProjectItem>
+                        <ProjectItem>content-shim-none.gif</ProjectItem>
+                        <ProjectItem>content-shim-photo.gif</ProjectItem>
+                        <ProjectItem>content-shim-stretch.gif</ProjectItem>
+                        <ProjectItem>content-shim.gif</ProjectItem>
+                        <ProjectItem>footer-side.gif</ProjectItem>
+                        <ProjectItem TargetFileName="footer.gif">1footer.gif</ProjectItem>
+                        <ProjectItem TargetFileName="frame-bot--x.gif">1frame-bot--x.gif</ProjectItem>
+                        <ProjectItem TargetFileName="frame-bot-x-.gif">1frame-bot-x-.gif</ProjectItem>
+                        <ProjectItem TargetFileName="frame-botx--.gif">1frame-botx--.gif</ProjectItem>
+                        <ProjectItem TargetFileName="frame-mid--x.gif">1frame-mid--x.gif</ProjectItem>
+                        <ProjectItem TargetFileName="frame-midx--.gif">1frame-midx--.gif</ProjectItem>
+                        <ProjectItem TargetFileName="frame-top--x.gif">1frame-top--x.gif</ProjectItem>
+                        <ProjectItem TargetFileName="frame-top-x-.gif">1frame-top-x-.gif</ProjectItem>
+                        <ProjectItem TargetFileName="frame-topx--.gif">1frame-topx--.gif</ProjectItem>
+                        <ProjectItem TargetFileName="header.gif">1header.gif</ProjectItem>
+                        <ProjectItem>photonav-bg.gif</ProjectItem>
+                        <ProjectItem>photonav-top-bg.gif</ProjectItem>
+                        <ProjectItem TargetFileName="spacer.gif">1spacer.gif</ProjectItem>
+                    </Folder>
+                </Folder>
+            </Folder>
+            <ProjectItem OpenInEditor="true" OpenOrder="10">Default.aspx</ProjectItem>
+            <ProjectItem>Default.aspx.cs</ProjectItem>
+            <ProjectItem>Default.master</ProjectItem>
+            <ProjectItem>Default.master.cs</ProjectItem>
+            <ProjectItem TargetFileName="Details.aspx">1Details.aspx</ProjectItem>
+            <ProjectItem TargetFileName="Details.aspx.cs">1Details.aspx.cs</ProjectItem>
+            <ProjectItem>Download.aspx</ProjectItem>
+            <ProjectItem>Download.aspx.cs</ProjectItem>
+            <ProjectItem>Global.asax</ProjectItem>
+            <ProjectItem>Handler.ashx</ProjectItem>
+            <Folder Name="Images">
+                <ProjectItem>placeholder-100.jpg</ProjectItem>
+                <ProjectItem>placeholder-200.jpg</ProjectItem>
+                <ProjectItem>placeholder-600.jpg</ProjectItem>
+                <ProjectItem>resume-photo.jpg</ProjectItem>
+            </Folder>
+            <ProjectItem>Links.aspx</ProjectItem>
+            <ProjectItem>Links.aspx.cs</ProjectItem>
+            <ProjectItem TargetFileName="Photos.aspx">1Photos.aspx</ProjectItem>
+            <ProjectItem TargetFileName="Photos.aspx.cs">1Photos.aspx.cs</ProjectItem>
+            <ProjectItem>Register.aspx</ProjectItem>
+            <ProjectItem>Register.aspx.cs</ProjectItem>
+            <ProjectItem>Resume.aspx</ProjectItem>
+            <ProjectItem>Resume.aspx.cs</ProjectItem>
+            <Folder Name="Upload">
+            </Folder>
+            <ProjectItem>web.config</ProjectItem>
+            <ProjectItem>web.sitemap</ProjectItem>
+            <ProjectItem OpenInWebBrowser="true" OpenOrder="1">Welcome.html</ProjectItem>
+        </Project>
+    </TemplateContent>
+</VSTemplate>

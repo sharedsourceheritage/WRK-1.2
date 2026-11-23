@@ -1,0 +1,21 @@
+
+a:link {color:black}
+a:visited {color:black}
+a:hover {color:black}
+a:active {color:black}
+.rcol
+{
+	border-right: black thin solid;
+	border-top: black thin solid;
+}
+.lcol
+{
+	border-right: black thin solid;
+	border-top: black thin solid;
+	border-left: black thin solid;
+}
+
+body table td { font-family: Verdana; font-size:x-small; padding:5,5,5,5; }
+
+
+

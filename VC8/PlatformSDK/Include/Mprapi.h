@@ -48,7 +48,6 @@ Abstract:
         MprAdminServerConnect
         MprAdminServerDisconnect
         MprAdminBufferFree
-        MprAdminServerSetInfo
         MprAdminServerGetInfo
         MprAdminGetErrorString
         MprAdminTransportCreate
@@ -70,8 +69,6 @@ Abstract:
         MprAdminInterfaceUpdateRoutes
         MprAdminInterfaceQueryUpdateResult
         MprAdminInterfaceUpdatePhonebookInfo
-        MprAdminEstablishDomainRasServer
-        MprAdminIsDomainRasServer
 
         MprAdminMIBServerConnect
         MprAdminMIBServerDisconnect
@@ -90,7 +87,6 @@ Abstract:
         MprConfigServerConnect
         MprConfigServerDisconnect
         MprConfigBufferFree
-        MprConfigServerSetInfo
         MprConfigServerGetInfo
         MprConfigServerBackup
         MprConfigServerRestore
@@ -546,30 +542,6 @@ typedef struct _MPR_SERVER_0
 }
 MPR_SERVER_0, *PMPR_SERVER_0;
 
-
-#if (WINVER >= 0x501)
-
-//
-// values for dwFlags in MPR_SERVER_1. This enables the ports for Ras or Routing.
-//
-
-#define MPR_ENABLE_RAS_ON_DEVICE            0x00000001
-#define MPR_ENABLE_ROUTING_ON_DEVICE        0x00000002
-
-typedef struct _MPR_SERVER_1
-{
-
-    IN OUT DWORD                   dwNumPptpPorts;
-    IN OUT DWORD                   dwPptpPortFlags;
-    IN OUT DWORD                   dwNumL2tpPorts;
-    IN OUT DWORD                   dwL2tpPortFlags;
-
-}
-MPR_SERVER_1, *PMPR_SERVER_1;
-
-#endif
-
-
 //
 // Port condition codes
 //
@@ -732,7 +704,7 @@ PPP_CCP_INFO;
 //
 
 #define PPP_LCP_PAP          0xC023
-#define PPP_LCP_SPAP         0xC027
+#define PPP_LCP_SPAP         0xC123
 #define PPP_LCP_CHAP         0xC223
 #define PPP_LCP_EAP          0xC227
 
@@ -794,8 +766,6 @@ PPP_INFO_2;
 #if(WINVER < 0x0501)
 #define RAS_FLAGS_RAS_CONNECTION        0x00000004
 #endif
-
-#define RAS_FLAGS_QUARANTINE_PRESENT    0x00000008
 
 typedef struct _RAS_CONNECTION_0
 {
@@ -1005,17 +975,6 @@ MprAdminConnectionHangupNotification2(
 
 #endif /* WINVER >= 0x0500 */
 
-#if (WINVER >= 0x501)
-
-DWORD APIENTRY
-MprAdminConnectionRemoveQuarantine(
-    IN      HANDLE          hRasServer,    
-    IN      HANDLE          hRasConnection,
-    IN      BOOL            fIsIpAddress
-    );
-
-#endif
-
 VOID APIENTRY
 MprAdminLinkHangupNotification (
     IN      RAS_PORT_0 *            pRasPort0,
@@ -1146,31 +1105,6 @@ MprAdminServerGetInfo(
     IN      DWORD                   dwLevel,
     OUT     LPBYTE *                lplpbBuffer
 );
-
-#if (WINVER >= 0x501)
-DWORD APIENTRY
-MprAdminServerSetInfo(
-    IN      MPR_SERVER_HANDLE       hMprServer,
-    IN      DWORD                   dwLevel,
-    IN      LPBYTE                  lpbBuffer
-);
-
-
-DWORD  APIENTRY
-MprAdminEstablishDomainRasServer (
-    IN      PWCHAR                  pszDomain,
-    IN      PWCHAR                  pszMachine,
-    IN      BOOL                    bEnable
-);
-
-DWORD  APIENTRY
-MprAdminIsDomainRasServer (
-    IN      PWCHAR                  pszDomain,
-    IN      PWCHAR                  pszMachine,
-    OUT     PBOOL                   pbIsRasServer
-);
-
-#endif
 
 #if(WINVER >= 0x0500)
 
@@ -1577,15 +1511,6 @@ MprConfigServerGetInfo(
     IN      DWORD                   dwLevel,
     OUT     LPBYTE *                lplpbBuffer
 );
-
-#if (WINVER >= 0x501)
-DWORD APIENTRY
-MprConfigServerSetInfo(
-    IN      MPR_SERVER_HANDLE       hMprServer,
-    IN      DWORD                   dwLevel,
-    IN      LPBYTE                  lpbBuffer
-);
-#endif
 
 DWORD APIENTRY
 MprConfigServerBackup(

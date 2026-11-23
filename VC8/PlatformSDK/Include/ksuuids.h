@@ -209,13 +209,6 @@ OUR_GUID_ENTRY(AM_KSCATEGORY_TVAUDIO,
 OUR_GUID_ENTRY(AM_KSCATEGORY_VBICODEC,
 0x07dad660L, 0x22f1, 0x11d1, 0xa9, 0xf4, 0x00, 0xc0, 0x4f, 0xbb, 0xde, 0x8f)
 
-// BUGBUG: this vbicodec_mi needs to get copied back over to drivers\published\ksmedia.w
-// but we're not building drivers depot for symphony
-// multi-instance safe codec categories(kernel or user mode)
-// {9C24A977-0951-451a-8006-0E49BD28CD5F}
-OUR_GUID_ENTRY(AM_KSCATEGORY_VBICODEC_MI,
-0x9c24a977, 0x951, 0x451a, 0x80, 0x6, 0xe, 0x49, 0xbd, 0x28, 0xcd, 0x5f)
-
 
 // 0A4252A0L-7E70-11D0-A5D6-28DB04C10000
 OUR_GUID_ENTRY(AM_KSCATEGORY_SPLITTER,

@@ -1,0 +1,9 @@
+<xsd:schema targetNamespace="Microsoft.Samples.Web.Services" elementFormDefault="qualified" xmlns="Microsoft.Samples.Web.Services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <xsd:element name="Book" type="BookType" />
+   <xsd:complexType name="BookType">
+      <xsd:sequence>
+         <xsd:element name="Author" type="xsd:string" />
+         <xsd:element name="Title" type="xsd:string" />			   			   
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

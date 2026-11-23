@@ -3,7 +3,7 @@
 //  userenv.h   -   Header file for user environment API.
 //                  User Profiles, environment variables, and Group Policy
 //
-//  Copyright (c) Microsoft Corporation 1995-2002
+//  Copyright (c) Microsoft Corporation 1995-1999
 //  All rights reserved
 //
 //=============================================================================
@@ -646,7 +646,7 @@ UnregisterGPNotification(
 // For a given DS object (Site, Domain, OU), the GPLink property will
 // be in this text format
 //
-// [LDAP://CN={E615A0E3-C4F1-11D1-A3A7-00AA00615092},CN=Policies,CN=System,DC=mydomain,DC=Microsoft,DC=Com;1]
+// [LDAP://CN={E615A0E3-C4F1-11D1-A3A7-00AA00615092},CN=Policies,CN=System,DC=ntdev,DC=Microsoft,DC=Com;1]
 //
 // The GUID is the GPO name, and the number following the LDAP path are the options
 // for that link from this DS object.  Note, there can be multiple GPOs
@@ -680,7 +680,7 @@ UnregisterGPNotification(
 // another user or machine.  The caller of this function will
 // need to look in each GPO for their specific policy
 //
-// This function can be called in two different ways.  Either the hToken for
+// This function can be called two different ways.  Either the hToken for
 // a user or machine can be supplied and the correct name and domain
 // controller name will be generated, or hToken is NULL and the caller
 // must supply the name and the domain controller name.
@@ -709,25 +709,25 @@ UnregisterGPNotification(
 // Here's how this function will typically be called for
 // looking up the list of GPOs for a user:
 //
-//      LPGROUP_POLICY_OBJECT  pGPOList;
+//      LPGROUP_POLICY_OBJECT  pGPOList
 //
 //      if (GetGPOList (hToken, NULL, NULL, NULL, 0, &pGPOList))
 //      {
 //          // do processing here...
-//          FreeGPOList (pGPOList);
+//          FreeGPOList (pGPOList)
 //      }
 //
 //
 // Here's how this function will typically be called for
 // looking up the list of GPOs for a machine:
 //
-//      LPGROUP_POLICY_OBJECT  pGPOList;
+//      LPGROUP_POLICY_OBJECT  pGPOList
 //
 //      if (GetGPOList (NULL, lpMachineName, lpHostName, lpMachineName,
 //                      GPO_LIST_FLAG_MACHINE, &pGPOList))
 //      {
 //          // do processing here...
-//          FreeGPOList (pGPOList);
+//          FreeGPOList (pGPOList)
 //      }
 //
 //=============================================================================
@@ -792,9 +792,8 @@ typedef PGROUP_POLICY_OBJECTA PGROUP_POLICY_OBJECT;
 // dwFlags for GetGPOList()
 //
 
-#define GPO_LIST_FLAG_MACHINE        0x00000001  // Return machine policy information
-#define GPO_LIST_FLAG_SITEONLY       0x00000002  // Return site policy information only
-#define GPO_LIST_FLAG_NO_WMIFILTERS  0x00000004  // Ignore WMI filters when filtering GPO's
+#define GPO_LIST_FLAG_MACHINE   0x00000001  // Return machine policy information
+#define GPO_LIST_FLAG_SITEONLY  0x00000002  // Return site policy information only
 
 
 USERENVAPI
@@ -830,9 +829,9 @@ GetGPOListW (
 // FreeGPOList
 //
 //
-// Frees the linked list returned from GetGPOList
+// Frees the link list returned from GetGPOList
 //
-// pGPOList - Pointer to the linked list of GPOs
+// pGPOList - Pointer to the link list of GPOs
 //
 //
 // Returns:  TRUE if successful
@@ -866,7 +865,7 @@ FreeGPOListW (
 //
 // Queries for the list of applied Group Policy Objects for the specified
 // user or machine and specified client side extension. This function will return
-// a linked list of Group Policy Objects.  Call FreeGPOList to free the list.
+// a linked listof Group Policy Objects.  Call FreeGPOList to free the list.
 //
 // dwFlags          - User or machine policy, if it is GPO_LIST_FLAG_MACHINE then
 //                    return machine policy information
@@ -930,7 +929,7 @@ GetAppliedGPOListW (
 //     DllName                      REG_EXPAND_SZ  Path to your DLL
 //     ProcessGroupPolicy           REG_SZ       Function name (see PFNPROCESSGROUPPOLICY prototype). This
 //                                                 is obsolete, it has been superseded by ProcessGroupPolicyEx.
-//                                                 It's here for backward compatibility reasons only.
+//                                                 It's here for backwards compatibility only.
 //     ProcessGroupPolicyEx         REG_SZ       Function name (see PFNPROCESSGROUPPOLICYEX prototype)
 //     GenerateGroupPolicy          REG_SZ       Function name for Rsop (see PFNGENERATEGROUPPOLICY prototype)
 //     NoMachinePolicy              REG_DWORD    True, if extension does not have to be called when
@@ -938,10 +937,10 @@ GetAppliedGPOListW (
 //     NoUserPolicy                 REG_DWORD    True, if extension does not have to be called when
 //                                                 user policies are being processed.
 //     NoSlowLink                   REG_DWORD    True, if extension does not have to be called on a slow link
-//     NoBackgroundPolicy           REG_DWORD    True, if extension does not have to be called 
-//                                                 for background policy processing.
+//     NoBackgroundPolicy           REG_DWORD    True, if extension does not have to be called on.
+//                                                 policies applied in background.
 //     NoGPOListChanges             REG_DWORD    True, if extension does not have to be called when
-//                                                 there are no changes between cached and current GPO lists.
+//                                                 there are no changes between cached can current GPO lists.
 //     PerUserLocalSettings         REG_DWORD    True, if user policies have to be cached on a per user and
 //                                                 per machine basis.
 //     RequiresSuccessfulRegistry   REG_DWORD    True, if extension should be called only if registry extension
@@ -987,7 +986,6 @@ GetAppliedGPOListW (
 #define GPO_INFO_FLAG_FORCED_REFRESH       0x00000400  // Forced Refresh is being applied. redo policies.
 #define GPO_INFO_FLAG_SAFEMODE_BOOT        0x00000800  // windows safe mode boot flag
 #define GPO_INFO_FLAG_ASYNC_FOREGROUND     0x00001000  // Asynchronous foreground refresh of policy
-#define GPO_INFO_FLAG_REPORT               0x00002000  // Report all settings for one GPO rather than the resultant settings across multiple GPOs
 
 typedef UINT_PTR ASYNCCOMPLETIONHANDLE;
 typedef DWORD (*PFNSTATUSMESSAGECALLBACK)(BOOL bVerbose, LPWSTR lpMessage);
@@ -1176,7 +1174,7 @@ USERENVAPI
 HRESULT 
 WINAPI
 RsopFileAccessCheck(
-    IN  LPWSTR pszFileName,
+    IN  LPTSTR pszFileName,
     IN  PRSOPTOKEN pRsopToken,
     IN  DWORD dwDesiredAccessMask,
     OUT LPDWORD pdwGrantedAccessMask,
@@ -1283,10 +1281,7 @@ RsopResetPolicySettingStatus(   DWORD               dwFlags,
 
 #define FLAG_ASSUME_USER_WQLFILTER_TRUE   0x04000000  // planning mode RSoP assumes all comp filters to be true
 #define FLAG_ASSUME_COMP_WQLFILTER_TRUE   0x02000000  // planning mode RSoP assumes all user filters to be true
-
-#define FLAG_PLANNING_MODE                0x01000000  // flag that indicates that a given namespace was created
-                                                      // for planning mode. This flag cannot be passed in but the
-						      // relevant subnamespace will be marked with this flag
+#define FLAG_INTERNAL_MASK      0x01FFFFFF
 
 // diagnostic mode provider flags
 #define FLAG_NO_USER                      0x00000001  // Don't get any user data

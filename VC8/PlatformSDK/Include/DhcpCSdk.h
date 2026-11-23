@@ -137,7 +137,11 @@ typedef struct _DHCPAPI_PARAMS {                  // use this structure to reque
     ULONG                          Flags;         // for future use
     ULONG                          OptionId;      // what option is this?
     BOOL                           IsVendor;      // is this vendor specific?
+#ifdef __midl
+    [size_is(nBytesData)] LPBYTE   Data;          // the actual data
+#else
     LPBYTE                         Data;          // the actual data
+#endif
     DWORD                          nBytesData;    // how many bytes of data are there in Data?
 } DHCPAPI_PARAMS, *PDHCPAPI_PARAMS, *LPDHCPAPI_PARAMS;
 #endif DHCPAPI_PARAMS_DEFINED
@@ -147,12 +151,20 @@ DHCPCAPI_PARAMS, *PDHCPCAPI_PARAMS, *LPDHCPCAPI_PARAMS;
 
 typedef struct _DHCPCAPI_PARAMS_ARARAY {          // array of params..
     ULONG                          nParams;       // size of array
-    LPDHCPCAPI_PARAMS              Params;        // actual array
+#ifdef __midl
+    [size_is(nParams)] LPDHCPCAPI_PARAMS Params;  // actual array
+#else
+    LPDHCPCAPI_PARAMS Params;        // actual array
+#endif
 } DHCPCAPI_PARAMS_ARRAY, *PDHCPCAPI_PARAMS_ARRAY, *LPDHCPCAPI_PARAMS_ARRAY;
 
 typedef struct _DHCPCAPI_CLASSID {                // defines a client class id.
     ULONG                          Flags;         // must be zero currently.
+#ifdef __midl
+    [size_is(nBytesData)] LPBYTE   Data;
+#else
     LPBYTE                         Data;          // classid binary data.
+#endif
     ULONG                          nBytesData;    // how many bytes of data are there?
 } DHCPCAPI_CLASSID, *PDHCPCAPI_CLASSID, *LPDHCPCAPI_CLASSID;
 

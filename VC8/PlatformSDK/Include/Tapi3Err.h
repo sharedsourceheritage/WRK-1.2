@@ -334,7 +334,7 @@
 //
 // MessageText:
 //
-//  Invalid mode passed as a parameter
+//  Invalide mode passed as a parameter
 //
 #define TAPI_E_INVALMODE                 ((HRESULT)0x8004001FL)
 

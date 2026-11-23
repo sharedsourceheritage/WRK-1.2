@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+	<siteMapNode url="~/aspnet/doc/management/default.aspx" title="Managing ASP.NET Applications">
+        <siteMapNode url="~/aspnet/doc/management/fileformat.aspx" title="Configuration File Format">
+           <siteMapNode url="~/aspnet/doc/management/fileformat.aspx#SectionsAndSectionGroups" title="Configuration Sections and Section Groups"/>
+           <siteMapNode url="~/aspnet/doc/management/fileformat.aspx#AddingASection" title="Adding a Configuration Section"/>
+           <siteMapNode url="~/aspnet/doc/management/fileformat.aspx#CollectionSettings" title="Collection Settings"/>
+           <siteMapNode url="~/aspnet/doc/management/fileformat.aspx#UsingLocationAndPath" title="Using Location and Path"/>
+           <siteMapNode url="~/aspnet/doc/management/fileformat.aspx#LockingDown" title="Locking Down Configuration Settings"/>
+           <siteMapNode url="~/aspnet/doc/management/fileformat.aspx#StandardSections" title="Standard ASP.NET Configuration Sections"/>
+        </siteMapNode>
+        <siteMapNode url="~/aspnet/doc/management/retrieve.aspx" title="Retrieving Configuration">
+           <siteMapNode url="~/aspnet/doc/management/retrieve.aspx#appsettings" title="Using Application Settings"/>
+           <siteMapNode url="~/aspnet/doc/management/retrieve.aspx#connectionstrings" title="Using Database Connection Strings"/>
+        </siteMapNode>
+        <siteMapNode url="~/aspnet/doc/management/mgmtapi.aspx" title="Using the Management API">
+           <siteMapNode url="~/aspnet/doc/management/mgmtapi.aspx#examine" title="Examining Configuration Settings"/>
+           <siteMapNode url="~/aspnet/doc/management/mgmtapi.aspx#update" title="Updating Configuration Settings"/>
+           <siteMapNode url="~/aspnet/doc/management/mgmtapi.aspx#encrypt" title="Encrypting a Section"/>
+        </siteMapNode>
+        <siteMapNode url="~/aspnet/doc/management/tools.aspx" title="Using Management Tools">
+           <siteMapNode url="~/aspnet/doc/management/tools.aspx#mmc" title="ASP.NET MMC Snapin"/>
+           <siteMapNode url="~/aspnet/doc/management/tools.aspx#webadmin" title="Web Site Administration Tool"/>
+           <siteMapNode url="~/aspnet/doc/management/tools.aspx#regsql" title="The ASPNET_REGSQL Tool"/>
+           <siteMapNode url="~/aspnet/doc/management/tools.aspx#regiis" title="The ASPNET_REGIIS Tool"/>
+        </siteMapNode>
+        <siteMapNode url="~/aspnet/doc/management/processmodel.aspx" title="Configuring the Process Model">
+           <siteMapNode url="~/aspnet/doc/management/processmodel.aspx#config" title="Process Model Configuration"/>
+           <siteMapNode url="~/aspnet/doc/management/processmodel.aspx#reactive" title="Reactive Process Recycling"/>
+           <siteMapNode url="~/aspnet/doc/management/processmodel.aspx#proactive" title="Proactive Process Recycling"/>
+           <siteMapNode url="~/aspnet/doc/management/processmodel.aspx#events" title="Logging Process Model Events"/>
+        </siteMapNode>
+    </siteMapNode>
+</siteMap>
+

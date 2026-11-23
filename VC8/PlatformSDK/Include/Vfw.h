@@ -52,7 +52,6 @@ extern "C" {            /* Assume C declarations for C++ */
 
 #define VFWAPI  WINAPI
 #define VFWAPIV WINAPIV
-#define VFWAPI_INLINE  WINAPI_INLINE
 
 /****************************************************************************
  *
@@ -835,7 +834,7 @@ ICDecompress(
  *  decompress a single frame
  *
  */
-static __inline LRESULT VFWAPI_INLINE
+static __inline LRESULT VFWAPI
 ICDecompressEx(
             HIC hic,
             DWORD dwFlags,
@@ -881,7 +880,7 @@ ICDecompressEx(
  *  format (lpbiOutput) is supported.
  *
  */
-static __inline LRESULT VFWAPI_INLINE
+static __inline LRESULT VFWAPI
 ICDecompressExBegin(
             HIC hic,
             DWORD dwFlags,
@@ -923,7 +922,7 @@ ICDecompressExBegin(
  *  ICDecompressExQuery()
  *
  */
-static __inline LRESULT VFWAPI_INLINE
+static __inline LRESULT VFWAPI
 ICDecompressExQuery(
             HIC hic,
             DWORD dwFlags,
@@ -1029,7 +1028,7 @@ ICDraw(
 
 // ICMessage is not supported on Win32, so provide a static inline function
 // to do the same job
-static __inline LRESULT VFWAPI_INLINE
+static __inline LRESULT VFWAPI
 ICDrawSuggestFormat(
             HIC hic,
             LPBITMAPINFOHEADER lpbiIn,
@@ -1116,7 +1115,7 @@ ICDrawSuggestFormat(
 
 
 // ICMessage is not supported on NT
-static __inline LRESULT VFWAPI_INLINE
+static __inline LRESULT VFWAPI
 ICSetStatusProc(
             HIC hic,
             DWORD dwFlags,
@@ -1535,23 +1534,6 @@ VFWAPI
 DrawDibProfileDisplay(
     IN LPBITMAPINFOHEADER lpbi
     );
-
-
-#ifdef DRAWDIB_INCLUDE_STRETCHDIB
-void WINAPI StretchDIB(
-	LPBITMAPINFOHEADER biDst,
-	LPVOID	lpDst,		
-	int	DstX,		
-	int	DstY,		
-	int	DstXE,		
-	int	DstYE,		
-	LPBITMAPINFOHEADER biSrc,
-	LPVOID	lpSrc,		
-	int	SrcX,		
-	int	SrcY,		
-	int	SrcXE,		
-	int	SrcYE); 	
-#endif
 
 #endif  /* NODRAWDIB */
 
@@ -2154,6 +2136,7 @@ DECLARE_INTERFACE_(IAVIPersistFile, IPersistFile)
 
 typedef IAVIPersistFile FAR* PAVIPERSISTFILE;
 
+
 #undef  INTERFACE
 #define INTERFACE   IAVIFile
 #define PAVIFILE IAVIFile FAR*
@@ -2655,6 +2638,7 @@ STDAPI EditStreamSetInfoA(PAVISTREAM pavi, LPAVISTREAMINFOA lpInfo, LONG cbInfo)
  *  MCIWnd - Window class for MCI objects
  *
  ***************************************************************************/
+
 #ifndef NOMCIWND
 /*----------------------------------------------------------------------------*\
  *
@@ -3070,6 +3054,7 @@ BOOL VFWAPIV MCIWndRegisterClass(void);
 #endif
 
 #endif  /* NOAVIFILE */
+
 /****************************************************************************
  *
  *  VIDEO - Video Capture Driver Interface
@@ -3810,3 +3795,4 @@ extern "C" {            /* Assume C declarations for C++ */
 #endif  /* __cplusplus */
 
 #endif  /* _INC_VFW */
+

@@ -16,7 +16,6 @@ import "wtypes.idl";
 // Flags for configuration interface
 
 const LONG CMM_REFRESHONLY = 0x00000001;	// Non-interactive configure; just reload settings
-const LONG CMM_READONLY    = 0x00000002;        // show UI in read-only mode
 
 //+--------------------------------------------------------------------------
 // ICertManageModule::XetProperty()

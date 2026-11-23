@@ -659,7 +659,6 @@ BOOL WINAPI ImmDisableTextFrameService(DWORD idThread);
 #define IME_ESC_AUTOMATA                0x1009
 #define IME_ESC_PRIVATE_HOTKEY          0x100a
 #define IME_ESC_GETHELPFILENAME         0x100b
-
 // style of word registration
 #define IME_REGWORD_STYLE_EUDC          0x00000001
 #define IME_REGWORD_STYLE_USER_FIRST    0x80000000

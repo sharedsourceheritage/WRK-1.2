@@ -79,7 +79,6 @@ DECLARE_HANDLE(SAFER_LEVEL_HANDLE);
 //
 
 #define SAFER_CRITERIA_IMAGEPATH    0x00001
-#define SAFER_CRITERIA_NOSIGNEDHASH 0x00002
 #define SAFER_CRITERIA_IMAGEHASH    0x00004
 #define SAFER_CRITERIA_AUTHENTICODE 0x00008
 #define SAFER_CRITERIA_URLZONE      0x00010
@@ -467,22 +466,22 @@ typedef struct _SAFER_URLZONE_IDENTIFICATION
 WINADVAPI
 BOOL WINAPI
 SaferGetPolicyInformation(
-    __in DWORD                   dwScopeId,
-    __in SAFER_POLICY_INFO_CLASS SaferPolicyInfoClass,
-    __in DWORD                   InfoBufferSize,
-    __inout_bcount(InfoBufferSize) PVOID    InfoBuffer,
-    __inout PDWORD							InfoBufferRetSize,
-    __reserved LPVOID						lpReserved
+    IN DWORD                   dwScopeId,
+    IN SAFER_POLICY_INFO_CLASS SaferPolicyInfoClass,
+    IN DWORD                   InfoBufferSize,
+    IN OUT PVOID               InfoBuffer,
+    IN OUT PDWORD              InfoBufferRetSize,
+    IN LPVOID                  lpReserved
     );
 
 WINADVAPI
 BOOL WINAPI
 SaferSetPolicyInformation(
-    __in DWORD							dwScopeId,
-    __in SAFER_POLICY_INFO_CLASS		SaferPolicyInfoClass,
-    __in DWORD							InfoBufferSize,
-    __in_bcount(InfoBufferSize) PVOID	InfoBuffer,
-    __reserved LPVOID					lpReserved
+    IN DWORD                   dwScopeId,
+    IN SAFER_POLICY_INFO_CLASS SaferPolicyInfoClass,
+    IN DWORD                   InfoBufferSize,
+    IN PVOID                   InfoBuffer,
+    IN LPVOID                  lpReserved
     );
 
 //
@@ -492,55 +491,55 @@ SaferSetPolicyInformation(
 WINADVAPI
 BOOL WINAPI
 SaferCreateLevel(
-    __in DWORD                dwScopeId,
-    __in DWORD                dwLevelId,
-    __in DWORD                OpenFlags,
-    __deref_out SAFER_LEVEL_HANDLE * pLevelHandle,
-    __reserved LPVOID               lpReserved
+    IN  DWORD                dwScopeId,
+    IN  DWORD                dwLevelId,
+    IN  DWORD                OpenFlags,
+    OUT SAFER_LEVEL_HANDLE * pLevelHandle,
+    IN  LPVOID               lpReserved
     );
 
 WINADVAPI
 BOOL WINAPI
 SaferCloseLevel(
-    __in SAFER_LEVEL_HANDLE hLevelHandle
+    IN SAFER_LEVEL_HANDLE hLevelHandle
     );
 
 WINADVAPI
 BOOL WINAPI
 SaferIdentifyLevel(
-    __in DWORD                    dwNumProperties,
-    __in_ecount_opt(dwNumProperties) PSAFER_CODE_PROPERTIES   pCodeProperties,
-    __deref_out SAFER_LEVEL_HANDLE     * pLevelHandle,
-    __reserved LPVOID                   lpReserved
+    IN  DWORD                    dwNumProperties,
+    IN  PSAFER_CODE_PROPERTIES   pCodeProperties,
+    OUT SAFER_LEVEL_HANDLE     * pLevelHandle,
+    IN  LPVOID                   lpReserved
     );
 
 WINADVAPI
 BOOL WINAPI
 SaferComputeTokenFromLevel(
-    __in SAFER_LEVEL_HANDLE LevelHandle,
-    __in_opt HANDLE             InAccessToken,
-    __out PHANDLE            OutAccessToken,
-    __in DWORD              dwFlags,
-    __inout_opt LPVOID             lpReserved
+    IN  SAFER_LEVEL_HANDLE LevelHandle,
+    IN  HANDLE             InAccessToken   OPTIONAL,
+    OUT PHANDLE            OutAccessToken,
+    IN  DWORD              dwFlags,
+    IN  LPVOID             lpReserved
     );
 
 WINADVAPI
 BOOL WINAPI
 SaferGetLevelInformation(
-        __in SAFER_LEVEL_HANDLE      LevelHandle,
-        __in SAFER_OBJECT_INFO_CLASS dwInfoType,
-        __out_bcount_opt(dwInBufferSize) LPVOID		lpQueryBuffer,
-        __in DWORD                   dwInBufferSize,
-        __out LPDWORD                 lpdwOutBufferSize
+        IN  SAFER_LEVEL_HANDLE      LevelHandle,
+        IN  SAFER_OBJECT_INFO_CLASS dwInfoType,
+        OUT LPVOID                  lpQueryBuffer     OPTIONAL,
+        IN  DWORD                   dwInBufferSize,
+        OUT LPDWORD                 lpdwOutBufferSize
         );
 
 WINADVAPI
 BOOL WINAPI
 SaferSetLevelInformation(
-    __in SAFER_LEVEL_HANDLE				LevelHandle,
-    __in SAFER_OBJECT_INFO_CLASS		dwInfoType,
-    __in_bcount(dwInBufferSize) LPVOID	lpQueryBuffer,
-    __in DWORD							dwInBufferSize
+    IN SAFER_LEVEL_HANDLE      LevelHandle,
+    IN SAFER_OBJECT_INFO_CLASS dwInfoType,
+    IN LPVOID                  lpQueryBuffer,
+    IN DWORD                   dwInBufferSize
     );
 
 //
@@ -552,18 +551,11 @@ SaferSetLevelInformation(
 WINADVAPI
 BOOL WINAPI
 SaferRecordEventLogEntry(
-    __in SAFER_LEVEL_HANDLE hLevel,
-    __in LPCWSTR            szTargetPath,
-    __reserved LPVOID       lpReserved
+    IN SAFER_LEVEL_HANDLE hLevel,
+    IN LPCWSTR            szTargetPath,
+    IN LPVOID             lpReserved
     );
 
-
-WINADVAPI
-BOOL WINAPI
-SaferiIsExecutableFileType(
-    __in LPCWSTR szFullPathname,
-    __in BOOLEAN bFromShellExecute
-    );
 
 
 #ifdef __cplusplus

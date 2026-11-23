@@ -210,7 +210,6 @@ typedef struct tagRPC_EE_INFO_PARAM
 #define EEInfoUseFileTime                4
 
 #define EEInfoGCCOM                     11
-#define EEInfoGCFRS                     12
 
 typedef struct tagRPC_EXTENDED_ERROR_INFO
 {

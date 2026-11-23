@@ -1,6 +1,8 @@
 //***************************************************************************
+
 //
-//  Copyright © Microsoft Corporation.  All rights reserved.
+
+// Copyright (c) 1997-2001 Microsoft Corporation, All Rights Reserved
 //
 //  Instance.h
 //

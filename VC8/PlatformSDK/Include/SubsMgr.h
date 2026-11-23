@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for subsmgr.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -313,7 +312,7 @@ void __RPC_STUB IEnumItemProperties_GetCount_Stub(
 #endif 	/* __IEnumItemProperties_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_subsmgr_0264 */
+/* interface __MIDL_itf_subsmgr_0259 */
 /* [local] */ 
 
 //  Subscription item flag values
@@ -321,8 +320,8 @@ void __RPC_STUB IEnumItemProperties_GetCount_Stub(
 #define SI_TEMPORARY         0x80000000
 
 
-extern RPC_IF_HANDLE __MIDL_itf_subsmgr_0264_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_subsmgr_0264_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_subsmgr_0259_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_subsmgr_0259_v0_0_s_ifspec;
 
 #ifndef __ISubscriptionItem_INTERFACE_DEFINED__
 #define __ISubscriptionItem_INTERFACE_DEFINED__
@@ -1447,7 +1446,7 @@ SubscriptionMgr;
 #endif
 #endif /* __SubscriptionMgr_LIBRARY_DEFINED__ */
 
-/* interface __MIDL_itf_subsmgr_0268 */
+/* interface __MIDL_itf_subsmgr_0263 */
 /* [local] */ 
 
 
@@ -1532,8 +1531,8 @@ enum CHANNEL_AGENT_FLAGS
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_subsmgr_0268_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_subsmgr_0268_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_subsmgr_0263_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_subsmgr_0263_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

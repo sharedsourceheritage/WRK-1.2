@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{E6FDF86B-F3D1-11D4-8576-0002A516ECE8}") = "MQSendJSL", "MQSend\MQSend.vjsproj", "{33A6B171-5DCE-4C7C-A839-090889C00049}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33A6B171-5DCE-4C7C-A839-090889C00049}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33A6B171-5DCE-4C7C-A839-090889C00049}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33A6B171-5DCE-4C7C-A839-090889C00049}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33A6B171-5DCE-4C7C-A839-090889C00049}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

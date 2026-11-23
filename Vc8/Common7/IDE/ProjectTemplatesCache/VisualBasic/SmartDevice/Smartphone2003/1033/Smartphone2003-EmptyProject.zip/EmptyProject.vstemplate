@@ -1,0 +1,23 @@
+<VSTemplate Version="2.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="3177" />
+    <Description Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="3179" />
+    <Icon Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="213" />
+    <ProjectType>VisualBasic</ProjectType>
+    <SortOrder>395</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Project</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <PromptForSaveOnCreation>false</PromptForSaveOnCreation>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+  </TemplateData>
+  <TemplateContent>
+    <CustomParameters>
+        <CustomParameter Name="$PlatformID$" Value="4DE813A2-67E0-4a00-945C-3188240A8243"/>
+        <CustomParameter Name="$PlatformFamily$" Value="Smartphone"/>
+        <CustomParameter Name="$OSVersion$" Value="4.20"/>
+    </CustomParameters>
+    <Project File="EmptyProject.vbproj" ReplaceParameters="true" />
+  </TemplateContent>
+</VSTemplate>

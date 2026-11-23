@@ -79,14 +79,9 @@ extern "C" {
 // HTTP_SEND_RESPONSE_FLAG_MORE_DATA - Specifies that additional entity body
 // data will be sent by the caller.
 //
-// HTTP_SEND_RESPONSE_FLAG_BUFFER_DATA - Specifies that a caller wants the
-// response to complete as soon as possible at the cost by buffering partial
-// or the entire response.
-//
 
 #define HTTP_SEND_RESPONSE_FLAG_DISCONNECT          0x00000001
 #define HTTP_SEND_RESPONSE_FLAG_MORE_DATA           0x00000002
-#define HTTP_SEND_RESPONSE_FLAG_BUFFER_DATA         0x00000004
 
 
 

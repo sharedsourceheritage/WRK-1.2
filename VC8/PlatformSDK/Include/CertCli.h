@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for certcli.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -279,7 +278,7 @@ void __RPC_STUB ICertGetConfig_GetConfig_Stub(
 #endif 	/* __ICertGetConfig_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_certcli_0122 */
+/* interface __MIDL_itf_certcli_0118 */
 /* [local] */ 
 
 #define wszCONFIG_COMMONNAME 		L"CommonName"
@@ -311,8 +310,8 @@ void __RPC_STUB ICertGetConfig_GetConfig_Stub(
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_certcli_0122_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_certcli_0122_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_certcli_0118_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_certcli_0118_v0_0_s_ifspec;
 
 #ifndef __ICertConfig_INTERFACE_DEFINED__
 #define __ICertConfig_INTERFACE_DEFINED__
@@ -685,7 +684,7 @@ void __RPC_STUB ICertConfig2_SetSharedFolder_Stub(
 #endif 	/* __ICertConfig2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_certcli_0124 */
+/* interface __MIDL_itf_certcli_0120 */
 /* [local] */ 
 
 #define	CR_IN_BASE64HEADER	( 0 )
@@ -726,8 +725,6 @@ void __RPC_STUB ICertConfig2_SetSharedFolder_Stub(
 
 #define	CC_LOCALACTIVECONFIG	( 0x4 )
 
-#define	CC_UIPICKCONFIGSKIPLOCALCA	( 0x5 )
-
 #define	CR_DISP_INCOMPLETE	( 0 )
 
 #define	CR_DISP_ERROR	( 0x1 )
@@ -760,10 +757,7 @@ void __RPC_STUB ICertConfig2_SetSharedFolder_Stub(
 #define CR_PROP_FILEVERSION        1  // String
 #define CR_PROP_PRODUCTVERSION     2  // String
 #define CR_PROP_EXITCOUNT          3  // Long
-
-// CR_PROP_EXITCOUNT Elements:
 #define CR_PROP_EXITDESCRIPTION    4  // String, Indexed
-
 #define CR_PROP_POLICYDESCRIPTION  5  // String
 #define CR_PROP_CANAME             6  // String
 #define CR_PROP_SANITIZEDCANAME    7  // String
@@ -771,131 +765,49 @@ void __RPC_STUB ICertConfig2_SetSharedFolder_Stub(
 #define CR_PROP_PARENTCA           9  // String
 #define CR_PROP_CATYPE            10  // Long
 #define CR_PROP_CASIGCERTCOUNT    11  // Long
-
-// CR_PROP_CASIGCERTCOUNT Elements:
 #define CR_PROP_CASIGCERT         12  // Binary, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
 #define CR_PROP_CASIGCERTCHAIN    13  // Binary, Indexed
-
 #define CR_PROP_CAXCHGCERTCOUNT   14  // Long
-
-// CR_PROP_CAXCHGCERTCOUNT Elements:
 #define CR_PROP_CAXCHGCERT        15  // Binary, Indexed
-
-// CR_PROP_CAXCHGCERTCOUNT Elements:
 #define CR_PROP_CAXCHGCERTCHAIN   16  // Binary, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
-// Fetch only if CR_PROP_CRLSTATE[i] == CA_DISP_VALID
-// May also be available if CR_PROP_CRLSTATE[i] == CA_DISP_INVALID
 #define CR_PROP_BASECRL           17  // Binary, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
-// Fetch only if Delta CRLs enabled && CR_PROP_CRLSTATE[i] == CA_DISP_VALID
-// May also be available if CR_PROP_CRLSTATE[i] == CA_DISP_INVALID
 #define CR_PROP_DELTACRL          18  // Binary, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
 #define CR_PROP_CACERTSTATE       19  // Long, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
 #define CR_PROP_CRLSTATE          20  // Long, Indexed
-
 #define CR_PROP_CAPROPIDMAX       21  // Long
 #define CR_PROP_DNSNAME           22  // String
 #define CR_PROP_ROLESEPARATIONENABLED 23 // Long
 #define CR_PROP_KRACERTUSEDCOUNT  24  // Long
 #define CR_PROP_KRACERTCOUNT      25  // Long
-
-// CR_PROP_KRACERTCOUNT Elements:
 #define CR_PROP_KRACERT           26  // Binary, Indexed
-
-// CR_PROP_KRACERTCOUNT Elements:
 #define CR_PROP_KRACERTSTATE      27  // Long, Indexed
-
 #define CR_PROP_ADVANCEDSERVER    28  // Long
 #define CR_PROP_TEMPLATES         29  // String
-
-// CR_PROP_CASIGCERTCOUNT Elements:
-// Fetch only if CR_PROP_CRLSTATE[i] == CA_DISP_VALID
-#define CR_PROP_BASECRLPUBLISHSTATUS 30  // Long, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
-// Fetch only if Delta CRLs enabled && CR_PROP_CRLSTATE[i] == CA_DISP_VALID
-#define CR_PROP_DELTACRLPUBLISHSTATUS 31  // Long, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
+#define CR_PROP_BASECRLPUBLISHSTATUS     30  // Long, Indexed
+#define CR_PROP_DELTACRLPUBLISHSTATUS    31  // Long, Indexed
 #define CR_PROP_CASIGCERTCRLCHAIN 32  // Binary, Indexed
-
-// CR_PROP_CAXCHGCERTCOUNT Elements:
 #define CR_PROP_CAXCHGCERTCRLCHAIN 33 // Binary, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
 #define CR_PROP_CACERTSTATUSCODE  34  // Long, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
-#define CR_PROP_CAFORWARDCROSSCERT 35  // Binary, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
-#define CR_PROP_CABACKWARDCROSSCERT 36  // Binary, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
-#define CR_PROP_CAFORWARDCROSSCERTSTATE 37  // Long, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
-#define CR_PROP_CABACKWARDCROSSCERTSTATE 38  // Long, Indexed
-
-// CR_PROP_CASIGCERTCOUNT Elements:
-#define CR_PROP_CACERTVERSION       39  // Long, Indexed
-#define CR_PROP_SANITIZEDCASHORTNAME 40  // String
-
-
 #define FR_PROP_NONE                    0  // Invalid
 #define FR_PROP_FULLRESPONSE            1  // Binary
 #define FR_PROP_STATUSINFOCOUNT         2  // Long
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_BODYPARTSTRING          3  // String, Indexed
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_STATUS                  4  // Long, Indexed
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_STATUSSTRING            5  // String, Indexed
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_OTHERINFOCHOICE         6  // Long, Indexed
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_FAILINFO                7  // Long, Indexed
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_PENDINFOTOKEN           8  // Binary, Indexed
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_PENDINFOTIME            9  // Date, Indexed
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_ISSUEDCERTIFICATEHASH  10  // Binary, Indexed
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_ISSUEDCERTIFICATE      11  // Binary, Indexed
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_ISSUEDCERTIFICATECHAIN 12  // Binary, Indexed
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_ISSUEDCERTIFICATECRLCHAIN 13  // Binary, Indexed
-
-// FR_PROP_STATUSINFOCOUNT Elements:
 #define FR_PROP_ENCRYPTEDKEYHASH	  14  // Binary, Indexed
-
 #define FR_PROP_FULLRESPONSENOPKCS7	  15  // Binary
 
 
-extern RPC_IF_HANDLE __MIDL_itf_certcli_0124_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_certcli_0124_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_certcli_0120_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_certcli_0120_v0_0_s_ifspec;
 
 #ifndef __ICertRequest_INTERFACE_DEFINED__
 #define __ICertRequest_INTERFACE_DEFINED__

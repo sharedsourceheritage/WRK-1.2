@@ -50,6 +50,7 @@ Revision History:
 #define LANG_BASQUE                      0x2d
 #define LANG_BELARUSIAN                  0x23
 #define LANG_BENGALI                     0x45
+#define LANG_BOSNIAN                     0x1a
 #define LANG_BULGARIAN                   0x02
 #define LANG_CATALAN                     0x03
 #define LANG_CHINESE                     0x04
@@ -87,7 +88,9 @@ Revision History:
 #define LANG_MACEDONIAN                  0x2f   // the Former Yugoslav Republic of Macedonia
 #define LANG_MALAY                       0x3e
 #define LANG_MALAYALAM                   0x4c
+#define LANG_MALTESE                     0x3a
 #define LANG_MANIPURI                    0x58
+#define LANG_MAORI                       0x81
 #define LANG_MARATHI                     0x4e
 #define LANG_MONGOLIAN                   0x50
 #define LANG_NEPALI                      0x61
@@ -96,13 +99,16 @@ Revision History:
 #define LANG_POLISH                      0x15
 #define LANG_PORTUGUESE                  0x16
 #define LANG_PUNJABI                     0x46
+#define LANG_QUECHUA                     0x6b
 #define LANG_ROMANIAN                    0x18
 #define LANG_RUSSIAN                     0x19
+#define LANG_SAMI                        0x3b
 #define LANG_SANSKRIT                    0x4f
 #define LANG_SERBIAN                     0x1a
 #define LANG_SINDHI                      0x59
 #define LANG_SLOVAK                      0x1b
 #define LANG_SLOVENIAN                   0x24
+#define LANG_SOTHO                       0x6c
 #define LANG_SPANISH                     0x0a
 #define LANG_SWAHILI                     0x41
 #define LANG_SWEDISH                     0x1d
@@ -111,11 +117,15 @@ Revision History:
 #define LANG_TATAR                       0x44
 #define LANG_TELUGU                      0x4a
 #define LANG_THAI                        0x1e
+#define LANG_TSWANA                      0x32
 #define LANG_TURKISH                     0x1f
 #define LANG_UKRAINIAN                   0x22
 #define LANG_URDU                        0x20
 #define LANG_UZBEK                       0x43
 #define LANG_VIETNAMESE                  0x2a
+#define LANG_WELSH                       0x52
+#define LANG_XHOSA                       0x34
+#define LANG_ZULU                        0x35
 
 //
 //  Sublanguage IDs.
@@ -147,11 +157,14 @@ Revision History:
 #define SUBLANG_ARABIC_QATAR             0x10    // Arabic (Qatar)
 #define SUBLANG_AZERI_LATIN              0x01    // Azeri (Latin)
 #define SUBLANG_AZERI_CYRILLIC           0x02    // Azeri (Cyrillic)
+#define SUBLANG_BOSNIAN_BOSNIA_HERZEGOVINA_LATIN 0x05 // Bosnian (Bosnia and Herzegovina - Latin)
 #define SUBLANG_CHINESE_TRADITIONAL      0x01    // Chinese (Taiwan)
 #define SUBLANG_CHINESE_SIMPLIFIED       0x02    // Chinese (PR China)
 #define SUBLANG_CHINESE_HONGKONG         0x03    // Chinese (Hong Kong S.A.R., P.R.C.)
 #define SUBLANG_CHINESE_SINGAPORE        0x04    // Chinese (Singapore)
 #define SUBLANG_CHINESE_MACAU            0x05    // Chinese (Macau S.A.R.)
+#define SUBLANG_CROATIAN_CROATIA         0x01    // Croatian (Croatia)
+#define SUBLANG_CROATIAN_BOSNIA_HERZEGOVINA_LATIN 0x04 // Croatian (Bosnia and Herzegovina - Latin)
 #define SUBLANG_DUTCH                    0x01    // Dutch
 #define SUBLANG_DUTCH_BELGIAN            0x02    // Dutch (Belgian)
 #define SUBLANG_ENGLISH_US               0x01    // English (USA)
@@ -180,9 +193,7 @@ Revision History:
 #define SUBLANG_GERMAN_LIECHTENSTEIN     0x05    // German (Liechtenstein)
 #define SUBLANG_ITALIAN                  0x01    // Italian
 #define SUBLANG_ITALIAN_SWISS            0x02    // Italian (Swiss)
-#if _WIN32_WINNT >= 0x0501
 #define SUBLANG_KASHMIRI_SASIA           0x02    // Kashmiri (South Asia)
-#endif
 #define SUBLANG_KASHMIRI_INDIA           0x02    // For app compatibility only
 #define SUBLANG_KOREAN                   0x01    // Korean (Extended Wansung)
 #define SUBLANG_LITHUANIAN               0x01    // Lithuanian
@@ -193,11 +204,26 @@ Revision History:
 #define SUBLANG_NORWEGIAN_NYNORSK        0x02    // Norwegian (Nynorsk)
 #define SUBLANG_PORTUGUESE               0x02    // Portuguese
 #define SUBLANG_PORTUGUESE_BRAZILIAN     0x01    // Portuguese (Brazilian)
+#define SUBLANG_QUECHUA_BOLIVIA          0x01    // Quechua (Bolivia)
+#define SUBLANG_QUECHUA_ECUADOR          0x02    // Quechua (Ecuador)
+#define SUBLANG_QUECHUA_PERU             0x03    // Quechua (Peru)
+#define SUBLANG_SAMI_NORTHERN_NORWAY     0x01    // Northern Sami (Norway)
+#define SUBLANG_SAMI_NORTHERN_SWEDEN     0x02    // Northern Sami (Sweden)
+#define SUBLANG_SAMI_NORTHERN_FINLAND    0x03    // Northern Sami (Finland)
+#define SUBLANG_SAMI_LULE_NORWAY         0x04    // Lule Sami (Norway)
+#define SUBLANG_SAMI_LULE_SWEDEN         0x05    // Lule Sami (Sweden)
+#define SUBLANG_SAMI_SOUTHERN_NORWAY     0x06    // Southern Sami (Norway)
+#define SUBLANG_SAMI_SOUTHERN_SWEDEN     0x07    // Southern Sami (Sweden)
+#define SUBLANG_SAMI_SKOLT_FINLAND       0x08    // Skolt Sami (Finland)
+#define SUBLANG_SAMI_INARI_FINLAND       0x09    // Inari Sami (Finland)
+#define SUBLANG_SERBIAN_BOSNIA_HERZEGOVINA_LATIN    0x06 // Serbian (Bosnia and Herzegovina - Latin)
+#define SUBLANG_SERBIAN_BOSNIA_HERZEGOVINA_CYRILLIC 0x07 // Serbian (Bosnia and Herzegovina - Cyrillic)
 #define SUBLANG_SERBIAN_LATIN            0x02    // Serbian (Latin)
 #define SUBLANG_SERBIAN_CYRILLIC         0x03    // Serbian (Cyrillic)
+#define SUBLANG_SOTHO_NORTHERN_SOUTH_AFRICA 0x01    // Northern Sotho (South Africa)
 #define SUBLANG_SPANISH                  0x01    // Spanish (Castilian)
 #define SUBLANG_SPANISH_MEXICAN          0x02    // Spanish (Mexican)
-#define SUBLANG_SPANISH_MODERN           0x03    // Spanish (Spain)
+#define SUBLANG_SPANISH_MODERN           0x03    // Spanish (Modern)
 #define SUBLANG_SPANISH_GUATEMALA        0x04    // Spanish (Guatemala)
 #define SUBLANG_SPANISH_COSTA_RICA       0x05    // Spanish (Costa Rica)
 #define SUBLANG_SPANISH_PANAMA           0x06    // Spanish (Panama)

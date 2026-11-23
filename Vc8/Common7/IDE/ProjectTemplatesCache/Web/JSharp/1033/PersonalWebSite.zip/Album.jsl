@@ -1,0 +1,23 @@
+public class Album {
+
+	private int _id;
+	private int _count;
+	private String _caption;
+	private boolean _ispublic;
+
+	/**@property*/
+	public int get_AlbumID() { return _id; }
+	/**@property*/
+	public int get_Count() { return _count; }
+	/**@property*/
+	public String get_Caption() { return _caption; }
+	/**@property*/
+	public boolean get_IsPublic() { return _ispublic; }
+
+	public Album(int id, int count, String caption, boolean ispublic) {
+		_id = id;
+		_count = count;
+		_caption = caption;
+		_ispublic = ispublic;
+	}
+}

@@ -38,39 +38,39 @@ typedef void __RPC_FAR * RPC_NS_HANDLE;
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsBindingExportA(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_CSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt RPC_BINDING_VECTOR __RPC_FAR *BindingVec,
-    __in_opt UUID_VECTOR __RPC_FAR *ObjectUuidVec
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * EntryName,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+    IN RPC_BINDING_VECTOR __RPC_FAR * BindingVec OPTIONAL,
+    IN UUID_VECTOR __RPC_FAR * ObjectUuidVec OPTIONAL
     );
 
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsBindingUnexportA(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_CSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt UUID_VECTOR __RPC_FAR *ObjectUuidVec
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * EntryName,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+    IN UUID_VECTOR __RPC_FAR * ObjectUuidVec OPTIONAL
     );
 
 #ifdef RPC_UNICODE_SUPPORTED
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsBindingExportW(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_WSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt RPC_BINDING_VECTOR __RPC_FAR *BindingVec,
-    __in_opt UUID_VECTOR __RPC_FAR *ObjectUuidVec
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * EntryName,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+    IN RPC_BINDING_VECTOR __RPC_FAR * BindingVec OPTIONAL,
+    IN UUID_VECTOR __RPC_FAR * ObjectUuidVec OPTIONAL
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsBindingUnexportW(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_WSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt UUID_VECTOR __RPC_FAR *ObjectUuidVec
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * EntryName,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+    IN UUID_VECTOR __RPC_FAR * ObjectUuidVec OPTIONAL
     );
 
 #endif
@@ -79,36 +79,36 @@ RpcNsBindingUnexportW(
 
 RPC_STATUS RPC_ENTRY
 RpcNsBindingExportPnPA(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_CSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt UUID_VECTOR *ObjectVector
+    IN unsigned long EntryNameSyntax,
+    IN unsigned char * EntryName,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+     IN UUID_VECTOR * ObjectVector OPTIONAL
     );
 
 RPC_STATUS RPC_ENTRY
 RpcNsBindingUnexportPnPA(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_CSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt UUID_VECTOR *ObjectVector
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned char * EntryName,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+    IN UUID_VECTOR * ObjectVector OPTIONAL
     );
 
 #ifdef RPC_UNICODE_SUPPORTED
 
 RPC_STATUS RPC_ENTRY
 RpcNsBindingExportPnPW(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_WSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt UUID_VECTOR *ObjectVector
+    IN unsigned long EntryNameSyntax,
+    IN unsigned short * EntryName,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+    IN UUID_VECTOR * ObjectVector OPTIONAL
     );
 
 RPC_STATUS RPC_ENTRY
 RpcNsBindingUnexportPnPW(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_WSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt UUID_VECTOR *ObjectVector
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned short * EntryName,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+    IN UUID_VECTOR * ObjectVector OPTIONAL
     );
 
 #endif
@@ -117,24 +117,24 @@ RpcNsBindingUnexportPnPW(
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsBindingLookupBeginA(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_CSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt UUID __RPC_FAR *ObjUuid,
-    __in unsigned long BindingMaxCount,
-    __out RPC_NS_HANDLE __RPC_FAR *LookupContext
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * EntryName OPTIONAL,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+    IN UUID __RPC_FAR * ObjUuid OPTIONAL,
+    IN unsigned long BindingMaxCount OPTIONAL,
+    OUT RPC_NS_HANDLE __RPC_FAR * LookupContext
     );
 
 #ifdef RPC_UNICODE_SUPPORTED
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsBindingLookupBeginW(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_WSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt UUID __RPC_FAR *ObjUuid,
-    __in unsigned long BindingMaxCount,
-    __out RPC_NS_HANDLE __RPC_FAR *LookupContext
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * EntryName OPTIONAL,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+    IN UUID __RPC_FAR * ObjUuid OPTIONAL,
+    IN unsigned long BindingMaxCount OPTIONAL,
+    OUT RPC_NS_HANDLE __RPC_FAR * LookupContext
     );
 #endif
 
@@ -153,76 +153,76 @@ RpcNsBindingLookupDone(
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsGroupDeleteA(
-    __in unsigned long GroupNameSyntax,
-    __in_opt RPC_CSTR GroupName
+    IN unsigned long GroupNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * GroupName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsGroupMbrAddA(
-    __in unsigned long GroupNameSyntax,
-    __in RPC_CSTR GroupName,
-    __in unsigned long MemberNameSyntax,
-    __in RPC_CSTR MemberName
+    IN unsigned long GroupNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * GroupName,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * MemberName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsGroupMbrRemoveA(
-    __in unsigned long GroupNameSyntax,
-    __in RPC_CSTR GroupName,
-    __in unsigned long MemberNameSyntax,
-    __in RPC_CSTR MemberName
+    IN unsigned long GroupNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * GroupName,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * MemberName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsGroupMbrInqBeginA(
-    __in unsigned long GroupNameSyntax,
-    __in RPC_CSTR GroupName,
-    __in unsigned long MemberNameSyntax,
-    __out RPC_NS_HANDLE __RPC_FAR *InquiryContext
+    IN unsigned long GroupNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * GroupName,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    OUT RPC_NS_HANDLE __RPC_FAR * InquiryContext
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsGroupMbrInqNextA(
-    __inout RPC_NS_HANDLE InquiryContext,
-    __deref_out RPC_CSTR __RPC_FAR *MemberName
+    IN  RPC_NS_HANDLE InquiryContext,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * MemberName
     );
 
 #ifdef RPC_UNICODE_SUPPORTED
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsGroupDeleteW(
-    __in unsigned long GroupNameSyntax,
-    __in_opt RPC_WSTR GroupName
+    IN unsigned long GroupNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * GroupName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsGroupMbrAddW(
-    __in unsigned long GroupNameSyntax,
-    __in RPC_WSTR GroupName,
-    __in unsigned long MemberNameSyntax,
-    __in RPC_WSTR MemberName
+    IN unsigned long GroupNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * GroupName,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * MemberName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsGroupMbrRemoveW(
-    __in unsigned long GroupNameSyntax,
-    __in RPC_WSTR GroupName,
-    __in unsigned long MemberNameSyntax,
-    __in RPC_WSTR MemberName
+    IN unsigned long GroupNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * GroupName,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * MemberName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsGroupMbrInqBeginW(
-    __in unsigned long GroupNameSyntax,
-    __in RPC_WSTR GroupName,
-    __in unsigned long MemberNameSyntax,
-    __out RPC_NS_HANDLE __RPC_FAR *InquiryContext
+    IN unsigned long GroupNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * GroupName,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    OUT RPC_NS_HANDLE __RPC_FAR * InquiryContext
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsGroupMbrInqNextW(
-    __inout RPC_NS_HANDLE InquiryContext,
-    __deref_out RPC_WSTR __RPC_FAR *MemberName
+    IN  RPC_NS_HANDLE InquiryContext,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * MemberName
     );
 
 #endif
@@ -236,98 +236,98 @@ RpcNsGroupMbrInqDone(
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsProfileDeleteA(
-    __in unsigned long ProfileNameSyntax,
-    __in RPC_CSTR ProfileName
+    IN unsigned long ProfileNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * ProfileName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsProfileEltAddA(
-    __in unsigned long ProfileNameSyntax,
-    __in RPC_CSTR ProfileName,
-    __in_opt RPC_IF_ID __RPC_FAR *IfId,
-    __in unsigned long MemberNameSyntax,
-    __in RPC_CSTR MemberName,
-    __in unsigned long Priority,
-    __in_opt RPC_CSTR Annotation
+    IN unsigned long ProfileNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * ProfileName,
+    IN RPC_IF_ID __RPC_FAR * IfId OPTIONAL,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * MemberName,
+    IN unsigned long Priority,
+    IN unsigned char __RPC_FAR * Annotation OPTIONAL
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsProfileEltRemoveA(
-    __in unsigned long ProfileNameSyntax,
-    __in RPC_CSTR ProfileName,
-    __in_opt RPC_IF_ID __RPC_FAR *IfId,
-    __in unsigned long MemberNameSyntax,
-    __in RPC_CSTR MemberName
+    IN unsigned long ProfileNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * ProfileName,
+    IN RPC_IF_ID __RPC_FAR * IfId OPTIONAL,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * MemberName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsProfileEltInqBeginA(
-    __in unsigned long ProfileNameSyntax,
-    __in RPC_CSTR ProfileName,
-    __in unsigned long InquiryType,
-    __in_opt RPC_IF_ID __RPC_FAR *IfId,
-    __in unsigned long VersOption,
-    __in unsigned long MemberNameSyntax,
-    __in_opt RPC_CSTR MemberName,
-    __out RPC_NS_HANDLE __RPC_FAR *InquiryContext
+    IN unsigned long ProfileNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * ProfileName,
+    IN unsigned long InquiryType,
+    IN RPC_IF_ID __RPC_FAR * IfId OPTIONAL,
+    IN unsigned long VersOption,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * MemberName OPTIONAL,
+    OUT RPC_NS_HANDLE __RPC_FAR * InquiryContext
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsProfileEltInqNextA(
-    __in RPC_NS_HANDLE InquiryContext,
-    __out_opt RPC_IF_ID __RPC_FAR *IfId,
-    __out RPC_CSTR __RPC_FAR *MemberName,
-    __out unsigned long __RPC_FAR *Priority,
-    __out RPC_CSTR __RPC_FAR *Annotation
+    IN RPC_NS_HANDLE InquiryContext,
+    OUT RPC_IF_ID __RPC_FAR * IfId,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * MemberName,
+    OUT unsigned long __RPC_FAR * Priority,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * Annotation
     );
 
 #ifdef RPC_UNICODE_SUPPORTED
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsProfileDeleteW(
-    __in unsigned long ProfileNameSyntax,
-    __in RPC_WSTR ProfileName
+    IN unsigned long ProfileNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * ProfileName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsProfileEltAddW(
-    __in unsigned long ProfileNameSyntax,
-    __in RPC_WSTR ProfileName,
-    __in_opt RPC_IF_ID __RPC_FAR *IfId,
-    __in unsigned long MemberNameSyntax,
-    __in RPC_WSTR MemberName,
-    __in unsigned long Priority,
-    __in_opt RPC_WSTR Annotation
+    IN unsigned long ProfileNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * ProfileName,
+    IN RPC_IF_ID __RPC_FAR * IfId OPTIONAL,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * MemberName,
+    IN unsigned long Priority,
+    IN unsigned short __RPC_FAR * Annotation OPTIONAL
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsProfileEltRemoveW(
-    __in unsigned long ProfileNameSyntax,
-    __in RPC_WSTR ProfileName,
-    __in_opt RPC_IF_ID __RPC_FAR *IfId,
-    __in unsigned long MemberNameSyntax,
-    __in RPC_WSTR MemberName
+    IN unsigned long ProfileNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * ProfileName,
+    IN RPC_IF_ID __RPC_FAR * IfId OPTIONAL,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * MemberName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsProfileEltInqBeginW(
-    __in unsigned long ProfileNameSyntax,
-    __in RPC_WSTR ProfileName,
-    __in unsigned long InquiryType,
-    __in_opt RPC_IF_ID __RPC_FAR *IfId,
-    __in unsigned long VersOption,
-    __in unsigned long MemberNameSyntax,
-    __in_opt RPC_WSTR MemberName,
-    __out RPC_NS_HANDLE __RPC_FAR *InquiryContext
+    IN unsigned long ProfileNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * ProfileName,
+    IN unsigned long InquiryType,
+    IN RPC_IF_ID __RPC_FAR * IfId OPTIONAL,
+    IN unsigned long VersOption,
+    IN unsigned long MemberNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * MemberName OPTIONAL,
+    OUT RPC_NS_HANDLE __RPC_FAR * InquiryContext
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsProfileEltInqNextW(
-    __in RPC_NS_HANDLE InquiryContext,
-    __out_opt RPC_IF_ID __RPC_FAR *IfId,
-    __out RPC_WSTR __RPC_FAR *MemberName,
-    __out unsigned long __RPC_FAR *Priority,
-    __out RPC_WSTR __RPC_FAR *Annotation
+    IN RPC_NS_HANDLE InquiryContext,
+    OUT RPC_IF_ID __RPC_FAR * IfId,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * MemberName,
+    OUT unsigned long __RPC_FAR * Priority,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * Annotation
     );
 
 #endif
@@ -341,18 +341,18 @@ RpcNsProfileEltInqDone(
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsEntryObjectInqBeginA(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_CSTR EntryName,
-    __out RPC_NS_HANDLE __RPC_FAR *InquiryContext
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * EntryName,
+    OUT RPC_NS_HANDLE __RPC_FAR * InquiryContext
     );
 
 #ifdef RPC_UNICODE_SUPPORTED
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsEntryObjectInqBeginW(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_WSTR EntryName,
-    __out RPC_NS_HANDLE __RPC_FAR *InquiryContext
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * EntryName,
+    OUT RPC_NS_HANDLE __RPC_FAR * InquiryContext
     );
 
 #endif
@@ -372,37 +372,37 @@ RpcNsEntryObjectInqDone(
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsEntryExpandNameA(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_CSTR EntryName,
-    __out RPC_CSTR __RPC_FAR *ExpandedName
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * EntryName,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ExpandedName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsMgmtBindingUnexportA(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_CSTR EntryName,
-    __in_opt RPC_IF_ID __RPC_FAR *IfId,
-    __in unsigned long VersOption,
-    __in_opt UUID_VECTOR __RPC_FAR *ObjectUuidVec
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * EntryName,
+    IN RPC_IF_ID __RPC_FAR * IfId OPTIONAL,
+    IN unsigned long VersOption,
+    IN UUID_VECTOR __RPC_FAR * ObjectUuidVec OPTIONAL
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsMgmtEntryCreateA(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_CSTR EntryName
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * EntryName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsMgmtEntryDeleteA(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_CSTR EntryName
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * EntryName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsMgmtEntryInqIfIdsA(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_CSTR EntryName,
-    __out RPC_IF_ID_VECTOR __RPC_FAR * __RPC_FAR *IfIdVec
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * EntryName,
+    OUT RPC_IF_ID_VECTOR __RPC_FAR * __RPC_FAR * IfIdVec
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
@@ -425,37 +425,37 @@ RpcNsMgmtSetExpAge(
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsEntryExpandNameW(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_WSTR EntryName,
-    __out RPC_WSTR __RPC_FAR *ExpandedName
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * EntryName,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * ExpandedName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsMgmtBindingUnexportW(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_WSTR EntryName,
-    __in_opt RPC_IF_ID __RPC_FAR *IfId,
-    __in unsigned long VersOption,
-    __in_opt UUID_VECTOR __RPC_FAR *ObjectUuidVec
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * EntryName,
+    IN RPC_IF_ID __RPC_FAR * IfId OPTIONAL,
+    IN unsigned long VersOption,
+    IN UUID_VECTOR __RPC_FAR * ObjectUuidVec OPTIONAL
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsMgmtEntryCreateW(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_WSTR EntryName
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * EntryName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsMgmtEntryDeleteW(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_WSTR EntryName
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * EntryName
     );
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsMgmtEntryInqIfIdsW(
-    __in unsigned long EntryNameSyntax,
-    __in RPC_WSTR EntryName,
-    __out RPC_IF_ID_VECTOR __RPC_FAR * __RPC_FAR *IfIdVec
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * EntryName,
+    OUT RPC_IF_ID_VECTOR __RPC_FAR * __RPC_FAR * IfIdVec
     );
 
 #endif
@@ -464,22 +464,22 @@ RpcNsMgmtEntryInqIfIdsW(
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsBindingImportBeginA(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_CSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt UUID __RPC_FAR *ObjUuid,
-    __out RPC_NS_HANDLE __RPC_FAR *ImportContext
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned char __RPC_FAR * EntryName OPTIONAL,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+    IN UUID __RPC_FAR * ObjUuid OPTIONAL,
+    OUT RPC_NS_HANDLE __RPC_FAR * ImportContext
     );
 
 #ifdef RPC_UNICODE_SUPPORTED
 
 RPCNSAPI RPC_STATUS RPC_ENTRY
 RpcNsBindingImportBeginW(
-    __in unsigned long EntryNameSyntax,
-    __in_opt RPC_WSTR EntryName,
-    __in_opt RPC_IF_HANDLE IfSpec,
-    __in_opt UUID __RPC_FAR *ObjUuid,
-    __out RPC_NS_HANDLE __RPC_FAR *ImportContext
+    IN unsigned long EntryNameSyntax OPTIONAL,
+    IN unsigned short __RPC_FAR * EntryName OPTIONAL,
+    IN RPC_IF_HANDLE IfSpec OPTIONAL,
+    IN UUID __RPC_FAR * ObjUuid OPTIONAL,
+    OUT RPC_NS_HANDLE __RPC_FAR * ImportContext
     );
 
 #endif

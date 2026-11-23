@@ -69,7 +69,7 @@ typedef long RPC_STATUS;
 #define RPC_UNICODE_SUPPORTED
 #endif
 
-#if !defined(__RPC_MAC__) && ( (_MSC_VER >= 800) || defined(_STDCALL_SUPPORTED) )
+#if !defined(_M_AMD64) && !defined(__RPC_MAC__) && ( (_MSC_VER >= 800) || defined(_STDCALL_SUPPORTED) )
 #	define __RPC_API  __stdcall
 #	define __RPC_USER __stdcall
 #	define __RPC_STUB __stdcall

@@ -124,12 +124,6 @@ typedef LONG NTSTATUS, *PNTSTATUS;
 #define STATUS_PASSWORD_MUST_CHANGE      ((NTSTATUS)0xC0000224L)    // ntsubauth
 #define STATUS_ACCESS_DENIED             ((NTSTATUS)0xC0000022L)
 #define STATUS_DOWNGRADE_DETECTED        ((NTSTATUS)0xC0000388L)
-#define STATUS_AUTHENTICATION_FIREWALL_FAILED ((NTSTATUS)0xC0000413L)
-#define STATUS_ACCOUNT_DISABLED          ((NTSTATUS)0xC0000072L)     // ntsubauth
-#define STATUS_ACCOUNT_RESTRICTION       ((NTSTATUS)0xC000006EL)     // ntsubauth
-#define STATUS_ACCOUNT_LOCKED_OUT        ((NTSTATUS)0xC0000234L)    // ntsubauth
-#define STATUS_ACCOUNT_EXPIRED           ((NTSTATUS)0xC0000193L)    // ntsubauth
-#define STATUS_LOGON_TYPE_NOT_GRANTED    ((NTSTATUS)0xC000015BL)
 
 // Don't require lmerr.h
 #define NERR_BASE       2100
@@ -172,38 +166,14 @@ typedef LONG NTSTATUS, *PNTSTATUS;
         (_Status) == HRESULT_FROM_WIN32( NERR_PasswordExpired ) \
 )
 
+
 #define CREDUI_IS_AUTHENTICATION_ERROR( _Status ) ( \
         CREDUIP_IS_USER_PASSWORD_ERROR( _Status ) || \
         CREDUIP_IS_DOWNGRADE_ERROR( _Status ) || \
         CREDUIP_IS_EXPIRED_ERROR( _Status ) \
 )
 
-#define CREDUI_NO_PROMPT_AUTHENTICATION_ERROR( _Status ) ( \
-        (_Status) == ERROR_AUTHENTICATION_FIREWALL_FAILED || \
-        (_Status) == HRESULT_FROM_WIN32( ERROR_AUTHENTICATION_FIREWALL_FAILED ) || \
-        (_Status) == STATUS_AUTHENTICATION_FIREWALL_FAILED || \
-        (_Status) == HRESULT_FROM_NT( STATUS_AUTHENTICATION_FIREWALL_FAILED ) || \
-        (_Status) == ERROR_ACCOUNT_DISABLED || \
-        (_Status) == HRESULT_FROM_WIN32( ERROR_ACCOUNT_DISABLED ) || \
-        (_Status) == STATUS_ACCOUNT_DISABLED || \
-        (_Status) == HRESULT_FROM_NT( STATUS_ACCOUNT_DISABLED ) || \
-        (_Status) == ERROR_ACCOUNT_RESTRICTION || \
-        (_Status) == HRESULT_FROM_WIN32( ERROR_ACCOUNT_RESTRICTION ) || \
-        (_Status) == STATUS_ACCOUNT_RESTRICTION || \
-        (_Status) == HRESULT_FROM_NT( STATUS_ACCOUNT_RESTRICTION ) || \
-        (_Status) == ERROR_ACCOUNT_LOCKED_OUT || \
-        (_Status) == HRESULT_FROM_WIN32( ERROR_ACCOUNT_LOCKED_OUT ) || \
-        (_Status) == STATUS_ACCOUNT_LOCKED_OUT || \
-        (_Status) == HRESULT_FROM_NT( STATUS_ACCOUNT_LOCKED_OUT ) || \
-        (_Status) == ERROR_ACCOUNT_EXPIRED || \
-        (_Status) == HRESULT_FROM_WIN32( ERROR_ACCOUNT_EXPIRED ) || \
-        (_Status) == STATUS_ACCOUNT_EXPIRED || \
-        (_Status) == HRESULT_FROM_NT( STATUS_ACCOUNT_EXPIRED ) || \
-        (_Status) == ERROR_LOGON_TYPE_NOT_GRANTED || \
-        (_Status) == HRESULT_FROM_WIN32( ERROR_LOGON_TYPE_NOT_GRANTED ) || \
-        (_Status) == STATUS_LOGON_TYPE_NOT_GRANTED || \
-        (_Status) == HRESULT_FROM_NT( STATUS_LOGON_TYPE_NOT_GRANTED ) \
-)
+
 
 //-----------------------------------------------------------------------------
 // Structures
@@ -246,9 +216,6 @@ typedef struct _CREDENTIAL_ATTRIBUTEW {
     LPWSTR  Keyword;
 #endif // MIDL_PASS
     DWORD Flags;
-#ifdef MIDL_PASS
-    [range(0,CRED_MAX_VALUE_SIZE)]
-#endif // MIDL_PASS
     DWORD ValueSize;
 #ifdef MIDL_PASS
     [size_is(ValueSize)]
@@ -295,7 +262,6 @@ typedef PCREDENTIAL_ATTRIBUTEA PCREDENTIAL_ATTRIBUTE;
 #define CRED_TYPE_DOMAIN_CERTIFICATE    3
 #define CRED_TYPE_DOMAIN_VISIBLE_PASSWORD 4
 #define CRED_TYPE_MAXIMUM               5       // Maximum supported cred type
-#define CRED_TYPE_MAXIMUM_EX  (CRED_TYPE_MAXIMUM+1000)  // Allow new applications to run on old OSes
 
 //
 // Maximum size of the CredBlob field (in bytes)
@@ -344,18 +310,12 @@ typedef struct _CREDENTIALW {
     LPWSTR Comment;
 #endif // MIDL_PASS
     FILETIME LastWritten;
-#ifdef MIDL_PASS
-    [range(0,CRED_MAX_CREDENTIAL_BLOB_SIZE)]
-#endif // MIDL_PASS
     DWORD CredentialBlobSize;
 #ifdef MIDL_PASS
     [size_is(CredentialBlobSize)]
 #endif // MIDL_PASS
     LPBYTE CredentialBlob;
     DWORD Persist;
-#ifdef MIDL_PASS
-    [range(0,CRED_MAX_ATTRIBUTES)]
-#endif // MIDL_PASS
     DWORD AttributeCount;
 #ifdef MIDL_PASS
     [size_is(AttributeCount)]
@@ -430,13 +390,7 @@ typedef struct _CREDENTIAL_TARGET_INFORMATIONW {
     LPWSTR PackageName;
 #endif // MIDL_PASS
     ULONG Flags;
-#ifdef MIDL_PASS
-    [range(0,CRED_TYPE_MAXIMUM_EX)]
-#endif // MIDL_PASS
     DWORD CredTypeCount;
-#ifdef MIDL_PASS
-    [size_is(CredTypeCount)]
-#endif // MIDL_PASS
     LPDWORD CredTypes;
 } CREDENTIAL_TARGET_INFORMATIONW, *PCREDENTIAL_TARGET_INFORMATIONW;
 
@@ -522,7 +476,7 @@ typedef PCREDUI_INFOA PCREDUI_INFO;
 #define CREDUI_MAX_MESSAGE_LENGTH           32767
 #define CREDUI_MAX_CAPTION_LENGTH           128
 #define CREDUI_MAX_GENERIC_TARGET_LENGTH    CRED_MAX_GENERIC_TARGET_NAME_LENGTH
-#define CREDUI_MAX_DOMAIN_TARGET_LENGTH     CRED_MAX_DOMAIN_TARGET_NAME_LENGTH
+#define CREDUI_MAX_DOMAIN_TARGET_LENGTH     (CRED_MAX_STRING_LENGTH + NNLEN)
 #define CREDUI_MAX_USERNAME_LENGTH          CRED_MAX_USERNAME_LENGTH
 #define CREDUI_MAX_PASSWORD_LENGTH          (CRED_MAX_CREDENTIAL_BLOB_SIZE / 2)
 
@@ -546,7 +500,7 @@ typedef PCREDUI_INFOA PCREDUI_INFO;
 #define CREDUI_FLAGS_EXPECT_CONFIRMATION    0x20000     // do not persist unless caller later confirms credential via CredUIConfirmCredential() api
 #define CREDUI_FLAGS_GENERIC_CREDENTIALS    0x40000     // Credential is a generic credential
 #define CREDUI_FLAGS_USERNAME_TARGET_CREDENTIALS 0x80000 // Credential has a username as the target
-#define CREDUI_FLAGS_KEEP_USERNAME         0x100000             // don't allow the user to change the supplied username
+#define CREDUI_FLAGS_KEEP_USERNAME         0x100000		// don't allow the user to change the supplied username
 
 
 //
@@ -569,7 +523,7 @@ typedef PCREDUI_INFOA PCREDUI_INFO;
         CREDUI_FLAGS_EXPECT_CONFIRMATION | \
         CREDUI_FLAGS_GENERIC_CREDENTIALS | \
         CREDUI_FLAGS_USERNAME_TARGET_CREDENTIALS | \
-                CREDUI_FLAGS_KEEP_USERNAME )
+		CREDUI_FLAGS_KEEP_USERNAME )
 
 
 //-----------------------------------------------------------------------------
@@ -587,16 +541,16 @@ WINADVAPI
 BOOL
 WINAPI
 CredWriteW (
-    __in PCREDENTIALW Credential,
-    __in DWORD Flags
+    IN PCREDENTIALW Credential,
+    IN DWORD Flags
     );
 
 WINADVAPI
 BOOL
 WINAPI
 CredWriteA (
-    __in PCREDENTIALA Credential,
-    __in DWORD Flags
+    IN PCREDENTIALA Credential,
+    IN DWORD Flags
     );
 
 #ifdef UNICODE
@@ -610,20 +564,20 @@ WINADVAPI
 BOOL
 WINAPI
 CredReadW (
-    __in LPCWSTR TargetName,
-    __in DWORD Type,
-    __reserved DWORD Flags,
-    __out PCREDENTIALW *Credential
+    IN LPCWSTR TargetName,
+    IN DWORD Type,
+    IN DWORD Flags,
+    OUT PCREDENTIALW *Credential
     );
 
 WINADVAPI
 BOOL
 WINAPI
 CredReadA (
-    __in LPCSTR TargetName,
-    __in DWORD Type,
-    __reserved DWORD Flags,
-    __out PCREDENTIALA *Credential
+    IN LPCSTR TargetName,
+    IN DWORD Type,
+    IN DWORD Flags,
+    OUT PCREDENTIALA *Credential
     );
 
 #ifdef UNICODE
@@ -637,20 +591,20 @@ WINADVAPI
 BOOL
 WINAPI
 CredEnumerateW (
-    __in LPCWSTR Filter,
-    __reserved DWORD Flags,
-    __out DWORD *Count,
-    __deref_out_ecount(*Count) PCREDENTIALW **Credential
+    IN LPCWSTR Filter,
+    IN DWORD Flags,
+    OUT DWORD *Count,
+    OUT PCREDENTIALW **Credential
     );
 
 WINADVAPI
 BOOL
 WINAPI
 CredEnumerateA (
-    __in LPCSTR Filter,
-    __reserved DWORD Flags,
-    __out DWORD *Count,
-    __deref_out_ecount(*Count) PCREDENTIALA **Credential
+    IN LPCSTR Filter,
+    IN DWORD Flags,
+    OUT DWORD *Count,
+    OUT PCREDENTIALA **Credential
     );
 
 #ifdef UNICODE
@@ -664,18 +618,18 @@ WINADVAPI
 BOOL
 WINAPI
 CredWriteDomainCredentialsW (
-    __in PCREDENTIAL_TARGET_INFORMATIONW TargetInfo,
-    __in PCREDENTIALW Credential,
-    __in DWORD Flags
+    IN PCREDENTIAL_TARGET_INFORMATIONW TargetInfo,
+    IN PCREDENTIALW Credential,
+    IN DWORD Flags
     );
 
 WINADVAPI
 BOOL
 WINAPI
 CredWriteDomainCredentialsA (
-    __in PCREDENTIAL_TARGET_INFORMATIONA TargetInfo,
-    __in PCREDENTIALA Credential,
-    __in DWORD Flags
+    IN PCREDENTIAL_TARGET_INFORMATIONA TargetInfo,
+    IN PCREDENTIALA Credential,
+    IN DWORD Flags
     );
 
 #ifdef UNICODE
@@ -697,20 +651,20 @@ WINADVAPI
 BOOL
 WINAPI
 CredReadDomainCredentialsW (
-    __in PCREDENTIAL_TARGET_INFORMATIONW TargetInfo,
-    __in DWORD Flags,
-    __out DWORD *Count,
-    __deref_out_ecount(*Count) PCREDENTIALW **Credential
+    IN PCREDENTIAL_TARGET_INFORMATIONW TargetInfo,
+    IN DWORD Flags,
+    OUT DWORD *Count,
+    OUT PCREDENTIALW **Credential
     );
 
 WINADVAPI
 BOOL
 WINAPI
 CredReadDomainCredentialsA (
-    __in PCREDENTIAL_TARGET_INFORMATIONA TargetInfo,
-    __in DWORD Flags,
-    __out DWORD *Count,
-    __deref_out_ecount(*Count) PCREDENTIALA **Credential
+    IN PCREDENTIAL_TARGET_INFORMATIONA TargetInfo,
+    IN DWORD Flags,
+    OUT DWORD *Count,
+    OUT PCREDENTIALA **Credential
     );
 
 #ifdef UNICODE
@@ -724,18 +678,18 @@ WINADVAPI
 BOOL
 WINAPI
 CredDeleteW (
-    __in LPCWSTR TargetName,
-    __in DWORD Type,
-    __reserved DWORD Flags
+    IN LPCWSTR TargetName,
+    IN DWORD Type,
+    IN DWORD Flags
     );
 
 WINADVAPI
 BOOL
 WINAPI
 CredDeleteA (
-    __in LPCSTR TargetName,
-    __in DWORD Type,
-    __reserved DWORD Flags
+    IN LPCSTR TargetName,
+    IN DWORD Type,
+    IN DWORD Flags
     );
 
 #ifdef UNICODE
@@ -749,20 +703,20 @@ WINADVAPI
 BOOL
 WINAPI
 CredRenameW (
-    __in LPCWSTR OldTargetName,
-    __in LPCWSTR NewTargetName,
-    __in DWORD Type,
-    __reserved DWORD Flags
+    IN LPCWSTR OldTargetName,
+    IN LPCWSTR NewTargetName,
+    IN DWORD Type,
+    IN DWORD Flags
     );
 
 WINADVAPI
 BOOL
 WINAPI
 CredRenameA (
-    __in LPCSTR OldTargetName,
-    __in LPCSTR NewTargetName,
-    __in DWORD Type,
-    __reserved DWORD Flags
+    IN LPCSTR OldTargetName,
+    IN LPCSTR NewTargetName,
+    IN DWORD Type,
+    IN DWORD Flags
     );
 
 #ifdef UNICODE
@@ -782,18 +736,18 @@ WINADVAPI
 BOOL
 WINAPI
 CredGetTargetInfoW (
-    __in LPCWSTR TargetName,
-    __in DWORD Flags,
-    __out PCREDENTIAL_TARGET_INFORMATIONW *TargetInfo
+    IN LPCWSTR TargetName,
+    IN DWORD Flags,
+    OUT PCREDENTIAL_TARGET_INFORMATIONW *TargetInfo
     );
 
 WINADVAPI
 BOOL
 WINAPI
 CredGetTargetInfoA (
-    __in LPCSTR TargetName,
-    __in DWORD Flags,
-    __out PCREDENTIAL_TARGET_INFORMATIONA *TargetInfo
+    IN LPCSTR TargetName,
+    IN DWORD Flags,
+    OUT PCREDENTIAL_TARGET_INFORMATIONA *TargetInfo
     );
 
 #ifdef UNICODE
@@ -806,18 +760,18 @@ WINADVAPI
 BOOL
 WINAPI
 CredMarshalCredentialW(
-    __in CRED_MARSHAL_TYPE CredType,
-    __in PVOID Credential,
-    __out LPWSTR *MarshaledCredential
+    IN CRED_MARSHAL_TYPE CredType,
+    IN PVOID Credential,
+    OUT LPWSTR *MarshaledCredential
     );
 
 WINADVAPI
 BOOL
 WINAPI
 CredMarshalCredentialA(
-    __in CRED_MARSHAL_TYPE CredType,
-    __in PVOID Credential,
-    __out LPSTR *MarshaledCredential
+    IN CRED_MARSHAL_TYPE CredType,
+    IN PVOID Credential,
+    OUT LPSTR *MarshaledCredential
     );
 
 #ifdef UNICODE
@@ -830,18 +784,18 @@ WINADVAPI
 BOOL
 WINAPI
 CredUnmarshalCredentialW(
-    __in LPCWSTR MarshaledCredential,
-    __out PCRED_MARSHAL_TYPE CredType,
-    __out PVOID *Credential
+    IN LPCWSTR MarshaledCredential,
+    OUT PCRED_MARSHAL_TYPE CredType,
+    OUT PVOID *Credential
     );
 
 WINADVAPI
 BOOL
 WINAPI
 CredUnmarshalCredentialA(
-    __in LPCSTR MarshaledCredential,
-    __out PCRED_MARSHAL_TYPE CredType,
-    __out PVOID *Credential
+    IN LPCSTR MarshaledCredential,
+    OUT PCRED_MARSHAL_TYPE CredType,
+    OUT PVOID *Credential
     );
 
 #ifdef UNICODE
@@ -854,14 +808,14 @@ WINADVAPI
 BOOL
 WINAPI
 CredIsMarshaledCredentialW(
-    __in LPCWSTR MarshaledCredential
+    IN LPCWSTR MarshaledCredential
     );
 
 WINADVAPI
 BOOL
 WINAPI
 CredIsMarshaledCredentialA(
-    __in LPCSTR MarshaledCredential
+    IN LPCSTR MarshaledCredential
     );
 
 #ifdef UNICODE
@@ -877,8 +831,8 @@ WINADVAPI
 BOOL
 WINAPI
 CredGetSessionTypes (
-    __in DWORD MaximumPersistCount,
-    __out LPDWORD MaximumPersist
+    IN DWORD MaximumPersistCount,
+    OUT LPDWORD MaximumPersist
     );
 
 
@@ -886,7 +840,7 @@ WINADVAPI
 VOID
 WINAPI
 CredFree (
-    __in PVOID Buffer
+    IN PVOID Buffer
     );
 
 
@@ -894,32 +848,32 @@ CREDUIAPI
 DWORD
 WINAPI
 CredUIPromptForCredentialsW(
-    __in_opt PCREDUI_INFOW pUiInfo,
-    __in_opt PCWSTR pszTargetName,
-    __reserved PCtxtHandle pContext,
-    __in DWORD dwAuthError,
-    __out_ecount(ulUserNameBufferSize) PWSTR pszUserName,
-    __in ULONG ulUserNameBufferSize,
-    __out_ecount(ulPasswordBufferSize) PWSTR pszPassword,
-    __in ULONG ulPasswordBufferSize,
-    __inout_opt BOOL *save,
-    __in DWORD dwFlags
+    PCREDUI_INFOW pUiInfo,
+    PCWSTR pszTargetName,
+    PCtxtHandle pContext,
+    DWORD dwAuthError,
+    PWSTR pszUserName,
+    ULONG ulUserNameBufferSize,
+    PWSTR pszPassword,
+    ULONG ulPasswordBufferSize,
+    BOOL *save,
+    DWORD dwFlags
     );
 
 CREDUIAPI
 DWORD
 WINAPI
 CredUIPromptForCredentialsA(
-    __in_opt PCREDUI_INFOA pUiInfo,
-    __in_opt PCSTR pszTargetName,
-    __reserved PCtxtHandle pContext,
-    __in DWORD dwAuthError,
-    __out_ecount(ulUserNameBufferSize) PSTR  pszUserName,
-    __in ULONG ulUserNameBufferSize,
-    __out_ecount(ulPasswordBufferSize) PSTR pszPassword,
-    __in ULONG ulPasswordBufferSize,
-    __inout_opt BOOL *save,
-    __in DWORD dwFlags
+    PCREDUI_INFOA pUiInfo,
+    PCSTR pszTargetName,
+    PCtxtHandle pContext,
+    DWORD dwAuthError,
+    PSTR  pszUserName,
+    ULONG ulUserNameBufferSize,
+    PSTR pszPassword,
+    ULONG ulPasswordBufferSize,
+    BOOL *save,
+    DWORD dwFlags
     );
 
 #ifdef UNICODE
@@ -935,22 +889,22 @@ CREDUIAPI
 DWORD
 WINAPI
 CredUIParseUserNameW(
-    __in CONST WCHAR *UserName,
-    __out_ecount(userBufferSize) WCHAR *user,
-    __in ULONG userBufferSize,
-    __out_ecount(domainBufferSize) WCHAR *domain,
-    __in ULONG domainBufferSize
+    PCWSTR pszUserName,
+    PWSTR pszUser,
+    ULONG ulUserBufferSize,
+    PWSTR pszDomain,
+    ULONG ulDomainBufferSize
     );
 
 CREDUIAPI
 DWORD
 WINAPI
 CredUIParseUserNameA(
-    __in CONST CHAR *userName,
-    __out_ecount(userBufferSize) CHAR *user,
-    __in ULONG userBufferSize,
-    __out_ecount(domainBufferSize) CHAR *domain,
-    __in ULONG domainBufferSize
+    PCSTR pszUserName,
+    PSTR pszUser,
+    ULONG ulUserBufferSize,
+    PSTR pszDomain,
+    ULONG ulDomainBufferSize
     );
 
 #ifdef UNICODE
@@ -965,30 +919,30 @@ CREDUIAPI
 DWORD
 WINAPI
 CredUICmdLinePromptForCredentialsW(
-    __in_opt PCWSTR pszTargetName,
-    __reserved PCtxtHandle pContext,
-    __in DWORD dwAuthError,
-    __out_ecount(ulUserBufferSize) PWSTR UserName,
-    __in ULONG ulUserBufferSize,
-    __out_ecount(ulPasswordBufferSize) PWSTR pszPassword,
-    __in ULONG ulPasswordBufferSize,
-    __inout_opt PBOOL pfSave,
-    __in DWORD dwFlags
+    PCWSTR pszTargetName,
+    PCtxtHandle pContext,
+    DWORD dwAuthError,
+    PWSTR UserName,
+    ULONG ulUserBufferSize,
+    PWSTR pszPassword,
+    ULONG ulPasswordBufferSize,
+    PBOOL pfSave,
+    DWORD dwFlags
     );
 
 CREDUIAPI
 DWORD
 WINAPI
 CredUICmdLinePromptForCredentialsA(
-    __in_opt PCSTR pszTargetName,
-    __reserved PCtxtHandle pContext,
-    __in DWORD dwAuthError,
-    __out_ecount(ulUserBufferSize) PSTR UserName,
-    __in ULONG ulUserBufferSize,
-    __out_ecount(ulPasswordBufferSize) PSTR pszPassword,
-    __in ULONG ulPasswordBufferSize,
-    __inout_opt PBOOL pfSave,
-    __in DWORD dwFlags
+    PCSTR pszTargetName,
+    PCtxtHandle pContext,
+    DWORD dwAuthError,
+    PSTR UserName,
+    ULONG ulUserBufferSize,
+    PSTR pszPassword,
+    ULONG ulPasswordBufferSize,
+    PBOOL pfSave,
+    DWORD dwFlags
     );
 
 #ifdef UNICODE
@@ -1006,16 +960,16 @@ CREDUIAPI
 DWORD
 WINAPI
 CredUIConfirmCredentialsW(
-    __in PCWSTR pszTargetName,
-    __in BOOL  bConfirm
+    PCWSTR pszTargetName,
+    BOOL  bConfirm
     );
 
 CREDUIAPI
 DWORD
 WINAPI
 CredUIConfirmCredentialsA(
-    __in PCSTR pszTargetName,
-    __in BOOL  bConfirm
+    PCSTR pszTargetName,
+    BOOL  bConfirm
     );
 
 #ifdef UNICODE
@@ -1025,22 +979,23 @@ CredUIConfirmCredentialsA(
 #endif
 
 
+
 CREDUIAPI
 DWORD
 WINAPI
 CredUIStoreSSOCredW (
-    __in_opt PCWSTR pszRealm,
-    __in PCWSTR pszUsername,
-    __in PCWSTR pszPassword,
-    __in BOOL   bPersist
+    PCWSTR pszRealm,
+    PCWSTR pszUsername,
+    PCWSTR pszPassword,
+    BOOL   bPersist
     );
 
 CREDUIAPI
 DWORD
 WINAPI
 CredUIReadSSOCredW (
-    __in_opt PCWSTR pszRealm,
-    __deref_out PWSTR* ppszUsername
+    PCWSTR pszRealm,
+    PWSTR* ppszUsername
     );
 
 

@@ -526,10 +526,6 @@ typedef struct _MIB_TCP6TABLE_OWNER_MODULE
 
 #define SIZEOF_TCP6TABLE_OWNER_MODULE(X) (FIELD_OFFSET(MIB_TCP6TABLE_OWNER_MODULE, table[0]) + ((X) * sizeof(MIB_TCP6ROW_OWNER_PID)) + ALIGN_SIZE)
 
-//
-// Flags that describe the health of TCPIP with respect to security/DOS.
-//
-#define MIB_SECURITY_TCP_SYN_ATTACK 0x00000001
 
 #define MIB_USE_CURRENT_TTL         ((DWORD)-1)
 #define MIB_USE_CURRENT_FORWARDING  ((DWORD)-1)

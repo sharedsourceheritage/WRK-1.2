@@ -1,0 +1,44 @@
+<%@ master language="VB" %>
+
+<html>
+<head>
+  <link rel="stylesheet" href="StyleSheet.css" type="text/css" />
+</head>
+<body>
+<form id="Form1" runat="server">
+    <div>
+        <table class="main" cellspacing="0" cellpadding="2">
+              <tr  class="header">
+                  <td colspan="2" class="header"/>
+              </tr>
+               <tr valign="top">
+                <td class="sidebar" rowspan="2">
+                    <a href="daffodil.aspx">Daffodil</a><br/>
+                    <a href="rose.aspx">Rose</a><br/>
+                    <a href="dahlia.aspx">Dahlia</a><br/>
+                    <a href="hydrangea.aspx">Hydrangea</a><br/>
+                    <a href="daisy.aspx">Daisy</a><br />
+                </td>
+                <td class="body">
+                    <asp:contentplaceholder id="FlowerText" runat="server">
+                        <h3>Welcome to my florist website!</h3>
+                          We have an enormous selection of quality flowers and seeds, available for shipping to any location worldwide.  Let us handle all you gardening needs!
+                    </asp:contentplaceholder>
+                    <br /><br />
+                    <asp:contentplaceholder id="FlowerPicture" runat="server">
+                        <img alt="water lilies" src="Images/waterlilies.jpg"/>
+                    </asp:contentplaceholder>
+                    <br /><br />
+                    <asp:adrotator id="MyAdRotator" advertisementfile="Ads.xml" runat="server"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="footer">
+                    <asp:label id="Footer" font-italic="true" text="Copyright Microsoft 2003" runat="server" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+</body>
+</html>

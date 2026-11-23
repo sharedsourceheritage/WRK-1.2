@@ -1,6 +1,8 @@
 //***************************************************************************
+
 //
-//  Copyright © Microsoft Corporation.  All rights reserved.
+
+// Copyright (c) 1997-2001 Microsoft Corporation, All Rights Reserved
 //
 //  RefPtrCo.h
 //
@@ -166,12 +168,7 @@ BOOL TRefPointerCollection<TYPED_PTR>::Add( TYPED_PTR* ptr )
 				    ptr->Release();	// Add failed, so Release the AddRef
 			    }
             }
-            catch ( CHeap_Exception& )
-            {
-    	        EndWrite() ;
-                throw;
-            }
-            catch ( CFramework_Exception& e_FR )
+            catch ( ... )
             {
     	        EndWrite() ;
                 throw;
@@ -329,14 +326,9 @@ void TRefPointerCollection<TYPED_PTR>::Empty( void )
 	    }	// IF nSize > 0
 
     }
-    catch ( CHeap_Exception& )
+    catch ( ... )
     {
     	EndWrite() ;
-        throw;
-    }
-    catch ( CFramework_Exception& e_FR )
-    {
-        EndWrite() ;
         throw;
     }
 
@@ -382,14 +374,9 @@ const TRefPointerCollection<TYPED_PTR>& TRefPointerCollection<TYPED_PTR>::Copy( 
 		    Add( ptr );
 	    }
     }
-    catch ( CHeap_Exception& )
+    catch ( ... )
     {
     	EndWrite() ;
-        throw;
-    }
-    catch ( CFramework_Exception& e_FR )
-    {
-        EndWrite() ;
         throw;
     }
 

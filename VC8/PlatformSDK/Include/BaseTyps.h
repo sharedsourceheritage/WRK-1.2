@@ -150,8 +150,7 @@
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 //#define interface               struct FAR
-#define __STRUCT__ struct
-#define interface __STRUCT__
+#define interface struct
 #define STDMETHOD(method)       virtual HRESULT STDMETHODCALLTYPE method
 #define STDMETHOD_(type,method) virtual type STDMETHODCALLTYPE method
 #define STDMETHODV(method)       virtual HRESULT STDMETHODVCALLTYPE method

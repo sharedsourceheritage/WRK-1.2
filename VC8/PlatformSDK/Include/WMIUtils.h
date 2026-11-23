@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for wmiutils.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -1482,11 +1481,11 @@ WbemQuery;
 #endif
 #endif /* __WbemUtilities_v1_LIBRARY_DEFINED__ */
 
-/* interface __MIDL_itf_wmiutils_0116 */
+/* interface __MIDL_itf_wmiutils_0112 */
 /* [local] */ 
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_wmiutils_0116_0001
+enum __MIDL___MIDL_itf_wmiutils_0112_0001
     {	WMIQ_ANALYSIS_RPN_SEQUENCE	= 0x1,
 	WMIQ_ANALYSIS_ASSOC_QUERY	= 0x2,
 	WMIQ_ANALYSIS_PROP_ANALYSIS_MATRIX	= 0x3,
@@ -1495,7 +1494,7 @@ enum __MIDL___MIDL_itf_wmiutils_0116_0001
     } 	WMIQ_ANALYSIS_TYPE;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_wmiutils_0116_0002
+enum __MIDL___MIDL_itf_wmiutils_0112_0002
     {	WMIQ_RPN_TOKEN_EXPRESSION	= 1,
 	WMIQ_RPN_TOKEN_AND	= 2,
 	WMIQ_RPN_TOKEN_OR	= 3,
@@ -1532,7 +1531,7 @@ enum __MIDL___MIDL_itf_wmiutils_0116_0002
     } 	WMIQ_RPN_TOKEN_FLAGS;
 
 typedef /* [public] */ 
-enum __MIDL___MIDL_itf_wmiutils_0116_0003
+enum __MIDL___MIDL_itf_wmiutils_0112_0003
     {	WMIQ_ASSOCQ_ASSOCIATORS	= 0x1,
 	WMIQ_ASSOCQ_REFERENCES	= 0x2,
 	WMIQ_ASSOCQ_RESULTCLASS	= 0x4,
@@ -1714,8 +1713,8 @@ typedef struct tag_SWbemAssocQueryInf
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wmiutils_0116_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wmiutils_0116_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wmiutils_0112_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wmiutils_0112_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

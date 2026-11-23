@@ -1,3 +1,4 @@
+//depot/private/homenet/net/published/inc/routprot.w#2 - integrate change 4116 (text)
 /*++
 
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -248,10 +249,10 @@ typedef struct _SUPPORT_FUNCTIONS
 #define PROTO_IP_NT_STATIC_NON_DOD  10007   // 0x00002717
 #define PROTO_IP_DIFFSERV           10008   // 0x00002718
 #define PROTO_IP_MGM                10009   // 0x00002719
-#define PROTO_IP_ALG                10010   // 0x0000271A
+
 #define PROTO_IP_H323               10011   // 0x0000271B
 #define PROTO_IP_FTP                10012   // 0x0000271C
-#define PROTO_IP_DTP                10013   // 0x0000271D
+#define PROTO_IP_ALG                10013   // 0x0000271D
 
 //
 // For all future development, the following macro must be used to generate
@@ -330,9 +331,6 @@ typedef struct _SUPPORT_FUNCTIONS
 
 #define MS_IP_VRRP                  \
     PROTOCOL_ID(PROTO_TYPE_MS0, PROTO_VENDOR_MS1, PROTO_IP_VRRP)
-
-#define MS_IP_DTP                   \
-    PROTOCOL_ID(PROTO_TYPE_MS0, PROTO_VENDOR_MS1, PROTO_IP_DTP)
 
 #define MS_IP_H323                  \
     PROTOCOL_ID(PROTO_TYPE_MS0, PROTO_VENDOR_MS1, PROTO_IP_H323)

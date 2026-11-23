@@ -1,27 +1,3 @@
-/*#!perl
-MapHeaderToDll("ole2.h", "ole32.dll");
-ActivateAroundFunctionCall("ole32.dll");
-IgnoreFunction("CreateDataAdviseHolder"); # this function occurs in ole2.h and objbase.h
-                                          # The wrapped one is in objbase.h
-IgnoreFunction("OleBuildVersion"); # not documented
-DeclareFunctionErrorValue("OleCreateMenuDescriptor", "NULL");
-DeclareFunctionErrorValue("OleDuplicateData", "NULL");
-DeclareFunctionErrorValue("OleGetIconOfFile", "NULL");
-DeclareFunctionErrorValue("OleGetIconOfClass", "NULL");
-DeclareFunctionErrorValue("OleMetafilePictFromIconAndLabel", "NULL");
-IgnoreFunction("WlmOleCheckoutMacInterface"); # Macintosh stuff
-IgnoreFunction("WlmOleCheckinMacInterface"); # Macintosh stuff
-IgnoreFunction("WlmOleWrapMacInterface"); # Macintosh stuff
-IgnoreFunction("WlmOleUnwrapMacInterface"); # Macintosh stuff
-IgnoreFunction("WlmOleCheckoutWinInterface"); # Macintosh stuff
-IgnoreFunction("WlmOleCheckinWinInterface"); # Macintosh stuff
-IgnoreFunction("WlmOleWrapWinInterface"); # Macintosh stuff
-IgnoreFunction("WlmOleUnwrapWinInterface"); # Macintosh stuff
-IgnoreFunction("WlmOleVersion"); # Macintosh stuff
-IgnoreFunction("WlmOleSetInPlaceWindow"); # Macintosh stuff
-IgnoreFunction("WlmOleRegisterUserWrap"); # Macintosh stuff
-*/
-
 //+---------------------------------------------------------------------------
 //
 //  Microsoft Windows
@@ -150,15 +126,12 @@ typedef struct tagOleMBarRec
 /****** DV APIs ***********************************************************/
 
 
-/* This function is declared in objbase.h and ole2.h.
-   IsolationAware support is via objbase.h.
-*/
-#if    !defined(ISOLATION_AWARE_ENABLED) \
-    || !ISOLATION_AWARE_ENABLED \
-    || !defined(_OBJBASE_H_) \
-    || !defined(CreateDataAdviseHolder)
 WINOLEAPI CreateDataAdviseHolder(OUT LPDATAADVISEHOLDER FAR* ppDAHolder);
-#endif
+
+
+
+
+
 
 
 /****** OLE API Prototypes ************************************************/
@@ -451,10 +424,5 @@ WINOLEAPI OleConvertOLESTREAMToIStorageEx
 #endif // _WIN32
 
 #endif // _MAC
-
-//d308927f-ca94-4c96-8d87-2692a3dadff6
-/*#!perl
-SetInsertionPoint("ole2.h", "d308927f-ca94-4c96-8d87-2692a3dadff6");
-*/
 
 #endif     // __OLE2_H__

@@ -21,32 +21,6 @@ Revision History:
 #include <malloc.h>             // calloc()
 #include <string.h>             // strlen(), strcmp(), strstr()
 
-#if defined(__GOT_SECURE_LIB__) && __GOT_SECURE_LIB__ >= 200402L
-
-#define _WSPIAPI_STRCPY_S strcpy_s
-#define _WSPIAPI_STRCAT_S strcat_s
-#define _WSPIAPI_STRNCPY_S strncpy_s
-#define _WSPIAPI_SPRINTF_S_1 sprintf_s
-
-#else
-
-#define _WSPIAPI_STRCPY_S(_Dst, _Size, _Src) strcpy((_Dst), (_Src))
-#define _WSPIAPI_STRCAT_S(_Dst, _Size, _Src) strcat((_Dst), (_Src))
-#define _WSPIAPI_STRNCPY_S(_Dst, _Size, _Src, _Count) strncpy((_Dst), (_Src), (_Count)); (_Dst)[(_Size) - 1] = 0
-#define _WSPIAPI_SPRINTF_S_1(_Dst, _Size, _Format, _Arg1) sprintf((_Dst), (_Format), (_Arg1))
-
-#endif // defined(__GOT_SECURE_LIB__) && __GOT_SECURE_LIB__ >= 200402L
-
-#if !defined(_WSPIAPI_COUNTOF)
-#if !defined(__cplusplus)
-#define _WSPIAPI_COUNTOF(_Array) (sizeof(_Array) / sizeof(_Array[0]))
-#else
-template <typename __CountofType, size_t _N>
-char (&__wspiapi_countof_helper(__CountofType (&_Array)[_N]))[_N];
-#define _WSPIAPI_COUNTOF(_Array) sizeof(__wspiapi_countof_helper(_Array))
-#endif
-#endif
-
 #define WspiapiMalloc(tSize)    calloc(1, (tSize))
 #define WspiapiFree(p)          free(p)
 #define WspiapiSwap(a, b, c)    { (c) = (a); (a) = (b); (b) = (c); }
@@ -87,7 +61,7 @@ _inline
 char *
 WINAPI
 WspiapiStrdup (
-        IN  const char *                    pszString)
+	IN  const char *                    pszString)
 /*++
 
 Routine Description
@@ -104,18 +78,15 @@ Return Value
 --*/    
 {
     char    *pszMemory;
-    size_t  cchMemory;
 
     if (!pszString)
         return(NULL);
 
-    cchMemory = strlen(pszString) + 1;
-    pszMemory = (char *) WspiapiMalloc(cchMemory);
+    pszMemory = (char *) WspiapiMalloc(strlen(pszString) + 1);
     if (!pszMemory)
         return(NULL);
 
-    _WSPIAPI_STRCPY_S(pszMemory, cchMemory, pszString);
-    return pszMemory;
+    return(strcpy(pszMemory, pszString));
 }
 
     
@@ -282,7 +253,8 @@ Return Value
         }
 
         // pick up the canonical name.
-        _WSPIAPI_STRNCPY_S(pszAlias, NI_MAXHOST, ptHost->h_name, NI_MAXHOST - 1);
+        strncpy(pszAlias, ptHost->h_name, NI_MAXHOST - 1);
+        pszAlias[NI_MAXHOST - 1] = '\0';
         
         return 0;
     }
@@ -340,7 +312,8 @@ Return Value
     char    *pszName            = szFQDN1;
     char    *pszAlias           = szFQDN2;
     char    *pszScratch         = NULL;
-    _WSPIAPI_STRNCPY_S(pszName, NI_MAXHOST, pszNodeName, NI_MAXHOST - 1);
+    strncpy(pszName, pszNodeName, NI_MAXHOST - 1);
+    pszName[NI_MAXHOST - 1] = '\0';
     
     for (;;)
     {
@@ -760,7 +733,7 @@ Return Value
         if (iFlags & NI_NUMERICSERV)
         {
             // return numeric form of the address.
-            _WSPIAPI_SPRINTF_S_1(szBuffer, _WSPIAPI_COUNTOF(szBuffer), "%u", ntohs(wPort));
+            sprintf(szBuffer, "%u", ntohs(wPort));
         }
         else
         {
@@ -775,13 +748,13 @@ Return Value
             else
             {
                 // DRAFT: return numeric form of the port!
-                _WSPIAPI_SPRINTF_S_1(szBuffer, _WSPIAPI_COUNTOF(szBuffer), "%u", ntohs(wPort));
+                sprintf(szBuffer, "%u", ntohs(wPort));
             }
         }
         
         
         if (tServiceLength > strlen(pszService))
-            _WSPIAPI_STRCPY_S(pszServiceName, tServiceLength, pszService);
+            strcpy(pszServiceName, pszService);
         else
             return EAI_FAIL;
     }
@@ -832,7 +805,7 @@ Return Value
         }
 
         if (tNodeLength > strlen(pszNode))
-            _WSPIAPI_STRCPY_S(pszNodeName, tNodeLength, pszNode);
+            strcpy(pszNodeName, pszNode);
         else
             return EAI_FAIL;
     }
@@ -916,8 +889,8 @@ Return Value
         // in Whistler and beyond...
         // the routines are present in the WinSock 2 library (ws2_32.dll).
         // printf("Looking in ws2_32 for getaddrinfo...\n");
-        _WSPIAPI_STRCPY_S(Path, _WSPIAPI_COUNTOF(Path), SystemDir);
-        _WSPIAPI_STRCAT_S(Path, _WSPIAPI_COUNTOF(Path), "\\ws2_32");
+        strcpy(Path, SystemDir);
+        strcat(Path, "\\ws2_32");
         hLibrary = LoadLibraryA(Path);
         if (hLibrary != NULL)
         {
@@ -935,8 +908,8 @@ Return Value
         // in the IPv6 Technology Preview...        
         // the routines are present in the IPv6 WinSock library (wship6.dll).
         // printf("Looking in wship6 for getaddrinfo...\n");
-        _WSPIAPI_STRCPY_S(Path, _WSPIAPI_COUNTOF(Path), SystemDir);
-        _WSPIAPI_STRCAT_S(Path, _WSPIAPI_COUNTOF(Path), "\\wship6");
+        strcpy(Path, SystemDir);
+        strcat(Path, "\\wship6");
         hLibrary = LoadLibraryA(Path);
         if (hLibrary != NULL)
         {

@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for hlink.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -101,7 +100,7 @@ void __RPC_USER MIDL_user_free( void * );
 //=--------------------------------------------------------------------------=
 // HLInk.h
 //=--------------------------------------------------------------------------=
-// (C) Copyright 1995-1997 Microsoft Corporation.  All Rights Reserved.
+// (C) Copyright 1995-1998 Microsoft Corporation.  All Rights Reserved.
 //
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
 // ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
@@ -123,7 +122,6 @@ void __RPC_USER MIDL_user_free( void * );
 
 
 
-// ;BUGBUG We temporarily support the old 'source' names                              
 #define SID_SHlinkFrame IID_IHlinkFrame
 #define IID_IHlinkSource IID_IHlinkTarget                                     
 #define IHlinkSource IHlinkTarget                                             
@@ -842,7 +840,7 @@ void __RPC_STUB IHlink_GetAdditionalParams_Stub(
 #endif 	/* __IHlink_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_hlink_0217 */
+/* interface __MIDL_itf_hlink_0212 */
 /* [local] */ 
 
 #endif
@@ -851,8 +849,8 @@ void __RPC_STUB IHlink_GetAdditionalParams_Stub(
 EXTERN_C const GUID SID_SContainer;
 
 
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0217_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0217_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0212_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0212_v0_0_s_ifspec;
 
 #ifndef __IHlinkSite_INTERFACE_DEFINED__
 #define __IHlinkSite_INTERFACE_DEFINED__
@@ -1048,7 +1046,7 @@ void __RPC_STUB IHlinkSite_OnNavigationComplete_Stub(
 #endif 	/* __IHlinkSite_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_hlink_0218 */
+/* interface __MIDL_itf_hlink_0213 */
 /* [local] */ 
 
 #endif
@@ -1056,8 +1054,8 @@ void __RPC_STUB IHlinkSite_OnNavigationComplete_Stub(
 #define _LPHLINKTARGET_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0218_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0218_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0213_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0213_v0_0_s_ifspec;
 
 #ifndef __IHlinkTarget_INTERFACE_DEFINED__
 #define __IHlinkTarget_INTERFACE_DEFINED__
@@ -1251,7 +1249,7 @@ void __RPC_STUB IHlinkTarget_GetFriendlyName_Stub(
 #endif 	/* __IHlinkTarget_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_hlink_0219 */
+/* interface __MIDL_itf_hlink_0214 */
 /* [local] */ 
 
 #endif
@@ -1260,8 +1258,8 @@ void __RPC_STUB IHlinkTarget_GetFriendlyName_Stub(
 EXTERN_C const GUID SID_SHlinkFrame;
 
 
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0219_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0219_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0214_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0214_v0_0_s_ifspec;
 
 #ifndef __IHlinkFrame_INTERFACE_DEFINED__
 #define __IHlinkFrame_INTERFACE_DEFINED__
@@ -1473,7 +1471,7 @@ void __RPC_STUB IHlinkFrame_UpdateHlink_Stub(
 #endif 	/* __IHlinkFrame_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_hlink_0220 */
+/* interface __MIDL_itf_hlink_0215 */
 /* [local] */ 
 
 #endif
@@ -1481,8 +1479,8 @@ void __RPC_STUB IHlinkFrame_UpdateHlink_Stub(
 #define _LPENUMHLITEM_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0220_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0220_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0215_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0215_v0_0_s_ifspec;
 
 #ifndef __IEnumHLITEM_INTERFACE_DEFINED__
 #define __IEnumHLITEM_INTERFACE_DEFINED__
@@ -1653,7 +1651,7 @@ void __RPC_STUB IEnumHLITEM_Clone_Stub(
 #endif 	/* __IEnumHLITEM_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_hlink_0221 */
+/* interface __MIDL_itf_hlink_0216 */
 /* [local] */ 
 
 #endif
@@ -1661,8 +1659,8 @@ void __RPC_STUB IEnumHLITEM_Clone_Stub(
 #define _LPHLINKBROWSECONTEXT_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0221_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0221_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0216_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0216_v0_0_s_ifspec;
 
 #ifndef __IHlinkBrowseContext_INTERFACE_DEFINED__
 #define __IHlinkBrowseContext_INTERFACE_DEFINED__
@@ -2150,7 +2148,7 @@ void __RPC_STUB IHlinkBrowseContext_Close_Stub(
 #endif 	/* __IHlinkBrowseContext_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_hlink_0222 */
+/* interface __MIDL_itf_hlink_0217 */
 /* [local] */ 
 
 #endif
@@ -2158,8 +2156,8 @@ void __RPC_STUB IHlinkBrowseContext_Close_Stub(
 #define _LPEXTENSIONSERVICES_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0222_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0222_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0217_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0217_v0_0_s_ifspec;
 
 #ifndef __IExtensionServices_INTERFACE_DEFINED__
 #define __IExtensionServices_INTERFACE_DEFINED__
@@ -2281,7 +2279,7 @@ void __RPC_STUB IExtensionServices_SetAuthenticateData_Stub(
 #endif 	/* __IExtensionServices_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_hlink_0223 */
+/* interface __MIDL_itf_hlink_0218 */
 /* [local] */ 
 
 #endif
@@ -2289,8 +2287,8 @@ void __RPC_STUB IExtensionServices_SetAuthenticateData_Stub(
 #endif // !HLINK_H                                                            
 
 
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0223_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_hlink_0223_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0218_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_hlink_0218_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

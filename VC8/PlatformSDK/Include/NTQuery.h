@@ -43,15 +43,6 @@ STDAPI LoadIFilter( WCHAR const * pwcsPath,
                     IUnknown *    pUnkOuter,
                     void **       ppIUnk );
 
-#define LIFF_LOAD_DEFINED_FILTER                   1
-#define LIFF_IMPLEMENT_TEXT_FILTER_FALLBACK_POLICY 2
-#define LIFF_FORCE_TEXT_FILTER_FALLBACK            3
-
-STDAPI LoadIFilterEx( WCHAR const * pwcsPath,
-                      DWORD         dwFlags,
-                      REFIID        riid,
-                      void **       ppIUnk );
-
 STDAPI BindIFilterFromStorage( IStorage * pStg,
                                IUnknown * pUnkOuter,
                                void **    ppIUnk );

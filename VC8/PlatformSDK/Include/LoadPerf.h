@@ -1,15 +1,20 @@
 /*++
+
 Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Module Name:
+
     loadperf.h
 
 Abstract:
+
     Header file for the Performance Monitor counter string installation
     and removal functions.
 
 Revision History
+
     16-Nov-95   Created (a-robw)
+
 --*/
 
 #ifndef _LOADPERF_H_
@@ -33,102 +38,128 @@ extern "C" {
 #endif
 
 // flags for dwFlags Argument
-#define LOADPERF_FLAGS_DELETE_MOF_ON_EXIT   ((ULONG_PTR) 1)
-#define LOADPERF_FLAGS_LOAD_REGISTRY_ONLY   ((ULONG_PTR) 2)
-#define LOADPERF_FLAGS_CREATE_MOF_ONLY      ((ULONG_PTR) 4)
-#define LOADPERF_FLAGS_DISPLAY_USER_MSGS    ((ULONG_PTR) 8)
+
+#define LOADPERF_FLAGS_DELETE_MOF_ON_EXIT   ((ULONG_PTR)1)
+#define LOADPERF_FLAGS_LOAD_REGISTRY_ONLY   ((ULONG_PTR)2)
+#define LOADPERF_FLAGS_CREATE_MOF_ONLY      ((ULONG_PTR)4)
+#define LOADPERF_FLAGS_DISPLAY_USER_MSGS    ((ULONG_PTR)8)
+
+// note: LOADPERF_FLAGS_LOAD_REGISTRY_ONLY is not a valid flag for
+// LoadMofFromInstalledServiceA/W as the service must already be installed
 
 LOADPERF_FUNCTION
-InstallPerfDllW(
-    IN  LPCWSTR   szComputerName,
-    IN  LPCWSTR   lpIniFile,
-    IN  ULONG_PTR dwFlags         
-);
-
-LOADPERF_FUNCTION
-InstallPerfDllA(
-    IN  LPCSTR    szComputerName,
-    IN  LPCSTR    lpIniFile,
-    IN  ULONG_PTR dwFlags         
+LoadMofFromInstalledServiceA (
+    IN  LPCSTR  szServiceName,  // service to create mof for
+    IN  LPCSTR  szMofFilename,  // name of file to create
+    IN  ULONG_PTR   dwFlags
 );
 
 LOADPERF_FUNCTION
-LoadPerfCounterTextStringsA(
-    __in LPSTR lpCommandLine,
-    __in BOOL bQuietModeArg
+LoadMofFromInstalledServiceW (
+    IN  LPCWSTR szServiceName,  // service to create mof for
+    IN  LPCWSTR szMofFilename,  // name of file to create
+    IN  ULONG_PTR   dwFlags
 );
 
 LOADPERF_FUNCTION
-LoadPerfCounterTextStringsW(
-    __in LPWSTR lpCommandLine,
-    __in BOOL bQuietModeArg
+InstallPerfDllW (
+    IN  LPCWSTR szComputerName,
+    IN  LPCWSTR lpIniFile,
+    IN  ULONG_PTR   dwFlags         
 );
 
 LOADPERF_FUNCTION
-UnloadPerfCounterTextStringsW(
-    __in LPWSTR lpCommandLine,
-    __in BOOL bQuietModeArg
+InstallPerfDllA (
+    IN  LPCSTR  szComputerName,
+    IN  LPCSTR  lpIniFile,
+    IN  ULONG_PTR   dwFlags         
 );
 
 LOADPERF_FUNCTION
-UnloadPerfCounterTextStringsA(
-    __in LPSTR lpCommandLine,
-    __in BOOL bQuietModeArg
+UnInstallPerfDllA (
+    IN  LPCSTR  szComputerName,
+    IN  LPCSTR  lpServiceName,
+    IN  ULONG_PTR   dwFlags         
 );
 
 LOADPERF_FUNCTION
-UpdatePerfNameFilesA(
-    __in LPCSTR szNewCtrFilePath,
-    __in LPCSTR szNewHlpFilePath,
-    __in LPSTR szLanguageID,
-    __in ULONG_PTR dwFlags
+UnInstallPerfDllA (
+    IN  LPCSTR  szComputerName,
+    IN  LPCSTR  lpServiceName,
+    IN  ULONG_PTR   dwFlags         
 );
 
 LOADPERF_FUNCTION
-UpdatePerfNameFilesW(
-    __in LPCWSTR szNewCtrFilePath,
-    __in LPCWSTR szNewHlpFilePath,
-    __in LPWSTR szLanguageID,
-    __in ULONG_PTR dwFlags
+LoadPerfCounterTextStringsA (
+    IN  LPSTR   lpCommandLine,
+    IN  BOOL    bQuietModeArg
 );
 
 LOADPERF_FUNCTION
-SetServiceAsTrustedA(
-    IN  LPCSTR    szReserved,
-    IN  LPCSTR    szServiceName
+LoadPerfCounterTextStringsW (
+    IN  LPWSTR  lpCommandLine,
+    IN  BOOL    bQuietModeArg
 );
 
 LOADPERF_FUNCTION
-SetServiceAsTrustedW(
-    IN  LPCWSTR   szReserved,
-    IN  LPCWSTR   szServiceName
+UnloadPerfCounterTextStringsW (
+    IN  LPWSTR  lpCommandLine,
+    IN  BOOL    bQuietModeArg
 );
 
-DWORD
-BackupPerfRegistryToFileW(
-    IN  LPCWSTR   szFileName,
-    IN  LPCWSTR   szCommentString
+LOADPERF_FUNCTION
+UnloadPerfCounterTextStringsA (
+    IN  LPSTR   lpCommandLine,
+    IN  BOOL    bQuietModeArg
 );
 
-DWORD
-RestorePerfRegistryFromFileW(
-    IN  LPCWSTR   szFileName,
-    IN  LPCWSTR   szLangId
+LOADPERF_FUNCTION
+UpdatePerfNameFilesA (
+    IN  LPCSTR      szNewCtrFilePath,
+    IN  LPCSTR      szNewHlpFilePath,
+    IN  LPSTR       szLanguageID,
+    IN  ULONG_PTR   dwFlags
 );
+
+LOADPERF_FUNCTION
+UpdatePerfNameFilesW (
+    IN  LPCWSTR     szNewCtrFilePath,
+    IN  LPCWSTR     szNewHlpFilePath,
+    IN  LPWSTR      szLanguageID,
+    IN  ULONG_PTR   dwFlags
+);
+
+LOADPERF_FUNCTION
+SetServiceAsTrustedA (
+    LPCSTR szReserved,
+    LPCSTR szServiceName
+);
+
+LOADPERF_FUNCTION
+SetServiceAsTrustedW (
+    LPCWSTR szReserved,
+    LPCWSTR szServiceName
+);
+
 
 #ifdef UNICODE
 #define InstallPerfDll                  InstallPerfDllW
+#define UnInstallPerfDll                UnInstallPerfDllW
 #define LoadPerfCounterTextStrings      LoadPerfCounterTextStringsW
 #define UnloadPerfCounterTextStrings    UnloadPerfCounterTextStringsW
+#define LoadMofFromInstalledService     LoadMofFromInstalledServiceW
 #define UpdatePerfNameFiles             UpdatePerfNameFilesW 
 #define SetServiceAsTrusted             SetServiceAsTrustedW
 #else
 #define InstallPerfDll                  InstallPerfDllA
+#define UnInstallPerfDll                UnInstallPerfDllA
 #define LoadPerfCounterTextStrings      LoadPerfCounterTextStringsA
 #define UnloadPerfCounterTextStrings    UnloadPerfCounterTextStringsA
+#define LoadMofFromInstalledService     LoadMofFromInstalledServiceA
 #define UpdatePerfNameFiles             UpdatePerfNameFilesA
 #define SetServiceAsTrusted             SetServiceAsTrustedA
 #endif
+
 
 #ifdef __cplusplus
 }

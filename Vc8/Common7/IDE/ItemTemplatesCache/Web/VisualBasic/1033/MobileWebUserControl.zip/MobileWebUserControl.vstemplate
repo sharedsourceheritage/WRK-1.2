@@ -1,0 +1,22 @@
+﻿<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+    <TemplateData>
+	<Name Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3330"/>
+	<Description Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3331"/>
+	<Icon Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="4729"/>
+        <ProjectType>Web</ProjectType>
+        <ProjectSubType>VisualBasic</ProjectSubType>
+        <SortOrder>210</SortOrder>
+        <SupportsLanguageDropdown>true</SupportsLanguageDropdown>
+        <SupportsCodeSeparation>true</SupportsCodeSeparation>
+        <DefaultName>WebUserControl.ascx</DefaultName>
+	</TemplateData>
+	<TemplateContent>
+		<ProjectItem ReplaceParameters="true">WebUserControl.ascx</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.$fileinputextension$">WebUserControl_cb.ascx</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.$fileinputextension$.vb">CodeBeside.vb</ProjectItem>
+	</TemplateContent>
+    <WizardExtension>
+        <Assembly>Microsoft.VisualStudio.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+        <FullClassName>Microsoft.VisualStudio.Web.Wizard.VsWebUserControlItemTemplateWizard</FullClassName>
+    </WizardExtension>
+</VSTemplate>

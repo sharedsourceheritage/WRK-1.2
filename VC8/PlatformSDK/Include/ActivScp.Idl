@@ -104,10 +104,6 @@ cpp_quote("// {DB01A1E3-A42B-11cf-8F20-00805F2CD064}")
 cpp_quote("DEFINE_GUID(IID_IActiveScriptSite, 0xdb01a1e3, 0xa42b, 0x11cf, 0x8f, 0x20, 0x00, 0x80, 0x5f, 0x2c, 0xd0, 0x64);")
 cpp_quote("")
 
-cpp_quote("// {4B7272AE-1955-4bfe-98B0-780621888569}")
-cpp_quote("DEFINE_GUID(IID_IActiveScriptSiteTraceInfo, 0x4b7272ae, 0x1955, 0x4bfe, 0x98, 0xb0, 0x78, 0x6, 0x21, 0x88, 0x85, 0x69);")
-cpp_quote("")
-
 cpp_quote("// {D10F6761-83E9-11cf-8F20-00805F2CD064}")
 cpp_quote("DEFINE_GUID(IID_IActiveScriptSiteWindow, 0xd10f6761, 0x83e9, 0x11cf, 0x8f, 0x20, 0x00, 0x80, 0x5f, 0x2c, 0xd0, 0x64);")
 cpp_quote("")
@@ -144,10 +140,6 @@ cpp_quote("")
 
 cpp_quote("// {764651D0-38DE-11d4-A2A3-00104BD35090}")
 cpp_quote("DEFINE_GUID(IID_IActiveScriptSIPInfo, 0x764651d0, 0x38de, 0x11d4, 0xa2, 0xa3, 0x00, 0x10, 0x4b, 0xd3, 0x50, 0x90);")
-cpp_quote("")
-
-cpp_quote("// {C35456E7-BEBF-4a1b-86A9-24D56BE8B369}")
-cpp_quote("DEFINE_GUID(IID_IActiveScriptTraceInfo, 0xC35456E7, 0xBEBF, 0x4a1b, 0x86, 0xA9, 0x24, 0xD5, 0x6B, 0xE8, 0xB3, 0x69);")
 cpp_quote("")
 
 cpp_quote("// {1629F04E-2799-4db5-8FE5-ACE10F17EBAB}")
@@ -271,18 +263,6 @@ typedef enum tagSCRIPTSTATE {
 	SCRIPTSTATE_CLOSED              = 4,
 
 } SCRIPTSTATE ;
-
-typedef enum tagSCRIPTTRACEINFO {
-	SCRIPTTRACEINFO_SCRIPTSTART	= 0,
-	SCRIPTTRACEINFO_SCRIPTEND	= 1,
-	SCRIPTTRACEINFO_COMCALLSTART	= 2,
-	SCRIPTTRACEINFO_COMCALLEND	= 3,
-	SCRIPTTRACEINFO_CREATEOBJSTART	= 4,
-	SCRIPTTRACEINFO_CREATEOBJEND	= 5,
-	SCRIPTTRACEINFO_GETOBJSTART	= 6,
-	SCRIPTTRACEINFO_GETOBJEND	= 7,
-	
-} SCRIPTTRACEINFO ;
 
 cpp_quote("")
 cpp_quote("/* script thread state values */")
@@ -904,67 +884,6 @@ interface IActiveScriptSIPInfo : IUnknown
 	HRESULT GetSIPOID(
 		[out] GUID * poid_sip
 	);
-}
-
-[
-	object,
-	uuid(4B7272AE-1955-4bfe-98B0-780621888569),
-	pointer_default(unique)
-]
-interface IActiveScriptSiteTraceInfo : IUnknown
-{
-
-	// SendScriptTraceInfo
-	//	stiEventType: the SCRIPTTRACEINFO type for this script statement
-	//	guidContextID: the host's ContextID cookie
-	//	dwScriptContextCookie: the SCRIPT block ContextID cookie
-	//	lScriptStatementStart: the start character count index of the executing script statement
-	//	lScriptStatementEnd: the end character count index of the executing script statement	
-	//	dwReserved: reserved for any unforseen need
-	//
-	//	Return Values:
-	//		S_OK: Success
-	//		E_NOTIMPL: Not implemented
-	//
-	HRESULT SendScriptTraceInfo(
-		[in] SCRIPTTRACEINFO stiEventType,
-		[in] GUID guidContextID,
-		[in] DWORD dwScriptContextCookie,
-		[in] LONG lScriptStatementStart,
-		[in] LONG lScriptStatementEnd,
-		[in] DWORD64 dwReserved
-	);
-}
-
-[
-	object,
-	uuid(C35456E7-BEBF-4a1b-86A9-24D56BE8B369),
-	pointer_default(unique)
-]
-interface IActiveScriptTraceInfo : IUnknown
-{
-	// StartScriptTracing
-	//	pSiteTraceInfo: pointer to the host's IActiveScriptSiteTraceInfo
-	//	
-	//	Return Values:
-	//		S_OK: Success
-	//		E_POINTER: pSiteTraceInfo is a NULL pointer.
-	//		E_NOTIMPL: Not implemented
-	//
-	HRESULT StartScriptTracing(
-		[in] IActiveScriptSiteTraceInfo * pSiteTraceInfo,
-		[in] GUID guidContextID
-	);
-
-
-	// StopScriptTracing
-	//
-	//	
-	//	Return Values:
-	//		S_OK: Success
-	//		E_NOTIMPL: Not implemented
-	//
-	HRESULT StopScriptTracing(void);
 }
 
 cpp_quote("")

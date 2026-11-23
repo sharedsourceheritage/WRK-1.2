@@ -1,0 +1,47 @@
+<VSTemplate Version="2.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="2417" />
+    <Description Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="2418" />
+    <Icon Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="4588" />
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>100</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>ScreenSaver</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ScreenSaver.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true">OptionsForm.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">OptionsForm.Designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">Program.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">ScreenSaverForm.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">ScreenSaverForm.Designer.cs</ProjectItem>
+
+      <ProjectItem OpenInWebBrowser="true">Documentation\ScreenSaverStarterKit.htm</ProjectItem>
+      <ProjectItem>Documentation\Images\title.jpg</ProjectItem>
+      <ProjectItem>Documentation\Images\side-vc.gif</ProjectItem>
+      <ProjectItem>Documentation\Images\topjump-vc.gif</ProjectItem>
+      <ProjectItem>Documentation\Images\top-vc.gif</ProjectItem>
+      <ProjectItem>Documentation\Images\screensaver_thumbnail.png</ProjectItem>
+
+      <ProjectItem ReplaceParameters="true">Properties\AssemblyInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">Properties\Resources.resx</ProjectItem>
+      <ProjectItem ReplaceParameters="true">Properties\Resources.Designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">Properties\Settings.settings</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Settings.Designer.cs">Properties\Settings.designer.cs</ProjectItem>
+
+      <ProjectItem>Resources\App.ico</ProjectItem>
+      <ProjectItem>Resources\SSaverBackground.jpg</ProjectItem>
+      <ProjectItem>Resources\SSaverBackground2.jpg</ProjectItem>
+
+      <ProjectItem ReplaceParameters="true">Rss\RssChannel.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">Rss\RssFeed.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">Rss\RssItem.cs</ProjectItem>
+
+      <ProjectItem ReplaceParameters="true">UI\IItem.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">UI\ItemDescriptionView.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">UI\ItemListView.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
+

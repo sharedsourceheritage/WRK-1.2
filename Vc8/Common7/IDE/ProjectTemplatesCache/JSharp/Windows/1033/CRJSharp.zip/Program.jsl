@@ -1,0 +1,13 @@
+﻿package $safeprojectname$;
+
+import System.Collections.Generic.*;
+import System.Windows.Forms.*;
+
+public class Program
+{
+	public static void main(String[] args)
+	{
+		Application.EnableVisualStyles();
+		Application.Run(new Form1());
+	}
+}

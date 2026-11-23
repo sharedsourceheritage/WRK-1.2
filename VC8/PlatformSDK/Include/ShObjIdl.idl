@@ -2564,6 +2564,7 @@ typedef enum tagNWMF
     NWMF_USERREQUESTED    = 0x0080,  // There is no doubt the user requested this window (from RClick->Open in New Window, or Shift+Clicked a link)
     NWMF_USERALLOWED      = 0x0100,  // This popup is the result of the user requesting a replay that resulted in a refresh
 } NWMF;
+
 // Popup manager interface for WebOC hosts and Trident.
 cpp_quote("#define SID_SNewWindowManager IID_INewWindowManager")
 [
@@ -2811,7 +2812,6 @@ interface IAttachmentExecute : IUnknown
 };
 
 
-//-------------------------------------------------------------------------
 //
 // IShellMenu interface
 //

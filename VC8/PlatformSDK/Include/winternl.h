@@ -278,11 +278,9 @@ typedef enum _SYSTEM_INFORMATION_CLASS {
 // since these functions may change between Windows releases.
 //
 
-
-#define RtlMoveMemory(Destination,Source,Length) memmove((Destination),(Source),(Length))
 #define RtlFillMemory(Destination,Length,Fill) memset((Destination),(Fill),(Length))
 #define RtlZeroMemory(Destination,Length) memset((Destination),0,(Length))
-
+#define RtlMoveMemory(Destination,Source,Length) memmove((Destination),(Source),(Length))
 
 //
 // use the Win32 API instead
@@ -514,9 +512,9 @@ RtlUnicodeStringToOemString(
 //
 NTSTATUS
 RtlUnicodeToMultiByteSize(
-    __out PULONG BytesInMultiByteString,
-    __in_bcount(BytesInUnicodeString) PWCH UnicodeString,
-    __in ULONG BytesInUnicodeString
+    PULONG BytesInMultiByteString,
+    IN PWSTR UnicodeString,
+    ULONG BytesInUnicodeString
     );
 
 //
@@ -608,7 +606,6 @@ typedef struct _WINSTATIONINFORMATIONW {
 // 
 typedef BOOLEAN (WINAPI * PWINSTATIONQUERYINFORMATIONW)(
     HANDLE, ULONG, WINSTATIONINFOCLASS, PVOID, ULONG, PULONG );
-
 
 #ifdef __cplusplus
 }

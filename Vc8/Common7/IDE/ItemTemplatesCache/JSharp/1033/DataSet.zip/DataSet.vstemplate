@@ -1,0 +1,23 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2277" />
+    <Description Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2278" />
+    <Icon Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="4522" />
+    <ProjectType>JSharp</ProjectType>
+    <SortOrder>50</SortOrder>
+    <DefaultName>DataSet.xsd</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectItem ReplaceParameters="true">DataSet.xsd</ProjectItem>
+    <CustomParameters>
+      <CustomParameter Name="$itemproperties$" Value="CustomTool" />
+      <CustomParameter Name="$CustomTool$" Value="MSDataSetGenerator" />
+      <CustomParameter Name="$QueryServiceGuid$" Value="AD028B85-FA21-41b1-AB4A-08672F633506" />
+      <CustomParameter Name="$XmlConvert_itemname$" Value="" />
+    </CustomParameters>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Microsoft.VSDesigner, Version=8.0.0.0, Culture=Neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>Microsoft.VSDesigner.ProjectWizard.ItemPropertyWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

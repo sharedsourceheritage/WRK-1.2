@@ -330,7 +330,7 @@
 //
 // MessageText:
 //
-//  The key was truncated because it exceeded the maximum length.
+//  The key was truncated because it is more than 255 bytes.
 //
 #define hrFLDKeyTooBig                   ((HRESULT)0x88000190L)
 
@@ -1449,7 +1449,7 @@
 //
 // MessageText:
 //
-//  The length of the field exceeds the maximum length.
+//  The length of the field exceeds the maximum length of 255 bytes.
 //
 #define hrColumnTooBig                   ((HRESULT)0xC80005E2L)
 
@@ -1494,7 +1494,7 @@
 //
 // MessageText:
 //
-//  The column was truncated because it exceeded the maximum length.
+//  The column was truncated because it exceeded the maximum length of 255 bytes.
 //
 #define hrColumnMaxTruncated             ((HRESULT)0x880005E8L)
 

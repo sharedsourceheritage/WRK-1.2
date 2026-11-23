@@ -41,16 +41,6 @@ typedef struct _KEYSVC_BLOB {
     BYTE                *pb;
 } KEYSVC_BLOB, *PKEYSVC_BLOB;
 
-//--------------------------------------------------------------------------------
-// Define flags for use with RKeyOpenKeyService(). 
-// 
-// RKEYSVC_CONNECT_SECURE_ONLY - client will require mutual authentication to prevent
-//     spoofing.  While more secure, this will cause the call to fail in situations when
-//     fallback to NTLM would otherwise have been possible. 
-// 
-#ifndef KEYSVC_MIDL_PASS
-#define RKEYSVC_CONNECT_SECURE_ONLY 0x00000001
-#endif // #ifndef KEYSVC_MIDL_PASS
 
 ULONG RKeyOpenKeyService
 ( /* [in] */       LPSTR            pszMachineName,

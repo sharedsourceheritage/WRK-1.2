@@ -1,0 +1,368 @@
+<html>
+	<head>
+		<title>Microsoft .NET Framework SDK Samples Configuration Details</title>
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+			<h2>Microsoft .NET Framework SDK QuickStart Configuration Details</h2>
+			<p>
+			This page provides a detailed listing of the configuration steps performed by 
+			the .NET Framework QuickStart configuration program.&nbsp; It also contains 
+			solutions to common problems related to the samples setup.</P>
+				<ul>
+					<li><a href="#SQL">General SQL Server / SQL Server Express Information</a></li>
+					<li><a href="#SQL2005">Installing SQL Server 2005 instead of SQL Server Express</a></li>
+					<li><a href="#Install">Installing the SDK Quickstart Tutorials Manually</a></li>
+					<LI><a href="#WindowsServer">Running the QuickStart on the Windows Server 2003, 64-bit Windows XP, or newer Windows operating systems</a></LI>
+					<LI><a href="#installingsdk">Resolving the ".NET Framework SDK installation (not found)" Error in ConfigSamples.Exe</a></LI>
+					<LI><a href="#Installing Additional Fonts">Installing Additional Fonts</a></LI>
+					<LI><a href="#InstallSSE">Installing SQL Server Express</a></LI>
+					<LI><a href="#ConfigSamples Params">ConfigSamples Command Line Parameters</a></LI>
+					<LI><a href="#ConfigSSE Params">ConfigSSE Command Line Parameters</a></LI>
+					<li><a href="#Scrub">Scrubbing Pre-Existing Data Files</a></li>
+                    			<li><a href="#NetSamplePath">Setting the NetSamplePath Environment Variable</a></li>
+					<li><a href="#GrantUserAccess">Grant a New User Account Access to a Database</a></li>
+					<li><a href="#NormalUser">How to run the Quickstarts as Normal User</a></li>
+					<li><a href="#AccessToTemp">How to Give Network Service the Write Access</a></li>
+				</ul>
+
+				<p><a name="SQL"><b>General SQL Server/SQL Server Express Information</b></a></p>
+				<p>In order for the database access samples to 
+                function properly, a named instance of Microsoft&REG; SQL Server Express&trade; is 
+						required.&nbsp;  To download and install Microsoft 
+                SQL Server Express, please follow the instructions on 
+                the Microsoft SQL Server Express download page at 
+                <a href="http://go.microsoft.com/fwlink/?LinkId=31766" target="_new">http://go.microsoft.com/fwlink/?LinkId=31766</a>.</p>
+
+				<p><a name="SQL2005"></a><b>Installing SQL Server 2005 instead of SQL Server Express</b></p>
+				<p>The user can also use ConfigSamples.exe to install a named instance or a default instance of SQL Server 2005 by passing in the switch /sql_instance:&lt;named_instance&gt;.
+				</p>
+				
+					<blockquote><em>&lt;sdk Install Path&gt;\samples\setup\configsamples.exe /sql_instance:&lt;MyInstanceName&gt;</em></blockquote>
+				
+				<p>The SQL Server Express instance name used by the SDK samples is 
+						'SQLExpress'.&nbsp; To access the database, use the server name: 
+						(local)\SQLExpress.</p>
+				
+					<blockquote><em>&lt;SDK Prompt&gt; sqlcmd -S (local)\SQLExpress -E -d &lt;database&gt;</em></blockquote>
+				
+
+
+				<p><a name="Install"><b>Installing the SDK Quickstart Tutorials Manually</b></a></p>
+
+				<p>The SDK Quickstart tutorials require Internet Information Server. For help installing Internet Information Server see the Windows Help documentation.</p>
+				<ol>
+					<li>Install and register ASP.NET with IIS</li>
+					
+					<ol>
+						<li>From the SDK command prompt run aspnet_regiis -ir -enable</li>
+					</ol>
+					
+					<li>Optional Install SQL Server Express or SQL Server 2005.</li>
+					<li><a name="Add">Install the Quickstart Sample databases. From the SDK command prompt change to the SDK\v2.0\samples\setup folder and run the following commands</a></li>
+					
+					<ol>
+						<li>sqlcmd -E -S (local)\SQLExpress -i InstPubs.sql</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -i InstNwnd.sql</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -i InstGrocer.sql</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -i InstContacts.sql</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -i InstPhotos.sql</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -i Inst_FileSystemSQL.sql</li>
+						<li>aspnet_regsql.exe -S (local)\SQLExpress -E -A all</li>
+					</ol>
+					
+					<li><a name="Grant">Grant the ASP.NET User account access to the databases. On Windows Server 2003 the ASP.NET process runs under NT AUTHORITY\NETWORK SERVICE. In all other cases it runs under MACHINENAME\ASPNET.</a></li>
+					
+					<ol>
+						<li>sqlcmd -E -S (local)\SQLExpress -Q "sp_grantlogin &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d Pubs -Q "sp_grantdbaccess &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d Pubs -Q "sp_addrolemember 'db_owner', &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d NorthWind -Q "sp_grantdbaccess &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d NorthWind -Q "sp_addrolemember 'db_owner', &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d GrocerToGo -Q "sp_grantdbaccess &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d GrocerToGo -Q "sp_addrolemember 'db_owner', &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d Contacts -Q "sp_grantdbaccess &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d Contacts -Q "sp_addrolemember 'db_owner', &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d Photos -Q "sp_grantdbaccess &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d Photos -Q "sp_addrolemember 'db_owner', &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d FileSystemSQL -Q "sp_grantdbaccess &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d FileSystemSQL -Q "sp_addrolemember 'db_owner', &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d ASPNETDB -Q "sp_grantdbaccess &lt;ASP.NET User Account&gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d ASPNETDB -Q "sp_addrolemember 'db_owner', &lt;ASP.NET User Account&gt;"</li>
+					</ol>
+					
+					<li>Modify the Web.config file to point to the location that the QuickStart are installed to:</li>
+                </ol>
+                <blockquote>
+					. . .<br>
+					&lt;sourceview&gt;<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;add key="root" value="C:\Program Files\Microsoft.NET\SDK\v2.0\QuickStart" /&gt;<br>
+					&lt;/sourceview&gt;<br>
+					. . .
+                </blockquote>
+                
+				<blockquote>
+				If you are going to host the QuickStart to enable users from other machines to view and run the QuickStart, set the RemoteHosted appSetting key value to true in the web.config file. This will prevent your computer from hosting some samples that were not designed for use by un-trusted sources.</blockquote>
+
+					<blockquote><em>&lt;appSettings&gt;<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;add key="RemoteHost" value="true" /&gt;<br>
+					&lt;/appSettings&gt;</em>
+				</blockquote>
+                
+                <ol start=6>
+					<li>If you installed SQL Server 2005 instead of SQL Express you will need to update the connection string used by all samples. Search the SDK\v2.0\QuickStart\ directory and replace all instances of "(local)\SQLExpress" with the connection string needed for your instance of SQL.</li>
+					<li>Install all SDK Quickstart Virtual Directories in IIS. The Setup.xml installed to the SDK\v2.0\Samples\setup folder lists all of the SDK Quickstart virtual directories that need to be installed. The SDK Quickstart configuration wizard defaults to installing the virtual directories to the QuickstartV20 virtual directory path.</li>
+					<li>If you are running IIS 6.0 you should create a separate unique application pool for the SDK Quickstart samples. The SDK Quickstart Configuration Wizard creates the "QuickstartV20AppPool" by default. Associate this application pool with the QuickstartV20 virtual directory.</li>
+					<li>Set all appropriate security permission on the application pool that you created and the Quickstart Virtual directories to adequately protect your IIS server from attackers.</li>
+					<li>After creating all Virtual Directories run "aspnet_regiis -s W3SVC/1/ROOT/QuickstartV20" from the SDK Command prompt to register the asp.net 2.0 script map for the Quickstart Virtual Directory. </li>
+					<li>Optional - Build all of the Quickstart samples in the sdk\v2.0\Quickstart\ folder by calling msbuild on each sample solution file from within the SDK command prompt.</li>
+				</ol>
+
+
+
+
+
+			<p><b><a name="WindowsServer">Running the QuickStart on the Windows Server 2003, 64-bit Windows XP, and newer Windows operating systems</a></b></p>
+				<p>Note: If you are installing the QuickStart on a Windows Server 2003, 64-bit Windows XP, or newer Windows operating systems, ASP.NET Web Server Extensions must be 'Allowed' for the QuickStart to work.  See the 'Enabling and Disabling Dynamic Content' section of the IIS help documentation for more information.
+				</p>
+
+			<p><b><a name="installingsdk">Resolving the ".NET Framework SDK installation (not found)" Error in ConfigSamples.Exe</a></b></p>
+				<p>The samples configuration utility will return a ".NET Framework SDK installation (not found)" error if it does not detect an installation of the corresponding version of the .NET Framework SDK. If you receive this 
+				error, please confirm that the registry key created by the .NET Framework SDK 
+				(HKLM\SOFTWARE\Microsoft\.NETFramework\sdkInstallRootv2.0) exists. If this registry key does not exist, 
+				it indicates that the .NET Framework SDK was not installed or that the installation did not complete successfully. In this case, please reinstall the .NET Framework SDK.
+				</p>
+
+
+			<p><b><a name="Installing Additional Fonts">Installing 
+            Additional Fonts</a></b></p>
+            <p>The ASP.NET Quickstart Localization samples require several fonts 
+            (e.g. Japanese) 
+            to view the samples correctly.&nbsp; 
+            The installation procedure for these fonts may require the original Windows CD. To 
+            install new fonts, complete the following 
+            steps:</p>
+            <p>On Windows 2000</p>
+            <ul>
+              <li>Open Control Panel</li>
+              <li>Open Regional Options / General </li>
+              <li>Check the desired language setting in the &#39;Language setting for the system&#39; list box. 
+              e.g. Japanese (additional languages can be selected at this point as 
+              well)</li>
+            </ul>
+            <p>On Windows XP or Windows 2003</p>
+            <ul>
+              <li>Open Control Panel</li>
+              <li>Open Regional and Language Options</li>
+              <li>Select Languages tab</li>
+              <li>Check the desired language setting.&nbsp; e.g. &#39;Install files for East Asian Languages&#39;</li>
+            </ul>
+
+
+			<p><b><a name="InstallSSE">Installing SQL Server Express</a></b></p>
+			
+            <p><b>1.</b> <em>ERROR: SQL Server Express Installation Failed</em></p>
+    		<p>This is a general SSE installation error message.  Please go to <em>Start -> Settings -> Control Panel -> Administrative Tools -> Services</em> and look for the service named "SQL Server (SQLEXPRESS)".  If it is there, please start it.  If it is not there, please run ConfigSamples.exe again.<p>
+	    	<p>For more information, please go to <a href="http://lab.msdn.microsoft.com/vs2005/get/vsbeta2installissues/default.aspx#sse" target="_new">http://lab.msdn.microsoft.com/vs2005/get/vsbeta2installissues/default.aspx#sse</a>.</p>
+	 
+	    	<p><b>2.</b> <em>ERROR: SQL Server Express Download Failed</em></p>
+	    	<p>Please try and manually download the SSE installation package.  To download the 32-bit-only SSE (32MB), please go to <a href="http://go.microsoft.com/fwlink/?LinkId=47324" target="_New">http://go.microsoft.com/fwlink/?LinkId=47324</a>.  To download the 32/64 bit SSE (70MB), please go to <a href="http://go.microsoft.com/fwlink/?LinkId=39581" target="_New">http://go.microsoft.com/fwlink/?LinkId=39581</a>.  Please then re-run the ConfigSamples.exe, and when you reach the page that sets the options for the SQL Server Express, select the second option "Download from the local machine" and browse to the downloaded location.</p>
+
+			<p><b><a name="ConfigSamples Params">ConfigSamples Command Line Parameters</a></b></p>
+
+		<p>The SDK Quickstart Setup utility provides the following command line parameters to make setup and uninstall of the QuickStart easier.</p>
+
+		<p>Usage: ConfigSamples [-?] [-q] [-v] [-sql_instance:name]</p>
+
+		<Center>
+		<table border=1 width=90%>
+			<tr>
+				<td><b>Parameter</b></td>
+				<td><b>Details</b></td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-?</td>
+				<td valign=top>Show parameter usage information</td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-q</td>
+				<td valign=top>Run in quiet mode. No UI is displayed. Default values will be selected if not specified by a switch. By default SQL Express is downloaded and installed by ConfigSamples.</td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-v</td>
+				<td valign=top>Show verbose information. Verbose log information will be displayed to the console instead of the standard log file is this switch is specified.</td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-i</td>
+				<td valign=top>Ignore install failures. Do not rollback changes. The -i switch can be to force ConfigSamples to install the QuickStart even when there are installation problems.</td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-uninstall</td>
+				<td valign=top>This option will cause ConfigSamples to remove the Quickstart Virtual directories and compiled binaries from you computer. It will not remove SQL Server Express or uninstall the sample databases.</td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-enable_aspnet</td>
+				<td valign=top>This option will enable ASP.NET in IIS if it was not previously installed and enabled.</td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-skip_sqlexpress</td>
+				<td valign=top>Skips the download and installation of SQL Server Express</td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-sql_instance:&lt;name&gt;</td>
+				<td valign=top>This option allows you to specify your own SQL Server instance name. If you do not specify an instance name as the parameter ConfigSamples will attempt to install to the default SQL Server instance.
+
+				By default ConfigSamples will try to install the SQLServerExpress named SQL instance. </td>
+			</tr>
+		</table>
+		</center>
+                     
+		<p><b><a name="ConfigSSE Params">ConfigSSE Command Line Parameters</a></b></p>
+
+		<p>ConfigSSE was designed to allow you to install SQL Server Express and the SDK Sample databases without setting up the rest of the QuickStart.</p> 
+
+		<p>Usage: ConfigSSE [-?] [-q] [-v] [-sql_instance:name]</p>
+
+		<Center>
+		<table border=1 width=90%>
+			<tr>
+				<td><b>Parameter</b></td>
+				<td><b>Details</b></td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-?</td>
+				<td valign=top>Displays usage information</td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-q</td>
+				<td valign=top>Runs in silent mode. No UI is displayed and defaults are selected. By default SQL Server Express is downloaded and installed.</td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-v</td>
+				<td valign=top>Verbose mode. Logging information is displayed in the command prompt.</td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-i</td>
+				<td valign=top>Ignores all setup errors.</td>
+			</tr>
+			<tr>
+				<td valign=top nowrap>-sql_instance:&lt;name&gt;</td>
+				<td valign=top>This option allows you to specify your own SQL Server instance name. If you do not specify an instance name as the parameter ConfigSamples will attempt to install to the default SQL Server instance.
+
+				By default ConfigSamples will try to install the SQLServerExpress named SQL instance. </td>
+			</tr>
+		</table>
+		</Center>
+
+		<p><a name=Scrub><b>Scrubbing Pre-Existing Data Files</b></a></p>
+					If database files with the same filename already exist on the hard 
+						drive, the samples configuration utility will not overwrite/replace these 
+						files.&nbsp; 
+			
+				There 
+						are two ways to correct this problem:
+				
+						<blockquote> 1.&nbsp; Delete or rename the following files from the 
+								C:\Program Files\Microsoft SQL Server\MSSQL$SQLExpress\Data directory.<ul>
+								<li>
+									Pubs.mdf
+								<li>
+									Pubs_log.ldf
+								<li>
+									northwind.mdf
+								<li>
+									northwind.ldf
+								<li>
+									GrocerToGo.mdf
+								<li>
+									GrocerToGo.ldf
+								<li>
+									ASPNETDB.mdf
+								<li>
+									ASPNETDB_log.ldf
+					</LI></UL>
+  
+						
+  <p>2a.&nbsp; Complete the instructions outlined in the <A href=#Add>Adding the SQL Server Databases to SQL Server Express</A> and 
+								<A href=#Grant>Granting Access to the ASPNET user</A> sections above.<br>
+								2b.&nbsp; Or, run the samples configuration utility (ConfigSamples.exe)
+								again.<br>
+								&nbsp;</p></BLOCKQUOTE>
+
+			<p><a name="NetSamplePath"><b>Setting the NetSamplePath Environment Variable</b></a></p>
+			<p>
+			The NetSamplePath environment variable is required to compile the QuickStart 
+			samples.&nbsp; Set the NetSamplePath environment variable to 
+			&lt;SDK&gt; directory.&nbsp; The &lt;SDK&gt;
+			directory name must be in the short form (no spaces).&nbsp; For an example of 
+			what NetSamplePath should be set to, see the SDKVars.bat file located in the 
+			&lt;SDK&gt;\Bin directory.
+			</p>
+			<p>
+			The process of setting an environment variable varies depending on your 
+			operating system.&nbsp; In general, the command is:
+			</p>
+				<UL>
+					<li>SET NetSamplePath=D:\PROGRA~1\MICROS~1.NET\SDK\v2.0\</li>
+				</UL>
+			
+
+
+			<p><b><a name="GrantUserAccess">Grant a New User Account Access to a Database</a></b></p>
+			<p>
+			Please replace <font color="blue"><em>DATABASE NAME</em></font> with the name of the database and replace <font color="blue"><em>USER NAME</em></font> with the name of the user account.
+			</p>
+						<ol>
+						<li>sqlcmd -E -S (local)\SQLExpress -Q "sp_grantlogin &lt;  <font color="blue"><em>USER NAME</em></font>  &gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d <font color="blue"><em>DATABASE NAME</em></font> -Q "sp_grantdbaccess &lt;  <font color="blue"><em>USER NAME</em></font> &gt;"</li>
+						<li>sqlcmd -E -S (local)\SQLExpress -d <font color="blue"><em>DATABASE NAME</em></font> -Q "sp_addrolemember 'db_owner', &lt;  <font color="blue"><em>USER NAME</em></font>  &gt;"</li>
+						</ol>
+
+			<p><b><a name="NormalUser">How to run the Quickstarts as Normal User</a></b></p>
+			<p>
+			If you need to connect to the SSE using a normal user account as oppose to an administrator account, for all instances where you would otherwise use
+            </p>
+            
+			<blockquote>
+			sqlcmd -E .....
+			</blockquote>
+			
+			<p>
+			please use
+            </p>			
+			<blockquote>
+			sqlcmd -U <em>&lt;Username&gt;</em> -P <em>&lt;Password&gt;</em> .....
+			</blockquote>
+
+			<p>
+			instead.  Also, since you will no longer be using Integrated security for your web site, then the connection strings located in the web.config files need to be changed to the following format:
+			</p>
+
+			<blockquote>
+				&lt;add name="<b>DatabaseName</b>" connectionString="Server=<b>ServerName</b>; Database=<b>DatabaseName</b>;User ID=<b>UserName</b>;Password=<b>Password</b>;" providerName="System.Data.SqlClient" /&gt;
+			</blockquote>
+
+			<p>
+			from the previous format:
+			</p>
+
+			<blockquote>
+				&lt;add name="<b>DatabaseName</b>" connectionString="Server=<b>ServerName</b>;Integrated Security=True;Database=<b>DatabaseName</b>;Persist Security Info=True"
+
+      providerName="System.Data.SqlClient" />
+			</blockquote>
+
+			<p><a name="AccessToTemp"><b>How to Give Network Service the Write Access</b></a></p>
+			<p>
+			If your current identity <em>(NT AUTHORITY \ NETWORK SERVICE)</em> does not have write access, including the
+			temporary directory, please run the following command to grant the appropriate permissions:
+			</p>
+			<p>
+			<em>&lt;SDK Prompt&gt;aspnet_regiis -ga "NT Authority\Network Service"</em>
+			</p>
+			<HR>
+			Copyright &copy; 2005 Microsoft Corporation. All rights reserved.
+
+			<br>
+	</body>
+</html>

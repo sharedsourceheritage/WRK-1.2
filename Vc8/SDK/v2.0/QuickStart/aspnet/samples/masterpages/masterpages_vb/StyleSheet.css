@@ -1,0 +1,58 @@
+body 
+{
+	margin-top:0;
+	margin-left:0;
+	margin-right:0;
+	margin-bottom:0;
+}
+
+a  {
+    color : Yellow;
+    font-weight:bold;
+    font-family: verdana;
+    font-size: 10pt;	
+	}
+	
+table.main
+{
+	border-width:0;
+	border-style:none;
+    height:100%; 
+    width:100%;
+}
+	
+td 
+{
+	font-family:Verdana;
+	font-size:10pt;
+}
+	
+td.sidebar {
+	width: 184px; 
+	background-color: #0080ff;
+	padding-left:10px;
+    padding-top:10px;
+	}
+ 
+ tr.header 
+ {
+	height:138px;
+ }
+  
+td.header 
+{
+	width: 150px; 
+	background-repeat: no-repeat; 
+	background-color: #0080ff;
+	background-image: url(Images/PetalsTitle.JPG);
+}
+
+td.body 
+{
+	padding:10,10,10,10;	
+}
+
+td.footer 
+{
+	padding-left:10;	
+}

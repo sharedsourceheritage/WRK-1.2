@@ -1,0 +1,13 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2314" />
+    <Description Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2315" />
+    <Icon Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="4544" />
+    <ProjectType>JSharp</ProjectType>
+    <SortOrder>180</SortOrder>
+    <DefaultName>Stylesheet.css</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectItem>Stylesheet.css</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

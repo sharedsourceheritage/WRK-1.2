@@ -1,0 +1,30 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{164B10B9-B200-11D0-8C61-00A0C91E29D5}" ID="3137" />
+    <Description Package="{164B10B9-B200-11D0-8C61-00A0C91E29D5}" ID="3138" />
+    <Icon Package="{164B10B9-B200-11D0-8C61-00A0C91E29D5}" ID="4574" />
+    <ProjectType>VisualBasic</ProjectType>
+    <SortOrder>60</SortOrder>
+    <DefaultName>LoginForm.vb</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+        <References>
+            <Reference>
+                <Assembly>System</Assembly>
+                <URL>http://www.microsoft.com</URL>
+            </Reference>
+            <Reference>
+                <Assembly>System.Drawing</Assembly>
+                <URL>http://www.microsoft.com</URL>
+            </Reference>
+            <Reference>
+                <Assembly>System.Windows.Forms</Assembly>
+                <URL>http://www.microsoft.com</URL>
+            </Reference>
+        </References>
+
+    <ProjectItem ReplaceParameters="true" SubType="Form">LoginForm.vb</ProjectItem>
+    <ProjectItem ReplaceParameters="true">LoginForm.Designer.vb</ProjectItem>
+    <ProjectItem TargetFileName="$fileinputname$.resx" ReplaceParameters="false">LoginForm.resx</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

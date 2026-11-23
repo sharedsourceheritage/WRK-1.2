@@ -9,32 +9,15 @@
 #ifndef __MSIDEFS
 #define __MSIDEFS
 
-#ifndef NTDDI_WIN2K
-#define NTDDI_WIN2K                         0x05000000
-#endif
-#ifndef NTDDI_WINXP
-#define NTDDI_WINXP                         0x05010000
-#endif
-#ifndef NTDDI_WINXPSP2
-#define NTDDI_WINXPSP2                      0x05010200
-#endif
-#ifndef NTDDI_WS03SP1
-#define NTDDI_WS03SP1                       0x05020100
-#endif
-
 #ifndef _WIN32_MSI
-#if (_WIN32_WINNT >= 0x0501 || (defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_WINXP))
-  #if (defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_WS03SP1)
-    #define _WIN32_MSI   310
-  #elif (defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_WINXPSP2)
-    #define _WIN32_MSI   300
-  #else
-    #define _WIN32_MSI   200
-  #endif
-#elif (_WIN32_WINNT >= 0x0500 || (defined(NTDDI_VERSION) && NTDDI_VERSION >= NTDDI_WIN2K))
-  #define _WIN32_MSI   110
+#if (_WIN32_WINNT > 0x0502)
+#define _WIN32_MSI   300
+#elif (_WIN32_WINNT >= 0x0501)
+#define _WIN32_MSI   200
+#elif (_WIN32_WINNT >= 0x0500)
+#define _WIN32_MSI   110
 #else
-  #define _WIN32_MSI   100
+#define _WIN32_MSI   100
 #endif //_WIN32_WINNT
 #endif // !_WIN32_MSI
 
@@ -181,10 +164,8 @@
 // Hardware properties: set by installer at initialization
 #define IPROPNAME_INTEL            TEXT("Intel")
 #if (_WIN32_MSI >= 150)
-#define IPROPNAME_TEMPLATE_AMD64   TEXT("AMD64")  // Oct. 2004: this is to be retired once grace period expires, use the x64 below instead
-#define IPROPNAME_TEMPLATE_X64     TEXT("x64")
-#define IPROPNAME_MSIAMD64         TEXT("MsiAMD64")  // Oct. 2004: this is to be retired once grace period expires, use the x64 below instead
-#define IPROPNAME_MSIX64           TEXT("Msix64")
+#define IPROPNAME_TEMPLATE_AMD64   TEXT("AMD64")
+#define IPROPNAME_MSIAMD64         TEXT("MsiAMD64")
 #define IPROPNAME_INTEL64          TEXT("Intel64")
 #else // (_WIN32_MSI >= 150)
 #define IPROPNAME_IA64             TEXT("IA64")

@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------------------
 //
-//  Copyright (C) Microsoft Corporation, 1995-1997.
+//  Copyright (C) Microsoft Corporation, 1995-1998.
 //
 //  Contents:   Hyperlinking interfaces
 //
@@ -9,7 +9,7 @@
 cpp_quote("//=--------------------------------------------------------------------------=")
 cpp_quote("// HLInk.h")
 cpp_quote("//=--------------------------------------------------------------------------=")
-cpp_quote("// (C) Copyright 1995-1997 Microsoft Corporation.  All Rights Reserved.")
+cpp_quote("// (C) Copyright 1995-1998 Microsoft Corporation.  All Rights Reserved.")
 cpp_quote("//")
 cpp_quote("// THIS CODE AND INFORMATION IS PROVIDED \"AS IS\" WITHOUT WARRANTY OF")
 cpp_quote("// ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO")
@@ -35,7 +35,6 @@ interface IHlinkFrame;
 interface IEnumHLITEM;
 interface IHlinkBrowseContext;
 
-cpp_quote("// ;BUGBUG We temporarily support the old 'source' names                              ")
 cpp_quote("#define SID_SHlinkFrame IID_IHlinkFrame")
 cpp_quote("#define IID_IHlinkSource IID_IHlinkTarget                                     ")
 cpp_quote("#define IHlinkSource IHlinkTarget                                             ")
@@ -320,7 +319,7 @@ cpp_quote("                                                                     
 
 //----------------------------------------------------------------------------
 //
-//  Copyright (C) Microsoft Corporation, 1995 - 1997.
+//  Copyright (C) Microsoft Corporation, 1995-1998.
 //
 //  Contents:   IHlink interface definition
 //
@@ -445,7 +444,7 @@ cpp_quote("#endif")
 
 //+---------------------------------------------------------------------------
 //
-//  Copyright (C) Microsoft Corporation, 1995 - 1997.
+//  Copyright (C) Microsoft Corporation, 1995-1998.
 //
 //  Contents:   IHlinkSite interface definition
 //
@@ -505,7 +504,7 @@ cpp_quote("#endif")
 
 //+---------------------------------------------------------------------------
 //
-//  Copyright (C) Microsoft Corporation, 1995 - 1997.
+//  Copyright (C) Microsoft Corporation, 1995-1998.
 //
 //  Contents:   IHlinkTarget interface definition
 //
@@ -551,7 +550,7 @@ cpp_quote("#endif")
 
 //+---------------------------------------------------------------------------
 //
-//  Copyright (C) Microsoft Corporation, 1995 - 1997.
+//  Copyright (C) Microsoft Corporation, 1995-1998.
 //
 //  Contents:   IHlinkFrame interface definition
 //
@@ -604,7 +603,7 @@ cpp_quote("#endif")
 
 //+---------------------------------------------------------------------------
 //
-//  Copyright (C) Microsoft Corporation, 1995 - 1997.
+//  Copyright (C) Microsoft Corporation, 1995-1998.
 //
 //  Contents:  IEnumHLITEM interface definition
 //
@@ -661,7 +660,7 @@ cpp_quote("#endif")
 
 //+---------------------------------------------------------------------------
 //
-//  Copyright (C) Microsoft Corporation, 1995 - 1997.
+//  Copyright (C) Microsoft Corporation, 1995-1998.
 //
 //  Contents:   IHlinkBrowseContext interface definition
 //
@@ -803,7 +802,7 @@ cpp_quote("#endif")
 
 //+---------------------------------------------------------------------------
 //
-//  Copyright (C) Microsoft Corporation, 1995 - 1997.
+//  Copyright (C) Microsoft Corporation, 1995-1998.
 //
 //  Contents:  IExtensionServices interface definition
 //

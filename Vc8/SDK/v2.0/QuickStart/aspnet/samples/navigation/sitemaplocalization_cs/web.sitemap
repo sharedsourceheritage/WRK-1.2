@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" 
+         enableLocalization="true">
+  <siteMapNode url="~/Default.aspx" title=" $resources: Title, MyTitle , Home" description="Default page description when no localized value exists."  >
+    <siteMapNode url="~/Category.aspx" resourceKey="Category">
+      <siteMapNode title="Autos" description="Autos" url="~/Autos.aspx" resourceKey="Autos" />
+      <siteMapNode title="Games" description="Games" url="~/Games.aspx" resourceKey="Games" />
+      <siteMapNode title="Health" description="Health" url="~/Health.aspx" resourceKey="Health" />
+      <siteMapNode title="News" description="News" url="~/News.aspx" resourceKey="News" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

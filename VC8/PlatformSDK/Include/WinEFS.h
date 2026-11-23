@@ -44,10 +44,6 @@ typedef struct _CERTIFICATE_BLOB {
 
     DWORD   dwCertEncodingType;
 
-#ifdef MIDL_PASS
-    [range(0,32768)] 
-#endif // MIDL_PASS
-
     DWORD   cbData;
 
 #ifdef MIDL_PASS
@@ -64,9 +60,6 @@ typedef struct _CERTIFICATE_BLOB {
 
 typedef struct _EFS_HASH_BLOB {
 
-#ifdef MIDL_PASS
-    [range(0,100)] 
-#endif // MIDL_PASS
     DWORD   cbData;
 
 #ifdef MIDL_PASS
@@ -83,9 +76,6 @@ typedef struct _EFS_HASH_BLOB {
 
 typedef struct _EFS_RPC_BLOB {
 
-#ifdef MIDL_PASS
-    [range(0,266240)] 
-#endif // MIDL_PASS
     DWORD   cbData;
 
 #ifdef MIDL_PASS
@@ -138,9 +128,6 @@ typedef struct _ENCRYPTION_CERTIFICATE_HASH {
 
 
 typedef struct _ENCRYPTION_CERTIFICATE_HASH_LIST {
-#ifdef MIDL_PASS
-    [range(0,500)] 
-#endif // MIDL_PASS
     DWORD nCert_Hash;
 #ifdef MIDL_PASS
     [size_is(nCert_Hash)]
@@ -150,10 +137,7 @@ typedef struct _ENCRYPTION_CERTIFICATE_HASH_LIST {
 
 
 
-typedef struct _ENCRYPTION_CERTIFICATE_LIST {    
-#ifdef MIDL_PASS
-    [range(0,500)] 
-#endif // MIDL_PASS
+typedef struct _ENCRYPTION_CERTIFICATE_LIST {
     DWORD nUsers;
 #ifdef MIDL_PASS
     [size_is(nUsers)]
@@ -177,8 +161,8 @@ WINADVAPI
 DWORD
 WINAPI
 QueryUsersOnEncryptedFile(
-     __in LPCWSTR lpFileName,
-     __out PENCRYPTION_CERTIFICATE_HASH_LIST * pUsers
+     IN LPCWSTR lpFileName,
+     OUT PENCRYPTION_CERTIFICATE_HASH_LIST * pUsers
     );
 
 
@@ -186,8 +170,8 @@ WINADVAPI
 DWORD
 WINAPI
 QueryRecoveryAgentsOnEncryptedFile(
-     __in LPCWSTR lpFileName,
-     __out PENCRYPTION_CERTIFICATE_HASH_LIST * pRecoveryAgents
+     IN LPCWSTR lpFileName,
+     OUT PENCRYPTION_CERTIFICATE_HASH_LIST * pRecoveryAgents
     );
 
 
@@ -195,23 +179,23 @@ WINADVAPI
 DWORD
 WINAPI
 RemoveUsersFromEncryptedFile(
-     __in LPCWSTR lpFileName,
-     __in PENCRYPTION_CERTIFICATE_HASH_LIST pHashes
+     IN LPCWSTR lpFileName,
+     IN PENCRYPTION_CERTIFICATE_HASH_LIST pHashes
     );
 
 WINADVAPI
 DWORD
 WINAPI
 AddUsersToEncryptedFile(
-     __in LPCWSTR lpFileName,
-     __in PENCRYPTION_CERTIFICATE_LIST pUsers
+     IN LPCWSTR lpFileName,
+     IN PENCRYPTION_CERTIFICATE_LIST pUsers
     );
 
 WINADVAPI
 DWORD
 WINAPI
 SetUserFileEncryptionKey(
-    __in_opt PENCRYPTION_CERTIFICATE pEncryptionCertificate
+    IN PENCRYPTION_CERTIFICATE pEncryptionCertificate
     );
 
 
@@ -219,15 +203,15 @@ WINADVAPI
 VOID
 WINAPI
 FreeEncryptionCertificateHashList(
-    __in_opt PENCRYPTION_CERTIFICATE_HASH_LIST pHashes
+    IN PENCRYPTION_CERTIFICATE_HASH_LIST pHashes
     );
 
 WINADVAPI
 BOOL
 WINAPI
 EncryptionDisable(
-    __in LPCWSTR DirPath,
-    __in BOOL Disable
+    IN LPCWSTR DirPath,
+    IN BOOL Disable
     );
 
 
@@ -235,11 +219,11 @@ WINADVAPI
 DWORD
 WINAPI
 DuplicateEncryptionInfoFile(
-     __in LPCWSTR SrcFileName,
-     __in LPCWSTR DstFileName, 
-     __in DWORD dwCreationDistribution, 
-     __in DWORD dwAttributes, 
-     __in CONST LPSECURITY_ATTRIBUTES lpSecurityAttributes
+     IN LPCWSTR SrcFileName,
+     IN LPCWSTR DstFileName, 
+     IN DWORD dwCreationDistribution, 
+     IN DWORD dwAttributes, 
+     IN LPSECURITY_ATTRIBUTES lpSecurityAttributes
      );
 
 #ifdef __cplusplus

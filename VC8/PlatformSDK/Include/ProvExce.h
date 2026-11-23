@@ -15,14 +15,6 @@
 #ifndef _PROVIDER_EXCEPT_H
 #define _PROVIDER_EXCEPT_H
 
-#ifdef _M_CEE_PURE
-#define PROVIDER_EXCEPT_API_INLINE __clrcall
-#define PROVIDER_EXCEPT_SE_TRANSLATOR_FUNC_TYPE __se_translator_function_m
-#else
-#define PROVIDER_EXCEPT_API_INLINE __cdecl
-#define PROVIDER_EXCEPT_SE_TRANSLATOR_FUNC_TYPE _se_translator_function
-#endif
-
 /**************************************************************
  *
  **************************************************************/
@@ -79,36 +71,32 @@ public:
  *
  **************************************************************/
 
-#ifndef _M_CEE_PURE
-
 class CSetStructuredExceptionHandler
 {
 private:
 
-    PROVIDER_EXCEPT_SE_TRANSLATOR_FUNC_TYPE m_PrevFunc ;
+	_se_translator_function m_PrevFunc ;
 
 public:
 
-    static void PROVIDER_EXCEPT_API_INLINE trans_func ( UINT u , EXCEPTION_POINTERS *pExp )
+	static void _cdecl trans_func ( UINT u , EXCEPTION_POINTERS *pExp )
 	{
 		throw CStructured_Exception ( u , pExp ) ;
 	}
 
 	CSetStructuredExceptionHandler () : m_PrevFunc ( NULL )
 	{
-		// Foreign exception translator is no longer used
+		m_PrevFunc = _set_se_translator ( trans_func ) ;
 	}
 
 	~CSetStructuredExceptionHandler ()
 	{
+		_set_se_translator ( m_PrevFunc ) ;
 	}
 } ;
-
-#endif // ndef _M_CEE_PURE
 
 /**************************************************************
  *
  **************************************************************/
-
 
 #endif //_PROVIDER_EXCEPT_H

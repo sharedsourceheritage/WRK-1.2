@@ -54,11 +54,6 @@ typedef const VOID *LPCVOID;
 #define WINSCARDDATA __declspec(dllimport)
 #endif
 
-/* In clr:pure we cannot mark data export with dllimport.
- * We should add small functions which returns the value of
- * the global.
- */
-#if !defined(_M_CEE_PURE)
 WINSCARDDATA extern const SCARD_IO_REQUEST
     g_rgSCardT0Pci,
     g_rgSCardT1Pci,
@@ -66,7 +61,6 @@ WINSCARDDATA extern const SCARD_IO_REQUEST
 #define SCARD_PCI_T0  (&g_rgSCardT0Pci)
 #define SCARD_PCI_T1  (&g_rgSCardT1Pci)
 #define SCARD_PCI_RAW (&g_rgSCardRawPci)
-#endif
 
 
 //

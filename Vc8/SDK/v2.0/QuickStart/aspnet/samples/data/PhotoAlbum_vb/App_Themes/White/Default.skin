@@ -1,0 +1,124 @@
+
+<asp:gridview SkinID="GridView1" runat="server" font-names="Verdana" font-size="0.8em" borderstyle="None" cellpadding="4" allowpaging="True" allowsorting="True"
+    backcolor="White" autogeneratecolumns="False" gridlines="None" forecolor="#333333">
+    <footerstyle forecolor="#333333" backcolor="#990000" font-bold="True"></footerstyle>
+    <pagerstyle forecolor="#333333" horizontalalign="Center" backcolor="#FFCC66"></pagerstyle>
+    <headerstyle forecolor="White" backcolor="#990000" font-bold="True" horizontalalign="Left"></headerstyle>
+    <alternatingrowstyle backcolor="White"></alternatingrowstyle>
+    <selectedrowstyle forecolor="Navy" backcolor="#FFCC66" font-bold="True"></selectedrowstyle>
+    <rowstyle forecolor="#333333" backcolor="#FFFBD6"></rowstyle>
+</asp:gridview>
+
+<asp:gridview SkinID="GridView2" runat="server" font-names="Verdana" font-size="0.8em" borderstyle="None" cellpadding="4" allowpaging="True" allowsorting="True"
+    backcolor="White" autogeneratecolumns="False" gridlines="None" forecolor="#333333">
+    <footerstyle backcolor="#507CD1" font-bold="True" forecolor="White"></footerstyle>
+    <pagerstyle forecolor="White" horizontalalign="Center" backcolor="#2461BF"></pagerstyle>
+    <headerstyle forecolor="White" backcolor="#507CD1" font-bold="True"></headerstyle>
+    <editrowstyle backcolor="#2461BF"></editrowstyle>
+    <alternatingrowstyle backcolor="White"></alternatingrowstyle>
+    <selectedrowstyle forecolor="#333333" backcolor="#D1DDF1" font-bold="True"></selectedrowstyle>
+    <rowstyle forecolor="#333333" backcolor="#EFF3FB"></rowstyle>
+</asp:gridview>
+
+<asp:gridview runat="server" font-names="Verdana" font-size="0.8em" borderstyle="Solid" bordercolor="#B1B1B1" cellpadding="4" allowpaging="True" allowsorting="True"
+    backcolor="White" autogeneratecolumns="False" gridlines="None" forecolor="#333333">
+    <footerstyle backcolor="#1C5E55" font-bold="True" forecolor="White"></footerstyle>
+    <pagerstyle forecolor="White" horizontalalign="Center" backcolor="#666666"></pagerstyle>
+    <headerstyle forecolor="White" backcolor="#1C5E55" font-bold="True"></headerstyle>
+    <editrowstyle backcolor="#7C6F57"></editrowstyle>
+    <alternatingrowstyle backcolor="White"></alternatingrowstyle>
+    <selectedrowstyle forecolor="#333333" backcolor="#C5BBAF" font-bold="True" borderstyle="None"></selectedrowstyle>
+    <rowstyle forecolor="#333333" backcolor="#E3EAEB"></rowstyle>
+</asp:gridview>
+
+<asp:gridview Width="100%" SkinID="GridView3" runat="server" font-names="Verdana" font-size="0.8em" borderstyle="None" cellpadding="4" allowpaging="True" allowsorting="True"
+    backcolor="White" autogeneratecolumns="False" gridlines="None" forecolor="#333333">
+    <footerstyle forecolor="White" backcolor="#5D7B9D" font-bold="True"></footerstyle>
+    <pagerstyle forecolor="White" horizontalalign="Left" backcolor="#284775"></pagerstyle>
+    <headerstyle forecolor="White" backcolor="#5D7B9D" font-bold="True"></headerstyle>
+    <editrowstyle backcolor="#999999"></editrowstyle>
+    <alternatingrowstyle backcolor="White" forecolor="#284775"></alternatingrowstyle>
+    <selectedrowstyle forecolor="#333333" backcolor="#E2DED6" font-bold="True"></selectedrowstyle>
+    <rowstyle forecolor="#333333" backcolor="#F7F6F3"></rowstyle>
+</asp:gridview>
+
+<asp:detailsview SkinID="DetailsView1" runat="server" font-names="Verdana" font-size="0.8em" backcolor="White" borderstyle="None" cellpadding="4" allowpaging="True" gridlines="None">
+    <commandrowstyle horizontalalign="Right" height="25px" font-size="0.9em" font-bold="True" backcolor="#FFFFC0"></commandrowstyle>
+    <footerstyle forecolor="#FFFBD6" backcolor="#990000" font-bold="True" height="25px"></footerstyle>
+    <rowstyle forecolor="#333333" backcolor="White"></rowstyle>
+    <pagerstyle forecolor="#333333" horizontalalign="Center" backcolor="#FFCC66" height="25px"></pagerstyle>
+    <fieldheaderstyle font-bold="True"></fieldheaderstyle>
+    <headerstyle forecolor="#FFFBD6" backcolor="#990000" font-bold="True" height="25px"></headerstyle>
+    <editrowstyle backcolor="#FFFFC0" font-bold="False"></editrowstyle>
+    <alternatingrowstyle backcolor="#FFFFC0"></alternatingrowstyle>
+</asp:detailsview>
+
+<asp:detailsview SkinID="DetailsView2" runat="server" font-names="Verdana" font-size="0.8em" backcolor="White" borderstyle="None" cellpadding="4" allowpaging="True" gridlines="None">
+    <commandrowstyle font-bold="True" backcolor="#D1DDF1"></commandrowstyle>
+    <footerstyle forecolor="#EFF3FB" backcolor="#507CD1" font-bold="True" height="25px"></footerstyle>
+    <rowstyle forecolor="#333333" backcolor="White"></rowstyle>
+    <pagerstyle forecolor="White" horizontalalign="Center" backcolor="#2461BF"></pagerstyle>
+    <fieldheaderstyle font-bold="True"></fieldheaderstyle>
+    <headerstyle forecolor="#EFF3FB" backcolor="#507CD1" font-bold="True"></headerstyle>
+    <editrowstyle forecolor="#333333" backcolor="#E2DED6" font-bold="True"></editrowstyle>
+    <alternatingrowstyle backcolor="#EFF3FB"></alternatingrowstyle>
+</asp:detailsview>
+
+<asp:detailsview runat="server" font-names="Verdana" font-size="0.8em" backcolor="White" borderstyle="Solid" bordercolor="#B1B1B1" cellpadding="4" allowpaging="True" gridlines="None">
+    <commandrowstyle font-bold="True" backcolor="#C5BBAF"></commandrowstyle>
+    <footerstyle forecolor="#EFF3FB" backcolor="#1C5E55" font-bold="True" height="25px"></footerstyle>
+    <rowstyle forecolor="#333333" backcolor="White"></rowstyle>
+    <pagerstyle forecolor="White" horizontalalign="Center" backcolor="#666666"></pagerstyle>
+    <fieldheaderstyle font-bold="True"></fieldheaderstyle>
+    <headerstyle forecolor="#EFF3FB" backcolor="#1C5E55" font-bold="True"></headerstyle>
+    <editrowstyle forecolor="#333333" backcolor="#E3EAEB" font-bold="True"></editrowstyle>
+    <alternatingrowstyle backcolor="#E3EAEB"></alternatingrowstyle>
+</asp:detailsview>
+
+<asp:detailsview SkinID="DetailsView3" runat="server" font-names="Verdana" font-size="0.8em" backcolor="White" borderstyle="None" cellpadding="4" allowpaging="True" gridlines="None">
+    <commandrowstyle font-bold="True" backcolor="#E2DED6"></commandrowstyle>
+    <footerstyle forecolor="#F7F6F3" backcolor="#5D7B9D" font-bold="True" height="25px"></footerstyle>
+    <rowstyle forecolor="#333333" backcolor="White"></rowstyle>
+    <pagerstyle forecolor="White" horizontalalign="Center" backcolor="#284775"></pagerstyle>
+    <fieldheaderstyle font-bold="True"></fieldheaderstyle>
+    <headerstyle forecolor="#F7F6F3" backcolor="#5D7B9D" font-bold="True"></headerstyle>
+    <editrowstyle forecolor="#333333" backcolor="#E2DED6" font-bold="True"></editrowstyle>
+    <alternatingrowstyle backcolor="#F7F6F3"></alternatingrowstyle>
+</asp:detailsview>
+
+<asp:DataList SkinID="PhotosList" Runat="Server" RepeatColumns="3" Repeatdirection="Horizontal">
+    <ItemStyle CssClass="photo_grid" />
+    <ItemTemplate>
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="photo_border2_l1"><img src="images/pers_wht_border2_l1.gif" width="14" height="14" alt="" /></td>
+                <td class="photo_border2_mtl"><img src="images/pers_wht_border2_mtl.gif" width="60" height="14" alt="" /></td>
+                <td class="photo_border2_tstretch"></td>
+                <td class="photo_border2_mtr"><img src="images/pers_wht_border2_mtr.gif" width="68" height="14" alt="" /></td>
+                <td class="photo_border2_l1"><img src="images/pers_wht_border2_r1.gif" width="14" height="14" alt="" /></td>
+            </tr>
+            <tr>
+                <td class="photo_border2_l2"><img src="images/pers_wht_border2_l2.gif" width="14" height="81" alt="" /></td>
+                <td colspan="3" rowspan="3"><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("PhotoID", "~/PhotoFormViewEdit.aspx?ID={0}") %>'><asp:Image ID="Image1" Runat="server" ImageUrl='<%# Eval("FileName", "images/thumbs/{0}") %>' /></asp:HyperLink></td>
+                <td class="photo_border2_r2"><img src="images/pers_wht_border2_r2.gif" width="14" height="81" alt="" /></td>
+            </tr>
+            <tr>
+                <td class="photo_border2_lstretch"></td>
+                <td class="photo_border2_rstretch"></td>
+            </tr>
+            <tr>
+                <td class="photo_border2_l3"><img src="images/pers_wht_border2_l3.gif" width="14" height="39" alt="" /></td>
+                <td class="photo_border2_r3"><img src="images/pers_wht_border2_r3.gif" width="14" height="39" alt="" /></td>
+            </tr>
+            <tr>
+                <td class="photo_border2_l1"><img src="images/pers_wht_border2_l4.gif" alt="" width="14" height="14" /></td>
+                <td class="photo_border2_mbl"><img src="images/pers_wht_border2_mbl.gif" width="60" height="14" alt="" /></td>
+                <td class="photo_border2_bstretch"></td>
+                <td class="photo_border2_mbr"><img src="images/pers_wht_border2_mbr.gif" width="68" height="14" alt="" /></td>
+                <td class="photo_border2_l1"><img src="images/pers_wht_border2_r4.gif" width="14" height="14" alt="" /></td>
+            </tr>
+        </table>
+        <p><asp:Label ID="CaptionLabel" Runat="server" Text='<%# Eval("Caption") %>' /></p>
+    </ItemTemplate>       
+</asp:DataList>
+

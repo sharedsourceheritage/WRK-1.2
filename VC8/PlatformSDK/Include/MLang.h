@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for mlang.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -5181,7 +5180,7 @@ CMultiLanguage;
 #endif
 #endif /* __MultiLanguage_LIBRARY_DEFINED__ */
 
-/* interface __MIDL_itf_mlang_0131 */
+/* interface __MIDL_itf_mlang_0127 */
 /* [local] */ 
 
 #ifndef _MLANG_H_API_DEF_                                                     
@@ -5211,8 +5210,8 @@ STDAPI ConvertINetUnicodeToMultiByte(LPDWORD lpdwMode, DWORD dwEncoding, LPCWSTR
 #endif // _MLANG_H_API_DEF_                                                   
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mlang_0131_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mlang_0131_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mlang_0127_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mlang_0127_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

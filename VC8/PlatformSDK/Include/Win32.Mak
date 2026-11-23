@@ -225,7 +225,6 @@ hcvars = -xn
 #   -Od  - disable all optimizations
 #   -Ox  - use maximum optimizations
 #   -Zd  - generate only public symbols and line numbers for debugging
-#   -GS  - enable security checks
 #
 # i386 specific compiler flags:
 #   -Gz  - stdcall   (only if scall is added to makefile's compiler build rules)
@@ -233,7 +232,7 @@ hcvars = -xn
 # -------------------------------------------------------------------------
 
 # declarations common to all compiler options
-ccommon = -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS
+ccommon = -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo
 
 # for compatibility with old source code, map {try, except, leave, finally}
 # to their proper names (i.e. prefaced by "__")
@@ -377,12 +376,12 @@ noansi = -DNULL=0
 
 # for Windows applications that use the C Run-Time libraries
 !IFDEF NODEBUG
+cvars      = $(noansi) -ML
 cvarsmt    = $(noansi) -D_MT -MT
-cvars      = $(noansi) $(cvarsmt)
 cvarsdll   = $(noansi) -D_MT -D_DLL -MD
 !ELSE
+cvars      = $(noansi) -MLd
 cvarsmt    = $(noansi) -D_MT -MTd
-cvars      = $(noansi) $(cvarsmt)
 cvarsdll   = $(noansi) -D_MT -D_DLL -MDd
 !ENDIF
 
@@ -431,14 +430,6 @@ MIDL_OPTIMIZATION=-target NT51
 !ELSEIF "$(APPVER)" == "4.0"
 MIDL_OPTIMIZATION=-target NT40
 !ENDIF
-!ENDIF
-
-!IF "$(CPU)" == "IA64"
-MIDL_OPTIMIZATION = $(MIDL_OPTIMIZATION) /ia64
-!ELSEIF "$(CPU)" == "AMD64"
-MIDL_OPTIMIZATION = $(MIDL_OPTIMIZATION) /x64
-!ELSE
-MIDL_OPTIMIZATION = $(MIDL_OPTIMIZATION) /win32
 !ENDIF
 
 !IF ("$(TARGETOS)" == "WINNT" ) && ("$(APPVER)" != "4.0")
@@ -501,15 +492,7 @@ DLLENTRY =
 # Note: Debug switches are on by default.
 # -------------------------------------------------------------------------
 
-!IF "$(CPU)" == "i386"
-
-!IFDEF NODEBUG
-ldebug = /RELEASE
-!ELSE
-ldebug = /DEBUG /DEBUGTYPE:cv
-!ENDIF
-
-!ELSE
+!IF "$(CPU)" != "IA64"
 
 !IFDEF NODEBUG
 ldebug = /RELEASE
@@ -518,11 +501,15 @@ ldebug = /DEBUG:mapped,partial /DEBUGTYPE:coff
 !ELSE IFDEF TUNE
 ldebug = /DEBUG:mapped,partial /DEBUGTYPE:coff
 !ELSE
-ldebug = /DEBUG /DEBUGTYPE:cv
+ldebug = /DEBUG:full /DEBUGTYPE:cv
 !ENDIF
 
-#ldebug = $(ldebug) bufferoverflowu.lib
-
+!ELSE
+!IFDEF NODEBUG
+ldebug = /RELEASE
+!ELSE
+ldebug = /DEBUG:full /DEBUGTYPE:cv
+!ENDIF
 !ENDIF
 
 # for compatibility with older-style makefiles
@@ -609,7 +596,7 @@ winsocklibs = ws2_32.lib mswsock.lib
 
 
 # basic subsystem specific libraries, less the C Run-Time
-baselibs    = kernel32.lib $(optlibs) $(winsocklibs) advapi32.lib bufferoverflowu.lib
+baselibs    = kernel32.lib $(optlibs) $(winsocklibs) advapi32.lib
 winlibs     = $(baselibs) user32.lib gdi32.lib comdlg32.lib winspool.lib
 
 # for Windows applications that use the C Run-Time libraries
@@ -639,12 +626,12 @@ bc_dll = /Makedll
 
 # Set the Output Directory
 
-!IF ("$(APPVER)" == "5.02") && ("$(CPU)" != "i386")
-!IF "$(CPU)" == "IA64"
-OUTDIR=SRV2003_IA64
+!IF ("$(APPVER)" == "5.02") && ("$(CPU)" == "IA64")
+OUTDIR=SRV2003_64
+!ELSEIF "$(CPU)" == "IA64"
+OUTDIR=XP64
 !ELSEIF "$(CPU)" == "AMD64"
-OUTDIR=x64
-!ENDIF
+OUTDIR=XP_AMD64
 !ELSE
 
 !IF "$(TARGETOS)" == "WIN95"

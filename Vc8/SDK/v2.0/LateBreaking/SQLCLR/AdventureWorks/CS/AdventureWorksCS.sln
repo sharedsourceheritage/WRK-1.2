@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact", "Contact\Contact.csproj", "{1E806D5C-035C-413A-B7C5-50D06DDA1C4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionFunction", "ConversionFunction\ConversionFunction.csproj", "{BA932025-1CAC-49A5-9564-218BC3442803}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyType", "CurrencyType\CurrencyType.csproj", "{D5CA1074-23F3-4B50-9C32-760B7A6F268E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E806D5C-035C-413A-B7C5-50D06DDA1C4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E806D5C-035C-413A-B7C5-50D06DDA1C4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E806D5C-035C-413A-B7C5-50D06DDA1C4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E806D5C-035C-413A-B7C5-50D06DDA1C4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA932025-1CAC-49A5-9564-218BC3442803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA932025-1CAC-49A5-9564-218BC3442803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA932025-1CAC-49A5-9564-218BC3442803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA932025-1CAC-49A5-9564-218BC3442803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5CA1074-23F3-4B50-9C32-760B7A6F268E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5CA1074-23F3-4B50-9C32-760B7A6F268E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5CA1074-23F3-4B50-9C32-760B7A6F268E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5CA1074-23F3-4B50-9C32-760B7A6F268E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

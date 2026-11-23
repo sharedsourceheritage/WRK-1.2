@@ -174,7 +174,6 @@
 #define MD_ADV_CACHE_TTL                (IIS_MD_HTTP_BASE+64 )
 #define MD_NET_LOGON_WKS                (IIS_MD_HTTP_BASE+65 )
 #define MD_USE_HOST_NAME                (IIS_MD_HTTP_BASE+66 )
-
 #define MD_AUTH_CHANGE_FLAGS            (IIS_MD_HTTP_BASE+68 )
 
 #define MD_PROCESS_NTCR_IF_LOGGED_ON    (IIS_MD_HTTP_BASE+70 )
@@ -201,16 +200,12 @@
 // This is only used by setup & UI
 #define MD_NOT_DELETABLE                (IIS_MD_HTTP_BASE+116)
 
-
-#define MD_APP_TRACE_URL_LIST           (IIS_MD_HTTP_BASE+118)
-#define MD_CENTRAL_W3C_LOGGING_ENABLED  (IIS_MD_HTTP_BASE+119)
-
-
 #define MD_CUSTOM_ERROR_DESC            (IIS_MD_HTTP_BASE+120)
 
 //
 //  Client Access License parameters
 //
+
 #define MD_CAL_VC_PER_CONNECT           (IIS_MD_HTTP_BASE+130)
 #define MD_CAL_AUTH_RESERVE_TIMEOUT     (IIS_MD_HTTP_BASE+131)
 #define MD_CAL_SSL_RESERVE_TIMEOUT      (IIS_MD_HTTP_BASE+132)
@@ -226,10 +221,13 @@
 
 #define MD_CPU_CGI_ENABLED              (IIS_MD_HTTP_BASE+140)
 #define MD_CPU_APP_ENABLED              (IIS_MD_HTTP_BASE+141)
+
+//
+// These values are per site
+//
+
 #define MD_CPU_LIMITS_ENABLED           (IIS_MD_HTTP_BASE+143)
-
 #define MD_CPU_RESET_INTERVAL           (IIS_MD_HTTP_BASE+144)
-
 #define MD_CPU_LOGGING_INTERVAL         (IIS_MD_HTTP_BASE+145)
 #define MD_CPU_LOGGING_OPTIONS          (IIS_MD_HTTP_BASE+146)
 #define MD_CPU_CGI_LIMIT                (IIS_MD_HTTP_BASE+148)
@@ -238,8 +236,10 @@
 #define MD_CPU_LIMIT_PROCSTOP           (IIS_MD_HTTP_BASE+151)
 #define MD_CPU_LIMIT_PAUSE              (IIS_MD_HTTP_BASE+152)
 
-
-#define MD_SET_HOST_NAME                (IIS_MD_HTTP_BASE+154)
+//
+// DAV Enabled - Can be set on a per-URL level
+//
+#define MD_DAV_ENABLED                  (IIS_MD_HTTP_BASE+153)
 
 //
 // Valid values for CPU Accounting's MD_CPU_LOGGING_OPTIONS field
@@ -266,24 +266,12 @@
 
 #define MD_CPU_ENABLE_LOGGING           0x80000000
 
-
 //
 //  Site Server properties
 //
 
 
-//
-// Properties to disable/restrict request handlers.
-//
-
-#define MD_ISAPI_RESTRICTION_LIST           (IIS_MD_HTTP_BASE+163)
-#define MD_CGI_RESTRICTION_LIST             (IIS_MD_HTTP_BASE+164)
-#define MD_RESTRICTION_LIST_CUSTOM_DESC     (IIS_MD_HTTP_BASE+165)
-#define MD_SECURITY_SETUP_REQUIRED          (IIS_MD_HTTP_BASE+166)
-#define MD_APP_DEPENDENCIES                 (IIS_MD_HTTP_BASE+167)
-#define MD_WEB_SVC_EXT_RESTRICTION_LIST     (IIS_MD_HTTP_BASE+168)
-
-#define MD_MD_SERVER_SS_AUTH_MAPPING        (IIS_MD_HTTP_BASE+200)
+#define MD_MD_SERVER_SS_AUTH_MAPPING    (IIS_MD_HTTP_BASE+200)
 
 //
 // valid values for MD_CERT_CHECK_MODE
@@ -298,41 +286,42 @@
 // HTTP Compression properties.  All are global and unheritable.
 //
 
-#define MD_HC_COMPRESSION_DIRECTORY             (IIS_MD_HTTP_BASE+210)
-#define MD_HC_CACHE_CONTROL_HEADER              (IIS_MD_HTTP_BASE+211)
-#define MD_HC_EXPIRES_HEADER                    (IIS_MD_HTTP_BASE+212)
-#define MD_HC_DO_DYNAMIC_COMPRESSION            (IIS_MD_HTTP_BASE+213)
-#define MD_HC_DO_STATIC_COMPRESSION             (IIS_MD_HTTP_BASE+214)
-#define MD_HC_DO_ON_DEMAND_COMPRESSION          (IIS_MD_HTTP_BASE+215)
-#define MD_HC_DO_DISK_SPACE_LIMITING            (IIS_MD_HTTP_BASE+216)
-#define MD_HC_NO_COMPRESSION_FOR_HTTP_10        (IIS_MD_HTTP_BASE+217)
-#define MD_HC_NO_COMPRESSION_FOR_PROXIES        (IIS_MD_HTTP_BASE+218)
-#define MD_HC_NO_COMPRESSION_FOR_RANGE          (IIS_MD_HTTP_BASE+219)
-#define MD_HC_SEND_CACHE_HEADERS                (IIS_MD_HTTP_BASE+220)
-#define MD_HC_MAX_DISK_SPACE_USAGE              (IIS_MD_HTTP_BASE+221)
-#define MD_HC_IO_BUFFER_SIZE                    (IIS_MD_HTTP_BASE+222)
-#define MD_HC_COMPRESSION_BUFFER_SIZE           (IIS_MD_HTTP_BASE+223)
-#define MD_HC_MAX_QUEUE_LENGTH                  (IIS_MD_HTTP_BASE+224)
-#define MD_HC_FILES_DELETED_PER_DISK_FREE       (IIS_MD_HTTP_BASE+225)
-#define MD_HC_MIN_FILE_SIZE_FOR_COMP            (IIS_MD_HTTP_BASE+226)
-#define MD_HC_COMPRESSION_DLL                   (IIS_MD_HTTP_BASE+237)
-#define MD_HC_FILE_EXTENSIONS                   (IIS_MD_HTTP_BASE+238)
-#define MD_HC_MIME_TYPE                         (IIS_MD_HTTP_BASE+239)
-#define MD_HC_PRIORITY                          (IIS_MD_HTTP_BASE+240)
-#define MD_HC_DYNAMIC_COMPRESSION_LEVEL         (IIS_MD_HTTP_BASE+241)
-#define MD_HC_ON_DEMAND_COMP_LEVEL              (IIS_MD_HTTP_BASE+242)
-#define MD_HC_CREATE_FLAGS                      (IIS_MD_HTTP_BASE+243)
-#define MD_HC_SCRIPT_FILE_EXTENSIONS            (IIS_MD_HTTP_BASE+244)
+#define MD_HC_COMPRESSION_DIRECTORY        (IIS_MD_HTTP_BASE+210)
+#define MD_HC_CACHE_CONTROL_HEADER         (IIS_MD_HTTP_BASE+211)
+#define MD_HC_EXPIRES_HEADER               (IIS_MD_HTTP_BASE+212)
+#define MD_HC_DO_DYNAMIC_COMPRESSION       (IIS_MD_HTTP_BASE+213)
+#define MD_HC_DO_STATIC_COMPRESSION        (IIS_MD_HTTP_BASE+214)
+#define MD_HC_DO_ON_DEMAND_COMPRESSION     (IIS_MD_HTTP_BASE+215)
+#define MD_HC_DO_DISK_SPACE_LIMITING       (IIS_MD_HTTP_BASE+216)
+#define MD_HC_NO_COMPRESSION_FOR_HTTP_10   (IIS_MD_HTTP_BASE+217)
+#define MD_HC_NO_COMPRESSION_FOR_PROXIES   (IIS_MD_HTTP_BASE+218)
+#define MD_HC_NO_COMPRESSION_FOR_RANGE     (IIS_MD_HTTP_BASE+219)
+#define MD_HC_SEND_CACHE_HEADERS           (IIS_MD_HTTP_BASE+220)
+#define MD_HC_MAX_DISK_SPACE_USAGE         (IIS_MD_HTTP_BASE+221)
+#define MD_HC_IO_BUFFER_SIZE               (IIS_MD_HTTP_BASE+222)
+#define MD_HC_COMPRESSION_BUFFER_SIZE      (IIS_MD_HTTP_BASE+223)
+#define MD_HC_MAX_QUEUE_LENGTH             (IIS_MD_HTTP_BASE+224)
+#define MD_HC_FILES_DELETED_PER_DISK_FREE  (IIS_MD_HTTP_BASE+225)
+#define MD_HC_MIN_FILE_SIZE_FOR_COMP       (IIS_MD_HTTP_BASE+226)
 
-#define MD_HC_DO_NAMESPACE_DYNAMIC_COMPRESSION  (IIS_MD_HTTP_BASE+255)
-#define MD_HC_DO_NAMESPACE_STATIC_COMPRESSION   (IIS_MD_HTTP_BASE+256)
+#define MD_HC_COMPRESSION_DLL              (IIS_MD_HTTP_BASE+237)
+#define MD_HC_FILE_EXTENSIONS              (IIS_MD_HTTP_BASE+238)
+#define MD_HC_MIME_TYPE                    (IIS_MD_HTTP_BASE+239)
+#define MD_HC_PRIORITY                     (IIS_MD_HTTP_BASE+240)
+#define MD_HC_DYNAMIC_COMPRESSION_LEVEL    (IIS_MD_HTTP_BASE+241)
+#define MD_HC_ON_DEMAND_COMP_LEVEL         (IIS_MD_HTTP_BASE+242)
+#define MD_HC_CREATE_FLAGS                 (IIS_MD_HTTP_BASE+243)
+#define MD_HC_SCRIPT_FILE_EXTENSIONS       (IIS_MD_HTTP_BASE+244)
+
+#define MD_HC_DO_NAMESPACE_DYNAMIC_COMPRESSION (IIS_MD_HTTP_BASE+255)
+#define MD_HC_DO_NAMESPACE_STATIC_COMPRESSION  (IIS_MD_HTTP_BASE+256)
 
 //
 // Generic property indicating a failure status code - Can be used under
 // any component that can fail (virtual directory, filters, applications etc)
 //
 
-#define MD_WIN32_ERROR                          (IIS_MD_SERVER_BASE+99 )
+#define MD_WIN32_ERROR                  (IIS_MD_SERVER_BASE+99 )
 
 //
 // Virtual root properties - note MD_ACCESS_PERM is also generally set at
@@ -353,37 +342,31 @@
 //  Logging related attributes
 //
 
-#define IIS_MD_LOG_BASE                     4000
+#define IIS_MD_LOG_BASE                 4000
 
-#define MD_LOG_TYPE                         (IIS_MD_LOG_BASE+0  )
-#define MD_LOGFILE_DIRECTORY                (IIS_MD_LOG_BASE+1  )
-#define MD_LOG_UNUSED1                      (IIS_MD_LOG_BASE+2  )
-#define MD_LOGFILE_PERIOD                   (IIS_MD_LOG_BASE+3  )
-#define MD_LOGFILE_TRUNCATE_SIZE            (IIS_MD_LOG_BASE+4  )
-#define MD_LOG_PLUGIN_MOD_ID                (IIS_MD_LOG_BASE+5  )
-#define MD_LOG_PLUGIN_UI_ID                 (IIS_MD_LOG_BASE+6  )
-#define MD_LOGSQL_DATA_SOURCES              (IIS_MD_LOG_BASE+7  )
-#define MD_LOGSQL_TABLE_NAME                (IIS_MD_LOG_BASE+8  )
-#define MD_LOGSQL_USER_NAME                 (IIS_MD_LOG_BASE+9  )
-#define MD_LOGSQL_PASSWORD                  (IIS_MD_LOG_BASE+10 )
-#define MD_LOG_PLUGIN_ORDER                 (IIS_MD_LOG_BASE+11 )
-#define MD_LOG_PLUGINS_AVAILABLE            (IIS_MD_LOG_BASE+12 )
-#define MD_LOGEXT_FIELD_MASK                (IIS_MD_LOG_BASE+13 )
-#define MD_LOGEXT_FIELD_MASK2               (IIS_MD_LOG_BASE+14 )
+#define MD_LOG_TYPE                     (IIS_MD_LOG_BASE+0  )
+#define MD_LOGFILE_DIRECTORY            (IIS_MD_LOG_BASE+1  )
+#define MD_LOG_UNUSED1                  (IIS_MD_LOG_BASE+2  )
+#define MD_LOGFILE_PERIOD               (IIS_MD_LOG_BASE+3  )
+#define MD_LOGFILE_TRUNCATE_SIZE        (IIS_MD_LOG_BASE+4  )
+#define MD_LOG_PLUGIN_MOD_ID            (IIS_MD_LOG_BASE+5  )
+#define MD_LOG_PLUGIN_UI_ID             (IIS_MD_LOG_BASE+6  )
+#define MD_LOGSQL_DATA_SOURCES          (IIS_MD_LOG_BASE+7  )
+#define MD_LOGSQL_TABLE_NAME            (IIS_MD_LOG_BASE+8  )
+#define MD_LOGSQL_USER_NAME             (IIS_MD_LOG_BASE+9  )
+#define MD_LOGSQL_PASSWORD              (IIS_MD_LOG_BASE+10 )
+#define MD_LOG_PLUGIN_ORDER             (IIS_MD_LOG_BASE+11 )
+#define MD_LOG_PLUGINS_AVAILABLE        (IIS_MD_LOG_BASE+12 )
+#define MD_LOGEXT_FIELD_MASK            (IIS_MD_LOG_BASE+13 )
+#define MD_LOGEXT_FIELD_MASK2           (IIS_MD_LOG_BASE+14 )
 
 //
 // Allow W3C logging file naming and rollover based on Local Time
 //
 
-#define MD_LOGFILE_LOCALTIME_ROLLOVER       (IIS_MD_LOG_BASE+15 )
+#define MD_LOGFILE_LOCALTIME_ROLLOVER   (IIS_MD_LOG_BASE+15)
 
-#define IIS_MD_LOG_LAST                     MD_LOGFILE_LOCALTIME_ROLLOVER
-
-//
-// Global Flag to denote that IIS will generate one centralized
-// binary log file rather than a separate file per web site
-//
-#define MD_GLOBAL_BINARY_LOGGING_ENABLED    (IIS_MD_LOG_BASE+16 )
+#define IIS_MD_LOG_LAST                 MD_LOGFILE_LOCALTIME_ROLLOVER
 
 //
 // Log type
@@ -429,16 +412,13 @@
 #define MD_EXTLOG_REFERER               0x00040000
 #define MD_EXTLOG_PROTOCOL_VERSION      0x00080000
 #define MD_EXTLOG_HOST                  0x00100000
-#define MD_EXTLOG_HTTP_SUB_STATUS       0x00200000
 
 
 #define MD_DEFAULT_EXTLOG_FIELDS        (MD_EXTLOG_CLIENT_IP | \
                                          MD_EXTLOG_TIME      | \
                                          MD_EXTLOG_METHOD    | \
                                          MD_EXTLOG_URI_STEM  | \
-                                         MD_EXTLOG_HTTP_STATUS | \
-                                         MD_EXTLOG_HTTP_SUB_STATUS | \
-                                         MD_EXTLOG_SITE_NAME )
+                                         MD_EXTLOG_HTTP_STATUS)
 
 //
 // Custom Logging related attributes
@@ -459,10 +439,13 @@
 
 #define MD_CPU_LOGGING_MASK             (IIS_MD_LOGCUSTOM_BASE+7 )
 
-#define MD_LOGCUSTOM_PROPERTY_NODE_ID   (IIS_MD_LOGCUSTOM_BASE+8 )
+//
+// The values for MD_CPU_LOGGING_MASK are defined above.
+// See MD_CPU_ENABLE_EVENT, etc.
+//
 
 
-#define IIS_MD_LOGCUSTOM_LAST           MD_LOGCUSTOM_PROPERTY_NODE_ID
+#define IIS_MD_LOGCUSTOM_LAST           MD_CPU_LOGGING_MASK
 
 //
 // Valid values for Custom Logging's MD_LOGCUSTOM_PROPERTY_DATATYPE field
@@ -529,9 +512,6 @@
 #define MD_BANNER_MESSAGE               (IIS_MD_FTP_BASE+11 )
 #define MD_USER_ISOLATION               (IIS_MD_FTP_BASE+12 )
 #define MD_FTP_LOG_IN_UTF_8             (IIS_MD_FTP_BASE+13 )
-#define MD_AD_CONNECTIONS_USERNAME      (IIS_MD_FTP_BASE+14 )
-#define MD_AD_CONNECTIONS_PASSWORD      (IIS_MD_FTP_BASE+15 )
-#define MD_PASSIVE_PORT_RANGE           (IIS_MD_FTP_BASE+16 )
 #define MD_SUPPRESS_DEFAULT_BANNER      (IIS_MD_FTP_BASE+17 )
 
 //
@@ -557,8 +537,6 @@
 //
 #define MD_SSL_USE_DS_MAPPER            ( IIS_MD_SSL_BASE+19 )
 
-
-#define MD_SSL_ALWAYS_NEGO_CLIENT_CERT  ( IIS_MD_SSL_BASE+21 )
 
 //
 // Metabase properties that are used by the CertWiz ActiveX control, that
@@ -623,16 +601,6 @@
 #define MD_PUT_READ_SIZE                (IIS_MD_FILE_PROP_BASE+46 )
 #define MD_USE_DIGEST_SSP               (IIS_MD_FILE_PROP_BASE+47 )
 
-#define MD_ENABLE_URL_AUTHORIZATION     (IIS_MD_FILE_PROP_BASE+48 )
-#define MD_URL_AUTHORIZATION_STORE_NAME (IIS_MD_FILE_PROP_BASE+49 )
-#define MD_URL_AUTHORIZATION_SCOPE_NAME (IIS_MD_FILE_PROP_BASE+50 )
-
-#define MD_MAX_REQUEST_ENTITY_ALLOWED   (IIS_MD_FILE_PROP_BASE+51 )
-
-#define MD_PASSPORT_REQUIRE_AD_MAPPING  (IIS_MD_FILE_PROP_BASE+52 )
-
-#define MD_URL_AUTHORIZATION_IMPERSONATION_LEVEL    (IIS_MD_FILE_PROP_BASE+53 )
-
 
 #define ASP_MD_SERVER_BASE                  7000
 
@@ -668,7 +636,6 @@
 #define MD_ASP_ENABLEAPPLICATIONRESTART     (ASP_MD_SERVER_BASE + 27)
 #define MD_ASP_QUEUECONNECTIONTESTTIME      (ASP_MD_SERVER_BASE + 28)
 #define MD_ASP_SESSIONMAX                   (ASP_MD_SERVER_BASE + 29)
-
 // thread gate
 #define MD_ASP_THREADGATEENABLED            (ASP_MD_SERVER_BASE + 30)
 #define MD_ASP_THREADGATETIMESLICE          (ASP_MD_SERVER_BASE + 31)
@@ -694,32 +661,23 @@
 #define MD_ASP_SERVICE_FLAG_FUSION          (ASP_MD_SERVER_BASE + 46)
 #define MD_ASP_SERVICE_FLAG_PARTITIONS      (ASP_MD_SERVER_BASE + 47)
 #define MD_ASP_SERVICE_PARTITION_ID         (ASP_MD_SERVER_BASE + 48)
-#define MD_ASP_SERVICE_SXS_NAME             (ASP_MD_SERVER_BASE + 49)
+#define MD_ASP_SERVICE_SXS_NAME				(ASP_MD_SERVER_BASE + 49)
 
-// Valid flags for MD_ASP_SERVICE_FLAGS property
-#define MD_ASP_SERVICE_ENABLE_TRACKER       1
-#define MD_ASP_SERVICE_ENABLE_SXS           2
-#define MD_ASP_SERVICE_USE_PARTITION        4
-
-// Line number calculation flag.
-#define MD_ASP_CALCLINENUMBER               (ASP_MD_SERVER_BASE + 50)
-
-#define MD_ASP_RUN_ONEND_ANON               (ASP_MD_SERVER_BASE + 51)
-
+// winse 49978
 #define MD_ASP_BUFFER_LIMIT                 (ASP_MD_SERVER_BASE + 52)
 
-#define MD_ASP_MAX_REQUEST_ENTITY_ALLOWED   (ASP_MD_SERVER_BASE + 53)
-#define MD_ASP_MAXREQUESTENTITY             MD_ASP_MAX_REQUEST_ENTITY_ALLOWED
+#define MD_ASP_MAXREQUESTENTITY           (ASP_MD_SERVER_BASE + 53)
 
 #define MD_ASP_ID_LAST                      (ASP_MD_SERVER_BASE + 53)
+
 
 //
 //  Valid values for WAM
 //
 #define WAM_MD_SERVER_BASE                  7500
 
-#define MD_WAM_USER_NAME                    (WAM_MD_SERVER_BASE+1)
-#define MD_WAM_PWD                          (WAM_MD_SERVER_BASE+2)
+#define MD_WAM_USER_NAME                (WAM_MD_SERVER_BASE+1)
+#define MD_WAM_PWD                      (WAM_MD_SERVER_BASE+2)
 
 //
 //  Valid values for WEBDAV
@@ -745,18 +703,23 @@
 #define MD_APPPOOL_SMP_AFFINITIZED                    (IIS_MD_APPPOOL_BASE + 7)
 #define MD_APPPOOL_SMP_AFFINITIZED_PROCESSOR_MASK     (IIS_MD_APPPOOL_BASE + 8)
 #define MD_APPPOOL_ORPHAN_PROCESSES_FOR_DEBUGGING     (IIS_MD_APPPOOL_BASE + 9)
+
+#define MD_APPPOOL_RUN_AS_LOCALSYSTEM                 (IIS_MD_APPPOOL_BASE + 10)
 #define MD_APPPOOL_STARTUP_TIMELIMIT                  (IIS_MD_APPPOOL_BASE + 11)
 #define MD_APPPOOL_SHUTDOWN_TIMELIMIT                 (IIS_MD_APPPOOL_BASE + 12)
 #define MD_APPPOOL_PING_INTERVAL                      (IIS_MD_APPPOOL_BASE + 13)
 #define MD_APPPOOL_PING_RESPONSE_TIMELIMIT            (IIS_MD_APPPOOL_BASE + 14)
 #define MD_APPPOOL_DISALLOW_OVERLAPPING_ROTATION      (IIS_MD_APPPOOL_BASE + 15)
+#define MD_APPPOOL_ORPHAN_ACTION                      (IIS_MD_APPPOOL_BASE + 16)
 #define MD_APPPOOL_UL_APPPOOL_QUEUE_LENGTH            (IIS_MD_APPPOOL_BASE + 17)
 #define MD_APPPOOL_DISALLOW_ROTATION_ON_CONFIG_CHANGE (IIS_MD_APPPOOL_BASE + 18)
+#define MD_APPPOOL_FRIENDLY_NAME                      (IIS_MD_APPPOOL_BASE + 19)
 #define MD_APPPOOL_PERIODIC_RESTART_SCHEDULE          (IIS_MD_APPPOOL_BASE + 20)
 #define MD_APPPOOL_IDENTITY_TYPE                      (IIS_MD_APPPOOL_BASE + 21)
 #define MD_CPU_ACTION                                 (IIS_MD_APPPOOL_BASE + 22)
 #define MD_CPU_LIMIT                                  (IIS_MD_APPPOOL_BASE + 23)
 #define MD_APPPOOL_PERIODIC_RESTART_MEMORY            (IIS_MD_APPPOOL_BASE + 24)
+#define MD_DISABLE_PUBLISHING                         (IIS_MD_APPPOOL_BASE + 25)
 #define MD_APPPOOL_COMMAND                            (IIS_MD_APPPOOL_BASE + 26)
 #define MD_APPPOOL_STATE                              (IIS_MD_APPPOOL_BASE + 27)
 #define MD_APPPOOL_AUTO_START                         (IIS_MD_APPPOOL_BASE + 28)
@@ -764,33 +727,6 @@
 #define MD_RAPID_FAIL_PROTECTION_MAX_CRASHES          (IIS_MD_APPPOOL_BASE + 30)
 #define MD_APPPOOL_ORPHAN_ACTION_EXE                  (IIS_MD_APPPOOL_BASE + 31)
 #define MD_APPPOOL_ORPHAN_ACTION_PARAMS               (IIS_MD_APPPOOL_BASE + 32)
-#define MB_DONT_IMPERSONATE                           (IIS_MD_APPPOOL_BASE + 33)
-
-//
-// Load balancer properties
-//
-#define MD_LOAD_BALANCER_CAPABILITIES                 (IIS_MD_APPPOOL_BASE + 34)
-
-//
-//  Valid values for APP POOL
-//
-#define MD_APPPOOL_AUTO_SHUTDOWN_EXE                  (IIS_MD_APPPOOL_BASE + 35)
-#define MD_APPPOOL_AUTO_SHUTDOWN_PARAMS               (IIS_MD_APPPOOL_BASE + 36)
-#define MD_APP_POOL_LOG_EVENT_ON_RECYCLE              (IIS_MD_APPPOOL_BASE + 37)
-#define MD_APPPOOL_PERIODIC_RESTART_PRIVATE_MEMORY    (IIS_MD_APPPOOL_BASE + 38)
-#define MD_APPPOOL_32_BIT_APP_ON_WIN64                (IIS_MD_APPPOOL_BASE + 40)
-
-//
-// Valid values for MD_APP_POOL_LOG_EVENT_ON_RECYCLE
-//
-#define MD_APP_POOL_RECYCLE_TIME                      1
-#define MD_APP_POOL_RECYCLE_REQUESTS                  2
-#define MD_APP_POOL_RECYCLE_SCHEDULE                  4
-#define MD_APP_POOL_RECYCLE_MEMORY                    8
-#define MD_APP_POOL_RECYCLE_ISAPI_UNHEALTHY           16
-#define MD_APP_POOL_RECYCLE_ON_DEMAND                 32
-#define MD_APP_POOL_RECYCLE_CONFIG_CHANGE             64
-#define MD_APP_POOL_RECYCLE_PRIVATE_MEMORY            128
 
 
 //
@@ -819,18 +755,8 @@
 #define MD_APPPOOL_STATE_STOPPED                      4
 
 //
-// Valid values for MD_APPPOOL_IDENTITY_TYPE
+// Valid values for MD_APPPOOL_STATE
 //
-#define MD_APPPOOL_IDENTITY_TYPE_LOCALSYSTEM          0
-#define MD_APPPOOL_IDENTITY_TYPE_LOCALSERVICE         1
-#define MD_APPPOOL_IDENTITY_TYPE_NETWORKSERVICE       2
-#define MD_APPPOOL_IDENTITY_TYPE_SPECIFICUSER         3
-
-//
-// Valid values for MD_LOAD_BALANCER_CAPABILITIES
-//
-#define MD_LOAD_BALANCER_CAPABILITIES_BASIC           1
-#define MD_LOAD_BALANCER_CAPABILITIES_SOPHISTICATED   2
 
 #define IIS_MD_APP_BASE                               9100
 #define MD_APP_APPPOOL_ID                             (IIS_MD_APP_BASE+1)
@@ -848,15 +774,13 @@
 //#define MD_APPPOOL_AUTO_START                         (IIS_MD_APP_BASE + 103)
 
 
-
-#define IIS_MD_GLOBAL_BASE                              9200
-#define MD_MAX_GLOBAL_BANDWIDTH                         (IIS_MD_GLOBAL_BASE+1)
-#define MD_MAX_GLOBAL_CONNECTIONS                       (IIS_MD_GLOBAL_BASE+2)
+#define IIS_MD_GLOBAL_BASE                            9200
+#define MD_MAX_GLOBAL_BANDWIDTH                       (IIS_MD_GLOBAL_BASE+1)
+#define MD_MAX_GLOBAL_CONNECTIONS                     (IIS_MD_GLOBAL_BASE+2)
 #define MD_GLOBAL_STANDARD_APP_MODE_ENABLED             (IIS_MD_GLOBAL_BASE+3)
-#define MD_HEADER_WAIT_TIMEOUT                          (IIS_MD_GLOBAL_BASE+4)
-#define MD_MIN_FILE_BYTES_PER_SEC                       (IIS_MD_GLOBAL_BASE+5)
-#define MD_GLOBAL_LOG_IN_UTF_8                          (IIS_MD_GLOBAL_BASE+6)
-#define MD_DEMAND_START_THRESHOLD                       (IIS_MD_GLOBAL_BASE+7)
+#define MD_HEADER_WAIT_TIMEOUT                        (IIS_MD_GLOBAL_BASE+4)
+#define MD_MIN_FILE_KB_SEC                            (IIS_MD_GLOBAL_BASE+5)
+#define MD_GLOBAL_LOG_IN_UTF_8                        (IIS_MD_GLOBAL_BASE+6)
 
 #define MD_GLOBAL_SESSIONKEY                                 9999
 #define MD_ROOT_ENABLE_EDIT_WHILE_RUNNING                    9998
@@ -879,11 +803,7 @@
 #define MD_AUTH_ANONYMOUS               0x00000001
 #define MD_AUTH_BASIC                   0x00000002
 #define MD_AUTH_NT                      0x00000004    // Use NT auth provider (like NTLM)
-#define MD_AUTH_PASSPORT                0x00000040
-// MD_ACCESS_MAP_CERT that set on SSL_ACCESS_PERM is true authenticaion method
-// never use 0x80 for other MD_AUTH_* method because worker process
-// takes MD_ACCESS_MAP_CERT value as if it was ID of the authentication method
-//#define MD_ACCESS_MAP_CERT              0x00000080    // Map SSL cert to NT account
+
 //
 //  Valid values for MD_AUTHORIZATION_PERSISTENCE
 //
@@ -906,9 +826,8 @@
 #define MD_ACCESS_NO_REMOTE_READ        0x00001000    // Local host access only
 #define MD_ACCESS_NO_REMOTE_EXECUTE     0x00002000    // Local host access only
 #define MD_ACCESS_NO_REMOTE_SCRIPT      0x00004000    // Local host access only
-#define MD_ACCESS_NO_PHYSICAL_DIR       0x00008000    // VR maps to no physical path
 
-#define MD_NONSSL_ACCESS_MASK           (MD_ACCESS_READ|                \
+#define MD_NONSLL_ACCESS_MASK           (MD_ACCESS_READ|                \
                                          MD_ACCESS_WRITE|               \
                                          MD_ACCESS_EXECUTE|             \
                                          MD_ACCESS_SOURCE|              \
@@ -916,8 +835,7 @@
                                          MD_ACCESS_NO_REMOTE_READ|      \
                                          MD_ACCESS_NO_REMOTE_WRITE|     \
                                          MD_ACCESS_NO_REMOTE_EXECUTE|   \
-                                         MD_ACCESS_NO_REMOTE_SCRIPT|    \
-                                         MD_ACCESS_NO_PHYSICAL_DIR      \
+                                         MD_ACCESS_NO_REMOTE_SCRIPT     \
                                          )
 //
 //  Valid values for MD_SSL_ACCESS_PERM
@@ -935,7 +853,7 @@
                                          MD_ACCESS_MAP_CERT|\
                                          MD_ACCESS_SSL128)
 
-#define MD_ACCESS_MASK                  0x0000ffff
+#define MD_ACCESS_MASK                  0x00007fff
 
 //
 //  Valid values for MD_DIRECTORY_BROWSING
@@ -968,14 +886,6 @@
 #define MD_LOGON_BATCH              1
 #define MD_LOGON_NETWORK            2
 #define MD_LOGON_NETWORK_CLEARTEXT  3
-
-//
-//  Valid values for MD_PASSPORT_REQUIRE_AD_MAPPING
-//
-
-#define MD_PASSPORT_NO_MAPPING      0
-#define MD_PASSPORT_TRY_MAPPING     1
-#define MD_PASSPORT_NEED_MAPPING    2
 
 //
 // Valid values for MD_NOTIFY_EXAUTH
@@ -1073,7 +983,6 @@
 #define MD_ERROR_SUB401_LOGON_ACL               3
 #define MD_ERROR_SUB401_FILTER                  4
 #define MD_ERROR_SUB401_APPLICATION             5
-#define MD_ERROR_SUB401_URLAUTH_POLICY          7
 
 #define MD_ERROR_SUB403_EXECUTE_ACCESS_DENIED   1
 #define MD_ERROR_SUB403_READ_ACCESS_DENIED      2
@@ -1092,19 +1001,8 @@
 #define MD_ERROR_SUB403_CAL_EXCEEDED           15
 #define MD_ERROR_SUB403_CERT_BAD               16
 #define MD_ERROR_SUB403_CERT_TIME_INVALID      17
-#define MD_ERROR_SUB403_APPPOOL_DENIED         18
-#define MD_ERROR_SUB403_INSUFFICIENT_PRIVILEGE_FOR_CGI  19
-#define MD_ERROR_SUB403_PASSPORT_LOGIN_FAILURE 20
 
 #define MD_ERROR_SUB404_SITE_NOT_FOUND          1
-#define MD_ERROR_SUB404_DENIED_BY_POLICY        2
-#define MD_ERROR_SUB404_DENIED_BY_MIMEMAP       3
-
-#define MD_ERROR_SUB500_UNC_ACCESS             16
-#define MD_ERROR_SUB500_URLAUTH_NO_STORE       17
-#define MD_ERROR_SUB500_URLAUTH_STORE_ERROR    18
-#define MD_ERROR_SUB500_BAD_METADATA           19
-#define MD_ERROR_SUB500_URLAUTH_NO_SCOPE       20
 
 #define MD_ERROR_SUB502_TIMEOUT                 1
 #define MD_ERROR_SUB502_PREMATURE_EXIT          2
@@ -1122,14 +1020,6 @@
 #define MD_ACR_ENUM_KEYS            0x00000008
 #define MD_ACR_WRITE_DAC            0x00040000
 
-//
-// Valid modes for MD_USER_ISOLATION
-//
-
-#define MD_USER_ISOLATION_NONE      0
-#define MD_USER_ISOLATION_BASIC     1
-#define MD_USER_ISOLATION_AD        2
-#define MD_USER_ISOLATION_LAST      2
 
 //
 // MD_IP_SEC binary format description

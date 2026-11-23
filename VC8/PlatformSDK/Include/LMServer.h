@@ -156,7 +156,7 @@ NetServerTransportEnum (
 // Therefore, if this is the only function called by that service, then
 // it is not necessary to link to netapi32.lib.
 //
-BOOL NET_API_FUNCTION
+BOOL
 SetServiceBits(
     IN SERVICE_STATUS_HANDLE    hServiceStatus,
     IN DWORD                    dwServiceBits,

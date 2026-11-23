@@ -1,0 +1,22 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="2246" />
+    <Description Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="2265" />
+    <Icon Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="4517" />
+    <ProjectType>CSharp</ProjectType>
+    <TemplateGroupID>SmartDevice-NETCFv1</TemplateGroupID>
+    <TemplateID>SmartDevice-NETCFv1-Component</TemplateID>
+    <ShowByDefault>false</ShowByDefault>
+    <SortOrder>30</SortOrder>
+    <DefaultName>Component.cs</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+		</References>
+
+    <ProjectItem ReplaceParameters="true">Component.cs</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

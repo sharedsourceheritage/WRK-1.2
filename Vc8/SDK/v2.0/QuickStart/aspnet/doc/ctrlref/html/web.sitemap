@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+	<siteMapNode url="~/aspnet/doc/ctrlref/html/default.aspx" title="HTML Controls">
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlanchor.aspx" title="HtmlAnchor"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlbutton.aspx" title="HtmlButton"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlform.aspx" title="HtmlForm"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlgeneric.aspx" title="HtmlGeneric"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlimage.aspx" title="HtmlImage"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlinputbutton.aspx" title="HtmlInputButton"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlinputcheckbox.aspx" title="HtmlInputCheckBox"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlinputfile.aspx" title="HtmlInputFile"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlinputhidden.aspx" title="HtmlInputHidden"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlinputimage.aspx" title="HtmlInputImage"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlinputradiobutton.aspx" title="HtmlInputRadioButton"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlinputtext.aspx" title="HtmlInputText"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmlselect.aspx" title="HtmlSelect"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmltable.aspx" title="HtmlTable"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/html/htmltextarea.aspx" title="HtmlTextArea"/>
+        </siteMapNode>
+</siteMap>

@@ -1,0 +1,4 @@
+C# Source:CS\XmlReadWriteSchema\XmlReadWriteSchema.cs,CS\XmlReadWriteSchema\sample.xsd
+VB Source:VB\XmlReadWriteSchema\XmlReadWriteSchema.vb,VB\XmlReadWriteSchema\sample.xsd
+C++ Source:CP\XmlReadWriteSchema\XmlReadWriteSchema.cpp,CP\XmlReadWriteSchema\sample.xsd
+JSL Source:JSL\XmlReadWriteSchema\XmlReadWriteSchema.jsl,JSL\XmlReadWriteSchema\sample.xsd

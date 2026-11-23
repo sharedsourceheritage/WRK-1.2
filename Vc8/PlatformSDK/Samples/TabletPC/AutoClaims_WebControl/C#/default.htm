@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- ----------------------------------------------------------------------- -->
+<!--                                                                         -->
+<!--  This is part of the Microsoft Tablet PC Platform SDK                   -->
+<!--  Copyright (C) 2003 Microsoft Corporation                               -->
+<!--  All rights reserved.                                                   -->
+<!--                                                                         -->
+<!--  This source code is only intended as a supplement to the               -->
+<!--  Microsoft Tablet PC Platform SDK Reference and related electronic      -->
+<!--  documentation provided with the Software Development Kit.              -->
+<!--  See these sources for more detailed information.                       -->
+<!--                                                                         -->
+<!--  File: Default.htm                                                      -->
+<!--  Runs the AutoClaims sample as WinForms control hosted in a web page.   -->
+<!--                                                                         -->
+<!-- ----------------------------------------------------------------------- -->
+<html>
+    <script language="jscript">
+        
+        // Release any resouces held by the AutoClaims control
+        function OnUnload()
+        {
+            autoClaimsControl.DisposeResources();
+        }
+
+    </script>
+    <head>
+        <title>AutoClaims (Web Control)</title>
+        <META NAME="GENERATOR" Content="Microsoft Visual Studio 7.0">
+    </head>
+    <body onunload="OnUnload()">
+        <object id="autoClaimsControl" classid="AutoClaims.dll#AutoClaims.AutoClaims" VIEWASTEXT>
+        </object>
+    </body>
+</html>

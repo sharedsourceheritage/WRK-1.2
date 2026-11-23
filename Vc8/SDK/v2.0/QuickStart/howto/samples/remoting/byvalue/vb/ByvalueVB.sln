@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Client", "Client\Client.vbproj", "{5F7E9B82-5F2F-4EF7-818A-442FD4FCCC48}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Server", "Server\Server.vbproj", "{51112C37-3757-48F6-8CDF-CF5583B7614E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Share", "Share\Share.vbproj", "{B7B0F6B6-CC95-4040-AEDC-32ACAFEDE3FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F7E9B82-5F2F-4EF7-818A-442FD4FCCC48}.Debug|.NET.ActiveCfg = Debug|.NET
+		{5F7E9B82-5F2F-4EF7-818A-442FD4FCCC48}.Debug|.NET.Build.0 = Debug|.NET
+		{5F7E9B82-5F2F-4EF7-818A-442FD4FCCC48}.Release|.NET.ActiveCfg = Release|.NET
+		{5F7E9B82-5F2F-4EF7-818A-442FD4FCCC48}.Release|.NET.Build.0 = Release|.NET
+		{51112C37-3757-48F6-8CDF-CF5583B7614E}.Debug|.NET.ActiveCfg = Debug|.NET
+		{51112C37-3757-48F6-8CDF-CF5583B7614E}.Debug|.NET.Build.0 = Debug|.NET
+		{51112C37-3757-48F6-8CDF-CF5583B7614E}.Release|.NET.ActiveCfg = Release|.NET
+		{51112C37-3757-48F6-8CDF-CF5583B7614E}.Release|.NET.Build.0 = Release|.NET
+		{B7B0F6B6-CC95-4040-AEDC-32ACAFEDE3FD}.Debug|.NET.ActiveCfg = Debug|.NET
+		{B7B0F6B6-CC95-4040-AEDC-32ACAFEDE3FD}.Debug|.NET.Build.0 = Debug|.NET
+		{B7B0F6B6-CC95-4040-AEDC-32ACAFEDE3FD}.Release|.NET.ActiveCfg = Release|.NET
+		{B7B0F6B6-CC95-4040-AEDC-32ACAFEDE3FD}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

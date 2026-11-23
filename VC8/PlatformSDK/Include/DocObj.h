@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for docobj.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -286,7 +285,7 @@ void __RPC_STUB IOleDocument_EnumViews_Stub(
 #endif 	/* __IOleDocument_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_docobj_0265 */
+/* interface __MIDL_itf_docobj_0260 */
 /* [local] */ 
 
 #endif
@@ -294,8 +293,8 @@ void __RPC_STUB IOleDocument_EnumViews_Stub(
 #define _LPOLEDOCUMENTSITE_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0265_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0265_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0260_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0260_v0_0_s_ifspec;
 
 #ifndef __IOleDocumentSite_INTERFACE_DEFINED__
 #define __IOleDocumentSite_INTERFACE_DEFINED__
@@ -389,7 +388,7 @@ void __RPC_STUB IOleDocumentSite_ActivateMe_Stub(
 #endif 	/* __IOleDocumentSite_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_docobj_0266 */
+/* interface __MIDL_itf_docobj_0261 */
 /* [local] */ 
 
 #endif
@@ -397,8 +396,8 @@ void __RPC_STUB IOleDocumentSite_ActivateMe_Stub(
 #define _LPOLEDOCUMENTVIEW_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0266_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0266_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0261_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0261_v0_0_s_ifspec;
 
 #ifndef __IOleDocumentView_INTERFACE_DEFINED__
 #define __IOleDocumentView_INTERFACE_DEFINED__
@@ -765,7 +764,7 @@ void __RPC_STUB IOleDocumentView_Clone_Stub(
 #endif 	/* __IOleDocumentView_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_docobj_0267 */
+/* interface __MIDL_itf_docobj_0262 */
 /* [local] */ 
 
 #endif
@@ -773,8 +772,8 @@ void __RPC_STUB IOleDocumentView_Clone_Stub(
 #define _LPENUMOLEDOCUMENTVIEWS_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0267_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0267_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0262_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0262_v0_0_s_ifspec;
 
 #ifndef __IEnumOleDocumentViews_INTERFACE_DEFINED__
 #define __IEnumOleDocumentViews_INTERFACE_DEFINED__
@@ -937,7 +936,7 @@ void __RPC_STUB IEnumOleDocumentViews_Clone_Stub(
 #endif 	/* __IEnumOleDocumentViews_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_docobj_0268 */
+/* interface __MIDL_itf_docobj_0263 */
 /* [local] */ 
 
 #endif
@@ -945,8 +944,8 @@ void __RPC_STUB IEnumOleDocumentViews_Clone_Stub(
 #define _LPCONTINUECALLBACK_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0268_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0268_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0263_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0263_v0_0_s_ifspec;
 
 #ifndef __IContinueCallback_INTERFACE_DEFINED__
 #define __IContinueCallback_INTERFACE_DEFINED__
@@ -1065,7 +1064,7 @@ void __RPC_STUB IContinueCallback_FContinuePrinting_Stub(
 #endif 	/* __IContinueCallback_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_docobj_0269 */
+/* interface __MIDL_itf_docobj_0264 */
 /* [local] */ 
 
 #endif
@@ -1073,8 +1072,8 @@ void __RPC_STUB IContinueCallback_FContinuePrinting_Stub(
 #define _LPPRINT_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0269_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0269_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0264_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0264_v0_0_s_ifspec;
 
 #ifndef __IPrint_INTERFACE_DEFINED__
 #define __IPrint_INTERFACE_DEFINED__
@@ -1263,7 +1262,7 @@ void __RPC_STUB IPrint_RemotePrint_Stub(
 #endif 	/* __IPrint_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_docobj_0270 */
+/* interface __MIDL_itf_docobj_0265 */
 /* [local] */ 
 
 #endif
@@ -1271,8 +1270,8 @@ void __RPC_STUB IPrint_RemotePrint_Stub(
 #define _LPOLECOMMANDTARGET_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0270_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0270_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0265_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0265_v0_0_s_ifspec;
 
 #ifndef __IOleCommandTarget_INTERFACE_DEFINED__
 #define __IOleCommandTarget_INTERFACE_DEFINED__
@@ -1533,7 +1532,7 @@ void __RPC_STUB IOleCommandTarget_Exec_Stub(
 #endif 	/* __IOleCommandTarget_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_docobj_0271 */
+/* interface __MIDL_itf_docobj_0266 */
 /* [local] */ 
 
 #endif
@@ -1641,8 +1640,8 @@ typedef enum
 EXTERN_C const GUID SID_SContainerDispatch;
 
 
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0271_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_docobj_0271_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0266_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_docobj_0266_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

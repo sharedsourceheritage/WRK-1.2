@@ -61,9 +61,6 @@
 // get receiver statistics
 #define RM_RECEIVER_STATISTICS          (RM_OPTIONSBASE + 13)
 
-// get receiver statistics
-#define RM_HIGH_SPEED_INTRANET_OPT      (RM_OPTIONSBASE + 14)
-
 //==============================================================
 //
 // Definitions
@@ -76,6 +73,9 @@
 
 #define     SENDER_DEFAULT_LATE_JOINER_PERCENTAGE    0              // 0%
 #define     SENDER_MAX_LATE_JOINER_PERCENTAGE        75             // 75%
+
+#define     INTERNAL_RATE_CALCULATION_FREQUENCY    8192             // ~8 secs
+#define     LOG2_INTERNAL_RATE_CALCULATION_FREQUENCY 13
 
 #define     BITS_PER_BYTE                             8
 #define     LOG2_BITS_PER_BYTE                        3
@@ -111,7 +111,6 @@ typedef struct _RM_SENDER_STATS
     ULONGLONG   LeadingEdgeSeqId;       // largest (newest) Sequence Id in the window
     ULONGLONG   RateKBitsPerSecOverall; // Internally calculated send-rate from the beginning
     ULONGLONG   RateKBitsPerSecLast;    // Send-rate calculated every INTERNAL_RATE_CALCULATION_FREQUENCY
-    ULONGLONG   TotalODataPacketsSent;  // # ODATA packets sent so far
 } RM_SENDER_STATS;
 
 

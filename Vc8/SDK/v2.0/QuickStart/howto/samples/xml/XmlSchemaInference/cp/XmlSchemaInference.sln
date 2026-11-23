@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XmlSchemaInference", "XmlSchemaInference\XmlSchemaInference.vcproj", "{B839F572-C32B-432D-B132-9E23697B509B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		Debug|x64 = Debug|x64
+		Debug|Itanium = Debug|Itanium
+		Release|x64 = Release|x64
+		Release|Itanium = Release|Itanium
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B839F572-C32B-432D-B132-9E23697B509B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B839F572-C32B-432D-B132-9E23697B509B}.Debug|Win32.Build.0 = Debug|Win32
+		{B839F572-C32B-432D-B132-9E23697B509B}.Release|Win32.ActiveCfg = Release|Win32
+		{B839F572-C32B-432D-B132-9E23697B509B}.Release|Win32.Build.0 = Release|Win32
+		{B839F572-C32B-432D-B132-9E23697B509B}.Debug|x64.ActiveCfg = Debug|x64
+		{B839F572-C32B-432D-B132-9E23697B509B}.Debug|x64.Build.0 = Debug|x64
+		{B839F572-C32B-432D-B132-9E23697B509B}.Debug|Itanium.ActiveCfg = Debug|Itanium
+		{B839F572-C32B-432D-B132-9E23697B509B}.Debug|Itanium.Build.0 = Debug|Itanium
+		{B839F572-C32B-432D-B132-9E23697B509B}.Release|x64.ActiveCfg = Release|x64
+		{B839F572-C32B-432D-B132-9E23697B509B}.Release|x64.Build.0 = Release|x64
+		{B839F572-C32B-432D-B132-9E23697B509B}.Release|Itanium.ActiveCfg = Release|Itanium
+		{B839F572-C32B-432D-B132-9E23697B509B}.Release|Itanium.Build.0 = Release|Itanium
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

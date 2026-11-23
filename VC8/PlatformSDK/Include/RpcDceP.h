@@ -366,17 +366,8 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcBindingInqWireIdForSnego (
-    __in RPC_BINDING_HANDLE Binding,
-    __out RPC_CSTR WireId
-    );
-
-RPCRTAPI
-RPC_STATUS
-RPC_ENTRY
-I_RpcBindingInqMarshalledTargetInfo (
-    __in RPC_BINDING_HANDLE Binding,
-    __out unsigned long *MarshalledTargetInfoLength,
-    __deref_out_bcount(*MarshalledTargetInfoLength) RPC_CSTR *MarshalledTargetInfo
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned char *WireId
     );
 
 RPCRTAPI
@@ -401,64 +392,64 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcNsBindingSetEntryNameW (
-    __in RPC_BINDING_HANDLE Binding,
-    __in unsigned long EntryNameSyntax,
-    __in RPC_WSTR EntryName
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned long EntryNameSyntax,
+    IN unsigned short __RPC_FAR * EntryName
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcNsBindingSetEntryNameA (
-    __in RPC_BINDING_HANDLE Binding,
-    __in unsigned long EntryNameSyntax,
-    __in RPC_CSTR EntryName
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned long EntryNameSyntax,
+    IN unsigned char __RPC_FAR * EntryName
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcServerUseProtseqEp2A (
-    __in RPC_CSTR NetworkAddress,
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_CSTR Endpoint,
-    __in void __RPC_FAR * SecurityDescriptor,
-    __in void *Policy
+    IN unsigned char __RPC_FAR * NetworkAddress,
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN unsigned char __RPC_FAR * Endpoint,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN void *Policy
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcServerUseProtseqEp2W (
-    __in RPC_WSTR NetworkAddress,
-    __in RPC_WSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_WSTR Endpoint,
-    __in void __RPC_FAR *SecurityDescriptor,
-    __in void *Policy
+    IN unsigned short __RPC_FAR * NetworkAddress,
+    IN unsigned short __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN unsigned short __RPC_FAR * Endpoint,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN void * Policy
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcServerUseProtseq2W (
-    __in RPC_WSTR NetworkAddress,
-    __in RPC_WSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in void __RPC_FAR *SecurityDescriptor,
-    __in void *Policy
+    IN unsigned short __RPC_FAR * NetworkAddress,
+    IN unsigned short __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN void * Policy
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcServerUseProtseq2A (
-    __in RPC_CSTR NetworkAddress,
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in void __RPC_FAR *SecurityDescriptor,
-    __in void *Policy
+    IN unsigned char __RPC_FAR * NetworkAddress,
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN void * Policy
     );
 
 
@@ -478,32 +469,32 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcNsBindingSetEntryName (
-    __in RPC_BINDING_HANDLE Binding,
-    __in unsigned long EntryNameSyntax,
-    __in RPC_CSTR EntryName
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned long EntryNameSyntax,
+    IN unsigned char __RPC_FAR * EntryName
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcServerUseProtseq2 (
-    __in RPC_CSTR NetworkAddress,
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in void __RPC_FAR *SecurityDescriptor,
-    __in void *Policy
+    IN unsigned char __RPC_FAR * NetworkAddress,
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN void * Policy
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcServerUseProtseqEp2 (
-    __in RPC_CSTR NetworkAddress,
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_CSTR Endpoint,
-    __in void __RPC_FAR *SecurityDescriptor,
-    __in void *Policy
+    IN unsigned char __RPC_FAR * NetworkAddress,
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN unsigned char __RPC_FAR * Endpoint,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN void * Policy
     );
 #endif
 
@@ -513,16 +504,16 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcBindingInqDynamicEndpointW (
-    __in RPC_BINDING_HANDLE Binding,
-    __deref_out_opt RPC_WSTR __RPC_FAR *DynamicEndpoint
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * DynamicEndpoint
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcBindingInqDynamicEndpointA (
-    __in RPC_BINDING_HANDLE Binding,
-    __deref_out_opt RPC_CSTR __RPC_FAR *DynamicEndpoint
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * DynamicEndpoint
     );
 
 #ifdef UNICODE
@@ -537,8 +528,8 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcBindingInqDynamicEndpoint (
-    __in RPC_BINDING_HANDLE Binding,
-    __deref_out_opt RPC_CSTR __RPC_FAR *DynamicEndpoint
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * DynamicEndpoint
     );
 
 #endif
@@ -752,16 +743,16 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcServerUnregisterEndpointA (
-    __in RPC_CSTR Protseq,
-    __in RPC_CSTR Endpoint
+    IN unsigned char * Protseq,
+    IN unsigned char * Endpoint
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 I_RpcServerUnregisterEndpointW (
-    __in RPC_WSTR Protseq,
-    __in RPC_WSTR Endpoint
+    IN unsigned short * Protseq,
+    IN unsigned short * Endpoint
     );
 
 #ifdef UNICODE
@@ -785,38 +776,6 @@ I_RpcMapWin32Status (
     IN RPC_STATUS Status
     );
 
-typedef struct _RPC_C_OPT_METADATA_DESCRIPTOR
-{
-    unsigned long BufferSize;   // Length of the buffer in bytes
-    char *Buffer;               // Zero-terminated string
-} RPC_C_OPT_METADATA_DESCRIPTOR;
-
-typedef struct _RDR_CALLOUT_STATE
-{
-    // LastError is used for debugging only - don't use it for processing
-    RPC_STATUS LastError;
-    void *LastEEInfo;
-
-    RPC_HTTP_REDIRECTOR_STAGE LastCalledStage;
-
-    // the information accumulated throughout the stages
-    unsigned short *ServerName;   // Allocated with MemAllocate
-    unsigned short *ServerPort;   // Allocated with MemAllocate
-    unsigned short *RemoteUser;   // Allocated with MemAllocate
-    unsigned short *AuthType;     // Allocated with MemAllocate
-    unsigned char ResourceTypePresent;
-    unsigned char MetadataPresent;
-    unsigned char SessionIdPresent;
-    unsigned char InterfacePresent;
-    UUID ResourceType;
-    RPC_C_OPT_METADATA_DESCRIPTOR Metadata;     // Allocated with MemAllocate
-    UUID SessionId;
-    RPC_SYNTAX_IDENTIFIER Interface;
-    void *CertContext;            // Contains PCCERT_CONTEXT if cert is used for authentication. 
-                                  // NULL otherwise. If allocated, CertFreeCertificateContext 
-                                  // needs to be called on it when done
-} RDR_CALLOUT_STATE;
-
 typedef RPC_STATUS
 (RPC_ENTRY *I_RpcProxyIsValidMachineFn)
         (
@@ -839,27 +798,11 @@ typedef RPC_STATUS
         OUT unsigned long *ConnectionTimeout
         );
 
-typedef RPC_STATUS
-(RPC_ENTRY *I_RpcPerformCalloutFn) 
-    (
-    IN void *Context,
-    IN RDR_CALLOUT_STATE *CallOutState,
-    IN RPC_HTTP_REDIRECTOR_STAGE Stage
-    );
-
-typedef void
-(RPC_ENTRY *I_RpcFreeCalloutStateFn)
-    (
-    IN RDR_CALLOUT_STATE *CallOutState
-    );
-
 typedef struct tagI_RpcProxyCallbackInterface
 {
     I_RpcProxyIsValidMachineFn IsValidMachineFn;
     I_RpcProxyGetClientAddressFn GetClientAddressFn;
     I_RpcProxyGetConnectionTimeoutFn GetConnectionTimeoutFn;
-    I_RpcPerformCalloutFn PerformCalloutFn;
-    I_RpcFreeCalloutStateFn FreeCalloutStateFn;
 } I_RpcProxyCallbackInterface;
 
 #define RPC_PROXY_CONNECTION_TYPE_IN_PROXY    0
@@ -872,27 +815,8 @@ I_RpcProxyNewConnection (
     IN unsigned long ConnectionType,
     IN unsigned short *ServerAddress,
     IN unsigned short *ServerPort,
-    IN unsigned short *MinConnTimeout,
     IN void *ConnectionParameter,
-    IN OPTIONAL RDR_CALLOUT_STATE *CallOutState, 
     IN I_RpcProxyCallbackInterface *ProxyCallbackInterface
-    );
-
-RPCRTAPI
-RPC_STATUS
-RPC_ENTRY
-I_RpcReplyToClientWithStatus (
-    IN void *ConnectionParameter,
-    IN RPC_STATUS RpcStatus
-    );
-
-RPCRTAPI
-void
-RPC_ENTRY
-I_RpcRecordCalloutFailure (
-    IN RPC_STATUS RpcStatus,
-    IN RDR_CALLOUT_STATE *CallOutState,
-    IN unsigned short *DllName
     );
 
 #ifdef __cplusplus

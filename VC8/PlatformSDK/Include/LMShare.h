@@ -236,20 +236,11 @@ typedef struct _SHARE_INFO_1501 {
 #define CSC_CACHE_VDO           0x20    // no need to flow opens
 #define CSC_CACHE_NONE          0x30    // no CSC for this share
 
-#define SHI1005_FLAGS_RESTRICT_EXCLUSIVE_OPENS  0x0100          // Used to disallow read-deny read behavior
-#define SHI1005_FLAGS_FORCE_SHARED_DELETE       0x0200          // Used to allows force shared delete
-#define SHI1005_FLAGS_ALLOW_NAMESPACE_CACHING   0x0400          // The clients may cache the namespace
-#define SHI1005_FLAGS_ACCESS_BASED_DIRECTORY_ENUM 0x0800          // Trim visible files in enumerations based on access
-
 //
 // The subset of 1005 infolevel flags that can be set via the API
 //
-#define SHI1005_VALID_FLAGS_SET    (CSC_MASK|                                   \
-                                    SHI1005_FLAGS_RESTRICT_EXCLUSIVE_OPENS|     \
-                                    SHI1005_FLAGS_FORCE_SHARED_DELETE|          \
-                                    SHI1005_FLAGS_ALLOW_NAMESPACE_CACHING|      \
-                                    SHI1005_FLAGS_ACCESS_BASED_DIRECTORY_ENUM)
-                                    
+#define SHI1005_VALID_FLAGS_SET    CSC_MASK
+
 #endif // _LMSHARE_
 
 //

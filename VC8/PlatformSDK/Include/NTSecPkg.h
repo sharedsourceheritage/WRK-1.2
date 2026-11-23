@@ -573,6 +573,7 @@ typedef LSA_CALLBACK_FUNCTION * PLSA_CALLBACK_FUNCTION ;
 #define PRIMARY_CRED_CACHED_LOGON       0x8
 #define PRIMARY_CRED_LOGON_NO_TCB   	0x10
 
+
 #define PRIMARY_CRED_LOGON_PACKAGE_SHIFT 24
 #define PRIMARY_CRED_PACKAGE_MASK 0xff000000
 
@@ -905,8 +906,7 @@ typedef enum _SECPKG_NAME_TYPE {
     SecNameSamCompatible,
     SecNameAlternateId,
     SecNameFlat,
-    SecNameDN,
-    SecNameSPN
+    SecNameDN
 } SECPKG_NAME_TYPE ;
 
 typedef NTSTATUS
@@ -1145,11 +1145,12 @@ typedef struct _ENCRYPTED_CREDENTIALW {
 // Values for CredFlags parameter
 //
 
-#define CREDP_FLAGS_IN_PROCESS      0x01    // Caller is in-process. Password data may be returned
-#define CREDP_FLAGS_USE_MIDL_HEAP   0x02    // Allocated buffer should use MIDL_user_allocte
-#define CREDP_FLAGS_DONT_CACHE_TI   0x04    // TargetInformation shouldn't be cached for CredGetTargetInfo
-#define CREDP_FLAGS_CLEAR_PASSWORD  0x08    // Credential blob is passed in in-the-clear
-#define CREDP_FLAGS_USER_ENCRYPTED_PASSWORD 0x10    // Credential blob is passed protected by RtlEncryptMemory
+#define CREDP_FLAGS_IN_PROCESS      		0x01    // Caller is in-process. Password data may be returned
+#define CREDP_FLAGS_USE_MIDL_HEAP   		0x02    // Allocated buffer should use MIDL_user_allocte
+#define CREDP_FLAGS_DONT_CACHE_TI  		0x04    // TargetInformation shouldn't be cached for CredGetTargetInfo
+#define CREDP_FLAGS_CLEAR_PASSWORD  		0x08    // Credential blob is passed in in-the-clear
+#define CREDP_FLAGS_USER_ENCRYPTED_PASSWORD 	0x10    // Credential blob is passed protected by RtlEncryptMemory
+
 
 typedef NTSTATUS
 (NTAPI CredReadFn) (
@@ -1176,7 +1177,7 @@ typedef VOID
     IN ULONG Count,
     IN PENCRYPTED_CREDENTIALW *Credentials OPTIONAL
     );
-
+    
 typedef NTSTATUS
 (NTAPI CredWriteFn) (
     IN PLUID LogonId,
@@ -1184,6 +1185,7 @@ typedef NTSTATUS
     IN PENCRYPTED_CREDENTIALW Credential,
     IN ULONG Flags
     );
+
 
 NTSTATUS
 CredMarshalTargetInfo (
@@ -1196,12 +1198,8 @@ NTSTATUS
 CredUnmarshalTargetInfo (
     IN PUSHORT Buffer,
     IN ULONG BufferSize,
-    OUT PCREDENTIAL_TARGET_INFORMATIONW *RetTargetInfo OPTIONAL,
-    OUT PULONG RetActualSize OPTIONAL
+    OUT PCREDENTIAL_TARGET_INFORMATIONW *RetTargetInfo
     );
-
-// Number of bytes consumed by the trailing size ULONG
-#define CRED_MARSHALED_TI_SIZE_SIZE 12
 
 #endif // _WINCRED_H_
 
@@ -1294,7 +1292,7 @@ typedef struct _LSA_SECPKG_FUNCTION_TABLE {
     PLSA_ALLOCATE_PRIVATE_HEAP AllocatePrivateHeap;
     PLSA_FREE_PRIVATE_HEAP FreePrivateHeap;
     PLSA_CREATE_TOKEN_EX CreateTokenEx;
-#ifdef _WINCRED_H_
+    #ifdef _WINCRED_H_
     CredWriteFn *CrediWrite;
 #else // _WINCRED_H_
     PLSA_PROTECT_MEMORY DummyFunction4;
@@ -1399,13 +1397,6 @@ typedef NTSTATUS
     IN ULONG CredentialAttribute,
     IN OUT PVOID Buffer
     );
-
-typedef NTSTATUS
-(NTAPI SpSetCredentialsAttributesFn)(
-    IN LSA_SEC_HANDLE CredentialHandle,
-    IN ULONG CredentialAttribute,
-    IN PVOID Buffer,
-    IN ULONG BufferSize );
 
 typedef NTSTATUS
 (NTAPI SpAddCredentialsFn)(
@@ -1535,7 +1526,6 @@ typedef struct _SECPKG_FUNCTION_TABLE {
     SpAddCredentialsFn * AddCredentials ;
     SpSetExtendedInformationFn * SetExtendedInformation ;
     SpSetContextAttributesFn * SetContextAttributes ;
-    SpSetCredentialsAttributesFn * SetCredentialsAttributes ;
 } SECPKG_FUNCTION_TABLE, *PSECPKG_FUNCTION_TABLE;
 
 //
@@ -1675,26 +1665,21 @@ typedef NTSTATUS
 //
 // Version of the security package interface.
 //
-// These defines are used for all of the following:
-//
+// These define are used for all of the following:
 // * Passed by the LSA to SpLsaModeInitializeFn to indicate the version of the LSA.
 //      All packages currently expect the LSA to pass SECPKG_INTERFACE_VERSION.
-//
 // * Passed by secur32.dll to SpUserModeInitialzeFn to indicate the version of the secur32 DLL.
 //      All packages currently expect secur32 to pass SECPKG_INTERFACE_VERSION.
-//
 // * Returned from SpLsaModeInitializeFn to indicate the version of SECPKG_FUNCTION_TABLE.
 //      SECPKG_INTERFACE_VERSION indicates all fields through SetExtendedInformation are defined (potentially to NULL)
 //      SECPKG_INTERFACE_VERSION_2 indicates all fields through SetContextAttributes are defined (potentially to NULL)
-//      SECPKG_INTERFACE_VERSION_3 indicates all fields through SetCredentialsAttributes are defined (potentially to NULL)
-//
 // * Returned from SpUserModeInitializeFn to indicate the version of the auth package.
 //      All packages currently return SECPKG_INTERFACE_VERSION
 //
 
 #define SECPKG_INTERFACE_VERSION    0x00010000
 #define SECPKG_INTERFACE_VERSION_2  0x00020000
-#define SECPKG_INTERFACE_VERSION_3  0x00040000
+
 
 
 typedef enum _KSEC_CONTEXT_TYPE {
@@ -1749,12 +1734,6 @@ typedef NTSTATUS
     OUT PULONG Size,
     OUT PVOID * SerializedData );
 
-typedef NTSTATUS
-(SEC_ENTRY KSEC_SERIALIZE_SCHANNEL_AUTH_DATA)(
-    IN PVOID pvAuthData,
-    OUT PULONG Size,
-    OUT PVOID * SerializedData );
-
 #ifndef MIDL_PASS
 
 KSEC_CREATE_CONTEXT_LIST KSecCreateContextList ;
@@ -1762,7 +1741,6 @@ KSEC_INSERT_LIST_ENTRY KSecInsertListEntry ;
 KSEC_REFERENCE_LIST_ENTRY KSecReferenceListEntry ;
 KSEC_DEREFERENCE_LIST_ENTRY KSecDereferenceListEntry ;
 KSEC_SERIALIZE_WINNT_AUTH_DATA KSecSerializeWinntAuthData ;
-KSEC_SERIALIZE_SCHANNEL_AUTH_DATA KSecSerializeSchannelAuthData ;
 
 #endif // not valid for MIDL_PASS
 
@@ -1771,7 +1749,6 @@ typedef KSEC_INSERT_LIST_ENTRY * PKSEC_INSERT_LIST_ENTRY ;
 typedef KSEC_REFERENCE_LIST_ENTRY * PKSEC_REFERENCE_LIST_ENTRY ;
 typedef KSEC_DEREFERENCE_LIST_ENTRY * PKSEC_DEREFERENCE_LIST_ENTRY ;
 typedef KSEC_SERIALIZE_WINNT_AUTH_DATA * PKSEC_SERIALIZE_WINNT_AUTH_DATA ;
-typedef KSEC_SERIALIZE_SCHANNEL_AUTH_DATA * PKSEC_SERIALIZE_SCHANNEL_AUTH_DATA ;
 
 
 typedef struct _SECPKG_KERNEL_FUNCTIONS {
@@ -1782,7 +1759,6 @@ typedef struct _SECPKG_KERNEL_FUNCTIONS {
     PKSEC_REFERENCE_LIST_ENTRY ReferenceListEntry ;
     PKSEC_DEREFERENCE_LIST_ENTRY DereferenceListEntry ;
     PKSEC_SERIALIZE_WINNT_AUTH_DATA SerializeWinntAuthData ;
-    PKSEC_SERIALIZE_SCHANNEL_AUTH_DATA SerializeSchannelAuthData ;
 } SECPKG_KERNEL_FUNCTIONS, *PSECPKG_KERNEL_FUNCTIONS;
 
 

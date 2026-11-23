@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for cluscfgserver.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -307,42 +306,6 @@ typedef interface AsyncIClusCfgStartupNotify AsyncIClusCfgStartupNotify;
 #endif 	/* __AsyncIClusCfgStartupNotify_FWD_DEFINED__ */
 
 
-#ifndef __IClusCfgManagedResourceData_FWD_DEFINED__
-#define __IClusCfgManagedResourceData_FWD_DEFINED__
-typedef interface IClusCfgManagedResourceData IClusCfgManagedResourceData;
-#endif 	/* __IClusCfgManagedResourceData_FWD_DEFINED__ */
-
-
-#ifndef __IClusCfgVerifyQuorum_FWD_DEFINED__
-#define __IClusCfgVerifyQuorum_FWD_DEFINED__
-typedef interface IClusCfgVerifyQuorum IClusCfgVerifyQuorum;
-#endif 	/* __IClusCfgVerifyQuorum_FWD_DEFINED__ */
-
-
-#ifndef __IClusCfgEvictListener_FWD_DEFINED__
-#define __IClusCfgEvictListener_FWD_DEFINED__
-typedef interface IClusCfgEvictListener IClusCfgEvictListener;
-#endif 	/* __IClusCfgEvictListener_FWD_DEFINED__ */
-
-
-#ifndef __AsyncIClusCfgEvictListener_FWD_DEFINED__
-#define __AsyncIClusCfgEvictListener_FWD_DEFINED__
-typedef interface AsyncIClusCfgEvictListener AsyncIClusCfgEvictListener;
-#endif 	/* __AsyncIClusCfgEvictListener_FWD_DEFINED__ */
-
-
-#ifndef __IClusCfgEvictNotify_FWD_DEFINED__
-#define __IClusCfgEvictNotify_FWD_DEFINED__
-typedef interface IClusCfgEvictNotify IClusCfgEvictNotify;
-#endif 	/* __IClusCfgEvictNotify_FWD_DEFINED__ */
-
-
-#ifndef __AsyncIClusCfgEvictNotify_FWD_DEFINED__
-#define __AsyncIClusCfgEvictNotify_FWD_DEFINED__
-typedef interface AsyncIClusCfgEvictNotify AsyncIClusCfgEvictNotify;
-#endif 	/* __AsyncIClusCfgEvictNotify_FWD_DEFINED__ */
-
-
 /* header files for imported files */
 #include "unknwn.h"
 
@@ -358,13 +321,12 @@ void __RPC_USER MIDL_user_free( void * );
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// Copyright (c) 2000-2001 Microsoft Corporation
+// Copyright (c) 2000 Microsoft Corporation
 //
 // Remarks:
 //     Generated file. See file ClusCfgServer.idl for more details.
 //
 //////////////////////////////////////////////////////////////////////////////
-
 
 
 
@@ -400,16 +362,7 @@ enum __MIDL___MIDL_itf_cluscfgserver_0000_0001
 	dluRAM_DISK	= dluCOMPACT_DISC + 1,
 	dluSYSTEM	= dluRAM_DISK + 1,
 	dluUNUSED	= dluSYSTEM + 1,
-	dluSTART_OF_SYSTEM_BUS	= 50,
-	dluNO_ROOT_DIRECTORY_SYSTEM_BUS	= dluSTART_OF_SYSTEM_BUS + 1,
-	dluREMOVABLE_DISK_SYSTEM_BUS	= dluNO_ROOT_DIRECTORY_SYSTEM_BUS + 1,
-	dluFIXED_DISK_SYSTEM_BUS	= dluREMOVABLE_DISK_SYSTEM_BUS + 1,
-	dluNETWORK_DRIVE_SYSTEM_BUS	= dluFIXED_DISK_SYSTEM_BUS + 1,
-	dluCOMPACT_DISC_SYSTEM_BUS	= dluNETWORK_DRIVE_SYSTEM_BUS + 1,
-	dluRAM_DISK_SYSTEM_BUS	= dluCOMPACT_DISC_SYSTEM_BUS + 1,
-	dluSYSTEM_SYSTEM_BUS	= dluRAM_DISK_SYSTEM_BUS + 1,
-	dluUNUSED_SYSTEM_BUS	= dluSYSTEM_SYSTEM_BUS + 1,
-	dluMAX	= dluUNUSED_SYSTEM_BUS + 1
+	dluMAX	= dluUNUSED + 1
     } 	EDriveLetterUsage;
 
 typedef struct _DRIVELETTERMAPPING
@@ -425,20 +378,6 @@ enum __MIDL___MIDL_itf_cluscfgserver_0000_0002
 	cmCLEANUP_NODE_AFTER_EVICT	= cmADD_NODE_TO_CLUSTER + 1,
 	cmMAX	= cmCLEANUP_NODE_AFTER_EVICT + 1
     } 	ECommitMode;
-
-typedef /* [helpstring][uuid] */  DECLSPEC_UUID("FFCF84AD-5892-4f4c-8C22-ACE041D6ACC2") 
-enum EClusCfgCleanupReason
-    {	crSUCCESS	= 0,
-	crCANCELLED	= 1,
-	crERROR	= 2
-    } 	EClusCfgCleanupReason;
-
-typedef /* [helpstring][uuid] */  DECLSPEC_UUID("1DAF9692-6662-43b1-AD45-D50F7849B0CD") 
-enum EDependencyFlags
-    {	dfUNKNOWN	= 0,
-	dfSHARED	= 1,
-	dfEXCLUSIVE	= 2
-    } 	EDependencyFlags;
 
 
 
@@ -484,13 +423,6 @@ EXTERN_C const IID IID_IClusCfgNodeInfo;
         
         virtual HRESULT STDMETHODCALLTYPE GetDriveLetterMappings( 
             /* [out] */ SDriveLetterMapping *pdlmDriveLetterUsageOut) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetMaxNodeCount( 
-            /* [out] */ DWORD *pcMaxNodesOut) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetProcessorInfo( 
-            /* [out] */ WORD *pwProcessorArchitectureOut,
-            /* [out] */ WORD *pwProcessorLevelOut) = 0;
         
     };
     
@@ -543,15 +475,6 @@ EXTERN_C const IID IID_IClusCfgNodeInfo;
             IClusCfgNodeInfo * This,
             /* [out] */ SDriveLetterMapping *pdlmDriveLetterUsageOut);
         
-        HRESULT ( STDMETHODCALLTYPE *GetMaxNodeCount )( 
-            IClusCfgNodeInfo * This,
-            /* [out] */ DWORD *pcMaxNodesOut);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetProcessorInfo )( 
-            IClusCfgNodeInfo * This,
-            /* [out] */ WORD *pwProcessorArchitectureOut,
-            /* [out] */ WORD *pwProcessorLevelOut);
-        
         END_INTERFACE
     } IClusCfgNodeInfoVtbl;
 
@@ -595,12 +518,6 @@ EXTERN_C const IID IID_IClusCfgNodeInfo;
 
 #define IClusCfgNodeInfo_GetDriveLetterMappings(This,pdlmDriveLetterUsageOut)	\
     (This)->lpVtbl -> GetDriveLetterMappings(This,pdlmDriveLetterUsageOut)
-
-#define IClusCfgNodeInfo_GetMaxNodeCount(This,pcMaxNodesOut)	\
-    (This)->lpVtbl -> GetMaxNodeCount(This,pcMaxNodesOut)
-
-#define IClusCfgNodeInfo_GetProcessorInfo(This,pwProcessorArchitectureOut,pwProcessorLevelOut)	\
-    (This)->lpVtbl -> GetProcessorInfo(This,pwProcessorArchitectureOut,pwProcessorLevelOut)
 
 #endif /* COBJMACROS */
 
@@ -697,31 +614,6 @@ void __RPC_STUB IClusCfgNodeInfo_GetDriveLetterMappings_Stub(
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE IClusCfgNodeInfo_GetMaxNodeCount_Proxy( 
-    IClusCfgNodeInfo * This,
-    /* [out] */ DWORD *pcMaxNodesOut);
-
-
-void __RPC_STUB IClusCfgNodeInfo_GetMaxNodeCount_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgNodeInfo_GetProcessorInfo_Proxy( 
-    IClusCfgNodeInfo * This,
-    /* [out] */ WORD *pwProcessorArchitectureOut,
-    /* [out] */ WORD *pwProcessorLevelOut);
-
-
-void __RPC_STUB IClusCfgNodeInfo_GetProcessorInfo_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
 
 #endif 	/* __IClusCfgNodeInfo_INTERFACE_DEFINED__ */
 
@@ -779,17 +671,6 @@ EXTERN_C const IID IID_AsyncIClusCfgNodeInfo;
         
         virtual HRESULT STDMETHODCALLTYPE Finish_GetDriveLetterMappings( 
             /* [out] */ SDriveLetterMapping *pdlmDriveLetterUsageOut) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Begin_GetMaxNodeCount( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Finish_GetMaxNodeCount( 
-            /* [out] */ DWORD *pcMaxNodesOut) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Begin_GetProcessorInfo( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Finish_GetProcessorInfo( 
-            /* [out] */ WORD *pwProcessorArchitectureOut,
-            /* [out] */ WORD *pwProcessorLevelOut) = 0;
         
     };
     
@@ -863,21 +744,6 @@ EXTERN_C const IID IID_AsyncIClusCfgNodeInfo;
             AsyncIClusCfgNodeInfo * This,
             /* [out] */ SDriveLetterMapping *pdlmDriveLetterUsageOut);
         
-        HRESULT ( STDMETHODCALLTYPE *Begin_GetMaxNodeCount )( 
-            AsyncIClusCfgNodeInfo * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Finish_GetMaxNodeCount )( 
-            AsyncIClusCfgNodeInfo * This,
-            /* [out] */ DWORD *pcMaxNodesOut);
-        
-        HRESULT ( STDMETHODCALLTYPE *Begin_GetProcessorInfo )( 
-            AsyncIClusCfgNodeInfo * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Finish_GetProcessorInfo )( 
-            AsyncIClusCfgNodeInfo * This,
-            /* [out] */ WORD *pwProcessorArchitectureOut,
-            /* [out] */ WORD *pwProcessorLevelOut);
-        
         END_INTERFACE
     } AsyncIClusCfgNodeInfoVtbl;
 
@@ -942,18 +808,6 @@ EXTERN_C const IID IID_AsyncIClusCfgNodeInfo;
 
 #define AsyncIClusCfgNodeInfo_Finish_GetDriveLetterMappings(This,pdlmDriveLetterUsageOut)	\
     (This)->lpVtbl -> Finish_GetDriveLetterMappings(This,pdlmDriveLetterUsageOut)
-
-#define AsyncIClusCfgNodeInfo_Begin_GetMaxNodeCount(This)	\
-    (This)->lpVtbl -> Begin_GetMaxNodeCount(This)
-
-#define AsyncIClusCfgNodeInfo_Finish_GetMaxNodeCount(This,pcMaxNodesOut)	\
-    (This)->lpVtbl -> Finish_GetMaxNodeCount(This,pcMaxNodesOut)
-
-#define AsyncIClusCfgNodeInfo_Begin_GetProcessorInfo(This)	\
-    (This)->lpVtbl -> Begin_GetProcessorInfo(This)
-
-#define AsyncIClusCfgNodeInfo_Finish_GetProcessorInfo(This,pwProcessorArchitectureOut,pwProcessorLevelOut)	\
-    (This)->lpVtbl -> Finish_GetProcessorInfo(This,pwProcessorArchitectureOut,pwProcessorLevelOut)
 
 #endif /* COBJMACROS */
 
@@ -1121,53 +975,6 @@ HRESULT STDMETHODCALLTYPE AsyncIClusCfgNodeInfo_Finish_GetDriveLetterMappings_Pr
 
 
 void __RPC_STUB AsyncIClusCfgNodeInfo_Finish_GetDriveLetterMappings_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgNodeInfo_Begin_GetMaxNodeCount_Proxy( 
-    AsyncIClusCfgNodeInfo * This);
-
-
-void __RPC_STUB AsyncIClusCfgNodeInfo_Begin_GetMaxNodeCount_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgNodeInfo_Finish_GetMaxNodeCount_Proxy( 
-    AsyncIClusCfgNodeInfo * This,
-    /* [out] */ DWORD *pcMaxNodesOut);
-
-
-void __RPC_STUB AsyncIClusCfgNodeInfo_Finish_GetMaxNodeCount_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgNodeInfo_Begin_GetProcessorInfo_Proxy( 
-    AsyncIClusCfgNodeInfo * This);
-
-
-void __RPC_STUB AsyncIClusCfgNodeInfo_Begin_GetProcessorInfo_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgNodeInfo_Finish_GetProcessorInfo_Proxy( 
-    AsyncIClusCfgNodeInfo * This,
-    /* [out] */ WORD *pwProcessorArchitectureOut,
-    /* [out] */ WORD *pwProcessorLevelOut);
-
-
-void __RPC_STUB AsyncIClusCfgNodeInfo_Finish_GetProcessorInfo_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -2103,7 +1910,7 @@ EXTERN_C const IID IID_IClusCfgManagedResourceInfo;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
-    MIDL_INTERFACE("8389D687-DF99-442b-81AB-58BA5B029688")
+    MIDL_INTERFACE("E0324847-1520-41b0-B960-54198DA5F8AF")
     IClusCfgManagedResourceInfo : public IUnknown
     {
     public:
@@ -2121,15 +1928,12 @@ EXTERN_C const IID IID_IClusCfgManagedResourceInfo;
         virtual HRESULT STDMETHODCALLTYPE SetManaged( 
             /* [in] */ BOOL fIsManagedIn) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE IsQuorumResource( void) = 0;
+        virtual HRESULT STDMETHODCALLTYPE IsQuorumDevice( void) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE SetQuorumResource( 
-            /* [in] */ BOOL fIsQuorumResourceIn) = 0;
+        virtual HRESULT STDMETHODCALLTYPE SetQuorumedDevice( 
+            /* [in] */ BOOL fIsQuorumDeviceIn) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE IsQuorumCapable( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetQuorumCapable( 
-            /* [in] */ BOOL fIsQuorumCapableIn) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetDriveLetterMappings( 
             /* [out] */ SDriveLetterMapping *pdlmDriveLetterMappingOut) = 0;
@@ -2137,10 +1941,10 @@ EXTERN_C const IID IID_IClusCfgManagedResourceInfo;
         virtual HRESULT STDMETHODCALLTYPE SetDriveLetterMappings( 
             /* [in] */ SDriveLetterMapping dlmDriveLetterMappingIn) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE IsManagedByDefault( void) = 0;
+        virtual HRESULT STDMETHODCALLTYPE IsDeviceJoinable( void) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE SetManagedByDefault( 
-            /* [in] */ BOOL fIsManagedByDefaultIn) = 0;
+        virtual HRESULT STDMETHODCALLTYPE SetDeviceJoinable( 
+            /* [in] */ BOOL fJoinableIn) = 0;
         
     };
     
@@ -2180,19 +1984,15 @@ EXTERN_C const IID IID_IClusCfgManagedResourceInfo;
             IClusCfgManagedResourceInfo * This,
             /* [in] */ BOOL fIsManagedIn);
         
-        HRESULT ( STDMETHODCALLTYPE *IsQuorumResource )( 
+        HRESULT ( STDMETHODCALLTYPE *IsQuorumDevice )( 
             IClusCfgManagedResourceInfo * This);
         
-        HRESULT ( STDMETHODCALLTYPE *SetQuorumResource )( 
+        HRESULT ( STDMETHODCALLTYPE *SetQuorumedDevice )( 
             IClusCfgManagedResourceInfo * This,
-            /* [in] */ BOOL fIsQuorumResourceIn);
+            /* [in] */ BOOL fIsQuorumDeviceIn);
         
         HRESULT ( STDMETHODCALLTYPE *IsQuorumCapable )( 
             IClusCfgManagedResourceInfo * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetQuorumCapable )( 
-            IClusCfgManagedResourceInfo * This,
-            /* [in] */ BOOL fIsQuorumCapableIn);
         
         HRESULT ( STDMETHODCALLTYPE *GetDriveLetterMappings )( 
             IClusCfgManagedResourceInfo * This,
@@ -2202,12 +2002,12 @@ EXTERN_C const IID IID_IClusCfgManagedResourceInfo;
             IClusCfgManagedResourceInfo * This,
             /* [in] */ SDriveLetterMapping dlmDriveLetterMappingIn);
         
-        HRESULT ( STDMETHODCALLTYPE *IsManagedByDefault )( 
+        HRESULT ( STDMETHODCALLTYPE *IsDeviceJoinable )( 
             IClusCfgManagedResourceInfo * This);
         
-        HRESULT ( STDMETHODCALLTYPE *SetManagedByDefault )( 
+        HRESULT ( STDMETHODCALLTYPE *SetDeviceJoinable )( 
             IClusCfgManagedResourceInfo * This,
-            /* [in] */ BOOL fIsManagedByDefaultIn);
+            /* [in] */ BOOL fJoinableIn);
         
         END_INTERFACE
     } IClusCfgManagedResourceInfoVtbl;
@@ -2247,17 +2047,14 @@ EXTERN_C const IID IID_IClusCfgManagedResourceInfo;
 #define IClusCfgManagedResourceInfo_SetManaged(This,fIsManagedIn)	\
     (This)->lpVtbl -> SetManaged(This,fIsManagedIn)
 
-#define IClusCfgManagedResourceInfo_IsQuorumResource(This)	\
-    (This)->lpVtbl -> IsQuorumResource(This)
+#define IClusCfgManagedResourceInfo_IsQuorumDevice(This)	\
+    (This)->lpVtbl -> IsQuorumDevice(This)
 
-#define IClusCfgManagedResourceInfo_SetQuorumResource(This,fIsQuorumResourceIn)	\
-    (This)->lpVtbl -> SetQuorumResource(This,fIsQuorumResourceIn)
+#define IClusCfgManagedResourceInfo_SetQuorumedDevice(This,fIsQuorumDeviceIn)	\
+    (This)->lpVtbl -> SetQuorumedDevice(This,fIsQuorumDeviceIn)
 
 #define IClusCfgManagedResourceInfo_IsQuorumCapable(This)	\
     (This)->lpVtbl -> IsQuorumCapable(This)
-
-#define IClusCfgManagedResourceInfo_SetQuorumCapable(This,fIsQuorumCapableIn)	\
-    (This)->lpVtbl -> SetQuorumCapable(This,fIsQuorumCapableIn)
 
 #define IClusCfgManagedResourceInfo_GetDriveLetterMappings(This,pdlmDriveLetterMappingOut)	\
     (This)->lpVtbl -> GetDriveLetterMappings(This,pdlmDriveLetterMappingOut)
@@ -2265,11 +2062,11 @@ EXTERN_C const IID IID_IClusCfgManagedResourceInfo;
 #define IClusCfgManagedResourceInfo_SetDriveLetterMappings(This,dlmDriveLetterMappingIn)	\
     (This)->lpVtbl -> SetDriveLetterMappings(This,dlmDriveLetterMappingIn)
 
-#define IClusCfgManagedResourceInfo_IsManagedByDefault(This)	\
-    (This)->lpVtbl -> IsManagedByDefault(This)
+#define IClusCfgManagedResourceInfo_IsDeviceJoinable(This)	\
+    (This)->lpVtbl -> IsDeviceJoinable(This)
 
-#define IClusCfgManagedResourceInfo_SetManagedByDefault(This,fIsManagedByDefaultIn)	\
-    (This)->lpVtbl -> SetManagedByDefault(This,fIsManagedByDefaultIn)
+#define IClusCfgManagedResourceInfo_SetDeviceJoinable(This,fJoinableIn)	\
+    (This)->lpVtbl -> SetDeviceJoinable(This,fJoinableIn)
 
 #endif /* COBJMACROS */
 
@@ -2337,23 +2134,23 @@ void __RPC_STUB IClusCfgManagedResourceInfo_SetManaged_Stub(
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceInfo_IsQuorumResource_Proxy( 
+HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceInfo_IsQuorumDevice_Proxy( 
     IClusCfgManagedResourceInfo * This);
 
 
-void __RPC_STUB IClusCfgManagedResourceInfo_IsQuorumResource_Stub(
+void __RPC_STUB IClusCfgManagedResourceInfo_IsQuorumDevice_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceInfo_SetQuorumResource_Proxy( 
+HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceInfo_SetQuorumedDevice_Proxy( 
     IClusCfgManagedResourceInfo * This,
-    /* [in] */ BOOL fIsQuorumResourceIn);
+    /* [in] */ BOOL fIsQuorumDeviceIn);
 
 
-void __RPC_STUB IClusCfgManagedResourceInfo_SetQuorumResource_Stub(
+void __RPC_STUB IClusCfgManagedResourceInfo_SetQuorumedDevice_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -2365,18 +2162,6 @@ HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceInfo_IsQuorumCapable_Proxy(
 
 
 void __RPC_STUB IClusCfgManagedResourceInfo_IsQuorumCapable_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceInfo_SetQuorumCapable_Proxy( 
-    IClusCfgManagedResourceInfo * This,
-    /* [in] */ BOOL fIsQuorumCapableIn);
-
-
-void __RPC_STUB IClusCfgManagedResourceInfo_SetQuorumCapable_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -2407,23 +2192,23 @@ void __RPC_STUB IClusCfgManagedResourceInfo_SetDriveLetterMappings_Stub(
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceInfo_IsManagedByDefault_Proxy( 
+HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceInfo_IsDeviceJoinable_Proxy( 
     IClusCfgManagedResourceInfo * This);
 
 
-void __RPC_STUB IClusCfgManagedResourceInfo_IsManagedByDefault_Stub(
+void __RPC_STUB IClusCfgManagedResourceInfo_IsDeviceJoinable_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceInfo_SetManagedByDefault_Proxy( 
+HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceInfo_SetDeviceJoinable_Proxy( 
     IClusCfgManagedResourceInfo * This,
-    /* [in] */ BOOL fIsManagedByDefaultIn);
+    /* [in] */ BOOL fJoinableIn);
 
 
-void __RPC_STUB IClusCfgManagedResourceInfo_SetManagedByDefault_Stub(
+void __RPC_STUB IClusCfgManagedResourceInfo_SetDeviceJoinable_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -2445,7 +2230,7 @@ EXTERN_C const IID IID_AsyncIClusCfgManagedResourceInfo;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
-    MIDL_INTERFACE("0560D153-892F-4bf5-87B0-06AF2803955C")
+    MIDL_INTERFACE("73616028-1243-4749-AD84-0B5EB358FFA0")
     AsyncIClusCfgManagedResourceInfo : public IUnknown
     {
     public:
@@ -2473,23 +2258,18 @@ EXTERN_C const IID IID_AsyncIClusCfgManagedResourceInfo;
         
         virtual HRESULT STDMETHODCALLTYPE Finish_SetManaged( void) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE Begin_IsQuorumResource( void) = 0;
+        virtual HRESULT STDMETHODCALLTYPE Begin_IsQuorumDevice( void) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE Finish_IsQuorumResource( void) = 0;
+        virtual HRESULT STDMETHODCALLTYPE Finish_IsQuorumDevice( void) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE Begin_SetQuorumResource( 
-            /* [in] */ BOOL fIsQuorumResourceIn) = 0;
+        virtual HRESULT STDMETHODCALLTYPE Begin_SetQuorumedDevice( 
+            /* [in] */ BOOL fIsQuorumDeviceIn) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE Finish_SetQuorumResource( void) = 0;
+        virtual HRESULT STDMETHODCALLTYPE Finish_SetQuorumedDevice( void) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE Begin_IsQuorumCapable( void) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE Finish_IsQuorumCapable( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Begin_SetQuorumCapable( 
-            /* [in] */ BOOL fIsQuorumCapableIn) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Finish_SetQuorumCapable( void) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE Begin_GetDriveLetterMappings( void) = 0;
         
@@ -2501,14 +2281,14 @@ EXTERN_C const IID IID_AsyncIClusCfgManagedResourceInfo;
         
         virtual HRESULT STDMETHODCALLTYPE Finish_SetDriveLetterMappings( void) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE Begin_IsManagedByDefault( void) = 0;
+        virtual HRESULT STDMETHODCALLTYPE Begin_IsDeviceJoinable( void) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE Finish_IsManagedByDefault( void) = 0;
+        virtual HRESULT STDMETHODCALLTYPE Finish_IsDeviceJoinable( void) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE Begin_SetManagedByDefault( 
-            /* [in] */ BOOL fIsManagedByDefaultIn) = 0;
+        virtual HRESULT STDMETHODCALLTYPE Begin_SetDeviceJoinable( 
+            /* [in] */ BOOL fJoinableIn) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE Finish_SetManagedByDefault( void) = 0;
+        virtual HRESULT STDMETHODCALLTYPE Finish_SetDeviceJoinable( void) = 0;
         
     };
     
@@ -2563,30 +2343,23 @@ EXTERN_C const IID IID_AsyncIClusCfgManagedResourceInfo;
         HRESULT ( STDMETHODCALLTYPE *Finish_SetManaged )( 
             AsyncIClusCfgManagedResourceInfo * This);
         
-        HRESULT ( STDMETHODCALLTYPE *Begin_IsQuorumResource )( 
+        HRESULT ( STDMETHODCALLTYPE *Begin_IsQuorumDevice )( 
             AsyncIClusCfgManagedResourceInfo * This);
         
-        HRESULT ( STDMETHODCALLTYPE *Finish_IsQuorumResource )( 
+        HRESULT ( STDMETHODCALLTYPE *Finish_IsQuorumDevice )( 
             AsyncIClusCfgManagedResourceInfo * This);
         
-        HRESULT ( STDMETHODCALLTYPE *Begin_SetQuorumResource )( 
+        HRESULT ( STDMETHODCALLTYPE *Begin_SetQuorumedDevice )( 
             AsyncIClusCfgManagedResourceInfo * This,
-            /* [in] */ BOOL fIsQuorumResourceIn);
+            /* [in] */ BOOL fIsQuorumDeviceIn);
         
-        HRESULT ( STDMETHODCALLTYPE *Finish_SetQuorumResource )( 
+        HRESULT ( STDMETHODCALLTYPE *Finish_SetQuorumedDevice )( 
             AsyncIClusCfgManagedResourceInfo * This);
         
         HRESULT ( STDMETHODCALLTYPE *Begin_IsQuorumCapable )( 
             AsyncIClusCfgManagedResourceInfo * This);
         
         HRESULT ( STDMETHODCALLTYPE *Finish_IsQuorumCapable )( 
-            AsyncIClusCfgManagedResourceInfo * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Begin_SetQuorumCapable )( 
-            AsyncIClusCfgManagedResourceInfo * This,
-            /* [in] */ BOOL fIsQuorumCapableIn);
-        
-        HRESULT ( STDMETHODCALLTYPE *Finish_SetQuorumCapable )( 
             AsyncIClusCfgManagedResourceInfo * This);
         
         HRESULT ( STDMETHODCALLTYPE *Begin_GetDriveLetterMappings )( 
@@ -2603,17 +2376,17 @@ EXTERN_C const IID IID_AsyncIClusCfgManagedResourceInfo;
         HRESULT ( STDMETHODCALLTYPE *Finish_SetDriveLetterMappings )( 
             AsyncIClusCfgManagedResourceInfo * This);
         
-        HRESULT ( STDMETHODCALLTYPE *Begin_IsManagedByDefault )( 
+        HRESULT ( STDMETHODCALLTYPE *Begin_IsDeviceJoinable )( 
             AsyncIClusCfgManagedResourceInfo * This);
         
-        HRESULT ( STDMETHODCALLTYPE *Finish_IsManagedByDefault )( 
+        HRESULT ( STDMETHODCALLTYPE *Finish_IsDeviceJoinable )( 
             AsyncIClusCfgManagedResourceInfo * This);
         
-        HRESULT ( STDMETHODCALLTYPE *Begin_SetManagedByDefault )( 
+        HRESULT ( STDMETHODCALLTYPE *Begin_SetDeviceJoinable )( 
             AsyncIClusCfgManagedResourceInfo * This,
-            /* [in] */ BOOL fIsManagedByDefaultIn);
+            /* [in] */ BOOL fJoinableIn);
         
-        HRESULT ( STDMETHODCALLTYPE *Finish_SetManagedByDefault )( 
+        HRESULT ( STDMETHODCALLTYPE *Finish_SetDeviceJoinable )( 
             AsyncIClusCfgManagedResourceInfo * This);
         
         END_INTERFACE
@@ -2669,29 +2442,23 @@ EXTERN_C const IID IID_AsyncIClusCfgManagedResourceInfo;
 #define AsyncIClusCfgManagedResourceInfo_Finish_SetManaged(This)	\
     (This)->lpVtbl -> Finish_SetManaged(This)
 
-#define AsyncIClusCfgManagedResourceInfo_Begin_IsQuorumResource(This)	\
-    (This)->lpVtbl -> Begin_IsQuorumResource(This)
+#define AsyncIClusCfgManagedResourceInfo_Begin_IsQuorumDevice(This)	\
+    (This)->lpVtbl -> Begin_IsQuorumDevice(This)
 
-#define AsyncIClusCfgManagedResourceInfo_Finish_IsQuorumResource(This)	\
-    (This)->lpVtbl -> Finish_IsQuorumResource(This)
+#define AsyncIClusCfgManagedResourceInfo_Finish_IsQuorumDevice(This)	\
+    (This)->lpVtbl -> Finish_IsQuorumDevice(This)
 
-#define AsyncIClusCfgManagedResourceInfo_Begin_SetQuorumResource(This,fIsQuorumResourceIn)	\
-    (This)->lpVtbl -> Begin_SetQuorumResource(This,fIsQuorumResourceIn)
+#define AsyncIClusCfgManagedResourceInfo_Begin_SetQuorumedDevice(This,fIsQuorumDeviceIn)	\
+    (This)->lpVtbl -> Begin_SetQuorumedDevice(This,fIsQuorumDeviceIn)
 
-#define AsyncIClusCfgManagedResourceInfo_Finish_SetQuorumResource(This)	\
-    (This)->lpVtbl -> Finish_SetQuorumResource(This)
+#define AsyncIClusCfgManagedResourceInfo_Finish_SetQuorumedDevice(This)	\
+    (This)->lpVtbl -> Finish_SetQuorumedDevice(This)
 
 #define AsyncIClusCfgManagedResourceInfo_Begin_IsQuorumCapable(This)	\
     (This)->lpVtbl -> Begin_IsQuorumCapable(This)
 
 #define AsyncIClusCfgManagedResourceInfo_Finish_IsQuorumCapable(This)	\
     (This)->lpVtbl -> Finish_IsQuorumCapable(This)
-
-#define AsyncIClusCfgManagedResourceInfo_Begin_SetQuorumCapable(This,fIsQuorumCapableIn)	\
-    (This)->lpVtbl -> Begin_SetQuorumCapable(This,fIsQuorumCapableIn)
-
-#define AsyncIClusCfgManagedResourceInfo_Finish_SetQuorumCapable(This)	\
-    (This)->lpVtbl -> Finish_SetQuorumCapable(This)
 
 #define AsyncIClusCfgManagedResourceInfo_Begin_GetDriveLetterMappings(This)	\
     (This)->lpVtbl -> Begin_GetDriveLetterMappings(This)
@@ -2705,17 +2472,17 @@ EXTERN_C const IID IID_AsyncIClusCfgManagedResourceInfo;
 #define AsyncIClusCfgManagedResourceInfo_Finish_SetDriveLetterMappings(This)	\
     (This)->lpVtbl -> Finish_SetDriveLetterMappings(This)
 
-#define AsyncIClusCfgManagedResourceInfo_Begin_IsManagedByDefault(This)	\
-    (This)->lpVtbl -> Begin_IsManagedByDefault(This)
+#define AsyncIClusCfgManagedResourceInfo_Begin_IsDeviceJoinable(This)	\
+    (This)->lpVtbl -> Begin_IsDeviceJoinable(This)
 
-#define AsyncIClusCfgManagedResourceInfo_Finish_IsManagedByDefault(This)	\
-    (This)->lpVtbl -> Finish_IsManagedByDefault(This)
+#define AsyncIClusCfgManagedResourceInfo_Finish_IsDeviceJoinable(This)	\
+    (This)->lpVtbl -> Finish_IsDeviceJoinable(This)
 
-#define AsyncIClusCfgManagedResourceInfo_Begin_SetManagedByDefault(This,fIsManagedByDefaultIn)	\
-    (This)->lpVtbl -> Begin_SetManagedByDefault(This,fIsManagedByDefaultIn)
+#define AsyncIClusCfgManagedResourceInfo_Begin_SetDeviceJoinable(This,fJoinableIn)	\
+    (This)->lpVtbl -> Begin_SetDeviceJoinable(This,fJoinableIn)
 
-#define AsyncIClusCfgManagedResourceInfo_Finish_SetManagedByDefault(This)	\
-    (This)->lpVtbl -> Finish_SetManagedByDefault(This)
+#define AsyncIClusCfgManagedResourceInfo_Finish_SetDeviceJoinable(This)	\
+    (This)->lpVtbl -> Finish_SetDeviceJoinable(This)
 
 #endif /* COBJMACROS */
 
@@ -2838,45 +2605,45 @@ void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_SetManaged_Stub(
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Begin_IsQuorumResource_Proxy( 
+HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Begin_IsQuorumDevice_Proxy( 
     AsyncIClusCfgManagedResourceInfo * This);
 
 
-void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Begin_IsQuorumResource_Stub(
+void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Begin_IsQuorumDevice_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Finish_IsQuorumResource_Proxy( 
+HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Finish_IsQuorumDevice_Proxy( 
     AsyncIClusCfgManagedResourceInfo * This);
 
 
-void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_IsQuorumResource_Stub(
+void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_IsQuorumDevice_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Begin_SetQuorumResource_Proxy( 
+HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Begin_SetQuorumedDevice_Proxy( 
     AsyncIClusCfgManagedResourceInfo * This,
-    /* [in] */ BOOL fIsQuorumResourceIn);
+    /* [in] */ BOOL fIsQuorumDeviceIn);
 
 
-void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Begin_SetQuorumResource_Stub(
+void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Begin_SetQuorumedDevice_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Finish_SetQuorumResource_Proxy( 
+HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Finish_SetQuorumedDevice_Proxy( 
     AsyncIClusCfgManagedResourceInfo * This);
 
 
-void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_SetQuorumResource_Stub(
+void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_SetQuorumedDevice_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -2899,29 +2666,6 @@ HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Finish_IsQuorumCapabl
 
 
 void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_IsQuorumCapable_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Begin_SetQuorumCapable_Proxy( 
-    AsyncIClusCfgManagedResourceInfo * This,
-    /* [in] */ BOOL fIsQuorumCapableIn);
-
-
-void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Begin_SetQuorumCapable_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Finish_SetQuorumCapable_Proxy( 
-    AsyncIClusCfgManagedResourceInfo * This);
-
-
-void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_SetQuorumCapable_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -2974,45 +2718,45 @@ void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_SetDriveLetterMappings_S
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Begin_IsManagedByDefault_Proxy( 
+HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Begin_IsDeviceJoinable_Proxy( 
     AsyncIClusCfgManagedResourceInfo * This);
 
 
-void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Begin_IsManagedByDefault_Stub(
+void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Begin_IsDeviceJoinable_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Finish_IsManagedByDefault_Proxy( 
+HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Finish_IsDeviceJoinable_Proxy( 
     AsyncIClusCfgManagedResourceInfo * This);
 
 
-void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_IsManagedByDefault_Stub(
+void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_IsDeviceJoinable_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Begin_SetManagedByDefault_Proxy( 
+HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Begin_SetDeviceJoinable_Proxy( 
     AsyncIClusCfgManagedResourceInfo * This,
-    /* [in] */ BOOL fIsManagedByDefaultIn);
+    /* [in] */ BOOL fJoinableIn);
 
 
-void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Begin_SetManagedByDefault_Stub(
+void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Begin_SetDeviceJoinable_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Finish_SetManagedByDefault_Proxy( 
+HRESULT STDMETHODCALLTYPE AsyncIClusCfgManagedResourceInfo_Finish_SetDeviceJoinable_Proxy( 
     AsyncIClusCfgManagedResourceInfo * This);
 
 
-void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_SetManagedByDefault_Stub(
+void __RPC_STUB AsyncIClusCfgManagedResourceInfo_Finish_SetDeviceJoinable_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -5899,9 +5643,6 @@ EXTERN_C const IID IID_IClusCfgClusterInfo;
         virtual HRESULT STDMETHODCALLTYPE SetBindingString( 
             /* [unique][in] */ LPCWSTR pcszBindingStringIn) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE GetMaxNodeCount( 
-            /* [out] */ DWORD *pcMaxNodesOut) = 0;
-        
     };
     
 #else 	/* C style interface */
@@ -5973,10 +5714,6 @@ EXTERN_C const IID IID_IClusCfgClusterInfo;
             IClusCfgClusterInfo * This,
             /* [unique][in] */ LPCWSTR pcszBindingStringIn);
         
-        HRESULT ( STDMETHODCALLTYPE *GetMaxNodeCount )( 
-            IClusCfgClusterInfo * This,
-            /* [out] */ DWORD *pcMaxNodesOut);
-        
         END_INTERFACE
     } IClusCfgClusterInfoVtbl;
 
@@ -6038,9 +5775,6 @@ EXTERN_C const IID IID_IClusCfgClusterInfo;
 
 #define IClusCfgClusterInfo_SetBindingString(This,pcszBindingStringIn)	\
     (This)->lpVtbl -> SetBindingString(This,pcszBindingStringIn)
-
-#define IClusCfgClusterInfo_GetMaxNodeCount(This,pcMaxNodesOut)	\
-    (This)->lpVtbl -> GetMaxNodeCount(This,pcMaxNodesOut)
 
 #endif /* COBJMACROS */
 
@@ -6205,18 +5939,6 @@ void __RPC_STUB IClusCfgClusterInfo_SetBindingString_Stub(
     DWORD *_pdwStubPhase);
 
 
-HRESULT STDMETHODCALLTYPE IClusCfgClusterInfo_GetMaxNodeCount_Proxy( 
-    IClusCfgClusterInfo * This,
-    /* [out] */ DWORD *pcMaxNodesOut);
-
-
-void __RPC_STUB IClusCfgClusterInfo_GetMaxNodeCount_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
 
 #endif 	/* __IClusCfgClusterInfo_INTERFACE_DEFINED__ */
 
@@ -6300,11 +6022,6 @@ EXTERN_C const IID IID_AsyncIClusCfgClusterInfo;
             /* [unique][in] */ LPCWSTR pcszBindingStringIn) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE Finish_SetBindingString( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Begin_GetMaxNodeCount( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Finish_GetMaxNodeCount( 
-            /* [out] */ DWORD *pcMaxNodesOut) = 0;
         
     };
     
@@ -6416,13 +6133,6 @@ EXTERN_C const IID IID_AsyncIClusCfgClusterInfo;
         HRESULT ( STDMETHODCALLTYPE *Finish_SetBindingString )( 
             AsyncIClusCfgClusterInfo * This);
         
-        HRESULT ( STDMETHODCALLTYPE *Begin_GetMaxNodeCount )( 
-            AsyncIClusCfgClusterInfo * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Finish_GetMaxNodeCount )( 
-            AsyncIClusCfgClusterInfo * This,
-            /* [out] */ DWORD *pcMaxNodesOut);
-        
         END_INTERFACE
     } AsyncIClusCfgClusterInfoVtbl;
 
@@ -6523,12 +6233,6 @@ EXTERN_C const IID IID_AsyncIClusCfgClusterInfo;
 
 #define AsyncIClusCfgClusterInfo_Finish_SetBindingString(This)	\
     (This)->lpVtbl -> Finish_SetBindingString(This)
-
-#define AsyncIClusCfgClusterInfo_Begin_GetMaxNodeCount(This)	\
-    (This)->lpVtbl -> Begin_GetMaxNodeCount(This)
-
-#define AsyncIClusCfgClusterInfo_Finish_GetMaxNodeCount(This,pcMaxNodesOut)	\
-    (This)->lpVtbl -> Finish_GetMaxNodeCount(This,pcMaxNodesOut)
 
 #endif /* COBJMACROS */
 
@@ -6830,29 +6534,6 @@ HRESULT STDMETHODCALLTYPE AsyncIClusCfgClusterInfo_Finish_SetBindingString_Proxy
 
 
 void __RPC_STUB AsyncIClusCfgClusterInfo_Finish_SetBindingString_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgClusterInfo_Begin_GetMaxNodeCount_Proxy( 
-    AsyncIClusCfgClusterInfo * This);
-
-
-void __RPC_STUB AsyncIClusCfgClusterInfo_Begin_GetMaxNodeCount_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgClusterInfo_Finish_GetMaxNodeCount_Proxy( 
-    AsyncIClusCfgClusterInfo * This,
-    /* [out] */ DWORD *pcMaxNodesOut);
-
-
-void __RPC_STUB AsyncIClusCfgClusterInfo_Finish_GetMaxNodeCount_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -7346,19 +7027,6 @@ EXTERN_C const IID IID_IClusCfgCredentials;
             /* [out] */ BSTR *pbstrDomainOut,
             /* [out] */ BSTR *pbstrPasswordOut) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE GetIdentity( 
-            /* [out] */ BSTR *pbstrUserOut,
-            /* [out] */ BSTR *pbstrDomainOut) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetPassword( 
-            /* [out] */ BSTR *pbstrPasswordOut) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE AssignTo( 
-            /* [in] */ IClusCfgCredentials *picccDestIn) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE AssignFrom( 
-            /* [in] */ IClusCfgCredentials *picccSourceIn) = 0;
-        
     };
     
 #else 	/* C style interface */
@@ -7390,23 +7058,6 @@ EXTERN_C const IID IID_IClusCfgCredentials;
             /* [out] */ BSTR *pbstrDomainOut,
             /* [out] */ BSTR *pbstrPasswordOut);
         
-        HRESULT ( STDMETHODCALLTYPE *GetIdentity )( 
-            IClusCfgCredentials * This,
-            /* [out] */ BSTR *pbstrUserOut,
-            /* [out] */ BSTR *pbstrDomainOut);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetPassword )( 
-            IClusCfgCredentials * This,
-            /* [out] */ BSTR *pbstrPasswordOut);
-        
-        HRESULT ( STDMETHODCALLTYPE *AssignTo )( 
-            IClusCfgCredentials * This,
-            /* [in] */ IClusCfgCredentials *picccDestIn);
-        
-        HRESULT ( STDMETHODCALLTYPE *AssignFrom )( 
-            IClusCfgCredentials * This,
-            /* [in] */ IClusCfgCredentials *picccSourceIn);
-        
         END_INTERFACE
     } IClusCfgCredentialsVtbl;
 
@@ -7435,18 +7086,6 @@ EXTERN_C const IID IID_IClusCfgCredentials;
 
 #define IClusCfgCredentials_GetCredentials(This,pbstrUserOut,pbstrDomainOut,pbstrPasswordOut)	\
     (This)->lpVtbl -> GetCredentials(This,pbstrUserOut,pbstrDomainOut,pbstrPasswordOut)
-
-#define IClusCfgCredentials_GetIdentity(This,pbstrUserOut,pbstrDomainOut)	\
-    (This)->lpVtbl -> GetIdentity(This,pbstrUserOut,pbstrDomainOut)
-
-#define IClusCfgCredentials_GetPassword(This,pbstrPasswordOut)	\
-    (This)->lpVtbl -> GetPassword(This,pbstrPasswordOut)
-
-#define IClusCfgCredentials_AssignTo(This,picccDestIn)	\
-    (This)->lpVtbl -> AssignTo(This,picccDestIn)
-
-#define IClusCfgCredentials_AssignFrom(This,picccSourceIn)	\
-    (This)->lpVtbl -> AssignFrom(This,picccSourceIn)
 
 #endif /* COBJMACROS */
 
@@ -7477,55 +7116,6 @@ HRESULT STDMETHODCALLTYPE IClusCfgCredentials_GetCredentials_Proxy(
 
 
 void __RPC_STUB IClusCfgCredentials_GetCredentials_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgCredentials_GetIdentity_Proxy( 
-    IClusCfgCredentials * This,
-    /* [out] */ BSTR *pbstrUserOut,
-    /* [out] */ BSTR *pbstrDomainOut);
-
-
-void __RPC_STUB IClusCfgCredentials_GetIdentity_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgCredentials_GetPassword_Proxy( 
-    IClusCfgCredentials * This,
-    /* [out] */ BSTR *pbstrPasswordOut);
-
-
-void __RPC_STUB IClusCfgCredentials_GetPassword_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgCredentials_AssignTo_Proxy( 
-    IClusCfgCredentials * This,
-    /* [in] */ IClusCfgCredentials *picccDestIn);
-
-
-void __RPC_STUB IClusCfgCredentials_AssignTo_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgCredentials_AssignFrom_Proxy( 
-    IClusCfgCredentials * This,
-    /* [in] */ IClusCfgCredentials *picccSourceIn);
-
-
-void __RPC_STUB IClusCfgCredentials_AssignFrom_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -7565,27 +7155,6 @@ EXTERN_C const IID IID_AsyncIClusCfgCredentials;
             /* [out] */ BSTR *pbstrDomainOut,
             /* [out] */ BSTR *pbstrPasswordOut) = 0;
         
-        virtual HRESULT STDMETHODCALLTYPE Begin_GetIdentity( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Finish_GetIdentity( 
-            /* [out] */ BSTR *pbstrUserOut,
-            /* [out] */ BSTR *pbstrDomainOut) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Begin_GetPassword( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Finish_GetPassword( 
-            /* [out] */ BSTR *pbstrPasswordOut) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Begin_AssignTo( 
-            /* [in] */ IClusCfgCredentials *picccDestIn) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Finish_AssignTo( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Begin_AssignFrom( 
-            /* [in] */ IClusCfgCredentials *picccSourceIn) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Finish_AssignFrom( void) = 0;
-        
     };
     
 #else 	/* C style interface */
@@ -7623,35 +7192,6 @@ EXTERN_C const IID IID_AsyncIClusCfgCredentials;
             /* [out] */ BSTR *pbstrDomainOut,
             /* [out] */ BSTR *pbstrPasswordOut);
         
-        HRESULT ( STDMETHODCALLTYPE *Begin_GetIdentity )( 
-            AsyncIClusCfgCredentials * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Finish_GetIdentity )( 
-            AsyncIClusCfgCredentials * This,
-            /* [out] */ BSTR *pbstrUserOut,
-            /* [out] */ BSTR *pbstrDomainOut);
-        
-        HRESULT ( STDMETHODCALLTYPE *Begin_GetPassword )( 
-            AsyncIClusCfgCredentials * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Finish_GetPassword )( 
-            AsyncIClusCfgCredentials * This,
-            /* [out] */ BSTR *pbstrPasswordOut);
-        
-        HRESULT ( STDMETHODCALLTYPE *Begin_AssignTo )( 
-            AsyncIClusCfgCredentials * This,
-            /* [in] */ IClusCfgCredentials *picccDestIn);
-        
-        HRESULT ( STDMETHODCALLTYPE *Finish_AssignTo )( 
-            AsyncIClusCfgCredentials * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Begin_AssignFrom )( 
-            AsyncIClusCfgCredentials * This,
-            /* [in] */ IClusCfgCredentials *picccSourceIn);
-        
-        HRESULT ( STDMETHODCALLTYPE *Finish_AssignFrom )( 
-            AsyncIClusCfgCredentials * This);
-        
         END_INTERFACE
     } AsyncIClusCfgCredentialsVtbl;
 
@@ -7686,30 +7226,6 @@ EXTERN_C const IID IID_AsyncIClusCfgCredentials;
 
 #define AsyncIClusCfgCredentials_Finish_GetCredentials(This,pbstrUserOut,pbstrDomainOut,pbstrPasswordOut)	\
     (This)->lpVtbl -> Finish_GetCredentials(This,pbstrUserOut,pbstrDomainOut,pbstrPasswordOut)
-
-#define AsyncIClusCfgCredentials_Begin_GetIdentity(This)	\
-    (This)->lpVtbl -> Begin_GetIdentity(This)
-
-#define AsyncIClusCfgCredentials_Finish_GetIdentity(This,pbstrUserOut,pbstrDomainOut)	\
-    (This)->lpVtbl -> Finish_GetIdentity(This,pbstrUserOut,pbstrDomainOut)
-
-#define AsyncIClusCfgCredentials_Begin_GetPassword(This)	\
-    (This)->lpVtbl -> Begin_GetPassword(This)
-
-#define AsyncIClusCfgCredentials_Finish_GetPassword(This,pbstrPasswordOut)	\
-    (This)->lpVtbl -> Finish_GetPassword(This,pbstrPasswordOut)
-
-#define AsyncIClusCfgCredentials_Begin_AssignTo(This,picccDestIn)	\
-    (This)->lpVtbl -> Begin_AssignTo(This,picccDestIn)
-
-#define AsyncIClusCfgCredentials_Finish_AssignTo(This)	\
-    (This)->lpVtbl -> Finish_AssignTo(This)
-
-#define AsyncIClusCfgCredentials_Begin_AssignFrom(This,picccSourceIn)	\
-    (This)->lpVtbl -> Begin_AssignFrom(This,picccSourceIn)
-
-#define AsyncIClusCfgCredentials_Finish_AssignFrom(This)	\
-    (This)->lpVtbl -> Finish_AssignFrom(This)
 
 #endif /* COBJMACROS */
 
@@ -7762,99 +7278,6 @@ HRESULT STDMETHODCALLTYPE AsyncIClusCfgCredentials_Finish_GetCredentials_Proxy(
 
 
 void __RPC_STUB AsyncIClusCfgCredentials_Finish_GetCredentials_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgCredentials_Begin_GetIdentity_Proxy( 
-    AsyncIClusCfgCredentials * This);
-
-
-void __RPC_STUB AsyncIClusCfgCredentials_Begin_GetIdentity_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgCredentials_Finish_GetIdentity_Proxy( 
-    AsyncIClusCfgCredentials * This,
-    /* [out] */ BSTR *pbstrUserOut,
-    /* [out] */ BSTR *pbstrDomainOut);
-
-
-void __RPC_STUB AsyncIClusCfgCredentials_Finish_GetIdentity_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgCredentials_Begin_GetPassword_Proxy( 
-    AsyncIClusCfgCredentials * This);
-
-
-void __RPC_STUB AsyncIClusCfgCredentials_Begin_GetPassword_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgCredentials_Finish_GetPassword_Proxy( 
-    AsyncIClusCfgCredentials * This,
-    /* [out] */ BSTR *pbstrPasswordOut);
-
-
-void __RPC_STUB AsyncIClusCfgCredentials_Finish_GetPassword_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgCredentials_Begin_AssignTo_Proxy( 
-    AsyncIClusCfgCredentials * This,
-    /* [in] */ IClusCfgCredentials *picccDestIn);
-
-
-void __RPC_STUB AsyncIClusCfgCredentials_Begin_AssignTo_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgCredentials_Finish_AssignTo_Proxy( 
-    AsyncIClusCfgCredentials * This);
-
-
-void __RPC_STUB AsyncIClusCfgCredentials_Finish_AssignTo_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgCredentials_Begin_AssignFrom_Proxy( 
-    AsyncIClusCfgCredentials * This,
-    /* [in] */ IClusCfgCredentials *picccSourceIn);
-
-
-void __RPC_STUB AsyncIClusCfgCredentials_Begin_AssignFrom_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgCredentials_Finish_AssignFrom_Proxy( 
-    AsyncIClusCfgCredentials * This);
-
-
-void __RPC_STUB AsyncIClusCfgCredentials_Finish_AssignFrom_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -8113,6 +7536,13 @@ void __RPC_STUB IClusCfgManagedResourceCfg_Evict_Stub(
 
 /* interface IClusCfgResourcePreCreate */
 /* [unique][local][uuid][object] */ 
+
+typedef /* [helpstring][uuid] */  DECLSPEC_UUID("1DAF9692-6662-43b1-AD45-D50F7849B0CD") 
+enum EDependencyFlags
+    {	dfUNKNOWN	= 0,
+	dfSHARED	= 1,
+	dfEXCLUSIVE	= 2
+    } 	EDependencyFlags;
 
 
 EXTERN_C const IID IID_IClusCfgResourcePreCreate;
@@ -10297,672 +9727,6 @@ void __RPC_STUB AsyncIClusCfgStartupNotify_Finish_SendNotifications_Stub(
 
 
 #endif 	/* __AsyncIClusCfgStartupNotify_INTERFACE_DEFINED__ */
-
-
-#ifndef __IClusCfgManagedResourceData_INTERFACE_DEFINED__
-#define __IClusCfgManagedResourceData_INTERFACE_DEFINED__
-
-/* interface IClusCfgManagedResourceData */
-/* [unique][uuid][object] */ 
-
-
-EXTERN_C const IID IID_IClusCfgManagedResourceData;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("8447ECB7-2171-4e21-A108-0EB5B0B516DA")
-    IClusCfgManagedResourceData : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE GetResourcePrivateData( 
-            /* [size_is][out] */ BYTE *pbBufferOut,
-            /* [out][in] */ DWORD *pcbBufferInout) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetResourcePrivateData( 
-            /* [size_is][unique][in] */ const BYTE *pcbBufferIn,
-            /* [in] */ DWORD cbBufferIn) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IClusCfgManagedResourceDataVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IClusCfgManagedResourceData * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IClusCfgManagedResourceData * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IClusCfgManagedResourceData * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetResourcePrivateData )( 
-            IClusCfgManagedResourceData * This,
-            /* [size_is][out] */ BYTE *pbBufferOut,
-            /* [out][in] */ DWORD *pcbBufferInout);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetResourcePrivateData )( 
-            IClusCfgManagedResourceData * This,
-            /* [size_is][unique][in] */ const BYTE *pcbBufferIn,
-            /* [in] */ DWORD cbBufferIn);
-        
-        END_INTERFACE
-    } IClusCfgManagedResourceDataVtbl;
-
-    interface IClusCfgManagedResourceData
-    {
-        CONST_VTBL struct IClusCfgManagedResourceDataVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IClusCfgManagedResourceData_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IClusCfgManagedResourceData_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IClusCfgManagedResourceData_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IClusCfgManagedResourceData_GetResourcePrivateData(This,pbBufferOut,pcbBufferInout)	\
-    (This)->lpVtbl -> GetResourcePrivateData(This,pbBufferOut,pcbBufferInout)
-
-#define IClusCfgManagedResourceData_SetResourcePrivateData(This,pcbBufferIn,cbBufferIn)	\
-    (This)->lpVtbl -> SetResourcePrivateData(This,pcbBufferIn,cbBufferIn)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceData_GetResourcePrivateData_Proxy( 
-    IClusCfgManagedResourceData * This,
-    /* [size_is][out] */ BYTE *pbBufferOut,
-    /* [out][in] */ DWORD *pcbBufferInout);
-
-
-void __RPC_STUB IClusCfgManagedResourceData_GetResourcePrivateData_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgManagedResourceData_SetResourcePrivateData_Proxy( 
-    IClusCfgManagedResourceData * This,
-    /* [size_is][unique][in] */ const BYTE *pcbBufferIn,
-    /* [in] */ DWORD cbBufferIn);
-
-
-void __RPC_STUB IClusCfgManagedResourceData_SetResourcePrivateData_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IClusCfgManagedResourceData_INTERFACE_DEFINED__ */
-
-
-#ifndef __IClusCfgVerifyQuorum_INTERFACE_DEFINED__
-#define __IClusCfgVerifyQuorum_INTERFACE_DEFINED__
-
-/* interface IClusCfgVerifyQuorum */
-/* [unique][uuid][object] */ 
-
-
-EXTERN_C const IID IID_IClusCfgVerifyQuorum;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("90A2EFAE-1B62-4ada-BF1C-BECAB56F748D")
-    IClusCfgVerifyQuorum : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE PrepareToHostQuorumResource( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Cleanup( 
-            /* [in] */ EClusCfgCleanupReason cccrReasonIn) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE IsMultiNodeCapable( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetMultiNodeCapable( 
-            /* [in] */ BOOL fMultiNodeCapableIn) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IClusCfgVerifyQuorumVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IClusCfgVerifyQuorum * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IClusCfgVerifyQuorum * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IClusCfgVerifyQuorum * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *PrepareToHostQuorumResource )( 
-            IClusCfgVerifyQuorum * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Cleanup )( 
-            IClusCfgVerifyQuorum * This,
-            /* [in] */ EClusCfgCleanupReason cccrReasonIn);
-        
-        HRESULT ( STDMETHODCALLTYPE *IsMultiNodeCapable )( 
-            IClusCfgVerifyQuorum * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetMultiNodeCapable )( 
-            IClusCfgVerifyQuorum * This,
-            /* [in] */ BOOL fMultiNodeCapableIn);
-        
-        END_INTERFACE
-    } IClusCfgVerifyQuorumVtbl;
-
-    interface IClusCfgVerifyQuorum
-    {
-        CONST_VTBL struct IClusCfgVerifyQuorumVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IClusCfgVerifyQuorum_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IClusCfgVerifyQuorum_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IClusCfgVerifyQuorum_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IClusCfgVerifyQuorum_PrepareToHostQuorumResource(This)	\
-    (This)->lpVtbl -> PrepareToHostQuorumResource(This)
-
-#define IClusCfgVerifyQuorum_Cleanup(This,cccrReasonIn)	\
-    (This)->lpVtbl -> Cleanup(This,cccrReasonIn)
-
-#define IClusCfgVerifyQuorum_IsMultiNodeCapable(This)	\
-    (This)->lpVtbl -> IsMultiNodeCapable(This)
-
-#define IClusCfgVerifyQuorum_SetMultiNodeCapable(This,fMultiNodeCapableIn)	\
-    (This)->lpVtbl -> SetMultiNodeCapable(This,fMultiNodeCapableIn)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgVerifyQuorum_PrepareToHostQuorumResource_Proxy( 
-    IClusCfgVerifyQuorum * This);
-
-
-void __RPC_STUB IClusCfgVerifyQuorum_PrepareToHostQuorumResource_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgVerifyQuorum_Cleanup_Proxy( 
-    IClusCfgVerifyQuorum * This,
-    /* [in] */ EClusCfgCleanupReason cccrReasonIn);
-
-
-void __RPC_STUB IClusCfgVerifyQuorum_Cleanup_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgVerifyQuorum_IsMultiNodeCapable_Proxy( 
-    IClusCfgVerifyQuorum * This);
-
-
-void __RPC_STUB IClusCfgVerifyQuorum_IsMultiNodeCapable_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgVerifyQuorum_SetMultiNodeCapable_Proxy( 
-    IClusCfgVerifyQuorum * This,
-    /* [in] */ BOOL fMultiNodeCapableIn);
-
-
-void __RPC_STUB IClusCfgVerifyQuorum_SetMultiNodeCapable_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IClusCfgVerifyQuorum_INTERFACE_DEFINED__ */
-
-
-#ifndef __IClusCfgEvictListener_INTERFACE_DEFINED__
-#define __IClusCfgEvictListener_INTERFACE_DEFINED__
-
-/* interface IClusCfgEvictListener */
-/* [unique][async_uuid][uuid][object] */ 
-
-
-EXTERN_C const IID IID_IClusCfgEvictListener;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("E20DDEE3-DEFC-4d54-B1F7-2AEB784C3847")
-    IClusCfgEvictListener : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE EvictNotify( 
-            /* [unique][in] */ LPCWSTR pcszNodeNameIn) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IClusCfgEvictListenerVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IClusCfgEvictListener * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IClusCfgEvictListener * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IClusCfgEvictListener * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *EvictNotify )( 
-            IClusCfgEvictListener * This,
-            /* [unique][in] */ LPCWSTR pcszNodeNameIn);
-        
-        END_INTERFACE
-    } IClusCfgEvictListenerVtbl;
-
-    interface IClusCfgEvictListener
-    {
-        CONST_VTBL struct IClusCfgEvictListenerVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IClusCfgEvictListener_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IClusCfgEvictListener_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IClusCfgEvictListener_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IClusCfgEvictListener_EvictNotify(This,pcszNodeNameIn)	\
-    (This)->lpVtbl -> EvictNotify(This,pcszNodeNameIn)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgEvictListener_EvictNotify_Proxy( 
-    IClusCfgEvictListener * This,
-    /* [unique][in] */ LPCWSTR pcszNodeNameIn);
-
-
-void __RPC_STUB IClusCfgEvictListener_EvictNotify_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IClusCfgEvictListener_INTERFACE_DEFINED__ */
-
-
-#ifndef __AsyncIClusCfgEvictListener_INTERFACE_DEFINED__
-#define __AsyncIClusCfgEvictListener_INTERFACE_DEFINED__
-
-/* interface AsyncIClusCfgEvictListener */
-/* [uuid][unique][object] */ 
-
-
-EXTERN_C const IID IID_AsyncIClusCfgEvictListener;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("08609AC3-D284-4009-805F-17D3CFE4160B")
-    AsyncIClusCfgEvictListener : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE Begin_EvictNotify( 
-            /* [unique][in] */ LPCWSTR pcszNodeNameIn) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Finish_EvictNotify( void) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct AsyncIClusCfgEvictListenerVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            AsyncIClusCfgEvictListener * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            AsyncIClusCfgEvictListener * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            AsyncIClusCfgEvictListener * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Begin_EvictNotify )( 
-            AsyncIClusCfgEvictListener * This,
-            /* [unique][in] */ LPCWSTR pcszNodeNameIn);
-        
-        HRESULT ( STDMETHODCALLTYPE *Finish_EvictNotify )( 
-            AsyncIClusCfgEvictListener * This);
-        
-        END_INTERFACE
-    } AsyncIClusCfgEvictListenerVtbl;
-
-    interface AsyncIClusCfgEvictListener
-    {
-        CONST_VTBL struct AsyncIClusCfgEvictListenerVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define AsyncIClusCfgEvictListener_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define AsyncIClusCfgEvictListener_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define AsyncIClusCfgEvictListener_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define AsyncIClusCfgEvictListener_Begin_EvictNotify(This,pcszNodeNameIn)	\
-    (This)->lpVtbl -> Begin_EvictNotify(This,pcszNodeNameIn)
-
-#define AsyncIClusCfgEvictListener_Finish_EvictNotify(This)	\
-    (This)->lpVtbl -> Finish_EvictNotify(This)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgEvictListener_Begin_EvictNotify_Proxy( 
-    AsyncIClusCfgEvictListener * This,
-    /* [unique][in] */ LPCWSTR pcszNodeNameIn);
-
-
-void __RPC_STUB AsyncIClusCfgEvictListener_Begin_EvictNotify_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgEvictListener_Finish_EvictNotify_Proxy( 
-    AsyncIClusCfgEvictListener * This);
-
-
-void __RPC_STUB AsyncIClusCfgEvictListener_Finish_EvictNotify_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __AsyncIClusCfgEvictListener_INTERFACE_DEFINED__ */
-
-
-#ifndef __IClusCfgEvictNotify_INTERFACE_DEFINED__
-#define __IClusCfgEvictNotify_INTERFACE_DEFINED__
-
-/* interface IClusCfgEvictNotify */
-/* [unique][async_uuid][uuid][object] */ 
-
-
-EXTERN_C const IID IID_IClusCfgEvictNotify;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("090E7745-9E5B-4d76-936E-D760CF2FF3B9")
-    IClusCfgEvictNotify : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE SendNotifications( 
-            /* [unique][in] */ LPCWSTR pcszNodeNameIn) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IClusCfgEvictNotifyVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IClusCfgEvictNotify * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IClusCfgEvictNotify * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IClusCfgEvictNotify * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *SendNotifications )( 
-            IClusCfgEvictNotify * This,
-            /* [unique][in] */ LPCWSTR pcszNodeNameIn);
-        
-        END_INTERFACE
-    } IClusCfgEvictNotifyVtbl;
-
-    interface IClusCfgEvictNotify
-    {
-        CONST_VTBL struct IClusCfgEvictNotifyVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IClusCfgEvictNotify_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IClusCfgEvictNotify_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IClusCfgEvictNotify_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IClusCfgEvictNotify_SendNotifications(This,pcszNodeNameIn)	\
-    (This)->lpVtbl -> SendNotifications(This,pcszNodeNameIn)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgEvictNotify_SendNotifications_Proxy( 
-    IClusCfgEvictNotify * This,
-    /* [unique][in] */ LPCWSTR pcszNodeNameIn);
-
-
-void __RPC_STUB IClusCfgEvictNotify_SendNotifications_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IClusCfgEvictNotify_INTERFACE_DEFINED__ */
-
-
-#ifndef __AsyncIClusCfgEvictNotify_INTERFACE_DEFINED__
-#define __AsyncIClusCfgEvictNotify_INTERFACE_DEFINED__
-
-/* interface AsyncIClusCfgEvictNotify */
-/* [uuid][unique][object] */ 
-
-
-EXTERN_C const IID IID_AsyncIClusCfgEvictNotify;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("AD2E83CC-1D14-4d20-928E-22D344847454")
-    AsyncIClusCfgEvictNotify : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE Begin_SendNotifications( 
-            /* [unique][in] */ LPCWSTR pcszNodeNameIn) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE Finish_SendNotifications( void) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct AsyncIClusCfgEvictNotifyVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            AsyncIClusCfgEvictNotify * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            AsyncIClusCfgEvictNotify * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            AsyncIClusCfgEvictNotify * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Begin_SendNotifications )( 
-            AsyncIClusCfgEvictNotify * This,
-            /* [unique][in] */ LPCWSTR pcszNodeNameIn);
-        
-        HRESULT ( STDMETHODCALLTYPE *Finish_SendNotifications )( 
-            AsyncIClusCfgEvictNotify * This);
-        
-        END_INTERFACE
-    } AsyncIClusCfgEvictNotifyVtbl;
-
-    interface AsyncIClusCfgEvictNotify
-    {
-        CONST_VTBL struct AsyncIClusCfgEvictNotifyVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define AsyncIClusCfgEvictNotify_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define AsyncIClusCfgEvictNotify_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define AsyncIClusCfgEvictNotify_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define AsyncIClusCfgEvictNotify_Begin_SendNotifications(This,pcszNodeNameIn)	\
-    (This)->lpVtbl -> Begin_SendNotifications(This,pcszNodeNameIn)
-
-#define AsyncIClusCfgEvictNotify_Finish_SendNotifications(This)	\
-    (This)->lpVtbl -> Finish_SendNotifications(This)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgEvictNotify_Begin_SendNotifications_Proxy( 
-    AsyncIClusCfgEvictNotify * This,
-    /* [unique][in] */ LPCWSTR pcszNodeNameIn);
-
-
-void __RPC_STUB AsyncIClusCfgEvictNotify_Begin_SendNotifications_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE AsyncIClusCfgEvictNotify_Finish_SendNotifications_Proxy( 
-    AsyncIClusCfgEvictNotify * This);
-
-
-void __RPC_STUB AsyncIClusCfgEvictNotify_Finish_SendNotifications_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __AsyncIClusCfgEvictNotify_INTERFACE_DEFINED__ */
 
 
 /* Additional Prototypes for ALL interfaces */

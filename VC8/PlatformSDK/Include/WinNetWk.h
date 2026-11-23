@@ -86,8 +86,6 @@ extern "C" {
 #define     WNNC_NET_IBMAL       0x00340000
 #define     WNNC_NET_LOCK        0x00350000
 #define     WNNC_NET_TERMSRV     0x00360000
-#define     WNNC_NET_SRT         0x00370000
-#define     WNNC_NET_QUINCY      0x00380000
 
 #define     WNNC_CRED_MANAGER   0xFFFF0000
 
@@ -302,23 +300,6 @@ WNetGetConnectionW(
 #define WNetGetConnection  WNetGetConnectionW
 #else
 #define WNetGetConnection  WNetGetConnectionA
-#endif // !UNICODE
-
-
-DWORD APIENTRY
-WNetRestoreConnectionA(
-    IN HWND     hwndParent,
-    IN LPCSTR lpDevice
-    );
-DWORD APIENTRY
-WNetRestoreConnectionW(
-    IN HWND     hwndParent,
-    IN LPCWSTR lpDevice
-    );
-#ifdef UNICODE
-#define WNetRestoreConnection  WNetRestoreConnectionW
-#else
-#define WNetRestoreConnection  WNetRestoreConnectionA
 #endif // !UNICODE
 
 

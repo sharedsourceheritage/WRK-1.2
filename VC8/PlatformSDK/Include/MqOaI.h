@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for mqoai.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -381,18 +380,6 @@ typedef interface IMSMQCollection IMSMQCollection;
 #endif 	/* __IMSMQCollection_FWD_DEFINED__ */
 
 
-#ifndef __MSMQCollection_FWD_DEFINED__
-#define __MSMQCollection_FWD_DEFINED__
-
-#ifdef __cplusplus
-typedef class MSMQCollection MSMQCollection;
-#else
-typedef struct MSMQCollection MSMQCollection;
-#endif /* __cplusplus */
-
-#endif 	/* __MSMQCollection_FWD_DEFINED__ */
-
-
 #ifndef __IMSMQManagement_FWD_DEFINED__
 #define __IMSMQManagement_FWD_DEFINED__
 typedef interface IMSMQManagement IMSMQManagement;
@@ -557,7 +544,6 @@ enum MQMSGCLASS
 	MQMSG_CLASS_NACK_NOT_TRANSACTIONAL_Q	= 0x8000 + 0 + 0x9,
 	MQMSG_CLASS_NACK_NOT_TRANSACTIONAL_MSG	= 0x8000 + 0 + 0xa,
 	MQMSG_CLASS_NACK_UNSUPPORTED_CRYPTO_PROVIDER	= 0x8000 + 0 + 0xb,
-	MQMSG_CLASS_NACK_SOURCE_COMPUTER_GUID_CHANGED	= 0x8000 + 0 + 0xc,
 	MQMSG_CLASS_NACK_Q_DELETED	= 0x8000 + 0x4000 + 0,
 	MQMSG_CLASS_NACK_Q_PURGED	= 0x8000 + 0x4000 + 0x1,
 	MQMSG_CLASS_NACK_RECEIVE_TIMEOUT	= 0x8000 + 0x4000 + 0x2,
@@ -599,6 +585,7 @@ enum MQMSGSENDERIDTYPE
 /* [helpstringcontext] */ 
 enum MQMSGPRIVLEVEL
     {	MQMSG_PRIV_LEVEL_NONE	= 0,
+	MQMSG_PRIV_LEVEL_BODY	= 1,
 	MQMSG_PRIV_LEVEL_BODY_BASE	= 1,
 	MQMSG_PRIV_LEVEL_BODY_ENHANCED	= 3
     } ;
@@ -704,8 +691,7 @@ enum QUEUE_STATE
 	MQ_QUEUE_STATE_ONHOLD	= MQ_QUEUE_STATE_NEEDVALIDATE + 1,
 	MQ_QUEUE_STATE_NONACTIVE	= MQ_QUEUE_STATE_ONHOLD + 1,
 	MQ_QUEUE_STATE_CONNECTED	= MQ_QUEUE_STATE_NONACTIVE + 1,
-	MQ_QUEUE_STATE_DISCONNECTING	= MQ_QUEUE_STATE_CONNECTED + 1,
-	MQ_QUEUE_STATE_LOCKED	= MQ_QUEUE_STATE_DISCONNECTING + 1
+	MQ_QUEUE_STATE_DISCONNECTING	= MQ_QUEUE_STATE_CONNECTED + 1
     } ;
 /* [helpstringcontext] */ 
 enum MQDEFAULT
@@ -731,7 +717,6 @@ enum MQERROR
     {	MQ_ERROR	= 0xc00e0001,
 	MQ_ERROR_PROPERTY	= 0xc00e0002,
 	MQ_ERROR_QUEUE_NOT_FOUND	= 0xc00e0003,
-	MQ_ERROR_QUEUE_NOT_ACTIVE	= 0xc00e0004,
 	MQ_ERROR_QUEUE_EXISTS	= 0xc00e0005,
 	MQ_ERROR_INVALID_PARAMETER	= 0xc00e0006,
 	MQ_ERROR_INVALID_HANDLE	= 0xc00e0007,
@@ -764,7 +749,6 @@ enum MQERROR
 	MQ_ERROR_SENDER_CERT_BUFFER_TOO_SMALL	= 0xc00e002b,
 	MQ_ERROR_INVALID_CERTIFICATE	= 0xc00e002c,
 	MQ_ERROR_CORRUPTED_INTERNAL_CERTIFICATE	= 0xc00e002d,
-	MQ_ERROR_INTERNAL_USER_CERT_EXIST	= 0xc00e002e,
 	MQ_ERROR_NO_INTERNAL_USER_CERT	= 0xc00e002f,
 	MQ_ERROR_CORRUPTED_SECURITY_DATA	= 0xc00e0030,
 	MQ_ERROR_CORRUPTED_PERSONAL_CERT_STORE	= 0xc00e0031,
@@ -857,10 +841,7 @@ enum MQERROR
 	MQ_ERROR_DS_LOCAL_USER	= 0xc00e0090L,
 	MQ_ERROR_Q_ADS_PROPERTY_NOT_SUPPORTED	= 0xc00e0091L,
 	MQ_ERROR_BAD_XML_FORMAT	= 0xc00e0092L,
-	MQ_ERROR_UNSUPPORTED_CLASS	= 0xc00e0093,
-	MQ_ERROR_UNINITIALIZED_OBJECT	= 0xc00e0094,
-	MQ_ERROR_CANNOT_CREATE_PSC_OBJECTS	= 0xc00e0095,
-	MQ_ERROR_CANNOT_UPDATE_PSC_OBJECTS	= 0xc00e0096
+	MQ_ERROR_UNSUPPORTED_CLASS	= 0xc00e0093L
     } ;
 /* [helpstringcontext] */ 
 enum MQWARNING
@@ -14328,7 +14309,7 @@ EXTERN_C const IID IID_IMSMQApplication3;
         virtual /* [id][propget][helpstringcontext] */ HRESULT STDMETHODCALLTYPE get_IsConnected( 
             /* [retval][out] */ VARIANT_BOOL *pfIsConnected) = 0;
         
-        virtual /* [id][propget][helpstringcontext] */ HRESULT STDMETHODCALLTYPE get_BytesInAllQueues( 
+        virtual /* [id][propget][hidden] */ HRESULT STDMETHODCALLTYPE get_BytesInAllQueues( 
             /* [retval][out] */ VARIANT *pvBytesInAllQueues) = 0;
         
         virtual /* [id][propput][helpstringcontext] */ HRESULT STDMETHODCALLTYPE put_Machine( 
@@ -14442,7 +14423,7 @@ EXTERN_C const IID IID_IMSMQApplication3;
             IMSMQApplication3 * This,
             /* [retval][out] */ VARIANT_BOOL *pfIsConnected);
         
-        /* [id][propget][helpstringcontext] */ HRESULT ( STDMETHODCALLTYPE *get_BytesInAllQueues )( 
+        /* [id][propget][hidden] */ HRESULT ( STDMETHODCALLTYPE *get_BytesInAllQueues )( 
             IMSMQApplication3 * This,
             /* [retval][out] */ VARIANT *pvBytesInAllQueues);
         
@@ -14610,7 +14591,7 @@ void __RPC_STUB IMSMQApplication3_get_IsConnected_Stub(
     DWORD *_pdwStubPhase);
 
 
-/* [id][propget][helpstringcontext] */ HRESULT STDMETHODCALLTYPE IMSMQApplication3_get_BytesInAllQueues_Proxy( 
+/* [id][propget][hidden] */ HRESULT STDMETHODCALLTYPE IMSMQApplication3_get_BytesInAllQueues_Proxy( 
     IMSMQApplication3 * This,
     /* [retval][out] */ VARIANT *pvBytesInAllQueues);
 
@@ -15269,7 +15250,7 @@ MSMQDestination;
 #define __IMSMQCollection_INTERFACE_DEFINED__
 
 /* interface IMSMQCollection */
-/* [object][oleautomation][dual][helpstringcontext][uuid] */ 
+/* [object][oleautomation][dual][hidden][uuid] */ 
 
 
 EXTERN_C const IID IID_IMSMQCollection;
@@ -15280,11 +15261,11 @@ EXTERN_C const IID IID_IMSMQCollection;
     IMSMQCollection : public IDispatch
     {
     public:
-        virtual /* [id][helpstringcontext] */ HRESULT STDMETHODCALLTYPE Item( 
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE Item( 
             /* [in] */ VARIANT *Index,
             /* [retval][out] */ VARIANT *pvarRet) = 0;
         
-        virtual /* [propget][id][helpstringcontext] */ HRESULT STDMETHODCALLTYPE get_Count( 
+        virtual /* [propget][id] */ HRESULT STDMETHODCALLTYPE get_Count( 
             /* [retval][out] */ long *pCount) = 0;
         
         virtual /* [restricted][id] */ HRESULT STDMETHODCALLTYPE _NewEnum( 
@@ -15338,12 +15319,12 @@ EXTERN_C const IID IID_IMSMQCollection;
             /* [out] */ EXCEPINFO *pExcepInfo,
             /* [out] */ UINT *puArgErr);
         
-        /* [id][helpstringcontext] */ HRESULT ( STDMETHODCALLTYPE *Item )( 
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *Item )( 
             IMSMQCollection * This,
             /* [in] */ VARIANT *Index,
             /* [retval][out] */ VARIANT *pvarRet);
         
-        /* [propget][id][helpstringcontext] */ HRESULT ( STDMETHODCALLTYPE *get_Count )( 
+        /* [propget][id] */ HRESULT ( STDMETHODCALLTYPE *get_Count )( 
             IMSMQCollection * This,
             /* [retval][out] */ long *pCount);
         
@@ -15403,7 +15384,7 @@ EXTERN_C const IID IID_IMSMQCollection;
 
 
 
-/* [id][helpstringcontext] */ HRESULT STDMETHODCALLTYPE IMSMQCollection_Item_Proxy( 
+/* [id] */ HRESULT STDMETHODCALLTYPE IMSMQCollection_Item_Proxy( 
     IMSMQCollection * This,
     /* [in] */ VARIANT *Index,
     /* [retval][out] */ VARIANT *pvarRet);
@@ -15416,7 +15397,7 @@ void __RPC_STUB IMSMQCollection_Item_Stub(
     DWORD *_pdwStubPhase);
 
 
-/* [propget][id][helpstringcontext] */ HRESULT STDMETHODCALLTYPE IMSMQCollection_get_Count_Proxy( 
+/* [propget][id] */ HRESULT STDMETHODCALLTYPE IMSMQCollection_get_Count_Proxy( 
     IMSMQCollection * This,
     /* [retval][out] */ long *pCount);
 
@@ -15443,14 +15424,6 @@ void __RPC_STUB IMSMQCollection__NewEnum_Stub(
 
 #endif 	/* __IMSMQCollection_INTERFACE_DEFINED__ */
 
-
-EXTERN_C const CLSID CLSID_MSMQCollection;
-
-#ifdef __cplusplus
-
-class DECLSPEC_UUID("f72b9031-2f0c-43e8-924e-e6052cdc493f")
-MSMQCollection;
-#endif
 
 #ifndef __IMSMQManagement_INTERFACE_DEFINED__
 #define __IMSMQManagement_INTERFACE_DEFINED__
@@ -15795,7 +15768,7 @@ EXTERN_C const IID IID_IMSMQOutgoingQueueManagement;
         virtual /* [propget][helpstringcontext] */ HRESULT STDMETHODCALLTYPE get_NextHops( 
             /* [retval][out] */ VARIANT *pvNextHops) = 0;
         
-        virtual /* [helpstringcontext] */ HRESULT STDMETHODCALLTYPE EodGetSendInfo( 
+        virtual /* [helpstringcontext][hidden] */ HRESULT STDMETHODCALLTYPE EodGetSendInfo( 
             /* [retval][out] */ IMSMQCollection **ppCollection) = 0;
         
         virtual /* [helpstringcontext] */ HRESULT STDMETHODCALLTYPE Resume( void) = 0;
@@ -15898,7 +15871,7 @@ EXTERN_C const IID IID_IMSMQOutgoingQueueManagement;
             IMSMQOutgoingQueueManagement * This,
             /* [retval][out] */ VARIANT *pvNextHops);
         
-        /* [helpstringcontext] */ HRESULT ( STDMETHODCALLTYPE *EodGetSendInfo )( 
+        /* [helpstringcontext][hidden] */ HRESULT ( STDMETHODCALLTYPE *EodGetSendInfo )( 
             IMSMQOutgoingQueueManagement * This,
             /* [retval][out] */ IMSMQCollection **ppCollection);
         
@@ -16024,7 +15997,7 @@ void __RPC_STUB IMSMQOutgoingQueueManagement_get_NextHops_Stub(
     DWORD *_pdwStubPhase);
 
 
-/* [helpstringcontext] */ HRESULT STDMETHODCALLTYPE IMSMQOutgoingQueueManagement_EodGetSendInfo_Proxy( 
+/* [helpstringcontext][hidden] */ HRESULT STDMETHODCALLTYPE IMSMQOutgoingQueueManagement_EodGetSendInfo_Proxy( 
     IMSMQOutgoingQueueManagement * This,
     /* [retval][out] */ IMSMQCollection **ppCollection);
 
@@ -16099,10 +16072,10 @@ EXTERN_C const IID IID_IMSMQQueueManagement;
         virtual /* [propget][helpstringcontext] */ HRESULT STDMETHODCALLTYPE get_JournalMessageCount( 
             /* [retval][out] */ long *plJournalMessageCount) = 0;
         
-        virtual /* [propget][helpstringcontext] */ HRESULT STDMETHODCALLTYPE get_BytesInJournal( 
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_BytesInJournal( 
             /* [retval][out] */ VARIANT *pvBytesInJournal) = 0;
         
-        virtual /* [helpstringcontext] */ HRESULT STDMETHODCALLTYPE EodGetReceiveInfo( 
+        virtual /* [helpstringcontext][hidden] */ HRESULT STDMETHODCALLTYPE EodGetReceiveInfo( 
             /* [retval][out] */ VARIANT *pvCollection) = 0;
         
     };
@@ -16195,11 +16168,11 @@ EXTERN_C const IID IID_IMSMQQueueManagement;
             IMSMQQueueManagement * This,
             /* [retval][out] */ long *plJournalMessageCount);
         
-        /* [propget][helpstringcontext] */ HRESULT ( STDMETHODCALLTYPE *get_BytesInJournal )( 
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_BytesInJournal )( 
             IMSMQQueueManagement * This,
             /* [retval][out] */ VARIANT *pvBytesInJournal);
         
-        /* [helpstringcontext] */ HRESULT ( STDMETHODCALLTYPE *EodGetReceiveInfo )( 
+        /* [helpstringcontext][hidden] */ HRESULT ( STDMETHODCALLTYPE *EodGetReceiveInfo )( 
             IMSMQQueueManagement * This,
             /* [retval][out] */ VARIANT *pvCollection);
         
@@ -16295,7 +16268,7 @@ void __RPC_STUB IMSMQQueueManagement_get_JournalMessageCount_Stub(
     DWORD *_pdwStubPhase);
 
 
-/* [propget][helpstringcontext] */ HRESULT STDMETHODCALLTYPE IMSMQQueueManagement_get_BytesInJournal_Proxy( 
+/* [propget] */ HRESULT STDMETHODCALLTYPE IMSMQQueueManagement_get_BytesInJournal_Proxy( 
     IMSMQQueueManagement * This,
     /* [retval][out] */ VARIANT *pvBytesInJournal);
 
@@ -16307,7 +16280,7 @@ void __RPC_STUB IMSMQQueueManagement_get_BytesInJournal_Stub(
     DWORD *_pdwStubPhase);
 
 
-/* [helpstringcontext] */ HRESULT STDMETHODCALLTYPE IMSMQQueueManagement_EodGetReceiveInfo_Proxy( 
+/* [helpstringcontext][hidden] */ HRESULT STDMETHODCALLTYPE IMSMQQueueManagement_EodGetReceiveInfo_Proxy( 
     IMSMQQueueManagement * This,
     /* [retval][out] */ VARIANT *pvCollection);
 

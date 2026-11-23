@@ -1,0 +1,26 @@
+
+<asp:Label Font-Bold="true" ForeColor="orange" runat="server" />
+
+<asp:Calendar BackColor="White" BorderColor="Black" BorderStyle="Solid" CellSpacing="1"
+  Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="250px" 
+  NextPrevFormat="ShortMonth" Width="330px" runat="server">
+  <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+  <OtherMonthDayStyle ForeColor="#999999" />
+  <TodayDayStyle BackColor="#999999" ForeColor="White" />
+  <DayStyle BackColor="#CCCCCC" />
+  <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="White" />
+  <DayHeaderStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" Height="8pt" />
+  <TitleStyle BackColor="#333399" BorderStyle="Solid" Font-Bold="True" Font-Size="12pt"
+    ForeColor="White" Height="12pt" />
+</asp:Calendar>
+
+<asp:GridView CellPadding="4" 
+  ForeColor="#333333" GridLines="None" Width="461px" runat="server">
+  <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+  <RowStyle BackColor="#E3EAEB" />
+  <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+  <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+  <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+  <EditRowStyle BackColor="#7C6F57" />
+  <AlternatingRowStyle BackColor="White" />
+</asp:GridView>

@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for bits1_5.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -624,14 +623,14 @@ BackgroundCopyManager1_5;
 #endif
 #endif /* __BackgroundCopyManager1_5_LIBRARY_DEFINED__ */
 
-/* interface __MIDL_itf_bits1_5_0124 */
+/* interface __MIDL_itf_bits1_5_0120 */
 /* [local] */ 
 
 #include "bits2_0.h"
 
 
-extern RPC_IF_HANDLE __MIDL_itf_bits1_5_0124_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_bits1_5_0124_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_bits1_5_0120_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_bits1_5_0120_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

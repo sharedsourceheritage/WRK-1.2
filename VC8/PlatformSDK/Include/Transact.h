@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for transact.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -79,12 +78,6 @@ typedef interface ITransactionOutcomeEvents ITransactionOutcomeEvents;
 #endif 	/* __ITransactionOutcomeEvents_FWD_DEFINED__ */
 
 
-#ifndef __ITmNodeName_FWD_DEFINED__
-#define __ITmNodeName_FWD_DEFINED__
-typedef interface ITmNodeName ITmNodeName;
-#endif 	/* __ITmNodeName_FWD_DEFINED__ */
-
-
 /* header files for imported files */
 #include "unknwn.h"
 
@@ -105,7 +98,7 @@ void __RPC_USER MIDL_user_free( void * );
 
 
 #ifndef DECLSPEC_UUID
-#if (_MSC_VER >= 1100) && defined (__cplusplus)
+#if _MSC_VER >= 1100
 #define DECLSPEC_UUID(x)    __declspec(uuid(x))
 #else
 #define DECLSPEC_UUID(x)
@@ -1055,122 +1048,7 @@ void __RPC_STUB ITransactionOutcomeEvents_Indoubt_Stub(
 #endif 	/* __ITransactionOutcomeEvents_INTERFACE_DEFINED__ */
 
 
-#ifndef __ITmNodeName_INTERFACE_DEFINED__
-#define __ITmNodeName_INTERFACE_DEFINED__
-
-/* interface ITmNodeName */
-/* [unique][uuid][object] */ 
-
-
-EXTERN_C const IID IID_ITmNodeName;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("30274F88-6EE4-474e-9B95-7807BC9EF8CF")
-    ITmNodeName : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE GetNodeNameSize( 
-            /* [out] */ ULONG *pcbNodeNameSize) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetNodeName( 
-            /* [in] */ ULONG cbNodeNameBufferSize,
-            /* [out][in] */ LPWSTR pNodeNameBuffer) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct ITmNodeNameVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ITmNodeName * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ITmNodeName * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            ITmNodeName * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNodeNameSize )( 
-            ITmNodeName * This,
-            /* [out] */ ULONG *pcbNodeNameSize);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNodeName )( 
-            ITmNodeName * This,
-            /* [in] */ ULONG cbNodeNameBufferSize,
-            /* [out][in] */ LPWSTR pNodeNameBuffer);
-        
-        END_INTERFACE
-    } ITmNodeNameVtbl;
-
-    interface ITmNodeName
-    {
-        CONST_VTBL struct ITmNodeNameVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define ITmNodeName_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define ITmNodeName_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define ITmNodeName_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define ITmNodeName_GetNodeNameSize(This,pcbNodeNameSize)	\
-    (This)->lpVtbl -> GetNodeNameSize(This,pcbNodeNameSize)
-
-#define ITmNodeName_GetNodeName(This,cbNodeNameBufferSize,pNodeNameBuffer)	\
-    (This)->lpVtbl -> GetNodeName(This,cbNodeNameBufferSize,pNodeNameBuffer)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE ITmNodeName_GetNodeNameSize_Proxy( 
-    ITmNodeName * This,
-    /* [out] */ ULONG *pcbNodeNameSize);
-
-
-void __RPC_STUB ITmNodeName_GetNodeNameSize_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE ITmNodeName_GetNodeName_Proxy( 
-    ITmNodeName * This,
-    /* [in] */ ULONG cbNodeNameBufferSize,
-    /* [out][in] */ LPWSTR pNodeNameBuffer);
-
-
-void __RPC_STUB ITmNodeName_GetNodeName_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __ITmNodeName_INTERFACE_DEFINED__ */
-
-
-/* interface __MIDL_itf_transact_0016 */
+/* interface __MIDL_itf_transact_0015 */
 /* [local] */ 
 
 
@@ -1183,7 +1061,6 @@ DEFINE_GUID(IID_ITransaction2,               0x34021548, 0x0065, 0x11d3, 0xba, 0
 DEFINE_GUID(IID_ITransactionDispenser,       0x3A6AD9E1, 0x23B9, 0x11cf, 0xAD, 0x60, 0x00, 0xAA, 0x00, 0xA7, 0x4C, 0xCD);
 DEFINE_GUID(IID_ITransactionOptions,         0x3A6AD9E0, 0x23B9, 0x11cf, 0xAD, 0x60, 0x00, 0xAA, 0x00, 0xA7, 0x4C, 0xCD);
 DEFINE_GUID(IID_ITransactionOutcomeEvents,   0x3A6AD9E2, 0x23B9, 0x11cf, 0xAD, 0x60, 0x00, 0xAA, 0x00, 0xA7, 0x4C, 0xCD);
-DEFINE_GUID(IID_ITmNodeName,   0x30274F88, 0x6EE4, 0x474e, 0x9B, 0x95, 0x78, 0x07, 0xBC, 0x9E, 0xF8, 0xCF);
 
 #else // #if _MSC_VER < 1100 || !defined(__cplusplus)
 
@@ -1193,14 +1070,13 @@ DEFINE_GUID(IID_ITmNodeName,   0x30274F88, 0x6EE4, 0x474e, 0x9B, 0x95, 0x78, 0x0
 #define  IID_ITransactionDispenser           __uuidof(ITransactionDispenser)
 #define  IID_ITransactionOptions             __uuidof(ITransactionOptions)
 #define  IID_ITransactionOutcomeEvents       __uuidof(ITransactionOutcomeEvents)
-#define  IID_ITmNodeName       __uuidof(ITmNodeName)
 
 #endif // #if _MSC_VER < 1100 || !defined(__cplusplus)
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_transact_0016_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_transact_0016_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_transact_0015_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_transact_0015_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

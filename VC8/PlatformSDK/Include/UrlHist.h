@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for urlhist.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -324,7 +323,7 @@ void __RPC_STUB IEnumSTATURL_SetFilter_Stub(
 #endif 	/* __IEnumSTATURL_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlhist_0277 */
+/* interface __MIDL_itf_urlhist_0272 */
 /* [local] */ 
 
 #endif
@@ -332,8 +331,8 @@ void __RPC_STUB IEnumSTATURL_SetFilter_Stub(
 #define _LPURLHISTORYSTG_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlhist_0277_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlhist_0277_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlhist_0272_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlhist_0272_v0_0_s_ifspec;
 
 #ifndef __IUrlHistoryStg_INTERFACE_DEFINED__
 #define __IUrlHistoryStg_INTERFACE_DEFINED__
@@ -536,7 +535,7 @@ void __RPC_STUB IUrlHistoryStg_EnumUrls_Stub(
 #endif 	/* __IUrlHistoryStg_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlhist_0278 */
+/* interface __MIDL_itf_urlhist_0273 */
 /* [local] */ 
 
 #endif
@@ -544,8 +543,8 @@ void __RPC_STUB IUrlHistoryStg_EnumUrls_Stub(
 #define _LPURLHISTORYSTG2_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlhist_0278_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlhist_0278_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlhist_0273_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlhist_0273_v0_0_s_ifspec;
 
 #ifndef __IUrlHistoryStg2_INTERFACE_DEFINED__
 #define __IUrlHistoryStg2_INTERFACE_DEFINED__
@@ -716,7 +715,7 @@ void __RPC_STUB IUrlHistoryStg2_ClearHistory_Stub(
 #endif 	/* __IUrlHistoryStg2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlhist_0279 */
+/* interface __MIDL_itf_urlhist_0274 */
 /* [local] */ 
 
 #endif
@@ -724,8 +723,8 @@ void __RPC_STUB IUrlHistoryStg2_ClearHistory_Stub(
 #define _LPURLHISTORYNOTIFY_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlhist_0279_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlhist_0279_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlhist_0274_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlhist_0274_v0_0_s_ifspec;
 
 #ifndef __IUrlHistoryNotify_INTERFACE_DEFINED__
 #define __IUrlHistoryNotify_INTERFACE_DEFINED__
@@ -819,14 +818,14 @@ EXTERN_C const IID IID_IUrlHistoryNotify;
 #endif 	/* __IUrlHistoryNotify_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_urlhist_0280 */
+/* interface __MIDL_itf_urlhist_0275 */
 /* [local] */ 
 
 #endif
 
 
-extern RPC_IF_HANDLE __MIDL_itf_urlhist_0280_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_urlhist_0280_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlhist_0275_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_urlhist_0275_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

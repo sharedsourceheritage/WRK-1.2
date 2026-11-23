@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+	<siteMapNode url="~/aspnet/doc/ctrlref/navigation/default.aspx" title="Navigation Controls">
+           <siteMapNode url="~/aspnet/doc/ctrlref/navigation/sitemappath.aspx" title="SiteMapPath"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/navigation/menu.aspx" title="Menu"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/navigation/treeview.aspx" title="TreeView"/>
+        </siteMapNode>
+</siteMap>

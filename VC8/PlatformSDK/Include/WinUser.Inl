@@ -1,4 +1,4 @@
-/* Copyright (c) 2001-2005, Microsoft Corp. All rights reserved. */
+/* Copyright (c) 2001-2004, Microsoft Corp. All rights reserved. */
 
 #if _MSC_VER > 1000
 #pragma once
@@ -10,59 +10,45 @@ extern "C" {
 
 
 #if !defined(RC_INVOKED) /* RC complains about long symbols in #ifs */
-#if defined(ISOLATION_AWARE_ENABLED) && (ISOLATION_AWARE_ENABLED != 0)
+#if ISOLATION_AWARE_ENABLED
 
-
-#if !defined(ISOLATION_AWARE_USE_STATIC_LIBRARY)
-#define ISOLATION_AWARE_USE_STATIC_LIBRARY 0
-#endif
-
-#if !defined(ISOLATION_AWARE_BUILD_STATIC_LIBRARY)
-#define ISOLATION_AWARE_BUILD_STATIC_LIBRARY 0
-#endif
 
 #if !defined(ISOLATION_AWARE_INLINE)
-#if ISOLATION_AWARE_BUILD_STATIC_LIBRARY
-#define ISOLATION_AWARE_INLINE /* nothing */
-#else
 #if defined(__cplusplus)
 #define ISOLATION_AWARE_INLINE inline
 #else
 #define ISOLATION_AWARE_INLINE __inline
 #endif
 #endif
-#endif
 
-#if !ISOLATION_AWARE_USE_STATIC_LIBRARY
-FARPROC WINAPI WinuserIsolationAwarePrivatetRgCebPnQQeRff_HfReQP_QYY(LPCSTR pszProcName);
+FARPROC WINAPI WinuserIsolationAwarePrivatetEgCebCnDDeEff_HfEeDC_DLL(LPCSTR pszProcName);
 
-#endif /* ISOLATION_AWARE_USE_STATIC_LIBRARY */
-ATOM WINAPI IsolationAwareRegisterClassA(__in const WNDCLASSA*lpWndClass);
-ATOM WINAPI IsolationAwareRegisterClassW(__in const WNDCLASSW*lpWndClass);
-BOOL WINAPI IsolationAwareUnregisterClassA(__in LPCSTR lpClassName,__in HINSTANCE hInstance);
-BOOL WINAPI IsolationAwareUnregisterClassW(__in LPCWSTR lpClassName,__in HINSTANCE hInstance);
-BOOL WINAPI IsolationAwareGetClassInfoA(__in_opt HINSTANCE hInstance,__in LPCSTR lpClassName,__out LPWNDCLASSA lpWndClass);
-BOOL WINAPI IsolationAwareGetClassInfoW(__in_opt HINSTANCE hInstance,__in LPCWSTR lpClassName,__out LPWNDCLASSW lpWndClass);
-ATOM WINAPI IsolationAwareRegisterClassExA(__in const WNDCLASSEXA*unnamed1);
-ATOM WINAPI IsolationAwareRegisterClassExW(__in const WNDCLASSEXW*unnamed1);
-BOOL WINAPI IsolationAwareGetClassInfoExA(__in_opt HINSTANCE hInstance,__in LPCSTR lpszClass,__out LPWNDCLASSEXA lpwcx);
-BOOL WINAPI IsolationAwareGetClassInfoExW(__in_opt HINSTANCE hInstance,__in LPCWSTR lpszClass,__out LPWNDCLASSEXW lpwcx);
-HWND WINAPI IsolationAwareCreateWindowExA(__in DWORD dwExStyle,__in_opt LPCSTR lpClassName,__in_opt LPCSTR lpWindowName,__in DWORD dwStyle,__in int X,__in int Y,__in int nWidth,__in int nHeight,__in_opt HWND hWndParent,__in_opt HMENU hMenu,__in_opt HINSTANCE hInstance,__in_opt LPVOID lpParam);
-HWND WINAPI IsolationAwareCreateWindowExW(__in DWORD dwExStyle,__in_opt LPCWSTR lpClassName,__in_opt LPCWSTR lpWindowName,__in DWORD dwStyle,__in int X,__in int Y,__in int nWidth,__in int nHeight,__in_opt HWND hWndParent,__in_opt HMENU hMenu,__in_opt HINSTANCE hInstance,__in_opt LPVOID lpParam);
-HWND WINAPI IsolationAwareCreateDialogParamA(__in_opt HINSTANCE hInstance,__in LPCSTR lpTemplateName,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam);
-HWND WINAPI IsolationAwareCreateDialogParamW(__in_opt HINSTANCE hInstance,__in LPCWSTR lpTemplateName,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam);
-HWND WINAPI IsolationAwareCreateDialogIndirectParamA(__in_opt HINSTANCE hInstance,__in LPCDLGTEMPLATEA lpTemplate,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam);
-HWND WINAPI IsolationAwareCreateDialogIndirectParamW(__in_opt HINSTANCE hInstance,__in LPCDLGTEMPLATEW lpTemplate,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam);
-INT_PTR WINAPI IsolationAwareDialogBoxParamA(__in_opt HINSTANCE hInstance,__in LPCSTR lpTemplateName,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam);
-INT_PTR WINAPI IsolationAwareDialogBoxParamW(__in_opt HINSTANCE hInstance,__in LPCWSTR lpTemplateName,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam);
-INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamA(__in_opt HINSTANCE hInstance,__in LPCDLGTEMPLATEA hDialogTemplate,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam);
-INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamW(__in_opt HINSTANCE hInstance,__in LPCDLGTEMPLATEW hDialogTemplate,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam);
-int WINAPI IsolationAwareMessageBoxA(__in_opt HWND hWnd,__in_opt LPCSTR lpText,__in_opt LPCSTR lpCaption,__in UINT uType);
-int WINAPI IsolationAwareMessageBoxW(__in_opt HWND hWnd,__in_opt LPCWSTR lpText,__in_opt LPCWSTR lpCaption,__in UINT uType);
-int WINAPI IsolationAwareMessageBoxExA(__in_opt HWND hWnd,__in_opt LPCSTR lpText,__in_opt LPCSTR lpCaption,__in UINT uType,__in WORD wLanguageId);
-int WINAPI IsolationAwareMessageBoxExW(__in_opt HWND hWnd,__in_opt LPCWSTR lpText,__in_opt LPCWSTR lpCaption,__in UINT uType,__in WORD wLanguageId);
-int WINAPI IsolationAwareMessageBoxIndirectA(__in const MSGBOXPARAMSA*lpmbp);
-int WINAPI IsolationAwareMessageBoxIndirectW(__in const MSGBOXPARAMSW*lpmbp);
+ATOM WINAPI IsolationAwareRegisterClassA(const WNDCLASSA*lpWndClass);
+ATOM WINAPI IsolationAwareRegisterClassW(const WNDCLASSW*lpWndClass);
+BOOL WINAPI IsolationAwareUnregisterClassA(LPCSTR lpClassName,HINSTANCE hInstance);
+BOOL WINAPI IsolationAwareUnregisterClassW(LPCWSTR lpClassName,HINSTANCE hInstance);
+BOOL WINAPI IsolationAwareGetClassInfoA(HINSTANCE hInstance,LPCSTR lpClassName,LPWNDCLASSA lpWndClass);
+BOOL WINAPI IsolationAwareGetClassInfoW(HINSTANCE hInstance,LPCWSTR lpClassName,LPWNDCLASSW lpWndClass);
+ATOM WINAPI IsolationAwareRegisterClassExA(const WNDCLASSEXA*unnamed1);
+ATOM WINAPI IsolationAwareRegisterClassExW(const WNDCLASSEXW*unnamed1);
+BOOL WINAPI IsolationAwareGetClassInfoExA(HINSTANCE unnamed1,LPCSTR unnamed2,LPWNDCLASSEXA unnamed3);
+BOOL WINAPI IsolationAwareGetClassInfoExW(HINSTANCE unnamed1,LPCWSTR unnamed2,LPWNDCLASSEXW unnamed3);
+HWND WINAPI IsolationAwareCreateWindowExA(DWORD dwExStyle,LPCSTR lpClassName,LPCSTR lpWindowName,DWORD dwStyle,int X,int Y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu,HINSTANCE hInstance,LPVOID lpParam);
+HWND WINAPI IsolationAwareCreateWindowExW(DWORD dwExStyle,LPCWSTR lpClassName,LPCWSTR lpWindowName,DWORD dwStyle,int X,int Y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu,HINSTANCE hInstance,LPVOID lpParam);
+HWND WINAPI IsolationAwareCreateDialogParamA(HINSTANCE hInstance,LPCSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);
+HWND WINAPI IsolationAwareCreateDialogParamW(HINSTANCE hInstance,LPCWSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);
+HWND WINAPI IsolationAwareCreateDialogIndirectParamA(HINSTANCE hInstance,LPCDLGTEMPLATEA lpTemplate,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);
+HWND WINAPI IsolationAwareCreateDialogIndirectParamW(HINSTANCE hInstance,LPCDLGTEMPLATEW lpTemplate,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);
+INT_PTR WINAPI IsolationAwareDialogBoxParamA(HINSTANCE hInstance,LPCSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);
+INT_PTR WINAPI IsolationAwareDialogBoxParamW(HINSTANCE hInstance,LPCWSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);
+INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamA(HINSTANCE hInstance,LPCDLGTEMPLATEA hDialogTemplate,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);
+INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamW(HINSTANCE hInstance,LPCDLGTEMPLATEW hDialogTemplate,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam);
+int WINAPI IsolationAwareMessageBoxA(HWND hWnd,LPCSTR lpText,LPCSTR lpCaption,UINT uType);
+int WINAPI IsolationAwareMessageBoxW(HWND hWnd,LPCWSTR lpText,LPCWSTR lpCaption,UINT uType);
+int WINAPI IsolationAwareMessageBoxExA(HWND hWnd,LPCSTR lpText,LPCSTR lpCaption,UINT uType,WORD wLanguageId);
+int WINAPI IsolationAwareMessageBoxExW(HWND hWnd,LPCWSTR lpText,LPCWSTR lpCaption,UINT uType,WORD wLanguageId);
+int WINAPI IsolationAwareMessageBoxIndirectA(const MSGBOXPARAMSA*unnamed1);
+int WINAPI IsolationAwareMessageBoxIndirectW(const MSGBOXPARAMSW*unnamed1);
 
 #if defined(UNICODE)
 
@@ -98,12 +84,11 @@ int WINAPI IsolationAwareMessageBoxIndirectW(__in const MSGBOXPARAMSW*lpmbp);
 
 #endif /* UNICODE */
 
-#if !ISOLATION_AWARE_USE_STATIC_LIBRARY
-ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassA(__in const WNDCLASSA*lpWndClass)
+ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassA(const WNDCLASSA*lpWndClass)
 {
     ATOM result = 0 ;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return result;
     __try
@@ -112,7 +97,7 @@ ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassA(__in const WNDCL
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (result == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -124,11 +109,11 @@ ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassA(__in const WNDCL
     return result;
 }
 
-ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassW(__in const WNDCLASSW*lpWndClass)
+ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassW(const WNDCLASSW*lpWndClass)
 {
     ATOM result = 0 ;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return result;
     __try
@@ -137,7 +122,7 @@ ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassW(__in const WNDCL
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (result == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -149,11 +134,11 @@ ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassW(__in const WNDCL
     return result;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareUnregisterClassA(__in LPCSTR lpClassName,__in HINSTANCE hInstance)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareUnregisterClassA(LPCSTR lpClassName,HINSTANCE hInstance)
 {
     BOOL fResult = FALSE;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
@@ -162,7 +147,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareUnregisterClassA(__in LPCSTR lp
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -174,11 +159,11 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareUnregisterClassA(__in LPCSTR lp
     return fResult;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareUnregisterClassW(__in LPCWSTR lpClassName,__in HINSTANCE hInstance)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareUnregisterClassW(LPCWSTR lpClassName,HINSTANCE hInstance)
 {
     BOOL fResult = FALSE;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
@@ -187,7 +172,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareUnregisterClassW(__in LPCWSTR l
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -199,11 +184,11 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareUnregisterClassW(__in LPCWSTR l
     return fResult;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoA(__in_opt HINSTANCE hInstance,__in LPCSTR lpClassName,__out LPWNDCLASSA lpWndClass)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoA(HINSTANCE hInstance,LPCSTR lpClassName,LPWNDCLASSA lpWndClass)
 {
     BOOL fResult = FALSE;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
@@ -212,7 +197,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoA(__in_opt HINSTANC
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -224,11 +209,11 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoA(__in_opt HINSTANC
     return fResult;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoW(__in_opt HINSTANCE hInstance,__in LPCWSTR lpClassName,__out LPWNDCLASSW lpWndClass)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoW(HINSTANCE hInstance,LPCWSTR lpClassName,LPWNDCLASSW lpWndClass)
 {
     BOOL fResult = FALSE;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
@@ -237,7 +222,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoW(__in_opt HINSTANC
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -249,11 +234,11 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoW(__in_opt HINSTANC
     return fResult;
 }
 
-ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassExA(__in const WNDCLASSEXA*unnamed1)
+ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassExA(const WNDCLASSEXA*unnamed1)
 {
     ATOM result = 0 ;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return result;
     __try
@@ -262,7 +247,7 @@ ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassExA(__in const WND
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (result == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -274,11 +259,11 @@ ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassExA(__in const WND
     return result;
 }
 
-ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassExW(__in const WNDCLASSEXW*unnamed1)
+ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassExW(const WNDCLASSEXW*unnamed1)
 {
     ATOM result = 0 ;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return result;
     __try
@@ -287,7 +272,7 @@ ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassExW(__in const WND
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (result == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -299,20 +284,20 @@ ISOLATION_AWARE_INLINE ATOM WINAPI IsolationAwareRegisterClassExW(__in const WND
     return result;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoExA(__in_opt HINSTANCE hInstance,__in LPCSTR lpszClass,__out LPWNDCLASSEXA lpwcx)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoExA(HINSTANCE unnamed1,LPCSTR unnamed2,LPWNDCLASSEXA unnamed3)
 {
     BOOL fResult = FALSE;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
-        fResult = GetClassInfoExA(hInstance,lpszClass,lpwcx);
+        fResult = GetClassInfoExA(unnamed1,unnamed2,unnamed3);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -324,20 +309,20 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoExA(__in_opt HINSTA
     return fResult;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoExW(__in_opt HINSTANCE hInstance,__in LPCWSTR lpszClass,__out LPWNDCLASSEXW lpwcx)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoExW(HINSTANCE unnamed1,LPCWSTR unnamed2,LPWNDCLASSEXW unnamed3)
 {
     BOOL fResult = FALSE;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
-        fResult = GetClassInfoExW(hInstance,lpszClass,lpwcx);
+        fResult = GetClassInfoExW(unnamed1,unnamed2,unnamed3);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -349,11 +334,11 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareGetClassInfoExW(__in_opt HINSTA
     return fResult;
 }
 
-ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateWindowExA(__in DWORD dwExStyle,__in_opt LPCSTR lpClassName,__in_opt LPCSTR lpWindowName,__in DWORD dwStyle,__in int X,__in int Y,__in int nWidth,__in int nHeight,__in_opt HWND hWndParent,__in_opt HMENU hMenu,__in_opt HINSTANCE hInstance,__in_opt LPVOID lpParam)
+ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateWindowExA(DWORD dwExStyle,LPCSTR lpClassName,LPCSTR lpWindowName,DWORD dwStyle,int X,int Y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu,HINSTANCE hInstance,LPVOID lpParam)
 {
     HWND windowResult = NULL;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return windowResult;
     __try
@@ -362,7 +347,7 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateWindowExA(__in DWORD dwEx
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (windowResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -374,11 +359,11 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateWindowExA(__in DWORD dwEx
     return windowResult;
 }
 
-ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateWindowExW(__in DWORD dwExStyle,__in_opt LPCWSTR lpClassName,__in_opt LPCWSTR lpWindowName,__in DWORD dwStyle,__in int X,__in int Y,__in int nWidth,__in int nHeight,__in_opt HWND hWndParent,__in_opt HMENU hMenu,__in_opt HINSTANCE hInstance,__in_opt LPVOID lpParam)
+ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateWindowExW(DWORD dwExStyle,LPCWSTR lpClassName,LPCWSTR lpWindowName,DWORD dwStyle,int X,int Y,int nWidth,int nHeight,HWND hWndParent,HMENU hMenu,HINSTANCE hInstance,LPVOID lpParam)
 {
     HWND windowResult = NULL;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return windowResult;
     __try
@@ -387,7 +372,7 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateWindowExW(__in DWORD dwEx
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (windowResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -399,11 +384,11 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateWindowExW(__in DWORD dwEx
     return windowResult;
 }
 
-ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogParamA(__in_opt HINSTANCE hInstance,__in LPCSTR lpTemplateName,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam)
+ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogParamA(HINSTANCE hInstance,LPCSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam)
 {
     HWND windowResult = NULL;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return windowResult;
     __try
@@ -412,7 +397,7 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogParamA(__in_opt HIN
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (windowResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -424,11 +409,11 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogParamA(__in_opt HIN
     return windowResult;
 }
 
-ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogParamW(__in_opt HINSTANCE hInstance,__in LPCWSTR lpTemplateName,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam)
+ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogParamW(HINSTANCE hInstance,LPCWSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam)
 {
     HWND windowResult = NULL;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return windowResult;
     __try
@@ -437,7 +422,7 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogParamW(__in_opt HIN
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (windowResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -449,11 +434,11 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogParamW(__in_opt HIN
     return windowResult;
 }
 
-ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogIndirectParamA(__in_opt HINSTANCE hInstance,__in LPCDLGTEMPLATEA lpTemplate,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam)
+ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogIndirectParamA(HINSTANCE hInstance,LPCDLGTEMPLATEA lpTemplate,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam)
 {
     HWND windowResult = NULL;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return windowResult;
     __try
@@ -462,7 +447,7 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogIndirectParamA(__in
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (windowResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -474,11 +459,11 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogIndirectParamA(__in
     return windowResult;
 }
 
-ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogIndirectParamW(__in_opt HINSTANCE hInstance,__in LPCDLGTEMPLATEW lpTemplate,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam)
+ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogIndirectParamW(HINSTANCE hInstance,LPCDLGTEMPLATEW lpTemplate,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam)
 {
     HWND windowResult = NULL;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return windowResult;
     __try
@@ -487,7 +472,7 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogIndirectParamW(__in
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (windowResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -499,11 +484,11 @@ ISOLATION_AWARE_INLINE HWND WINAPI IsolationAwareCreateDialogIndirectParamW(__in
     return windowResult;
 }
 
-ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxParamA(__in_opt HINSTANCE hInstance,__in LPCSTR lpTemplateName,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam)
+ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxParamA(HINSTANCE hInstance,LPCSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam)
 {
     INT_PTR nResult = -1;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
@@ -512,7 +497,7 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxParamA(__in_opt HIN
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == -1);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -524,11 +509,11 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxParamA(__in_opt HIN
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxParamW(__in_opt HINSTANCE hInstance,__in LPCWSTR lpTemplateName,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam)
+ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxParamW(HINSTANCE hInstance,LPCWSTR lpTemplateName,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam)
 {
     INT_PTR nResult = -1;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
@@ -537,7 +522,7 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxParamW(__in_opt HIN
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == -1);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -549,11 +534,11 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxParamW(__in_opt HIN
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamA(__in_opt HINSTANCE hInstance,__in LPCDLGTEMPLATEA hDialogTemplate,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam)
+ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamA(HINSTANCE hInstance,LPCDLGTEMPLATEA hDialogTemplate,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam)
 {
     INT_PTR nResult = -1;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
@@ -562,7 +547,7 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamA(__in
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == -1);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -574,11 +559,11 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamA(__in
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamW(__in_opt HINSTANCE hInstance,__in LPCDLGTEMPLATEW hDialogTemplate,__in_opt HWND hWndParent,__in_opt DLGPROC lpDialogFunc,__in LPARAM dwInitParam)
+ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamW(HINSTANCE hInstance,LPCDLGTEMPLATEW hDialogTemplate,HWND hWndParent,DLGPROC lpDialogFunc,LPARAM dwInitParam)
 {
     INT_PTR nResult = -1;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
@@ -587,7 +572,7 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamW(__in
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == -1);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -599,11 +584,11 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwareDialogBoxIndirectParamW(__in
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxA(__in_opt HWND hWnd,__in_opt LPCSTR lpText,__in_opt LPCSTR lpCaption,__in UINT uType)
+ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxA(HWND hWnd,LPCSTR lpText,LPCSTR lpCaption,UINT uType)
 {
     int nResult = 0 ;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
@@ -612,7 +597,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxA(__in_opt HWND hWnd,_
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -624,11 +609,11 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxA(__in_opt HWND hWnd,_
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxW(__in_opt HWND hWnd,__in_opt LPCWSTR lpText,__in_opt LPCWSTR lpCaption,__in UINT uType)
+ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxW(HWND hWnd,LPCWSTR lpText,LPCWSTR lpCaption,UINT uType)
 {
     int nResult = 0 ;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
@@ -637,7 +622,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxW(__in_opt HWND hWnd,_
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -649,11 +634,11 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxW(__in_opt HWND hWnd,_
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxExA(__in_opt HWND hWnd,__in_opt LPCSTR lpText,__in_opt LPCSTR lpCaption,__in UINT uType,__in WORD wLanguageId)
+ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxExA(HWND hWnd,LPCSTR lpText,LPCSTR lpCaption,UINT uType,WORD wLanguageId)
 {
     int nResult = 0 ;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
@@ -662,7 +647,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxExA(__in_opt HWND hWnd
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -674,11 +659,11 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxExA(__in_opt HWND hWnd
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxExW(__in_opt HWND hWnd,__in_opt LPCWSTR lpText,__in_opt LPCWSTR lpCaption,__in UINT uType,__in WORD wLanguageId)
+ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxExW(HWND hWnd,LPCWSTR lpText,LPCWSTR lpCaption,UINT uType,WORD wLanguageId)
 {
     int nResult = 0 ;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
@@ -687,7 +672,7 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxExW(__in_opt HWND hWnd
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -699,20 +684,20 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxExW(__in_opt HWND hWnd
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxIndirectA(__in const MSGBOXPARAMSA*lpmbp)
+ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxIndirectA(const MSGBOXPARAMSA*unnamed1)
 {
     int nResult = 0 ;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
-        nResult = MessageBoxIndirectA(lpmbp);
+        nResult = MessageBoxIndirectA(unnamed1);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -724,20 +709,20 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxIndirectA(__in const M
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxIndirectW(__in const MSGBOXPARAMSW*lpmbp)
+ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxIndirectW(const MSGBOXPARAMSW*unnamed1)
 {
     int nResult = 0 ;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
-        nResult = MessageBoxIndirectW(lpmbp);
+        nResult = MessageBoxIndirectW(unnamed1);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == 0 );
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -749,18 +734,26 @@ ISOLATION_AWARE_INLINE int WINAPI IsolationAwareMessageBoxIndirectW(__in const M
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE FARPROC WINAPI WinuserIsolationAwarePrivatetRgCebPnQQeRff_HfReQP_QYY(LPCSTR pszProcName)
+ISOLATION_AWARE_INLINE FARPROC WINAPI WinuserIsolationAwarePrivatetEgCebCnDDeEff_HfEeDC_DLL(LPCSTR pszProcName)
 /* This function is shared by the other stubs in this header. */
 {
+    FARPROC proc = NULL;
     static HMODULE s_module;
-    const static IsolationAwarePrivatepBAFGnAG_zBqHyr_vAsB
-        c = { IsolationAwarePrivatezlybNQyVOeNeln, IsolationAwarePrivatezlybNQyVOeNelJ, "User32.dll", L"User32.dll" };
-    static IsolationAwarePrivatezHGnoyr_zBqHyr_vAsB m;
-
-    return IsolationAwarePrivatezltRgCebPnQQeRff(&c, &m, pszProcName);
+    if (s_module == NULL)
+    {
+        s_module = LoadLibraryW(L"User32.dll");
+        if (s_module == NULL)
+        {
+            if (GetLastError() != ERROR_CALL_NOT_IMPLEMENTED)
+                return proc;
+            s_module = LoadLibraryA("User32.dll");
+            if (s_module == NULL)
+                return proc;
+        }
+    }
+    proc = GetProcAddress(s_module, pszProcName);
+    return proc;
 }
-
-#endif /* ISOLATION_AWARE_USE_STATIC_LIBRARY */
 
 #define CreateDialogIndirectParamA IsolationAwareCreateDialogIndirectParamA
 #define CreateDialogIndirectParamW IsolationAwareCreateDialogIndirectParamW

@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for iadmw.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -148,7 +147,6 @@ DEFINE_GUID(IID_IMSAdminBase3_W, 0xf612954d, 0x3b0b, 0x4c56, 0x95, 0x63, 0x22, 0
 DEFINE_GUID(IID_IMSImpExpHelp_W, 0x29ff67ff, 0x8050, 0x480f, 0x9f, 0x30, 0xcc, 0x41, 0x63, 0x5f, 0x2f, 0x9d);
 DEFINE_GUID(IID_IMSAdminBaseSink_W, 0xa9e69612, 0xb80d, 0x11d0, 0xb9, 0xb9, 0x0, 0xa0, 0xc9, 0x22, 0xe7, 0x50);
 DEFINE_GUID(IID_AsyncIMSAdminBaseSink_W, 0xa9e69613, 0xb80d, 0x11d0, 0xb9, 0xb9, 0x0, 0xa0, 0xc9, 0x22, 0xe7, 0x50);
-DEFINE_GUID(IID_IMSAdminBaseSinkNoAsyncCallback, 0x41704d5c, 0x75a0, 0x4d0e, 0xae, 0x3f, 0x80, 0xa5, 0xfc, 0x4c, 0xf6, 0x53);
 #define GETAdminBaseCLSIDW(IsService) CLSID_MSAdminBase_W
 /*                                                                              
 The Main Interface, UNICODE                                                     
@@ -2489,14 +2487,14 @@ void __RPC_STUB AsyncIMSAdminBaseSinkW_Finish_ShutdownNotify_Stub(
 #endif 	/* __AsyncIMSAdminBaseSinkW_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_iadmw_0272 */
+/* interface __MIDL_itf_iadmw_0267 */
 /* [local] */ 
 
 #endif
 
 
-extern RPC_IF_HANDLE __MIDL_itf_iadmw_0272_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_iadmw_0272_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_iadmw_0267_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_iadmw_0267_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

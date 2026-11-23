@@ -66,7 +66,7 @@ Compiler switches:
 #define INC_OLE2
 #endif
 
-#if defined(WIN32) || defined(_M_AMD64)
+#if defined(WIN32) || defined(__RPC_WIN64__)
 
 //We need to define REFIID, REFCLSID, REFGUID, & REFFMTID here so that the
 //proxy code won't get the const GUID *const definition.

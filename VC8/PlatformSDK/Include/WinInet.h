@@ -725,15 +725,13 @@ BOOLAPI InternetTimeToSystemTime(
 #endif // !UNICODE
 
 
-BOOLAPI
-InternetCrackUrlA(
+BOOLAPI InternetCrackUrlA(
     __in_ecount(dwUrlLength) LPCSTR lpszUrl,
     __in DWORD dwUrlLength,
     __in DWORD dwFlags,
     __inout LPURL_COMPONENTSA lpUrlComponents
     );
-BOOLAPI
-InternetCrackUrlW(
+BOOLAPI InternetCrackUrlW(
     __in_ecount(dwUrlLength) LPCWSTR lpszUrl,
     __in DWORD dwUrlLength,
     __in DWORD dwFlags,
@@ -745,18 +743,16 @@ InternetCrackUrlW(
 #define InternetCrackUrl  InternetCrackUrlA
 #endif // !UNICODE
 
-BOOLAPI
-InternetCreateUrlA(
+BOOLAPI InternetCreateUrlA(
     __in LPURL_COMPONENTSA lpUrlComponents,
     __in DWORD dwFlags,
-    __out_ecount_opt(*lpdwUrlLength) LPSTR lpszUrl,
+    __out_ecount(*lpdwUrlLength) __opt LPSTR lpszUrl,
     __inout LPDWORD lpdwUrlLength
     );
-BOOLAPI
-InternetCreateUrlW(
+BOOLAPI InternetCreateUrlW(
     __in LPURL_COMPONENTSW lpUrlComponents,
     __in DWORD dwFlags,
-    __out_ecount_opt(*lpdwUrlLength) LPWSTR lpszUrl,
+    __out_ecount(*lpdwUrlLength) __opt LPWSTR lpszUrl,
     __inout LPDWORD lpdwUrlLength
     );
 #ifdef UNICODE
@@ -765,15 +761,13 @@ InternetCreateUrlW(
 #define InternetCreateUrl  InternetCreateUrlA
 #endif // !UNICODE
 
-BOOLAPI
-InternetCanonicalizeUrlA(
+BOOLAPI InternetCanonicalizeUrlA(
     __in LPCSTR lpszUrl,
     __out_ecount(*lpdwBufferLength) LPSTR lpszBuffer,
     __inout LPDWORD lpdwBufferLength,
     __in DWORD dwFlags
     );
-BOOLAPI
-InternetCanonicalizeUrlW(
+BOOLAPI InternetCanonicalizeUrlW(
     __in LPCWSTR lpszUrl,
     __out_ecount(*lpdwBufferLength) LPWSTR lpszBuffer,
     __inout LPDWORD lpdwBufferLength,
@@ -785,16 +779,14 @@ InternetCanonicalizeUrlW(
 #define InternetCanonicalizeUrl  InternetCanonicalizeUrlA
 #endif // !UNICODE
 
-BOOLAPI
-InternetCombineUrlA(
+BOOLAPI InternetCombineUrlA(
     __in LPCSTR lpszBaseUrl,
     __in LPCSTR lpszRelativeUrl,
     __out_ecount(*lpdwBufferLength) LPSTR lpszBuffer,
     __inout LPDWORD lpdwBufferLength,
     __in DWORD dwFlags
     );
-BOOLAPI
-InternetCombineUrlW(
+BOOLAPI InternetCombineUrlW(
     __in LPCWSTR lpszBaseUrl,
     __in LPCWSTR lpszRelativeUrl,
     __out_ecount(*lpdwBufferLength) LPWSTR lpszBuffer,
@@ -828,17 +820,17 @@ InternetCombineUrlW(
         // signs encountered, default is to not encode percent.
 
 INTERNETAPI_(HINTERNET) InternetOpenA(
-    __in_opt LPCSTR lpszAgent,
+    __in __opt LPCSTR lpszAgent,
     __in DWORD dwAccessType,
-    __in_opt LPCSTR lpszProxy,
-    __in_opt LPCSTR lpszProxyBypass,
+    __in __opt LPCSTR lpszProxy,
+    __in __opt LPCSTR lpszProxyBypass,
     __in DWORD dwFlags
     );
 INTERNETAPI_(HINTERNET) InternetOpenW(
-    __in_opt LPCWSTR lpszAgent,
+    __in __opt LPCWSTR lpszAgent,
     __in DWORD dwAccessType,
-    __in_opt LPCWSTR lpszProxy,
-    __in_opt LPCWSTR lpszProxyBypass,
+    __in __opt LPCWSTR lpszProxy,
+    __in __opt LPCWSTR lpszProxyBypass,
     __in DWORD dwFlags
     );
 #ifdef UNICODE
@@ -868,27 +860,25 @@ BOOLAPI InternetCloseHandle(
     __in HINTERNET hInternet
     );
 
-INTERNETAPI_(HINTERNET)
-InternetConnectA(
+INTERNETAPI_(HINTERNET) InternetConnectA(
     __in HINTERNET hInternet,
     __in LPCSTR lpszServerName,
     __in INTERNET_PORT nServerPort,
-    __in_opt LPCSTR lpszUserName,
-    __in_opt LPCSTR lpszPassword,
+    __in __opt LPCSTR lpszUserName,
+    __in __opt LPCSTR lpszPassword,
     __in DWORD dwService,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
-INTERNETAPI_(HINTERNET)
-InternetConnectW(
+INTERNETAPI_(HINTERNET) InternetConnectW(
     __in HINTERNET hInternet,
     __in LPCWSTR lpszServerName,
     __in INTERNET_PORT nServerPort,
-    __in_opt LPCWSTR lpszUserName,
-    __in_opt LPCWSTR lpszPassword,
+    __in __opt LPCWSTR lpszUserName,
+    __in __opt LPCWSTR lpszPassword,
     __in DWORD dwService,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define InternetConnect  InternetConnectW
@@ -908,18 +898,18 @@ InternetConnectW(
 INTERNETAPI_(HINTERNET) InternetOpenUrlA(
     __in HINTERNET hInternet,
     __in LPCSTR lpszUrl,
-    __in_ecount_opt(dwHeadersLength) LPCSTR lpszHeaders,
+    __in_ecount(dwHeadersLength) __opt LPCSTR lpszHeaders,
     __in DWORD dwHeadersLength,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 INTERNETAPI_(HINTERNET) InternetOpenUrlW(
     __in HINTERNET hInternet,
     __in LPCWSTR lpszUrl,
-    __in_ecount_opt(dwHeadersLength) LPCWSTR lpszHeaders,
+    __in_ecount(dwHeadersLength) __opt LPCWSTR lpszHeaders,
     __in DWORD dwHeadersLength,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define InternetOpenUrl  InternetOpenUrlW
@@ -938,13 +928,13 @@ INTERNETAPI_(BOOL) InternetReadFileExA(
     __in HINTERNET hFile,
     __out LPINTERNET_BUFFERSA lpBuffersOut,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 INTERNETAPI_(BOOL) InternetReadFileExW(
     __in HINTERNET hFile,
     __out LPINTERNET_BUFFERSW lpBuffersOut,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define InternetReadFileEx  InternetReadFileExW
@@ -979,9 +969,9 @@ BOOLAPI InternetWriteFile(
 
 BOOLAPI InternetQueryDataAvailable(
     __in HINTERNET hFile,
-    __out_opt LPDWORD lpdwNumberOfBytesAvailable,
+    __out __opt LPDWORD lpdwNumberOfBytesAvailable,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 
 BOOLAPI InternetFindNextFileA(
@@ -999,15 +989,15 @@ BOOLAPI InternetFindNextFileW(
 #endif // !UNICODE
 
 BOOLAPI InternetQueryOptionA(
-    __in_opt HINTERNET hInternet,
+    __in __opt HINTERNET hInternet,
     __in DWORD dwOption,
-    __out_bcount_opt(*lpdwBufferLength) LPVOID lpBuffer,
+    __out_bcount(*lpdwBufferLength) __opt LPVOID lpBuffer,
     __inout LPDWORD lpdwBufferLength
     );
 BOOLAPI InternetQueryOptionW(
-    __in_opt HINTERNET hInternet,
+    __in __opt HINTERNET hInternet,
     __in DWORD dwOption,
-    __out_bcount_opt(*lpdwBufferLength) LPVOID lpBuffer,
+    __out_bcount(*lpdwBufferLength) __opt LPVOID lpBuffer,
     __inout LPDWORD lpdwBufferLength
     );
 #ifdef UNICODE
@@ -1017,16 +1007,16 @@ BOOLAPI InternetQueryOptionW(
 #endif // !UNICODE
 
 BOOLAPI InternetSetOptionA(
-    __in_opt HINTERNET hInternet,
-    __in DWORD dwOption,
-    __in_opt LPVOID lpBuffer,
-    __in DWORD dwBufferLength
+    __in __opt HINTERNET hInternet,
+    __in       DWORD dwOption,
+    __in __opt LPVOID lpBuffer,
+    __in       DWORD dwBufferLength
     );
 BOOLAPI InternetSetOptionW(
-    __in_opt HINTERNET hInternet,
-    __in DWORD dwOption,
-    __in_opt LPVOID lpBuffer,
-    __in DWORD dwBufferLength
+    __in __opt HINTERNET hInternet,
+    __in       DWORD dwOption,
+    __in __opt LPVOID lpBuffer,
+    __in       DWORD dwBufferLength
     );
 #ifdef UNICODE
 #define InternetSetOption  InternetSetOptionW
@@ -1035,18 +1025,18 @@ BOOLAPI InternetSetOptionW(
 #endif // !UNICODE
 
 BOOLAPI InternetSetOptionExA(
-    __in_opt HINTERNET hInternet,
-    __in DWORD dwOption,
-    __in_opt LPVOID lpBuffer,
-    __in DWORD dwBufferLength,
-    __in DWORD dwFlags
+    __in __opt HINTERNET hInternet,
+    __in       DWORD dwOption,
+    __in __opt LPVOID lpBuffer,
+    __in       DWORD dwBufferLength,
+    __in       DWORD dwFlags
     );
 BOOLAPI InternetSetOptionExW(
-    __in_opt HINTERNET hInternet,
-    __in DWORD dwOption,
-    __in_opt LPVOID lpBuffer,
-    __in DWORD dwBufferLength,
-    __in DWORD dwFlags
+    __in __opt HINTERNET hInternet,
+    __in       DWORD dwOption,
+    __in __opt LPVOID lpBuffer,
+    __in       DWORD dwBufferLength,
+    __in       DWORD dwFlags
     );
 #ifdef UNICODE
 #define InternetSetOptionEx  InternetSetOptionExW
@@ -1257,16 +1247,14 @@ BOOLAPI InternetUnlockRequestFile(
 #define AUTODIAL_MODE_NO_NETWORK_PRESENT        4
 
 
-BOOLAPI
-InternetGetLastResponseInfoA(
+BOOLAPI InternetGetLastResponseInfoA(
     __out LPDWORD lpdwError,
-    __out_ecount_opt(*lpdwBufferLength) LPSTR lpszBuffer,
+    __out_ecount(*lpdwBufferLength) __opt LPSTR lpszBuffer,
     __inout LPDWORD lpdwBufferLength
     );
-BOOLAPI
-InternetGetLastResponseInfoW(
+BOOLAPI InternetGetLastResponseInfoW(
     __out LPDWORD lpdwError,
-    __out_ecount_opt(*lpdwBufferLength) LPWSTR lpszBuffer,
+    __out_ecount(*lpdwBufferLength) __opt LPWSTR lpszBuffer,
     __inout LPDWORD lpdwBufferLength
     );
 #ifdef UNICODE
@@ -1283,9 +1271,9 @@ typedef
 VOID
 (CALLBACK * INTERNET_STATUS_CALLBACK)(
     __in HINTERNET hInternet,
-    __in_opt DWORD_PTR dwContext,
+    __in __opt DWORD_PTR dwContext,
     __in DWORD dwInternetStatus,
-    __in_opt LPVOID lpvStatusInformation,
+    __in __opt LPVOID lpvStatusInformation,
     __in DWORD dwStatusInformationLength
     );
 
@@ -1293,12 +1281,12 @@ typedef INTERNET_STATUS_CALLBACK * LPINTERNET_STATUS_CALLBACK;
 
 INTERNETAPI_(INTERNET_STATUS_CALLBACK) InternetSetStatusCallbackA(
     __in HINTERNET hInternet,
-    __in_opt INTERNET_STATUS_CALLBACK lpfnInternetCallback
+    __in __opt INTERNET_STATUS_CALLBACK lpfnInternetCallback
     );
 
 INTERNETAPI_(INTERNET_STATUS_CALLBACK) InternetSetStatusCallbackW(
     __in HINTERNET hInternet,
-    __in_opt INTERNET_STATUS_CALLBACK lpfnInternetCallback
+    __in __opt INTERNET_STATUS_CALLBACK lpfnInternetCallback
     );
 
 #ifdef UNICODE
@@ -1309,7 +1297,7 @@ INTERNETAPI_(INTERNET_STATUS_CALLBACK) InternetSetStatusCallbackW(
 #else
 INTERNETAPI_(INTERNET_STATUS_CALLBACK) InternetSetStatusCallback(
     __in HINTERNET hInternet,
-    __in_opt INTERNET_STATUS_CALLBACK lpfnInternetCallback
+    __in __opt INTERNET_STATUS_CALLBACK lpfnInternetCallback
     );
 #endif // _WINX32_
 #endif // !UNICODE
@@ -1443,17 +1431,17 @@ CookieDecision;
 
 INTERNETAPI_(HINTERNET) FtpFindFirstFileA(
     __in HINTERNET hConnect,
-    __in_opt LPCSTR lpszSearchFile,
-    __out_opt LPWIN32_FIND_DATAA lpFindFileData,
+    __in __opt LPCSTR lpszSearchFile,
+    __out __opt LPWIN32_FIND_DATAA lpFindFileData,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 INTERNETAPI_(HINTERNET) FtpFindFirstFileW(
     __in HINTERNET hConnect,
-    __in_opt LPCWSTR lpszSearchFile,
-    __out_opt LPWIN32_FIND_DATAW lpFindFileData,
+    __in __opt LPCWSTR lpszSearchFile,
+    __out __opt LPWIN32_FIND_DATAW lpFindFileData,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define FtpFindFirstFile  FtpFindFirstFileW
@@ -1468,7 +1456,7 @@ BOOLAPI FtpGetFileA(
     __in BOOL fFailIfExists,
     __in DWORD dwFlagsAndAttributes,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 BOOLAPI FtpGetFileW(
     __in HINTERNET hConnect,
@@ -1477,7 +1465,7 @@ BOOLAPI FtpGetFileW(
     __in BOOL fFailIfExists,
     __in DWORD dwFlagsAndAttributes,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define FtpGetFile  FtpGetFileW
@@ -1490,14 +1478,14 @@ BOOLAPI FtpPutFileA(
     __in LPCSTR lpszLocalFile,
     __in LPCSTR lpszNewRemoteFile,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 BOOLAPI FtpPutFileW(
     __in HINTERNET hConnect,
     __in LPCWSTR lpszLocalFile,
     __in LPCWSTR lpszNewRemoteFile,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define FtpPutFile  FtpPutFileW
@@ -1512,7 +1500,7 @@ BOOLAPI FtpGetFileEx(
     __in BOOL fFailIfExists,
     __in DWORD dwFlagsAndAttributes,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 
 BOOLAPI FtpPutFileEx(
@@ -1520,7 +1508,7 @@ BOOLAPI FtpPutFileEx(
     __in LPCWSTR lpszLocalFile,
     __in LPCSTR lpszNewRemoteFile,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 
 BOOLAPI FtpDeleteFileA(
@@ -1558,14 +1546,14 @@ INTERNETAPI_(HINTERNET) FtpOpenFileA(
     __in LPCSTR lpszFileName,
     __in DWORD dwAccess,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 INTERNETAPI_(HINTERNET) FtpOpenFileW(
     __in HINTERNET hConnect,
     __in LPCWSTR lpszFileName,
     __in DWORD dwAccess,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define FtpOpenFile  FtpOpenFileW
@@ -1636,16 +1624,16 @@ BOOLAPI FtpCommandA(
     __in BOOL fExpectResponse,
     __in DWORD dwFlags,
     __in LPCSTR lpszCommand,
-    __in_opt DWORD_PTR dwContext,
-    __out_opt HINTERNET *phFtpCommand
+    __in __opt DWORD_PTR dwContext,
+    __out __opt HINTERNET *phFtpCommand
     );
 BOOLAPI FtpCommandW(
     __in HINTERNET hConnect,
     __in BOOL fExpectResponse,
     __in DWORD dwFlags,
     __in LPCWSTR lpszCommand,
-    __in_opt DWORD_PTR dwContext,
-    __out_opt HINTERNET *phFtpCommand
+    __in __opt DWORD_PTR dwContext,
+    __out __opt HINTERNET *phFtpCommand
     );
 #ifdef UNICODE
 #define FtpCommand  FtpCommandW
@@ -1655,7 +1643,7 @@ BOOLAPI FtpCommandW(
 
 INTERNETAPI_(DWORD) FtpGetFileSize(
     __in HINTERNET hFile,
-    __out_opt LPDWORD lpdwFileSizeHigh
+    __out __opt LPDWORD lpdwFileSizeHigh
     );
 
 
@@ -1985,19 +1973,19 @@ typedef struct {
 BOOLAPI GopherCreateLocatorA(
     __in LPCSTR lpszHost,
     __in INTERNET_PORT nServerPort,
-    __in_opt LPCSTR lpszDisplayString,
-    __in_opt LPCSTR lpszSelectorString,
+    __in __opt LPCSTR lpszDisplayString,
+    __in __opt LPCSTR lpszSelectorString,
     __in DWORD dwGopherType,
-    __out_opt LPSTR lpszLocator,
+    __out_ecount(*lpdwBufferLength) __opt LPSTR lpszLocator,
     __inout LPDWORD lpdwBufferLength
     );
 BOOLAPI GopherCreateLocatorW(
     __in LPCWSTR lpszHost,
     __in INTERNET_PORT nServerPort,
-    __in_opt LPCWSTR lpszDisplayString,
-    __in_opt LPCWSTR lpszSelectorString,
+    __in __opt LPCWSTR lpszDisplayString,
+    __in __opt LPCWSTR lpszSelectorString,
     __in DWORD dwGopherType,
-    __out_opt LPWSTR lpszLocator,
+    __out_ecount(*lpdwBufferLength) __opt LPWSTR lpszLocator,
     __inout LPDWORD lpdwBufferLength
     );
 #ifdef UNICODE
@@ -2022,19 +2010,19 @@ BOOLAPI GopherGetLocatorTypeW(
 
 INTERNETAPI_(HINTERNET) GopherFindFirstFileA(
     __in HINTERNET hConnect,
-    __in_opt LPCSTR lpszLocator,
-    __in_opt LPCSTR lpszSearchString,
-    __out_opt LPGOPHER_FIND_DATAA lpFindData,
+    __in __opt LPCSTR lpszLocator,
+    __in __opt LPCSTR lpszSearchString,
+    __out __opt LPGOPHER_FIND_DATAA lpFindData,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 INTERNETAPI_(HINTERNET) GopherFindFirstFileW(
     __in HINTERNET hConnect,
-    __in_opt LPCWSTR lpszLocator,
-    __in_opt LPCWSTR lpszSearchString,
-    __out_opt LPGOPHER_FIND_DATAW lpFindData,
+    __in __opt LPCWSTR lpszLocator,
+    __in __opt LPCWSTR lpszSearchString,
+    __out __opt LPGOPHER_FIND_DATAW lpFindData,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define GopherFindFirstFile  GopherFindFirstFileW
@@ -2045,16 +2033,16 @@ INTERNETAPI_(HINTERNET) GopherFindFirstFileW(
 INTERNETAPI_(HINTERNET) GopherOpenFileA(
     __in HINTERNET hConnect,
     __in LPCSTR lpszLocator,
-    __in_opt LPCSTR lpszView,
+    __in __opt LPCSTR lpszView,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 INTERNETAPI_(HINTERNET) GopherOpenFileW(
     __in HINTERNET hConnect,
     __in LPCWSTR lpszLocator,
-    __in_opt LPCWSTR lpszView,
+    __in __opt LPCWSTR lpszView,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define GopherOpenFile  GopherOpenFileW
@@ -2070,22 +2058,22 @@ typedef BOOL (CALLBACK * GOPHER_ATTRIBUTE_ENUMERATOR)(
 BOOLAPI GopherGetAttributeA(
     __in HINTERNET hConnect,
     __in LPCSTR lpszLocator,
-    __in_opt LPCSTR lpszAttributeName,
+    __in __opt LPCSTR lpszAttributeName,
     __out_ecount(dwBufferLength) __typefix(LPTSTR) LPBYTE lpBuffer,
     __in DWORD dwBufferLength,
     __out LPDWORD lpdwCharactersReturned,
-    __in_opt GOPHER_ATTRIBUTE_ENUMERATOR lpfnEnumerator,
-    __in_opt DWORD_PTR dwContext
+    __in __opt GOPHER_ATTRIBUTE_ENUMERATOR lpfnEnumerator,
+    __in __opt DWORD_PTR dwContext
     );
 BOOLAPI GopherGetAttributeW(
     __in HINTERNET hConnect,
     __in LPCWSTR lpszLocator,
-    __in_opt LPCWSTR lpszAttributeName,
+    __in __opt LPCWSTR lpszAttributeName,
     __out_ecount(dwBufferLength) __typefix(LPTSTR) LPBYTE lpBuffer,
     __in DWORD dwBufferLength,
     __out LPDWORD lpdwCharactersReturned,
-    __in_opt GOPHER_ATTRIBUTE_ENUMERATOR lpfnEnumerator,
-    __in_opt DWORD_PTR dwContext
+    __in __opt GOPHER_ATTRIBUTE_ENUMERATOR lpfnEnumerator,
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define GopherGetAttribute  GopherGetAttributeW
@@ -2327,23 +2315,23 @@ BOOLAPI GopherGetAttributeW(
 
 INTERNETAPI_(HINTERNET) HttpOpenRequestA(
     __in HINTERNET hConnect,
-    __in_opt LPCSTR lpszVerb,
-    __in_opt LPCSTR lpszObjectName,
-    __in_opt LPCSTR lpszVersion,
-    __in_opt LPCSTR lpszReferrer,
-    __in_opt LPCSTR FAR * lplpszAcceptTypes,
+    __in __opt LPCSTR lpszVerb,
+    __in __opt LPCSTR lpszObjectName,
+    __in __opt LPCSTR lpszVersion,
+    __in __opt LPCSTR lpszReferrer,
+    __in __opt LPCSTR FAR * lplpszAcceptTypes,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 INTERNETAPI_(HINTERNET) HttpOpenRequestW(
     __in HINTERNET hConnect,
-    __in_opt LPCWSTR lpszVerb,
-    __in_opt LPCWSTR lpszObjectName,
-    __in_opt LPCWSTR lpszVersion,
-    __in_opt LPCWSTR lpszReferrer,
-    __in_opt LPCWSTR FAR * lplpszAcceptTypes,
+    __in __opt LPCWSTR lpszVerb,
+    __in __opt LPCWSTR lpszObjectName,
+    __in __opt LPCWSTR lpszVersion,
+    __in __opt LPCWSTR lpszReferrer,
+    __in __opt LPCWSTR FAR * lplpszAcceptTypes,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define HttpOpenRequest  HttpOpenRequestW
@@ -2413,16 +2401,16 @@ BOOLAPI HttpAddRequestHeadersW(
 
 BOOLAPI HttpSendRequestA(
     __in HINTERNET hRequest,
-    __in_ecount_opt(dwHeadersLength) LPCSTR lpszHeaders,
+    __in_ecount(dwHeadersLength) __opt LPCSTR lpszHeaders,
     __in DWORD dwHeadersLength,
-    __in_bcount_opt(dwOptionalLength) LPVOID lpOptional,
+    __in_bcount(dwOptionalLength) __opt LPVOID lpOptional,
     __in DWORD dwOptionalLength
     );
 BOOLAPI HttpSendRequestW(
     __in HINTERNET hRequest,
-    __in_ecount_opt(dwHeadersLength) LPCWSTR lpszHeaders,
+    __in_ecount(dwHeadersLength) __opt LPCWSTR lpszHeaders,
     __in DWORD dwHeadersLength,
-    __in_bcount_opt(dwOptionalLength) LPVOID lpOptional,
+    __in_bcount(dwOptionalLength) __opt LPVOID lpOptional,
     __in DWORD dwOptionalLength
     );
 #ifdef UNICODE
@@ -2433,17 +2421,17 @@ BOOLAPI HttpSendRequestW(
 
 INTERNETAPI_(BOOL) HttpSendRequestExA(
     __in HINTERNET hRequest,
-    __in_opt LPINTERNET_BUFFERSA lpBuffersIn,
-    __out_opt LPINTERNET_BUFFERSA lpBuffersOut,
+    __in __opt LPINTERNET_BUFFERSA lpBuffersIn,
+    __out __opt LPINTERNET_BUFFERSA lpBuffersOut,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 INTERNETAPI_(BOOL) HttpSendRequestExW(
     __in HINTERNET hRequest,
-    __in_opt LPINTERNET_BUFFERSW lpBuffersIn,
-    __out_opt LPINTERNET_BUFFERSW lpBuffersOut,
+    __in __opt LPINTERNET_BUFFERSW lpBuffersIn,
+    __out __opt LPINTERNET_BUFFERSW lpBuffersOut,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define HttpSendRequestEx  HttpSendRequestExW
@@ -2464,15 +2452,15 @@ INTERNETAPI_(BOOL) HttpSendRequestExW(
 
 INTERNETAPI_(BOOL) HttpEndRequestA(
     __in HINTERNET hRequest,
-    __out_opt LPINTERNET_BUFFERSA lpBuffersOut,
+    __out __opt LPINTERNET_BUFFERSA lpBuffersOut,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 INTERNETAPI_(BOOL) HttpEndRequestW(
     __in HINTERNET hRequest,
-    __out_opt LPINTERNET_BUFFERSW lpBuffersOut,
+    __out __opt LPINTERNET_BUFFERSW lpBuffersOut,
     __in DWORD dwFlags,
-    __in_opt DWORD_PTR dwContext
+    __in __opt DWORD_PTR dwContext
     );
 #ifdef UNICODE
 #define HttpEndRequest  HttpEndRequestW
@@ -2483,16 +2471,16 @@ INTERNETAPI_(BOOL) HttpEndRequestW(
 BOOLAPI HttpQueryInfoA(
     __in HINTERNET hRequest,
     __in DWORD dwInfoLevel,
-    __inout_bcount_opt(*lpdwBufferLength) LPVOID lpBuffer,
+    __inout_bcount(*lpdwBufferLength) __opt LPVOID lpBuffer,
     __inout LPDWORD lpdwBufferLength,
-    __inout_opt LPDWORD lpdwIndex
+    __inout __opt LPDWORD lpdwIndex
     );
 BOOLAPI HttpQueryInfoW(
     __in HINTERNET hRequest,
     __in DWORD dwInfoLevel,
-    __inout_bcount_opt(*lpdwBufferLength) LPVOID lpBuffer,
+    __inout_bcount(*lpdwBufferLength) __opt LPVOID lpBuffer,
     __inout LPDWORD lpdwBufferLength,
-    __inout_opt LPDWORD lpdwIndex
+    __inout __opt LPDWORD lpdwIndex
     );
 #ifdef UNICODE
 #define HttpQueryInfo  HttpQueryInfoW
@@ -2519,16 +2507,14 @@ BOOLAPI HttpQueryInfoW(
 #define INTERNET_COOKIE_IS_LEGACY       0x800
 
 
-BOOLAPI
-InternetSetCookieA(
+BOOLAPI InternetSetCookieA(
     __in LPCSTR lpszUrl,
-    __in_opt LPCSTR lpszCookieName,
+    __in __opt LPCSTR lpszCookieName,
     __in LPCSTR lpszCookieData
     );
-BOOLAPI
-InternetSetCookieW(
+BOOLAPI InternetSetCookieW(
     __in LPCWSTR lpszUrl,
-    __in_opt LPCWSTR lpszCookieName,
+    __in __opt LPCWSTR lpszCookieName,
     __in LPCWSTR lpszCookieData
     );
 #ifdef UNICODE
@@ -2537,18 +2523,16 @@ InternetSetCookieW(
 #define InternetSetCookie  InternetSetCookieA
 #endif // !UNICODE
 
-BOOLAPI
-InternetGetCookieA(
+BOOLAPI InternetGetCookieA(
     __in LPCSTR lpszUrl,
-    __in_opt LPCSTR lpszCookieName,
-    __out_ecount_opt(*lpdwSize) LPSTR lpszCookieData,
+    __in __opt LPCSTR lpszCookieName,
+    __out_ecount(*lpdwSize) __opt LPSTR lpCookieData,
     __inout LPDWORD lpdwSize
     );
-BOOLAPI
-InternetGetCookieW(
+BOOLAPI InternetGetCookieW(
     __in LPCWSTR lpszUrl,
-    __in_opt LPCWSTR lpszCookieName,
-    __out_ecount_opt(*lpdwSize) LPWSTR lpszCookieData,
+    __in __opt LPCWSTR lpszCookieName,
+    __out_ecount(*lpdwSize) __opt LPWSTR lpCookieData,
     __inout LPDWORD lpdwSize
     );
 #ifdef UNICODE
@@ -2557,18 +2541,16 @@ InternetGetCookieW(
 #define InternetGetCookie  InternetGetCookieA
 #endif // !UNICODE
 
-INTERNETAPI_(DWORD)
-InternetSetCookieExA(
+INTERNETAPI_(DWORD) InternetSetCookieExA(
     __in LPCSTR lpszUrl,
-    __in_opt LPCSTR lpszCookieName,
+    __in __opt LPCSTR lpszCookieName,
     __in LPCSTR lpszCookieData,
     __in DWORD dwFlags,
     __null DWORD_PTR dwReserved
     );
-INTERNETAPI_(DWORD)
-InternetSetCookieExW(
+INTERNETAPI_(DWORD) InternetSetCookieExW(
     __in LPCWSTR lpszUrl,
-    __in_opt LPCWSTR lpszCookieName,
+    __in __opt LPCWSTR lpszCookieName,
     __in LPCWSTR lpszCookieData,
     __in DWORD dwFlags,
     __null DWORD_PTR dwReserved
@@ -2579,21 +2561,19 @@ InternetSetCookieExW(
 #define InternetSetCookieEx  InternetSetCookieExA
 #endif // !UNICODE
 
-BOOLAPI
-InternetGetCookieExA(
-    __in LPCSTR lpszUrl,
-    __in_opt LPCSTR lpszCookieName,
-    __in_ecount_opt(*lpdwSize) LPSTR lpszCookieData,
-    __inout_opt LPDWORD lpdwSize,
+BOOLAPI InternetGetCookieExA(
+    __in LPCSTR pchURL,
+    __in __opt LPCSTR pchCookieName,
+    __in_ecount(*pcchCookieData) __opt LPSTR pchCookieData,
+    __inout __opt LPDWORD pcchCookieData,
     __in DWORD dwFlags,
     __null LPVOID lpReserved
     );
-BOOLAPI
-InternetGetCookieExW(
-    __in LPCWSTR lpszUrl,
-    __in_opt LPCWSTR lpszCookieName,
-    __in_ecount_opt(*lpdwSize) LPWSTR lpszCookieData,
-    __inout_opt LPDWORD lpdwSize,
+BOOLAPI InternetGetCookieExW(
+    __in LPCWSTR pchURL,
+    __in __opt LPCWSTR pchCookieName,
+    __in_ecount(*pcchCookieData) __opt LPWSTR pchCookieData,
+    __inout __opt LPDWORD pcchCookieData,
     __in DWORD dwFlags,
     __null LPVOID lpReserved
     );
@@ -2607,20 +2587,17 @@ InternetGetCookieExW(
 // offline browsing
 //
 
-INTERNETAPI_(DWORD)
-InternetAttemptConnect(
+INTERNETAPI_(DWORD) InternetAttemptConnect(
     __null DWORD dwReserved
     );
 
-BOOLAPI
-InternetCheckConnectionA(
-    __in_opt LPCSTR lpszUrl,
+BOOLAPI InternetCheckConnectionA(
+    __in LPCSTR lpszUrl,
     __in DWORD dwFlags,
     __null DWORD dwReserved
     );
-BOOLAPI
-InternetCheckConnectionW(
-    __in_opt LPCWSTR lpszUrl,
+BOOLAPI InternetCheckConnectionW(
+    __in LPCWSTR lpszUrl,
     __in DWORD dwFlags,
     __null DWORD dwReserved
     );
@@ -2679,11 +2656,11 @@ INTERNETAPI_(BOOL) ResumeSuspendedDownload(
     );
 
 INTERNETAPI_(DWORD) InternetErrorDlg(
-    __in_opt HWND hWnd,
-    __in_opt HINTERNET hRequest,
+    __in HWND hWnd,
+    __inout HINTERNET hRequest,
     __in DWORD dwError,
     __in DWORD dwFlags,
-    __inout_opt LPVOID * lppvData
+    __inout __opt LPVOID * lppvData
     );
 
 INTERNETAPI_(DWORD) InternetConfirmZoneCrossingA(
@@ -3028,18 +3005,18 @@ typedef LPINTERNET_CACHE_GROUP_INFOA LPINTERNET_CACHE_GROUP_INFO;
 //
 
 BOOLAPI CreateUrlCacheEntryA(
-    __in LPCSTR lpszUrlName,
-    __in DWORD dwExpectedFileSize,
-    __in_opt LPCSTR lpszFileExtension,
-    __out LPSTR lpszFileName,
-    __null DWORD dwReserved
+    __in       LPCSTR lpszUrlName,
+    __in       DWORD dwExpectedFileSize,
+    __in __opt LPCSTR lpszFileExtension,
+    __out      LPSTR lpszFileName,
+    __null     DWORD dwReserved
     );
 BOOLAPI CreateUrlCacheEntryW(
-    __in LPCWSTR lpszUrlName,
-    __in DWORD dwExpectedFileSize,
-    __in_opt LPCWSTR lpszFileExtension,
-    __out LPWSTR lpszFileName,
-    __null DWORD dwReserved
+    __in       LPCWSTR lpszUrlName,
+    __in       DWORD dwExpectedFileSize,
+    __in __opt LPCWSTR lpszFileExtension,
+    __out      LPWSTR lpszFileName,
+    __null     DWORD dwReserved
     );
 #ifdef UNICODE
 #define CreateUrlCacheEntry  CreateUrlCacheEntryW
@@ -3059,30 +3036,27 @@ BOOLAPI CreateUrlCacheEntryW(
 // For Beta 1, we'll go with this behaviour, but in future releases
 // we want to make these apis consistent.
 
-BOOLAPI
-CommitUrlCacheEntryA(
+BOOLAPI CommitUrlCacheEntryA(
     __in LPCSTR lpszUrlName,
-    __in_opt LPCSTR lpszLocalFileName,
+    __in __opt LPCSTR lpszLocalFileName,
     __in FILETIME ExpireTime,
     __in FILETIME LastModifiedTime,
     __in DWORD CacheEntryType,
-    __in_ecount_opt(dwHeaderSize) LPBYTE lpHeaderInfo,
-    __in_opt DWORD dwHeaderSize,
+    __in_ecount(dwHeaderSize) __opt LPBYTE lpHeaderInfo,
+    __in __opt DWORD dwHeaderSize,
     __null LPCSTR lpszFileExtension,
-    __in_opt LPCSTR lpszOriginalUrl
+    __in __opt LPCSTR lpszOriginalUrl
     );
-
-BOOLAPI
-CommitUrlCacheEntryW(
+BOOLAPI CommitUrlCacheEntryW(
     __in LPCWSTR lpszUrlName,
-    __in_opt LPCWSTR lpszLocalFileName,
+    __in __opt LPCWSTR lpszLocalFileName,
     __in FILETIME ExpireTime,
     __in FILETIME LastModifiedTime,
     __in DWORD CacheEntryType,
-    __in_ecount_opt(dwHeaders) LPWSTR lpszHeaderInfo,
-    __in DWORD dwHeaders,
+    __in_ecount(dwHeaderSize) __opt LPWSTR lpHeaderInfo,
+    __in DWORD dwHeaderSize,
     __null LPCWSTR lpszFileExtension,
-    __in_opt LPCWSTR lpszOriginalUrl
+    __in __opt LPCWSTR lpszOriginalUrl
     );
 
 #ifdef UNICODE
@@ -3094,25 +3068,25 @@ CommitUrlCacheEntryW(
 #else
 CommitUrlCacheEntryA(
     __in LPCSTR lpszUrlName,
-    __in_opt LPCSTR lpszLocalFileName,
+    __in __opt LPCSTR lpszLocalFileName,
     __in FILETIME ExpireTime,
     __in FILETIME LastModifiedTime,
     __in DWORD CacheEntryType,
-    __in_ecount_opt(dwHeaderSize) LPCSTR lpHeaderInfo,
+    __in_ecount(dwHeaderSize) __opt LPCSTR lpHeaderInfo,
     __in DWORD dwHeaderSize,
     __null LPCSTR lpszFileExtension,
-    __in_opt LPCSTR lpszOriginalUrl
+    __in __opt LPCSTR lpszOriginalUrl
     );
 CommitUrlCacheEntryW(
     __in LPCWSTR lpszUrlName,
-    __in_opt LPCWSTR lpszLocalFileName,
+    __in __opt LPCWSTR lpszLocalFileName,
     __in FILETIME ExpireTime,
     __in FILETIME LastModifiedTime,
     __in DWORD CacheEntryType,
-    __in_ecount_opt(dwHeaderSize) LPCWSTR lpHeaderInfo,
+    __in_ecount(dwHeaderSize) __opt LPCWSTR lpHeaderInfo,
     __in DWORD dwHeaderSize,
     __null LPCWSTR lpszFileExtension,
-    __in_opt LPCWSTR lpszOriginalUrl
+    __in __opt LPCWSTR lpszOriginalUrl
     );
 #ifdef UNICODE
 #define CommitUrlCacheEntry  CommitUrlCacheEntryW
@@ -3121,18 +3095,16 @@ CommitUrlCacheEntryW(
 #endif // !UNICODE
 #endif
 
-BOOLAPI
-RetrieveUrlCacheEntryFileA(
-    __in LPCSTR lpszUrlName,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
-    __inout LPDWORD lpcbCacheEntryInfo,
+BOOLAPI RetrieveUrlCacheEntryFileA(
+    __in LPCSTR  lpszUrlName,
+    __out_bcount(*lpdwCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
+    __inout LPDWORD lpdwCacheEntryInfoBufferSize,
     __null DWORD dwReserved
     );
-BOOLAPI
-RetrieveUrlCacheEntryFileW(
-    __in LPCWSTR lpszUrlName,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
-    __inout LPDWORD lpcbCacheEntryInfo,
+BOOLAPI RetrieveUrlCacheEntryFileW(
+    __in LPCWSTR  lpszUrlName,
+    __out_bcount(*lpdwCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
+    __inout LPDWORD lpdwCacheEntryInfoBufferSize,
     __null DWORD dwReserved
     );
 #ifdef UNICODE
@@ -3166,19 +3138,17 @@ BOOLAPI UnlockUrlCacheEntryFile(
 #endif // _WINX32_
 #endif // !UNICODE
 
-INTERNETAPI_(HANDLE)
-RetrieveUrlCacheEntryStreamA(
+INTERNETAPI_(HANDLE) RetrieveUrlCacheEntryStreamA(
     __in LPCSTR  lpszUrlName,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
-    __inout LPDWORD lpcbCacheEntryInfo,
+    __out_bcount(*lpdwCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
+    __inout LPDWORD lpdwCacheEntryInfoBufferSize,
     __in BOOL fRandomRead,
     __null DWORD dwReserved
     );
-INTERNETAPI_(HANDLE)
-RetrieveUrlCacheEntryStreamW(
+INTERNETAPI_(HANDLE) RetrieveUrlCacheEntryStreamW(
     __in LPCWSTR  lpszUrlName,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
-    __inout LPDWORD lpcbCacheEntryInfo,
+    __out_bcount(*lpdwCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
+    __inout LPDWORD lpdwCacheEntryInfoBufferSize,
     __in BOOL fRandomRead,
     __null DWORD dwReserved
     );
@@ -3188,8 +3158,7 @@ RetrieveUrlCacheEntryStreamW(
 #define RetrieveUrlCacheEntryStream  RetrieveUrlCacheEntryStreamA
 #endif // !UNICODE
 
-BOOLAPI
-ReadUrlCacheEntryStream(
+BOOLAPI ReadUrlCacheEntryStream(
     __in HANDLE hUrlCacheStream,
     __in DWORD dwLocation,
     __out_bcount(*lpdwLen) LPVOID lpBuffer,
@@ -3197,24 +3166,21 @@ ReadUrlCacheEntryStream(
     __null DWORD Reserved
     );
 
-BOOLAPI
-UnlockUrlCacheEntryStream(
+BOOLAPI UnlockUrlCacheEntryStream(
     __in HANDLE hUrlCacheStream,
     __null DWORD Reserved
     );
 
 
-URLCACHEAPI_(BOOL)
-GetUrlCacheEntryInfoA(
+URLCACHEAPI_(BOOL) GetUrlCacheEntryInfoA(
     __in LPCSTR lpszUrlName,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
-    __inout_opt LPDWORD lpcbCacheEntryInfo
+    __out_bcount(*lpdwCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
+    __inout __opt LPDWORD lpdwCacheEntryInfoBufferSize
     );
-URLCACHEAPI_(BOOL)
-GetUrlCacheEntryInfoW(
+URLCACHEAPI_(BOOL) GetUrlCacheEntryInfoW(
     __in LPCWSTR lpszUrlName,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
-    __inout_opt LPDWORD lpcbCacheEntryInfo
+    __out_bcount(*lpdwCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
+    __inout __opt LPDWORD lpdwCacheEntryInfoBufferSize
     );
 #ifdef UNICODE
 #define GetUrlCacheEntryInfo  GetUrlCacheEntryInfoW
@@ -3294,25 +3260,23 @@ BOOLAPI DeleteUrlCacheGroup(
     );
 
 
-BOOLAPI
-GetUrlCacheEntryInfoExA(
-    __in LPCSTR lpszUrl,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
-    __inout_opt LPDWORD lpcbCacheEntryInfo,
-    __null LPSTR lpszRedirectUrl,
-    __null LPDWORD lpcbRedirectUrl,
-    __null LPVOID lpReserved,
-    __in DWORD dwFlags
+BOOLAPI GetUrlCacheEntryInfoExA(
+    __in LPCSTR      lpszUrl,
+    __out_bcount(*lpdwCacheEntryInfoBufSize) __opt LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
+    __inout __opt LPDWORD    lpdwCacheEntryInfoBufSize,
+    __null LPSTR     lpszReserved,
+    __null LPDWORD     lpdwReserved,
+    __null LPVOID      lpReserved,
+    __null DWORD       dwFlags
     );
-BOOLAPI
-GetUrlCacheEntryInfoExW(
-    __in LPCWSTR lpszUrl,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
-    __inout_opt LPDWORD lpcbCacheEntryInfo,
-    __null LPWSTR lpszRedirectUrl,
-    __null LPDWORD lpcbRedirectUrl,
-    __null LPVOID lpReserved,
-    __in DWORD dwFlags
+BOOLAPI GetUrlCacheEntryInfoExW(
+    __in LPCWSTR      lpszUrl,
+    __out_bcount(*lpdwCacheEntryInfoBufSize) __opt LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
+    __inout __opt LPDWORD    lpdwCacheEntryInfoBufSize,
+    __null LPWSTR     lpszReserved,
+    __null LPDWORD     lpdwReserved,
+    __null LPVOID      lpReserved,
+    __null DWORD       dwFlags
     );
 #ifdef UNICODE
 #define GetUrlCacheEntryInfoEx  GetUrlCacheEntryInfoExW
@@ -3400,29 +3364,27 @@ BOOLAPI SetUrlCacheEntryGroup(
 #endif // _WINX32_
 #endif // !UNICODE
 
-INTERNETAPI_(HANDLE)
-FindFirstUrlCacheEntryExA(
-    __in_opt LPCSTR  lpszUrlSearchPattern,
-    __in DWORD dwFlags,
-    __in DWORD  dwFilter,
-    __in GROUPID  GroupId,
-    __out_bcount_opt(*lpcbEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpFirstCacheEntryInfo,
-    __inout LPDWORD lpcbEntryInfo,
-    __null LPVOID lpGroupAttributes,
-    __null LPDWORD lpcbGroupAttributes,
-    __null LPVOID lpReserved
+INTERNETAPI_(HANDLE) FindFirstUrlCacheEntryExA(
+    __in __opt LPCSTR  lpszUrlSearchPattern,
+    __in       DWORD     dwFlags,
+    __in       DWORD     dwFilter,
+    __in       GROUPID   GroupId,
+    __out_bcount(*lpdwFirstCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOA lpFirstCacheEntryInfo,
+    __inout    LPDWORD   lpdwFirstCacheEntryInfoBufferSize,
+    __null     LPVOID    lpReserved,   // must pass NULL
+    __null     LPDWORD   pcbReserved2, // must pass NULL
+    __null     LPVOID    lpReserved3   // must pass NULL
     );
-INTERNETAPI_(HANDLE)
-FindFirstUrlCacheEntryExW(
-    __in_opt LPCWSTR  lpszUrlSearchPattern,
-    __in DWORD dwFlags,
-    __in DWORD  dwFilter,
-    __in GROUPID  GroupId,
-    __out_bcount_opt(*lpcbEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpFirstCacheEntryInfo,
-    __inout LPDWORD lpcbEntryInfo,
-    __null LPVOID lpGroupAttributes,
-    __null LPDWORD lpcbGroupAttributes,
-    __null LPVOID lpReserved
+INTERNETAPI_(HANDLE) FindFirstUrlCacheEntryExW(
+    __in __opt LPCWSTR  lpszUrlSearchPattern,
+    __in       DWORD     dwFlags,
+    __in       DWORD     dwFilter,
+    __in       GROUPID   GroupId,
+    __out_bcount(*lpdwFirstCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOW lpFirstCacheEntryInfo,
+    __inout    LPDWORD   lpdwFirstCacheEntryInfoBufferSize,
+    __null     LPVOID    lpReserved,   // must pass NULL
+    __null     LPDWORD   pcbReserved2, // must pass NULL
+    __null     LPVOID    lpReserved3   // must pass NULL
     );
 #ifdef UNICODE
 #define FindFirstUrlCacheEntryEx  FindFirstUrlCacheEntryExW
@@ -3430,23 +3392,21 @@ FindFirstUrlCacheEntryExW(
 #define FindFirstUrlCacheEntryEx  FindFirstUrlCacheEntryExA
 #endif // !UNICODE
 
-BOOLAPI
-FindNextUrlCacheEntryExA(
-    __in HANDLE hEnumHandle,
-    __out_bcount_opt(*lpcbEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpNextCacheEntryInfo,
-    __inout LPDWORD lpcbEntryInfo,
-    __null LPVOID lpGroupAttributes,
-    __null LPDWORD lpcbGroupAttributes,
-    __null LPVOID lpReserved
+BOOLAPI FindNextUrlCacheEntryExA(
+    __in    HANDLE    hEnumHandle,
+    __out_bcount(lpdwFirstCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOA lpFirstCacheEntryInfo,
+    __inout LPDWORD   lpdwFirstCacheEntryInfoBufferSize,
+    __null  LPVOID    lpReserved,      // must pass NULL
+    __null  LPDWORD   pcbReserved2,    // must pass NULL
+    __null  LPVOID    lpReserved3      // must pass NULL
     );
-BOOLAPI
-FindNextUrlCacheEntryExW(
-    __in HANDLE hEnumHandle,
-    __out_bcount_opt(*lpcbEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpNextCacheEntryInfo,
-    __inout LPDWORD lpcbEntryInfo,
-    __null LPVOID lpGroupAttributes,
-    __null LPDWORD lpcbGroupAttributes,
-    __null LPVOID lpReserved
+BOOLAPI FindNextUrlCacheEntryExW(
+    __in    HANDLE    hEnumHandle,
+    __out_bcount(lpdwFirstCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOW lpFirstCacheEntryInfo,
+    __inout LPDWORD   lpdwFirstCacheEntryInfoBufferSize,
+    __null  LPVOID    lpReserved,      // must pass NULL
+    __null  LPDWORD   pcbReserved2,    // must pass NULL
+    __null  LPVOID    lpReserved3      // must pass NULL
     );
 #ifdef UNICODE
 #define FindNextUrlCacheEntryEx  FindNextUrlCacheEntryExW
@@ -3454,17 +3414,15 @@ FindNextUrlCacheEntryExW(
 #define FindNextUrlCacheEntryEx  FindNextUrlCacheEntryExA
 #endif // !UNICODE
 
-INTERNETAPI_(HANDLE)
-FindFirstUrlCacheEntryA(
-    __in_opt LPCSTR lpszUrlSearchPattern,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpFirstCacheEntryInfo,
-    __inout LPDWORD lpcbCacheEntryInfo
+INTERNETAPI_(HANDLE) FindFirstUrlCacheEntryA(
+    __in __opt LPCSTR lpszUrlSearchPattern,
+    __out_bcount(*lpdwFirstCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOA lpFirstCacheEntryInfo,
+    __inout LPDWORD lpdwFirstCacheEntryInfoBufferSize
     );
-INTERNETAPI_(HANDLE)
-FindFirstUrlCacheEntryW(
-    __in_opt LPCWSTR lpszUrlSearchPattern,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpFirstCacheEntryInfo,
-    __inout LPDWORD lpcbCacheEntryInfo
+INTERNETAPI_(HANDLE) FindFirstUrlCacheEntryW(
+    __in __opt LPCWSTR lpszUrlSearchPattern,
+    __out_bcount(*lpdwFirstCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOW lpFirstCacheEntryInfo,
+    __inout LPDWORD lpdwFirstCacheEntryInfoBufferSize
     );
 #ifdef UNICODE
 #define FindFirstUrlCacheEntry  FindFirstUrlCacheEntryW
@@ -3472,17 +3430,15 @@ FindFirstUrlCacheEntryW(
 #define FindFirstUrlCacheEntry  FindFirstUrlCacheEntryA
 #endif // !UNICODE
 
-BOOLAPI
-FindNextUrlCacheEntryA(
+BOOLAPI FindNextUrlCacheEntryA(
     __in HANDLE hEnumHandle,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpNextCacheEntryInfo,
-    __inout LPDWORD lpcbCacheEntryInfo
+    __out_bcount(*lpdwNextCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOA lpNextCacheEntryInfo,
+    __inout LPDWORD lpdwNextCacheEntryInfoBufferSize
     );
-BOOLAPI
-FindNextUrlCacheEntryW(
+BOOLAPI FindNextUrlCacheEntryW(
     __in HANDLE hEnumHandle,
-    __out_bcount_opt(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpNextCacheEntryInfo,
-    __inout LPDWORD lpcbCacheEntryInfo
+    __out_bcount(*lpdwNextCacheEntryInfoBufferSize) __opt LPINTERNET_CACHE_ENTRY_INFOW lpNextCacheEntryInfo,
+    __inout LPDWORD lpdwNextCacheEntryInfoBufferSize
     );
 #ifdef UNICODE
 #define FindNextUrlCacheEntry  FindNextUrlCacheEntryW
@@ -3567,13 +3523,13 @@ INTERNETAPI_(DWORD) InternetHangUp(
 #define INTERENT_GOONLINE_MASK 0x00000001
 
 INTERNETAPI_(BOOL) InternetGoOnlineA(
-    __in_opt LPSTR    lpszURL,
+    __in LPSTR    lpszURL,
     __in HWND     hwndParent,
     __in DWORD    dwFlags
     );
 
 INTERNETAPI_(BOOL) InternetGoOnlineW(
-    __in_opt LPWSTR   lpszURL,
+    __in LPWSTR   lpszURL,
     __in HWND     hwndParent,
     __in DWORD    dwFlags
     );
@@ -3585,7 +3541,7 @@ INTERNETAPI_(BOOL) InternetGoOnlineW(
 #define InternetGoOnline  InternetGoOnlineA
 #else
 INTERNETAPI_(BOOL) InternetGoOnline(
-    __in_opt LPSTR   lpszURL,
+    __in LPSTR   lpszURL,
     __in HWND     hwndParent,
     __in DWORD    dwFlags
     );
@@ -3593,8 +3549,8 @@ INTERNETAPI_(BOOL) InternetGoOnline(
 #endif // !UNICODE
 
 INTERNETAPI_(BOOL) InternetAutodial(
-    __in DWORD dwFlags,
-    __in_opt HWND hwndParent);
+    __in       DWORD  dwFlags,
+    __in __opt HWND   hwndParent);
 
 // Flags for InternetAutodial
 #define INTERNET_AUTODIAL_FORCE_ONLINE          1
@@ -3608,81 +3564,24 @@ INTERNETAPI_(BOOL) InternetAutodialHangup(
     __null DWORD    dwReserved);
 
 INTERNETAPI_(BOOL) InternetGetConnectedState(
-    __out  LPDWORD lpdwFlags,
-    __null DWORD dwReserved);
+    __out  LPDWORD  lpdwFlags,
+    __null DWORD    dwReserved);
 
-INTERNETAPI_(BOOL)
-InternetGetConnectedStateExA(
-    __out_opt LPDWORD lpdwFlags,
-    __out_ecount_opt(dwBufLen) LPSTR lpszConnectionName,
-    __in DWORD dwBufLen,
-    __null DWORD dwReserved
+INTERNETAPI_(BOOL) InternetGetConnectedStateExA(
+    __out __opt LPDWORD lpdwFlags,
+    __out_ecount(dwNameLen) __opt LPSTR lpszConnectionName,
+    __in DWORD    dwNameLen,
+    __null DWORD  dwReserved
     );
 
-INTERNETAPI_(BOOL)
-InternetGetConnectedStateExW(
-    __out_opt LPDWORD lpdwFlags,
-    __out_ecount_opt(dwBufLen) LPWSTR lpszConnectionName,
-    __in DWORD dwBufLen,
-    __null DWORD dwReserved
+INTERNETAPI_(BOOL) InternetGetConnectedStateExW(
+    __out __opt LPDWORD lpdwFlags,
+    __out_ecount(dwNameLen) __opt LPWSTR lpszConnectionName,
+    __in DWORD    dwNameLen,
+    __null DWORD  dwReserved
     );
 
 
-
-#define  PROXY_AUTO_DETECT_TYPE_DHCP    1
-#define  PROXY_AUTO_DETECT_TYPE_DNS_A   2
-
-struct AutoProxyHelperFunctions;
-
-typedef struct AutoProxyHelperVtbl
-{
-    BOOL ( __stdcall *IsResolvable )(
-            LPSTR   lpszHost);
-
-    DWORD ( __stdcall *GetIPAddress )(
-           LPSTR   lpszIPAddress,
-           LPDWORD lpdwIPAddressSize);
-
-    DWORD ( __stdcall *ResolveHostName )( 
-           LPSTR   lpszHostName,
-           LPSTR   lpszIPAddress,
-           LPDWORD lpdwIPAddressSize);
-
-    BOOL ( __stdcall *IsInNet )( 
-            LPSTR   lpszIPAddress,
-            LPSTR   lpszDest,
-            LPSTR   lpszMask);
-
-}AutoProxyHelperVtbl;
-
-typedef struct
-{
-    DWORD dwStructSize;              // Size of struct
-    LPSTR lpszScriptBuffer;          // Buffer to Pass
-    DWORD dwScriptBufferSize;        // Size of buffer above
-} AUTO_PROXY_SCRIPT_BUFFER, *LPAUTO_PROXY_SCRIPT_BUFFER;
-
-typedef struct AutoProxyHelperFunctions
-{
-    const struct AutoProxyHelperVtbl * lpVtbl;
-} AutoProxyHelperFunctions;
-
-
-typedef BOOL ( CALLBACK *pfnInternetInitializeAutoProxyDll)(DWORD dwVersion,
-                           LPSTR lpszDownloadedTempFile,
-                           LPSTR lpszMime,
-                           AutoProxyHelperFunctions* lpAutoProxyCallbacks,
-                           LPAUTO_PROXY_SCRIPT_BUFFER lpAutoProxyScriptBuffer );
-
-typedef BOOL (CALLBACK *pfnInternetDeInitializeAutoProxyDll)(LPSTR lpszMime,
-                           DWORD dwReserved);
-
-typedef BOOL (CALLBACK *pfnInternetGetProxyInfo)(LPCSTR lpszUrl,
-                           DWORD dwUrlLength, 
-                           LPSTR lpszUrlHostName,
-                           DWORD dwUrlHostNameLength,
-                           LPSTR* lplpszProxyHostName,
-                           LPDWORD lpdwProxyHostNameLength);
 
 
 INTERNETAPI_(BOOL) InternetInitializeAutoProxyDll(
@@ -3702,6 +3601,7 @@ INTERNETAPI_(BOOL) InternetGetProxyInfo(
     __out LPSTR * lplpszProxyHostName,
     __out LPDWORD lpdwProxyHostNameLength
     );
+
 
 INTERNETAPI_(BOOL) DetectAutoProxyUrl(
     __out_ecount(dwAutoProxyUrlLength) LPSTR lpszAutoProxyUrl,
@@ -3724,7 +3624,7 @@ INTERNETAPI_(BOOL) CreateMD5SSOHash (
 #else
 INTERNETAPI_(BOOL) InternetGetConnectedStateEx(
     __out LPDWORD lpdwFlags,
-    __out_ecount_opt(dwNameLen) LPSTR lpszConnectionName,
+    __out_ecount(dwNameLen) __opt LPSTR lpszConnectionName,
     __in DWORD dwNameLen,
     __null DWORD dwReserved
     );
@@ -3759,13 +3659,13 @@ typedef DWORD (CALLBACK * PFN_DIAL_HANDLER) (HWND, LPCSTR, DWORD, LPDWORD);
 #define INTERNET_CUSTOMDIAL_CAN_HANGUP          4
 
 INTERNETAPI_(BOOL) InternetSetDialStateA(
-    __in_opt   LPCSTR lpszConnectoid,
+    __in   LPCSTR lpszConnectoid,
     __in   DWORD  dwState,
     __null DWORD  dwReserved
     );
 
 INTERNETAPI_(BOOL) InternetSetDialStateW(
-    __in_opt   LPCWSTR lpszConnectoid,
+    __in   LPCWSTR lpszConnectoid,
     __in   DWORD    dwState,
     __null DWORD    dwReserved
     );
@@ -3777,7 +3677,7 @@ INTERNETAPI_(BOOL) InternetSetDialStateW(
 #define InternetSetDialState  InternetSetDialStateA
 #else
 INTERNETAPI_(BOOL) InternetSetDialState(
-    __in_opt   LPCSTR lpszConnectoid,
+    __in   LPCSTR lpszConnectoid,
     __in   DWORD    dwState,
     __null DWORD    dwReserved
     );
@@ -3872,16 +3772,16 @@ PrivacySetZonePreferenceW(
     __in DWORD       dwZone, 
     __in DWORD       dwType,
     __in DWORD       dwTemplate,
-    __in_opt LPCWSTR     pszPreference
+    __in LPCWSTR     pszPreference
     );
 
 INTERNETAPI_(DWORD)
 PrivacyGetZonePreferenceW(
     __in DWORD dwZone,
     __in DWORD dwType,
-    __out_opt LPDWORD pdwTemplate,
-    __out_ecount_opt(*pdwBufferLength) LPWSTR pszBuffer,
-    __inout_opt LPDWORD pdwBufferLength
+    __out __opt LPDWORD pdwTemplate,
+    __out_ecount(*pdwBufferLength) __opt LPWSTR pszBuffer,
+    __inout __opt LPDWORD pdwBufferLength
     );
 
 

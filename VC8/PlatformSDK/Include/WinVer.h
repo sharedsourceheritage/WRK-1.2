@@ -212,16 +212,16 @@ VerInstallFileW(
 DWORD
 APIENTRY
 GetFileVersionInfoSizeA(
-    __in LPCSTR lptstrFilename, /* Filename of version stamped file */
-    __out_opt LPDWORD lpdwHandle
-    );                      /* Information for use by GetFileVersionInfo */
+        LPCSTR lptstrFilename, /* Filename of version stamped file */
+        LPDWORD lpdwHandle
+        );                      /* Information for use by GetFileVersionInfo */
 /* Returns size of version info in bytes */
 DWORD
 APIENTRY
 GetFileVersionInfoSizeW(
-    __in LPCWSTR lptstrFilename, /* Filename of version stamped file */
-    __out_opt LPDWORD lpdwHandle
-    );                      /* Information for use by GetFileVersionInfo */
+        LPCWSTR lptstrFilename, /* Filename of version stamped file */
+        LPDWORD lpdwHandle
+        );                      /* Information for use by GetFileVersionInfo */
 #ifdef UNICODE
 #define GetFileVersionInfoSize  GetFileVersionInfoSizeW
 #else
@@ -232,20 +232,20 @@ GetFileVersionInfoSizeW(
 BOOL
 APIENTRY
 GetFileVersionInfoA(
-    __in LPCSTR lptstrFilename, /* Filename of version stamped file */
-    __in DWORD dwHandle,         /* Information from GetFileVersionSize */
-    __in DWORD dwLen,            /* Length of buffer for info */
-    __out_bcount(dwLen) LPVOID lpData
-    );                      /* Buffer to place the data structure */
+        LPCSTR lptstrFilename, /* Filename of version stamped file */
+        DWORD dwHandle,         /* Information from GetFileVersionSize */
+        DWORD dwLen,            /* Length of buffer for info */
+        LPVOID lpData
+        );                      /* Buffer to place the data structure */
 /* Read version info into buffer */
 BOOL
 APIENTRY
 GetFileVersionInfoW(
-    __in LPCWSTR lptstrFilename, /* Filename of version stamped file */
-    __in DWORD dwHandle,         /* Information from GetFileVersionSize */
-    __in DWORD dwLen,            /* Length of buffer for info */
-    __out_bcount(dwLen) LPVOID lpData
-    );                      /* Buffer to place the data structure */
+        LPCWSTR lptstrFilename, /* Filename of version stamped file */
+        DWORD dwHandle,         /* Information from GetFileVersionSize */
+        DWORD dwLen,            /* Length of buffer for info */
+        LPVOID lpData
+        );                      /* Buffer to place the data structure */
 #ifdef UNICODE
 #define GetFileVersionInfo  GetFileVersionInfoW
 #else

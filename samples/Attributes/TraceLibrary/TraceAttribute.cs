@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Runtime.Remoting.Contexts;
 using System.Runtime.Remoting.Activation;
 
+
 namespace AttributeSample.TraceLibrary
 {
 	/// <summary>
@@ -37,7 +38,7 @@ namespace AttributeSample.TraceLibrary
 
       // Read in the settings for TraceLevel and TraceLog.  If not found, or incorrect,
       // then use the default settings.
-      string traceLevelSetting = ConfigurationSettings.AppSettings["TraceLevel"];
+      string traceLevelSetting = System.Configuration.ConfigurationManager.AppSettings["TraceLevel"];
       if (traceLevelSetting != null)
       {
         if (Enum.IsDefined(typeof(TraceLevel), traceLevelSetting))
@@ -46,7 +47,7 @@ namespace AttributeSample.TraceLibrary
           traceLevel = defaultTraceLevel;
       }
 
-      string traceLogSetting = ConfigurationSettings.AppSettings["TraceLog"];
+      string traceLogSetting = System.Configuration.ConfigurationManager.AppSettings["TraceLog"];
       if (traceLogSetting != null)
         traceLog = traceLogSetting;
 

@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for mstask.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -346,7 +345,7 @@ void __RPC_STUB ITaskTrigger_GetTriggerString_Stub(
 #endif 	/* __ITaskTrigger_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mstask_0140 */
+/* interface __MIDL_itf_mstask_0136 */
 /* [local] */ 
 
 // {a6b952f0-a4b1-11d0-997d-00aa006887ec}
@@ -354,8 +353,8 @@ DEFINE_GUID(IID_IScheduledWorkItem, 0xa6b952f0L, 0xa4b1, 0x11d0, 0x99, 0x7d, 0x0
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0140_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0140_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0136_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0136_v0_0_s_ifspec;
 
 #ifndef __IScheduledWorkItem_INTERFACE_DEFINED__
 #define __IScheduledWorkItem_INTERFACE_DEFINED__
@@ -1093,7 +1092,7 @@ void __RPC_STUB IScheduledWorkItem_GetAccountInformation_Stub(
 #endif 	/* __IScheduledWorkItem_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mstask_0141 */
+/* interface __MIDL_itf_mstask_0137 */
 /* [local] */ 
 
 // {148BD524-A2AB-11CE-B11F-00AA00530503}
@@ -1101,8 +1100,8 @@ DEFINE_GUID(IID_ITask, 0x148BD524L, 0xA2AB, 0x11CE, 0xB1, 0x1F, 0x00, 0xAA, 0x00
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0141_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0141_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0137_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0137_v0_0_s_ifspec;
 
 #ifndef __ITask_INTERFACE_DEFINED__
 #define __ITask_INTERFACE_DEFINED__
@@ -1650,7 +1649,7 @@ void __RPC_STUB ITask_GetMaxRunTime_Stub(
 #endif 	/* __ITask_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mstask_0142 */
+/* interface __MIDL_itf_mstask_0138 */
 /* [local] */ 
 
 // {148BD528-A2AB-11CE-B11F-00AA00530503}
@@ -1658,8 +1657,8 @@ DEFINE_GUID(IID_IEnumWorkItems, 0x148BD528L, 0xA2AB, 0x11CE, 0xB1, 0x1F, 0x00, 0
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0142_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0142_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0138_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0138_v0_0_s_ifspec;
 
 #ifndef __IEnumWorkItems_INTERFACE_DEFINED__
 #define __IEnumWorkItems_INTERFACE_DEFINED__
@@ -1820,7 +1819,7 @@ void __RPC_STUB IEnumWorkItems_Clone_Stub(
 #endif 	/* __IEnumWorkItems_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mstask_0143 */
+/* interface __MIDL_itf_mstask_0139 */
 /* [local] */ 
 
 // {148BD527-A2AB-11CE-B11F-00AA00530503}
@@ -1828,8 +1827,8 @@ DEFINE_GUID(IID_ITaskScheduler, 0x148BD527L, 0xA2AB, 0x11CE, 0xB1, 0x1F, 0x00, 0
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0143_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0143_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0139_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0139_v0_0_s_ifspec;
 
 #ifndef __ITaskScheduler_INTERFACE_DEFINED__
 #define __ITaskScheduler_INTERFACE_DEFINED__
@@ -2096,7 +2095,7 @@ void __RPC_STUB ITaskScheduler_IsOfType_Stub(
 #endif 	/* __ITaskScheduler_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mstask_0144 */
+/* interface __MIDL_itf_mstask_0140 */
 /* [local] */ 
 
 EXTERN_C const CLSID CLSID_CTask;
@@ -2123,8 +2122,8 @@ DEFINE_GUID(IID_IProvideTaskPage, 0x4086658aL, 0xcbbb, 0x11cf, 0xb6, 0x04, 0x00,
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0144_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0144_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0140_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0140_v0_0_s_ifspec;
 
 #ifndef __IProvideTaskPage_INTERFACE_DEFINED__
 #define __IProvideTaskPage_INTERFACE_DEFINED__
@@ -2222,7 +2221,7 @@ void __RPC_STUB IProvideTaskPage_GetPage_Stub(
 #endif 	/* __IProvideTaskPage_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mstask_0145 */
+/* interface __MIDL_itf_mstask_0141 */
 /* [local] */ 
 
 #define ISchedulingAgent       ITaskScheduler
@@ -2231,8 +2230,8 @@ void __RPC_STUB IProvideTaskPage_GetPage_Stub(
 #define CLSID_CSchedulingAgent CLSID_CTaskScheduler
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0145_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mstask_0145_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0141_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mstask_0141_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

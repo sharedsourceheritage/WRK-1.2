@@ -108,6 +108,11 @@ NetWkstaTransportEnum (
     OUT LPDWORD     totalentries,
     IN  OUT LPDWORD resumehandle OPTIONAL
     );
+    
+NET_API_STATUS NET_API_FUNCTION
+I_NetWkstaResetDfsCache(
+    VOID
+    );
 
 //
 //  Data Structures

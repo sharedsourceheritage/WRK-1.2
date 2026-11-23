@@ -64,7 +64,7 @@ typedef enum    _PNP_VETO_TYPE {
 #define CM_PROB_BOOT_CONFIG_CONFLICT       (0x00000006)   // boot config conflict
 #define CM_PROB_FAILED_FILTER              (0x00000007)   //
 #define CM_PROB_DEVLOADER_NOT_FOUND        (0x00000008)   // Devloader not found
-#define CM_PROB_INVALID_DATA               (0x00000009)   // Invalid ID
+#define CM_PROB_INVALID_DATA               (0x00000009)   //
 #define CM_PROB_FAILED_START               (0x0000000A)   //
 #define CM_PROB_LIAR                       (0x0000000B)   //
 #define CM_PROB_NORMAL_CONFLICT            (0x0000000C)   // config conflict
@@ -105,8 +105,7 @@ typedef enum    _PNP_VETO_TYPE {
 #define CM_PROB_HELD_FOR_EJECT             (0x0000002F)   // The device is offline awaiting removal
 #define CM_PROB_DRIVER_BLOCKED             (0x00000030)   // One or more drivers is blocked from loading
 #define CM_PROB_REGISTRY_TOO_LARGE         (0x00000031)   // System hive has grown too large
-#define CM_PROB_SETPROPERTIES_FAILED       (0x00000032)   // Failed to apply one or more registry properties  
-#define NUM_CM_PROB                        (0x00000033)
+#define NUM_CM_PROB                        (0x00000032)
 
 //
 // Configuration Manager Global State Flags (returned by CM_Get_Global_State)
@@ -133,7 +132,7 @@ typedef enum    _PNP_VETO_TYPE {
 #define DN_HAS_PROBLEM     (0x00000400) // Need device installer
 #define DN_FILTERED        (0x00000800) // Is filtered
 #define DN_MOVED           (0x00001000) // Has been moved
-#define DN_DISABLEABLE     (0x00002000) // Can be disabled
+#define DN_DISABLEABLE     (0x00002000) // Can be rebalanced
 #define DN_REMOVABLE       (0x00004000) // Can be removed
 #define DN_PRIVATE_PROBLEM (0x00008000) // Has a private problem
 #define DN_MF_PARENT       (0x00010000) // Multi function parent
@@ -165,12 +164,12 @@ typedef enum    _PNP_VETO_TYPE {
 //
 // These are overloaded on top of unused Win 9X flags
 //
-//#define DN_LIAR                       (0x00000100)            // Lied about can reconfig once
-#define DN_NEED_RESTART                 DN_LIAR                 // System needs to be restarted for this Devnode to work properly
-// #define DN_NOT_FIRST_TIME            (0x00000040)            // Has Register_Enumerator
-#define DN_DRIVER_BLOCKED               DN_NOT_FIRST_TIME       // One or more drivers are blocked from loading for this Devnode
-//#define DN_MOVED                      (0x00001000)            // Has been moved
-#define DN_LEGACY_DRIVER                DN_MOVED                // This device is using a legacy driver
+//#define DN_LIAR               (0x00000100)        // Lied about can reconfig once
+#define DN_NEED_RESTART         DN_LIAR             // System needs to be restarted for this Devnode to work properly
+// #define DN_NOT_FIRST_TIME    (0x00000040)        // Has Register_Enumerator
+#define DN_DRIVER_BLOCKED       DN_NOT_FIRST_TIME   // One or more drivers are blocked from loading for this Devnode
+//#define DN_MOVED              (0x00001000)        // Has been moved
+#define DN_LEGACY_DRIVER        DN_MOVED            // This device is using a legacy driver
 //#define DN_HAS_MARK                   (0x00000200)            // Not CM_Create_DevInst lately
 #define DN_CHILD_WITH_INVALID_ID        DN_HAS_MARK             // One or more children have invalid ID(s)
 
@@ -215,4 +214,5 @@ typedef enum    _PNP_VETO_TYPE {
 #define MAX_LCPRI             (0x0000FFFF) // Maximum known LC Priority
 
 #endif // _CFG_INCLUDED_
+
 

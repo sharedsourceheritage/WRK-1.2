@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for tapi3.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -3899,14 +3898,14 @@ void __RPC_STUB IEnumAgentHandler_Clone_Stub(
 #endif 	/* __IEnumAgentHandler_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_tapi3_0520 */
+/* interface __MIDL_itf_tapi3_0515 */
 /* [local] */ 
 
 /* Copyright (c) Microsoft Corporation. All rights reserved. */
 
 
-extern RPC_IF_HANDLE __MIDL_itf_tapi3_0520_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_tapi3_0520_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tapi3_0515_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tapi3_0515_v0_0_s_ifspec;
 
 #ifndef __ITAMMediaFormat_INTERFACE_DEFINED__
 #define __ITAMMediaFormat_INTERFACE_DEFINED__
@@ -4220,20 +4219,20 @@ void __RPC_STUB ITAllocatorProperties_GetBufferSize_Stub(
 #endif 	/* __ITAllocatorProperties_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_tapi3_0524 */
+/* interface __MIDL_itf_tapi3_0519 */
 /* [local] */ 
 
 /* Copyright (c) Microsoft Corporation. All rights reserved.*/
 typedef long *MSP_HANDLE;
 
 typedef /* [public][public][public] */ 
-enum __MIDL___MIDL_itf_tapi3_0524_0001
+enum __MIDL___MIDL_itf_tapi3_0519_0001
     {	ADDRESS_TERMINAL_AVAILABLE	= 0,
 	ADDRESS_TERMINAL_UNAVAILABLE	= ADDRESS_TERMINAL_AVAILABLE + 1
     } 	MSP_ADDRESS_EVENT;
 
 typedef /* [public][public][public] */ 
-enum __MIDL___MIDL_itf_tapi3_0524_0002
+enum __MIDL___MIDL_itf_tapi3_0519_0002
     {	CALL_NEW_STREAM	= 0,
 	CALL_STREAM_FAIL	= CALL_NEW_STREAM + 1,
 	CALL_TERMINAL_FAIL	= CALL_STREAM_FAIL + 1,
@@ -4243,7 +4242,7 @@ enum __MIDL___MIDL_itf_tapi3_0524_0002
     } 	MSP_CALL_EVENT;
 
 typedef /* [public][public][public] */ 
-enum __MIDL___MIDL_itf_tapi3_0524_0003
+enum __MIDL___MIDL_itf_tapi3_0519_0003
     {	CALL_CAUSE_UNKNOWN	= 0,
 	CALL_CAUSE_BAD_DEVICE	= CALL_CAUSE_UNKNOWN + 1,
 	CALL_CAUSE_CONNECT_FAIL	= CALL_CAUSE_BAD_DEVICE + 1,
@@ -4255,7 +4254,7 @@ enum __MIDL___MIDL_itf_tapi3_0524_0003
     } 	MSP_CALL_EVENT_CAUSE;
 
 typedef /* [public][public][public] */ 
-enum __MIDL___MIDL_itf_tapi3_0524_0004
+enum __MIDL___MIDL_itf_tapi3_0519_0004
     {	ME_ADDRESS_EVENT	= 0,
 	ME_CALL_EVENT	= ME_ADDRESS_EVENT + 1,
 	ME_TSP_DATA	= ME_CALL_EVENT + 1,
@@ -4266,7 +4265,7 @@ enum __MIDL___MIDL_itf_tapi3_0524_0004
 	ME_TONE_TERMINAL_EVENT	= ME_FILE_TERMINAL_EVENT + 1
     } 	MSP_EVENT;
 
-typedef /* [public][public] */ struct __MIDL___MIDL_itf_tapi3_0524_0005
+typedef /* [public][public] */ struct __MIDL___MIDL_itf_tapi3_0519_0005
     {
     DWORD dwSize;
     MSP_EVENT Event;
@@ -4324,8 +4323,8 @@ typedef /* [public][public] */ struct __MIDL___MIDL_itf_tapi3_0524_0005
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_tapi3_0524_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_tapi3_0524_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tapi3_0519_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tapi3_0519_v0_0_s_ifspec;
 
 #ifndef __ITPluggableTerminalEventSink_INTERFACE_DEFINED__
 #define __ITPluggableTerminalEventSink_INTERFACE_DEFINED__
@@ -5018,7 +5017,7 @@ const long TAPIMEDIATYPE_MULTITRACK	=	0x10000;
 #endif /* __TapiConstants_MODULE_DEFINED__ */
 #endif /* __TAPI3Lib_LIBRARY_DEFINED__ */
 
-/* interface __MIDL_itf_tapi3_0530 */
+/* interface __MIDL_itf_tapi3_0525 */
 /* [local] */ 
 
 #define TAPI_CURRENT_VERSION 0x00030001
@@ -5026,8 +5025,8 @@ const long TAPIMEDIATYPE_MULTITRACK	=	0x10000;
 #include <tapi3err.h>
 
 
-extern RPC_IF_HANDLE __MIDL_itf_tapi3_0530_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_tapi3_0530_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tapi3_0525_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_tapi3_0525_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

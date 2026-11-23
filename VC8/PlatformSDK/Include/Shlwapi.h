@@ -179,31 +179,6 @@ LWSTDAPI_(DWORD) StrCatChainW(LPWSTR pszDst, DWORD cchDst, DWORD ichAt, LPCWSTR 
 
 LWSTDAPI SHLoadIndirectString(LPCWSTR pszSource, LPWSTR pszOutBuf, UINT cchOutBuf, void **ppvReserved);
 
-#if (_WIN32_IE >= 0x0603)
-LWSTDAPI_(BOOL) IsCharSpaceA(CHAR wch);
-LWSTDAPI_(BOOL) IsCharSpaceW(WCHAR wch);
-#ifdef UNICODE
-#define IsCharSpace  IsCharSpaceW
-#else
-#define IsCharSpace  IsCharSpaceA
-#endif // !UNICODE
-
-LWSTDAPI_(int)  StrCmpCA(LPCSTR pszStr1, LPCSTR pszStr2);
-LWSTDAPI_(int)  StrCmpCW(LPCWSTR pszStr1, LPCWSTR pszStr2);
-#ifdef UNICODE
-#define StrCmpC  StrCmpCW
-#else
-#define StrCmpC  StrCmpCA
-#endif // !UNICODE
-
-LWSTDAPI_(int)  StrCmpICA(LPCSTR pszStr1, LPCSTR pszStr2);
-LWSTDAPI_(int)  StrCmpICW(LPCWSTR pszStr1, LPCWSTR pszStr2);
-#ifdef UNICODE
-#define StrCmpIC  StrCmpICW
-#else
-#define StrCmpIC  StrCmpICA
-#endif // !UNICODE
-#endif // (_WIN32_IE >= 0x0603)
 
 #ifdef UNICODE
 #define StrChr                  StrChrW
@@ -750,7 +725,6 @@ typedef enum {
 #define URL_UNESCAPE_HIGH_ANSI_ONLY     0x00400000
 #define URL_INTERNAL_PATH               0x00800000  // Will escape #'s in paths
 #define URL_FILE_USE_PATHURL            0x00010000
-#define URL_DONT_UNESCAPE               0x00020000  // Do not unescape the path/url at all
 #define URL_ESCAPE_PERCENT              0x00001000
 #define URL_ESCAPE_SEGMENT_ONLY         0x00002000  // Treat the entire URL param as one URL segment.
 
@@ -1424,7 +1398,7 @@ typedef enum {
 
 typedef DWORD PERCEIVEDFLAG;
 
-LWSTDAPI AssocGetPerceivedType(__in LPCWSTR pszExt, __out PERCEIVED *ptype, __out PERCEIVEDFLAG *pflag, __out_opt LPWSTR *ppszType);
+LWSTDAPI AssocGetPerceivedType(__in LPCWSTR pszExt, __out PERCEIVED *ptype, __out PERCEIVEDFLAG *pflag, __out __opt LPWSTR *ppszType);
 #endif  // (_WIN32_IE >= 0x0603)
 
 

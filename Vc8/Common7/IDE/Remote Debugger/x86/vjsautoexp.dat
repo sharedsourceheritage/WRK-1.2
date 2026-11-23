@@ -1,0 +1,620 @@
+[DebuggerValue("Message")]
+System.Exception
+
+[DebuggerValue("bs", "bs")]
+[DebuggerValue("bs+3", "bs+3")]
+Foo
+
+[DebuggerVisualProxy("visproxy.dll", "VisualProxy")]
+[DebuggerProxy("", "EEProxy")]
+ProxySample
+
+[DebuggerVisualProxy("visproxy.dll", "ColorProxy")]
+[DebuggerProxy("", "ColorEEProxy")]
+[DebuggerValue("ToString()")]
+System.Drawing.Color
+
+
+
+
+
+
+
+
+
+
+[DebuggerValue("__value")]
+java.lang.Character
+
+[DebuggerValue("value")]
+java.lang.Float
+
+[DebuggerValue("value")]
+java.lang.Double
+
+[DebuggerValue("__value")]
+java.lang.Long
+
+[DebuggerValue("__value")]
+java.lang.Integer
+
+[DebuggerValue("__value")]
+java.lang.Boolean
+
+[DebuggerValue("__value")]
+java.lang.Byte
+
+[DebuggerValue("__value")]
+java.lang.Short
+
+[DebuggerValue("value", "__builder.m_StringValue")]
+java.lang.StringBuffer
+
+[DebuggerValue("name", "__name")]
+java.lang.Thread
+
+
+
+[DebuggerValue("elementCount", "elementCount")]
+[DebuggerValue("capacityIncrement", "capacityIncrement")]
+java.util.Vector
+
+[DebuggerValue("elementCount", "elementCount")]
+[DebuggerValue("capacityIncrement", "capacityIncrement")]
+java.util.Stack
+
+[DebuggerValue("count", "__itemCount")]
+[DebuggerValue("loadfactor", "__loadFactor")]
+java.util.Hashtable
+
+
+
+[DebuggerValue("x", "__bounds.x")]
+[DebuggerValue("y", "__bounds.y")]
+[DebuggerValue("w", "__bounds.width")]
+[DebuggerValue("h", "__bounds.height")]
+[DebuggerValue("visible", "__bVisible")]
+[DebuggerValue("enabled", "__bEnabled")]
+[DebuggerValue("valid", "__bValid")]
+java.awt.Component
+
+[DebuggerValue("nComponents", "Children.Count")]
+java.awt.Container
+
+[DebuggerValue("label", "__title")]
+java.awt.Button
+
+[DebuggerValue("selectedIndex", "__curIndex")]
+java.awt.Choice
+
+[DebuggerValue("Label", "__label")]
+[DebuggerValue("state", "__checkedState")]
+java.awt.Checkbox
+
+[DebuggerValue("currentChoice", "__selected ")]
+java.awt.CheckboxGroup
+
+[DebuggerValue("name", "__text")]
+[DebuggerValue("alignment", "__alignment ")]
+java.awt.Label
+
+[DebuggerValue("rows", "__visibleRows")]
+[DebuggerValue("multipleSelections", "__multipleSelectMode")]
+java.awt.List
+
+[DebuggerValue("title", "__title")]
+[DebuggerValue("resizable", "__resizable")]
+java.awt.Frame
+
+[DebuggerValue("x", "x")]
+[DebuggerValue("y", "y")]
+java.awt.Point
+
+[DebuggerValue("x", "x")]
+[DebuggerValue("y", "y")]
+[DebuggerValue("width", "width")]
+[DebuggerValue("height", "height")]
+java.awt.Rectangle
+
+[DebuggerValue("left", "left")]
+[DebuggerValue("top", "top")]
+[DebuggerValue("right", "right")]
+[DebuggerValue("bottom", "bottom")]
+java.awt.Insets
+
+[DebuggerValue("width", "width")]
+[DebuggerValue("height", "height")]
+java.awt.Dimension
+
+[DebuggerValue("red", "cRed")]
+[DebuggerValue("green", "cGreen")]
+[DebuggerValue("blue", "cBlue")]
+[DebuggerValue("rgb", "rgb")]
+java.awt.Color
+
+[DebuggerValue("name", "name")]
+[DebuggerValue("size", "size")]
+[DebuggerValue("style", "style")]
+java.awt.Font
+
+[DebuggerValue("cursorType", "__cursorType")]
+java.awt.Cursor
+
+[DebuggerValue("hgap", "__hgap")]
+[DebuggerValue("vgap", "__vgap")]
+java.awt.BorderLayout
+
+[DebuggerValue("hgap", "__hgap")]
+[DebuggerValue("vgap", "__vgap")]
+java.awt.FlowLayout
+
+[DebuggerValue("hgap", "__hgap")]
+[DebuggerValue("vgap", "__vgap")]
+java.awt.CardLayout
+
+[DebuggerValue("hgap", "__hgap")]
+[DebuggerValue("vgap", "__vgap")]
+java.awt.GridLayout
+
+[DebuggerValue("defaultConstraints", "defaultConstraints")]
+java.awt.GridBagLayout
+
+[DebuggerValue("gridx", "gridx")]
+[DebuggerValue("gridy", "gridy")]
+[DebuggerValue("gridWidth", "gridwidth")]
+[DebuggerValue("gridHeight", "gridheight")]
+[DebuggerValue("weightX", "weightx")]
+[DebuggerValue("weightY", "weighty")]
+java.awt.GridBagConstraints
+
+[DebuggerValue("title", "__title")]
+[DebuggerValue("resizable", "__resizable")]
+[DebuggerValue("modal", "__modal")]
+java.awt.Dialog
+
+[DebuggerValue("title", "__title")]
+[DebuggerValue("resizable", "__resizable")]
+[DebuggerValue("modal", "__modal")]
+java.awt.FileDialog
+
+[DebuggerValue("label", "__menuLabel")]
+[DebuggerValue("enabled", "__bEnabled")]
+java.awt.MenuItem
+
+[DebuggerValue("label", "__menuLabel")]
+[DebuggerValue("enabled", "__bEnabled")]
+java.awt.Menu
+
+[DebuggerValue("label", "__menuLabel")]
+[DebuggerValue("enabled", "__bEnabled")]
+java.awt.PopupMenu
+
+[DebuggerValue("value", "index")]
+java.awt.SystemColor
+
+
+
+[DebuggerValue("fd", "__mFd.fd.fd")]
+java.io.FileInputStream
+
+[DebuggerValue("fd", "__mFd.fd.fd")]
+java.io.FileOutputStream
+
+[DebuggerValue("count", "count")]
+[DebuggerValue("pos", "pos")]
+[DebuggerValue("marklimit", "marklimit")]
+[DebuggerValue("markpos", "markpos")]
+java.io.BufferedInputStream
+
+[DebuggerValue("count", "count")]
+java.io.BufferedOutputStream
+
+[DebuggerValue("path", "__mPathName")]
+java.io.File
+
+[DebuggerValue("written", "written")]
+java.io.DataOutputStream
+
+[DebuggerValue("fd", "fd.fd")]
+java.io.FileDescriptor
+
+[DebuggerValue("lineNumber", "__lineCount")]
+[DebuggerValue("marklineNumber", "__rememberCount")]
+[DebuggerValue("pushback", "__pushback")]
+java.io.LineNumberInputStream
+
+[DebuggerValue("closed", "__bClosed")]
+[DebuggerValue("in", "in")] 
+[DebuggerValue("out", "out")]
+java.io.PipedInputStream
+
+[DebuggerValue("sink", "__dest")]
+java.io.PipedOutputStream
+
+[DebuggerValue("autoflush", "__autoflush")]
+[DebuggerValue("error", "__err")]
+java.io.PrintStream
+
+[DebuggerValue("pushback", "pos")]
+java.io.PushbackInputStream
+
+[DebuggerValue("count", "count")]
+[DebuggerValue("pos", "pos")]
+java.io.StringBufferInputStream
+
+[DebuggerValue("count", "count")]
+[DebuggerValue("pos", "pos")]
+java.io.ByteArrayInputStream
+
+[DebuggerValue("count", "count")]
+java.io.ByteArrayOutputStream
+
+
+
+[DebuggerValue("address", "addr")]
+[DebuggerValue("length", "buflen")]
+[DebuggerValue("port", "port")]
+java.net.DatagramPacket
+
+[DebuggerValue("hostname", "_name")]
+java.net.InetAddress
+
+[DebuggerValue("fd", "__impl.fd.fd.fd")]
+[DebuggerValue("localPort", "__impl.localPort")]
+java.net.DatagramSocket
+
+[DebuggerValue("fd", "__impl.fd.fd.fd")]
+[DebuggerValue("localPort", "__impl.localPort")]
+java.net.MulticastSocket
+
+[DebuggerValue("fd", "__impl.fd.fd.fd")]
+[DebuggerValue("localPort", "__impl.localport")]
+java.net.ServerSocket
+
+[DebuggerValue("protocol", "protocol")]
+[DebuggerValue("host", "host")]
+[DebuggerValue("port", "port")]
+[DebuggerValue("file", "file")]
+[DebuggerValue("ref", "ref")]
+java.net.URL
+
+
+
+[DebuggerValue("Month")]
+[DebuggerValue("Day")]
+[DebuggerValue("Year")] 
+System.DateTime
+
+[DebuggerValue("FullName")]
+System.Type
+
+[DebuggerValue("Count", "Count")]
+System.Collections.ArrayList
+
+[DebuggerValue("Count", "Count")]
+System.Collections.Hashtable
+
+[DebuggerValue("Count", "Count")]
+System.Collections.Queue
+
+[DebuggerValue("Count", "Count")]
+System.Collections.SortedList
+
+[DebuggerValue("Count", "Count")]
+System.Collections.Stack
+
+
+
+[DebuggerValue("Message")] 
+System.Exception
+
+[DebuggerValue("Message")] 
+System.ApplicationException
+
+[DebuggerValue("Message")] 
+System.ArgumentException
+
+[DebuggerValue("Message")] 
+System.ArgumentNullException
+
+[DebuggerValue("Message")] 
+System.ArgumentOutOfRangeException
+
+[DebuggerValue("Message")] 
+System.ArithmeticException
+
+[DebuggerValue("Message")] 
+System.DivideByZeroException
+
+[DebuggerValue("Message")] 
+System.DllNotFoundException
+
+[DebuggerValue("Message")] 
+System.ApplicationException
+
+[DebuggerValue("Message")] 
+System.IndexOutOfRangeException
+
+[DebuggerValue("Message")] 
+System.InvalidCastException
+
+[DebuggerValue("Message")] 
+System.MemberAccessException
+
+[DebuggerValue("Message")] 
+System.MethodAccessException
+
+[DebuggerValue("Message")] 
+System.NullReferenceException
+
+[DebuggerValue("Message")]
+System.StackOverflowException
+
+[DebuggerValue("Message")]
+System.SystemException
+
+[DebuggerValue("TypeName")]
+System.TypeLoadException
+
+[DebuggerValue("FileName")]
+System.IO.FileLoadException
+
+[DebuggerValue("FileName")]
+System.IO.FileNotFoundException
+
+[DebuggerValue("Message")]
+System.Reflection.ReflectionTypeLoadException
+
+[DebuggerValue("Message")]
+System.Security.SecurityException
+
+
+
+[DebuggerValue("RGB", "value,h")]
+System.Drawing.Color
+
+[DebuggerValue("Name", "fontFamily.Name")] 
+[DebuggerValue("Size", "fontSize")]
+System.Drawing.Font
+
+[DebuggerValue("Name", "Name")]
+System.Drawing.FontFamily
+
+[DebuggerValue("Color", "color")]
+System.Drawing.Pen
+
+[DebuggerValue("X", "x")] 
+[DebuggerValue("Y", "y")]
+System.Drawing.Point
+
+[DebuggerValue("X", "x")] 
+[DebuggerValue("Y", "y")]
+System.Drawing.PointF
+
+[DebuggerValue("X", "x")] 
+[DebuggerValue("Y", "y")] 
+[DebuggerValue("Width", "width")] 
+[DebuggerValue("Height", "height")]
+System.Drawing.Rectangle
+
+[DebuggerValue("X", "x")] 
+[DebuggerValue("Y", "y")] 
+[DebuggerValue("Width", "width")] 
+[DebuggerValue("Height", "height")]
+System.Drawing.RectangleF
+
+[DebuggerValue("Width", "width")] 
+[DebuggerValue("Height", "height")]
+System.Drawing.Size
+
+[DebuggerValue("Width", "width")] 
+[DebuggerValue("Height", "height")]
+System.Drawing.SizeF
+
+[DebuggerValue("Color", "color")]
+System.Drawing.SolidBrush
+
+
+
+[DebuggerValue("Text", "Text")]
+System.Web.UI.WebControls.Button
+
+[DebuggerValue("Text", "Text")]
+System.Web.UI.WebControls.Label
+
+[DebuggerValue("Text", "Text")]
+System.Web.UI.WebControls.HyperLink
+
+[DebuggerValue("Text", "Text")] 
+[DebuggerValue("Checked", "Checked")]
+System.Web.UI.WebControls.CheckBox
+
+[DebuggerValue("Text", "Text")] 
+[DebuggerValue("Checked", "Checked")]
+System.Web.UI.WebControls.RadioButton
+
+[DebuggerValue("SelectedDate", "SelectedDate")]
+System.Web.UI.WebControls.Calendar
+
+[DebuggerValue("Text", "Text")]
+System.Web.UI.WebControls.LinkButton
+
+
+
+[DebuggerValue("Value", "Value")]
+System.Web.UI.HtmlControls.HtmlInputButton
+
+[DebuggerValue("InnerText", "InnerText")]
+System.Web.UI.HtmlControls.HtmlGenericControl
+
+[DebuggerValue("Value", "Value")]
+System.Web.UI.HtmlControls.HtmlTextArea
+
+[DebuggerValue("Value", "Value")]
+System.Web.UI.HtmlControls.HtmlInputText
+
+[DebuggerValue("Value", "Value")] 
+[DebuggerValue("Checked", "Checked")]
+System.Web.UI.HtmlControls.HtmlInputCheckBox
+
+[DebuggerValue("Value", "Value")] 
+[DebuggerValue("Checked", "Checked")]
+System.Web.UI.HtmlControls.HtmlInputRadioButton
+
+
+
+[DebuggerValue("ExecutablePath", "executablePath")]
+System.Windows.Forms.Application
+
+[DebuggerValue("Text", "Text")]
+System.Windows.Forms.Button
+
+[DebuggerValue("Text", "Text")] 
+[DebuggerValue("CheckState", "checkState")]
+System.Windows.Forms.CheckBox
+
+[DebuggerValue("SelectedItem", "Text")]
+System.Windows.Forms.CheckedListBox
+
+[DebuggerValue("Text", "Text")]
+System.Windows.Forms.DataGrid
+
+[DebuggerValue("Column", "col")] 
+[DebuggerValue("Row", "row")]
+System.Windows.Forms.DataGrid.HitTestInfo
+
+[DebuggerValue("HeaderText", "headerName")]
+System.Windows.Forms.DataGridColumnStyle
+
+[DebuggerValue("Text", "Text")]
+System.Windows.Forms.DataGridTextBox
+
+[DebuggerValue("HeaderText", "headerName")]
+System.Windows.Forms.DataGridTextBoxColumn
+
+[DebuggerValue("Value", "value")]
+System.Windows.Forms.DateTimePicker
+
+[DebuggerValue("Font", "font")] 
+[DebuggerValue("Color", "color")]
+System.Windows.Forms.FontDialog
+
+[DebuggerValue("Value", "value")]
+System.Windows.Forms.HScrollBar
+
+[DebuggerValue("InvalidRect", "invalidRect")]
+System.Windows.Forms.InvalidateEventArgs
+
+[DebuggerValue("Index", "index")]
+System.Windows.Forms.ItemChangedEventArgs
+
+[DebuggerValue("Index", "index")] 
+[DebuggerValue("NewValue", "newValue")] 
+[DebuggerValue("CurrentValue", "currentValue")]
+System.Windows.Forms.ItemCheckEventArgs
+
+[DebuggerValue("KeyData", "keyData")]
+System.Windows.Forms.KeyEventArgs
+
+[DebuggerValue("KeyChar", "keyChar")]
+System.Windows.Forms.KeyPressEventArgs
+
+[DebuggerValue("LinkText", "linkText")]
+System.Windows.Forms.LinkClickedEventArgs
+
+[DebuggerValue("Text", "Text")]
+System.Windows.Forms.LinkLabel
+
+[DebuggerValue("SelectedItem", "Text")]
+System.Windows.Forms.ListBox
+
+[DebuggerValue("Text", "Text")]
+System.Windows.Forms.ListViewItem
+
+[DebuggerValue("SelectionStart", "selectionStart")] 
+[DebuggerValue("SelectionEnd", "selectionEnd")]
+System.Windows.Forms.MonthCalendar
+
+[DebuggerValue("X", "x")] 
+[DebuggerValue("Y", "y")] 
+[DebuggerValue("Button", "button")]
+System.Windows.Forms.MouseEventArgs
+
+[DebuggerValue("Value", "currentValue")]
+System.Windows.Forms.NumericUpDown
+
+[DebuggerValue("ClipRectangle", "clipRect")]
+System.Windows.Forms.PaintEventArgs
+
+[DebuggerValue("Value", "value")]
+System.Windows.Forms.ProgressBar
+
+[DebuggerValue("Text", "Text")] 
+[DebuggerValue("Checked", "isChecked")]
+System.Windows.Forms.RadioButton
+
+[DebuggerValue("Text", "Text")]
+System.Windows.Forms.RichTextBox
+
+[DebuggerValue("WorkingArea", "workingArea")]
+System.Windows.Forms.Screen
+
+[DebuggerValue("Start", "start")] 
+[DebuggerValue("End", "end")]
+System.Windows.Forms.SelectionRange
+
+[DebuggerValue("SplitPosition", "splitSize")]
+System.Windows.Forms.Splitter
+
+[DebuggerValue("SplitX", "splitX")] 
+[DebuggerValue("SplitY", "splitY")]
+System.Windows.Forms.SplitterEventArgs
+
+[DebuggerValue("Text", "Text")]
+System.Windows.Forms.TextBox
+
+[DebuggerValue("Interval", "interval")]
+System.Windows.Forms.Timer
+
+[DebuggerValue("ToolTip", "caption")]
+System.Windows.Forms.ToolTip
+
+[DebuggerValue("Value", "value")]
+System.Windows.Forms.TrackBar
+
+[DebuggerValue("Text", "Text")]
+System.Windows.Forms.TreeNode
+
+[DebuggerValue("Value", "value")]
+System.Windows.Forms.VScrollBar
+
+
+[DebuggerValue("m_value")]
+System.Data.SqlTypes.SqlInt64
+
+[DebuggerValue("Value")]
+System.Data.SqlTypes.SqlDateTime
+
+[DebuggerValue("m_value")]
+System.Data.SqlTypes.SqlInt32
+
+[DebuggerValue("Value")]
+System.Data.SqlTypes.SqlMoney
+
+[DebuggerValue("m_value")]
+System.Data.SqlTypes.SqlString
+
+[DebuggerValue("m_value")]
+System.Data.SqlTypes.SqlSingle
+
+[DebuggerValue("m_value")]
+System.Data.SqlTypes.SqlInt16
+
+[DebuggerValue("m_value")]
+System.Data.SqlTypes.SqlByte
+
+[DebuggerValue("m_value")]
+System.Data.SqlTypes.SqlDouble
+
+
+

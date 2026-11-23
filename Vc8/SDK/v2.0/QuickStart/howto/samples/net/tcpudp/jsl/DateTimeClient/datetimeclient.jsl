@@ -1,0 +1,81 @@
+package Microsoft.Samples.QuickStart.HowTo.Net.TcpUdp;
+//-----------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//-----------------------------------------------------------------------
+import System.*;
+import System.Net.*;
+import System.Net.Sockets.*;
+import System.IO.*;
+import System.Text.*;
+
+class Client
+{
+    public static void main(String[] args)
+    {
+        TcpClient tcpc = new TcpClient();
+        ubyte read[] = new ubyte[32];
+
+        if (args.get_Length() != 1) {
+            Console.WriteLine("Please specify a server name in the "
+                + "command line");
+            return;
+        }
+
+        String server = args[0];
+        // Verify that the server exists
+        if (Dns.GetHostEntry(server) == null) {
+            Console.WriteLine("Cannot find server: {0}", server);
+            return;
+        }
+        // Try to connect to the server
+        try {
+            tcpc.Connect(server, 13);
+        }
+        catch (SocketException exc) {
+            Console.WriteLine("Cannot connect to {0}: {1}", server, 
+                exc.get_Message());
+            return;
+        }
+        // Get the stream
+        Stream s = null;
+        int bytes = 0;
+        String time = null;
+
+        try {
+            s = tcpc.GetStream();
+            // Read the stream and convert it to ASII
+            bytes = s.Read(read, 0, read.get_Length());
+            time = Encoding.get_ASCII().GetString(read);
+        }
+        catch (InvalidOperationException exc) {
+            Console.WriteLine("Cannot connect to {0}: {1}", server, 
+                exc.get_Message());
+            return;
+        }
+        finally {
+            if (tcpc != null) {
+                tcpc.Close();
+            }
+            if (s != null) {
+                s.Close();
+            }
+        }
+        // Display the data
+        Console.WriteLine("Received {0} bytes", (Int32)bytes);
+        Console.WriteLine("Current date and time is: {0}", time);
+        // Wait for user response to exit
+        Console.WriteLine("Press Return to exit");
+        Console.Read();
+    } //main
+} //Client

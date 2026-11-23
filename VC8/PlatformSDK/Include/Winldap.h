@@ -214,8 +214,6 @@ typedef enum {
     LDAP_NO_OBJECT_CLASS_MODS       =   0x45,
     LDAP_RESULTS_TOO_LARGE          =   0x46,
     LDAP_AFFECTS_MULTIPLE_DSAS      =   0x47,
-    
-    LDAP_VIRTUAL_LIST_VIEW_ERROR    =   0x4c,
 
     LDAP_OTHER                      =   0x50,
     LDAP_SERVER_DOWN                =   0x51,
@@ -821,20 +819,6 @@ WINLDAPAPI ULONG LDAPAPI ldap_set_optionW( LDAP *ld, int option, const void *inv
 //
 
 #define LDAP_OPT_TCP_KEEPALIVE     0x40
-
-
-//
-// Turns on support for fast concurrent binds (extended operation
-// 1.2.840.113556.1.4.1781).  This option can be set only on a fresh
-// (never bound/authenticated) connection.  Setting this option will
-// (1) switch the client into a mode where it supports simultaneous
-// simple binds on the connection, and (2) sends the extended operation
-// to the server to switch it into fast bind mode.  Only simple binds
-// are supported in this mode.
-//
-#define LDAP_OPT_FAST_CONCURRENT_BIND   0x41
-
-#define LDAP_OPT_SEND_TIMEOUT           0x42
 
 //
 //  End of Microsoft only options

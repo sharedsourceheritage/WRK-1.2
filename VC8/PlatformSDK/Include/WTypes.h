@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for wtypes.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -573,20 +572,18 @@ enum tagCLSCTX
 	CLSCTX_INPROC_SERVER16	= 0x8,
 	CLSCTX_REMOTE_SERVER	= 0x10,
 	CLSCTX_INPROC_HANDLER16	= 0x20,
-	CLSCTX_RESERVED1	= 0x40,
-	CLSCTX_RESERVED2	= 0x80,
-	CLSCTX_RESERVED3	= 0x100,
-	CLSCTX_RESERVED4	= 0x200,
+	CLSCTX_INPROC_SERVERX86	= 0x40,
+	CLSCTX_INPROC_HANDLERX86	= 0x80,
+	CLSCTX_ESERVER_HANDLER	= 0x100,
+	CLSCTX_RESERVED	= 0x200,
 	CLSCTX_NO_CODE_DOWNLOAD	= 0x400,
-	CLSCTX_RESERVED5	= 0x800,
+	CLSCTX_NO_WX86_TRANSLATION	= 0x800,
 	CLSCTX_NO_CUSTOM_MARSHAL	= 0x1000,
 	CLSCTX_ENABLE_CODE_DOWNLOAD	= 0x2000,
 	CLSCTX_NO_FAILURE_LOG	= 0x4000,
 	CLSCTX_DISABLE_AAA	= 0x8000,
 	CLSCTX_ENABLE_AAA	= 0x10000,
-	CLSCTX_FROM_DEFAULT_CONTEXT	= 0x20000,
-	CLSCTX_ACTIVATE_32_BIT_SERVER	= 0x40000,
-	CLSCTX_ACTIVATE_64_BIT_SERVER	= 0x80000
+	CLSCTX_FROM_DEFAULT_CONTEXT	= 0x20000
     } 	CLSCTX;
 
 typedef 

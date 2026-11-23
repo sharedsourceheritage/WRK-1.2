@@ -49,7 +49,6 @@
 #define FACILITY_UMI                     22
 #define FACILITY_SXS                     23
 #define FACILITY_STORAGE                 3
-#define FACILITY_STATE_MANAGEMENT        34
 #define FACILITY_SSPI                    9
 #define FACILITY_SCARD                   16
 #define FACILITY_SETUPAPI                15
@@ -58,7 +57,6 @@
 #define FACILITY_WIN32                   7
 #define FACILITY_CONTROL                 10
 #define FACILITY_NULL                    0
-#define FACILITY_METADIRECTORY           35
 #define FACILITY_MSMQ                    14
 #define FACILITY_MEDIASERVER             13
 #define FACILITY_INTERNET                12
@@ -66,7 +64,6 @@
 #define FACILITY_HTTP                    25
 #define FACILITY_DPLAY                   21
 #define FACILITY_DISPATCH                2
-#define FACILITY_DIRECTORYSERVICE        37
 #define FACILITY_CONFIGURATION           33
 #define FACILITY_COMPLUS                 17
 #define FACILITY_CERT                    11
@@ -1588,24 +1585,6 @@
 #define ERROR_EXE_MACHINE_TYPE_MISMATCH  216L
 
 //
-// MessageId: ERROR_EXE_CANNOT_MODIFY_SIGNED_BINARY
-//
-// MessageText:
-//
-//  The image file %1 is signed, unable to modify.
-//
-#define ERROR_EXE_CANNOT_MODIFY_SIGNED_BINARY 217L
-
-//
-// MessageId: ERROR_EXE_CANNOT_MODIFY_STRONG_SIGNED_BINARY
-//
-// MessageText:
-//
-//  The image file %1 is strong signed, unable to modify.
-//
-#define ERROR_EXE_CANNOT_MODIFY_STRONG_SIGNED_BINARY 218L
-
-//
 // MessageId: ERROR_BAD_PIPE
 //
 // MessageText:
@@ -1829,15 +1808,6 @@
 //  The system cannot find message text for message number 0x%1 in the message file for %2.
 //
 #define ERROR_MR_MID_NOT_FOUND           317L
-
-//
-// MessageId: ERROR_SCOPE_NOT_FOUND
-//
-// MessageText:
-//
-//  The scope specified was not found.
-//
-#define ERROR_SCOPE_NOT_FOUND            318L
 
 //
 // MessageId: ERROR_INVALID_ADDRESS
@@ -3216,7 +3186,7 @@
 //
 // MessageText:
 //
-//  Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed. Disconnect all previous connections to the server or shared resource and try again.
+//  Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed. Disconnect all previous connections to the server or shared resource and try again..
 //
 #define ERROR_SESSION_CREDENTIAL_CONFLICT 1219L
 
@@ -3532,7 +3502,7 @@
 //
 // MessageText:
 //
-//  This operation is not supported on a computer running Windows Server 2003 for Small Business Server
+//  This operation is not supported on a Microsoft Small Business Server
 //
 #define ERROR_NOT_SUPPORTED_ON_SBS       1254L
 
@@ -3614,8 +3584,7 @@
 // MessageText:
 //
 //  The kerberos protocol encountered an error while validating the
-//  KDC certificate during smartcard logon.  There is more information in the
-//  system event log.
+//  KDC certificate during smartcard logon.
 //
 #define ERROR_PKINIT_FAILURE             1263L
 
@@ -3639,8 +3608,57 @@
 #define ERROR_DOWNGRADE_DETECTED         1265L
 
 //
-// Do not use ID's 1266 - 1270 as the symbolicNames have been moved to SEC_E_*
+// MessageId: SEC_E_SMARTCARD_CERT_REVOKED
 //
+// MessageText:
+//
+//  The smartcard certificate used for authentication has been revoked. 
+//  Please contact your system administrator.  There may be additional information in the 
+//  event log.
+//
+#define SEC_E_SMARTCARD_CERT_REVOKED     1266L
+
+//
+// MessageId: SEC_E_ISSUING_CA_UNTRUSTED
+//
+// MessageText:
+//
+//  An untrusted certificate authority was detected While processing the 
+//  smartcard certificate used for authentication.  Please contact your system 
+//  administrator. 
+//
+#define SEC_E_ISSUING_CA_UNTRUSTED       1267L
+
+//
+// MessageId: SEC_E_REVOCATION_OFFLINE_C
+//
+// MessageText:
+//
+//  The revocation status of the smartcard certificate used for 
+//  authentication could not be determined. Please contact your system administrator.
+//
+#define SEC_E_REVOCATION_OFFLINE_C       1268L
+
+//
+// MessageId: SEC_E_PKINIT_CLIENT_FAILURE
+//
+// MessageText:
+//
+//  The smartcard certificate used for authentication was not trusted.  Please 
+//  contact your system administrator.
+//
+#define SEC_E_PKINIT_CLIENT_FAILURE      1269L
+
+//
+// MessageId: SEC_E_SMARTCARD_CERT_EXPIRED
+//
+// MessageText:
+//
+//  The smartcard certificate used for authentication has expired.  Please 
+//  contact your system administrator.
+//
+#define SEC_E_SMARTCARD_CERT_EXPIRED     1270L
+
 //
 // MessageId: ERROR_MACHINE_LOCKED
 //
@@ -3687,51 +3705,6 @@
 #define ERROR_INVALID_IMPORT_OF_NON_DLL  1276L
 
 //
-// MessageId: ERROR_ACCESS_DISABLED_WEBBLADE
-//
-// MessageText:
-//
-//  Windows cannot open this program since it has been disabled.
-//
-#define ERROR_ACCESS_DISABLED_WEBBLADE   1277L
-
-//
-// MessageId: ERROR_ACCESS_DISABLED_WEBBLADE_TAMPER
-//
-// MessageText:
-//
-//  Windows cannot open this program because the license enforcement system has been tampered with or become corrupted.
-//
-#define ERROR_ACCESS_DISABLED_WEBBLADE_TAMPER 1278L
-
-//
-// MessageId: ERROR_RECOVERY_FAILURE
-//
-// MessageText:
-//
-//  A transaction recover failed.
-//
-#define ERROR_RECOVERY_FAILURE           1279L
-
-//
-// MessageId: ERROR_ALREADY_FIBER
-//
-// MessageText:
-//
-//  The current thread has already been converted to a fiber.
-//
-#define ERROR_ALREADY_FIBER              1280L
-
-//
-// MessageId: ERROR_ALREADY_THREAD
-//
-// MessageText:
-//
-//  The current thread has already been converted from a fiber.
-//
-#define ERROR_ALREADY_THREAD             1281L
-
-//
 // MessageId: ERROR_STACK_BUFFER_OVERRUN
 //
 // MessageText:
@@ -3740,52 +3713,6 @@
 //  overrun could potentially allow a malicious user to gain control of this application.
 //
 #define ERROR_STACK_BUFFER_OVERRUN       1282L
-
-//
-// MessageId: ERROR_PARAMETER_QUOTA_EXCEEDED
-//
-// MessageText:
-//
-//  Data present in one of the parameters is more than the function can operate on.
-//
-#define ERROR_PARAMETER_QUOTA_EXCEEDED   1283L
-
-//
-// MessageId: ERROR_DEBUGGER_INACTIVE
-//
-// MessageText:
-//
-//  An attempt to do an operation on a debug object failed because the object is in the process of being deleted.
-//
-#define ERROR_DEBUGGER_INACTIVE          1284L
-
-//
-// MessageId: ERROR_DELAY_LOAD_FAILED
-//
-// MessageText:
-//
-//  An attempt to delay-load a .dll or get a function address in a delay-loaded .dll failed.
-//
-#define ERROR_DELAY_LOAD_FAILED          1285L
-
-//
-// MessageId: ERROR_VDM_DISALLOWED
-//
-// MessageText:
-//
-//  %1 is a 16-bit application. You do not have permissions to execute 16-bit applications. Check your permissions with your system administrator.
-//
-#define ERROR_VDM_DISALLOWED             1286L
-
-//
-// MessageId: ERROR_UNIDENTIFIED_ERROR
-//
-// MessageText:
-//
-//  Insufficient information exists to identify the cause of failure.
-//
-#define ERROR_UNIDENTIFIED_ERROR         1287L
-
 
 ///////////////////////////
 //
@@ -5262,15 +5189,6 @@
 //
 #define ERROR_INVALID_MONITOR_HANDLE     1461L
 
-//
-// MessageId: ERROR_INCORRECT_SIZE
-//
-// MessageText:
-//
-//  Incorrect size argument.
-//
-#define ERROR_INCORRECT_SIZE             1462L
-
 // End of WinUser error codes
 
 
@@ -5725,15 +5643,6 @@
 //  One or more customizations are not permitted by software restriction policy.
 //
 #define ERROR_INSTALL_TRANSFORM_REJECTED 1644L
-
-//
-// MessageId: ERROR_INSTALL_REMOTE_PROHIBITED
-//
-// MessageText:
-//
-//  The Windows Installer does not permit installation from a Remote Desktop Connection.
-//
-#define ERROR_INSTALL_REMOTE_PROHIBITED  1645L
 
 // End of MSI error codes
 
@@ -7213,51 +7122,6 @@
 //
 #define ERROR_CONTEXT_EXPIRED            1931L
 
-//
-// MessageId: ERROR_PER_USER_TRUST_QUOTA_EXCEEDED
-//
-// MessageText:
-//
-//  The current user's delegated trust creation quota has been exceeded.
-//
-#define ERROR_PER_USER_TRUST_QUOTA_EXCEEDED 1932L
-
-//
-// MessageId: ERROR_ALL_USER_TRUST_QUOTA_EXCEEDED
-//
-// MessageText:
-//
-//  The total delegated trust creation quota has been exceeded.
-//
-#define ERROR_ALL_USER_TRUST_QUOTA_EXCEEDED 1933L
-
-//
-// MessageId: ERROR_USER_DELETE_TRUST_QUOTA_EXCEEDED
-//
-// MessageText:
-//
-//  The current user's delegated trust deletion quota has been exceeded.
-//
-#define ERROR_USER_DELETE_TRUST_QUOTA_EXCEEDED 1934L
-
-//
-// MessageId: ERROR_AUTHENTICATION_FIREWALL_FAILED
-//
-// MessageText:
-//
-//  Logon Failure: The machine you are logging onto is protected by an authentication firewall.  The specified account is not allowed to authenticate to the machine.
-//
-#define ERROR_AUTHENTICATION_FIREWALL_FAILED 1935L
-
-//
-// MessageId: ERROR_REMOTE_PRINT_CONNECTIONS_BLOCKED
-//
-// MessageText:
-//
-//  Remote connections to the Print Spooler are blocked by a policy set on your machine.
-//
-#define ERROR_REMOTE_PRINT_CONNECTIONS_BLOCKED 1936L
-
 
 
 
@@ -8262,15 +8126,6 @@
 //
 #define ERROR_CLEANER_CARTRIDGE_INSTALLED 4340L
 
-//
-// MessageId: ERROR_IEPORT_FULL
-//
-// MessageText:
-//
-//  Cannot use the ieport because it is not empty.
-//
-#define ERROR_IEPORT_FULL                4341L
-
 ////////////////////////////////////////////
 //                                        //
 // NT Remote Storage Service Error Codes  //
@@ -9268,51 +9123,6 @@
 //
 #define ERROR_CLUSTER_CANT_CREATE_DUP_CLUSTER_NAME 5900L
 
-//
-// MessageId: ERROR_CLUSCFG_ALREADY_COMMITTED
-//
-// MessageText:
-//
-//  The cluster configuration action has already been committed.
-//
-#define ERROR_CLUSCFG_ALREADY_COMMITTED  5901L
-
-//
-// MessageId: ERROR_CLUSCFG_ROLLBACK_FAILED
-//
-// MessageText:
-//
-//  The cluster configuration action could not be rolled back.
-//
-#define ERROR_CLUSCFG_ROLLBACK_FAILED    5902L
-
-//
-// MessageId: ERROR_CLUSCFG_SYSTEM_DISK_DRIVE_LETTER_CONFLICT
-//
-// MessageText:
-//
-//  The drive letter assigned to a system disk on one node conflicted with the drive letter assigned to a disk on another node.
-//
-#define ERROR_CLUSCFG_SYSTEM_DISK_DRIVE_LETTER_CONFLICT 5903L
-
-//
-// MessageId: ERROR_CLUSTER_OLD_VERSION
-//
-// MessageText:
-//
-//  One or more nodes in the cluster are running a version of Windows that does not support this operation.
-//
-#define ERROR_CLUSTER_OLD_VERSION        5904L
-
-//
-// MessageId: ERROR_CLUSTER_MISMATCHED_COMPUTER_ACCT_NAME
-//
-// MessageText:
-//
-//  The name of the corresponding computer account doesn't match the Network Name for this resource.
-//
-#define ERROR_CLUSTER_MISMATCHED_COMPUTER_ACCT_NAME 5905L
-
 ////////////////////////////////////
 //                                //
 //     EFS Error Codes            //
@@ -9857,15 +9667,6 @@
 //  The remote control of the console was terminated because the display mode was changed. Changing the display mode in a remote control session is not supported.
 //
 #define ERROR_CTX_SHADOW_ENDED_BY_MODE_CHANGE 7058L
-
-//
-// MessageId: ERROR_ACTIVATION_COUNT_EXCEEDED
-//
-// MessageText:
-//
-//  Activation has already been reset the maximum number of times for this installation. Your activation timer will not be cleared.
-//
-#define ERROR_ACTIVATION_COUNT_EXCEEDED  7059L
 
 ///////////////////////////////////////////////////
 //                                                /
@@ -10626,7 +10427,7 @@
 //
 // MessageText:
 //
-//  The add replica operation cannot be performed. The naming context must be writeable in order to create the replica.
+//  The add replica operation cannot be performed. The naming context must be writable in order to create the replica.
 //
 #define ERROR_DS_ADD_REPLICA_INHIBITED   8302L
 
@@ -10789,7 +10590,7 @@
 //
 // MessageText:
 //
-//  Multiple values were specified for an attribute that can have only one value.
+//  Mutliple values were specified for an attribute that can have only one value.
 //
 #define ERROR_DS_SINGLE_VALUE_CONSTRAINT 8321L
 
@@ -11554,7 +11355,7 @@
 //
 // MessageText:
 //
-//  No superior reference has been configured for the directory service. The directory service is therefore unable to issue referrals to objects outside this forest.
+//  A required subref is missing.
 //
 #define ERROR_DS_MISSING_SUPREF          8406L
 
@@ -12076,7 +11877,7 @@
 //
 // MessageText:
 //
-//  Synchronization attempt failed because the destination DC is currently waiting to synchronize new partial attributes from source. This condition is normal if a recent schema change modified the partial attribute set. The destination partial attribute set is not a subset of source partial attribute set.
+//  The replication synchronization attempt failed as the destination partial attribute set is not a subset of source partial attribute set.
 //
 #define ERROR_DS_DRA_INCOMPATIBLE_PARTIAL_SET 8464L
 
@@ -12103,7 +11904,7 @@
 //
 // MessageText:
 //
-//  The version of the Active Directory schema of the source forest is not compatible with the version of Active Directory on this computer.
+//  The version of the Active Directory schema of the source forest is not compatible with the version of Active Directory on this computer.  You must upgrade the operating system on a domain controller in the source forest before this computer can be added as a domain controller to that forest.
 //
 #define ERROR_DS_INSTALL_SCHEMA_MISMATCH 8467L
 
@@ -12175,7 +11976,7 @@
 //
 // MessageText:
 //
-//  Modification of a constructed attribute is not allowed.
+//  Modification of a constructed att is not allowed.
 //
 #define ERROR_DS_CONSTRUCTED_ATT_MOD     8475L
 
@@ -12328,7 +12129,7 @@
 //
 // MessageText:
 //
-//  This object may not be moved across domain boundaries either because cross-domain moves for this class are disallowed, or the object has some special characteristics, e.g.: trust account or restricted RID, which prevent its move.
+//  This object may not be moved across domain boundaries either because cross-domain moves for this class are disallowed, or the object has some special characteristics, eg: trust account or restricted RID, which prevent its move.
 //
 #define ERROR_DS_ILLEGAL_XDOM_MOVE_OPERATION 8492L
 
@@ -12971,7 +12772,7 @@
 //
 // MessageText:
 //
-//  The version of the operating system installed is incompatible with the current forest functional level. You must upgrade to a new version of the operating system before this server can become a domain controller in this forest.
+//  This version of Windows is too old to support the current directory forest behavior.  You must upgrade the operating system on this server before it can become a domain controller in this forest.
 //
 #define ERROR_DS_FOREST_VERSION_TOO_HIGH 8563L
 
@@ -12980,7 +12781,7 @@
 //
 // MessageText:
 //
-//  The version of the operating system installed is incompatible with the current domain functional level. You must upgrade to a new version of the operating system before this server can become a domain controller in this domain.
+//  This version of Windows is too old to support the current domain behavior.  You must upgrade the operating system on this server before it can become a domain controller in this domain.
 //
 #define ERROR_DS_DOMAIN_VERSION_TOO_HIGH 8564L
 
@@ -12989,7 +12790,7 @@
 //
 // MessageText:
 //
-//  The version of the operating system installed on this server no longer supports the current forest functional level. You must raise the forest functional level before this server can become a domain controller in this forest.
+//  This version of Windows no longer supports the behavior version in use in this directory forest.  You must advance the forest behavior version before this server can become a domain controller in the forest.
 //
 #define ERROR_DS_FOREST_VERSION_TOO_LOW  8565L
 
@@ -12998,7 +12799,7 @@
 //
 // MessageText:
 //
-//  The version of the operating system installed on this server no longer supports the current domain functional level. You must raise the domain functional level before this server can become a domain controller in this domain.
+//  This version of Windows no longer supports the behavior version in use in this domain.  You must advance the domain behavior version before this server can become a domain controller in the domain.
 //
 #define ERROR_DS_DOMAIN_VERSION_TOO_LOW  8566L
 
@@ -13007,7 +12808,7 @@
 //
 // MessageText:
 //
-//  The version of the operating system installed on this server is incompatible with the functional level of the domain or forest.
+//  The version of Windows is incompatible with the behavior version of the domain or forest.
 //
 #define ERROR_DS_INCOMPATIBLE_VERSION    8567L
 
@@ -13016,7 +12817,7 @@
 //
 // MessageText:
 //
-//  The functional level of the domain (or forest) cannot be raised to the requested value, because there exist one or more domain controllers in the domain (or forest) that are at a lower incompatible functional level.
+//  The behavior version cannot be increased to the requested value because Domain Controllers still exist with versions lower than the requested value.
 //
 #define ERROR_DS_LOW_DSA_VERSION         8568L
 
@@ -13025,7 +12826,7 @@
 //
 // MessageText:
 //
-//  The forest functional level cannot be raised to the requested value since one or more domains are still in mixed domain mode. All domains in the forest must be in native mode, for you to raise the forest functional level.
+//  The behavior version value cannot be increased while the domain is still in mixed domain mode.  You must first change the domain to native mode before increasing the behavior version.
 //
 #define ERROR_DS_NO_BEHAVIOR_VERSION_IN_MIXEDDOMAIN 8569L
 
@@ -13043,7 +12844,7 @@
 //
 // MessageText:
 //
-//  The requested name already exists as a unique identifier.
+//  Found an object with a non unique name.
 //
 #define ERROR_DS_NAME_NOT_UNIQUE         8571L
 
@@ -13106,7 +12907,7 @@
 //
 // MessageText:
 //
-//  An account group can not have a universal group as a member.
+//  A account group can not have a universal group as a member.
 //
 #define ERROR_DS_AG_CANT_HAVE_UNIVERSAL_MEMBER 8578L
 
@@ -13319,155 +13120,6 @@
 //  The remote create cross reference operation failed on the Domain Naming Master FSMO.  The operation's error is in the extended data.
 //
 #define ERROR_DS_REMOTE_CROSSREF_OP_FAILED 8601L
-
-//
-// MessageId: ERROR_DS_CROSS_REF_BUSY
-//
-// MessageText:
-//
-//  A cross reference is in use locally with the same name.
-//
-#define ERROR_DS_CROSS_REF_BUSY          8602L
-
-//
-// MessageId: ERROR_DS_CANT_DERIVE_SPN_FOR_DELETED_DOMAIN
-//
-// MessageText:
-//
-//  The DS cannot derive a service principal name (SPN) with which to mutually authenticate the target server because the server's domain has been deleted from the forest.
-//
-#define ERROR_DS_CANT_DERIVE_SPN_FOR_DELETED_DOMAIN 8603L
-
-//
-// MessageId: ERROR_DS_CANT_DEMOTE_WITH_WRITEABLE_NC
-//
-// MessageText:
-//
-//  Writeable NCs prevent this DC from demoting.
-//
-#define ERROR_DS_CANT_DEMOTE_WITH_WRITEABLE_NC 8604L
-
-//
-// MessageId: ERROR_DS_DUPLICATE_ID_FOUND
-//
-// MessageText:
-//
-//  The requested object has a non-unique identifier and cannot be retrieved.
-//
-#define ERROR_DS_DUPLICATE_ID_FOUND      8605L
-
-//
-// MessageId: ERROR_DS_INSUFFICIENT_ATTR_TO_CREATE_OBJECT
-//
-// MessageText:
-//
-//  Insufficient attributes were given to create an object.  This object may not exist because it may have been deleted and already garbage collected.
-//
-#define ERROR_DS_INSUFFICIENT_ATTR_TO_CREATE_OBJECT 8606L
-
-//
-// MessageId: ERROR_DS_GROUP_CONVERSION_ERROR
-//
-// MessageText:
-//
-//  The group cannot be converted due to attribute restrictions on the requested group type.
-//
-#define ERROR_DS_GROUP_CONVERSION_ERROR  8607L
-
-//
-// MessageId: ERROR_DS_CANT_MOVE_APP_BASIC_GROUP
-//
-// MessageText:
-//
-//  Cross-domain move of non-empty basic application groups is not allowed.
-//
-#define ERROR_DS_CANT_MOVE_APP_BASIC_GROUP 8608L
-
-//
-// MessageId: ERROR_DS_CANT_MOVE_APP_QUERY_GROUP
-//
-// MessageText:
-//
-//  Cross-domain move of non-empty query based application groups is not allowed.
-//
-#define ERROR_DS_CANT_MOVE_APP_QUERY_GROUP 8609L
-
-//
-// MessageId: ERROR_DS_ROLE_NOT_VERIFIED
-//
-// MessageText:
-//
-//  The FSMO role ownership could not be verified because its directory partition has not replicated successfully with atleast one replication partner.
-//
-#define ERROR_DS_ROLE_NOT_VERIFIED       8610L
-
-//
-// MessageId: ERROR_DS_WKO_CONTAINER_CANNOT_BE_SPECIAL
-//
-// MessageText:
-//
-//  The target container for a redirection of a well known object container cannot already be a special container.
-//
-#define ERROR_DS_WKO_CONTAINER_CANNOT_BE_SPECIAL 8611L
-
-//
-// MessageId: ERROR_DS_DOMAIN_RENAME_IN_PROGRESS
-//
-// MessageText:
-//
-//  The Directory Service cannot perform the requested operation because a domain rename operation is in progress.
-//
-#define ERROR_DS_DOMAIN_RENAME_IN_PROGRESS 8612L
-
-//
-// MessageId: ERROR_DS_EXISTING_AD_CHILD_NC
-//
-// MessageText:
-//
-//  The Active Directory detected an Active Directory child partition below the
-//  requested new partition name.  The Active Directory's partition heiarchy must
-//  be created in a top down method.
-//
-#define ERROR_DS_EXISTING_AD_CHILD_NC    8613L
-
-//
-// MessageId: ERROR_DS_REPL_LIFETIME_EXCEEDED
-//
-// MessageText:
-//
-//  The Active Directory cannot replicate with this server because the time since the last replication with this server has exceeded the tombstone lifetime.
-//
-#define ERROR_DS_REPL_LIFETIME_EXCEEDED  8614L
-
-//
-// MessageId: ERROR_DS_DISALLOWED_IN_SYSTEM_CONTAINER
-//
-// MessageText:
-//
-//  The requested operation is not allowed on an object under the system container.
-//
-#define ERROR_DS_DISALLOWED_IN_SYSTEM_CONTAINER 8615L
-
-//
-// MessageId: ERROR_DS_LDAP_SEND_QUEUE_FULL
-//
-// MessageText:
-//
-//  The LDAP servers network send queue has filled up because the client is not
-//  processing the results of it's requests fast enough.  No more requests will
-//  be processed until the client catches up.  If the client does not catch up
-//  then it will be disconnected.
-//
-#define ERROR_DS_LDAP_SEND_QUEUE_FULL    8616L
-
-//
-// MessageId: ERROR_DS_DRA_OUT_SCHEDULE_WINDOW
-//
-// MessageText:
-//
-//  The scheduled replication did not take place because the system was too busy to execute the request within the schedule window.  The replication queue is overloaded. Consider reducing the number of partners or decreasing the scheduled replication frequency.
-//
-#define ERROR_DS_DRA_OUT_SCHEDULE_WINDOW 8617L
 
 ///////////////////////////////////////////////////
 //                                                /
@@ -13819,38 +13471,6 @@
 //  The operation requested is not permitted on a DNS root server.
 //
 #define DNS_ERROR_NOT_ALLOWED_ON_ROOT_SERVER 9562L
-
-// DNS_ERROR_NOT_ALLOWED_UNDER_DELEGATION  0x0000255B
-//
-// MessageId: DNS_ERROR_NOT_ALLOWED_UNDER_DELEGATION
-//
-// MessageText:
-//
-//  The record could not be created because this part of the DNS namespace has
-//  been delegated to another server.
-//
-#define DNS_ERROR_NOT_ALLOWED_UNDER_DELEGATION 9563L
-
-// DNS_ERROR_CANNOT_FIND_ROOT_HINTS  0x0000255C
-//
-// MessageId: DNS_ERROR_CANNOT_FIND_ROOT_HINTS
-//
-// MessageText:
-//
-//  The DNS server could not find a set of root hints.
-//
-#define DNS_ERROR_CANNOT_FIND_ROOT_HINTS 9564L
-
-// DNS_ERROR_INCONSISTENT_ROOT_HINTS  0x0000255D
-//
-// MessageId: DNS_ERROR_INCONSISTENT_ROOT_HINTS
-//
-// MessageText:
-//
-//  The DNS server found root hints but they were not consistent across
-//  all adapters.
-//
-#define DNS_ERROR_INCONSISTENT_ROOT_HINTS 9565L
 
 
 //
@@ -14437,7 +14057,7 @@
 //
 // MessageText:
 //
-//  This DNS server is not enlisted in the specified directory partition.
+//  The DS is not enlisted in the specified directory partition.
 //
 #define DNS_ERROR_DP_NOT_ENLISTED        9903L
 
@@ -14447,32 +14067,9 @@
 //
 // MessageText:
 //
-//  This DNS server is already enlisted in the specified directory partition.
+//  The DS is already enlisted in the specified directory partition.
 //
 #define DNS_ERROR_DP_ALREADY_ENLISTED    9904L
-
-// DNS_ERROR_DP_NOT_AVAILABLE            0x000026b1
-//
-// MessageId: DNS_ERROR_DP_NOT_AVAILABLE
-//
-// MessageText:
-//
-//  The directory partition is not available at this time. Please wait
-//  a few minutes and try again.
-//
-#define DNS_ERROR_DP_NOT_AVAILABLE       9905L
-
-// DNS_ERROR_DP_FSMO_ERROR               0x000026b2
-//
-// MessageId: DNS_ERROR_DP_FSMO_ERROR
-//
-// MessageText:
-//
-//  The application directory partition operation failed. The domain controller
-//  holding the domain naming master role is down or unable to service the
-//  request or is not running Windows Server 2003.
-//
-#define DNS_ERROR_DP_FSMO_ERROR          9906L
 
 ///////////////////////////////////////////////////
 //                                               //
@@ -15049,7 +14646,7 @@
 //
 // MessageText:
 //
-//  The requested name is valid, but no data of the requested type was found.
+//  The requested name is valid and was found in the database, but it does not have the correct associated data being resolved for.
 //
 #define WSANO_DATA                       11004L
 
@@ -16279,24 +15876,6 @@
 #define ERROR_IPSEC_QM_POLICY_PENDING_DELETION 13023L
 
 //
-// MessageId: WARNING_IPSEC_MM_POLICY_PRUNED
-//
-// MessageText:
-//
-//  The Main Mode policy was successfully added, but some of the requested offers are not supported.
-//
-#define WARNING_IPSEC_MM_POLICY_PRUNED   13024L
-
-//
-// MessageId: WARNING_IPSEC_QM_POLICY_PRUNED
-//
-// MessageText:
-//
-//  The Quick Mode policy was successfully added, but some of the requested offers are not supported.
-//
-#define WARNING_IPSEC_QM_POLICY_PRUNED   13025L
-
-//
 // MessageId: ERROR_IPSEC_IKE_NEG_STATUS_BEGIN
 //
 // MessageText:
@@ -17100,13 +16679,13 @@
 // indicate success).
 //
 
-#define SUCCEEDED(hr) ((HRESULT)(hr) >= 0)
+#define SUCCEEDED(Status) ((HRESULT)(Status) >= 0)
 
 //
 // and the inverse
 //
 
-#define FAILED(hr) ((HRESULT)(hr) < 0)
+#define FAILED(Status) ((HRESULT)(Status)<0)
 
 
 //
@@ -18997,7 +18576,7 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 //
 #define EVENT_E_PER_USER_SID_NOT_LOGGED_ON _HRESULT_TYPEDEF_(0x80040210L)
 
-#define XACT_E_FIRST   0x8004D000
+#define XACT_E_FIRST	0x8004D000
 #define XACT_E_LAST    0x8004D029
 #define XACT_S_FIRST   0x0004D000
 #define XACT_S_LAST    0x0004D010
@@ -19576,15 +19155,6 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 //  There is no MTS object context
 //
 #define CONTEXT_E_NOCONTEXT              _HRESULT_TYPEDEF_(0x8004E004L)
-
-//
-// MessageId: CONTEXT_E_WOULD_DEADLOCK
-//
-// MessageText:
-//
-//  The component is configured to use synchronization and this method call would cause a deadlock to occur.
-//
-#define CONTEXT_E_WOULD_DEADLOCK         _HRESULT_TYPEDEF_(0x8004E005L)
 
 //
 // MessageId: CONTEXT_E_SYNCH_TIMEOUT
@@ -22770,8 +22340,7 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 //
 // MessageText:
 //
-//  The client certificate does not contain a valid UPN, or does not match the client name
-//  in the logon request.  Please contact your administrator.
+//  The client cert name does not matches the user name or the KDC name is incorrect.
 //
 #define SEC_E_PKINIT_NAME_MISMATCH       _HRESULT_TYPEDEF_(0x8009033DL)
 
@@ -22834,7 +22403,7 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 //
 // MessageText:
 //
-//  The requested operation cannot be completed.  The computer must be trusted for delegation and the current user account must be configured to allow delegation.
+//  The requested operation requires delegation to be enabled on the machine.
 //
 #define SEC_E_DELEGATION_REQUIRED        _HRESULT_TYPEDEF_(0x80090345L)
 
@@ -22864,139 +22433,6 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 //  SEC_E_NO_KERB_KEY
 //
 #define SEC_E_NO_KERB_KEY                _HRESULT_TYPEDEF_(0x80090348L)
-
-//
-// MessageId: SEC_E_CERT_WRONG_USAGE
-//
-// MessageText:
-//
-//  The certificate is not valid for the requested usage.
-//
-#define SEC_E_CERT_WRONG_USAGE           _HRESULT_TYPEDEF_(0x80090349L)
-
-//
-// MessageId: SEC_E_DOWNGRADE_DETECTED
-//
-// MessageText:
-//
-//  The system detected a possible attempt to compromise security.  Please ensure that you can contact the server that authenticated you.
-//
-#define SEC_E_DOWNGRADE_DETECTED         _HRESULT_TYPEDEF_(0x80090350L)
-
-//
-// MessageId: SEC_E_SMARTCARD_CERT_REVOKED
-//
-// MessageText:
-//
-//  The smartcard certificate used for authentication has been revoked.
-//  Please contact your system administrator.  There may be additional information in the
-//  event log.
-//
-#define SEC_E_SMARTCARD_CERT_REVOKED     _HRESULT_TYPEDEF_(0x80090351L)
-
-//
-// MessageId: SEC_E_ISSUING_CA_UNTRUSTED
-//
-// MessageText:
-//
-//  An untrusted certificate authority was detected While processing the
-//  smartcard certificate used for authentication.  Please contact your system
-//  administrator.
-//
-#define SEC_E_ISSUING_CA_UNTRUSTED       _HRESULT_TYPEDEF_(0x80090352L)
-
-//
-// MessageId: SEC_E_REVOCATION_OFFLINE_C
-//
-// MessageText:
-//
-//  The revocation status of the smartcard certificate used for
-//  authentication could not be determined. Please contact your system administrator.
-//
-#define SEC_E_REVOCATION_OFFLINE_C       _HRESULT_TYPEDEF_(0x80090353L)
-
-//
-// MessageId: SEC_E_PKINIT_CLIENT_FAILURE
-//
-// MessageText:
-//
-//  The smartcard certificate used for authentication was not trusted.  Please
-//  contact your system administrator.
-//
-#define SEC_E_PKINIT_CLIENT_FAILURE      _HRESULT_TYPEDEF_(0x80090354L)
-
-//
-// MessageId: SEC_E_SMARTCARD_CERT_EXPIRED
-//
-// MessageText:
-//
-//  The smartcard certificate used for authentication has expired.  Please
-//  contact your system administrator.
-//
-#define SEC_E_SMARTCARD_CERT_EXPIRED     _HRESULT_TYPEDEF_(0x80090355L)
-
-//
-// MessageId: SEC_E_NO_S4U_PROT_SUPPORT
-//
-// MessageText:
-//
-//  The Kerberos subsystem encountered an error.  A service for user protocol request was made
-//  against a domain controller which does not support service for user.
-//
-#define SEC_E_NO_S4U_PROT_SUPPORT        _HRESULT_TYPEDEF_(0x80090356L)
-
-//
-// MessageId: SEC_E_CROSSREALM_DELEGATION_FAILURE
-//
-// MessageText:
-//
-//  An attempt was made by this server to make a Kerberos constrained delegation request for a target
-//  outside of the server's realm.  This is not supported, and indicates a misconfiguration on this
-//  server's allowed to delegate to list.  Please contact your administrator.
-//
-#define SEC_E_CROSSREALM_DELEGATION_FAILURE _HRESULT_TYPEDEF_(0x80090357L)
-
-//
-// MessageId: SEC_E_REVOCATION_OFFLINE_KDC
-//
-// MessageText:
-//
-//  The revocation status of the domain controller certificate used for smartcard
-//  authentication could not be determined.  There is additional information in the system event
-//  log. Please contact your system administrator.
-//
-#define SEC_E_REVOCATION_OFFLINE_KDC     _HRESULT_TYPEDEF_(0x80090358L)
-
-//
-// MessageId: SEC_E_ISSUING_CA_UNTRUSTED_KDC
-//
-// MessageText:
-//
-//  An untrusted certificate authority was detected while processing the
-//  domain controller certificate used for authentication.  There is additional information in
-//  the system event log.  Please contact your system administrator.
-//
-#define SEC_E_ISSUING_CA_UNTRUSTED_KDC   _HRESULT_TYPEDEF_(0x80090359L)
-
-//
-// MessageId: SEC_E_KDC_CERT_EXPIRED
-//
-// MessageText:
-//
-//  The domain controller certificate used for smartcard logon has expired.
-//  Please contact your system administrator with the contents of your system event log.
-//
-#define SEC_E_KDC_CERT_EXPIRED           _HRESULT_TYPEDEF_(0x8009035AL)
-
-//
-// MessageId: SEC_E_KDC_CERT_REVOKED
-//
-// MessageText:
-//
-//  The domain controller certificate used for smartcard logon has been revoked.
-//  Please contact your system administrator with the contents of your system event log.
-//
-#define SEC_E_KDC_CERT_REVOKED           _HRESULT_TYPEDEF_(0x8009035BL)
 
 //
 // Provided for backwards compatibility
@@ -24226,15 +23662,6 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 #define CERTSRV_E_TEMPLATE_DENIED        _HRESULT_TYPEDEF_(0x80094012L)
 
 //
-// MessageId: CERTSRV_E_DOWNLEVEL_DC_SSL_OR_UPGRADE
-//
-// MessageText:
-//
-//  The contacted domain controller cannot support signed LDAP traffic.  Update the domain controller or configure Certificate Services to use SSL for Active Directory access.
-//
-#define CERTSRV_E_DOWNLEVEL_DC_SSL_OR_UPGRADE _HRESULT_TYPEDEF_(0x80094013L)
-
-//
 // MessageId: CERTSRV_E_UNSUPPORTED_CERT_TYPE
 //
 // MessageText:
@@ -24397,33 +23824,6 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 #define CERTSRV_E_KEY_LENGTH             _HRESULT_TYPEDEF_(0x80094811L)
 
 //
-// MessageId: CERTSRV_E_SUBJECT_EMAIL_REQUIRED
-//
-// MessageText:
-//
-//  The EMail name is unavailable and cannot be added to the Subject or Subject Alternate name.
-//
-#define CERTSRV_E_SUBJECT_EMAIL_REQUIRED _HRESULT_TYPEDEF_(0x80094812L)
-
-//
-// MessageId: CERTSRV_E_UNKNOWN_CERT_TYPE
-//
-// MessageText:
-//
-//  One or more certificate templates to be enabled on this certification authority could not be found.
-//
-#define CERTSRV_E_UNKNOWN_CERT_TYPE      _HRESULT_TYPEDEF_(0x80094813L)
-
-//
-// MessageId: CERTSRV_E_CERT_TYPE_OVERLAP
-//
-// MessageText:
-//
-//  The certificate template renewal period is longer than the certificate validity period.  The template should be reconfigured or the CA certificate renewed.
-//
-#define CERTSRV_E_CERT_TYPE_OVERLAP      _HRESULT_TYPEDEF_(0x80094814L)
-
-//
 // The range 0x5000-0x51ff is reserved for XENROLL errors.
 //
 //
@@ -24458,7 +23858,7 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 //
 // MessageText:
 //
-//  An unexpected key archival hash attribute was found in the response.
+//  An unexpetced key archival hash attribute was found in the response.
 //
 #define XENROLL_E_RESPONSE_UNEXPECTED_KA_HASH _HRESULT_TYPEDEF_(0x80095003L)
 
@@ -24548,7 +23948,7 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 //
 // MessageText:
 //
-//  The certificate does not meet or contain the Authenticode(tm) financial extensions.
+//  The certificate does not meet or contain the Authenticode financial extensions.
 //
 #define TRUST_E_FINANCIAL_CRITERIA       _HRESULT_TYPEDEF_(0x8009601EL)
 
@@ -24958,7 +24358,7 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 //
 // MessageText:
 //
-//  A certificate chain could not be built to a trusted root authority.
+//  An internal certificate chaining error has occurred.
 //
 #define CERT_E_CHAINING                  _HRESULT_TYPEDEF_(0x800B010AL)
 
@@ -25648,132 +25048,6 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 #define SPAPI_E_SCE_DISABLED             _HRESULT_TYPEDEF_(0x800F0238L)
 
 //
-// MessageId: SPAPI_E_UNKNOWN_EXCEPTION
-//
-// MessageText:
-//
-//  An unknown exception was encountered.
-//
-#define SPAPI_E_UNKNOWN_EXCEPTION        _HRESULT_TYPEDEF_(0x800F0239L)
-
-//
-// MessageId: SPAPI_E_PNP_REGISTRY_ERROR
-//
-// MessageText:
-//
-//  A problem was encountered when accessing the Plug and Play registry database.
-//
-#define SPAPI_E_PNP_REGISTRY_ERROR       _HRESULT_TYPEDEF_(0x800F023AL)
-
-//
-// MessageId: SPAPI_E_REMOTE_REQUEST_UNSUPPORTED
-//
-// MessageText:
-//
-//  The requested operation is not supported for a remote machine.
-//
-#define SPAPI_E_REMOTE_REQUEST_UNSUPPORTED _HRESULT_TYPEDEF_(0x800F023BL)
-
-//
-// MessageId: SPAPI_E_NOT_AN_INSTALLED_OEM_INF
-//
-// MessageText:
-//
-//  The specified file is not an installed OEM INF.
-//
-#define SPAPI_E_NOT_AN_INSTALLED_OEM_INF _HRESULT_TYPEDEF_(0x800F023CL)
-
-//
-// MessageId: SPAPI_E_INF_IN_USE_BY_DEVICES
-//
-// MessageText:
-//
-//  One or more devices are presently installed using the specified INF.
-//
-#define SPAPI_E_INF_IN_USE_BY_DEVICES    _HRESULT_TYPEDEF_(0x800F023DL)
-
-//
-// MessageId: SPAPI_E_DI_FUNCTION_OBSOLETE
-//
-// MessageText:
-//
-//  The requested device install operation is obsolete.
-//
-#define SPAPI_E_DI_FUNCTION_OBSOLETE     _HRESULT_TYPEDEF_(0x800F023EL)
-
-//
-// MessageId: SPAPI_E_NO_AUTHENTICODE_CATALOG
-//
-// MessageText:
-//
-//  A file could not be verified because it does not have an associated catalog signed via Authenticode(tm).
-//
-#define SPAPI_E_NO_AUTHENTICODE_CATALOG  _HRESULT_TYPEDEF_(0x800F023FL)
-
-//
-// MessageId: SPAPI_E_AUTHENTICODE_DISALLOWED
-//
-// MessageText:
-//
-//  Authenticode(tm) signature verification is not supported for the specified INF.
-//
-#define SPAPI_E_AUTHENTICODE_DISALLOWED  _HRESULT_TYPEDEF_(0x800F0240L)
-
-//
-// MessageId: SPAPI_E_AUTHENTICODE_TRUSTED_PUBLISHER
-//
-// MessageText:
-//
-//  The INF was signed with an Authenticode(tm) catalog from a trusted publisher.
-//
-#define SPAPI_E_AUTHENTICODE_TRUSTED_PUBLISHER _HRESULT_TYPEDEF_(0x800F0241L)
-
-//
-// MessageId: SPAPI_E_AUTHENTICODE_TRUST_NOT_ESTABLISHED
-//
-// MessageText:
-//
-//  The publisher of an Authenticode(tm) signed catalog has not yet been established as trusted.
-//
-#define SPAPI_E_AUTHENTICODE_TRUST_NOT_ESTABLISHED _HRESULT_TYPEDEF_(0x800F0242L)
-
-//
-// MessageId: SPAPI_E_AUTHENTICODE_PUBLISHER_NOT_TRUSTED
-//
-// MessageText:
-//
-//  The publisher of an Authenticode(tm) signed catalog was not established as trusted.
-//
-#define SPAPI_E_AUTHENTICODE_PUBLISHER_NOT_TRUSTED _HRESULT_TYPEDEF_(0x800F0243L)
-
-//
-// MessageId: SPAPI_E_SIGNATURE_OSATTRIBUTE_MISMATCH
-//
-// MessageText:
-//
-//  The software was tested for compliance with Windows Logo requirements on a different version of Windows, and may not be compatible with this version.
-//
-#define SPAPI_E_SIGNATURE_OSATTRIBUTE_MISMATCH _HRESULT_TYPEDEF_(0x800F0244L)
-
-//
-// MessageId: SPAPI_E_ONLY_VALIDATE_VIA_AUTHENTICODE
-//
-// MessageText:
-//
-//  The file may only be validated by a catalog signed via Authenticode(tm).
-//
-#define SPAPI_E_ONLY_VALIDATE_VIA_AUTHENTICODE _HRESULT_TYPEDEF_(0x800F0245L)
-
-//
-// MessageId: SPAPI_E_UNRECOVERABLE_STACK_OVERFLOW
-//
-// MessageText:
-//
-//  An unrecoverable stack overflow was encountered.
-//
-#define SPAPI_E_UNRECOVERABLE_STACK_OVERFLOW _HRESULT_TYPEDEF_(0x800F0300L)
-
-//
 // MessageId: SPAPI_E_ERROR_NOT_INSTALLED
 //
 // MessageText:
@@ -26222,15 +25496,6 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 //  The requested key container does not exist on the smart card.
 //
 #define SCARD_E_NO_KEY_CONTAINER         _HRESULT_TYPEDEF_(0x80100030L)
-
-//
-// MessageId: SCARD_E_SERVER_TOO_BUSY
-//
-// MessageText:
-//
-//  The Smart card resource manager is too busy to complete this operation.
-//
-#define SCARD_E_SERVER_TOO_BUSY          _HRESULT_TYPEDEF_(0x80100031L)
 
 //
 // These are warning codes.
@@ -27369,12 +26634,24 @@ __inline HRESULT HRESULT_FROM_WIN32(long x) { return x <= 0 ? (HRESULT)x : (HRES
 #define COMADMIN_E_REGISTRY_ACCESSDENIED _HRESULT_TYPEDEF_(0x80110823L)
 
 //
-// MessageId: COMADMIN_E_PARTITIONS_DISABLED
+// REMOVE THESE WHEN POSSIBLE
+//
+//
+// MessageId: COMADMIN_E_CAT_DUPLICATE_PARTITION_SET_NAME
 //
 // MessageText:
 //
-//  COM+ partitions are currently disabled.
+//  REMOVE THIS ERROR
 //
-#define COMADMIN_E_PARTITIONS_DISABLED   _HRESULT_TYPEDEF_(0x80110824L)
+#define COMADMIN_E_CAT_DUPLICATE_PARTITION_SET_NAME _HRESULT_TYPEDEF_(0x80110900L)
+
+//
+// MessageId: COMADMIN_E_CAT_INVALID_PARTITION_SET_NAME
+//
+// MessageText:
+//
+//  REMOVE THIS ERROR
+//
+#define COMADMIN_E_CAT_INVALID_PARTITION_SET_NAME _HRESULT_TYPEDEF_(0x80110901L)
 
 #endif//_WINERROR_

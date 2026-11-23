@@ -13,6 +13,7 @@
 #define _PRSHT_H_
 
 
+
 #ifndef _WINRESRC_
 #ifndef _WIN32_IE
 #define _WIN32_IE 0x0501
@@ -771,38 +772,24 @@ typedef struct _PSHNOTIFY
 
 
 #if !defined(RC_INVOKED) /* RC complains about long symbols in #ifs */
-#if defined(ISOLATION_AWARE_ENABLED) && (ISOLATION_AWARE_ENABLED != 0)
+#if ISOLATION_AWARE_ENABLED
 
-
-#if !defined(ISOLATION_AWARE_USE_STATIC_LIBRARY)
-#define ISOLATION_AWARE_USE_STATIC_LIBRARY 0
-#endif
-
-#if !defined(ISOLATION_AWARE_BUILD_STATIC_LIBRARY)
-#define ISOLATION_AWARE_BUILD_STATIC_LIBRARY 0
-#endif
 
 #if !defined(ISOLATION_AWARE_INLINE)
-#if ISOLATION_AWARE_BUILD_STATIC_LIBRARY
-#define ISOLATION_AWARE_INLINE /* nothing */
-#else
 #if defined(__cplusplus)
 #define ISOLATION_AWARE_INLINE inline
 #else
 #define ISOLATION_AWARE_INLINE __inline
 #endif
 #endif
-#endif
 
-#if !ISOLATION_AWARE_USE_STATIC_LIBRARY
-FARPROC WINAPI PrshtIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY(LPCSTR pszProcName);
+FARPROC WINAPI PrshtIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL(LPCSTR pszProcName);
 
 
 #ifndef CCSIZEOF_STRUCT
 #define CCSIZEOF_STRUCT(structname, member)  (((int)((LPBYTE)(&((structname*)0)->member) - ((LPBYTE)((structname*)0)))) + sizeof(((structname*)0)->member))
 #endif
 
-#endif /* ISOLATION_AWARE_USE_STATIC_LIBRARY */
 HPROPSHEETPAGE WINAPI IsolationAwareCreatePropertySheetPageA(LPCPROPSHEETPAGEA constPropSheetPagePointer);
 HPROPSHEETPAGE WINAPI IsolationAwareCreatePropertySheetPageW(LPCPROPSHEETPAGEW constPropSheetPagePointer);
 BOOL WINAPI IsolationAwareDestroyPropertySheetPage(HPROPSHEETPAGE unnamed1);
@@ -821,7 +808,6 @@ INT_PTR WINAPI IsolationAwarePropertySheetW(LPCPROPSHEETHEADERW unnamed1);
 
 #endif /* UNICODE */
 
-#if !ISOLATION_AWARE_USE_STATIC_LIBRARY
 ISOLATION_AWARE_INLINE HPROPSHEETPAGE WINAPI IsolationAwareCreatePropertySheetPageA(LPCPROPSHEETPAGEA constPropSheetPagePointer)
 {
     HPROPSHEETPAGE result = NULL;
@@ -830,19 +816,19 @@ ISOLATION_AWARE_INLINE HPROPSHEETPAGE WINAPI IsolationAwareCreatePropertySheetPa
 
     const LPPROPSHEETPAGEA_LATEST latestPropSheetPagePointer = (LPPROPSHEETPAGEA_LATEST)constPropSheetPagePointer;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return result;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)PrshtIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("CreatePropertySheetPageA");
+            s_pfn = (PFN)PrshtIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("CreatePropertySheetPageA");
             if (s_pfn == NULL)
                 __leave;
         }
 
-        if (IsolationAwarePrivateT_SqbjaYRiRY)
+        if (IsolationAwarePrivateG_FqbjaLEiEL)
         {
             if ((latestPropSheetPagePointer->dwFlags & PSP_USEFUSIONCONTEXT) != 0)
             {
@@ -854,13 +840,13 @@ ISOLATION_AWARE_INLINE HPROPSHEETPAGE WINAPI IsolationAwareCreatePropertySheetPa
                   )
         {
             latestPropSheetPagePointer->dwFlags |= PSP_USEFUSIONCONTEXT;
-            latestPropSheetPagePointer->hActCtx = WinbaseIsolationAwarePrivateT_UnPgpgk;
+            latestPropSheetPagePointer->hActCtx = WinbaseIsolationAwarePrivateG_HnCgpgk;
         }
         result = s_pfn(constPropSheetPagePointer);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (result == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -880,19 +866,19 @@ ISOLATION_AWARE_INLINE HPROPSHEETPAGE WINAPI IsolationAwareCreatePropertySheetPa
 
     const LPPROPSHEETPAGEW_LATEST latestPropSheetPagePointer = (LPPROPSHEETPAGEW_LATEST)constPropSheetPagePointer;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return result;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)PrshtIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("CreatePropertySheetPageW");
+            s_pfn = (PFN)PrshtIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("CreatePropertySheetPageW");
             if (s_pfn == NULL)
                 __leave;
         }
 
-        if (IsolationAwarePrivateT_SqbjaYRiRY)
+        if (IsolationAwarePrivateG_FqbjaLEiEL)
         {
             if ((latestPropSheetPagePointer->dwFlags & PSP_USEFUSIONCONTEXT) != 0)
             {
@@ -904,13 +890,13 @@ ISOLATION_AWARE_INLINE HPROPSHEETPAGE WINAPI IsolationAwareCreatePropertySheetPa
                   )
         {
             latestPropSheetPagePointer->dwFlags |= PSP_USEFUSIONCONTEXT;
-            latestPropSheetPagePointer->hActCtx = WinbaseIsolationAwarePrivateT_UnPgpgk;
+            latestPropSheetPagePointer->hActCtx = WinbaseIsolationAwarePrivateG_HnCgpgk;
         }
         result = s_pfn(constPropSheetPagePointer);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (result == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -928,14 +914,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareDestroyPropertySheetPage(HPROPS
     typedef BOOL (WINAPI* PFN)(HPROPSHEETPAGE unnamed1);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return fResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)PrshtIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("DestroyPropertySheetPage");
+            s_pfn = (PFN)PrshtIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("DestroyPropertySheetPage");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -943,7 +929,7 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareDestroyPropertySheetPage(HPROPS
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (fResult == FALSE);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -961,14 +947,14 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwarePropertySheetA(LPCPROPSHEETH
     typedef INT_PTR (WINAPI* PFN)(LPCPROPSHEETHEADERA unnamed1);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)PrshtIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("PropertySheetA");
+            s_pfn = (PFN)PrshtIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("PropertySheetA");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -976,7 +962,7 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwarePropertySheetA(LPCPROPSHEETH
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == -1);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -994,14 +980,14 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwarePropertySheetW(LPCPROPSHEETH
     typedef INT_PTR (WINAPI* PFN)(LPCPROPSHEETHEADERW unnamed1);
     static PFN s_pfn;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
         return nResult;
     __try
     {
         if (s_pfn == NULL)
         {
-            s_pfn = (PFN)PrshtIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY("PropertySheetW");
+            s_pfn = (PFN)PrshtIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL("PropertySheetW");
             if (s_pfn == NULL)
                 __leave;
         }
@@ -1009,7 +995,7 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwarePropertySheetW(LPCPROPSHEETH
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
             const BOOL fPreserveLastError = (nResult == -1);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
@@ -1021,30 +1007,38 @@ ISOLATION_AWARE_INLINE INT_PTR WINAPI IsolationAwarePropertySheetW(LPCPROPSHEETH
     return nResult;
 }
 
-ISOLATION_AWARE_INLINE FARPROC WINAPI PrshtIsolationAwarePrivatetRgCebPnQQeRff_pbZPgYQP_QYY(LPCSTR pszProcName)
+ISOLATION_AWARE_INLINE FARPROC WINAPI PrshtIsolationAwarePrivatetEgCebCnDDeEff_pbMCgLDC_DLL(LPCSTR pszProcName)
 /* This function is shared by the other stubs in this header. */
 {
     FARPROC proc = NULL;
     static HMODULE s_module;
     BOOL fActivateActCtxSuccess = FALSE;
     ULONG_PTR ulpCookie = 0;
-    const static IsolationAwarePrivatepBAFGnAG_zBqHyr_vAsB
-        c = { IsolationAwarePrivatezlybNQyVOeNeln, IsolationAwarePrivatezlybNQyVOeNelJ, "Comctl32.dll", L"Comctl32.dll" };
-    static IsolationAwarePrivatezHGnoyr_zBqHyr_vAsB m;
-
     __try
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (s_module == NULL)
         {
-            fActivateActCtxSuccess = IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
-            if (!fActivateActCtxSuccess)
-                __leave;
+            if (!IsolationAwarePrivateG_FqbjaLEiEL)
+            {
+                fActivateActCtxSuccess = IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
+                if (!fActivateActCtxSuccess)
+                    __leave;
+            }
+            s_module = LoadLibraryW(L"Comctl32.dll");
+            if (s_module == NULL)
+            {
+                if (GetLastError() != ERROR_CALL_NOT_IMPLEMENTED)
+                    __leave;
+                s_module = LoadLibraryA("Comctl32.dll");
+                if (s_module == NULL)
+                    __leave;
+            }
         }
-        proc = IsolationAwarePrivatezltRgCebPnQQeRff(&c, &m, pszProcName);
+        proc = GetProcAddress(s_module, pszProcName);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY && fActivateActCtxSuccess)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL && fActivateActCtxSuccess)
         {
             const DWORD dwLastError = (proc == NULL) ? GetLastError() : NO_ERROR;
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
@@ -1054,8 +1048,6 @@ ISOLATION_AWARE_INLINE FARPROC WINAPI PrshtIsolationAwarePrivatetRgCebPnQQeRff_p
     }
     return proc;
 }
-
-#endif /* ISOLATION_AWARE_USE_STATIC_LIBRARY */
 
 #define CreatePropertySheetPageA IsolationAwareCreatePropertySheetPageA
 #define CreatePropertySheetPageW IsolationAwareCreatePropertySheetPageW

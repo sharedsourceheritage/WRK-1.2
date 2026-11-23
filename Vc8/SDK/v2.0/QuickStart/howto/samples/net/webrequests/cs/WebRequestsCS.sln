@@ -1,0 +1,54 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientGet", "ClientGet\ClientGet.csproj", "{9175654E-3C0C-4BC3-81D7-205F1984E3FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientGetAsync", "ClientGetAsync\ClientGetAsync.csproj", "{F848400C-FB04-4243-A660-946061D8B628}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientGetWithNTLM", "ClientGetWithNTLM\ClientGetWithNTLM.csproj", "{8E0CC5F6-9E45-428B-9335-94DDF7FB6D74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientGetWithProxy", "ClientGetWithProxy\ClientGetWithProxy.csproj", "{1D256C8E-A0C2-4CEE-8FD0-9EA82589008A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientGetWithSSL", "ClientGetWithSSL\ClientGetWithSSL.csproj", "{7A2BA0C9-D935-4173-9EA2-4F7FC9D4945F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientPost", "ClientPost\ClientPost.csproj", "{8F6C8A9C-675D-4609-9454-5DF5ECADD965}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientWebException", "ClientWebException\ClientWebException.csproj", "{EB1423A9-23C9-4B20-AE57-B49D817955AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9175654E-3C0C-4BC3-81D7-205F1984E3FD}.Debug|.NET.ActiveCfg = Debug|.NET
+		{9175654E-3C0C-4BC3-81D7-205F1984E3FD}.Debug|.NET.Build.0 = Debug|.NET
+		{9175654E-3C0C-4BC3-81D7-205F1984E3FD}.Release|.NET.ActiveCfg = Release|.NET
+		{9175654E-3C0C-4BC3-81D7-205F1984E3FD}.Release|.NET.Build.0 = Release|.NET
+		{F848400C-FB04-4243-A660-946061D8B628}.Debug|.NET.ActiveCfg = Debug|.NET
+		{F848400C-FB04-4243-A660-946061D8B628}.Debug|.NET.Build.0 = Debug|.NET
+		{F848400C-FB04-4243-A660-946061D8B628}.Release|.NET.ActiveCfg = Release|.NET
+		{F848400C-FB04-4243-A660-946061D8B628}.Release|.NET.Build.0 = Release|.NET
+		{8E0CC5F6-9E45-428B-9335-94DDF7FB6D74}.Debug|.NET.ActiveCfg = Debug|.NET
+		{8E0CC5F6-9E45-428B-9335-94DDF7FB6D74}.Debug|.NET.Build.0 = Debug|.NET
+		{8E0CC5F6-9E45-428B-9335-94DDF7FB6D74}.Release|.NET.ActiveCfg = Release|.NET
+		{8E0CC5F6-9E45-428B-9335-94DDF7FB6D74}.Release|.NET.Build.0 = Release|.NET
+		{1D256C8E-A0C2-4CEE-8FD0-9EA82589008A}.Debug|.NET.ActiveCfg = Debug|.NET
+		{1D256C8E-A0C2-4CEE-8FD0-9EA82589008A}.Debug|.NET.Build.0 = Debug|.NET
+		{1D256C8E-A0C2-4CEE-8FD0-9EA82589008A}.Release|.NET.ActiveCfg = Release|.NET
+		{1D256C8E-A0C2-4CEE-8FD0-9EA82589008A}.Release|.NET.Build.0 = Release|.NET
+		{7A2BA0C9-D935-4173-9EA2-4F7FC9D4945F}.Debug|.NET.ActiveCfg = Debug|.NET
+		{7A2BA0C9-D935-4173-9EA2-4F7FC9D4945F}.Debug|.NET.Build.0 = Debug|.NET
+		{7A2BA0C9-D935-4173-9EA2-4F7FC9D4945F}.Release|.NET.ActiveCfg = Release|.NET
+		{7A2BA0C9-D935-4173-9EA2-4F7FC9D4945F}.Release|.NET.Build.0 = Release|.NET
+		{8F6C8A9C-675D-4609-9454-5DF5ECADD965}.Debug|.NET.ActiveCfg = Debug|.NET
+		{8F6C8A9C-675D-4609-9454-5DF5ECADD965}.Debug|.NET.Build.0 = Debug|.NET
+		{8F6C8A9C-675D-4609-9454-5DF5ECADD965}.Release|.NET.ActiveCfg = Release|.NET
+		{8F6C8A9C-675D-4609-9454-5DF5ECADD965}.Release|.NET.Build.0 = Release|.NET
+		{EB1423A9-23C9-4B20-AE57-B49D817955AF}.Debug|.NET.ActiveCfg = Debug|.NET
+		{EB1423A9-23C9-4B20-AE57-B49D817955AF}.Debug|.NET.Build.0 = Debug|.NET
+		{EB1423A9-23C9-4B20-AE57-B49D817955AF}.Release|.NET.ActiveCfg = Release|.NET
+		{EB1423A9-23C9-4B20-AE57-B49D817955AF}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

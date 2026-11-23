@@ -1,0 +1,3 @@
+C# Source:cs\Client\SoapExceptionClient.aspx,cs\App_WebReferences\SoapExceptionService.wsdl,cs\Server\SoapExceptionService.asmx,cs\App_WebReferences\results.discomap
+VB Source:vb\Client\SoapExceptionClient.aspx,vb\App_WebReferences\SoapExceptionService.wsdl,vb\Server\SoapExceptionService.asmx,vb\App_WebReferences\results.discomap
+J# Source:jsl\Client\SoapExceptionClient.aspx,jsl\App_WebReferences\SoapExceptionService.wsdl,jsl\Server\SoapExceptionService.asmx,jsl\App_WebReferences\results.discomap

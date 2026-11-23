@@ -1,12 +1,13 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for txcoord.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run)
-    protocol : dce , ms_ext, c_ext, robust
+    Os, W1, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
@@ -14,12 +15,10 @@
 */
 //@@MIDL_FILE_HEADING(  )
 
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
-
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
 #ifndef __REQUIRED_RPCNDR_H_VERSION__
-#define __REQUIRED_RPCNDR_H_VERSION__ 475
+#define __REQUIRED_RPCNDR_H_VERSION__ 440
 #endif
 
 #include "rpc.h"
@@ -115,18 +114,6 @@ typedef interface ITipPullSink ITipPullSink;
 #endif 	/* __ITipPullSink_FWD_DEFINED__ */
 
 
-#ifndef __IDtcNetworkAccessConfig_FWD_DEFINED__
-#define __IDtcNetworkAccessConfig_FWD_DEFINED__
-typedef interface IDtcNetworkAccessConfig IDtcNetworkAccessConfig;
-#endif 	/* __IDtcNetworkAccessConfig_FWD_DEFINED__ */
-
-
-#ifndef __IDtcNetworkAccessConfig2_FWD_DEFINED__
-#define __IDtcNetworkAccessConfig2_FWD_DEFINED__
-typedef interface IDtcNetworkAccessConfig2 IDtcNetworkAccessConfig2;
-#endif 	/* __IDtcNetworkAccessConfig2_FWD_DEFINED__ */
-
-
 /* header files for imported files */
 #include "transact.h"
 #include "objidl.h"
@@ -140,8 +127,6 @@ void __RPC_USER MIDL_user_free( void * );
 
 /* interface __MIDL_itf_txcoord_0000 */
 /* [local] */ 
-
-
 
 
 
@@ -1653,684 +1638,25 @@ void __RPC_STUB ITipPullSink_PullComplete_Stub(
 #endif 	/* __ITipPullSink_INTERFACE_DEFINED__ */
 
 
-#ifndef __IDtcNetworkAccessConfig_INTERFACE_DEFINED__
-#define __IDtcNetworkAccessConfig_INTERFACE_DEFINED__
-
-/* interface IDtcNetworkAccessConfig */
-/* [unique][uuid][object] */ 
-
-
-EXTERN_C const IID IID_IDtcNetworkAccessConfig;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("9797C15D-A428-4291-87B6-0995031A678D")
-    IDtcNetworkAccessConfig : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE GetAnyNetworkAccess( 
-            /* [out] */ BOOL *pbAnyNetworkAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetAnyNetworkAccess( 
-            /* [in] */ BOOL bAnyNetworkAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetNetworkAdministrationAccess( 
-            /* [out] */ BOOL *pbNetworkAdministrationAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetNetworkAdministrationAccess( 
-            /* [in] */ BOOL bNetworkAdministrationAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetNetworkTransactionAccess( 
-            /* [out] */ BOOL *pbNetworkTransactionAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetNetworkTransactionAccess( 
-            /* [in] */ BOOL bNetworkTransactionAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetNetworkClientAccess( 
-            /* [out] */ BOOL *pbNetworkClientAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetNetworkClientAccess( 
-            /* [in] */ BOOL bNetworkClientAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetNetworkTIPAccess( 
-            /* [out] */ BOOL *pbNetworkTIPAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetNetworkTIPAccess( 
-            /* [in] */ BOOL bNetworkTIPAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetXAAccess( 
-            /* [out] */ BOOL *pbXAAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetXAAccess( 
-            /* [in] */ BOOL bXAAccess) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE RestartDtcService( void) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IDtcNetworkAccessConfigVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IDtcNetworkAccessConfig * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IDtcNetworkAccessConfig * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IDtcNetworkAccessConfig * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetAnyNetworkAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [out] */ BOOL *pbAnyNetworkAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetAnyNetworkAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [in] */ BOOL bAnyNetworkAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNetworkAdministrationAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [out] */ BOOL *pbNetworkAdministrationAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetNetworkAdministrationAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [in] */ BOOL bNetworkAdministrationAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNetworkTransactionAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [out] */ BOOL *pbNetworkTransactionAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetNetworkTransactionAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [in] */ BOOL bNetworkTransactionAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNetworkClientAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [out] */ BOOL *pbNetworkClientAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetNetworkClientAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [in] */ BOOL bNetworkClientAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNetworkTIPAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [out] */ BOOL *pbNetworkTIPAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetNetworkTIPAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [in] */ BOOL bNetworkTIPAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetXAAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [out] */ BOOL *pbXAAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetXAAccess )( 
-            IDtcNetworkAccessConfig * This,
-            /* [in] */ BOOL bXAAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *RestartDtcService )( 
-            IDtcNetworkAccessConfig * This);
-        
-        END_INTERFACE
-    } IDtcNetworkAccessConfigVtbl;
-
-    interface IDtcNetworkAccessConfig
-    {
-        CONST_VTBL struct IDtcNetworkAccessConfigVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IDtcNetworkAccessConfig_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IDtcNetworkAccessConfig_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IDtcNetworkAccessConfig_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IDtcNetworkAccessConfig_GetAnyNetworkAccess(This,pbAnyNetworkAccess)	\
-    (This)->lpVtbl -> GetAnyNetworkAccess(This,pbAnyNetworkAccess)
-
-#define IDtcNetworkAccessConfig_SetAnyNetworkAccess(This,bAnyNetworkAccess)	\
-    (This)->lpVtbl -> SetAnyNetworkAccess(This,bAnyNetworkAccess)
-
-#define IDtcNetworkAccessConfig_GetNetworkAdministrationAccess(This,pbNetworkAdministrationAccess)	\
-    (This)->lpVtbl -> GetNetworkAdministrationAccess(This,pbNetworkAdministrationAccess)
-
-#define IDtcNetworkAccessConfig_SetNetworkAdministrationAccess(This,bNetworkAdministrationAccess)	\
-    (This)->lpVtbl -> SetNetworkAdministrationAccess(This,bNetworkAdministrationAccess)
-
-#define IDtcNetworkAccessConfig_GetNetworkTransactionAccess(This,pbNetworkTransactionAccess)	\
-    (This)->lpVtbl -> GetNetworkTransactionAccess(This,pbNetworkTransactionAccess)
-
-#define IDtcNetworkAccessConfig_SetNetworkTransactionAccess(This,bNetworkTransactionAccess)	\
-    (This)->lpVtbl -> SetNetworkTransactionAccess(This,bNetworkTransactionAccess)
-
-#define IDtcNetworkAccessConfig_GetNetworkClientAccess(This,pbNetworkClientAccess)	\
-    (This)->lpVtbl -> GetNetworkClientAccess(This,pbNetworkClientAccess)
-
-#define IDtcNetworkAccessConfig_SetNetworkClientAccess(This,bNetworkClientAccess)	\
-    (This)->lpVtbl -> SetNetworkClientAccess(This,bNetworkClientAccess)
-
-#define IDtcNetworkAccessConfig_GetNetworkTIPAccess(This,pbNetworkTIPAccess)	\
-    (This)->lpVtbl -> GetNetworkTIPAccess(This,pbNetworkTIPAccess)
-
-#define IDtcNetworkAccessConfig_SetNetworkTIPAccess(This,bNetworkTIPAccess)	\
-    (This)->lpVtbl -> SetNetworkTIPAccess(This,bNetworkTIPAccess)
-
-#define IDtcNetworkAccessConfig_GetXAAccess(This,pbXAAccess)	\
-    (This)->lpVtbl -> GetXAAccess(This,pbXAAccess)
-
-#define IDtcNetworkAccessConfig_SetXAAccess(This,bXAAccess)	\
-    (This)->lpVtbl -> SetXAAccess(This,bXAAccess)
-
-#define IDtcNetworkAccessConfig_RestartDtcService(This)	\
-    (This)->lpVtbl -> RestartDtcService(This)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_GetAnyNetworkAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [out] */ BOOL *pbAnyNetworkAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_GetAnyNetworkAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_SetAnyNetworkAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [in] */ BOOL bAnyNetworkAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_SetAnyNetworkAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_GetNetworkAdministrationAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [out] */ BOOL *pbNetworkAdministrationAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_GetNetworkAdministrationAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_SetNetworkAdministrationAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [in] */ BOOL bNetworkAdministrationAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_SetNetworkAdministrationAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_GetNetworkTransactionAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [out] */ BOOL *pbNetworkTransactionAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_GetNetworkTransactionAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_SetNetworkTransactionAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [in] */ BOOL bNetworkTransactionAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_SetNetworkTransactionAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_GetNetworkClientAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [out] */ BOOL *pbNetworkClientAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_GetNetworkClientAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_SetNetworkClientAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [in] */ BOOL bNetworkClientAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_SetNetworkClientAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_GetNetworkTIPAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [out] */ BOOL *pbNetworkTIPAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_GetNetworkTIPAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_SetNetworkTIPAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [in] */ BOOL bNetworkTIPAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_SetNetworkTIPAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_GetXAAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [out] */ BOOL *pbXAAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_GetXAAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_SetXAAccess_Proxy( 
-    IDtcNetworkAccessConfig * This,
-    /* [in] */ BOOL bXAAccess);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_SetXAAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig_RestartDtcService_Proxy( 
-    IDtcNetworkAccessConfig * This);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig_RestartDtcService_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IDtcNetworkAccessConfig_INTERFACE_DEFINED__ */
-
-
-/* interface __MIDL_itf_txcoord_0115 */
-/* [local] */ 
-
-typedef 
-enum AUTHENTICATION_LEVEL
-    {	NO_AUTHENTICATION_REQUIRED	= 0,
-	INCOMING_AUTHENTICATION_REQUIRED	= 1,
-	MUTUAL_AUTHENTICATION_REQUIRED	= 2
-    } 	AUTHENTICATION_LEVEL;
-
-
-
-extern RPC_IF_HANDLE __MIDL_itf_txcoord_0115_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_txcoord_0115_v0_0_s_ifspec;
-
-#ifndef __IDtcNetworkAccessConfig2_INTERFACE_DEFINED__
-#define __IDtcNetworkAccessConfig2_INTERFACE_DEFINED__
-
-/* interface IDtcNetworkAccessConfig2 */
-/* [unique][uuid][object] */ 
-
-
-EXTERN_C const IID IID_IDtcNetworkAccessConfig2;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("A7AA013B-EB7D-4f42-B41C-B2DEC09AE034")
-    IDtcNetworkAccessConfig2 : public IDtcNetworkAccessConfig
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE GetNetworkInboundAccess( 
-            /* [out] */ BOOL *pbInbound) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetNetworkOutboundAccess( 
-            /* [out] */ BOOL *pbOutbound) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetNetworkInboundAccess( 
-            /* [in] */ BOOL bInbound) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetNetworkOutboundAccess( 
-            /* [in] */ BOOL bOutbound) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetAuthenticationLevel( 
-            /* [out] */ AUTHENTICATION_LEVEL *pAuthLevel) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE SetAuthenticationLevel( 
-            /* [in] */ AUTHENTICATION_LEVEL AuthLevel) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IDtcNetworkAccessConfig2Vtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IDtcNetworkAccessConfig2 * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IDtcNetworkAccessConfig2 * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetAnyNetworkAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [out] */ BOOL *pbAnyNetworkAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetAnyNetworkAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [in] */ BOOL bAnyNetworkAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNetworkAdministrationAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [out] */ BOOL *pbNetworkAdministrationAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetNetworkAdministrationAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [in] */ BOOL bNetworkAdministrationAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNetworkTransactionAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [out] */ BOOL *pbNetworkTransactionAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetNetworkTransactionAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [in] */ BOOL bNetworkTransactionAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNetworkClientAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [out] */ BOOL *pbNetworkClientAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetNetworkClientAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [in] */ BOOL bNetworkClientAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNetworkTIPAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [out] */ BOOL *pbNetworkTIPAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetNetworkTIPAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [in] */ BOOL bNetworkTIPAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetXAAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [out] */ BOOL *pbXAAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetXAAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [in] */ BOOL bXAAccess);
-        
-        HRESULT ( STDMETHODCALLTYPE *RestartDtcService )( 
-            IDtcNetworkAccessConfig2 * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNetworkInboundAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [out] */ BOOL *pbInbound);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetNetworkOutboundAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [out] */ BOOL *pbOutbound);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetNetworkInboundAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [in] */ BOOL bInbound);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetNetworkOutboundAccess )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [in] */ BOOL bOutbound);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetAuthenticationLevel )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [out] */ AUTHENTICATION_LEVEL *pAuthLevel);
-        
-        HRESULT ( STDMETHODCALLTYPE *SetAuthenticationLevel )( 
-            IDtcNetworkAccessConfig2 * This,
-            /* [in] */ AUTHENTICATION_LEVEL AuthLevel);
-        
-        END_INTERFACE
-    } IDtcNetworkAccessConfig2Vtbl;
-
-    interface IDtcNetworkAccessConfig2
-    {
-        CONST_VTBL struct IDtcNetworkAccessConfig2Vtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IDtcNetworkAccessConfig2_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IDtcNetworkAccessConfig2_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IDtcNetworkAccessConfig2_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IDtcNetworkAccessConfig2_GetAnyNetworkAccess(This,pbAnyNetworkAccess)	\
-    (This)->lpVtbl -> GetAnyNetworkAccess(This,pbAnyNetworkAccess)
-
-#define IDtcNetworkAccessConfig2_SetAnyNetworkAccess(This,bAnyNetworkAccess)	\
-    (This)->lpVtbl -> SetAnyNetworkAccess(This,bAnyNetworkAccess)
-
-#define IDtcNetworkAccessConfig2_GetNetworkAdministrationAccess(This,pbNetworkAdministrationAccess)	\
-    (This)->lpVtbl -> GetNetworkAdministrationAccess(This,pbNetworkAdministrationAccess)
-
-#define IDtcNetworkAccessConfig2_SetNetworkAdministrationAccess(This,bNetworkAdministrationAccess)	\
-    (This)->lpVtbl -> SetNetworkAdministrationAccess(This,bNetworkAdministrationAccess)
-
-#define IDtcNetworkAccessConfig2_GetNetworkTransactionAccess(This,pbNetworkTransactionAccess)	\
-    (This)->lpVtbl -> GetNetworkTransactionAccess(This,pbNetworkTransactionAccess)
-
-#define IDtcNetworkAccessConfig2_SetNetworkTransactionAccess(This,bNetworkTransactionAccess)	\
-    (This)->lpVtbl -> SetNetworkTransactionAccess(This,bNetworkTransactionAccess)
-
-#define IDtcNetworkAccessConfig2_GetNetworkClientAccess(This,pbNetworkClientAccess)	\
-    (This)->lpVtbl -> GetNetworkClientAccess(This,pbNetworkClientAccess)
-
-#define IDtcNetworkAccessConfig2_SetNetworkClientAccess(This,bNetworkClientAccess)	\
-    (This)->lpVtbl -> SetNetworkClientAccess(This,bNetworkClientAccess)
-
-#define IDtcNetworkAccessConfig2_GetNetworkTIPAccess(This,pbNetworkTIPAccess)	\
-    (This)->lpVtbl -> GetNetworkTIPAccess(This,pbNetworkTIPAccess)
-
-#define IDtcNetworkAccessConfig2_SetNetworkTIPAccess(This,bNetworkTIPAccess)	\
-    (This)->lpVtbl -> SetNetworkTIPAccess(This,bNetworkTIPAccess)
-
-#define IDtcNetworkAccessConfig2_GetXAAccess(This,pbXAAccess)	\
-    (This)->lpVtbl -> GetXAAccess(This,pbXAAccess)
-
-#define IDtcNetworkAccessConfig2_SetXAAccess(This,bXAAccess)	\
-    (This)->lpVtbl -> SetXAAccess(This,bXAAccess)
-
-#define IDtcNetworkAccessConfig2_RestartDtcService(This)	\
-    (This)->lpVtbl -> RestartDtcService(This)
-
-
-#define IDtcNetworkAccessConfig2_GetNetworkInboundAccess(This,pbInbound)	\
-    (This)->lpVtbl -> GetNetworkInboundAccess(This,pbInbound)
-
-#define IDtcNetworkAccessConfig2_GetNetworkOutboundAccess(This,pbOutbound)	\
-    (This)->lpVtbl -> GetNetworkOutboundAccess(This,pbOutbound)
-
-#define IDtcNetworkAccessConfig2_SetNetworkInboundAccess(This,bInbound)	\
-    (This)->lpVtbl -> SetNetworkInboundAccess(This,bInbound)
-
-#define IDtcNetworkAccessConfig2_SetNetworkOutboundAccess(This,bOutbound)	\
-    (This)->lpVtbl -> SetNetworkOutboundAccess(This,bOutbound)
-
-#define IDtcNetworkAccessConfig2_GetAuthenticationLevel(This,pAuthLevel)	\
-    (This)->lpVtbl -> GetAuthenticationLevel(This,pAuthLevel)
-
-#define IDtcNetworkAccessConfig2_SetAuthenticationLevel(This,AuthLevel)	\
-    (This)->lpVtbl -> SetAuthenticationLevel(This,AuthLevel)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig2_GetNetworkInboundAccess_Proxy( 
-    IDtcNetworkAccessConfig2 * This,
-    /* [out] */ BOOL *pbInbound);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig2_GetNetworkInboundAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig2_GetNetworkOutboundAccess_Proxy( 
-    IDtcNetworkAccessConfig2 * This,
-    /* [out] */ BOOL *pbOutbound);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig2_GetNetworkOutboundAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig2_SetNetworkInboundAccess_Proxy( 
-    IDtcNetworkAccessConfig2 * This,
-    /* [in] */ BOOL bInbound);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig2_SetNetworkInboundAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig2_SetNetworkOutboundAccess_Proxy( 
-    IDtcNetworkAccessConfig2 * This,
-    /* [in] */ BOOL bOutbound);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig2_SetNetworkOutboundAccess_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig2_GetAuthenticationLevel_Proxy( 
-    IDtcNetworkAccessConfig2 * This,
-    /* [out] */ AUTHENTICATION_LEVEL *pAuthLevel);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig2_GetAuthenticationLevel_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IDtcNetworkAccessConfig2_SetAuthenticationLevel_Proxy( 
-    IDtcNetworkAccessConfig2 * This,
-    /* [in] */ AUTHENTICATION_LEVEL AuthLevel);
-
-
-void __RPC_STUB IDtcNetworkAccessConfig2_SetAuthenticationLevel_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IDtcNetworkAccessConfig2_INTERFACE_DEFINED__ */
-
-
-/* interface __MIDL_itf_txcoord_0116 */
+/* interface __MIDL_itf_txcoord_0109 */
 /* [local] */ 
 
 
 
 #if _MSC_VER < 1100 || !defined(__cplusplus)
 
-DEFINE_GUID(IID_ITransactionResourceAsync,       0x69E971F0, 0x23CE, 0x11cf, 0xAD, 0x60, 0x00, 0xAA, 0x00, 0xA7, 0x4C, 0xCD);
-DEFINE_GUID(IID_ITransactionLastResourceAsync,   0xC82BD532, 0x5B30, 0x11D3, 0x8A, 0x91, 0x00, 0xC0, 0x4F, 0x79, 0xEB, 0x6D);
-DEFINE_GUID(IID_ITransactionResource,            0xEE5FF7B3, 0x4572, 0x11d0, 0x94, 0x52, 0x00, 0xA0, 0xC9, 0x05, 0x41, 0x6E);
-DEFINE_GUID(IID_ITransactionEnlistmentAsync,     0x0fb15081, 0xaf41, 0x11ce, 0xbd, 0x2b, 0x20, 0x4c, 0x4f, 0x4f, 0x50, 0x20);
-DEFINE_GUID(IID_ITransactionLastEnlistmentAsync, 0xC82BD533, 0x5B30, 0x11D3, 0x8A, 0x91, 0x00, 0xC0, 0x4F, 0x79, 0xEB, 0x6D);
-DEFINE_GUID(IID_ITransactionExportFactory,       0xE1CF9B53, 0x8745, 0x11ce, 0xA9, 0xBA, 0x00, 0xAA, 0x00, 0x6C, 0x37, 0x06);
-DEFINE_GUID(IID_ITransactionImportWhereabouts,   0x0141fda4, 0x8fc0, 0x11ce, 0xbd, 0x18, 0x20, 0x4c, 0x4f, 0x4f, 0x50, 0x20);
-DEFINE_GUID(IID_ITransactionExport,              0x0141fda5, 0x8fc0, 0x11ce, 0xbd, 0x18, 0x20, 0x4c, 0x4f, 0x4f, 0x50, 0x20);
-DEFINE_GUID(IID_ITransactionImport,              0xE1CF9B5A, 0x8745, 0x11ce, 0xA9, 0xBA, 0x00, 0xAA, 0x00, 0x6C, 0x37, 0x06);
-DEFINE_GUID(IID_ITipTransaction,                 0x17cf72d0, 0xbac5, 0x11d1, 0xb1, 0xbf, 0x0, 0xc0, 0x4f, 0xc2, 0xf3, 0xef);
-DEFINE_GUID(IID_ITipHelper,                      0x17cf72d1, 0xbac5, 0x11d1, 0xb1, 0xbf, 0x0, 0xc0, 0x4f, 0xc2, 0xf3, 0xef);
-DEFINE_GUID(IID_ITipPullSink,                    0x17cf72d2, 0xbac5, 0x11d1, 0xb1, 0xbf, 0x0, 0xc0, 0x4f, 0xc2, 0xf3, 0xef);
-DEFINE_GUID(IID_IDtcNetworkAccessConfig,         0x9797c15d, 0xa428, 0x4291, 0x87, 0xb6, 0x9, 0x95, 0x3, 0x1a, 0x67, 0x8d);
-DEFINE_GUID(IID_IDtcNetworkAccessConfig2,        0xa7aa013b, 0xeb7d, 0x4f42, 0xb4, 0x1c, 0xb2, 0xde, 0xc0, 0x9a, 0xe0, 0x34);
+DEFINE_GUID(IID_ITransactionResourceAsync,		0x69E971F0, 0x23CE, 0x11cf, 0xAD, 0x60, 0x00, 0xAA, 0x00, 0xA7, 0x4C, 0xCD);
+DEFINE_GUID(IID_ITransactionLastResourceAsync,	0xC82BD532, 0x5B30, 0x11D3, 0x8A, 0x91, 0x00, 0xC0, 0x4F, 0x79, 0xEB, 0x6D);
+DEFINE_GUID(IID_ITransactionResource,			0xEE5FF7B3, 0x4572, 0x11d0, 0x94, 0x52, 0x00, 0xA0, 0xC9, 0x05, 0x41, 0x6E);
+DEFINE_GUID(IID_ITransactionEnlistmentAsync,		0x0fb15081, 0xaf41, 0x11ce, 0xbd, 0x2b, 0x20, 0x4c, 0x4f, 0x4f, 0x50, 0x20);
+DEFINE_GUID(IID_ITransactionLastEnlistmentAsync,	0xC82BD533, 0x5B30, 0x11D3, 0x8A, 0x91, 0x00, 0xC0, 0x4F, 0x79, 0xEB, 0x6D);
+DEFINE_GUID(IID_ITransactionExportFactory,		0xE1CF9B53, 0x8745, 0x11ce, 0xA9, 0xBA, 0x00, 0xAA, 0x00, 0x6C, 0x37, 0x06);
+DEFINE_GUID(IID_ITransactionImportWhereabouts,	0x0141fda4, 0x8fc0, 0x11ce, 0xbd, 0x18, 0x20, 0x4c, 0x4f, 0x4f, 0x50, 0x20);
+DEFINE_GUID(IID_ITransactionExport,				0x0141fda5, 0x8fc0, 0x11ce, 0xbd, 0x18, 0x20, 0x4c, 0x4f, 0x4f, 0x50, 0x20);
+DEFINE_GUID(IID_ITransactionImport,				0xE1CF9B5A, 0x8745, 0x11ce, 0xA9, 0xBA, 0x00, 0xAA, 0x00, 0x6C, 0x37, 0x06);
+DEFINE_GUID(IID_ITipTransaction,					0x17cf72d0, 0xbac5, 0x11d1, 0xb1, 0xbf, 0x0, 0xc0, 0x4f, 0xc2, 0xf3, 0xef);
+DEFINE_GUID(IID_ITipHelper,						0x17cf72d1, 0xbac5, 0x11d1, 0xb1, 0xbf, 0x0, 0xc0, 0x4f, 0xc2, 0xf3, 0xef);
+DEFINE_GUID(IID_ITipPullSink,					0x17cf72d2, 0xbac5, 0x11d1, 0xb1, 0xbf, 0x0, 0xc0, 0x4f, 0xc2, 0xf3, 0xef);
 
 #else
 
@@ -2338,7 +1664,7 @@ DEFINE_GUID(IID_IDtcNetworkAccessConfig2,        0xa7aa013b, 0xeb7d, 0x4f42, 0xb
 #define  IID_ITransactionLastResourceAsync           __uuidof(ITransactionLastResourceAsync)
 #define  IID_ITransactionResource                    __uuidof(ITransactionResource)
 #define  IID_ITransactionEnlistmentAsync             __uuidof(ITransactionEnlistmentAsync)
-#define  IID_ITransactionLastEnlistmentAsync         __uuidof(ITransactionLastEnlistmentAsync)
+#define  IID_ITransactionLastEnlistmentAsync             __uuidof(ITransactionLastEnlistmentAsync)
 #define  IID_ITransactionExportFactory               __uuidof(ITransactionExportFactory)
 #define  IID_ITransactionImportWhereabouts           __uuidof(ITransactionImportWhereabouts)
 #define  IID_ITransactionExport                      __uuidof(ITransactionExport)
@@ -2346,14 +1672,12 @@ DEFINE_GUID(IID_IDtcNetworkAccessConfig2,        0xa7aa013b, 0xeb7d, 0x4f42, 0xb
 #define  IID_ITipTransaction                         __uuidof(ITipTransaction)
 #define  IID_ITipHelper                              __uuidof(ITipHelper)
 #define  IID_ITipPullSink                            __uuidof(ITipPullSink)
-#define  IID_IDtcNetworkAccessConfig                 __uuidof(IDtcNetworkAccessConfig)
-#define  IID_IDtcNetworkAccessConfig2                __uuidof(IDtcNetworkAccessConfig2)
 
 #endif
 
 
-extern RPC_IF_HANDLE __MIDL_itf_txcoord_0116_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_txcoord_0116_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_txcoord_0109_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_txcoord_0109_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

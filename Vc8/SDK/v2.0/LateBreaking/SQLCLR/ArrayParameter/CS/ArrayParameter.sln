@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayParameter", "ArrayParameter\ArrayParameter.csproj", "{7B68720E-6A5B-4EC4-8340-974C03927158}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestArrayParameter", "TestArrayParameter\TestArrayParameter.csproj", "{1D7C0147-5F2C-4DDE-9B4C-2E753B1541BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B68720E-6A5B-4EC4-8340-974C03927158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B68720E-6A5B-4EC4-8340-974C03927158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B68720E-6A5B-4EC4-8340-974C03927158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B68720E-6A5B-4EC4-8340-974C03927158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D7C0147-5F2C-4DDE-9B4C-2E753B1541BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D7C0147-5F2C-4DDE-9B4C-2E753B1541BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D7C0147-5F2C-4DDE-9B4C-2E753B1541BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D7C0147-5F2C-4DDE-9B4C-2E753B1541BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

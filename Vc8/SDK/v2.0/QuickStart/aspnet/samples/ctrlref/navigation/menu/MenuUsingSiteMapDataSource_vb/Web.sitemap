@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode title="Library Home" url="~/contentPages/LibraryHome.aspx"  description="Go To Library Home">
+		<siteMapNode title="Book 0"  url="~/contentPages/book0/book.aspx"  description="Go To Book 0"/>
+		<siteMapNode title="Book 1"  url="~/contentPages/book1/book.aspx"  description="Go To Book 1">
+			<siteMapNode title="Chapter 0"  url="~/contentPages/book1/chapter0/chapter.aspx"  description="Go To Chapter 0"/>
+			<siteMapNode title="Chapter 1"  url="~/contentPages/book1/chapter1/chapter.aspx"  description="Go To Chapter 1">
+				<siteMapNode title="Page 1"  url="~/contentPages/book1/chapter1/page1.aspx"  description="Go To Page 1"/>
+			</siteMapNode>
+		</siteMapNode>
+		<siteMapNode title="Book 2"  url="~/contentPages/book2/book.aspx"  description="Go To Book 2">
+			<siteMapNode title="Chapter 0"  url="~/contentPages/book2/chapter0/chapter.aspx"  description="Go To Chapter 0"/>
+			<siteMapNode title="Chapter 1"  url="~/contentPages/book2/chapter1/chapter.aspx"  description="Go To Chapter 1">
+				<siteMapNode title="Page 1"  url="~/contentPages/book2/chapter1/page1.aspx"  description="Go To Page 1"/>
+			</siteMapNode>
+			<siteMapNode title="Chapter 2"  url="~/contentPages/book2/chapter2/chapter.aspx"  description="Go To Chapter 2">
+				<siteMapNode title="Page 1"  url="~/contentPages/book2/chapter2/page1.aspx"  description="Go To Page 1"/>
+				<siteMapNode title="Page 2"  url="~/contentPages/book2/chapter2/page2.aspx"  description="Go To Page 2"/>
+			</siteMapNode>
+		</siteMapNode>
+		<siteMapNode title="Book 3"  url="~/contentPages/book3/book.aspx"  description="Go To Book 3">
+			<siteMapNode title="Chapter 0"  url="~/contentPages/book3/chapter0/chapter.aspx"  description="Go To Chapter 0"/>
+			<siteMapNode title="Chapter 1"  url="~/contentPages/book3/chapter1/chapter.aspx"  description="Go To Chapter 1">
+				<siteMapNode title="Page 1"  url="~/contentPages/book3/chapter1/page1.aspx"  description="Go To Page 1"/>
+			</siteMapNode>
+			<siteMapNode title="Chapter 2"  url="~/contentPages/book3/chapter2/chapter.aspx"  description="Go To Chapter 2">
+				<siteMapNode title="Page 1"  url="~/contentPages/book3/chapter2/page1.aspx"  description="Go To Page 1"/>
+				<siteMapNode title="Page 2"  url="~/contentPages/book3/chapter2/page2.aspx"  description="Go To Page 2"/>
+			</siteMapNode>
+			<siteMapNode title="Chapter 3"  url="~/contentPages/book3/chapter3/chapter.aspx"  description="Go To Chapter 3">
+				<siteMapNode title="Page 1"  url="~/contentPages/book3/chapter3/page1.aspx"  description="Go To Page 1"/>
+				<siteMapNode title="Page 2"  url="~/contentPages/book3/chapter3/page2.aspx"  description="Go To Page 2"/>
+				<siteMapNode title="Page 3"  url="~/contentPages/book3/chapter3/page3.aspx"  description="Go To Page 3"/>
+			</siteMapNode>
+		</siteMapNode>
+	</siteMapNode>
+</siteMap>

@@ -105,7 +105,7 @@
     /* The Workstation service is in an inconsistent state. Restart the computer before restarting the Workstation service. */
 #define NERR_WkstaNotStarted    (NERR_BASE+38)  /* The Workstation service has not been started. */
 #define NERR_BrowserNotStarted  (NERR_BASE+39)  /* The requested information is not available. */
-#define NERR_InternalError      (NERR_BASE+40)  /* An internal Windows error occurred.*/
+#define NERR_InternalError      (NERR_BASE+40)  /* An internal Windows 2000 error occurred.*/
 #define NERR_BadTransactConfig  (NERR_BASE+41)  /* The server is not configured for transactions. */
 #define NERR_InvalidAPI         (NERR_BASE+42)  /* The requested API is not supported on the remote server. */
 #define NERR_BadEventName       (NERR_BASE+43)  /* The event name is invalid. */
@@ -161,7 +161,7 @@
 #define NERR_BadServiceProgName (NERR_BASE+88)  /* The configuration file contains an invalid service program name. */
 #define NERR_ServiceNotCtrl     (NERR_BASE+89)  /* The service could not be controlled in its present state. */
 #define NERR_ServiceKillProc    (NERR_BASE+90)  /* The service ended abnormally. */
-#define NERR_ServiceCtlNotValid (NERR_BASE+91)  /* The requested pause, continue, or stop is not valid for this service. */
+#define NERR_ServiceCtlNotValid (NERR_BASE+91)  /* The requested pause or stop is not valid for this service. */
 #define NERR_NotInDispatchTbl   (NERR_BASE+92)  /* The service control dispatcher could not find the service name in the dispatch table. */
 #define NERR_BadControlRecv     (NERR_BASE+93)  /* The service control dispatcher pipe read failed. */
 #define NERR_ServiceNotStarting (NERR_BASE+94)  /* A thread for the new service could not be created. */
@@ -579,17 +579,6 @@
 #define NERR_NameUsesIncompatibleCodePage  (NERR_BASE+596) /*The specified computer name is incompatible with the default language used on the domain controller.*/
 #define NERR_ComputerAccountNotFound       (NERR_BASE+597) /*The specified computer account could not be found.*/
 #define NERR_PersonalSku                   (NERR_BASE+598) /*This version of Windows cannot be joined to a domain.*/
-
-/*
- *  Some Password and account error results
- *
- *          NERR_BASE + (601 - 608)
-*/
-#define NERR_PasswordMustChange            (NERR_BASE + 601)   /* Password must change at next logon */
-#define NERR_AccountLockedOut              (NERR_BASE + 602)   /* Account is locked out */
-#define NERR_PasswordTooLong               (NERR_BASE + 603)   /* Password is too long */
-#define NERR_PasswordNotComplexEnough      (NERR_BASE + 604)   /* Password doesn't meet the complexity policy */ 
-#define NERR_PasswordFilterError           (NERR_BASE + 605)   /* Password doesn't meet the requirements of the filter dll's */
 
 /***********WARNING ****************
  *The range 2750-2799 has been     *

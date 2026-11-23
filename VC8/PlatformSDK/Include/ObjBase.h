@@ -1,23 +1,3 @@
-/*#!perl
-MapHeaderToDll("objbase.h", "ole32.dll");
-ActivateAroundFunctionCall("ole32.dll");
-#IgnoreFunction("CreateDataAdviseHolder"); # this function occurs in ole2.h and objbase.h
-                                           # The wrapped one is in objbase.h
-IgnoreFunction("CoBuildVersion"); # deprecated
-IgnoreFunction("CoGetCurrentProcess"); # never fails => hard to wrap well
-IgnoreFunction("CoAddRefServerProcess"); # never fails => hard to wrap well
-IgnoreFunction("CoReleaseServerProcess"); # never fails => hard to wrap well
-IgnoreFunction("DebugCoGetRpcFault"); # not documented
-IgnoreFunction("DebugCoSetRpcFault"); # not documented
-IgnoreFunction("wIsEqualGUID");
-DeclareFunctionErrorValue("CoLoadLibrary", "NULL");
-DeclareFunctionErrorValue("StringFromGUID2" , "0");
-DeclareFunctionErrorValue("CoTaskMemAlloc", "NULL");
-DeclareFunctionErrorValue("CoTaskMemRealloc", "NULL");
-IgnoreFunction("DllGetClassObject"); # client function prototyped (like WinMain)
-IgnoreFunction("DllCanUnloadNow"); # client function prototyped (like WinMain)
-*/
-
 //+---------------------------------------------------------------------------
 //
 //  Microsoft Windows
@@ -189,8 +169,7 @@ IgnoreFunction("DllCanUnloadNow"); # client function prototyped (like WinMain)
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 //#define interface               struct FAR
-#define __STRUCT__ struct
-#define interface __STRUCT__
+#define interface struct
 #define STDMETHOD(method)       virtual HRESULT STDMETHODCALLTYPE method
 #define STDMETHOD_(type,method) virtual type STDMETHODCALLTYPE method
 #define STDMETHODV(method)       virtual HRESULT STDMETHODVCALLTYPE method
@@ -450,24 +429,13 @@ WINOLEAPI  CoRevokeMallocSpy(void);
 WINOLEAPI  CoCreateStandardMalloc(IN DWORD memctx, OUT IMalloc FAR* FAR* ppMalloc);
 
 #if (_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM) // DCOM
-/* #!perl PoundIf("CoInitializeEx", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI  CoInitializeEx(IN LPVOID pvReserved, IN DWORD dwCoInit);
-
-/* #!perl PoundIf("CoGetCallerTID", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI  CoGetCallerTID( LPDWORD lpdwTID );
 #endif // DCOM
 
 #if (_WIN32_WINNT >= 0x0501)
-/* #!perl
-    PoundIf("CoRegisterInitializeSpy", "_WIN32_WINNT >= 0x0501");
-    PoundIf("CoRevokeInitializeSpy", "_WIN32_WINNT >= 0x0501");
-*/
 WINOLEAPI  CoRegisterInitializeSpy(IN LPINITIALIZESPY pSpy, OUT ULARGE_INTEGER *puliCookie);
 WINOLEAPI  CoRevokeInitializeSpy(IN ULARGE_INTEGER uliCookie);
-
-WINOLEAPI  CoGetContextToken(ULONG_PTR* pToken);
 
 // COM System Security Descriptors (used when the corresponding registry 
 // entries are absent)
@@ -480,27 +448,11 @@ typedef enum tagCOMSD
     
 } COMSD;
 WINOLEAPI  CoGetSystemSecurityPermissions(COMSD comSDType, PSECURITY_DESCRIPTOR *ppSD);
-
 #endif
 
 #if DBG == 1
 WINOLEAPI_(ULONG) DebugCoGetRpcFault( void );
 WINOLEAPI_(void) DebugCoSetRpcFault( ULONG );
-#endif
-
-#if (_WIN32_WINNT >= 0x0500)
-
-typedef struct tagSOleTlsDataPublic
-{
-    void *pvReserved0[2];
-    DWORD dwReserved0[3];
-    void *pvReserved1[1];
-    DWORD dwReserved1[3];
-    void *pvReserved2[4];
-    DWORD dwReserved2[1];
-    void *pCurrentCtx;
-} SOleTlsDataPublic;
-
 #endif
 
 /* COM+ APIs */
@@ -570,9 +522,7 @@ WINOLEAPI_(HINSTANCE) CoLoadLibrary(IN LPOLESTR lpszLibName, IN BOOL bAutoFree);
 WINOLEAPI_(void) CoFreeLibrary(IN HINSTANCE hInst);
 WINOLEAPI_(void) CoFreeAllLibraries(void);
 WINOLEAPI_(void) CoFreeUnusedLibraries(void);
-#if  (_WIN32_WINNT >= 0x0501)
-/* #!perl PoundIf("CoFreeUnusedLibrariesEx", "(_WIN32_WINNT >= 0x0501)");
-*/
+#if  (_WIN32_WINNT >= 0x0501 )
 WINOLEAPI_(void) CoFreeUnusedLibrariesEx(IN DWORD dwUnloadDelay, IN DWORD dwReserved);
 #endif
 
@@ -580,8 +530,6 @@ WINOLEAPI_(void) CoFreeUnusedLibrariesEx(IN DWORD dwUnloadDelay, IN DWORD dwRese
 
 /* Call Security. */
 
-/* #!perl PoundIf("CoInitializeSecurity", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoInitializeSecurity(
                     IN PSECURITY_DESCRIPTOR         pSecDesc,
                     IN LONG                         cAuthSvc,
@@ -592,13 +540,7 @@ WINOLEAPI CoInitializeSecurity(
                     IN void                        *pAuthList,
                     IN DWORD                        dwCapabilities,
                     IN void                        *pReserved3 );
-
-/* #!perl PoundIf("CoGetCallContext", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoGetCallContext( IN REFIID riid, OUT void **ppInterface );
-
-/* #!perl PoundIf("CoQueryProxyBlanket", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoQueryProxyBlanket(
     IN  IUnknown                  *pProxy,
     OUT DWORD                     *pwAuthnSvc,
@@ -608,9 +550,6 @@ WINOLEAPI CoQueryProxyBlanket(
     OUT DWORD                     *pImpLevel,
     OUT RPC_AUTH_IDENTITY_HANDLE  *pAuthInfo,
     OUT DWORD                     *pCapabilites );
-
-/* #!perl PoundIf("CoSetProxyBlanket", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoSetProxyBlanket(
     IN IUnknown                 *pProxy,
     IN DWORD                     dwAuthnSvc,
@@ -620,15 +559,9 @@ WINOLEAPI CoSetProxyBlanket(
     IN DWORD                     dwImpLevel,
     IN RPC_AUTH_IDENTITY_HANDLE  pAuthInfo,
     IN DWORD                     dwCapabilities );
-
-/* #!perl PoundIf("CoCopyProxy", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoCopyProxy(
     IN  IUnknown    *pProxy,
     OUT IUnknown   **ppCopy );
-
-/* #!perl PoundIf("CoQueryClientBlanket", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoQueryClientBlanket(
     OUT DWORD             *pAuthnSvc,
     OUT DWORD             *pAuthzSvc,
@@ -637,23 +570,11 @@ WINOLEAPI CoQueryClientBlanket(
     OUT DWORD             *pImpLevel,
     OUT RPC_AUTHZ_HANDLE  *pPrivs,
     OUT DWORD             *pCapabilities );
-
-/* #!perl PoundIf("CoImpersonateClient", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoImpersonateClient();
-
-/* #!perl PoundIf("CoRevertToSelf", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoRevertToSelf();
-
-/* #!perl PoundIf("CoQueryAuthenticationServices", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoQueryAuthenticationServices(
     OUT DWORD *pcAuthSvc,
     OUT SOLE_AUTHENTICATION_SERVICE **asAuthSvc );
-
-/* #!perl PoundIf("CoSwitchCallContext", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoSwitchCallContext( IN IUnknown *pNewObject, OUT IUnknown **ppOldObject );
 
 #define COM_RIGHTS_EXECUTE 1
@@ -662,8 +583,7 @@ WINOLEAPI CoSwitchCallContext( IN IUnknown *pNewObject, OUT IUnknown **ppOldObje
 #define COM_RIGHTS_ACTIVATE_LOCAL 8
 #define COM_RIGHTS_ACTIVATE_REMOTE 16
 
-
-
+ 
 #endif // DCOM
 
 /* helper for creating instances */
@@ -674,8 +594,6 @@ WINOLEAPI CoCreateInstance(IN REFCLSID rclsid, IN LPUNKNOWN pUnkOuter,
 
 #if (_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM) // DCOM
 
-/* #!perl PoundIf("CoGetInstanceFromFile", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoGetInstanceFromFile(
     IN COSERVERINFO *              pServerInfo,
     IN CLSID       *               pClsid,
@@ -686,8 +604,6 @@ WINOLEAPI CoGetInstanceFromFile(
     IN DWORD                       dwCount,
     IN OUT MULTI_QI    *           pResults );
 
-/* #!perl PoundIf("CoGetInstanceFromIStorage", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoGetInstanceFromIStorage(
     IN COSERVERINFO *              pServerInfo,
     IN CLSID       *               pClsid,
@@ -697,8 +613,6 @@ WINOLEAPI CoGetInstanceFromIStorage(
     IN DWORD                       dwCount,
     IN OUT MULTI_QI    *           pResults );
 
-/* #!perl PoundIf("CoCreateInstanceEx", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoCreateInstanceEx(
     IN REFCLSID                    Clsid,
     IN IUnknown    *               punkOuter, // only relevant locally
@@ -712,36 +626,15 @@ WINOLEAPI CoCreateInstanceEx(
 /* Call related APIs */
 #if (_WIN32_WINNT >= 0x0500 ) || defined(_WIN32_DCOM) // DCOM
 
-/* #!perl PoundIf("CoGetCancelObject", "(_WIN32_WINNT >= 0x0500 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoGetCancelObject(IN DWORD dwThreadId, IN REFIID iid, OUT void **ppUnk);
-
-/* #!perl PoundIf("CoSetCancelObject", "(_WIN32_WINNT >= 0x0500 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoSetCancelObject(IN IUnknown *pUnk);
-
-/* #!perl PoundIf("CoCancelCall", "(_WIN32_WINNT >= 0x0500 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoCancelCall(IN DWORD dwThreadId, IN ULONG ulTimeout);
-
-/* #!perl PoundIf("CoTestCancel", "(_WIN32_WINNT >= 0x0500 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoTestCancel();
-
-/* #!perl PoundIf("CoEnableCallCancellation", "(_WIN32_WINNT >= 0x0500 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoEnableCallCancellation(IN LPVOID pReserved);
-
-/* #!perl PoundIf("CoDisableCallCancellation", "(_WIN32_WINNT >= 0x0500 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoDisableCallCancellation(IN LPVOID pReserved);
 
-/* #!perl PoundIf("CoAllowSetForegroundWindow", "(_WIN32_WINNT >= 0x0500 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoAllowSetForegroundWindow(IN IUnknown *pUnk, IN LPVOID lpvReserved);
 
-/* #!perl PoundIf("DcomChannelSetHResult", "(_WIN32_WINNT >= 0x0500 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI DcomChannelSetHResult(IN LPVOID pvReserved, IN ULONG* pulReserved, IN HRESULT appsHR);
 
 #endif
@@ -771,16 +664,12 @@ WINOLEAPI CoRegisterMessageFilter( IN LPMESSAGEFILTER lpMessageFilter,
                                 OUT LPMESSAGEFILTER FAR* lplpMessageFilter );
 
 #if (_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM) // DCOM
-/* #!perl PoundIf("CoRegisterChannelHook", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoRegisterChannelHook( IN REFGUID ExtensionUuid, IN IChannelHook *pChannelHook );
 #endif // DCOM
 
 #if (_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM) // DCOM
 /* Synchronization API */
 
-/* #!perl PoundIf("CoWaitForMultipleHandles", "(_WIN32_WINNT >= 0x0400 ) || defined(_WIN32_DCOM)");
-*/
 WINOLEAPI CoWaitForMultipleHandles (IN DWORD dwFlags,
                                     IN DWORD dwTimeout,
                                     IN ULONG cHandles,
@@ -792,20 +681,11 @@ WINOLEAPI CoWaitForMultipleHandles (IN DWORD dwFlags,
 typedef enum tagCOWAIT_FLAGS
 {
   COWAIT_WAITALL = 1,
-  COWAIT_ALERTABLE = 2,
-  COWAIT_INPUTAVAILABLE = 4
+  COWAIT_ALERTABLE = 2
 }COWAIT_FLAGS;
 
 #endif // DCOM
 
-/* for flushing OLESCM remote binding handles */
-
-#if  (_WIN32_WINNT >= 0x0501)
-/* #!perl
-    PoundIf("CoInvalidateRemoteMachineBindings", "_WIN32_WINNT >= 0x0501");
-*/
-WINOLEAPI CoInvalidateRemoteMachineBindings(LPOLESTR pszMachineName);
-#endif
 
 /* TreatAs APIS */
 
@@ -842,11 +722,13 @@ WINOLEAPI_(void)   CoTaskMemFree(IN LPVOID pv);
 
 /****** DV APIs ***********************************************************/
 
-/* This function is declared in objbase.h and ole2.h */
+
 WINOLEAPI CreateDataAdviseHolder(OUT LPDATAADVISEHOLDER FAR* ppDAHolder);
 
 WINOLEAPI CreateDataCache(IN LPUNKNOWN pUnkOuter, IN REFCLSID rclsid,
                                         IN REFIID iid, OUT LPVOID FAR* ppv);
+
+
 
 
 /****** Storage API Prototypes ********************************************/
@@ -901,22 +783,14 @@ WINOLEAPI StgOpenLayoutDocfile(IN OLECHAR const *pwcsDfName,
              OUT IStorage **ppstgOpen);
 
 // STG initialization options for StgCreateStorageEx and StgOpenStorageEx
-#if _WIN32_WINNT == 0x500
-#define STGOPTIONS_VERSION 1
-#elif _WIN32_WINNT > 0x500
 #define STGOPTIONS_VERSION 2
-#else
-#define STGOPTIONS_VERSION 0
-#endif
 
 typedef struct tagSTGOPTIONS
 {
     USHORT usVersion;            // Versions 1 and 2 supported
     USHORT reserved;             // must be 0 for padding
     ULONG ulSectorSize;          // docfile header sector size (512)
-#if STGOPTIONS_VERSION >= 2
     const WCHAR *pwcsTemplateFile;  // version 2 or above 
-#endif    
 } STGOPTIONS;
 
 WINOLEAPI StgCreateStorageEx (IN const WCHAR* pwcsName,
@@ -985,11 +859,6 @@ WINOLEAPI CreateStdProgressIndicator(IN HWND hwndParent,
                                    IN  LPCOLESTR pszTitle,
                                    IN  IBindStatusCallback * pIbscCaller,
                                    OUT IBindStatusCallback ** ppIbsc);
-
-//12ea2135-0f75-4d97-821a-c78c710d42b8
-/*#!perl
-SetInsertionPoint("objbase.h", "12ea2135-0f75-4d97-821a-c78c710d42b8");
-*/
 
 #ifndef RC_INVOKED
 #include <poppack.h>

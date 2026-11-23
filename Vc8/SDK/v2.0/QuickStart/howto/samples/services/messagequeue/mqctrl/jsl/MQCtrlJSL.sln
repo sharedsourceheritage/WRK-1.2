@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{E6FDF86B-F3D1-11D4-8576-0002A516ECE8}") = "MQCtrl", "MQCtrl\MQCtrl.vjsproj", "{D006EE4D-9290-4366-95CC-65665A3931D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D006EE4D-9290-4366-95CC-65665A3931D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D006EE4D-9290-4366-95CC-65665A3931D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D006EE4D-9290-4366-95CC-65665A3931D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D006EE4D-9290-4366-95CC-65665A3931D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

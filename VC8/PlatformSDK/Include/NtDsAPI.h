@@ -31,14 +31,8 @@ Notes:
 
 #if !defined(_NTDSAPI_)
 #define NTDSAPI DECLSPEC_IMPORT
-#if !defined(_NTDSAPI_POSTXP_ASLIB_)
-#define NTDSAPI_POSTXP DECLSPEC_IMPORT
-#else
-#define NTDSAPI_POSTXP
-#endif
 #else
 #define NTDSAPI
-#define NTDSAPI_POSTXP
 #endif
 
 #ifdef __cplusplus
@@ -61,9 +55,8 @@ typedef void VOID;
 // Following constants define the Active Directory Behavior
 // Version numbers. 
 #define DS_BEHAVIOR_WIN2000                            0
-#define DS_BEHAVIOR_WIN2003_WITH_MIXED_DOMAINS         1
-#define DS_BEHAVIOR_WIN2003                            2
-
+#define DS_BEHAVIOR_WHISTLER_WITH_MIXED_DOMAINS        1
+#define DS_BEHAVIOR_WHISTLER                           2
 
 #define DS_DEFAULT_LOCALE                                           \
            (MAKELCID(MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),  \
@@ -72,8 +65,7 @@ typedef void VOID;
 #define DS_DEFAULT_LOCALE_COMPARE_FLAGS    (NORM_IGNORECASE     |   \
                                             NORM_IGNOREKANATYPE |   \
                                             NORM_IGNORENONSPACE |   \
-                                            NORM_IGNOREWIDTH    |   \
-                                            SORT_STRINGSORT )
+                                            NORM_IGNOREWIDTH)
 
 // When booted to DS mode, this event is signalled when the DS has completed
 // its initial sync attempts.  The period of time between system startup and
@@ -336,21 +328,6 @@ typedef struct
 // Public replication option flags
 
 // ********************
-// DsBindWithSpnEx flags
-// ********************
-// Allow the Bind to use delegate service level, so that you can
-// do ntdsapi operations that require delegation, such as
-// DsAddSidHistory, and DsReplicaSyncAll().  Most operations do
-// not require DELEGATE so this flag should only be specified 
-// if you need it, because if you bind to a rogue server with
-// the DELEGATE flag, you'll allow the rogue server to use your
-// credentials to connect back to a non-rogue server and perform
-// operations other than you intended.
-#define  NTDSAPI_BIND_ALLOW_DELEGATION		(0x00000001)
-
-
-
-// ********************
 // Replica Sync flags
 // These flag values are used both as input to DsReplicaSync and
 // as output from DsReplicaGetInfo, PENDING_OPS, DS_REPL_OPW.ulOptions
@@ -577,8 +554,7 @@ typedef struct
 //
 #define DS_INSTANCETYPE_IS_NC_HEAD        0x00000001 // This if what to specify on an object to indicate it's an NC Head.
 #define DS_INSTANCETYPE_NC_IS_WRITEABLE   0x00000004 // This is to indicate that the NC Head is writeable.
-#define DS_INSTANCETYPE_NC_COMING         0x00000010 // This is to indicate that this NC is still replicating in objects to this DC, and may not be a complete NC.
-#define DS_INSTANCETYPE_NC_GOING          0x00000020 // This is to indicate that this NC is in the process of being removed from this DC, and may not be a complete NC.
+
 
 // ********************
 //  xxx_OPT_xxx Flags
@@ -620,29 +596,6 @@ typedef struct
 //  1 - Compression of replication data disabled
 #define NTDSCONN_OPT_DISABLE_INTERSITE_COMPRESSION    (1 << 4)
 
-// For connections whose IS_GENERATED bit is 0, this bit has no effect.
-// For KCC-generated connections, this bit indicates that the schedule attribute
-// is owned by the user and should not be touched by the KCC.
-#define NTDSCONN_OPT_USER_OWNED_SCHEDULE    (1 << 5)
-
-// Connection reasons
-//
-// Values for "reason for connection".  A connection can be needed for
-// more than one reason.
-//
-#define NTDSCONN_KCC_NO_REASON                ( 0 )               // 000
-#define NTDSCONN_KCC_GC_TOPOLOGY              ( 1 << 0 )          // 001
-#define NTDSCONN_KCC_RING_TOPOLOGY            ( 1 << 1 )          // 002
-#define NTDSCONN_KCC_MINIMIZE_HOPS_TOPOLOGY   ( 1 << 2 )          // 004
-#define NTDSCONN_KCC_STALE_SERVERS_TOPOLOGY   ( 1 << 3 )          // 008
-#define NTDSCONN_KCC_OSCILLATING_CONNECTION_TOPOLOGY   ( 1 << 4 ) // 010
-#define NTDSCONN_KCC_INTERSITE_GC_TOPOLOGY    (1 << 5)            // 020
-#define NTDSCONN_KCC_INTERSITE_TOPOLOGY       (1 << 6)            // 040
-#define NTDSCONN_KCC_SERVER_FAILOVER_TOPOLOGY (1 << 7)            // 080
-#define NTDSCONN_KCC_SITE_FAILOVER_TOPOLOGY   (1 << 8)            // 100
-#define NTDSCONN_KCC_REDUNDANT_SERVER_TOPOLOGY (1 << 9)           // 200
-
-
 //
 // The high 4 bits of the options attribute are used by NTFRS to assign priority
 // for inbound connections. Bit 31 is used to force FRS to ignore schedule during
@@ -673,24 +626,6 @@ typedef struct
 #define NTDSSETTINGS_OPT_IS_GROUP_CACHING_ENABLED      ( 1 << 5 ) /* group memberships for users enabled */
 #define NTDSSETTINGS_OPT_FORCE_KCC_WHISTLER_BEHAVIOR   ( 1 << 6 ) /* force KCC to operate in Whistler behavior mode */
 #define NTDSSETTINGS_OPT_FORCE_KCC_W2K_ELECTION        ( 1 << 7 ) /* force KCC to use the Windows 2000 ISTG election algorithm */
-#define NTDSSETTINGS_OPT_IS_RAND_BH_SELECTION_DISABLED ( 1 << 8 ) /* prevent the KCC from randomly picking a bridgehead when creating a connection */
-#define NTDSSETTINGS_OPT_IS_SCHEDULE_HASHING_ENABLED   ( 1 << 9 ) /* allow the KCC to use hashing when creating a replication schedule */
-#define NTDSSETTINGS_OPT_IS_REDUNDANT_SERVER_TOPOLOGY_ENABLED     ( 1 << 10 ) /* create static failover connections */
-
-// The following two options allow the new kcc spanning tree algorithm, which replaces the ISM,
-// to override the ISM policy settings. These two flags are analogous to those found on the
-// transport object.
-
-// default without flag: schedules are significant
-// This flag causes the KCC in W2K3 mode to ignore schedules
-#define NTDSSETTINGS_OPT_W2K3_IGNORE_SCHEDULES ( 1 << 11 ) // Schedules disabled
-
-// default without flag: links transitive (bridges not required) auto site link bridging enabled
-// This flag causes the KCC in W2K3 mode to require bridges
-#define NTDSSETTINGS_OPT_W2K3_BRIDGES_REQUIRED (1 << 12 ) // siteLink bridges are required
-
-// How many redundant connections will be generated
-#define NTDSSETTINGS_DEFAULT_SERVER_REDUNDANCY 2
 
 // Bit flags for options attribute on Inter-Site-Transport objects
 //
@@ -739,9 +674,6 @@ typedef struct
 #define GUID_DELETED_OBJECTS_CONTAINER_A    "18e2ea80684f11d2b9aa00c04f79f805"
 #define GUID_LOSTANDFOUND_CONTAINER_A       "ab8153b7768811d1aded00c04fd8d5cd"
 #define GUID_FOREIGNSECURITYPRINCIPALS_CONTAINER_A "22b70c67d56e4efb91e9300fca3dc1aa"
-#define GUID_PROGRAM_DATA_CONTAINER_A       "09460c08ae1e4a4ea0f64aee7daa1e5a"
-#define GUID_MICROSOFT_PROGRAM_DATA_CONTAINER_A "f4be92a4c777485e878e9421d53087db" 
-#define GUID_NTDS_QUOTAS_CONTAINER_A        "6227f0af1fc2410d8e3bb10615bb5b0f" 
 
 #define GUID_USERS_CONTAINER_W              L"a9d1ca15768811d1aded00c04fd8d5cd"
 #define GUID_COMPUTRS_CONTAINER_W           L"aa312825768811d1aded00c04fd8d5cd"
@@ -751,9 +683,6 @@ typedef struct
 #define GUID_DELETED_OBJECTS_CONTAINER_W    L"18e2ea80684f11d2b9aa00c04f79f805"
 #define GUID_LOSTANDFOUND_CONTAINER_W       L"ab8153b7768811d1aded00c04fd8d5cd"
 #define GUID_FOREIGNSECURITYPRINCIPALS_CONTAINER_W L"22b70c67d56e4efb91e9300fca3dc1aa"
-#define GUID_PROGRAM_DATA_CONTAINER_W       L"09460c08ae1e4a4ea0f64aee7daa1e5a"
-#define GUID_MICROSOFT_PROGRAM_DATA_CONTAINER_W L"f4be92a4c777485e878e9421d53087db"
-#define GUID_NTDS_QUOTAS_CONTAINER_W        L"6227f0af1fc2410d8e3bb10615bb5b0f" 
 
 #define GUID_USERS_CONTAINER_BYTE              "\xa9\xd1\xca\x15\x76\x88\x11\xd1\xad\xed\x00\xc0\x4f\xd8\xd5\xcd"
 #define GUID_COMPUTRS_CONTAINER_BYTE           "\xaa\x31\x28\x25\x76\x88\x11\xd1\xad\xed\x00\xc0\x4f\xd8\xd5\xcd"
@@ -763,10 +692,6 @@ typedef struct
 #define GUID_DELETED_OBJECTS_CONTAINER_BYTE    "\x18\xe2\xea\x80\x68\x4f\x11\xd2\xb9\xaa\x00\xc0\x4f\x79\xf8\x05"
 #define GUID_LOSTANDFOUND_CONTAINER_BYTE       "\xab\x81\x53\xb7\x76\x88\x11\xd1\xad\xed\x00\xc0\x4f\xd8\xd5\xcd"
 #define GUID_FOREIGNSECURITYPRINCIPALS_CONTAINER_BYTE "\x22\xb7\x0c\x67\xd5\x6e\x4e\xfb\x91\xe9\x30\x0f\xca\x3d\xc1\xaa"
-#define GUID_PROGRAM_DATA_CONTAINER_BYTE       "\x09\x46\x0c\x08\xae\x1e\x4a\x4e\xa0\xf6\x4a\xee\x7d\xaa\x1e\x5a"
-#define GUID_MICROSOFT_PROGRAM_DATA_CONTAINER_BYTE "\xf4\xbe\x92\xa4\xc7\x77\x48\x5e\x87\x8e\x94\x21\xd5\x30\x87\xdb"
-#define GUID_NTDS_QUOTAS_CONTAINER_BYTE        "\x62\x27\xf0\xaf\x1f\xc2\x41\x0d\x8e\x3b\xb1\x06\x15\xbb\x5b\x0f" 
-
 
 typedef enum _DS_MANGLE_FOR {
         DS_MANGLE_UNKNOWN = 0,
@@ -909,84 +834,6 @@ DsBindWithSpnA(
 #else
 #define DsBindWithSpn DsBindWithSpnA
 #endif
-
-//
-// DsBindWithSpnEx{A|W} allows you all the options of the previous 
-// DsBindWithSpn(), plus the added benefit of specifying some optional
-// Binding flags.  Currently if you pass NTDSAPI_BIND_ALLOW_DELEGATION,
-// you will get the exact old behaviour.  If you can avoid it, you 
-// should not specify this flag, see flag above for details.
-//
-
-NTDSAPI_POSTXP
-DWORD
-WINAPI
-DsBindWithSpnExW(
-    LPCWSTR         DomainControllerName,      // in, optional
-    LPCWSTR         DnsDomainName,             // in, optional
-    RPC_AUTH_IDENTITY_HANDLE AuthIdentity,     // in, optional
-    LPCWSTR         ServicePrincipalName,      // in, optional
-    DWORD           BindFlags,                 // in, optional
-    HANDLE          *phDS);
-
-NTDSAPI_POSTXP
-DWORD
-WINAPI
-DsBindWithSpnExA(
-    LPCSTR          DomainControllerName,      // in, optional
-    LPCSTR          DnsDomainName,             // in, optional
-    RPC_AUTH_IDENTITY_HANDLE AuthIdentity,     // in, optional
-    LPCSTR          ServicePrincipalName,      // in, optional
-    DWORD           BindFlags,                 // in, optional
-    HANDLE          *phDS);
-
-#ifdef UNICODE
-#define DsBindWithSpnEx DsBindWithSpnExW
-#else
-#define DsBindWithSpnEx DsBindWithSpnExA
-#endif
-
-
-//
-// DsBindToISTG{A|W} allows the caller to bind to the server which
-// holds the Inter-Site Topology Generator role in the specified site.
-// The site name should be the RDN of a site.  If no site is specified,
-// the function will try to bind to the ISTG in a nearby site.
-//
-
-NTDSAPI_POSTXP
-DWORD
-WINAPI
-DsBindToISTGW(
-    LPCWSTR         SiteName,                  // in, optional
-    HANDLE          *phDS);
-
-NTDSAPI_POSTXP
-DWORD
-WINAPI
-DsBindToISTGA(
-    LPCSTR          SiteName,                  // in, optional
-    HANDLE          *phDS);
-
-#ifdef UNICODE
-#define DsBindToISTG DsBindToISTGW
-#else
-#define DsBindToISTG DsBindToISTGA
-#endif
-
-//
-// DsBindingSetTimeout allows the caller to specify a timeout value
-// which will be honored by all RPC calls using the specified binding
-// handle. RPC calls which take longer the timeout value are canceled.
-//
-
-NTDSAPI_POSTXP
-DWORD
-WINAPI
-DsBindingSetTimeout(
-    HANDLE          hDS,                        // in
-    ULONG           cTimeoutSecs                // in
-    );
 
 //
 // DsUnBind
@@ -1397,11 +1244,6 @@ This routine is a simplified wrapper to DsMakeSpn.
 The ServiceName is made canonical by resolving through DNS.
 Guid-based dns names are not supported.
 
-NOTE:
-This routine is no longer recommended for use. In order to be secure, an SPN
-should be constructed purely on the client without reliance on other services,
-such as DNS, which may be spoofed.
-
 The simplified SPN constructed looks like this:
 
 ServiceClass / ServiceName / ServiceName
@@ -1573,7 +1415,10 @@ the object-guid of that server's ntds-dsa (settings) object.
 
 Arguments:
 
-    pNC (IN) - NC for which to add the replica.
+    pNC (IN) - NC for which to add the replica.  The NC record must exist
+        locally as either an object (instantiated or not) or a reference
+        phantom (i.e., a phantom with a guid).
+
     pSourceDsaDN (IN) - DN of the source DSA's ntdsDsa object.  Required if
         ulOptions includes DS_REPADD_ASYNCHRONOUS_REPLICA; ignored otherwise.
 
@@ -1631,8 +1476,6 @@ DsReplicaAddW(
 // The DsaSrc parameter is the transport specific address of the source DSA,
 // usually its guid-based dns name.  The guid in the guid-based dns name is
 // the object-guid of that server's ntds-dsa (settings) object.
-// If you remove an NC from a given destination and specify the "no source"
-// flag, then the entire replica will be removed from the DC.
 //
 //  PARAMETERS:
 //      pNC (DSNAME *)
@@ -1641,8 +1484,6 @@ DsReplicaAddW(
 //          DSA for which to delete the source.
 //      ulOptions (ULONG)
 //          Bitwise OR of zero or more flags
-//
-//
 //   RETURNS: WIN32 STATUS
 
 NTDSAPI
@@ -1686,7 +1527,7 @@ DsReplicaDelW(
 //      pNC (DSNAME *)
 //          Name of the NC for which the Reps-From should be modified.
 //      puuidSourceDRA (UUID *)
-//          Guid of the DSA object for the source server. May be NULL if:
+//          Invocation-ID of the referenced DRA.  May be NULL if:
 //            . ulModifyFields does not include DS_REPMOD_UPDATE_ADDRESS and
 //            . pmtxSourceDRA is non-NULL.
 //      puuidTransportObj (UUID *)
@@ -1772,8 +1613,8 @@ DsReplicaModifyW(
 //          Network address of DSA for which the reference should be added
 //          or deleted.
 //      pUuidDsaDest (UUID *)
-//          objectGuid of the DSA object for which the reference should be 
-//          added or deleted.
+//          Invocation-ID of DSA for which the reference should be added
+//          or deleted.
 //      ulOptions (ULONG)
 //          Bitwise OR of zero or more of the following:
 //              DS_REPUPD_ASYNC_OP
@@ -2181,61 +2022,6 @@ DsListRolesW(
 #define DsListRoles DsListRolesA
 #endif
 
-//
-// DsQuerySitesByCost{A|W} allows the caller to determine the
-// communication cost between the From Site and each of the sites
-// in the list of To Sites. The costs are returned in the rgSiteInfo
-// structure which must be freed with DsQuerySitesFree.
-//
-// The Site Names should all be passed as RDNs. For example, if the
-// site's DN is "CN=Foo,CN=Sites,CN=Configuration,...", the RDN is
-// simply "Foo".
-//
-
-typedef struct {
-    DWORD               errorCode;
-    DWORD               cost;
-} DS_SITE_COST_INFO, *PDS_SITE_COST_INFO;
-
-NTDSAPI_POSTXP
-DWORD
-WINAPI
-DsQuerySitesByCostW(
-    HANDLE              hDS,            // in
-    LPWSTR              pwszFromSite,   // in
-    LPWSTR             *rgwszToSites,   // in
-    DWORD               cToSites,       // in
-    DWORD               dwFlags,        // in
-    PDS_SITE_COST_INFO *prgSiteInfo     // out
-    );
-
-NTDSAPI_POSTXP
-DWORD
-WINAPI
-DsQuerySitesByCostA(
-    HANDLE              hDS,            // in
-    LPSTR               pwszFromSite,   // in
-    LPSTR              *rgwszToSites,   // in
-    DWORD               cToSites,       // in
-    DWORD               dwFlags,        // in
-    PDS_SITE_COST_INFO *prgSiteInfo     // out
-    );
-
-#ifdef UNICODE
-#define DsQuerySitesByCost DsQuerySitesByCostW
-#else
-#define DsQuerySitesByCost DsQuerySitesByCostA
-#endif
-
-//
-// DsQuerySitesByCost will free the site info array returned
-// from DsQuerySitesByCost{A|W}.
-//
-VOID
-DsQuerySitesFree(
-    PDS_SITE_COST_INFO  rgSiteInfo
-    );
-
 // Definitions required for DsMapSchemaGuid routines.
 
 #define DS_SCHEMA_GUID_NOT_FOUND            0
@@ -2483,10 +2269,7 @@ typedef enum {
 } DS_KCC_TASKID;
 
 // Don't wait for completion of the task; queue it and return.
-#define DS_KCC_FLAG_ASYNC_OP    (1 << 0)
-
-// Don't enqueue the task if another queued task will run soon.
-#define DS_KCC_FLAG_DAMPED      (1 << 1)
+#define DS_KCC_FLAG_ASYNC_OP    (1)
 
 NTDSAPI
 DWORD
@@ -2563,7 +2346,6 @@ typedef enum _DS_REPL_INFO_TYPE {
 #define DS_REPL_NBR_FULL_SYNC_IN_PROGRESS           (0x00010000)
 #define DS_REPL_NBR_FULL_SYNC_NEXT_PACKET           (0x00020000)
 #define DS_REPL_NBR_NEVER_SYNCED                    (0x00200000)
-#define DS_REPL_NBR_PREEMPTED                       (0x01000000)
 #define DS_REPL_NBR_IGNORE_CHANGE_NOTIFICATIONS     (0x04000000)
 #define DS_REPL_NBR_DISABLE_SCHEDULED_SYNC          (0x08000000)
 #define DS_REPL_NBR_COMPRESS_CHANGES                (0x10000000)

@@ -4,7 +4,8 @@
 *
 *   Windows Terminal Server public APIs
 *
-*   Copyright (c) 1997-2001 Microsoft Corporation
+*   Copyright 1995-1999, Citrix Systems Inc.
+*   Copyright (c) 1997-1999  Microsoft Corporation
 *
 **********************************************************************/
 

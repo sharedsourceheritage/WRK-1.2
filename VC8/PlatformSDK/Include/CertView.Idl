@@ -113,7 +113,7 @@ interface IEnumCERTVIEWCOLUMN: IDispatch
 		[out, retval] LONG *pMaxLength);
 
     HRESULT GetValue(
-		[in] LONG Flags,		// CV_OUT_*
+		[in] LONG Flags,
 		[out, retval] VARIANT *pvarValue);
     
     HRESULT Skip(
@@ -190,7 +190,7 @@ interface IEnumCERTVIEWEXTENSION: IDispatch
 
     HRESULT GetValue(
 		[in] LONG Type,
-		[in] LONG Flags,		// CV_OUT_*
+		[in] LONG Flags,
 		[out, retval] VARIANT *pvarValue);
     
     HRESULT Skip(
@@ -227,11 +227,11 @@ interface IEnumCERTVIEWROW: IDispatch
 		[out, retval] IEnumCERTVIEWCOLUMN **ppenum);
     
     HRESULT EnumCertViewAttribute(
-		[in] LONG Flags,		// must be 0
+		[in] LONG Flags,
 		[out, retval] IEnumCERTVIEWATTRIBUTE **ppenum);
     
     HRESULT EnumCertViewExtension(
-		[in] LONG Flags,		// must be 0
+		[in] LONG Flags,
 		[out, retval] IEnumCERTVIEWEXTENSION **ppenum);
     
     HRESULT Skip(
@@ -292,8 +292,8 @@ interface ICertView: IDispatch
 
     HRESULT SetRestriction(
 		[in] LONG ColumnIndex,
-		[in] LONG SeekOperator,		// CVR_SEEK_*
-		[in] LONG SortOrder,		// CVR_SORT_*
+		[in] LONG SeekOperator,
+		[in] LONG SortOrder,
 		[in] VARIANT const *pvarValue);
 
     // Open or reset the view:

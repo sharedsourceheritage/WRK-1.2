@@ -91,30 +91,6 @@ typedef enum _AUDIT_PARAM_TYPE
 
     APT_ObjectTypeList,
     
-    //
-    // Luid (not translated to LogonId)
-    //
-    
-    APT_Luid,
-    
-    //
-    // Guid
-    //
-     
-    APT_Guid,
-
-    //
-    // Time (FILETIME)
-    //
-
-    APT_Time,
-
-    //
-    // ULONGLONG
-    // 
-
-    APT_Int64
-
 } AUDIT_PARAM_TYPE;
 
 // 
@@ -258,11 +234,6 @@ typedef struct _AUDIT_PARAM
         SID* psid;
         
 #ifdef MIDL_PASS
-        [case(APT_Guid)]
-#endif
-        GUID* pguid;
-
-#ifdef MIDL_PASS
         [case(APT_LogonId)]
 #endif
         ULONG LogonId_LowPart;
@@ -392,12 +363,15 @@ typedef
 #endif
 PVOID AUDIT_HANDLE, *PAUDIT_HANDLE;
 
-//
-// Begin support for extensible auditing.
-//
+BOOL
+AuthzpRegisterAuditEvent(
+    IN  PAUTHZ_AUDIT_EVENT_TYPE_OLD pAuditEventType,
+    OUT PAUDIT_HANDLE     phAuditContext
+    );
 
-#define AUTHZ_ALLOW_MULTIPLE_SOURCE_INSTANCES 0x1
-
-#define AUTHZ_AUDIT_INSTANCE_INFORMATION 0x2
+BOOL
+AuthzpUnregisterAuditEvent(
+    IN OUT AUDIT_HANDLE* phAuditContext
+    );
 
 #endif //_ADTGEN_H

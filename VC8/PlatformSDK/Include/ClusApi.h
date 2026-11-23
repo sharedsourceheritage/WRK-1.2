@@ -129,7 +129,6 @@ typedef struct CLUS_STARTING_PARAMS {
 #define CLUSTER_GET_MAJOR_VERSION( _ver ) (( _ver ) >> 16 )
 #define CLUSTER_GET_MINOR_VERSION( _ver ) (( _ver ) & 0xFFFF )
 
-#endif // MIDL_PASS
 
 //
 // Interfaces for the cluster state on a node
@@ -144,28 +143,6 @@ typedef enum NODE_CLUSTER_STATE {
     ClusterStateNotRunning                  = CLUSTER_INSTALLED | CLUSTER_CONFIGURED,
     ClusterStateRunning                     = CLUSTER_INSTALLED | CLUSTER_CONFIGURED | CLUSTER_RUNNING
 } NODE_CLUSTER_STATE;
-
-//
-//  Resource state change reason related types and defines
-//
-#define CLUSCTL_RESOURCE_STATE_CHANGE_REASON_VERSION_1  1
-
-typedef enum CLUSTER_RESOURCE_STATE_CHANGE_REASON {
-    eResourceStateChangeReasonUnknown,
-    eResourceStateChangeReasonMove,
-    eResourceStateChangeReasonFailover,
-    eResourceStateChangeReasonFailedMove,
-    eResourceStateChangeReasonShutdown,
-    eResourceStateChangeReasonRundown
-} CLUSTER_RESOURCE_STATE_CHANGE_REASON;
-
-#ifndef MIDL_PASS
-
-typedef struct _CLUSCTL_RESOURCE_STATE_CHANGE_REASON_STRUCT {
-    DWORD                                   dwSize;
-    DWORD                                   dwVersion;
-    CLUSTER_RESOURCE_STATE_CHANGE_REASON    eReason;
-} CLUSCTL_RESOURCE_STATE_CHANGE_REASON_STRUCT, *PCLUSCTL_RESOURCE_STATE_CHANGE_REASON_STRUCT;
 
 
 #endif // MIDL_PASS
@@ -195,8 +172,8 @@ typedef enum CLUSTER_SET_PASSWORD_FLAGS {
 #ifndef MIDL_PASS
 
 //
-// Structure used to return the status of a request to set the 
-// password on the account used by the Cluster Service on each 
+// Structure used to return the status of a request to set the
+// password on the account used by the Cluster Service on each
 // cluster node.
 //
 typedef struct CLUSTER_SET_PASSWORD_STATUS {
@@ -234,21 +211,21 @@ SetClusterName(
 DWORD
 WINAPI
 GetClusterInformation(
-    __in HCLUSTER hCluster,
-    __out_ecount_part(*lpcchClusterName, *lpcchClusterName + 1) LPWSTR lpszClusterName,
-    __inout LPDWORD lpcchClusterName,
-    __out_opt LPCLUSTERVERSIONINFO lpClusterInfo
+    IN HCLUSTER hCluster,
+    OUT LPWSTR lpszClusterName,
+    IN OUT LPDWORD lpcchClusterName,
+    OUT OPTIONAL LPCLUSTERVERSIONINFO lpClusterInfo
     );
 
 DWORD
 WINAPI
 GetClusterQuorumResource(
-    __in HCLUSTER hCluster,
-    __out_ecount_part(*lpcchResourceName, *lpcchResourceName + 1) LPWSTR lpszResourceName,
-    __inout LPDWORD lpcchResourceName,
-    __out_ecount_part(*lpcchDeviceName, *lpcchDeviceName + 1) LPWSTR lpszDeviceName,
-    __inout LPDWORD lpcchDeviceName,
-    __out LPDWORD lpdwMaxQuorumLogSize
+    IN HCLUSTER     hCluster,
+    OUT LPWSTR      lpszResourceName,
+    IN OUT LPDWORD  lpcchResourceName,
+    OUT LPWSTR      lpszDeviceName,
+    IN OUT LPDWORD  lpcchDeviceName,
+    OUT LPDWORD     lpdwMaxQuorumLogSize
     );
 
 DWORD
@@ -285,25 +262,24 @@ SetClusterNetworkPriorityOrder(
 DWORD
 WINAPI
 SetClusterServiceAccountPassword(
-    __in LPCWSTR lpszClusterName,
-    __in LPCWSTR lpszNewPassword,
-    __in DWORD dwFlags,
-    __out_bcount_part_opt(*lpcbReturnStatusBufferSize, *lpcbReturnStatusBufferSize) PCLUSTER_SET_PASSWORD_STATUS lpReturnStatusBuffer,
-    __inout LPDWORD lpcbReturnStatusBufferSize
+    IN LPCWSTR ClusterName,
+    IN LPCWSTR lpszNewPassword,
+    IN DWORD dwFlags,
+    OUT PCLUSTER_SET_PASSWORD_STATUS ReturnStatusBuffer,
+    IN OUT LPDWORD ReturnStatusBufferSize
     );
-
 
 DWORD
 WINAPI
 ClusterControl(
-    __in HCLUSTER hCluster,
-    __in_opt HNODE hHostNode,
-    __in DWORD dwControlCode,
-    __in_bcount_opt(nInBufferSize) LPVOID lpInBuffer,
-    __in DWORD nInBufferSize,
-    __out_bcount_part_opt(nOutBufferSize, *lpBytesReturned) LPVOID lpOutBuffer,
-    __in DWORD nOutBufferSize,
-    __out LPDWORD lpBytesReturned
+    IN HCLUSTER hCluster,
+    IN OPTIONAL HNODE hHostNode,
+    IN DWORD dwControlCode,
+    IN LPVOID lpInBuffer,
+    IN DWORD nInBufferSize,
+    OUT LPVOID lpOutBuffer,
+    IN DWORD nOutBufferSize,
+    OUT LPDWORD lpBytesReturned
     );
 
 #endif // MIDL_PASS
@@ -419,12 +395,12 @@ RegisterClusterNotify(
 DWORD
 WINAPI
 GetClusterNotify(
-    __in HCHANGE hChange,
-    __out DWORD_PTR *lpdwNotifyKey,
-    __out LPDWORD lpdwFilterType,
-    __out_ecount_part_opt(*lpcchName, *lpcchName + 1) LPWSTR lpszName,
-    __inout LPDWORD lpcchName,
-    __in DWORD dwMilliseconds
+    IN HCHANGE hChange,
+    OUT DWORD_PTR *lpdwNotifyKey,
+    OUT LPDWORD lpdwFilterType,
+    OUT OPTIONAL LPWSTR lpszName,
+    IN OUT LPDWORD lpcchName,
+    IN DWORD dwMilliseconds
     );
 
 BOOL
@@ -479,11 +455,11 @@ ClusterGetEnumCount(
 DWORD
 WINAPI
 ClusterEnum(
-    __in HCLUSENUM hEnum,
-    __in DWORD dwIndex,
-    __out LPDWORD lpdwType,
-    __out_ecount_part(*lpcchName, *lpcchName + 1) LPWSTR lpszName,
-    __inout LPDWORD lpcchName
+    IN HCLUSENUM hEnum,
+    IN DWORD dwIndex,
+    OUT LPDWORD lpdwType,
+    OUT LPWSTR lpszName,
+    IN OUT LPDWORD lpcchName
     );
 
 DWORD
@@ -545,9 +521,9 @@ GetClusterNodeState(
 DWORD
 WINAPI
 GetClusterNodeId(
-    __in HNODE hNode,
-    __out_ecount_part(*lpcchName, *lpcchName + 1) LPWSTR lpszNodeId,
-    __inout LPDWORD lpcchName
+    IN HNODE hNode,
+    OUT LPWSTR lpszNodeId,
+    IN OUT LPDWORD lpcchName
     );
 
 #define GetCurrentClusterNodeId(_lpszNodeId_, _lpcchName_) \
@@ -599,11 +575,11 @@ ClusterNodeCloseEnum(
 DWORD
 WINAPI
 ClusterNodeEnum(
-    __in HNODEENUM hNodeEnum,
-    __in DWORD dwIndex,
-    __out LPDWORD lpdwType,
-    __out_ecount_part(*lpcchName, *lpcchName + 1) LPWSTR lpszName,
-    __inout LPDWORD lpcchName
+    IN HNODEENUM hNodeEnum,
+    IN DWORD dwIndex,
+    OUT LPDWORD lpdwType,
+    OUT LPWSTR lpszName,
+    IN OUT LPDWORD lpcchName
     );
 
 DWORD
@@ -694,9 +670,9 @@ GetClusterFromGroup(
 CLUSTER_GROUP_STATE
 WINAPI
 GetClusterGroupState(
-    __in HGROUP hGroup,
-    __out_ecount_part_opt(*lpcchNodeName, *lpcchNodeName + 1) LPWSTR lpszNodeName,
-    __inout LPDWORD lpcchNodeName
+    IN HGROUP hGroup,
+    OUT OPTIONAL LPWSTR lpszNodeName,
+    IN OUT LPDWORD lpcchNodeName
     );
 
 DWORD
@@ -756,11 +732,11 @@ ClusterGroupGetEnumCount(
 DWORD
 WINAPI
 ClusterGroupEnum(
-    __in HGROUPENUM hGroupEnum,
-    __in DWORD dwIndex,
-    __out LPDWORD lpdwType,
-    __out_ecount_part(*lpcchName, *lpcchName + 1) LPWSTR lpszResourceName,
-    __inout LPDWORD lpcchName
+    IN HGROUPENUM hGroupEnum,
+    IN DWORD dwIndex,
+    OUT LPDWORD lpdwType,
+    OUT LPWSTR lpszResourceName,
+    IN OUT LPDWORD lpcchName
     );
 
 DWORD
@@ -851,11 +827,11 @@ DeleteClusterResource(
 CLUSTER_RESOURCE_STATE
 WINAPI
 GetClusterResourceState(
-    __in HRESOURCE hResource,
-    __out_ecount_part_opt(*lpcchNodeName, *lpcchNodeName + 1) LPWSTR lpszNodeName,
-    __inout LPDWORD lpcchNodeName,
-    __out_ecount_part_opt(*lpcchGroupName, *lpcchGroupName + 1) LPWSTR lpszGroupName,
-    __inout LPDWORD lpcchGroupName
+    IN HRESOURCE hResource,
+    OUT OPTIONAL LPWSTR lpszNodeName,
+    IN OUT LPDWORD lpcchNodeName,
+    OUT OPTIONAL LPWSTR lpszGroupName,
+    IN OUT LPDWORD lpcchGroupName
     );
 
 DWORD
@@ -928,62 +904,62 @@ CanResourceBeDependent(
 DWORD
 WINAPI
 ClusterResourceControl(
-    __in HRESOURCE hResource,
-    __in_opt HNODE hHostNode,
-    __in DWORD dwControlCode,
-    __in_bcount_opt(cbInBufferSize) LPVOID lpInBuffer,
-    __in DWORD cbInBufferSize,
-    __out_bcount_part_opt(cbOutBufferSize, *lpBytesReturned) LPVOID lpOutBuffer,
-    __in DWORD cbOutBufferSize,
-    __out LPDWORD lpBytesReturned
+    IN HRESOURCE hResource,
+    IN OPTIONAL HNODE hHostNode,
+    IN DWORD dwControlCode,
+    IN LPVOID lpInBuffer,
+    IN DWORD cbInBufferSize,
+    OUT LPVOID lpOutBuffer,
+    IN DWORD cbOutBufferSize,
+    OUT LPDWORD lpcbBytesReturned
     );
 
 DWORD
 WINAPI
 ClusterResourceTypeControl(
-    __in HCLUSTER hCluster,
-    __in LPCWSTR lpszResourceTypeName,
-    __in_opt HNODE hHostNode,
-    __in DWORD dwControlCode,
-    __in_bcount_opt(nInBufferSize) LPVOID lpInBuffer,
-    __in DWORD nInBufferSize,
-    __out_bcount_part_opt(nOutBufferSize, *lpBytesReturned) LPVOID lpOutBuffer,
-    __in DWORD nOutBufferSize,
-    __out LPDWORD lpBytesReturned
+    IN HCLUSTER hCluster,
+    IN LPCWSTR ResourceTypeName,
+    IN OPTIONAL HNODE hHostNode,
+    IN DWORD dwControlCode,
+    IN LPVOID lpInBuffer,
+    IN DWORD cbInBufferSize,
+    OUT LPVOID lpOutBuffer,
+    IN DWORD cbOutBufferSize,
+    OUT LPDWORD lpcbBytesReturned
     );
 
 DWORD
 WINAPI
 ClusterGroupControl(
-    __in HGROUP hGroup,
-    __in_opt HNODE hHostNode,
-    __in DWORD dwControlCode,
-    __in_bcount_opt(nInBufferSize) LPVOID lpInBuffer,
-    __in DWORD nInBufferSize,
-    __out_bcount_part_opt(nOutBufferSize, *lpBytesReturned) LPVOID lpOutBuffer,
-    __in DWORD nOutBufferSize,
-    __out LPDWORD lpBytesReturned
+    IN HGROUP hGroup,
+    IN OPTIONAL HNODE hHostNode,
+    IN DWORD dwControlCode,
+    IN LPVOID lpInBuffer,
+    IN DWORD cbInBufferSize,
+    OUT LPVOID lpOutBuffer,
+    IN DWORD cbOutBufferSize,
+    OUT LPDWORD lpcbBytesReturned
     );
 
 DWORD
 WINAPI
 ClusterNodeControl(
-    __in HNODE hNode,
-    __in_opt HNODE hHostNode,
-    __in DWORD dwControlCode,
-    __in_bcount_opt(nInBufferSize) LPVOID lpInBuffer,
-    __in DWORD nInBufferSize,
-    __out_bcount_part_opt(nOutBufferSize, *lpBytesReturned) LPVOID lpOutBuffer,
-    __in DWORD nOutBufferSize,
-    __out LPDWORD lpBytesReturned
+    IN HNODE hNode,
+    IN OPTIONAL HNODE hHostNode,
+    IN DWORD dwControlCode,
+    IN LPVOID lpInBuffer,
+    IN DWORD cbInBufferSize,
+    OUT LPVOID lpOutBuffer,
+    IN DWORD cbOutBufferSize,
+    OUT LPDWORD lpcbBytesReturned
     );
 
 BOOL
 WINAPI
 GetClusterResourceNetworkName(
-    __in HRESOURCE hResource,
-    __out_ecount_part(*nSize, *nSize + 1) LPWSTR lpBuffer,
-    __inout LPDWORD nSize
+    IN HRESOURCE hResource,
+    OUT LPWSTR lpBuffer,
+    IN OUT LPDWORD nSize
     );
 
 
@@ -1057,7 +1033,6 @@ typedef enum CLUSTER_PROPERTY_SYNTAX {
     CLUSPROP_SYNTAX_LIST_VALUE_EXPANDED_SZ          = CLUSPROP_SYNTAX_VALUE( CLUSPROP_TYPE_LIST_VALUE, CLUSPROP_FORMAT_EXPANDED_SZ ),
     CLUSPROP_SYNTAX_LIST_VALUE_SECURITY_DESCRIPTOR  = CLUSPROP_SYNTAX_VALUE( CLUSPROP_TYPE_LIST_VALUE, CLUSPROP_FORMAT_SECURITY_DESCRIPTOR ),
     CLUSPROP_SYNTAX_LIST_VALUE_LARGE_INTEGER        = CLUSPROP_SYNTAX_VALUE( CLUSPROP_TYPE_LIST_VALUE, CLUSPROP_FORMAT_LARGE_INTEGER ),
-    CLUSPROP_SYNTAX_LIST_VALUE_ULARGE_INTEGER       = CLUSPROP_SYNTAX_VALUE( CLUSPROP_TYPE_LIST_VALUE, CLUSPROP_FORMAT_ULARGE_INTEGER ),
 
     // Storage syntax values
 
@@ -1175,7 +1150,6 @@ typedef enum CLCTL_CODES {
     CLCTL_GET_FLAGS                         = CLCTL_EXTERNAL_CODE( 2, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
     CLCTL_GET_CLASS_INFO                    = CLCTL_EXTERNAL_CODE( 3, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
     CLCTL_GET_REQUIRED_DEPENDENCIES         = CLCTL_EXTERNAL_CODE( 4, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
-    CLCTL_GET_ARB_TIMEOUT                   = CLCTL_EXTERNAL_CODE( 5, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),    
 
     CLCTL_GET_NAME                          = CLCTL_EXTERNAL_CODE( 10, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
     CLCTL_GET_RESOURCE_TYPE                 = CLCTL_EXTERNAL_CODE( 11, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
@@ -1183,8 +1157,7 @@ typedef enum CLCTL_CODES {
     CLCTL_GET_NETWORK                       = CLCTL_EXTERNAL_CODE( 13, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
     CLCTL_GET_ID                            = CLCTL_EXTERNAL_CODE( 14, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
     CLCTL_GET_FQDN                          = CLCTL_EXTERNAL_CODE( 15, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
-    CLCTL_GET_CLUSTER_SERVICE_ACCOUNT_NAME  = CLCTL_EXTERNAL_CODE( 16, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
-    
+
     CLCTL_ENUM_COMMON_PROPERTIES            = CLCTL_EXTERNAL_CODE( 20, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
     CLCTL_GET_RO_COMMON_PROPERTIES          = CLCTL_EXTERNAL_CODE( 21, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
     CLCTL_GET_COMMON_PROPERTIES             = CLCTL_EXTERNAL_CODE( 22, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
@@ -1211,14 +1184,9 @@ typedef enum CLCTL_CODES {
 
     CLCTL_RESOURCE_UPGRADE_DLL              = CLCTL_EXTERNAL_CODE( 46, CLUS_ACCESS_WRITE, CLUS_MODIFY ),
 
-    CLCTL_ADD_REGISTRY_CHECKPOINT_64BIT     = CLCTL_EXTERNAL_CODE( 47, CLUS_ACCESS_WRITE, CLUS_MODIFY ),
-    CLCTL_ADD_REGISTRY_CHECKPOINT_32BIT     = CLCTL_EXTERNAL_CODE( 48, CLUS_ACCESS_WRITE, CLUS_MODIFY ),
-
     CLCTL_GET_LOADBAL_PROCESS_LIST          = CLCTL_EXTERNAL_CODE( 50, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
 
     CLCTL_GET_NETWORK_NAME                  = CLCTL_EXTERNAL_CODE( 90, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
-    CLCTL_NETNAME_GET_VIRTUAL_SERVER_TOKEN  = CLCTL_EXTERNAL_CODE( 91, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
-    CLCTL_NETNAME_REGISTER_DNS_RECORDS      = CLCTL_EXTERNAL_CODE( 92, CLUS_ACCESS_WRITE, CLUS_NO_MODIFY ),
 
     CLCTL_STORAGE_GET_DISK_INFO             = CLCTL_EXTERNAL_CODE( 100, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
     CLCTL_STORAGE_GET_AVAILABLE_DISKS       = CLCTL_EXTERNAL_CODE( 101, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
@@ -1226,11 +1194,6 @@ typedef enum CLCTL_CODES {
     CLCTL_STORAGE_GET_ALL_AVAILABLE_DISKS   = (CLCTL_EXTERNAL_CODE( 103, CLUS_ACCESS_READ, CLUS_NO_MODIFY ) | CLCTL_GLOBAL_MASK),
 
     CLCTL_QUERY_DELETE                      = CLCTL_EXTERNAL_CODE( 110, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
-
-    CLCTL_QUERY_MAINTENANCE_MODE            = CLCTL_EXTERNAL_CODE( 120, CLUS_ACCESS_READ, CLUS_NO_MODIFY ),
-    CLCTL_SET_MAINTENANCE_MODE              = CLCTL_EXTERNAL_CODE( 121, CLUS_ACCESS_WRITE, CLUS_MODIFY ),
-    
-
 
     //
     // Internal control codes
@@ -1251,9 +1214,8 @@ typedef enum CLCTL_CODES {
     CLCTL_STARTING_PHASE2                   = CLCTL_INTERNAL_CODE( 14, CLUS_ACCESS_WRITE, CLUS_MODIFY ),
     CLCTL_HOLD_IO                           = CLCTL_INTERNAL_CODE( 15, CLUS_ACCESS_WRITE, CLUS_MODIFY ),
     CLCTL_RESUME_IO                         = CLCTL_INTERNAL_CODE( 16, CLUS_ACCESS_WRITE, CLUS_MODIFY ),
-    CLCTL_FORCE_QUORUM                      = CLCTL_INTERNAL_CODE( 17, CLUS_ACCESS_WRITE, CLUS_MODIFY ),
-    CLCTL_INITIALIZE                        = CLCTL_INTERNAL_CODE( 18, CLUS_ACCESS_WRITE, CLUS_MODIFY ),
-    CLCTL_STATE_CHANGE_REASON               = CLCTL_INTERNAL_CODE( 19, CLUS_ACCESS_WRITE, CLUS_MODIFY )
+    CLCTL_FORCE_QUORUM                      = CLCTL_INTERNAL_CODE( 17, CLUS_ACCESS_WRITE, CLUS_MODIFY )
+
 
 } CLCTL_CODES;
 
@@ -1389,12 +1351,6 @@ typedef enum CLUSCTL_RESOURCE_CODES {
     CLUSCTL_RESOURCE_GET_NETWORK_NAME =
         CLUSCTL_RESOURCE_CODE( CLCTL_GET_NETWORK_NAME ),
 
-    CLUSCTL_RESOURCE_NETNAME_GET_VIRTUAL_SERVER_TOKEN =
-        CLUSCTL_RESOURCE_CODE( CLCTL_NETNAME_GET_VIRTUAL_SERVER_TOKEN ),
-
-    CLUSCTL_RESOURCE_NETNAME_REGISTER_DNS_RECORDS =
-        CLUSCTL_RESOURCE_CODE( CLCTL_NETNAME_REGISTER_DNS_RECORDS ),
-
     CLUSCTL_RESOURCE_STORAGE_GET_DISK_INFO =
         CLUSCTL_RESOURCE_CODE( CLCTL_STORAGE_GET_DISK_INFO ),
 
@@ -1406,18 +1362,6 @@ typedef enum CLUSCTL_RESOURCE_CODES {
 
     CLUSCTL_RESOURCE_UPGRADE_DLL =
         CLUSCTL_RESOURCE_CODE( CLCTL_RESOURCE_UPGRADE_DLL ),
-
-    CLUSCTL_RESOURCE_ADD_REGISTRY_CHECKPOINT_64BIT =
-        CLUSCTL_RESOURCE_CODE( CLCTL_ADD_REGISTRY_CHECKPOINT_64BIT ),
-
-    CLUSCTL_RESOURCE_ADD_REGISTRY_CHECKPOINT_32BIT =
-        CLUSCTL_RESOURCE_CODE( CLCTL_ADD_REGISTRY_CHECKPOINT_32BIT ),
-
-    CLUSCTL_RESOURCE_QUERY_MAINTENANCE_MODE =
-        CLUSCTL_RESOURCE_CODE( CLCTL_QUERY_MAINTENANCE_MODE ),
-
-    CLUSCTL_RESOURCE_SET_MAINTENANCE_MODE =
-        CLUSCTL_RESOURCE_CODE( CLCTL_SET_MAINTENANCE_MODE ),
 
     // Internal
     CLUSCTL_RESOURCE_DELETE =
@@ -1451,13 +1395,7 @@ typedef enum CLUSCTL_RESOURCE_CODES {
         CLUSCTL_RESOURCE_CODE( CLCTL_CLUSTER_VERSION_CHANGED ),
 
     CLUSCTL_RESOURCE_FORCE_QUORUM =
-        CLUSCTL_RESOURCE_CODE( CLCTL_FORCE_QUORUM ),
-
-    CLUSCTL_RESOURCE_INITIALIZE =
-        CLUSCTL_RESOURCE_CODE( CLCTL_INITIALIZE ),
-
-    CLUSCTL_RESOURCE_STATE_CHANGE_REASON =
-        CLUSCTL_RESOURCE_CODE( CLCTL_STATE_CHANGE_REASON )                     
+        CLUSCTL_RESOURCE_CODE( CLCTL_FORCE_QUORUM )
 
 } CLUSCTL_RESOURCE_CODES;
 
@@ -1482,9 +1420,6 @@ typedef enum CLUSCTL_RESOURCE_TYPE_CODES {
     CLUSCTL_RESOURCE_TYPE_GET_REQUIRED_DEPENDENCIES =
         CLUSCTL_RESOURCE_TYPE_CODE( CLCTL_GET_REQUIRED_DEPENDENCIES ),
 
-    CLUSCTL_RESOURCE_TYPE_GET_ARB_TIMEOUT =
-        CLUSCTL_RESOURCE_TYPE_CODE( CLCTL_GET_ARB_TIMEOUT ),
-        
     CLUSCTL_RESOURCE_TYPE_ENUM_COMMON_PROPERTIES =
         CLUSCTL_RESOURCE_TYPE_CODE( CLCTL_ENUM_COMMON_PROPERTIES ),
 
@@ -1538,7 +1473,6 @@ typedef enum CLUSCTL_RESOURCE_TYPE_CODES {
 
     CLUSCTL_RESOURCE_TYPE_QUERY_DELETE =
         CLUSCTL_RESOURCE_TYPE_CODE( CLCTL_QUERY_DELETE ),
-        
 
     // Internal
     CLUSCTL_RESOURCE_TYPE_INSTALL_NODE =
@@ -1652,7 +1586,7 @@ typedef enum CLUSCTL_NODE_CODES {
 
     CLUSCTL_NODE_GET_ID =
         CLUSCTL_NODE_CODE( CLCTL_GET_ID ),
-        
+
     CLUSCTL_NODE_ENUM_COMMON_PROPERTIES =
         CLUSCTL_NODE_CODE( CLCTL_ENUM_COMMON_PROPERTIES ),
 
@@ -1687,11 +1621,7 @@ typedef enum CLUSCTL_NODE_CODES {
         CLUSCTL_NODE_CODE( CLCTL_GET_COMMON_PROPERTY_FMTS ),
 
     CLUSCTL_NODE_GET_PRIVATE_PROPERTY_FMTS=
-        CLUSCTL_NODE_CODE( CLCTL_GET_PRIVATE_PROPERTY_FMTS ),
-        
-    CLUSCTL_NODE_GET_CLUSTER_SERVICE_ACCOUNT_NAME =
-        CLUSCTL_NODE_CODE( CLCTL_GET_CLUSTER_SERVICE_ACCOUNT_NAME )
-
+        CLUSCTL_NODE_CODE( CLCTL_GET_PRIVATE_PROPERTY_FMTS )
 
 } CLUSCTL_NODE_CODES;
 
@@ -1889,12 +1819,11 @@ typedef enum CLUS_RESSUBCLASS {
 // Cluster Characteristics
 //
 typedef enum CLUS_CHARACTERISTICS {
-    CLUS_CHAR_UNKNOWN                       = 0x00000000,
-    CLUS_CHAR_QUORUM                        = 0x00000001,
-    CLUS_CHAR_DELETE_REQUIRES_ALL_NODES     = 0x00000002,
-    CLUS_CHAR_LOCAL_QUORUM                  = 0x00000004,
-    CLUS_CHAR_LOCAL_QUORUM_DEBUG            = 0x00000008,
-    CLUS_CHAR_REQUIRES_STATE_CHANGE_REASON  = 0x00000010   
+    CLUS_CHAR_UNKNOWN                   = 0x00000000,
+    CLUS_CHAR_QUORUM                    = 0x00000001,
+    CLUS_CHAR_DELETE_REQUIRES_ALL_NODES = 0x00000002,
+    CLUS_CHAR_LOCAL_QUORUM              = 0x00000004,
+    CLUS_CHAR_LOCAL_QUORUM_DEBUG        = 0x00000008
 } CLUS_CHARACTERISTICS;
 
 //
@@ -2164,21 +2093,6 @@ typedef struct CLUSPROP_SCSI_ADDRESS {
 #endif
 } CLUSPROP_SCSI_ADDRESS, *PCLUSPROP_SCSI_ADDRESS;
 
-//
-// input structure for CLUSCTL_RESOURCE_NETNAME_GET_VIRTUAL_SERVER_TOKEN
-//
-typedef struct CLUS_NETNAME_VS_TOKEN_INFO {
-    DWORD ProcessID;
-    DWORD DesiredAccess;
-    BOOL  InheritHandle;
-} CLUS_NETNAME_VS_TOKEN_INFO, *PCLUS_NETNAME_VS_TOKEN_INFO;
-
-//
-// input/output structure associated with Maintenance Mode
-//
-typedef struct CLUS_MAINTENANCE_MODE_INFO {
-    BOOL  InMaintenance;
-} CLUS_MAINTENANCE_MODE_INFO, *PCLUS_MAINTENANCE_MODE_INFO;
 
 // Beginning of a property list.
 typedef struct CLUSPROP_LIST {
@@ -2284,11 +2198,11 @@ ClusterResourceGetEnumCount(
 DWORD
 WINAPI
 ClusterResourceEnum(
-    __in HRESENUM hResEnum,
-    __in DWORD dwIndex,
-    __out LPDWORD lpdwType,
-    __out_ecount_part(*lpcchName, *lpcchName + 1) LPWSTR lpszName,
-    __inout LPDWORD lpcchName
+    IN HRESENUM hResEnum,
+    IN DWORD dwIndex,
+    OUT LPDWORD lpdwType,
+    OUT LPWSTR lpszName,
+    IN OUT LPDWORD lpcchName
     );
 
 DWORD
@@ -2332,11 +2246,11 @@ ClusterResourceTypeGetEnumCount(
 DWORD
 WINAPI
 ClusterResourceTypeEnum(
-    __in HRESTYPEENUM hResTypeEnum,
-    __in DWORD dwIndex,
-    __out LPDWORD lpdwType,
-    __out_ecount_part(*lpcchName, *lpcchName + 1) LPWSTR lpszName,
-    __inout LPDWORD lpcchName
+    IN HRESTYPEENUM hResTypeEnum,
+    IN DWORD dwIndex,
+    OUT LPDWORD lpdwType,
+    OUT LPWSTR lpszName,
+    IN OUT LPDWORD lpcchName
     );
 
 DWORD
@@ -2421,11 +2335,11 @@ ClusterNetworkGetEnumCount(
 DWORD
 WINAPI
 ClusterNetworkEnum(
-    __in HNETWORKENUM hNetworkEnum,
-    __in DWORD dwIndex,
-    __out LPDWORD lpdwType,
-    __out_ecount_part(*lpcchName, *lpcchName + 1) LPWSTR lpszName,
-    __inout LPDWORD lpcchName
+    IN HNETWORKENUM hNetworkEnum,
+    IN DWORD dwIndex,
+    OUT LPDWORD lpdwType,
+    OUT LPWSTR lpszName,
+    IN OUT LPDWORD lpcchName
     );
 
 DWORD
@@ -2450,22 +2364,22 @@ SetClusterNetworkName(
 DWORD
 WINAPI
 GetClusterNetworkId(
-    __in HNETWORK hNetwork,
-    __out_ecount_part(*lpcchName, *lpcchName + 1) LPWSTR lpszNetworkId,
-    __inout LPDWORD lpcchName
+    IN HNETWORK hNetwork,
+    OUT LPWSTR lpszNetworkId,
+    IN OUT LPDWORD lpcchNetworkId
     );
 
 DWORD
 WINAPI
 ClusterNetworkControl(
-    __in HNETWORK hNetwork,
-    __in_opt HNODE hHostNode,
-    __in DWORD dwControlCode,
-    __in_bcount_opt(nInBufferSize) LPVOID lpInBuffer,
-    __in DWORD nInBufferSize,
-    __out_bcount_part_opt(nOutBufferSize, *lpBytesReturned) LPVOID lpOutBuffer,
-    __in DWORD nOutBufferSize,
-    __out LPDWORD lpBytesReturned
+    IN HNETWORK hNetwork,
+    IN OPTIONAL HNODE hHostNode,
+    IN DWORD dwControlCode,
+    IN LPVOID lpInBuffer,
+    IN DWORD cbInBufferSize,
+    OUT LPVOID lpOutBuffer,
+    IN DWORD cbOutBufferSize,
+    OUT LPDWORD lpcbBytesReturned
     );
 #endif // MIDL_PASS
 
@@ -2499,11 +2413,11 @@ OpenClusterNetInterface(
 DWORD
 WINAPI
 GetClusterNetInterface(
-    __in HCLUSTER hCluster,
-    __in LPCWSTR lpszNodeName,
-    __in LPCWSTR lpszNetworkName,
-    __out_ecount_part(*lpcchInterfaceName, *lpcchInterfaceName + 1) LPWSTR lpszInterfaceName,
-    __inout LPDWORD lpcchInterfaceName
+    IN HCLUSTER hCluster,
+    IN LPCWSTR lpszNodeName,
+    IN LPCWSTR lpszNetworkName,
+    OUT LPWSTR lpszInterfaceName,
+    IN OUT LPDWORD lpcchInterfaceName
     );
 
 BOOL
@@ -2527,14 +2441,14 @@ GetClusterNetInterfaceState(
 DWORD
 WINAPI
 ClusterNetInterfaceControl(
-    __in HNETINTERFACE hNetInterface,
-    __in_opt HNODE hHostNode,
-    __in DWORD dwControlCode,
-    __in_bcount_opt(nInBufferSize) LPVOID lpInBuffer,
-    __in DWORD nInBufferSize,
-    __out_bcount_part_opt(nOutBufferSize, *lpBytesReturned) LPVOID lpOutBuffer,
-    __in DWORD nOutBufferSize,
-    __out LPDWORD lpBytesReturned
+    IN HNETINTERFACE hNetInterface,
+    IN OPTIONAL HNODE hHostNode,
+    IN DWORD dwControlCode,
+    IN LPVOID lpInBuffer,
+    IN DWORD cbInBufferSize,
+    OUT LPVOID lpOutBuffer,
+    IN DWORD cbOutBufferSize,
+    OUT LPDWORD lpcbBytesReturned
     );
 #endif // MIDL_PASS
 
@@ -2623,11 +2537,11 @@ ClusterRegCloseKey(
 LONG
 WINAPI
 ClusterRegEnumKey(
-    __in HKEY hKey,
-    __in DWORD dwIndex,
-    __out_ecount_part(*lpcchName, *lpcchName + 1) LPWSTR lpszName,
-    __inout LPDWORD lpcchName,
-    __out PFILETIME lpftLastWriteTime
+    IN HKEY hKey,
+    IN DWORD dwIndex,
+    OUT LPWSTR lpszName,
+    IN OUT LPDWORD lpcchName,
+    OUT PFILETIME lpftLastWriteTime
     );
 
 DWORD
@@ -2650,23 +2564,23 @@ ClusterRegDeleteValue(
 LONG
 WINAPI
 ClusterRegQueryValue(
-    __in HKEY hKey,
-    __in LPCWSTR lpszValueName,
-    __out LPDWORD lpdwValueType,
-    __out_bcount_part_opt(*lpcbData, *lpcbData) LPBYTE lpData,
-    __inout_opt LPDWORD lpcbData
+    IN HKEY hKey,
+    IN LPCWSTR lpszValueName,
+    OUT LPDWORD lpdwValueType,
+    OUT LPBYTE lpData,
+    IN OUT LPDWORD lpcbData
     );
 
 DWORD
 WINAPI
 ClusterRegEnumValue(
-    __in HKEY hKey,
-    __in DWORD dwIndex,
-    __out_ecount_part(*lpcchValueName, *lpcchValueName + 1) LPWSTR lpszValueName,
-    __inout LPDWORD lpcchValueName,
-    __out LPDWORD lpdwType,
-    __out_bcount_part_opt(*lpcbData, *lpcbData) LPBYTE lpData,
-    __inout_opt LPDWORD lpcbData
+    IN HKEY hKey,
+    IN DWORD dwIndex,
+    OUT LPWSTR lpszValueName,
+    IN OUT LPDWORD lpcchValueName,
+    OUT LPDWORD lpdwType,
+    OUT LPBYTE lpData,
+    IN OUT LPDWORD lpcbData
     );
 
 LONG
@@ -2685,10 +2599,10 @@ ClusterRegQueryInfoKey(
 LONG
 WINAPI
 ClusterRegGetKeySecurity (
-    __in HKEY hKey,
-    __in SECURITY_INFORMATION RequestedInformation,
-    __out_bcount_part(*lpcbSecurityDescriptor, *lpcbSecurityDescriptor) PSECURITY_DESCRIPTOR pSecurityDescriptor,
-    __inout LPDWORD lpcbSecurityDescriptor
+    IN HKEY hKey,
+    IN SECURITY_INFORMATION RequestedInformation,
+    OUT PSECURITY_DESCRIPTOR pSecurityDescriptor,
+    IN LPDWORD lpcbSecurityDescriptor
     );
 
 LONG

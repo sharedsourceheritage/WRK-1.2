@@ -1,0 +1,53 @@
+<%@ Master Language="C#" MasterPageFile="~/Quickstart.master"%>
+
+<script runat="server">
+
+    void Page_Load(object sender, EventArgs e)
+    {
+        //This changes the Label text for the Quickstart Info
+        //and also modifies the Page Title.
+        const string BANNER_TITLE = "How Do I...? Common Tasks QuickStart Tutorial";
+
+        Label lblBanner;
+        lblBanner = (Label)Master.FindControl("BannerTitle");
+        lblBanner.Text = BANNER_TITLE;
+
+        Master.Page.Title = "Common Task QuickStart Tutorial";
+    }
+
+</script>
+
+<asp:Content ID="Content1" ContentPlaceHolderID=Nav Runat=Server>
+
+    <asp:TreeView ID="TreeView1" MaxDataBindDepth="1" Runat="server" DataSourceID="SiteMapDataSource1" ShowExpandCollapse="False"
+        NodeIndent="10">
+        <LevelStyles>
+            <asp:TreeNodeStyle Font-Size="small" Font-Bold="True" /> 
+            <asp:TreeNodeStyle ImageUrl="~/Images/Bullet_Nav_Big.gif" Font-Bold="True" /> 
+            <asp:TreeNodeStyle ImageUrl="~/Images/Bullet_Nav_Small.gif" /> 
+        </LevelStyles>
+        <SelectedNodeStyle Font-Underline="False" />
+        <NodeStyle ChildNodesPadding="10" Font-Size="1em"  />
+    </asp:TreeView>                     
+    <asp:SiteMapDataSource ID="SiteMapDataSource1" StartingNodeOffset="2" Runat="server" />
+           
+</asp:Content>
+        
+<asp:Content ID="Content2" ContentPlaceHolderID=Main_Body Runat=Server>  
+             
+    <asp:ContentPlaceHolder ID="MainBody" Runat="server" />
+            
+    <br />
+    <br />
+    <hr />
+    <center>
+      Microsoft .NET Framework SDK QuickStart Tutorials Version 2.0<br>
+      Copyright © 2005 Microsoft Corporation. All rights reserved.<br>
+      <SCRIPT Language="javascript">
+       document.write('<a href="mailto:qswish@microsoft.com?subject=QuickStart v2.0 Feedback: ' + document.URL + '">Send Comments on this topic</a>')
+      </SCRIPT>
+    </center>
+    <br />
+    <br />
+
+</asp:Content>

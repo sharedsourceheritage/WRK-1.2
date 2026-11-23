@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for msxml2.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -1047,7 +1046,7 @@ typedef struct _xml_error
     } 	XML_ERROR;
 
 #endif
-#ifdef __ISAXXMLReader_INTERFACE_DEFINED__
+#ifndef __ISAXXMLReader_INTERFACE_DEFINED__
 #undef __MSXML2_LIBRARY_DEFINED__
 #endif
 
@@ -1165,8 +1164,6 @@ enum tagDOMNodeType
     } 	DOMNodeType;
 
 #endif
-#if !defined(__msxml_sxh_enums__)
-#define __msxml_sxh_enums__
 typedef /* [helpstring] */ 
 enum _SERVERXMLHTTP_OPTION
     {	SXH_OPTION_URL	= -1,
@@ -1193,9 +1190,6 @@ enum _SXH_PROXY_SETTING
 	SXH_PROXY_SET_PROXY	= 0x2
     } 	SXH_PROXY_SETTING;
 
-#endif // !defined(__msxml_sxh_enums__)
-#if !defined(__msxml_som_enums__)
-#define __msxml_som_enums__
 typedef /* [helpstring] */ 
 enum _SOMITEMTYPE
     {	SOMITEM_SCHEMA	= 0x1000,
@@ -1323,7 +1317,6 @@ enum _SCHEMATYPEVARIETY
 	SCHEMATYPEVARIETY_UNION	= 2
     } 	SCHEMATYPEVARIETY;
 
-#endif // !defined(__msxml_som_enums__)
 
 EXTERN_C const IID LIBID_MSXML2;
 
@@ -27758,7 +27751,7 @@ XMLDocument;
 #endif
 #endif /* __MSXML2_LIBRARY_DEFINED__ */
 
-/* interface __MIDL_itf_msxml2_0196 */
+/* interface __MIDL_itf_msxml2_0192 */
 /* [local] */ 
 
 //----------------------------
@@ -27773,8 +27766,8 @@ XMLDocument;
 #endif
 
 
-extern RPC_IF_HANDLE __MIDL_itf_msxml2_0196_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_msxml2_0196_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_msxml2_0192_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_msxml2_0192_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

@@ -43,30 +43,18 @@ DEFINE_GUID(IID_IDebugClient, 0x27fe5639, 0x8407, 0x4f47,
 /* edbed635-372e-4dab-bbfe-ed0d2f63be81 */
 DEFINE_GUID(IID_IDebugClient2, 0xedbed635, 0x372e, 0x4dab,
         0xbb, 0xfe, 0xed, 0x0d, 0x2f, 0x63, 0xbe, 0x81);
-/* dd492d7f-71b8-4ad6-a8dc-1c887479ff91 */
-DEFINE_GUID(IID_IDebugClient3, 0xdd492d7f, 0x71b8, 0x4ad6,
-            0xa8, 0xdc, 0x1c, 0x88, 0x74, 0x79, 0xff, 0x91);
-/* ca83c3de-5089-4cf8-93c8-d892387f2a5e */
-DEFINE_GUID(IID_IDebugClient4, 0xca83c3de, 0x5089, 0x4cf8,
-            0x93, 0xc8, 0xd8, 0x92, 0x38, 0x7f, 0x2a, 0x5e);
 /* 5182e668-105e-416e-ad92-24ef800424ba */
 DEFINE_GUID(IID_IDebugControl, 0x5182e668, 0x105e, 0x416e,
             0xad, 0x92, 0x24, 0xef, 0x80, 0x04, 0x24, 0xba);
 /* d4366723-44df-4bed-8c7e-4c05424f4588 */
 DEFINE_GUID(IID_IDebugControl2, 0xd4366723, 0x44df, 0x4bed,
             0x8c, 0x7e, 0x4c, 0x05, 0x42, 0x4f, 0x45, 0x88);
-/* 7df74a86-b03f-407f-90ab-a20dadcead08 */
-DEFINE_GUID(IID_IDebugControl3, 0x7df74a86, 0xb03f, 0x407f,
-            0x90, 0xab, 0xa2, 0x0d, 0xad, 0xce, 0xad, 0x08);
 /* 88f7dfab-3ea7-4c3a-aefb-c4e8106173aa */
 DEFINE_GUID(IID_IDebugDataSpaces, 0x88f7dfab, 0x3ea7, 0x4c3a,
             0xae, 0xfb, 0xc4, 0xe8, 0x10, 0x61, 0x73, 0xaa);
 /* 7a5e852f-96e9-468f-ac1b-0b3addc4a049 */
 DEFINE_GUID(IID_IDebugDataSpaces2, 0x7a5e852f, 0x96e9, 0x468f,
             0xac, 0x1b, 0x0b, 0x3a, 0xdd, 0xc4, 0xa0, 0x49);
-/* 23f79d6c-8aaf-4f7c-a607-9995f5407e63 */
-DEFINE_GUID(IID_IDebugDataSpaces3, 0x23f79d6c, 0x8aaf, 0x4f7c,
-            0xa6, 0x07, 0x99, 0x95, 0xf5, 0x40, 0x7e, 0x63);
 /* 337be28b-5036-4d72-b6bf-c45fbb9f2eaa */
 DEFINE_GUID(IID_IDebugEventCallbacks, 0x337be28b, 0x5036, 0x4d72,
             0xb6, 0xbf, 0xc4, 0x5f, 0xbb, 0x9f, 0x2e, 0xaa);
@@ -94,9 +82,6 @@ DEFINE_GUID(IID_IDebugSystemObjects, 0x6b86fe2c, 0x2c4f, 0x4f0c,
 /* 0ae9f5ff-1852-4679-b055-494bee6407ee */
 DEFINE_GUID(IID_IDebugSystemObjects2, 0x0ae9f5ff, 0x1852, 0x4679,
             0xb0, 0x55, 0x49, 0x4b, 0xee, 0x64, 0x07, 0xee);
-/* e9676e2f-e286-4ea3-b0f9-dfe5d9fc330e */
-DEFINE_GUID(IID_IDebugSystemObjects3, 0xe9676e2f, 0xe286, 0x4ea3,
-            0xb0, 0xf9, 0xdf, 0xe5, 0xd9, 0xfc, 0x33, 0x0e);
 
 typedef interface DECLSPEC_UUID("f2df5f53-071f-47bd-9de6-5734c3fed689")
     IDebugAdvanced* PDEBUG_ADVANCED;
@@ -106,22 +91,14 @@ typedef interface DECLSPEC_UUID("27fe5639-8407-4f47-8364-ee118fb08ac8")
     IDebugClient* PDEBUG_CLIENT;
 typedef interface DECLSPEC_UUID("edbed635-372e-4dab-bbfe-ed0d2f63be81")
     IDebugClient2* PDEBUG_CLIENT2;
-typedef interface DECLSPEC_UUID("dd492d7f-71b8-4ad6-a8dc-1c887479ff91")
-    IDebugClient3* PDEBUG_CLIENT3;
-typedef interface DECLSPEC_UUID("ca83c3de-5089-4cf8-93c8-d892387f2a5e")
-    IDebugClient4* PDEBUG_CLIENT4;
 typedef interface DECLSPEC_UUID("5182e668-105e-416e-ad92-24ef800424ba")
     IDebugControl* PDEBUG_CONTROL;
 typedef interface DECLSPEC_UUID("d4366723-44df-4bed-8c7e-4c05424f4588")
     IDebugControl2* PDEBUG_CONTROL2;
-typedef interface DECLSPEC_UUID("7df74a86-b03f-407f-90ab-a20dadcead08")
-    IDebugControl3* PDEBUG_CONTROL3;
 typedef interface DECLSPEC_UUID("88f7dfab-3ea7-4c3a-aefb-c4e8106173aa")
     IDebugDataSpaces* PDEBUG_DATA_SPACES;
 typedef interface DECLSPEC_UUID("7a5e852f-96e9-468f-ac1b-0b3addc4a049")
     IDebugDataSpaces2* PDEBUG_DATA_SPACES2;
-typedef interface DECLSPEC_UUID("23f79d6c-8aaf-4f7c-a607-9995f5407e63")
-    IDebugDataSpaces3* PDEBUG_DATA_SPACES3;
 typedef interface DECLSPEC_UUID("337be28b-5036-4d72-b6bf-c45fbb9f2eaa")
     IDebugEventCallbacks* PDEBUG_EVENT_CALLBACKS;
 typedef interface DECLSPEC_UUID("9f50e42c-f136-499e-9a97-73036c94ed2d")
@@ -140,8 +117,6 @@ typedef interface DECLSPEC_UUID("6b86fe2c-2c4f-4f0c-9da2-174311acc327")
     IDebugSystemObjects* PDEBUG_SYSTEM_OBJECTS;
 typedef interface DECLSPEC_UUID("0ae9f5ff-1852-4679-b055-494bee6407ee")
     IDebugSystemObjects2* PDEBUG_SYSTEM_OBJECTS2;
-typedef interface DECLSPEC_UUID("e9676e2f-e286-4ea3-b0f9-dfe5d9fc330e")
-    IDebugSystemObjects3* PDEBUG_SYSTEM_OBJECTS3;
 
 //----------------------------------------------------------------------------
 //
@@ -151,7 +126,7 @@ typedef interface DECLSPEC_UUID("e9676e2f-e286-4ea3-b0f9-dfe5d9fc330e")
 
 // Extends a 32-bit address into a 64-bit address.
 #define DEBUG_EXTEND64(Addr) ((ULONG64)(LONG64)(LONG)(Addr))
-
+    
 //----------------------------------------------------------------------------
 //
 // Client creation functions.
@@ -174,7 +149,7 @@ DebugCreate(
     IN REFIID InterfaceId,
     OUT PVOID* Interface
     );
-
+    
 //----------------------------------------------------------------------------
 //
 // IDebugAdvanced.
@@ -220,7 +195,7 @@ DECLARE_INTERFACE_(IDebugAdvanced, IUnknown)
         IN ULONG ContextSize
         ) PURE;
 };
-
+    
 //----------------------------------------------------------------------------
 //
 // IDebugBreakpoint.
@@ -250,9 +225,6 @@ DECLARE_INTERFACE_(IDebugAdvanced, IUnknown)
 // to the adding client.  The breakpoint can not
 // be enumerated and accessed by other clients.
 #define DEBUG_BREAKPOINT_ADDER_ONLY 0x00000008
-// One-shot breakpoints automatically clear themselves
-// the first time they are hit.
-#define DEBUG_BREAKPOINT_ONE_SHOT   0x00000010
 
 // Data breakpoint access types.
 // Different architectures support different
@@ -298,7 +270,7 @@ DECLARE_INTERFACE_(IDebugBreakpoint, IUnknown)
         ) PURE;
 
     // IDebugBreakpoint.
-
+    
     // Retrieves debugger engine unique ID
     // for the breakpoint.  This ID is
     // fixed as long as the breakpoint exists
@@ -319,7 +291,7 @@ DECLARE_INTERFACE_(IDebugBreakpoint, IUnknown)
         THIS_
         OUT PDEBUG_CLIENT* Adder
         ) PURE;
-
+        
     STDMETHOD(GetFlags)(
         THIS_
         OUT PULONG Flags
@@ -341,7 +313,7 @@ DECLARE_INTERFACE_(IDebugBreakpoint, IUnknown)
         THIS_
         IN ULONG Flags
         ) PURE;
-
+        
     // Controls the offset of the breakpoint.  The
     // interpretation of the offset value depends on
     // the type of breakpoint and its settings.  It
@@ -371,7 +343,7 @@ DECLARE_INTERFACE_(IDebugBreakpoint, IUnknown)
         IN ULONG Size,
         IN ULONG AccessType
         ) PURE;
-
+                    
     // Pass count defaults to one.
     STDMETHOD(GetPassCount)(
         THIS_
@@ -480,22 +452,16 @@ DECLARE_INTERFACE_(IDebugBreakpoint, IUnknown)
 #define DEBUG_GET_PROC_ONLY_MATCH 0x00000002
 
 // GetRunningProcessDescription flags.
-#define DEBUG_PROC_DESC_DEFAULT         0x00000000
+#define DEBUG_PROC_DESC_DEFAULT  0x00000000
 // Return only filenames, not full paths.
-#define DEBUG_PROC_DESC_NO_PATHS        0x00000001
-// Dont look up service names.
-#define DEBUG_PROC_DESC_NO_SERVICES     0x00000002
-// Dont look up MTS package names.
-#define DEBUG_PROC_DESC_NO_MTS_PACKAGES 0x00000004
-// Dont retrieve the command line.
-#define DEBUG_PROC_DESC_NO_COMMAND_LINE 0x00000008
+#define DEBUG_PROC_DESC_NO_PATHS 0x00000001
 
 //
 // Attach flags.
 //
 
 // Call DebugActiveProcess when attaching.
-#define DEBUG_ATTACH_DEFAULT                   0x00000000
+#define DEBUG_ATTACH_DEFAULT     0x00000000
 // When attaching to a process just examine
 // the process state and suspend the threads.
 // DebugActiveProcess is not called so the process
@@ -504,7 +470,7 @@ DECLARE_INTERFACE_(IDebugBreakpoint, IUnknown)
 // interfere with the operation of DebugActiveProcess
 // or in situations where it is not desirable to
 // actually set up as a debugger.
-#define DEBUG_ATTACH_NONINVASIVE               0x00000001
+#define DEBUG_ATTACH_NONINVASIVE 0x00000001
 // Attempt to attach to a process that was abandoned
 // when being debugged.  This is only supported in
 // some system versions.
@@ -512,38 +478,12 @@ DECLARE_INTERFACE_(IDebugBreakpoint, IUnknown)
 // attach to the same process, which can result
 // in numerous problems unless very carefully
 // managed.
-#define DEBUG_ATTACH_EXISTING                  0x00000002
-// When attaching non-invasively, do not suspend
-// threads.  It is the callers responsibility
-// to either suspend the threads itself or be
-// aware that the attach state may not reflect
-// the current state of the process if threads
-// are still running.
-#define DEBUG_ATTACH_NONINVASIVE_NO_SUSPEND    0x00000004
-// When doing an invasive attach do not inject
-// a break-in thread to generate the initial break-in
-// event.  This can be useful to save resources when
-// an initial break is not necessary or when injecting
-// a thread might affect the debuggee's state.  This
-// option is only supported on Windows XP and above.
-#define DEBUG_ATTACH_INVASIVE_NO_INITIAL_BREAK 0x00000008
-// When doing an invasive attach resume all threads at the
-// time of attach.  This makes it possible to attach
-// to a process created suspended and cause it to start running.
-#define DEBUG_ATTACH_INVASIVE_RESUME_PROCESS   0x00000010
+#define DEBUG_ATTACH_EXISTING    0x00000002
 
-//
 // Process creation flags.
-//
-
-// On Windows XP this flag prevents the debug
+// On Windows Whistler this flag prevents the debug
 // heap from being used in the new process.
 #define DEBUG_CREATE_PROCESS_NO_DEBUG_HEAP CREATE_UNICODE_ENVIRONMENT
-// Indicates that the native NT RTL process creation
-// routines should be used instead of Win32.  This
-// is only meaningful for special processes that run
-// as NT native processes.
-#define DEBUG_CREATE_PROCESS_THROUGH_RTL   STACK_SIZE_PARAM_IS_A_RESERVATION
 
 //
 // Process options.
@@ -596,10 +536,6 @@ DECLARE_INTERFACE_(IDebugBreakpoint, IUnknown)
 // that the server can process the request.  It is best
 // to avoid making such calls.
 #define DEBUG_END_REENTRANT        0x00000003
-// Notify a server that a remote client is disconnecting.
-// This isnt required but if it isnt called then
-// no disconnect messages will be generated by the server.
-#define DEBUG_END_DISCONNECT       0x00000004
 
 // Output mask bits.
 // Normal output.
@@ -620,8 +556,6 @@ DECLARE_INTERFACE_(IDebugBreakpoint, IUnknown)
 #define DEBUG_OUTPUT_DEBUGGEE          0x00000080
 // Debuggee-generated prompt, such as from DbgPrompt.
 #define DEBUG_OUTPUT_DEBUGGEE_PROMPT   0x00000100
-// Symbol messages, such as for !sym noisy.
-#define DEBUG_OUTPUT_SYMBOLS           0x00000200
 
 // Internal debugger output, used mainly
 // for debugging the debugger.  Output
@@ -656,7 +590,7 @@ DECLARE_INTERFACE_(IDebugClient, IUnknown)
         ) PURE;
 
     // IDebugClient.
-
+    
     // The following set of methods start
     // the different kinds of debuggees.
 
@@ -788,7 +722,7 @@ DECLARE_INTERFACE_(IDebugClient, IUnknown)
         THIS_
         IN ULONG Options
         ) PURE;
-
+    
     // Opens any kind of user- or kernel-mode dump file
     // and begins a debug session with the information
     // contained within it.
@@ -859,7 +793,7 @@ DECLARE_INTERFACE_(IDebugClient, IUnknown)
         THIS_
         OUT PULONG Code
         ) PURE;
-
+        
     // Client event callbacks are called on the thread
     // of the client.  In order to give thread
     // execution to the engine for callbacks all
@@ -899,7 +833,7 @@ DECLARE_INTERFACE_(IDebugClient, IUnknown)
         THIS_
         OUT PDEBUG_CLIENT* Client
         ) PURE;
-
+    
     STDMETHOD(GetInputCallbacks)(
         THIS_
         OUT PDEBUG_INPUT_CALLBACKS* Callbacks
@@ -908,7 +842,7 @@ DECLARE_INTERFACE_(IDebugClient, IUnknown)
         THIS_
         IN PDEBUG_INPUT_CALLBACKS Callbacks
         ) PURE;
-
+    
     // Output callback interfaces are described separately.
     STDMETHOD(GetOutputCallbacks)(
         THIS_
@@ -1027,42 +961,17 @@ DECLARE_INTERFACE_(IDebugClient, IUnknown)
 };
 
 // Per-dump-format control flags.
-#define DEBUG_FORMAT_DEFAULT             0x00000000
-// Write dump to a temporary file, then package it
-// into a CAB file and delete the temporary file.
-#define DEBUG_FORMAT_WRITE_CAB           0x20000000
-// When creating a CAB add secondary files such as
-// current symbols and mapped images.
-#define DEBUG_FORMAT_CAB_SECONDARY_FILES 0x40000000
-// Don't overwrite existing files.
-#define DEBUG_FORMAT_NO_OVERWRITE        0x80000000
+#define DEBUG_FORMAT_DEFAULT 0x00000000
 
-#define DEBUG_FORMAT_USER_SMALL_FULL_MEMORY               0x00000001
-#define DEBUG_FORMAT_USER_SMALL_HANDLE_DATA               0x00000002
-#define DEBUG_FORMAT_USER_SMALL_UNLOADED_MODULES          0x00000004
-#define DEBUG_FORMAT_USER_SMALL_INDIRECT_MEMORY           0x00000008
-#define DEBUG_FORMAT_USER_SMALL_DATA_SEGMENTS             0x00000010
-#define DEBUG_FORMAT_USER_SMALL_FILTER_MEMORY             0x00000020
-#define DEBUG_FORMAT_USER_SMALL_FILTER_PATHS              0x00000040
-#define DEBUG_FORMAT_USER_SMALL_PROCESS_THREAD_DATA       0x00000080
-#define DEBUG_FORMAT_USER_SMALL_PRIVATE_READ_WRITE_MEMORY 0x00000100
+#define DEBUG_FORMAT_USER_SMALL_FULL_MEMORY 0x00000001
+#define DEBUG_FORMAT_USER_SMALL_HANDLE_DATA 0x00000002
 
 //
 // Dump information file types.
 //
 
-// Base dump file, returned when querying for dump files.
-#define DEBUG_DUMP_FILE_BASE           0xffffffff
 // Single file containing packed page file information.
 #define DEBUG_DUMP_FILE_PAGE_FILE_DUMP 0x00000000
-
-//
-// GetDumpFile
-//
-
-// Special index that returns the name of the last .dmp file that failed
-// to laod (whether directly or from inside a .cab file
-#define DEBUG_DUMP_FILE_LOAD_FAILED_INDEX 0xffffffff
 
 #undef INTERFACE
 #define INTERFACE IDebugClient2
@@ -1082,7 +991,7 @@ DECLARE_INTERFACE_(IDebugClient2, IUnknown)
         ) PURE;
 
     // IDebugClient.
-
+    
     // The following set of methods start
     // the different kinds of debuggees.
 
@@ -1214,7 +1123,7 @@ DECLARE_INTERFACE_(IDebugClient2, IUnknown)
         THIS_
         IN ULONG Options
         ) PURE;
-
+    
     // Opens any kind of user- or kernel-mode dump file
     // and begins a debug session with the information
     // contained within it.
@@ -1285,7 +1194,7 @@ DECLARE_INTERFACE_(IDebugClient2, IUnknown)
         THIS_
         OUT PULONG Code
         ) PURE;
-
+        
     // Client event callbacks are called on the thread
     // of the client.  In order to give thread
     // execution to the engine for callbacks all
@@ -1325,7 +1234,7 @@ DECLARE_INTERFACE_(IDebugClient2, IUnknown)
         THIS_
         OUT PDEBUG_CLIENT* Client
         ) PURE;
-
+    
     STDMETHOD(GetInputCallbacks)(
         THIS_
         OUT PDEBUG_INPUT_CALLBACKS* Callbacks
@@ -1334,7 +1243,7 @@ DECLARE_INTERFACE_(IDebugClient2, IUnknown)
         THIS_
         IN PDEBUG_INPUT_CALLBACKS Callbacks
         ) PURE;
-
+    
     // Output callback interfaces are described separately.
     STDMETHOD(GetOutputCallbacks)(
         THIS_
@@ -1518,1044 +1427,6 @@ DECLARE_INTERFACE_(IDebugClient2, IUnknown)
     // This is only supported on some system versions.
     STDMETHOD(AbandonCurrentProcess)(
         THIS
-        ) PURE;
-};
-
-#undef INTERFACE
-#define INTERFACE IDebugClient3
-DECLARE_INTERFACE_(IDebugClient3, IUnknown)
-{
-    // IUnknown.
-    STDMETHOD(QueryInterface)(
-        THIS_
-        IN REFIID InterfaceId,
-        OUT PVOID* Interface
-        ) PURE;
-    STDMETHOD_(ULONG, AddRef)(
-        THIS
-        ) PURE;
-    STDMETHOD_(ULONG, Release)(
-        THIS
-        ) PURE;
-
-    // IDebugClient.
-
-    // The following set of methods start
-    // the different kinds of debuggees.
-
-    // Begins a debug session using the kernel
-    // debugging protocol.  This method selects
-    // the protocol as the debuggee communication
-    // mechanism but does not initiate the communication
-    // itself.
-    STDMETHOD(AttachKernel)(
-        THIS_
-        IN ULONG Flags,
-        IN OPTIONAL PCSTR ConnectOptions
-        ) PURE;
-    STDMETHOD(GetKernelConnectionOptions)(
-        THIS_
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG OptionsSize
-        ) PURE;
-    // Updates the connection options for a live
-    // kernel connection.  This can only be used
-    // to modify parameters for the connection, not
-    // to switch to a completely different kind of
-    // connection.
-    // This method is reentrant.
-    STDMETHOD(SetKernelConnectionOptions)(
-        THIS_
-        IN PCSTR Options
-        ) PURE;
-
-    // Starts a process server for remote
-    // user-mode process control.
-    // The local process server is server zero.
-    STDMETHOD(StartProcessServer)(
-        THIS_
-        IN ULONG Flags,
-        IN PCSTR Options,
-        IN PVOID Reserved
-        ) PURE;
-    STDMETHOD(ConnectProcessServer)(
-        THIS_
-        IN PCSTR RemoteOptions,
-        OUT PULONG64 Server
-        ) PURE;
-    STDMETHOD(DisconnectProcessServer)(
-        THIS_
-        IN ULONG64 Server
-        ) PURE;
-
-    // Enumerates and describes processes
-    // accessible through the given process server.
-    STDMETHOD(GetRunningProcessSystemIds)(
-        THIS_
-        IN ULONG64 Server,
-        OUT OPTIONAL /* size_is(Count) */ PULONG Ids,
-        IN ULONG Count,
-        OUT OPTIONAL PULONG ActualCount
-        ) PURE;
-    STDMETHOD(GetRunningProcessSystemIdByExecutableName)(
-        THIS_
-        IN ULONG64 Server,
-        IN PCSTR ExeName,
-        IN ULONG Flags,
-        OUT PULONG Id
-        ) PURE;
-    STDMETHOD(GetRunningProcessDescription)(
-        THIS_
-        IN ULONG64 Server,
-        IN ULONG SystemId,
-        IN ULONG Flags,
-        OUT OPTIONAL PSTR ExeName,
-        IN ULONG ExeNameSize,
-        OUT OPTIONAL PULONG ActualExeNameSize,
-        OUT OPTIONAL PSTR Description,
-        IN ULONG DescriptionSize,
-        OUT OPTIONAL PULONG ActualDescriptionSize
-        ) PURE;
-
-    // Attaches to a running user-mode process.
-    STDMETHOD(AttachProcess)(
-        THIS_
-        IN ULONG64 Server,
-        IN ULONG ProcessId,
-        IN ULONG AttachFlags
-        ) PURE;
-    // Creates a new user-mode process for debugging.
-    // CreateFlags are as given to Win32s CreateProcess.
-    // One of DEBUG_PROCESS or DEBUG_ONLY_THIS_PROCESS
-    // must be specified.
-    STDMETHOD(CreateProcess)(
-        THIS_
-        IN ULONG64 Server,
-        IN PSTR CommandLine,
-        IN ULONG CreateFlags
-        ) PURE;
-    // Creates or attaches to a user-mode process, or both.
-    // If CommandLine is NULL this method operates as
-    // AttachProcess does.  If ProcessId is zero it
-    // operates as CreateProcess does.  If CommandLine is
-    // non-NULL and ProcessId is non-zero the method first
-    // starts a process with the given information but
-    // in a suspended state.  The engine then attaches to
-    // the indicated process.  Once the attach is successful
-    // the suspended process is resumed.  This provides
-    // synchronization between the new process and the
-    // attachment.
-    STDMETHOD(CreateProcessAndAttach)(
-        THIS_
-        IN ULONG64 Server,
-        IN OPTIONAL PSTR CommandLine,
-        IN ULONG CreateFlags,
-        IN ULONG ProcessId,
-        IN ULONG AttachFlags
-        ) PURE;
-    // Gets and sets process control flags.
-    STDMETHOD(GetProcessOptions)(
-        THIS_
-        OUT PULONG Options
-        ) PURE;
-    STDMETHOD(AddProcessOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-    STDMETHOD(RemoveProcessOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-    STDMETHOD(SetProcessOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-
-    // Opens any kind of user- or kernel-mode dump file
-    // and begins a debug session with the information
-    // contained within it.
-    STDMETHOD(OpenDumpFile)(
-        THIS_
-        IN PCSTR DumpFile
-        ) PURE;
-    // Writes a dump file from the current session information.
-    // The kind of dump file written is determined by the
-    // kind of session and the type qualifier given.
-    // For example, if the current session is a kernel
-    // debug session (DEBUG_CLASS_KERNEL) and the qualifier
-    // is DEBUG_DUMP_SMALL a small kernel dump will be written.
-    STDMETHOD(WriteDumpFile)(
-        THIS_
-        IN PCSTR DumpFile,
-        IN ULONG Qualifier
-        ) PURE;
-
-    // Indicates that a remote client is ready to
-    // begin participating in the current session.
-    // HistoryLimit gives a character limit on
-    // the amount of output history to be sent.
-    STDMETHOD(ConnectSession)(
-        THIS_
-        IN ULONG Flags,
-        IN ULONG HistoryLimit
-        ) PURE;
-    // Indicates that the engine should start accepting
-    // remote connections. Options specifies connection types
-    // and their parameters.  Supported strings are:
-    //    npipe:Pipe=<Pipe name>
-    //    tcp:Port=<IP port>
-    STDMETHOD(StartServer)(
-        THIS_
-        IN PCSTR Options
-        ) PURE;
-    // List the servers running on the given machine.
-    // Uses the line prefix.
-    STDMETHOD(OutputServers)(
-        THIS_
-        IN ULONG OutputControl,
-        IN PCSTR Machine,
-        IN ULONG Flags
-        ) PURE;
-
-    // Attempts to terminate all processes in the debuggers list.
-    STDMETHOD(TerminateProcesses)(
-        THIS
-        ) PURE;
-    // Attempts to detach from all processes in the debuggers list.
-    // This requires OS support for debugger detach.
-    STDMETHOD(DetachProcesses)(
-        THIS
-        ) PURE;
-    // Stops the current debug session.  If a process
-    // was created or attached an active EndSession can
-    // terminate or detach from it.
-    // If a kernel connection was opened it will be closed but the
-    // target machine is otherwise unaffected.
-    STDMETHOD(EndSession)(
-        THIS_
-        IN ULONG Flags
-        ) PURE;
-    // If a process was started and ran to completion
-    // this method can be used to retrieve its exit code.
-    STDMETHOD(GetExitCode)(
-        THIS_
-        OUT PULONG Code
-        ) PURE;
-
-    // Client event callbacks are called on the thread
-    // of the client.  In order to give thread
-    // execution to the engine for callbacks all
-    // client threads should call DispatchCallbacks
-    // when they are idle.  Callbacks are only
-    // received when a thread calls DispatchCallbacks
-    // or WaitForEvent.  WaitForEvent can only be
-    // called by the thread that started the debug
-    // session so all other client threads should
-    // call DispatchCallbacks when possible.
-    // DispatchCallbacks returns when ExitDispatch is used
-    // to interrupt dispatch or when the timeout expires.
-    // DispatchCallbacks dispatches callbacks for all
-    // clients associated with the thread calling
-    // DispatchCallbacks.
-    // DispatchCallbacks returns S_FALSE when the
-    // timeout expires.
-    STDMETHOD(DispatchCallbacks)(
-        THIS_
-        IN ULONG Timeout
-        ) PURE;
-    // ExitDispatch can be used to interrupt callback
-    // dispatch when a client thread is needed by the
-    // client.  This method is reentrant and can
-    // be called from any thread.
-    STDMETHOD(ExitDispatch)(
-        THIS_
-        IN PDEBUG_CLIENT Client
-        ) PURE;
-
-    // Clients are specific to the thread that
-    // created them.  Calls from other threads
-    // fail immediately.  The CreateClient method
-    // is a notable exception; it allows creation
-    // of a new client for a new thread.
-    STDMETHOD(CreateClient)(
-        THIS_
-        OUT PDEBUG_CLIENT* Client
-        ) PURE;
-
-    STDMETHOD(GetInputCallbacks)(
-        THIS_
-        OUT PDEBUG_INPUT_CALLBACKS* Callbacks
-        ) PURE;
-    STDMETHOD(SetInputCallbacks)(
-        THIS_
-        IN PDEBUG_INPUT_CALLBACKS Callbacks
-        ) PURE;
-
-    // Output callback interfaces are described separately.
-    STDMETHOD(GetOutputCallbacks)(
-        THIS_
-        OUT PDEBUG_OUTPUT_CALLBACKS* Callbacks
-        ) PURE;
-    STDMETHOD(SetOutputCallbacks)(
-        THIS_
-        IN PDEBUG_OUTPUT_CALLBACKS Callbacks
-        ) PURE;
-    // Output flags provide control over
-    // the distribution of output among clients.
-    // Output masks select which output streams
-    // should be sent to the output callbacks.
-    // Only Output calls with a mask that
-    // contains one of the output mask bits
-    // will be sent to the output callbacks.
-    // These methods are reentrant.
-    // If such access is not synchronized
-    // disruptions in output may occur.
-    STDMETHOD(GetOutputMask)(
-        THIS_
-        OUT PULONG Mask
-        ) PURE;
-    STDMETHOD(SetOutputMask)(
-        THIS_
-        IN ULONG Mask
-        ) PURE;
-    // These methods allow access to another clients
-    // output mask.  They are necessary for changing
-    // a clients output mask when it is
-    // waiting for events.  These methods are reentrant
-    // and can be called from any thread.
-    STDMETHOD(GetOtherOutputMask)(
-        THIS_
-        IN PDEBUG_CLIENT Client,
-        OUT PULONG Mask
-        ) PURE;
-    STDMETHOD(SetOtherOutputMask)(
-        THIS_
-        IN PDEBUG_CLIENT Client,
-        IN ULONG Mask
-        ) PURE;
-    // Control the width of an output line for
-    // commands which produce formatted output.
-    // This setting is just a suggestion.
-    STDMETHOD(GetOutputWidth)(
-        THIS_
-        OUT PULONG Columns
-        ) PURE;
-    STDMETHOD(SetOutputWidth)(
-        THIS_
-        IN ULONG Columns
-        ) PURE;
-    // Some of the engines output commands produce
-    // multiple lines of output.  A prefix can be
-    // set that the engine will automatically output
-    // for each line in that case, allowing a caller
-    // to control indentation or identifying marks.
-    // This is not a general setting for any output
-    // with a newline in it.  Methods which use
-    // the line prefix are marked in their documentation.
-    STDMETHOD(GetOutputLinePrefix)(
-        THIS_
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG PrefixSize
-        ) PURE;
-    STDMETHOD(SetOutputLinePrefix)(
-        THIS_
-        IN OPTIONAL PCSTR Prefix
-        ) PURE;
-
-    // Returns a string describing the machine
-    // and user this client represents.  The
-    // specific content of the string varies
-    // with operating system.  If the client is
-    // remotely connected some network information
-    // may also be present.
-    STDMETHOD(GetIdentity)(
-        THIS_
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG IdentitySize
-        ) PURE;
-    // Format is a printf-like format string
-    // with one %s where the identity string should go.
-    STDMETHOD(OutputIdentity)(
-        THIS_
-        IN ULONG OutputControl,
-        IN ULONG Flags,
-        IN PCSTR Format
-        ) PURE;
-
-    // Event callbacks allow a client to
-    // receive notification about changes
-    // during the debug session.
-    STDMETHOD(GetEventCallbacks)(
-        THIS_
-        OUT PDEBUG_EVENT_CALLBACKS* Callbacks
-        ) PURE;
-    STDMETHOD(SetEventCallbacks)(
-        THIS_
-        IN PDEBUG_EVENT_CALLBACKS Callbacks
-        ) PURE;
-
-    // The engine sometimes merges compatible callback
-    // requests to reduce callback overhead.  This is
-    // most noticeable with output as small pieces of
-    // output are collected into larger groups to
-    // reduce the overall number of output callback calls.
-    // A client can use this method to force all pending
-    // callbacks to be delivered.  This is rarely necessary.
-    STDMETHOD(FlushCallbacks)(
-        THIS
-        ) PURE;
-
-    // IDebugClient2.
-
-    // Functions similarly to WriteDumpFile with
-    // the addition of the ability to specify
-    // per-dump-format write control flags.
-    // Comment is not supported in all formats.
-    STDMETHOD(WriteDumpFile2)(
-        THIS_
-        IN PCSTR DumpFile,
-        IN ULONG Qualifier,
-        IN ULONG FormatFlags,
-        IN OPTIONAL PCSTR Comment
-        ) PURE;
-    // Registers additional files of supporting information
-    // for a dump file open.  This method must be called
-    // before OpenDumpFile is called.
-    // The files registered may be opened at the time
-    // this method is called but generally will not
-    // be used until OpenDumpFile is called.
-    STDMETHOD(AddDumpInformationFile)(
-        THIS_
-        IN PCSTR InfoFile,
-        IN ULONG Type
-        ) PURE;
-
-    // Requests that the remote process server shut down.
-    STDMETHOD(EndProcessServer)(
-        THIS_
-        IN ULONG64 Server
-        ) PURE;
-    // Waits for a started process server to
-    // exit.  Allows an application running a
-    // process server to monitor the process
-    // server so that it can tell when a remote
-    // client has asked for it to exit.
-    // Returns S_OK if the process server has
-    // shut down and S_FALSE for a timeout.
-    STDMETHOD(WaitForProcessServerEnd)(
-        THIS_
-        IN ULONG Timeout
-        ) PURE;
-
-    // Returns S_OK if the system is configured
-    // to allow kernel debugging.
-    STDMETHOD(IsKernelDebuggerEnabled)(
-        THIS
-        ) PURE;
-
-    // Attempts to terminate the current process.
-    // Exit process events for the process may be generated.
-    STDMETHOD(TerminateCurrentProcess)(
-        THIS
-        ) PURE;
-    // Attempts to detach from the current process.
-    // This requires OS support for debugger detach.
-    STDMETHOD(DetachCurrentProcess)(
-        THIS
-        ) PURE;
-    // Removes the process from the debuggers process
-    // list without making any other changes.  The process
-    // will still be marked as being debugged and will
-    // not run.  This allows a debugger to be shut down
-    // and a new debugger attached without taking the
-    // process out of the debugged state.
-    // This is only supported on some system versions.
-    STDMETHOD(AbandonCurrentProcess)(
-        THIS
-        ) PURE;
-
-    // IDebugClient3.
-
-    STDMETHOD(GetRunningProcessSystemIdByExecutableNameWide)(
-        THIS_
-        IN ULONG64 Server,
-        IN PCWSTR ExeName,
-        IN ULONG Flags,
-        OUT PULONG Id
-        ) PURE;
-    STDMETHOD(GetRunningProcessDescriptionWide)(
-        THIS_
-        IN ULONG64 Server,
-        IN ULONG SystemId,
-        IN ULONG Flags,
-        OUT OPTIONAL PWSTR ExeName,
-        IN ULONG ExeNameSize,
-        OUT OPTIONAL PULONG ActualExeNameSize,
-        OUT OPTIONAL PWSTR Description,
-        IN ULONG DescriptionSize,
-        OUT OPTIONAL PULONG ActualDescriptionSize
-        ) PURE;
-
-    STDMETHOD(CreateProcessWide)(
-        THIS_
-        IN ULONG64 Server,
-        IN PWSTR CommandLine,
-        IN ULONG CreateFlags
-        ) PURE;
-    STDMETHOD(CreateProcessAndAttachWide)(
-        THIS_
-        IN ULONG64 Server,
-        IN OPTIONAL PWSTR CommandLine,
-        IN ULONG CreateFlags,
-        IN ULONG ProcessId,
-        IN ULONG AttachFlags
-        ) PURE;
-};
-
-#undef INTERFACE
-#define INTERFACE IDebugClient4
-DECLARE_INTERFACE_(IDebugClient4, IUnknown)
-{
-    // IUnknown.
-    STDMETHOD(QueryInterface)(
-        THIS_
-        IN REFIID InterfaceId,
-        OUT PVOID* Interface
-        ) PURE;
-    STDMETHOD_(ULONG, AddRef)(
-        THIS
-        ) PURE;
-    STDMETHOD_(ULONG, Release)(
-        THIS
-        ) PURE;
-
-    // IDebugClient.
-
-    // The following set of methods start
-    // the different kinds of debuggees.
-
-    // Begins a debug session using the kernel
-    // debugging protocol.  This method selects
-    // the protocol as the debuggee communication
-    // mechanism but does not initiate the communication
-    // itself.
-    STDMETHOD(AttachKernel)(
-        THIS_
-        IN ULONG Flags,
-        IN OPTIONAL PCSTR ConnectOptions
-        ) PURE;
-    STDMETHOD(GetKernelConnectionOptions)(
-        THIS_
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG OptionsSize
-        ) PURE;
-    // Updates the connection options for a live
-    // kernel connection.  This can only be used
-    // to modify parameters for the connection, not
-    // to switch to a completely different kind of
-    // connection.
-    // This method is reentrant.
-    STDMETHOD(SetKernelConnectionOptions)(
-        THIS_
-        IN PCSTR Options
-        ) PURE;
-
-    // Starts a process server for remote
-    // user-mode process control.
-    // The local process server is server zero.
-    STDMETHOD(StartProcessServer)(
-        THIS_
-        IN ULONG Flags,
-        IN PCSTR Options,
-        IN PVOID Reserved
-        ) PURE;
-    STDMETHOD(ConnectProcessServer)(
-        THIS_
-        IN PCSTR RemoteOptions,
-        OUT PULONG64 Server
-        ) PURE;
-    STDMETHOD(DisconnectProcessServer)(
-        THIS_
-        IN ULONG64 Server
-        ) PURE;
-
-    // Enumerates and describes processes
-    // accessible through the given process server.
-    STDMETHOD(GetRunningProcessSystemIds)(
-        THIS_
-        IN ULONG64 Server,
-        OUT OPTIONAL /* size_is(Count) */ PULONG Ids,
-        IN ULONG Count,
-        OUT OPTIONAL PULONG ActualCount
-        ) PURE;
-    STDMETHOD(GetRunningProcessSystemIdByExecutableName)(
-        THIS_
-        IN ULONG64 Server,
-        IN PCSTR ExeName,
-        IN ULONG Flags,
-        OUT PULONG Id
-        ) PURE;
-    STDMETHOD(GetRunningProcessDescription)(
-        THIS_
-        IN ULONG64 Server,
-        IN ULONG SystemId,
-        IN ULONG Flags,
-        OUT OPTIONAL PSTR ExeName,
-        IN ULONG ExeNameSize,
-        OUT OPTIONAL PULONG ActualExeNameSize,
-        OUT OPTIONAL PSTR Description,
-        IN ULONG DescriptionSize,
-        OUT OPTIONAL PULONG ActualDescriptionSize
-        ) PURE;
-
-    // Attaches to a running user-mode process.
-    STDMETHOD(AttachProcess)(
-        THIS_
-        IN ULONG64 Server,
-        IN ULONG ProcessId,
-        IN ULONG AttachFlags
-        ) PURE;
-    // Creates a new user-mode process for debugging.
-    // CreateFlags are as given to Win32s CreateProcess.
-    // One of DEBUG_PROCESS or DEBUG_ONLY_THIS_PROCESS
-    // must be specified.
-    STDMETHOD(CreateProcess)(
-        THIS_
-        IN ULONG64 Server,
-        IN PSTR CommandLine,
-        IN ULONG CreateFlags
-        ) PURE;
-    // Creates or attaches to a user-mode process, or both.
-    // If CommandLine is NULL this method operates as
-    // AttachProcess does.  If ProcessId is zero it
-    // operates as CreateProcess does.  If CommandLine is
-    // non-NULL and ProcessId is non-zero the method first
-    // starts a process with the given information but
-    // in a suspended state.  The engine then attaches to
-    // the indicated process.  Once the attach is successful
-    // the suspended process is resumed.  This provides
-    // synchronization between the new process and the
-    // attachment.
-    STDMETHOD(CreateProcessAndAttach)(
-        THIS_
-        IN ULONG64 Server,
-        IN OPTIONAL PSTR CommandLine,
-        IN ULONG CreateFlags,
-        IN ULONG ProcessId,
-        IN ULONG AttachFlags
-        ) PURE;
-    // Gets and sets process control flags.
-    STDMETHOD(GetProcessOptions)(
-        THIS_
-        OUT PULONG Options
-        ) PURE;
-    STDMETHOD(AddProcessOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-    STDMETHOD(RemoveProcessOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-    STDMETHOD(SetProcessOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-
-    // Opens any kind of user- or kernel-mode dump file
-    // and begins a debug session with the information
-    // contained within it.
-    STDMETHOD(OpenDumpFile)(
-        THIS_
-        IN PCSTR DumpFile
-        ) PURE;
-    // Writes a dump file from the current session information.
-    // The kind of dump file written is determined by the
-    // kind of session and the type qualifier given.
-    // For example, if the current session is a kernel
-    // debug session (DEBUG_CLASS_KERNEL) and the qualifier
-    // is DEBUG_DUMP_SMALL a small kernel dump will be written.
-    STDMETHOD(WriteDumpFile)(
-        THIS_
-        IN PCSTR DumpFile,
-        IN ULONG Qualifier
-        ) PURE;
-
-    // Indicates that a remote client is ready to
-    // begin participating in the current session.
-    // HistoryLimit gives a character limit on
-    // the amount of output history to be sent.
-    STDMETHOD(ConnectSession)(
-        THIS_
-        IN ULONG Flags,
-        IN ULONG HistoryLimit
-        ) PURE;
-    // Indicates that the engine should start accepting
-    // remote connections. Options specifies connection types
-    // and their parameters.  Supported strings are:
-    //    npipe:Pipe=<Pipe name>
-    //    tcp:Port=<IP port>
-    STDMETHOD(StartServer)(
-        THIS_
-        IN PCSTR Options
-        ) PURE;
-    // List the servers running on the given machine.
-    // Uses the line prefix.
-    STDMETHOD(OutputServers)(
-        THIS_
-        IN ULONG OutputControl,
-        IN PCSTR Machine,
-        IN ULONG Flags
-        ) PURE;
-
-    // Attempts to terminate all processes in the debuggers list.
-    STDMETHOD(TerminateProcesses)(
-        THIS
-        ) PURE;
-    // Attempts to detach from all processes in the debuggers list.
-    // This requires OS support for debugger detach.
-    STDMETHOD(DetachProcesses)(
-        THIS
-        ) PURE;
-    // Stops the current debug session.  If a process
-    // was created or attached an active EndSession can
-    // terminate or detach from it.
-    // If a kernel connection was opened it will be closed but the
-    // target machine is otherwise unaffected.
-    STDMETHOD(EndSession)(
-        THIS_
-        IN ULONG Flags
-        ) PURE;
-    // If a process was started and ran to completion
-    // this method can be used to retrieve its exit code.
-    STDMETHOD(GetExitCode)(
-        THIS_
-        OUT PULONG Code
-        ) PURE;
-
-    // Client event callbacks are called on the thread
-    // of the client.  In order to give thread
-    // execution to the engine for callbacks all
-    // client threads should call DispatchCallbacks
-    // when they are idle.  Callbacks are only
-    // received when a thread calls DispatchCallbacks
-    // or WaitForEvent.  WaitForEvent can only be
-    // called by the thread that started the debug
-    // session so all other client threads should
-    // call DispatchCallbacks when possible.
-    // DispatchCallbacks returns when ExitDispatch is used
-    // to interrupt dispatch or when the timeout expires.
-    // DispatchCallbacks dispatches callbacks for all
-    // clients associated with the thread calling
-    // DispatchCallbacks.
-    // DispatchCallbacks returns S_FALSE when the
-    // timeout expires.
-    STDMETHOD(DispatchCallbacks)(
-        THIS_
-        IN ULONG Timeout
-        ) PURE;
-    // ExitDispatch can be used to interrupt callback
-    // dispatch when a client thread is needed by the
-    // client.  This method is reentrant and can
-    // be called from any thread.
-    STDMETHOD(ExitDispatch)(
-        THIS_
-        IN PDEBUG_CLIENT Client
-        ) PURE;
-
-    // Clients are specific to the thread that
-    // created them.  Calls from other threads
-    // fail immediately.  The CreateClient method
-    // is a notable exception; it allows creation
-    // of a new client for a new thread.
-    STDMETHOD(CreateClient)(
-        THIS_
-        OUT PDEBUG_CLIENT* Client
-        ) PURE;
-
-    STDMETHOD(GetInputCallbacks)(
-        THIS_
-        OUT PDEBUG_INPUT_CALLBACKS* Callbacks
-        ) PURE;
-    STDMETHOD(SetInputCallbacks)(
-        THIS_
-        IN PDEBUG_INPUT_CALLBACKS Callbacks
-        ) PURE;
-
-    // Output callback interfaces are described separately.
-    STDMETHOD(GetOutputCallbacks)(
-        THIS_
-        OUT PDEBUG_OUTPUT_CALLBACKS* Callbacks
-        ) PURE;
-    STDMETHOD(SetOutputCallbacks)(
-        THIS_
-        IN PDEBUG_OUTPUT_CALLBACKS Callbacks
-        ) PURE;
-    // Output flags provide control over
-    // the distribution of output among clients.
-    // Output masks select which output streams
-    // should be sent to the output callbacks.
-    // Only Output calls with a mask that
-    // contains one of the output mask bits
-    // will be sent to the output callbacks.
-    // These methods are reentrant.
-    // If such access is not synchronized
-    // disruptions in output may occur.
-    STDMETHOD(GetOutputMask)(
-        THIS_
-        OUT PULONG Mask
-        ) PURE;
-    STDMETHOD(SetOutputMask)(
-        THIS_
-        IN ULONG Mask
-        ) PURE;
-    // These methods allow access to another clients
-    // output mask.  They are necessary for changing
-    // a clients output mask when it is
-    // waiting for events.  These methods are reentrant
-    // and can be called from any thread.
-    STDMETHOD(GetOtherOutputMask)(
-        THIS_
-        IN PDEBUG_CLIENT Client,
-        OUT PULONG Mask
-        ) PURE;
-    STDMETHOD(SetOtherOutputMask)(
-        THIS_
-        IN PDEBUG_CLIENT Client,
-        IN ULONG Mask
-        ) PURE;
-    // Control the width of an output line for
-    // commands which produce formatted output.
-    // This setting is just a suggestion.
-    STDMETHOD(GetOutputWidth)(
-        THIS_
-        OUT PULONG Columns
-        ) PURE;
-    STDMETHOD(SetOutputWidth)(
-        THIS_
-        IN ULONG Columns
-        ) PURE;
-    // Some of the engines output commands produce
-    // multiple lines of output.  A prefix can be
-    // set that the engine will automatically output
-    // for each line in that case, allowing a caller
-    // to control indentation or identifying marks.
-    // This is not a general setting for any output
-    // with a newline in it.  Methods which use
-    // the line prefix are marked in their documentation.
-    STDMETHOD(GetOutputLinePrefix)(
-        THIS_
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG PrefixSize
-        ) PURE;
-    STDMETHOD(SetOutputLinePrefix)(
-        THIS_
-        IN OPTIONAL PCSTR Prefix
-        ) PURE;
-
-    // Returns a string describing the machine
-    // and user this client represents.  The
-    // specific content of the string varies
-    // with operating system.  If the client is
-    // remotely connected some network information
-    // may also be present.
-    STDMETHOD(GetIdentity)(
-        THIS_
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG IdentitySize
-        ) PURE;
-    // Format is a printf-like format string
-    // with one %s where the identity string should go.
-    STDMETHOD(OutputIdentity)(
-        THIS_
-        IN ULONG OutputControl,
-        IN ULONG Flags,
-        IN PCSTR Format
-        ) PURE;
-
-    // Event callbacks allow a client to
-    // receive notification about changes
-    // during the debug session.
-    STDMETHOD(GetEventCallbacks)(
-        THIS_
-        OUT PDEBUG_EVENT_CALLBACKS* Callbacks
-        ) PURE;
-    STDMETHOD(SetEventCallbacks)(
-        THIS_
-        IN PDEBUG_EVENT_CALLBACKS Callbacks
-        ) PURE;
-
-    // The engine sometimes merges compatible callback
-    // requests to reduce callback overhead.  This is
-    // most noticeable with output as small pieces of
-    // output are collected into larger groups to
-    // reduce the overall number of output callback calls.
-    // A client can use this method to force all pending
-    // callbacks to be delivered.  This is rarely necessary.
-    STDMETHOD(FlushCallbacks)(
-        THIS
-        ) PURE;
-
-    // IDebugClient2.
-
-    // Functions similarly to WriteDumpFile with
-    // the addition of the ability to specify
-    // per-dump-format write control flags.
-    // Comment is not supported in all formats.
-    STDMETHOD(WriteDumpFile2)(
-        THIS_
-        IN PCSTR DumpFile,
-        IN ULONG Qualifier,
-        IN ULONG FormatFlags,
-        IN OPTIONAL PCSTR Comment
-        ) PURE;
-    // Registers additional files of supporting information
-    // for a dump file open.  This method must be called
-    // before OpenDumpFile is called.
-    // The files registered may be opened at the time
-    // this method is called but generally will not
-    // be used until OpenDumpFile is called.
-    STDMETHOD(AddDumpInformationFile)(
-        THIS_
-        IN PCSTR InfoFile,
-        IN ULONG Type
-        ) PURE;
-
-    // Requests that the remote process server shut down.
-    STDMETHOD(EndProcessServer)(
-        THIS_
-        IN ULONG64 Server
-        ) PURE;
-    // Waits for a started process server to
-    // exit.  Allows an application running a
-    // process server to monitor the process
-    // server so that it can tell when a remote
-    // client has asked for it to exit.
-    // Returns S_OK if the process server has
-    // shut down and S_FALSE for a timeout.
-    STDMETHOD(WaitForProcessServerEnd)(
-        THIS_
-        IN ULONG Timeout
-        ) PURE;
-
-    // Returns S_OK if the system is configured
-    // to allow kernel debugging.
-    STDMETHOD(IsKernelDebuggerEnabled)(
-        THIS
-        ) PURE;
-
-    // Attempts to terminate the current process.
-    // Exit process events for the process may be generated.
-    STDMETHOD(TerminateCurrentProcess)(
-        THIS
-        ) PURE;
-    // Attempts to detach from the current process.
-    // This requires OS support for debugger detach.
-    STDMETHOD(DetachCurrentProcess)(
-        THIS
-        ) PURE;
-    // Removes the process from the debuggers process
-    // list without making any other changes.  The process
-    // will still be marked as being debugged and will
-    // not run.  This allows a debugger to be shut down
-    // and a new debugger attached without taking the
-    // process out of the debugged state.
-    // This is only supported on some system versions.
-    STDMETHOD(AbandonCurrentProcess)(
-        THIS
-        ) PURE;
-
-    // IDebugClient3.
-
-    STDMETHOD(GetRunningProcessSystemIdByExecutableNameWide)(
-        THIS_
-        IN ULONG64 Server,
-        IN PCWSTR ExeName,
-        IN ULONG Flags,
-        OUT PULONG Id
-        ) PURE;
-    STDMETHOD(GetRunningProcessDescriptionWide)(
-        THIS_
-        IN ULONG64 Server,
-        IN ULONG SystemId,
-        IN ULONG Flags,
-        OUT OPTIONAL PWSTR ExeName,
-        IN ULONG ExeNameSize,
-        OUT OPTIONAL PULONG ActualExeNameSize,
-        OUT OPTIONAL PWSTR Description,
-        IN ULONG DescriptionSize,
-        OUT OPTIONAL PULONG ActualDescriptionSize
-        ) PURE;
-
-    STDMETHOD(CreateProcessWide)(
-        THIS_
-        IN ULONG64 Server,
-        IN PWSTR CommandLine,
-        IN ULONG CreateFlags
-        ) PURE;
-    STDMETHOD(CreateProcessAndAttachWide)(
-        THIS_
-        IN ULONG64 Server,
-        IN OPTIONAL PWSTR CommandLine,
-        IN ULONG CreateFlags,
-        IN ULONG ProcessId,
-        IN ULONG AttachFlags
-        ) PURE;
-
-    // IDebugClient4.
-
-    // In the following methods both a filename and a file
-    // handle can be passed in.  If a file handle is given
-    // the filename may be omitted, although providing it
-    // allows the debugger to properly report the name when
-    // queried.
-    // File handles cannot be used in remote calls.
-    STDMETHOD(OpenDumpFileWide)(
-        THIS_
-        IN OPTIONAL PCWSTR FileName,
-        IN ULONG64 FileHandle
-        ) PURE;
-    STDMETHOD(WriteDumpFileWide)(
-        THIS_
-        IN OPTIONAL PCWSTR FileName,
-        IN ULONG64 FileHandle,
-        IN ULONG Qualifier,
-        IN ULONG FormatFlags,
-        IN OPTIONAL PCWSTR Comment
-        ) PURE;
-    STDMETHOD(AddDumpInformationFileWide)(
-        THIS_
-        IN OPTIONAL PCWSTR FileName,
-        IN ULONG64 FileHandle,
-        IN ULONG Type
-        ) PURE;
-    STDMETHOD(GetNumberDumpFiles)(
-        THIS_
-        OUT PULONG Number
-        ) PURE;
-    STDMETHOD(GetDumpFile)(
-        THIS_
-        IN ULONG Index,
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG NameSize,
-        OUT OPTIONAL PULONG64 Handle,
-        OUT PULONG Type
-        ) PURE;
-    STDMETHOD(GetDumpFileWide)(
-        THIS_
-        IN ULONG Index,
-        OUT OPTIONAL PWSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG NameSize,
-        OUT OPTIONAL PULONG64 Handle,
-        OUT PULONG Type
         ) PURE;
 };
 
@@ -2773,8 +1644,6 @@ typedef struct _DEBUG_STACK_FRAME
 #define DEBUG_STACK_PARAMETERS              0x00000080
 // Show just return address in stack frame addresses
 #define DEBUG_STACK_FRAME_ADDRESSES_RA_ONLY 0x00000100
-// Show frame-to-frame memory usage.
-#define DEBUG_STACK_FRAME_MEMORY_USAGE      0x00000200
 
 // Classes of debuggee.  Each class
 // has different qualifiers for specific
@@ -2966,14 +1835,9 @@ typedef struct _DEBUG_LAST_EVENT_INFO_SYSTEM_ERROR
 #endif
 #endif
 
-// We want the DEBUG_VALUE structure to have 8-byte alignment
-// and be 32 bytes total.  This is tricky because the compiler
-// wants to pad the union of values out to a even 8-byte multiple,
-// pushing the type out too far.  We can't use 4-packing because
-// then the 8-byte alignment requirement is lost, so instead
-// we shrink the union to 24 bytes and have a reserved field
-// before the type field.  The same amount of space is available
-// and everybody's happy, but the structure is somewhat unusual.
+// Force the compiler to align DEBUG_VALUE.Type on a four-byte
+// boundary so that it comes out to 32 bytes total.
+#include <pshpack4.h>
 
 typedef struct _DEBUG_VALUE
 {
@@ -3018,18 +1882,19 @@ typedef struct _DEBUG_VALUE
         // describes.  This array also serves to pad
         // the structure out to 32 bytes and reserves
         // space for future members.
-        UCHAR RawBytes[24];
+        UCHAR RawBytes[28];
     };
-    ULONG TailOfRawBytes;
-  ULONG Type;
+    ULONG Type;
 } DEBUG_VALUE, *PDEBUG_VALUE;
+
+#include <poppack.h>
 
 #if defined(_MSC_VER)
 #if _MSC_VER >= 800
 #if _MSC_VER >= 1200
 #pragma warning(pop)
 #else
-#pragma warning(default:4201)    /* Nameless struct/union */
+#pragma warning(disable:4201)    /* Nameless struct/union */
 #endif
 #endif
 #endif
@@ -3052,7 +1917,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         ) PURE;
 
     // IDebugControl.
-
+    
     // Checks for a user interrupt, such a Ctrl-C
     // or stop button.
     // This method is reentrant.
@@ -3111,7 +1976,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         THIS_
         IN ULONG Mask
         ) PURE;
-
+            
     // Input requests input from all clients.
     // The first input that is returned is used
     // to satisfy the call.  Other returned
@@ -3132,7 +1997,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         THIS_
         IN PCSTR Buffer
         ) PURE;
-
+    
     // Sends output through clients
     // output callbacks if the mask is allowed
     // by the current output control mask and
@@ -3170,7 +2035,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         IN PCSTR Format,
         IN va_list Args
         ) PURE;
-
+            
     // Displays the standard command-line prompt
     // followed by the given output.  If Format
     // is NULL no additional output is produced.
@@ -3207,7 +2072,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         IN ULONG OutputControl,
         IN ULONG Flags
         ) PURE;
-
+        
     // Outputs the debugger and extension version
     // information.  This method is reentrant.
     // Uses the line prefix.
@@ -3330,7 +2195,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         IN ULONG FramesSize,
         IN ULONG Flags
         ) PURE;
-
+    
     // Returns information about the debuggee such
     // as user vs. kernel, dump vs. live, etc.
     STDMETHOD(GetDebuggeeType)(
@@ -3445,7 +2310,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         IN ULONG AbbrevNameBufferSize,
         OUT OPTIONAL PULONG AbbrevNameSize
         ) PURE;
-
+                
     // Gets and sets the type of processor to
     // use when doing things like setting
     // breakpoints, accessing registers,
@@ -3478,7 +2343,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         THIS_
         IN ULONG Status
         ) PURE;
-
+        
     // Controls what code interpretation level the debugger
     // runs at.  The debugger checks the code level when
     // deciding whether to step by a source line or
@@ -3510,7 +2375,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         THIS_
         IN ULONG Options
         ) PURE;
-
+    
     // Gets and sets control values for
     // handling system error events.
     // If the system error level is less
@@ -3528,7 +2393,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         IN ULONG OutputLevel,
         IN ULONG BreakLevel
         ) PURE;
-
+    
     // The command processor supports simple
     // string replacement macros in Evaluate and
     // Execute.  There are currently ten macro
@@ -3546,7 +2411,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         IN ULONG Slot,
         IN PCSTR Macro
         ) PURE;
-
+    
     // Controls the default number radix used
     // in expressions and commands.
     STDMETHOD(GetRadix)(
@@ -3589,7 +2454,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         IN /* size_is(Count) */ PULONG OutTypes,
         OUT /* size_is(Count) */ PDEBUG_VALUE Out
         ) PURE;
-
+    
     // Executes the given command string.
     // If the string has multiple commands
     // Execute will not return until all
@@ -3613,7 +2478,7 @@ DECLARE_INTERFACE_(IDebugControl, IUnknown)
         IN PCSTR CommandFile,
         IN ULONG Flags
         ) PURE;
-
+        
     // Breakpoint interfaces are described
     // elsewhere in this section.
     STDMETHOD(GetNumberBreakpoints)(
@@ -3890,7 +2755,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         ) PURE;
 
     // IDebugControl.
-
+    
     // Checks for a user interrupt, such a Ctrl-C
     // or stop button.
     // This method is reentrant.
@@ -3949,7 +2814,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         THIS_
         IN ULONG Mask
         ) PURE;
-
+            
     // Input requests input from all clients.
     // The first input that is returned is used
     // to satisfy the call.  Other returned
@@ -3970,7 +2835,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         THIS_
         IN PCSTR Buffer
         ) PURE;
-
+    
     // Sends output through clients
     // output callbacks if the mask is allowed
     // by the current output control mask and
@@ -4008,7 +2873,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         IN PCSTR Format,
         IN va_list Args
         ) PURE;
-
+            
     // Displays the standard command-line prompt
     // followed by the given output.  If Format
     // is NULL no additional output is produced.
@@ -4045,7 +2910,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         IN ULONG OutputControl,
         IN ULONG Flags
         ) PURE;
-
+        
     // Outputs the debugger and extension version
     // information.  This method is reentrant.
     // Uses the line prefix.
@@ -4168,7 +3033,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         IN ULONG FramesSize,
         IN ULONG Flags
         ) PURE;
-
+    
     // Returns information about the debuggee such
     // as user vs. kernel, dump vs. live, etc.
     STDMETHOD(GetDebuggeeType)(
@@ -4283,7 +3148,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         IN ULONG AbbrevNameBufferSize,
         OUT OPTIONAL PULONG AbbrevNameSize
         ) PURE;
-
+                
     // Gets and sets the type of processor to
     // use when doing things like setting
     // breakpoints, accessing registers,
@@ -4316,7 +3181,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         THIS_
         IN ULONG Status
         ) PURE;
-
+        
     // Controls what code interpretation level the debugger
     // runs at.  The debugger checks the code level when
     // deciding whether to step by a source line or
@@ -4348,7 +3213,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         THIS_
         IN ULONG Options
         ) PURE;
-
+    
     // Gets and sets control values for
     // handling system error events.
     // If the system error level is less
@@ -4366,7 +3231,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         IN ULONG OutputLevel,
         IN ULONG BreakLevel
         ) PURE;
-
+    
     // The command processor supports simple
     // string replacement macros in Evaluate and
     // Execute.  There are currently ten macro
@@ -4384,7 +3249,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         IN ULONG Slot,
         IN PCSTR Macro
         ) PURE;
-
+    
     // Controls the default number radix used
     // in expressions and commands.
     STDMETHOD(GetRadix)(
@@ -4427,7 +3292,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         IN /* size_is(Count) */ PULONG OutTypes,
         OUT /* size_is(Count) */ PDEBUG_VALUE Out
         ) PURE;
-
+    
     // Executes the given command string.
     // If the string has multiple commands
     // Execute will not return until all
@@ -4451,7 +3316,7 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         IN PCSTR CommandFile,
         IN ULONG Flags
         ) PURE;
-
+        
     // Breakpoint interfaces are described
     // elsewhere in this section.
     STDMETHOD(GetNumberBreakpoints)(
@@ -4767,1056 +3632,6 @@ DECLARE_INTERFACE_(IDebugControl2, IUnknown)
         THIS_
         IN ULONG OutputControl,
         IN ULONG Flags
-        ) PURE;
-};
-
-//
-// Assembly/disassembly options.
-//
-// The specific effects of these flags varies depending
-// on the particular instruction set.
-//
-
-#define DEBUG_ASMOPT_DEFAULT             0x00000000
-// Display additional information in disassembly.
-#define DEBUG_ASMOPT_VERBOSE             0x00000001
-// Do not display raw code bytes in disassembly.
-#define DEBUG_ASMOPT_NO_CODE_BYTES       0x00000002
-// Do not take the output width into account when
-// formatting disassembly.
-#define DEBUG_ASMOPT_IGNORE_OUTPUT_WIDTH 0x00000004
-
-//
-// Expression syntax options.
-//
-
-// MASM-style expression evaluation.
-#define DEBUG_EXPR_MASM      0x00000000
-// C++-style expression evaluation.
-#define DEBUG_EXPR_CPLUSPLUS 0x00000001
-
-//
-// Event index description information.
-//
-
-#define DEBUG_EINDEX_NAME 0x00000000
-
-//
-// SetNextEventIndex relation options.
-//
-
-// Value increases forward from the first index.
-#define DEBUG_EINDEX_FROM_START   0x00000000
-// Value increases backwards from the last index.
-#define DEBUG_EINDEX_FROM_END     0x00000001
-// Value is a signed delta from the current index.
-#define DEBUG_EINDEX_FROM_CURRENT 0x00000002
-
-#undef INTERFACE
-#define INTERFACE IDebugControl3
-DECLARE_INTERFACE_(IDebugControl3, IUnknown)
-{
-    // IUnknown.
-    STDMETHOD(QueryInterface)(
-        THIS_
-        IN REFIID InterfaceId,
-        OUT PVOID* Interface
-        ) PURE;
-    STDMETHOD_(ULONG, AddRef)(
-        THIS
-        ) PURE;
-    STDMETHOD_(ULONG, Release)(
-        THIS
-        ) PURE;
-
-    // IDebugControl.
-
-    // Checks for a user interrupt, such a Ctrl-C
-    // or stop button.
-    // This method is reentrant.
-    STDMETHOD(GetInterrupt)(
-        THIS
-        ) PURE;
-    // Registers a user interrupt.
-    // This method is reentrant.
-    STDMETHOD(SetInterrupt)(
-        THIS_
-        IN ULONG Flags
-        ) PURE;
-    // Interrupting a user-mode process requires
-    // access to some system resources that the
-    // process may hold itself, preventing the
-    // interrupt from occurring.  The engine
-    // will time-out pending interrupt requests
-    // and simulate an interrupt if necessary.
-    // These methods control the interrupt timeout.
-    STDMETHOD(GetInterruptTimeout)(
-        THIS_
-        OUT PULONG Seconds
-        ) PURE;
-    STDMETHOD(SetInterruptTimeout)(
-        THIS_
-        IN ULONG Seconds
-        ) PURE;
-
-    STDMETHOD(GetLogFile)(
-        THIS_
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG FileSize,
-        OUT PBOOL Append
-        ) PURE;
-    // Opens a log file which collects all
-    // output.  Output from every client except
-    // those that explicitly disable logging
-    // goes into the log.
-    // Opening a log file closes any log file
-    // already open.
-    STDMETHOD(OpenLogFile)(
-        THIS_
-        IN PCSTR File,
-        IN BOOL Append
-        ) PURE;
-    STDMETHOD(CloseLogFile)(
-        THIS
-        ) PURE;
-    // Controls what output is logged.
-    STDMETHOD(GetLogMask)(
-        THIS_
-        OUT PULONG Mask
-        ) PURE;
-    STDMETHOD(SetLogMask)(
-        THIS_
-        IN ULONG Mask
-        ) PURE;
-
-    // Input requests input from all clients.
-    // The first input that is returned is used
-    // to satisfy the call.  Other returned
-    // input is discarded.
-    STDMETHOD(Input)(
-        THIS_
-        OUT PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG InputSize
-        ) PURE;
-    // This method is used by clients to return
-    // input when it is available.  It will
-    // return S_OK if the input is used to
-    // satisfy an Input call and S_FALSE if
-    // the input is ignored.
-    // This method is reentrant.
-    STDMETHOD(ReturnInput)(
-        THIS_
-        IN PCSTR Buffer
-        ) PURE;
-
-    // Sends output through clients
-    // output callbacks if the mask is allowed
-    // by the current output control mask and
-    // according to the output distribution
-    // settings.
-    STDMETHODV(Output)(
-        THIS_
-        IN ULONG Mask,
-        IN PCSTR Format,
-        ...
-        ) PURE;
-    STDMETHOD(OutputVaList)(
-        THIS_
-        IN ULONG Mask,
-        IN PCSTR Format,
-        IN va_list Args
-        ) PURE;
-    // The following methods allow direct control
-    // over the distribution of the given output
-    // for situations where something other than
-    // the default is desired.  These methods require
-    // extra work in the engine so they should
-    // only be used when necessary.
-    STDMETHODV(ControlledOutput)(
-        THIS_
-        IN ULONG OutputControl,
-        IN ULONG Mask,
-        IN PCSTR Format,
-        ...
-        ) PURE;
-    STDMETHOD(ControlledOutputVaList)(
-        THIS_
-        IN ULONG OutputControl,
-        IN ULONG Mask,
-        IN PCSTR Format,
-        IN va_list Args
-        ) PURE;
-
-    // Displays the standard command-line prompt
-    // followed by the given output.  If Format
-    // is NULL no additional output is produced.
-    // Output is produced under the
-    // DEBUG_OUTPUT_PROMPT mask.
-    // This method only outputs the prompt; it
-    // does not get input.
-    STDMETHODV(OutputPrompt)(
-        THIS_
-        IN ULONG OutputControl,
-        IN OPTIONAL PCSTR Format,
-        ...
-        ) PURE;
-    STDMETHOD(OutputPromptVaList)(
-        THIS_
-        IN ULONG OutputControl,
-        IN OPTIONAL PCSTR Format,
-        IN va_list Args
-        ) PURE;
-    // Gets the text that would be displayed by OutputPrompt.
-    STDMETHOD(GetPromptText)(
-        THIS_
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG TextSize
-        ) PURE;
-    // Outputs information about the current
-    // debuggee state such as a register
-    // summary, disassembly at the current PC,
-    // closest symbol and others.
-    // Uses the line prefix.
-    STDMETHOD(OutputCurrentState)(
-        THIS_
-        IN ULONG OutputControl,
-        IN ULONG Flags
-        ) PURE;
-
-    // Outputs the debugger and extension version
-    // information.  This method is reentrant.
-    // Uses the line prefix.
-    STDMETHOD(OutputVersionInformation)(
-        THIS_
-        IN ULONG OutputControl
-        ) PURE;
-
-    // In user-mode debugging sessions the
-    // engine will set an event when
-    // exceptions are continued.  This can
-    // be used to synchronize other processes
-    // with the debuggers handling of events.
-    // For example, this is used to support
-    // the e argument to ntsd.
-    STDMETHOD(GetNotifyEventHandle)(
-        THIS_
-        OUT PULONG64 Handle
-        ) PURE;
-    STDMETHOD(SetNotifyEventHandle)(
-        THIS_
-        IN ULONG64 Handle
-        ) PURE;
-
-    STDMETHOD(Assemble)(
-        THIS_
-        IN ULONG64 Offset,
-        IN PCSTR Instr,
-        OUT PULONG64 EndOffset
-        ) PURE;
-    STDMETHOD(Disassemble)(
-        THIS_
-        IN ULONG64 Offset,
-        IN ULONG Flags,
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG DisassemblySize,
-        OUT PULONG64 EndOffset
-        ) PURE;
-    // Returns the value of the effective address
-    // computed for the last Disassemble, if there
-    // was one.
-    STDMETHOD(GetDisassembleEffectiveOffset)(
-        THIS_
-        OUT PULONG64 Offset
-        ) PURE;
-    // Uses the line prefix if necessary.
-    STDMETHOD(OutputDisassembly)(
-        THIS_
-        IN ULONG OutputControl,
-        IN ULONG64 Offset,
-        IN ULONG Flags,
-        OUT PULONG64 EndOffset
-        ) PURE;
-    // Produces multiple lines of disassembly output.
-    // There will be PreviousLines of disassembly before
-    // the given offset if a valid disassembly exists.
-    // In all, there will be TotalLines of output produced.
-    // The first and last line offsets are returned
-    // specially and all lines offsets can be retrieved
-    // through LineOffsets.  LineOffsets will contain
-    // offsets for each line where disassembly started.
-    // When disassembly of a single instruction takes
-    // multiple lines the initial offset will be followed
-    // by DEBUG_INVALID_OFFSET.
-    // Uses the line prefix.
-    STDMETHOD(OutputDisassemblyLines)(
-        THIS_
-        IN ULONG OutputControl,
-        IN ULONG PreviousLines,
-        IN ULONG TotalLines,
-        IN ULONG64 Offset,
-        IN ULONG Flags,
-        OUT OPTIONAL PULONG OffsetLine,
-        OUT OPTIONAL PULONG64 StartOffset,
-        OUT OPTIONAL PULONG64 EndOffset,
-        OUT OPTIONAL /* size_is(TotalLines) */ PULONG64 LineOffsets
-        ) PURE;
-    // Returns the offset of the start of
-    // the instruction thats the given
-    // delta away from the instruction
-    // at the initial offset.
-    // This routine does not check for
-    // validity of the instruction or
-    // the memory containing it.
-    STDMETHOD(GetNearInstruction)(
-        THIS_
-        IN ULONG64 Offset,
-        IN LONG Delta,
-        OUT PULONG64 NearOffset
-        ) PURE;
-
-    // Offsets can be passed in as zero to use the current
-    // thread state.
-    STDMETHOD(GetStackTrace)(
-        THIS_
-        IN ULONG64 FrameOffset,
-        IN ULONG64 StackOffset,
-        IN ULONG64 InstructionOffset,
-        OUT /* size_is(FramesSize) */ PDEBUG_STACK_FRAME Frames,
-        IN ULONG FramesSize,
-        OUT OPTIONAL PULONG FramesFilled
-        ) PURE;
-    // Does a simple stack trace to determine
-    // what the current return address is.
-    STDMETHOD(GetReturnOffset)(
-        THIS_
-        OUT PULONG64 Offset
-        ) PURE;
-    // If Frames is NULL OutputStackTrace will
-    // use GetStackTrace to get FramesSize frames
-    // and then output them.  The current register
-    // values for frame, stack and instruction offsets
-    // are used.
-    // Uses the line prefix.
-    STDMETHOD(OutputStackTrace)(
-        THIS_
-        IN ULONG OutputControl,
-        IN OPTIONAL /* size_is(FramesSize) */ PDEBUG_STACK_FRAME Frames,
-        IN ULONG FramesSize,
-        IN ULONG Flags
-        ) PURE;
-
-    // Returns information about the debuggee such
-    // as user vs. kernel, dump vs. live, etc.
-    STDMETHOD(GetDebuggeeType)(
-        THIS_
-        OUT PULONG Class,
-        OUT PULONG Qualifier
-        ) PURE;
-    // Returns the type of physical processors in
-    // the machine.
-    // Returns one of the IMAGE_FILE_MACHINE values.
-    STDMETHOD(GetActualProcessorType)(
-        THIS_
-        OUT PULONG Type
-        ) PURE;
-    // Returns the type of processor used in the
-    // current processor context.
-    STDMETHOD(GetExecutingProcessorType)(
-        THIS_
-        OUT PULONG Type
-        ) PURE;
-    // Query all the possible processor types that
-    // may be encountered during this debug session.
-    STDMETHOD(GetNumberPossibleExecutingProcessorTypes)(
-        THIS_
-        OUT PULONG Number
-        ) PURE;
-    STDMETHOD(GetPossibleExecutingProcessorTypes)(
-        THIS_
-        IN ULONG Start,
-        IN ULONG Count,
-        OUT /* size_is(Count) */ PULONG Types
-        ) PURE;
-    // Get the number of actual processors in
-    // the machine.
-    STDMETHOD(GetNumberProcessors)(
-        THIS_
-        OUT PULONG Number
-        ) PURE;
-    // PlatformId is one of the VER_PLATFORM values.
-    // Major and minor are as given in the NT
-    // kernel debugger protocol.
-    // ServicePackString and ServicePackNumber indicate the
-    // system service pack level.  ServicePackNumber is not
-    // available in some sessions where the service pack level
-    // is only expressed as a string.  The service pack information
-    // will be empty if the system does not have a service pack
-    // applied.
-    // The build string is string information identifying the
-    // particular build of the system.  The build string is
-    // empty if the system has no particular identifying
-    // information.
-    STDMETHOD(GetSystemVersion)(
-        THIS_
-        OUT PULONG PlatformId,
-        OUT PULONG Major,
-        OUT PULONG Minor,
-        OUT OPTIONAL PSTR ServicePackString,
-        IN ULONG ServicePackStringSize,
-        OUT OPTIONAL PULONG ServicePackStringUsed,
-        OUT PULONG ServicePackNumber,
-        OUT OPTIONAL PSTR BuildString,
-        IN ULONG BuildStringSize,
-        OUT OPTIONAL PULONG BuildStringUsed
-        ) PURE;
-    // Returns the page size for the currently executing
-    // processor context.  The page size may vary between
-    // processor types.
-    STDMETHOD(GetPageSize)(
-        THIS_
-        OUT PULONG Size
-        ) PURE;
-    // Returns S_OK if the current processor context uses
-    // 64-bit addresses, otherwise S_FALSE.
-    STDMETHOD(IsPointer64Bit)(
-        THIS
-        ) PURE;
-    // Reads the bugcheck data area and returns the
-    // current contents.  This method only works
-    // in kernel debugging sessions.
-    STDMETHOD(ReadBugCheckData)(
-        THIS_
-        OUT PULONG Code,
-        OUT PULONG64 Arg1,
-        OUT PULONG64 Arg2,
-        OUT PULONG64 Arg3,
-        OUT PULONG64 Arg4
-        ) PURE;
-
-    // Query all the processor types supported by
-    // the engine.  This is a complete list and is
-    // not related to the machine running the engine
-    // or the debuggee.
-    STDMETHOD(GetNumberSupportedProcessorTypes)(
-        THIS_
-        OUT PULONG Number
-        ) PURE;
-    STDMETHOD(GetSupportedProcessorTypes)(
-        THIS_
-        IN ULONG Start,
-        IN ULONG Count,
-        OUT /* size_is(Count) */ PULONG Types
-        ) PURE;
-    // Returns a full, descriptive name and an
-    // abbreviated name for a processor type.
-    STDMETHOD(GetProcessorTypeNames)(
-        THIS_
-        IN ULONG Type,
-        OUT OPTIONAL PSTR FullNameBuffer,
-        IN ULONG FullNameBufferSize,
-        OUT OPTIONAL PULONG FullNameSize,
-        OUT OPTIONAL PSTR AbbrevNameBuffer,
-        IN ULONG AbbrevNameBufferSize,
-        OUT OPTIONAL PULONG AbbrevNameSize
-        ) PURE;
-
-    // Gets and sets the type of processor to
-    // use when doing things like setting
-    // breakpoints, accessing registers,
-    // getting stack traces and so on.
-    STDMETHOD(GetEffectiveProcessorType)(
-        THIS_
-        OUT PULONG Type
-        ) PURE;
-    STDMETHOD(SetEffectiveProcessorType)(
-        THIS_
-        IN ULONG Type
-        ) PURE;
-
-    // Returns information about whether and how
-    // the debuggee is running.  Status will
-    // be GO if the debuggee is running and
-    // BREAK if it isnt.
-    // If no debuggee exists the status is
-    // NO_DEBUGGEE.
-    // This method is reentrant.
-    STDMETHOD(GetExecutionStatus)(
-        THIS_
-        OUT PULONG Status
-        ) PURE;
-    // Changes the execution status of the
-    // engine from stopped to running.
-    // Status must be one of the go or step
-    // status values.
-    STDMETHOD(SetExecutionStatus)(
-        THIS_
-        IN ULONG Status
-        ) PURE;
-
-    // Controls what code interpretation level the debugger
-    // runs at.  The debugger checks the code level when
-    // deciding whether to step by a source line or
-    // assembly instruction along with other related operations.
-    STDMETHOD(GetCodeLevel)(
-        THIS_
-        OUT PULONG Level
-        ) PURE;
-    STDMETHOD(SetCodeLevel)(
-        THIS_
-        IN ULONG Level
-        ) PURE;
-
-    // Gets and sets engine control flags.
-    // These methods are reentrant.
-    STDMETHOD(GetEngineOptions)(
-        THIS_
-        OUT PULONG Options
-        ) PURE;
-    STDMETHOD(AddEngineOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-    STDMETHOD(RemoveEngineOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-    STDMETHOD(SetEngineOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-
-    // Gets and sets control values for
-    // handling system error events.
-    // If the system error level is less
-    // than or equal to the given levels
-    // the error may be displayed and
-    // the default break for the event
-    // may be set.
-    STDMETHOD(GetSystemErrorControl)(
-        THIS_
-        OUT PULONG OutputLevel,
-        OUT PULONG BreakLevel
-        ) PURE;
-    STDMETHOD(SetSystemErrorControl)(
-        THIS_
-        IN ULONG OutputLevel,
-        IN ULONG BreakLevel
-        ) PURE;
-
-    // The command processor supports simple
-    // string replacement macros in Evaluate and
-    // Execute.  There are currently ten macro
-    // slots available.  Slots 0-9 map to
-    // the command invocations $u0-$u9.
-    STDMETHOD(GetTextMacro)(
-        THIS_
-        IN ULONG Slot,
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG MacroSize
-        ) PURE;
-    STDMETHOD(SetTextMacro)(
-        THIS_
-        IN ULONG Slot,
-        IN PCSTR Macro
-        ) PURE;
-
-    // Controls the default number radix used
-    // in expressions and commands.
-    STDMETHOD(GetRadix)(
-        THIS_
-        OUT PULONG Radix
-        ) PURE;
-    STDMETHOD(SetRadix)(
-        THIS_
-        IN ULONG Radix
-        ) PURE;
-
-    // Evaluates the given expression string and
-    // returns the resulting value.
-    // If DesiredType is DEBUG_VALUE_INVALID then
-    // the natural type is used.
-    // RemainderIndex, if provided, is set to the index
-    // of the first character in the input string that was
-    // not used when evaluating the expression.
-    STDMETHOD(Evaluate)(
-        THIS_
-        IN PCSTR Expression,
-        IN ULONG DesiredType,
-        OUT PDEBUG_VALUE Value,
-        OUT OPTIONAL PULONG RemainderIndex
-        ) PURE;
-    // Attempts to convert the input value to a value
-    // of the requested type in the output value.
-    // Conversions can fail if no conversion exists.
-    // Successful conversions may be lossy.
-    STDMETHOD(CoerceValue)(
-        THIS_
-        IN PDEBUG_VALUE In,
-        IN ULONG OutType,
-        OUT PDEBUG_VALUE Out
-        ) PURE;
-    STDMETHOD(CoerceValues)(
-        THIS_
-        IN ULONG Count,
-        IN /* size_is(Count) */ PDEBUG_VALUE In,
-        IN /* size_is(Count) */ PULONG OutTypes,
-        OUT /* size_is(Count) */ PDEBUG_VALUE Out
-        ) PURE;
-
-    // Executes the given command string.
-    // If the string has multiple commands
-    // Execute will not return until all
-    // of them have been executed.  If this
-    // requires waiting for the debuggee to
-    // execute an internal wait will be done
-    // so Execute can take an arbitrary amount
-    // of time.
-    STDMETHOD(Execute)(
-        THIS_
-        IN ULONG OutputControl,
-        IN PCSTR Command,
-        IN ULONG Flags
-        ) PURE;
-    // Executes the given command file by
-    // reading a line at a time and processing
-    // it with Execute.
-    STDMETHOD(ExecuteCommandFile)(
-        THIS_
-        IN ULONG OutputControl,
-        IN PCSTR CommandFile,
-        IN ULONG Flags
-        ) PURE;
-
-    // Breakpoint interfaces are described
-    // elsewhere in this section.
-    STDMETHOD(GetNumberBreakpoints)(
-        THIS_
-        OUT PULONG Number
-        ) PURE;
-    // It is possible for this retrieval function to
-    // fail even with an index within the number of
-    // existing breakpoints if the breakpoint is
-    // a private breakpoint.
-    STDMETHOD(GetBreakpointByIndex)(
-        THIS_
-        IN ULONG Index,
-        OUT PDEBUG_BREAKPOINT* Bp
-        ) PURE;
-    STDMETHOD(GetBreakpointById)(
-        THIS_
-        IN ULONG Id,
-        OUT PDEBUG_BREAKPOINT* Bp
-        ) PURE;
-    // If Ids is non-NULL the Count breakpoints
-    // referred to in the Ids array are returned,
-    // otherwise breakpoints from index Start to
-    // Start + Count  1 are returned.
-    STDMETHOD(GetBreakpointParameters)(
-        THIS_
-        IN ULONG Count,
-        IN OPTIONAL /* size_is(Count) */ PULONG Ids,
-        IN ULONG Start,
-        OUT /* size_is(Count) */ PDEBUG_BREAKPOINT_PARAMETERS Params
-        ) PURE;
-    // Breakpoints are created empty and disabled.
-    // When their parameters have been set they
-    // should be enabled by setting the ENABLE flag.
-    // If DesiredId is DEBUG_ANY_ID then the
-    // engine picks an unused ID.  If DesiredId
-    // is any other number the engine attempts
-    // to use the given ID for the breakpoint.
-    // If another breakpoint exists with that ID
-    // the call will fail.
-    STDMETHOD(AddBreakpoint)(
-        THIS_
-        IN ULONG Type,
-        IN ULONG DesiredId,
-        OUT PDEBUG_BREAKPOINT* Bp
-        ) PURE;
-    // Breakpoint interface is invalid after this call.
-    STDMETHOD(RemoveBreakpoint)(
-        THIS_
-        IN PDEBUG_BREAKPOINT Bp
-        ) PURE;
-
-    // Control and use extension DLLs.
-    STDMETHOD(AddExtension)(
-        THIS_
-        IN PCSTR Path,
-        IN ULONG Flags,
-        OUT PULONG64 Handle
-        ) PURE;
-    STDMETHOD(RemoveExtension)(
-        THIS_
-        IN ULONG64 Handle
-        ) PURE;
-    STDMETHOD(GetExtensionByPath)(
-        THIS_
-        IN PCSTR Path,
-        OUT PULONG64 Handle
-        ) PURE;
-    // If Handle is zero the extension
-    // chain is walked searching for the
-    // function.
-    STDMETHOD(CallExtension)(
-        THIS_
-        IN ULONG64 Handle,
-        IN PCSTR Function,
-        IN OPTIONAL PCSTR Arguments
-        ) PURE;
-    // GetExtensionFunction works like
-    // GetProcAddress on extension DLLs
-    // to allow raw function-call-level
-    // interaction with extension DLLs.
-    // Such functions do not need to
-    // follow the standard extension prototype
-    // if they are not going to be called
-    // through the text extension interface.
-    // This function cannot be called remotely.
-    STDMETHOD(GetExtensionFunction)(
-        THIS_
-        IN ULONG64 Handle,
-        IN PCSTR FuncName,
-        OUT FARPROC* Function
-        ) PURE;
-    // These methods return alternate
-    // extension interfaces in order to allow
-    // interface-style extension DLLs to mix in
-    // older extension calls.
-    // Structure sizes must be initialized before
-    // the call.
-    // These methods cannot be called remotely.
-    STDMETHOD(GetWindbgExtensionApis32)(
-        THIS_
-        IN OUT PWINDBG_EXTENSION_APIS32 Api
-        ) PURE;
-    STDMETHOD(GetWindbgExtensionApis64)(
-        THIS_
-        IN OUT PWINDBG_EXTENSION_APIS64 Api
-        ) PURE;
-
-    // The engine provides a simple mechanism
-    // to filter common events.  Arbitrarily complicated
-    // filtering can be done by registering event callbacks
-    // but simple event filtering only requires
-    // setting the options of one of the predefined
-    // event filters.
-    // Simple event filters are either for specific
-    // events and therefore have an enumerant or
-    // they are for an exception and are based on
-    // the exceptions code.  Exception filters
-    // are further divided into exceptions specially
-    // handled by the engine, which is a fixed set,
-    // and arbitrary exceptions.
-    // All three groups of filters are indexed together
-    // with the specific filters first, then the specific
-    // exception filters and finally the arbitrary
-    // exception filters.
-    // The first specific exception is the default
-    // exception.  If an exception event occurs for
-    // an exception without settings the default
-    // exception settings are used.
-    STDMETHOD(GetNumberEventFilters)(
-        THIS_
-        OUT PULONG SpecificEvents,
-        OUT PULONG SpecificExceptions,
-        OUT PULONG ArbitraryExceptions
-        ) PURE;
-    // Some filters have descriptive text associated with them.
-    STDMETHOD(GetEventFilterText)(
-        THIS_
-        IN ULONG Index,
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG TextSize
-        ) PURE;
-    // All filters support executing a command when the
-    // event occurs.
-    STDMETHOD(GetEventFilterCommand)(
-        THIS_
-        IN ULONG Index,
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG CommandSize
-        ) PURE;
-    STDMETHOD(SetEventFilterCommand)(
-        THIS_
-        IN ULONG Index,
-        IN PCSTR Command
-        ) PURE;
-    STDMETHOD(GetSpecificFilterParameters)(
-        THIS_
-        IN ULONG Start,
-        IN ULONG Count,
-        OUT /* size_is(Count) */ PDEBUG_SPECIFIC_FILTER_PARAMETERS Params
-        ) PURE;
-    STDMETHOD(SetSpecificFilterParameters)(
-        THIS_
-        IN ULONG Start,
-        IN ULONG Count,
-        IN /* size_is(Count) */ PDEBUG_SPECIFIC_FILTER_PARAMETERS Params
-        ) PURE;
-    // Some specific filters have arguments to further
-    // qualify their operation.
-    STDMETHOD(GetSpecificFilterArgument)(
-        THIS_
-        IN ULONG Index,
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG ArgumentSize
-        ) PURE;
-    STDMETHOD(SetSpecificFilterArgument)(
-        THIS_
-        IN ULONG Index,
-        IN PCSTR Argument
-        ) PURE;
-    // If Codes is non-NULL Start is ignored.
-    STDMETHOD(GetExceptionFilterParameters)(
-        THIS_
-        IN ULONG Count,
-        IN OPTIONAL /* size_is(Count) */ PULONG Codes,
-        IN ULONG Start,
-        OUT /* size_is(Count) */ PDEBUG_EXCEPTION_FILTER_PARAMETERS Params
-        ) PURE;
-    // The codes in the parameter data control the application
-    // of the parameter data.  If a code is not already in
-    // the set of filters it is added.  If the ExecutionOption
-    // for a code is REMOVE then the filter is removed.
-    // Specific exception filters cannot be removed.
-    STDMETHOD(SetExceptionFilterParameters)(
-        THIS_
-        IN ULONG Count,
-        IN /* size_is(Count) */ PDEBUG_EXCEPTION_FILTER_PARAMETERS Params
-        ) PURE;
-    // Exception filters support an additional command for
-    // second-chance events.
-    STDMETHOD(GetExceptionFilterSecondCommand)(
-        THIS_
-        IN ULONG Index,
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG CommandSize
-        ) PURE;
-    STDMETHOD(SetExceptionFilterSecondCommand)(
-        THIS_
-        IN ULONG Index,
-        IN PCSTR Command
-        ) PURE;
-
-    // Yields processing to the engine until
-    // an event occurs.  This method may
-    // only be called by the thread that started
-    // the debug session.
-    // When an event occurs the engine carries
-    // out all event processing such as calling
-    // callbacks.
-    // If the callbacks indicate that execution should
-    // break the wait will return, otherwise it
-    // goes back to waiting for a new event.
-    // If the timeout expires, S_FALSE is returned.
-    // The timeout is not currently supported for
-    // kernel debugging.
-    STDMETHOD(WaitForEvent)(
-        THIS_
-        IN ULONG Flags,
-        IN ULONG Timeout
-        ) PURE;
-
-    // Retrieves information about the last event that occurred.
-    // EventType is one of the event callback mask bits.
-    // ExtraInformation contains additional event-specific
-    // information.  Not all events have additional information.
-    STDMETHOD(GetLastEventInformation)(
-        THIS_
-        OUT PULONG Type,
-        OUT PULONG ProcessId,
-        OUT PULONG ThreadId,
-        OUT OPTIONAL PVOID ExtraInformation,
-        IN ULONG ExtraInformationSize,
-        OUT OPTIONAL PULONG ExtraInformationUsed,
-        OUT OPTIONAL PSTR Description,
-        IN ULONG DescriptionSize,
-        OUT OPTIONAL PULONG DescriptionUsed
-        ) PURE;
-
-    // IDebugControl2.
-
-    STDMETHOD(GetCurrentTimeDate)(
-        THIS_
-        OUT PULONG TimeDate
-        ) PURE;
-    // Retrieves the number of seconds since the
-    // machine started running.
-    STDMETHOD(GetCurrentSystemUpTime)(
-        THIS_
-        OUT PULONG UpTime
-        ) PURE;
-
-    // If the current session is a dump session,
-    // retrieves any extended format information.
-    STDMETHOD(GetDumpFormatFlags)(
-        THIS_
-        OUT PULONG FormatFlags
-        ) PURE;
-
-    // The debugger has been enhanced to allow
-    // arbitrary text replacements in addition
-    // to the simple $u0-$u9 text macros.
-    // Text replacement takes a given source
-    // text in commands and converts it to the
-    // given destination text.  Replacements
-    // are named by their source text so that
-    // only one replacement for a source text
-    // string can exist.
-    STDMETHOD(GetNumberTextReplacements)(
-        THIS_
-        OUT PULONG NumRepl
-        ) PURE;
-    // If SrcText is non-NULL the replacement
-    // is looked up by source text, otherwise
-    // Index is used to get the Nth replacement.
-    STDMETHOD(GetTextReplacement)(
-        THIS_
-        IN OPTIONAL PCSTR SrcText,
-        IN ULONG Index,
-        OUT OPTIONAL PSTR SrcBuffer,
-        IN ULONG SrcBufferSize,
-        OUT OPTIONAL PULONG SrcSize,
-        OUT OPTIONAL PSTR DstBuffer,
-        IN ULONG DstBufferSize,
-        OUT OPTIONAL PULONG DstSize
-        ) PURE;
-    // Setting the destination text to
-    // NULL removes the alias.
-    STDMETHOD(SetTextReplacement)(
-        THIS_
-        IN PCSTR SrcText,
-        IN OPTIONAL PCSTR DstText
-        ) PURE;
-    STDMETHOD(RemoveTextReplacements)(
-        THIS
-        ) PURE;
-    // Outputs the complete list of current
-    // replacements.
-    STDMETHOD(OutputTextReplacements)(
-        THIS_
-        IN ULONG OutputControl,
-        IN ULONG Flags
-        ) PURE;
-
-    // IDebugControl3.
-
-    // Control options for assembly and disassembly.
-    STDMETHOD(GetAssemblyOptions)(
-        THIS_
-        OUT PULONG Options
-        ) PURE;
-    STDMETHOD(AddAssemblyOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-    STDMETHOD(RemoveAssemblyOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-    STDMETHOD(SetAssemblyOptions)(
-        THIS_
-        IN ULONG Options
-        ) PURE;
-
-    // Control the expression syntax.
-    STDMETHOD(GetExpressionSyntax)(
-        THIS_
-        OUT PULONG Flags
-        ) PURE;
-    STDMETHOD(SetExpressionSyntax)(
-        THIS_
-        IN ULONG Flags
-        ) PURE;
-    // Look up a syntax by its abbreviated
-    // name and set it.
-    STDMETHOD(SetExpressionSyntaxByName)(
-        THIS_
-        IN PCSTR AbbrevName
-        ) PURE;
-    STDMETHOD(GetNumberExpressionSyntaxes)(
-        THIS_
-        OUT PULONG Number
-        ) PURE;
-    STDMETHOD(GetExpressionSyntaxNames)(
-        THIS_
-        IN ULONG Index,
-        OUT OPTIONAL PSTR FullNameBuffer,
-        IN ULONG FullNameBufferSize,
-        OUT OPTIONAL PULONG FullNameSize,
-        OUT OPTIONAL PSTR AbbrevNameBuffer,
-        IN ULONG AbbrevNameBufferSize,
-        OUT OPTIONAL PULONG AbbrevNameSize
-        ) PURE;
-
-    //
-    // Some debug sessions have only a single
-    // possible event, such as a snapshot dump
-    // file; some have dynamic events, such as
-    // a live debug session; and others may have
-    // multiple events, such as a dump file that
-    // contains snapshots from different points
-    // in time.  The following methods allow
-    // discovery and selection of the available
-    // events for a session.
-    // Sessions with one or more static events
-    // will be able to report all of the events
-    // when queried.  Sessions with dynamic events
-    // will only report a single event representing
-    // the current event.
-    // Switching events constitutes execution and
-    // changing the current event will alter the
-    // execution status to a running state, after
-    // which WaitForEvent must be used to process
-    // the selected event.
-    //
-
-    // GetNumberEvents returns S_OK if this is the
-    // complete set of events possible, such as for
-    // a static session; or S_FALSE if other events
-    // may be possible, such as for a dynamic session.
-    STDMETHOD(GetNumberEvents)(
-        THIS_
-        OUT PULONG Events
-        ) PURE;
-    // Sessions may have descriptive information for
-    // the various events available.  The amount of
-    // information varies according to the specific
-    // session and data.
-    STDMETHOD(GetEventIndexDescription)(
-        THIS_
-        IN ULONG Index,
-        IN ULONG Which,
-        IN OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG DescSize
-        ) PURE;
-    STDMETHOD(GetCurrentEventIndex)(
-        THIS_
-        OUT PULONG Index
-        ) PURE;
-    // SetNextEventIndex works like seek in that
-    // it can set an absolute or relative index.
-    // SetNextEventIndex works similarly to SetExecutionStatus
-    // by putting the session into a running state, after
-    // which the caller must call WaitForEvent.  The
-    // current event index only changes when WaitForEvent
-    // is called.
-    STDMETHOD(SetNextEventIndex)(
-        THIS_
-        IN ULONG Relation,
-        IN ULONG Value,
-        OUT PULONG NextIndex
         ) PURE;
 };
 
@@ -5913,38 +3728,9 @@ DECLARE_INTERFACE_(IDebugControl3, IUnknown)
 #define DEBUG_DATA_MmTotalCommitLimitMaximumAddr        608
 #define DEBUG_DATA_CmNtCSDVersionAddr                   616
 #define DEBUG_DATA_MmPhysicalMemoryBlockAddr            624
-#define DEBUG_DATA_MmSessionBase                        632
-#define DEBUG_DATA_MmSessionSize                        640
-#define DEBUG_DATA_MmSystemParentTablePage              648
-#define DEBUG_DATA_MmVirtualTranslationBase             656
-#define DEBUG_DATA_OffsetKThreadNextProcessor           664
-#define DEBUG_DATA_OffsetKThreadTeb                     666
-#define DEBUG_DATA_OffsetKThreadKernelStack             668
-#define DEBUG_DATA_OffsetKThreadInitialStack            670
-#define DEBUG_DATA_OffsetKThreadApcProcess              672
-#define DEBUG_DATA_OffsetKThreadState                   674
-#define DEBUG_DATA_OffsetKThreadBStore                  676
-#define DEBUG_DATA_OffsetKThreadBStoreLimit             678
-#define DEBUG_DATA_SizeEProcess                         680
-#define DEBUG_DATA_OffsetEprocessPeb                    682
-#define DEBUG_DATA_OffsetEprocessParentCID              684
-#define DEBUG_DATA_OffsetEprocessDirectoryTableBase     686
-#define DEBUG_DATA_SizePrcb                             688
-#define DEBUG_DATA_OffsetPrcbDpcRoutine                 690
-#define DEBUG_DATA_OffsetPrcbCurrentThread              692
-#define DEBUG_DATA_OffsetPrcbMhz                        694
-#define DEBUG_DATA_OffsetPrcbCpuType                    696
-#define DEBUG_DATA_OffsetPrcbVendorString               698
-#define DEBUG_DATA_OffsetPrcbProcessorState             700
-#define DEBUG_DATA_OffsetPrcbNumber                     702
-#define DEBUG_DATA_SizeEThread                          704
-#define DEBUG_DATA_KdPrintCircularBufferPtrAddr         712
-#define DEBUG_DATA_KdPrintBufferSizeAddr                720
 
 #define DEBUG_DATA_PaeEnabled                        100000
 #define DEBUG_DATA_SharedUserData                    100008
-#define DEBUG_DATA_ProductType                       100016
-#define DEBUG_DATA_SuiteMask                         100024
 
 //
 // Processor information structures.
@@ -5981,19 +3767,12 @@ typedef struct _DEBUG_PROCESSOR_IDENTIFICATION_X86
     CHAR  VendorString[16];
 } DEBUG_PROCESSOR_IDENTIFICATION_X86, *PDEBUG_PROCESSOR_IDENTIFICATION_X86;
 
-typedef struct _DEBUG_PROCESSOR_IDENTIFICATION_ARM
-{
-    ULONG Type;
-    ULONG Revision;
-} DEBUG_PROCESSOR_IDENTIFICATION_ARM, *PDEBUG_PROCESSOR_IDENTIFICATION_ARM;
-
 typedef union _DEBUG_PROCESSOR_IDENTIFICATION_ALL
 {
     DEBUG_PROCESSOR_IDENTIFICATION_ALPHA Alpha;
     DEBUG_PROCESSOR_IDENTIFICATION_AMD64 Amd64;
     DEBUG_PROCESSOR_IDENTIFICATION_IA64  Ia64;
     DEBUG_PROCESSOR_IDENTIFICATION_X86   X86;
-    DEBUG_PROCESSOR_IDENTIFICATION_ARM   Arm;
 } DEBUG_PROCESSOR_IDENTIFICATION_ALL, *PDEBUG_PROCESSOR_IDENTIFICATION_ALL;
 
 // Indices for ReadProcessorSystemData.
@@ -6002,7 +3781,6 @@ typedef union _DEBUG_PROCESSOR_IDENTIFICATION_ALL
 #define DEBUG_DATA_KTHREAD_OFFSET                       2
 #define DEBUG_DATA_BASE_TRANSLATION_VIRTUAL_OFFSET      3
 #define DEBUG_DATA_PROCESSOR_IDENTIFICATION             4
-#define DEBUG_DATA_PROCESSOR_SPEED                      5
 
 #undef INTERFACE
 #define INTERFACE IDebugDataSpaces
@@ -6197,12 +3975,10 @@ DECLARE_INTERFACE_(IDebugDataSpaces, IUnknown)
 // Handle data types and structures.
 //
 
-#define DEBUG_HANDLE_DATA_TYPE_BASIC            0
-#define DEBUG_HANDLE_DATA_TYPE_TYPE_NAME        1
-#define DEBUG_HANDLE_DATA_TYPE_OBJECT_NAME      2
-#define DEBUG_HANDLE_DATA_TYPE_HANDLE_COUNT     3
-#define DEBUG_HANDLE_DATA_TYPE_TYPE_NAME_WIDE   4
-#define DEBUG_HANDLE_DATA_TYPE_OBJECT_NAME_WIDE 5
+#define DEBUG_HANDLE_DATA_TYPE_BASIC        0
+#define DEBUG_HANDLE_DATA_TYPE_TYPE_NAME    1
+#define DEBUG_HANDLE_DATA_TYPE_OBJECT_NAME  2
+#define DEBUG_HANDLE_DATA_TYPE_HANDLE_COUNT 3
 
 typedef struct _DEBUG_HANDLE_DATA_BASIC
 {
@@ -6472,314 +4248,6 @@ DECLARE_INTERFACE_(IDebugDataSpaces2, IUnknown)
         ) PURE;
 };
 
-#undef INTERFACE
-#define INTERFACE IDebugDataSpaces3
-DECLARE_INTERFACE_(IDebugDataSpaces3, IUnknown)
-{
-    // IUnknown.
-    STDMETHOD(QueryInterface)(
-        THIS_
-        IN REFIID InterfaceId,
-        OUT PVOID* Interface
-        ) PURE;
-    STDMETHOD_(ULONG, AddRef)(
-        THIS
-        ) PURE;
-    STDMETHOD_(ULONG, Release)(
-        THIS
-        ) PURE;
-
-    // IDebugDataSpaces.
-    STDMETHOD(ReadVirtual)(
-        THIS_
-        IN ULONG64 Offset,
-        OUT PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesRead
-        ) PURE;
-    STDMETHOD(WriteVirtual)(
-        THIS_
-        IN ULONG64 Offset,
-        IN PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesWritten
-        ) PURE;
-    // SearchVirtual searches the given virtual
-    // address range for the given pattern.  PatternSize
-    // gives the byte length of the pattern and PatternGranularity
-    // controls the granularity of comparisons during
-    // the search.
-    // For example, a DWORD-granular search would
-    // use a pattern granularity of four to search by DWORD
-    // increments.
-    STDMETHOD(SearchVirtual)(
-        THIS_
-        IN ULONG64 Offset,
-        IN ULONG64 Length,
-        IN PVOID Pattern,
-        IN ULONG PatternSize,
-        IN ULONG PatternGranularity,
-        OUT PULONG64 MatchOffset
-        ) PURE;
-    // These methods are identical to Read/WriteVirtual
-    // except that they avoid the kernel virtual memory
-    // cache entirely and are therefore useful for reading
-    // virtual memory which is inherently volatile, such
-    // as memory-mapped device areas, without contaminating
-    // or invalidating the cache.
-    // In user-mode they are the same as Read/WriteVirtual.
-    STDMETHOD(ReadVirtualUncached)(
-        THIS_
-        IN ULONG64 Offset,
-        OUT PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesRead
-        ) PURE;
-    STDMETHOD(WriteVirtualUncached)(
-        THIS_
-        IN ULONG64 Offset,
-        IN PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesWritten
-        ) PURE;
-    // The following two methods are convenience
-    // methods for accessing pointer values.
-    // They automatically convert between native pointers
-    // and canonical 64-bit values as necessary.
-    // These routines stop at the first failure.
-    STDMETHOD(ReadPointersVirtual)(
-        THIS_
-        IN ULONG Count,
-        IN ULONG64 Offset,
-        OUT /* size_is(Count) */ PULONG64 Ptrs
-        ) PURE;
-    STDMETHOD(WritePointersVirtual)(
-        THIS_
-        IN ULONG Count,
-        IN ULONG64 Offset,
-        IN /* size_is(Count) */ PULONG64 Ptrs
-        ) PURE;
-    // All non-virtual data spaces are only
-    // available when kernel debugging.
-    STDMETHOD(ReadPhysical)(
-        THIS_
-        IN ULONG64 Offset,
-        OUT PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesRead
-        ) PURE;
-    STDMETHOD(WritePhysical)(
-        THIS_
-        IN ULONG64 Offset,
-        IN PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesWritten
-        ) PURE;
-    STDMETHOD(ReadControl)(
-        THIS_
-        IN ULONG Processor,
-        IN ULONG64 Offset,
-        OUT PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesRead
-        ) PURE;
-    STDMETHOD(WriteControl)(
-        THIS_
-        IN ULONG Processor,
-        IN ULONG64 Offset,
-        IN PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesWritten
-        ) PURE;
-    STDMETHOD(ReadIo)(
-        THIS_
-        IN ULONG InterfaceType,
-        IN ULONG BusNumber,
-        IN ULONG AddressSpace,
-        IN ULONG64 Offset,
-        OUT PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesRead
-        ) PURE;
-    STDMETHOD(WriteIo)(
-        THIS_
-        IN ULONG InterfaceType,
-        IN ULONG BusNumber,
-        IN ULONG AddressSpace,
-        IN ULONG64 Offset,
-        IN PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesWritten
-        ) PURE;
-    STDMETHOD(ReadMsr)(
-        THIS_
-        IN ULONG Msr,
-        OUT PULONG64 Value
-        ) PURE;
-    STDMETHOD(WriteMsr)(
-        THIS_
-        IN ULONG Msr,
-        IN ULONG64 Value
-        ) PURE;
-    STDMETHOD(ReadBusData)(
-        THIS_
-        IN ULONG BusDataType,
-        IN ULONG BusNumber,
-        IN ULONG SlotNumber,
-        IN ULONG Offset,
-        OUT PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesRead
-        ) PURE;
-    STDMETHOD(WriteBusData)(
-        THIS_
-        IN ULONG BusDataType,
-        IN ULONG BusNumber,
-        IN ULONG SlotNumber,
-        IN ULONG Offset,
-        IN PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG BytesWritten
-        ) PURE;
-    STDMETHOD(CheckLowMemory)(
-        THIS
-        ) PURE;
-    STDMETHOD(ReadDebuggerData)(
-        THIS_
-        IN ULONG Index,
-        OUT PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG DataSize
-        ) PURE;
-    STDMETHOD(ReadProcessorSystemData)(
-        THIS_
-        IN ULONG Processor,
-        IN ULONG Index,
-        OUT PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG DataSize
-        ) PURE;
-
-    // IDebugDataSpaces2.
-
-    STDMETHOD(VirtualToPhysical)(
-        THIS_
-        IN ULONG64 Virtual,
-        OUT PULONG64 Physical
-        ) PURE;
-    // Returns the physical addresses for the
-    // N levels of the systems paging structures.
-    // Level zero is the starting base physical
-    // address for virtual translations.
-    // Levels one-(N-1) will point to the appropriate
-    // paging descriptor for the virtual address at
-    // the given level of the paging hierarchy.  The
-    // exact number of levels depends on many factors.
-    // The last level will be the fully translated
-    // physical address, matching what VirtualToPhysical
-    // returns.  If the address can only be partially
-    // translated S_FALSE is returned.
-    STDMETHOD(GetVirtualTranslationPhysicalOffsets)(
-        THIS_
-        IN ULONG64 Virtual,
-        OUT OPTIONAL /* size_is(OffsetsSize) */ PULONG64 Offsets,
-        IN ULONG OffsetsSize,
-        OUT OPTIONAL PULONG Levels
-        ) PURE;
-
-    // System handle data is accessible in certain
-    // debug sessions.  The particular data available
-    // varies from session to session and platform
-    // to platform.
-    STDMETHOD(ReadHandleData)(
-        THIS_
-        IN ULONG64 Handle,
-        IN ULONG DataType,
-        OUT OPTIONAL PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG DataSize
-        ) PURE;
-
-    // Fills memory with the given pattern.
-    // The fill stops at the first non-writable byte.
-    STDMETHOD(FillVirtual)(
-        THIS_
-        IN ULONG64 Start,
-        IN ULONG Size,
-        IN PVOID Pattern,
-        IN ULONG PatternSize,
-        OUT OPTIONAL PULONG Filled
-        ) PURE;
-    STDMETHOD(FillPhysical)(
-        THIS_
-        IN ULONG64 Start,
-        IN ULONG Size,
-        IN PVOID Pattern,
-        IN ULONG PatternSize,
-        OUT OPTIONAL PULONG Filled
-        ) PURE;
-
-    // Queries virtual memory mapping information given
-    // an address similarly to the Win32 API VirtualQuery.
-    // MEMORY_BASIC_INFORMATION64 is defined in crash.h.
-    // This method currently only works for user-mode sessions.
-    STDMETHOD(QueryVirtual)(
-        THIS_
-        IN ULONG64 Offset,
-        OUT PMEMORY_BASIC_INFORMATION64 Info
-        ) PURE;
-
-    // IDebugDataSpaces3.
-
-    // Convenience method for reading an image
-    // header from virtual memory.  Given the
-    // image base, this method determines where
-    // the NT headers are, validates the necessary
-    // markers and converts the headers into
-    // 64-bit form for consistency.
-    // A caller can check whether the headers were
-    // originally 32-bit by checking the optional
-    // header magic value.
-    // This method will not read ROM headers.
-    STDMETHOD(ReadImageNtHeaders)(
-        THIS_
-        IN ULONG64 ImageBase,
-        OUT PIMAGE_NT_HEADERS64 Headers
-        ) PURE;
-
-    // Some debug sessions have arbitrary additional
-    // data available.  For example, additional dump
-    // information files may contain extra information
-    // gathered at the same time as the primary dump.
-    // Such information is tagged with a unique identifier
-    // and can only be retrieved via the tag.
-    // Tagged data cannot be partially available; the
-    // tagged block is either fully present or completely
-    // absent.
-    STDMETHOD(ReadTagged)(
-        THIS_
-        IN LPGUID Tag,
-        IN ULONG Offset,
-        OUT OPTIONAL PVOID Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG TotalSize
-        ) PURE;
-    STDMETHOD(StartEnumTagged)(
-        THIS_
-        OUT PULONG64 Handle
-        ) PURE;
-    STDMETHOD(GetNextTagged)(
-        THIS_
-        IN ULONG64 Handle,
-        OUT LPGUID Tag,
-        OUT PULONG Size
-        ) PURE;
-    STDMETHOD(EndEnumTagged)(
-        THIS_
-        IN ULONG64 Handle
-        ) PURE;
-};
-
 //----------------------------------------------------------------------------
 //
 // IDebugEventCallbacks.
@@ -6836,8 +4304,8 @@ DECLARE_INTERFACE_(IDebugDataSpaces3, IUnknown)
 // Argument is zero.
 #define DEBUG_CES_ALL                 0xffffffff
 // Current thread changed.  This may imply a change
-// of system and process also.  Argument is the ID of the new
-// current thread or DEBUG_ANY_ID if no thread is current.
+// of process also.  Argument is the ID of the new
+// current thread.
 #define DEBUG_CES_CURRENT_THREAD      0x00000001
 // Effective processor changed.  Argument is the
 // new processor type.
@@ -6871,19 +4339,6 @@ DECLARE_INTERFACE_(IDebugDataSpaces3, IUnknown)
 #define DEBUG_CES_PROCESS_OPTIONS     0x00000200
 // Extensions have been added or removed.
 #define DEBUG_CES_EXTENSIONS          0x00000400
-// Systems have been added or removed.  The argument
-// is the system ID.  Systems, unlike processes and
-// threads, may be created at any time and not
-// just during WaitForEvent.
-#define DEBUG_CES_SYSTEMS             0x00000800
-// Assembly/disassembly options have changed.  Argument
-// is the new options value.
-#define DEBUG_CES_ASSEMBLY_OPTIONS    0x00001000
-// Expression syntax has changed.  Argument
-// is the new syntax value.
-#define DEBUG_CES_EXPRESSION_SYNTAX   0x00002000
-// Text replacements have changed.
-#define DEBUG_CES_TEXT_REPLACEMENTS   0x00004000
 
 // ChangeSymbolState flags.
 // Symbol state has changed generally, such
@@ -6928,7 +4383,7 @@ DECLARE_INTERFACE_(IDebugEventCallbacks, IUnknown)
         ) PURE;
 
     // IDebugEventCallbacks.
-
+    
     // The engine calls GetInterestMask once when
     // the event callbacks are set for a client.
     STDMETHOD(GetInterestMask)(
@@ -7036,7 +4491,7 @@ DECLARE_INTERFACE_(IDebugEventCallbacks, IUnknown)
     // changes in debug state.  The return value
     // of these callbacks is ignored.  Implementations
     // can not call back into the engine.
-
+    
     // Debuggee state, such as registers or data spaces,
     // has changed.
     STDMETHOD(ChangeDebuggeeState)(
@@ -7082,7 +4537,7 @@ DECLARE_INTERFACE_(IDebugInputCallbacks, IUnknown)
         ) PURE;
 
     // IDebugInputCallbacks.
-
+    
     // A call to the StartInput method is a request for
     // a line of input from any client.  The returned input
     // should always be zero-terminated.  The buffer size
@@ -7124,7 +4579,7 @@ DECLARE_INTERFACE_(IDebugOutputCallbacks, IUnknown)
         ) PURE;
 
     // IDebugOutputCallbacks.
-
+    
     // This method is only called if the supplied mask
     // is allowed by the clients output control.
     // The return value is ignored.
@@ -7241,7 +4696,7 @@ DECLARE_INTERFACE_(IDebugRegisters, IUnknown)
         IN ULONG Start,
         IN /* size_is(Count) */ PDEBUG_VALUE Values
         ) PURE;
-
+        
     // Outputs a group of registers in a well-formatted
     // way thats specific to the platforms register set.
     // Uses the line prefix.
@@ -7344,13 +4799,10 @@ DECLARE_INTERFACE_(IDebugSymbolGroup, IUnknown)
         THIS_
         OUT PULONG Number
         ) PURE;
-    // On input Index indicates the desired insertion
-    // index.  On output Index contains the actual index.
-    // Use DEBUG_ANY_ID to append a symbol to the end.
     STDMETHOD(AddSymbol)(
         THIS_
         IN PCSTR Name,
-        IN OUT PULONG Index
+        OUT PULONG Index
         ) PURE;
     STDMETHOD(RemoveSymbolByName)(
         THIS_
@@ -7409,10 +4861,8 @@ DECLARE_INTERFACE_(IDebugSymbolGroup, IUnknown)
 //
 
 // Flags.
-#define DEBUG_MODULE_LOADED           0x00000000
-#define DEBUG_MODULE_UNLOADED         0x00000001
-#define DEBUG_MODULE_USER_MODE        0x00000002
-#define DEBUG_MODULE_SYM_BAD_CHECKSUM 0x00010000
+#define DEBUG_MODULE_LOADED   0x00000000
+#define DEBUG_MODULE_UNLOADED 0x00000001
 
 // Symbol types.
 #define DEBUG_SYMTYPE_NONE     0
@@ -7515,7 +4965,7 @@ DECLARE_INTERFACE_(IDebugSymbols, IUnknown)
         THIS_
         IN ULONG Options
         ) PURE;
-
+    
     STDMETHOD(GetNameByOffset)(
         THIS_
         IN ULONG64 Offset,
@@ -7560,7 +5010,7 @@ DECLARE_INTERFACE_(IDebugSymbols, IUnknown)
         OUT OPTIONAL PULONG NameSize,
         OUT OPTIONAL PULONG64 Displacement
         ) PURE;
-
+            
     STDMETHOD(GetLineByOffset)(
         THIS_
         IN ULONG64 Offset,
@@ -7759,7 +5209,7 @@ DECLARE_INTERFACE_(IDebugSymbols, IUnknown)
         IN ULONG TypeId,
         IN ULONG Flags
         ) PURE;
-
+            
     // Function arguments and scope block symbols
     // can be retrieved relative to currently
     // executing code.  A caller can provide just
@@ -7856,7 +5306,7 @@ DECLARE_INTERFACE_(IDebugSymbols, IUnknown)
         THIS_
         IN ULONG64 Handle
         ) PURE;
-
+    
     STDMETHOD(Reload)(
         THIS_
         IN PCSTR Module
@@ -7876,7 +5326,7 @@ DECLARE_INTERFACE_(IDebugSymbols, IUnknown)
         THIS_
         IN PCSTR Addition
         ) PURE;
-
+    
     // Manipulate the path for executable images.
     // Some dump files need to load executable images
     // in order to resolve dump information.  This
@@ -7981,12 +5431,6 @@ DECLARE_INTERFACE_(IDebugSymbols, IUnknown)
 // Display PUSHORT and USHORT arrays in UNICODE
 #define DEBUG_TYPEOPTS_UNICODE_DISPLAY 0x00000001
 
-// Display LONG types in default base instead of decimal
-#define DEBUG_TYPEOPTS_LONGSTATUS_DISPLAY 0x00000002
-
-// Display integer types in default base instead of decimal
-#define DEBUG_TYPEOPTS_FORCERADIX_OUTPUT 0x00000004
-
 #undef INTERFACE
 #define INTERFACE IDebugSymbols2
 DECLARE_INTERFACE_(IDebugSymbols2, IUnknown)
@@ -8025,7 +5469,7 @@ DECLARE_INTERFACE_(IDebugSymbols2, IUnknown)
         THIS_
         IN ULONG Options
         ) PURE;
-
+    
     STDMETHOD(GetNameByOffset)(
         THIS_
         IN ULONG64 Offset,
@@ -8070,7 +5514,7 @@ DECLARE_INTERFACE_(IDebugSymbols2, IUnknown)
         OUT OPTIONAL PULONG NameSize,
         OUT OPTIONAL PULONG64 Displacement
         ) PURE;
-
+            
     STDMETHOD(GetLineByOffset)(
         THIS_
         IN ULONG64 Offset,
@@ -8269,7 +5713,7 @@ DECLARE_INTERFACE_(IDebugSymbols2, IUnknown)
         IN ULONG TypeId,
         IN ULONG Flags
         ) PURE;
-
+            
     // Function arguments and scope block symbols
     // can be retrieved relative to currently
     // executing code.  A caller can provide just
@@ -8366,7 +5810,7 @@ DECLARE_INTERFACE_(IDebugSymbols2, IUnknown)
         THIS_
         IN ULONG64 Handle
         ) PURE;
-
+    
     STDMETHOD(Reload)(
         THIS_
         IN PCSTR Module
@@ -8386,7 +5830,7 @@ DECLARE_INTERFACE_(IDebugSymbols2, IUnknown)
         THIS_
         IN PCSTR Addition
         ) PURE;
-
+    
     // Manipulate the path for executable images.
     // Some dump files need to load executable images
     // in order to resolve dump information.  This
@@ -8518,7 +5962,7 @@ DECLARE_INTERFACE_(IDebugSymbols2, IUnknown)
         IN ULONG NameBufferSize,
         OUT OPTIONAL PULONG NameSize
         ) PURE;
-
+    
     // Gets name of a field in a struct
     // FieldNumber is 0 based index of field in a struct
     // Method fails with E_INVALIDARG if FieldNumber is
@@ -8576,7 +6020,7 @@ DECLARE_INTERFACE_(IDebugSystemObjects, IUnknown)
         ) PURE;
 
     // IDebugSystemObjects.
-
+    
     // In user mode debugging the debugger
     // tracks all threads and processes and
     // enumerates them through the following
@@ -8589,7 +6033,7 @@ DECLARE_INTERFACE_(IDebugSystemObjects, IUnknown)
     // the threads in the system.  Process
     // enumeration is limited to a single
     // virtual process representing kernel space.
-
+    
     // Returns the ID of the thread on which
     // the last event occurred.
     STDMETHOD(GetEventThread)(
@@ -8600,7 +6044,7 @@ DECLARE_INTERFACE_(IDebugSystemObjects, IUnknown)
         THIS_
         OUT PULONG Id
         ) PURE;
-
+    
     // Controls implicit thread used by the
     // debug engine.  The debuggers current
     // thread is just a piece of data held
@@ -8726,7 +6170,7 @@ DECLARE_INTERFACE_(IDebugSystemObjects, IUnknown)
         IN ULONG64 Handle,
         OUT PULONG Id
         ) PURE;
-
+    
     // Currently kernel mode sessions will only have
     // a single process representing kernel space.
     STDMETHOD(GetNumberProcesses)(
@@ -8782,7 +6226,7 @@ DECLARE_INTERFACE_(IDebugSystemObjects, IUnknown)
     // system process ID.
     // Not currently supported when kernel debugging.
     STDMETHOD(GetProcessIdBySystemId)(
-        THIS_
+        THIS_                                      
         IN ULONG SysId,
         OUT PULONG Id
         ) PURE;
@@ -8829,7 +6273,7 @@ DECLARE_INTERFACE_(IDebugSystemObjects2, IUnknown)
         ) PURE;
 
     // IDebugSystemObjects.
-
+    
     // In user mode debugging the debugger
     // tracks all threads and processes and
     // enumerates them through the following
@@ -8842,7 +6286,7 @@ DECLARE_INTERFACE_(IDebugSystemObjects2, IUnknown)
     // the threads in the system.  Process
     // enumeration is limited to a single
     // virtual process representing kernel space.
-
+    
     // Returns the ID of the thread on which
     // the last event occurred.
     STDMETHOD(GetEventThread)(
@@ -8853,7 +6297,7 @@ DECLARE_INTERFACE_(IDebugSystemObjects2, IUnknown)
         THIS_
         OUT PULONG Id
         ) PURE;
-
+    
     // Controls implicit thread used by the
     // debug engine.  The debuggers current
     // thread is just a piece of data held
@@ -8979,7 +6423,7 @@ DECLARE_INTERFACE_(IDebugSystemObjects2, IUnknown)
         IN ULONG64 Handle,
         OUT PULONG Id
         ) PURE;
-
+    
     // Currently kernel mode sessions will only have
     // a single process representing kernel space.
     STDMETHOD(GetNumberProcesses)(
@@ -9035,7 +6479,7 @@ DECLARE_INTERFACE_(IDebugSystemObjects2, IUnknown)
     // system process ID.
     // Not currently supported when kernel debugging.
     STDMETHOD(GetProcessIdBySystemId)(
-        THIS_
+        THIS_                                      
         IN ULONG SysId,
         OUT PULONG Id
         ) PURE;
@@ -9109,406 +6553,6 @@ DECLARE_INTERFACE_(IDebugSystemObjects2, IUnknown)
         IN ULONG64 Offset
         ) PURE;
 };
-
-#undef INTERFACE
-#define INTERFACE IDebugSystemObjects3
-DECLARE_INTERFACE_(IDebugSystemObjects3, IUnknown)
-{
-    // IUnknown.
-    STDMETHOD(QueryInterface)(
-        THIS_
-        IN REFIID InterfaceId,
-        OUT PVOID* Interface
-        ) PURE;
-    STDMETHOD_(ULONG, AddRef)(
-        THIS
-        ) PURE;
-    STDMETHOD_(ULONG, Release)(
-        THIS
-        ) PURE;
-
-    // IDebugSystemObjects.
-
-    // In user mode debugging the debugger
-    // tracks all threads and processes and
-    // enumerates them through the following
-    // methods.  When enumerating threads
-    // the threads are enumerated for the current
-    // process.
-    // Kernel mode debugging currently is
-    // limited to enumerating only the threads
-    // assigned to processors, not all of
-    // the threads in the system.  Process
-    // enumeration is limited to a single
-    // virtual process representing kernel space.
-
-    // Returns the ID of the thread on which
-    // the last event occurred.
-    STDMETHOD(GetEventThread)(
-        THIS_
-        OUT PULONG Id
-        ) PURE;
-    STDMETHOD(GetEventProcess)(
-        THIS_
-        OUT PULONG Id
-        ) PURE;
-
-    // Controls implicit thread used by the
-    // debug engine.  The debuggers current
-    // thread is just a piece of data held
-    // by the debugger for calls which use
-    // thread-specific information.  In those
-    // calls the debuggers current thread is used.
-    // The debuggers current thread is not related
-    // to any system thread attribute.
-    // IDs for threads are small integer IDs
-    // maintained by the engine.  They are not
-    // related to system thread IDs.
-    STDMETHOD(GetCurrentThreadId)(
-        THIS_
-        OUT PULONG Id
-        ) PURE;
-    STDMETHOD(SetCurrentThreadId)(
-        THIS_
-        IN ULONG Id
-        ) PURE;
-    // The current process is the process
-    // that owns the current thread.
-    STDMETHOD(GetCurrentProcessId)(
-        THIS_
-        OUT PULONG Id
-        ) PURE;
-    // Setting the current process automatically
-    // sets the current thread to the thread that
-    // was last current in that process.
-    STDMETHOD(SetCurrentProcessId)(
-        THIS_
-        IN ULONG Id
-        ) PURE;
-
-    // Gets the number of threads in the current process.
-    STDMETHOD(GetNumberThreads)(
-        THIS_
-        OUT PULONG Number
-        ) PURE;
-    // Gets thread count information for all processes
-    // and the largest number of threads in a single process.
-    STDMETHOD(GetTotalNumberThreads)(
-        THIS_
-        OUT PULONG Total,
-        OUT PULONG LargestProcess
-        ) PURE;
-    STDMETHOD(GetThreadIdsByIndex)(
-        THIS_
-        IN ULONG Start,
-        IN ULONG Count,
-        OUT OPTIONAL /* size_is(Count) */ PULONG Ids,
-        OUT OPTIONAL /* size_is(Count) */ PULONG SysIds
-        ) PURE;
-    // Gets the debugger ID for the thread
-    // currently running on the given
-    // processor.  Only works in kernel
-    // debugging.
-    STDMETHOD(GetThreadIdByProcessor)(
-        THIS_
-        IN ULONG Processor,
-        OUT PULONG Id
-        ) PURE;
-    // Returns the offset of the current threads
-    // system data structure.  When kernel debugging
-    // this is the offset of the KTHREAD.
-    // When user debugging it is the offset
-    // of the current TEB.
-    STDMETHOD(GetCurrentThreadDataOffset)(
-        THIS_
-        OUT PULONG64 Offset
-        ) PURE;
-    // Looks up a debugger thread ID for the given
-    // system thread data structure.
-    // Currently when kernel debugging this will fail
-    // if the thread is not executing on a processor.
-    STDMETHOD(GetThreadIdByDataOffset)(
-        THIS_
-        IN ULONG64 Offset,
-        OUT PULONG Id
-        ) PURE;
-    // Returns the offset of the current threads
-    // TEB.  In user mode this is equivalent to
-    // the threads data offset.
-    STDMETHOD(GetCurrentThreadTeb)(
-        THIS_
-        OUT PULONG64 Offset
-        ) PURE;
-    // Looks up a debugger thread ID for the given TEB.
-    // Currently when kernel debugging this will fail
-    // if the thread is not executing on a processor.
-    STDMETHOD(GetThreadIdByTeb)(
-        THIS_
-        IN ULONG64 Offset,
-        OUT PULONG Id
-        ) PURE;
-    // Returns the system unique ID for the current thread.
-    // Not currently supported when kernel debugging.
-    STDMETHOD(GetCurrentThreadSystemId)(
-        THIS_
-        OUT PULONG SysId
-        ) PURE;
-    // Looks up a debugger thread ID for the given
-    // system thread ID.
-    // Currently when kernel debugging this will fail
-    // if the thread is not executing on a processor.
-    STDMETHOD(GetThreadIdBySystemId)(
-        THIS_
-        IN ULONG SysId,
-        OUT PULONG Id
-        ) PURE;
-    // Returns the handle of the current thread.
-    // In kernel mode the value returned is the
-    // index of the processor the thread is
-    // executing on plus one.
-    STDMETHOD(GetCurrentThreadHandle)(
-        THIS_
-        OUT PULONG64 Handle
-        ) PURE;
-    // Looks up a debugger thread ID for the given handle.
-    // Currently when kernel debugging this will fail
-    // if the thread is not executing on a processor.
-    STDMETHOD(GetThreadIdByHandle)(
-        THIS_
-        IN ULONG64 Handle,
-        OUT PULONG Id
-        ) PURE;
-
-    // Currently kernel mode sessions will only have
-    // a single process representing kernel space.
-    STDMETHOD(GetNumberProcesses)(
-        THIS_
-        OUT PULONG Number
-        ) PURE;
-    STDMETHOD(GetProcessIdsByIndex)(
-        THIS_
-        IN ULONG Start,
-        IN ULONG Count,
-        OUT OPTIONAL /* size_is(Count) */ PULONG Ids,
-        OUT OPTIONAL /* size_is(Count) */ PULONG SysIds
-        ) PURE;
-    // Returns the offset of the current processs
-    // system data structure.  When kernel debugging
-    // this is the offset of the KPROCESS of
-    // the process that owns the current thread.
-    // When user debugging it is the offset
-    // of the current PEB.
-    STDMETHOD(GetCurrentProcessDataOffset)(
-        THIS_
-        OUT PULONG64 Offset
-        ) PURE;
-    // Looks up a debugger process ID for the given
-    // system process data structure.
-    // Not currently supported when kernel debugging.
-    STDMETHOD(GetProcessIdByDataOffset)(
-        THIS_
-        IN ULONG64 Offset,
-        OUT PULONG Id
-        ) PURE;
-    // Returns the offset of the current processs
-    // PEB.  In user mode this is equivalent to
-    // the processs data offset.
-    STDMETHOD(GetCurrentProcessPeb)(
-        THIS_
-        OUT PULONG64 Offset
-        ) PURE;
-    // Looks up a debugger process ID for the given PEB.
-    // Not currently supported when kernel debugging.
-    STDMETHOD(GetProcessIdByPeb)(
-        THIS_
-        IN ULONG64 Offset,
-        OUT PULONG Id
-        ) PURE;
-    // Returns the system unique ID for the current process.
-    // Not currently supported when kernel debugging.
-    STDMETHOD(GetCurrentProcessSystemId)(
-        THIS_
-        OUT PULONG SysId
-        ) PURE;
-    // Looks up a debugger process ID for the given
-    // system process ID.
-    // Not currently supported when kernel debugging.
-    STDMETHOD(GetProcessIdBySystemId)(
-        THIS_
-        IN ULONG SysId,
-        OUT PULONG Id
-        ) PURE;
-    // Returns the handle of the current process.
-    // In kernel mode this is the kernel processs
-    // artificial handle used for symbol operations
-    // and so can only be used with dbghelp APIs.
-    STDMETHOD(GetCurrentProcessHandle)(
-        THIS_
-        OUT PULONG64 Handle
-        ) PURE;
-    // Looks up a debugger process ID for the given handle.
-    STDMETHOD(GetProcessIdByHandle)(
-        THIS_
-        IN ULONG64 Handle,
-        OUT PULONG Id
-        ) PURE;
-    // Retrieve the name of the executable loaded
-    // in the process.  This may fail if no executable
-    // was identified.
-    STDMETHOD(GetCurrentProcessExecutableName)(
-        THIS_
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG ExeSize
-        ) PURE;
-
-    // IDebugSystemObjects2.
-
-    // Return the number of seconds that the current
-    // process has been running.
-    STDMETHOD(GetCurrentProcessUpTime)(
-        THIS_
-        OUT PULONG UpTime
-        ) PURE;
-
-    // During kernel sessions the debugger retrieves
-    // some information from the system thread and process
-    // running on the current processor.  For example,
-    // the debugger will retrieve virtual memory translation
-    // information for when the debugger needs to
-    // carry out its own virtual to physical translations.
-    // Occasionally it can be interesting to perform
-    // similar operations but on a process which isnt
-    // currently running.  The follow methods allow a caller
-    // to override the data offsets used by the debugger
-    // so that other system threads and processes can
-    // be used instead.  These values are defaulted to
-    // the thread and process running on the current
-    // processor each time the debuggee executes or
-    // the current processor changes.
-    // The thread and process settings are independent so
-    // it is possible to refer to a thread in a process
-    // other than the current process and vice versa.
-    // Setting an offset of zero will reload the
-    // default value.
-    STDMETHOD(GetImplicitThreadDataOffset)(
-        THIS_
-        OUT PULONG64 Offset
-        ) PURE;
-    STDMETHOD(SetImplicitThreadDataOffset)(
-        THIS_
-        IN ULONG64 Offset
-        ) PURE;
-    STDMETHOD(GetImplicitProcessDataOffset)(
-        THIS_
-        OUT PULONG64 Offset
-        ) PURE;
-    STDMETHOD(SetImplicitProcessDataOffset)(
-        THIS_
-        IN ULONG64 Offset
-        ) PURE;
-
-    // IDebugSystemObjects3.
-
-    STDMETHOD(GetEventSystem)(
-        THIS_
-        OUT PULONG Id
-        ) PURE;
-
-    STDMETHOD(GetCurrentSystemId)(
-        THIS_
-        OUT PULONG Id
-        ) PURE;
-    STDMETHOD(SetCurrentSystemId)(
-        THIS_
-        IN ULONG Id
-        ) PURE;
-
-    STDMETHOD(GetNumberSystems)(
-        THIS_
-        OUT PULONG Number
-        ) PURE;
-    STDMETHOD(GetSystemIdsByIndex)(
-        THIS_
-        IN ULONG Start,
-        IN ULONG Count,
-        OUT /* size_is(Count) */ PULONG Ids
-        ) PURE;
-    STDMETHOD(GetTotalNumberThreadsAndProcesses)(
-        THIS_
-        OUT PULONG TotalThreads,
-        OUT PULONG TotalProcesses,
-        OUT PULONG LargestProcessThreads,
-        OUT PULONG LargestSystemThreads,
-        OUT PULONG LargestSystemProcesses
-        ) PURE;
-    STDMETHOD(GetCurrentSystemServer)(
-        THIS_
-        OUT PULONG64 Server
-        ) PURE;
-    STDMETHOD(GetSystemByServer)(
-        THIS_
-        IN ULONG64 Server,
-        OUT PULONG Id
-        ) PURE;
-    STDMETHOD(GetCurrentSystemServerName)(
-        THIS_
-        OUT OPTIONAL PSTR Buffer,
-        IN ULONG BufferSize,
-        OUT OPTIONAL PULONG NameSize
-        ) PURE;
-};
-
-//----------------------------------------------------------------------------
-//
-// Debugger/debuggee communication.
-//
-// A distinguished exception, DBG_COMMAND_EXCEPTION (0x40010009),
-// can be used by a debuggee to communicate with the debugger.
-// The arguments of the exception must be:
-// 1. Exception ID.
-// 2. Command code.
-// 3. Size of argument.
-// 4. Pointer to argument.
-//
-// The arguments depend on the command code.
-//
-//----------------------------------------------------------------------------
-
-#define DEBUG_COMMAND_EXCEPTION_ID 0xdbe00dbe
-
-// Invalid command code.
-#define DEBUG_CMDEX_INVALID             0x00000000
-
-//
-// The debugger can collect strings for display at the
-// next event.  A debuggee can use this to register information
-// about a program situation before places where an event
-// may occur, such as a risky operation or assertion.
-// The strings are automatically flushed on the next
-// event continuation.  Strings are kept on a per-thread basis.
-//
-// When adding, the argument is the string to add.
-// Reset has no arguments and clears all strings.
-//
-#define DEBUG_CMDEX_ADD_EVENT_STRING    0x00000001
-#define DEBUG_CMDEX_RESET_EVENT_STRINGS 0x00000002
-
-#ifndef DEBUG_NO_IMPLEMENTATION
-
-FORCEINLINE void
-DebugCommandException(ULONG Command, ULONG ArgSize, PVOID Arg)
-{
-    ULONG_PTR ExArgs[4];
-
-    ExArgs[0] = DEBUG_COMMAND_EXCEPTION_ID;
-    ExArgs[1] = Command;
-    ExArgs[2] = ArgSize;
-    ExArgs[3] = (ULONG_PTR)Arg;
-    RaiseException(DBG_COMMAND_EXCEPTION, 0, 4, ExArgs);
-}
-
-#endif // #ifndef DEBUG_NO_IMPLEMENTATION
 
 //----------------------------------------------------------------------------
 //
@@ -9598,7 +6642,7 @@ typedef HRESULT (CALLBACK* PDEBUG_EXTENSION_CALL)
 //
 //----------------------------------------------------------------------------
 
-#if !defined(DEBUG_NO_IMPLEMENTATION) && !defined(_M_CEE_PURE)
+#ifndef DEBUG_NO_IMPLEMENTATION
 
 //
 // DebugBaseEventCallbacks provides a do-nothing base implementation
@@ -9638,7 +6682,7 @@ public:
     }
 
     // IDebugEventCallbacks.
-
+    
     STDMETHOD(Breakpoint)(
         THIS_
         IN PDEBUG_BREAKPOINT Bp

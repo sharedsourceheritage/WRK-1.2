@@ -11,6 +11,10 @@
 //    Declares the interface for extensions to the Internet Authentication
 //    Service.
 //
+// MODIFICATION HISTORY
+//
+//    09/28/1998    Original version.
+//
 /////////////////////////////////////////////////////////////////////////////*/
 
 #ifndef _AUTHIF_H_
@@ -80,11 +84,7 @@ typedef enum _RADIUS_ATTRIBUTE_TYPE {
     ratCHAPChallenge = 60,
     ratNASPortType = 61,
     ratPortLimit = 62,
-    ratTunnelType = 64,
-    ratMediumType = 65,
-    ratTunnelPassword = 69,
-    ratTunnelPrivateGroupID = 81,
-    
+
     /* Extended attribute types used to pass additional information. */
     ratCode = 262,             /* Request type code. */
     ratIdentifier = 263,       /* Request identifier. */
@@ -94,30 +94,8 @@ typedef enum _RADIUS_ATTRIBUTE_TYPE {
     ratProvider = 267,         /* Authentication provider. */
     ratStrippedUserName = 268, /* User-Name with realm stripped. */
     ratFQUserName = 269,       /* Fully-Qualified-User-Name. */
-    ratPolicyName = 270,       /* Remote Access Policy name. */
-    ratUniqueId = 271,         /* Unique ID identifying the request. */
-    ratExtensionState = 272,   /* Used to pass state between extensions. */
-    ratEAPTLV = 273,           /* EAP-TLV packet */
-    ratRejectReasonCode = 274, /* The reason code for radius reject */
-    ratCRPPolicyName = 275,    /* CRP Policy Name */
-    ratProviderName = 276,     /* Remote RADIUS server group name */
-    ratClearTextPassword = 277,   /* The user password in clear text */
+    ratPolicyName = 270        /* Remote Access Policy name. */
 } RADIUS_ATTRIBUTE_TYPE;
-
-/*
- *  Enumerates the different RADIUS packet codes. Used for the ratCode extended
- *  attribute.
- */
-typedef enum _RADIUS_CODE {
-    rcUnknown = 0,
-    rcAccessRequest = 1,
-    rcAccessAccept = 2,
-    rcAccessReject = 3,
-    rcAccountingRequest = 4,
-    rcAccountingResponse = 5,
-    rcAccessChallenge = 11,
-    rcDiscard = 256
-} RADIUS_CODE;
 
 /*
  *  Enumerates the different authentication providers used for processing a
@@ -132,18 +110,6 @@ typedef enum _RADIUS_AUTHENTICATION_PROVIDER {
     rapODBC,
     rapNone
 } RADIUS_AUTHENTICATION_PROVIDER;
-
-/*
- *  Enumerates a subset of reason codes for radius reject.
- *  Used for the ratReasonCode extended attribute.
- */
-typedef enum _RADIUS_REJECT_REASON_CODE {
-    rrrcUndefined = 0,
-    rrrcAccountUnknown = 1,
-    rrrcAccountDisabled = 2,
-    rrrcAccountExpired = 3,
-    rrrcAuthenticationFailure = 4,
-} RADIUS_REJECT_REASON_CODE;
 
 /*
  *  Enumerates the different RADIUS data types. A type of 'rdtUnknown' means
@@ -169,18 +135,6 @@ typedef struct _RADIUS_ATTRIBUTE {
         PCSTR lpValue;           /* For rdtUnknown, and rdtString */
     };
 } RADIUS_ATTRIBUTE, *PRADIUS_ATTRIBUTE;
-
-/*
- *  Struct representing the layout of a RADIUS Vendor-Specific attribute. This
- *  is useful when interpreting the RADIUS_ATTRIBUTE lpValue field when
- *  dwAttrType is ratVendorSpecific.
- */
-typedef struct _RADIUS_VSA_FORMAT {
-   BYTE VendorId[4];
-   BYTE VendorType;
-   BYTE VendorLength;
-   BYTE AttributeSpecific[1];
-} RADIUS_VSA_FORMAT;
 
 /*
  *  Enumerates the different actions an extension DLL can generate in
@@ -232,7 +186,7 @@ typedef VOID (WINAPI *PRADIUS_EXTENSION_TERM)( VOID );
  */
 #define RADIUS_EXTENSION_PROCESS "RadiusExtensionProcess"
 typedef DWORD (WINAPI *PRADIUS_EXTENSION_PROCESS)(
-    IN const RADIUS_ATTRIBUTE *pAttrs,
+    IN CONST RADIUS_ATTRIBUTE *pAttrs,
     OUT OPTIONAL PRADIUS_ACTION pfAction
     );
 
@@ -259,7 +213,7 @@ typedef DWORD (WINAPI *PRADIUS_EXTENSION_PROCESS)(
  */
 #define RADIUS_EXTENSION_PROCESS_EX "RadiusExtensionProcessEx"
 typedef DWORD (WINAPI *PRADIUS_EXTENSION_PROCESS_EX)(
-    IN const RADIUS_ATTRIBUTE *pInAttrs,
+    IN CONST RADIUS_ATTRIBUTE *pInAttrs,
     OUT PRADIUS_ATTRIBUTE *pOutAttrs,
     OUT OPTIONAL PRADIUS_ACTION pfAction
     );
@@ -304,170 +258,4 @@ typedef VOID (WINAPI *PRADIUS_EXTENSION_FREE_ATTRIBUTES)(
 #define AUTHSRV_AUTHORIZATION_VALUE_W \
     L"AuthorizationDLLs"
 
-
-#if _WIN32_WINNT >= 0x0501
-
-/* Version of this spec. */
-#define RADIUS_EXTENSION_VERSION (1)
-
-/*
- *  Enumerates the different points during request processing where an
- *  extension can be invoked.
- */
-typedef enum _RADIUS_EXTENSION_POINT {
-   repAuthentication,     /* ExtensionDLLs */
-   repAuthorization       /* AuthorizationDLLs */
-} RADIUS_EXTENSION_POINT;
-
-/*
- * Struct representing an array of RADIUS_ATTRIBUTE structs. All the functions
- * for adding attributes to a request copy the supplied memory, so there is no
- * need for the extension to export RadiusExtensionFreeAttributes.  The
- * extension must not modify this struct. All changes must be made by using the
- * supplied callback functions.
- */
-typedef struct _RADIUS_ATTRIBUTE_ARRAY {
-
-   /* Size of this structure in bytes. */
-   DWORD cbSize;
-
-   /* Adds a new attribute to the end of the array. */
-   DWORD (WINAPI *Add)(
-       IN struct _RADIUS_ATTRIBUTE_ARRAY *This,
-       IN const RADIUS_ATTRIBUTE *pAttr
-       );
-
-   /*
-    * Returns a const pointer to the specified attribute within the array or
-    * NULL if the index is out of range.
-    */
-   const RADIUS_ATTRIBUTE * (WINAPI *AttributeAt)(
-       IN const struct _RADIUS_ATTRIBUTE_ARRAY *This,
-       IN DWORD dwIndex
-       );
-
-   /*
-    * Returns the size of the array. Since indexes are zero-based, the size is
-    * 1 greater than the largest index.
-    */
-   DWORD (WINAPI *GetSize)(
-                     IN const struct _RADIUS_ATTRIBUTE_ARRAY *This
-                     );
-
-   /*
-    * Inserts a new attribute at a specified index in the array. In the
-    * process, it shifts up (by incrementing the index) the existing attribute
-    * at this index, and it shifts up all the attributes above it. Returns
-    * ERROR_INVALID_PARAMETER if the index is out of range.
-    */
-   DWORD (WINAPI *InsertAt)(
-       IN struct _RADIUS_ATTRIBUTE_ARRAY *This,
-       IN DWORD dwIndex,
-       IN const RADIUS_ATTRIBUTE *pAttr
-       );
-
-   /*
-    * Removes the attribute at the specified index in the array. In the
-    * process, it shifts down all the attributes above the removed attribute.
-    * Returns ERROR_ACCESS_DENIED if the specified attribute is read-only.
-    * Returns ERROR_INVALID_PARAMETER if the index is out of range.
-    */
-   DWORD (WINAPI *RemoveAt)(
-       IN struct _RADIUS_ATTRIBUTE_ARRAY *This,
-       IN DWORD dwIndex
-       );
-
-   /*
-    * Sets the array element at the specified index, replacing the existing
-    * attribute.  Returns ERROR_INVALID_PARAMETER if the index is out of range.
-    */
-   DWORD (WINAPI *SetAt)(
-       IN struct _RADIUS_ATTRIBUTE_ARRAY *This,
-       IN DWORD dwIndex,
-       IN const RADIUS_ATTRIBUTE *pAttr
-       );
-
-} RADIUS_ATTRIBUTE_ARRAY, *PRADIUS_ATTRIBUTE_ARRAY;
-
-/*
- * Struct used to exchange information with the extension during request
- * processing. The extension must not modify this struct. All changes must be
- * made by using the supplied callback functions.
- */
-typedef struct _RADIUS_EXTENSION_CONTROL_BLOCK  {
-
-   /* Size of this structure. */
-   DWORD cbSize;
-
-   /* Version info of this specification. */
-   DWORD dwVersion;
-
-   /* Point during request processing where the extension is being invoked. */
-   RADIUS_EXTENSION_POINT repPoint;
-
-   /* Type of RADIUS request being processed. */
-   RADIUS_CODE rcRequestType;
-
-   /*
-    * Final disposition of the request. This field must not be modified
-    * directly; use the SetResponseType callback function instead. At the
-    * repAuthentication point, this may be set to rcUnknown to indicate that no
-    * decision has been made yet.
-    */
-   RADIUS_CODE rcResponseType;
-
-   /*
-    * Returns the attributes received in the RADIUS request and any internal
-    * attributes describing the request state. The extenstion can modify the
-    * request attributes. For example, when IAS is acting as a RADIUS proxy, an
-    * extension could filter which attributes are forwarded to a remote RADIUS
-    * server.
-    */
-   PRADIUS_ATTRIBUTE_ARRAY (WINAPI *GetRequest)(
-       IN struct _RADIUS_EXTENSION_CONTROL_BLOCK *This
-       );
-
-   /*
-    * Returns the attributes that will be sent in the response if the final
-    * outcome of request processing matches the specified response type.
-    * Returns NULL if rcResponseType is invalid. Note that an extension may
-    * retrieve and modify the attributes for any valid response type regardless
-    * of the request's current disposition. For example, an extension can set
-    * the response type to rcAccessAccept, but still add attributes to the
-    * Access-Reject in case the response type is overridden during further
-    * processing.
-    */
-   PRADIUS_ATTRIBUTE_ARRAY (WINAPI *GetResponse)(
-       IN struct _RADIUS_EXTENSION_CONTROL_BLOCK *This,
-       IN RADIUS_CODE rcResponseType
-       );
-
-   /*
-    * Sets the final disposition of the request.
-    * Returns ERROR_INVALID_PARAMETER if the specified response type is invalid
-    * for the request type.
-    */
-   DWORD (WINAPI *SetResponseType)(
-       IN struct _RADIUS_EXTENSION_CONTROL_BLOCK *This,
-       IN RADIUS_CODE rcResponseType
-       );
-
-} RADIUS_EXTENSION_CONTROL_BLOCK, *PRADIUS_EXTENSION_CONTROL_BLOCK;
-
-/*
- * If RadiusExtensionProcess2 exists, RadiusExtensionProcess and
- * RadiusExtensionProcessEx are ignored.
- *
- * Parameters:
- *   pECB      Info exchanged with the extension.
- *
- * Return Value:
- *     A return value other than NO_ERROR causes the request to be discarded.
- */
-#define RADIUS_EXTENSION_PROCESS2 "RadiusExtensionProcess2"
-typedef DWORD (WINAPI *PRADIUS_EXTENSION_PROCESS_2)(
-   IN OUT PRADIUS_EXTENSION_CONTROL_BLOCK pECB
-   );
-
-#endif // _WIN32_WINNT
 #endif  /* _AUTHIF_H_ */

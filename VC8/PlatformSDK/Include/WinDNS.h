@@ -1,6 +1,6 @@
 /*++
 
-Copyright (c) 1996-2002  Microsoft Corporation
+Copyright (c) 1996-2000  Microsoft Corporation
 
 Module Name:
 
@@ -15,6 +15,7 @@ Abstract:
 Author:
 
     Jim Gilroy (jamesg)     December 7, 1996
+    Glenn Curtis (glennc)   January 22, 1997
 
 Revision History:
 
@@ -35,7 +36,7 @@ extern "C"
 //  Define QWORD -- not yet defined globally 
 //
 
-typedef unsigned __int64 QWORD, *PQWORD;
+typedef unsigned __int64 QWORD;
 
 //
 //  DNS public types
@@ -102,7 +103,7 @@ IP6_ADDRESS, *PIP6_ADDRESS;
 
 //  Backward compatibility
 
-//typedef IP6_ADDRESS  DNS_IP6_ADDRESS, *PDNS_IP6_ADDRESS;
+typedef IP6_ADDRESS  DNS_IP6_ADDRESS, *PDNS_IP6_ADDRESS;
 
 //
 //  IP6 string max is 45 bytes
@@ -115,7 +116,7 @@ IP6_ADDRESS, *PIP6_ADDRESS;
 #define IP6_ADDRESS_STRING_BUFFER_LENGTH    (48)
 
 //  backcompat
-//#define IPV6_ADDRESS_STRING_LENGTH      IP6_ADDRESS_STRING_LENGTH
+#define IPV6_ADDRESS_STRING_LENGTH      IP6_ADDRESS_STRING_LENGTH
 
 
 //
@@ -218,7 +219,6 @@ IP6_ADDRESS, *PIP6_ADDRESS;
 #define DNS_IP4_REVERSE_DOMAIN_STRING   DNS_IP4_REVERSE_DOMAIN_STRING_A
 #define DNS_IP6_REVERSE_DOMAIN_STRING   DNS_IP6_REVERSE_DOMAIN_STRING_A
 #endif
-
 
 //
 //  DNS Text string limited by size representable
@@ -784,8 +784,6 @@ typedef enum
     DnsConfigFullHostName_W,
     DnsConfigFullHostName_A,
     DnsConfigFullHostName_UTF8
-
-    //  In XP-SP1 (Server.net)
 }
 DNS_CONFIG_TYPE;
 
@@ -794,11 +792,11 @@ DNS_CONFIG_TYPE;
 //
 
 //
-//  Causes config info to be allocated.
-//  Free with DnsFree().
+//  Causes config info to be allocated with LocalAlloc()
 //
 
 #define DNS_CONFIG_FLAG_ALLOC   (0x00000001)
+
 
 DNS_STATUS
 WINAPI
@@ -829,91 +827,47 @@ DNS_A_DATA, *PDNS_A_DATA;
 
 typedef struct
 {
-    PWSTR           pNameHost;
+    LPTSTR          pNameHost;
 }
-DNS_PTR_DATAW, *PDNS_PTR_DATAW;
+DNS_PTR_DATA, *PDNS_PTR_DATA;
 
 typedef struct
 {
-    PSTR            pNameHost;
-}
-DNS_PTR_DATAA, *PDNS_PTR_DATAA;
-
-typedef struct
-{
-    PWSTR           pNamePrimaryServer;
-    PWSTR           pNameAdministrator;
+    LPTSTR          pNamePrimaryServer;
+    LPTSTR          pNameAdministrator;
     DWORD           dwSerialNo;
     DWORD           dwRefresh;
     DWORD           dwRetry;
     DWORD           dwExpire;
     DWORD           dwDefaultTtl;
 }
-DNS_SOA_DATAW, *PDNS_SOA_DATAW;
+DNS_SOA_DATA, *PDNS_SOA_DATA;
 
 typedef struct
 {
-    PSTR            pNamePrimaryServer;
-    PSTR            pNameAdministrator;
-    DWORD           dwSerialNo;
-    DWORD           dwRefresh;
-    DWORD           dwRetry;
-    DWORD           dwExpire;
-    DWORD           dwDefaultTtl;
+    LPTSTR          pNameMailbox;
+    LPTSTR          pNameErrorsMailbox;
 }
-DNS_SOA_DATAA, *PDNS_SOA_DATAA;
+DNS_MINFO_DATA, *PDNS_MINFO_DATA;
 
 typedef struct
 {
-    PWSTR           pNameMailbox;
-    PWSTR           pNameErrorsMailbox;
-}
-DNS_MINFO_DATAW, *PDNS_MINFO_DATAW;
-
-typedef struct
-{
-    PSTR            pNameMailbox;
-    PSTR            pNameErrorsMailbox;
-}
-DNS_MINFO_DATAA, *PDNS_MINFO_DATAA;
-
-typedef struct
-{
-    PWSTR           pNameExchange;
+    LPTSTR          pNameExchange;
     WORD            wPreference;
     WORD            Pad;        // keep ptrs DWORD aligned
 }
-DNS_MX_DATAW, *PDNS_MX_DATAW;
-
-typedef struct
-{
-    PSTR            pNameExchange;
-    WORD            wPreference;
-    WORD            Pad;        // keep ptrs DWORD aligned
-}
-DNS_MX_DATAA, *PDNS_MX_DATAA;
+DNS_MX_DATA, *PDNS_MX_DATA;
 
 typedef struct
 {
     DWORD           dwStringCount;
 #ifdef MIDL_PASS
-    [size_is(dwStringCount)] PWSTR pStringArray[];
+    [size_is(dwStringCount)] LPTSTR pStringArray[];
 #else
-    PWSTR           pStringArray[1];
+    LPTSTR          pStringArray[1];
 #endif
 }
-DNS_TXT_DATAW, *PDNS_TXT_DATAW;
-
-typedef struct
-{
-    DWORD           dwStringCount;
-#ifdef MIDL_PASS
-    [size_is(dwStringCount)] PSTR  pStringArray[];
-#else
-    PSTR            pStringArray[1];
-#endif
-}
-DNS_TXT_DATAA, *PDNS_TXT_DATAA;
+DNS_TXT_DATA, *PDNS_TXT_DATA;
 
 typedef struct
 {
@@ -936,13 +890,13 @@ DNS_WKS_DATA, *PDNS_WKS_DATA;
 
 typedef struct
 {
-    IP6_ADDRESS     Ip6Address;
+    DNS_IP6_ADDRESS Ip6Address;
 }
 DNS_AAAA_DATA, *PDNS_AAAA_DATA;
 
 typedef struct
 {
-    PWSTR           pNameSigner;
+    LPTSTR          pNameSigner;
     WORD            wTypeCovered;
     BYTE            chAlgorithm;
     BYTE            chLabelCount;
@@ -953,22 +907,7 @@ typedef struct
     WORD            Pad;            // keep byte field aligned
     BYTE            Signature[1];
 }
-DNS_SIG_DATAW, *PDNS_SIG_DATAW;
-
-typedef struct
-{
-    PSTR            pNameSigner;
-    WORD            wTypeCovered;
-    BYTE            chAlgorithm;
-    BYTE            chLabelCount;
-    DWORD           dwOriginalTtl;
-    DWORD           dwExpiration;
-    DWORD           dwTimeSigned;
-    WORD            wKeyTag;
-    WORD            Pad;            // keep byte field aligned
-    BYTE            Signature[1];
-}
-DNS_SIG_DATAA, *PDNS_SIG_DATAA;
+DNS_SIG_DATA, *PDNS_SIG_DATA;
 
 typedef struct
 {
@@ -993,39 +932,21 @@ DNS_LOC_DATA, *PDNS_LOC_DATA;
 
 typedef struct
 {
-    PWSTR           pNameNext;
+    LPTSTR          pNameNext;
     WORD            wNumTypes;
     WORD            wTypes[1];
 }
-DNS_NXT_DATAW, *PDNS_NXT_DATAW;
+DNS_NXT_DATA, *PDNS_NXT_DATA;
 
 typedef struct
 {
-    PSTR            pNameNext;
-    WORD            wNumTypes;
-    WORD            wTypes[1];
-}
-DNS_NXT_DATAA, *PDNS_NXT_DATAA;
-
-typedef struct
-{
-    PWSTR           pNameTarget;
+    LPTSTR          pNameTarget;
     WORD            wPriority;
     WORD            wWeight;
     WORD            wPort;
     WORD            Pad;            // keep ptrs DWORD aligned
 }
-DNS_SRV_DATAW, *PDNS_SRV_DATAW;
-
-typedef struct
-{
-    PSTR            pNameTarget;
-    WORD            wPriority;
-    WORD            wWeight;
-    WORD            wPort;
-    WORD            Pad;            // keep ptrs DWORD aligned
-}
-DNS_SRV_DATAA, *PDNS_SRV_DATAA;
+DNS_SRV_DATA, *PDNS_SRV_DATA;
 
 typedef struct
 {
@@ -1042,7 +963,7 @@ DNS_ATMA_DATA, *PDNS_ATMA_DATA;
 
 typedef struct
 {
-    PWSTR           pNameAlgorithm;
+    LPTSTR          pNameAlgorithm;
     PBYTE           pAlgorithmPacket;
     PBYTE           pKey;
     PBYTE           pOtherData;
@@ -1055,28 +976,11 @@ typedef struct
     UCHAR           cAlgNameLength;
     BOOL            bPacketPointers;
 }
-DNS_TKEY_DATAW, *PDNS_TKEY_DATAW;
+DNS_TKEY_DATA, *PDNS_TKEY_DATA;
 
 typedef struct
 {
-    PSTR            pNameAlgorithm;
-    PBYTE           pAlgorithmPacket;
-    PBYTE           pKey;
-    PBYTE           pOtherData;
-    DWORD           dwCreateTime;
-    DWORD           dwExpireTime;
-    WORD            wMode;
-    WORD            wError;
-    WORD            wKeyLength;
-    WORD            wOtherLength;
-    UCHAR           cAlgNameLength;
-    BOOL            bPacketPointers;
-}
-DNS_TKEY_DATAA, *PDNS_TKEY_DATAA;
-
-typedef struct
-{
-    PWSTR           pNameAlgorithm;
+    LPTSTR          pNameAlgorithm;
     PBYTE           pAlgorithmPacket;
     PBYTE           pSignature;
     PBYTE           pOtherData;
@@ -1089,24 +993,8 @@ typedef struct
     UCHAR           cAlgNameLength;
     BOOL            bPacketPointers;
 }
-DNS_TSIG_DATAW, *PDNS_TSIG_DATAW;
+DNS_TSIG_DATA, *PDNS_TSIG_DATA;
 
-typedef struct
-{
-    PSTR            pNameAlgorithm;
-    PBYTE           pAlgorithmPacket;
-    PBYTE           pSignature;
-    PBYTE           pOtherData;
-    LONGLONG        i64CreateTime;
-    WORD            wFudgeTime;
-    WORD            wOriginalXid;
-    WORD            wError;
-    WORD            wSigLength;
-    WORD            wOtherLength;
-    UCHAR           cAlgNameLength;
-    BOOL            bPacketPointers;
-}
-DNS_TSIG_DATAA, *PDNS_TSIG_DATAA;
 
 //
 //  MS only types -- only hit the wire in MS-MS zone transfer
@@ -1127,48 +1015,10 @@ typedef struct
     DWORD           dwMappingFlag;
     DWORD           dwLookupTimeout;
     DWORD           dwCacheTimeout;
-    PWSTR           pNameResultDomain;
+    LPTSTR          pNameResultDomain;
 }
-DNS_WINSR_DATAW, *PDNS_WINSR_DATAW;
+DNS_WINSR_DATA, *PDNS_WINSR_DATA;
 
-typedef struct
-{
-    DWORD           dwMappingFlag;
-    DWORD           dwLookupTimeout;
-    DWORD           dwCacheTimeout;
-    PSTR            pNameResultDomain;
-}
-DNS_WINSR_DATAA, *PDNS_WINSR_DATAA;
-
-//
-//  Unicode/ANSI record types
-//
-
-#ifdef UNICODE
-typedef DNS_PTR_DATAW   DNS_PTR_DATA,   *PDNS_PTR_DATA;
-typedef DNS_SOA_DATAW   DNS_SOA_DATA,   *PDNS_SOA_DATA;
-typedef DNS_MINFO_DATAW DNS_MINFO_DATA, *PDNS_MINFO_DATA;
-typedef DNS_MX_DATAW    DNS_MX_DATA,    *PDNS_MX_DATA;
-typedef DNS_TXT_DATAW   DNS_TXT_DATA,   *PDNS_TXT_DATA;
-typedef DNS_SIG_DATAW   DNS_SIG_DATA,   *PDNS_SIG_DATA;
-typedef DNS_NXT_DATAW   DNS_NXT_DATA,   *PDNS_NXT_DATA;
-typedef DNS_SRV_DATAW   DNS_SRV_DATA,   *PDNS_SRV_DATA;
-typedef DNS_TKEY_DATAW  DNS_TKEY_DATA,  *PDNS_TKEY_DATA;
-typedef DNS_TSIG_DATAW  DNS_TSIG_DATA,  *PDNS_TSIG_DATA;
-typedef DNS_WINSR_DATAW DNS_WINSR_DATA, *PDNS_WINSR_DATA;
-#else
-typedef DNS_PTR_DATAA   DNS_PTR_DATA,   *PDNS_PTR_DATA;
-typedef DNS_SOA_DATAA   DNS_SOA_DATA,   *PDNS_SOA_DATA;
-typedef DNS_MINFO_DATAA DNS_MINFO_DATA, *PDNS_MINFO_DATA;
-typedef DNS_MX_DATAA    DNS_MX_DATA,    *PDNS_MX_DATA;
-typedef DNS_TXT_DATAA   DNS_TXT_DATA,   *PDNS_TXT_DATA;
-typedef DNS_SIG_DATAA   DNS_SIG_DATA,   *PDNS_SIG_DATA;
-typedef DNS_NXT_DATAA   DNS_NXT_DATA,   *PDNS_NXT_DATA;
-typedef DNS_SRV_DATAA   DNS_SRV_DATA,   *PDNS_SRV_DATA;
-typedef DNS_TKEY_DATAA  DNS_TKEY_DATA,  *PDNS_TKEY_DATA;
-typedef DNS_TSIG_DATAA  DNS_TSIG_DATA,  *PDNS_TSIG_DATA;
-typedef DNS_WINSR_DATAA DNS_WINSR_DATA, *PDNS_WINSR_DATA;
-#endif
 
 //
 //  Length of non-fixed-length data types
@@ -1267,69 +1117,12 @@ DNS_SECTION;
 
 #else
 
-typedef struct _DnsRecordW
+typedef struct _DnsRecord
 {
-    struct _DnsRecordW *    pNext;
-    PWSTR                   pName;
-    WORD                    wType;
-    WORD                    wDataLength;    // Not referenced for DNS record types
-                                            // defined above.
-    union
-    {
-        DWORD               DW;     // flags as DWORD
-        DNS_RECORD_FLAGS    S;      // flags as structure
-
-    } Flags;
-
-    DWORD                   dwTtl;
-    DWORD                   dwReserved;
-
-    //  Record Data
-
-    union
-    {
-        DNS_A_DATA          A;
-        DNS_SOA_DATAW       SOA, Soa;
-        DNS_PTR_DATAW       PTR, Ptr,
-                            NS, Ns,
-                            CNAME, Cname,
-                            MB, Mb,
-                            MD, Md,
-                            MF, Mf,
-                            MG, Mg,
-                            MR, Mr;
-        DNS_MINFO_DATAW     MINFO, Minfo,
-                            RP, Rp;
-        DNS_MX_DATAW        MX, Mx,
-                            AFSDB, Afsdb,
-                            RT, Rt;
-        DNS_TXT_DATAW       HINFO, Hinfo,
-                            ISDN, Isdn,
-                            TXT, Txt,
-                            X25;
-        DNS_NULL_DATA       Null;
-        DNS_WKS_DATA        WKS, Wks;
-        DNS_AAAA_DATA       AAAA;
-        DNS_KEY_DATA        KEY, Key;
-        DNS_SIG_DATAW       SIG, Sig;
-        DNS_ATMA_DATA       ATMA, Atma;
-        DNS_NXT_DATAW       NXT, Nxt;
-        DNS_SRV_DATAW       SRV, Srv;
-        DNS_TKEY_DATAW      TKEY, Tkey;
-        DNS_TSIG_DATAW      TSIG, Tsig;
-        DNS_WINS_DATA       WINS, Wins;
-        DNS_WINSR_DATAW     WINSR, WinsR, NBSTAT, Nbstat;
-
-    } Data;
-}
-DNS_RECORDW, *PDNS_RECORDW;
-
-typedef struct _DnsRecordA
-{
-    struct _DnsRecordA *    pNext;
-    PSTR                    pName;
-    WORD                    wType;
-    WORD                    wDataLength; // Not referenced for DNS record types
+    struct _DnsRecord * pNext;
+    LPTSTR              pName;
+    WORD                wType;
+    WORD                wDataLength; // Not referenced for DNS record types
                                      // defined above.
     union
     {
@@ -1338,54 +1131,48 @@ typedef struct _DnsRecordA
 
     } Flags;
 
-    DWORD                   dwTtl;
-    DWORD                   dwReserved;
+    DWORD               dwTtl;
+    DWORD               dwReserved;
 
     //  Record Data
 
     union
     {
-        DNS_A_DATA          A;
-        DNS_SOA_DATAA       SOA, Soa;
-        DNS_PTR_DATAA       PTR, Ptr,
-                            NS, Ns,
-                            CNAME, Cname,
-                            MB, Mb,
-                            MD, Md,
-                            MF, Mf,
-                            MG, Mg,
-                            MR, Mr;
-        DNS_MINFO_DATAA     MINFO, Minfo,
-                            RP, Rp;
-        DNS_MX_DATAA        MX, Mx,
-                            AFSDB, Afsdb,
-                            RT, Rt;
-        DNS_TXT_DATAA       HINFO, Hinfo,
-                            ISDN, Isdn,
-                            TXT, Txt,
-                            X25;
-        DNS_NULL_DATA       Null;
-        DNS_WKS_DATA        WKS, Wks;
-        DNS_AAAA_DATA       AAAA;
-        DNS_KEY_DATA        KEY, Key;
-        DNS_SIG_DATAA       SIG, Sig;
-        DNS_ATMA_DATA       ATMA, Atma;
-        DNS_NXT_DATAA       NXT, Nxt;
-        DNS_SRV_DATAA       SRV, Srv;
-        DNS_TKEY_DATAA      TKEY, Tkey;
-        DNS_TSIG_DATAA      TSIG, Tsig;
-        DNS_WINS_DATA       WINS, Wins;
-        DNS_WINSR_DATAA     WINSR, WinsR, NBSTAT, Nbstat;
+        DNS_A_DATA      A;
+        DNS_SOA_DATA    SOA, Soa;
+        DNS_PTR_DATA    PTR, Ptr,
+                        NS, Ns,
+                        CNAME, Cname,
+                        MB, Mb,
+                        MD, Md,
+                        MF, Mf,
+                        MG, Mg,
+                        MR, Mr;
+        DNS_MINFO_DATA  MINFO, Minfo,
+                        RP, Rp;
+        DNS_MX_DATA     MX, Mx,
+                        AFSDB, Afsdb,
+                        RT, Rt;
+        DNS_TXT_DATA    HINFO, Hinfo,
+                        ISDN, Isdn,
+                        TXT, Txt,
+                        X25;
+        DNS_NULL_DATA   Null;
+        DNS_WKS_DATA    WKS, Wks;
+        DNS_AAAA_DATA   AAAA;
+        DNS_KEY_DATA    KEY, Key;
+        DNS_SIG_DATA    SIG, Sig;
+        DNS_ATMA_DATA   ATMA, Atma;
+        DNS_NXT_DATA    NXT, Nxt;
+        DNS_SRV_DATA    SRV, Srv;
+        DNS_TKEY_DATA   TKEY, Tkey;
+        DNS_TSIG_DATA   TSIG, Tsig;
+        DNS_WINS_DATA   WINS, Wins;
+        DNS_WINSR_DATA  WINSR, WinsR, NBSTAT, Nbstat;
 
     } Data;
 }
-DNS_RECORDA, *PDNS_RECORDA;
-
-#ifdef UNICODE
-typedef DNS_RECORDW     DNS_RECORD, *PDNS_RECORD;
-#else
-typedef DNS_RECORDA     DNS_RECORD, *PDNS_RECORD;
-#endif
+DNS_RECORD, *PDNS_RECORD;
 
 //
 //  Header or fixed size of DNS_RECORD
@@ -1543,42 +1330,33 @@ DnsRecordSetDetach(
     );
 
 //
-//  Free structures returned from dnsapi.dll
+//  Free record list
 //
-//  Currently supported free structures:
-//      Flat -- flat structure, including those allocated by DnsQueryConfig()
-//      RecordList -- deep record list free, including sub-fields of DNS_RECORD;
-//          includes those returned by DnsQuery() or DnsRecordSetCopy()
+//  Only supported free is deep free of entire record list with LocalFree().
+//  This correctly frees record list returned by DnsQuery() or DnsRecordSetCopy()
 //
 
 typedef enum
 {
     DnsFreeFlat = 0,
-    DnsFreeRecordList,
-    DnsFreeParsedMessageFields
+    DnsFreeRecordList
 }
 DNS_FREE_TYPE;
 
-VOID
-WINAPI
-DnsFree(
-    IN OUT  PVOID           pData,
-    IN      DNS_FREE_TYPE   FreeType
-    );
-
-//
-//  Backward compatibility with Win2K, do not use for XP+ applications
-//
-//  To free record lists, code
-//      DnsFree( pRecordList, DnsFreeRecordList );
-//
-
 #define DnsFreeRecordListDeep   DnsFreeRecordList
+
 
 VOID
 WINAPI
 DnsRecordListFree(
     IN OUT  PDNS_RECORD     pRecordList,
+    IN      DNS_FREE_TYPE   FreeType
+    );
+
+VOID
+WINAPI
+DnsFree(
+    IN OUT  PVOID           pData,
     IN      DNS_FREE_TYPE   FreeType
     );
 
@@ -1683,7 +1461,6 @@ DnsQuery_W(
 #define DNS_UPDATE_FORCE_SECURITY_NEGO      0x00000800
 #define DNS_UPDATE_TRY_ALL_MASTER_SERVERS   0x00001000
 #define DNS_UPDATE_SKIP_NO_UPDATE_ADAPTERS  0x00002000
-#define DNS_UPDATE_REMOTE_SERVER            0x00004000
 #define DNS_UPDATE_RESERVED                 0xffff0000
 
 
@@ -1891,7 +1668,7 @@ BOOL
 WINAPI
 DnsWriteQuestionToBuffer_W(
     IN OUT  PDNS_MESSAGE_BUFFER pDnsBuffer,
-    IN OUT  PDWORD              pdwBufferSize,
+    IN OUT  LPDWORD             pdwBufferSize,
     IN      LPWSTR              pszName,
     IN      WORD                wType,
     IN      WORD                Xid,

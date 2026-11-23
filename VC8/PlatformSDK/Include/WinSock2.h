@@ -26,9 +26,6 @@
 
 #if !defined(WIN32) && !defined(_WIN64)
 #include <pshpack4.h>
-/* WIN32 can be defined between here and the required poppack 
-   so define this special macro to ensure poppack */
-#define _NEED_POPPACK
 #endif
 
 /*
@@ -655,7 +652,6 @@ struct  linger {
 #define MSG_OOB         0x1             /* process out-of-band data */
 #define MSG_PEEK        0x2             /* peek at incoming message */
 #define MSG_DONTROUTE   0x4             /* send without using routing tables */
-#define MSG_WAITALL     0x8             /* do not complete until packet is completely filled */
 
 #define MSG_PARTIAL     0x8000          /* partial send or recv for message xport */
 
@@ -3850,7 +3846,7 @@ typedef struct timeval FAR *LPTIMEVAL;
 }
 #endif
 
-#ifdef _NEED_POPPACK
+#if !defined(WIN32) && !defined(_WIN64)
 #include <poppack.h>
 #endif
 

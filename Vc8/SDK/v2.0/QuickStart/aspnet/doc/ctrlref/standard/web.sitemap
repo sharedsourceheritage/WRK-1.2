@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+	<siteMapNode url="~/aspnet/doc/ctrlref/standard/default.aspx" title="Standard Controls">
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/adrotator.aspx" title="AdRotator"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/bulletedlist.aspx" title="BulletedList"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/button.aspx" title="Button"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/calendar.aspx" title="Calendar"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/checkbox.aspx" title="CheckBox"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/checkboxlist.aspx" title="CheckBoxList"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/dropdownlist.aspx" title="DropDownList"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/fileupload.aspx" title="FileUpload"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/hiddenfield.aspx" title="HiddenField"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/hyperlink.aspx" title="HyperLink"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/image.aspx" title="Image"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/imagebutton.aspx" title="ImageButton"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/imagemap.aspx" title="ImageMap"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/label.aspx" title="Label"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/linkbutton.aspx" title="LinkButton"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/listbox.aspx" title="ListBox"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/literal.aspx" title="Literal"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/multiview.aspx" title="MultiView and View"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/panel.aspx" title="Panel"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/placeholder.aspx" title="PlaceHolder"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/radiobutton.aspx" title="RadioButton"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/radiobuttonlist.aspx" title="RadioButtonList"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/substitution.aspx" title="Substitution"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/table.aspx" title="Table"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/textbox.aspx" title="TextBox"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/wizard.aspx" title="Wizard"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/standard/xml.aspx" title="Xml"/>
+        </siteMapNode>
+</siteMap>

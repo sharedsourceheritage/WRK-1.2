@@ -487,15 +487,6 @@
 #define SCARD_E_NO_KEY_CONTAINER         ((DWORD)0x80100030L)
 
 //
-// MessageId: SCARD_E_SERVER_TOO_BUSY
-//
-// MessageText:
-//
-//  The Smart card resource manager is too busy to complete this operation.
-//
-#define SCARD_E_SERVER_TOO_BUSY          ((DWORD)0x80100031L)
-
-//
 // These are warning codes.
 //
 //

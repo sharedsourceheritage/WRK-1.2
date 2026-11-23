@@ -1,0 +1,463 @@
+
+<siteMap>
+  <siteMapNode title="Home" url="~/default.aspx" >
+    <siteMapNode title="Introduction to ASP.NET" url="~/introduction/default.aspx">
+    <siteMapNode title="What's New in Whidbey?" url="~/introduction/whatsnew.aspx"/>
+      <siteMapNode title="Sample Applications (Starter Kits)" url="~/introduction/starterkits.aspx"/>
+      <siteMapNode title="Introduction to Visual Web Developer" url="~/introduction/vwd.aspx"/>
+    </siteMapNode>
+    <siteMapNode title="Building A Web Application" url="~/development/default.aspx">
+      <siteMapNode title="Building a Simple Application" url="~/development/simple/default.aspx">
+        <siteMapNode title="Introduction to ASP.NET pages" url="~/development/simple/pages.aspx"/>
+        <siteMapNode title="Introduction to Server Controls" url="~/development/simple/servercontrols.aspx"/>
+        <siteMapNode title="Inline vs Code Behind Pages" url="~/development/simple/codeseparation.aspx"/>
+        <siteMapNode title="Sharing Code Between Pages" url="~/development/simple/codedirectory.aspx"/>
+      </siteMapNode>
+      <siteMapNode title="Performing Data Access" url="~/development/data/default.aspx">
+        <siteMapNode title="Introducing Data Controls" url="~/development/data/datacontrols.aspx">
+          <siteMapNode title="DataSource and Data-bound Controls" url="~/development/data/datacontrols.aspx#types"/>
+        </siteMapNode>
+        <siteMapNode title="Binding to Databases" url="~/development/data/databases.aspx">
+          <siteMapNode title="The GridView Control" url="~/development/data/gridview.aspx"/>
+          <siteMapNode title="Creating a Data Report" url="~/development/data/selecting.aspx"/>
+          <siteMapNode title="Connection String Settings" url="~/development/data/connections.aspx"/>
+          <siteMapNode title="Sorting and Paging Data" url="~/development/data/sortingpaging.aspx"/>
+          <siteMapNode title="Updating and Deleting Data" url="~/development/data/updatingdeleting.aspx"/>
+          <siteMapNode title="Filtering Data" url="~/development/data/filtering.aspx"/>
+          <siteMapNode title="Caching Data" url="~/development/data/caching.aspx"/>
+          <siteMapNode title="Master-Details" url="~/development/data/masterdetails.aspx"/>
+          <siteMapNode title="Inserting Data" url="~/development/data/inserting.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Binding to Business Objects" url="~/development/data/objects.aspx">
+          <siteMapNode title="Binding to a Data Access Layer" url="~/development/data/datalayer.aspx"/>
+          <siteMapNode title="Binding to a Business Logic Layer" url="~/development/data/businesslayer.aspx"/>
+          <siteMapNode title="Binding to a Visual Studio Data Component" url="~/development/data/datacomponent.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Databinding in Templates" url="~/development/data/templates.aspx">
+          <siteMapNode title="Databinding Expressions" url="~/development/data/databinding.aspx"/>
+          <siteMapNode title="The FormView Control" url="~/development/data/formview.aspx"/>
+          <siteMapNode title="Two-way Databinding" url="~/development/data/twowaybinding.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Hierarchical Data" url="~/development/data/hierarchy.aspx">
+          <siteMapNode title="The TreeView and Menu Controls" url="~/development/data/treeviewmenu.aspx"/>
+          <siteMapNode title="Binding to XML" url="~/development/data/xml.aspx"/>
+          <siteMapNode title="Binding to Site Navigation" url="~/development/data/navigation.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Advanced Data Scenarios" url="~/development/data/advanced.aspx">
+          <siteMapNode title="Handling Data Source Events" url="~/development/data/events.aspx"/>
+          <siteMapNode title="Using Optimistic Concurrency" url="~/development/data/optimistic.aspx"/>
+          <siteMapNode title="Advanced Paging/Sorting" url="~/development/data/advpagingsorting.aspx"/>
+          <siteMapNode title="Sorting/Paging Using Callbacks" url="~/development/data/callbacks.aspx"/>
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode title="Applying Themes and Skins" url="~/development/themes/default.aspx">
+        <siteMapNode title="Using Themes to Customize a Site" url="~/development/themes/themes.aspx">
+          <siteMapNode title="The Theme Folder" url="~/development/themes/themes.aspx#folder"/>
+          <siteMapNode title="Global and Application Themes" url="~/development/themes/themes.aspx#scope"/>
+          <siteMapNode title="The Theme Directive" url="~/development/themes/themes.aspx#directive"/>
+          <siteMapNode title="Theme Resources" url="~/development/themes/themes.aspx#resources"/>
+        </siteMapNode>
+        <siteMapNode title="Using Skins within a Theme" url="~/development/themes/skins.aspx">
+          <siteMapNode title="Default and Named Skins" url="~/development/themes/skins.aspx#named"/> 
+          <siteMapNode title="Defining Control Content in Themes" url="~/development/themes/skins.aspx#controls"/> 
+          <siteMapNode title="DataBinding and Expressions in Themes" url="~/development/themes/skins.aspx#expressions"/> 
+        </siteMapNode>
+        <siteMapNode title="Server-side Styles using Themes" url="~/development/themes/styles.aspx">
+          <siteMapNode title="Declarative Server-side Styles" url="~/development/themes/styles.aspx#declare"/>
+          <siteMapNode title="Assigning a StyleSheet Theme in Code" url="~/development/themes/styles.aspx#code"/>
+          <siteMapNode title="Dynamic Controls" url="~/development/themes/styles.aspx#controls"/>
+        </siteMapNode>
+        <siteMapNode title="Server-side Customization using Themes" url="~/development/themes/customization.aspx">
+          <siteMapNode title="Declarative Customization Themes" url="~/development/themes/customization.aspx#declare"/>
+          <siteMapNode title="Assigning the Customization Theme in Code" url="~/development/themes/customization.aspx#code"/>
+          <siteMapNode title="Dynamic Controls" url="~/development/themes/customization.aspx#controls"/>
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode title="Creating a Layout Using Master Pages" url="~/development/masterpages/default.aspx">
+        <siteMapNode title="Introducing Master Pages" url="~/development/masterpages/introduction.aspx">
+          <siteMapNode title="Understanding Master and Content Pages" url="~/development/masterpages/masterpages.aspx"/>
+          <siteMapNode title="The Content and ContentPlaceHolder Controls" url="~/development/masterpages/controls.aspx"/>
+          <siteMapNode title="Referencing Resources from a Master Page" url="~/development/masterpages/resources.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Advanced Master Page Scenarios" url="~/development/masterpages/advanced.aspx">
+          <siteMapNode title="Creating Nested Master Pages" url="~/development/masterpages/nestedpages.aspx"/>
+          <siteMapNode title="Selecting a Master-page for a Device" url="~/development/masterpages/devices.aspx"/>
+          <siteMapNode title="Accessing a Master Page from Code" url="~/development/masterpages/code.aspx"/>
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode title="Building a Site Navigation Hierarchy" url="~/development/navigation/default.aspx">
+        <siteMapNode title="Creating an Application Site Map" url="~/development/navigation/intro.aspx">
+          <siteMapNode title="Creating a Web.Sitemap file" url="~/development/navigation/sitemap.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Using the Navigation Controls" url="~/development/navigation/controls.aspx">
+          <siteMapNode title="The SiteMapPath control" url="~/development/navigation/controls.aspx#sitemappath"/>
+          <siteMapNode title="The SiteMapDataSource control" url="~/development/navigation/controls.aspx#sitemapdatasource"/>
+          <siteMapNode title="The Menu control" url="~/development/navigation/controls.aspx#menu"/>
+          <siteMapNode title="The TreeView control" url="~/development/navigation/controls.aspx#treeview"/>
+        </siteMapNode>
+        <siteMapNode title="Using the Navigation API" url="~/development/navigation/api.aspx">
+          <siteMapNode title="Introduction to the Navigation API" url="~/development/navigation/api.aspx#intro"/>
+          <siteMapNode title="Navigating linked site maps with the APIs" url="~/development/navigation/api.aspx#linkedmaps"/>
+          <siteMapNode title="Configuring and using URL mapping" url="~/development/navigation/api.aspx#urlmapping"/>
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode title="Securing Your Application" url="~/development/security/default.aspx">
+        <siteMapNode title="Using the Login Controls" url="~/development/security/controls.aspx">
+          <siteMapNode title="The CreateUserWizard control" url="~/development/security/controls.aspx#createuserwizard"/>
+          <siteMapNode title="The Login control" url="~/development/security/controls.aspx#login"/>
+          <siteMapNode title="The LoginStatus control" url="~/development/security/controls.aspx#loginstatus"/>
+          <siteMapNode title="The LoginName control" url="~/development/security/controls.aspx#loginname"/>
+          <siteMapNode title="The LoginView control" url="~/development/security/controls.aspx#loginview"/>
+          <siteMapNode title="The PasswordRecovery control" url="~/development/security/controls.aspx#passwordrecovery"/>
+          <siteMapNode title="The ChangePassword control" url="~/development/security/controls.aspx#changepassword"/>
+        </siteMapNode>
+        <siteMapNode title="Using the Membership Service" url="~/development/security/membership.aspx">
+          <siteMapNode title="Introduction to Membership" url="~/development/security/membership/default.aspx"/>
+          <siteMapNode title="Creating a user in membership" url="~/development/security/membership/createuser.aspx"/>
+          <siteMapNode title="Authenticating and integrating with forms authentication" url="~/development/security/membership/formsauth.aspx"/>
+          <siteMapNode title="Common tasks for a membership user" url="~/development/security/membership/commontasks.aspx"/>
+          <siteMapNode title="Administering the membership system" url="~/development/security/membership/administration.aspx"/>
+          <siteMapNode title="Authenticating using multiple membership providers" url="~/development/security/membership/multipleproviders.aspx"/>
+          <siteMapNode title="Using custom hash algorithms with membership" url="~/development/security/membership/customhash.aspx"/>
+          <siteMapNode title="Using membership in a non-HTTP environment" url="~/development/security/membership/nonhttp.aspx"/>
+          <siteMapNode title="Integrating membership data using views" url="~/development/security/membership/views.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Using the Role Management Service" url="~/development/security/roles.aspx">
+          <siteMapNode title="Introduction to Role Management" url="~/development/security/roles/default.aspx"/>
+          <siteMapNode title="Authorizing membership users with role manager" url="~/development/security/roles/authusers.aspx"/>
+          <siteMapNode title="Authorizing users who are not stored in Membership" url="~/development/security/roles/authnonusers.aspx"/>
+          <siteMapNode title="Authorizing membership users with AzMan role provider" url="~/development/security/roles/authazman.aspx"/>
+          <siteMapNode title="Authorizing Windows authenticated users" url="~/development/security/roles/authwindows.aspx"/>
+          <siteMapNode title="Modifying and displaying a user's roles" url="~/development/security/roles/displayroles.aspx"/>
+          <siteMapNode title="Administering the role management system" url="~/development/security/roles/administration.aspx"/>
+          <siteMapNode title="Authorization with multiple role manager providers" url="~/development/security/roles/multipleproviders.aspx"/>
+          <siteMapNode title="Using role manager in a non-HTTP environment" url="~/development/security/roles/nonhttp.aspx"/>
+          <siteMapNode title="Integrating role manager data using views" url="~/development/security/roles/views.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Forms Authentication Improvements" url="~/development/security/formsauth.aspx"/>
+      </siteMapNode>
+      <siteMapNode title="Personalizing Using Web Parts" url="~/development/webparts/default.aspx">
+        <siteMapNode title="Introducing Web Parts" url="~/development/webparts/intro.aspx">
+          <siteMapNode title="Personalization and Web Parts" url="~/development/webparts/personalizationintro.aspx"/>
+          <siteMapNode title="Adding Web Part UI elements" url="~/development/webparts/webpartui.aspx"/>
+          <siteMapNode title="Changing Web Part display modes" url="~/development/webparts/displaymodes.aspx"/>
+          <siteMapNode title="Enabling Web Part editing" url="~/development/webparts/editing.aspx"/>
+          <siteMapNode title="Enabling Web Part catalogs" url="~/development/webparts/catalogs.aspx"/>
+          <siteMapNode title="Sharing Web Part configuration" url="~/development/webparts/configuration.aspx"/>
+          <siteMapNode title="Securing Web Part access" url="~/development/webparts/security.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Building Web Parts" url="~/development/webparts/building.aspx">
+          <siteMapNode title="Building a Web Part" url="~/development/webparts/buildingwebparts.aspx"/>
+          <siteMapNode title="Editing Web Part properties" url="~/development/webparts/editingproperties.aspx"/>
+          <siteMapNode title="Personalizable Web Part properties" url="~/development/webparts/personalizableproperties.aspx"/>
+          <siteMapNode title="Sharing data between Web Parts" url="~/development/webparts/sharingdata.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Web Part Zones" url="~/development/webparts/zones.aspx">
+          <siteMapNode title="Customizing Web Part frames" url="~/development/webparts/customframes.aspx"/>
+          <siteMapNode title="Creating a new Web Part Zone" url="~/development/webparts/creatingzones.aspx"/>
+          <siteMapNode title="Supporting new display modes" url="~/development/webparts/zonedisplaymodes.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Personalization and Web Parts" url="~/development/webparts/personalization.aspx">
+          <siteMapNode title="Securing Personalization mode" url="~/development/webparts/personalizationmode.aspx"/>
+          <siteMapNode title="Implementing IPersonalizable" url="~/development/webparts/ipersonalizable.aspx"/>
+          <siteMapNode title="Implementing ITrackingPersonalizable" url="~/development/webparts/itrackingpersonalizable.aspx"/>
+          <siteMapNode title="Handling Web Part upgrades" url="~/development/webparts/upgrades.aspx"/>
+          <siteMapNode title="Administering personalization" url="~/development/webparts/administration.aspx"/>
+          <siteMapNode title="Customizing personalization data" url="~/development/webparts/customdata.aspx"/>
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode title="Storing User Profiles" url="~/development/profile/default.aspx">
+        <siteMapNode title="Creating a User Profile" url="~/development/profile/profile.aspx">
+          <siteMapNode title="Configuring a Profile Schema" url="~/development/profile/schema.aspx"/>
+          <siteMapNode title="Using the Profile Object" url="~/development/profile/profileobject.aspx"/>
+          <siteMapNode title="Using Profile with Authenticated users" url="~/development/profile/auth.aspx"/>
+          <siteMapNode title="Using Profile with Non-authenticated users" url="~/development/profile/nonauth.aspx"/>
+          <siteMapNode title="Using Profile with complex user-defined types" url="~/development/profile/complextypes.aspx"/>
+          <siteMapNode title="Maintaining Profile with the Administrative API" url="~/development/profile/administration.aspx"/>
+          <siteMapNode title="Using Profile with multiple profile providers" url="~/development/profile/multipleproviders.aspx"/>
+          <siteMapNode title="Configuring a Profile schema with a custom profile class" url="~/development/profile/customclass.aspx"/>
+          <siteMapNode title="Using Profiles in a non-HTTP environment" url="~/development/profile/nonhttp.aspx"/>
+          <siteMapNode title="Integrating Profile data using views" url="~/development/profile/views.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Tracking Anonymous IDs" url="~/development/profile/trackingids.aspx">
+          <siteMapNode title="Anonymous Identification" url="~/development/profile/anonymousid.aspx"/>
+          <siteMapNode title="Using Profile with Anonymous Identification" url="~/development/profile/idandprofile.aspx"/>
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode title="Caching For Performance" url="~/development/caching/default.aspx">
+        <siteMapNode title="Caching Pages" url="~/development/caching/pagecaching.aspx">
+          <siteMapNode title="Using Cache Profiles" url="~/development/caching/pagecaching.aspx#cacheprofiles"/>
+          <siteMapNode title="Using Disk Cache" url="~/development/caching/pagecaching.aspx#diskcache"/>
+          <siteMapNode title="Using SqlCacheDependency" url="~/development/caching/sqlcachedependency.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Caching Page Fragments" url="~/development/caching/fragmentcaching.aspx">
+          <siteMapNode title="User Control Cache Dependency API" url="~/development/caching/fragmentcaching.aspx#dependencyapi"/>
+        </siteMapNode>
+        <siteMapNode title="Post-cache Substitution" url="~/development/caching/substitution.aspx">
+          <siteMapNode title="Using PostCache Substitution" url="~/development/caching/substitution.aspx#using"/>
+          <siteMapNode title="Using the Substitution Control" url="~/development/caching/substitution.aspx#control"/>
+        </siteMapNode>
+        <siteMapNode title="Caching Data" url="~/development/caching/datacaching.aspx">
+          <siteMapNode title="Using the PreRemove Event" url="~/development/caching/datacaching.aspx#preremove"/>
+        </siteMapNode>
+        <siteMapNode title="Configuring the Cache" url="~/development/caching/configuration.aspx">
+          <siteMapNode title="Debugging Cache" url="~/development/caching/configuration.aspx#debugging"/>
+          <siteMapNode title="Tuning Cache Scavenging Settings" url="~/development/caching/configuration.aspx#scavenging"/>
+          <siteMapNode title="Controlling Disk Cache" url="~/development/caching/configuration.aspx#diskcache"/>
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode title="Localizing An Application" url="~/development/localization/default.aspx">
+        <siteMapNode title="Introducing Localization" url="~/development/localization/introduction.aspx"/>
+        <siteMapNode title="Creating a Multi-Lingual Site" url="~/development/localization/multilanguage.aspx"/>
+        <siteMapNode title="Resource Expressions" url="~/development/localization/expressions.aspx">
+          <siteMapNode title="Explicit and Non-explicit Expressions" url="~/development/localization/expressions.aspx#syntax"/>
+          <siteMapNode title="Application and Page Resources" url="~/development/localization/expressions.aspx#scope"/>
+        </siteMapNode>
+        <siteMapNode title="Using Directionality" url="~/development/localization/directionality.aspx"/>
+        <siteMapNode title="Localizing Static Content" url="~/development/localization/staticcontent.aspx"/>
+        <siteMapNode title="Localizing a Control" url="~/development/localization/controls.aspx"/>
+        <siteMapNode title="Detecting the Client Language" url="~/development/localization/detectlanguage.aspx">
+          <siteMapNode title="Detecting Language Declaratively" url="~/development/localization/detectlanguage.aspx#declarative"/>
+          <siteMapNode title="Detecting Language Programmatically" url="~/development/localization/detectlanguage.aspx#programmatic"/>
+          <siteMapNode title="Setting Language Preference" url="~/development/localization/languagepreference.aspx"/>
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode title="Mobile-enabling An Application" url="~/development/mobile/default.aspx">
+        <siteMapNode title="Designing for Mobility" url="~/development/mobile/mobility.aspx">
+          <siteMapNode title="Managing a Linear Application" url="~/development/mobile/mobility.aspx#linearapps"/>
+        </siteMapNode>
+        <siteMapNode title="Using Mobility Controls" url="~/development/mobile/controls.aspx">
+          <siteMapNode title="Content Pager" url="~/development/mobile/controls.aspx#contentpager"/>
+          <siteMapNode title="PhoneLink" url="~/development/mobile/controls.aspx#phonelink"/>
+          <siteMapNode title="MultiView" url="~/development/mobile/controls.aspx#multiview"/>
+        </siteMapNode>
+        <siteMapNode title="Using Device Filters" url="~/development/mobile/filters.aspx">
+          <siteMapNode title="Introduction to Filters" url="~/development/mobile/filters.aspx#intro"/>
+          <siteMapNode title="Declarative Filtering" url="~/development/mobile/filters.aspx#declarative"/>
+          <siteMapNode title="Programmatic Filtering" url="~/development/mobile/filters.aspx#programmatic"/>
+        </siteMapNode>
+        <siteMapNode title="Detecting Browser Capabilities" url="~/development/mobile/capabilities.aspx">
+          <siteMapNode title="Creating Custom Capabilities" url="~/development/mobile/capabilities.aspx#custom"/>
+          <siteMapNode title="Creating Custom Browsers/Filters" url="~/development/mobile/capabilities.aspx#customfilters"/>
+          <siteMapNode title="Gateway Considerations" url="~/development/mobile/capabilities.aspx#gateways"/>
+        </siteMapNode>
+        <siteMapNode title="Using Adapters" url="~/development/mobile/adapters.aspx"/>
+      </siteMapNode>
+      <siteMapNode title="Cool Tips and Tricks" url="~/development/tipstricks/default.aspx">
+        <siteMapNode title="Cross-page Posting" url="~/development/tipstricks/crosspagepost.aspx"/>
+        <siteMapNode title="Validation Groups" url="~/development/tipstricks/validationgroups.aspx"/>
+        <siteMapNode title="Wizard Control" url="~/development/tipstricks/wizard.aspx"/>
+        <siteMapNode title="Image Generation" url="~/development/tipstricks/imagegen.aspx"/>
+        <siteMapNode title="URL Rewriting" url="~/development/tipstricks/urlrewriting.aspx"/>
+        <siteMapNode title="SiteCounters" url="~/development/tipstricks/sitecounters.aspx"/>
+        <siteMapNode title="Focus API" url="~/development/tipstricks/focusapi.aspx"/>
+        <siteMapNode title="Mail Services" url="~/development/tipstricks/mail.aspx"/>
+        <siteMapNode title="No-compile Pages" url="~/development/tipstricks/nocompile.aspx"/>
+        <siteMapNode title="File Provider" url="~/development/tipstricks/fileprovider.aspx"/>
+        <siteMapNode title="Session State" url="~/development/tipstricks/sessionstate.aspx"/>
+      </siteMapNode>
+      <siteMapNode title="Server Control Reference" url="~/development/controls/default.aspx">
+        <siteMapNode title="Standard Controls" url="~/development/controls/standard.aspx">
+          <siteMapNode title="Label" />
+          <siteMapNode title="TextBox" />
+          <siteMapNode title="Button" />
+          <siteMapNode title="LinkButton" />
+          <siteMapNode title="ImageButton" />
+          <siteMapNode title="HyperLink" />
+          <siteMapNode title="DropDownList" />
+          <siteMapNode title="ListBox" />
+          <siteMapNode title="CheckBox" />
+          <siteMapNode title="CheckBoxList" />
+          <siteMapNode title="RadioButton" />
+          <siteMapNode title="RadioButtonList" />
+          <siteMapNode title="Image" />
+          <siteMapNode title="DynamicImage" url="~/development/controls/standard/dynamicimage.aspx"/>
+          <siteMapNode title="ImageMap" url="~/development/controls/standard/imagemap.aspx"/>
+          <siteMapNode title="BulletedList" url="~/development/controls/standard/bulletedlist.aspx"/>
+          <siteMapNode title="HiddenField" url="~/development/controls/standard/hiddenfield.aspx"/>
+          <siteMapNode title="Literal" />
+          <siteMapNode title="Calendar" />
+          <siteMapNode title="AdRotator" />
+          <siteMapNode title="FileUpload" url="~/development/controls/standard/fileupload.aspx"/>
+          <siteMapNode title="PhoneLink" url="~/development/controls/standard/phonelink.aspx"/>
+          <siteMapNode title="ContentPager" url="~/development/controls/standard/contentpager.aspx"/>
+          <siteMapNode title="XML"/>
+          <siteMapNode title="Content" url="~/development/controls/standard/content.aspx"/>
+          <siteMapNode title="ContentPlaceHolder" url="~/development/controls/standard/contentplaceholder.aspx"/>
+          <siteMapNode title="Table"/>
+          <siteMapNode title="Panel"/>
+          <siteMapNode title="Placeholder"/>
+          <siteMapNode title="View" url="~/development/controls/standard/view.aspx"/>
+          <siteMapNode title="MultiView" url="~/development/controls/standard/multiview.aspx"/>
+          <siteMapNode title="Substitution" url="~/development/controls/standard/substitution.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Data Controls" url="~/development/controls/data.aspx">
+          <siteMapNode title="GridView" url="~/development/controls/data/gridview.aspx"/>
+          <siteMapNode title="DataList" />
+          <siteMapNode title="DetailsView" url="~/development/controls/data/detailsview.aspx"/>
+          <siteMapNode title="FormView" url="~/development/controls/data/formview.aspx"/>
+          <siteMapNode title="ObjectDataSource" url="~/development/controls/data/onjectdatasource.aspx"/>
+          <siteMapNode title="Repeater" />
+          <siteMapNode title="SqlDataSource" url="~/development/controls/data/sqldatasource.aspx"/>
+          <siteMapNode title="AccessDataSource" url="~/development/controls/data/accessdatasource.aspx"/>
+          <siteMapNode title="DataSetDataSource" url="~/development/controls/data/datasetdatasource.aspx"/>
+          <siteMapNode title="XmlDataSource" url="~/development/controls/data/xmldatasource.aspx"/>
+          <siteMapNode title="SiteMapDataSource" url="~/development/controls/data/sitemapdatasource.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Web Parts Controls" url="~/development/controls/webparts.aspx">
+          <siteMapNode title="WebPartManager" url="~/development/controls/webparts/.aspx"/>
+          <siteMapNode title="WebPartZone" url="~/development/controls/webparts/webpartzone.aspx"/>
+          <siteMapNode title="CatalogZone" url="~/development/controls/webparts/catalogzone.aspx"/>
+          <siteMapNode title="DeclarativeCatalogPart" url="~/development/controls/webparts/declarativecatalogpart.aspx"/>
+          <siteMapNode title="PageCatalogPart" url="~/development/controls/webparts/pagecatalogpart.aspx"/>
+          <siteMapNode title="EditorZone" url="~/development/controls/webparts/editorzone.aspx"/>
+          <siteMapNode title="AppearanceEditorPart" url="~/development/controls/webparts/appearanceeditorpart.aspx"/>
+          <siteMapNode title="LayoutEditorPart" url="~/development/controls/webparts/layouteditorpart.aspx"/>
+          <siteMapNode title="BehaviorEditorPart" url="~/development/controls/webparts/behavioreditorpart.aspx"/>
+          <siteMapNode title="PropertyGridEditorPart" url="~/development/controls/webparts/propertygrideditorpart.aspx"/>
+          <siteMapNode title="ConnectionsZone" url="~/development/controls/webparts/connectionszone.aspx"/>
+          <siteMapNode title="WebPartPageMenu" url="~/development/controls/webparts/webPartpagemenu.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Login Controls" url="~/development/controls/login.aspx">
+          <siteMapNode title="CreateUserWizard" url="~/development/controls/login/createuserwizard.aspx"/>
+          <siteMapNode title="Login" url="~/development/controls/login/login.aspx"/>
+          <siteMapNode title="LoginStatus" url="~/development/controls/login/loginstatus.aspx"/>
+          <siteMapNode title="LoginName" url="~/development/controls/login/loginname.aspx"/>
+          <siteMapNode title="LoginView" url="~/development/controls/login/loginview.aspx"/>
+          <siteMapNode title="PasswordRecovery" url="~/development/controls/login/passwordrecovery.aspx"/>
+          <siteMapNode title="ChangePassword" url="~/development/controls/login/changepassword.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Validation Controls" url="~/development/controls/validation.aspx">
+          <siteMapNode title="RequiredFieldValidator" />
+          <siteMapNode title="RangeValidator" />
+          <siteMapNode title="RegularExpressionValidator" />
+          <siteMapNode title="CompareValidator" />
+          <siteMapNode title="CustomValidator" />
+          <siteMapNode title="ValidationSummary" />
+        </siteMapNode>
+        <siteMapNode title="Navigation Controls" url="~/development/controls/navigation.aspx">
+          <siteMapNode title="TreeView" url="~/development/controls/navigation/treeview.aspx"/>
+          <siteMapNode title="Menu" url="~/development/controls/navigation/menu.aspx"/>
+          <siteMapNode title="SiteMapPath" url="~/development/controls/navigation/sitemappath.aspx"/>
+          <siteMapNode title="Wizard" url="~/development/controls/navigation/wizard.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="HTML Controls" url="~/development/controls/html.aspx">
+          <siteMapNode title="Label"/>
+          <siteMapNode title="Button"/>
+          <siteMapNode title="Reset Button"/>
+          <siteMapNode title="Submit Button"/>
+          <siteMapNode title="Text Field"/>
+          <siteMapNode title="Text Area"/>
+          <siteMapNode title="File Field"/>
+          <siteMapNode title="Password Field"/>
+          <siteMapNode title="Checkbox"/>
+          <siteMapNode title="Radio Button"/>
+          <siteMapNode title="Hidden"/>
+          <siteMapNode title="Table"/>
+          <siteMapNode title="Image"/>
+          <siteMapNode title="Listbox"/>
+          <siteMapNode title="Dropdown"/>
+          <siteMapNode title="Horizontal Rule"/>
+          <siteMapNode title="Div"/>
+        </siteMapNode>
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode title="Performance Tuning Your Application" url="~/performance/default.aspx">
+    </siteMapNode>
+    <siteMapNode title="Deploying Your Application" url="~/deployment/default.aspx">
+    </siteMapNode>
+    <siteMapNode title="Managing Your Application" url="~/management/default.aspx">
+      <siteMapNode title="Configuration Overview" url="~/management/configuration.aspx"/>
+      <siteMapNode title="Using the Configuration API" url="~/management/configapi.aspx"/>
+      <siteMapNode title="Using the ASP.NET MMC Console" url="~/management/mmc.aspx"/>
+      <siteMapNode title="Using the Web Administration Tool" url="~/management/webadmin.aspx"/>
+    </siteMapNode>
+    <siteMapNode title="Monitoring Your Application" url="~/monitoring/default.aspx">
+      <siteMapNode title="Health Monitoring" url="~/monitoring/healthmon.aspx">
+        <siteMapNode title="Introduction to Health Monitoring" url="~/monitoring/introduction.aspx"/>
+        <siteMapNode title="Health Monitoring Providers" url="~/monitoring/providers.aspx">
+          <siteMapNode title="Using Buffering models" url="~/monitoring/providers.aspx#buffering"/>
+          <siteMapNode title="Using the Mail provider" url="~/monitoring/providers.aspx#mail"/>
+          <siteMapNode title="Using the SQL provider" url="~/monitoring/providers.aspx#sql"/>
+          <siteMapNode title="Using the EventLog provider" url="~/monitoring/providers.aspx#eventlog"/>
+        </siteMapNode>
+        <siteMapNode title="Event Filtering" url="~/monitoring/events.aspx">
+          <siteMapNode title="Event Filtering" url="~/monitoring/events.aspx#intro"/>
+          <siteMapNode title="Advanced Event Filtering" url="~/monitoring/events.aspx#advanced"/>
+          <siteMapNode title="Event Filtering with Shared Servers" url="~/monitoring/events.aspx#servers"/>
+        </siteMapNode>
+        <siteMapNode title="Auditing" url="~/monitoring/auditing.aspx">
+          <siteMapNode title="Subscribing to Auditing Events" url="~/monitoring/auditing.aspx#subscribe"/>
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode title="Tracing and Debugging" url="~/monitoring/tracing.aspx">
+        <siteMapNode title="Introduction to Tracing" url="~/monitoring/tracing.aspx#intro"/>
+        <siteMapNode title="Integrating Page and Debug Trace" url="~/monitoring/tracing.aspx#integration"/>
+        <siteMapNode title="Tracing and Health Monitoring" url="~/monitoring/tracing.aspx#healthmon"/>
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode title="Extending ASP.NET" url="~/extensibility/default.aspx">
+        <siteMapNode title="Writing Server Controls" url="~/extensibility/controls/default.aspx">
+          <siteMapNode title="Building Controls" url="~/extensibility/controls/controls.aspx">
+            <siteMapNode title="Server Controls" url="~/extensibility/controls/controls.aspx#server"/>
+            <siteMapNode title="Composite Controls" url="~/extensibility/controls/controls.aspx#composite"/>
+          </siteMapNode>
+          <siteMapNode title="Managing State Information" url="~/extensibility/controls/state.aspx">
+            <siteMapNode title="ViewState and ControlState" url="~/extensibility/controls/state.aspx#types"/>
+            <siteMapNode title="Managing ViewState" url="~/extensibility/controls/state.aspx#viewstate"/>
+          </siteMapNode>
+          <siteMapNode title="Rendering Adaptive UI" url="~/extensibility/controls/adapters.aspx">
+            <siteMapNode title="Introducing adapters" url="~/extensibility/controls/adapters.aspx#intro"/>
+            <siteMapNode title="Adaptive rendering" url="~/extensibility/controls/adapters.aspx#rendering"/>
+            <siteMapNode title="PostBack handling" url="~/extensibility/controls/adapters.aspx#postbacks"/>
+            <siteMapNode title="State handling" url="~/extensibility/controls/adapters.aspx#state"/>
+            <siteMapNode title="Supporting pagination" url="~/extensibility/controls/adapters.aspx#pagination"/>
+            <siteMapNode title="Handling images" url="~/extensibility/controls/adapters.aspx#images"/>
+            <siteMapNode title="Handling styles" url="~/extensibility/controls/adapters.aspx#styles"/>
+            <siteMapNode title="Redirection" url="~/extensibility/controls/adapters.aspx#redirection"/>
+          </siteMapNode>
+          <siteMapNode title="Using Client Script" url="~/extensibility/controls/clientscript.aspx">
+          </siteMapNode>
+          <siteMapNode title="Building Control Designers" url="~/extensibility/controls/designers.aspx">
+            <siteMapNode title="Writing a ControlDesigner" url="~/extensibility/controls/designers.aspx#control"/>
+            <siteMapNode title="Writing a CompositeControlDesigner" url="~/extensibility/controls/designers.aspx#compositecontrol"/>
+            <siteMapNode title="Writing a ContainerControlDesigner" url="~/extensibility/controls/designers.aspx#containercontrol"/>
+            <siteMapNode title="Painting Techniques" url="~/extensibility/controls/designers.aspx#painting"/>
+            <siteMapNode title="Using Region Editing" url="~/extensibility/controls/designers.aspx#regions"/>
+            <siteMapNode title="Using Template Editing" url="~/extensibility/controls/designers.aspx#templates"/>
+            <siteMapNode title="Using Task-based Editing" url="~/extensibility/controls/designers.aspx#tasks"/>
+            <siteMapNode title="Writing a TemplatedControlDesigner" url="~/extensibility/controls/designers.aspx#templatedesigner"/>
+          </siteMapNode>
+        </siteMapNode>
+        <siteMapNode title="Writing Data Source Controls" url="~/extensibility/datasources/default.aspx">
+        </siteMapNode>
+        <siteMapNode title="Writing Application Service Providers" url="~/extensibility/providers/default.aspx">
+          <siteMapNode title="Writing a Membership Provider" url="~/extensibility/providers/membership.aspx"/>
+          <siteMapNode title="Writing a Roles Provider" url="~/extensibility/providers/roles.aspx"/>
+          <siteMapNode title="Writing a Session State Provider" url="~/extensibility/providers/session.aspx"/>
+          <siteMapNode title="Writing a Personalization Provider" url="~/extensibility/providers/personalization.aspx"/>
+          <siteMapNode title="Writing a Profile Provider" url="~/extensibility/providers/profile.aspx"/>
+          <siteMapNode title="Writing Site Navigation Provider" url="~/extensibility/providers/navigation.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Writing Expression Handlers" url="~/extensibility/expressions/default.aspx">
+          <siteMapNode title="Introducing Expressions" url="~/extensibility/expressions/intro.aspx"/>
+          <siteMapNode title="Creating an Expression Builder" url="~/extensibility/expressions/builder.aspx"/>
+          <siteMapNode title="Supporting No-compile pages" url="~/extensibility/expressions/nocompile.aspx"/>
+          <siteMapNode title="Creating an Expression Editor" url="~/extensibility/expressions/editor.aspx"/>
+        </siteMapNode>
+        <siteMapNode title="Writing Build Providers" url="~/extensibility/buildproviders/default.aspx">
+        </siteMapNode>
+    </siteMapNode>
+    <siteMapNode title="Additional Resources" url="~/resources/default.aspx">
+    </siteMapNode>
+    <siteMapNode title="Index" url="~/index/default.aspx">
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>
+
+
+
+
+
+
+

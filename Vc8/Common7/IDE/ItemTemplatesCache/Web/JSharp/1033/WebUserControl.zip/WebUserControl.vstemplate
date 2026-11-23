@@ -1,0 +1,15 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+	<TemplateData>
+		<Name Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3107"/>
+		<Description Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3108"/>
+		<Icon Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="4544"/>
+        <ProjectType>Web</ProjectType>
+        <ProjectSubType>JSharp</ProjectSubType>
+        <SortOrder>40</SortOrder>
+        <SupportsLanguageDropdown>true</SupportsLanguageDropdown>
+        <DefaultName>WebUserControl.ascx</DefaultName>
+	</TemplateData>
+	<TemplateContent>
+		<ProjectItem ReplaceParameters="true">WebUserControl.ascx</ProjectItem>
+	</TemplateContent>
+</VSTemplate>

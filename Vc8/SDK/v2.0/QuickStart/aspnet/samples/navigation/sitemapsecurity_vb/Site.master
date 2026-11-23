@@ -1,0 +1,52 @@
+<%@ Master Language="VB" %>
+<html>
+  <head runat="server" id="Head1">
+    <title>Using Site Navigation Controls</title>
+  </head>
+  <body>
+    <form id="form1" runat="server">
+      <table style="background-color: blue" cellspacing="0" cellpadding="5" border="0" height="80%">
+        <tr height="20px">
+          <td style="width: 100px">
+            <img src="Images/microsoft.gif"  runat="server"/>
+          </td>
+          <td style="width: 100px">
+            <img src="Images/homeadvisor.gif" runat="server" />
+          </td>
+          <td style="width: 80px; background-color: white">
+              <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction=Redirect LogoutPageUrl="~/Login.aspx"  />
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 100px" valign="top">
+            <asp:treeview ID="TreeView1" ForeColor="White" DataSourceId="SiteMapDataSource1" NodeIndent="0" NodeStyle-ChildNodesPadding="10" runat="server">
+              <LevelStyles>
+                <asp:TreeNodeStyle Font-Bold="true"/>
+                <asp:TreeNodeStyle />
+                <asp:TreeNodeStyle Font-Size="x-small"/>
+              </LevelStyles>
+              <nodestyle forecolor="White" HorizontalPadding="5"/>
+              <SelectedNodeStyle backcolor="lightblue" forecolor="blue"  />
+              <HoverNodeStyle Font-UnderLine="true" />
+            </asp:treeview>
+            <br/><br/>
+            <% If (Not SiteMap.CurrentNode.ParentNode is Nothing)  %>
+              <a style="color:white" href="<%= SiteMap.CurrentNode.ParentNode.Url %>">Back to Parent</a><br/><br/>
+            <% End If %>
+          </td>
+          <td style="background-color: white;padding-left:25;padding-top:15" colspan="2" valign="top">
+            <b>Current Page: </b>
+            <asp:sitemappath id="SiteMapPath1" runat="server" />
+            <br/><br/>
+            <b>Jump To Page: </b> 
+            <asp:Menu ID="Menu1" DataSourceId="SiteMapDataSource1" runat="server"/>
+            <br />
+            <br />
+            <asp:contentplaceholder id="MainBody" runat="server" />
+          </td>
+        </tr>
+      </table>
+      <asp:sitemapdatasource id="SiteMapDataSource1" runat="server" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadWriteXML", "ReadWriteXML\ReadWriteXML.csproj", "{AE1AA592-B845-4AF1-BA13-2A0911B36664}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PurchaseOrder", "PurchaseOrder\PurchaseOrder.csproj", "{FC08C5CA-AD7D-4A9A-90CC-01EC6FECFE36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE1AA592-B845-4AF1-BA13-2A0911B36664}.Debug|.NET.ActiveCfg = Debug|.NET
+		{AE1AA592-B845-4AF1-BA13-2A0911B36664}.Debug|.NET.Build.0 = Debug|.NET
+		{AE1AA592-B845-4AF1-BA13-2A0911B36664}.Release|.NET.ActiveCfg = Release|.NET
+		{AE1AA592-B845-4AF1-BA13-2A0911B36664}.Release|.NET.Build.0 = Release|.NET
+		{FC08C5CA-AD7D-4A9A-90CC-01EC6FECFE36}.Debug|.NET.ActiveCfg = Debug|.NET
+		{FC08C5CA-AD7D-4A9A-90CC-01EC6FECFE36}.Debug|.NET.Build.0 = Debug|.NET
+		{FC08C5CA-AD7D-4A9A-90CC-01EC6FECFE36}.Release|.NET.ActiveCfg = Release|.NET
+		{FC08C5CA-AD7D-4A9A-90CC-01EC6FECFE36}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,28 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2291" />
+    <Description Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2292" />
+    <Icon Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="4520" />
+    <ProjectType>JSharp</ProjectType>
+    <SortOrder>140</SortOrder>
+    <DefaultName>Service.jsl</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Data</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.ServiceProcess</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Xml</Assembly>
+			</Reference>
+		</References>
+
+    <ProjectItem ReplaceParameters="true" SubType="Component">Service.jsl</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

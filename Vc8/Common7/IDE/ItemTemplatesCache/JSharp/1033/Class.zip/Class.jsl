@@ -1,0 +1,14 @@
+package $rootnamespace$;
+
+/**
+ * Summary description for $safeitemrootname$.
+ */
+public class $safeitemrootname$
+{
+    public $safeitemrootname$()
+    {
+        //
+        // TODO: Add Constructor Logic here
+        //
+    }
+}

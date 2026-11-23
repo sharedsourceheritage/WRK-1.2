@@ -1,34 +1,28 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for mddefw.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run)
-    protocol : dce , ms_ext, c_ext, robust
-    error checks: allocation ref bounds_check enum stub_data 
+    Oi, W1, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext
+    error checks: allocation ref 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
 
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
-
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
 #ifndef __REQUIRED_RPCNDR_H_VERSION__
-#define __REQUIRED_RPCNDR_H_VERSION__ 475
+#define __REQUIRED_RPCNDR_H_VERSION__ 440
 #endif
 
 #include "rpc.h"
 #include "rpcndr.h"
-
-#ifndef __RPCNDR_H_VERSION__
-#error this stub requires an updated version of <rpcndr.h>
-#endif // __RPCNDR_H_VERSION__
-
 
 #ifndef __mddefw_h__
 #define __mddefw_h__
@@ -161,9 +155,6 @@ enum METADATATYPES
         METADATA_LOCAL_MACHINE_ONLY - If set for a data item, the data item
         will not be replicated during web cluster replication.
                                                                                 
-        METADATA_NON_SECURE_ONLY - When using GetAll api, do not
-        retrieve properties which are secure.
-                                                                                
 */                                                                              
                                                                                 
 #define METADATA_NO_ATTRIBUTES          0                                       
@@ -175,7 +166,6 @@ enum METADATATYPES
 #define METADATA_ISINHERITED            0x00000020                              
 #define METADATA_INSERT_PATH            0x00000040                              
 #define METADATA_LOCAL_MACHINE_ONLY     0x00000080                              
-#define METADATA_NON_SECURE_ONLY        0x00000100                              
                                                                                 
 /*                                                                              
     Backup Flags.                                                               

@@ -30,21 +30,19 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcCertGeneratePrincipalNameW(
-    __in PCCERT_CONTEXT Context,
-    __in DWORD Flags,
-    __deref_out RPC_WSTR *pBuffer
-    );
-
-
+                      PCCERT_CONTEXT Context,
+                      DWORD          Flags,
+                      WCHAR **       pBuffer
+                      );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcCertGeneratePrincipalNameA(
-    PCCERT_CONTEXT Context,
-    DWORD Flags,
-    __deref_out RPC_CSTR *pBuffer
-    );
+                      PCCERT_CONTEXT    Context,
+                      DWORD             Flags,
+                      unsigned char  ** pBuffer
+                      );
 
 #else /* RPC_UNICODE_SUPPORTED */
 
@@ -52,10 +50,10 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcCertGeneratePrincipalName(
-    __in PCCERT_CONTEXT Context,
-    __in DWORD Flags,
-    __deref_out RPC_CSTR *pBuffer
-    );
+                      PCCERT_CONTEXT     Context,
+                      DWORD              Flags,
+                      unsigned char  **  pBuffer
+                      );
 
 #endif /* RPC_UNICODE_SUPPORTED */
 

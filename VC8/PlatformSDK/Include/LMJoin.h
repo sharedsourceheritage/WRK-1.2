@@ -80,13 +80,6 @@ typedef enum _NETSETUP_JOIN_STATUS {
 
 #define NETSETUP_INSTALL_INVOCATION 0x00040000  // The APIs were invoked during install
 
-#define NETSETUP_IGNORE_UNSUPPORTED_FLAGS  0x10000000  // If this bit is set, unrecognized flags
-                                                       //  will be ignored by the NetJoin API and
-                                                       //  the API will behave as if the flags
-                                                       //  were not set.
-
-#define NETSETUP_VALID_UNJOIN_FLAGS (NETSETUP_ACCT_DELETE | NETSETUP_IGNORE_UNSUPPORTED_FLAGS)
-
 //
 // 0x80000000 is reserved for internal use only
 //

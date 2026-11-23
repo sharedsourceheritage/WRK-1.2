@@ -72,8 +72,8 @@ SfcIsFileProtected(
 BOOL
 WINAPI
 SfpVerifyFile(
-    IN LPCSTR pszFileName,
-    IN LPSTR  pszError,
+    IN LPCTSTR pszFileName,
+    IN LPTSTR  pszError,
     IN DWORD   dwErrSize
     );    
 

@@ -350,9 +350,7 @@ typedef enum RESOURCE_MONITOR_STATE {
     RmonArbitrateResource,
     RmonReleaseResource,
     RmonResourceControl,
-    RmonResourceTypeControl,
-    RmonTerminateResource,
-    RmonDeadlocked
+    RmonResourceTypeControl
 } RESOURCE_MONITOR_STATE;
 
 typedef struct MONITOR_STATE {
@@ -413,53 +411,53 @@ ResUtilIsPathValid(
 DWORD
 WINAPI
 ResUtilEnumProperties(
-    __in const PRESUTIL_PROPERTY_ITEM pPropertyTable,
-    __out_bcount_part(cbOutPropertiesSize, *pcbBytesReturned) LPWSTR pszOutProperties,
-    __in DWORD cbOutPropertiesSize,
-    __out LPDWORD pcbBytesReturned,
-    __out LPDWORD pcbRequired
+    IN const PRESUTIL_PROPERTY_ITEM pPropertyTable,
+    OUT LPWSTR pszOutProperties,
+    IN DWORD cbOutPropertiesSize,
+    OUT LPDWORD pcbBytesReturned,
+    OUT LPDWORD pcbRequired
     );
 
 DWORD
 WINAPI
 ResUtilEnumPrivateProperties(
-    __in HKEY hkeyClusterKey,
-    __out_bcount_part(cbOutPropertiesSize, *pcbBytesReturned) LPWSTR pszOutProperties,
-    __in DWORD cbOutPropertiesSize,
-    __out LPDWORD pcbBytesReturned,
-    __out LPDWORD pcbRequired
+    IN HKEY hkeyClusterKey,
+    OUT LPWSTR pszOutProperties,
+    IN DWORD cbOutPropertiesSize,
+    OUT LPDWORD pcbBytesReturned,
+    OUT LPDWORD pcbRequired
     );
 
 DWORD
 WINAPI
 ResUtilGetProperties(
-    __in HKEY hkeyClusterKey,
-    __in const PRESUTIL_PROPERTY_ITEM pPropertyTable,
-    __out_bcount_part(cbOutPropertyListSize, *pcbBytesReturned) PVOID pOutPropertyList,
-    __in DWORD cbOutPropertyListSize,
-    __out LPDWORD pcbBytesReturned,
-    __out LPDWORD pcbRequired
+    IN HKEY hkeyClusterKey,
+    IN const PRESUTIL_PROPERTY_ITEM pPropertyTable,
+    OUT PVOID pOutPropertyList,
+    IN DWORD cbOutPropertyListSize,
+    OUT LPDWORD pcbBytesReturned,
+    OUT LPDWORD pcbRequired
     );
 
 DWORD
 WINAPI
 ResUtilGetAllProperties(
-    __in HKEY hkeyClusterKey,
-    __in const PRESUTIL_PROPERTY_ITEM pPropertyTable,
-    __out_bcount_part(cbOutPropertyListSize, *pcbBytesReturned) PVOID pOutPropertyList,
-    __in DWORD cbOutPropertyListSize,
-    __out LPDWORD pcbBytesReturned,
-    __out LPDWORD pcbRequired
+    IN HKEY hkeyClusterKey,
+    IN const PRESUTIL_PROPERTY_ITEM pPropertyTable,
+    OUT PVOID pOutPropertyList,
+    IN DWORD cbOutPropertyListSize,
+    OUT LPDWORD pcbBytesReturned,
+    OUT LPDWORD pcbRequired
     );
 
 DWORD
 WINAPI
 ResUtilGetPrivateProperties(
-    __in HKEY hkeyClusterKey,
-    __out_bcount_part(cbOutPropertyListSize, *pcbBytesReturned) PVOID pOutPropertyList,
-    __in DWORD cbOutPropertyListSize,
-    __out LPDWORD pcbBytesReturned,
-    __out LPDWORD pcbRequired
+    IN HKEY hkeyClusterKey,
+    OUT PVOID pOutPropertyList,
+    IN DWORD cbOutPropertyListSize,
+    OUT LPDWORD pcbBytesReturned,
+    OUT LPDWORD pcbRequired
     );
 
 DWORD
@@ -474,33 +472,33 @@ ResUtilGetPropertySize(
 DWORD
 WINAPI
 ResUtilGetProperty(
-    __in HKEY hkeyClusterKey,
-    __in const PRESUTIL_PROPERTY_ITEM pPropertyTableItem,
-    __out_bcount_part(*pcbOutPropertyItemSize, *pcbOutPropertyItemSize) PVOID *pOutPropertyItem,
-    __inout LPDWORD pcbOutPropertyItemSize
+    IN HKEY hkeyClusterKey,
+    IN const PRESUTIL_PROPERTY_ITEM pPropertyTableItem,
+    OUT PVOID * pOutPropertyItem,
+    IN OUT LPDWORD pcbOutPropertyItemSize
     );
 
 DWORD
 WINAPI
 ResUtilVerifyPropertyTable(
-    __in const PRESUTIL_PROPERTY_ITEM pPropertyTable,
-    __reserved PVOID Reserved,
-    __in BOOL bAllowUnknownProperties,
-    __in_bcount(cbInPropertyListSize) const PVOID pInPropertyList,
-    __in DWORD cbInPropertyListSize,
-    __out_opt LPBYTE pOutParams
+    IN const PRESUTIL_PROPERTY_ITEM pPropertyTable,
+    IN PVOID Reserved,
+    IN BOOL bAllowUnknownProperties,
+    IN const PVOID pInPropertyList,
+    IN DWORD cbInPropertyListSize,
+    OUT OPTIONAL LPBYTE pOutParams
     );
 
 DWORD
 WINAPI
 ResUtilSetPropertyTable(
-    __in HKEY hkeyClusterKey,
-    __in const PRESUTIL_PROPERTY_ITEM pPropertyTable,
-    __reserved PVOID Reserved,
-    __in BOOL bAllowUnknownProperties,
-    __in_bcount(cbInPropertyListSize) const PVOID pInPropertyList,
-    __in DWORD cbInPropertyListSize,
-    __out_opt LPBYTE pOutParams
+    IN HKEY hkeyClusterKey,
+    IN const PRESUTIL_PROPERTY_ITEM pPropertyTable,
+    IN PVOID Reserved,
+    IN BOOL bAllowUnknownProperties,
+    IN const PVOID pInPropertyList,
+    IN DWORD cbInPropertyListSize,
+    OUT OPTIONAL LPBYTE pOutParams
     );
 
 DWORD
@@ -544,10 +542,10 @@ ResUtilSetPropertyParameterBlockEx(
 DWORD
 WINAPI
 ResUtilSetUnknownProperties(
-    __in HKEY hkeyClusterKey,
-    __in const PRESUTIL_PROPERTY_ITEM pPropertyTable,
-    __in_bcount(cbInPropertyListSize) const PVOID pInPropertyList,
-    __in DWORD cbInPropertyListSize
+    IN HKEY hkeyClusterKey,
+    IN const PRESUTIL_PROPERTY_ITEM pPropertyTable,
+    IN const PVOID pInPropertyList,
+    IN DWORD cbInPropertyListSize
     );
 
 DWORD
@@ -622,10 +620,10 @@ ResUtilDupString(
 DWORD
 WINAPI
 ResUtilGetBinaryValue(
-    __in HKEY hkeyClusterKey,
-    __in LPCWSTR pszValueName,
-    __deref_out_bcount_full_opt(*pcbOutValueSize) LPBYTE *ppbOutValue,
-    __out LPDWORD pcbOutValueSize
+    IN HKEY hkeyClusterKey,
+    IN LPCWSTR pszValueName,
+    OUT LPBYTE * ppbOutValue,
+    OUT DWORD * pcbOutValueSize
     );
 
 LPWSTR
@@ -645,12 +643,12 @@ ResUtilGetExpandSzValue(
 
 FORCEINLINE
 DWORD
-WINAPI_INLINE
+WINAPI
 ResUtilGetMultiSzValue(
-    __in HKEY hkeyClusterKey,
-    __in LPCWSTR pszValueName,
-    __deref_out_bcount_full_opt(*pcbOutValueSize) LPWSTR *ppszOutValue,
-    __out LPDWORD pcbOutValueSize
+    IN HKEY hkeyClusterKey,
+    IN LPCWSTR pszValueName,
+    OUT LPWSTR * ppszOutValue,
+    OUT LPDWORD pcbOutValueSize
     )
 {
     return ResUtilGetBinaryValue( hkeyClusterKey, pszValueName, (LPBYTE *) ppszOutValue, pcbOutValueSize );
@@ -659,50 +657,50 @@ ResUtilGetMultiSzValue(
 DWORD
 WINAPI
 ResUtilGetDwordValue(
-    __in HKEY hkeyClusterKey,
-    __in LPCWSTR pszValueName,
-    __out LPDWORD pdwOutValue,
-    __in DWORD dwDefaultValue
+    IN HKEY hkeyClusterKey,
+    IN LPCWSTR pszValueName,
+    OUT LPDWORD pdwOutValue,
+    IN DWORD dwDefaultValue OPTIONAL
     );
 
 DWORD
 WINAPI
 ResUtilSetBinaryValue(
-    __in HKEY hkeyClusterKey,
-    __in LPCWSTR pszValueName,
-    __in_bcount(cbNewValueSize) const LPBYTE pbNewValue,
-    __in DWORD cbNewValueSize,
-    __deref_opt_inout_bcount_full(*pcbOutValueSize) LPBYTE *ppbOutValue,
-    __inout LPDWORD pcbOutValueSize
+    IN HKEY hkeyClusterKey,
+    IN LPCWSTR pszValueName,
+    IN const LPBYTE pbNewValue,
+    IN DWORD cbNewValueSize,
+    IN OUT LPBYTE * ppbOutValue,
+    IN OUT LPDWORD pcbOutValueSize
     );
 
 DWORD
 WINAPI
 ResUtilSetSzValue(
-    __in HKEY hkeyClusterKey,
-    __in LPCWSTR pszValueName,
-    __in LPCWSTR pszNewValue,
-    __deref_opt_inout LPWSTR *ppszOutString
+    IN HKEY hkeyClusterKey,
+    IN LPCWSTR pszValueName,
+    IN LPCWSTR pszNewValue,
+    IN OUT LPWSTR * ppszOutString
     );
 
 DWORD
 WINAPI
 ResUtilSetExpandSzValue(
-    __in HKEY hkeyClusterKey,
-    __in LPCWSTR pszValueName,
-    __in LPCWSTR pszNewValue,
-    __inout_opt LPWSTR *ppszOutString
+    IN HKEY hkeyClusterKey,
+    IN LPCWSTR pszValueName,
+    IN LPCWSTR pszNewValue,
+    IN OUT LPWSTR * ppszOutString
     );
 
 DWORD
 WINAPI
 ResUtilSetMultiSzValue(
-    __in HKEY hkeyClusterKey,
-    __in LPCWSTR pszValueName,
-    __in_bcount(cbNewValueSize) LPCWSTR pszNewValue,
-    __in DWORD cbNewValueSize,
-    __deref_opt_out_bcount_full(*pcbOutValueSize) LPWSTR *ppszOutValue,
-    __inout_opt LPDWORD pcbOutValueSize
+    IN HKEY hkeyClusterKey,
+    IN LPCWSTR pszValueName,
+    IN LPCWSTR pszNewValue,
+    IN DWORD cbNewValueSize,
+    IN OUT LPWSTR * ppszOutValue,
+    IN OUT LPDWORD pcbOutValueSize
     );
 
 DWORD
@@ -717,35 +715,35 @@ ResUtilSetDwordValue(
 DWORD
 WINAPI
 ResUtilGetBinaryProperty(
-    __deref_out_bcount(*pcbOutValueSize) LPBYTE *ppbOutValue,
-    __out LPDWORD pcbOutValueSize,
-    __in const PCLUSPROP_BINARY pValueStruct,
-    __in const LPBYTE pbOldValue,
-    __in DWORD cbOldValueSize,
-    __deref_inout_bcount(*pcbPropertyListSize) LPBYTE *ppPropertyList,
-    __inout LPDWORD pcbPropertyListSize
+    OUT LPBYTE * ppbOutValue,
+    OUT LPDWORD pcbOutValueSize,
+    IN const PCLUSPROP_BINARY pValueStruct,
+    IN const LPBYTE pbOldValue,
+    IN DWORD cbOldValueSize,
+    OUT LPBYTE * ppPropertyList,
+    OUT LPDWORD pcbPropertyListSize
     );
 
 DWORD
 WINAPI
 ResUtilGetSzProperty(
-    __deref_out LPWSTR *ppszOutValue,
-    __in const PCLUSPROP_SZ pValueStruct,
-    __in LPCWSTR pszOldValue,
-    __deref_inout_bcount(*pcbPropertyListSize) LPBYTE *ppPropertyList,
-    __inout LPDWORD pcbPropertyListSize
+    OUT LPWSTR * ppszOutValue,
+    IN const PCLUSPROP_SZ pValueStruct,
+    IN LPCWSTR pszOldValue,
+    OUT LPBYTE * ppPropertyList,
+    OUT LPDWORD pcbPropertyListSize
     );
 
 DWORD
 WINAPI
 ResUtilGetMultiSzProperty(
-    __deref_out_bcount(*pcbOutValueSize) LPWSTR *ppszOutValue,
-    __out LPDWORD pcbOutValueSize,
-    __in const PCLUSPROP_SZ pValueStruct,
-    __in_bcount(cbOldValueSize) LPCWSTR pszOldValue,
-    __in DWORD cbOldValueSize,
-    __deref_inout_bcount(*pcbPropertyListSize) LPBYTE *ppPropertyList,
-    __inout LPDWORD pcbPropertyListSize
+    OUT LPWSTR * ppszOutValue,
+    OUT LPDWORD pcbOutValueSize,
+    IN const PCLUSPROP_SZ pValueStruct,
+    IN LPCWSTR pszOldValue,
+    IN DWORD cbOldValueSize,
+    OUT LPBYTE * ppPropertyList,
+    OUT LPDWORD pcbPropertyListSize
     );
 
 DWORD
@@ -789,14 +787,6 @@ ResUtilSetResourceServiceEnvironment(
 
 DWORD
 WINAPI
-ResUtilRemoveResourceServiceEnvironment(
-    IN  LPCWSTR             pszServiceName,
-    IN  PLOG_EVENT_ROUTINE  pfnLogEvent,
-    IN  RESOURCE_HANDLE     hResourceHandle
-    );
-
-DWORD
-WINAPI
 ResUtilSetResourceServiceStartParameters(
     IN LPCWSTR pszServiceName,
     IN SC_HANDLE schSCMHandle,
@@ -808,66 +798,66 @@ ResUtilSetResourceServiceStartParameters(
 DWORD
 WINAPI
 ResUtilFindSzProperty(
-    __in_bcount(cbPropertyListSize) const PVOID pPropertyList,
-    __in DWORD cbPropertyListSize,
-    __in LPCWSTR pszPropertyName,
-    __deref_out LPWSTR *pszPropertyValue
+    IN const PVOID pPropertyList,
+    IN DWORD cbPropertyListSize,
+    IN LPCWSTR pszPropertyName,
+    OUT LPWSTR * pszPropertyValue
     );
 
 DWORD
 WINAPI
 ResUtilFindExpandSzProperty(
-    __in_bcount(cbPropertyListSize) const PVOID pPropertyList,
-    __in DWORD cbPropertyListSize,
-    __in LPCWSTR pszPropertyName,
-    __deref_out LPWSTR *pszPropertyValue
+    IN const PVOID pPropertyList,
+    IN DWORD cbPropertyListSize,
+    IN LPCWSTR pszPropertyName,
+    OUT LPWSTR * pszPropertyValue
     );
 
 DWORD
 WINAPI
 ResUtilFindExpandedSzProperty(
-    __in_bcount(cbPropertyListSize) const PVOID pPropertyList,
-    __in DWORD cbPropertyListSize,
-    __in LPCWSTR pszPropertyName,
-    __deref_out LPWSTR *pszPropertyValue
+    IN const PVOID pPropertyList,
+    IN DWORD cbPropertyListSize,
+    IN LPCWSTR pszPropertyName,
+    OUT LPWSTR * pszPropertyValue
     );
 
 DWORD
 WINAPI
 ResUtilFindDwordProperty(
-    __in_bcount(cbPropertyListSize) const PVOID pPropertyList,
-    __in DWORD cbPropertyListSize,
-    __in LPCWSTR pszPropertyName,
-    __out LPDWORD pdwPropertyValue
+    IN const PVOID pPropertyList,
+    IN DWORD cbPropertyListSize,
+    IN LPCWSTR pszPropertyName,
+    OUT LPDWORD pdwPropertyValue
     );
 
 DWORD
 WINAPI
 ResUtilFindBinaryProperty(
-    __in_bcount(cbPropertyListSize) const PVOID pPropertyList,
-    __in DWORD cbPropertyListSize,
-    __in LPCWSTR pszPropertyName,
-    __deref_out_bcount_full(*pcbPropertyValueSize) LPBYTE *pbPropertyValue,
-    __out LPDWORD pcbPropertyValueSize
+    IN const PVOID pPropertyList,
+    IN DWORD cbPropertyListSize,
+    IN LPCWSTR pszPropertyName,
+    OUT LPBYTE * pbPropertyValue,
+    OUT LPDWORD pcbPropertyValueSize
     );
 
 DWORD
 WINAPI
 ResUtilFindMultiSzProperty(
-    __in_bcount(cbPropertyListSize) const PVOID pPropertyList,
-    __in DWORD cbPropertyListSize,
-    __in LPCWSTR pszPropertyName,
-    __deref_out_bcount_full(*pcbPropertyValueSize) LPWSTR *pszPropertyValue,
-    __out LPDWORD pcbPropertyValueSize
+    IN const PVOID pPropertyList,
+    IN DWORD cbPropertyListSize,
+    IN LPCWSTR pszPropertyName,
+    OUT LPWSTR * pszPropertyValue,
+    OUT LPDWORD pcbPropertyValueSize
     );
 
 DWORD
 WINAPI
 ResUtilFindLongProperty(
-    __in_bcount(cbPropertyListSize) const PVOID pPropertyList,
-    __in DWORD cbPropertyListSize,
-    __in LPCWSTR pszPropertyName,
-    __out LPLONG plPropertyValueSize
+    IN const PVOID pPropertyList,
+    IN DWORD cbPropertyListSize,
+    IN LPCWSTR pszPropertyName,
+    OUT LPLONG plPropertyValueSize
     );
 
 
@@ -988,60 +978,60 @@ ResUtilGetResourceNameDependency(
 DWORD
 WINAPI
 ResUtilGetResourceDependentIPAddressProps(
-    __in HRESOURCE hResource,
-    __out_ecount_part(*pcchAddress, *pcchAddress) LPWSTR pszAddress,
-    __inout DWORD *pcchAddress,
-    __out_ecount_part(*pcchSubnetMask, *pcchSubnetMask) LPWSTR pszSubnetMask,
-    __inout DWORD *pcchSubnetMask,
-    __out_ecount_part(*pcchNetwork, *pcchNetwork) LPWSTR pszNetwork,
-    __inout DWORD *pcchNetwork
+    IN      HRESOURCE   hResource,
+    OUT     LPWSTR      pszAddress,
+    IN OUT  DWORD *     pcchAddress,
+    OUT     LPWSTR      pszSubnetMask,
+    IN OUT  DWORD *     pcchSubnetMask,
+    OUT     LPWSTR      pszNetwork,
+    IN OUT  DWORD *     pcchNetwork
     );
 
 DWORD
 WINAPI
 ResUtilFindDependentDiskResourceDriveLetter(
-    __in HCLUSTER hCluster,              // handle to cluster
-    __in HRESOURCE hResource,            // handle to resource to query for dependencies
-    __out_ecount_part(*pcchDriveLetter, *pcchDriveLetter) LPWSTR pszDriveLetter,       // buffer to store drive letter (ex. "X:\0")
-    __inout DWORD *pcchDriveLetter       // IN size of the pszDriveLetter buffer, OUT size of buffer required
+    IN     HCLUSTER  hCluster,             // handle to cluster
+    IN     HRESOURCE hResource,            // handle to resource to query for dependencies
+    IN     LPWSTR    pszDriveLetter,       // buffer to store drive letter (ex. "X:\0")
+    IN OUT DWORD *   pcchDriveLetter       // IN size of the pszDriveLetter buffer, OUT size of buffer required
     );
 
 DWORD
 WINAPI
 ResUtilTerminateServiceProcessFromResDll(
-    __in DWORD dwServicePid,
-    __in BOOL bOffline,
-    __out PDWORD pdwResourceState,
-    __in PLOG_EVENT_ROUTINE pfnLogEvent,
-    __in RESOURCE_HANDLE hResourceHandle
+    IN  DWORD               dwServicePid,
+    IN  BOOL                bOffline,
+    OUT PDWORD              pdwResourceState,
+    IN  PLOG_EVENT_ROUTINE  pfnLogEvent,
+    IN  RESOURCE_HANDLE     hResourceHandle
     );
 
 DWORD
 WINAPI
 ResUtilGetPropertyFormats(
-    __in const PRESUTIL_PROPERTY_ITEM pPropertyTable,
-    __out_bcount_part(cbPropertyFormatListSize, *pcbBytesReturned) PVOID pOutPropertyFormatList,
-    __in DWORD cbPropertyFormatListSize,
-    __out LPDWORD pcbBytesReturned,
-    __out LPDWORD pcbRequired
+    IN const PRESUTIL_PROPERTY_ITEM pPropertyTable,
+    OUT PVOID                       pOutPropertyFormatList,
+    IN DWORD                        cbPropertyFormatListSize,
+    OUT LPDWORD                     pcbBytesReturned,
+    OUT LPDWORD                     pcbRequired
     );
 
 
 DWORD
 WINAPI
 ResUtilGetCoreClusterResources(
-    __in HCLUSTER hCluster,
-    __out HRESOURCE *phClusterNameResource,
-    __out HRESOURCE *phClusterIPAddressResource,
-    __out HRESOURCE *phClusterQuorumResource
+      IN    HCLUSTER      hCluster
+    , OUT   HRESOURCE *   phClusterNameResource
+    , OUT   HRESOURCE *   phClusterIPAddressResource
+    , OUT   HRESOURCE *   phClusterQuorumResource
     );
 
 DWORD
 WINAPI
 ResUtilGetResourceName(
-    __in HRESOURCE hResource,
-    __out_ecount_part(*pcchResourceNameInOut, *pcchResourceNameInOut) PWSTR pszResourceName,
-    __inout DWORD *pcchResourceNameInOut
+      IN        HRESOURCE hResource
+    , OUT       WCHAR *   pszResourceName
+    , IN OUT    DWORD *   pcchResourceName
     );
 
 #ifdef __cplusplus

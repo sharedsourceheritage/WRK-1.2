@@ -1,0 +1,25 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="2413" />
+    <Description Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="2414" />
+    <Icon Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="4586" />
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>20</SortOrder>
+    <DefaultName>Interface.cs</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+			</Reference>
+		</References>
+
+    <ProjectItem ReplaceParameters="true">Interface.cs</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

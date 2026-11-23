@@ -149,6 +149,7 @@ typedef struct _NDIS_VAR_DATA_DESC
 #define OID_GEN_MEDIA_CAPABILITIES              0x00010201
 #define OID_GEN_PHYSICAL_MEDIUM                 0x00010202
 
+
 //
 //  Required statistics
 //

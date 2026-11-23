@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PermRequestCS", "PermRequest\PermRequestCS.csproj", "{E967FA8C-8D6D-4294-8E05-F544BAEF4D8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E967FA8C-8D6D-4294-8E05-F544BAEF4D8E}.Debug|.NET.ActiveCfg = Debug|.NET
+		{E967FA8C-8D6D-4294-8E05-F544BAEF4D8E}.Debug|.NET.Build.0 = Debug|.NET
+		{E967FA8C-8D6D-4294-8E05-F544BAEF4D8E}.Release|.NET.ActiveCfg = Release|.NET
+		{E967FA8C-8D6D-4294-8E05-F544BAEF4D8E}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

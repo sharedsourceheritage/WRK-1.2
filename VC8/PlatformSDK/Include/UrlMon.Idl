@@ -50,7 +50,6 @@ interface IWindowForBindingUI;
 interface ICodeInstall;
 interface IHttpNegotiate;
 interface IHttpNegotiate2;
-interface IWinInetFileStream;
 
 cpp_quote("// Side-by-Side clsid")
 cpp_quote("EXTERN_C const IID CLSID_SBS_StdURLMoniker;  ")
@@ -900,43 +899,6 @@ interface IHttpNegotiate2 : IHttpNegotiate
 }
 
 cpp_quote("#endif")
-
-//+---------------------------------------------------------------------------
-//
-//  Copyright (C) Microsoft Corporation, 1995-1998.
-//
-//  Contents:   IWinInetFileStream interface definition
-//
-//----------------------------------------------------------------------------
-cpp_quote("#ifndef _LPWININETFILESTREAM_DEFINED")
-cpp_quote("#define _LPWININETFILESTREAM_DEFINED")
-
-[
-    object,
-    uuid(F134C4B7-B1F8-4e75-B886-74B90943BECB),
-    pointer_default(unique)
-]
-
-interface IWinInetFileStream : IUnknown
-{
-    typedef [unique] IWinInetFileStream *LPWININETFILESTREAM;
-
-    HRESULT SetHandleForUnlock
-    (
-        [in]    DWORD_PTR hWinInetLockHandle,
-        [in]    DWORD_PTR dwReserved
-    );
-
-    HRESULT SetDeleteFile
-    (
-        [in]    DWORD_PTR dwReserved
-    );
-}
-
-cpp_quote("#endif")
-
-
-
 
 //+---------------------------------------------------------------------------
 //
@@ -2203,7 +2165,6 @@ cpp_quote("#define MUTZ_ISFILE                  0x00000002 // Assume URL if File
 cpp_quote("#define MUTZ_ACCEPT_WILDCARD_SCHEME  0x00000080 // Accept a wildcard scheme")
 cpp_quote("#define MUTZ_ENFORCERESTRICTED       0x00000100 // enforce restricted zone independent of URL")
 cpp_quote("#define MUTZ_REQUIRESAVEDFILECHECK   0x00000400 // always check the file for MOTW (overriding FEATURE_UNC_SAVEDFILECHECK)")
-cpp_quote("#define MUTZ_DONT_UNESCAPE           0x00000800 // Do not unescape the url")
 
     HRESULT MapUrlToZone
     (
@@ -2245,8 +2206,7 @@ cpp_quote("#define MAX_SIZE_SECURITY_ID 512 // bytes")
         PUAF_LMZ_LOCKED                     = 0x00020000, // flag to force retrieving locked down local machine policies when LMZL is on
         PUAF_DEFAULTZONEPOL                 = 0x00040000, // flag to retrieve Default Security Zone policies when NPL is on
         PUAF_NPL_USE_LOCKED_IF_RESTRICTED   = 0x00080000, // flag to tell urlmon that trident wants to use locked zones if needed.
-        PUAF_NOUIIFLOCKED                   = 0x00100000, // flag to turn off UI if Urlmon figures it is using the locked zone. 
-        PUAF_DRAGPROTOCOLCHECK              = 0x00200000  // flag to check for whitelist drag protcols when URLACTION_SHELL_MOVE_OR_COPY is allow
+        PUAF_NOUIIFLOCKED                   = 0x00100000  // flag to turn off UI if Urlmon figures it is using the locked zone. 
     } PUAF ;
 
     typedef enum
@@ -2460,9 +2420,7 @@ cpp_quote("#define URLACTION_SHELL_EXECUTE_HIGHRISK                       0x0000
 cpp_quote("#define URLACTION_SHELL_EXECUTE_MODRISK                        0x00001807")
 cpp_quote("#define URLACTION_SHELL_EXECUTE_LOWRISK                        0x00001808")
 cpp_quote("#define URLACTION_SHELL_POPUPMGR                               0x00001809")
-cpp_quote("#define URLACTION_SHELL_RTF_OBJECTS_LOAD                       0x0000180A")
-cpp_quote("#define URLACTION_SHELL_ENHANCED_DRAGDROP_SECURITY             0x0000180B")
-cpp_quote("#define URLACTION_SHELL_CURR_MAX                               0x0000180B")
+cpp_quote("#define URLACTION_SHELL_CURR_MAX                               0x00001809")
 cpp_quote("#define URLACTION_SHELL_MAX                                    0x000019ff")
 cpp_quote("")
 cpp_quote("#define URLACTION_NETWORK_MIN                                  0x00001A00")
@@ -2618,15 +2576,12 @@ interface IInternetZoneManager : IUnknown
         URLZONE_INTRANET,                   // My Intranet zone
         URLZONE_TRUSTED,                    // Trusted Web sites zone
         URLZONE_INTERNET,                   // The Internet zone
-        URLZONE_UNTRUSTED,                  // Untrusted sites zone
+        URLZONE_UNTRUSTED,                                      // Untrusted sites zone
         URLZONE_PREDEFINED_MAX = 999,
 
         URLZONE_USER_MIN = 1000,
         URLZONE_USER_MAX = 10000,
     }  URLZONE;
-
-cpp_quote("// Enhanced Security Configuration zone mapping flag for IInternetSecurityManager::SetZoneMapping")
-cpp_quote("#define URLZONE_ESC_FLAG     0x100")
 
     typedef enum tagURLTEMPLATE
     {

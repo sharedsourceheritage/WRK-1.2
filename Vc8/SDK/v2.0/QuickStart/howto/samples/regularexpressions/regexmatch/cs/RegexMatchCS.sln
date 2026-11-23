@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexMatch", "RegexMatch\RegexMatch.csproj", "{3D9A5145-B473-49C7-9EA4-300A603CE8A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D9A5145-B473-49C7-9EA4-300A603CE8A0}.Debug|.NET.ActiveCfg = Debug|.NET
+		{3D9A5145-B473-49C7-9EA4-300A603CE8A0}.Debug|.NET.Build.0 = Debug|.NET
+		{3D9A5145-B473-49C7-9EA4-300A603CE8A0}.Release|.NET.ActiveCfg = Release|.NET
+		{3D9A5145-B473-49C7-9EA4-300A603CE8A0}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

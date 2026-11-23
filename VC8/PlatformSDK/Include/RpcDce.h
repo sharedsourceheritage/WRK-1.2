@@ -47,11 +47,6 @@ extern "C" {
 /*typedef unsigned char byte;*/
 /*typedef unsigned char boolean;*/
 
-#include <specstrings.h>
-
-typedef __nullterminated unsigned char __RPC_FAR *RPC_CSTR;
-typedef __nullterminated unsigned short __RPC_FAR *RPC_WSTR;
-
 typedef I_RPC_HANDLE RPC_BINDING_HANDLE;
 typedef RPC_BINDING_HANDLE handle_t;
 #define rpc_binding_handle_t RPC_BINDING_HANDLE
@@ -264,16 +259,16 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingFromStringBindingA (
-    __in RPC_CSTR StringBinding,
-    __out RPC_BINDING_HANDLE __RPC_FAR *Binding
+    IN unsigned char __RPC_FAR * StringBinding,
+    OUT RPC_BINDING_HANDLE __RPC_FAR * Binding
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingFromStringBindingW (
-    __in RPC_WSTR StringBinding,
-    __out RPC_BINDING_HANDLE __RPC_FAR *Binding
+    IN unsigned short __RPC_FAR * StringBinding,
+    OUT RPC_BINDING_HANDLE __RPC_FAR * Binding
     );
 
 #ifdef UNICODE
@@ -288,8 +283,8 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingFromStringBinding (
-    __in RPC_CSTR StringBinding,
-    __out RPC_BINDING_HANDLE __RPC_FAR *Binding
+    IN unsigned char __RPC_FAR * StringBinding,
+    OUT RPC_BINDING_HANDLE __RPC_FAR * Binding
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -349,16 +344,16 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingToStringBindingA (
-    __in RPC_BINDING_HANDLE Binding,
-    __deref_out RPC_CSTR __RPC_FAR *StringBinding
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * StringBinding
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingToStringBindingW (
-    __in RPC_BINDING_HANDLE Binding,
-    __deref_out RPC_WSTR __RPC_FAR *StringBinding
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * StringBinding
     );
 
 #ifdef UNICODE
@@ -373,8 +368,8 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingToStringBinding (
-    __in RPC_BINDING_HANDLE Binding,
-    __deref_out RPC_CSTR __RPC_FAR *StringBinding
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * StringBinding
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -395,24 +390,24 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcStringBindingComposeA (
-    __in_opt RPC_CSTR ObjUuid,
-    __in_opt RPC_CSTR Protseq,
-    __in_opt RPC_CSTR NetworkAddr,
-    __in_opt RPC_CSTR Endpoint,
-    __in_opt RPC_CSTR Options,
-    __deref_opt_out RPC_CSTR __RPC_FAR *StringBinding
+    IN unsigned char __RPC_FAR * ObjUuid OPTIONAL,
+    IN unsigned char __RPC_FAR * Protseq OPTIONAL,
+    IN unsigned char __RPC_FAR * NetworkAddr OPTIONAL,
+    IN unsigned char __RPC_FAR * Endpoint OPTIONAL,
+    IN unsigned char __RPC_FAR * Options OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * StringBinding OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcStringBindingComposeW (
-    __in_opt RPC_WSTR ObjUuid,
-    __in_opt RPC_WSTR Protseq,
-    __in_opt RPC_WSTR NetworkAddr,
-    __in_opt RPC_WSTR Endpoint,
-    __in_opt RPC_WSTR Options,
-    __deref_opt_out RPC_WSTR __RPC_FAR *StringBinding
+    IN unsigned short __RPC_FAR * ObjUuid OPTIONAL,
+    IN unsigned short __RPC_FAR * Protseq OPTIONAL,
+    IN unsigned short __RPC_FAR * NetworkAddr OPTIONAL,
+    IN unsigned short __RPC_FAR * Endpoint OPTIONAL,
+    IN unsigned short __RPC_FAR * Options OPTIONAL,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * StringBinding OPTIONAL
     );
 
 #ifdef UNICODE
@@ -427,12 +422,12 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcStringBindingCompose (
-    __in_opt RPC_CSTR ObjUuid,
-    __in_opt RPC_CSTR Protseq,
-    __in_opt RPC_CSTR NetworkAddr,
-    __in_opt RPC_CSTR Endpoint,
-    __in_opt RPC_CSTR Options,
-    __deref_opt_out RPC_CSTR __RPC_FAR *StringBinding
+    IN unsigned char __RPC_FAR * ObjUuid OPTIONAL,
+    IN unsigned char __RPC_FAR * Protseq OPTIONAL,
+    IN unsigned char __RPC_FAR * NetworkAddr OPTIONAL,
+    IN unsigned char __RPC_FAR * Endpoint OPTIONAL,
+    IN unsigned char __RPC_FAR * Options OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * StringBinding OPTIONAL
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -445,24 +440,24 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcStringBindingParseA (
-    __in RPC_CSTR StringBinding,
-    __deref_opt_out RPC_CSTR __RPC_FAR *ObjUuid,
-    __deref_opt_out RPC_CSTR __RPC_FAR *Protseq,
-    __deref_opt_out RPC_CSTR __RPC_FAR *NetworkAddr,
-    __deref_opt_out RPC_CSTR __RPC_FAR *Endpoint,
-    __deref_opt_out RPC_CSTR __RPC_FAR *NetworkOptions
+    IN unsigned char __RPC_FAR * StringBinding,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ObjUuid OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * Protseq OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * NetworkAddr OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * Endpoint OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * NetworkOptions OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcStringBindingParseW (
-    __in RPC_WSTR StringBinding,
-    __deref_opt_out RPC_WSTR __RPC_FAR *ObjUuid,
-    __deref_opt_out RPC_WSTR __RPC_FAR *Protseq,
-    __deref_opt_out RPC_WSTR __RPC_FAR *NetworkAddr,
-    __deref_opt_out RPC_WSTR __RPC_FAR *Endpoint,
-    __deref_opt_out RPC_WSTR __RPC_FAR *NetworkOptions
+    IN unsigned short __RPC_FAR * StringBinding,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * ObjUuid OPTIONAL,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * Protseq OPTIONAL,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * NetworkAddr OPTIONAL,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * Endpoint OPTIONAL,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * NetworkOptions OPTIONAL
     );
 
 #ifdef UNICODE
@@ -477,12 +472,12 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcStringBindingParse (
-    __in RPC_CSTR StringBinding,
-    __deref_opt_out RPC_CSTR __RPC_FAR *ObjUuid,
-    __deref_opt_out RPC_CSTR __RPC_FAR *Protseq,
-    __deref_opt_out RPC_CSTR __RPC_FAR *NetworkAddr,
-    __deref_opt_out RPC_CSTR __RPC_FAR *Endpoint,
-    __deref_opt_out RPC_CSTR __RPC_FAR *NetworkOptions
+    IN unsigned char __RPC_FAR * StringBinding,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ObjUuid OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * Protseq OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * NetworkAddr OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * Endpoint OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * NetworkOptions OPTIONAL
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -495,14 +490,14 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcStringFreeA (
-    __deref RPC_CSTR __RPC_FAR *String
+    IN OUT unsigned char __RPC_FAR * __RPC_FAR * String
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcStringFreeW (
-    __deref RPC_WSTR __RPC_FAR *String
+    IN OUT unsigned short __RPC_FAR * __RPC_FAR * String
     );
 
 #ifdef UNICODE
@@ -517,7 +512,7 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcStringFree (
-    __deref RPC_CSTR __RPC_FAR *String
+    IN OUT unsigned char __RPC_FAR * __RPC_FAR * String
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -539,14 +534,14 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcNetworkIsProtseqValidA (
-    __in RPC_CSTR Protseq
+    IN unsigned char __RPC_FAR * Protseq
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcNetworkIsProtseqValidW (
-    __in RPC_WSTR Protseq
+    IN unsigned short __RPC_FAR * Protseq
     );
 
 #ifdef UNICODE
@@ -561,7 +556,7 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcNetworkIsProtseqValid (
-    __in RPC_CSTR Protseq
+    IN unsigned char __RPC_FAR * Protseq
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -824,38 +819,38 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqA (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in_opt void __RPC_FAR *SecurityDescriptor
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN void __RPC_FAR * SecurityDescriptor OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqExA (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in_opt void __RPC_FAR *SecurityDescriptor,
-    __in PRPC_POLICY Policy
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN PRPC_POLICY Policy
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqW (
-    __in RPC_WSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in_opt void __RPC_FAR *SecurityDescriptor
+    IN unsigned short __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN void __RPC_FAR * SecurityDescriptor OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqExW (
-    __in RPC_WSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in_opt void __RPC_FAR *SecurityDescriptor,
-    __in PRPC_POLICY Policy
+    IN unsigned short __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN PRPC_POLICY Policy
     );
 
 #ifdef UNICODE
@@ -872,19 +867,19 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseq (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in_opt void __RPC_FAR *SecurityDescriptor
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN void __RPC_FAR * SecurityDescriptor OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqEx (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in_opt void __RPC_FAR *SecurityDescriptor,
-    __in PRPC_POLICY Policy
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN PRPC_POLICY Policy
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -897,42 +892,42 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqEpA (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_CSTR Endpoint,
-    __in_opt void __RPC_FAR *SecurityDescriptor
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN unsigned char __RPC_FAR * Endpoint,
+    IN void __RPC_FAR * SecurityDescriptor OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqEpExA (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_CSTR Endpoint,
-    __in_opt void __RPC_FAR *SecurityDescriptor,
-    __in PRPC_POLICY Policy
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN unsigned char __RPC_FAR * Endpoint,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN PRPC_POLICY Policy
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqEpW (
-    __in RPC_WSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_WSTR Endpoint,
-    __in_opt void __RPC_FAR *SecurityDescriptor
+    IN unsigned short __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN unsigned short __RPC_FAR * Endpoint,
+    IN void __RPC_FAR * SecurityDescriptor OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqEpExW (
-    __in RPC_WSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_WSTR Endpoint,
-    __in_opt void __RPC_FAR *SecurityDescriptor,
-    __in PRPC_POLICY Policy
+    IN unsigned short __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN unsigned short __RPC_FAR * Endpoint,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN PRPC_POLICY Policy
     );
 
 #ifdef UNICODE
@@ -949,21 +944,21 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqEp (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_CSTR Endpoint,
-    __in_opt void __RPC_FAR *SecurityDescriptor
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN unsigned char __RPC_FAR * Endpoint,
+    IN void __RPC_FAR * SecurityDescriptor OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqEpEx (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_CSTR Endpoint,
-    __in_opt void __RPC_FAR *SecurityDescriptor,
-    __in PRPC_POLICY Policy
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN unsigned char __RPC_FAR * Endpoint,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN PRPC_POLICY Policy
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -976,42 +971,42 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqIfA (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_IF_HANDLE IfSpec,
-    __in_opt void __RPC_FAR *SecurityDescriptor
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN RPC_IF_HANDLE IfSpec,
+    IN void __RPC_FAR * SecurityDescriptor OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqIfExA (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_IF_HANDLE IfSpec,
-    __in_opt void __RPC_FAR *SecurityDescriptor,
-    __in PRPC_POLICY Policy
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN RPC_IF_HANDLE IfSpec,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN PRPC_POLICY Policy
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqIfW (
-    __in RPC_WSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_IF_HANDLE IfSpec,
-    __in_opt void __RPC_FAR *SecurityDescriptor
+    IN unsigned short __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN RPC_IF_HANDLE IfSpec,
+    IN void __RPC_FAR * SecurityDescriptor OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqIfExW (
-    __in RPC_WSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_IF_HANDLE IfSpec,
-    __in_opt void __RPC_FAR *SecurityDescriptor,
-    __in PRPC_POLICY Policy
+    IN unsigned short __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN RPC_IF_HANDLE IfSpec,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN PRPC_POLICY Policy
     );
 
 #ifdef UNICODE
@@ -1028,21 +1023,21 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqIf (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_IF_HANDLE IfSpec,
-    __in_opt void __RPC_FAR *SecurityDescriptor
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN RPC_IF_HANDLE IfSpec,
+    IN void __RPC_FAR * SecurityDescriptor OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerUseProtseqIfEx (
-    __in RPC_CSTR Protseq,
-    __in unsigned int MaxCalls,
-    __in RPC_IF_HANDLE IfSpec,
-    __in_opt void __RPC_FAR *SecurityDescriptor,
-    __in PRPC_POLICY Policy
+    IN unsigned char __RPC_FAR * Protseq,
+    IN unsigned int MaxCalls,
+    IN RPC_IF_HANDLE IfSpec,
+    IN void __RPC_FAR * SecurityDescriptor,
+    IN PRPC_POLICY Policy
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -1139,18 +1134,18 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcMgmtInqServerPrincNameA (
-    __in RPC_BINDING_HANDLE Binding,
-    __in unsigned long AuthnSvc,
-    __deref_out RPC_CSTR __RPC_FAR *ServerPrincName
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned long AuthnSvc,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ServerPrincName
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcMgmtInqServerPrincNameW (
-    __in RPC_BINDING_HANDLE Binding,
-    __in unsigned long AuthnSvc,
-    __deref_out RPC_WSTR __RPC_FAR *ServerPrincName
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned long AuthnSvc,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * ServerPrincName
     );
 
 #ifdef UNICODE
@@ -1165,9 +1160,9 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcMgmtInqServerPrincName (
-    __in RPC_BINDING_HANDLE Binding,
-    __in unsigned long AuthnSvc,
-    __deref_out RPC_CSTR __RPC_FAR *ServerPrincName
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned long AuthnSvc,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ServerPrincName
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -1178,16 +1173,16 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerInqDefaultPrincNameA (
-    __in unsigned long AuthnSvc,
-    __deref_out RPC_CSTR __RPC_FAR *PrincName
+    IN unsigned long AuthnSvc,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * PrincName
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerInqDefaultPrincNameW (
-    __in unsigned long AuthnSvc,
-    __deref_out RPC_WSTR __RPC_FAR *PrincName
+    IN unsigned long AuthnSvc,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * PrincName
     );
 
 #ifdef UNICODE
@@ -1202,8 +1197,8 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerInqDefaultPrincName (
-    __in unsigned long AuthnSvc,
-    __deref_out RPC_CSTR __RPC_FAR *PrincName
+    IN unsigned long AuthnSvc,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * PrincName
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -1225,18 +1220,18 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcNsBindingInqEntryNameA (
-    __in RPC_BINDING_HANDLE Binding,
-    __in unsigned long EntryNameSyntax,
-    __deref_out RPC_CSTR __RPC_FAR *EntryName
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned long EntryNameSyntax,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * EntryName
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcNsBindingInqEntryNameW (
-    __in RPC_BINDING_HANDLE Binding,
-    __in unsigned long EntryNameSyntax,
-    __deref_out RPC_WSTR __RPC_FAR *EntryName
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned long EntryNameSyntax,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * EntryName
     );
 
 #ifdef UNICODE
@@ -1251,9 +1246,9 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcNsBindingInqEntryName (
-    __in RPC_BINDING_HANDLE Binding,
-    __in unsigned long EntryNameSyntax,
-    __deref_out RPC_CSTR __RPC_FAR *EntryName
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned long EntryNameSyntax,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * EntryName
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -1282,8 +1277,6 @@ typedef void __RPC_FAR * RPC_AUTHZ_HANDLE;
 #define RPC_C_QOS_CAPABILITIES_MUTUAL_AUTH                    0x1
 #define RPC_C_QOS_CAPABILITIES_MAKE_FULLSIC                   0x2
 #define RPC_C_QOS_CAPABILITIES_ANY_AUTHORITY                  0x4
-#define RPC_C_QOS_CAPABILITIES_IGNORE_DELEGATE_FAILURE        0x8
-#define RPC_C_QOS_CAPABILITIES_LOCAL_MA_HINT                 0x10
 
 #define RPC_C_PROTECT_LEVEL_DEFAULT       (RPC_C_AUTHN_LEVEL_DEFAULT)
 #define RPC_C_PROTECT_LEVEL_NONE          (RPC_C_AUTHN_LEVEL_NONE)
@@ -1367,12 +1360,9 @@ typedef struct _SEC_WINNT_AUTH_IDENTITY_A {
 #define RPC_C_HTTP_AUTHN_SCHEME_PASSPORT   0x00000004
 #define RPC_C_HTTP_AUTHN_SCHEME_DIGEST     0x00000008
 #define RPC_C_HTTP_AUTHN_SCHEME_NEGOTIATE  0x00000010
-#define RPC_C_HTTP_AUTHN_SCHEME_CERT       0x00010000
-// 0x00020000 & 0x00040000 are reserved
 
 #define RPC_C_HTTP_FLAG_USE_SSL                     1
 #define RPC_C_HTTP_FLAG_USE_FIRST_AUTH_SCHEME       2
-#define RPC_C_HTTP_FLAG_IGNORE_CERT_CN_INVALID      8
 
 typedef struct _RPC_HTTP_TRANSPORT_CREDENTIALS_W
 {
@@ -1418,34 +1408,6 @@ typedef struct _RPC_SECURITY_QOS_V2_A {
       } u;
 } RPC_SECURITY_QOS_V2_A, *PRPC_SECURITY_QOS_V2_A;
 
-#define RPC_C_SECURITY_QOS_VERSION_3 3L
-
-typedef struct _RPC_SECURITY_QOS_V3_W {
-  unsigned long Version;
-  unsigned long Capabilities;
-  unsigned long IdentityTracking;
-  unsigned long ImpersonationType;
-  unsigned long AdditionalSecurityInfoType;
-  union 
-      {
-      RPC_HTTP_TRANSPORT_CREDENTIALS_W *HttpCredentials;
-      } u;
-  void *Sid;
-} RPC_SECURITY_QOS_V3_W, *PRPC_SECURITY_QOS_V3_W;
-
-typedef struct _RPC_SECURITY_QOS_V3_A {
-  unsigned long Version;
-  unsigned long Capabilities;
-  unsigned long IdentityTracking;
-  unsigned long ImpersonationType;
-  unsigned long AdditionalSecurityInfoType;
-  union 
-      {
-      RPC_HTTP_TRANSPORT_CREDENTIALS_A *HttpCredentials;
-      } u;
-  void *Sid;
-} RPC_SECURITY_QOS_V3_A, *PRPC_SECURITY_QOS_V3_A;
-
 #endif //_AUTH_IDENTITY_DEFINED
 
 #ifdef UNICODE
@@ -1458,10 +1420,6 @@ typedef struct _RPC_SECURITY_QOS_V3_A {
 #define PRPC_HTTP_TRANSPORT_CREDENTIALS PRPC_HTTP_TRANSPORT_CREDENTIALS_W
 #define _RPC_HTTP_TRANSPORT_CREDENTIALS _RPC_HTTP_TRANSPORT_CREDENTIALS_W
 
-#define RPC_SECURITY_QOS_V3 RPC_SECURITY_QOS_V3_W
-#define PRPC_SECURITY_QOS_V3 PRPC_SECURITY_QOS_V3_W
-#define _RPC_SECURITY_QOS_V3 _RPC_SECURITY_QOS_V3_W
-
 #else // UNICODE
 
 #define RPC_SECURITY_QOS_V2 RPC_SECURITY_QOS_V2_A
@@ -1472,41 +1430,19 @@ typedef struct _RPC_SECURITY_QOS_V3_A {
 #define PRPC_HTTP_TRANSPORT_CREDENTIALS PRPC_HTTP_TRANSPORT_CREDENTIALS_A
 #define _RPC_HTTP_TRANSPORT_CREDENTIALS _RPC_HTTP_TRANSPORT_CREDENTIALS_A
 
-#define RPC_SECURITY_QOS_V3 RPC_SECURITY_QOS_V3_A
-#define PRPC_SECURITY_QOS_V3 PRPC_SECURITY_QOS_V3_A
-#define _RPC_SECURITY_QOS_V3 _RPC_SECURITY_QOS_V3_A
-
 #endif // UNICODE
-
-typedef enum _RPC_HTTP_REDIRECTOR_STAGE
-{
-    RPCHTTP_RS_REDIRECT = 1,
-    RPCHTTP_RS_ACCESS_1,
-    RPCHTTP_RS_SESSION,
-    RPCHTTP_RS_ACCESS_2,
-    RPCHTTP_RS_INTERFACE
-} RPC_HTTP_REDIRECTOR_STAGE;
 
 typedef RPC_STATUS
 (__RPC_USER * RPC_NEW_HTTP_PROXY_CHANNEL) (
-    IN RPC_HTTP_REDIRECTOR_STAGE RedirectorStage,
     IN unsigned short __RPC_FAR *ServerName,
     IN unsigned short __RPC_FAR *ServerPort,
-    IN OPTIONAL unsigned short __RPC_FAR *RemoteUser,
-    IN OPTIONAL unsigned short __RPC_FAR *AuthType,
-    IN OPTIONAL void __RPC_FAR *ResourceUuid,
-    IN OPTIONAL void __RPC_FAR *Metadata,
-    IN OPTIONAL void __RPC_FAR *SessionId,
-    IN OPTIONAL void __RPC_FAR *Interface,
-    IN OPTIONAL void __RPC_FAR *Reserved,
-    IN unsigned long Flags,
-    OUT OPTIONAL unsigned short __RPC_FAR **NewServerName,
-    OUT OPTIONAL unsigned short __RPC_FAR **NewServerPort
+    IN unsigned char __RPC_FAR *RemoteUser,
+    OUT unsigned short __RPC_FAR **NewServerName
     );
 
 typedef void
 (__RPC_USER * RPC_HTTP_PROXY_FREE_STRING) (
-    IN unsigned short __RPC_FAR *String
+    IN unsigned short __RPC_FAR *ServerName
     );
 
 #define RPC_C_AUTHZ_NONE    0
@@ -1540,36 +1476,36 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingInqAuthClientA (
-    __in_opt RPC_BINDING_HANDLE ClientBinding,
-    __out RPC_AUTHZ_HANDLE __RPC_FAR *Privs,
-    __deref_opt_out RPC_CSTR __RPC_FAR *ServerPrincName,
-    __out_opt unsigned long __RPC_FAR *AuthnLevel, 
-    __out_opt unsigned long __RPC_FAR *AuthnSvc,
-    __out_opt unsigned long __RPC_FAR *AuthzSvc
+    IN RPC_BINDING_HANDLE ClientBinding, OPTIONAL
+    OUT RPC_AUTHZ_HANDLE __RPC_FAR * Privs,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ServerPrincName, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnLevel, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnSvc, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthzSvc OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingInqAuthClientW (
-    __in_opt RPC_BINDING_HANDLE ClientBinding,
-    __out RPC_AUTHZ_HANDLE __RPC_FAR *Privs,
-    __deref_opt_out RPC_WSTR __RPC_FAR *ServerPrincName,
-    __out_opt unsigned long __RPC_FAR *AuthnLevel,
-    __out_opt unsigned long __RPC_FAR *AuthnSvc,
-    __out_opt unsigned long __RPC_FAR *AuthzSvc
+    IN RPC_BINDING_HANDLE ClientBinding, OPTIONAL
+    OUT RPC_AUTHZ_HANDLE __RPC_FAR * Privs,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * ServerPrincName, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnLevel, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnSvc, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthzSvc OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingInqAuthClientExA (
-    __in_opt RPC_BINDING_HANDLE ClientBinding,
-    __out RPC_AUTHZ_HANDLE __RPC_FAR *Privs,
-    __deref_opt_out RPC_CSTR __RPC_FAR *ServerPrincName,
-    __out_opt unsigned long __RPC_FAR *AuthnLevel,
-    __out_opt unsigned long __RPC_FAR *AuthnSvc,
-    __out_opt unsigned long __RPC_FAR *AuthzSvc,
+    IN RPC_BINDING_HANDLE ClientBinding, OPTIONAL
+    OUT RPC_AUTHZ_HANDLE __RPC_FAR * Privs,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ServerPrincName, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnLevel, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnSvc, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthzSvc, OPTIONAL
     IN  unsigned long             Flags
     );
 
@@ -1577,12 +1513,12 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingInqAuthClientExW (
-    __in_opt RPC_BINDING_HANDLE ClientBinding,
-    __out RPC_AUTHZ_HANDLE __RPC_FAR *Privs,
-    __deref_opt_out RPC_WSTR __RPC_FAR *ServerPrincName,
-    __out_opt unsigned long __RPC_FAR *AuthnLevel,
-    __out_opt unsigned long __RPC_FAR *AuthnSvc,
-    __out_opt unsigned long __RPC_FAR *AuthzSvc,
+    IN RPC_BINDING_HANDLE ClientBinding, OPTIONAL
+    OUT RPC_AUTHZ_HANDLE __RPC_FAR * Privs,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * ServerPrincName, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnLevel, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnSvc, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthzSvc, OPTIONAL
     IN  unsigned long             Flags
     );
 
@@ -1590,102 +1526,102 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingInqAuthInfoA (
-    __in RPC_BINDING_HANDLE Binding,
-    __deref_opt_out RPC_CSTR __RPC_FAR *ServerPrincName,
-    __out_opt unsigned long __RPC_FAR *AuthnLevel,
-    __out_opt unsigned long __RPC_FAR *AuthnSvc,
-    __out_opt RPC_AUTH_IDENTITY_HANDLE __RPC_FAR *AuthIdentity,
-    __out_opt unsigned long __RPC_FAR *AuthzSvc
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ServerPrincName, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnLevel, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnSvc, OPTIONAL
+    OUT RPC_AUTH_IDENTITY_HANDLE __RPC_FAR * AuthIdentity, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthzSvc OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingInqAuthInfoW (
-    __in RPC_BINDING_HANDLE Binding,
-    __deref_opt_out RPC_WSTR __RPC_FAR *ServerPrincName,
-    __out_opt unsigned long __RPC_FAR *AuthnLevel,
-    __out_opt unsigned long __RPC_FAR *AuthnSvc,
-    __out_opt RPC_AUTH_IDENTITY_HANDLE __RPC_FAR *AuthIdentity,
-    __out_opt unsigned long __RPC_FAR *AuthzSvc
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * ServerPrincName, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnLevel, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnSvc, OPTIONAL
+    OUT RPC_AUTH_IDENTITY_HANDLE __RPC_FAR * AuthIdentity, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthzSvc OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingSetAuthInfoA (
-    __in RPC_BINDING_HANDLE Binding,
-    __in RPC_CSTR ServerPrincName,
-    __in unsigned long AuthnLevel,
-    __in unsigned long AuthnSvc,
-    __in_opt RPC_AUTH_IDENTITY_HANDLE AuthIdentity,
-    __in unsigned long AuthzSvc
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned char __RPC_FAR * ServerPrincName,
+    IN unsigned long AuthnLevel,
+    IN unsigned long AuthnSvc,
+    IN RPC_AUTH_IDENTITY_HANDLE AuthIdentity, OPTIONAL
+    IN unsigned long AuthzSvc
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingSetAuthInfoExA (
-    __in RPC_BINDING_HANDLE Binding,
-    __in RPC_CSTR ServerPrincName,
-    __in unsigned long AuthnLevel,
-    __in unsigned long AuthnSvc,
-    __in_opt RPC_AUTH_IDENTITY_HANDLE AuthIdentity,
-    __in unsigned long AuthzSvc,
-    __in_opt RPC_SECURITY_QOS *SecurityQos
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned char __RPC_FAR * ServerPrincName,
+    IN unsigned long AuthnLevel,
+    IN unsigned long AuthnSvc,
+    IN RPC_AUTH_IDENTITY_HANDLE AuthIdentity, OPTIONAL
+    IN unsigned long AuthzSvc,
+    IN RPC_SECURITY_QOS *SecurityQos OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingSetAuthInfoW (
-    __in RPC_BINDING_HANDLE Binding,
-    __in RPC_WSTR ServerPrincName,
-    __in unsigned long AuthnLevel,
-    __in unsigned long AuthnSvc,
-    __in_opt RPC_AUTH_IDENTITY_HANDLE AuthIdentity,
-    __in unsigned long AuthzSvc
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned short __RPC_FAR * ServerPrincName,
+    IN unsigned long AuthnLevel,
+    IN unsigned long AuthnSvc,
+    IN RPC_AUTH_IDENTITY_HANDLE AuthIdentity, OPTIONAL
+    IN unsigned long AuthzSvc
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingSetAuthInfoExW (
-    __in RPC_BINDING_HANDLE Binding,
-    __in RPC_WSTR ServerPrincName,
-    __in unsigned long AuthnLevel,
-    __in unsigned long AuthnSvc,
-    __in_opt RPC_AUTH_IDENTITY_HANDLE AuthIdentity,
-    __in unsigned long AuthzSvc,
-    __in_opt RPC_SECURITY_QOS *SecurityQOS
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned short __RPC_FAR * ServerPrincName,
+    IN unsigned long AuthnLevel,
+    IN unsigned long AuthnSvc,
+    IN RPC_AUTH_IDENTITY_HANDLE AuthIdentity, OPTIONAL
+    IN unsigned long AuthzSvc, OPTIONAL
+    IN RPC_SECURITY_QOS *SecurityQOS
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingInqAuthInfoExA (
-    __in RPC_BINDING_HANDLE Binding,
-    __deref_opt_out RPC_CSTR __RPC_FAR *ServerPrincName,
-    __out_opt unsigned long __RPC_FAR *AuthnLevel,
-    __out_opt unsigned long __RPC_FAR *AuthnSvc,
-    __out_opt RPC_AUTH_IDENTITY_HANDLE __RPC_FAR *AuthIdentity,
-    __out_opt unsigned long __RPC_FAR *AuthzSvc,
-    __in unsigned long RpcQosVersion,
-    __out_opt RPC_SECURITY_QOS *SecurityQOS
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ServerPrincName, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnLevel, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnSvc, OPTIONAL
+    OUT RPC_AUTH_IDENTITY_HANDLE __RPC_FAR * AuthIdentity, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthzSvc, OPTIONAL
+    IN  unsigned long RpcQosVersion,
+    OUT RPC_SECURITY_QOS *SecurityQOS
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingInqAuthInfoExW (
-    __in RPC_BINDING_HANDLE Binding,
-    __deref_opt_out RPC_WSTR __RPC_FAR *ServerPrincName, 
-    __out_opt unsigned long __RPC_FAR *AuthnLevel,
-    __out_opt unsigned long __RPC_FAR *AuthnSvc,
-    __out_opt RPC_AUTH_IDENTITY_HANDLE __RPC_FAR *AuthIdentity,
-    __out_opt unsigned long __RPC_FAR *AuthzSvc,
-    __in unsigned long RpcQosVersion,
-    __out_opt RPC_SECURITY_QOS *SecurityQOS
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * ServerPrincName, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnLevel, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnSvc, OPTIONAL
+    OUT RPC_AUTH_IDENTITY_HANDLE __RPC_FAR * AuthIdentity, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthzSvc OPTIONAL,
+    IN  unsigned long RpcQosVersion,
+    OUT RPC_SECURITY_QOS *SecurityQOS
     );
 
 typedef void
@@ -1701,20 +1637,20 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerRegisterAuthInfoA (
-    __in RPC_CSTR ServerPrincName,
-    __in unsigned long AuthnSvc,
-    __in_opt RPC_AUTH_KEY_RETRIEVAL_FN GetKeyFn,
-    __in_opt void __RPC_FAR *Arg
+    IN unsigned char __RPC_FAR * ServerPrincName,
+    IN unsigned long AuthnSvc,
+    IN RPC_AUTH_KEY_RETRIEVAL_FN GetKeyFn OPTIONAL,
+    IN void __RPC_FAR * Arg OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerRegisterAuthInfoW (
-    __in RPC_WSTR ServerPrincName,
-    __in unsigned long AuthnSvc,
-    __in_opt RPC_AUTH_KEY_RETRIEVAL_FN GetKeyFn,
-    __in_opt void __RPC_FAR *Arg
+    IN unsigned short __RPC_FAR * ServerPrincName,
+    IN unsigned long AuthnSvc,
+    IN RPC_AUTH_KEY_RETRIEVAL_FN GetKeyFn OPTIONAL,
+    IN void __RPC_FAR * Arg OPTIONAL
     );
 
 #ifdef UNICODE
@@ -1741,49 +1677,49 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingInqAuthClient (
-    __in_opt RPC_BINDING_HANDLE ClientBinding,
-    __out RPC_AUTHZ_HANDLE __RPC_FAR *Privs,
-    __deref_opt_out RPC_CSTR __RPC_FAR *ServerPrincName,
-    __out_opt unsigned long __RPC_FAR *AuthnLevel,
-    __out_opt unsigned long __RPC_FAR *AuthnSvc,
-    __out_opt unsigned long __RPC_FAR *AuthzSvc
+    IN RPC_BINDING_HANDLE ClientBinding, OPTIONAL
+    OUT RPC_AUTHZ_HANDLE __RPC_FAR * Privs,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ServerPrincName, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnLevel, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnSvc, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthzSvc OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingInqAuthClientEx (
-    __in_opt RPC_BINDING_HANDLE ClientBinding,
-    __out RPC_AUTHZ_HANDLE __RPC_FAR *Privs,
-    __deref_opt_out RPC_CSTR __RPC_FAR *ServerPrincName,
-    __out_opt unsigned long __RPC_FAR *AuthnLevel,
-    __out_opt unsigned long __RPC_FAR *AuthnSvc,
-    __out_opt unsigned long __RPC_FAR *AuthzSvc,
-    __in unsigned long Flags
+    IN RPC_BINDING_HANDLE ClientBinding, OPTIONAL
+    OUT RPC_AUTHZ_HANDLE __RPC_FAR * Privs,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ServerPrincName, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnLevel, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnSvc, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthzSvc, OPTIONAL
+    IN  unsigned long             Flags
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingInqAuthInfo (
-    __in RPC_BINDING_HANDLE Binding,
-    __deref_opt_out RPC_CSTR __RPC_FAR *ServerPrincName,
-    __out_opt unsigned long __RPC_FAR *AuthnLevel,
-    __out_opt unsigned long __RPC_FAR *AuthnSvc,
-    __out_opt RPC_AUTH_IDENTITY_HANDLE __RPC_FAR *AuthIdentity,
-    __out_opt unsigned long __RPC_FAR *AuthzSvc
+    IN RPC_BINDING_HANDLE Binding,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * ServerPrincName, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnLevel, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthnSvc, OPTIONAL
+    OUT RPC_AUTH_IDENTITY_HANDLE __RPC_FAR * AuthIdentity, OPTIONAL
+    OUT unsigned long __RPC_FAR * AuthzSvc OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcBindingSetAuthInfo (
-    __in RPC_BINDING_HANDLE Binding,
-    __in RPC_CSTR ServerPrincName,
-    __in unsigned long AuthnLevel,
-    __in unsigned long AuthnSvc,
-    __in_opt RPC_AUTH_IDENTITY_HANDLE AuthIdentity,
-    __in unsigned long AuthzSvc
+    IN RPC_BINDING_HANDLE Binding,
+    IN unsigned char __RPC_FAR * ServerPrincName,
+    IN unsigned long AuthnLevel,
+    IN unsigned long AuthnSvc,
+    IN RPC_AUTH_IDENTITY_HANDLE AuthIdentity, OPTIONAL
+    IN unsigned long AuthzSvc
     );
 
 typedef void
@@ -1799,10 +1735,10 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcServerRegisterAuthInfo (
-    __in RPC_CSTR ServerPrincName,
-    __in unsigned long AuthnSvc,
-    __in_opt RPC_AUTH_KEY_RETRIEVAL_FN GetKeyFn,
-    __in_opt void __RPC_FAR *Arg
+    IN unsigned char __RPC_FAR * ServerPrincName,
+    IN unsigned long AuthnSvc,
+    IN RPC_AUTH_KEY_RETRIEVAL_FN GetKeyFn OPTIONAL,
+    IN void __RPC_FAR * Arg OPTIONAL
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -1883,8 +1819,8 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 UuidToStringA (
-    __in UUID __RPC_FAR *Uuid,
-    __deref_out RPC_CSTR __RPC_FAR *StringUuid
+    IN UUID __RPC_FAR * Uuid,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * StringUuid
     );
 
 /* client/server */
@@ -1892,8 +1828,8 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 UuidFromStringA (
-    __in RPC_CSTR StringUuid,
-    __out UUID __RPC_FAR *Uuid
+    IN unsigned char __RPC_FAR * StringUuid,
+    OUT UUID __RPC_FAR * Uuid
     );
 
 /* client/server */
@@ -1901,8 +1837,8 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 UuidToStringW (
-    __in UUID __RPC_FAR *Uuid,
-    __deref_out RPC_WSTR __RPC_FAR *StringUuid
+    IN UUID __RPC_FAR * Uuid,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * StringUuid
     );
 
 /* client/server */
@@ -1910,8 +1846,8 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 UuidFromStringW (
-    __in_opt RPC_WSTR StringUuid,
-    __out UUID __RPC_FAR *Uuid
+    IN unsigned short __RPC_FAR * StringUuid,
+    OUT UUID __RPC_FAR * Uuid
     );
 
 #ifdef UNICODE
@@ -1929,8 +1865,8 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 UuidToString (
-    __in UUID __RPC_FAR *Uuid,
-    __deref_out RPC_CSTR __RPC_FAR *StringUuid
+    IN UUID __RPC_FAR * Uuid,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * StringUuid
     );
 
 /* client/server */
@@ -1938,8 +1874,8 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 UuidFromString (
-    __in_opt RPC_CSTR StringUuid,
-    __out UUID __RPC_FAR *Uuid
+    IN unsigned char __RPC_FAR * StringUuid,
+    OUT UUID __RPC_FAR * Uuid
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -1991,40 +1927,40 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcEpRegisterNoReplaceA (
-    __in RPC_IF_HANDLE IfSpec,
-    __in RPC_BINDING_VECTOR *BindingVector,
-    __in_opt UUID_VECTOR *UuidVector,
-    __in_opt RPC_CSTR Annotation
+    IN RPC_IF_HANDLE IfSpec,
+    IN RPC_BINDING_VECTOR * BindingVector,
+    IN UUID_VECTOR * UuidVector OPTIONAL,
+    IN unsigned char * Annotation
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcEpRegisterNoReplaceW (
-    __in RPC_IF_HANDLE IfSpec,
-    __in RPC_BINDING_VECTOR *BindingVector,
-    __in_opt UUID_VECTOR *UuidVector,
-    __in_opt RPC_WSTR Annotation
+    IN RPC_IF_HANDLE IfSpec,
+    IN RPC_BINDING_VECTOR * BindingVector,
+    IN UUID_VECTOR * UuidVector OPTIONAL,
+    IN unsigned short  * Annotation
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcEpRegisterA (
-    __in RPC_IF_HANDLE IfSpec,
-    __in RPC_BINDING_VECTOR *BindingVector,
-    __in_opt UUID_VECTOR *UuidVector,
-    __in_opt RPC_CSTR Annotation
+    IN RPC_IF_HANDLE IfSpec,
+    IN RPC_BINDING_VECTOR * BindingVector,
+    IN UUID_VECTOR * UuidVector OPTIONAL,
+    IN unsigned char * Annotation
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcEpRegisterW (
-    __in RPC_IF_HANDLE IfSpec,
-    __in RPC_BINDING_VECTOR *BindingVector,
-    __in_opt UUID_VECTOR *UuidVector,
-    __in_opt RPC_WSTR Annotation
+    IN RPC_IF_HANDLE IfSpec,
+    IN RPC_BINDING_VECTOR * BindingVector,
+    IN UUID_VECTOR * UuidVector OPTIONAL,
+    IN unsigned short * Annotation
     );
 
 #ifdef UNICODE
@@ -2041,20 +1977,20 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcEpRegisterNoReplace (
-    __in RPC_IF_HANDLE IfSpec,
-    __in RPC_BINDING_VECTOR *BindingVector,
-    __in_opt UUID_VECTOR *UuidVector,
-    __in_opt RPC_CSTR Annotation
+    IN RPC_IF_HANDLE IfSpec,
+    IN RPC_BINDING_VECTOR * BindingVector,
+    IN UUID_VECTOR * UuidVector OPTIONAL,
+    IN unsigned  char * Annotation
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcEpRegister (
-    __in RPC_IF_HANDLE IfSpec,
-    __in RPC_BINDING_VECTOR *BindingVector,
-    __in_opt UUID_VECTOR *UuidVector,
-    __in_opt RPC_CSTR Annotation
+    IN RPC_IF_HANDLE IfSpec,
+    IN RPC_BINDING_VECTOR * BindingVector,
+    IN UUID_VECTOR * UuidVector OPTIONAL,
+    IN unsigned char * Annotation
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
@@ -2065,11 +2001,9 @@ RPC_STATUS
 RPC_ENTRY
 RpcEpUnregister(
     IN RPC_IF_HANDLE IfSpec,
-    IN RPC_BINDING_VECTOR *BindingVector,
-    IN UUID_VECTOR *UuidVector
+    IN RPC_BINDING_VECTOR * BindingVector,
+    IN UUID_VECTOR * UuidVector
     );
-
-#define DCE_C_ERROR_STRING_LEN 256
 
 #ifdef RPC_UNICODE_SUPPORTED
 
@@ -2077,16 +2011,16 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 DceErrorInqTextA (
-    __in RPC_STATUS RpcStatus,
-    __out_ecount(DCE_C_ERROR_STRING_LEN) RPC_CSTR ErrorText
+    IN RPC_STATUS RpcStatus,
+    OUT unsigned char __RPC_FAR * ErrorText
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 DceErrorInqTextW (
-    __in RPC_STATUS RpcStatus,
-    __out_ecount(DCE_C_ERROR_STRING_LEN) RPC_WSTR ErrorText
+    IN RPC_STATUS RpcStatus,
+    OUT unsigned short __RPC_FAR * ErrorText
     );
 
 #ifdef UNICODE
@@ -2101,11 +2035,13 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 DceErrorInqText (
-    __in RPC_STATUS RpcStatus,
-    __out_ecount(DCE_C_ERROR_STRING_LEN) RPC_CSTR ErrorText
+    IN RPC_STATUS RpcStatus,
+    OUT unsigned char __RPC_FAR * ErrorText
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */
+
+#define DCE_C_ERROR_STRING_LEN 256
 
 typedef I_RPC_HANDLE * RPC_EP_INQ_HANDLE;
 
@@ -2145,22 +2081,22 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcMgmtEpEltInqNextA (
-    __in RPC_EP_INQ_HANDLE InquiryContext,
-    __out RPC_IF_ID __RPC_FAR *IfId,
-    __out_opt RPC_BINDING_HANDLE __RPC_FAR *Binding,
-    __out_opt UUID __RPC_FAR *ObjectUuid,
-    __deref_opt_out RPC_CSTR __RPC_FAR *Annotation
+    IN RPC_EP_INQ_HANDLE InquiryContext,
+    OUT RPC_IF_ID __RPC_FAR * IfId,
+    OUT RPC_BINDING_HANDLE __RPC_FAR * Binding OPTIONAL,
+    OUT UUID __RPC_FAR * ObjectUuid OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * Annotation OPTIONAL
     );
 
 RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcMgmtEpEltInqNextW (
-    __in RPC_EP_INQ_HANDLE InquiryContext,
-    __out RPC_IF_ID __RPC_FAR *IfId,
-    __out_opt RPC_BINDING_HANDLE __RPC_FAR *Binding,
-    __out_opt UUID __RPC_FAR *ObjectUuid,
-    __deref_opt_out RPC_WSTR __RPC_FAR *Annotation
+    IN RPC_EP_INQ_HANDLE InquiryContext,
+    OUT RPC_IF_ID __RPC_FAR * IfId,
+    OUT RPC_BINDING_HANDLE __RPC_FAR * Binding OPTIONAL,
+    OUT UUID __RPC_FAR * ObjectUuid OPTIONAL,
+    OUT unsigned short __RPC_FAR * __RPC_FAR * Annotation OPTIONAL
     );
 
 #ifdef UNICODE
@@ -2175,10 +2111,10 @@ RPCRTAPI
 RPC_STATUS
 RPC_ENTRY
 RpcMgmtEpEltInqNext (
-    __in RPC_EP_INQ_HANDLE InquiryContext,
-    __out RPC_IF_ID __RPC_FAR *IfId,
-    __out_opt RPC_BINDING_HANDLE __RPC_FAR *Binding,
-    __deref_opt_out RPC_CSTR __RPC_FAR *Annotation
+    IN RPC_EP_INQ_HANDLE InquiryContext,
+    OUT RPC_IF_ID __RPC_FAR * IfId,
+    OUT RPC_BINDING_HANDLE __RPC_FAR * Binding OPTIONAL,
+    OUT unsigned char __RPC_FAR * __RPC_FAR * Annotation OPTIONAL
     );
 
 #endif /* RPC_UNICODE_SUPPORTED */

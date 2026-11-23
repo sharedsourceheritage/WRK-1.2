@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for certenc.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -1266,15 +1265,15 @@ void __RPC_STUB ICertEncodeCRLDistInfo_Encode_Stub(
 #endif 	/* __ICertEncodeCRLDistInfo_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_certenc_0122 */
+/* interface __MIDL_itf_certenc_0118 */
 /* [local] */ 
 
 #define	EAN_NAMEOBJECTID	( 0x80000000 )
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_certenc_0122_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_certenc_0122_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_certenc_0118_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_certenc_0118_v0_0_s_ifspec;
 
 #ifndef __ICertEncodeAltName_INTERFACE_DEFINED__
 #define __ICertEncodeAltName_INTERFACE_DEFINED__

@@ -1,5 +1,7 @@
-//**************************************************************************************************
+//*********************************************************************************************************************************************
 //
+//      File: Parser.h
+//  Author: Donald Drake
 //  Purpose: Defines classes to support parsing tokens from a xml file
 
 #ifndef _PARSER_H
@@ -8,7 +10,7 @@
 #include <stdio.h>
 
 #undef CLASS_IMPORT_EXPORT
-#if defined(HHCTRL) || defined(_M_CEE_PURE) // define this only when building the HHCtrl DLL
+#ifdef HHCTRL // define this only when building the HHCtrl DLL
   #define CLASS_IMPORT_EXPORT /**/
 #else
  #ifdef HHSETUP // define this only when building the HHSetup DLL
@@ -16,12 +18,6 @@
  #else
   #define CLASS_IMPORT_EXPORT __declspec( dllimport )
  #endif
-#endif
-
-#ifdef _M_CEE_PURE
-#define PARSER_API_INLINE __clrcall
-#else
-#define PARSER_API_INLINE
 #endif
 
 #define MAX_LINE_LEN 1024

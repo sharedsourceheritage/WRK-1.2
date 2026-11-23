@@ -1,0 +1,5 @@
+[DEFAULT]
+BASEURL=//http://www.microsoft.com/msdownload/platformsdk/sdkupdate
+[InternetShortcut]
+URL=http://www.microsoft.com/msdownload/platformsdk/sdkupdate
+Modified=800EC947ABA2C001AC

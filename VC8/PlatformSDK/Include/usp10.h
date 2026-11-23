@@ -18,7 +18,7 @@ extern "C" {
 
 ///// Uniscribe build number
 
-#define USPBUILD 0400
+#define USPBUILD 0420
 
 
 
@@ -507,7 +507,7 @@ typedef enum tag_SCRIPT_JUSTIFY {
     SCRIPT_JUSTIFY_ARABIC_BA      = 12,  // Middle-Of-Word form of Ba (U+628)
     SCRIPT_JUSTIFY_ARABIC_BARA    = 13,  // Ligature of alike (U+628,U+631)
     SCRIPT_JUSTIFY_ARABIC_SEEN    = 14,  // Highest priority: Initial shape of Seen(U+633) (end)
-    SCRIPT_JUSTIFY_RESERVED4      = 15,  // Reserved #4
+    SCRIPT_JUSTIFY_ARABIC_SEEN_M  = 15,  // Reserved #4
 } SCRIPT_JUSTIFY;
 
 

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{E6FDF86B-F3D1-11D4-8576-0002A516ECE8}") = "DateTimeServer", "DateTimeServer\DateTimeServer.vjsproj", "{8ACB1D46-C7DB-4F3D-8567-B40798680622}"
+EndProject
+Project("{E6FDF86B-F3D1-11D4-8576-0002A516ECE8}") = "DateTimeClient", "DateTimeClient\DateTimeClient.vjsproj", "{100FAF94-3307-4B27-A4BC-96C2FC62D244}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8ACB1D46-C7DB-4F3D-8567-B40798680622}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ACB1D46-C7DB-4F3D-8567-B40798680622}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ACB1D46-C7DB-4F3D-8567-B40798680622}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ACB1D46-C7DB-4F3D-8567-B40798680622}.Release|Any CPU.Build.0 = Release|Any CPU
+		{100FAF94-3307-4B27-A4BC-96C2FC62D244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{100FAF94-3307-4B27-A4BC-96C2FC62D244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{100FAF94-3307-4B27-A4BC-96C2FC62D244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{100FAF94-3307-4B27-A4BC-96C2FC62D244}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -7,8 +7,6 @@
 //
 // Comments: 		
 //
-//<owner current="true" primary="true">afield</owner>
-//<owner current="true" primary="false">mugunm</owner>
 //-----------------------------------------------------------------------------
 
 #ifndef __ODBCINST_H

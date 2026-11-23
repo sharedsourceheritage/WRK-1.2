@@ -1,16 +1,14 @@
 
 #pragma warning( disable: 4049 )  /* more than 64k source lines */
-#pragma warning( disable: 4100 ) /* unreferenced arguments in x86 call */
-#pragma warning( disable: 4211 )  /* redefine extent to static */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0358 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for admex.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run)
-    protocol : dce , ms_ext, c_ext, robust
-    error checks: allocation ref bounds_check enum stub_data 
+    Oi, W1, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext
+    error checks: allocation ref 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
          DECLSPEC_UUID(), MIDL_INTERFACE()
@@ -20,7 +18,7 @@
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
 #ifndef __REQUIRED_RPCNDR_H_VERSION__
-#define __REQUIRED_RPCNDR_H_VERSION__ 475
+#define __REQUIRED_RPCNDR_H_VERSION__ 440
 #endif
 
 #include "rpc.h"
@@ -295,7 +293,7 @@ void __RPC_STUB IMSAdminReplication_DeSerialize_Stub(
 #endif 	/* __IMSAdminReplication_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_admex_0255 */
+/* interface __MIDL_itf_admex_0259 */
 /* [local] */ 
 
 /*                                                                              
@@ -303,8 +301,8 @@ The Crypto capabilities Interface
 */                                                                              
 
 
-extern RPC_IF_HANDLE __MIDL_itf_admex_0255_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_admex_0255_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_admex_0259_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_admex_0259_v0_0_s_ifspec;
 
 #ifndef __IMSAdminCryptoCapabilities_INTERFACE_DEFINED__
 #define __IMSAdminCryptoCapabilities_INTERFACE_DEFINED__
@@ -505,14 +503,14 @@ void __RPC_STUB IMSAdminCryptoCapabilities_SetCAList_Stub(
 #endif 	/* __IMSAdminCryptoCapabilities_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_admex_0256 */
+/* interface __MIDL_itf_admex_0260 */
 /* [local] */ 
 
 #endif
 
 
-extern RPC_IF_HANDLE __MIDL_itf_admex_0256_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_admex_0256_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_admex_0260_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_admex_0260_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

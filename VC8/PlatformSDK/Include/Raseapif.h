@@ -58,14 +58,14 @@ extern "C" {
 #define RAS_EAP_VALUENAME_CONFIG_CLSID          TEXT("ConfigCLSID")
 #define RAS_EAP_VALUENAME_STANDALONE_SUPPORTED  TEXT("StandaloneSupported")
 #define RAS_EAP_VALUENAME_ROLES_SUPPORTED       TEXT("RolesSupported")
-#define RAS_EAP_VALUENAME_PER_POLICY_CONFIG     TEXT("PerPolicyConfig")
 
 
 // Flags for RolesSupported.
-#define RAS_EAP_ROLE_AUTHENTICATOR   0x00000001
-#define RAS_EAP_ROLE_AUTHENTICATEE   0x00000002
+#define RAS_EAP_ROLE_AUTHENTICATOR              0x00000001
+#define RAS_EAP_ROLE_AUTHENTICATEE              0x00000002
+#define RAS_EAP_ROLE_DISABLED_IN_VPN_CLIENT     0x00000004
 
-//
+// 
 // Following flags describe the hosting of EAP
 // methods in PEAP or in EAP.  If this role is
 // missing the default behavior is to show the
@@ -73,7 +73,8 @@ extern "C" {
 //
 #define RAS_EAP_ROLE_EXCLUDE_IN_EAP  0x00000004
 #define RAS_EAP_ROLE_EXCLUDE_IN_PEAP 0x00000008
-#define RAS_EAP_ROLE_EXCLUDE_IN_VPN  0x00000010
+#define RAS_EAP_ROLE_WIRELESS_EAP    0x00000010
+#define RAS_EAP_ROLE_VPN_EAP         0x00000020
 
 typedef enum _RAS_AUTH_ATTRIBUTE_TYPE_
 {
@@ -215,7 +216,10 @@ typedef struct _RAS_AUTH_ATTRIBUTE
 #define RAS_EAP_FLAG_GUEST_ACCESS           0x00000040  // Request to provide guest
                                                         // access.
 #define RAS_EAP_FLAG_8021X_AUTH             0x00000080  // Anything specific to 8021x
-                                                        // to be done in TLS
+
+//FIXME: FLAG CHANGED                                                        // to be done in TLS
+//#define RAS_EAP_FLAG_RESUME_FROM_HIBERNATE  0x00000100  // Indicates this is the first call
+//                                                        // after m/c resumed from hibernation.
 #define RAS_EAP_FLAG_HOSTED_IN_PEAP         0x00000100  // This EAP Method is hosted
                                                         // in PEAP
 #define RAS_EAP_FLAG_RESUME_FROM_HIBERNATE  0x00000200  // Indicates this is the
@@ -223,8 +227,6 @@ typedef struct _RAS_AUTH_ATTRIBUTE
                                                         // resumed from hibernation.
 #define RAS_EAP_FLAG_PEAP_UPFRONT           0x00000400  // Indicate peap is enabled
                                                         // at the beginning of IAS pipeline.
-#define RAS_EAP_FLAG_ALTERNATIVE_USER_DB    0x00000800 // The user database is
-                                                        // not active directory
 
 typedef struct _PPP_EAP_PACKET
 {
@@ -406,7 +408,7 @@ typedef enum _PPP_EAP_ACTION
     EAPACTION_Send,         // Send message, don't timeout waiting for reply
     EAPACTION_SendWithTimeout, // Send message, timeout if reply not received
     EAPACTION_SendWithTimeoutInteractive,  // As above, but don't increment
-                                           // retry count
+                                          // retry count
 
 	EAPACTION_IndicateTLV,		// Do not use
 	EAPACTION_IndicateIdentity	// Do not use

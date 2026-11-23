@@ -32,6 +32,12 @@
             trace information appropriate to the level setting currently in effect.
             </summary>
         </member>
+        <member name="P:AttributeSample.TraceLibrary.TraceOutput.NextSink">
+            <summary>
+            This property is used by the remoting framework to obtain the next
+            bit of behavior that is attached to the ContextBoundObject.
+            </summary>
+        </member>
         <member name="M:AttributeSample.TraceLibrary.TraceOutput.SyncProcessMessage(System.Runtime.Remoting.Messaging.IMessage)">
             <summary>
             This method intercepts method calls to the target object and adds on
@@ -47,6 +53,13 @@
             <param name="msg"></param>
             <param name="replySink"></param>
             <returns></returns>
+        </member>
+        <member name="P:AttributeSample.TraceLibrary.TraceOutput.ContextName">
+            <summary>
+            The ContextName is used by the objects to which this behavior is attached
+            to obtain a reference to the behavior.  This allows the object to participate
+            in the behaviors that surround it.
+            </summary>
         </member>
         <member name="M:AttributeSample.TraceLibrary.TraceOutput.TraceMethodCall(System.Runtime.Remoting.Messaging.IMessage)">
             <summary>
@@ -98,19 +111,6 @@
             </summary>
             <param name="msg">The incoming method call</param>
             <param name="returnMsg">The method return</param>
-        </member>
-        <member name="P:AttributeSample.TraceLibrary.TraceOutput.NextSink">
-            <summary>
-            This property is used by the remoting framework to obtain the next
-            bit of behavior that is attached to the ContextBoundObject.
-            </summary>
-        </member>
-        <member name="P:AttributeSample.TraceLibrary.TraceOutput.ContextName">
-            <summary>
-            The ContextName is used by the objects to which this behavior is attached
-            to obtain a reference to the behavior.  This allows the object to participate
-            in the behaviors that surround it.
-            </summary>
         </member>
         <member name="T:AttributeSample.TraceLibrary.TraceOutputProperty">
             <summary>

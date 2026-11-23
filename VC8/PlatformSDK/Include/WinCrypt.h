@@ -179,9 +179,6 @@ typedef LONG HRESULT;
 #define ALG_SID_HMAC                    9
 #define ALG_SID_TLS1PRF                 10
 #define ALG_SID_HASH_REPLACE_OWF        11
-#define ALG_SID_SHA_256                 12
-#define ALG_SID_SHA_384                 13
-#define ALG_SID_SHA_512                 14
 
 // secure channel sub ids
 #define ALG_SID_SSL3_MASTER             1
@@ -242,9 +239,6 @@ typedef unsigned int ALG_ID;
 #define CALG_AES_192            (ALG_CLASS_DATA_ENCRYPT|ALG_TYPE_BLOCK|ALG_SID_AES_192)
 #define CALG_AES_256            (ALG_CLASS_DATA_ENCRYPT|ALG_TYPE_BLOCK|ALG_SID_AES_256)
 #define CALG_AES                (ALG_CLASS_DATA_ENCRYPT|ALG_TYPE_BLOCK|ALG_SID_AES)
-#define CALG_SHA_256            (ALG_CLASS_HASH | ALG_TYPE_ANY | ALG_SID_SHA_256)
-#define CALG_SHA_384            (ALG_CLASS_HASH | ALG_TYPE_ANY | ALG_SID_SHA_384)
-#define CALG_SHA_512            (ALG_CLASS_HASH | ALG_TYPE_ANY | ALG_SID_SHA_512)
 
 typedef ULONG_PTR HCRYPTPROV;
 typedef ULONG_PTR HCRYPTKEY;
@@ -293,11 +287,6 @@ typedef ULONG_PTR HCRYPTHASH;
 #define CRYPT_BLOB_VER3         0x00000080  // export version 3 of a blob type
 #define CRYPT_IPSEC_HMAC_KEY    0x00000100  // CryptImportKey only
 
-// dwFlags definitions for CryptDecrypt
-//  See also CRYPT_OAEP, above.
-//  Note, the following flag is not supported for CryptEncrypt
-#define CRYPT_DECRYPT_RSA_NO_PADDING_CHECK      0x00000020
-
 // dwFlags definitions for CryptCreateHash
 #define CRYPT_SECRETDIGEST      0x00000001
 
@@ -325,7 +314,6 @@ typedef ULONG_PTR HCRYPTHASH;
 #define OPAQUEKEYBLOB           0x9
 #define PUBLICKEYBLOBEX         0xA
 #define SYMMETRICWRAPKEYBLOB    0xB
-#define KEYSTATEBLOB            0xC
 
 #define AT_KEYEXCHANGE          1
 #define AT_SIGNATURE            2
@@ -367,14 +355,13 @@ typedef ULONG_PTR HCRYPTHASH;
 #define KP_KEYEXCHANGE_PIN      32
 #define KP_SIGNATURE_PIN        33
 #define KP_PREHASH              34
-#define KP_ROUNDS               35
+
 #define KP_OAEP_PARAMS          36      // for setting OAEP params on RSA keys
 #define KP_CMS_KEY_INFO         37
 #define KP_CMS_DH_KEY_INFO      38
 #define KP_PUB_PARAMS           39      // for setting public parameters
 #define KP_VERIFY_PARAMS        40      // for verifying DSA and DH parameters
 #define KP_HIGHEST_VERSION      41      // for TLS protocol version setting
-#define KP_GET_USE_COUNT        42      // for use with PP_CRYPT_COUNT_KEY_USE contexts
 
 // KP_PADDING
 #define PKCS5_PADDING           1       // PKCS 5 (sec 6.2) padding method
@@ -445,7 +432,6 @@ typedef ULONG_PTR HCRYPTHASH;
 #define PP_USE_HARDWARE_RNG     38
 #define PP_KEYSPEC              39
 #define PP_ENUMEX_SIGNING_PROT  40
-#define PP_CRYPT_COUNT_KEY_USE  41
 
 #define CRYPT_FIRST             1
 #define CRYPT_NEXT              2
@@ -504,6 +490,15 @@ typedef ULONG_PTR HCRYPTHASH;
 #define PROV_REPLACE_OWF        23
 #define PROV_RSA_AES            24
 
+
+//
+// STT defined Providers
+//
+#define PROV_STT_MER            7
+#define PROV_STT_ACQ            8
+#define PROV_STT_BRND           9
+#define PROV_STT_ROOT           10
+#define PROV_STT_ISS            11
 
 //
 // Provider friendly names
@@ -588,8 +583,8 @@ typedef ULONG_PTR HCRYPTHASH;
 #define MS_SCARD_PROV           MS_SCARD_PROV_A
 #endif
 
-#define MS_ENH_RSA_AES_PROV_A   "Microsoft Enhanced RSA and AES Cryptographic Provider"
-#define MS_ENH_RSA_AES_PROV_W   L"Microsoft Enhanced RSA and AES Cryptographic Provider"
+#define MS_ENH_RSA_AES_PROV_A   "Microsoft Enhanced RSA and AES Cryptographic Provider (Prototype)"
+#define MS_ENH_RSA_AES_PROV_W   L"Microsoft Enhanced RSA and AES Cryptographic Provider (Prototype)"
 #ifdef UNICODE
 #define MS_ENH_RSA_AES_PROV     MS_ENH_RSA_AES_PROV_W
 #else
@@ -620,12 +615,14 @@ typedef ULONG_PTR HCRYPTHASH;
 
 //
 // Registry values for enabling and controlling the caching (and timeout)
+// of private keys.  This feature is useful only for UI-protected private
 // of private keys.  This feature is intended for UI-protected private
 // keys.
 //
 // Note that in Windows 2000 and later, private keys, once read from storage,
 // are cached in the associated HCRYPTPROV structure for subsequent use.
 //
+// In .NET Server and XP SP1, new key caching behavior is available.  Keys
 // In Server 2003 and XP SP1, new key caching behavior is available.  Keys
 // that have been read from storage and cached may now be considered "stale"
 // if a period of time has elapsed since the key was last used.  This forces
@@ -650,9 +647,9 @@ typedef ULONG_PTR HCRYPTHASH;
 #define szKEY_CACHE_SECONDS                     "PrivateKeyLifetimeSeconds"
 
 // 
-// In platforms later than (and not including) Windows Server 2003, private 
-// keys are always cached for a period of time per-process, even when 
-// not being used in any context.  
+// In platforms later than (and not including) Windows Server 2003, including 
+// XP SP2, private keys are always cached for a period of time per-process, 
+// even when not being used in any context.  
 //
 // The differences between the process-wide caching settings described below 
 // and the Optional Key Timeouts described above are subtle.
@@ -691,8 +688,6 @@ typedef ULONG_PTR HCRYPTHASH;
 //
 #define szPRIV_KEY_CACHE_PURGE_INTERVAL_SECONDS "PrivKeyCachePurgeIntervalSeconds"
 #define cPRIV_KEY_CACHE_PURGE_INTERVAL_SECONDS_DEFAULT 86400 // 1 day 
-
-
 
 #define CUR_BLOB_VERSION        2
 
@@ -801,25 +796,6 @@ typedef struct _CERT_FORTEZZA_DATA_PROP {
     int             CertIndex;
     unsigned char   CertLabel[36];
 } CERT_FORTEZZA_DATA_PROP;
-
-typedef struct _CRYPT_RC4_KEY_STATE {
-    unsigned char Key[16];
-    unsigned char SBox[256];
-    unsigned char i;
-    unsigned char j;
-} CRYPT_RC4_KEY_STATE, *PCRYPT_RC4_KEY_STATE;
-
-typedef struct _CRYPT_DES_KEY_STATE {
-    unsigned char Key[8];
-    unsigned char IV[8];
-    unsigned char Feedback[8];
-} CRYPT_DES_KEY_STATE, *PCRYPT_DES_KEY_STATE;
-
-typedef struct _CRYPT_3DES_KEY_STATE {
-    unsigned char Key[24];
-    unsigned char IV[8];
-    unsigned char Feedback[8];
-} CRYPT_3DES_KEY_STATE, *PCRYPT_3DES_KEY_STATE;
 
 
 //+-------------------------------------------------------------------------
@@ -1292,18 +1268,29 @@ CryptDuplicateHash(
     HCRYPTHASH *phHash
     );
 
-//
-// This function is provided in Microsoft Windows 2000 as a means of 
-// installing the 128-bit encryption provider. This function is unavailable 
-// in Microsoft Windows XP, because Windows XP ships with the 128-bit 
-// encryption provider.
-//
-BOOL 
-__cdecl 
-GetEncSChannel(
-    BYTE **pData, 
-    DWORD *dwDecSize
-    );
+typedef struct {
+    DWORD  dwVersion;
+    ALG_ID algId;
+    DWORD  dwMinKeyLength;
+    DWORD  dwMaxKeyLength;
+    DWORD  dwRequiredFlags;
+    DWORD  dwDisallowedFlags;
+} _CRYPT_KEY_LIMITS_V01;
+typedef _CRYPT_KEY_LIMITS_V01 CRYPT_KEY_LIMITS, *PCRYPT_KEY_LIMITS;
+
+// Request Flag definitions
+#define CRYPTLIMIT_USING_PCT 0x0001
+#define CRYPTLIMIT_USING_SGC 0x0002
+
+WINADVAPI
+BOOL
+WINAPI
+CryptGetLocalKeyLimits(
+    IN  ALG_ID algId,
+    IN  DWORD dwFlags,
+    OUT PCRYPT_KEY_LIMITS pLimits,
+    IN OUT LPDWORD cbLimitLength);
+
 
 //+-------------------------------------------------------------------------
 //  In a CRYPT_BIT_BLOB the last byte may contain 0-7 unused bits. Therefore, the
@@ -1672,11 +1659,6 @@ typedef struct _CERT_RDN_ATTR {
 // For encoding: when set, CERT_RDN_UTF8_STRING is selected instead of
 // CERT_RDN_UNICODE_STRING.
 #define CERT_RDN_ENABLE_UTF8_UNICODE_FLAG   0x20000000
-
-// For encoding: when set, CERT_RDN_UTF8_STRING is selected instead of
-// CERT_RDN_PRINTABLE_STRING for DirectoryString types. Also,
-// enables CERT_RDN_ENABLE_UTF8_UNICODE_FLAG.
-#define CERT_RDN_FORCE_UTF8_UNICODE_FLAG    0x10000000
 
 // For encoding: when set, the characters aren't checked to see if they
 // are valid for the Value Type.
@@ -2256,13 +2238,6 @@ CryptEncodeObject(
 //  CERT_RDN_UNICODE_STRING.
 #define CRYPT_UNICODE_NAME_ENCODE_ENABLE_UTF8_UNICODE_FLAG   \
             CERT_RDN_ENABLE_UTF8_UNICODE_FLAG
-
-//  The following flag is applicable when encoding X509_UNICODE_NAME.
-//  When set, CERT_RDN_UTF8_STRING is selected instead of
-//  CERT_RDN_PRINTABLE_STRING for DirectoryString types. Also,
-//  enables CRYPT_UNICODE_NAME_ENCODE_ENABLE_UTF8_UNICODE_FLAG.
-#define CRYPT_UNICODE_NAME_ENCODE_FORCE_UTF8_UNICODE_FLAG     \
-            CERT_RDN_FORCE_UTF8_UNICODE_FLAG
 
 //  The following flag is applicable when encoding X509_UNICODE_NAME,
 //  X509_UNICODE_NAME_VALUE or X509_UNICODE_ANY_STRING.
@@ -7141,9 +7116,7 @@ typedef const CTL_CONTEXT *PCCTL_CONTEXT;
 #define CERT_ARCHIVED_KEY_HASH_PROP_ID      65
 #define CERT_AUTO_ENROLL_RETRY_PROP_ID      66
 #define CERT_AIA_URL_RETRIEVED_PROP_ID      67
-// Note, 68 - 70 are reserved for future use.
-#define CERT_REQUEST_ORIGINATOR_PROP_ID     71
-#define CERT_FIRST_RESERVED_PROP_ID         72
+#define CERT_FIRST_RESERVED_PROP_ID         68
 
 #define CERT_LAST_RESERVED_PROP_ID          0x00007FFF
 #define CERT_FIRST_USER_PROP_ID             0x00008000
@@ -7613,12 +7586,12 @@ typedef struct _CERT_REGISTRY_STORE_ROAMING_PARA {
 // at HKLM\Software\Microsoft\Cryptography\IEDirtyFlags is set to 0x1
 // whenever a certificate is added to the registry store.
 //
-// Legacy definition, no longer supported after 01-May-02 (Server 2003)
+// Legacy definition, no longer supported after 01-May-02 (.Net Server)
 #define CERT_REGISTRY_STORE_MY_IE_DIRTY_FLAG    0x80000
 
 // Registry path to the subkey containing the "My" DWORD value to be set
 //
-// Legacy definition, no longer supported after 01-May-02 (Server 2003)
+// Legacy definition, no longer supported after 01-May-02 (.Net Server)
 #define CERT_IE_DIRTY_FLAGS_REGPATH \
     L"Software\\Microsoft\\Cryptography\\IEDirtyFlags"
 
@@ -12498,7 +12471,6 @@ CertNameToStrW(
 #define CERT_NAME_STR_DISABLE_IE4_UTF8_FLAG     0x00010000
 #define CERT_NAME_STR_ENABLE_T61_UNICODE_FLAG   0x00020000
 #define CERT_NAME_STR_ENABLE_UTF8_UNICODE_FLAG  0x00040000
-#define CERT_NAME_STR_FORCE_UTF8_DIR_STR_FLAG   0x00080000
 
 
 //+-------------------------------------------------------------------------
@@ -12547,12 +12519,6 @@ CertNameToStrW(
 //  to select the CERT_RDN_UTF8_STRING encoded value type instead of
 //  CERT_RDN_UNICODE_STRING.
 //
-//  CERT_NAME_STR_FORCE_UTF8_DIR_STR_FLAG can be or'ed into dwStrType
-//  to force the CERT_RDN_UTF8_STRING encoded value type instead of
-//  allowing CERT_RDN_PRINTABLE_STRING for DirectoryString types.
-//  Applies to the X500 Keys below which allow "Printable, Unicode".
-//  Also, enables CERT_NAME_STR_ENABLE_UTF8_UNICODE_FLAG.
-//
 //  Support the following X500 Keys:
 //
 //  Key         Object Identifier               RDN Value Type(s)
@@ -12570,13 +12536,11 @@ CertNameToStrW(
 //  T           szOID_TITLE                     Printable, Unicode
 //  Title       szOID_TITLE                     Printable, Unicode
 //  G           szOID_GIVEN_NAME                Printable, Unicode
-//  GN          szOID_GIVEN_NAME                Printable, Unicode
 //  GivenName   szOID_GIVEN_NAME                Printable, Unicode
 //  I           szOID_INITIALS                  Printable, Unicode
 //  Initials    szOID_INITIALS                  Printable, Unicode
 //  SN          szOID_SUR_NAME                  Printable, Unicode
 //  DC          szOID_DOMAIN_COMPONENT          IA5, UTF8
-//  SERIALNUMBER szOID_DEVICE_SERIAL_NUMBER     Only Printable
 //
 //  Note, T61 is selected instead of Unicode if
 //  CERT_NAME_STR_ENABLE_T61_UNICODE_FLAG is set and all the unicode
@@ -14005,7 +13969,7 @@ typedef PCRYPT_PASSWORD_CREDENTIALSA PCRYPT_PASSWORD_CREDENTIALS;
 // definition
 #define SCHEME_OID_RETRIEVE_ENCODED_OBJECT_FUNC "SchemeDllRetrieveEncodedObject"
 
-// 2-8-02 Server 2003 changed to use UNICODE Url strings instead of multibyte
+// 2-8-02 .NET Server changed to use UNICODE Url strings instead of multibyte
 #define SCHEME_OID_RETRIEVE_ENCODED_OBJECTW_FUNC "SchemeDllRetrieveEncodedObjectW"
 
 typedef VOID (WINAPI *PFN_FREE_ENCODED_OBJECT_FUNC) (
@@ -14015,7 +13979,7 @@ typedef VOID (WINAPI *PFN_FREE_ENCODED_OBJECT_FUNC) (
     );
 
 //
-// SchemeDllRetrieveEncodedObject was replaced in Server 2003 with
+// SchemeDllRetrieveEncodedObject was replaced in .NET Server with
 // the following. (Changed to use UNICODE Url Strings.)
 //
 
@@ -14617,57 +14581,6 @@ CryptUnprotectData(
     OUT             DATA_BLOB*      pDataOut
     );
 
-
-//
-// The buffer length passed into CryptProtectMemory and CryptUnprotectMemory
-// must be a multiple of this length (or zero).
-//
-
-#define CRYPTPROTECTMEMORY_BLOCK_SIZE           16
-
-
-//
-// CryptProtectMemory/CryptUnprotectMemory dwFlags
-//
-
-//
-// Encrypt/Decrypt within current process context.
-//
-
-#define CRYPTPROTECTMEMORY_SAME_PROCESS         0x00
-
-//
-// Encrypt/Decrypt across process boundaries.
-// eg: encrypted buffer passed across LPC to another process which calls CryptUnprotectMemory.
-//
-
-#define CRYPTPROTECTMEMORY_CROSS_PROCESS        0x01
-
-//
-// Encrypt/Decrypt across callers with same LogonId.
-// eg: encrypted buffer passed across LPC to another process which calls CryptUnprotectMemory whilst impersonating.
-//
-
-#define CRYPTPROTECTMEMORY_SAME_LOGON           0x02
-
-
-WINCRYPT32API
-BOOL
-WINAPI
-CryptProtectMemory(
-    IN OUT          LPVOID          pDataIn,             // in out data to encrypt
-    IN              DWORD           cbDataIn,            // multiple of CRYPTPROTECTMEMORY_BLOCK_SIZE
-    IN              DWORD           dwFlags
-    );
-
-WINCRYPT32API
-BOOL
-WINAPI
-CryptUnprotectMemory(
-    IN OUT          LPVOID          pDataIn,             // in out data to decrypt
-    IN              DWORD           cbDataIn,            // multiple of CRYPTPROTECTMEMORY_BLOCK_SIZE
-    IN              DWORD           dwFlags
-    );
 
 
 //+=========================================================================

@@ -1,0 +1,20 @@
+public class Photo {
+
+	private int _id;
+	private int _albumid;
+	private String _caption;
+
+	/**@property*/
+	public int get_PhotoID() { return _id; }
+	/**@property*/
+	public int get_AlbumID() { return _albumid; }
+	/**@property*/
+	public String get_Caption() { return _caption; }
+
+	public Photo(int id, int albumid, String caption) {
+		_id = id;
+		_albumid = albumid;
+		_caption = caption;
+	}
+
+}

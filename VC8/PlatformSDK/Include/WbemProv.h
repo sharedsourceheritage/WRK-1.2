@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for wbemprov.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -1678,7 +1677,7 @@ void __RPC_STUB IWbemProviderIdentity_SetRegistrationObject_Stub(
 #endif 	/* __IWbemProviderIdentity_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wbemprov_0169 */
+/* interface __MIDL_itf_wbemprov_0165 */
 /* [local] */ 
 
 typedef 
@@ -1698,8 +1697,8 @@ enum tag_WBEM_PROVIDER_FLAGS
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wbemprov_0169_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wbemprov_0169_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemprov_0165_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemprov_0165_v0_0_s_ifspec;
 
 #ifndef __IWbemDecoupledBasicEventProvider_INTERFACE_DEFINED__
 #define __IWbemDecoupledBasicEventProvider_INTERFACE_DEFINED__
@@ -1845,7 +1844,7 @@ void __RPC_STUB IWbemDecoupledBasicEventProvider_GetService_Stub(
 #endif 	/* __IWbemDecoupledBasicEventProvider_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wbemprov_0174 */
+/* interface __MIDL_itf_wbemprov_0170 */
 /* [local] */ 
 
 typedef /* [v1_enum] */ 
@@ -1857,8 +1856,8 @@ enum tag_WBEM_BATCH_TYPE
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wbemprov_0174_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wbemprov_0174_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemprov_0170_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wbemprov_0170_v0_0_s_ifspec;
 
 #ifndef __IWbemEventSink_INTERFACE_DEFINED__
 #define __IWbemEventSink_INTERFACE_DEFINED__

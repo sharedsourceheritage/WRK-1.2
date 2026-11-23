@@ -372,22 +372,18 @@ DWORD WINAPI CreateNtmsMediaPoolW(
     LPNTMS_GUID lpPoolId            // OUT
     );
 
-DWORD
-WINAPI
-GetNtmsMediaPoolNameA(
-    __in HANDLE hSession,
-    __in LPNTMS_GUID lpPoolId,
-    __out_ecount_part(*lpdwBufSize, *lpdwBufSize) LPSTR lpNameBuf,
-    __inout LPDWORD lpdwBufSize
+DWORD WINAPI GetNtmsMediaPoolNameA(
+    HANDLE hSession,
+    LPNTMS_GUID lpPoolId,
+    LPSTR lpBufName,
+    LPDWORD lpdwNameSize
     );
 
-DWORD
-WINAPI
-GetNtmsMediaPoolNameW(
-    __in HANDLE hSession,
-    __in LPNTMS_GUID lpPoolId,
-    __out_ecount_part(*lpdwBufSize, *lpdwBufSize) LPWSTR lpNameBuf,
-    __inout LPDWORD lpdwBufSize
+DWORD WINAPI GetNtmsMediaPoolNameW(
+    HANDLE hSession,
+    LPNTMS_GUID lpPoolId,
+    LPWSTR lpBufName,
+    LPDWORD lpdwNameSize
     );
 
 DWORD WINAPI MoveToNtmsMediaPool(
@@ -504,9 +500,7 @@ enum NtmsLibraryType {
 enum NtmsLibraryFlags {
     NTMS_LIBRARYFLAG_FIXEDOFFLINE     = 0x01,
     NTMS_LIBRARYFLAG_CLEANERPRESENT   = 0x02,
-    NTMS_LIBRARYFLAG_AUTODETECTCHANGE = 0x04,
-    NTMS_LIBRARYFLAG_IGNORECLEANERUSESREMAINING = 0x08,
-    NTMS_LIBRARYFLAG_RECOGNIZECLEANERBARCODE = 0x10
+    NTMS_LIBRARYFLAG_AUTODETECTCHANGE = 0x04
 };
 
 enum NtmsInventoryMethod {
@@ -1456,11 +1450,6 @@ DWORD WINAPI CreateNtmsMediaW(
     DWORD dwOptions
     ) ;
 
-enum NtmsEnumerateOption {
-    NTMS_ENUM_DEFAULT                   = 0,
-    NTMS_ENUM_ROOTPOOL                  = 1
-    };
-
 DWORD WINAPI EnumerateNtmsObject(
     HANDLE hSession,
     const LPNTMS_GUID lpContainerId,
@@ -1739,24 +1728,20 @@ enum NtmsUIOperations {
     NTMS_UIOPERATION_MAX
 };
 
-DWORD
-WINAPI
-GetNtmsUIOptionsA(
-    __in HANDLE hSession,
-    __in const LPNTMS_GUID lpObjectId,
-    __in DWORD dwType,
-    __out_ecount_part(*lpdwBufSize, *lpdwBufSize) LPSTR lpszDestination,
-    __inout LPDWORD lpdwBufSize
+DWORD WINAPI GetNtmsUIOptionsA(
+    HANDLE hSession,
+    const LPNTMS_GUID lpObjectId,
+    DWORD dwType,
+    LPSTR lpszDestination,
+    LPDWORD lpAttributeSize
     );
 
-DWORD
-WINAPI
-GetNtmsUIOptionsW(
-    __in HANDLE hSession,
-    __in const LPNTMS_GUID lpObjectId,
-    __in DWORD dwType,
-    __out_ecount_part(*lpdwBufSize,*lpdwBufSize) LPWSTR lpszDestination,
-    __inout LPDWORD lpdwBufSize
+DWORD WINAPI GetNtmsUIOptionsW(
+    HANDLE hSession,
+    const LPNTMS_GUID lpObjectId,
+    DWORD dwType,
+    LPWSTR lpszDestination,
+    LPDWORD lpdwSize
     );
 
 DWORD WINAPI SetNtmsUIOptionsA(
@@ -1900,20 +1885,16 @@ DWORD WINAPI EjectDiskFromSADriveA(
 
 #ifndef MIDL_PASS
 
-DWORD
-WINAPI
-GetVolumesFromDriveW(
-    __in LPWSTR pszDriveName,
-    __deref_out LPWSTR *VolumeNameBufferPtr,
-    __deref_out LPWSTR *DriveLetterBufferPtr
+DWORD WINAPI GetVolumesFromDriveW(
+    LPWSTR pszDriveName,
+    LPWSTR *VolumeNameBufferPtr,
+    LPWSTR *DriveLetterBufferPtr
     );
 
-DWORD
-WINAPI
-GetVolumesFromDriveA(
-    __in LPSTR pszDriveName,
-    __deref_out LPSTR *VolumeNameBufferPtr,
-    __deref_out LPSTR *DriveLetterBufferPtr
+DWORD WINAPI GetVolumesFromDriveA(
+    LPSTR pszDriveName,
+    LPSTR* VolumeNameBufferPtr,
+    LPSTR* DriveLetterBufferPtr
     );
 
 #endif

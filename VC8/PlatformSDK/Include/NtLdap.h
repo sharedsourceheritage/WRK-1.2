@@ -65,13 +65,6 @@ extern "C" {
 #define LDAP_SERVER_NOTIFICATION_OID_W         L"1.2.840.113556.1.4.528"
 
 //
-// Shutdown Notification. No Data.
-//
-
-#define LDAP_SERVER_SHUTDOWN_NOTIFY_OID          "1.2.840.113556.1.4.1907"
-#define LDAP_SERVER_SHUTDOWN_NOTIFY_OID_W       L"1.2.840.113556.1.4.1907"
-    
-//
 // Lazy Commit. No Data.
 //
 
@@ -128,24 +121,12 @@ extern "C" {
 //          Cookie  OCTET STRING
 //      }
 //
-// Flags are listed below.
-//
 
 #define LDAP_SERVER_DIRSYNC_OID                 "1.2.840.113556.1.4.841"
 #define LDAP_SERVER_DIRSYNC_OID_W              L"1.2.840.113556.1.4.841"
 
 //
-// Return extended DNs according to the requested format.  Optional data as
-// follows
-//      SEQUENCE {
-//          Option  INTEGER
-//      }
-//
-//  Option values:
-//      0:  DN preceded by GUID and SID (if any) in hex string format
-//      1:  DN preceded by GUID and SID (if any) in standard string format
-//
-//  If no data is provided then option 0 is selected for backwards compat.
+// Return extended DNs. No Data.
 //
 
 #define LDAP_SERVER_EXTENDED_DN_OID             "1.2.840.113556.1.4.529"
@@ -187,19 +168,6 @@ extern "C" {
 #define SERVER_SEARCH_FLAG_DOMAIN_SCOPE         0x1 // no referrals generated
 #define SERVER_SEARCH_FLAG_PHANTOM_ROOT         0x2 // search all NCs subordinate
                                                     // to search base
-
-//
-// This control is used to pass the sid of a security principle
-// who's quota is being queried
-//      SEQUENCE {
-//          QuerySid OCTET STRING     // sid of security principle
-//      }
-//
-
-#define LDAP_SERVER_QUOTA_CONTROL_OID           "1.2.840.113556.1.4.1852"
-#define LDAP_SERVER_QUOTA_CONTROL_OID_W        L"1.2.840.113556.1.4.1852"
-
-
 //
 // End of Server controls
 //
@@ -315,12 +283,6 @@ extern "C" {
 #define LDAP_CAP_ACTIVE_DIRECTORY_V51_OID      "1.2.840.113556.1.4.1670"
 #define LDAP_CAP_ACTIVE_DIRECTORY_V51_OID_W    L"1.2.840.113556.1.4.1670"
 
-#define LDAP_CAP_ACTIVE_DIRECTORY_LDAP_INTEG_OID   "1.2.840.113556.1.4.1791"
-#define LDAP_CAP_ACTIVE_DIRECTORY_LDAP_INTEG_OID_W L"1.2.840.113556.1.4.1791"
-
-#define LDAP_CAP_ACTIVE_DIRECTORY_ADAM_OID   "1.2.840.113556.1.4.1851"
-#define LDAP_CAP_ACTIVE_DIRECTORY_ADAM_OID_W L"1.2.840.113556.1.4.1851"
-
 //
 //  End of capabilities
 //
@@ -357,26 +319,6 @@ extern "C" {
 
 #define LDAP_SERVER_FAST_BIND_OID               "1.2.840.113556.1.4.1781"
 #define LDAP_SERVER_FAST_BIND_OID_W             L"1.2.840.113556.1.4.1781"
-
-//
-// DirSync flags
-//
-
-// Without this flag, the caller must have the replicate changes right. With this flag,
-// the caller needs no rights, but is only allowed to see objects and attributes
-// which are accessible to them.
-#define LDAP_DIRSYNC_OBJECT_SECURITY             (0x1)
-
-// Return parents before children, when parents would otherwise appear later
-// in the replication stream.
-#define LDAP_DIRSYNC_ANCESTORS_FIRST_ORDER    (0x0800)
-
-// Do not return secret data. Always on by default.
-#define LDAP_DIRSYNC_PUBLIC_DATA_ONLY         (0x2000)
-
-// Without this flag, all the values (up to a limit) in a multi-valued attribute are
-// returned when any value changes. With this flag, only the changed values are returned.
-#define LDAP_DIRSYNC_INCREMENTAL_VALUES   (0x80000000)
 
 #ifdef __cplusplus
 }

@@ -464,33 +464,33 @@ WINADVAPI
 BOOL
 WINAPI
 ChangeServiceConfigA(
-    __in        SC_HANDLE    hService,
-    __in        DWORD        dwServiceType,
-    __in        DWORD        dwStartType,
-    __in        DWORD        dwErrorControl,
-    __in_opt    LPCSTR     lpBinaryPathName,
-    __in_opt    LPCSTR     lpLoadOrderGroup,
-    __out_opt   LPDWORD      lpdwTagId,
-    __in_opt    LPCSTR     lpDependencies,
-    __in_opt    LPCSTR     lpServiceStartName,
-    __in_opt    LPCSTR     lpPassword,
-    __in_opt    LPCSTR     lpDisplayName
+    SC_HANDLE    hService,
+    DWORD        dwServiceType,
+    DWORD        dwStartType,
+    DWORD        dwErrorControl,
+    LPCSTR     lpBinaryPathName,
+    LPCSTR     lpLoadOrderGroup,
+    LPDWORD      lpdwTagId,
+    LPCSTR     lpDependencies,
+    LPCSTR     lpServiceStartName,
+    LPCSTR     lpPassword,
+    LPCSTR     lpDisplayName
     );
 WINADVAPI
 BOOL
 WINAPI
 ChangeServiceConfigW(
-    __in        SC_HANDLE    hService,
-    __in        DWORD        dwServiceType,
-    __in        DWORD        dwStartType,
-    __in        DWORD        dwErrorControl,
-    __in_opt    LPCWSTR     lpBinaryPathName,
-    __in_opt    LPCWSTR     lpLoadOrderGroup,
-    __out_opt   LPDWORD      lpdwTagId,
-    __in_opt    LPCWSTR     lpDependencies,
-    __in_opt    LPCWSTR     lpServiceStartName,
-    __in_opt    LPCWSTR     lpPassword,
-    __in_opt    LPCWSTR     lpDisplayName
+    SC_HANDLE    hService,
+    DWORD        dwServiceType,
+    DWORD        dwStartType,
+    DWORD        dwErrorControl,
+    LPCWSTR     lpBinaryPathName,
+    LPCWSTR     lpLoadOrderGroup,
+    LPDWORD      lpdwTagId,
+    LPCWSTR     lpDependencies,
+    LPCWSTR     lpServiceStartName,
+    LPCWSTR     lpPassword,
+    LPCWSTR     lpDisplayName
     );
 #ifdef UNICODE
 #define ChangeServiceConfig  ChangeServiceConfigW
@@ -502,17 +502,17 @@ WINADVAPI
 BOOL
 WINAPI
 ChangeServiceConfig2A(
-    __in        SC_HANDLE    hService,
-    __in        DWORD        dwInfoLevel,
-    __in_opt    LPVOID       lpInfo
+    SC_HANDLE    hService,
+    DWORD        dwInfoLevel,
+    LPVOID       lpInfo
     );
 WINADVAPI
 BOOL
 WINAPI
 ChangeServiceConfig2W(
-    __in        SC_HANDLE    hService,
-    __in        DWORD        dwInfoLevel,
-    __in_opt    LPVOID       lpInfo
+    SC_HANDLE    hService,
+    DWORD        dwInfoLevel,
+    LPVOID       lpInfo
     );
 #ifdef UNICODE
 #define ChangeServiceConfig2  ChangeServiceConfig2W
@@ -524,55 +524,53 @@ WINADVAPI
 BOOL
 WINAPI
 CloseServiceHandle(
-    __in        SC_HANDLE   hSCObject
+    SC_HANDLE   hSCObject
     );
 
 WINADVAPI
 BOOL
 WINAPI
 ControlService(
-    __in        SC_HANDLE           hService,
-    __in        DWORD               dwControl,
-    __out       LPSERVICE_STATUS    lpServiceStatus
+    SC_HANDLE           hService,
+    DWORD               dwControl,
+    LPSERVICE_STATUS    lpServiceStatus
     );
 
-__checkReturn
 WINADVAPI
 SC_HANDLE
 WINAPI
 CreateServiceA(
-    __in        SC_HANDLE    hSCManager,
-    __in        LPCSTR     lpServiceName,
-    __in_opt    LPCSTR     lpDisplayName,
-    __in        DWORD        dwDesiredAccess,
-    __in        DWORD        dwServiceType,
-    __in        DWORD        dwStartType,
-    __in        DWORD        dwErrorControl,
-    __in_opt    LPCSTR     lpBinaryPathName,
-    __in_opt    LPCSTR     lpLoadOrderGroup,
-    __out_opt   LPDWORD      lpdwTagId,
-    __in_opt    LPCSTR     lpDependencies,
-    __in_opt    LPCSTR     lpServiceStartName,
-    __in_opt    LPCSTR     lpPassword
+    SC_HANDLE    hSCManager,
+    LPCSTR     lpServiceName,
+    LPCSTR     lpDisplayName,
+    DWORD        dwDesiredAccess,
+    DWORD        dwServiceType,
+    DWORD        dwStartType,
+    DWORD        dwErrorControl,
+    LPCSTR     lpBinaryPathName,
+    LPCSTR     lpLoadOrderGroup,
+    LPDWORD      lpdwTagId,
+    LPCSTR     lpDependencies,
+    LPCSTR     lpServiceStartName,
+    LPCSTR     lpPassword
     );
-__checkReturn
 WINADVAPI
 SC_HANDLE
 WINAPI
 CreateServiceW(
-    __in        SC_HANDLE    hSCManager,
-    __in        LPCWSTR     lpServiceName,
-    __in_opt    LPCWSTR     lpDisplayName,
-    __in        DWORD        dwDesiredAccess,
-    __in        DWORD        dwServiceType,
-    __in        DWORD        dwStartType,
-    __in        DWORD        dwErrorControl,
-    __in_opt    LPCWSTR     lpBinaryPathName,
-    __in_opt    LPCWSTR     lpLoadOrderGroup,
-    __out_opt   LPDWORD      lpdwTagId,
-    __in_opt    LPCWSTR     lpDependencies,
-    __in_opt    LPCWSTR     lpServiceStartName,
-    __in_opt    LPCWSTR     lpPassword
+    SC_HANDLE    hSCManager,
+    LPCWSTR     lpServiceName,
+    LPCWSTR     lpDisplayName,
+    DWORD        dwDesiredAccess,
+    DWORD        dwServiceType,
+    DWORD        dwStartType,
+    DWORD        dwErrorControl,
+    LPCWSTR     lpBinaryPathName,
+    LPCWSTR     lpLoadOrderGroup,
+    LPDWORD      lpdwTagId,
+    LPCWSTR     lpDependencies,
+    LPCWSTR     lpServiceStartName,
+    LPCWSTR     lpPassword
     );
 #ifdef UNICODE
 #define CreateService  CreateServiceW
@@ -584,34 +582,30 @@ WINADVAPI
 BOOL
 WINAPI
 DeleteService(
-    __in        SC_HANDLE   hService
+    SC_HANDLE   hService
     );
 
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 EnumDependentServicesA(
-    __in            SC_HANDLE               hService,
-    __in            DWORD                   dwServiceState,
-    __out_bcount_opt(cbBufSize)     
-                    LPENUM_SERVICE_STATUSA  lpServices,
-    __in            DWORD                   cbBufSize,
-    __out           LPDWORD                 pcbBytesNeeded,
-    __out           LPDWORD                 lpServicesReturned
+    SC_HANDLE               hService,
+    DWORD                   dwServiceState,
+    LPENUM_SERVICE_STATUSA  lpServices,
+    DWORD                   cbBufSize,
+    LPDWORD                 pcbBytesNeeded,
+    LPDWORD                 lpServicesReturned
     );
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 EnumDependentServicesW(
-    __in            SC_HANDLE               hService,
-    __in            DWORD                   dwServiceState,
-    __out_bcount_opt(cbBufSize)     
-                    LPENUM_SERVICE_STATUSW  lpServices,
-    __in            DWORD                   cbBufSize,
-    __out           LPDWORD                 pcbBytesNeeded,
-    __out           LPDWORD                 lpServicesReturned
+    SC_HANDLE               hService,
+    DWORD                   dwServiceState,
+    LPENUM_SERVICE_STATUSW  lpServices,
+    DWORD                   cbBufSize,
+    LPDWORD                 pcbBytesNeeded,
+    LPDWORD                 lpServicesReturned
     );
 #ifdef UNICODE
 #define EnumDependentServices  EnumDependentServicesW
@@ -619,35 +613,31 @@ EnumDependentServicesW(
 #define EnumDependentServices  EnumDependentServicesA
 #endif // !UNICODE
 
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 EnumServicesStatusA(
-    __in            SC_HANDLE               hSCManager,
-    __in            DWORD                   dwServiceType,
-    __in            DWORD                   dwServiceState,
-    __out_bcount_opt(cbBufSize)
-                    LPENUM_SERVICE_STATUSA  lpServices,
-    __in            DWORD                   cbBufSize,
-    __out           LPDWORD                 pcbBytesNeeded,
-    __out           LPDWORD                 lpServicesReturned,
-    __inout_opt     LPDWORD                 lpResumeHandle
+    SC_HANDLE               hSCManager,
+    DWORD                   dwServiceType,
+    DWORD                   dwServiceState,
+    LPENUM_SERVICE_STATUSA  lpServices,
+    DWORD                   cbBufSize,
+    LPDWORD                 pcbBytesNeeded,
+    LPDWORD                 lpServicesReturned,
+    LPDWORD                 lpResumeHandle
     );
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 EnumServicesStatusW(
-    __in            SC_HANDLE               hSCManager,
-    __in            DWORD                   dwServiceType,
-    __in            DWORD                   dwServiceState,
-    __out_bcount_opt(cbBufSize)
-                    LPENUM_SERVICE_STATUSW  lpServices,
-    __in            DWORD                   cbBufSize,
-    __out           LPDWORD                 pcbBytesNeeded,
-    __out           LPDWORD                 lpServicesReturned,
-    __inout_opt     LPDWORD                 lpResumeHandle
+    SC_HANDLE               hSCManager,
+    DWORD                   dwServiceType,
+    DWORD                   dwServiceState,
+    LPENUM_SERVICE_STATUSW  lpServices,
+    DWORD                   cbBufSize,
+    LPDWORD                 pcbBytesNeeded,
+    LPDWORD                 lpServicesReturned,
+    LPDWORD                 lpResumeHandle
     );
 #ifdef UNICODE
 #define EnumServicesStatus  EnumServicesStatusW
@@ -655,39 +645,35 @@ EnumServicesStatusW(
 #define EnumServicesStatus  EnumServicesStatusA
 #endif // !UNICODE
 
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 EnumServicesStatusExA(
-    __in            SC_HANDLE               hSCManager,
-    __in            SC_ENUM_TYPE            InfoLevel,
-    __in            DWORD                   dwServiceType,
-    __in            DWORD                   dwServiceState,
-    __out_bcount_opt(cbBufSize) 
-                    LPBYTE                  lpServices,
-    __in            DWORD                   cbBufSize,
-    __out           LPDWORD                 pcbBytesNeeded,
-    __out           LPDWORD                 lpServicesReturned,
-    __inout_opt     LPDWORD                 lpResumeHandle,
-    __in_opt        LPCSTR                pszGroupName
+    SC_HANDLE                  hSCManager,
+    SC_ENUM_TYPE               InfoLevel,
+    DWORD                      dwServiceType,
+    DWORD                      dwServiceState,
+    LPBYTE                     lpServices,
+    DWORD                      cbBufSize,
+    LPDWORD                    pcbBytesNeeded,
+    LPDWORD                    lpServicesReturned,
+    LPDWORD                    lpResumeHandle,
+    LPCSTR                   pszGroupName
     );
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 EnumServicesStatusExW(
-    __in            SC_HANDLE               hSCManager,
-    __in            SC_ENUM_TYPE            InfoLevel,
-    __in            DWORD                   dwServiceType,
-    __in            DWORD                   dwServiceState,
-    __out_bcount_opt(cbBufSize) 
-                    LPBYTE                  lpServices,
-    __in            DWORD                   cbBufSize,
-    __out           LPDWORD                 pcbBytesNeeded,
-    __out           LPDWORD                 lpServicesReturned,
-    __inout_opt     LPDWORD                 lpResumeHandle,
-    __in_opt        LPCWSTR                pszGroupName
+    SC_HANDLE                  hSCManager,
+    SC_ENUM_TYPE               InfoLevel,
+    DWORD                      dwServiceType,
+    DWORD                      dwServiceState,
+    LPBYTE                     lpServices,
+    DWORD                      cbBufSize,
+    LPDWORD                    pcbBytesNeeded,
+    LPDWORD                    lpServicesReturned,
+    LPDWORD                    lpResumeHandle,
+    LPCWSTR                   pszGroupName
     );
 #ifdef UNICODE
 #define EnumServicesStatusEx  EnumServicesStatusExW
@@ -695,27 +681,23 @@ EnumServicesStatusExW(
 #define EnumServicesStatusEx  EnumServicesStatusExA
 #endif // !UNICODE
 
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 GetServiceKeyNameA(
-    __in            SC_HANDLE               hSCManager,
-    __in            LPCSTR                lpDisplayName,
-    __out_ecount_opt(*lpcchBuffer)
-                    LPSTR                 lpServiceName,
-    __inout         LPDWORD                 lpcchBuffer
+    SC_HANDLE               hSCManager,
+    LPCSTR                lpDisplayName,
+    LPSTR                 lpServiceName,
+    LPDWORD                 lpcchBuffer
     );
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 GetServiceKeyNameW(
-    __in            SC_HANDLE               hSCManager,
-    __in            LPCWSTR                lpDisplayName,
-    __out_ecount_opt(*lpcchBuffer)
-                    LPWSTR                 lpServiceName,
-    __inout         LPDWORD                 lpcchBuffer
+    SC_HANDLE               hSCManager,
+    LPCWSTR                lpDisplayName,
+    LPWSTR                 lpServiceName,
+    LPDWORD                 lpcchBuffer
     );
 #ifdef UNICODE
 #define GetServiceKeyName  GetServiceKeyNameW
@@ -723,27 +705,23 @@ GetServiceKeyNameW(
 #define GetServiceKeyName  GetServiceKeyNameA
 #endif // !UNICODE
 
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 GetServiceDisplayNameA(
-    __in            SC_HANDLE               hSCManager,
-    __in            LPCSTR                lpServiceName,
-    __out_ecount_opt(*lpcchBuffer) 
-                    LPSTR                 lpDisplayName,
-    __inout         LPDWORD                 lpcchBuffer
+    SC_HANDLE               hSCManager,
+    LPCSTR                lpServiceName,
+    LPSTR                 lpDisplayName,
+    LPDWORD                 lpcchBuffer
     );
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 GetServiceDisplayNameW(
-    __in            SC_HANDLE               hSCManager,
-    __in            LPCWSTR                lpServiceName,
-    __out_ecount_opt(*lpcchBuffer) 
-                    LPWSTR                 lpDisplayName,
-    __inout         LPDWORD                 lpcchBuffer
+    SC_HANDLE               hSCManager,
+    LPCWSTR                lpServiceName,
+    LPWSTR                 lpDisplayName,
+    LPDWORD                 lpcchBuffer
     );
 #ifdef UNICODE
 #define GetServiceDisplayName  GetServiceDisplayNameW
@@ -755,33 +733,31 @@ WINADVAPI
 SC_LOCK
 WINAPI
 LockServiceDatabase(
-    __in            SC_HANDLE               hSCManager
+    SC_HANDLE   hSCManager
     );
 
 WINADVAPI
 BOOL
 WINAPI
 NotifyBootConfigStatus(
-    __in            BOOL                    BootAcceptable
+    BOOL     BootAcceptable
     );
 
-__checkReturn
 WINADVAPI
 SC_HANDLE
 WINAPI
 OpenSCManagerA(
-    __in_opt        LPCSTR                lpMachineName,
-    __in_opt        LPCSTR                lpDatabaseName,
-    __in            DWORD                   dwDesiredAccess
+    LPCSTR lpMachineName,
+    LPCSTR lpDatabaseName,
+    DWORD   dwDesiredAccess
     );
-__checkReturn
 WINADVAPI
 SC_HANDLE
 WINAPI
 OpenSCManagerW(
-    __in_opt        LPCWSTR                lpMachineName,
-    __in_opt        LPCWSTR                lpDatabaseName,
-    __in            DWORD                   dwDesiredAccess
+    LPCWSTR lpMachineName,
+    LPCWSTR lpDatabaseName,
+    DWORD   dwDesiredAccess
     );
 #ifdef UNICODE
 #define OpenSCManager  OpenSCManagerW
@@ -789,23 +765,21 @@ OpenSCManagerW(
 #define OpenSCManager  OpenSCManagerA
 #endif // !UNICODE
 
-__checkReturn
 WINADVAPI
 SC_HANDLE
 WINAPI
 OpenServiceA(
-    __in            SC_HANDLE               hSCManager,
-    __in            LPCSTR                lpServiceName,
-    __in            DWORD                   dwDesiredAccess
+    SC_HANDLE   hSCManager,
+    LPCSTR    lpServiceName,
+    DWORD       dwDesiredAccess
     );
-__checkReturn
 WINADVAPI
 SC_HANDLE
 WINAPI
 OpenServiceW(
-    __in            SC_HANDLE               hSCManager,
-    __in            LPCWSTR                lpServiceName,
-    __in            DWORD                   dwDesiredAccess
+    SC_HANDLE   hSCManager,
+    LPCWSTR    lpServiceName,
+    DWORD       dwDesiredAccess
     );
 #ifdef UNICODE
 #define OpenService  OpenServiceW
@@ -813,27 +787,23 @@ OpenServiceW(
 #define OpenService  OpenServiceA
 #endif // !UNICODE
 
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 QueryServiceConfigA(
-    __in            SC_HANDLE               hService,
-    __out_bcount_opt(cbBufSize)      
-                    LPQUERY_SERVICE_CONFIGA lpServiceConfig,
-    __in            DWORD                   cbBufSize,
-    __out           LPDWORD                 pcbBytesNeeded
+    SC_HANDLE               hService,
+    LPQUERY_SERVICE_CONFIGA lpServiceConfig,
+    DWORD                   cbBufSize,
+    LPDWORD                 pcbBytesNeeded
     );
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 QueryServiceConfigW(
-    __in            SC_HANDLE               hService,
-    __out_bcount_opt(cbBufSize)      
-                    LPQUERY_SERVICE_CONFIGW lpServiceConfig,
-    __in            DWORD                   cbBufSize,
-    __out           LPDWORD                 pcbBytesNeeded
+    SC_HANDLE               hService,
+    LPQUERY_SERVICE_CONFIGW lpServiceConfig,
+    DWORD                   cbBufSize,
+    LPDWORD                 pcbBytesNeeded
     );
 #ifdef UNICODE
 #define QueryServiceConfig  QueryServiceConfigW
@@ -841,29 +811,25 @@ QueryServiceConfigW(
 #define QueryServiceConfig  QueryServiceConfigA
 #endif // !UNICODE
 
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 QueryServiceConfig2A(
-    __in            SC_HANDLE               hService,
-    __in            DWORD                   dwInfoLevel,
-    __out_bcount_opt(cbBufSize) 
-                    LPBYTE                  lpBuffer,
-    __in            DWORD                   cbBufSize,
-    __out           LPDWORD                 pcbBytesNeeded
+    SC_HANDLE   hService,
+    DWORD       dwInfoLevel,
+    LPBYTE      lpBuffer,
+    DWORD       cbBufSize,
+    LPDWORD     pcbBytesNeeded
     );
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 QueryServiceConfig2W(
-    __in            SC_HANDLE               hService,
-    __in            DWORD                   dwInfoLevel,
-    __out_bcount_opt(cbBufSize) 
-                    LPBYTE                  lpBuffer,
-    __in            DWORD                   cbBufSize,
-    __out           LPDWORD                 pcbBytesNeeded
+    SC_HANDLE   hService,
+    DWORD       dwInfoLevel,
+    LPBYTE      lpBuffer,
+    DWORD       cbBufSize,
+    LPDWORD     pcbBytesNeeded
     );
 #ifdef UNICODE
 #define QueryServiceConfig2  QueryServiceConfig2W
@@ -871,27 +837,23 @@ QueryServiceConfig2W(
 #define QueryServiceConfig2  QueryServiceConfig2A
 #endif // !UNICODE
 
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 QueryServiceLockStatusA(
-    __in            SC_HANDLE                       hSCManager,
-    __out_bcount_opt(cbBufSize) 
-                    LPQUERY_SERVICE_LOCK_STATUSA    lpLockStatus,
-    __in            DWORD                           cbBufSize,
-    __out           LPDWORD                         pcbBytesNeeded
+    SC_HANDLE                       hSCManager,
+    LPQUERY_SERVICE_LOCK_STATUSA    lpLockStatus,
+    DWORD                           cbBufSize,
+    LPDWORD                         pcbBytesNeeded
     );
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 QueryServiceLockStatusW(
-    __in            SC_HANDLE                       hSCManager,
-    __out_bcount_opt(cbBufSize) 
-                    LPQUERY_SERVICE_LOCK_STATUSW    lpLockStatus,
-    __in            DWORD                           cbBufSize,
-    __out           LPDWORD                         pcbBytesNeeded
+    SC_HANDLE                       hSCManager,
+    LPQUERY_SERVICE_LOCK_STATUSW    lpLockStatus,
+    DWORD                           cbBufSize,
+    LPDWORD                         pcbBytesNeeded
     );
 #ifdef UNICODE
 #define QueryServiceLockStatus  QueryServiceLockStatusW
@@ -899,58 +861,49 @@ QueryServiceLockStatusW(
 #define QueryServiceLockStatus  QueryServiceLockStatusA
 #endif // !UNICODE
 
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 QueryServiceObjectSecurity(
-    __in            SC_HANDLE               hService,
-    __in            SECURITY_INFORMATION    dwSecurityInformation,
-    __out_bcount_opt(cbBufSize) 
-                    PSECURITY_DESCRIPTOR    lpSecurityDescriptor,
-    __in            DWORD                   cbBufSize,
-    __out           LPDWORD                 pcbBytesNeeded
+    SC_HANDLE               hService,
+    SECURITY_INFORMATION    dwSecurityInformation,
+    PSECURITY_DESCRIPTOR    lpSecurityDescriptor,
+    DWORD                   cbBufSize,
+    LPDWORD                 pcbBytesNeeded
     );
 
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 QueryServiceStatus(
-    __in            SC_HANDLE           hService,
-    __out           LPSERVICE_STATUS    lpServiceStatus
+    SC_HANDLE           hService,
+    LPSERVICE_STATUS    lpServiceStatus
     );
 
-__checkReturn
 WINADVAPI
 BOOL
 WINAPI
 QueryServiceStatusEx(
-    __in            SC_HANDLE           hService,
-    __in            SC_STATUS_TYPE      InfoLevel,
-    __out_bcount_opt(cbBufSize) 
-                    LPBYTE              lpBuffer,
-    __in            DWORD               cbBufSize,
-    __out           LPDWORD             pcbBytesNeeded
+    SC_HANDLE           hService,
+    SC_STATUS_TYPE      InfoLevel,
+    LPBYTE              lpBuffer,
+    DWORD               cbBufSize,
+    LPDWORD             pcbBytesNeeded
     );
 
-__checkReturn
 WINADVAPI
 SERVICE_STATUS_HANDLE
 WINAPI
 RegisterServiceCtrlHandlerA(
-    __in    LPCSTR                    lpServiceName,
-    __in    __callback  
-            LPHANDLER_FUNCTION          lpHandlerProc
+    LPCSTR             lpServiceName,
+    LPHANDLER_FUNCTION   lpHandlerProc
     );
-__checkReturn
 WINADVAPI
 SERVICE_STATUS_HANDLE
 WINAPI
 RegisterServiceCtrlHandlerW(
-    __in    LPCWSTR                    lpServiceName,
-    __in    __callback  
-            LPHANDLER_FUNCTION          lpHandlerProc
+    LPCWSTR             lpServiceName,
+    LPHANDLER_FUNCTION   lpHandlerProc
     );
 #ifdef UNICODE
 #define RegisterServiceCtrlHandler  RegisterServiceCtrlHandlerW
@@ -958,25 +911,21 @@ RegisterServiceCtrlHandlerW(
 #define RegisterServiceCtrlHandler  RegisterServiceCtrlHandlerA
 #endif // !UNICODE
 
-__checkReturn
 WINADVAPI
 SERVICE_STATUS_HANDLE
 WINAPI
 RegisterServiceCtrlHandlerExA(
-    __in    LPCSTR                    lpServiceName,
-    __in    __callback
-            LPHANDLER_FUNCTION_EX       lpHandlerProc,
-    __in_opt LPVOID                     lpContext
+    LPCSTR                lpServiceName,
+    LPHANDLER_FUNCTION_EX   lpHandlerProc,
+    LPVOID                  lpContext
     );
-__checkReturn
 WINADVAPI
 SERVICE_STATUS_HANDLE
 WINAPI
 RegisterServiceCtrlHandlerExW(
-    __in    LPCWSTR                    lpServiceName,
-    __in    __callback
-            LPHANDLER_FUNCTION_EX       lpHandlerProc,
-    __in_opt LPVOID                     lpContext
+    LPCWSTR                lpServiceName,
+    LPHANDLER_FUNCTION_EX   lpHandlerProc,
+    LPVOID                  lpContext
     );
 #ifdef UNICODE
 #define RegisterServiceCtrlHandlerEx  RegisterServiceCtrlHandlerExW
@@ -988,30 +937,30 @@ WINADVAPI
 BOOL
 WINAPI
 SetServiceObjectSecurity(
-    __in        SC_HANDLE               hService,
-    __in        SECURITY_INFORMATION    dwSecurityInformation,
-    __in        PSECURITY_DESCRIPTOR    lpSecurityDescriptor
+    SC_HANDLE               hService,
+    SECURITY_INFORMATION    dwSecurityInformation,
+    PSECURITY_DESCRIPTOR    lpSecurityDescriptor
     );
 
 WINADVAPI
 BOOL
 WINAPI
 SetServiceStatus(
-    __in        SERVICE_STATUS_HANDLE   hServiceStatus,
-    __in        LPSERVICE_STATUS        lpServiceStatus
+    SERVICE_STATUS_HANDLE   hServiceStatus,
+    LPSERVICE_STATUS        lpServiceStatus
     );
 
 WINADVAPI
 BOOL
 WINAPI
 StartServiceCtrlDispatcherA(
-    __in CONST  SERVICE_TABLE_ENTRYA    *lpServiceStartTable
+    CONST SERVICE_TABLE_ENTRYA *lpServiceStartTable
     );
 WINADVAPI
 BOOL
 WINAPI
 StartServiceCtrlDispatcherW(
-    __in CONST  SERVICE_TABLE_ENTRYW    *lpServiceStartTable
+    CONST SERVICE_TABLE_ENTRYW *lpServiceStartTable
     );
 #ifdef UNICODE
 #define StartServiceCtrlDispatcher  StartServiceCtrlDispatcherW
@@ -1024,19 +973,17 @@ WINADVAPI
 BOOL
 WINAPI
 StartServiceA(
-    __in            SC_HANDLE            hService,
-    __in            DWORD                dwNumServiceArgs,
-    __in_ecount_opt(dwNumServiceArgs)       
-                    LPCSTR             *lpServiceArgVectors
+    SC_HANDLE            hService,
+    DWORD                dwNumServiceArgs,
+    LPCSTR             *lpServiceArgVectors
     );
 WINADVAPI
 BOOL
 WINAPI
 StartServiceW(
-    __in            SC_HANDLE            hService,
-    __in            DWORD                dwNumServiceArgs,
-    __in_ecount_opt(dwNumServiceArgs)       
-                    LPCWSTR             *lpServiceArgVectors
+    SC_HANDLE            hService,
+    DWORD                dwNumServiceArgs,
+    LPCWSTR             *lpServiceArgVectors
     );
 #ifdef UNICODE
 #define StartService  StartServiceW
@@ -1048,7 +995,7 @@ WINADVAPI
 BOOL
 WINAPI
 UnlockServiceDatabase(
-    __in            SC_LOCK             ScLock
+    SC_LOCK     ScLock
     );
 
 

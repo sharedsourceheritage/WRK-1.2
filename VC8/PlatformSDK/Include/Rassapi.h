@@ -34,17 +34,15 @@ Note:
 
 #if _MSC_VER > 1000
 #pragma once
-#endif // _MSC_VER > 1000
+#endif
 
 #ifdef __cplusplus
 extern "C" {
-#endif // __cplusplus
-
-#if (WINVER < 0x502)
+#endif
 
 #ifndef UNLEN
 #include <lmcons.h>
-#endif // UNLEN
+#endif
 
 #define RASSAPI_MAX_PHONENUMBER_SIZE     128
 #define RASSAPI_MAX_MEDIA_NAME	         16
@@ -337,6 +335,11 @@ DWORD APIENTRY RasAdminFreeBuffer(
     PVOID Pointer
     );
 
+DWORD APIENTRY RasAdminGetErrorString(
+    IN  UINT    ResourceId,
+    OUT WCHAR * lpszString,
+    IN  DWORD   InBufSize );
+
 BOOL APIENTRY RasAdminAcceptNewConnection (
 	IN 		RAS_PORT_1 *		      pRasPort1,
     IN      RAS_PORT_STATISTICS *   pRasStats,
@@ -362,11 +365,28 @@ VOID APIENTRY RasAdminReleaseIpAddress (
 	IN 		IPADDR *	   pipAddress
 	);
 
-#endif // (WINVER < 0x502)
+// The following two APIs are used to get/set
+// RAS user permissions in to a UsrParms buffer
+// obtained by a call to NetUserGetInfo.
+//
+// Note that RasAdminUserGetInfo and RasAdminUserSetInfo
+// are the APIs you should be using for getting and
+// setting RAS permissions.
+
+DWORD APIENTRY RasAdminGetUserParms(
+    IN  WCHAR          * lpszParms,
+    OUT PRAS_USER_0      pRasUser0
+    );
+
+DWORD APIENTRY RasAdminSetUserParms(
+    IN OUT   WCHAR    * lpszParms,
+    IN DWORD          cchNewParms,
+    IN PRAS_USER_0    pRasUser0
+    );
 
 #ifdef __cplusplus
 }
-#endif // __cplusplus
+#endif
 
 #endif // _RASSAPI_H_
 

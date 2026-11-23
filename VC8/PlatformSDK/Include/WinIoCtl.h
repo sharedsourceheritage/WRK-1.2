@@ -140,8 +140,7 @@ DEFINE_GUID(GUID_DEVINTERFACE_SERENUM_BUS_ENUMERATOR, 0x4D36E978L, 0xE325, 0x11C
 #define FILE_DEVICE_SERENUM             0x00000037
 #define FILE_DEVICE_TERMSRV             0x00000038
 #define FILE_DEVICE_KSEC                0x00000039
-#define FILE_DEVICE_FIPS                0x0000003A
-#define FILE_DEVICE_INFINIBAND          0x0000003B
+#define FILE_DEVICE_FIPS		0x0000003A
 
 //
 // Macro definition for defining IOCTL and FSCTL function control codes.  Note
@@ -166,15 +165,6 @@ DEFINE_GUID(GUID_DEVINTERFACE_SERENUM_BUS_ENUMERATOR, 0x4D36E978L, 0xE325, 0x11C
 #define METHOD_IN_DIRECT                1
 #define METHOD_OUT_DIRECT               2
 #define METHOD_NEITHER                  3
-
-//
-// Define some easier to comprehend aliases:
-//   METHOD_DIRECT_TO_HARDWARE (writes, aka METHOD_IN_DIRECT)
-//   METHOD_DIRECT_FROM_HARDWARE (reads, aka METHOD_OUT_DIRECT)
-//
-
-#define METHOD_DIRECT_TO_HARDWARE       METHOD_IN_DIRECT
-#define METHOD_DIRECT_FROM_HARDWARE     METHOD_OUT_DIRECT
 
 //
 // Define the access check value for any access
@@ -245,7 +235,6 @@ extern "C" {
 
 #define IOCTL_STORAGE_GET_DEVICE_NUMBER       CTL_CODE(IOCTL_STORAGE_BASE, 0x0420, METHOD_BUFFERED, FILE_ANY_ACCESS)
 #define IOCTL_STORAGE_PREDICT_FAILURE         CTL_CODE(IOCTL_STORAGE_BASE, 0x0440, METHOD_BUFFERED, FILE_ANY_ACCESS)
-#define IOCTL_STORAGE_READ_CAPACITY           CTL_CODE(IOCTL_STORAGE_BASE, 0x0450, METHOD_BUFFERED, FILE_READ_ACCESS)
 
 
 //
@@ -311,19 +300,6 @@ typedef struct _STORAGE_BUS_RESET_REQUEST {
 } STORAGE_BUS_RESET_REQUEST, *PSTORAGE_BUS_RESET_REQUEST;
 
 //
-// Break reservation is sent to the Adapter/FDO with the given lun information.
-//
-
-typedef struct STORAGE_BREAK_RESERVATION_REQUEST {
-        DWORD Length;
-        BYTE  _unused;
-    BYTE  PathId;
-    BYTE  TargetId;
-    BYTE  Lun;
-} STORAGE_BREAK_RESERVATION_REQUEST, *PSTORAGE_BREAK_RESERVATION_REQUEST;
-
-
-//
 // IOCTL_STORAGE_MEDIA_REMOVAL disables the mechanism
 // on a storage device that ejects media. This function
 // may or may not be supported on storage devices that
@@ -336,18 +312,6 @@ typedef struct STORAGE_BREAK_RESERVATION_REQUEST {
 typedef struct _PREVENT_MEDIA_REMOVAL {
     BOOLEAN PreventMediaRemoval;
 } PREVENT_MEDIA_REMOVAL, *PPREVENT_MEDIA_REMOVAL;
-
-
-
-//
-//  This is the format of TARGET_DEVICE_CUSTOM_NOTIFICATION.CustomDataBuffer
-//  passed to applications by the classpnp autorun code (via IoReportTargetDeviceChangeAsynchronous).
-//
-typedef struct _CLASS_MEDIA_CHANGE_CONTEXT {
-        DWORD MediaChangeCount;
-        DWORD NewState;         // see MEDIA_CHANGE_DETECTION_STATE enum in classpnp.h in DDK
-} CLASS_MEDIA_CHANGE_CONTEXT, *PCLASS_MEDIA_CHANGE_CONTEXT;
-
 
 // begin_ntminitape
 
@@ -500,9 +464,6 @@ typedef enum _STORAGE_BUS_TYPE {
     BusTypeFibre,
     BusTypeUsb,
     BusTypeRAID,
-    BusTypeiScsi,
-    BusTypeSas,
-    BusTypeSata,
     BusTypeMaxReserved = 0x7F
 } STORAGE_BUS_TYPE, *PSTORAGE_BUS_TYPE;
 
@@ -637,14 +598,6 @@ typedef struct _STORAGE_PREDICT_FAILURE
 
 #endif /* _WIN32_WINNT >= 0x0500 */
 
-#if (_WIN32_WINNT >= 0x0502)
-
-//
-// New IOCTL for disk devices that support 8 byte LBA
-//
-#define IOCTL_DISK_REASSIGN_BLOCKS_EX       CTL_CODE(IOCTL_DISK_BASE, 0x0029, METHOD_BUFFERED, FILE_READ_ACCESS | FILE_WRITE_ACCESS)
-
-#endif //_WIN32_WINNT >= 0x0502
 
 #if(_WIN32_WINNT >= 0x0500)
 #define IOCTL_DISK_UPDATE_DRIVE_SIZE        CTL_CODE(IOCTL_DISK_BASE, 0x0032, METHOD_BUFFERED, FILE_READ_ACCESS | FILE_WRITE_ACCESS)
@@ -652,7 +605,7 @@ typedef struct _STORAGE_PREDICT_FAILURE
 
 #define IOCTL_DISK_GET_CACHE_INFORMATION    CTL_CODE(IOCTL_DISK_BASE, 0x0035, METHOD_BUFFERED, FILE_READ_ACCESS)
 #define IOCTL_DISK_SET_CACHE_INFORMATION    CTL_CODE(IOCTL_DISK_BASE, 0x0036, METHOD_BUFFERED, FILE_READ_ACCESS | FILE_WRITE_ACCESS)
-#define OBSOLETE_DISK_GET_WRITE_CACHE_STATE CTL_CODE(IOCTL_DISK_BASE, 0x0037, METHOD_BUFFERED, FILE_READ_ACCESS)
+#define IOCTL_DISK_GET_WRITE_CACHE_STATE    CTL_CODE(IOCTL_DISK_BASE, 0x0037, METHOD_BUFFERED, FILE_READ_ACCESS)
 
 #define IOCTL_DISK_DELETE_DRIVE_LAYOUT      CTL_CODE(IOCTL_DISK_BASE, 0x0040, METHOD_BUFFERED, FILE_READ_ACCESS | FILE_WRITE_ACCESS)
 
@@ -971,19 +924,6 @@ typedef struct _REASSIGN_BLOCKS {
     DWORD BlockNumber[1];
 } REASSIGN_BLOCKS, *PREASSIGN_BLOCKS;
 
-//
-// The following structure is passed in on an IOCTL_DISK_REASSIGN_BLOCKS_EX
-// request.
-//
-
-#include <pshpack1.h>
-typedef struct _REASSIGN_BLOCKS_EX {
-    WORD   Reserved;
-    WORD   Count;
-    LARGE_INTEGER BlockNumber[1];
-} REASSIGN_BLOCKS_EX, *PREASSIGN_BLOCKS_EX;
-#include <poppack.h>
-
 
 #if(_WIN32_WINNT >= 0x500)
 
@@ -1032,7 +972,6 @@ typedef struct _PARTITION_INFORMATION_GPT {
 
 #define GPT_BASIC_DATA_ATTRIBUTE_NO_DRIVE_LETTER    (0x8000000000000000)
 #define GPT_BASIC_DATA_ATTRIBUTE_HIDDEN             (0x4000000000000000)
-#define GPT_BASIC_DATA_ATTRIBUTE_SHADOW_COPY        (0x2000000000000000)
 #define GPT_BASIC_DATA_ATTRIBUTE_READ_ONLY          (0x1000000000000000)
 
 //
@@ -1244,10 +1183,10 @@ typedef struct _DISK_PARTITION_INFO {
 //
 
 #define DiskGeometryGetPartition(Geometry)\
-                        ((PDISK_PARTITION_INFO)((Geometry)->Data))
+                        ((PDISK_PARTITION_INFO)((Geometry)+1))
 
 #define DiskGeometryGetDetect(Geometry)\
-                        ((PDISK_DETECTION_INFO)(((DWORD_PTR)DiskGeometryGetPartition(Geometry)+\
+                        ((PDISK_DETECTION_INFO)(((PBYTE)DiskGeometryGetPartition(Geometry)+\
                                         DiskGeometryGetPartition(Geometry)->SizeOfPartitionInfo)))
 
 typedef struct _DISK_GEOMETRY_EX {
@@ -1293,6 +1232,12 @@ typedef enum {
     KeepPrefetchedData,
     KeepReadData
 } DISK_CACHE_RETENTION_PRIORITY;
+
+typedef enum _DISK_WRITE_CACHE_STATE {
+    DiskWriteCacheNormal,
+    DiskWriteCacheForceDisable,
+    DiskWriteCacheDisableNotSupported
+} DISK_WRITE_CACHE_STATE, *PDISK_WRITE_CACHE_STATE;
 
 typedef struct _DISK_CACHE_INFORMATION {
 
@@ -1710,6 +1655,7 @@ typedef struct _SENDCMDOUTPARAMS {
 #define RETURN_SMART_STATUS     0xDA
 #define ENABLE_DISABLE_AUTO_OFFLINE 0xDB
 #endif /* _WIN32_WINNT >= 0x0400 */
+
 
 
 #define IOCTL_CHANGER_BASE                FILE_DEVICE_CHANGER
@@ -2534,7 +2480,7 @@ typedef enum _CHANGER_DEVICE_PROBLEM_TYPE {
 #if(_WIN32_WINNT >= 0x0500)
 // decommissioned fsctl value                                             33
 // decommissioned fsctl value                                             34
-#define FSCTL_FIND_FILES_BY_SID         CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 35, METHOD_NEITHER, FILE_ANY_ACCESS) // FIND_BY_SID_DATA, FIND_BY_SID_OUTPUT
+#define FSCTL_FIND_FILES_BY_SID         CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 35, METHOD_NEITHER, FILE_ANY_ACCESS)
 // decommissioned fsctl value                                             36
 // decommissioned fsctl value                                             37
 #define FSCTL_SET_OBJECT_ID             CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 38, METHOD_BUFFERED, FILE_SPECIAL_ACCESS) // FILE_OBJECTID_BUFFER
@@ -2732,21 +2678,13 @@ typedef struct _MOVE_FILE_DATA32 {
 
 #if(_WIN32_WINNT >= 0x0500)
 //
-// Structures for FSCTL_FIND_FILES_BY_SID
+// Structure for FSCTL_FIND_FILES_BY_SID
 //
 
 typedef struct {
     DWORD Restart;
     SID Sid;
 } FIND_BY_SID_DATA, *PFIND_BY_SID_DATA;
-
-typedef struct {
-    DWORD NextEntryOffset;
-    DWORD FileIndex;
-    DWORD FileNameLength;
-    WCHAR FileName[1];
-} FIND_BY_SID_OUTPUT, *PFIND_BY_SID_OUTPUT;
-
 #endif /* _WIN32_WINNT >= 0x0500 */
 
 #if(_WIN32_WINNT >= 0x0500)
@@ -2940,17 +2878,8 @@ typedef struct {
 //  MARK_HANDLE_PROTECT_CLUSTERS - disallow any defragmenting (FSCTL_MOVE_FILE) until the
 //      the handle is closed
 //
-//  MARK_HANDLE_TXF_SYSTEM_LOG - indicates that this stream is being used as the Txf
-//      log for an RM on the volume.  Must be called in the kernel using
-//      IRP_MN_KERNEL_CALL.
-//
-//  MARK_HANDLE_NOT_TXF_SYSTEM_LOG - indicates that this user is no longer using this
-//      object as a log file.
-//
 
 #define MARK_HANDLE_PROTECT_CLUSTERS        (0x00000001)
-#define MARK_HANDLE_TXF_SYSTEM_LOG          (0x00000004)
-#define MARK_HANDLE_NOT_TXF_SYSTEM_LOG      (0x00000008)
 
 #endif /* _WIN32_WINNT >= 0x0500 */
 

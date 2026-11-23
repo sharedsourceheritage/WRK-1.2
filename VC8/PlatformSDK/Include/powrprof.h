@@ -9,9 +9,24 @@
 *                                                                             *
 \*****************************************************************************/
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+
+// Define the following to debug batmeter on machines with no battery support.
+//#define SIM_BATTERY 1
+
+#define CURRENT_REVISION 1
+
+#define STRSIZE(psz) ((lstrlen(psz) + 1) * sizeof(TCHAR))
+
+#define MAX_NAME_LEN  32    // Max length of name in characters.
+#define MAX_NAME_SIZE (MAX_NAME_LEN +1) * sizeof(TCHAR)
+
+#define MAX_DESC_LEN  512   // Max length of description in characters.
+#define MAX_DESC_SIZE (MAX_DESC_LEN +1) * sizeof(TCHAR)
+
+#define SEMAPHORE_TIMEOUT  10000
+
+#define NUM_DEC_DIGITS 10+1+1       // 10 digits + NUll and sign.
+#define SIZE_DEC_DIGITS (10+1+1) * sizeof(TCHAR)
 
 // Registry storage structures for the GLOBAL_POWER_POLICY data. There are two
 // structures, GLOBAL_MACHINE_POWER_POLICY and GLOBAL_USER_POWER_POLICY. the
@@ -170,7 +185,7 @@ BOOLEAN WINAPI GetCurrentPowerPolicies(PGLOBAL_POWER_POLICY, PPOWER_POLICY);
 BOOLEAN WINAPI CanUserWritePwrScheme(VOID);
 BOOLEAN WINAPI ReadProcessorPwrScheme(UINT, PMACHINE_PROCESSOR_POWER_POLICY);
 BOOLEAN WINAPI WriteProcessorPwrScheme(UINT, PMACHINE_PROCESSOR_POWER_POLICY);
-BOOLEAN WINAPI ValidatePowerPolicies(PGLOBAL_POWER_POLICY, PPOWER_POLICY);
+
 #ifndef NT_SUCCESS
 #define NTSTATUS LONG
 #define _OVERRIDE_NTSTATUS_
@@ -182,6 +197,6 @@ NTSTATUS WINAPI CallNtPowerInformation(POWER_INFORMATION_LEVEL, PVOID, ULONG, PV
 #undef NTSTATUS
 #endif
 
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
+void WINAPI LoadCurrentPwrScheme(HWND hwnd, HINSTANCE hAppInstance, LPSTR lpszCmdLine, int nCmdShow);
+void WINAPI MergeLegacyPwrScheme(HWND hwnd, HINSTANCE hAppInstance, LPSTR lpszCmdLine, int nCmdShow);
+

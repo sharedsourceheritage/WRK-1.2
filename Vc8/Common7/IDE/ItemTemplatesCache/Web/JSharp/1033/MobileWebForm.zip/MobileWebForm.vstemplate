@@ -1,0 +1,15 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+    <TemplateData>
+	<Name Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3328"/>
+	<Description Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3329"/>
+	<Icon Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="4728"/>
+        <ProjectType>Web</ProjectType>
+        <ProjectSubType>JSharp</ProjectSubType>
+        <SortOrder>200</SortOrder>
+        <SupportsLanguageDropdown>true</SupportsLanguageDropdown>
+        <DefaultName>Default.aspx</DefaultName>
+	</TemplateData>
+	<TemplateContent>
+	<ProjectItem>WebForm.aspx</ProjectItem>
+	</TemplateContent>
+</VSTemplate>

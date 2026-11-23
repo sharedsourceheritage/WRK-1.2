@@ -1,0 +1,16 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+    <TemplateData>
+        <Name Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3332"/>
+		<Description Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3333"/>
+		<Icon Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="4727"/>
+        <ProjectType>Web</ProjectType>
+        <ProjectSubType>VisualBasic</ProjectSubType>
+        <SortOrder>220</SortOrder>
+        <DefaultName>Web.config</DefaultName>
+    </TemplateData>
+	<TemplateContent>
+		<ProjectItem>
+			<SourceFile>Web.Config</SourceFile>
+		</ProjectItem>
+	</TemplateContent>
+</VSTemplate>

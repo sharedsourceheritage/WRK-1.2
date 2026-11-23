@@ -26,10 +26,6 @@
 #endif
 #endif //_MAC
 
-#ifndef WIN32
-#define WIN32
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -132,12 +128,6 @@ typedef char *PSZ;
 #define APIENTRY    WINAPI
 #define APIPRIVATE
 #define PASCAL      pascal
-#endif
-
-#ifdef _M_CEE_PURE
-#define WINAPI_INLINE  __clrcall
-#else
-#define WINAPI_INLINE  WINAPI
 #endif
 
 #undef FAR
@@ -355,17 +345,6 @@ typedef struct tagPOINTS
     SHORT   x;
 #endif
 } POINTS, *PPOINTS, *LPPOINTS;
-
-//
-//  File System time stamps are represented with the following structure:
-//
-
-typedef struct _FILETIME {
-    DWORD dwLowDateTime;
-    DWORD dwHighDateTime;
-} FILETIME, *PFILETIME, *LPFILETIME;
-#define _FILETIME_
-
 
 /* mode selections for the device mode function */
 #define DM_UPDATE           1

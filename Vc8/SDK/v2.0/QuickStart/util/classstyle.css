@@ -1,0 +1,103 @@
+
+    div.inline { padding-bottom:3px;}
+
+    td.toolbar td {
+	color: #FFFFFF;
+	background: #999999;
+	font: 11px Tahoma, Verdana, Helvetica-Narrow, Helvetica, sans-serif;
+    }
+
+    a { 
+        color: #3366CC; 
+    }
+
+    a:hover { 
+        color: #1D489E; text-decoration: none; 
+    }
+
+    body 
+    { 
+        margin:0,0,0,0; 
+    }
+
+
+    div.TOC
+    { 
+        font-family:Tahoma,Verdana; 
+        font-size:1.0em; 
+        padding-right:10; 
+        margin-left:15;
+        text-color : white
+    }
+
+    table.sidebar td 
+    { 
+        font-family:Verdana; 
+        font-size:.7em; 
+        padding-right:10; 
+        padding-left:15;
+        text-color : white
+    }
+
+    table.main td 
+    { 
+        font-family:Verdana; 
+        font-size:.7em; 
+        padding-right:10; 
+        padding-left:5
+    }
+
+    class_main td
+    { 
+        font-family:Verdana; 
+        font-size:.7em; 
+    }
+
+    table.top td 
+    { 
+        font-family:Verdana; 
+        font-size:.7em; 
+        padding:10,5,10,10;
+        border-bottom:solid; 
+        border-width:3;         
+        border-color:black 
+    }
+
+    table.classes
+    { 
+        text-align:left;
+        border-style:solid; 
+        border-color:black; 
+        border-width:1 
+    }
+
+    table.classes td 
+    { 
+        text-align:left;
+        border-style:solid; 
+        border-color:black; 
+        border-width:1 
+    }
+
+
+    td.sidebar_header 
+    { 
+        padding:20,0,10,0;
+    }
+ 
+    td.main_header 
+    { 
+        font-family:Verdana;
+        padding:20,0,10,0;
+        margin-left:5
+    }
+
+    td.class_header 
+    { 
+        padding:0,0,10,0;
+    }
+
+
+
+
+   

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataComponent" targetNamespace="http://tempuri.org/DataComponent.xsd" xmlns:mstns="http://tempuri.org/DataComponent.xsd" xmlns="http://tempuri.org/DataComponent.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" GeneratorTypeConverterClassName="Converter" Modifier="AutoLayout, AnsiClass, Class, Public" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="Photos" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Public" Name="Photos (Web.config)" ParameterPrefix="" PropertyReference="&lt;SOAP-ENV:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:clr=&quot;http://schemas.microsoft.com/soap/encoding/clr/1.0&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&#xD;&#xA;&lt;SOAP-ENV:Body&gt;&#xD;&#xA;&lt;a1:CodePropertyReferenceExpression id=&quot;ref-1&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;targetObject href=&quot;#ref-3&quot;/&gt;&#xD;&#xA;&lt;propertyName id=&quot;ref-4&quot;&gt;ConnectionString&lt;/propertyName&gt;&#xD;&#xA;&lt;parameters href=&quot;#ref-5&quot;/&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodePropertyReferenceExpression&gt;&#xD;&#xA;&lt;a1:CodeIndexerExpression id=&quot;ref-3&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;targetObject href=&quot;#ref-6&quot;/&gt;&#xD;&#xA;&lt;indices href=&quot;#ref-7&quot;/&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeIndexerExpression&gt;&#xD;&#xA;&lt;a1:CodeExpressionCollection id=&quot;ref-5&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;CollectionBase_x002B_list href=&quot;#ref-8&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeExpressionCollection&gt;&#xD;&#xA;&lt;a1:CodePropertyReferenceExpression id=&quot;ref-6&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;targetObject href=&quot;#ref-9&quot;/&gt;&#xD;&#xA;&lt;propertyName id=&quot;ref-10&quot;&gt;ConnectionStrings&lt;/propertyName&gt;&#xD;&#xA;&lt;parameters href=&quot;#ref-11&quot;/&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodePropertyReferenceExpression&gt;&#xD;&#xA;&lt;a1:CodeExpressionCollection id=&quot;ref-7&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;CollectionBase_x002B_list href=&quot;#ref-12&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeExpressionCollection&gt;&#xD;&#xA;&lt;a2:ArrayList id=&quot;ref-8&quot; xmlns:a2=&quot;http://schemas.microsoft.com/clr/ns/System.Collections&quot;&gt;&#xD;&#xA;&lt;_items href=&quot;#ref-13&quot;/&gt;&#xD;&#xA;&lt;_size&gt;0&lt;/_size&gt;&#xD;&#xA;&lt;_version&gt;0&lt;/_version&gt;&#xD;&#xA;&lt;/a2:ArrayList&gt;&#xD;&#xA;&lt;a1:CodeTypeReferenceExpression id=&quot;ref-9&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;type href=&quot;#ref-14&quot;/&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeTypeReferenceExpression&gt;&#xD;&#xA;&lt;a1:CodeExpressionCollection id=&quot;ref-11&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;CollectionBase_x002B_list href=&quot;#ref-15&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeExpressionCollection&gt;&#xD;&#xA;&lt;a2:ArrayList id=&quot;ref-12&quot; xmlns:a2=&quot;http://schemas.microsoft.com/clr/ns/System.Collections&quot;&gt;&#xD;&#xA;&lt;_items href=&quot;#ref-16&quot;/&gt;&#xD;&#xA;&lt;_size&gt;1&lt;/_size&gt;&#xD;&#xA;&lt;_version&gt;1&lt;/_version&gt;&#xD;&#xA;&lt;/a2:ArrayList&gt;&#xD;&#xA;&lt;SOAP-ENC:Array id=&quot;ref-13&quot; SOAP-ENC:arrayType=&quot;xsd:anyType[0]&quot;&gt;&#xD;&#xA;&lt;/SOAP-ENC:Array&gt;&#xD;&#xA;&lt;a1:CodeTypeReference id=&quot;ref-14&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;baseType id=&quot;ref-17&quot;&gt;System.Configuration.ConfigurationManager&lt;/baseType&gt;&#xD;&#xA;&lt;isInterface&gt;false&lt;/isInterface&gt;&#xD;&#xA;&lt;arrayRank&gt;0&lt;/arrayRank&gt;&#xD;&#xA;&lt;arrayElementType xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;typeArguments xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;referenceOptions&gt;0&lt;/referenceOptions&gt;&#xD;&#xA;&lt;needsFixup&gt;true&lt;/needsFixup&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeTypeReference&gt;&#xD;&#xA;&lt;a2:ArrayList id=&quot;ref-15&quot; xmlns:a2=&quot;http://schemas.microsoft.com/clr/ns/System.Collections&quot;&gt;&#xD;&#xA;&lt;_items href=&quot;#ref-13&quot;/&gt;&#xD;&#xA;&lt;_size&gt;0&lt;/_size&gt;&#xD;&#xA;&lt;_version&gt;0&lt;/_version&gt;&#xD;&#xA;&lt;/a2:ArrayList&gt;&#xD;&#xA;&lt;SOAP-ENC:Array id=&quot;ref-16&quot; SOAP-ENC:arrayType=&quot;xsd:anyType[4]&quot;&gt;&#xD;&#xA;&lt;item href=&quot;#ref-18&quot;/&gt;&#xD;&#xA;&lt;/SOAP-ENC:Array&gt;&#xD;&#xA;&lt;a1:CodePrimitiveExpression id=&quot;ref-18&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;value id=&quot;ref-19&quot; xsi:type=&quot;SOAP-ENC:string&quot;&gt;Photos&lt;/value&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodePrimitiveExpression&gt;&#xD;&#xA;&lt;/SOAP-ENV:Body&gt;&#xD;&#xA;&lt;/SOAP-ENV:Envelope&gt;&#xD;&#xA;" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorName="AlbumsTableAdapter" GeneratorDataComponentClassName="AlbumsTableAdapter" GeneratorDataComponentInterfaceName="IAlbumsTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" Name="Albums" UserDataComponentName="AlbumsTableAdapter" WebServiceAttribute="False">
+            <MainSource>
+              <DbSource ConnectionRef="Photos (Web.config)" DbObjectName="Photos.dbo.Albums" DbObjectType="Table" EnableWebMethods="False" GenerateMethods="Get" GeneratePagingMethods="False" GenerateShortCommands="True" GeneratorGetMethodName="GetAlbums" GetMethodName="GetAlbums" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetAlbums" UserSourceName="GetAlbums">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM [Albums] WHERE (([AlbumID] = @Original_AlbumID))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_AlbumID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlbumID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO [Albums] ([AlbumName], [Owner], [DateCreated], [AlbumPath], [Visible]) VALUES (@AlbumName, @Owner, @DateCreated, @AlbumPath, @Visible)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@AlbumName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="AlbumName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Owner" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Owner" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@DateCreated" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="DateCreated" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@AlbumPath" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="AlbumPath" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Visible" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Visible" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select * from Albums</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE [Albums] SET [AlbumName] = @AlbumName, [Owner] = @Owner, [DateCreated] = @DateCreated, [AlbumPath] = @AlbumPath, [Visible] = @Visible WHERE (([AlbumID] = @Original_AlbumID))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@AlbumName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="AlbumName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Owner" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Owner" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@DateCreated" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="DateCreated" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@AlbumPath" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="AlbumPath" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Visible" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Visible" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_AlbumID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlbumID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="AlbumID" DataSetColumn="AlbumID" />
+              <Mapping SourceColumn="AlbumName" DataSetColumn="AlbumName" />
+              <Mapping SourceColumn="Owner" DataSetColumn="Owner" />
+              <Mapping SourceColumn="DateCreated" DataSetColumn="DateCreated" />
+              <Mapping SourceColumn="AlbumPath" DataSetColumn="AlbumPath" />
+              <Mapping SourceColumn="Visible" DataSetColumn="Visible" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="Photos (Web.config)" DbObjectName="[C:\WebSites\TechEdEurope\Data\Photos.mdf].dbo.Albums" DbObjectType="Table" EnableWebMethods="False" GenerateMethods="Get" GeneratePagingMethods="False" GenerateShortCommands="True" GeneratorGetMethodName="GetAlbumsByOwner" GetMethodName="GetAlbumsByOwner" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAlbumsByOwner" UserSourceName="GetAlbumsByOwner1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select * from Albums where Owner = @Owner</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="True" AutogeneratedName="Owner" ColumnName="Owner" DataSourceName="[C:\WebSites\TechEdEurope\Data\Photos.mdf].dbo.Albums" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="Owner" Precision="0" Scale="0" Size="50" SourceColumn="Owner" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorName="OwnersTableAdapter" GeneratorDataComponentClassName="OwnersTableAdapter" GeneratorDataComponentInterfaceName="IOwnersTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" Name="Owners" UserDataComponentName="OwnersTableAdapter" WebServiceAttribute="False">
+            <MainSource>
+              <DbSource ConnectionRef="Photos (Web.config)" DbObjectName="[C:\WebSites\TechEdEurope\Data\Photos.mdf].dbo.Albums" DbObjectType="Table" EnableWebMethods="False" GenerateMethods="Get" GeneratePagingMethods="False" GenerateShortCommands="True" GeneratorGetMethodName="GetOwners" GetMethodName="GetOwners" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetOwners" UserSourceName="GetOwners">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select distinct Owner from Albums</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Owner" DataSetColumn="Owner" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorName="PhotosTableAdapter" GeneratorDataComponentClassName="PhotosTableAdapter" GeneratorDataComponentInterfaceName="IPhotosTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" Name="Photos" UserDataComponentName="PhotosTableAdapter" WebServiceAttribute="False">
+            <MainSource>
+              <DbSource ConnectionRef="Photos (Web.config)" DbObjectName="Photos.dbo.Photos" DbObjectType="Table" EnableWebMethods="False" GenerateMethods="Get" GeneratePagingMethods="False" GenerateShortCommands="True" GeneratorGetMethodName="GetPhotosForAlbum" GetMethodName="GetPhotosForAlbum" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetPhotosForAlbum" UserSourceName="GetPhotosForAlbum">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM [Photos] WHERE (([PhotoID] = @Original_PhotoID))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_PhotoID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PhotoID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO [Photos] ([AlbumID], [Caption], [FileName]) VALUES (@AlbumID, @Caption, @FileName)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@AlbumID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlbumID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Caption" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Caption" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FileName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FileName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select * from Photos where AlbumID = @AlbumID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="AlbumID" ColumnName="AlbumID" DataSourceName="Photos.dbo.Photos" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@AlbumID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="AlbumID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE [Photos] SET [AlbumID] = @AlbumID, [Caption] = @Caption, [FileName] = @FileName WHERE (([PhotoID] = @Original_PhotoID))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@AlbumID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlbumID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Caption" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Caption" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FileName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FileName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_PhotoID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PhotoID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PhotoID" DataSetColumn="PhotoID" />
+              <Mapping SourceColumn="AlbumID" DataSetColumn="AlbumID" />
+              <Mapping SourceColumn="Caption" DataSetColumn="Caption" />
+              <Mapping SourceColumn="FileName" DataSetColumn="FileName" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="Photos (Web.config)" DbObjectName="[C:\WebSites\TechEdEurope\Data\Photos.mdf].dbo.Photos" DbObjectType="Table" EnableWebMethods="False" GenerateMethods="Get" GeneratePagingMethods="False" GenerateShortCommands="True" GeneratorGetMethodName="GetPhoto" GetMethodName="GetPhoto" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetPhoto" UserSourceName="GetPhoto1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select * from Photos where PhotoID= @PhotoID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="PhotoID" ColumnName="PhotoID" DataSourceName="[C:\WebSites\TechEdEurope\Data\Photos.mdf].dbo.Photos" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="PhotoID" Precision="0" Scale="0" Size="4" SourceColumn="PhotoID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="Photos (Web.config)" DbObjectName="" DbObjectType="Unknown" EnableWebMethods="False" GeneratePagingMethods="False" GenerateShortCommands="True" GeneratorSourceName="UpdateCaption" Modifier="Public" Name="UpdateCaption" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="UpdateCaption">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>UPDATE [Photos] SET [Caption] = @Caption WHERE [PhotoID] = @Original_PhotoID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="True" AutogeneratedName="Caption" ColumnName="Caption" DataSourceName="[C:\WebSites\TechEdEurope\Data\Photos.mdf].dbo.Photos" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="Caption" Precision="0" Scale="0" Size="50" SourceColumn="Caption" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="Original_PhotoID" ColumnName="PhotoID" DataSourceName="[C:\WebSites\TechEdEurope\Data\Photos.mdf].dbo.Photos" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="Original_PhotoID" Precision="0" Scale="0" Size="4" SourceColumn="PhotoID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataComponent" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataComponent" msprop:Generator_DataSetName="DataComponent">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Albums" msprop:Generator_UserTableName="Albums" msprop:Generator_TableClassName="AlbumsDataTable" msprop:Generator_RowClassName="AlbumsRow" msprop:Generator_RowEvArgName="AlbumsRowChangeEvent" msprop:Generator_RowEvHandlerName="AlbumsRowChangeEventHandler" msprop:Generator_TablePropName="Albums" msprop:Generator_TableVarName="tableAlbums">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AlbumID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="AlbumID" msprop:Generator_ColumnVarNameInTable="columnAlbumID" msprop:Generator_ColumnPropNameInRow="AlbumID" msprop:Generator_ColumnPropNameInTable="AlbumIDColumn" type="xs:int" />
+              <xs:element name="AlbumName" msprop:Generator_UserColumnName="AlbumName" msprop:Generator_ColumnVarNameInTable="columnAlbumName" msprop:Generator_ColumnPropNameInRow="AlbumName" msprop:Generator_ColumnPropNameInTable="AlbumNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Owner" msprop:Generator_UserColumnName="Owner" msprop:Generator_ColumnVarNameInTable="columnOwner" msprop:Generator_ColumnPropNameInRow="Owner" msprop:Generator_ColumnPropNameInTable="OwnerColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateCreated" msprop:Generator_UserColumnName="DateCreated" msprop:Generator_ColumnVarNameInTable="columnDateCreated" msprop:Generator_ColumnPropNameInRow="DateCreated" msprop:Generator_ColumnPropNameInTable="DateCreatedColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="AlbumPath" msprop:Generator_UserColumnName="AlbumPath" msprop:Generator_ColumnVarNameInTable="columnAlbumPath" msprop:Generator_ColumnPropNameInRow="AlbumPath" msprop:Generator_ColumnPropNameInTable="AlbumPathColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Visible" msprop:Generator_UserColumnName="Visible" msprop:Generator_ColumnVarNameInTable="columnVisible" msprop:Generator_ColumnPropNameInRow="Visible" msprop:Generator_ColumnPropNameInTable="VisibleColumn" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Owners" msprop:Generator_UserTableName="Owners" msprop:Generator_TableClassName="OwnersDataTable" msprop:Generator_RowClassName="OwnersRow" msprop:Generator_RowEvArgName="OwnersRowChangeEvent" msprop:Generator_RowEvHandlerName="OwnersRowChangeEventHandler" msprop:Generator_TablePropName="Owners" msprop:Generator_TableVarName="tableOwners">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Owner" msprop:Generator_UserColumnName="Owner" msprop:Generator_ColumnVarNameInTable="columnOwner" msprop:Generator_ColumnPropNameInRow="Owner" msprop:Generator_ColumnPropNameInTable="OwnerColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Photos" msprop:Generator_UserTableName="Photos" msprop:Generator_TableClassName="PhotosDataTable" msprop:Generator_RowClassName="PhotosRow" msprop:Generator_RowEvArgName="PhotosRowChangeEvent" msprop:Generator_RowEvHandlerName="PhotosRowChangeEventHandler" msprop:Generator_TablePropName="Photos" msprop:Generator_TableVarName="tablePhotos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PhotoID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="PhotoID" msprop:Generator_ColumnVarNameInTable="columnPhotoID" msprop:Generator_ColumnPropNameInRow="PhotoID" msprop:Generator_ColumnPropNameInTable="PhotoIDColumn" type="xs:int" />
+              <xs:element name="AlbumID" msprop:Generator_UserColumnName="AlbumID" msprop:Generator_ColumnVarNameInTable="columnAlbumID" msprop:Generator_ColumnPropNameInRow="AlbumID" msprop:Generator_ColumnPropNameInTable="AlbumIDColumn" type="xs:int" />
+              <xs:element name="Caption" msprop:Generator_UserColumnName="Caption" msprop:Generator_ColumnVarNameInTable="columnCaption" msprop:Generator_ColumnPropNameInRow="Caption" msprop:Generator_ColumnPropNameInTable="CaptionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FileName" msprop:Generator_UserColumnName="FileName" msprop:Generator_ColumnVarNameInTable="columnFileName" msprop:Generator_ColumnPropNameInRow="FileName" msprop:Generator_ColumnPropNameInTable="FileNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Albums" />
+      <xs:field xpath="mstns:AlbumID" />
+    </xs:unique>
+    <xs:unique name="Photos_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Photos" />
+      <xs:field xpath="mstns:PhotoID" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Albums_Photos" msdata:parent="Albums" msdata:child="Photos" msdata:parentkey="AlbumID" msdata:childkey="AlbumID" msprop:Generator_UserRelationName="Albums_Photos" msprop:Generator_RelationVarName="relationAlbums_Photos" msprop:Generator_UserChildTable="Photos" msprop:Generator_UserParentTable="Albums" msprop:Generator_ParentPropName="AlbumsRow" msprop:Generator_ChildPropName="GetPhotosRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

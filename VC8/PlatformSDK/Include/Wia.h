@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for wia.idl, wia.acf:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -264,7 +263,7 @@ EXTERN_C const IID IID_IWiaDevMgr;
             /* [in] */ BSTR bstrDescription,
             /* [in] */ BSTR bstrIcon) = 0;
         
-        virtual /* [local] */ HRESULT STDMETHODCALLTYPE RegisterEventCallbackInterface( 
+        virtual /* [helpstring] */ HRESULT STDMETHODCALLTYPE RegisterEventCallbackInterface( 
             /* [in] */ LONG lFlags,
             /* [in] */ BSTR bstrDeviceID,
             /* [in] */ const GUID *pEventGUID,
@@ -348,7 +347,7 @@ EXTERN_C const IID IID_IWiaDevMgr;
             /* [in] */ BSTR bstrDescription,
             /* [in] */ BSTR bstrIcon);
         
-        /* [local] */ HRESULT ( STDMETHODCALLTYPE *RegisterEventCallbackInterface )( 
+        /* [helpstring] */ HRESULT ( STDMETHODCALLTYPE *RegisterEventCallbackInterface )( 
             IWiaDevMgr * This,
             /* [in] */ LONG lFlags,
             /* [in] */ BSTR bstrDeviceID,
@@ -521,7 +520,7 @@ void __RPC_STUB IWiaDevMgr_LocalRegisterEventCallbackProgram_Stub(
     DWORD *_pdwStubPhase);
 
 
-/* [helpstring][call_as] */ HRESULT STDMETHODCALLTYPE IWiaDevMgr_LocalRegisterEventCallbackInterface_Proxy( 
+/* [helpstring] */ HRESULT STDMETHODCALLTYPE IWiaDevMgr_RegisterEventCallbackInterface_Proxy( 
     IWiaDevMgr * This,
     /* [in] */ LONG lFlags,
     /* [in] */ BSTR bstrDeviceID,
@@ -530,7 +529,7 @@ void __RPC_STUB IWiaDevMgr_LocalRegisterEventCallbackProgram_Stub(
     /* [out] */ IUnknown **pEventObject);
 
 
-void __RPC_STUB IWiaDevMgr_LocalRegisterEventCallbackInterface_Stub(
+void __RPC_STUB IWiaDevMgr_RegisterEventCallbackInterface_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -864,7 +863,7 @@ void __RPC_STUB IWiaEventCallback_ImageEventCallback_Stub(
 #endif 	/* __IWiaEventCallback_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wia_0125 */
+/* interface __MIDL_itf_wia_0121 */
 /* [local] */ 
 
 typedef struct _WIA_DATA_CALLBACK_HEADER
@@ -879,8 +878,8 @@ typedef struct _WIA_DATA_CALLBACK_HEADER *PWIA_DATA_CALLBACK_HEADER;
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wia_0125_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wia_0125_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wia_0121_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wia_0121_v0_0_s_ifspec;
 
 #ifndef __IWiaDataCallback_INTERFACE_DEFINED__
 #define __IWiaDataCallback_INTERFACE_DEFINED__
@@ -993,7 +992,7 @@ void __RPC_STUB IWiaDataCallback_RemoteBandedDataCallback_Stub(
 #endif 	/* __IWiaDataCallback_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wia_0126 */
+/* interface __MIDL_itf_wia_0122 */
 /* [local] */ 
 
 typedef struct _WIA_DATA_TRANSFER_INFO
@@ -1022,8 +1021,8 @@ typedef struct _WIA_EXTENDED_TRANSFER_INFO *PWIA_EXTENDED_TRANSFER_INFO;
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wia_0126_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wia_0126_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wia_0122_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wia_0122_v0_0_s_ifspec;
 
 #ifndef __IWiaDataTransfer_INTERFACE_DEFINED__
 #define __IWiaDataTransfer_INTERFACE_DEFINED__
@@ -1672,7 +1671,7 @@ EXTERN_C const IID IID_IWiaPropertyStorage;
             /* [size_is][in] */ const PROPSPEC rgpspec[  ],
             /* [size_is][out] */ PROPVARIANT rgpropvar[  ]) = 0;
         
-        virtual /* [local] */ HRESULT STDMETHODCALLTYPE WriteMultiple( 
+        virtual HRESULT STDMETHODCALLTYPE WriteMultiple( 
             /* [in] */ ULONG cpspec,
             /* [size_is][in] */ const PROPSPEC rgpspec[  ],
             /* [size_is][in] */ const PROPVARIANT rgpropvar[  ],
@@ -1728,7 +1727,7 @@ EXTERN_C const IID IID_IWiaPropertyStorage;
             /* [out] */ GUID *pCompatibilityId,
             /* [out] */ IStream **ppIStream) = 0;
         
-        virtual /* [local] */ HRESULT STDMETHODCALLTYPE SetPropertyStream( 
+        virtual /* [helpstring] */ HRESULT STDMETHODCALLTYPE SetPropertyStream( 
             /* [in] */ GUID *pCompatibilityId,
             /* [unique][in] */ IStream *pIStream) = 0;
         
@@ -1757,7 +1756,7 @@ EXTERN_C const IID IID_IWiaPropertyStorage;
             /* [size_is][in] */ const PROPSPEC rgpspec[  ],
             /* [size_is][out] */ PROPVARIANT rgpropvar[  ]);
         
-        /* [local] */ HRESULT ( STDMETHODCALLTYPE *WriteMultiple )( 
+        HRESULT ( STDMETHODCALLTYPE *WriteMultiple )( 
             IWiaPropertyStorage * This,
             /* [in] */ ULONG cpspec,
             /* [size_is][in] */ const PROPSPEC rgpspec[  ],
@@ -1827,7 +1826,7 @@ EXTERN_C const IID IID_IWiaPropertyStorage;
             /* [out] */ GUID *pCompatibilityId,
             /* [out] */ IStream **ppIStream);
         
-        /* [local] */ HRESULT ( STDMETHODCALLTYPE *SetPropertyStream )( 
+        /* [helpstring] */ HRESULT ( STDMETHODCALLTYPE *SetPropertyStream )( 
             IWiaPropertyStorage * This,
             /* [in] */ GUID *pCompatibilityId,
             /* [unique][in] */ IStream *pIStream);
@@ -1924,15 +1923,15 @@ void __RPC_STUB IWiaPropertyStorage_ReadMultiple_Stub(
     DWORD *_pdwStubPhase);
 
 
-/* [call_as] */ HRESULT STDMETHODCALLTYPE IWiaPropertyStorage_RemoteWriteMultiple_Proxy( 
+HRESULT STDMETHODCALLTYPE IWiaPropertyStorage_WriteMultiple_Proxy( 
     IWiaPropertyStorage * This,
     /* [in] */ ULONG cpspec,
-    /* [size_is][in] */ const PROPSPEC *rgpspec,
-    /* [size_is][in] */ const PROPVARIANT *rgpropvar,
+    /* [size_is][in] */ const PROPSPEC rgpspec[  ],
+    /* [size_is][in] */ const PROPVARIANT rgpropvar[  ],
     /* [in] */ PROPID propidNameFirst);
 
 
-void __RPC_STUB IWiaPropertyStorage_RemoteWriteMultiple_Stub(
+void __RPC_STUB IWiaPropertyStorage_WriteMultiple_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -2106,13 +2105,13 @@ void __RPC_STUB IWiaPropertyStorage_GetPropertyStream_Stub(
     DWORD *_pdwStubPhase);
 
 
-/* [helpstring][call_as] */ HRESULT STDMETHODCALLTYPE IWiaPropertyStorage_RemoteSetPropertyStream_Proxy( 
+/* [helpstring] */ HRESULT STDMETHODCALLTYPE IWiaPropertyStorage_SetPropertyStream_Proxy( 
     IWiaPropertyStorage * This,
     /* [in] */ GUID *pCompatibilityId,
     /* [unique][in] */ IStream *pIStream);
 
 
-void __RPC_STUB IWiaPropertyStorage_RemoteSetPropertyStream_Stub(
+void __RPC_STUB IWiaPropertyStorage_SetPropertyStream_Stub(
     IRpcStubBuffer *This,
     IRpcChannelBuffer *_pRpcChannelBuffer,
     PRPC_MESSAGE _pRpcMessage,
@@ -2304,7 +2303,7 @@ void __RPC_STUB IEnumWiaItem_GetCount_Stub(
 #endif 	/* __IEnumWiaItem_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_wia_0130 */
+/* interface __MIDL_itf_wia_0126 */
 /* [local] */ 
 
 typedef struct _WIA_DEV_CAP
@@ -2325,8 +2324,8 @@ typedef struct _WIA_DEV_CAP *PWIA_EVENT_HANDLER;
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_wia_0130_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_wia_0130_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wia_0126_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_wia_0126_v0_0_s_ifspec;
 
 #ifndef __IEnumWIA_DEV_CAPS_INTERFACE_DEFINED__
 #define __IEnumWIA_DEV_CAPS_INTERFACE_DEFINED__
@@ -3402,23 +3401,6 @@ void                      __RPC_USER  STGMEDIUM_UserFree(     unsigned long *, S
     /* [in] */ BSTR bstrDescription,
     /* [in] */ BSTR bstrIcon);
 
-/* [local] */ HRESULT STDMETHODCALLTYPE IWiaDevMgr_RegisterEventCallbackInterface_Proxy( 
-    IWiaDevMgr * This,
-    /* [in] */ LONG lFlags,
-    /* [in] */ BSTR bstrDeviceID,
-    /* [in] */ const GUID *pEventGUID,
-    /* [unique][in] */ IWiaEventCallback *pIWiaEventCallback,
-    /* [out] */ IUnknown **pEventObject);
-
-
-/* [helpstring][call_as] */ HRESULT STDMETHODCALLTYPE IWiaDevMgr_RegisterEventCallbackInterface_Stub( 
-    IWiaDevMgr * This,
-    /* [in] */ LONG lFlags,
-    /* [in] */ BSTR bstrDeviceID,
-    /* [in] */ const GUID *pEventGUID,
-    /* [unique][in] */ IWiaEventCallback *pIWiaEventCallback,
-    /* [out] */ IUnknown **pEventObject);
-
 /* [local] */ HRESULT STDMETHODCALLTYPE IWiaDevMgr_RegisterEventCallbackCLSID_Proxy( 
     IWiaDevMgr * This,
     /* [in] */ LONG lFlags,
@@ -3514,32 +3496,6 @@ void                      __RPC_USER  STGMEDIUM_UserFree(     unsigned long *, S
     /* [in] */ LONG lIntent,
     /* [out] */ LONG *plItemCount,
     /* [out] */ IWiaItem ***pIWiaItem);
-
-/* [local] */ HRESULT STDMETHODCALLTYPE IWiaPropertyStorage_WriteMultiple_Proxy( 
-    IWiaPropertyStorage * This,
-    /* [in] */ ULONG cpspec,
-    /* [size_is][in] */ const PROPSPEC rgpspec[  ],
-    /* [size_is][in] */ const PROPVARIANT rgpropvar[  ],
-    /* [in] */ PROPID propidNameFirst);
-
-
-/* [call_as] */ HRESULT STDMETHODCALLTYPE IWiaPropertyStorage_WriteMultiple_Stub( 
-    IWiaPropertyStorage * This,
-    /* [in] */ ULONG cpspec,
-    /* [size_is][in] */ const PROPSPEC *rgpspec,
-    /* [size_is][in] */ const PROPVARIANT *rgpropvar,
-    /* [in] */ PROPID propidNameFirst);
-
-/* [local] */ HRESULT STDMETHODCALLTYPE IWiaPropertyStorage_SetPropertyStream_Proxy( 
-    IWiaPropertyStorage * This,
-    /* [in] */ GUID *pCompatibilityId,
-    /* [unique][in] */ IStream *pIStream);
-
-
-/* [helpstring][call_as] */ HRESULT STDMETHODCALLTYPE IWiaPropertyStorage_SetPropertyStream_Stub( 
-    IWiaPropertyStorage * This,
-    /* [in] */ GUID *pCompatibilityId,
-    /* [unique][in] */ IStream *pIStream);
 
 /* [local] */ HRESULT STDMETHODCALLTYPE IEnumWiaItem_Next_Proxy( 
     IEnumWiaItem * This,

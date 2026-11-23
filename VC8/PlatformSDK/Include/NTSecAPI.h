@@ -95,397 +95,13 @@ typedef enum _SECURITY_LOGON_TYPE {
     Unlock,             // Unlock workstation
     NetworkCleartext,   // Network logon with cleartext credentials
     NewCredentials,     // Clone caller, new default credentials
-    RemoteInteractive,  // Remote, yet interactive. Terminal server
-    CachedInteractive,  // Try cached credentials without hitting the net.
-    CachedRemoteInteractive, // Same as RemoteInteractive, this is used internally for auditing purpose
-    CachedUnlock        // Cached Unlock workstation
+    RemoteInteractive,  // Remote, yet interactive.  Terminal server
+    CachedInteractive   // Try cached credentials without hitting the net.
 } SECURITY_LOGON_TYPE, *PSECURITY_LOGON_TYPE;
 
 // end_ntifs
 #endif // _NTLSA_IFS_
 
-#ifndef _NTLSA_IFS_
-// begin_ntifs
-
-#ifndef _NTLSA_AUDIT_
-#define _NTLSA_AUDIT_
-
-/////////////////////////////////////////////////////////////////////////
-//                                                                     //
-// Data types related to Auditing                                      //
-//                                                                     //
-/////////////////////////////////////////////////////////////////////////
-
-
-//
-// The following enumerated type is used between the reference monitor and
-// LSA in the generation of audit messages.  It is used to indicate the
-// type of data being passed as a parameter from the reference monitor
-// to LSA.  LSA is responsible for transforming the specified data type
-// into a set of unicode strings that are added to the event record in
-// the audit log.
-//
-
-typedef enum _SE_ADT_PARAMETER_TYPE {
-
-    SeAdtParmTypeNone = 0,          //Produces 1 parameter
-                                    //Received value:
-                                    //
-                                    //  None.
-                                    //
-                                    //Results in:
-                                    //
-                                    //  a unicode string containing "-".
-                                    //
-                                    //Note:  This is typically used to
-                                    //       indicate that a parameter value
-                                    //       was not available.
-                                    //
-
-    SeAdtParmTypeString,            //Produces 1 parameter.
-                                    //Received Value:
-                                    //
-                                    //  Unicode String (variable length)
-                                    //
-                                    //Results in:
-                                    //
-                                    //  No transformation.  The string
-                                    //  entered into the event record as
-                                    //  received.
-                                    //
-                                    // The Address value of the audit info
-                                    // should be a pointer to a UNICODE_STRING
-                                    // structure.
-
-
-
-    SeAdtParmTypeFileSpec,          //Produces 1 parameter.
-                                    //Received value:
-                                    //
-                                    //  Unicode string containing a file or
-                                    //  directory name.
-                                    //
-                                    //Results in:
-                                    //
-                                    //  Unicode string with the prefix of the
-                                    //  file's path replaced by a drive letter
-                                    //  if possible.
-                                    //
-
-
-
-
-    SeAdtParmTypeUlong,             //Produces 1 parameter
-                                    //Received value:
-                                    //
-                                    //  Ulong
-                                    //
-                                    //Results in:
-                                    //
-                                    //  Unicode string representation of
-                                    //  unsigned integer value.
-
-
-    SeAdtParmTypeSid,               //Produces 1 parameter.
-                                    //Received value:
-                                    //
-                                    //  SID (variable length)
-                                    //
-                                    //Results in:
-                                    //
-                                    //  String representation of SID
-                                    //
-
-
-
-
-    SeAdtParmTypeLogonId,           //Produces 3 parameters.
-                                    //Received Value:
-                                    //
-                                    //  LUID (fixed length)
-                                    //
-                                    //Results in:
-                                    //
-                                    //  param 1: Username string
-                                    //  param 2: domain name string
-                                    //  param 3: Logon ID (Luid) string
-
-
-    SeAdtParmTypeNoLogonId,         //Produces 3 parameters.
-                                    //Received value:
-                                    //
-                                    //  None.
-                                    //
-                                    //Results in:
-                                    //
-                                    //  param 1: "-"
-                                    //  param 2: "-"
-                                    //  param 3: "-"
-                                    //
-                                    //Note:
-                                    //
-                                    //  This type is used when a logon ID
-                                    //  is needed, but one is not available
-                                    //  to pass.  For example, if an
-                                    //  impersonation logon ID is expected
-                                    //  but the subject is not impersonating
-                                    //  anyone.
-                                    //
-
-    SeAdtParmTypeAccessMask,        //Produces 1 parameter with formatting.
-                                    //Received value:
-                                    //
-                                    //  ACCESS_MASK followed by
-                                    //  a Unicode string.  The unicode
-                                    //  string contains the name of the
-                                    //  type of object the access mask
-                                    //  applies to.  The event's source
-                                    //  further qualifies the object type.
-                                    //
-                                    //Results in:
-                                    //
-                                    //  formatted unicode string built to
-                                    //  take advantage of the specified
-                                    //  source's parameter message file.
-                                    //
-                                    //Note:
-                                    //
-                                    //  An access mask containing three
-                                    //  access types for a Widget object
-                                    //  type (defined by the Foozle source)
-                                    //  might end up looking like:
-                                    //
-                                    //      %%1062\n\t\t%1066\n\t\t%%601
-                                    //
-                                    //  The %%numbers are signals to the
-                                    //  event viewer to perform parameter
-                                    //  substitution before display.
-                                    //
-
-
-
-    SeAdtParmTypePrivs,             //Produces 1 parameter with formatting.
-                                    //Received value:
-                                    //
-                                    //  ??? Check with RobertRe and ScottBi
-                                    //
-                                    //Results in:
-                                    //
-                                    //  formatted unicode string similar to
-                                    //  that for access types.  Each priv
-                                    //  will be formatted to be displayed
-                                    //  on its own line.  E.g.,
-                                    //
-                                    //      %%642\n\t\t%%651\n\t\t%%655
-                                    //
-
-    SeAdtParmTypeObjectTypes,       //Produces 10 parameters with formatting.
-                                    //Received value:
-                                    //
-                                    // Produces a list a stringized GUIDS along
-                                    // with information similar to that for
-                                    // an access mask.
-
-    SeAdtParmTypeHexUlong,          //Produces 1 parameter
-                                    //Received value:
-                                    //
-                                    //  Ulong
-                                    //
-                                    //Results in:
-                                    //
-                                    //  Unicode string representation of
-                                    //  unsigned integer value in hexadecimal.
-
-    SeAdtParmTypePtr,               //Produces 1 parameter
-                                    //Received value:
-                                    //
-                                    //  pointer
-                                    //
-                                    //Results in:
-                                    //
-                                    //  Unicode string representation of
-                                    //  unsigned integer value in hexadecimal.
-
-    SeAdtParmTypeTime,              //Produces 2 parameters
-                                    //Received value:
-                                    //
-                                    //  LARGE_INTEGER
-                                    //
-                                    //Results in:
-                                    //
-                                    // Unicode string representation of
-                                    // date and time.
-
-                                    //
-    SeAdtParmTypeGuid,              //Produces 1 parameter
-                                    //Received value:
-                                    //
-                                    //  GUID pointer
-                                    //
-                                    //Results in:
-                                    //
-                                    // Unicode string representation of GUID
-                                    // {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
-                                    //
-
-    SeAdtParmTypeLuid,              //
-                                    //Produces 1 parameter
-                                    //Received value:
-                                    //
-                                    // LUID
-                                    //
-                                    //Results in:
-                                    //
-                                    // Hex LUID
-                                    //
-
-    SeAdtParmTypeHexInt64,          //Produces 1 parameter
-                                    //Received value:
-                                    //
-                                    //  64 bit integer
-                                    //
-                                    //Results in:
-                                    //
-                                    //  Unicode string representation of
-                                    //  unsigned integer value in hexadecimal.
-
-    SeAdtParmTypeStringList,        //Produces 1 parameter
-                                    //Received value:
-                                    //
-                                    // ptr to LSAP_ADT_STRING_LIST
-                                    //
-                                    //Results in:
-                                    //
-                                    // Unicode string representation of
-                                    // concatenation of the strings in the list
-
-    SeAdtParmTypeSidList,           //Produces 1 parameter
-                                    //Received value:
-                                    //
-                                    // ptr to LSAP_ADT_SID_LIST
-                                    //
-                                    //Results in:
-                                    //
-                                    // Unicode string representation of
-                                    // concatenation of the SIDs in the list
-
-    SeAdtParmTypeDuration,          //Produces 1 parameters
-                                    //Received value:
-                                    //
-                                    //  LARGE_INTEGER
-                                    //
-                                    //Results in:
-                                    //
-                                    // Unicode string representation of
-                                    // a duration.
-
-    SeAdtParmTypeUserAccountControl,//Produces 3 parameters
-                                    //Received value:
-                                    //
-                                    // old and new UserAccountControl values
-                                    //
-                                    //Results in:
-                                    //
-                                    // Unicode string representations of
-                                    // the flags in UserAccountControl.
-                                    // 1 - old value in hex
-                                    // 2 - new value in hex
-                                    // 3 - difference as strings
-
-    SeAdtParmTypeNoUac,             //Produces 3 parameters
-                                    //Received value:
-                                    //
-                                    // none
-                                    //
-                                    //Results in:
-                                    //
-                                    // Three dashes ('-') as unicode strings.
-
-    SeAdtParmTypeMessage,           //Produces 1 Parameter
-                                    //Received value:
-                                    //
-                                    //  ULONG (MessageNo from msobjs.mc)
-                                    //
-                                    //Results in:
-                                    //
-                                    // Unicode string representation of
-                                    // %%MessageNo which the event viewer
-                                    // will replace with the message string
-                                    // from msobjs.mc
-
-    SeAdtParmTypeDateTime,          //Produces 1 Parameter
-                                    //Received value:
-                                    //
-                                    //  LARGE_INTEGER
-                                    //
-                                    //Results in:
-                                    //
-                                    // Unicode string representation of
-                                    // date and time (in _one_ string).
-
-    SeAdtParmTypeSockAddr           // Produces 2 parameters
-                                    //
-                                    // Received value:
-                                    //
-                                    // pointer to SOCKADDR_IN/SOCKADDR_IN6
-                                    // structure
-                                    //
-                                    // Results in:
-                                    //
-                                    // param 1: IP address string
-                                    // param 2: Port number string
-                                    // 
-
-
-} SE_ADT_PARAMETER_TYPE, *PSE_ADT_PARAMETER_TYPE;
-
-#ifndef GUID_DEFINED
-#include <guiddef.h>
-#endif /* GUID_DEFINED */
-
-typedef struct _SE_ADT_OBJECT_TYPE {
-    GUID ObjectType;
-    USHORT Flags;
-#define SE_ADT_OBJECT_ONLY 0x1
-    USHORT Level;
-    ACCESS_MASK AccessMask;
-} SE_ADT_OBJECT_TYPE, *PSE_ADT_OBJECT_TYPE;
-
-typedef struct _SE_ADT_PARAMETER_ARRAY_ENTRY {
-
-    SE_ADT_PARAMETER_TYPE Type;
-    ULONG Length;
-    ULONG_PTR Data[2];
-    PVOID Address;
-
-} SE_ADT_PARAMETER_ARRAY_ENTRY, *PSE_ADT_PARAMETER_ARRAY_ENTRY;
-
-//
-// Structure that will be passed between the Reference Monitor and LSA
-// to transmit auditing information.
-//
-
-#define SE_MAX_AUDIT_PARAMETERS 32
-#define SE_MAX_GENERIC_AUDIT_PARAMETERS 28
-
-typedef struct _SE_ADT_PARAMETER_ARRAY {
-
-    ULONG CategoryId;
-    ULONG AuditId;
-    ULONG ParameterCount;
-    ULONG Length;
-    USHORT Type;
-    ULONG Flags;
-    SE_ADT_PARAMETER_ARRAY_ENTRY Parameters[ SE_MAX_AUDIT_PARAMETERS ];
-
-} SE_ADT_PARAMETER_ARRAY, *PSE_ADT_PARAMETER_ARRAY;
-
-#define SE_ADT_PARAMETERS_SELF_RELATIVE     0x00000001
-
-#endif // _NTLSA_AUDIT_
-
-// end_ntifs
-#endif // _NTLSA_IFS_
 
 //
 // Audit Event Categories
@@ -602,29 +218,29 @@ typedef struct _LSA_OBJECT_ATTRIBUTES {
 NTSTATUS
 NTAPI
 LsaRegisterLogonProcess (
-    __in PLSA_STRING LogonProcessName,
-    __out PHANDLE LsaHandle,
-    __out PLSA_OPERATIONAL_MODE SecurityMode
+    IN PLSA_STRING LogonProcessName,
+    OUT PHANDLE LsaHandle,
+    OUT PLSA_OPERATIONAL_MODE SecurityMode
     );
 
 
 NTSTATUS
 NTAPI
 LsaLogonUser (
-    __in HANDLE LsaHandle,
-    __in PLSA_STRING OriginName,
-    __in SECURITY_LOGON_TYPE LogonType,
-    __in ULONG AuthenticationPackage,
-    __in_bcount(AuthenticationInformationLength) PVOID AuthenticationInformation,
-    __in ULONG AuthenticationInformationLength,
-    __in_opt PTOKEN_GROUPS LocalGroups,
-    __in PTOKEN_SOURCE SourceContext,
-    __out PVOID *ProfileBuffer,
-    __out PULONG ProfileBufferLength,
-    __out PLUID LogonId,
-    __out PHANDLE Token,
-    __out PQUOTA_LIMITS Quotas,
-    __out PNTSTATUS SubStatus
+    IN HANDLE LsaHandle,
+    IN PLSA_STRING OriginName,
+    IN SECURITY_LOGON_TYPE LogonType,
+    IN ULONG AuthenticationPackage,
+    IN PVOID AuthenticationInformation,
+    IN ULONG AuthenticationInformationLength,
+    IN PTOKEN_GROUPS LocalGroups OPTIONAL,
+    IN PTOKEN_SOURCE SourceContext,
+    OUT PVOID *ProfileBuffer,
+    OUT PULONG ProfileBufferLength,
+    OUT PLUID LogonId,
+    OUT PHANDLE Token,
+    OUT PQUOTA_LIMITS Quotas,
+    OUT PNTSTATUS SubStatus
     );
 
 
@@ -633,9 +249,9 @@ LsaLogonUser (
 NTSTATUS
 NTAPI
 LsaLookupAuthenticationPackage (
-    __in HANDLE LsaHandle,
-    __in PLSA_STRING PackageName,
-    __out PULONG AuthenticationPackage
+    IN HANDLE LsaHandle,
+    IN PLSA_STRING PackageName,
+    OUT PULONG AuthenticationPackage
     );
 
 // begin_ntifs
@@ -643,7 +259,7 @@ LsaLookupAuthenticationPackage (
 NTSTATUS
 NTAPI
 LsaFreeReturnBuffer (
-    __in PVOID Buffer
+    IN PVOID Buffer
     );
 
 // end_ntifs
@@ -651,26 +267,26 @@ LsaFreeReturnBuffer (
 NTSTATUS
 NTAPI
 LsaCallAuthenticationPackage (
-    __in HANDLE LsaHandle,
-    __in ULONG AuthenticationPackage,
-    __in_bcount(SubmitBufferLength) PVOID ProtocolSubmitBuffer,
-    __in ULONG SubmitBufferLength,
-    __out_opt PVOID *ProtocolReturnBuffer,
-    __out_opt PULONG ReturnBufferLength,
-    __out_opt PNTSTATUS ProtocolStatus
+    IN HANDLE LsaHandle,
+    IN ULONG AuthenticationPackage,
+    IN PVOID ProtocolSubmitBuffer,
+    IN ULONG SubmitBufferLength,
+    OUT PVOID *ProtocolReturnBuffer,
+    OUT PULONG ReturnBufferLength,
+    OUT PNTSTATUS ProtocolStatus
     );
 
 
 NTSTATUS
 NTAPI
 LsaDeregisterLogonProcess (
-    __in HANDLE LsaHandle
+    IN HANDLE LsaHandle
     );
 
 NTSTATUS
 NTAPI
 LsaConnectUntrusted (
-    __out PHANDLE LsaHandle
+    OUT PHANDLE LsaHandle
     );
 
 #endif // _NTLSA_IFS_
@@ -876,6 +492,21 @@ typedef enum _POLICY_LSA_SERVER_ROLE {
     PolicyServerRolePrimary
 
 } POLICY_LSA_SERVER_ROLE, *PPOLICY_LSA_SERVER_ROLE;
+
+
+//
+// The following data type is used to represent the state of the LSA
+// server (enabled or disabled).  Some operations may only be performed on
+// an enabled LSA server.
+//
+
+typedef enum _POLICY_SERVER_ENABLE_STATE {
+
+    PolicyServerEnabled = 2,
+    PolicyServerDisabled
+
+} POLICY_SERVER_ENABLE_STATE, *PPOLICY_SERVER_ENABLE_STATE;
+
 
 //
 // The following data type is used to specify the auditing options for
@@ -1215,6 +846,24 @@ typedef enum _POLICY_DOMAIN_INFORMATION_CLASS {
 
 } POLICY_DOMAIN_INFORMATION_CLASS, *PPOLICY_DOMAIN_INFORMATION_CLASS;
 
+
+//
+// QualityOfService information.  Corresponds to PolicyDomainQualityOfServiceInformation
+//
+
+#define POLICY_QOS_SCHANNEL_REQUIRED            0x00000001
+#define POLICY_QOS_OUTBOUND_INTEGRITY           0x00000002
+#define POLICY_QOS_OUTBOUND_CONFIDENTIALITY     0x00000004
+#define POLICY_QOS_INBOUND_INTEGRITY            0x00000008
+#define POLICY_QOS_INBOUND_CONFIDENTIALITY      0x00000010
+#define POLICY_QOS_ALLOW_LOCAL_ROOT_CERT_STORE  0x00000020
+#define POLICY_QOS_RAS_SERVER_ALLOWED           0x00000040
+#define POLICY_QOS_DHCP_SERVER_ALLOWED          0x00000080
+
+//
+// Bits 0x00000100 through 0xFFFFFFFF are reserved for future use.
+//
+
 //
 // The following structure corresponds to the PolicyEfsInformation
 // information class
@@ -1227,7 +876,6 @@ typedef struct _POLICY_DOMAIN_EFS_INFO {
 
 } POLICY_DOMAIN_EFS_INFO, *PPOLICY_DOMAIN_EFS_INFO;
 
-//
 // where the members have the following usage:
 //
 //      InfoLength - Length of the EFS Information blob
@@ -1239,7 +887,6 @@ typedef struct _POLICY_DOMAIN_EFS_INFO {
 //
 // The following structure corresponds to the PolicyDomainKerberosTicketInformation
 // information class
-//
 
 #define POLICY_KERBEROS_VALIDATE_CLIENT 0x00000080
 
@@ -1412,19 +1059,15 @@ typedef PLSA_TRUST_INFORMATION PTRUSTED_DOMAIN_INFORMATION_BASIC;
 #define TRUST_TYPE_DOWNLEVEL            0x00000001  // NT4 and before
 #define TRUST_TYPE_UPLEVEL              0x00000002  // NT5
 #define TRUST_TYPE_MIT                  0x00000003  // Trust with a MIT Kerberos realm
-// #define TRUST_TYPE_DCE                  0x00000004  // Trust with a DCE realm
+#define TRUST_TYPE_DCE                  0x00000004  // Trust with a DCE realm
 // Levels 0x5 - 0x000FFFFF reserved for future use
 // Provider specific trust levels are from 0x00100000 to 0xFFF00000
 
 #define TRUST_ATTRIBUTE_NON_TRANSITIVE     0x00000001  // Disallow transitivity
 #define TRUST_ATTRIBUTE_UPLEVEL_ONLY       0x00000002  // Trust link only valid for uplevel client
-#define TRUST_ATTRIBUTE_QUARANTINED_DOMAIN 0x00000004  // Used to quarantine domains
+#define TRUST_ATTRIBUTE_FILTER_SIDS        0x00000004  // Used to quarantine domains
 #define TRUST_ATTRIBUTE_FOREST_TRANSITIVE  0x00000008  // This link may contain forest trust information
-#define TRUST_ATTRIBUTE_CROSS_ORGANIZATION 0x00000010  // This trust is to a domain/forest which is not part of this enterprise
-#define TRUST_ATTRIBUTE_WITHIN_FOREST      0x00000020  // Trust is internal to this forest
-#define TRUST_ATTRIBUTE_TREAT_AS_EXTERNAL  0x00000040  // Trust is to be treated as external for trust boundary purposes
-#define TRUST_ATTRIBUTE_TRUST_USES_RC4_ENCRYPTION     0x00000080 // MIT trust with RC4
-// Trust attributes 0x00000040 through 0x00200000 are reserved for future use
+// Trust attributes 0x00000010 through 0x00200000 are reserved for future use
 // Trust attributes 0x00400000 through 0x00800000 were used previously (up to W2K) and should not be re-used
 // Trust attributes 0x01000000 through 0x80000000 are reserved for user
 #define TRUST_ATTRIBUTES_VALID          0xFF03FFFF
@@ -1509,6 +1152,8 @@ typedef enum {
 
 } LSA_FOREST_TRUST_RECORD_TYPE;
 
+#define LSA_FOREST_TRUST_RECORD_TYPE_UNRECOGNIZED 0x80000000
+
 //
 // Bottom 16 bits of the flags are reserved for disablement reasons
 //
@@ -1544,7 +1189,6 @@ typedef struct _LSA_FOREST_TRUST_DOMAIN_INFO {
 
 } LSA_FOREST_TRUST_DOMAIN_INFO, *PLSA_FOREST_TRUST_DOMAIN_INFO;
 
-
 //
 //  To prevent huge data to be passed in, we should put a limit on LSA_FOREST_TRUST_BINARY_DATA.
 //      128K is large enough that can't be reached in the near future, and small enough not to
@@ -1561,6 +1205,7 @@ typedef struct _LSA_FOREST_TRUST_BINARY_DATA {
     ULONG Length;
     PUCHAR Buffer;
 #endif
+
 
 } LSA_FOREST_TRUST_BINARY_DATA, *PLSA_FOREST_TRUST_BINARY_DATA;
 
@@ -1600,6 +1245,7 @@ typedef struct _LSA_FOREST_TRUST_RECORD {
 typedef struct _LSA_FOREST_TRUST_INFORMATION {
 
 #ifdef MIDL_PASS
+
     [range(0, MAX_RECORDS_IN_FOREST_TRUST_INFO)] ULONG RecordCount;
     [size_is( RecordCount )] PLSA_FOREST_TRUST_RECORD * Entries;
 #else
@@ -1664,13 +1310,13 @@ typedef struct _LSA_ENUMERATION_INFORMATION {
 NTSTATUS
 NTAPI
 LsaFreeMemory(
-    __in_opt PVOID Buffer
+    IN PVOID Buffer
     );
 
 NTSTATUS
 NTAPI
 LsaClose(
-    __in LSA_HANDLE ObjectHandle
+    IN LSA_HANDLE ObjectHandle
     );
 
 
@@ -1697,72 +1343,72 @@ typedef struct _SECURITY_LOGON_SESSION_DATA {
 NTSTATUS
 NTAPI
 LsaEnumerateLogonSessions(
-    __out PULONG LogonSessionCount,
-    __out PLUID * LogonSessionList
+    OUT PULONG  LogonSessionCount,
+    OUT PLUID * LogonSessionList
     );
 
 NTSTATUS
 NTAPI
 LsaGetLogonSessionData(
-    __in PLUID LogonId,
-    __out PSECURITY_LOGON_SESSION_DATA * ppLogonSessionData
+    IN PLUID    LogonId,
+    OUT PSECURITY_LOGON_SESSION_DATA * ppLogonSessionData
     );
 
 NTSTATUS
 NTAPI
 LsaOpenPolicy(
-    __in_opt PLSA_UNICODE_STRING SystemName,
-    __in PLSA_OBJECT_ATTRIBUTES ObjectAttributes,
-    __in ACCESS_MASK DesiredAccess,
-    __out PLSA_HANDLE PolicyHandle
+    IN PLSA_UNICODE_STRING SystemName OPTIONAL,
+    IN PLSA_OBJECT_ATTRIBUTES ObjectAttributes,
+    IN ACCESS_MASK DesiredAccess,
+    IN OUT PLSA_HANDLE PolicyHandle
     );
 
 
 NTSTATUS
 NTAPI
 LsaQueryInformationPolicy(
-    __in LSA_HANDLE PolicyHandle,
-    __in POLICY_INFORMATION_CLASS InformationClass,
-    __out PVOID *Buffer
+    IN LSA_HANDLE PolicyHandle,
+    IN POLICY_INFORMATION_CLASS InformationClass,
+    OUT PVOID *Buffer
     );
 
 NTSTATUS
 NTAPI
 LsaSetInformationPolicy(
-    __in LSA_HANDLE PolicyHandle,
-    __in POLICY_INFORMATION_CLASS InformationClass,
-    __in PVOID Buffer
+    IN LSA_HANDLE PolicyHandle,
+    IN POLICY_INFORMATION_CLASS InformationClass,
+    IN PVOID Buffer
     );
 
 NTSTATUS
 NTAPI
 LsaQueryDomainInformationPolicy(
-    __in LSA_HANDLE PolicyHandle,
-    __in POLICY_DOMAIN_INFORMATION_CLASS InformationClass,
-    __out PVOID *Buffer
+    IN LSA_HANDLE PolicyHandle,
+    IN POLICY_DOMAIN_INFORMATION_CLASS InformationClass,
+    OUT PVOID *Buffer
     );
 
 NTSTATUS
 NTAPI
 LsaSetDomainInformationPolicy(
-    __in LSA_HANDLE PolicyHandle,
-    __in POLICY_DOMAIN_INFORMATION_CLASS InformationClass,
-    __in_opt PVOID Buffer
+    IN LSA_HANDLE PolicyHandle,
+    IN POLICY_DOMAIN_INFORMATION_CLASS InformationClass,
+    IN PVOID Buffer
     );
 
 
 NTSTATUS
 NTAPI
 LsaRegisterPolicyChangeNotification(
-    __in POLICY_NOTIFICATION_INFORMATION_CLASS InformationClass,
-    __in HANDLE  NotificationEventHandle
+    IN POLICY_NOTIFICATION_INFORMATION_CLASS InformationClass,
+    IN HANDLE  NotificationEventHandle
     );
 
 NTSTATUS
 NTAPI
 LsaUnregisterPolicyChangeNotification(
-    __in POLICY_NOTIFICATION_INFORMATION_CLASS InformationClass,
-    __in HANDLE  NotificationEventHandle
+    IN POLICY_NOTIFICATION_INFORMATION_CLASS InformationClass,
+    IN HANDLE  NotificationEventHandle
     );
 
 
@@ -1770,43 +1416,43 @@ LsaUnregisterPolicyChangeNotification(
 NTSTATUS
 NTAPI
 LsaEnumerateTrustedDomains(
-    __in LSA_HANDLE PolicyHandle,
-    __inout PLSA_ENUMERATION_HANDLE EnumerationContext,
-    __out PVOID *Buffer,
-    __in ULONG PreferedMaximumLength,
-    __out PULONG CountReturned
+    IN LSA_HANDLE PolicyHandle,
+    IN OUT PLSA_ENUMERATION_HANDLE EnumerationContext,
+    OUT PVOID *Buffer,
+    IN ULONG PreferedMaximumLength,
+    OUT PULONG CountReturned
     );
 
 
 NTSTATUS
 NTAPI
 LsaLookupNames(
-    __in LSA_HANDLE PolicyHandle,
-    __in ULONG Count,
-    __in PLSA_UNICODE_STRING Names,
-    __out PLSA_REFERENCED_DOMAIN_LIST *ReferencedDomains,
-    __out PLSA_TRANSLATED_SID *Sids
+    IN LSA_HANDLE PolicyHandle,
+    IN ULONG Count,
+    IN PLSA_UNICODE_STRING Names,
+    OUT PLSA_REFERENCED_DOMAIN_LIST *ReferencedDomains,
+    OUT PLSA_TRANSLATED_SID *Sids
     );
 
 NTSTATUS
 NTAPI
 LsaLookupNames2(
-    __in LSA_HANDLE PolicyHandle,
-    __in ULONG Flags, // Reserved
-    __in ULONG Count,
-    __in PLSA_UNICODE_STRING Names,
-    __out PLSA_REFERENCED_DOMAIN_LIST *ReferencedDomains,
-    __out PLSA_TRANSLATED_SID2 *Sids
+    IN LSA_HANDLE PolicyHandle,
+    IN ULONG Flags, // Reserved
+    IN ULONG Count,
+    IN PLSA_UNICODE_STRING Names,
+    OUT PLSA_REFERENCED_DOMAIN_LIST *ReferencedDomains,
+    OUT PLSA_TRANSLATED_SID2 *Sids
     );
 
 NTSTATUS
 NTAPI
 LsaLookupSids(
-    __in LSA_HANDLE PolicyHandle,
-    __in ULONG Count,
-    __in PSID *Sids,
-    __out PLSA_REFERENCED_DOMAIN_LIST *ReferencedDomains,
-    __out PLSA_TRANSLATED_NAME *Names
+    IN LSA_HANDLE PolicyHandle,
+    IN ULONG Count,
+    IN PSID *Sids,
+    OUT PLSA_REFERENCED_DOMAIN_LIST *ReferencedDomains,
+    OUT PLSA_TRANSLATED_NAME *Names
     );
 
 
@@ -1829,10 +1475,10 @@ LsaLookupSids(
 NTSTATUS
 NTAPI
 LsaEnumerateAccountsWithUserRight(
-    __in LSA_HANDLE PolicyHandle,
-    __in_opt PLSA_UNICODE_STRING UserRight,
-    __out PVOID *Buffer,
-    __out PULONG CountReturned
+    IN LSA_HANDLE PolicyHandle,
+    IN OPTIONAL PLSA_UNICODE_STRING UserRights,
+    OUT PVOID *EnumerationBuffer,
+    OUT PULONG CountReturned
     );
 
 //
@@ -1843,29 +1489,29 @@ LsaEnumerateAccountsWithUserRight(
 NTSTATUS
 NTAPI
 LsaEnumerateAccountRights(
-    __in LSA_HANDLE PolicyHandle,
-    __in PSID AccountSid,
-    __deref_out_ecount(*CountOfRights) PLSA_UNICODE_STRING *UserRights,
-    __out PULONG CountOfRights
+    IN LSA_HANDLE PolicyHandle,
+    IN PSID AccountSid,
+    OUT PLSA_UNICODE_STRING *UserRights,
+    OUT PULONG CountOfRights
     );
 
 NTSTATUS
 NTAPI
 LsaAddAccountRights(
-    __in LSA_HANDLE PolicyHandle,
-    __in PSID AccountSid,
-    __in_ecount(CountOfRights) PLSA_UNICODE_STRING UserRights,
-    __in ULONG CountOfRights
+    IN LSA_HANDLE PolicyHandle,
+    IN PSID AccountSid,
+    IN PLSA_UNICODE_STRING UserRights,
+    IN ULONG CountOfRights
     );
 
 NTSTATUS
 NTAPI
 LsaRemoveAccountRights(
-    __in LSA_HANDLE PolicyHandle,
-    __in PSID AccountSid,
-    __in BOOLEAN AllRights,
-    __in_ecount_opt(CountOfRights) PLSA_UNICODE_STRING UserRights,
-    __in ULONG CountOfRights
+    IN LSA_HANDLE PolicyHandle,
+    IN PSID AccountSid,
+    IN BOOLEAN AllRights,
+    IN PLSA_UNICODE_STRING UserRights,
+    IN ULONG CountOfRights
     );
 
 
@@ -1878,92 +1524,92 @@ LsaRemoveAccountRights(
 NTSTATUS
 NTAPI
 LsaOpenTrustedDomainByName(
-    __in LSA_HANDLE PolicyHandle,
-    __in PLSA_UNICODE_STRING TrustedDomainName,
-    __in ACCESS_MASK DesiredAccess,
-    __out PLSA_HANDLE TrustedDomainHandle
+    IN LSA_HANDLE PolicyHandle,
+    IN PLSA_UNICODE_STRING TrustedDomainName,
+    IN ACCESS_MASK DesiredAccess,
+    OUT PLSA_HANDLE TrustedDomainHandle
     );
 
 
 NTSTATUS
 NTAPI
 LsaQueryTrustedDomainInfo(
-    __in LSA_HANDLE PolicyHandle,
-    __in PSID TrustedDomainSid,
-    __in TRUSTED_INFORMATION_CLASS InformationClass,
-    __out PVOID *Buffer
+    IN LSA_HANDLE PolicyHandle,
+    IN PSID TrustedDomainSid,
+    IN TRUSTED_INFORMATION_CLASS InformationClass,
+    OUT PVOID *Buffer
     );
 
 NTSTATUS
 NTAPI
 LsaSetTrustedDomainInformation(
-    __in LSA_HANDLE PolicyHandle,
-    __in PSID TrustedDomainSid,
-    __in TRUSTED_INFORMATION_CLASS InformationClass,
-    __in PVOID Buffer
+    IN LSA_HANDLE PolicyHandle,
+    IN PSID TrustedDomainSid,
+    IN TRUSTED_INFORMATION_CLASS InformationClass,
+    IN PVOID Buffer
     );
 
 NTSTATUS
 NTAPI
 LsaDeleteTrustedDomain(
-    __in LSA_HANDLE PolicyHandle,
-    __in PSID TrustedDomainSid
+    IN LSA_HANDLE PolicyHandle,
+    IN PSID TrustedDomainSid
     );
 
 NTSTATUS
 NTAPI
 LsaQueryTrustedDomainInfoByName(
-    __in LSA_HANDLE PolicyHandle,
-    __in PLSA_UNICODE_STRING TrustedDomainName,
-    __in TRUSTED_INFORMATION_CLASS InformationClass,
-    __out PVOID *Buffer
+    IN LSA_HANDLE PolicyHandle,
+    IN PLSA_UNICODE_STRING TrustedDomainName,
+    IN TRUSTED_INFORMATION_CLASS InformationClass,
+    OUT PVOID *Buffer
     );
 
 NTSTATUS
 NTAPI
 LsaSetTrustedDomainInfoByName(
-    __in LSA_HANDLE PolicyHandle,
-    __in PLSA_UNICODE_STRING TrustedDomainName,
-    __in TRUSTED_INFORMATION_CLASS InformationClass,
-    __in PVOID Buffer
+    IN LSA_HANDLE PolicyHandle,
+    IN PLSA_UNICODE_STRING TrustedDomainName,
+    IN TRUSTED_INFORMATION_CLASS InformationClass,
+    IN PVOID Buffer
     );
 
 NTSTATUS
 NTAPI
 LsaEnumerateTrustedDomainsEx(
-    __in LSA_HANDLE PolicyHandle,
-    __inout PLSA_ENUMERATION_HANDLE EnumerationContext,
-    __out PVOID *Buffer,
-    __in ULONG PreferedMaximumLength,
-    __out PULONG CountReturned
+    IN LSA_HANDLE PolicyHandle,
+    IN OUT PLSA_ENUMERATION_HANDLE EnumerationContext,
+    OUT PVOID *Buffer,
+    IN ULONG PreferedMaximumLength,
+    OUT PULONG CountReturned
     );
 
 NTSTATUS
 NTAPI
 LsaCreateTrustedDomainEx(
-    __in LSA_HANDLE PolicyHandle,
-    __in PTRUSTED_DOMAIN_INFORMATION_EX TrustedDomainInformation,
-    __in PTRUSTED_DOMAIN_AUTH_INFORMATION AuthenticationInformation,
-    __in ACCESS_MASK DesiredAccess,
-    __out PLSA_HANDLE TrustedDomainHandle
+    IN LSA_HANDLE PolicyHandle,
+    IN PTRUSTED_DOMAIN_INFORMATION_EX TrustedDomainInformation,
+    IN PTRUSTED_DOMAIN_AUTH_INFORMATION AuthenticationInformation,
+    IN ACCESS_MASK DesiredAccess,
+    OUT PLSA_HANDLE TrustedDomainHandle
     );
 
 NTSTATUS
 NTAPI
 LsaQueryForestTrustInformation(
-    __in LSA_HANDLE PolicyHandle,
-    __in PLSA_UNICODE_STRING TrustedDomainName,
-    __out PLSA_FOREST_TRUST_INFORMATION * ForestTrustInfo
+    IN LSA_HANDLE PolicyHandle,
+    IN PLSA_UNICODE_STRING TrustedDomainName,
+    OUT PLSA_FOREST_TRUST_INFORMATION * ForestTrustInfo
     );
 
 NTSTATUS
 NTAPI
 LsaSetForestTrustInformation(
-    __in LSA_HANDLE PolicyHandle,
-    __in PLSA_UNICODE_STRING TrustedDomainName,
-    __in PLSA_FOREST_TRUST_INFORMATION ForestTrustInfo,
-    __in BOOLEAN CheckOnly,
-    __out PLSA_FOREST_TRUST_COLLISION_INFORMATION * CollisionInfo
+    IN LSA_HANDLE PolicyHandle,
+    IN PLSA_UNICODE_STRING TrustedDomainName,
+    IN PLSA_FOREST_TRUST_INFORMATION ForestTrustInfo,
+    IN BOOLEAN CheckOnly,
+    OUT PLSA_FOREST_TRUST_COLLISION_INFORMATION * CollisionInfo
     );
 
 // #define TESTING_MATCHING_ROUTINE
@@ -1973,10 +1619,10 @@ LsaSetForestTrustInformation(
 NTSTATUS
 NTAPI
 LsaForestTrustFindMatch(
-    __in LSA_HANDLE PolicyHandle,
-    __in ULONG Type,
-    __in PLSA_UNICODE_STRING Name,
-    __out PLSA_UNICODE_STRING * Match
+    IN LSA_HANDLE PolicyHandle,
+    IN ULONG Type,
+    IN PLSA_UNICODE_STRING Name,
+    OUT PLSA_UNICODE_STRING * Match
     );
 
 #endif
@@ -1989,24 +1635,24 @@ LsaForestTrustFindMatch(
 NTSTATUS
 NTAPI
 LsaStorePrivateData(
-    __in LSA_HANDLE PolicyHandle,
-    __in PLSA_UNICODE_STRING KeyName,
-    __in_opt PLSA_UNICODE_STRING PrivateData
+    IN LSA_HANDLE PolicyHandle,
+    IN PLSA_UNICODE_STRING KeyName,
+    IN PLSA_UNICODE_STRING PrivateData
     );
 
 NTSTATUS
 NTAPI
 LsaRetrievePrivateData(
-    __in LSA_HANDLE PolicyHandle,
-    __in PLSA_UNICODE_STRING KeyName,
-    __out PLSA_UNICODE_STRING * PrivateData
+    IN LSA_HANDLE PolicyHandle,
+    IN PLSA_UNICODE_STRING KeyName,
+    OUT PLSA_UNICODE_STRING * PrivateData
     );
 
 
 ULONG
 NTAPI
 LsaNtStatusToWinError(
-    __in NTSTATUS Status
+    NTSTATUS Status
     );
 
 
@@ -2045,7 +1691,6 @@ typedef struct _NEGOTIATE_PACKAGE_PREFIXES {
     ULONG       MessageType ;
     ULONG       PrefixCount ;
     ULONG       Offset ;        // Offset to array of _PREFIX above
-    ULONG       Pad ;           // Align structure for 64-bit
 } NEGOTIATE_PACKAGE_PREFIXES, *PNEGOTIATE_PACKAGE_PREFIXES ;
 
 typedef struct _NEGOTIATE_CALLER_NAME_REQUEST {
@@ -2057,6 +1702,9 @@ typedef struct _NEGOTIATE_CALLER_NAME_RESPONSE {
     ULONG       MessageType ;
     PWSTR       CallerName ;
 } NEGOTIATE_CALLER_NAME_RESPONSE, * PNEGOTIATE_CALLER_NAME_RESPONSE ;
+
+#define NEGOTIATE_ALLOW_NTLM    0x10000000
+#define NEGOTIATE_NEG_NTLM      0x20000000
 
 #ifndef _NTDEF_
 typedef LSA_UNICODE_STRING UNICODE_STRING, *PUNICODE_STRING;
@@ -2089,6 +1737,7 @@ typedef struct _DOMAIN_PASSWORD_INFORMATION {
 #define DOMAIN_LOCKOUT_ADMINS               0x00000008L
 #define DOMAIN_PASSWORD_STORE_CLEARTEXT     0x00000010L
 #define DOMAIN_REFUSE_PASSWORD_CHANGE       0x00000020L
+#define DOMAIN_NO_LM_OWF_CHANGE             0x00000040L
 
 
 
@@ -2182,6 +1831,11 @@ typedef enum _MSV1_0_PROFILE_BUFFER_TYPE {
     MsV1_0Lm20LogonProfile,
     MsV1_0SmartCardProfile
 } MSV1_0_PROFILE_BUFFER_TYPE, *PMSV1_0_PROFILE_BUFFER_TYPE;
+
+
+
+
+
 
 //
 // MsV1_0InteractiveLogon
@@ -2316,9 +1970,7 @@ typedef struct _MSV1_0_INTERACTIVE_PROFILE {
 #define MSV1_0_DISABLE_PERSONAL_FALLBACK     0x00001000
 #define MSV1_0_ALLOW_FORCE_GUEST             0x00002000
 #define MSV1_0_CLEARTEXT_PASSWORD_SUPPLIED   0x00004000
-#define MSV1_0_USE_DOMAIN_FOR_ROUTING_ONLY   0x00008000
 #define MSV1_0_SUBAUTHENTICATION_DLL_EX      0x00100000
-#define MSV1_0_ALLOW_MSVCHAPV2               0x00010000
 
 //
 // The high order byte is a value indicating the SubAuthentication DLL.
@@ -2345,6 +1997,8 @@ typedef struct _MSV1_0_LM20_LOGON {
     STRING CaseInsensitiveChallengeResponse;
     ULONG ParameterControl;
 } MSV1_0_LM20_LOGON, * PMSV1_0_LM20_LOGON;
+
+
 
 //
 // NT 5.0 SubAuth dlls can use this struct
@@ -2522,28 +2176,6 @@ typedef struct _MSV1_0_CHANGEPASSWORD_RESPONSE {
 
 
 //
-// MsV1_0GenericPassthrough - for remoting a CallPackage to
-// a domain controller on the specified domain
-//
-
-typedef struct _MSV1_0_PASSTHROUGH_REQUEST {
-    MSV1_0_PROTOCOL_MESSAGE_TYPE MessageType;
-    UNICODE_STRING DomainName;
-    UNICODE_STRING PackageName;
-    ULONG DataLength;
-    PUCHAR LogonData;
-    ULONG Pad ;
-} MSV1_0_PASSTHROUGH_REQUEST, *PMSV1_0_PASSTHROUGH_REQUEST;
-
-typedef struct _MSV1_0_PASSTHROUGH_RESPONSE {
-    MSV1_0_PROTOCOL_MESSAGE_TYPE MessageType;
-    ULONG Pad;
-    ULONG DataLength;
-    PUCHAR ValidationData;
-} MSV1_0_PASSTHROUGH_RESPONSE, *PMSV1_0_PASSTHROUGH_RESPONSE;
-
-
-//
 // MsV1_0SubAuthInfo submit buffer and response - for submitting a buffer to a
 // specified Subauthentication Package during an LsaCallAuthenticationPackage().
 // If this Subauthentication is to be done locally, then package this message
@@ -2567,51 +2199,6 @@ typedef struct _MSV1_0_SUBAUTH_RESPONSE{
 } MSV1_0_SUBAUTH_RESPONSE, *PMSV1_0_SUBAUTH_RESPONSE;
 
 
-#define RtlGenRandom                    SystemFunction036
-#define RtlEncryptMemory                SystemFunction040
-#define RtlDecryptMemory                SystemFunction041
-
-BOOLEAN
-RtlGenRandom(
-    __out_bcount(RandomBufferLength) PVOID RandomBuffer,
-    __in ULONG RandomBufferLength
-    );
-
-//
-// The buffer passed into RtlEncryptMemory and RtlDecryptMemory
-// must be a multiple of this length.
-//
-
-#define RTL_ENCRYPT_MEMORY_SIZE             8
-
-//
-// Allow Encrypt/Decrypt across process boundaries.
-// eg: encrypted buffer passed across LPC to another process which calls RtlDecryptMemory.
-//
-
-#define RTL_ENCRYPT_OPTION_CROSS_PROCESS    0x01
-
-//
-// Allow Encrypt/Decrypt across callers with same LogonId.
-// eg: encrypted buffer passed across LPC to another process which calls RtlDecryptMemory whilst impersonating.
-//
-
-#define RTL_ENCRYPT_OPTION_SAME_LOGON       0x02
-
-NTSTATUS
-RtlEncryptMemory(
-    __inout_bcount(MemorySize) PVOID Memory,
-    __in ULONG MemorySize,
-    __in ULONG OptionFlags
-    );
-
-NTSTATUS
-RtlDecryptMemory(
-    __inout_bcount(MemorySize) PVOID Memory,
-    __in ULONG MemorySize,
-    __in ULONG OptionFlags
-    );
-    
 
 // Revision of the Kerberos Protocol.  MS uses Version 5, Revision 6
 
@@ -2669,14 +2256,6 @@ RtlDecryptMemory(
 #define KERB_ETYPE_PKCS7_PUB                               13
 
 //
-// Unsupported but defined types
-//
-
-#define KERB_ETYPE_DES3_CBC_MD5                             5
-#define KERB_ETYPE_DES3_CBC_SHA1                            7
-#define KERB_ETYPE_DES3_CBC_SHA1_KD                        16
-
-//
 // In use types
 //
 
@@ -2717,7 +2296,6 @@ RtlDecryptMemory(
 #define AUTH_REQ_OK_AS_DELEGATE         0x00000100
 #define AUTH_REQ_PREAUTH_REQUIRED       0x00000200
 #define AUTH_REQ_TRANSITIVE_TRUST       0x00000400
-#define AUTH_REQ_ALLOW_S4U_DELEGATE     0x00000800
 
 
 #define AUTH_REQ_PER_USER_FLAGS         (AUTH_REQ_ALLOW_FORWARDABLE | \
@@ -2743,6 +2321,7 @@ RtlDecryptMemory(
 #define KERB_TICKET_FLAGS_hw_authent        0x00100000
 #define KERB_TICKET_FLAGS_ok_as_delegate    0x00040000
 #define KERB_TICKET_FLAGS_name_canonicalize 0x00010000
+#define KERB_TICKET_FLAGS_cname_in_pa_data  0x00040000
 #define KERB_TICKET_FLAGS_reserved1         0x00000001
 
 
@@ -2760,7 +2339,7 @@ RtlDecryptMemory(
 #define KRB_NT_SRV_HST   3                // Service with host name as instance (telnet, rcommands)
 #define KRB_NT_SRV_XHST  4                // Service with host as remaining components
 #define KRB_NT_UID       5                // Unique ID
-#define KRB_NT_ENTERPRISE_PRINCIPAL 10    // UPN **ONLY**
+#define KRB_NT_ENTERPRISE_PRINCIPAL 10    // UPN or SPN
 #define KRB_NT_ENT_PRINCIPAL_AND_ID -130  // UPN and SID
 
 //
@@ -2877,6 +2456,12 @@ typedef struct _KERB_S4U_LOGON {
     UNICODE_STRING ClientRealm; // Optional: Client Realm, if known
 } KERB_S4U_LOGON, *PKERB_S4U_LOGON;
 
+//
+// TBD:  Flags for S4UToSelf() logon
+//
+
+
+
 
 //
 // Use the same profile structure as MSV1_0
@@ -2924,6 +2509,7 @@ typedef struct _KERB_SMART_CARD_PROFILE {
 // For a ticket logon profile, we return the session key from the ticket
 //
 
+
 typedef struct KERB_CRYPTO_KEY {
     LONG KeyType;
     ULONG Length;
@@ -2934,6 +2520,8 @@ typedef struct _KERB_TICKET_PROFILE {
     KERB_INTERACTIVE_PROFILE Profile;
     KERB_CRYPTO_KEY SessionKey;
 } KERB_TICKET_PROFILE, *PKERB_TICKET_PROFILE;
+
+
 
 
 typedef enum _KERB_PROTOCOL_MESSAGE_TYPE {
@@ -2954,10 +2542,7 @@ typedef enum _KERB_PROTOCOL_MESSAGE_TYPE {
     KerbQueryTicketCacheExMessage,
     KerbPurgeTicketCacheExMessage,
     KerbRefreshSmartcardCredentialsMessage,
-    KerbAddExtraCredentialsMessage,
-    KerbQuerySupplementalCredentialsMessage,
-    KerbTransferCredentialsMessage,
-    KerbQueryTicketCacheEx2Message,   
+    KerbQuerySupplementalCredentialsMessage = 18
 } KERB_PROTOCOL_MESSAGE_TYPE, *PKERB_PROTOCOL_MESSAGE_TYPE;
 
 
@@ -2994,23 +2579,6 @@ typedef struct _KERB_TICKET_CACHE_INFO_EX {
     ULONG TicketFlags;
 } KERB_TICKET_CACHE_INFO_EX, *PKERB_TICKET_CACHE_INFO_EX;
 
-typedef struct _KERB_TICKET_CACHE_INFO_EX2 {
-    UNICODE_STRING ClientName;
-    UNICODE_STRING ClientRealm;
-    UNICODE_STRING ServerName;
-    UNICODE_STRING ServerRealm;
-    LARGE_INTEGER StartTime;
-    LARGE_INTEGER EndTime;
-    LARGE_INTEGER RenewTime;
-    LONG EncryptionType;
-    ULONG TicketFlags;
-    
-    //
-    // the following are new in KERB_TICKET_CACHE_INFO_EX2 
-    //
-    
-    ULONG SessionKeyType;
-} KERB_TICKET_CACHE_INFO_EX2, *PKERB_TICKET_CACHE_INFO_EX2;
 
 typedef struct _KERB_QUERY_TKT_CACHE_RESPONSE {
     KERB_PROTOCOL_MESSAGE_TYPE MessageType;
@@ -3018,17 +2586,13 @@ typedef struct _KERB_QUERY_TKT_CACHE_RESPONSE {
     KERB_TICKET_CACHE_INFO Tickets[ANYSIZE_ARRAY];
 } KERB_QUERY_TKT_CACHE_RESPONSE, *PKERB_QUERY_TKT_CACHE_RESPONSE;
 
+
 typedef struct _KERB_QUERY_TKT_CACHE_EX_RESPONSE {
     KERB_PROTOCOL_MESSAGE_TYPE MessageType;
     ULONG CountOfTickets;
     KERB_TICKET_CACHE_INFO_EX Tickets[ANYSIZE_ARRAY];
 } KERB_QUERY_TKT_CACHE_EX_RESPONSE, *PKERB_QUERY_TKT_CACHE_EX_RESPONSE;
 
-typedef struct _KERB_QUERY_TKT_CACHE_EX2_RESPONSE {
-    KERB_PROTOCOL_MESSAGE_TYPE MessageType;
-    ULONG CountOfTickets;
-    KERB_TICKET_CACHE_INFO_EX2 Tickets[ANYSIZE_ARRAY];
-} KERB_QUERY_TKT_CACHE_EX2_RESPONSE, *PKERB_QUERY_TKT_CACHE_EX2_RESPONSE;
 
 //
 // Types for retrieving encoded ticket from the cache
@@ -3048,13 +2612,12 @@ typedef struct _SecHandle
 #define KERB_USE_DEFAULT_TICKET_FLAGS       0x0
 
 // CacheOptions
-#define KERB_RETRIEVE_TICKET_DEFAULT           0x0
-#define KERB_RETRIEVE_TICKET_DONT_USE_CACHE    0x1
-#define KERB_RETRIEVE_TICKET_USE_CACHE_ONLY    0x2
-#define KERB_RETRIEVE_TICKET_USE_CREDHANDLE    0x4
-#define KERB_RETRIEVE_TICKET_AS_KERB_CRED      0x8
-#define KERB_RETRIEVE_TICKET_WITH_SEC_CRED    0x10
-#define KERB_RETRIEVE_TICKET_CACHE_TICKET     0x20
+#define KERB_RETRIEVE_TICKET_DEFAULT        0x0
+#define KERB_RETRIEVE_TICKET_DONT_USE_CACHE 0x1
+#define KERB_RETRIEVE_TICKET_USE_CACHE_ONLY 0x2
+#define KERB_RETRIEVE_TICKET_USE_CREDHANDLE 0x4
+#define KERB_RETRIEVE_TICKET_AS_KERB_CRED   0x8
+#define KERB_RETRIEVE_TICKET_WITH_SEC_CRED  0x10
 
 // Encryption Type options
 #define KERB_ETYPE_DEFAULT 0x0 // don't specify etype in tkt req.
@@ -3095,7 +2658,7 @@ typedef struct _KERB_EXTERNAL_TICKET {
     PKERB_EXTERNAL_NAME ClientName;
     UNICODE_STRING DomainName;
     UNICODE_STRING TargetDomainName;
-    UNICODE_STRING AltTargetDomainName;  // contains ClientDomainName
+    UNICODE_STRING AltTargetDomainName;
     KERB_CRYPTO_KEY SessionKey;
     ULONG TicketFlags;
     ULONG Flags;
@@ -3108,6 +2671,33 @@ typedef struct _KERB_EXTERNAL_TICKET {
     PUCHAR EncodedTicket;
 } KERB_EXTERNAL_TICKET, *PKERB_EXTERNAL_TICKET;
 
+#if 0
+
+typedef struct _KERB_EXTERNAL_TICKET_EX {
+    PKERB_EXTERNAL_NAME ClientName;
+    PKERB_EXTERNAL_NAME ServiceName;
+    PKERB_EXTERNAL_NAME TargetName;
+    UNICODE_STRING ClientRealm;
+    UNICODE_STRING ServerRealm;
+    UNICODE_STRING TargetDomainName;
+    UNICODE_STRING AltTargetDomainName;
+    KERB_CRYPTO_KEY SessionKey;
+    ULONG TicketFlags;
+    ULONG Flags;
+    LARGE_INTEGER KeyExpirationTime;
+    LARGE_INTEGER StartTime;
+    LARGE_INTEGER EndTime;
+    LARGE_INTEGER RenewUntil;
+    LARGE_INTEGER TimeSkew;
+    PKERB_NET_ADDRESSES TicketAddresses;
+    PKERB_AUTH_DATA AuthorizationData;
+    _KERB_EXTERNAL_TICKET_EX * SecondTicket;
+    ULONG EncodedTicketSize;
+    PUCHAR EncodedTicket;
+} KERB_EXTERNAL_TICKET_EX, *PKERB_EXTERNAL_TICKET_EX;
+
+#endif // 0
+
 typedef struct _KERB_RETRIEVE_TKT_REQUEST {
     KERB_PROTOCOL_MESSAGE_TYPE MessageType;
     LUID LogonId;
@@ -3118,9 +2708,32 @@ typedef struct _KERB_RETRIEVE_TKT_REQUEST {
     SecHandle CredentialsHandle;
 } KERB_RETRIEVE_TKT_REQUEST, *PKERB_RETRIEVE_TKT_REQUEST;
 
+#if 0
+
+typedef struct _KERB_RETRIEVE_TKT_EX_REQUEST {
+    KERB_PROTOCOL_MESSAGE_TYPE MessageType;
+    LUID LogonId;
+    KERB_TICKET_CACHE_INFO_EX TicketTemplate;
+    ULONG CacheOptions;
+    SecHandle CredentialsHandle;
+    PKERB_EXTERNAL_TICKET_EX SecondTicket;
+    PKERB_AUTH_DATA UserAuthData;
+    PKERB_NET_ADDRESS Addresses;
+} KERB_RETRIEVE_TKT_EX_REQUEST, *PKERB_RETRIEVE_TKT_EX_REQUEST;
+
+#endif // 0
+
 typedef struct _KERB_RETRIEVE_TKT_RESPONSE {
     KERB_EXTERNAL_TICKET Ticket;
 } KERB_RETRIEVE_TKT_RESPONSE, *PKERB_RETRIEVE_TKT_RESPONSE;
+
+#if 0
+
+typedef struct _KERB_RETRIEVE_TKT_EX_RESPONSE {
+    KERB_EXTERNAL_TICKET_EX Ticket;
+} KERB_RETRIEVE_TKT_EX_RESPONSE, *PKERB_RETRIEVE_TKT_EX_RESPONSE;
+
+#endif // 0
 
 //
 // Used to purge entries from the ticket cache
@@ -3144,7 +2757,8 @@ typedef struct _KERB_PURGE_TKT_CACHE_EX_REQUEST {
     LUID LogonId;
     ULONG Flags;
     KERB_TICKET_CACHE_INFO_EX TicketTemplate;
-} KERB_PURGE_TKT_CACHE_EX_REQUEST, *PKERB_PURGE_TKT_CACHE_EX_REQUEST;  
+} KERB_PURGE_TKT_CACHE_EX_REQUEST, *PKERB_PURGE_TKT_CACHE_EX_REQUEST;
+
 
 
 //
@@ -3163,6 +2777,14 @@ typedef struct _KERB_CHANGEPASSWORD_REQUEST {
     UNICODE_STRING NewPassword;
     BOOLEAN        Impersonating;
 } KERB_CHANGEPASSWORD_REQUEST, *PKERB_CHANGEPASSWORD_REQUEST;
+
+
+
+
+
+
+
+
 
 
 
@@ -3251,56 +2873,23 @@ typedef struct _KERB_ADD_BINDING_CACHE_ENTRY_REQUEST {
 //
 typedef struct _KERB_REFRESH_SCCRED_REQUEST {
     KERB_PROTOCOL_MESSAGE_TYPE MessageType;
-    UNICODE_STRING             CredentialBlob;   // optional
-    LUID                       LogonId;
-    ULONG                      Flags;
+    UNICODE_STRING	       CredentialBlob;	 // optional
+    LUID 		       LogonId;
+    ULONG 		       Flags;
 } KERB_REFRESH_SCCRED_REQUEST, *PKERB_REFRESH_SCCRED_REQUEST;
 
 //
 // Flags for KERB_REFRESH_SCCRED_REQUEST
 //
-//      KERB_REFRESH_SCCRED_RELEASE
-//      Release the smartcard handle for LUID
+//	KERB_REFRESH_SCCRED_RELEASE
+// 	Release the smartcard handle for LUID
 //
 //      KERB_REFRESH_SCCRED_GETTGT
-//      Use the certificate hash in the blob to get a TGT for the logon 
-//      session.
+//	Use the certificate hash in the blob to get a TGT for the logon 
+//	session.
 //
-#define KERB_REFRESH_SCCRED_RELEASE             0x0  
-#define KERB_REFRESH_SCCRED_GETTGT              0x1  
-
-//
-// Request structure for adding extra Server credentials to a given
-// logon session.  Only applicable during AcceptSecurityContext, and
-// requires TCB to alter "other" creds
-//
-
-typedef struct _KERB_ADD_CREDENTIALS_REQUEST {
-    KERB_PROTOCOL_MESSAGE_TYPE MessageType;
-    UNICODE_STRING UserName;
-    UNICODE_STRING DomainName;
-    UNICODE_STRING Password;
-    LUID  LogonId; // optional
-    ULONG Flags;
-} KERB_ADD_CREDENTIALS_REQUEST, *PKERB_ADD_CREDENTIALS_REQUEST;
-
-
-
-#define KERB_REQUEST_ADD_CREDENTIAL     1
-#define KERB_REQUEST_REPLACE_CREDENTIAL 2
-#define KERB_REQUEST_REMOVE_CREDENTIAL  4
-
-//
-// Request structure for transferring credentials between 2 luids.
-// Requires TCB.
-//
-
-typedef struct _KERB_TRANSFER_CRED_REQUEST {
-    KERB_PROTOCOL_MESSAGE_TYPE MessageType;
-    LUID                       OriginLogonId;
-    LUID                       DestinationLogonId;
-    ULONG                      Flags;
-} KERB_TRANSFER_CRED_REQUEST, *PKERB_TRANSFER_CRED_REQUEST;
+#define KERB_REFRESH_SCCRED_RELEASE		0x0  
+#define KERB_REFRESH_SCCRED_GETTGT		0x1  
 
 
 

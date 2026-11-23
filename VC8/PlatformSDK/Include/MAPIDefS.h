@@ -73,12 +73,7 @@ extern "C" {
 
 #if !defined (MIDL_PASS) /* MIDL doesn't want to see these */
 
-#ifndef _MAC
-typedef wchar_t WCHAR;    // wc,   16-bit UNICODE character
-#else
-// some Macintosh compilers don't define wchar_t in a convenient location, or define it as a char
-typedef unsigned short WCHAR;    // wc,   16-bit UNICODE character
-#endif
+typedef WORD				WCHAR;
 
 #ifdef UNICODE
 typedef WCHAR				TCHAR;

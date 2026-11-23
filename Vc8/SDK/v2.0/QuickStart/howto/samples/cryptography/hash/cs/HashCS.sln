@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashCS", "Hash\HashCS.csproj", "{C44DE022-3EC4-4A03-A125-531BCB037FBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C44DE022-3EC4-4A03-A125-531BCB037FBD}.Debug|.NET.ActiveCfg = Debug|.NET
+		{C44DE022-3EC4-4A03-A125-531BCB037FBD}.Debug|.NET.Build.0 = Debug|.NET
+		{C44DE022-3EC4-4A03-A125-531BCB037FBD}.Release|.NET.ActiveCfg = Release|.NET
+		{C44DE022-3EC4-4A03-A125-531BCB037FBD}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

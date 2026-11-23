@@ -1,4 +1,4 @@
-/* Copyright (c) 2001-2005, Microsoft Corp. All rights reserved. */
+/* Copyright (c) 2001-2004, Microsoft Corp. All rights reserved. */
 
 #if _MSC_VER > 1000
 #pragma once
@@ -10,69 +10,40 @@ extern "C" {
 
 
 #if !defined(RC_INVOKED) /* RC complains about long symbols in #ifs */
-#if defined(ISOLATION_AWARE_ENABLED) && (ISOLATION_AWARE_ENABLED != 0)
+#if ISOLATION_AWARE_ENABLED
 
-
-#if !defined(ISOLATION_AWARE_USE_STATIC_LIBRARY)
-#define ISOLATION_AWARE_USE_STATIC_LIBRARY 0
-#endif
-
-#if !defined(ISOLATION_AWARE_BUILD_STATIC_LIBRARY)
-#define ISOLATION_AWARE_BUILD_STATIC_LIBRARY 0
-#endif
 
 #if !defined(ISOLATION_AWARE_INLINE)
-#if ISOLATION_AWARE_BUILD_STATIC_LIBRARY
-#define ISOLATION_AWARE_INLINE /* nothing */
-#else
 #if defined(__cplusplus)
 #define ISOLATION_AWARE_INLINE inline
 #else
 #define ISOLATION_AWARE_INLINE __inline
 #endif
 #endif
-#endif
-
-#if !ISOLATION_AWARE_USE_STATIC_LIBRARY
 
 
-/* These wrappers prevent warnings about taking the addresses of __declspec(dllimport) functions. */
-ISOLATION_AWARE_INLINE HMODULE WINAPI IsolationAwarePrivatezlybNQyVOeNeln(LPCSTR s) { return LoadLibraryA(s); }
-ISOLATION_AWARE_INLINE HMODULE WINAPI IsolationAwarePrivatezlybNQyVOeNelJ(LPCWSTR s) { return LoadLibraryW(s); }
-ISOLATION_AWARE_INLINE HMODULE WINAPI IsolationAwarePrivatezltRgzbQhYRuNaQYRn(LPCSTR s) { return GetModuleHandleA(s); }
-ISOLATION_AWARE_INLINE HMODULE WINAPI IsolationAwarePrivatezltRgzbQhYRuNaQYRJ(LPCWSTR s) { return GetModuleHandleW(s); }
 
-/* temporary support for out of sync headers */
-#define IsolationAwarePrivateG_FqbjaLEiEL IsolationAwarePrivateT_SqbjaYRiRY
-#define IsolationAwarePrivatenCgIiAgEzlnCgpgk IsolationAwarePrivatenPgViNgRzlnPgpgk
-#define WinbaseIsolationAwarePrivateG_HnCgpgk WinbaseIsolationAwarePrivateT_UnPgpgk
-#define IsolationAwarePrivatezlybADyIBeAeln IsolationAwarePrivatezlybNQyVOeNeln
-#define IsolationAwarePrivatezlybADyIBeAelJ IsolationAwarePrivatezlybNQyVOeNelJ
-#define IsolationAwarePrivatezltEgCebCnDDeEff IsolationAwarePrivatezltRgCebPnQQeRff
-
-BOOL WINAPI IsolationAwarePrivatenPgViNgRzlnPgpgk(ULONG_PTR* pulpCookie);
+BOOL WINAPI IsolationAwarePrivatenCgIiAgEzlnCgpgk(ULONG_PTR* pulpCookie);
 
 /*
 These are private.
 */
-__declspec(selectany) HANDLE WinbaseIsolationAwarePrivateT_UnPgpgk = INVALID_HANDLE_VALUE;
-__declspec(selectany) BOOL   IsolationAwarePrivateT_SqbjaYRiRY = FALSE;
-__declspec(selectany) BOOL   WinbaseIsolationAwarePrivateT_SpeRNgRQnPgpgk = FALSE;
-__declspec(selectany) BOOL   WinbaseIsolationAwarePrivateT_SpYRNahcpNYYRQ = FALSE;
+__declspec(selectany) HANDLE WinbaseIsolationAwarePrivateG_HnCgpgk = INVALID_HANDLE_VALUE;
+__declspec(selectany) BOOL   IsolationAwarePrivateG_FqbjaLEiEL = FALSE;
+__declspec(selectany) BOOL   WinbaseIsolationAwarePrivateG_FpeEAgEDnCgpgk = FALSE;
+__declspec(selectany) BOOL   WinbaseIsolationAwarePrivateG_FpLEAahcpALLED = FALSE;
+FARPROC WINAPI WinbaseIsolationAwarePrivatetEgCebCnDDeEff_xEeaELDC_DLL(LPCSTR pszProcName);
 
-FARPROC WINAPI WinbaseIsolationAwarePrivatetRgCebPnQQeRff_xReaRYQP_QYY(LPCSTR pszProcName);
-
-#endif /* ISOLATION_AWARE_USE_STATIC_LIBRARY */
-__out HMODULE WINAPI IsolationAwareLoadLibraryA(__in LPCSTR lpLibFileName);
-__out HMODULE WINAPI IsolationAwareLoadLibraryW(__in LPCWSTR lpLibFileName);
-__out HMODULE WINAPI IsolationAwareLoadLibraryExA(__in LPCSTR lpLibFileName,__reserved HANDLE hFile,__in DWORD dwFlags);
-__out HMODULE WINAPI IsolationAwareLoadLibraryExW(__in LPCWSTR lpLibFileName,__reserved HANDLE hFile,__in DWORD dwFlags);
-__out HANDLE WINAPI IsolationAwareCreateActCtxW(__in PCACTCTXW pActCtx);
-void WINAPI IsolationAwareReleaseActCtx(__inout HANDLE hActCtx);
-BOOL WINAPI IsolationAwareActivateActCtx(__inout HANDLE hActCtx,__out ULONG_PTR*lpCookie);
-BOOL WINAPI IsolationAwareDeactivateActCtx(__in DWORD dwFlags,__in ULONG_PTR ulCookie);
-BOOL WINAPI IsolationAwareFindActCtxSectionStringW(__in DWORD dwFlags,__reserved const GUID*lpExtensionGuid,__in ULONG ulSectionId,__in LPCWSTR lpStringToFind,__out PACTCTX_SECTION_KEYED_DATA ReturnedData);
-BOOL WINAPI IsolationAwareQueryActCtxW(__in DWORD dwFlags,__in HANDLE hActCtx,__in_opt PVOID pvSubInstance,__in ULONG ulInfoClass,__out_bcount_part_opt(cbBuffer,*pcbWrittenOrRequired) PVOID pvBuffer,__in SIZE_T cbBuffer,__out_opt SIZE_T*pcbWrittenOrRequired);
+HMODULE WINAPI IsolationAwareLoadLibraryA(LPCSTR lpLibFileName);
+HMODULE WINAPI IsolationAwareLoadLibraryW(LPCWSTR lpLibFileName);
+HMODULE WINAPI IsolationAwareLoadLibraryExA(LPCSTR lpLibFileName,HANDLE hFile,DWORD dwFlags);
+HMODULE WINAPI IsolationAwareLoadLibraryExW(LPCWSTR lpLibFileName,HANDLE hFile,DWORD dwFlags);
+HANDLE WINAPI IsolationAwareCreateActCtxW(PCACTCTXW pActCtx);
+void WINAPI IsolationAwareReleaseActCtx(HANDLE hActCtx);
+BOOL WINAPI IsolationAwareActivateActCtx(HANDLE hActCtx,ULONG_PTR*lpCookie);
+BOOL WINAPI IsolationAwareDeactivateActCtx(DWORD dwFlags,ULONG_PTR ulCookie);
+BOOL WINAPI IsolationAwareFindActCtxSectionStringW(DWORD dwFlags,const GUID*lpExtensionGuid,ULONG ulSectionId,LPCWSTR lpStringToFind,PACTCTX_SECTION_KEYED_DATA ReturnedData);
+BOOL WINAPI IsolationAwareQueryActCtxW(DWORD dwFlags,HANDLE hActCtx,PVOID pvSubInstance,ULONG ulInfoClass,PVOID pvBuffer,SIZE_T cbBuffer,SIZE_T*pcbWrittenOrRequired);
 
 #if defined(UNICODE)
 
@@ -86,115 +57,114 @@ BOOL WINAPI IsolationAwareQueryActCtxW(__in DWORD dwFlags,__in HANDLE hActCtx,__
 
 #endif /* UNICODE */
 
-#if !ISOLATION_AWARE_USE_STATIC_LIBRARY
-ISOLATION_AWARE_INLINE __out HMODULE WINAPI IsolationAwareLoadLibraryA(__in LPCSTR lpLibFileName)
+ISOLATION_AWARE_INLINE HMODULE WINAPI IsolationAwareLoadLibraryA(LPCSTR lpLibFileName)
 {
-    __out HMODULE result = NULL;
+    HMODULE moduleResult = NULL;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
-        return result;
+        return moduleResult;
     __try
     {
-        result = LoadLibraryA(lpLibFileName);
+        moduleResult = LoadLibraryA(lpLibFileName);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
-            const BOOL fPreserveLastError = (result == NULL);
+            const BOOL fPreserveLastError = (moduleResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
             if (fPreserveLastError)
                 SetLastError(dwLastError);
         }
     }
-    return result;
+    return moduleResult;
 }
 
-ISOLATION_AWARE_INLINE __out HMODULE WINAPI IsolationAwareLoadLibraryW(__in LPCWSTR lpLibFileName)
+ISOLATION_AWARE_INLINE HMODULE WINAPI IsolationAwareLoadLibraryW(LPCWSTR lpLibFileName)
 {
-    __out HMODULE result = NULL;
+    HMODULE moduleResult = NULL;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
-        return result;
+        return moduleResult;
     __try
     {
-        result = LoadLibraryW(lpLibFileName);
+        moduleResult = LoadLibraryW(lpLibFileName);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
-            const BOOL fPreserveLastError = (result == NULL);
+            const BOOL fPreserveLastError = (moduleResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
             if (fPreserveLastError)
                 SetLastError(dwLastError);
         }
     }
-    return result;
+    return moduleResult;
 }
 
-ISOLATION_AWARE_INLINE __out HMODULE WINAPI IsolationAwareLoadLibraryExA(__in LPCSTR lpLibFileName,__reserved HANDLE hFile,__in DWORD dwFlags)
+ISOLATION_AWARE_INLINE HMODULE WINAPI IsolationAwareLoadLibraryExA(LPCSTR lpLibFileName,HANDLE hFile,DWORD dwFlags)
 {
-    __out HMODULE result = NULL;
+    HMODULE moduleResult = NULL;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
-        return result;
+        return moduleResult;
     __try
     {
-        result = LoadLibraryExA(lpLibFileName,hFile,dwFlags);
+        moduleResult = LoadLibraryExA(lpLibFileName,hFile,dwFlags);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
-            const BOOL fPreserveLastError = (result == NULL);
+            const BOOL fPreserveLastError = (moduleResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
             if (fPreserveLastError)
                 SetLastError(dwLastError);
         }
     }
-    return result;
+    return moduleResult;
 }
 
-ISOLATION_AWARE_INLINE __out HMODULE WINAPI IsolationAwareLoadLibraryExW(__in LPCWSTR lpLibFileName,__reserved HANDLE hFile,__in DWORD dwFlags)
+ISOLATION_AWARE_INLINE HMODULE WINAPI IsolationAwareLoadLibraryExW(LPCWSTR lpLibFileName,HANDLE hFile,DWORD dwFlags)
 {
-    __out HMODULE result = NULL;
+    HMODULE moduleResult = NULL;
     ULONG_PTR  ulpCookie = 0;
-    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateT_SqbjaYRiRY || IsolationAwarePrivatenPgViNgRzlnPgpgk(&ulpCookie);
+    const BOOL fActivateActCtxSuccess = IsolationAwarePrivateG_FqbjaLEiEL || IsolationAwarePrivatenCgIiAgEzlnCgpgk(&ulpCookie);
     if (!fActivateActCtxSuccess)
-        return result;
+        return moduleResult;
     __try
     {
-        result = LoadLibraryExW(lpLibFileName,hFile,dwFlags);
+        moduleResult = LoadLibraryExW(lpLibFileName,hFile,dwFlags);
     }
     __finally
     {
-        if (!IsolationAwarePrivateT_SqbjaYRiRY)
+        if (!IsolationAwarePrivateG_FqbjaLEiEL)
         {
-            const BOOL fPreserveLastError = (result == NULL);
+            const BOOL fPreserveLastError = (moduleResult == NULL);
             const DWORD dwLastError = fPreserveLastError ? GetLastError() : NO_ERROR;
             (void)IsolationAwareDeactivateActCtx(0, ulpCookie);
             if (fPreserveLastError)
                 SetLastError(dwLastError);
         }
     }
-    return result;
+    return moduleResult;
 }
 
-ISOLATION_AWARE_INLINE __out HANDLE WINAPI IsolationAwareCreateActCtxW(__in PCACTCTXW pActCtx)
+ISOLATION_AWARE_INLINE HANDLE WINAPI IsolationAwareCreateActCtxW(PCACTCTXW pActCtx)
 {
-    __out HANDLE result = INVALID_HANDLE_VALUE;
-    typedef __out HANDLE (WINAPI* PFN)(__in PCACTCTXW pActCtx);
+    HANDLE result = INVALID_HANDLE_VALUE;
+    typedef HANDLE (WINAPI* PFN)(PCACTCTXW pActCtx);
     static PFN s_pfn;
     if (s_pfn == NULL)
     {
-        s_pfn = (PFN)WinbaseIsolationAwarePrivatetRgCebPnQQeRff_xReaRYQP_QYY("CreateActCtxW");
+        s_pfn = (PFN)WinbaseIsolationAwarePrivatetEgCebCnDDeEff_xEeaELDC_DLL("CreateActCtxW");
         if (s_pfn == NULL)
             return result;
     }
@@ -202,13 +172,13 @@ ISOLATION_AWARE_INLINE __out HANDLE WINAPI IsolationAwareCreateActCtxW(__in PCAC
     return result;
 }
 
-ISOLATION_AWARE_INLINE void WINAPI IsolationAwareReleaseActCtx(__inout HANDLE hActCtx)
+ISOLATION_AWARE_INLINE void WINAPI IsolationAwareReleaseActCtx(HANDLE hActCtx)
 {
-    typedef void (WINAPI* PFN)(__inout HANDLE hActCtx);
+    typedef void (WINAPI* PFN)(HANDLE hActCtx);
     static PFN s_pfn;
     if (s_pfn == NULL)
     {
-        s_pfn = (PFN)WinbaseIsolationAwarePrivatetRgCebPnQQeRff_xReaRYQP_QYY("ReleaseActCtx");
+        s_pfn = (PFN)WinbaseIsolationAwarePrivatetEgCebCnDDeEff_xEeaELDC_DLL("ReleaseActCtx");
         if (s_pfn == NULL)
             return;
     }
@@ -216,14 +186,14 @@ ISOLATION_AWARE_INLINE void WINAPI IsolationAwareReleaseActCtx(__inout HANDLE hA
     return;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareActivateActCtx(__inout HANDLE hActCtx,__out ULONG_PTR*lpCookie)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareActivateActCtx(HANDLE hActCtx,ULONG_PTR*lpCookie)
 {
     BOOL fResult = FALSE;
-    typedef BOOL (WINAPI* PFN)(__inout HANDLE hActCtx,__out ULONG_PTR*lpCookie);
+    typedef BOOL (WINAPI* PFN)(HANDLE hActCtx,ULONG_PTR*lpCookie);
     static PFN s_pfn;
     if (s_pfn == NULL)
     {
-        s_pfn = (PFN)WinbaseIsolationAwarePrivatetRgCebPnQQeRff_xReaRYQP_QYY("ActivateActCtx");
+        s_pfn = (PFN)WinbaseIsolationAwarePrivatetEgCebCnDDeEff_xEeaELDC_DLL("ActivateActCtx");
         if (s_pfn == NULL)
             return fResult;
     }
@@ -231,14 +201,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareActivateActCtx(__inout HANDLE h
     return fResult;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareDeactivateActCtx(__in DWORD dwFlags,__in ULONG_PTR ulCookie)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareDeactivateActCtx(DWORD dwFlags,ULONG_PTR ulCookie)
 {
     BOOL fResult = FALSE;
-    typedef BOOL (WINAPI* PFN)(__in DWORD dwFlags,__in ULONG_PTR ulCookie);
+    typedef BOOL (WINAPI* PFN)(DWORD dwFlags,ULONG_PTR ulCookie);
     static PFN s_pfn;
     if (s_pfn == NULL)
     {
-        s_pfn = (PFN)WinbaseIsolationAwarePrivatetRgCebPnQQeRff_xReaRYQP_QYY("DeactivateActCtx");
+        s_pfn = (PFN)WinbaseIsolationAwarePrivatetEgCebCnDDeEff_xEeaELDC_DLL("DeactivateActCtx");
         if (s_pfn == NULL)
             return fResult;
     }
@@ -246,14 +216,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareDeactivateActCtx(__in DWORD dwF
     return fResult;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFindActCtxSectionStringW(__in DWORD dwFlags,__reserved const GUID*lpExtensionGuid,__in ULONG ulSectionId,__in LPCWSTR lpStringToFind,__out PACTCTX_SECTION_KEYED_DATA ReturnedData)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFindActCtxSectionStringW(DWORD dwFlags,const GUID*lpExtensionGuid,ULONG ulSectionId,LPCWSTR lpStringToFind,PACTCTX_SECTION_KEYED_DATA ReturnedData)
 {
     BOOL fResult = FALSE;
-    typedef BOOL (WINAPI* PFN)(__in DWORD dwFlags,__reserved const GUID*lpExtensionGuid,__in ULONG ulSectionId,__in LPCWSTR lpStringToFind,__out PACTCTX_SECTION_KEYED_DATA ReturnedData);
+    typedef BOOL (WINAPI* PFN)(DWORD dwFlags,const GUID*lpExtensionGuid,ULONG ulSectionId,LPCWSTR lpStringToFind,PACTCTX_SECTION_KEYED_DATA ReturnedData);
     static PFN s_pfn;
     if (s_pfn == NULL)
     {
-        s_pfn = (PFN)WinbaseIsolationAwarePrivatetRgCebPnQQeRff_xReaRYQP_QYY("FindActCtxSectionStringW");
+        s_pfn = (PFN)WinbaseIsolationAwarePrivatetEgCebCnDDeEff_xEeaELDC_DLL("FindActCtxSectionStringW");
         if (s_pfn == NULL)
             return fResult;
     }
@@ -261,14 +231,14 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareFindActCtxSectionStringW(__in D
     return fResult;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareQueryActCtxW(__in DWORD dwFlags,__in HANDLE hActCtx,__in_opt PVOID pvSubInstance,__in ULONG ulInfoClass,__out_bcount_part_opt(cbBuffer,*pcbWrittenOrRequired) PVOID pvBuffer,__in SIZE_T cbBuffer,__out_opt SIZE_T*pcbWrittenOrRequired)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareQueryActCtxW(DWORD dwFlags,HANDLE hActCtx,PVOID pvSubInstance,ULONG ulInfoClass,PVOID pvBuffer,SIZE_T cbBuffer,SIZE_T*pcbWrittenOrRequired)
 {
     BOOL fResult = FALSE;
-    typedef BOOL (WINAPI* PFN)(__in DWORD dwFlags,__in HANDLE hActCtx,__in_opt PVOID pvSubInstance,__in ULONG ulInfoClass,__out_bcount_part_opt(cbBuffer,*pcbWrittenOrRequired) PVOID pvBuffer,__in SIZE_T cbBuffer,__out_opt SIZE_T*pcbWrittenOrRequired);
+    typedef BOOL (WINAPI* PFN)(DWORD dwFlags,HANDLE hActCtx,PVOID pvSubInstance,ULONG ulInfoClass,PVOID pvBuffer,SIZE_T cbBuffer,SIZE_T*pcbWrittenOrRequired);
     static PFN s_pfn;
     if (s_pfn == NULL)
     {
-        s_pfn = (PFN)WinbaseIsolationAwarePrivatetRgCebPnQQeRff_xReaRYQP_QYY("QueryActCtxW");
+        s_pfn = (PFN)WinbaseIsolationAwarePrivatetEgCebCnDDeEff_xEeaELDC_DLL("QueryActCtxW");
         if (s_pfn == NULL)
             return fResult;
     }
@@ -278,69 +248,25 @@ ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwareQueryActCtxW(__in DWORD dwFlags
 
 
 
-#define WINBASE_NUMBER_OF(x) (sizeof(x) / sizeof((x)[0]))
-
-typedef struct IsolationAwarePrivate_pBAFGnAG_zBqHyr_vAsB {
-    HMODULE (WINAPI * WinbaseIsolationAwarePrivateybNQn)(LPCSTR a);
-    HMODULE (WINAPI * WinbaseIsolationAwarePrivateybNQJ)(LPCWSTR w);
-    PCSTR  WinbaseIsolationAwarePrivateANZRn;
-    PCWSTR WinbaseIsolationAwarePrivateANZRJ;
-} IsolationAwarePrivatepBAFGnAG_zBqHyr_vAsB;
-typedef const IsolationAwarePrivatepBAFGnAG_zBqHyr_vAsB *IsolationAwarePrivateCpBAFGnAG_zBqHyr_vAsB;
-
-typedef struct IsolationAwarePrivate_zHGnoyr_zBqHyr_vAsB {
-    HMODULE WinbaseIsolationAwarePrivateybNQRQzbQhYR;
-} IsolationAwarePrivatezHGnoyr_zBqHyr_vAsB, *IsolationAwarePrivateCzHGnoyr_zBqHyr_vAsB;
-
-ISOLATION_AWARE_INLINE FARPROC WINAPI
-IsolationAwarePrivatezltRgCebPnQQeRff(
-    IsolationAwarePrivateCpBAFGnAG_zBqHyr_vAsB c,
-    IsolationAwarePrivateCzHGnoyr_zBqHyr_vAsB m,
-    LPCSTR ProcName
+FORCEINLINE
+HMODULE
+WINAPI
+WinbaseIsolationAwarePrivatetEgzbDhLEuAaDLE_xEeaELDC_DLL(
     )
 {
-    static HMODULE s_moduleUnicows;
-    static BOOL s_fUnicowsInitialized;
-    FARPROC Proc = NULL;
-    HMODULE hModule;
-
-    /*
-       get unicows.dll loaded on-demand
-    */
-    if (!s_fUnicowsInitialized)
-    {
-        if ((GetVersion() & 0x80000000) != 0)
-        {
-            GetFileAttributesW(L"???.???");
-            s_moduleUnicows = GetModuleHandleA("Unicows.dll");
-        }
-        s_fUnicowsInitialized = TRUE;
-    }
-
-    /*
-       always call GetProcAddress(unicows) before the usual .dll
-    */
-    if (s_moduleUnicows != NULL)
-    {
-        Proc = GetProcAddress(s_moduleUnicows, ProcName);
-        if (Proc != NULL)
-            goto Exit;
-    }
-
-    hModule = m->WinbaseIsolationAwarePrivateybNQRQzbQhYR;
-    if (hModule == NULL)
-    {
-        hModule = (((GetVersion() & 0x80000000) != 0) ? (*c->WinbaseIsolationAwarePrivateybNQn)(c->WinbaseIsolationAwarePrivateANZRn) : (*c->WinbaseIsolationAwarePrivateybNQJ)(c->WinbaseIsolationAwarePrivateANZRJ));
-        if (hModule == NULL)
-            goto Exit;
-        m->WinbaseIsolationAwarePrivateybNQRQzbQhYR = hModule;
-    }
-    Proc = GetProcAddress(hModule, ProcName);
-Exit:
-    return Proc;
+    HMODULE hKernel32 = GetModuleHandleW(L"Kernel32.dll");
+    if (hKernel32 == NULL
+           && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED
+       )
+        hKernel32 = GetModuleHandleA("Kernel32.dll");
+    return hKernel32;
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI WinbaseIsolationAwarePrivatetRgzlnPgpgk(void)
+#define WINBASE_NUMBER_OF(x) (sizeof(x) / sizeof((x)[0]))
+
+
+
+ISOLATION_AWARE_INLINE BOOL WINAPI WinbaseIsolationAwarePrivatetEgzlnCgpgk (void)
 /*
 The correctness of this function depends on it being statically
 linked into its clients.
@@ -353,13 +279,13 @@ Do not use it.
     ACTIVATION_CONTEXT_BASIC_INFORMATION actCtxBasicInfo;
     ULONG_PTR ulpCookie = 0;
 
-    if (IsolationAwarePrivateT_SqbjaYRiRY)
+    if (IsolationAwarePrivateG_FqbjaLEiEL)
     {
         fResult = TRUE;
         goto Exit;
     }
 
-    if (WinbaseIsolationAwarePrivateT_UnPgpgk != INVALID_HANDLE_VALUE)
+    if (WinbaseIsolationAwarePrivateG_HnCgpgk != INVALID_HANDLE_VALUE)
     {
         fResult = TRUE;
         goto Exit;
@@ -368,7 +294,7 @@ Do not use it.
     if (!IsolationAwareQueryActCtxW(
         QUERY_ACTCTX_FLAG_ACTCTX_IS_ADDRESS
         | QUERY_ACTCTX_FLAG_NO_ADDREF,
-        &WinbaseIsolationAwarePrivateT_UnPgpgk,
+        &WinbaseIsolationAwarePrivateG_HnCgpgk,
         NULL,
         ActivationContextBasicInformation,
         &actCtxBasicInfo,
@@ -388,21 +314,21 @@ Do not use it.
         HMODULE hmodSelf;
         PGET_MODULE_HANDLE_EXW pfnGetModuleHandleExW;
 
-        pfnGetModuleHandleExW = (PGET_MODULE_HANDLE_EXW)WinbaseIsolationAwarePrivatetRgCebPnQQeRff_xReaRYQP_QYY("GetModuleHandleExW");
+        pfnGetModuleHandleExW = (PGET_MODULE_HANDLE_EXW)WinbaseIsolationAwarePrivatetEgCebCnDDeEff_xEeaELDC_DLL("GetModuleHandleExW");
         if (pfnGetModuleHandleExW == NULL)
             goto Exit;
 
         if (!(*pfnGetModuleHandleExW)(
                   GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT
                 | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS,
-                (LPCWSTR)&WinbaseIsolationAwarePrivateT_UnPgpgk,
+                (LPCWSTR)&WinbaseIsolationAwarePrivateG_HnCgpgk,
                 &hmodSelf
                 ))
             goto Exit;
 
         rgchFullModulePath[WINBASE_NUMBER_OF(rgchFullModulePath) - 1] = 0;
         rgchFullModulePath[WINBASE_NUMBER_OF(rgchFullModulePath) - 2] = 0;
-        dw = GetModuleFileNameW(hmodSelf, rgchFullModulePath, WINBASE_NUMBER_OF(rgchFullModulePath)-1);
+        dw = GetModuleFileNameW(hmodSelf, rgchFullModulePath, WINBASE_NUMBER_OF(rgchFullModulePath));
         if (dw == 0)
             goto Exit;
         if (rgchFullModulePath[WINBASE_NUMBER_OF(rgchFullModulePath) - 2] != 0)
@@ -429,10 +355,10 @@ Do not use it.
             actCtxBasicInfo.hActCtx = NULL;
         }
 
-        WinbaseIsolationAwarePrivateT_SpeRNgRQnPgpgk = TRUE;
+        WinbaseIsolationAwarePrivateG_FpeEAgEDnCgpgk = TRUE;
     }
 
-    WinbaseIsolationAwarePrivateT_UnPgpgk = actCtxBasicInfo.hActCtx;
+    WinbaseIsolationAwarePrivateG_HnCgpgk = actCtxBasicInfo.hActCtx;
 
 #define ACTIVATION_CONTEXT_SECTION_DLL_REDIRECTION              (2)
 
@@ -473,7 +399,7 @@ If you use id 2, this function fetches data from your .dll
     that you do not need to worry about cleaning up.
 */
 {
-    return WinbaseIsolationAwarePrivatetRgzlnPgpgk();
+    return WinbaseIsolationAwarePrivatetEgzlnCgpgk();
 }
 
 ISOLATION_AWARE_INLINE void WINAPI IsolationAwareCleanup(void)
@@ -485,22 +411,22 @@ This function does nothing, safely, if you use id 2.
 {
     HANDLE hActCtx;
 
-    if (WinbaseIsolationAwarePrivateT_SpYRNahcpNYYRQ)
+    if (WinbaseIsolationAwarePrivateG_FpLEAahcpALLED)
         return;
 
     /* IsolationAware* calls made from here on out will OutputDebugString
        and use the process default activation context instead of id 3 or will
        continue to successfully use id 2 (but still OutputDebugString).
     */
-    WinbaseIsolationAwarePrivateT_SpYRNahcpNYYRQ = TRUE;
+    WinbaseIsolationAwarePrivateG_FpLEAahcpALLED = TRUE;
     
     /* There is no cleanup to do if we did not CreateActCtx but only called QueryActCtx.
     */
-    if (!WinbaseIsolationAwarePrivateT_SpeRNgRQnPgpgk)
+    if (!WinbaseIsolationAwarePrivateG_FpeEAgEDnCgpgk)
         return;
 
-    hActCtx = WinbaseIsolationAwarePrivateT_UnPgpgk;
-    WinbaseIsolationAwarePrivateT_UnPgpgk = NULL; /* process default */
+    hActCtx = WinbaseIsolationAwarePrivateG_HnCgpgk;
+    WinbaseIsolationAwarePrivateG_HnCgpgk = NULL; /* process default */
 
     if (hActCtx == INVALID_HANDLE_VALUE)
         return;
@@ -509,33 +435,33 @@ This function does nothing, safely, if you use id 2.
     IsolationAwareReleaseActCtx(hActCtx);
 }
 
-ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwarePrivatenPgViNgRzlnPgpgk(ULONG_PTR* pulpCookie)
+ISOLATION_AWARE_INLINE BOOL WINAPI IsolationAwarePrivatenCgIiAgEzlnCgpgk(ULONG_PTR* pulpCookie)
 /*
 This function is private to functions present in this header and other headers.
 */
 {
     BOOL fResult = FALSE;
 
-    if (WinbaseIsolationAwarePrivateT_SpYRNahcpNYYRQ)
+    if (WinbaseIsolationAwarePrivateG_FpLEAahcpALLED)
     {
         const static char debugString[] = "IsolationAware function called after IsolationAwareCleanup\n";
         OutputDebugStringA(debugString);
     }
 
-    if (IsolationAwarePrivateT_SqbjaYRiRY)
+    if (IsolationAwarePrivateG_FqbjaLEiEL)
     {
         fResult = TRUE;
         goto Exit;
     }
 
     /* Do not call Init if Cleanup has been called. */
-    if (!WinbaseIsolationAwarePrivateT_SpYRNahcpNYYRQ)
+    if (!WinbaseIsolationAwarePrivateG_FpLEAahcpALLED)
     {
-        if (!WinbaseIsolationAwarePrivatetRgzlnPgpgk())
+        if (!WinbaseIsolationAwarePrivatetEgzlnCgpgk())
             goto Exit;
     }
     /* If Cleanup has been called and id3 was in use, this will activate NULL. */
-    if (!IsolationAwareActivateActCtx(WinbaseIsolationAwarePrivateT_UnPgpgk, pulpCookie))
+    if (!IsolationAwareActivateActCtx(WinbaseIsolationAwarePrivateG_HnCgpgk, pulpCookie))
         goto Exit;
 
     fResult = TRUE;
@@ -544,11 +470,10 @@ Exit:
     {
         const DWORD dwLastError = GetLastError();
         if (dwLastError == ERROR_PROC_NOT_FOUND
-            || dwLastError == ERROR_MOD_NOT_FOUND
             || dwLastError == ERROR_CALL_NOT_IMPLEMENTED
             )
         {
-            IsolationAwarePrivateT_SqbjaYRiRY = TRUE;
+            IsolationAwarePrivateG_FqbjaLEiEL = TRUE;
             fResult = TRUE;
         }
     }
@@ -557,20 +482,20 @@ Exit:
 
 #undef WINBASE_NUMBER_OF
 
-ISOLATION_AWARE_INLINE FARPROC WINAPI WinbaseIsolationAwarePrivatetRgCebPnQQeRff_xReaRYQP_QYY(LPCSTR pszProcName)
+ISOLATION_AWARE_INLINE FARPROC WINAPI WinbaseIsolationAwarePrivatetEgCebCnDDeEff_xEeaELDC_DLL(LPCSTR pszProcName)
 /* This function is shared by the other stubs in this header. */
 {
+    FARPROC proc = NULL;
     static HMODULE s_module;
-    /* Use GetModuleHandle instead of LoadLibrary on kernel32.dll because */
-    /* we already necessarily have a reference on kernel32.dll. */
-    const static IsolationAwarePrivatepBAFGnAG_zBqHyr_vAsB
-        c = { IsolationAwarePrivatezltRgzbQhYRuNaQYRn, IsolationAwarePrivatezltRgzbQhYRuNaQYRJ, "Kernel32.dll", L"Kernel32.dll" };
-    static IsolationAwarePrivatezHGnoyr_zBqHyr_vAsB m;
-
-    return IsolationAwarePrivatezltRgCebPnQQeRff(&c, &m, pszProcName);
+    if (s_module == NULL)
+    {
+        s_module = WinbaseIsolationAwarePrivatetEgzbDhLEuAaDLE_xEeaELDC_DLL();
+        if (s_module == NULL)
+            return proc;
+    }
+    proc = GetProcAddress(s_module, pszProcName);
+    return proc;
 }
-
-#endif /* ISOLATION_AWARE_USE_STATIC_LIBRARY */
 
 #define ActivateActCtx IsolationAwareActivateActCtx
 #define CreateActCtxW IsolationAwareCreateActCtxW

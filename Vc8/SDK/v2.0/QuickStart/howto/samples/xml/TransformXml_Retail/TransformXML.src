@@ -1,0 +1,3 @@
+C# Source:CS\TransformXML\TransformXML.cs,CS\TransformXML\books.xml,CS\TransformXML\Books.xsl,CS\TransformXML\NiceFormat.xml,CS\TransformXML\ProcessParametersA.xml,CS\TransformXML\ProcessParametersb.xml,CS\TransformXML\StyleSheetGenerator.xsl
+VB Source:VB\TransformXML\TransformXML.vb,VB\TransformXML\books.xml,VB\TransformXML\Books.xsl,VB\TransformXML\NiceFormat.xml,VB\TransformXML\ProcessParametersA.xml,VB\TransformXML\ProcessParametersb.xml,VB\TransformXML\StyleSheetGenerator.xsl
+C++ Source:CP\TransformXML\TransformXML.cpp,CP\TransformXML\books.xml,CP\TransformXML\Books.xsl,CP\TransformXML\NiceFormat.xml,CP\TransformXML\ProcessParametersA.xml,CP\TransformXML\ProcessParametersb.xml,CP\TransformXML\StyleSheetGenerator.xsl

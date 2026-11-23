@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+	<siteMapNode url="~/aspnet/doc/ctrlref/webparts/default.aspx" title="WebParts Controls">
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/webpartmanager.aspx" title="WebPartManager"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/proxywebpartmanager.aspx" title="ProxyWebPartManager"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/webpartzone.aspx" title="WebPartZone"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/catalogzone.aspx" title="CatalogZone"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/declarativecatalogpart.aspx" title="DeclarativeCatalogPart"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/pagecatalogpart.aspx" title="PageCatalogPart"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/importcatalogpart.aspx" title="ImportCatalogPart"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/editorzone.aspx" title="EditorZone"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/appearanceeditorpart.aspx" title="AppearanceEditorPart"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/behavioreditorpart.aspx" title="BehaviorEditorPart"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/layouteditorpart.aspx" title="LayoutEditorPart"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/propertygrideditorpart.aspx" title="PropertyGridEditorPart"/>
+           <siteMapNode url="~/aspnet/doc/ctrlref/webparts/connectionzone.aspx" title="ConnectionZone"/>
+        </siteMapNode>
+</siteMap>

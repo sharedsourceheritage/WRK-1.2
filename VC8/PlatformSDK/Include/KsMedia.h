@@ -869,108 +869,6 @@ typedef struct {
 #define KSDSOUND_3D_MODE_HEADRELATIVE    0x00000001
 #define KSDSOUND_3D_MODE_DISABLE         0x00000002
 
-//===========================================================================
-// Definitions intended for hardware acceleration of the HRTF 3D algorithm
-//===========================================================================
-
-#define KSDSOUND_BUFFER_CTRL_HRTF_3D        0x40000000
-
-typedef struct {
-    ULONG                   Size;           // This is the size of the struct in bytes
-    ULONG                   Enabled;
-    BOOL                    SwapChannels;
-    BOOL                    ZeroAzimuth;
-    BOOL                    CrossFadeOutput;
-    ULONG                   FilterSize;     // This is the additional size of the filter coeff in bytes
-} KSDS3D_HRTF_PARAMS_MSG, *PKSDS3D_HRTF_PARAMS_MSG;
-
-// HRTF filter quality levels
-typedef enum {
-    FULL_FILTER,
-    LIGHT_FILTER,
-    KSDS3D_FILTER_QUALITY_COUNT
-} KSDS3D_HRTF_FILTER_QUALITY;
-
-typedef struct {
-    ULONG                       Size;       // This is the size of the struct in bytes
-    KSDS3D_HRTF_FILTER_QUALITY  Quality;
-    FLOAT                       SampleRate;
-    ULONG                       MaxFilterSize;
-    ULONG                       FilterTransientMuteLength;
-    ULONG                       FilterOverlapBufferLength;
-    ULONG                       OutputOverlapBufferLength;
-    ULONG                       Reserved;
-} KSDS3D_HRTF_INIT_MSG, *PKSDS3D_HRTF_INIT_MSG;
-
-// Coefficient formats
-typedef enum {
-    FLOAT_COEFF,
-    SHORT_COEFF,
-    KSDS3D_COEFF_COUNT
-} KSDS3D_HRTF_COEFF_FORMAT;
-
-// Filter methods
-typedef enum {
-    DIRECT_FORM,
-    CASCADE_FORM,
-    KSDS3D_FILTER_METHOD_COUNT
-} KSDS3D_HRTF_FILTER_METHOD;
-
-// Filter methods
-typedef enum {
-    DS3D_HRTF_VERSION_1
-} KSDS3D_HRTF_FILTER_VERSION;
-
-typedef struct {
-    KSDS3D_HRTF_FILTER_METHOD    FilterMethod;
-    KSDS3D_HRTF_COEFF_FORMAT     CoeffFormat;
-    KSDS3D_HRTF_FILTER_VERSION   Version;
-    ULONG                        Reserved;
-} KSDS3D_HRTF_FILTER_FORMAT_MSG, *PKSDS3D_HRTF_FILTER_FORMAT_MSG;
-
-#define STATIC_KSPROPSETID_Hrtf3d\
-    0xb66decb0L, 0xa083, 0x11d0, 0x85, 0x1e, 0x00, 0xc0, 0x4f, 0xd9, 0xba, 0xf3
-DEFINE_GUIDSTRUCT("b66decb0-a083-11d0-851e-00c04fd9baf3", KSPROPSETID_Hrtf3d);
-#define KSPROPSETID_Hrtf3d DEFINE_GUIDNAMED(KSPROPSETID_Hrtf3d)
-
-typedef enum {
-    KSPROPERTY_HRTF3D_PARAMS = 0,
-    KSPROPERTY_HRTF3D_INITIALIZE,
-    KSPROPERTY_HRTF3D_FILTER_FORMAT
-} KSPROPERTY_HRTF3D;
-
-
-//===========================================================================
-// Definitions related to the obsolete Interaural Time Delay 3D algorithm
-//===========================================================================
-
-// DirectSound3D FIR context
-typedef struct {
-    LONG                Channel;
-    FLOAT               VolSmoothScale;
-    FLOAT               TotalDryAttenuation;
-    FLOAT               TotalWetAttenuation;
-    LONG                SmoothFrequency;
-    LONG                Delay;
-} KSDS3D_ITD_PARAMS, *PKSDS3D_ITD_PARAMS;
-
-typedef struct {
-    ULONG                 Enabled;
-    KSDS3D_ITD_PARAMS     LeftParams;
-    KSDS3D_ITD_PARAMS     RightParams;
-    ULONG                 Reserved;
-} KSDS3D_ITD_PARAMS_MSG, *PKSDS3D_ITD_PARAMS_MSG;
-
-#define STATIC_KSPROPSETID_Itd3d\
-    0x6429f090L, 0x9fd9, 0x11d0, 0xa7, 0x5b, 0x00, 0xa0, 0xc9, 0x03, 0x65, 0xe3
-DEFINE_GUIDSTRUCT("6429f090-9fd9-11d0-a75b-00a0c90365e3", KSPROPSETID_Itd3d);
-#define KSPROPSETID_Itd3d DEFINE_GUIDNAMED(KSPROPSETID_Itd3d)
-
-typedef enum {
-    KSPROPERTY_ITD3D_PARAMS = 0
-} KSPROPERTY_ITD3D;
-
-
 typedef struct {
    KSDATARANGE              DataRange;
    ULONG                    MaximumChannels;
@@ -1753,6 +1651,20 @@ typedef enum {
 //===========================================================================
 //===========================================================================
 
+#define STATIC_KSPROPSETID_Wave_Queued\
+    0x16a15b10L, 0x16f0, 0x11d0, 0xa1, 0x95, 0x00, 0x20, 0xaf, 0xd1, 0x56, 0xe4
+DEFINE_GUIDSTRUCT("16a15b10-16f0-11d0-a195-0020afd156e4", KSPROPSETID_Wave_Queued);
+#define KSPROPSETID_Wave_Queued DEFINE_GUIDNAMED(KSPROPSETID_Wave_Queued)
+
+#define KSPROPERTY_WAVE_QUEUED_POSITION                 0x00000001
+
+#define STATIC_KSMETHODSETID_Wave_Queued\
+    0x7432c160L, 0x8827, 0x11cf, 0xa1, 0x02, 0x00, 0x20, 0xaf, 0xd1, 0x56, 0xe4
+DEFINE_GUIDSTRUCT("7432c160-8827-11cf-a102-0020afd156e4", KSMETHODSETID_Wave_Queued);
+#define KSMETHODSETID_Wave_Queued DEFINE_GUIDNAMED(KSMETHODSETID_Wave_Queued)
+
+#define KSMETHOD_WAVE_QUEUED_BREAKLOOP                  0x00000001
+
 #define STATIC_KSPROPSETID_Wave\
     0x924e54b0L, 0x630f, 0x11cf, 0xad, 0xa7, 0x08, 0x00, 0x3e, 0x30, 0x49, 0x4a
 DEFINE_GUIDSTRUCT("924e54b0-630f-11cf-ada7-08003e30494a", KSPROPSETID_Wave);
@@ -1920,6 +1832,18 @@ typedef struct {
 #endif // !_NTDDK_
 } LOOPEDSTREAMING_POSITION_EVENT_DATA, *PLOOPEDSTREAMING_POSITION_EVENT_DATA ;
 
+// @@BEGIN_DDKSPLIT
+//===========================================================================
+#define STATIC_KSEVENTSETID_Sysaudio \
+    0x04800320L, 0x4491, 0x11D1, 0xA0, 0x50, 0x40, 0x57, 0x05, 0xC1, 0x00, 0x00
+DEFINE_GUIDSTRUCT("04800320-4491-11D1-A050-405705C10000", KSEVENTSETID_Sysaudio);
+#define KSEVENTSETID_Sysaudio DEFINE_GUIDNAMED(KSEVENTSETID_Sysaudio)
+
+typedef enum {
+    KSEVENT_SYSAUDIO_ADDREMOVE_DEVICE,
+    KSEVENT_SYSAUDIO_CHANGE_DEVICE
+} KSEVENT_SYSAUDIO;
+// @@END_DDKSPLIT
 
 //===========================================================================
 #define STATIC_KSPROPSETID_Sysaudio\
@@ -1935,8 +1859,22 @@ typedef enum {
     KSPROPERTY_SYSAUDIO_SELECT_GRAPH = 5,
     KSPROPERTY_SYSAUDIO_CREATE_VIRTUAL_SOURCE = 6,
     KSPROPERTY_SYSAUDIO_DEVICE_DEFAULT = 7,
+// @@BEGIN_DDKSPLIT
+    KSPROPERTY_SYSAUDIO_ALWAYS_CREATE_VIRTUAL_SOURCE = 8,
+    KSPROPERTY_SYSAUDIO_ADDREMOVE_LOCK = 9,
+    KSPROPERTY_SYSAUDIO_ADDREMOVE_UNLOCK = 10,
+    KSPROPERTY_SYSAUDIO_RENDER_PIN_INSTANCES = 11,
+    KSPROPERTY_SYSAUDIO_RENDER_CONNECTION_INDEX = 12,
+    KSPROPERTY_SYSAUDIO_CREATE_VIRTUAL_SOURCE_ONLY = 13,
+// @@END_DDKSPLIT
     KSPROPERTY_SYSAUDIO_INSTANCE_INFO = 14,
+// @@BEGIN_DDKSPLIT
+    KSPROPERTY_SYSAUDIO_PREFERRED_DEVICE = 15,
+// @@END_DDKSPLIT
     KSPROPERTY_SYSAUDIO_COMPONENT_ID = 16,
+// @@BEGIN_DDKSPLIT
+    KSPROPERTY_SYSAUDIO_ADDREMOVE_GFX = 17
+// @@END_DDKSPLIT
 } KSPROPERTY_SYSAUDIO;
 
 typedef struct {
@@ -1945,6 +1883,20 @@ typedef struct {
     GUID PinName;
 } SYSAUDIO_CREATE_VIRTUAL_SOURCE, *PSYSAUDIO_CREATE_VIRTUAL_SOURCE;
 
+// @@BEGIN_DDKSPLIT
+typedef struct {
+    BOOL        Enable;
+    HANDLE      hGfx;
+    ULONG       ulOrder;                    // Order of the GFX
+    ULONG       ulType;                     // Type of the GFX
+    ULONG       ulFlags;
+    ULONG       ulDeviceNameOffset;         // DeviceInterface on which this GFX needs to be attached
+    ULONG       ulFriendlyNameOffset;       // Friendly name of the GFX
+} SYSAUDIO_GFX, *PSYSAUDIO_GFX;
+
+#define GFX_DEVICETYPE_RENDER     1
+#define GFX_DEVICETYPE_CAPTURE    2
+// @@END_DDKSPLIT
 
 typedef struct {
     KSPROPERTY Property;
@@ -1962,6 +1914,15 @@ typedef struct {
 
 #define SYSAUDIO_FLAGS_DONT_COMBINE_PINS        0x00000001
 
+// @@BEGIN_DDKSPLIT
+typedef struct {
+    KSPROPERTY Property;
+    ULONG Flags;
+    ULONG Index;            // KSPROPERTY_SYSAUDIO_DEFAULT_TYPE
+} SYSAUDIO_PREFERRED_DEVICE, *PSYSAUDIO_PREFERRED_DEVICE;
+
+#define SYSAUDIO_FLAGS_CLEAR_PREFERRED          0x00000002
+// @@END_DDKSPLIT
 
 #define STATIC_KSPROPSETID_Sysaudio_Pin \
     0xA3A53220L, 0xC6E4, 0x11D0, 0xB4, 0x65, 0x00, 0x00, 0x1A, 0x18, 0x18, 0xE6
@@ -1969,7 +1930,13 @@ DEFINE_GUIDSTRUCT("A3A53220-C6E4-11D0-B465-00001A1818E6", KSPROPSETID_Sysaudio_P
 #define KSPROPSETID_Sysaudio_Pin DEFINE_GUIDNAMED(KSPROPSETID_Sysaudio_Pin)
 
 typedef enum {
+// @@BEGIN_DDKSPLIT
+    KSPROPERTY_SYSAUDIO_TOPOLOGY_CONNECTION_INDEX = 0,
+// @@END_DDKSPLIT
     KSPROPERTY_SYSAUDIO_ATTACH_VIRTUAL_SOURCE = 1,
+// @@BEGIN_DDKSPLIT
+    KSPROPERTY_SYSAUDIO_PIN_VOLUME_NODE = 2
+// @@END_DDKSPLIT
 } KSPROPERTY_SYSAUDIO_PIN;
 
 typedef struct {
@@ -2039,7 +2006,6 @@ typedef enum {
 } KSPROPERTY_LINEAR;
 
 //===========================================================================
-
 
 //
 // Midi definitions
@@ -3805,21 +3771,6 @@ typedef struct {
     ULONG Capabilities;                 // KSPROPERTY_VIDEOPROCAMP_FLAGS_*
 } KSPROPERTY_VIDEOPROCAMP_NODE_S, *PKSPROPERTY_VIDEOPROCAMP_NODE_S;
 
-typedef struct {
-    KSPROPERTY Property;
-    LONG Value1;
-    ULONG Flags;
-    ULONG Capabilities;
-    LONG Value2;
-} KSPROPERTY_VIDEOPROCAMP_S2, *PKSPROPERTY_VIDEOPROCAMP_S2;
-
-typedef struct {
-    KSP_NODE NodeProperty;
-    LONG Value1;
-    ULONG Flags;
-    ULONG Capabilities;
-    LONG Value2;
-} KSPROPERTY_VIDEOPROCAMP_NODE_S2, *PKSPROPERTY_VIDEOPROCAMP_NODE_S2;
 
 #define KSPROPERTY_VIDEOPROCAMP_FLAGS_AUTO        0X0001L
 #define KSPROPERTY_VIDEOPROCAMP_FLAGS_MANUAL      0X0002L
@@ -3968,6 +3919,7 @@ typedef enum {
 
 
 //===========================================================================
+
 // USB Video Class Definitions
 
 #define STATIC_KSNODETYPE_VIDEO_STREAMING \
@@ -4123,36 +4075,6 @@ typedef struct {
     ULONG Flags;                        // KSPROPERTY_CAMERACONTROL_FLAGS_*
     ULONG Capabilities;                 // KSPROPERTY_CAMERACONTROL_FLAGS_*
 } KSPROPERTY_CAMERACONTROL_NODE_S, PKSPROPERTY_CAMERACONTROL_NODE_S;
-
-typedef struct {
-    KSPROPERTY Property;
-    LONG Value1;
-    ULONG Flags;
-    ULONG Capabilities;
-    LONG Value2;
-} KSPROPERTY_CAMERACONTROL_S2, *PKSPROPERTY_CAMERACONTROL_S2;
-
-typedef struct {
-    KSP_NODE NodeProperty;
-    LONG Value1;
-    ULONG Flags;
-    ULONG Capabilities;
-    LONG Value2;
-} KSPROPERTY_CAMERACONTROL_NODE_S2, *PKSPROPERTY_CAMERACONTROL_NODE_S2;
-
-typedef struct {
-    KSPROPERTY Property;
-    LONG lOcularFocalLength;
-    LONG lObjectiveFocalLengthMin;
-    LONG lObjectiveFocalLengthMax;
-} KSPROPERTY_CAMERACONTROL_FOCAL_LENGTH_S, *PKSPROPERTY_CAMERACONTROL_FOCAL_LENGTH_S;
-
-typedef struct {
-    KSNODEPROPERTY NodeProperty;
-    LONG lOcularFocalLength;
-    LONG lObjectiveFocalLengthMin;
-    LONG lObjectiveFocalLengthMax;
-} KSPROPERTY_CAMERACONTROL_NODE_FOCAL_LENGTH_S, *PKSPROPERTY_CAMERACONTROL_NODE_FOCAL_LENGTH_S;
 
 #define KSPROPERTY_CAMERACONTROL_FLAGS_AUTO        0X0001L
 #define KSPROPERTY_CAMERACONTROL_FLAGS_MANUAL      0X0002L
@@ -4422,7 +4344,9 @@ typedef enum {
 
 #endif // __EDevCtrl__
 
+
 //===========================================================================
+
 
 #define STATIC_PROPSETID_VIDCAP_CROSSBAR\
     0x6a2e0640L, 0x28e4, 0x11d0, 0xa1, 0x8c, 0x00, 0xa0, 0xc9, 0x11, 0x89, 0x56
@@ -4562,14 +4486,6 @@ typedef enum {
     KS_CompressionCaps_CanWindow = 0x10,
 } KS_CompressionCaps;
 
-typedef enum {
-    KS_StreamingHint_FrameInterval = 0x0100,
-    KS_StreamingHint_KeyFrameRate = 0x0200,
-    KS_StreamingHint_PFrameRate = 0x0400,
-    KS_StreamingHint_CompQuality = 0x0800,
-    KS_StreamingHint_CompWindowSize = 0x1000,
-} KS_VideoStreamingHints;
-
 typedef struct {
     KSPROPERTY Property;
     // Note, no VersionString!
@@ -4587,13 +4503,6 @@ typedef struct {
     ULONG      StreamIndex;             // zero based index of stream
     LONG       Value;                   // value to get or set
 } KSPROPERTY_VIDEOCOMPRESSION_S, *PKSPROPERTY_VIDEOCOMPRESSION_S;
-
-typedef struct {
-    KSPROPERTY  Property;
-    ULONG       StreamIndex;             // zero based index of stream
-    LONG        Value;                   // value to get or set
-    ULONG       Flags;
-} KSPROPERTY_VIDEOCOMPRESSION_S1, *PKSPROPERTY_VIDEOCOMPRESSION_S1;
 
 //===========================================================================
 // MEDIASUBTYPE_Overlay
@@ -4883,7 +4792,7 @@ typedef struct _DDVIDEOPORTCONNECT {
     DWORD dwPortWidth;      // Width of the video port
     GUID  guidTypeID;       // Description of video port connection
     DWORD dwFlags;          // Connection flags
-    ULONG_PTR dwReserved1;  // Reserved, set to zero.
+    DWORD dwReserved1;      // Reserved, set to zero.
 } DDVIDEOPORTCONNECT, * LPDDVIDEOPORTCONNECT;
 
 #define DDVPTYPE_E_HREFH_VREFH  \
@@ -5005,18 +4914,8 @@ DEFINE_GUIDSTRUCT("DB47DE20-F628-11d1-BA41-00A0C90D2B05", KSEVENTSETID_VIDCAPTOS
 
 typedef enum {
     KSEVENT_VIDCAPTOSTI_EXT_TRIGGER,
-    KSEVENT_VIDCAP_AUTO_UPDATE,
-    KSEVENT_VIDCAP_SEARCH
 } KSEVENT_VIDCAPTOSTI;
 
-//
-// Extension Unit Properties
-//
-typedef enum {
-    KSPROPERTY_EXTENSION_UNIT_INFO,                  // (R)
-    KSPROPERTY_EXTENSION_UNIT_CONTROL,               // (RW) 
-    KSPROPERTY_EXTENSION_UNIT_PASS_THROUGH = 0xffff, // (RW) 
-} KSPROPERTY_EXTENSION_UNIT, *PKSPROPERTY_EXTENSION_UNIT;
 
 //
 //  IVPVBINotify event notification
@@ -5203,4 +5102,3 @@ typedef enum {
 #endif // __ENCODER_API_DEFINES__
 
 #endif // !defined(_KSMEDIA_)
-

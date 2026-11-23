@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for comadmin.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -117,17 +116,17 @@ void __RPC_USER MIDL_user_free( void * );
 /* interface __MIDL_itf_comadmin_0000 */
 /* [local] */ 
 
-// -----------------------------------------------------------------------   
-// comadmin.h  -- COM Administration Programming Interfaces                  
-//                                                                           
-// This file provides the prototypes for the APIs and COM interfaces         
-// used by Microsoft COM applications.                                       
-//                                                                           
-// Copyright (c) 1995-2001 Microsoft Corporation.  All Rights Reserved.      
-// -----------------------------------------------------------------------   
+// -----------------------------------------------------------------------	
+// comadmin.h  -- COM Administration Programming Interfaces					
+//																			
+// This file provides the prototypes for the APIs and COM interfaces			
+// used by Microsoft COM applications.										
+//																			
+// Copyright (c) 1995-2001 Microsoft Corporation.  All Rights Reserved.		
+// -----------------------------------------------------------------------	
 #include <objbase.h>
 #ifndef DECLSPEC_UUID
-#if (_MSC_VER >= 1100) && defined (__cplusplus)
+#if _MSC_VER >= 1100
 #define DECLSPEC_UUID(x)    __declspec(uuid(x))
 #else
 #define DECLSPEC_UUID(x)
@@ -912,7 +911,7 @@ void __RPC_STUB ICOMAdminCatalog_GetEventClassesForIID_Stub(
 #endif 	/* __ICOMAdminCatalog_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_comadmin_0116 */
+/* interface __MIDL_itf_comadmin_0112 */
 /* [local] */ 
 
 typedef /* [helpstring] */ 
@@ -927,8 +926,8 @@ enum COMAdminInUse
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_comadmin_0116_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_comadmin_0116_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_comadmin_0112_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_comadmin_0112_v0_0_s_ifspec;
 
 #ifndef __ICOMAdminCatalog2_INTERFACE_DEFINED__
 #define __ICOMAdminCatalog2_INTERFACE_DEFINED__
@@ -2915,25 +2914,11 @@ enum COMAdminAuthenticationCapabilitiesOptions
 
 typedef /* [helpstring] */ 
 enum COMAdminOS
-    {	COMAdminOSNotInitialized	= 0,
-	COMAdminOSWindows3_1	= 1,
+    {	COMAdminOSWindows3_1	= 1,
 	COMAdminOSWindows9x	= 2,
-	COMAdminOSWindows2000	= 3,
-	COMAdminOSWindows2000AdvancedServer	= 4,
-	COMAdminOSWindows2000Unknown	= 5,
-	COMAdminOSUnknown	= 6,
-	COMAdminOSWindowsXPPersonal	= 11,
-	COMAdminOSWindowsXPProfessional	= 12,
-	COMAdminOSWindowsNETStandardServer	= 13,
-	COMAdminOSWindowsNETEnterpriseServer	= 14,
-	COMAdminOSWindowsNETDatacenterServer	= 15,
-	COMAdminOSWindowsNETWebServer	= 16,
-	COMAdminOSWindowsLonghornPersonal	= 17,
-	COMAdminOSWindowsLonghornProfessional	= 18,
-	COMAdminOSWindowsLonghornStandardServer	= 19,
-	COMAdminOSWindowsLonghornEnterpriseServer	= 20,
-	COMAdminOSWindowsLonghornDatacenterServer	= 21,
-	COMAdminOSWindowsLonghornWebServer	= 22
+	COMAdminOSWindowsNT	= 3,
+	COMAdminOSWindowsNTEnterprise	= 4,
+	COMAdminOSWindows2000Personal	= 5
     } 	COMAdminOS;
 
 typedef /* [helpstring] */ 

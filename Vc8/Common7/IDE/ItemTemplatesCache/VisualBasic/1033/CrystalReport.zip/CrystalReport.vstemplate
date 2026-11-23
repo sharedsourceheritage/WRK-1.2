@@ -1,0 +1,13 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/developer/vstemplate/2005">
+	<TemplateData>
+		<Name Package="{97358C99-E52D-42C7-8B7C-B59CC4425F4B}" ID="15003"/>
+		<Description Package="{97358C99-E52D-42C7-8B7C-B59CC4425F4B}" ID="15004"/>
+		<Icon Package="{97358C99-E52D-42C7-8B7C-B59CC4425F4B}" ID="4521"/>
+                <ProjectType>VisualBasic</ProjectType>
+		<SortOrder>205</SortOrder>
+		<DefaultName>CrystalReport.rpt</DefaultName>
+	</TemplateData>
+	<TemplateContent>
+		<ProjectItem>CrystalReport.rpt</ProjectItem>
+	</TemplateContent>
+</VSTemplate>

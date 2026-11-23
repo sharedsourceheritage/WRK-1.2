@@ -1,6 +1,8 @@
 //***************************************************************************
+
 //
-//  Copyright © Microsoft Corporation.  All rights reserved.
+
+// Copyright (c) 1997-2001 Microsoft Corporation, All Rights Reserved
 //
 //  WBEMGLUE.H
 //
@@ -458,7 +460,7 @@ class POLARITY CWbemProviderGlue : public IWbemServices, public IWbemProviderIni
     static BOOL s_bInitted;
     static DWORD s_dwPlatform;
     static DWORD s_dwMajorVersion;
-    static WCHAR s_wstrCSDVersion[_MAX_PATH];
+    static WCHAR s_wstrCSDVersion[128];
     static IWbemClassObject *m_pStatusObject;
     static PTR2PLONG        s_factorymap;
     static CCritSec         s_csFactoryMap;

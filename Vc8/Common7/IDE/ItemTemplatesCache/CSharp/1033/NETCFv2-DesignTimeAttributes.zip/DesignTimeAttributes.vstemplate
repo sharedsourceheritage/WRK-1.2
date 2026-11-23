@@ -1,0 +1,16 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="3554" />
+    <Description Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="3555" />
+    <Icon Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="226" />
+    <ProjectType>CSharp</ProjectType>
+    <TemplateGroupID>SmartDevice-NETCFv2</TemplateGroupID>
+    <TemplateID>SmartDevice-NETCFv2-DesignTimeAttributes</TemplateID>
+    <ShowByDefault>false</ShowByDefault>
+    <SortOrder>60</SortOrder>
+    <DefaultName>DesignTimeAttributes.xmta</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectItem>DesignTimeAttributes.xmta</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

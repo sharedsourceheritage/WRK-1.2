@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistribTransaction", "DistribTransaction\DistribTransaction.csproj", "{C904EE37-47FB-4B1B-BF65-85DFC48FE8AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C904EE37-47FB-4B1B-BF65-85DFC48FE8AA}.Debug|.NET.ActiveCfg = Debug|.NET
+		{C904EE37-47FB-4B1B-BF65-85DFC48FE8AA}.Debug|.NET.Build.0 = Debug|.NET
+		{C904EE37-47FB-4B1B-BF65-85DFC48FE8AA}.Release|.NET.ActiveCfg = Release|.NET
+		{C904EE37-47FB-4B1B-BF65-85DFC48FE8AA}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

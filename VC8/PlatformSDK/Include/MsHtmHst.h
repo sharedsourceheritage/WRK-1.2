@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for mshtmhst.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -313,7 +312,7 @@ void __RPC_STUB IHostDialogHelper_ShowHTMLDialog_Stub(
 #endif 	/* __IHostDialogHelper_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mshtmhst_0277 */
+/* interface __MIDL_itf_mshtmhst_0272 */
 /* [local] */ 
 
 EXTERN_C const GUID CLSID_HostDialogHelper;
@@ -363,8 +362,8 @@ enum tagDOCHOSTUIFLAG
 #define DOCHOSTUIATOM_ENABLE_HIRES	_T("TridentEnableHiRes")
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0277_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0277_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0272_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0272_v0_0_s_ifspec;
 
 #ifndef __IDocHostUIHandler_INTERFACE_DEFINED__
 #define __IDocHostUIHandler_INTERFACE_DEFINED__
@@ -1028,14 +1027,14 @@ void __RPC_STUB IDocHostUIHandler2_GetOverrideKeyPath_Stub(
 #endif 	/* __IDocHostUIHandler2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mshtmhst_0279 */
+/* interface __MIDL_itf_mshtmhst_0274 */
 /* [local] */ 
 
 DEFINE_GUID(CGID_DocHostCommandHandler,0xf38bc242,0xb950,0x11d1,0x89,0x18,0x00,0xc0,0x4f,0xc2,0xc8,0x36);
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0279_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0279_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0274_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0274_v0_0_s_ifspec;
 
 #ifndef __ICustomDoc_INTERFACE_DEFINED__
 #define __ICustomDoc_INTERFACE_DEFINED__
@@ -1272,15 +1271,15 @@ void __RPC_STUB IDocHostShowUI_ShowHelp_Stub(
 #endif 	/* __IDocHostShowUI_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mshtmhst_0281 */
+/* interface __MIDL_itf_mshtmhst_0276 */
 /* [local] */ 
 
 #define IClassFactory3      IClassFactoryEx
 #define IID_IClassFactory3  IID_IClassFactoryEx
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0281_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0281_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0276_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0276_v0_0_s_ifspec;
 
 #ifndef __IClassFactoryEx_INTERFACE_DEFINED__
 #define __IClassFactoryEx_INTERFACE_DEFINED__
@@ -1566,15 +1565,15 @@ void __RPC_STUB IHTMLOMWindowServices_resizeBy_Stub(
 #endif 	/* __IHTMLOMWindowServices_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mshtmhst_0283 */
+/* interface __MIDL_itf_mshtmhst_0278 */
 /* [local] */ 
 
 #define SID_SHTMLOMWindowServices  IID_IHTMLOMWindowServices
 #endif
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0283_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0283_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0278_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mshtmhst_0278_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

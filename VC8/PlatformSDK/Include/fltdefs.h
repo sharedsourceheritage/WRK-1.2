@@ -28,11 +28,7 @@ Revision History:
 typedef PVOID  FILTER_HANDLE, *PFILTER_HANDLE;
 typedef PVOID  INTERFACE_HANDLE, *PINTERFACE_HANDLE;
 
-#ifdef _M_CEE_PURE
-#define PFEXPORT
-#else
-#define PFEXPORT __declspec(dllexport)
-#endif
+#define PFEXPORT _declspec(dllexport)
 
 #ifdef __cplusplus
 #define EXTERNCDECL EXTERN_C

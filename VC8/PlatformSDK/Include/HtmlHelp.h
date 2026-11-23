@@ -53,12 +53,11 @@ extern "C" {
 #define HH_RESET_IT_FILTER      0x0017  // Clear the info type filter of all info types.
 #define HH_SET_INCLUSIVE_FILTER 0x0018  // set inclusive filtering method for untyped topics to be included in display
 #define HH_SET_EXCLUSIVE_FILTER 0x0019  // set exclusive filtering method for untyped topics to be excluded from display
-#define HH_INITIALIZE            0x001C  // Initializes the help system.
-#define HH_UNINITIALIZE          0x001D  // Uninitializes the help system.
+#define HH_INITIALIZE           0x001C  // Initializes the help system.
+#define HH_UNINITIALIZE         0x001D  // Uninitializes the help system.
 #define HH_SET_QUERYSERVICE     0x001E  // Set the Host IQueryService interface
 #define HH_PRETRANSLATEMESSAGE  0x00fd  // Pumps messages. (NULL, NULL, MSG*). 
 #define HH_SET_GLOBAL_PROPERTY  0x00fc  // Set a global property. (NULL, NULL, HH_GPROP)
-#define HH_SAFE_DISPLAY_TOPIC   0x0020  // private addition to the interface for InternetExplorer.
 
 #define HHWIN_PROP_TAB_AUTOHIDESHOW (1 << 0)    // Automatically hide/show tri-pane window
 #define HHWIN_PROP_ONTOP            (1 << 1)    // Top-most window

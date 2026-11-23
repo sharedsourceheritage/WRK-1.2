@@ -1,0 +1,202 @@
+package Microsoft.Samples.QuickStart.HowTo.Net.TcpUdp;
+//-----------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+// This source code is intended only as a supplement to Microsoft
+// Development Tools and/or on-line documentation.  See these other
+// materials for detailed information regarding Microsoft code samples.
+// 
+// THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+// KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
+//-----------------------------------------------------------------------
+import System.*;
+import System.Globalization.*;
+import System.Net.*;
+import System.Net.Sockets.*;
+import System.Threading.*;
+import System.Text.*;
+
+public class Chat
+{
+    private static UdpClient mClient;
+    private static int listenerPort = 8080;
+    private static int senderPort = 8080;
+    private static int localPort;
+    private static int remotePort;
+    private static String mszHostName;
+
+    private static IPAddress mGroupAddress;
+    private static IPHostEntry mLocalHost;
+    private static IPEndPoint mRemoteEP;
+    private static boolean mDone = false;
+
+    public static void Usage()
+    {
+        Console.WriteLine("UDP Multicast Chat Utility");
+        Console.WriteLine("\nUsage:");
+        Console.WriteLine("chat.exe");
+    } //Usage
+
+    public static void main(String[] args)
+    {
+        localPort = senderPort;
+        remotePort = listenerPort;
+
+        if (args.get_Length() > 0) {
+            //
+            // print help message, as this utility doesnt take any arguments
+            //
+            Usage();
+            return;
+        }
+
+        mszHostName = Dns.GetHostName();
+        mLocalHost = Dns.GetHostEntry(mszHostName);
+        Console.WriteLine("Local Port: {0}, Remote: {1}", (Int32)localPort,
+            (Int32)remotePort);
+
+        Console.WriteLine("Initializing...");
+        Initialize();
+        Console.WriteLine("Starting Listener thread...");
+        System.Threading.Thread t = new System.Threading.Thread(new 
+            ThreadStart(Listener));
+        t.Start();
+
+        ubyte buffer[] = null;
+        Encoding ascii = Encoding.get_ASCII();
+        boolean mShuttingDown = false;
+
+        while (!mShuttingDown) {
+            String s = Console.ReadLine();
+            if (s.get_Length() == 0) {
+                continue;
+            }
+
+            if (String.Compare(s, 0, "@", 0, 1, true, CultureInfo.
+                get_InvariantCulture()) == 0) {
+                mDone = true;
+                //
+                // send a terminator to ourselves,
+                // so that the receiving thread can shut down
+                //
+                s = mszHostName + ":@";
+                mShuttingDown = true;
+            }
+            else {
+                s = mszHostName + ":" + s;
+            }
+            buffer = new ubyte[s.get_Length() + 1];
+            //
+            // send data to remote peer
+            //
+            int len = ascii.GetBytes(s.ToCharArray(), 0, s.get_Length(), 
+                buffer, 0);
+            int eCode = mClient.Send(buffer, len, mRemoteEP);
+
+            if (eCode <= 0) {
+                Console.WriteLine("Error in send : " + eCode);
+            }
+        }
+
+        t.Abort();
+        t.Join();
+        Console.WriteLine("Closing connection...");
+        Terminate();
+    } //main
+
+    public static void Terminate()
+    {
+        mClient.DropMulticastGroup(mGroupAddress);
+    } //Terminate
+
+    public static void Initialize()
+    {
+        //
+        // instantiate UdpCLient
+        //
+        mClient = new UdpClient(localPort);
+        //
+        // Create an object for Multicast Group
+        //
+        mGroupAddress = IPAddress.Parse("224.0.0.1");
+        //
+        // Join Group
+        //
+        try {
+            mClient.JoinMulticastGroup(mGroupAddress, 100);
+        }
+        catch (System.Exception exp) {
+            Console.WriteLine("Unable to join multicast group");
+        }
+        //
+        // Create Endpoint for peer
+        mRemoteEP = new IPEndPoint(mGroupAddress, remotePort);
+    } //Initialize
+
+    public static void Listener()
+    {
+        //
+        // The listener waits for data to come
+        // and buffers it
+        System.Threading.Thread.Sleep(2000); // make sure client2 is receiving
+        Encoding ascii = Encoding.get_ASCII();
+
+        while (!mDone) {
+            IPEndPoint endPoint = null;
+            ubyte data[] = mClient.Receive(endPoint);
+            String strData = ascii.GetString(data);
+            if (strData.IndexOf(":@") > 0) {
+                //
+                // we received a termination indication
+                // now we have to decide if it is from
+                // our main thread shutting down, or
+                // from someone else
+                //
+                char separators[] = { ':' };
+                String vars[] = strData.Split(separators);
+
+                if (vars[0].Equals(mszHostName)) {
+                    //
+                    // this is from ourselves, therefore we
+                    // end now
+                    //
+                    Console.WriteLine("shutting down Listener thread...");
+                    //
+                    // this should have been done by main thread, but we
+                    // do it again for safety
+                    //
+                    mDone = true;
+                }
+                else {
+                    //
+                    // this is from someone else
+                    //
+                    Console.WriteLine("{0} has left the conversation",
+                        vars[0]);
+                }
+            }
+            else {
+                //
+                // this is normal data received from others
+                // as well as ourselves
+                // check to see if it is from ourselves before
+                // we print
+                //
+                if (strData.IndexOf(":") > 0) {
+                    char separators[] = { ':' };
+                    String vars[] = strData.Split(separators);
+
+                    if (!(vars[0].Equals(mszHostName))) {
+                        Console.WriteLine(strData);
+                    }
+                }
+            }
+        }
+        Console.WriteLine("Listener thread finished...");
+        return;
+    } //Listener
+} //Chat

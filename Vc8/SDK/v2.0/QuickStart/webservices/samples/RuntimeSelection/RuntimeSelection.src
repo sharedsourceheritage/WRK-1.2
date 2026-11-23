@@ -1,0 +1,3 @@
+C# Source:cs\Client\ChooseProtocolClient.aspx,cs\Client\web.config,cs\App_WebReferences\HelloWorldService.wsdl,cs\Server\HelloWorldService.asmx,cs\App_WebReferences\results.discomap
+VB Source:vb\Client\ChooseProtocolClient.aspx,vb\Client\web.config,vb\App_WebReferences\HelloWorldService.wsdl,vb\Server\HelloWorldService.asmx,vb\App_WebReferences\results.discomap
+J# Source:jsl\Client\ChooseProtocolClient.aspx,jsl\Client\web.config,jsl\App_WebReferences\HelloWorldService.wsdl,jsl\Server\HelloWorldService.asmx,jsl\App_WebReferences\results.discomap

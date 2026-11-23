@@ -147,7 +147,6 @@ RASPBDLGA
 #define RASEDFLAG_NewDirectEntry 0x00000040
 #define RASEDFLAG_NewBroadbandEntry  0x00000080
 #define RASEDFLAG_InternetEntry  0x00000100
-#define RASEDFLAG_NAT            0x00000200
 
 #define RASENTRYDLGW struct tagRASENTRYDLGW
 RASENTRYDLGW
@@ -242,17 +241,17 @@ RASMONITORDLG
 typedef BOOL (WINAPI *RasCustomDialDlgFn) (
                             HINSTANCE hInstDll,
                             DWORD dwFlags,
-                            LPWSTR lpszPhonebook,
-                            LPWSTR lpszEntry,
-                            LPWSTR lpszPhoneNumber,
+                            LPTSTR lpszPhonebook,
+                            LPTSTR lpszEntry,
+                            LPTSTR lpszPhoneNumber,
                             LPRASDIALDLG lpInfo,
                             PVOID pvInfo
                             );
 
 typedef BOOL (WINAPI *RasCustomEntryDlgFn) (
                             HINSTANCE hInstDll,
-                            LPWSTR lpszPhonebook,
-                            LPWSTR lpszEntry,
+                            LPTSTR lpszPhonebook,
+                            LPTSTR lpszEntry,
                             LPRASENTRYDLG lpInfo,
                             DWORD  dwFlags
                             );

@@ -73,23 +73,22 @@ typedef struct {
 #define ASN_CONSTRUCTOR       (0x20)
 
 /* SNMP ObjectSyntax Values */
-#define SNMP_SYNTAX_SEQUENCE    (ASN_UNIVERSAL | ASN_CONSTRUCTOR | 0x10)
+#define SNMP_SYNTAX_SEQUENCE  (ASN_UNIVERSAL | ASN_CONSTRUCTOR | 0x10)
 /* These values are used in the "syntax" member of the smiVALUE structure which follows */
-#define SNMP_SYNTAX_INT         (ASN_UNIVERSAL | ASN_PRIMITIVE | 0x02)
-#define SNMP_SYNTAX_BITS        (ASN_UNIVERSAL | ASN_PRIMITIVE | 0x03)
-#define SNMP_SYNTAX_OCTETS      (ASN_UNIVERSAL | ASN_PRIMITIVE | 0x04)
-#define SNMP_SYNTAX_NULL        (ASN_UNIVERSAL | ASN_PRIMITIVE | 0x05)
-#define SNMP_SYNTAX_OID         (ASN_UNIVERSAL | ASN_PRIMITIVE | 0x06)
-#define SNMP_SYNTAX_INT32       SNMP_SYNTAX_INT
-#define SNMP_SYNTAX_IPADDR      (ASN_APPLICATION | ASN_PRIMITIVE | 0x00)
-#define SNMP_SYNTAX_CNTR32      (ASN_APPLICATION | ASN_PRIMITIVE | 0x01)
-#define SNMP_SYNTAX_GAUGE32     (ASN_APPLICATION | ASN_PRIMITIVE | 0x02)
-#define SNMP_SYNTAX_TIMETICKS   (ASN_APPLICATION | ASN_PRIMITIVE | 0x03)
-#define SNMP_SYNTAX_OPAQUE      (ASN_APPLICATION | ASN_PRIMITIVE | 0x04)
-#define SNMP_SYNTAX_NSAPADDR    (ASN_APPLICATION | ASN_PRIMITIVE | 0x05)
-#define SNMP_SYNTAX_CNTR64      (ASN_APPLICATION | ASN_PRIMITIVE | 0x06)
-#define SNMP_SYNTAX_UINT32      (ASN_APPLICATION | ASN_PRIMITIVE | 0x07)
-#define SNMP_SYNTAX_UNSIGNED32  SNMP_SYNTAX_GAUGE32
+#define SNMP_SYNTAX_INT       (ASN_UNIVERSAL | ASN_PRIMITIVE | 0x02)
+#define SNMP_SYNTAX_BITS      (ASN_UNIVERSAL | ASN_PRIMITIVE | 0x03)
+#define SNMP_SYNTAX_OCTETS    (ASN_UNIVERSAL | ASN_PRIMITIVE | 0x04)
+#define SNMP_SYNTAX_NULL      (ASN_UNIVERSAL | ASN_PRIMITIVE | 0x05)
+#define SNMP_SYNTAX_OID       (ASN_UNIVERSAL | ASN_PRIMITIVE | 0x06)
+#define SNMP_SYNTAX_INT32     SNMP_SYNTAX_INT
+#define SNMP_SYNTAX_IPADDR    (ASN_APPLICATION | ASN_PRIMITIVE | 0x00)
+#define SNMP_SYNTAX_CNTR32    (ASN_APPLICATION | ASN_PRIMITIVE | 0x01)
+#define SNMP_SYNTAX_GAUGE32   (ASN_APPLICATION | ASN_PRIMITIVE | 0x02)
+#define SNMP_SYNTAX_TIMETICKS (ASN_APPLICATION | ASN_PRIMITIVE | 0x03)
+#define SNMP_SYNTAX_OPAQUE    (ASN_APPLICATION | ASN_PRIMITIVE | 0x04)
+#define SNMP_SYNTAX_NSAPADDR  (ASN_APPLICATION | ASN_PRIMITIVE | 0x05)
+#define SNMP_SYNTAX_CNTR64    (ASN_APPLICATION | ASN_PRIMITIVE | 0x06)
+#define SNMP_SYNTAX_UINT32    (ASN_APPLICATION | ASN_PRIMITIVE | 0x07)
 /* Exception conditions in response PDUs for SNMPv2 */
 #define SNMP_SYNTAX_NOSUCHOBJECT   (ASN_CONTEXT | ASN_PRIMITIVE | 0x00)
 #define SNMP_SYNTAX_NOSUCHINSTANCE (ASN_CONTEXT | ASN_PRIMITIVE | 0x01)
@@ -238,13 +237,13 @@ typedef smiUINT32    SNMPAPI_STATUS;    /* Used for function ret values */
 /* v2.0: Structure for SnmpGetVendorInfo() output */
 #define MAXVENDORINFO 32
 typedef struct
-    {
-    char vendorName[MAXVENDORINFO*2];
-    char vendorContact[MAXVENDORINFO*2];
-    char vendorVersionId[MAXVENDORINFO];
-    char vendorVersionDate[MAXVENDORINFO];
-    smiUINT32 vendorEnterprise;
-    } smiVENDORINFO, FAR *smiLPVENDORINFO;
+	{
+	char vendorName[MAXVENDORINFO*2];
+	char vendorContact[MAXVENDORINFO*2];
+	char vendorVersionId[MAXVENDORINFO];
+	char vendorVersionDate[MAXVENDORINFO];
+	smiUINT32 vendorEnterprise;
+	} smiVENDORINFO, FAR *smiLPVENDORINFO;
 
 /* v2.0: Callback format for SnmpCreateSession() fCallback parameter */
 typedef SNMPAPI_STATUS (CALLBACK *SNMPAPI_CALLBACK)
@@ -344,22 +343,6 @@ SNMPAPI_STATUS SNMPAPI_CALL   SnmpListen
 SNMPAPI_STATUS SNMPAPI_CALL   SnmpCancelMsg
                               (IN HSNMP_SESSION session,
                               IN smiINT32 reqId);
-
-/* Extensions to Communications Functions */
-SNMPAPI_STATUS SNMPAPI_CALL SnmpStartupEx 
-                            (OUT smiLPUINT32 nMajorVersion,
-                             OUT smiLPUINT32 nMinorVersion,
-                             OUT smiLPUINT32 nLevel,
-                             OUT smiLPUINT32 nTranslateMode,
-                             OUT smiLPUINT32 nRetransmitMode);
-typedef SNMPAPI_STATUS (__stdcall * PFNSNMPSTARTUPEX)(  smiLPUINT32,
-                                                        smiLPUINT32,
-                                                        smiLPUINT32,
-                                                        smiLPUINT32,
-                                                        smiLPUINT32);
-SNMPAPI_STATUS SNMPAPI_CALL SnmpCleanupEx 
-                            (void);
-typedef SNMPAPI_STATUS (__stdcall * PFNSNMPCLEANUPEX)(void);
 
 /* Entity/Context Functions */
 HSNMP_ENTITY   SNMPAPI_CALL   SnmpStrToEntity

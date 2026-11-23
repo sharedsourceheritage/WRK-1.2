@@ -435,11 +435,9 @@ DsEnumerateDomainTrustsA (
 
 
 //
-// Only define this API if the caller has #included the pre-requisite 
-// ntlsa.h or ntsecapi.h  
-//
+// Only define this API if the caller has #included the pre-requisite ntlsa.h
 
-#if defined(_NTLSA_) || defined(_NTSECAPI_)
+#ifdef _NTLSA_
 
 DSGETDCAPI
 DWORD
@@ -464,7 +462,7 @@ DsMergeForestTrustInformationW(
     OUT PLSA_FOREST_TRUST_INFORMATION *MergedForestTrustInfo
     );
 
-#endif // _NTLSA_ || _NTSECAPI_
+#endif //_NTLSA_
 
 DSGETDCAPI
 DWORD

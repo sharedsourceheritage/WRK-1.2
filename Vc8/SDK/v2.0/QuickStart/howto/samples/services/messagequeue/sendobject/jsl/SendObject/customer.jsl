@@ -1,0 +1,59 @@
+package Microsoft.Samples;
+//-----------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+// This source code is intended only as a supplement to Microsoft
+// Development Tools and/or on-line documentation.  See these other
+// materials for detailed information regarding Microsoft code samples.
+// 
+// THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+// KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
+//-----------------------------------------------------------------------
+import System.*;
+  
+/** @attribute CLSCompliant(false)
+ */
+public class Customer
+{
+    private String lastName;
+    private String firstName;
+
+    /** @property 
+     */
+    public String get_LastName()
+    {
+        return this.lastName;
+    } //get_LastName
+
+    /** @property 
+     */
+    public void set_LastName(String value)
+    {
+        this.lastName = value;
+    } //set_LastName
+
+    /** @property 
+     */
+    public String get_FirstName()
+    {
+        return this.firstName;
+    } //get_FirstName
+
+    /** @property 
+     */
+    public void set_FirstName(String value)
+    {
+        this.firstName = value;
+    } //set_FirstName
+
+    /** @property 
+     */
+    public String get_FullName()
+    {
+        return get_FirstName() + get_LastName();
+    } //get_FullName
+} //Customer

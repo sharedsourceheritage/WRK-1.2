@@ -68,16 +68,6 @@ extern "C" {
 
 // begin_ntifs
 
-#if defined(_NO_KSECDD_IMPORT_)
-
-#define KSECDDDECLSPEC
-
-#else
-
-#define KSECDDDECLSPEC __declspec(dllimport)
-
-#endif
-
 typedef WCHAR SEC_WCHAR;
 typedef CHAR SEC_CHAR;
 
@@ -266,19 +256,17 @@ typedef struct _SecPkgInfoA
 #define SECPKG_FLAG_MULTI_REQUIRED  		0x00000020  // Full 3-leg required for re-auth.
 #define SECPKG_FLAG_CLIENT_ONLY     		0x00000040  // Server side functionality not available
 #define SECPKG_FLAG_EXTENDED_ERROR  		0x00000080  // Supports extended error msgs
-#define SECPKG_FLAG_IMPERSONATION   		0x00000100  // Supports impersonation
+#define SECPKG_FLAG_IMPERSONATION  		0x00000100  // Supports impersonation
 #define SECPKG_FLAG_ACCEPT_WIN32_NAME   	0x00000200  // Accepts Win32 names
-#define SECPKG_FLAG_STREAM          		0x00000400  // Supports stream semantics
-#define SECPKG_FLAG_NEGOTIABLE      		0x00000800  // Can be used by the negotiate package
+#define SECPKG_FLAG_STREAM         		0x00000400  // Supports stream semantics
+#define SECPKG_FLAG_NEGOTIABLE     		0x00000800  // Can be used by the negotiate package
 #define SECPKG_FLAG_GSS_COMPATIBLE  		0x00001000  // GSS Compatibility Available
 #define SECPKG_FLAG_LOGON           		0x00002000  // Supports common LsaLogonUser
 #define SECPKG_FLAG_ASCII_BUFFERS   		0x00004000  // Token Buffers are in ASCII
 #define SECPKG_FLAG_FRAGMENT        		0x00008000  // Package can fragment to fit
 #define SECPKG_FLAG_MUTUAL_AUTH     		0x00010000  // Package can perform mutual authentication
 #define SECPKG_FLAG_DELEGATION      		0x00020000  // Package can delegate
-#define SECPKG_FLAG_READONLY_WITH_CHECKSUM   	0x00040000  // Package can delegate
-
-
+#define SECPKG_FLAG_READONLY_WITH_CHECKSUM      0x00040000  // Package supports READONLY_WITH_CHECKSUM
 
 
 #define SECPKG_ID_NONE      0xFFFF
@@ -325,9 +313,10 @@ typedef struct _SecBufferDesc {
 #define SECBUFFER_CHANNEL_BINDINGS  14
 
 #define SECBUFFER_ATTRMASK          		0xF0000000
-#define SECBUFFER_READONLY          		0x80000000  // Buffer is read-only, no checksum
-#define SECBUFFER_READONLY_WITH_CHECKSUM	0x10000000  // Buffer is read-only, and checksummed
+#define SECBUFFER_READONLY          		0x80000000  // Buffer is read-only - deprecated...
 #define SECBUFFER_RESERVED          		0x60000000  // Flags reserved to security system
+#define SECBUFFER_READONLY_WITH_CHECKSUM	0x10000000  // Buffer is read-only, and checksummed
+
 
 
 typedef struct _SEC_NEGOTIATION_INFO {
@@ -435,7 +424,6 @@ typedef struct _SEC_CHANNEL_BINDINGS {
 #define ASC_REQ_ALLOW_CONTEXT_REPLAY    0x00400000
 #define ASC_REQ_FRAGMENT_TO_FIT         0x00800000
 #define ASC_REQ_FRAGMENT_SUPPLIED       0x00002000
-#define ASC_REQ_NO_TOKEN                0x01000000
 
 #define ASC_RET_DELEGATE                0x00000001
 #define ASC_RET_MUTUAL_AUTH             0x00000002
@@ -458,14 +446,12 @@ typedef struct _SEC_CHANNEL_BINDINGS {
 #define ASC_RET_ALLOW_NON_USER_LOGONS   0x00200000
 #define ASC_RET_ALLOW_CONTEXT_REPLAY    0x00400000
 #define ASC_RET_FRAGMENT_ONLY           0x00800000
-#define ASC_RET_NO_TOKEN                0x01000000
 
 //
 //  Security Credentials Attributes:
 //
 
-#define SECPKG_CRED_ATTR_NAMES        1
-#define SECPKG_CRED_ATTR_SSI_PROVIDER 2
+#define SECPKG_CRED_ATTR_NAMES 1
 
 typedef struct _SecPkgCredentials_NamesW
 {
@@ -485,32 +471,6 @@ typedef struct _SecPkgCredentials_NamesA
 #else
 #  define SecPkgCredentials_Names SecPkgCredentials_NamesA
 #  define PSecPkgCredentials_Names PSecPkgCredentials_NamesA
-#endif // !UNICODE
-
-// begin_ntifs
-
-typedef struct _SecPkgCredentials_SSIProviderW
-{
-    SEC_WCHAR SEC_FAR * sProviderName;
-    unsigned long       ProviderInfoLength;
-    char SEC_FAR *      ProviderInfo;
-} SecPkgCredentials_SSIProviderW, SEC_FAR * PSecPkgCredentials_SSIProviderW;
-
-// end ntifs
-
-typedef struct _SecPkgCredentials_SSIProviderA
-{
-    SEC_CHAR SEC_FAR  * sProviderName;
-    unsigned long       ProviderInfoLength;
-    char SEC_FAR *      ProviderInfo;
-} SecPkgCredentials_SSIProviderA, SEC_FAR * PSecPkgCredentials_SSIProviderA;
-
-#ifdef UNICODE
-#  define SecPkgCredentials_SSIProvider SecPkgCredentials_SSIProviderW      // ntifs
-#  define PSecPkgCredentials_SSIProvider PSecPkgCredentials_SSIProviderW    // ntifs
-#else
-#  define SecPkgCredentials_SSIProvider SecPkgCredentials_SSIProviderA
-#  define PSecPkgCredentials_SSIProvider PSecPkgCredentials_SSIProviderA
 #endif // !UNICODE
 
 // begin_ntifs
@@ -537,10 +497,7 @@ typedef struct _SecPkgCredentials_SSIProviderA
 #define SECPKG_ATTR_USE_VALIDATED   15
 #define SECPKG_ATTR_CREDENTIAL_NAME 16
 #define SECPKG_ATTR_TARGET_INFORMATION 17
-#define SECPKG_ATTR_ACCESS_TOKEN    18
-#define SECPKG_ATTR_TARGET          19
-#define SECPKG_ATTR_AUTHENTICATION_ID  20
-#define SECPKG_ATTR_LOGOFF_TIME     21
+#define SECPKG_ATTR_ACCESS_TOKEN 18
 
 typedef struct _SecPkgContext_Sizes
 {
@@ -680,11 +637,6 @@ typedef struct _SecPkgContext_PasswordExpiry
     TimeStamp tsPasswordExpires;
 } SecPkgContext_PasswordExpiry, SEC_FAR * PSecPkgContext_PasswordExpiry;
 
-typedef struct _SecPkgContext_LogoffTime
-{
-    TimeStamp tsLogoffTime;
-} SecPkgContext_LogoffTime, SEC_FAR * PSecPkgContext_LogoffTime;
-
 typedef struct _SecPkgContext_SessionKey
 {
     unsigned long SessionKeyLength;
@@ -750,11 +702,10 @@ typedef struct _SecPkgContext_NegotiationInfoW
 #define PSecPkgContext_NegotiationInfo  PSecPkgContext_NegotiationInfoA
 #endif
 
-#define SECPKG_NEGOTIATION_COMPLETE             0
-#define SECPKG_NEGOTIATION_OPTIMISTIC           1
-#define SECPKG_NEGOTIATION_IN_PROGRESS          2
-#define SECPKG_NEGOTIATION_DIRECT               3
-#define SECPKG_NEGOTIATION_TRY_MULTICRED        4
+#define SECPKG_NEGOTIATION_COMPLETE     0
+#define SECPKG_NEGOTIATION_OPTIMISTIC   1
+#define SECPKG_NEGOTIATION_IN_PROGRESS  2
+#define SECPKG_NEGOTIATION_DIRECT       3
 
 
 typedef struct _SecPkgContext_NativeNamesW
@@ -813,20 +764,6 @@ typedef struct _SecPkgContext_TargetInformation
 
 } SecPkgContext_TargetInformation, SEC_FAR * PSecPkgContext_TargetInformation;
 
-typedef struct _SecPkgContext_AuthzID
-{
-    unsigned long AuthzIDLength;
-    char SEC_FAR * AuthzID;
-
-} SecPkgContext_AuthzID, SEC_FAR * PSecPkgContext_AuthzID;
-
-typedef struct _SecPkgContext_Target
-{
-    unsigned long TargetLength;
-    char SEC_FAR * Target;
-
-} SecPkgContext_Target, SEC_FAR * PSecPkgContext_Target;
-
 
 // begin_ntifs
 
@@ -845,10 +782,8 @@ typedef void
 
 #define SECPKG_CONTEXT_EXPORT_RESET_NEW         0x00000001      // New context is reset to initial state
 #define SECPKG_CONTEXT_EXPORT_DELETE_OLD        0x00000002      // Old context is deleted during export
-#define SECPKG_CONTEXT_EXPORT_TO_KERNEL         0x00000004      // Context is to be transferred to the kernel
 
 
-KSECDDDECLSPEC
 SECURITY_STATUS SEC_ENTRY
 AcquireCredentialsHandleW(
 #if ISSP_MODE == 0                      // For Kernel mode
@@ -921,7 +856,6 @@ typedef SECURITY_STATUS
 
 // begin_ntifs
 
-KSECDDDECLSPEC
 SECURITY_STATUS SEC_ENTRY
 FreeCredentialsHandle(
     PCredHandle phCredential            // Handle to free
@@ -931,7 +865,6 @@ typedef SECURITY_STATUS
 (SEC_ENTRY * FREE_CREDENTIALS_HANDLE_FN)(
     PCredHandle );
 
-KSECDDDECLSPEC
 SECURITY_STATUS SEC_ENTRY
 AddCredentialsW(
     PCredHandle hCredentials,
@@ -996,13 +929,57 @@ typedef SECURITY_STATUS
 #define ADD_CREDENTIALS_FN ADD_CREDENTIALS_FN_A
 #endif
 
+// end_ntifs
+
+#ifdef WIN32_CHICAGO
+SECURITY_STATUS SEC_ENTRY
+SspiLogonUserW(
+    SEC_WCHAR SEC_FAR * pszPackage,     // Name of package
+    SEC_WCHAR SEC_FAR * pszUserName,     // Name of package
+    SEC_WCHAR SEC_FAR * pszDomainName,     // Name of package
+    SEC_WCHAR SEC_FAR * pszPassword      // Name of package
+    );
+
+typedef SECURITY_STATUS
+(SEC_ENTRY * SSPI_LOGON_USER_FN_W)(
+    SEC_CHAR SEC_FAR *,
+    SEC_CHAR SEC_FAR *,
+    SEC_CHAR SEC_FAR *,
+    SEC_CHAR SEC_FAR *);
+
+SECURITY_STATUS SEC_ENTRY
+SspiLogonUserA(
+    SEC_CHAR SEC_FAR * pszPackage,     // Name of package
+    SEC_CHAR SEC_FAR * pszUserName,     // Name of package
+    SEC_CHAR SEC_FAR * pszDomainName,     // Name of package
+    SEC_CHAR SEC_FAR * pszPassword      // Name of package
+    );
+
+typedef SECURITY_STATUS
+(SEC_ENTRY * SSPI_LOGON_USER_FN_A)(
+    SEC_CHAR SEC_FAR *,
+    SEC_CHAR SEC_FAR *,
+    SEC_CHAR SEC_FAR *,
+    SEC_CHAR SEC_FAR *);
+
+#ifdef UNICODE
+#define SspiLogonUser SspiLogonUserW            // ntifs
+#define SSPI_LOGON_USER_FN SSPI_LOGON_USER_FN_W
+#else
+#define SspiLogonUser SspiLogonUserA
+#define SSPI_LOGON_USER_FN SSPI_LOGON_USER_FN_A
+#endif // !UNICODE
+#endif // WIN32_CHICAGO
+
+
+// begin_ntifs
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// Context Management Functions
 ///
 ////////////////////////////////////////////////////////////////////////
 
-KSECDDDECLSPEC
 SECURITY_STATUS SEC_ENTRY
 InitializeSecurityContextW(
     PCredHandle phCredential,               // Cred to base context
@@ -1085,7 +1062,6 @@ typedef SECURITY_STATUS
 
 // begin_ntifs
 
-KSECDDDECLSPEC
 SECURITY_STATUS SEC_ENTRY
 AcceptSecurityContext(
     PCredHandle phCredential,               // Cred to base context
@@ -1124,7 +1100,7 @@ typedef SECURITY_STATUS
     PCtxtHandle,
     PSecBufferDesc);
 
-KSECDDDECLSPEC
+
 SECURITY_STATUS SEC_ENTRY
 ImpersonateSecurityContext(
     PCtxtHandle phContext               // Context to impersonate
@@ -1135,7 +1111,7 @@ typedef SECURITY_STATUS
     PCtxtHandle);
 
 
-KSECDDDECLSPEC
+
 SECURITY_STATUS SEC_ENTRY
 RevertSecurityContext(
     PCtxtHandle phContext               // Context from which to re
@@ -1146,7 +1122,6 @@ typedef SECURITY_STATUS
     PCtxtHandle);
 
 
-KSECDDDECLSPEC
 SECURITY_STATUS SEC_ENTRY
 QuerySecurityContextToken(
     PCtxtHandle phContext,
@@ -1158,7 +1133,7 @@ typedef SECURITY_STATUS
     PCtxtHandle, void SEC_FAR * SEC_FAR *);
 
 
-KSECDDDECLSPEC
+
 SECURITY_STATUS SEC_ENTRY
 DeleteSecurityContext(
     PCtxtHandle phContext               // Context to delete
@@ -1169,7 +1144,7 @@ typedef SECURITY_STATUS
     PCtxtHandle);
 
 
-KSECDDDECLSPEC
+
 SECURITY_STATUS SEC_ENTRY
 ApplyControlToken(
     PCtxtHandle phContext,              // Context to modify
@@ -1181,7 +1156,7 @@ typedef SECURITY_STATUS
     PCtxtHandle, PSecBufferDesc);
 
 
-KSECDDDECLSPEC
+
 SECURITY_STATUS SEC_ENTRY
 QueryContextAttributesW(
     PCtxtHandle phContext,              // Context to query
@@ -1261,7 +1236,6 @@ typedef SECURITY_STATUS
 
 // begin_ntifs
 
-KSECDDDECLSPEC
 SECURITY_STATUS SEC_ENTRY
 QueryCredentialsAttributesW(
     PCredHandle phCredential,              // Credential to query
@@ -1300,49 +1274,6 @@ typedef SECURITY_STATUS
 
 // begin_ntifs
 
-KSECDDDECLSPEC
-SECURITY_STATUS SEC_ENTRY
-SetCredentialsAttributesW(
-    PCredHandle phCredential,           // Credential to Set
-    unsigned long ulAttribute,          // Attribute to Set
-    void SEC_FAR * pBuffer,             // Buffer for attributes
-    unsigned long cbBuffer              // Size (in bytes) of Buffer
-    );
-
-typedef SECURITY_STATUS
-(SEC_ENTRY * SET_CREDENTIALS_ATTRIBUTES_FN_W)(
-    PCredHandle,
-    unsigned long,
-    void SEC_FAR *,
-    unsigned long );
-
-// end_ntifs
-
-SECURITY_STATUS SEC_ENTRY
-SetCredentialsAttributesA(
-    PCredHandle phCredential,           // Credential to Set
-    unsigned long ulAttribute,          // Attribute to Set
-    void SEC_FAR * pBuffer,             // Buffer for attributes
-    unsigned long cbBuffer              // Size (in bytes) of Buffer
-    );
-
-typedef SECURITY_STATUS
-(SEC_ENTRY * SET_CREDENTIALS_ATTRIBUTES_FN_A)(
-    PCredHandle,
-    unsigned long,
-    void SEC_FAR *,
-    unsigned long );
-
-#ifdef UNICODE
-#  define SetCredentialsAttributes SetCredentialsAttributesW            // ntifs
-#  define SET_CREDENTIALS_ATTRIBUTES_FN SET_CREDENTIALS_ATTRIBUTES_FN_W // ntifs
-#else
-#  define SetCredentialsAttributes SetCredentialsAttributesA
-#  define SET_CREDENTIALS_ATTRIBUTES_FN SET_CREDENTIALS_ATTRIBUTES_FN_A
-#endif // !UNICODE
-
-// begin_ntifs
-
 SECURITY_STATUS SEC_ENTRY
 FreeContextBuffer(
     void SEC_FAR * pvContextBuffer      // buffer to free
@@ -1361,7 +1292,6 @@ typedef SECURITY_STATUS
 ////
 //////////////////////////////////////////////////////////////////
 
-KSECDDDECLSPEC
 SECURITY_STATUS SEC_ENTRY
 MakeSignature(
     PCtxtHandle phContext,              // Context to use
@@ -1378,7 +1308,7 @@ typedef SECURITY_STATUS
     unsigned long);
 
 
-KSECDDDECLSPEC
+
 SECURITY_STATUS SEC_ENTRY
 VerifySignature(
     PCtxtHandle phContext,              // Context to use
@@ -1394,9 +1324,6 @@ typedef SECURITY_STATUS
     unsigned long,
     unsigned long SEC_FAR *);
 
-
-#define SECQOP_WRAP_NO_ENCRYPT      0x80000001
-#define SECQOP_WRAP_OOB_DATA        0x40000000
 
 SECURITY_STATUS SEC_ENTRY
 EncryptMessage( PCtxtHandle         phContext,
@@ -1431,7 +1358,7 @@ typedef SECURITY_STATUS
 ////
 ///////////////////////////////////////////////////////////////////////////
 
-KSECDDDECLSPEC
+
 SECURITY_STATUS SEC_ENTRY
 EnumerateSecurityPackagesW(
     unsigned long SEC_FAR * pcPackages,     // Receives num. packages
@@ -1466,7 +1393,6 @@ typedef SECURITY_STATUS
 
 // begin_ntifs
 
-KSECDDDECLSPEC
 SECURITY_STATUS SEC_ENTRY
 QuerySecurityPackageInfoW(
 #if ISSP_MODE == 0
@@ -1550,7 +1476,7 @@ DelegateSecurityContext(
 ///////////////////////////////////////////////////////////////////////////
 
 
-KSECDDDECLSPEC
+
 SECURITY_STATUS SEC_ENTRY
 ExportSecurityContext(
     PCtxtHandle          phContext,             // (in) context to export
@@ -1567,7 +1493,6 @@ typedef SECURITY_STATUS
     void SEC_FAR * SEC_FAR *
     );
 
-KSECDDDECLSPEC
 SECURITY_STATUS SEC_ENTRY
 ImportSecurityContextW(
 #if ISSP_MODE == 0
@@ -1620,7 +1545,6 @@ typedef SECURITY_STATUS
 // begin_ntifs
 
 #if ISSP_MODE == 0
-KSECDDDECLSPEC
 NTSTATUS
 NTAPI
 SecMakeSPN(
@@ -1633,8 +1557,7 @@ SecMakeSPN(
     OUT PULONG Length OPTIONAL,
     IN BOOLEAN Allocate
     );
-
-KSECDDDECLSPEC
+    
 NTSTATUS
 NTAPI
 SecMakeSPNEx(
@@ -1649,7 +1572,6 @@ SecMakeSPNEx(
     IN BOOLEAN Allocate
     );
 
-KSECDDDECLSPEC
 NTSTATUS
 SEC_ENTRY
 SecLookupAccountSid(
@@ -1661,7 +1583,6 @@ SecLookupAccountSid(
     OUT PSID_NAME_USE NameUse
     );
 
-KSECDDDECLSPEC
 NTSTATUS
 SEC_ENTRY
 SecLookupAccountName(
@@ -1671,16 +1592,6 @@ SecLookupAccountName(
     OUT PSID_NAME_USE NameUse,
     IN OUT PULONG DomainSize OPTIONAL,
     OUT PUNICODE_STRING ReferencedDomain OPTIONAL
-    );
-
-KSECDDDECLSPEC
-NTSTATUS
-SEC_ENTRY
-SecLookupWellKnownSid(
-    IN WELL_KNOWN_SID_TYPE SidType,
-    OUT PSID Sid,
-    ULONG SidBufferSize,
-    OUT PULONG SidSize OPTIONAL
     );
 
 #endif
@@ -1722,7 +1633,11 @@ typedef struct _SECURITY_FUNCTION_TABLE_W {
     QUERY_CREDENTIALS_ATTRIBUTES_FN_W   QueryCredentialsAttributesW;
     ACQUIRE_CREDENTIALS_HANDLE_FN_W     AcquireCredentialsHandleW;
     FREE_CREDENTIALS_HANDLE_FN          FreeCredentialsHandle;
+#ifndef WIN32_CHICAGO
     void SEC_FAR *                      Reserved2;
+#else // WIN32_CHICAGO
+    SSPI_LOGON_USER_FN                  SspiLogonUserW;
+#endif // WIN32_CHICAGO
     INITIALIZE_SECURITY_CONTEXT_FN_W    InitializeSecurityContextW;
     ACCEPT_SECURITY_CONTEXT_FN          AcceptSecurityContext;
     COMPLETE_AUTH_TOKEN_FN              CompleteAuthToken;
@@ -1745,7 +1660,6 @@ typedef struct _SECURITY_FUNCTION_TABLE_W {
     ENCRYPT_MESSAGE_FN                  EncryptMessage;
     DECRYPT_MESSAGE_FN                  DecryptMessage;
     SET_CONTEXT_ATTRIBUTES_FN_W         SetContextAttributesW;
-    SET_CREDENTIALS_ATTRIBUTES_FN_W     SetCredentialsAttributesW;
 } SecurityFunctionTableW, SEC_FAR * PSecurityFunctionTableW;
 
 // end_ntifs
@@ -1756,7 +1670,11 @@ typedef struct _SECURITY_FUNCTION_TABLE_A {
     QUERY_CREDENTIALS_ATTRIBUTES_FN_A   QueryCredentialsAttributesA;
     ACQUIRE_CREDENTIALS_HANDLE_FN_A     AcquireCredentialsHandleA;
     FREE_CREDENTIALS_HANDLE_FN          FreeCredentialHandle;
+#ifndef WIN32_CHICAGO
     void SEC_FAR *                      Reserved2;
+#else // WIN32_CHICAGO
+    SSPI_LOGON_USER_FN                       SspiLogonUserA;
+#endif // WIN32_CHICAGO
     INITIALIZE_SECURITY_CONTEXT_FN_A    InitializeSecurityContextA;
     ACCEPT_SECURITY_CONTEXT_FN          AcceptSecurityContext;
     COMPLETE_AUTH_TOKEN_FN              CompleteAuthToken;
@@ -1779,7 +1697,6 @@ typedef struct _SECURITY_FUNCTION_TABLE_A {
     ENCRYPT_MESSAGE_FN                  EncryptMessage;
     DECRYPT_MESSAGE_FN                  DecryptMessage;
     SET_CONTEXT_ATTRIBUTES_FN_A         SetContextAttributesA;
-    SET_CREDENTIALS_ATTRIBUTES_FN_A     SetCredentialsAttributesA;
 } SecurityFunctionTableA, SEC_FAR * PSecurityFunctionTableA;
 
 #ifdef UNICODE
@@ -1798,8 +1715,6 @@ typedef struct _SECURITY_FUNCTION_TABLE_A {
 // Function table has all routines through SetContextAttributes
 #define SECURITY_SUPPORT_PROVIDER_INTERFACE_VERSION_2   2   // ntifs
 
-// Function table has all routines through SetCredentialsAttributes
-#define SECURITY_SUPPORT_PROVIDER_INTERFACE_VERSION_3   3   // ntifs
 
 PSecurityFunctionTableA SEC_ENTRY
 InitSecurityInterfaceA(
@@ -1811,7 +1726,6 @@ typedef PSecurityFunctionTableA
 
 // begin_ntifs
 
-KSECDDDECLSPEC
 PSecurityFunctionTableW SEC_ENTRY
 InitSecurityInterfaceW(
     void
@@ -1956,15 +1870,9 @@ SaslAcceptSecurityContext(
     );
 
 
-#define SASL_OPTION_SEND_SIZE       1       // Maximum size to send to peer
-#define SASL_OPTION_RECV_SIZE       2       // Maximum size willing to receive
-#define SASL_OPTION_AUTHZ_STRING    3       // Authorization string
-#define SASL_OPTION_AUTHZ_PROCESSING    4       // Authorization string processing
-
-typedef enum _SASL_AUTHZID_STATE {
-    Sasl_AuthZIDForbidden,             // allow no AuthZID strings to be specified - error out (default)
-    Sasl_AuthZIDProcessed             // AuthZID Strings processed by Application or SSP
-} SASL_AUTHZID_STATE ;
+#define SASL_OPTION_SEND_SIZE       1
+#define SASL_OPTION_RECV_SIZE       2
+#define SASL_OPTION_AUTHZ_STRING    3
 
 SECURITY_STATUS
 SEC_ENTRY

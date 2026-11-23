@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceDemo", "TraceDemo\TraceDemo.csproj", "{0FBF030A-C888-40C5-AD37-BF92D6E58B8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FBF030A-C888-40C5-AD37-BF92D6E58B8D}.Debug|.NET.ActiveCfg = Debug|.NET
+		{0FBF030A-C888-40C5-AD37-BF92D6E58B8D}.Debug|.NET.Build.0 = Debug|.NET
+		{0FBF030A-C888-40C5-AD37-BF92D6E58B8D}.Release|.NET.ActiveCfg = Release|.NET
+		{0FBF030A-C888-40C5-AD37-BF92D6E58B8D}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

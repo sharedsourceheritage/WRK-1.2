@@ -76,13 +76,7 @@
 #define REGSTR_PATH_REALMODENET          TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Network\\Real Mode Net")
 #define REGSTR_PATH_NETEQUIV             TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Network\\Equivalent")
 #define REGSTR_PATH_CVNETWORK            TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Network")
-#define REGSTR_PATH_WMI_SECURITY         TEXT("System\\CurrentControlSet\\Control\\Wmi\\Security")
 #define REGSTR_PATH_RELIABILITY          TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Reliability")
-#define REGSTR_PATH_RELIABILITY_POLICY   TEXT("Software\\Policies\\Microsoft\\Windows NT\\Reliability")
-#define REGSTR_PATH_RELIABILITY_POLICY_SHUTDOWNREASONUI TEXT("ShutdownReasonUI")
-#define REGSTR_PATH_RELIABILITY_POLICY_SNAPSHOT         TEXT("Snapshot")
-#define REGSTR_PATH_RELIABILITY_POLICY_REPORTSNAPSHOT   TEXT("ReportSnapshot")
-
 #define REGSTR_PATH_REINSTALL            TEXT("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Reinstall")
 #define REGSTR_PATH_NT_CURRENTVERSION TEXT("Software\\Microsoft\\Windows NT\\CurrentVersion")
 
@@ -276,7 +270,6 @@
 
 #define REGSTR_VAL_LASTALIVEINTERVAL    TEXT("TimeStampInterval")
 #define REGSTR_VAL_LASTALIVESTAMP       TEXT("LastAliveStamp")
-#define REGSTR_VAL_LASTALIVEUPTIME      TEXT("LastAliveUptime")
 #define REGSTR_VAL_SHUTDOWNREASON       TEXT("ShutdownReason")
 #define REGSTR_VAL_SHUTDOWNREASON_CODE          TEXT("ShutdownReasonCode")
 #define REGSTR_VAL_SHUTDOWNREASON_COMMENT       TEXT("ShutdownReasonComment")
@@ -284,6 +277,11 @@
 #define REGSTR_VAL_SHUTDOWNREASON_USERNAME      TEXT("ShutdownReasonUserName")
 #define REGSTR_VAL_SHOWREASONUI                 TEXT("ShutdownReasonUI")
 #define REGSTR_VAL_SHUTDOWN_IGNORE_PREDEFINED   TEXT("ShutdownIgnorePredefinedReasons")
+#define REGSTR_VAL_SHUTDOWN_DO_STATE_SNAPSHOT   TEXT("ShutdownDoStateSnapshot")
+// Values for ShutDownDoStateSnapshot
+#define DO_SNAPSHOT_ON_UNPLANNED 0
+#define DO_SNAPSHOT_ALWAYS 1
+#define DO_SNAPSHOT_NEVER  2
 #define REGSTR_VAL_SHUTDOWN_STATE_SNAPSHOT      TEXT("ShutdownStateSnapshot")
 
 #define REGSTR_KEY_SETUP                TEXT("\\Setup")
@@ -898,6 +896,7 @@
 #define REGSTR_VAL_INSTALLER          TEXT("Installer")         // 16-bit class installer module/entry point
 #define REGSTR_VAL_INSTALLER_32       TEXT("Installer32")       // 32-bit class installer module/entry point
 #define REGSTR_VAL_INSICON            TEXT("Icon")              // value of class\name
+#define REGSTR_VAL_LEGACYINFOPT       TEXT("LegacyInfOption")   // used for translating to old-style INF option names
 #define REGSTR_VAL_ENUMPROPPAGES      TEXT("EnumPropPages")     // For Class/Device Properties (16-bit)
 #define REGSTR_VAL_ENUMPROPPAGES_32   TEXT("EnumPropPages32")   // For Class/Device Properties (32-bit)
 #define REGSTR_VAL_BASICPROPERTIES    TEXT("BasicProperties")   // For CPL basic Properties (16-bit)

@@ -2226,15 +2226,10 @@ extern "C" {            /* Assume C declarations for C++ */
 #if !defined(WAVE_FORMAT_EXTENSIBLE)
 #define  WAVE_FORMAT_EXTENSIBLE                 0xFFFE /* Microsoft */
 #endif // !defined(WAVE_FORMAT_EXTENSIBLE)
-
 //
-//  New wave format development should be based on the
-//  WAVEFORMATEXTENSIBLE structure. WAVEFORMATEXTENSIBLE allows you to
-//  avoid having to register a new format tag with Microsoft. However, if
-//  you must still define a new format tag, the WAVE_FORMAT_DEVELOPMENT
-//  format tag can be used during the development phase of a new wave
-//  format.  Before shipping, you MUST acquire an official format tag from
-//  Microsoft.
+//  the WAVE_FORMAT_DEVELOPMENT format tag can be used during the
+//  development phase of a new wave format.  Before shipping, you MUST
+//  acquire an official format tag from Microsoft.
 //
 #define WAVE_FORMAT_DEVELOPMENT         (0xFFFF)
 
@@ -2293,14 +2288,6 @@ typedef WAVEFORMATEX FAR  *LPWAVEFORMATEX;
 
 #ifdef GUID_DEFINED
 
-//
-//  New wave format development should be based on the
-//  WAVEFORMATEXTENSIBLE structure. WAVEFORMATEXTENSIBLE allows you to
-//  avoid having to register a new format tag with Microsoft. Simply
-//  define a new GUID value for the WAVEFORMATEXTENSIBLE.SubFormat field
-//  and use WAVE_FORMAT_EXTENSIBLE in the
-//  WAVEFORMATEXTENSIBLE.Format.wFormatTag field.
-//
 #ifndef _WAVEFORMATEXTENSIBLE_
 #define _WAVEFORMATEXTENSIBLE_
 typedef struct {

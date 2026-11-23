@@ -9,7 +9,7 @@ Module Name:
 
 Abstract:
 
-   Event message definitions used by routines by PDH.DLL
+   Event message definititions used by routines by PDH.DLL
 
 Created:
 
@@ -226,7 +226,7 @@ Revision History:
 //
 // MessageText:
 //
-//  Cannot change default real-time data source. There are real-time query
+//  Cannot change set default realtime datasource. There are realtime query
 //  sessions collecting counter data.
 //
 #define PDH_CANNOT_SET_DEFAULT_REALTIME_DATASOURCE ((DWORD)0x800007DCL)
@@ -556,7 +556,7 @@ Revision History:
 //
 // MessageText:
 //
-//  An error occurred while accessing the WBEM data store.
+//  An error occured while accessing the WBEM data store.
 //
 #define PDH_WBEM_ERROR                   ((DWORD)0xC0000BDAL)
 
@@ -576,7 +576,7 @@ Revision History:
 //
 // MessageText:
 //
-//  The maximum log file size specified is too small to log the selected counters.
+//  The maximum log file size specified is too small to log the selected counters. 
 //  No data will be recorded in this log file. Specify a smaller set of counters
 //  to log or a larger file size and retry this call.
 //
@@ -767,7 +767,7 @@ Revision History:
 //
 // MessageText:
 //
-//  The "Performance Logs & Alerts" service did not respond.
+//  The "Performance Logs & Alerts" service did not repond.
 //
 #define PDH_PLA_SERVICE_ERROR            ((DWORD)0xC0000BF1L)
 
@@ -813,81 +813,9 @@ Revision History:
 // MessageText:
 //
 //  Performance counter in PdhAddCounter() call has already been added
-//  in the performance query. This counter is ignored.
+//  in the performacne query. This counter is ignored.
 //
 #define PDH_COUNTER_ALREADY_IN_QUERY     ((DWORD)0xC0000BF6L)
-
-//
-// MessageId: PDH_BINARY_LOG_CORRUPT
-//
-// MessageText:
-//
-//  Unable to read counter information and data from input binary log files.
-//
-#define PDH_BINARY_LOG_CORRUPT           ((DWORD)0xC0000BF7L)
-
-//
-// MessageId: PDH_LOG_SAMPLE_TOO_SMALL
-//
-// MessageText:
-//
-//  At least one of the input binary log files contain fewer than two data samples.
-//
-#define PDH_LOG_SAMPLE_TOO_SMALL         ((DWORD)0xC0000BF8L)
-
-//
-// MessageId: PDH_OS_LATER_VERSION
-//
-// MessageText:
-//
-//  The version of the operating system on the computer named %1 is later than that on the local computer. This operation is not available from the local computer.
-//
-#define PDH_OS_LATER_VERSION             ((DWORD)0xC0000BF9L)
-
-//
-// MessageId: PDH_OS_EARLIER_VERSION
-//
-// MessageText:
-//
-//  %1 supports %2 or later. Check the operating system version on the computer named %3.
-//
-#define PDH_OS_EARLIER_VERSION           ((DWORD)0xC0000BFAL)
-
-//
-// MessageId: PDH_INCORRECT_APPEND_TIME
-//
-// MessageText:
-//
-//  The output file must contain earlier data than the file to be appended.
-//
-#define PDH_INCORRECT_APPEND_TIME        ((DWORD)0xC0000BFBL)
-
-//
-// MessageId: PDH_UNMATCHED_APPEND_COUNTER
-//
-// MessageText:
-//
-//  Both files must have identical counters in order to append.
-//
-#define PDH_UNMATCHED_APPEND_COUNTER     ((DWORD)0xC0000BFCL)
-
-//
-// MessageId: PDH_SQL_ALTER_DETAIL_FAILED
-//
-// MessageText:
-//
-//  Cannot alter CounterDetail table layout in SQL database.
-//
-#define PDH_SQL_ALTER_DETAIL_FAILED      ((DWORD)0xC0000BFDL)
-
-//
-// MessageId: PDH_QUERY_PERF_DATA_TIMEOUT
-//
-// MessageText:
-//
-//  System is busy. Timeout when collecting counter data. Please retry later or increase "CollectTime" registry value.
-//
-#define PDH_QUERY_PERF_DATA_TIMEOUT      ((DWORD)0xC0000BFEL)
 
 #endif //_PDH_MSG_H_
 // end of generated file

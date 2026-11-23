@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+	<siteMapNode url="~/aspnet/doc/monitoring/default.aspx" title="Monitoring Your Application">
+           <siteMapNode url="~/aspnet/doc/monitoring/tracing.aspx" title="Tracing">
+               <siteMapNode url="~/aspnet/doc/monitoring/pagetrace.aspx" title="Trace Logging to Page Output"/>
+               <siteMapNode url="~/aspnet/doc/monitoring/apptrace.aspx" title="Application-level Trace Logging"/> 
+               <siteMapNode url="~/aspnet/doc/monitoring/messages.aspx" title="Accessing Trace Messages in Code"/> 
+           </siteMapNode>
+           <siteMapNode url="~/aspnet/doc/monitoring/errors.aspx" title="Handling Errors">
+               <siteMapNode url="~/aspnet/doc/monitoring/errors.aspx#custom" title="Customizing Error Pages"/>
+               <siteMapNode url="~/aspnet/doc/monitoring/errors.aspx#handling" title="Handling Errors Programmatically"/>
+           </siteMapNode>
+           <siteMapNode url="~/aspnet/doc/monitoring/webevents.aspx" title="Web Events">
+               <siteMapNode url="~/aspnet/doc/monitoring/webevents.aspx#events" title="Events and Event Providers"/>
+               <siteMapNode url="~/aspnet/doc/monitoring/webevents.aspx#configure" title="Configuring Events"/>
+               <siteMapNode url="~/aspnet/doc/monitoring/webevents.aspx#custom" title="Creating a Custom Event"/>
+               <siteMapNode url="~/aspnet/doc/monitoring/webevents.aspx#instrument" title="Instrumenting Your Application"/>
+               <siteMapNode url="~/aspnet/doc/monitoring/webevents.aspx#throttle" title="Throttling Events"/>
+           </siteMapNode>
+        </siteMapNode>
+</siteMap>
+  
+  
+  
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="Microsoft.Samples.XmlMessaging.WebServices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="Microsoft.Samples.XmlMessaging.WebServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="Microsoft.Samples.XmlMessaging.WebServices">
+      <s:element name="getCurrentDateTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="getCurrentDateTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getCurrentDateTimeResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getCurrentDateTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:getCurrentDateTime" />
+  </wsdl:message>
+  <wsdl:message name="getCurrentDateTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:getCurrentDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServerInterfaceServiceSoap">
+    <wsdl:operation name="getCurrentDateTime">
+      <wsdl:input message="tns:getCurrentDateTimeSoapIn" />
+      <wsdl:output message="tns:getCurrentDateTimeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServerInterfaceServiceSoap" type="tns:ServerInterfaceServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="getCurrentDateTime">
+      <soap:operation soapAction="Microsoft.Samples.XmlMessaging.WebServices/getCurrentDateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServerInterfaceServiceSoap12" type="tns:ServerInterfaceServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="getCurrentDateTime">
+      <soap12:operation soapAction="Microsoft.Samples.XmlMessaging.WebServices/getCurrentDateTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServerInterfaceService">
+    <wsdl:port name="ServerInterfaceServiceSoap" binding="tns:ServerInterfaceServiceSoap">
+      <soap:address location="http://localhost/QuickStartv20/webservices/samples/ServerInterface/vb/Server/serverinterface.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServerInterfaceServiceSoap12" binding="tns:ServerInterfaceServiceSoap12">
+      <soap12:address location="http://localhost/QuickStartv20/webservices/samples/ServerInterface/vb/Server/serverinterface.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

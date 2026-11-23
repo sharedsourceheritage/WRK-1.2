@@ -2558,6 +2558,7 @@ interface IRpcOptions : IUnknown
                   [out] ULONG_PTR * pdwValue);
 }
 
+
 enum 
 {
    COMBND_RPCTIMEOUT = 0x01, // Rpc transport-specific timeout.
@@ -2570,6 +2571,7 @@ enum
    SERVER_LOCALITY_MACHINE_LOCAL=1,
    SERVER_LOCALITY_REMOTE=2     
 };
+
 
 cpp_quote( "#endif //DCOM" )
 
@@ -2861,6 +2863,7 @@ interface ISynchronizeMutex : ISynchronize
 
 
 
+
 [
  local,
  object,
@@ -3090,160 +3093,6 @@ interface IDummyHICONIncluder : IUnknown
         HRESULT Dummy([in]HICON h1, [in] HDC h2);
 }
 
-/****************************************************************************
-* Context related structures and interfaces
-****************************************************************************/
-cpp_quote("#if defined USE_COM_CONTEXT_DEF || defined BUILDTYPE_COMSVCS || defined _OLE32_")
-
-typedef DWORD CPFLAGS;
-
-typedef struct tagContextProperty {
-    GUID policyId;
-    CPFLAGS flags;
-    [unique] IUnknown *pUnk;
-} ContextProperty;
-
-
-[
-    local,
-    object,
-    uuid(000001c1-0000-0000-C000-000000000046),
-    pointer_default(unique)
-]
-interface IEnumContextProps : IUnknown
-{
-    typedef [unique] IEnumContextProps *LPENUMCONTEXTPROPS;
-
-    HRESULT Next([in] ULONG celt,
-                 [out, size_is(celt), length_is(*pceltFetched)] ContextProperty *pContextProperties,
-                 [out] ULONG *pceltFetched);
-    HRESULT Skip([in] ULONG celt);
-    HRESULT Reset();
-    HRESULT Clone([out] IEnumContextProps **ppEnumContextProps);
-    HRESULT Count([out] ULONG *pcelt);
-}
-
-
-[
-    local,
-    object,
-    uuid(000001c0-0000-0000-C000-000000000046),
-    pointer_default(unique)
-]
-interface IContext : IUnknown
-{
-    //typedef [unique] IContext *LPCONTEXT;
-
-    HRESULT SetProperty([in] REFGUID rpolicyId,
-                        [in] CPFLAGS flags,
-                        [in] IUnknown *pUnk);
-    HRESULT RemoveProperty([in] REFGUID rPolicyId);
-    HRESULT GetProperty([in] REFGUID rGuid,
-                        [out] CPFLAGS *pFlags,
-                        [out] IUnknown **ppUnk);
-    HRESULT EnumContextProps([out] IEnumContextProps **ppEnumContextProps);
-}
-
-
-///////////////////////////////////////////////////////////////////////////////
-//NOTE: This is the section where we define OLE  *PUBLIC ONLY* interfaces. If users need to 
-//use this definition of this interface they will need to define _OBJIDL_PUBLIC in their code.
-///////////////////////////////////////////////////////////////////////////////
-#ifdef _OBJIDL_PUBLIC
-
-cpp_quote("#if !defined BUILDTYPE_COMSVCS && !defined _OLE32_")
-
-// IObjContext interface
-[
-    local,
-    object,
-    uuid(000001c6-0000-0000-C000-000000000046),
-    pointer_default(unique)
-]
-interface IObjContext : IContext
-{
-
-	void Reserved1();
-	void Reserved2();
-	void Reserved3();
-	void Reserved4();
-	void Reserved5();
-	void Reserved6();
-	void Reserved7();
-
-}
-
-cpp_quote("#endif")
-
-#endif
-
-cpp_quote("#endif")
-
-/****************************************************************************
- *                         Surrogate Types				                    *
- ****************************************************************************/
-
-//
-// ApplicationType
-//
-typedef enum tagApplicationType 
-{ 
-	ServerApplication, 
-	LibraryApplication 
-} ApplicationType;
-
-//
-// ShutdownType
-//
-typedef enum tagShutdownType 
-{ 
-	IdleShutdown, 
-	ForcedShutdown
-} ShutdownType;
-
-
-/****************************************************************************
- *                         Surrogate Services Interfaces                    *
- ****************************************************************************/
-
-//
-// IProcessLock
-//
-[
-    object,
-	local,
-    uuid(000001d5-0000-0000-C000-000000000046),
-    pointer_default(unique)
-]
-interface IProcessLock : IUnknown
-{
-	ULONG AddRefOnProcess();
-	ULONG ReleaseRefOnProcess();
-}
-
-
-//
-// ISurrogateService
-//
-[
-    object,
-    local,
-    uuid(000001d4-0000-0000-C000-000000000046),
-    pointer_default(unique)
-]
-interface ISurrogateService : IUnknown
-{
-	HRESULT Init( [in] REFGUID rguidProcessID,
-                      [in] IProcessLock* pProcessLock,
-                      [out] BOOL* pfApplicationAware );
-	HRESULT ApplicationLaunch( [in] REFGUID rguidApplID, 
-                                   [in] ApplicationType appType );
-	HRESULT ApplicationFree( [in] REFGUID rguidApplID );
-	HRESULT CatalogRefresh( [in] ULONG ulReserved );
-	HRESULT ProcessShutdown( [in] ShutdownType shutdownType );
-}
-
-
 
 /****************************************************************************
 * ICOMThreadingInfo and enums
@@ -3278,6 +3127,7 @@ interface IComThreadingInfo : IUnknown
     HRESULT GetCurrentLogicalThreadId( [out] GUID* pguidLogicalThreadId );
     HRESULT SetCurrentLogicalThreadId( [in] REFGUID rguid );
 };
+
 
 [
     object,
@@ -3316,17 +3166,5 @@ cpp_quote("#else")
 cpp_quote("#pragma warning(default:4201)")
 cpp_quote("#endif")
 cpp_quote("#endif")
-
-
-
-
-
-
-
-
-
-
-
-
 
 

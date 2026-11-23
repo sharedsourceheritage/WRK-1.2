@@ -1,0 +1,35 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{164B10B9-B200-11D0-8C61-00A0C91E29D5}" ID="3042" />
+    <Description Package="{164B10B9-B200-11D0-8C61-00A0C91E29D5}" ID="3043" />
+    <Icon Package="{164B10B9-B200-11D0-8C61-00A0C91E29D5}" ID="4512" />
+    <ProjectType>VisualBasic</ProjectType>
+    <TemplateGroupID>SmartDevice-NETCFv1</TemplateGroupID>
+    <TemplateID>SmartDevice-NETCFv1-CustomControl</TemplateID>
+    <ShowByDefault>false</ShowByDefault>
+    <SortOrder>40</SortOrder>
+    <DefaultName>CustomControl.vb</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+				<URL>http://www.microsoft.com</URL>
+			</Reference>
+			<Reference>
+				<Assembly>System.Data</Assembly>
+				<URL>http://www.microsoft.com</URL>
+			</Reference>
+			<Reference>
+				<Assembly>System.Drawing</Assembly>
+				<URL>http://www.microsoft.com</URL>
+			</Reference>
+			<Reference>
+				<Assembly>System.Windows.Forms</Assembly>
+				<URL>http://www.microsoft.com</URL>
+			</Reference>
+		</References>
+
+    <ProjectItem ReplaceParameters="true">CustomControl.vb</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

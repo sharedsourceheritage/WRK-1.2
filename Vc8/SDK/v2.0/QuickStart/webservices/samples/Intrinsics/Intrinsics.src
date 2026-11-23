@@ -1,0 +1,4 @@
+C# Source:cs\Client\SessionServiceClient.aspx,cs\App_WebReferences\SessionService.wsdl,cs\Server\SessionService.asmx,cs\App_WebReferences\results.discomap
+VB Source:vb\Client\SessionServiceClient.aspx,vb\App_WebReferences\SessionService.wsdl,vb\Server\SessionService.asmx,vb\App_WebReferences\results.discomap
+J# Source:jsl\Client\SessionServiceClient.aspx,jsl\App_WebReferences\SessionService.wsdl,jsl\Server\SessionService.asmx,jsl\App_WebReferences\results.discomap
+

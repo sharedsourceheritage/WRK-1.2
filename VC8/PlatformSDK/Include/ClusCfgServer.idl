@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright (c) 2000-2002 Microsoft Corporation
+//  Copyright (c) 2000-2001 Microsoft Corporation
 //
 //  Module Name:
 //      ClusCfgServer.idl
@@ -21,7 +21,7 @@
 // Comments for generated files
 cpp_quote( "//////////////////////////////////////////////////////////////////////////////" )
 cpp_quote( "//" )
-cpp_quote( "// Copyright (c) 2000-2001 Microsoft Corporation" )
+cpp_quote( "// Copyright (c) 2000 Microsoft Corporation" )
 cpp_quote( "//" )
 cpp_quote( "// Remarks:" )
 cpp_quote( "//     Generated file. See file ClusCfgServer.idl for more details." )
@@ -65,8 +65,7 @@ interface IClusCfgResourceTypeInfo;
 interface IClusCfgResourceTypeCreate;
 interface IClusCfgMemberSetChangeListener;
 interface IClusCfgEvictCleanup;
-interface IClusCfgManagedResourceData;
-interface IClusCfgVerifyQuorum;
+interface IClusCfgStartupListener;
 
 //////////////////////////////////////////////////////////////////////////////
 // Type Definitions
@@ -79,7 +78,6 @@ interface IClusCfgVerifyQuorum;
 typedef enum
 {
     dluUNKNOWN = 0,
-
     dluNO_ROOT_DIRECTORY,
     dluREMOVABLE_DISK,
     dluFIXED_DISK,
@@ -88,27 +86,10 @@ typedef enum
     dluRAM_DISK,
     dluSYSTEM,
     dluUNUSED,
-
-    //
-    //  Disks that are on a system bus will have a usage enum that starts from here.
-    //
-
-    dluSTART_OF_SYSTEM_BUS = 50,
-
-    dluNO_ROOT_DIRECTORY_SYSTEM_BUS,
-    dluREMOVABLE_DISK_SYSTEM_BUS,
-    dluFIXED_DISK_SYSTEM_BUS,
-    dluNETWORK_DRIVE_SYSTEM_BUS,
-    dluCOMPACT_DISC_SYSTEM_BUS,
-    dluRAM_DISK_SYSTEM_BUS,
-    dluSYSTEM_SYSTEM_BUS,
-    dluUNUSED_SYSTEM_BUS,
-
     dluMAX
 } EDriveLetterUsage;
 
-typedef struct _DRIVELETTERMAPPING
-{
+typedef struct _DRIVELETTERMAPPING {
     EDriveLetterUsage dluDrives[ 26 ];
 } SDriveLetterMapping;
 
@@ -123,29 +104,6 @@ typedef enum
     cmCLEANUP_NODE_AFTER_EVICT,
     cmMAX
 } ECommitMode;
-
-typedef
-[
-    uuid( FFCF84AD-5892-4f4c-8C22-ACE041D6ACC2 ),
-    helpstring( "The reason that Cleanup was called." )
-]
-enum EClusCfgCleanupReason {
-    [ helpstring( "The operation completed successfully" ) ]                    crSUCCESS   = 0,
-    [ helpstring( "The operation was cancelled" ) ]                             crCANCELLED = 1,
-    [ helpstring( "The operation encountered an error and was terminated" ) ]   crERROR     = 2
-} EClusCfgCleanupReason;
-
-typedef
-[
-    uuid( 1DAF9692-6662-43b1-AD45-D50F7849B0CD ),
-    helpstring( "Resource dependency flags" )
-]
-enum EDependencyFlags
-{
-    [ helpstring( "Unknown access" ) ]              dfUNKNOWN   = 0,
-    [ helpstring( "Shared access resource" ) ]      dfSHARED    = 1,
-    [ helpstring( "Exclusive access resource" ) ]   dfEXCLUSIVE = 2
-} EDependencyFlags;
 
 //////////////////////////////////////////////////////////////////////////////
 // Constant Definitions
@@ -350,7 +308,7 @@ interface IClusCfgNodeInfo : IUnknown
     //  Parameter:
     //      rgDriveLetterUsage
     //          An array of flags representing A: thru Z: (26) drive mappings to
-    //          the drives. See SDriveLetterMapping for flag values.
+    //          the device. See SDriveLetterMapping for flag values.
     //
     //  Return Values:
     //      S_OK
@@ -362,75 +320,6 @@ interface IClusCfgNodeInfo : IUnknown
     //////////////////////////////////////////////////////////////////////////
     HRESULT
         GetDriveLetterMappings( [ out ] SDriveLetterMapping * pdlmDriveLetterUsageOut );
-
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  GetMaxNodeCount(
-    //      [ out ] DWORD * pcMaxNodesOut
-    //      )
-    //
-    //  Description:
-    //      Returns the maximun number of nodes for this node's product
-    //      suite type.
-    //
-    //  Notes:
-    //
-    //  Parameter:
-    //      pcMaxNodesOut
-    //          The maximum number of nodes allowed by this node's product
-    //          suite type.
-    //
-    //  Return Value:
-    //      S_OK
-    //          Success.
-    //
-    //      other HRESULT
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        GetMaxNodeCount(
-            [ out ] DWORD * pcMaxNodesOut
-            );
-
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  GetProcessorInfo(
-    //        [ out ] WORD *    pwProcessorArchitectureOut
-    //      , [ out ] WORD *    pwProcessorLevelOut
-    //      )
-    //
-    //  Description:
-    //      Returns the processor information for this node.
-    //
-    //  Notes:
-    //
-    //  Parameter:
-    //      pwProcessorArchitectureOut
-    //          The processor architecture.
-    //
-    //      pwProcessorLevelOut
-    //          The processor level.
-    //
-    //  Return Value:
-    //      S_OK
-    //          Success.
-    //
-    //      other HRESULT
-    //          The call failed.
-    //
-    //  Remarks:
-    //      See SYSTEM_INFO in MSDN and/or the Platform SDK for more
-    //      information.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        GetProcessorInfo(
-              [ out ] WORD *    pwProcessorArchitectureOut
-            , [ out ] WORD *    pwProcessorLevelOut
-            );
 
 }; //*** interface IClusCfgNodeInfo
 
@@ -776,8 +665,8 @@ interface IEnumClusCfgNetworks : IUnknown
 //****************************************************************************
 [
     object,
-    uuid( 8389D687-DF99-442b-81AB-58BA5B029688 ),
-    async_uuid( 0560D153-892F-4bf5-87B0-06AF2803955C ),
+    uuid( E0324847-1520-41b0-B960-54198DA5F8AF ),
+    async_uuid( 73616028-1243-4749-AD84-0B5EB358FFA0 ),
     pointer_default( unique )
 ]
 interface IClusCfgManagedResourceInfo : IUnknown
@@ -795,10 +684,10 @@ interface IClusCfgManagedResourceInfo : IUnknown
     //      )
     //
     //  Description:
-    //      Retrieve the Unique IDentifier for this resource. This is not a Universally
+    //      Retrieve the Unique IDentifier for this device. This is not a Universally
     //      Unique IDentifier (UUID or GUID). This indentifer should match identifiers
-    //      that can be generated on other nodes that can see this resource from a shared
-    //      bus (such as a SCSI disk).
+    //      that can be generated on other nodes that can see this device from a shared
+    //      bus (such as a SCSI device).
     //
     //  Parameters:
     //      pbstrUIDOut
@@ -831,11 +720,11 @@ interface IClusCfgManagedResourceInfo : IUnknown
     //      )
     //
     //  Description:
-    //      Retrieves a "user friendly" name of the resource.
+    //      Retrieves a "user friendly" name of the device.
     //
     //  Parameter:
     //      pbstrNameOut
-    //          Pointer to resource name. This should be freed by the caller by calling
+    //          Pointer to device name. This should be freed by the caller by calling
     //          SysFreeString( ).
     //
     //  Return Values:
@@ -860,12 +749,12 @@ interface IClusCfgManagedResourceInfo : IUnknown
     //      )
     //
     //  Description:
-    //      Stores a new name for the resource to be set when the cluster
+    //      Stores a new name for the device to be set when the cluster
     //      configuration is commited.
     //
     //  Parameter:
     //      pcszNameIn
-    //          The name of the user wants to assigned the resource.
+    //          The name of the user wants to assigned the device.
     //
     //  Return Value:
     //      S_OK
@@ -891,10 +780,7 @@ interface IClusCfgManagedResourceInfo : IUnknown
     //  IsManaged( void )
     //
     //  Description:
-    //      Call this to determine if the resource is/will be managed by the cluster.
-    //
-    //      A managed device will always have a resource created for it in the
-    //      cluster.
+    //      Call this to determine if the device is/will be managed by the cluster.
     //
     //  Return Values:
     //      S_OK
@@ -918,16 +804,12 @@ interface IClusCfgManagedResourceInfo : IUnknown
     //      )
     //
     //  Description:
-    //      Setting this flag will cause the resource to be configured as being managed
+    //      Setting this flag will cause the device to be configured as being managed
     //      by the cluster.
     //
     //  Parameter:
     //      fIsManagedIn
-    //          If TRUE, the resource will be marked as being managed by the cluster.
-    //
-    //      Setting this to TRUE will cause a resource to be created for this device
-    //      in the cluster.  Setting this to FALSE will prevent a resource for for
-    //      this device from being created in the cluster.
+    //          If TRUE, the device will be marked as being managed by the cluster.
     //
     //  Return Value:
     //      S_OK
@@ -941,17 +823,17 @@ interface IClusCfgManagedResourceInfo : IUnknown
         SetManaged( [ in ] BOOL fIsManagedIn );
 
     //
-    // Quorum resource?
+    // Quorum Device?
     //
 
     //////////////////////////////////////////////////////////////////////////
     //
     //  STDMETHOD
-    //  IsQuorumResource( void )
+    //  IsQuorumDevice( void )
     //
     //  Description:
-    //      Call this to determine if the resource is/will be set as the quorum
-    //      resource.
+    //      Call this to determine if the device is/will be set as the quorum
+    //      device.
     //
     //  Return Values:
     //      S_OK
@@ -965,37 +847,37 @@ interface IClusCfgManagedResourceInfo : IUnknown
     //
     //////////////////////////////////////////////////////////////////////////
     HRESULT
-        IsQuorumResource( void );
+        IsQuorumDevice( void );
 
     //////////////////////////////////////////////////////////////////////////
     //
     //  STDMETHOD
-    //  SetQuorumResource(
-    //      [ in ] BOOL fIsQuorumResourceIn
+    //  SetQuorumedDevice(
+    //      [ in ] BOOL fIsQuorumDeviceIn
     //      )
     //
     //  Description:
-    //      Setting this flag will cause the resource to be configured as the
-    //      quorum resource in the cluster.
+    //      Setting this flag will cause the device to be configured as the
+    //      quorum device in the cluster.
     //
     //  Parameter:
-    //      fIsQuorumResourceIn
-    //          If TRUE, the resource will be marked to be the quorum resource.
+    //      fIsQuorumDeviceIn
+    //          If TRUE, the device will be marked to be the quorum device.
     //
     //  Return Value:
     //      S_OK
     //          Success.
     //
-    //      HRESULT_FROM_WIN32( ERROR_NOT_QUORUM_CAPABLE )
-    //          You tried to set a resource to be the quorum when the resource
-    //          is not capable of being a quorum resource.
+    //      E_UNEXPECTED
+    //          You tried to set a device to be the quorum when the device is not
+    //          capable of being a quorum device.
     //
     //      other HRESULT
     //          The call failed.
     //
     //////////////////////////////////////////////////////////////////////////
     HRESULT
-        SetQuorumResource( [ in ] BOOL fIsQuorumResourceIn );
+        SetQuorumedDevice( [ in ] BOOL fIsQuorumDeviceIn );
 
     //
     // Quorum Capable?
@@ -1007,8 +889,8 @@ interface IClusCfgManagedResourceInfo : IUnknown
     //  IsQuorumCapable( void )
     //
     //  Description:
-    //      Call this to determine if the resource is capable be set as the quorum
-    //      resource.
+    //      Call this to determine if the device is capable be set as the quorum
+    //      device.
     //
     //  Return Values:
     //      S_OK
@@ -1025,35 +907,6 @@ interface IClusCfgManagedResourceInfo : IUnknown
         IsQuorumCapable( void );
 
     //
-    // Set Quorum Capable
-    //
-
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  SetQuorumCapable(
-    //      [ in ] BOOL fIsQuorumCapableIn
-    //      )
-    //
-    //  Description:
-    //      Call this to set whether the resource is capable to be the quorum
-    //      resource or not.
-    //
-    //  Parameter:
-    //      fSetQuorumCapableIn
-    //          If TRUE, the resource will be marked as quorum capable.
-    //
-    //  Return Values:
-    //      S_OK
-    //          Call succeeded.
-    //      E_NOTIMPL
-    //          The call is not implemented.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        SetQuorumCapable( [ in ] BOOL fIsQuorumCapableIn );
-
-    //
     // Drive Letter Mapping
     //
 
@@ -1065,12 +918,12 @@ interface IClusCfgManagedResourceInfo : IUnknown
     //      )
     //
     //  Description:
-    //      Retrieves the drive mappings for the resource (if any).
+    //      Retrieves the drive mappings for the device (if any).
     //
     //  Parameter:
     //      rgDriveLetterMappings
     //          An array of flags representing A: thru Z: (26) drive mappings to
-    //          the resource. See SDriveLetterMapping for flag values.
+    //          the device. See SDriveLetterMapping for flag values.
     //
     //  Return Values:
     //      S_OK
@@ -1091,13 +944,13 @@ interface IClusCfgManagedResourceInfo : IUnknown
     //      )
     //
     //  Description:
-    //      Stores the drive mappings for the resource. The change will not take
+    //      Stores the drive mappings for the device. The change will not take
     //      effect until the configuration has been committed.
     //
     //  Parameter:
     //      rgDriveLetterMappings
     //          An array of flags representing A: thru Z: (26) drive mappings to
-    //          the resource. See EDriveLetterUsage for flag values.
+    //          the device. See EDriveLetterUsage for flag values.
     //
     //  Return Values:
     //      S_OK
@@ -1110,24 +963,14 @@ interface IClusCfgManagedResourceInfo : IUnknown
     HRESULT
         SetDriveLetterMappings( [ in ] SDriveLetterMapping dlmDriveLetterMappingIn );
 
-    //
-    // Manageable by the cluster?
-    //
-
     //////////////////////////////////////////////////////////////////////////
     //
     //  STDMETHOD
-    //  IsManagedByDefault( void )
+    //  IsDeviceJoinable( void )
     //
     //  Description:
-    //      Call this to determine if the resource wants to be managed by default
-    //      by the cluster.
-    //
-    //      When doing a full configuration all devices that are
-    //      managed by default will be have resources created for them
-    //      in the cluster and will therefore be managed by the cluster.
-    //      When doing a minimum configuration resources will not be created
-    //      for any devices that want to be managed by default by the cluster.
+    //      Call this to determine if the quorum capable device allows other nodes
+    //      to join.
     //
     //  Return Values:
     //      S_OK
@@ -1141,39 +984,28 @@ interface IClusCfgManagedResourceInfo : IUnknown
     //
     //////////////////////////////////////////////////////////////////////////
     HRESULT
-        IsManagedByDefault( void );
+        IsDeviceJoinable( void );
 
     //////////////////////////////////////////////////////////////////////////
     //
     //  STDMETHOD
-    //  SetManagedByDefault(
-    //      [ in ] BOOL fIsManageableIn
+    //  SetDeviceJoinable(
+    //      [ in ] BOOL fJoinableIn
     //      )
     //
     //  Description:
-    //      Setting this flag will cause the resource to be managed by default
-    //      by the cluster.
+    //      Call this to set the joinable flag.
     //
-    //  Parameter:
-    //      fIsManagedByDefaultIn
-    //          If TRUE, the resource will be marked as being managed by default
-    //          by the cluster.
-    //
-    //      Setting this to TRUE will cause a cluster resource to be created for
-    //      this device by default when doing a full configuration.  By
-    //      setting this to FALSE the device will not have a resource created
-    //      for it in the cluster by default.
-    //
-    //  Return Value:
+    //  Return Values:
     //      S_OK
-    //          Success.
+    //          Call succeeded
     //
     //      other HRESULT
     //          The call failed.
     //
     //////////////////////////////////////////////////////////////////////////
     HRESULT
-        SetManagedByDefault( [ in ] BOOL fIsManagedByDefaultIn );
+        SetDeviceJoinable( [ in ] BOOL fJoinableIn );
 
 }; //*** interface IClusCfgManagedResourceInfo
 
@@ -1536,7 +1368,7 @@ interface IClusCfgPartitionInfo : IUnknown
     //  Parameter:
     //      rgDriveLetterUsage
     //          An array of flags representing A: thru Z: (26) drive mappings to
-    //          the disk. See SDriveLetterMapping for flag values.
+    //          the device. See SDriveLetterMapping for flag values.
     //
     //  Return Values:
     //      S_OK
@@ -1557,13 +1389,13 @@ interface IClusCfgPartitionInfo : IUnknown
     //      )
     //
     //  Description:
-    //      Stores the drive mappings for the disk. The change will not take
+    //      Stores the drive mappings for the device. The change will not take
     //      effect until the configuration has been committed.
     //
     //  Parameter:
     //      rgDriveLetterMappings
     //          An array of flags representing A: thru Z: (26) drive mappings to
-    //          the disk. See EDriveLetterUsage for flag values.
+    //          the device. See EDriveLetterUsage for flag values.
     //
     //  Return Values:
     //      S_OK
@@ -2381,7 +2213,7 @@ interface IClusCfgClusterInfo : IUnknown
     //
     //  Parameter:
     //      pbstrNameOut
-    //          Pointer to cluster name. This should be freed by the caller by calling
+    //          Pointer to device name. This should be freed by the caller by calling
     //          SysFreeString( ).
     //
     //  Return Values:
@@ -2418,7 +2250,7 @@ interface IClusCfgClusterInfo : IUnknown
     //
     //  Parameter:
     //      pcszNameIn
-    //          The name of the user wants to assign to the cluster.
+    //          The name of the user wants to assigned the device.
     //
     //  Return Value:
     //      S_OK
@@ -2705,35 +2537,6 @@ interface IClusCfgClusterInfo : IUnknown
             [ in, pointer_default( unique ) ] LPCWSTR pcszBindingStringIn
             );
 
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  GetMaxNodeCount(
-    //      [ out ] DWORD * pcMaxNodesOut
-    //      )
-    //
-    //  Description:
-    //      Returns the maximun number of nodes supported in this cluster.
-    //
-    //  Notes:
-    //
-    //  Parameter:
-    //      pcMaxNodesOut
-    //          The maximum number of nodes allowed in this cluster.
-    //
-    //  Return Value:
-    //      S_OK
-    //          Success.
-    //
-    //      other HRESULT
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        GetMaxNodeCount(
-            [ out ] DWORD * pcMaxNodesOut
-            );
-
 }; //*** interface IClusCfgClusterInfo
 
 
@@ -2955,8 +2758,8 @@ interface IClusCfgCredentials : IUnknown
     //  STDMETHOD
     //      GetCredentials(
     //          [ out ] BSTR * pbstrUserOut,
-    //          [ out ] BSTR * pbstrDomainOut,
-    //          [ out ] BSTR * pbstrPasswordOut
+    //          [ out ] BTSR * pbstrDomainOut,
+    //          [ out ] BTSR * pbstrPasswordOut
     //          )
     //
     //  Description:
@@ -2987,115 +2790,6 @@ interface IClusCfgCredentials : IUnknown
             , [ out ] BSTR * pbstrPasswordOut
             );
 
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //      GetIdentity(
-    //          [ out ] BSTR * pbstrUserOut,
-    //          [ out ] BSTR * pbstrDomainOut
-    //          )
-    //
-    //  Description:
-    //      Get the credentials.
-    //
-    //  Parameters:
-    //      pbstrUserOut
-    //          Catches the user name.
-    //
-    //      pbstrDomainOut
-    //          Catches the domain name.
-    //
-    //  Return Values:
-    //      S_OK
-    //          The call succeeded.
-    //
-    //      other HRESULTs
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        GetIdentity(
-              [ out ] BSTR * pbstrUserOut
-            , [ out ] BSTR * pbstrDomainOut
-            );
-
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //      GetPassword( [ out ] BSTR * pbstrPasswordOut )
-    //
-    //  Description:
-    //      Get the credentials.
-    //
-    //  Parameters:
-    //
-    //      pbstrPasswordOut
-    //          Catches the user's password.
-    //
-    //  Return Values:
-    //      S_OK
-    //          The call succeeded.
-    //
-    //      other HRESULTs
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        GetPassword( [ out ] BSTR * pbstrPasswordOut );
-
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //      AssignTo(
-    //          [ in ] IClusCfgCredentials * picccDestIn
-    //          )
-    //
-    //  Description:
-    //      Write contents to another instance.
-    //
-    //  Parameters:
-    //      picccDestIn
-    //          Instance that receives contents.
-    //
-    //  Return Values:
-    //      S_OK
-    //          The call succeeded.
-    //
-    //      other HRESULTs
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        AssignTo(
-            [ in ] IClusCfgCredentials * picccDestIn
-            );
-
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //      AssignFrom(
-    //          [ in ] IClusCfgCredentials * picccSourceIn
-    //          )
-    //
-    //  Description:
-    //      Overwrite contents with those from another instance.
-    //
-    //  Parameters:
-    //      picccSourceIn
-    //          Instance from which to overwrite contents.
-    //
-    //  Return Values:
-    //      S_OK
-    //          The call succeeded.
-    //
-    //      other HRESULTs
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        AssignFrom(
-            [ in ] IClusCfgCredentials * picccSourceIn
-            );
 }; //*** interface IClusCfgCredentials
 
 
@@ -3147,11 +2841,14 @@ interface IClusCfgCapabilities : IUnknown
 
 }; //*** interface IClusCfgCapabilities
 
-
 //****************************************************************************
 //++
 //
 //  interface IClusCfgManagedResourceCfg
+//
+//  Description:
+//      TODO:   gpease  06-JUN-2000
+//      Write a description.
 //
 //--
 //****************************************************************************
@@ -3165,23 +2862,23 @@ interface IClusCfgManagedResourceCfg : IUnknown
 {
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgManagedResourceCfg::PreCreate(
+    // STDMETHOD
+    // IClusCfgManagedResourceCfg::PreCreate(
     //      IUnknown * punkServicesIn
     //      )
     //
-    //  Description:
+    // Description:
     //      This method is called by the post configuration manager to
     //      determine the requirements of the resource. Querying the
     //      punkServicesIn allows the managed resource to use services
     //      provided by the manager.
     //
-    //  Arguments:
+    // Arguments:
     //      punkServicesIn
     //          The resource should QI this interface for services provided
     //          by the post configuration manager and to set its dependencies.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -3194,23 +2891,23 @@ interface IClusCfgManagedResourceCfg : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgManagedResourceCfg::Create(
+    // STDMETHOD
+    // IClusCfgManagedResourceCfg::Create(
     //      IUnknown * punkServicesIn
     //      )
     //
-    //  Description:
+    // Description:
     //      This method is called by the post configuration manager to
     //      have the resource create an instance of itself. Querying the
     //      punkServicesIn allows the managed resource to use services
     //      provided by the manager.
     //
-    //  Arguments:
+    // Arguments:
     //      punkServicesIn
     //          The resource should QI this interface for services provided
     //          by the post configuration manager and to create itself.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -3223,24 +2920,24 @@ interface IClusCfgManagedResourceCfg : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgManagedResourceCfg::PostCreate(
+    // STDMETHOD
+    // IClusCfgManagedResourceCfg::PostCreate(
     //      IUnknown * punkServicesIn
     //      )
     //
-    //  Description:
+    // Description:
     //      This method is called by the post configuration manager to allow
     //      resources to perform any post-creation configuration that may be
     //      needed. At this point the cluster is fully configured. Querying
     //      the punkServicesIn allows the managed resource to use services
     //      provided by the manager.
     //
-    //  Arguments:
+    // Arguments:
     //      punkServicesIn
     //          The resource should QI this interface for services provided
     //          by the post configuration manager.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -3253,12 +2950,12 @@ interface IClusCfgManagedResourceCfg : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgManagedResourceCfg::Evict(
+    // STDMETHOD
+    // IClusCfgManagedResourceCfg::Evict(
     //      IUnknown * punkServicesIn
     //      )
     //
-    //  Description:
+    // Description:
     //      This method is called by the post configuration manager to alert
     //      the resource that this node was evicted from the cluster. The
     //      resource should do whatever cleanup it needs to do revert to a
@@ -3266,12 +2963,12 @@ interface IClusCfgManagedResourceCfg : IUnknown
     //      managed resource to uses services provided by the post
     //      configuration manager.
     //
-    //  Arguments:
+    // Arguments:
     //      punkServicesIn
     //          The resource should QI this interface for services provided
     //          by the post configuration manager.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -3285,11 +2982,14 @@ interface IClusCfgManagedResourceCfg : IUnknown
 
 }; //*** interface IClusCfgManagedResourceCfg
 
-
 //****************************************************************************
 //++
 //
 //  interface IClusCfgResourcePreCreate
+//
+//  Description:
+//      TODO:   gpease  06-JUN-2000
+//      Write a description.
 //
 //--
 //****************************************************************************
@@ -3301,20 +3001,31 @@ interface IClusCfgManagedResourceCfg : IUnknown
 ]
 interface IClusCfgResourcePreCreate : IUnknown
 {
+    typedef
+    [
+        uuid( 1DAF9692-6662-43b1-AD45-D50F7849B0CD ),
+        helpstring("Resource dependency flags")
+    ]
+    enum EDependencyFlags {
+        [helpstring("Unknown access")]              dfUNKNOWN   = 0,
+        [helpstring("Shared access resource")]      dfSHARED    = 1,
+        [helpstring("Exclusive access resource")]   dfEXCLUSIVE = 2,
+    } EDependencyFlags;
+
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourcePreCreate::SetDependency(
+    // STDMETHOD
+    // IClusCfgResourcePreCreate::SetDependency(
     //      LPCLSID             pclsidDepResTypeIn,
     //      EDependencyFlags    dflagIn
     //      )
     //
-    //  Description:
+    // Description:
     //      Informs the post configuration manager that a resource has a
     //      dependency on another type of resource and if the resource needs
     //      the resource for shared access or exclusive access.
     //
-    //  Arguments:
+    // Arguments:
     //      pclsidDepResTypeIn
     //          The CLSID of the type of resource that a resource is
     //          requesting a dependency on. These are documented in the SDK
@@ -3343,21 +3054,21 @@ interface IClusCfgResourcePreCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourcePreCreate::SetType(
+    // STDMETHOD
+    // IClusCfgResourcePreCreate::GetType(
     //      CLSID * pclsidIn
     //      )
     //
-    //  Description:
+    // Description:
     //      A managed resource MUST call this to indicate its resource type.
     //      Failure to call this during PreCreate will result in your
     //      resource not being created.
     //
-    //  Arguments:
+    // Arguments:
     //      pclsidIn
     //          Pointer to the GUID of the resource type.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -3370,21 +3081,21 @@ interface IClusCfgResourcePreCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourcePreCreate::SetClassType(
+    // STDMETHOD
+    // IClusCfgResourcePreCreate::SetClassType(
     //      CLSID * pclsidIn
     //      )
     //
-    //  Description:
+    // Description:
     //      A managed resource sets this to indicate that its resource type
     //      can be considered to be of a class of resource. You may call this
     //      multiple times to indicate all the classes you belong to.
     //
-    //  Arguments:
+    // Arguments:
     //      pclsidIn
     //          Pointer to the GUID of the resource class type.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -3397,11 +3108,14 @@ interface IClusCfgResourcePreCreate : IUnknown
 
 }; //*** interface IClusCfgResourcePreCreate
 
-
 //****************************************************************************
 //++
 //
 //  interface IClusCfgResourceCreate
+//
+//  Description:
+//      TODO:   gpease  06-JUN-2000
+//      Write a description.
 //
 //--
 //****************************************************************************
@@ -3415,16 +3129,16 @@ interface IClusCfgResourceCreate : IUnknown
 {
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceCreate::SetPropertyBinary(
+    // STDMETHOD
+    // IClusCfgResourceCreate::SetPropertyBinary(
     //        [ in ] LPCWSTR        pcszNameIn
     //      , [ in ] const DWORD    cbSizeIn
     //      , [ in ] const BYTE *   pbyteIn
     //      )
     //
-    //  Description:
+    // Description:
     //
-    //  Arguments:
+    // Arguments:
     //
     // Return Value:
     //      S_OK
@@ -3443,15 +3157,15 @@ interface IClusCfgResourceCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceCreate::SetPropertyDWORD(
+    // STDMETHOD
+    // IClusCfgResourceCreate::SetPropertyDWORD(
     //        [ in ] LPCWSTR     pcszNameIn
     //      , [ in ] const DWORD dwDWORDIn
     //      )
     //
-    //  Description:
+    // Description:
     //
-    //  Arguments:
+    // Arguments:
     //
     // Return Value:
     //      S_OK
@@ -3469,15 +3183,15 @@ interface IClusCfgResourceCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceCreate::SetPropertyString(
+    // STDMETHOD
+    // IClusCfgResourceCreate::SetPropertyString(
     //        [ in ] LPCWSTR pcszNameIn
     //      , [ in ] LPCWSTR pcszStringIn
     //      )
     //
-    //  Description:
+    // Description:
     //
-    //  Arguments:
+    // Arguments:
     //
     // Return Value:
     //      S_OK
@@ -3495,15 +3209,15 @@ interface IClusCfgResourceCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceCreate::SetPropertyExpandString(
+    // STDMETHOD
+    // IClusCfgResourceCreate::SetPropertyExpandString(
     //        [ in ] LPCWSTR pcszNameIn
     //      , [ in ] LPCWSTR pcszStringIn
     //      )
     //
-    //  Description:
+    // Description:
     //
-    //  Arguments:
+    // Arguments:
     //
     // Return Value:
     //      S_OK
@@ -3521,16 +3235,16 @@ interface IClusCfgResourceCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceCreate::SetPropertyMultiString(
+    // STDMETHOD
+    // IClusCfgResourceCreate::SetPropertyMultiString(
     //        [ in ] LPCWSTR     pcszNameIn
     //      , [ in ] const DWORD cbMultiStringIn
     //      , [ in ] LPCWSTR     pcszMultiStringIn
     //      )
     //
-    //  Description:
+    // Description:
     //
-    //  Arguments:
+    // Arguments:
     //
     // Return Value:
     //      S_OK
@@ -3549,15 +3263,15 @@ interface IClusCfgResourceCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceCreate::SetPropertyUnsignedLargeInt(
+    // STDMETHOD
+    // IClusCfgResourceCreate::SetPropertyUnsignedLargeInt(
     //        [ in ] LPCWSTR                pcszNameIn
     //      , [ in ] const ULARGE_INTEGER   ulIntIn
     //      )
     //
-    //  Description:
+    // Description:
     //
-    //  Arguments:
+    // Arguments:
     //
     // Return Value:
     //      S_OK
@@ -3575,15 +3289,15 @@ interface IClusCfgResourceCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceCreate::SetPropertyLong(
+    // STDMETHOD
+    // IClusCfgResourceCreate::SetPropertyLong(
     //        [ in ] LPCWSTR     pcszNameIn
     //      , [ in ] const LONG  lLongIn
     //      )
     //
-    //  Description:
+    // Description:
     //
-    //  Arguments:
+    // Arguments:
     //
     // Return Value:
     //      S_OK
@@ -3601,15 +3315,15 @@ interface IClusCfgResourceCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceCreate::SetPropertySecurityDescriptor(
+    // STDMETHOD
+    // IClusCfgResourceCreate::SetPropertySecurityDescriptor(
     //        [ in ] LPCWSTR                     pcszNameIn
     //      , [ in ] const SECURITY_DESCRIPTOR * pcsdIn
     //      )
     //
-    //  Description:
+    // Description:
     //
-    //  Arguments:
+    // Arguments:
     //
     // Return Value:
     //      S_OK
@@ -3626,15 +3340,15 @@ interface IClusCfgResourceCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceCreate::SetPropertyLargeInt(
+    // STDMETHOD
+    // IClusCfgResourceCreate::SetPropertyLargeInt(
     //        [ in ] LPCWSTR pcszNameIn
     //      , [ in ] const LARGE_INTEGER lIntIn
     //      )
     //
-    //  Description:
+    // Description:
     //
-    //  Arguments:
+    // Arguments:
     //
     // Return Value:
     //      S_OK
@@ -3652,16 +3366,16 @@ interface IClusCfgResourceCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceCreate::SendResourceControl(
+    // STDMETHOD
+    // IClusCfgResourceCreate::SendResourceControl(
     //        [ in ] DWORD   dwControlCode
     //      , [ in ] LPVOID  lpInBuffer
     //      , [ in ] DWORD   cbInBufferSize
     //      )
     //
-    //  Description:
+    // Description:
     //
-    //  Arguments:
+    // Arguments:
     //
     // Return Value:
     //      S_OK
@@ -3680,11 +3394,14 @@ interface IClusCfgResourceCreate : IUnknown
 
 }; //*** interface IClusCfgResourceCreate
 
-
 //****************************************************************************
 //++
 //
 //  interface IClusCfgResourcePostCreate
+//
+//  Description:
+//      TODO:   gpease  06-JUN-2000
+//      Write a description.
 //
 //--
 //****************************************************************************
@@ -3698,15 +3415,15 @@ interface IClusCfgResourcePostCreate : IUnknown
 {
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourcePostCreate::ChangeName(
+    // STDMETHOD
+    // IClusCfgResourcePostCreate::ChangeName(
     //      [ in ] LPCWSTR pcszNameIn
     //      )
     //
-    //  Description:
+    // Description:
     //      Changes the name of the resource.
     //
-    //  Arguments:
+    // Arguments:
     //      pcszNameIn
     //          The name to assign the group.
     //
@@ -3723,8 +3440,8 @@ interface IClusCfgResourcePostCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceCreate::SendResourceControl(
+    // STDMETHOD
+    // IClusCfgResourceCreate::SendResourceControl(
     //        [ in ]  DWORD   dwControlCode
     //      , [ in ]  LPVOID  lpInBuffer
     //      , [ in ]  DWORD   cbInBufferSize
@@ -3733,9 +3450,9 @@ interface IClusCfgResourcePostCreate : IUnknown
     //      , [ out ] LPDWORD lpcbBytesReturned
     //      )
     //
-    //  Description:
+    // Description:
     //
-    //  Arguments:
+    // Arguments:
     //
     // Return Value:
     //      S_OK
@@ -3757,11 +3474,14 @@ interface IClusCfgResourcePostCreate : IUnknown
 
 }; //*** interface IClusCfgResourcePostCreate
 
-
 //****************************************************************************
 //++
 //
 //  interface IClusCfgGroupCfg
+//
+//  Description:
+//      TODO:   gpease  06-JUN-2000
+//      Write a description.
 //
 //--
 //****************************************************************************
@@ -3775,18 +3495,18 @@ interface IClusCfgGroupCfg : IUnknown
 {
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgGroupCfg::SetName(
+    // STDMETHOD
+    // IClusCfgGroupCfg::SetName(
     //      [ in ] LPCWSTR pcszNameIn
     //      )
     //
-    //  Description:
+    // Description:
     //      Changes the name of the group in which the resource was created.
     //      Note that the last resource to set the name wins. The ordering
     //      of the last resource is the resource that doesn't have anything
     //      depending on it.
     //
-    //  Arguments:
+    // Arguments:
     //      pcszNameIn
     //          The name to assign the group.
     //
@@ -3803,19 +3523,19 @@ interface IClusCfgGroupCfg : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgGroupCfg::GetName(
+    // STDMETHOD
+    // IClusCfgGroupCfg::GetName(
     //      BSTR * pbstrNameOut
     //      )
     //
-    //  Description:
+    // Description:
     //      Retrieves the name of the group in which the resource was created.
     //      Note that the last resource to set the name wins. The ordering
     //      of the last resource is the resource that doesn't have anything
     //      depending on it. Do not cache this value as the name may change
     //      after control has been returned to the manager.
     //
-    //  Arguments:
+    // Arguments:
     //      pbstrNameOut
     //          The name to assign the group.
     //
@@ -3834,7 +3554,6 @@ interface IClusCfgGroupCfg : IUnknown
         GetName( [ out ] BSTR * pbstrNameOut );
 
 }; //*** interface IClusCfgGroupCfg
-
 
 //****************************************************************************
 //++
@@ -3859,12 +3578,12 @@ interface IClusCfgMemberSetChangeListener : IUnknown
 {
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgMemberSetChangeListener::Notify(
+    // STDMETHOD
+    // IClusCfgMemberSetChangeListener::Notify(
     //      [ in ] IUnknown * punkClusterInfoIn
     //      )
     //
-    //  Description:
+    // Description:
     //      This method is called to notify a component that this computer has
     //      either joined or left a cluster. During this call, a component typically
     //      performs operations that are required to switch it from the "clustered"
@@ -3877,14 +3596,14 @@ interface IClusCfgMemberSetChangeListener : IUnknown
     //      Querying the punkClusterInfoIn allows the listener to get more
     //      information about the event that caused the listener to be notified.
     //
-    //  Arguments:
+    // Arguments:
     //      punkClusterInfoIn
     //          The resource should QI this interface for services provided
     //          by the caller of this function. Typically, the component that
     //          this punk refers to also implements the IClusCfgClusterInfo
     //          interface.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -3896,7 +3615,6 @@ interface IClusCfgMemberSetChangeListener : IUnknown
         Notify( [ in ] IUnknown * punkClusterInfoIn );
 
 }; //*** interface IClusCfgMemberSetChangeListener
-
 
 //****************************************************************************
 //++
@@ -3920,12 +3638,12 @@ interface IClusCfgResourceTypeInfo : IUnknown
 {
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceTypeInfo::CommitChanges(
+    // STDMETHOD
+    // IClusCfgResourceTypeInfo::CommitChanges(
     //      [ in ] IUnknown * punkClusterInfoIn
     //      )
     //
-    //  Description:
+    // Description:
     //      A component that wishes to participate in the configuration of
     //      cluster resource types should perform the configuration steps
     //      necessary for its resource type in this method.
@@ -3940,7 +3658,7 @@ interface IClusCfgResourceTypeInfo : IUnknown
     //      during cluster formation and join and will perform any cleanup
     //      required during node evict.
     //
-    //  Arguments:
+    // Arguments:
     //      punkClusterInfoIn
     //          The resource type should QI this interface for services provided
     //          by the caller of this function. Typically, the component that
@@ -3954,7 +3672,7 @@ interface IClusCfgResourceTypeInfo : IUnknown
     //          IClusCfgResourceTypeCreate interface, which provides methods
     //          for resource type creation.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -3970,21 +3688,21 @@ interface IClusCfgResourceTypeInfo : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceTypeInfo::GetTypeName(
+    // STDMETHOD
+    // IClusCfgResourceTypeInfo::GetTypeName(
     //      [ out ] BSTR *  pbstrTypeNameOut
     //      )
     //
-    //  Description:
+    // Description:
     //      Get the resource type name of this resource type.
     //
-    //  Arguments:
+    // Arguments:
     //      pbstrTypeNameOut
     //          Pointer to the BSTR that holds the name of the resource type.
     //          This BSTR has to be freed by the caller using the function
     //          SysFreeString().
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          The call succeeded.
     //
@@ -4001,20 +3719,20 @@ interface IClusCfgResourceTypeInfo : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceTypeInfo::GetTypeGUID(
+    // STDMETHOD
+    // IClusCfgResourceTypeInfo::GetTypeGUID(
     //      [ out ] GUID * pguidGUIDOut
     //      )
     //
-    //  Description:
+    // Description:
     //      Get the globally unique identifier of this resource type.
     //
-    //  Arguments:
+    // Arguments:
     //      pguidGUIDOut
     //          Pointer to the GUID object which will receive the GUID of this
     //          resource type.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          The call succeeded and the *pguidGUIDOut contains the type GUID.
     //
@@ -4030,7 +3748,6 @@ interface IClusCfgResourceTypeInfo : IUnknown
         GetTypeGUID( [ out ] GUID * pguidGUIDOut );
 
 }; //*** interface IClusCfgResourceTypeInfo
-
 
 //****************************************************************************
 //++
@@ -4055,8 +3772,8 @@ interface IClusCfgResourceTypeCreate : IUnknown
 {
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceTypeCreate::Create(
+    // STDMETHOD
+    // IClusCfgResourceTypeCreate::Create(
     //      [in, string ] const WCHAR *     pcszResTypeNameIn,
     //      [in, string ] const WCHAR *     pcszResTypeDisplayNameIn,
     //      [in, string ] const WCHAR *     pcszResDllNameIn,
@@ -4064,10 +3781,10 @@ interface IClusCfgResourceTypeCreate : IUnknown
     //      [in] DWORD                      dwIsAliveIntervalIn
     //      )
     //
-    //  Description:
+    // Description:
     //      This method creates a cluster resource type.
     //
-    //  Arguments:
+    // Arguments:
     //      pcszResTypeNameIn
     //          Name of the resource type
     //
@@ -4083,7 +3800,7 @@ interface IClusCfgResourceTypeCreate : IUnknown
     //      dwIsAliveIntervalIn
     //          Is-alive interval for the resource type (in milliseconds).
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -4102,18 +3819,18 @@ interface IClusCfgResourceTypeCreate : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgResourceTypeCreate::RegisterAdminExtensions(
+    // STDMETHOD
+    // IClusCfgResourceTypeCreate::RegisterAdminExtensions(
     //      [in, string ]                           const WCHAR *       pcszResDllNameIn,
     //      [in]                                    ULONG               cExtClsidCountIn,
     //      [in, size_is( cExtClsidCountIn ) ]      const CLSID *       rgclsidExtClsidsIn
     //      )
     //
-    //  Description:
+    // Description:
     //      This method registers the cluster administrator extensions for
     //      a resource type.
     //
-    //  Arguments:
+    // Arguments:
     //      pcszResTypeNameIn
     //          Name of the resource type against for the extensions are to be
     //          registered.
@@ -4126,7 +3843,7 @@ interface IClusCfgResourceTypeCreate : IUnknown
     //          This can be NULL if cExtClsidCountIn is 0.
     //
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -4142,7 +3859,6 @@ interface IClusCfgResourceTypeCreate : IUnknown
             );
 
 }; //*** interface IClusCfgResourceTypeCreate
-
 
 //****************************************************************************
 //++
@@ -4166,22 +3882,22 @@ IClusCfgEvictCleanup : IUnknown
 {
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgEvictCleanup::CleanupLocal( [ in ] DWORD dwDelayIn )
+    // STDMETHOD
+    // IClusCfgEvictCleanup::CleanupLocal( [ in ] DWORD dwDelayIn )
     //
-    //  Description:
+    // Description:
     //      This method performs the clean up actions on the local node after
     //      it has been evicted from a cluster, so that the node can go back
     //      to its "pre-clustered" state.
     //
-    //  Arguments:
+    // Arguments:
     //      DWORD dwDelayIn
     //          Number of milliseconds that this method will wait before starting
     //          cleanup. If some other process cleans up this node while this thread
     //          is waiting, the wait is terminated. If this value is zero, this method
     //          will attempt to clean up this node immediately.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -4194,18 +3910,18 @@ IClusCfgEvictCleanup : IUnknown
 
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgEvictCleanup::CleanupRemoteNode(
+    // STDMETHOD
+    // IClusCfgEvictCleanup::CleanupRemoteNode(
     //        const WCHAR * pcszEvicteeNodeNameIn
     //      , DWORD dwDelayIn
     //      )
     //
-    //  Description:
+    // Description:
     //      This method performs the clean up actions on a remote node after
     //      it has been evicted from a cluster, so that the node can go back
     //      to its "pre-clustered" state.
     //
-    //  Arguments:
+    // Arguments:
     //      const WCHAR * pcszEvictedNodeNameIn
     //          Name of the node that has just been evicted. This can be the
     //          NetBios name of the node, the fully qualified domain name or
@@ -4217,7 +3933,7 @@ IClusCfgEvictCleanup : IUnknown
     //          is waiting, the wait is terminated. If this value is zero, this method
     //          will attempt to clean up this node immediately.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -4255,21 +3971,21 @@ IClusCfgStartupListener : IUnknown
 {
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgStartupListener::Notify( [ in ] IUnknown * punkIn )
+    // STDMETHOD
+    // IClusCfgStartupListener::Notify( [ in ] IUnknown * punkIn )
     //
-    //  Description:
+    // Description:
     //      This method is called to inform a component that the cluster service
     //      has started on the local node.
     //
-    //  Arguments:
+    // Arguments:
     //      IUnknown * punkIn
     //          The component that implements this Punk may also provide services
     //          that are useful to the implementor of this method. For example,
     //          this component usually implements the IClusCfgResourceTypeCreate
     //          interface.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -4307,20 +4023,20 @@ IClusCfgStartupNotify : IUnknown
 {
     //////////////////////////////////////////////////////////////////////////
     //
-    //  STDMETHOD
-    //  IClusCfgStartupNotify::SendNotifications( void )
+    // STDMETHOD
+    // IClusCfgStartupNotify::SendNotifications( [ in ] IUnknown * punkIn )
     //
-    //  Description:
+    // Description:
     //      This method is called by the Cluster Service to inform the implementor
     //      of this interface to send out notification of cluster service startup
     //      to interested listeners. If this method is being called for the first
     //      time, the method waits till the post configuration steps are complete
     //      before sending out the notifications.
     //
-    //  Arguments:
+    // Arguments:
     //      None.
     //
-    //  Return Values:
+    // Return Values:
     //      S_OK
     //          Success.
     //
@@ -4332,341 +4048,3 @@ IClusCfgStartupNotify : IUnknown
         SendNotifications( void );
 
 }; // interface IClusCfgStartupNotify
-
-
-//****************************************************************************
-//++
-//
-//  interface IClusCfgManagedResourceData
-//
-//  Description:
-//      This inteface allows instances of resources to get, set, and exchange
-//      data between instances of themselves on different nodes.
-//
-//--
-//****************************************************************************
-[
-    object,
-    uuid( 8447ECB7-2171-4e21-A108-0EB5B0B516DA ),
-    pointer_default( unique )
-]
-interface IClusCfgManagedResourceData : IUnknown
-{
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  IClusCfgManagedResourceData::GetResourcePrivateData(
-    //        [ out ] BYTE *    pbBufferOut
-    //      , [ out ] DWORD *   pcbBufferInout
-    //      )
-    //
-    //  Description:
-    //      Get an already managed resource's private state data.  This
-    //      data will then be passed to the instances of that resource on all
-    //      nodes that are being added to the cluster.
-    //
-    //  Arguments:
-    //      pbBufferOut
-    //          Pointer to a buffer to contain the resource's private state data.
-    //
-    //      pcbBufferInout
-    //          On input it is the size of the buffer.  On output it is the size
-    //          of the data.
-    //
-    //  Return Value:
-    //      S_OK
-    //          Success.
-    //
-    //  ERROR_INSUFFICIENT_BUFFER as an HRESULT
-    //      When the passed in buffer is too small to hold the data.
-    //      pcbBufferOutIn will contain the size required.
-    //
-    //      other HRESULTs.
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        GetResourcePrivateData(
-              [ out, size_is( *pcbBufferInout ) ] BYTE *    pbBufferOut
-            , [ in, out ] DWORD *                           pcbBufferInout
-            );
-
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  IClusCfgManagedResourceData::SetResourcePrivateData(
-    //        [ in ] const BYTE *   pcbBufferIn
-    //      , [ in ] DWORD          cbBufferIn
-    //      )
-    //
-    //  Description:
-    //      Set the private resource data into this instance of a managed
-    //      resource.
-    //
-    //  Arguments:
-    //      pcbBufferIn
-    //          Pointer to a buffer containing the resource's private data.
-    //
-    //      cbBufferIn
-    //          The length in bytes of the data buffer.
-    //
-    //  Return Values:
-    //      S_OK
-    //          Success.
-    //
-    //      other HRESULTs.
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        SetResourcePrivateData(
-              [  in
-               , pointer_default( unique )
-               , size_is( cbBufferIn )
-               ]                            const BYTE *   pcbBufferIn
-            , [ in ] DWORD                  cbBufferIn
-            );
-
-}; //*** interface IClusCfgManagedResourceData
-
-
-//****************************************************************************
-//++
-//
-//  interface IClusCfgVerifyQuorum
-//
-//  Description:
-//      Ensure that the quorum resource can be hosted on all nodes being added
-//      to the cluster.
-//
-//      The IClusCfgManagedResourceData interface will be called just prior to
-//      any calls to the methods of this interface to allow the quorum resource
-//      to set all data needed for the quorum to be hosted on the nodes that
-//      are being added to the cluster.
-//
-//--
-//****************************************************************************
-[
-    object,
-    uuid( 90A2EFAE-1B62-4ada-BF1C-BECAB56F748D ),
-    pointer_default( unique )
-]
-interface IClusCfgVerifyQuorum : IUnknown
-{
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  IClusCfgVerifyQuorum::PrepareToHostQuorumResource(
-    //      void
-    //      )
-    //
-    //  Description:
-    //      This method is called when the implementing managed resource
-    //      is the quorum resource.  This gives the implementer a chance
-    //      to do anything required to ensure that this node can
-    //      indeed host the quorum resource.
-    //
-    //      This method will be called after the SetResourcePrivateData()
-    //      method of the IClusCfgManagedResourceData interface has been
-    //      called. This allows the implementer to get the latest state data
-    //      from a running instance of their resource.
-    //
-    //  Arguments:
-    //      None.
-    //
-    //  Return Value:
-    //      S_OK
-    //          Success.
-    //
-    //      other HRESULTs.
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        PrepareToHostQuorumResource( void );
-
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  IClusCfgVerifyQuorum::Cleanup(
-    //      EClusCfgCleanupReason cccrReasonIn
-    //      )
-    //
-    //  Description:
-    //      This method is called when a cluster configuration task is
-    //      shutting down.  The reason for the shut down is passed in
-    //      the cccrReasonIn parameter.
-    //
-    //      It is expected that any lingering changes made in
-    //      PrepareToHostQuorumResource() would be undone when the
-    //      reason code in not a success code.
-    //
-    //  Arguments:
-    //      cccrReasonIn
-    //          The reason that this method was called.  See
-    //          EClusCfgCleanupReason for the complete list of possbile
-    //          reason codes.
-    //
-    //  Return Values:
-    //      S_OK
-    //          Success.
-    //
-    //      other HRESULTs.
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        Cleanup( [ in ] EClusCfgCleanupReason cccrReasonIn );
-
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  IsMultiNodeCapable( void )
-    //
-    //  Description:
-    //      Call this to determine if this quorum capable resource allows
-    //      other nodes to join the cluster and create a multi node cluster.
-    //
-    //  Return Values:
-    //      S_OK
-    //          Call succeeded and the result is "TRUE."
-    //
-    //      S_FALSE
-    //          Call succeeded and the result is "FALSE."
-    //
-    //      other HRESULT
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        IsMultiNodeCapable( void );
-
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  SetMultiNodeCapable(
-    //      [ in ] BOOL fMultiNodeCapableIn
-    //      )
-    //
-    //  Description:
-    //      Call this to set this quorum resource as being multi node capable.
-    //
-    //  Return Values:
-    //      S_OK
-    //          Call succeeded
-    //
-    //      other HRESULT
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        SetMultiNodeCapable( [ in ] BOOL fMultiNodeCapableIn );
-
-}; //*** interface IClusCfgVerifyQuorum
-
-
-//****************************************************************************
-//++
-//
-//  interface IClusCfgEvictListener
-//
-//  Description:
-//      This interface is implemented by a component that wishes to be notified
-//      when the a node has been evicted from the cluster.
-//
-//--
-//****************************************************************************
-[
-    object,
-    uuid( E20DDEE3-DEFC-4d54-B1F7-2AEB784C3847 ),
-    async_uuid( 08609AC3-D284-4009-805F-17D3CFE4160B ),
-    pointer_default( unique )
-]
-interface
-IClusCfgEvictListener : IUnknown
-{
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  IClusCfgEvictListener::EvictNotify(
-    //      [ in ] LPCWSTR pcszNodeNameIn
-    //      )
-    //
-    //  Description:
-    //      This method is called to inform a component that a node has been
-    //      evicted from the cluster.
-    //
-    //  Arguments:
-    //      pcszNodeNameIn
-    //          The name of the node that was evicted.
-    //
-    //  Return Values:
-    //      S_OK
-    //          Success.
-    //
-    //      Other HRESULTs
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        EvictNotify(
-            [ in, pointer_default( unique ) ] LPCWSTR pcszNodeNameIn
-            );
-
-}; // interface IClusCfgEvictListener
-
-
-//****************************************************************************
-//++
-//
-//  interface IClusCfgEvictNotify
-//
-//  Description:
-//      This interface is implemented by a component that the cluster service
-//      instantiates. When the cluster service calls the only method on this
-//      interface, this component will enumerate the evict listeners and
-//      inform them that a node has been evicted from the cluster.  These
-//      components will be running on a cluster node and are capable of using
-//      the cluster API in their implementation.
-//
-//--
-//****************************************************************************
-[
-    object,
-    uuid( 090E7745-9E5B-4d76-936E-D760CF2FF3B9 ),
-    async_uuid( AD2E83CC-1D14-4d20-928E-22D344847454 ),
-    pointer_default( unique )
-]
-interface
-IClusCfgEvictNotify : IUnknown
-{
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //  STDMETHOD
-    //  IClusCfgEvictNotify::SendNotifications(
-    //      [ in, pointer_default( unique ) ] LPCWSTR pcszNodeNameIn
-    //      )
-    //
-    //  Description:
-    //      This method is called by the Cluster Service to inform the implementor
-    //      of this interface to send out notification when a node is evicted from
-    //      the cluster to interested listeners.
-    //
-    //  Arguments:
-    //      pcszNodeNameIn
-    //          The name of the node that was evicted.
-    //
-    //  Return Values:
-    //      S_OK
-    //          Success.
-    //
-    //      Other HRESULTs
-    //          The call failed.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    HRESULT
-        SendNotifications(
-            [ in, pointer_default( unique ) ] LPCWSTR pcszNodeNameIn
-            );
-
-}; // interface IClusCfgEvictNotify

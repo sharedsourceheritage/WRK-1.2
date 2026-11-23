@@ -7,7 +7,13 @@ which is on my GitHub.
 
 set PROCESSOR_ARCHITECTURE=x86
 
-set msvcdir=J:\MICROSOFT.RESEARCH\Lab00_n\VC8
+set VS80COMNTOOLS=J:\Releases\_MICROSOFT.RESEARCH\WRK-V1.2\Vc8\Common7\Tools\
+
+set _BUILDARCH=x86
+
+set 386=1
+
+J:\Releases\_MICROSOFT.RESEARCH\WRK-V1.2\Vc8\vcvarsall.bat
 
 Simply setting the 2005 VC8 tools and the ENV.BAT and Building the PAL first.
 

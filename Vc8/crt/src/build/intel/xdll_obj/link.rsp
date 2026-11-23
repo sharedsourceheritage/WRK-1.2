@@ -1,0 +1,17 @@
+-base:0x10200000
+-debug
+-def:intel\_sampld_.def
+-dll
+-entry:_CRTDLL_INIT
+-implib:build\intel\xdll_obj\tmp.lib
+-incremental:no
+-map
+-out:build\intel\_sampld_.dll
+-release
+-nodefaultlib:libcpmtd.lib
+-pdb:build\intel\_sampld_.pdb
+build\intel\xdll_obj\handler.obj  build\intel\xdll_obj\setnewh.obj  build\intel\xdll_obj\new_mode.obj  build\intel\xdll_obj\errmode.obj  build\intel\xdll_obj\matherr.obj build\intel\xdll_obj\dbgnew.obj
+build\intel\xdll_obj\dummy_msvcrt.lib
+build\intel\_sampld_.res
+build\intel\xdll_obj\_setargv.obj  build\intel\xdll_obj\_wstargv.obj  build\intel\xdll_obj\chkstk.obj  build\intel\xdll_obj\alloca16.obj  build\intel\xdll_obj\crt0dat.obj  build\intel\xdll_obj\crt0fp.obj  build\intel\xdll_obj\crt0init.obj  build\intel\xdll_obj\crt0msg.obj  build\intel\xdll_obj\crtlib.obj  build\intel\xdll_obj\mlock.obj  build\intel\xdll_obj\stdargv.obj  build\intel\xdll_obj\stdenvp.obj  build\intel\xdll_obj\thread.obj  build\intel\xdll_obj\threadex.obj  build\intel\xdll_obj\tidtable.obj  build\intel\xdll_obj\wild.obj  build\intel\xdll_obj\wstdargv.obj  build\intel\xdll_obj\wstdenvp.obj  build\intel\xdll_obj\wwild.obj  build\intel\xdll_obj\fp8.obj  build\intel\xdll_obj\convert.lib  build\intel\xdll_obj\direct.lib  build\intel\xdll_obj\dos.lib  build\intel\xdll_obj\eh.lib  build\intel\xdll_obj\exec.lib  build\intel\xdll_obj\heap.lib  build\intel\xdll_obj\helper.lib  build\intel\xdll_obj\lowio.lib  build\intel\xdll_obj\mbstring.lib  build\intel\xdll_obj\misc.lib  build\intel\xdll_obj\rtc.lib  build\intel\xdll_obj\stdio.lib  build\intel\xdll_obj\string.lib  build\intel\xdll_obj\time.lib  build\intel\xdll_obj\conv.lib  build\intel\xdll_obj\tran.lib
+kernel32.lib

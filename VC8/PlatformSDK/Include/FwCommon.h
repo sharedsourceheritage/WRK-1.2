@@ -1,6 +1,8 @@
 //***************************************************************************
+
 //
-//  Copyright © Microsoft Corporation.  All rights reserved.
+
+// Copyright (c) 1996-2001 Microsoft Corporation, All Rights Reserved
 //
 //  FWcommon.h
 //
@@ -52,22 +54,10 @@
 
 #include <Polarity.h>
 
-
-#ifndef EXPORT_LOCKIT
-
-#undef _CRTIMP
-#define _CRTIMP
-#include <yvals.h>
-#undef _CRTIMP
-
-#else
-
 #undef _CRTIMP
 #define _CRTIMP POLARITY
 #include <yvals.h>
 #undef _CRTIMP
-
-#endif
 
 #include <stllock.h>
 extern POLARITY CCritSec g_cs;

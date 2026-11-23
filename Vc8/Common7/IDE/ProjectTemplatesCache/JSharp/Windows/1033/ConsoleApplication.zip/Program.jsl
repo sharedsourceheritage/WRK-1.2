@@ -1,0 +1,14 @@
+package $safeprojectname$;
+
+/**
+ * Summary description for Program
+ */
+public class Program
+{
+    public static void main(String[] args)
+    {
+        //
+        // TODO: Add code to start application here
+        //
+    }
+}

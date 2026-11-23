@@ -392,98 +392,21 @@ WINOLEAUTAPI VarBoolFromUI4(ULONG ulIn, VARIANT_BOOL *pboolOut);
 WINOLEAUTAPI VarBoolFromUI8(ULONG64 i64In, VARIANT_BOOL FAR* pboolOut);
 WINOLEAUTAPI VarBoolFromDec(DECIMAL *pdecIn, VARIANT_BOOL *pboolOut);
 
-WINOLEAUTAPI 
-VarI1FromUI1(
-    __in BYTE bIn,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromI2(
-    __in SHORT uiIn,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromI4(
-    __in LONG lIn,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromI8(
-    __in LONG64 i64In,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromR4(
-    __in FLOAT fltIn,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromR8(
-    __in DOUBLE dblIn,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromDate(
-    __in DATE dateIn,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromCy(
-    __in CY cyIn,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromStr(
-    __in OLECHAR *strIn,
-    __in LCID lcid,
-    __in ULONG dwFlags,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromDisp(
-    __in IDispatch *pdispIn,
-    __in LCID lcid,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromBool(
-    __in VARIANT_BOOL boolIn,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromUI2(
-    __in USHORT uiIn,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromUI4(
-    __in ULONG ulIn,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromUI8(
-    __in ULONG64 i64In,
-    __out CHAR *pcOut
-    );
-
-WINOLEAUTAPI 
-VarI1FromDec(
-    __in DECIMAL *pdecIn,
-    __out CHAR *pcOut
-    );
+WINOLEAUTAPI VarI1FromUI1(BYTE bIn, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromI2(SHORT uiIn, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromI4(LONG lIn, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromI8(LONG64 i64In, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromR4(FLOAT fltIn, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromR8(DOUBLE dblIn, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromDate(DATE dateIn, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromCy(CY cyIn, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromStr(OLECHAR *strIn, LCID lcid, ULONG dwFlags, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromDisp(IDispatch *pdispIn, LCID lcid, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromBool(VARIANT_BOOL boolIn, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromUI2(USHORT uiIn, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromUI4(ULONG ulIn, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromUI8(ULONG64 i64In, CHAR *pcOut);
+WINOLEAUTAPI VarI1FromDec(DECIMAL *pdecIn, CHAR *pcOut);
 
 WINOLEAUTAPI VarUI2FromUI1(BYTE bIn, USHORT *puiOut);
 WINOLEAUTAPI VarUI2FromI2(SHORT uiIn, USHORT *puiOut);
@@ -727,9 +650,7 @@ extern "C++" {
 // Add wrapper for old ATL headers to call
 __inline
 HRESULT
-#if !defined(_M_CEE_PURE)
 STDAPICALLTYPE
-#endif
 VarCmp(LPVARIANT pvarLeft, LPVARIANT pvarRight, LCID lcid) {
     return VarCmp(pvarLeft, pvarRight, lcid, 0);
 }

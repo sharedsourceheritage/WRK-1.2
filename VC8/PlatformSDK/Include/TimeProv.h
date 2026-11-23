@@ -20,11 +20,7 @@ extern "C" {
 
 // Each time provider should create their own subkey under this key
 //  and store their configuration there.
-#define wszW32TimeRegKeyTimeProviders        L"System\\CurrentControlSet\\Services\\W32Time\\TimeProviders"
- 
-// Each time providers configured through policy should create their
-// own subkey under this subkey and store their configuration there. 
-#define wszW32TimeRegKeyPolicyTimeProviders  L"Software\\Policies\\Microsoft\\W32Time\\TimeProviders"
+#define wszW32TimeRegKeyTimeProviders      L"System\\CurrentControlSet\\Services\\W32Time\\TimeProviders"
 
 // Path:    ...\TimeProviders\<PrividerName>\Enabled 
 // Type:    REG_DWORD (cast to BOOL)

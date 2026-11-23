@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogMonitor", "LogMonitor\LogMonitor.csproj", "{605E85E2-82EA-4105-9D50-1A8353421115}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{605E85E2-82EA-4105-9D50-1A8353421115}.Debug|.NET.ActiveCfg = Debug|.NET
+		{605E85E2-82EA-4105-9D50-1A8353421115}.Debug|.NET.Build.0 = Debug|.NET
+		{605E85E2-82EA-4105-9D50-1A8353421115}.Release|.NET.ActiveCfg = Release|.NET
+		{605E85E2-82EA-4105-9D50-1A8353421115}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

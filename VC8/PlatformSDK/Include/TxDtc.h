@@ -1,12 +1,13 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for txdtc.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run)
-    protocol : dce , ms_ext, c_ext, robust
+    Os, W1, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
@@ -14,12 +15,10 @@
 */
 //@@MIDL_FILE_HEADING(  )
 
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
-
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
 #ifndef __REQUIRED_RPCNDR_H_VERSION__
-#define __REQUIRED_RPCNDR_H_VERSION__ 475
+#define __REQUIRED_RPCNDR_H_VERSION__ 440
 #endif
 
 #include "rpc.h"
@@ -47,12 +46,6 @@
 #define __IXATransLookup_FWD_DEFINED__
 typedef interface IXATransLookup IXATransLookup;
 #endif 	/* __IXATransLookup_FWD_DEFINED__ */
-
-
-#ifndef __IXATransLookup2_FWD_DEFINED__
-#define __IXATransLookup2_FWD_DEFINED__
-typedef interface IXATransLookup2 IXATransLookup2;
-#endif 	/* __IXATransLookup2_FWD_DEFINED__ */
 
 
 #ifndef __IResourceManagerSink_FWD_DEFINED__
@@ -468,99 +461,6 @@ void __RPC_STUB IXATransLookup_Lookup_Stub(
 
 
 #endif 	/* __IXATransLookup_INTERFACE_DEFINED__ */
-
-
-#ifndef __IXATransLookup2_INTERFACE_DEFINED__
-#define __IXATransLookup2_INTERFACE_DEFINED__
-
-/* interface IXATransLookup2 */
-/* [unique][object][uuid] */ 
-
-
-EXTERN_C const IID IID_IXATransLookup2;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("BF193C85-0D1A-4290-B88F-D2CB8873D1E7")
-    IXATransLookup2 : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE Lookup( 
-            /* [in] */ XID *pXID,
-            /* [out] */ ITransaction **ppTransaction) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IXATransLookup2Vtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IXATransLookup2 * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IXATransLookup2 * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IXATransLookup2 * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *Lookup )( 
-            IXATransLookup2 * This,
-            /* [in] */ XID *pXID,
-            /* [out] */ ITransaction **ppTransaction);
-        
-        END_INTERFACE
-    } IXATransLookup2Vtbl;
-
-    interface IXATransLookup2
-    {
-        CONST_VTBL struct IXATransLookup2Vtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IXATransLookup2_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IXATransLookup2_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IXATransLookup2_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IXATransLookup2_Lookup(This,pXID,ppTransaction)	\
-    (This)->lpVtbl -> Lookup(This,pXID,ppTransaction)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IXATransLookup2_Lookup_Proxy( 
-    IXATransLookup2 * This,
-    /* [in] */ XID *pXID,
-    /* [out] */ ITransaction **ppTransaction);
-
-
-void __RPC_STUB IXATransLookup2_Lookup_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IXATransLookup2_INTERFACE_DEFINED__ */
 
 
 #ifndef __IResourceManagerSink_INTERFACE_DEFINED__
@@ -3174,7 +3074,7 @@ void __RPC_STUB ITransactionReceiverFactory_Create_Stub(
 #endif 	/* __ITransactionReceiverFactory_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_txdtc_0141 */
+/* interface __MIDL_itf_txdtc_0133 */
 /* [local] */ 
 
 typedef struct _ProxyConfigParams
@@ -3184,8 +3084,8 @@ typedef struct _ProxyConfigParams
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_txdtc_0141_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_txdtc_0141_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_txdtc_0133_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_txdtc_0133_v0_0_s_ifspec;
 
 #ifndef __IDtcLuConfigure_INTERFACE_DEFINED__
 #define __IDtcLuConfigure_INTERFACE_DEFINED__
@@ -3469,7 +3369,7 @@ void __RPC_STUB IDtcLuRecoveryFactory_Create_Stub(
 #endif 	/* __IDtcLuRecoveryFactory_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_txdtc_0144 */
+/* interface __MIDL_itf_txdtc_0136 */
 /* [local] */ 
 
 typedef 
@@ -3537,8 +3437,8 @@ enum _DtcLu_CompareStates_Response
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_txdtc_0144_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_txdtc_0144_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_txdtc_0136_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_txdtc_0136_v0_0_s_ifspec;
 
 #ifndef __IDtcLuRecoveryInitiatedByDtcTransWork_INTERFACE_DEFINED__
 #define __IDtcLuRecoveryInitiatedByDtcTransWork_INTERFACE_DEFINED__
@@ -5550,7 +5450,7 @@ void __RPC_STUB IDtcLuSubordinateDtcFactory_Create_Stub(
 #endif 	/* __IDtcLuSubordinateDtcFactory_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_txdtc_0155 */
+/* interface __MIDL_itf_txdtc_0147 */
 /* [local] */ 
 
 
@@ -5558,7 +5458,6 @@ void __RPC_STUB IDtcLuSubordinateDtcFactory_Create_Stub(
 #if _MSC_VER < 1100 || !defined(__cplusplus)
 
 DEFINE_GUID(IID_IXATransLookup, 0xF3B1F131, 0xEEDA, 0x11ce, 0xAE, 0xD4, 0x00, 0xAA, 0x00, 0x51, 0xE2, 0xC4);
-DEFINE_GUID(IID_IXATransLookup2,0xbf193c85, 0xd1a, 0x4290, 0xb8, 0x8f, 0xd2, 0xcb, 0x88, 0x73, 0xd1, 0xe7);
 DEFINE_GUID(IID_IResourceManagerSink, 0x0D563181, 0xDEFB, 0x11ce, 0xAE, 0xD1, 0x00, 0xAA, 0x00, 0x51, 0xE2, 0xC4);
 DEFINE_GUID(IID_IResourceManager, 0x3741d21, 0x87eb, 0x11ce, 0x80, 0x81, 0x00, 0x80, 0xc7, 0x58, 0x52, 0x7e);
 DEFINE_GUID(IID_IResourceManager2, 0xd136c69a, 0xf749, 0x11d1, 0x8f, 0x47, 0x0, 0xc0, 0x4f, 0x8e, 0xe5, 0x7d);
@@ -5603,7 +5502,6 @@ DEFINE_GUID(IID_IDtcLuSubordinateDtcFactory, 0x4131E775, 0x1AEA, 0x11d0, 0x94, 0
 #else
 
 #define  IID_IXATransLookup							__uuidof(IXATransLookup)
-#define  IID_IXATransLookup2							__uuidof(IXATransLookup2)
 #define  IID_IResourceManagerSink					__uuidof(IResourceManagerSink)
 #define  IID_IResourceManager						__uuidof(IResourceManager)
 #define  IID_IResourceManager2						__uuidof(IResourceManager2)
@@ -5648,8 +5546,8 @@ DEFINE_GUID(IID_IDtcLuSubordinateDtcFactory, 0x4131E775, 0x1AEA, 0x11d0, 0x94, 0
 #endif
 
 
-extern RPC_IF_HANDLE __MIDL_itf_txdtc_0155_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_txdtc_0155_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_txdtc_0147_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_txdtc_0147_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

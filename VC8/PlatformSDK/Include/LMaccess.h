@@ -515,7 +515,6 @@ typedef struct _USER_MODALS_INFO_1007 {
 #define UF_DONT_REQUIRE_PREAUTH        0x400000
 #define UF_PASSWORD_EXPIRED            0x800000
 #define UF_TRUSTED_TO_AUTHENTICATE_FOR_DELEGATION 0x1000000
-#define UF_NO_AUTH_DATA_REQUIRED       0x2000000
 
 
 
@@ -535,9 +534,7 @@ typedef struct _USER_MODALS_INFO_1007 {
                     UF_NOT_DELEGATED | \
                     UF_USE_DES_KEY_ONLY  | \
                     UF_DONT_REQUIRE_PREAUTH |\
-                    UF_PASSWORD_EXPIRED |\
-                    UF_TRUSTED_TO_AUTHENTICATE_FOR_DELEGATION |\
-		    UF_NO_AUTH_DATA_REQUIRED \
+                    UF_PASSWORD_EXPIRED \
                 )
 
 //
@@ -1329,153 +1326,6 @@ typedef struct _ACCESS_LIST {
 
 #define ACCESS_LETTERS      "RWCXDAP         "
 
-
-
-//    ********************************
-//
-//    Password Checking API structures
-//
-//    ********************************
-
-
-//
-//    What kind of password checking is to be performed?
-//        NetValidateAuthentication : Check if the authentication can be done
-//        NetValidatePasswordChange: Check if the password can be changed
-//        NetValidatePasswordReset: Reset the password to the given value
-//
-typedef enum _NET_VALIDATE_PASSWORD_TYPE{
-    NetValidateAuthentication = 1,
-    NetValidatePasswordChange,
-    NetValidatePasswordReset
-} NET_VALIDATE_PASSWORD_TYPE, *PNET_VALIDATE_PASSWORD_TYPE;
-
-//
-//    Structure to keep the password hash
-//
-typedef struct _NET_VALIDATE_PASSWORD_HASH{
-    ULONG Length;
-    LPBYTE Hash;
-} NET_VALIDATE_PASSWORD_HASH, *PNET_VALIDATE_PASSWORD_HASH;
-
-// To be used with PresentFields member of NET_VALIDATE_PERSISTED_FIELDS
-#define NET_VALIDATE_PASSWORD_LAST_SET          0x00000001
-#define NET_VALIDATE_BAD_PASSWORD_TIME          0x00000002
-#define NET_VALIDATE_LOCKOUT_TIME               0x00000004
-#define NET_VALIDATE_BAD_PASSWORD_COUNT         0x00000008
-#define NET_VALIDATE_PASSWORD_HISTORY_LENGTH    0x00000010
-#define NET_VALIDATE_PASSWORD_HISTORY           0x00000020
-
-#if !defined(_WINBASE_) && !defined(_FILETIME_)
-#define _FILETIME_
-typedef struct _FILETIME
-{
-    DWORD dwLowDateTime;
-    DWORD dwHighDateTime;
-} FILETIME, FAR * LPFILETIME, *PFILETIME;
-#endif
-
-//
-//    Structure to keep information about the password and related things.
-//        Present Fields: (used only in output args) which fields are changed.
-//            See the constants above.
-//        PasswordLastSet: When the password is last set.
-//        BadPasswordTime: When the password was incorrect for the last time.
-//        LockoutTime: When the account is locked out. If the account is not locked out
-//            it is 0.
-//        BadPasswordCount: How many times the password has given incorrectly in the
-//            Observation Window.
-//        PasswordHistoryLength: How many passwords are kept in the history
-//        PasswordHistory: Password hashes that are in the history
-//
-typedef struct _NET_VALIDATE_PERSISTED_FIELDS{
-    ULONG   PresentFields;
-    FILETIME PasswordLastSet;
-    FILETIME BadPasswordTime;
-    FILETIME LockoutTime;
-    ULONG   BadPasswordCount;
-    ULONG   PasswordHistoryLength;
-    PNET_VALIDATE_PASSWORD_HASH PasswordHistory;
-} NET_VALIDATE_PERSISTED_FIELDS, *PNET_VALIDATE_PERSISTED_FIELDS;
-
-//
-//    Output Arg
-//        ChangedPersistedFields: Any changes to the password related info
-//        ValidationStatus: Shows the result of the request
-//
-typedef struct _NET_VALIDATE_OUTPUT_ARG{
-    NET_VALIDATE_PERSISTED_FIELDS ChangedPersistedFields;
-    NET_API_STATUS ValidationStatus;
-} NET_VALIDATE_OUTPUT_ARG, *PNET_VALIDATE_OUTPUT_ARG;
-
-//
-//    If authentication type of password check is to be made,
-//        this kind of input must be used
-//
-//    InputPersistedFields: Information about the account to be logged into
-//    PasswordMatched: Indicates the result of the application's authentication of the supplied password
-//
-typedef struct _NET_VALIDATE_AUTHENTICATION_INPUT_ARG{
-    NET_VALIDATE_PERSISTED_FIELDS InputPersistedFields;
-    BOOLEAN PasswordMatched;
-} NET_VALIDATE_AUTHENTICATION_INPUT_ARG, *PNET_VALIDATE_AUTHENTICATION_INPUT_ARG;
-
-//
-//    If password change type of check is to be made,
-//        this kind of input must be used
-//
-//    InputPersistedFields: Information about the account to be logged into
-//    ClearPassword: The string which password is going to be
-//    UserAccountName: Name of the user account
-//    HashedPassword: Hash of the string that the password is going to be
-//    PasswordMatch: denotes if the old password supplied by user matched or not
-//
-typedef struct  _NET_VALIDATE_PASSWORD_CHANGE_INPUT_ARG{
-    NET_VALIDATE_PERSISTED_FIELDS InputPersistedFields;
-    LPWSTR ClearPassword;
-    LPWSTR UserAccountName;
-    NET_VALIDATE_PASSWORD_HASH HashedPassword;
-    BOOLEAN PasswordMatch;
-} NET_VALIDATE_PASSWORD_CHANGE_INPUT_ARG, *PNET_VALIDATE_PASSWORD_CHANGE_INPUT_ARG;
-
-//
-//    If password reset type of check is to be made,
-//        this kind of input must be used
-//
-//    InputPersistedFields: Information about the account to be logged into
-//    ClearPassword: The string which password is going to be
-//    UserAccountName: Name of the user account
-//    HashedPassword: Hash of the string that the password is going to be
-//    PasswordMustChangeAtNextLogon: Password must change for the user to be logged in
-//    ClearLockout: If the account was locked out, this field can be used to clear lockout
-//
-typedef struct _NET_VALIDATE_PASSWORD_RESET_INPUT_ARG{
-    NET_VALIDATE_PERSISTED_FIELDS InputPersistedFields;
-    LPWSTR ClearPassword;
-    LPWSTR UserAccountName;
-    NET_VALIDATE_PASSWORD_HASH HashedPassword;
-    BOOLEAN  PasswordMustChangeAtNextLogon;
-    BOOLEAN  ClearLockout;
-} NET_VALIDATE_PASSWORD_RESET_INPUT_ARG, *PNET_VALIDATE_PASSWORD_RESET_INPUT_ARG;
-
-//
-//    Password Checking API structures end here
-//
-
-NET_API_STATUS NET_API_FUNCTION
-NetValidatePasswordPolicy(
-    IN LPCWSTR ServerName,
-    IN LPVOID Qualifier,
-    IN NET_VALIDATE_PASSWORD_TYPE ValidationType,
-    IN LPVOID InputArg,
-    OUT LPVOID *OutputArg
-    );
-
-NET_API_STATUS NET_API_FUNCTION
-NetValidatePasswordPolicyFree(
-    IN LPVOID *OutputArg
-    );
-
 #endif // _LMACCESS_
 
 //
@@ -1626,8 +1476,6 @@ typedef struct _NETLOGON_INFO_4 {
 #define NETLOGON_HAS_TIMESERV             0x20  // The trusted domain DC runs the Windows Time Service
 #define NETLOGON_DNS_UPDATE_FAILURE       0x40  // There was a failure in the last update for one of the DNS records
 #define NETLOGON_VERIFY_STATUS_RETURNED   0x80  // Trust verification status returned in netlog2_pdc_connection_status
-
-
 #ifdef __cplusplus
 }
 #endif

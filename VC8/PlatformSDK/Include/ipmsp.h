@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for ipmsp.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -387,7 +386,7 @@ void __RPC_STUB ITParticipant_EnumerateStreams_Stub(
 #endif 	/* __ITParticipant_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_ipmsp_0502 */
+/* interface __MIDL_itf_ipmsp_0497 */
 /* [local] */ 
 
 #ifndef STREAM_INTERFACES_DEFINED
@@ -467,8 +466,8 @@ enum tagTAPIControlFlags
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0502_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0502_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0497_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0497_v0_0_s_ifspec;
 
 #ifndef __ITFormatControl_INTERFACE_DEFINED__
 #define __ITFormatControl_INTERFACE_DEFINED__
@@ -666,7 +665,7 @@ void __RPC_STUB ITFormatControl_ReOrderCapabilities_Stub(
 #endif 	/* __ITFormatControl_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_ipmsp_0503 */
+/* interface __MIDL_itf_ipmsp_0498 */
 /* [local] */ 
 
 typedef 
@@ -679,8 +678,8 @@ enum tagStreamQualityProperty
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0503_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0503_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0498_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0498_v0_0_s_ifspec;
 
 #ifndef __ITStreamQualityControl_INTERFACE_DEFINED__
 #define __ITStreamQualityControl_INTERFACE_DEFINED__
@@ -843,7 +842,7 @@ void __RPC_STUB ITStreamQualityControl_Set_Stub(
 #endif 	/* __ITStreamQualityControl_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_ipmsp_0504 */
+/* interface __MIDL_itf_ipmsp_0499 */
 /* [local] */ 
 
 typedef 
@@ -860,8 +859,8 @@ enum tagCallQualityProperty
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0504_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0504_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0499_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0499_v0_0_s_ifspec;
 
 #ifndef __ITCallQualityControl_INTERFACE_DEFINED__
 #define __ITCallQualityControl_INTERFACE_DEFINED__
@@ -1024,7 +1023,7 @@ void __RPC_STUB ITCallQualityControl_Set_Stub(
 #endif 	/* __ITCallQualityControl_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_ipmsp_0505 */
+/* interface __MIDL_itf_ipmsp_0500 */
 /* [local] */ 
 
 typedef 
@@ -1036,8 +1035,8 @@ enum tagAudioDeviceProperty
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0505_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0505_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0500_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0500_v0_0_s_ifspec;
 
 #ifndef __ITAudioDeviceControl_INTERFACE_DEFINED__
 #define __ITAudioDeviceControl_INTERFACE_DEFINED__
@@ -1200,7 +1199,7 @@ void __RPC_STUB ITAudioDeviceControl_Set_Stub(
 #endif 	/* __ITAudioDeviceControl_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_ipmsp_0506 */
+/* interface __MIDL_itf_ipmsp_0501 */
 /* [local] */ 
 
 typedef 
@@ -1217,8 +1216,8 @@ enum tagAudioSettingsProperty
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0506_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0506_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0501_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0501_v0_0_s_ifspec;
 
 #ifndef __ITAudioSettings_INTERFACE_DEFINED__
 #define __ITAudioSettings_INTERFACE_DEFINED__
@@ -1519,7 +1518,7 @@ void __RPC_STUB ITQOSApplicationID_SetQOSApplicationID_Stub(
 #endif 	/* __ITQOSApplicationID_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_ipmsp_0508 */
+/* interface __MIDL_itf_ipmsp_0503 */
 /* [local] */ 
 
 #endif // STREAM_INTERFACES_DEFINED
@@ -1529,8 +1528,8 @@ struct DECLSPEC_UUID("14099BC0-787B-11d0-9CD3-00A0C9081C19") MEDIATYPE_RTP_Singl
 #endif //RTP_MEDIATYPE_DEFINED
 
 
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0508_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0508_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0503_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_ipmsp_0503_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

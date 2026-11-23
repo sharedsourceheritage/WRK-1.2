@@ -2,7 +2,7 @@
 !ERROR Env Variable NETSAMPLEPATH must be defined: Parent directory of QuickStart Samples
 !ENDIF
 
-!include $(NETSAMPLEPATH)\QuickStart\master.mak
+!include $(NETSAMPLEPATH)\master.mak
 
 #--------------------------------------------------
 SOURCES = ProcessDemo.cpp

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode title="ASP.NET Tutorials" url="~/default.aspx" >
+    <siteMapNode title="Page Development" url="~/pages.aspx">
+      <siteMapNode title="Master Pages" url="~/masterpages.aspx"/>
+      <siteMapNode title="Themes and Styles" url="~/themes.aspx"/>
+      <siteMapNode title="Site Navigation" url="~/sitenav.aspx"/>
+      <siteMapNode title="Client Side Script" url="~/client.aspx"/>
+    </siteMapNode>
+    <siteMapNode title="Developer Infrastructure" url="~/developer.aspx">
+      <siteMapNode title="Membership and Roles" url="~/membership.aspx"/>
+      <siteMapNode title="Personalization" url="~/personalization.aspx"/>
+      <siteMapNode title="Profile" url="~/profile.aspx"/>
+      <siteMapNode title="State Management" url="~/state.aspx"/>
+      <siteMapNode title="Post-Cache Substitution " url="~/postcache.aspx"/>
+    </siteMapNode>
+    <siteMapNode title="Server Controls" url="~/controls.aspx">
+      <siteMapNode title="GridView Control" url="~/gridview.aspx"/>
+      <siteMapNode title="Menu Control" url="~/menu.aspx"/>
+      <siteMapNode title="Wizard Control" url="~/wizard.aspx"/>
+      <siteMapNode title="Login Control" url="~/login.aspx"/>
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

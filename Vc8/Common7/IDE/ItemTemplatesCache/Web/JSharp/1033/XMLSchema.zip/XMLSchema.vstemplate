@@ -1,0 +1,14 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+	<TemplateData>
+		<Name Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3036"/>
+		<Description Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3037"/>
+		<Icon Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="4518"/>
+        <ProjectType>Web</ProjectType>
+        <ProjectSubType>JSharp</ProjectSubType>
+        <SortOrder>130</SortOrder>
+        <DefaultName>XMLSchema.xsd</DefaultName>
+    </TemplateData>
+	<TemplateContent>
+		<ProjectItem ReplaceParameters="true">XMLSchema.xsd</ProjectItem>
+	</TemplateContent>
+</VSTemplate>

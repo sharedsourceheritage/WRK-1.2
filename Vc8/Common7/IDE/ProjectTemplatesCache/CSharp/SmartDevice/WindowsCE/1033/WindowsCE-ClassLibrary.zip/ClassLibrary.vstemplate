@@ -1,0 +1,24 @@
+<VSTemplate Version="2.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+    <TemplateData>
+        <Name Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="3155" />
+        <Description Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="3157" />
+        <Icon Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="216" />
+        <ProjectType>CSharp</ProjectType>
+        <SortOrder>420</SortOrder>
+        <CreateNewFolder>true</CreateNewFolder>
+        <DefaultName>ClassLibrary</DefaultName>
+        <ProvideDefaultName>true</ProvideDefaultName>
+    </TemplateData>
+    <TemplateContent>
+        <CustomParameters>
+            <CustomParameter Name="$PlatformID$" Value="E2BECB1F-8C8C-41ba-B736-9BE7D946A398"/>
+            <CustomParameter Name="$PlatformFamily$" Value="WindowsCE"/>
+            <CustomParameter Name="$OSVersion$" Value="5.0"/>
+        </CustomParameters>
+	
+        <Project File="ClassLibrary.csproj" ReplaceParameters="true">
+            <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" OpenInEditor="true">Class1.cs</ProjectItem>
+        </Project>
+    </TemplateContent>
+</VSTemplate>

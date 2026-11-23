@@ -1,0 +1,31 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2237" />
+    <Description Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2264" />
+    <Icon Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="4535" />
+    <ProjectType>JSharp</ProjectType>
+    <SortOrder>10</SortOrder>
+    <DefaultName>Form.jsl</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Data</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Drawing</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Windows.Forms</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Xml</Assembly>
+			</Reference>
+		</References>
+
+    <ProjectItem ReplaceParameters="true" SubType="Form">Form.jsl</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

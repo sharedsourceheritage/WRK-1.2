@@ -666,8 +666,6 @@ WINAPI
 AttachConsole(
     IN DWORD dwProcessId
     );
-
-#define ATTACH_PARENT_PROCESS ((DWORD)-1)
 #endif /* _WIN32_WINNT >= 0x0500 */
 
 WINBASEAPI
@@ -826,123 +824,6 @@ APIENTRY
 GetConsoleProcessList(
     OUT LPDWORD lpdwProcessList,
     IN DWORD dwProcessCount);
-
-//
-// Aliasing apis.
-//
-
-WINBASEAPI
-BOOL
-APIENTRY
-AddConsoleAliasA(
-    IN LPSTR Source,
-    IN LPSTR Target,
-    IN LPSTR ExeName);
-WINBASEAPI
-BOOL
-APIENTRY
-AddConsoleAliasW(
-    IN LPWSTR Source,
-    IN LPWSTR Target,
-    IN LPWSTR ExeName);
-#ifdef UNICODE
-#define AddConsoleAlias  AddConsoleAliasW
-#else
-#define AddConsoleAlias  AddConsoleAliasA
-#endif // !UNICODE
-
-WINBASEAPI
-DWORD
-APIENTRY
-GetConsoleAliasA(
-    IN LPSTR Source,
-    OUT LPSTR TargetBuffer,
-    IN DWORD TargetBufferLength,
-    IN LPSTR ExeName);
-WINBASEAPI
-DWORD
-APIENTRY
-GetConsoleAliasW(
-    IN LPWSTR Source,
-    OUT LPWSTR TargetBuffer,
-    IN DWORD TargetBufferLength,
-    IN LPWSTR ExeName);
-#ifdef UNICODE
-#define GetConsoleAlias  GetConsoleAliasW
-#else
-#define GetConsoleAlias  GetConsoleAliasA
-#endif // !UNICODE
-
-WINBASEAPI
-DWORD
-APIENTRY
-GetConsoleAliasesLengthA(
-    IN LPSTR ExeName);
-WINBASEAPI
-DWORD
-APIENTRY
-GetConsoleAliasesLengthW(
-    IN LPWSTR ExeName);
-#ifdef UNICODE
-#define GetConsoleAliasesLength  GetConsoleAliasesLengthW
-#else
-#define GetConsoleAliasesLength  GetConsoleAliasesLengthA
-#endif // !UNICODE
-
-WINBASEAPI
-DWORD
-APIENTRY
-GetConsoleAliasExesLengthA(
-    VOID);
-WINBASEAPI
-DWORD
-APIENTRY
-GetConsoleAliasExesLengthW(
-    VOID);
-#ifdef UNICODE
-#define GetConsoleAliasExesLength  GetConsoleAliasExesLengthW
-#else
-#define GetConsoleAliasExesLength  GetConsoleAliasExesLengthA
-#endif // !UNICODE
-
-WINBASEAPI
-DWORD
-APIENTRY
-GetConsoleAliasesA(
-    OUT LPSTR AliasBuffer,
-    IN DWORD AliasBufferLength,
-    IN LPSTR ExeName);
-WINBASEAPI
-DWORD
-APIENTRY
-GetConsoleAliasesW(
-    OUT LPWSTR AliasBuffer,
-    IN DWORD AliasBufferLength,
-    IN LPWSTR ExeName);
-#ifdef UNICODE
-#define GetConsoleAliases  GetConsoleAliasesW
-#else
-#define GetConsoleAliases  GetConsoleAliasesA
-#endif // !UNICODE
-
-WINBASEAPI
-DWORD
-APIENTRY
-GetConsoleAliasExesA(
-    OUT LPSTR ExeNameBuffer,
-    IN DWORD ExeNameBufferLength);
-WINBASEAPI
-DWORD
-APIENTRY
-GetConsoleAliasExesW(
-    OUT LPWSTR ExeNameBuffer,
-    IN DWORD ExeNameBufferLength);
-#ifdef UNICODE
-#define GetConsoleAliasExes  GetConsoleAliasExesW
-#else
-#define GetConsoleAliasExes  GetConsoleAliasExesA
-#endif // !UNICODE
-
 #endif /* _WIN32_WINNT >= 0x0501 */
 
 #ifdef __cplusplus

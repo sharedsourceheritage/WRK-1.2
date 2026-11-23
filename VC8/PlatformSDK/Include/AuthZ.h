@@ -11,6 +11,10 @@ Abstract:
     This module contains the authorization framework APIs and any public data
     structures needed to call these APIs.
 
+Author:
+
+    Kedar Dubhashi - March 2000
+
 Revision History:
 
     Created - March 2000
@@ -38,22 +42,18 @@ extern "C" {
 //
 
 #define AUTHZ_SKIP_TOKEN_GROUPS  0x2
-#define AUTHZ_REQUIRE_S4U_LOGON  0x4
-
               
 DECLARE_HANDLE(AUTHZ_ACCESS_CHECK_RESULTS_HANDLE);
 DECLARE_HANDLE(AUTHZ_CLIENT_CONTEXT_HANDLE);
 DECLARE_HANDLE(AUTHZ_RESOURCE_MANAGER_HANDLE);
 DECLARE_HANDLE(AUTHZ_AUDIT_EVENT_HANDLE);
 DECLARE_HANDLE(AUTHZ_AUDIT_EVENT_TYPE_HANDLE);
-DECLARE_HANDLE(AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE);
 
-typedef AUTHZ_ACCESS_CHECK_RESULTS_HANDLE    *PAUTHZ_ACCESS_CHECK_RESULTS_HANDLE;
-typedef AUTHZ_CLIENT_CONTEXT_HANDLE          *PAUTHZ_CLIENT_CONTEXT_HANDLE;
-typedef AUTHZ_RESOURCE_MANAGER_HANDLE        *PAUTHZ_RESOURCE_MANAGER_HANDLE;
-typedef AUTHZ_AUDIT_EVENT_HANDLE             *PAUTHZ_AUDIT_EVENT_HANDLE;
-typedef AUTHZ_AUDIT_EVENT_TYPE_HANDLE        *PAUTHZ_AUDIT_EVENT_TYPE_HANDLE;
-typedef AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE *PAUTHZ_SECURITY_EVENT_PROVIDER_HANDLE;
+typedef AUTHZ_ACCESS_CHECK_RESULTS_HANDLE *PAUTHZ_ACCESS_CHECK_RESULTS_HANDLE;
+typedef AUTHZ_CLIENT_CONTEXT_HANDLE       *PAUTHZ_CLIENT_CONTEXT_HANDLE;
+typedef AUTHZ_RESOURCE_MANAGER_HANDLE     *PAUTHZ_RESOURCE_MANAGER_HANDLE;
+typedef AUTHZ_AUDIT_EVENT_HANDLE          *PAUTHZ_AUDIT_EVENT_HANDLE;
+typedef AUTHZ_AUDIT_EVENT_TYPE_HANDLE     *PAUTHZ_AUDIT_EVENT_TYPE_HANDLE;
 
 //
 // Structure defining the access check request.
@@ -259,8 +259,8 @@ AuthzFreeHandle(
 //
 
 #define AUTHZ_RM_FLAG_NO_AUDIT 0x1
-#define AUTHZ_RM_FLAG_INITIALIZE_UNDER_IMPERSONATION 0x2
-#define AUTHZ_VALID_RM_INIT_FLAGS (AUTHZ_RM_FLAG_NO_AUDIT | AUTHZ_RM_FLAG_INITIALIZE_UNDER_IMPERSONATION)
+
+#define AUTHZ_VALID_RM_INIT_FLAGS (AUTHZ_RM_FLAG_NO_AUDIT)
 
 AUTHZAPI
 BOOL
@@ -346,8 +346,7 @@ typedef enum _AUTHZ_CONTEXT_INFORMATION_CLASS
     AuthzContextInfoServerContext,
     AuthzContextInfoIdentifier,
     AuthzContextInfoSource,
-    AuthzContextInfoAll,
-    AuthzContextInfoAuthenticationId
+    AuthzContextInfoAll
 } AUTHZ_CONTEXT_INFORMATION_CLASS;
 
 AUTHZAPI
@@ -379,33 +378,17 @@ AuthzFreeContext(
 #define AUTHZ_VALID_OBJECT_ACCESS_AUDIT_FLAGS    (AUTHZ_NO_SUCCESS_AUDIT | \
                                                   AUTHZ_NO_FAILURE_AUDIT | \
                                                   AUTHZ_NO_ALLOC_STRINGS)
-                             
+
 AUTHZAPI
 BOOL
 WINAPI
 AuthzInitializeObjectAccessAuditEvent(
-    IN  DWORD                         Flags,
-    IN  AUTHZ_AUDIT_EVENT_TYPE_HANDLE hAuditEventType OPTIONAL,
-    IN  PWSTR                         szOperationType,
-    IN  PWSTR                         szObjectType,
-    IN  PWSTR                         szObjectName,
-    IN  PWSTR                         szAdditionalInfo,
-    OUT PAUTHZ_AUDIT_EVENT_HANDLE     phAuditEvent,
-    IN  DWORD                         dwAdditionalParameterCount,
-    ...
-    );
-    
-AUTHZAPI
-BOOL
-WINAPI
-AuthzInitializeObjectAccessAuditEvent2(
     IN  DWORD                         Flags,
     IN  AUTHZ_AUDIT_EVENT_TYPE_HANDLE hAuditEventType,
     IN  PWSTR                         szOperationType,
     IN  PWSTR                         szObjectType,
     IN  PWSTR                         szObjectName,
     IN  PWSTR                         szAdditionalInfo,
-    IN  PWSTR                         szAdditionalInfo2,
     OUT PAUTHZ_AUDIT_EVENT_HANDLE     phAuditEvent,
     IN  DWORD                         dwAdditionalParameterCount,
     ...
@@ -441,98 +424,6 @@ BOOL
 WINAPI
 AuthzFreeAuditEvent(
     IN AUTHZ_AUDIT_EVENT_HANDLE hAuditEvent
-    );
-
-//
-// Support for generic auditing.
-//
-
-typedef struct _AUTHZ_REGISTRATION_OBJECT_TYPE_NAME_OFFSET
-{
-    PWSTR szObjectTypeName;
-    DWORD dwOffset;
-} AUTHZ_REGISTRATION_OBJECT_TYPE_NAME_OFFSET, *PAUTHZ_REGISTRATION_OBJECT_TYPE_NAME_OFFSET;
-
-typedef struct _AUTHZ_SOURCE_SCHEMA_REGISTRATION
-{
-    DWORD dwFlags;
-    PWSTR szEventSourceName;
-    PWSTR szEventMessageFile;
-    PWSTR szEventSourceXmlSchemaFile;
-    PWSTR szEventAccessStringsFile;
-    PWSTR szExecutableImagePath;
-    PVOID pReserved;
-    DWORD dwObjectTypeNameCount;
-    AUTHZ_REGISTRATION_OBJECT_TYPE_NAME_OFFSET ObjectTypeNames[ANYSIZE_ARRAY];
-} AUTHZ_SOURCE_SCHEMA_REGISTRATION, *PAUTHZ_SOURCE_SCHEMA_REGISTRATION;
-
-#define AUTHZ_FLAG_ALLOW_MULTIPLE_SOURCE_INSTANCES 0x1
-
-AUTHZAPI
-BOOL 
-WINAPI
-AuthzInstallSecurityEventSource(
-    IN DWORD                             dwFlags,
-    IN PAUTHZ_SOURCE_SCHEMA_REGISTRATION pRegistration
-    );
-
-AUTHZAPI
-BOOL
-WINAPI
-AuthzUninstallSecurityEventSource(
-    IN DWORD  dwFlags,
-    IN PCWSTR szEventSourceName
-    );
-
-
-AUTHZAPI
-BOOL
-WINAPI
-AuthzEnumerateSecurityEventSources(
-    IN     DWORD                             dwFlags,
-    OUT    PAUTHZ_SOURCE_SCHEMA_REGISTRATION Buffer,
-    OUT    PDWORD                            pdwCount,
-    IN OUT PDWORD                            pdwLength
-    );
-    
-AUTHZAPI
-BOOL
-WINAPI
-AuthzRegisterSecurityEventSource(
-    IN  DWORD                                 dwFlags,
-    IN  PCWSTR                                szEventSourceName,
-    OUT PAUTHZ_SECURITY_EVENT_PROVIDER_HANDLE phEventProvider
-    );
-    
-AUTHZAPI
-BOOL
-WINAPI
-AuthzUnregisterSecurityEventSource(
-    IN     DWORD                                 dwFlags,
-    IN OUT PAUTHZ_SECURITY_EVENT_PROVIDER_HANDLE phEventProvider
-    );
-
-AUTHZAPI
-BOOL
-WINAPI
-AuthzReportSecurityEvent(
-    IN     DWORD                                dwFlags,
-    IN OUT AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE hEventProvider,
-    IN     DWORD                                dwAuditId,
-    IN     PSID                                 pUserSid        OPTIONAL,
-    IN     DWORD                                dwCount,
-    ...    
-    );
-
-AUTHZAPI
-BOOL
-WINAPI
-AuthzReportSecurityEventFromParams(
-    IN     DWORD                                dwFlags,
-    IN OUT AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE hEventProvider,
-    IN     DWORD                                dwAuditId,
-    IN     PSID                                 pUserSid       OPTIONAL,
-    IN     PAUDIT_PARAMS                        pParams
     );
 
 #ifdef __cplusplus

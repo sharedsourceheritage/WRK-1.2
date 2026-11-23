@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PolicyDefinitions Version="8.0" xmlns="http://schemas.microsoft.com/VSPolicy/PDLSchema" >
+<ElementDefs>
+	<Reference Id="refDataAccessDll">
+		<Identifiers>
+			<Filename>DataAccess.dll</Filename>
+		</Identifiers>
+	</Reference>
+	<Reference Id="refBusinessFacadeDll">
+		<Identifiers>
+			<Filename>BusinessFacade.dll</Filename>
+		</Identifiers>
+	</Reference>
+	<Reference Id="refBusinessRulesDll">
+		<Identifiers>
+			<Filename>BusinessRules.dll</Filename>
+		</Identifiers>
+	</Reference>
+	<Reference Id="refSystemFrameworksDll">
+		<Identifiers>
+			<Filename>SystemFrameworks.dll</Filename>
+		</Identifiers>
+	</Reference>
+	<Reference Id="refWebServiceDll">
+		<Identifiers>
+			<Filename>WebService.dll</Filename>
+		</Identifiers>
+	</Reference>
+    
+	<SolutionFolder Id="BusinessFacadeProjects">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="BusinessFacadeProjects"/>
+		</Identifiers>
+	</SolutionFolder>
+	<SolutionFolder Id="BusinessRulesProjects">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="BusinessRulesProjects"/>
+		</Identifiers>
+	</SolutionFolder>
+	<SolutionFolder Id="DataAccessProjects">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="DataAccessProjects"/>
+		</Identifiers>
+	</SolutionFolder>
+	<SolutionFolder Id="SystemProjects">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="SystemProjects"/>
+		</Identifiers>
+	</SolutionFolder>
+	<SolutionFolder Id="WebServiceProjects">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="WebServiceProjects"/>
+		</Identifiers>
+	</SolutionFolder>
+	<SolutionFolder Id="WebUIProjects">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="WebUIProjects"/>
+		</Identifiers>
+	</SolutionFolder>
+	<SolutionFolder Id="WinUIProjects">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="WinUIProjects"/>
+		</Identifiers>
+	</SolutionFolder>
+
+	<Project Id="projBusinessFacade">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="BusinessFacade" />
+		</Identifiers>
+		<Prototypes>
+			<Prototype>[EF]\Projects\CSharp Building Blocks\BusinessFacade.vsz</Prototype>
+			<Prototype>[EF]\Projects\Visual Basic Building Blocks\BusinessFacade.vsz</Prototype>
+		</Prototypes>
+	</Project>
+	<Project Id="projWebService">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="WebService" />
+		</Identifiers>
+		<Prototypes>
+			<Prototype>[EF]\Projects\CSharp Building Blocks\WebService.vsz</Prototype>
+			<Prototype>[EF]\Projects\Visual Basic Building Blocks\WebService.vsz</Prototype>
+		</Prototypes>
+	</Project>
+	<Project Id="projBusinessRules">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="BusinessRules" />
+		</Identifiers>
+		<Prototypes>
+			<Prototype>[EF]\Projects\CSharp Building Blocks\BusinessRules.vsz</Prototype>
+			<Prototype>[EF]\Projects\Visual Basic Building Blocks\BusinessRules.vsz</Prototype>
+		</Prototypes>
+	</Project>
+	<Project Id="projDataAccess">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="DataAccess" />
+		</Identifiers>
+		<Prototypes>
+			<Prototype>[EF]\Projects\CSharp Building Blocks\DataAccess.vsz</Prototype>
+			<Prototype>[EF]\Projects\Visual Basic Building Blocks\DataAccess.vsz</Prototype>
+		</Prototypes>
+	</Project>
+	<Project Id="projWebUI">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="WebUI" />
+		</Identifiers>
+		<Prototypes>
+			<Prototype>[EF]\Projects\CSharp Building Blocks\WebUI.vsz</Prototype>
+			<Prototype>[EF]\Projects\Visual Basic Building Blocks\WebUI.vsz</Prototype>
+		</Prototypes>
+	</Project>
+	<Project Id="projWinUI">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="WinUI" />
+		</Identifiers>
+		<Prototypes>
+			<Prototype>[EF]\Projects\CSharp Building Blocks\WinUI.vsz</Prototype>
+			<Prototype>[EF]\Projects\Visual Basic Building Blocks\WinUI.vsz</Prototype>
+		</Prototypes>
+	</Project>
+	<Project Id="projSystem">
+		<Identifiers>
+			<Global Name="TDLELEMENTTYPE" Value="System" />
+		</Identifiers>
+		<Prototypes>
+			<Prototype>[EF]\Projects\CSharp Building Blocks\SystemFrameworks.vsz</Prototype>
+			<Prototype>[EF]\Projects\Visual Basic Building Blocks\SystemFrameworks.vsz</Prototype>
+		</Prototypes>
+	</Project>
+	<!--codeClass: ERROR: Not enough data to classify ELEMENT-->
+</ElementDefs>
+</PolicyDefinitions>

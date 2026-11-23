@@ -69,10 +69,6 @@ DEFINE_GUID(CLSID_EXTLOG,               /* ff160663-DE82-11cf-bc0a-00aa006111e0 
 DEFINE_GUID(IID_LOGGINGUI,              /* 31DCAB89-BB3E-11d0-9299-00C04FB6678B */
     0x31dcab89, 0xbb3e, 0x11d0, 0x92, 0x99, 0x0, 0xc0, 0x4f, 0xb6, 0x67, 0x8b);
 
-// {FAE6E2A8-BF79-4ac6-AA58-71347C92D593}
-DEFINE_GUID(IID_LOGGINGUI2, 
-	0xfae6e2a8, 0xbf79, 0x4ac6, 0xaa, 0x58, 0x71, 0x34, 0x7c, 0x92, 0xd5, 0x93);
-
 DEFINE_GUID(CLSID_NCSALOGUI,            /* 31DCAB85-BB3E-11d0-9299-00C04FB6678B */
     0x31dcab85, 0xbb3e, 0x11d0, 0x92, 0x99, 0x0, 0xc0, 0x4f, 0xb6, 0x67, 0x8b);
 
@@ -235,17 +231,6 @@ class ILogUIPlugin  : public IUnknown
     
     virtual HRESULT STDMETHODCALLTYPE
     OnProperties( IN OLECHAR* pocMachineName, IN OLECHAR* pocMetabasePath ) = 0;
-};
-
-class ILogUIPlugin2  : public ILogUIPlugin
-{
-public:
-    virtual HRESULT STDMETHODCALLTYPE
-    OnPropertiesEx(
-		IN OLECHAR * pocMachineName, 
-		IN OLECHAR * pocMetabasePath,
-		IN OLECHAR * pocUserName,
-		IN OLECHAR * pocUserPassword) = 0;
 };
 
 //

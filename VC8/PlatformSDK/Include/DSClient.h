@@ -104,7 +104,6 @@ typedef struct _DSDISPLAYSPECOPTIONS
 
 #define DSDSOF_HASUSERANDSERVERINFO     0x00000001      // = 1 => user name/password are valid
 #define DSDSOF_SIMPLEAUTHENTICATE       0x00000002      // = 1 => don't use secure authentication to DS
-#define DSDSOF_DONTSIGNSEAL             0x00000004      // = 1 => don't sign+seal when opening DS objects
 #define DSDSOF_DSAVAILABLE              0x40000000      // = 1 => ignore DS available checks
 
 //
@@ -212,7 +211,6 @@ DECLARE_INTERFACE_(IDsBrowseDomainTree, IUnknown)
 // IDsDisplaySpecifier::SetServer flags
 //
 #define DSSSF_SIMPLEAUTHENTICATE        0x00000001  // = 1 => don't use secure authentication to DS
-#define DSSSF_DONTSIGNSEAL              0x00000002  // = 1 => don't use sign+seal when opening objects in the DS
 #define DSSSF_DSAVAILABLE               0x80000000  // = 1 => ignore DS available checks
 
 //
@@ -358,7 +356,6 @@ typedef struct
 #define DSBI_IGNORETREATASLEAF  0x00400000  // ignore the treat as leaf flag when calling IsClassContainer
 #define DSBI_SIMPLEAUTHENTICATE 0x00800000  // don't use secure authentication to DS
 #define DSBI_RETURNOBJECTCLASS  0x01000000  // return object class of selected object
-#define DSBI_DONTSIGNSEAL       0x02000000  // don't sign+seal communication with DS
 
 #define DSB_MAX_DISPLAYNAME_CHARS   64
 

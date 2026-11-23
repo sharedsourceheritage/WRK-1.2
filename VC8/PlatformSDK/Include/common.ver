@@ -30,12 +30,12 @@
 
 
 #ifndef VER_LEGALCOPYRIGHT_YEARS
-#define VER_LEGALCOPYRIGHT_YEARS    "1985-2005"
+#define VER_LEGALCOPYRIGHT_YEARS    "1981-2001"
 #endif
 
 #ifndef VER_LEGALCOPYRIGHT_STR
-#if defined(RC_INVOKED) && !defined(WIN16)
-#define VER_LEGALCOPYRIGHT_STR L"\251 Microsoft Corporation. All rights reserved."
+#ifdef RC_INVOKED
+#define VER_LEGALCOPYRIGHT_STR "\251 Microsoft Corporation. All rights reserved."
 #else
 #define VER_LEGALCOPYRIGHT_STR "Copyright (c) Microsoft Corporation. All rights reserved."
 #endif
@@ -43,7 +43,7 @@
 
 #ifndef VER_PRODUCTNAME_STR
 #ifdef RC_INVOKED
-#define VER_PRODUCTNAME_STR L"Microsoft\256 Windows\256 Operating System"
+#define VER_PRODUCTNAME_STR "Microsoft\256 Windows\256 Operating System"
 #else
 #define VER_PRODUCTNAME_STR "Microsoft (R) Windows (R) Operating System"
 #endif
@@ -156,25 +156,13 @@
 #endif
 
 #ifdef VER_LANGNEUTRAL
- #ifndef VER_VERSION_UNICODE_LANG
-  #define VER_VERSION_UNICODE_LANG  "000004B0" /* LANG_NEUTRAL/SUBLANG_NEUTRAL, Unicode CP */
- #endif
- #ifndef VER_VERSION_ANSI_LANG
-  #define VER_VERSION_ANSI_LANG     "000004E4" /* LANG_NEUTRAL/SUBLANG_NEUTRAL, Ansi CP */
- #endif
- #ifndef VER_VERSION_TRANSLATION
-  #define VER_VERSION_TRANSLATION   0x0000, 0x04B0
- #endif
+#define VER_VERSION_UNICODE_LANG  "000004B0" /* LANG_NEUTRAL/SUBLANG_NEUTRAL, Unicode CP */
+#define VER_VERSION_ANSI_LANG     "000004E4" /* LANG_NEUTRAL/SUBLANG_NEUTRAL, Ansi CP */
+#define VER_VERSION_TRANSLATION   0x0000, 0x04B0
 #else
- #ifndef VER_VERSION_UNICODE_LANG
-  #define VER_VERSION_UNICODE_LANG  "040904B0" /* LANG_ENGLISH/SUBLANG_ENGLISH_US, Unicode CP */
- #endif
- #ifndef VER_VERSION_ANSI_LANG
-  #define VER_VERSION_ANSI_LANG     "0c0904E4" /* LANG_ENGLISH/SUBLANG_ENGLISH_US, Ansi CP */
- #endif
- #ifndef VER_VERSION_TRANSLATION
-  #define VER_VERSION_TRANSLATION   0x0409, 0x04B0
- #endif
+#define VER_VERSION_UNICODE_LANG  "040904B0" /* LANG_ENGLISH/SUBLANG_ENGLISH_US, Unicode CP */
+#define VER_VERSION_ANSI_LANG     "0c0904E4" /* LANG_ENGLISH/SUBLANG_ENGLISH_US, Ansi CP */
+#define VER_VERSION_TRANSLATION   0x0409, 0x04B0
 #endif
 
 #ifdef RC_INVOKED

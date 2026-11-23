@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for netcon.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -213,7 +212,7 @@ EXTERN_C const CLSID CLSID_NetSharingManager;
 //retains whether shortcuts are created on the desktop.
 #define NETCON_HKEYCURRENTUSERPATH      TEXT("Software\\Microsoft\\Windows NT\\CurrentVersion\\Network\\Network Connections")
 #define NETCON_DESKTOPSHORTCUT          TEXT("DesktopShortcut")
-#define NETCON_MAX_NAME_LEN 256
+#define NETCON_MAX_NAME_LEN 246
 
 
 
@@ -689,7 +688,7 @@ void __RPC_STUB INetConnection_Rename_Stub(
 #endif 	/* __INetConnection_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_netcon_0120 */
+/* interface __MIDL_itf_netcon_0116 */
 /* [local] */ 
 
 
@@ -700,8 +699,8 @@ STDAPI_(BOOL) NcIsValidConnectionName (PCWSTR pszwName);
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_netcon_0120_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_netcon_0120_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netcon_0116_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netcon_0116_v0_0_s_ifspec;
 
 #ifndef __INetConnectionManager_INTERFACE_DEFINED__
 #define __INetConnectionManager_INTERFACE_DEFINED__
@@ -2741,14 +2740,14 @@ void __RPC_STUB INetSharingPortMappingCollection_get_Count_Stub(
 #endif 	/* __INetSharingPortMappingCollection_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_netcon_0133 */
+/* interface __MIDL_itf_netcon_0129 */
 /* [local] */ 
 
 // properties for INetConnection (wraps NETCON_PROPERTIES)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_netcon_0133_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_netcon_0133_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netcon_0129_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netcon_0129_v0_0_s_ifspec;
 
 #ifndef __INetConnectionProps_INTERFACE_DEFINED__
 #define __INetConnectionProps_INTERFACE_DEFINED__

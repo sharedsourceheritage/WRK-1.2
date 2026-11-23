@@ -645,23 +645,8 @@ BOOL       WINAPI RegisterCMMW(PCWSTR, DWORD, PCWSTR);
 BOOL       WINAPI UnregisterCMMA(PCSTR, DWORD);
 BOOL       WINAPI UnregisterCMMW(PCWSTR, DWORD);
 BOOL       WINAPI SelectCMM(DWORD);
-
-BOOL
-WINAPI
-GetColorDirectoryA(
-    __in PCSTR pMachineName,
-    __out_bcount_part(*pdwSize, *pdwSize) PSTR pBuffer,
-    __inout PDWORD pdwSize
-    );
-
-BOOL
-WINAPI
-GetColorDirectoryW(
-    __in PCWSTR pMachineName,
-    __out_bcount_part(*pdwSize, *pdwSize) PWSTR pBuffer,
-    __inout PDWORD pdwSize
-    );
-
+BOOL       WINAPI GetColorDirectoryA(PCSTR, PSTR, PDWORD);
+BOOL       WINAPI GetColorDirectoryW(PCWSTR, PWSTR, PDWORD);
 BOOL       WINAPI InstallColorProfileA(PCSTR, PCSTR);
 BOOL       WINAPI InstallColorProfileW(PCWSTR, PCWSTR);
 BOOL       WINAPI UninstallColorProfileA(PCSTR, PCSTR, BOOL);
@@ -670,25 +655,8 @@ BOOL       WINAPI EnumColorProfilesA(PCSTR, PENUMTYPEA, PBYTE, PDWORD, PDWORD);
 BOOL       WINAPI EnumColorProfilesW(PCWSTR, PENUMTYPEW, PBYTE, PDWORD, PDWORD);
 BOOL       WINAPI SetStandardColorSpaceProfileA(PCSTR, DWORD, PCSTR);
 BOOL       WINAPI SetStandardColorSpaceProfileW(PCWSTR, DWORD, PCWSTR);
-
-BOOL
-WINAPI
-GetStandardColorSpaceProfileA(
-    __in PCSTR pMachineName,
-    __in DWORD dwSCS,
-    __out_bcount_part(*pcbSize, *pcbSize) PSTR pBuffer,
-    __inout PDWORD pcbSize
-    );
-
-BOOL
-WINAPI
-GetStandardColorSpaceProfileW(
-    __in PCWSTR pMachineName,
-    __in DWORD dwSCS,
-    __out_bcount_part(*pcbSize, *pcbSize) PWSTR pBuffer,
-    __inout PDWORD pcbSize
-    );
-
+BOOL       WINAPI GetStandardColorSpaceProfileA(PCSTR, DWORD, PSTR, PDWORD);
+BOOL       WINAPI GetStandardColorSpaceProfileW(PCWSTR, DWORD, PWSTR, PDWORD);
 BOOL       WINAPI AssociateColorProfileWithDeviceA(PCSTR, PCSTR, PCSTR);
 BOOL       WINAPI AssociateColorProfileWithDeviceW(PCWSTR, PCWSTR, PCWSTR);
 BOOL       WINAPI DisassociateColorProfileFromDeviceA(PCSTR, PCSTR, PCSTR);

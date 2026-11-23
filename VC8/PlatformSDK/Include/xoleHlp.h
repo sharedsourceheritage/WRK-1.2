@@ -17,11 +17,7 @@ Filename :	xolehlp.h
 /*----------------------------------------
 //	Defines
 //--------------------------------------*/
-#ifdef _M_CEE_PURE
-#define EXPORTAPI HRESULT
-#else
 #define EXPORTAPI __declspec( dllexport )HRESULT
-#endif
 
 /*----------------------------------------
 // Constants

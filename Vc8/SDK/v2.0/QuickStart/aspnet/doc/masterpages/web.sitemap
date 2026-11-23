@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+	<siteMapNode url="~/aspnet/doc/masterpages/default.aspx" title="Creating a Layout Using Master Pages">
+           <siteMapNode url="~/aspnet/doc/masterpages/default.aspx#content" title="Master and Content Pages"/>
+           <siteMapNode url="~/aspnet/doc/masterpages/default.aspx#urls" title="URL Rebasing in a Master Page"/>
+           <siteMapNode url="~/aspnet/doc/masterpages/default.aspx#code" title="Accessing a Master Page from Code"/>
+           <siteMapNode url="~/aspnet/doc/masterpages/default.aspx#nested" title="Nesting Master Pages"/>
+        </siteMapNode>
+</siteMap>

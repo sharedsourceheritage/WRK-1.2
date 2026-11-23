@@ -3562,22 +3562,6 @@ DECLARE_INTERFACE_(IKsReferenceClock,IUnknown)
 };
 #undef INTERFACE
 
-#define INTERFACE IKsDeviceFunctions
-DECLARE_INTERFACE_(IKsDeviceFunctions, IUnknown)
-{
-    DEFINE_ABSTRACT_UNKNOWN() // For C
-    
-    STDMETHOD_(NTSTATUS, RegisterAdapterObjectEx)(THIS_
-        IN PADAPTER_OBJECT AdapterObject,
-        IN PDEVICE_DESCRIPTION DeviceDescription,
-        IN ULONG NumberOfMapRegisters,
-        IN ULONG MaxMappingsByteCount,
-        IN ULONG MappingTableStride
-        ) PURE;
-};
-
-#undef INTERFACE
-
 #define STATIC_IID_IKsControl \
 0x28F54685L, 0x06FD, 0x11D2, 0xB2, 0x7A, 0x00, 0xA0, 0xC9, 0x22, 0x31, 0x96
 DEFINE_GUID(IID_IKsControl,
@@ -3592,14 +3576,6 @@ DEFINE_GUID(IID_IKsFastClock,
 0xc9902485, 0xc180, 0x11d2, 0x84, 0x73, 0xd4, 0x23, 0x94, 0x45, 0x9e, 0x5e);
 #if defined(__cplusplus) && _MSC_VER >= 1100
 struct __declspec(uuid("C9902485-C180-11d2-8473-D42394459E5E")) IKsFastClock;
-#endif
-
-#define STATIC_IID_IKsDeviceFunctions \
-0xe234f2e2, 0xbd69, 0x4f8c, 0xb3, 0xf2, 0x7c, 0xd7, 0x9e, 0xd4, 0x66, 0xbd
-DEFINE_GUID(IID_IKsDeviceFunctions,
-0xe234f2e2, 0xbd69, 0x4f8c, 0xb3, 0xf2, 0x7c, 0xd7, 0x9e, 0xd4, 0x66, 0xbd);
-#if defined(__cplusplus) && _MSC_VER >= 1100
-struct __declspec(uuid("E234F2E2-BD69-4F8C-B3F2-7CD79ED466BD")) IKsDeviceFunctions;
 #endif
 
 #endif // !defined(_IKsControl_)
@@ -4447,22 +4423,22 @@ KSDDKAPI
 NTSTATUS
 NTAPI
 KsAddObjectCreateItemToDeviceHeader(
-    __in KSDEVICE_HEADER Header,
-    __in PDRIVER_DISPATCH Create,
-    __in PVOID Context,
-    __in PWSTR ObjectClass,
-    __in_opt PSECURITY_DESCRIPTOR SecurityDescriptor
+    IN KSDEVICE_HEADER Header,
+    IN PDRIVER_DISPATCH Create,
+    IN PVOID Context,
+    IN PWCHAR ObjectClass,
+    IN PSECURITY_DESCRIPTOR SecurityDescriptor OPTIONAL
     );
 
 KSDDKAPI
 NTSTATUS
 NTAPI
 KsAddObjectCreateItemToObjectHeader(
-    __in KSOBJECT_HEADER Header,
-    __in PDRIVER_DISPATCH Create,
-    __in PVOID Context,
-    __in PWSTR ObjectClass,
-    __in_opt PSECURITY_DESCRIPTOR SecurityDescriptor
+    IN KSOBJECT_HEADER Header,
+    IN PDRIVER_DISPATCH Create,
+    IN PVOID Context,
+    IN PWCHAR ObjectClass,
+    IN PSECURITY_DESCRIPTOR SecurityDescriptor OPTIONAL
     );
 
 KSDDKAPI
@@ -4726,14 +4702,14 @@ KSDDKAPI
 NTSTATUS
 NTAPI
 KsCreateFilterFactory(
-    __in PDEVICE_OBJECT DeviceObject,
-    __in const KSFILTER_DESCRIPTOR *Descriptor,
-    __in_opt PWSTR RefString OPTIONAL,
-    __in_opt PSECURITY_DESCRIPTOR SecurityDescriptor,
-    __in ULONG CreateItemFlags,
-    __in_opt PFNKSFILTERFACTORYPOWER SleepCallback,
-    __in_opt PFNKSFILTERFACTORYPOWER WakeCallback,
-    __out_opt PKSFILTERFACTORY *FilterFactory
+    IN PDEVICE_OBJECT DeviceObject,
+    IN const KSFILTER_DESCRIPTOR* Descriptor,
+    IN PWCHAR RefString OPTIONAL,
+    IN PSECURITY_DESCRIPTOR SecurityDescriptor OPTIONAL,
+    IN ULONG CreateItemFlags,
+    IN PFNKSFILTERFACTORYPOWER SleepCallback OPTIONAL,
+    IN PFNKSFILTERFACTORYPOWER WakeCallback OPTIONAL,
+    OUT PKSFILTERFACTORY* FilterFactory OPTIONAL
     );
 
 #define KsDeleteFilterFactory(FilterFactory) \
@@ -4755,10 +4731,10 @@ KSDDKAPI
 NTSTATUS
 NTAPI
 KsFilterFactoryAddCreateItem(
-    __in PKSFILTERFACTORY FilterFactory,
-    __in PWSTR RefString,
-    __in_opt PSECURITY_DESCRIPTOR SecurityDescriptor,
-    __in ULONG CreateItemFlags
+    IN PKSFILTERFACTORY FilterFactory,
+    IN PWCHAR RefString,
+    IN PSECURITY_DESCRIPTOR SecurityDescriptor OPTIONAL,
+    IN ULONG CreateItemFlags
     );
 
 KSDDKAPI

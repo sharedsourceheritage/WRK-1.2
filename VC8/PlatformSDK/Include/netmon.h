@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for netmon.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -47,6 +46,12 @@
 #define __IDelaydC_FWD_DEFINED__
 typedef interface IDelaydC IDelaydC;
 #endif 	/* __IDelaydC_FWD_DEFINED__ */
+
+
+#ifndef __IESP_FWD_DEFINED__
+#define __IESP_FWD_DEFINED__
+typedef interface IESP IESP;
+#endif 	/* __IESP_FWD_DEFINED__ */
 
 
 #ifndef __IRTC_FWD_DEFINED__
@@ -85,6 +90,9 @@ void __RPC_USER MIDL_user_free( void * );
 //  It contains the contents of these files from previous SDKs:
 //
 //      NPPTypes.h
+//      NMEvent.h       (previously Event.h)
+//      NMmcs.h         (previously mcs.h)
+//      NMmonitor.h     (previously monitor.h)
 //      Finder.h
 //      NMSupp.h
 //      BHTypes.h
@@ -103,11 +111,11 @@ void __RPC_USER MIDL_user_free( void * );
 //      NMTcpStructs.h  (previously TcpStructs.h)
 //
 //      IDelaydC.idl
+//      IESP.idl
 //      IRTC.idl
 //      IStats.idl
 //
 //=============================================================================
-#include <winerror.h>
 #include <winerror.h>
 
 #pragma pack(1)
@@ -214,11 +222,9 @@ typedef STATISTICS *LPSTATISTICS;
 
 #define	MAC_ADDRESS_SIZE	( 6 )
 
-#define	IP6_ADDRESS_SIZE	( 16 )
-
 // Q: What is the maximum address size that we could have to copy?
-// A: IP6 
-#define	MAX_ADDRESS_SIZE	( 16 )
+// A: IPX == DWORD + 6 bytes == 10
+#define	MAX_ADDRESS_SIZE	( 10 )
 
 #define	ADDRESS_TYPE_ETHERNET	( 0 )
 
@@ -245,8 +251,6 @@ typedef STATISTICS *LPSTATISTICS;
 #define	ADDRESS_TYPE_ATM	( 11 )
 
 #define	ADDRESS_TYPE_1394	( 12 )
-
-#define	ADDRESS_TYPE_IP6	( 13 )
 
 #define	ADDRESSTYPE_FLAGS_NORMALIZE	( 0x1 )
 
@@ -329,7 +333,7 @@ typedef struct _TOKENRING_DST_ADDRESS
 } TOKENRING_DST_ADDRESS;
 typedef TOKENRING_DST_ADDRESS *LPTOKENRING_DST_ADDRESS;
 // Address Structure
-typedef struct _ADDRESS2
+typedef struct _ADDRESS
 {
     DWORD                       Type;
 
@@ -342,9 +346,6 @@ typedef struct _ADDRESS2
 
         // IP
         BYTE                    IPAddress[IP_ADDRESS_SIZE];
-
-        // IP6
-        BYTE                    IP6Address[IP6_ADDRESS_SIZE];
 
         // raw IPX
         BYTE                    IPXRawAddress[IPX_ADDR_SIZE];
@@ -378,9 +379,9 @@ typedef struct _ADDRESS2
     };
     
     WORD                        Flags;
-} ADDRESS2;
-typedef ADDRESS2 *LPADDRESS2;
-#define ADDRESS2_SIZE   sizeof(ADDRESS2)
+} ADDRESS;
+typedef ADDRESS *LPADDRESS;
+#define ADDRESS_SIZE   sizeof(ADDRESS)
 
 
 #pragma pack(pop)
@@ -397,31 +398,31 @@ typedef ADDRESS2 *LPADDRESS2;
 
 #define	ADDRESS_FLAGS_MATCH_BOTH	( 0x3 )
 
-typedef struct _ADDRESSPAIR2
+typedef struct _ADDRESSPAIR
 {
     WORD        AddressFlags;
     WORD        NalReserved;
-    ADDRESS2    DstAddress;
-    ADDRESS2    SrcAddress;
+    ADDRESS     DstAddress;
+    ADDRESS     SrcAddress;
 
-} ADDRESSPAIR2;
-typedef ADDRESSPAIR2 *LPADDRESSPAIR2;
-#define ADDRESSPAIR2_SIZE  sizeof(ADDRESSPAIR2)
+} ADDRESSPAIR;
+typedef ADDRESSPAIR *LPADDRESSPAIR;
+#define ADDRESSPAIR_SIZE  sizeof(ADDRESSPAIR)
 //=============================================================================
 //  Address table.
 //=============================================================================
 #define	MAX_ADDRESS_PAIRS	( 8 )
 
-typedef struct _ADDRESSTABLE2
+typedef struct _ADDRESSTABLE
 {
     DWORD           nAddressPairs;
     DWORD           nNonMacAddressPairs;
-    ADDRESSPAIR2    AddressPair[MAX_ADDRESS_PAIRS];
+    ADDRESSPAIR     AddressPair[MAX_ADDRESS_PAIRS];
 
-} ADDRESSTABLE2;
+} ADDRESSTABLE;
 
-typedef ADDRESSTABLE2 *LPADDRESSTABLE2;
-#define ADDRESSTABLE2_SIZE sizeof(ADDRESSTABLE2)
+typedef ADDRESSTABLE *LPADDRESSTABLE;
+#define ADDRESSTABLE_SIZE sizeof(ADDRESSTABLE)
 //=============================================================================
 //  Network information.
 //=============================================================================
@@ -435,12 +436,11 @@ typedef ADDRESSTABLE2 *LPADDRESSTABLE2;
 
 #define	NETWORKINFO_FLAGS_RAS	( 0x20 )
 
-#define NETWORKINFO_RESERVED_FIELD_SIZE (FIELD_OFFSET(ADDRESS2,IPXAddress) + sizeof(IPX_ADDR))
 typedef struct _NETWORKINFO
 {
     BYTE            PermanentAddr[6];       //... Permanent MAC address
     BYTE            CurrentAddr[6];         //... Current  MAC address
-    BYTE            Reserved[NETWORKINFO_RESERVED_FIELD_SIZE];
+    ADDRESS         OtherAddress;           //... Other address supported (IP, IPX, etc...)
     DWORD           LinkSpeed;              //... Link speed in Mbits.
     DWORD           MacType;                //... Media type.
     DWORD           MaxFrameSize;           //... Max frame size allowed.
@@ -497,15 +497,8 @@ typedef NETWORKINFO *LPNETWORKINFO;
 // which follows IP.
 #define	OFFSET_BASIS_RELATIVE_TO_IP	( 3 )
 
-// The offset given is relative to the beginning of IP6. If IP6 is not present
-// then the frame does not match. If the PATTERN_MATCH_FLAGS_PORT_SPECIFIED
-// flag is set then the offset is relative to the beginning of the protocol
-// which follows IP6.
-#define	OFFSET_BASIS_RELATIVE_TO_IP6	( 4 )
-
 typedef /* [public][public][public][public][public][public][public][public][public] */ union __MIDL___MIDL_itf_netmon_0000_0001
     {
-    BYTE NextHeader;
     BYTE IPPort;
     WORD ByteSwappedIPXPort;
     } 	GENERIC_PORT;
@@ -631,7 +624,7 @@ typedef struct _CAPTUREFILTER
     LPWORD          lpEtypeTable;     
     WORD            nSaps;            
     WORD            nEtypes;          
-    LPADDRESSTABLE2 AddressTable;     
+    LPADDRESSTABLE  AddressTable;     
     EXPRESSION      FilterExpression; 
     TRIGGER         Trigger;          
     DWORD           nFrameBytesToCopy;
@@ -663,8 +656,6 @@ typedef FRAME UNALIGNED *ULPFRAME;
 #define	LOW_PROTOCOL_IPX	( OFFSET_BASIS_RELATIVE_TO_IPX )
 
 #define	LOW_PROTOCOL_IP	( OFFSET_BASIS_RELATIVE_TO_IP )
-
-#define	LOW_PROTOCOL_IP6	( OFFSET_BASIS_RELATIVE_TO_IP6 )
 
 #define	LOW_PROTOCOL_UNKNOWN	( ( BYTE  )-1 )
 
@@ -759,10 +750,37 @@ typedef SESSIONSTATS *LPSESSIONSTATS;
 //  Station Query
 //=============================================================================
 
-// These structures are obsolete and should not be used
-// They are included so that our interfaces need not change
+// These structures are used to decode network data and so need to be packed
 
 #pragma pack(push, 1)
+#define	STATIONQUERY_FLAGS_LOADED	( 0x1 )
+
+#define	STATIONQUERY_FLAGS_RUNNING	( 0x2 )
+
+#define	STATIONQUERY_FLAGS_CAPTURING	( 0x4 )
+
+#define	STATIONQUERY_FLAGS_TRANSMITTING	( 0x8 )
+
+#define	STATIONQUERY_VERSION_MINOR	( 0x1 )
+
+#define	STATIONQUERY_VERSION_MAJOR	( 0x2 )
+
+typedef struct _OLDSTATIONQUERY
+    {
+    DWORD Flags;
+    BYTE BCDVerMinor;
+    BYTE BCDVerMajor;
+    DWORD LicenseNumber;
+    BYTE MachineName[ 16 ];
+    BYTE UserName[ 32 ];
+    BYTE Reserved[ 32 ];
+    BYTE AdapterAddress[ 6 ];
+    } 	OLDSTATIONQUERY;
+
+typedef OLDSTATIONQUERY *LPOLDSTATIONQUERY;
+
+#define	OLDSTATIONQUERY_SIZE	( sizeof( OLDSTATIONQUERY  ) )
+
 typedef struct _STATIONQUERY
     {
     DWORD Flags;
@@ -807,6 +825,33 @@ typedef struct _LINK
     LPLINK NextLink;
     } 	LINK;
 
+//=============================================================================
+//  Security Request packet
+//=============================================================================
+
+// This structure is used to decode network data and so needs to be packed
+
+#pragma pack(push, 1)
+typedef struct _SECURITY_PERMISSION_CHECK
+    {
+    UINT Version;
+    DWORD RandomNumber;
+    BYTE MachineName[ 16 ];
+    BYTE UserName[ 32 ];
+    UINT MacType;
+    BYTE PermanentAdapterAddress[ 6 ];
+    BYTE CurrentAdapterAddress[ 6 ];
+    WCHAR WMachineName[ 16 ];
+    WCHAR WUserName[ 32 ];
+    } 	SECURITY_PERMISSION_CHECK;
+
+typedef SECURITY_PERMISSION_CHECK *LPSECURITY_PERMISSION_CHECK;
+
+typedef SECURITY_PERMISSION_CHECK UNALIGNED * ULPSECURITY_PERMISSION_CHECK;
+#define	SECURITY_PERMISSION_CHECK_SIZE	( sizeof( SECURITY_PERMISSION_CHECK  ) )
+
+
+#pragma pack(pop)
 //=============================================================================
 //  Security Response packet
 //=============================================================================
@@ -935,9 +980,75 @@ typedef NETWORKSTATUS *LPNETWORKSTATUS;
 
 #define	NETWORKSTATUS_FLAGS_TRIGGER_PENDING	( 0x1 )
 
+//=============================================================================
+//  BONEPACKET structure.
+//=============================================================================
+
+// This structure is used to decode network data and so needs to be packed
+
+#pragma pack(push, 1)
+#define	BONE_COMMAND_STATION_QUERY_REQUEST	( 0 )
+
+#define	BONE_COMMAND_STATION_QUERY_RESPONSE	( 1 )
+
+#define	BONE_COMMAND_ALERT	( 2 )
+
+#define	BONE_COMMAND_PERMISSION_CHECK	( 3 )
+
+#define	BONE_COMMAND_PERMISSION_RESPONSE	( 4 )
+
+#define	BONE_COMMAND_SECURITY_MONITOR_EVENT	( 5 )
+
+typedef struct _BONEPACKET
+    {
+    DWORD Signature;
+    BYTE Command;
+    BYTE Flags;
+    DWORD Reserved;
+    WORD Length;
+    } 	BONEPACKET;
+
+typedef BONEPACKET *LPBONEPACKET;
+
+typedef BONEPACKET UNALIGNED* ULPBONEPACKET;
+#define	BONEPACKET_SIZE	( sizeof( BONEPACKET  ) )
+
+
+#pragma pack(pop)
+//=============================================================================
+//  BONE alert packet.
+//=============================================================================
+
+// This structure is used to decode network data and so needs to be packed
+
+#pragma pack(push, 1)
+#define	ALERT_CODE_BEGIN_TRANSMIT	( 0 )
+
+typedef struct _ALERT
+    {
+    DWORD AlertCode;
+    WCHAR WMachineName[ 16 ];
+    WCHAR WUserName[ 32 ];
+    union 
+        {
+        BYTE Pad[ 32 ];
+        DWORD nFramesToSend;
+        } 	;
+    } 	ALERT;
+
+typedef ALERT *LPALERT;
+
+#define	ALERT_SIZE	( sizeof( ALERT  ) )
+
+
+#pragma pack(pop)
+//=============================================================================
+//  BONEPACKET signature.
+//=============================================================================
 #define MAKE_WORD(l, h)         (((WORD) (l)) | (((WORD) (h)) << 8))
 #define MAKE_LONG(l, h)         (((DWORD) (l)) | (((DWORD) (h)) << 16L))
 #define MAKE_SIG(a, b, c, d)    MAKE_LONG(MAKE_WORD(a, b), MAKE_WORD(c, d))
+#define BONE_PACKET_SIGNATURE   MAKE_SIG('R', 'T', 'S', 'S')
 //=============================================================================
 //  STATISTICS parameter structure.
 //=============================================================================
@@ -1174,133 +1285,14 @@ typedef ESTATFRAME UNALIGNED *ULPESTATFRAME;
 
 
 #pragma pack(pop)
-//****************************************************************************
-//****************************************************************************
-// Obsolete structures
-// The newer structures (named with a 2 appended) should be used
-//****************************************************************************
-//****************************************************************************
-
-#pragma pack(push, 1)
-// Address Structure
-// Obsolete, ADDRESS2 should be used
-typedef struct _ADDRESS
-{
-    DWORD                       Type;
-
-    union
-    {
-        // ADDRESS_TYPE_ETHERNET
-        // ADDRESS_TYPE_TOKENRING
-        // ADDRESS_TYPE_FDDI
-        BYTE                    MACAddress[MAC_ADDRESS_SIZE];
-
-        // IP
-        BYTE                    IPAddress[IP_ADDRESS_SIZE];
-
-        // raw IPX
-        BYTE                    IPXRawAddress[IPX_ADDR_SIZE];
-
-        // real IPX
-        IPX_ADDR                IPXAddress;
-
-        // raw Vines IP
-        BYTE                    VinesIPRawAddress[VINES_IP_ADDRESS_SIZE];
-
-        // real Vines IP
-        VINES_IP_ADDRESS        VinesIPAddress;
-
-        // ethernet with bits defined
-        ETHERNET_SRC_ADDRESS    EthernetSrcAddress;
-
-        // ethernet with bits defined
-        ETHERNET_DST_ADDRESS    EthernetDstAddress;
-
-        // tokenring with bits defined
-        TOKENRING_SRC_ADDRESS   TokenringSrcAddress;
-
-        // tokenring with bits defined
-        TOKENRING_DST_ADDRESS   TokenringDstAddress;
-
-        // fddi with bits defined
-        FDDI_SRC_ADDRESS        FddiSrcAddress;
-
-        // fddi with bits defined
-        FDDI_DST_ADDRESS        FddiDstAddress;
-    };
-    
-    WORD                        Flags;
-} ADDRESS;
-typedef ADDRESS *LPADDRESS;
-#define ADDRESS_SIZE   sizeof(ADDRESS)
-
-
-#pragma pack(pop)
-// Obsolete, ADDRESSPAIR2 should be used
-typedef struct _ADDRESSPAIR
-{
-    WORD        AddressFlags;
-    WORD        NalReserved;
-    ADDRESS     DstAddress;
-    ADDRESS     SrcAddress;
-
-} ADDRESSPAIR;
-typedef ADDRESSPAIR *LPADDRESSPAIR;
-#define ADDRESSPAIR_SIZE  sizeof(ADDRESSPAIR)
-// Obsolete, ADDRESSTABLE2 should be used
-typedef struct _ADDRESSTABLE
-{
-    DWORD           nAddressPairs;
-    DWORD           nNonMacAddressPairs;
-    ADDRESSPAIR     AddressPair[MAX_ADDRESS_PAIRS];
-
-} ADDRESSTABLE;
-
-typedef ADDRESSTABLE *LPADDRESSTABLE;
-#define ADDRESSTABLE_SIZE sizeof(ADDRESSTABLE)
-// Obsolete, ADDRESSINFO2 should be used
-typedef struct _ADDRESSINFO
-{
-    ADDRESS        Address;
-    WCHAR          Name[MAX_NAME_SIZE];
-    DWORD          Flags;
-    LPVOID         lpAddressInstData;
-
-} ADDRESSINFO;
-typedef struct _ADDRESSINFO *LPADDRESSINFO;
-#define ADDRESSINFO_SIZE    sizeof(ADDRESSINFO)
-// Obsolete, ADDRESSINFOTABLE2 should be used
-typedef struct _ADDRESSINFOTABLE
-{
-    DWORD         nAddressInfos;
-    LPADDRESSINFO lpAddressInfo[0];
-
-} ADDRESSINFOTABLE;
-typedef ADDRESSINFOTABLE *LPADDRESSINFOTABLE;
-#define ADDRESSINFOTABLE_SIZE   sizeof(ADDRESSINFOTABLE)
-//****************************************************************************
-//****************************************************************************
-// Obsolete functions
-// The newer functions should be used
-//****************************************************************************
-//****************************************************************************
-// Obsolete, SetNPPAddress2FilterInBlob should be used
-DWORD _cdecl SetNPPAddressFilterInBlob( HBLOB hBlob,
-                                 LPADDRESSTABLE pAddressTable);
-// Obsolete, GetNPPAddress2FilterFromBlob should be used
-DWORD _cdecl GetNPPAddressFilterFromBlob( HBLOB hBlob,
-                                   LPADDRESSTABLE pAddressTable,
-                                   HBLOB hErrorBlob);
 //=============================================================================
 //=============================================================================
 //  (NMEvent.h)
 //=============================================================================
 //=============================================================================
-
-#pragma pack(push, 8)
 // NMCOLUMNTYPE
 typedef /* [public][public][public][public][public][public] */ 
-enum __MIDL___MIDL_itf_netmon_0000_0005
+enum __MIDL___MIDL_itf_netmon_0000_0006
     {	NMCOLUMNTYPE_UINT8	= 0,
 	NMCOLUMNTYPE_SINT8	= NMCOLUMNTYPE_UINT8 + 1,
 	NMCOLUMNTYPE_UINT16	= NMCOLUMNTYPE_SINT8 + 1,
@@ -1357,7 +1349,6 @@ typedef NMCOLUMNINFO *PNMCOLUMNINFO;
 typedef LPSTR JTYPE;
 
 // EVENTDATA
-#ifdef MIDL_PASS
 typedef struct _NMEVENTDATA
     {
     LPSTR pszReserved;
@@ -1371,35 +1362,16 @@ typedef struct _NMEVENTDATA
     LPSTR szDescription;
     LPSTR szMachine;
     JTYPE Justification;
-    PVOID pvReserved;
+    LPSTR szUrl;
     SYSTEMTIME SysTime;
     /* [size_is] */ NMCOLUMNINFO Column[ 1 ];
     } 	NMEVENTDATA;
 
-#else  // MIDL_PASS
-typedef struct _NMEVENTDATA 
-{                            
-    LPSTR      pszReserved;  // Reserved
-    BYTE       Version;      // Version for this structure (must be 0)
-    DWORD      EventIdent;   // ID for this event
-    DWORD      Flags;        // Flags for Expert generated and others
-    DWORD      Severity;     // Severity level
-    BYTE       NumColumns;   // Number of optional columns for this event
-    LPSTR      szSourceName; // Name of Expert
-    LPSTR      szEventName;  // Name of event
-    LPSTR      szDescription;// Description of event
-    LPSTR      szMachine;    // Name (or IPADDRESS?) of the machine supplying the event (NULL for Experts usually)
-    JTYPE      Justification;// Justification pane info (currently a string, but possible structure)
-    PVOID      pvReserved;   // Reserved
-    SYSTEMTIME SysTime;      // Systemtime of the event
-    NMCOLUMNINFO Column[0];    
-} NMEVENTDATA;
-#endif // MIDL_PASS
 typedef NMEVENTDATA *PNMEVENTDATA;
 
-
-#pragma pack(pop)
 // EVENT FLAGS
+#define	NMEVENTFLAG_MONITOR	( 0 )
+
 #define	NMEVENTFLAG_EXPERT	( 0x1 )
 
 #define	NMEVENTFLAG_DO_NOT_DISPLAY_SEVERITY	( 0x80000000 )
@@ -1436,13 +1408,145 @@ enum _NMEVENT_SEVERITIES
     } ;
 //=============================================================================
 //=============================================================================
+//  (NMmcs.h)
+//=============================================================================
+//=============================================================================
+//=============================================================================
+// Monitor status values returned from call to GetMonitorStatus
+//=============================================================================
+#define	MONITOR_STATUS_ERROR	( -1 )
+
+#define	MONITOR_STATUS_ENABLED	( 4 )
+
+#define	MONITOR_STATUS_CONFIGURED	( 5 )
+
+#define	MONITOR_STATUS_RUNNING	( 6 )
+
+#define	MONITOR_STATUS_RUNNING_FAULTED	( 9 )
+
+#define	MONITOR_STATUS_DELETED	( 10 )
+
+#define	MCS_COMMAND_ENABLE	( 13 )
+
+#define	MCS_COMMAND_DISABLE	( 14 )
+
+#define	MCS_COMMAND_SET_CONFIG	( 15 )
+
+#define	MCS_COMMAND_GET_CONFIG	( 16 )
+
+#define	MCS_COMMAND_START	( 17 )
+
+#define	MCS_COMMAND_STOP	( 18 )
+
+#define	MCS_COMMAND_CONNECT	( 19 )
+
+#define	MCS_COMMAND_RENAME	( 20 )
+
+#define	MCS_COMMAND_REFRESH_STATUS	( 21 )
+
+//=============================================================================
+// Monitor Creation Flags
+//=============================================================================
+#define	MCS_CREATE_ONE_PER_NETCARD	( 0x1 )
+
+#define	MCS_CREATE_CONFIGS_BY_DEFAULT	( 0x10 )
+
+#define	MCS_CREATE_PMODE_NOT_REQUIRED	( 0x100 )
+
+typedef __int64 HNMMONITOR;
+
+//=============================================================================
+// NPP_INFO
+//=============================================================================
+typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0008
+    {
+    DWORD ListIndex;
+    /* [string] */ char *ShortName;
+    /* [string] */ char *LongName;
+    } 	NPP_INFO;
+
+typedef NPP_INFO *PNPP_INFO;
+
+//=============================================================================
+// MONITOR_INFO
+//=============================================================================
+typedef struct _MONITOR_INFO
+    {
+    HNMMONITOR MonitorInstance;
+    HNMMONITOR MonitorClass;
+    DWORD CreateFlags;
+    DWORD Status;
+    DWORD ListIndex;
+    /* [string] */ char *pDescription;
+    /* [string] */ char *pScript;
+    /* [string] */ char *pConfiguration;
+    /* [string] */ char *pName;
+    } 	MONITOR_INFO;
+
+typedef MONITOR_INFO *PMONITOR_INFO;
+
+//=============================================================================
+// MONITOR_MESSAGE
+//=============================================================================
+typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0009
+    {
+    HNMMONITOR Monitor;
+    DWORD ListIndex;
+    /* [string] */ char *pszMessage;
+    } 	MONITOR_MESSAGE;
+
+typedef MONITOR_MESSAGE *PMONITOR_MESSAGE;
+
+//=============================================================================
+// COMMAND_FAILED_EVENT
+//=============================================================================
+typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0010
+    {
+    HNMMONITOR Monitor;
+    DWORD Command;
+    DWORD FailureCode;
+    DWORD ListIndex;
+    DWORD Status;
+    } 	COMMAND_FAILED_EVENT;
+
+typedef COMMAND_FAILED_EVENT *PCOMMAND_FAILED_EVENT;
+
+//=============================================================================
+// MONITOR_STATUS_EVENT
+//=============================================================================
+typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0011
+    {
+    HNMMONITOR Monitor;
+    DWORD LastCommand;
+    DWORD ListIndex;
+    DWORD Status;
+    DWORD FramesProcessed;
+    } 	MONITOR_STATUS_EVENT;
+
+typedef MONITOR_STATUS_EVENT *PMONITOR_STATUS_EVENT;
+
+//=============================================================================
+// MCS_CLIENT
+//=============================================================================
+typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0012
+    {
+    /* [string] */ OLECHAR *pwszName;
+    FILETIME FileTime;
+    DWORD pXMCS;
+    BOOL bCurrent;
+    } 	MCS_CLIENT;
+
+typedef MCS_CLIENT *PMCS_CLIENT;
+
+//=============================================================================
+//=============================================================================
 // (Finder.h)
 //=============================================================================
 //=============================================================================
 //=============================================================================
-// Structures use by NPPs & the Finder
+// Structures use by NPPs, the Finder, and monitors
 //=============================================================================
-typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0007
+typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0013
     {
     DWORD dwNumBlobs;
     /* [size_is] */ HBLOB hBlobs[ 1 ];
@@ -1450,13 +1554,13 @@ typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0007
 
 typedef BLOB_TABLE *PBLOB_TABLE;
 
-typedef /* [public][public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0008
+typedef /* [public][public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0014
     {
     DWORD size;
     /* [size_is] */ BYTE *pBytes;
     } 	MBLOB;
 
-typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0009
+typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0015
     {
     DWORD dwNumBlobs;
     /* [size_is] */ MBLOB mBlobs[ 1 ];
@@ -1549,6 +1653,65 @@ BOOL  _cdecl RaiseNMEvent(HINSTANCE    hInstance,
 //  (NMmonitor.h)
 //=============================================================================
 //=============================================================================
+#ifdef __cplusplus
+struct MONITOR;
+typedef MONITOR* PMONITOR;
+
+typedef void (WINAPI* MCSALERTPROC) (PMONITOR pMonitor, TCHAR* alert);
+
+//****************************************************************************
+// Our exported Monitor functions, that must be supported by ALL monitors 
+//****************************************************************************
+// Create the Monitor, function called "CreateMonitor". The
+// argument is a potential configuration structure
+typedef DWORD (WINAPI* CREATEMONITOR)(PMONITOR*     ppMonitor, 
+                                      HBLOB         hInputNPPBlob,
+                                      char*         pConfiguration,
+                                      MCSALERTPROC  McsAlertProc);
+
+// Destroy the Monitor, function called "DestroyMonitor"
+typedef DWORD (WINAPI* DESTROYMONITOR)(PMONITOR);
+
+// We need the monitor's NPP filter blob: "GetMonitorFilter"
+typedef DWORD (WINAPI* GETMONITORFILTER) (HBLOB* pFilterBlob);
+
+// Get the monitor configuration "GetMonitorConfig"
+// The pMonitor argument can not be null
+typedef DWORD (WINAPI* GETMONITORCONFIG) (PMONITOR pMonitor,
+                                          char**   ppScript,
+                                          char**   ppConfiguration);
+
+// Set the monitor configuration "SetMonitorConfig"
+// The pMonitor argument can not be null
+typedef DWORD (WINAPI* SETMONITORCONFIG) (PMONITOR pMonitor, 
+                                          char* pConfiguration);
+
+// The monitor's connect function: "ConnectMonitor"
+typedef DWORD (WINAPI* CONNECTMONITOR) (PMONITOR pMonitor);
+
+// The monitor's start function: "StartMonitor"
+typedef DWORD (WINAPI* STARTMONITOR) (PMONITOR pMonitor, char** ppResponse);
+
+// The monitor's stop function: "StopMonitor"
+typedef DWORD (WINAPI* STOPMONITOR) (PMONITOR pMonitor);
+
+// Get the monitor status: "GetMonitorStatus"
+typedef DWORD (WINAPI* GETMONITORSTATUS) (PMONITOR pMonitor, DWORD* pStatus);
+
+//****************************************************************************
+// Optional function that allows the monitor dll to do specific functions
+// prior to the creation of any monitors. "OneTimeSetup"
+typedef DWORD (WINAPI* ONETIMESETUP) (void);
+//****************************************************************************
+
+//****************************************************************************
+// Optional function that provides a description of the monitor
+//****************************************************************************
+// For current display porpoises, we could use this: "DescribeSelf"
+typedef DWORD (WINAPI* DESCRIBESELF) (const char** ppName,
+                                      const char** ppDescription);
+
+#endif // __cplusplus
 //=============================================================================
 //=============================================================================
 //  (NMSupp.h)
@@ -1584,6 +1747,22 @@ BOOL  _cdecl RaiseNMEvent(HINSTANCE    hInstance,
 
 #define	FRAME_MASK_FDDI	( ( BYTE  )~0x1 )
 
+//=============================================================================
+//  ACCESSRIGHTS
+//=============================================================================
+typedef 
+enum _ACCESSRIGHTS
+    {	AccessRightsNoAccess	= 0,
+	AccessRightsMonitoring	= AccessRightsNoAccess + 1,
+	AccessRightsUserAccess	= AccessRightsMonitoring + 1,
+	AccessRightsAllAccess	= AccessRightsUserAccess + 1
+    } 	ACCESSRIGHTS;
+
+typedef ACCESSRIGHTS *PACCESSRIGHTS;
+
+typedef LPVOID HPASSWORD;
+
+#define HANDLE_TYPE_PASSWORD            MAKE_IDENTIFIER('P', 'W', 'D', '$')
 //=============================================================================
 //  Object heap type.
 //=============================================================================
@@ -1649,6 +1828,16 @@ SIZE_T     WINAPI MemorySize(LPVOID ptr);
 HANDLE     WINAPI MemoryHandle(LPBYTE ptr);
 
 //=============================================================================
+//  Password API's.
+//=============================================================================
+
+HPASSWORD    WINAPI CreatePassword(LPSTR password);
+
+VOID         WINAPI DestroyPassword(HPASSWORD hPassword);
+
+ACCESSRIGHTS WINAPI ValidatePassword(HPASSWORD hPassword);
+
+//=============================================================================
 //  EXPRESSION API's
 //=============================================================================
 
@@ -1662,11 +1851,11 @@ LPEXPRESSION         WINAPI OrExpression(LPEXPRESSION Expression, LPPATTERNMATCH
 
 LPPATTERNMATCH       WINAPI NegatePattern(LPPATTERNMATCH Pattern);
 
-LPADDRESSTABLE2      WINAPI AdjustOperatorPrecedence(LPADDRESSTABLE2 AddressTable);
+LPADDRESSTABLE       WINAPI AdjustOperatorPrecedence(LPADDRESSTABLE AddressTable);
 
-LPADDRESS2           WINAPI NormalizeAddress(LPADDRESS2 Address);
+LPADDRESS            WINAPI NormalizeAddress(LPADDRESS Address);
 
-LPADDRESSTABLE2      WINAPI NormalizeAddressTable(LPADDRESSTABLE2 AddressTable);
+LPADDRESSTABLE       WINAPI NormalizeAddressTable(LPADDRESSTABLE AddressTable);
 
 //=============================================================================
 //  MISC. API's
@@ -1906,8 +2095,6 @@ typedef DWORD OBJECTTYPE;
 #define	PROP_TYPE_ATM_ADDRESS	( 0x18 )
 
 #define	PROP_TYPE_1394_ADDRESS	( 0x19 )
-
-#define	PROP_TYPE_IP6_ADDRESS	( 0x1a )
 
 // data qualifiers
 #define	PROP_QUAL_NONE	( 0 )
@@ -2314,27 +2501,27 @@ typedef PROTOCOLTABLE *LPPROTOCOLTABLE;
 
 #define	PERMANENT_NAME	( 0x100 )
 
-typedef struct _ADDRESSINFO2
+typedef struct _ADDRESSINFO
 {
-    ADDRESS2       Address;
+    ADDRESS        Address;
     WCHAR          Name[MAX_NAME_SIZE];
     DWORD          Flags;
     LPVOID         lpAddressInstData;
 
-} ADDRESSINFO2;
-typedef struct _ADDRESSINFO2 *LPADDRESSINFO2;
-#define ADDRESSINFO2_SIZE    sizeof(ADDRESSINFO2)
+} ADDRESSINFO;
+typedef struct _ADDRESSINFO *LPADDRESSINFO;
+#define ADDRESSINFO_SIZE    sizeof(ADDRESSINFO)
 //=============================================================================
 //  AddressInfoTable
 //=============================================================================
-typedef struct _ADDRESSINFOTABLE2
+typedef struct _ADDRESSINFOTABLE
 {
     DWORD         nAddressInfos;
-    LPADDRESSINFO2 lpAddressInfo[0];
+    LPADDRESSINFO lpAddressInfo[0];
 
-} ADDRESSINFOTABLE2;
-typedef ADDRESSINFOTABLE2 *LPADDRESSINFOTABLE2;
-#define ADDRESSINFOTABLE2_SIZE   sizeof(ADDRESSINFOTABLE2)
+} ADDRESSINFOTABLE;
+typedef ADDRESSINFOTABLE *LPADDRESSINFOTABLE;
+#define ADDRESSINFOTABLE_SIZE   sizeof(ADDRESSINFOTABLE)
 //=============================================================================
 //  callback procedures.
 //=============================================================================
@@ -2809,6 +2996,55 @@ typedef DWORD (WINAPI *FILTERPROC)(HCAPTURE, HFRAME, LPVOID);
 #define	NMERR_NO_VALID_NPP_DLLS	( 3021 )
 
 //=============================================================================
+// Monitor errors
+//=============================================================================
+#define	NMERR_INVALID_LIST_INDEX	( 2000 )
+
+#define	NMERR_INVALID_MONITOR	( 2001 )
+
+#define	NMERR_INVALID_MONITOR_DLL	( 2002 )
+
+#define	NMERR_UNABLE_TO_CREATE_MONITOR	( 2003 )
+
+#define	NMERR_INVALID_MONITOR_CONFIG	( 2005 )
+
+#define	NMERR_INVALID_INDEX	( 2006 )
+
+#define	NMERR_MONITOR_ENABLED	( 2007 )
+
+#define	NMERR_MONITOR_NOT_RUNNING	( 2008 )
+
+#define	NMERR_MONITOR_IS_BUSY	( 2009 )
+
+#define	NMERR_MCS_IS_BUSY	( 2010 )
+
+#define	NMERR_NO_MONITORS	( 2011 )
+
+#define	NMERR_ONE_MONITOR_PER_NETCARD	( 2012 )
+
+#define	NMERR_CONFIGURATION_REQUIRED	( 2013 )
+
+#define	NMERR_MONITOR_NOT_CONNECTED	( 2014 )
+
+#define	NMERR_MONITOR_NOT_CONFIGURED	( 2015 )
+
+#define	NMERR_MONITOR_CONFIG_FAILED	( 2016 )
+
+#define	NMERR_MONITOR_INIT_FAILED	( 2017 )
+
+#define	NMERR_MONITOR_FAULTED	( 2018 )
+
+#define	NMERR_SAVE_ALL_FAILED	( 2019 )
+
+#define	NMERR_SAVE_MONITOR_FAILED	( 2029 )
+
+#define	NMERR_MONITOR_CONNECT_FAILED	( 2021 )
+
+#define	NMERR_MONITOR_START_FAILED	( 2022 )
+
+#define	NMERR_MONITOR_STOP_FAILED	( 2023 )
+
+//=============================================================================
 // Error Macros
 //=============================================================================
 #ifndef INLINE
@@ -2881,54 +3117,6 @@ typedef SYSTEMTIME UNALIGNED * ULPTIME;
 // I need to restart the convert property to value if the comparison does not match.
 // To do this, I need the original pointer to the property.  Pull the hProperty out of
 // the union so that the pointer to the property is saved.
-typedef struct _FILTEROBJECT2
-{
-    FILTERACTIONTYPE    Action;     // Object action, see codes below
-    HPROPERTY           hProperty;  // property key
-    union
-    {
-        VALUETYPE           Value;           // value of the object.
-        HPROTOCOL           hProtocol;       // protocol key.
-        LPVOID              lpArray;         // if array, length is ItemCount below.
-        LPPROTOCOLTABLETYPE lpProtocolTable; // list of protocols to see if exist in frame.
-        LPADDRESS2          lpAddress;       // kernel type address, mac or ip
-        ULPLARGEINT         lpLargeInt;      // Double DWORD used by NT
-        ULPTIME             lpTime;          // pointer to SYSTEMTIME
-        LPOBJECT_IDENTIFIER lpOID;           // pointer to OBJECT_IDENTIFIER
-
-    };
-    union
-    {
-        WORD            ByteCount;      // Number of BYTES!
-        WORD            ByteOffset;     // offset for array compare
-    };
-
-    struct _FILTEROBJECT2 * pNext;   // reserved
-
-} FILTEROBJECT2;
-
-typedef FILTEROBJECT2 * LPFILTEROBJECT2;
-
-#define FILTERINFO_SIZE (sizeof(FILTEROBJECT2) )
-
-
-
-typedef struct _FILTERDESC2
-{
-    WORD            NumEntries;
-    WORD            Flags;          // private
-    LPFILTEROBJECT2 lpStack;
-    LPFILTEROBJECT2 lpKeepLast;
-    LPVOID          UIInstanceData; // UI specific information.
-    LPFILTERBITS    lpFilterBits;   // cache who passed
-    LPFILTERBITS    lpCheckBits;    // have we looked at it yet?
-    
-} FILTERDESC2;
-
-typedef FILTERDESC2 * LPFILTERDESC2;
-
-#define FILTERDESC2_SIZE sizeof(FILTERDESC2)
-// Obsolete, FILTEROBJECT2 should be used
 typedef struct _FILTEROBJECT
 {
     FILTERACTIONTYPE    Action;     // Object action, see codes below
@@ -2954,8 +3142,13 @@ typedef struct _FILTEROBJECT
     struct _FILTEROBJECT * pNext;   // reserved
 
 } FILTEROBJECT;
+
 typedef FILTEROBJECT * LPFILTEROBJECT;
-// Obsolete, FILTERDESC2 should be used
+
+#define FILTERINFO_SIZE (sizeof(FILTEROBJECT) )
+
+
+
 typedef struct _FILTERDESC
 {
     WORD            NumEntries;
@@ -2967,13 +3160,15 @@ typedef struct _FILTERDESC
     LPFILTERBITS    lpCheckBits;    // have we looked at it yet?
     
 } FILTERDESC;
+
 typedef FILTERDESC * LPFILTERDESC;
+
 #define FILTERDESC_SIZE sizeof(FILTERDESC)
 //============================================================================
 //  Macros.
 //============================================================================
-#define FilterGetUIInstanceData(hfilt)         (((LPFILTERDESC2)hfilt)->UIInstanceData)
-#define FilterSetUIInstanceData(hfilt,inst)    (((LPFILTERDESC2)hfilt)->UIInstanceData = (LPVOID)inst)
+#define FilterGetUIInstanceData(hfilt)         (((LPFILTERDESC)hfilt)->UIInstanceData)
+#define FilterSetUIInstanceData(hfilt,inst)    (((LPFILTERDESC)hfilt)->UIInstanceData = (LPVOID)inst)
 //============================================================================
 //  defines
 //============================================================================
@@ -3088,8 +3283,6 @@ typedef FILTERDESC * LPFILTERDESC;
 
 #define	FILTERACTION_ADDR_VINES	( 48 )
 
-#define	FILTERACTION_ADDR_IP6	( 49 )
-
 #define	FILTERACTION_EXPRESSION	( 97 )
 
 #define	FILTERACTION_BOOL	( 98 )
@@ -3122,7 +3315,7 @@ DWORD    WINAPI DisableParserFilter(HFILTER hFilter, HPARSER hParser);
 
 DWORD    WINAPI EnableParserFilter(HFILTER hFilter, HPARSER hParser);
 
-DWORD    WINAPI FilterAddObject(HFILTER hFilter, LPFILTEROBJECT2 lpFilterObject );
+DWORD    WINAPI FilterAddObject(HFILTER hFilter, LPFILTEROBJECT lpFilterObject );
 
 VOID     WINAPI FilterFlushBits(HFILTER hFilter);
 
@@ -3203,8 +3396,6 @@ typedef NM_ATM *PNM_ATM;
 typedef NM_ATM *UPNM_ATM;
 
 #define NM_ATM_HEADER_LENGTH sizeof(NM_ATM)
-
-#pragma pack(push, 1)
 typedef struct _NM_1394
     {
     UCHAR DstAddr[ 6 ];
@@ -3222,6 +3413,8 @@ typedef NM_1394 *UPNM_1394;
 //=============================================================================
 
 // This structure is used to decode network data and so needs to be packed
+
+#pragma pack(push, 1)
 typedef struct _TOKENRING
 {
     BYTE    AccessCtrl;                 //... access control field.
@@ -3578,7 +3771,7 @@ BOOL _cdecl BERGetHeader( ULPBYTE  pCurrentPointer,
 #endif
 // Handoff Value Format Base
 typedef /* [public][public][public] */ 
-enum __MIDL___MIDL_itf_netmon_0000_0015
+enum __MIDL___MIDL_itf_netmon_0000_0021
     {	HANDOFF_VALUE_FORMAT_BASE_UNKNOWN	= 0,
 	HANDOFF_VALUE_FORMAT_BASE_DECIMAL	= 10,
 	HANDOFF_VALUE_FORMAT_BASE_HEX	= 16
@@ -3813,7 +4006,7 @@ typedef EXPERTFRAMEDESCRIPTOR * LPEXPERTFRAMEDESCRIPTOR;
 // EXPERTSTATUSENUM
 // gives the possible values for the status field in the EXPERTSTATUS structure
 typedef /* [public][public][public] */ 
-enum __MIDL___MIDL_itf_netmon_0000_0016
+enum __MIDL___MIDL_itf_netmon_0000_0022
     {	EXPERTSTATUS_INACTIVE	= 0,
 	EXPERTSTATUS_STARTING	= EXPERTSTATUS_INACTIVE + 1,
 	EXPERTSTATUS_RUNNING	= EXPERTSTATUS_STARTING + 1,
@@ -3834,7 +4027,7 @@ enum __MIDL___MIDL_itf_netmon_0000_0016
 
 // EXPERTSTATUS
 // Indicates the current status of a running expert.
-typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0017
+typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0023
     {
     EXPERTSTATUSENUMERATION Status;
     DWORD SubStatus;
@@ -3889,20 +4082,20 @@ HCAPTURE             WINAPI GetFrameCaptureHandle(HFRAME hFrame);
 
 
 DWORD                WINAPI GetFrameDestAddress(HFRAME       hFrame,
-                                                       LPADDRESS2    lpAddress,
+                                                       LPADDRESS    lpAddress,
                                                        DWORD        AddressType,
                                                        DWORD        Flags);
 
 DWORD                WINAPI GetFrameSourceAddress(HFRAME     hFrame,
-                                                         LPADDRESS2  lpAddress,
+                                                         LPADDRESS  lpAddress,
                                                          DWORD      AddressType,
                                                          DWORD      Flags);
 
 DWORD                WINAPI GetFrameMacHeaderLength(HFRAME hFrame);
 
-BOOL                 WINAPI CompareFrameDestAddress(HFRAME hFrame, LPADDRESS2 lpAddress);
+BOOL                 WINAPI CompareFrameDestAddress(HFRAME hFrame, LPADDRESS lpAddress);
 
-BOOL                 WINAPI CompareFrameSourceAddress(HFRAME hFrame, LPADDRESS2 lpAddress);
+BOOL                 WINAPI CompareFrameSourceAddress(HFRAME hFrame, LPADDRESS lpAddress);
 
 DWORD                WINAPI GetFrameLength(HFRAME hFrame);
 
@@ -3930,16 +4123,16 @@ HFRAME               WINAPI ModifyFrame(HCAPTURE hCapture,
 
 HFRAME               WINAPI FindNextFrame(HFRAME hCurrentFrame,
                                                 LPSTR ProtocolName,
-                                                LPADDRESS2 lpDestAddress,
-                                                LPADDRESS2 lpSrcAddress,
+                                                LPADDRESS lpDesstAddress,
+                                                LPADDRESS lpSrcAddress,
                                                 LPWORD ProtocolOffset,
                                                 DWORD  OriginalFrameNumber,
                                                 DWORD  nHighestFrame);
 
 HFRAME               WINAPI FindPreviousFrame(HFRAME hCurrentFrame,
                                                     LPSTR ProtocolName,
-                                                    LPADDRESS2 lpDstAddress,
-                                                    LPADDRESS2 lpSrcAddress,
+                                                    LPADDRESS lpDstAddress,
+                                                    LPADDRESS lpSrcAddress,
                                                     LPWORD ProtocolOffset,
                                                     DWORD  OriginalFrameNumber,
                                                     DWORD  nLowestFrame );
@@ -4025,19 +4218,11 @@ DWORD                WINAPI ResetPropertyInstanceLength( LPPROPERTYINST lpProp,
 
 DWORD                WINAPI GetCaptureCommentFromFilename(LPSTR lpFilename, LPSTR lpComment, DWORD BufferSize);
 
-int                  WINAPI CompareAddresses(LPADDRESS2 lpAddress1, LPADDRESS2 lpAddress2);
+int                  WINAPI CompareAddresses(LPADDRESS lpAddress1, LPADDRESS lpAddress2);
 
 DWORD                WINAPIV FormatPropertyInstance(LPPROPERTYINST lpPropertyInst, ...);
 
 SYSTEMTIME *         WINAPI AdjustSystemTime(SYSTEMTIME *SystemTime, __int64 TimeDelta);
-
-LPSTR                WINAPI NMRtlIpv6AddressToStringA(const BYTE IP6Addr[],LPSTR S);
-
-LPWSTR               WINAPI NMRtlIpv6AddressToStringW(const BYTE IP6Addr[], LPWSTR S);
-
-ULONG                WINAPI NMRtlIpv6StringToAddressA(LPCSTR S, LPCSTR *Terminator, BYTE IP6Addr[]);
-
-ULONG                WINAPI NMRtlIpv6StringToAddressW(LPCWSTR S, LPCWSTR *Terminator, BYTE IP6Addr[]);
 
 //=============================================================================
 //  EXPERT API's for use by Experts
@@ -4114,35 +4299,17 @@ DWORD _cdecl CreateBlob(HBLOB * phBlob);
 
 DWORD _cdecl DestroyBlob(HBLOB hBlob);
 
-DWORD _cdecl SetStringInBlob(HBLOB  hBlob,        
+DWORD _cdecl SetStringInBlob(HBLOB  hBlob,         
                       const char * pOwnerName,    
                       const char * pCategoryName, 
                       const char * pTagName,      
                       const char * pString);      
-
-DWORD _cdecl SetWStringInBlob(HBLOB  hBlob,       
-                      const char * pOwnerName,    
-                      const char * pCategoryName, 
-                      const char * pTagName,      
-                      const WCHAR * pwString);    
-
-DWORD _cdecl ConvertWStringToHexString(const WCHAR *pwsz,
-                        char ** ppsz);
 
 DWORD _cdecl GetStringFromBlob(HBLOB   hBlob,
                         const char *  pOwnerName,
                         const char *  pCategoryName,
                         const char *  pTagName,
                         const char ** ppString);
-
-DWORD _cdecl ConvertHexStringToWString(CHAR *psz,
-                        WCHAR **ppwsz);
-
-DWORD _cdecl GetWStringFromBlob(HBLOB   hBlob,
-                        const char *  pOwnerName,
-                        const char *  pCategoryName,
-                        const char *  pTagName,
-                        WCHAR ** ppwString);
 
 DWORD _cdecl GetStringsFromBlob(HBLOB   hBlob,
                          const char * pRequestedOwnerName,
@@ -4266,11 +4433,11 @@ DWORD _cdecl GetNPPPatternFilterFromBlob( HBLOB hBlob,
                                    LPEXPRESSION pExpression,
                                    HBLOB hErrorBlob);
 
-DWORD _cdecl SetNPPAddress2FilterInBlob( HBLOB hBlob,
-                                 LPADDRESSTABLE2 pAddressTable);
+DWORD _cdecl SetNPPAddressFilterInBlob( HBLOB hBlob,
+                                 LPADDRESSTABLE pAddressTable);
 
-DWORD _cdecl GetNPPAddress2FilterFromBlob( HBLOB hBlob,
-                                   LPADDRESSTABLE2 pAddressTable,
+DWORD _cdecl GetNPPAddressFilterFromBlob( HBLOB hBlob,
+                                   LPADDRESSTABLE pAddressTable,
                                    HBLOB hErrorBlob);
 
 DWORD _cdecl SetNPPTriggerInBlob( HBLOB hBlob,
@@ -4329,13 +4496,12 @@ BOOL  _cdecl IsRemoteNPP ( HBLOB hBLOB);
 #define TAG_MACADDRESS                  "MacAddress"
 #define TAG_CLASSID                     "ClassID"
 #define TAG_NAME                        "Name"
-#define TAG_CONNECTIONNAME              "Connection Name"
-#define TAG_FRIENDLYNAME                "Friendly Name"
 
 #define CATEGORY_CONFIG             "Config"
 #define TAG_FRAME_SIZE                  "FrameSize"
 #define TAG_UPDATE_FREQUENCY            "UpdateFreq"
 #define TAG_BUFFER_SIZE                 "BufferSize"
+#define TAG_DRIVE_LETTER                "DriveLetter"
 #define TAG_PATTERN_DESIGNATOR          "PatternMatch"
 #define TAG_PATTERN                     "Pattern"
 #define TAG_ADDRESS_PAIR                "AddressPair"
@@ -4350,6 +4516,7 @@ BOOL  _cdecl IsRemoteNPP ( HBLOB hBLOB);
 #define TAG_INTERFACE_REALTIME_CAPTURE  "IRTC"
 #define TAG_INTERFACE_STATS             "ISts"
 #define TAG_INTERFACE_TRANSMIT          "IXmt"
+#define TAG_INTERFACE_EXPERT_STATS      "IESP"
 #define TAG_LOCAL_ONLY                  "LocalOnly"
 // Is_Remote is set to TRUE by NPPs that go remote.  Note that when you
 //  are looking for a remote NPP, you probably also need to ask for
@@ -4371,6 +4538,57 @@ BOOL  _cdecl IsRemoteNPP ( HBLOB hBLOB);
 #define TAG_REMOTECOMPUTER              "RemoteComputer"
 #define TAG_REMOTECLASSID               "ClassID"
 
+#define CATEGORY_ESP                "ESP"
+#define TAG_ESP_GENERAL_ACTIVE          "ESPGeneralActive"
+#define TAG_ESP_PROTOCOL_ACTIVE         "ESPProtocolActive"
+#define TAG_ESP_MAC_ACTIVE              "ESPMacActive"
+#define TAG_ESP_MAC2MAC_ACTIVE          "ESPMac2MacActive"
+#define TAG_ESP_IP_ACTIVE               "ESPIpActive"
+#define TAG_ESP_IP2IP_ACTIVE            "ESPIp2IpActive"
+#define TAG_ESP_IP_APP_ACTIVE           "ESPIpAppActive"
+#define TAG_ESP_IPX_ACTIVE              "ESPIpxActive"
+#define TAG_ESP_IPX2IPX_ACTIVE          "ESPIpx2IpxActive"
+#define TAG_ESP_IPX_APP_ACTIVE          "ESPIpxAppActive"
+#define TAG_ESP_DEC_ACTIVE              "ESPDecActive"
+#define TAG_ESP_DEC2DEC_ACTIVE          "ESPDec2DecActive"
+#define TAG_ESP_DEC_APP_ACTIVE          "ESPDecAppActive"
+#define TAG_ESP_APPLE_ACTIVE            "ESPAppleActive"
+#define TAG_ESP_APPLE2APPLE_ACTIVE      "ESPApple2AppleActive"
+#define TAG_ESP_APPLE_APP_ACTIVE        "ESPAppleAppActive"
+
+#define TAG_ESP_UTIL_SIZE               "ESPUtilSize"
+#define TAG_ESP_TIME_SIZE               "ESPTimeSize"
+#define TAG_ESP_BPS_SIZE                "ESPBpsSize"
+#define TAG_ESP_BPS_THRESH              "ESPBpsThresh"
+#define TAG_ESP_FPS_THRESH              "ESPFpsThresh"
+
+#define TAG_ESP_MAC                     "ESPMac"
+#define TAG_ESP_IPX                     "ESPIpx"
+#define TAG_ESP_IPXSPX                  "ESPIpxSpx"
+#define TAG_ESP_NCP                     "ESPNcp"
+#define TAG_ESP_IP                      "ESPIp"
+#define TAG_ESP_UDP                     "ESPUdp"
+#define TAG_ESP_TCP                     "ESPTcp"
+#define TAG_ESP_ICMP                    "ESPIcmp"
+#define TAG_ESP_ARP                     "ESPArp"
+#define TAG_ESP_RARP                    "ESPRarp"
+#define TAG_ESP_APPLE                   "ESPApple"
+#define TAG_ESP_AARP                    "ESPAarp"
+#define TAG_ESP_DEC                     "ESPDec"
+#define TAG_ESP_NETBIOS                 "ESPNetbios"
+#define TAG_ESP_SNA                     "ESPSna"
+#define TAG_ESP_BPDU                    "ESPBpdu"
+#define TAG_ESP_LLC                     "ESPLlc"
+#define TAG_ESP_RPL                     "ESPRpl"
+#define TAG_ESP_BANYAN                  "ESPBanyan"
+#define TAG_ESP_LANMAN                  "ESPLanMan"
+#define TAG_ESP_SNMP                    "ESPSnmp"
+#define TAG_ESP_X25                     "ESPX25"
+#define TAG_ESP_XNS                     "ESPXns"
+#define TAG_ESP_ISO                     "ESPIso"
+#define TAG_ESP_UNKNOWN                 "ESPUnknown"
+#define TAG_ESP_ATP                     "ESPAtp"
+#define TAG_ESP_ADSP                    "ESPAdsp"
 
 //=============================================================================
 // npp value definitions
@@ -4384,7 +4602,6 @@ BOOL  _cdecl IsRemoteNPP ( HBLOB hBLOB);
 
 // lower protocols
 #define PROTOCOL_STRING_IP_TXT         "IP"
-#define PROTOCOL_STRING_IP6_TXT        "IP6"
 #define PROTOCOL_STRING_IPX_TXT        "IPX"
 #define PROTOCOL_STRING_XNS_TXT        "XNS"
 #define PROTOCOL_STRING_VINES_IP_TXT   "VINES IP"
@@ -4891,7 +5108,7 @@ typedef ICMP UNALIGNED * ULPICMP;
 //=============================================================================
 //=============================================================================
 //  IPX
-typedef /* [public][public][public][public][public][public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0018
+typedef /* [public][public][public][public][public][public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0024
     {
     UCHAR ha_address[ 6 ];
     } 	HOST_ADDRESS;
@@ -4911,7 +5128,7 @@ typedef struct _NET_ADDRESS
 
 typedef NET_ADDRESS UNALIGNED * UPNET_ADDRESS;
 // IPX Internetwork Packet eXchange Protocol Header.
-typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0019
+typedef /* [public][public] */ struct __MIDL___MIDL_itf_netmon_0000_0025
     {
     USHORT ipx_checksum;
     USHORT ipx_length;
@@ -5418,6 +5635,316 @@ void __RPC_STUB IDelaydC_QueryStations_Stub(
 
 //****************************************************************************
 //****************************************************************************
+// IESP - used by a consumer to get extended statistics, no frames.
+//****************************************************************************
+//****************************************************************************
+
+
+extern RPC_IF_HANDLE __MIDL_itf_netmon_0010_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netmon_0010_v0_0_s_ifspec;
+
+#ifndef __IESP_INTERFACE_DEFINED__
+#define __IESP_INTERFACE_DEFINED__
+
+/* interface IESP */
+/* [local][unique][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IESP;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("E99A04AA-AB95-11d0-BE96-00A0C94989DE")
+    IESP : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE Connect( 
+            /* [in] */ HBLOB hInputBlob,
+            /* [in] */ LPVOID StatusCallbackProc,
+            /* [in] */ LPVOID UserContext,
+            /* [out] */ HBLOB hErrorBlob) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE Disconnect( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE QueryStatus( 
+            /* [out] */ NETWORKSTATUS *pNetworkStatus) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE Configure( 
+            /* [in] */ HBLOB hConfigurationBlob,
+            /* [out] */ HBLOB hErrorBlob) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE Start( 
+            /* [out][string] */ char *pFileName) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE Pause( 
+            /* [out] */ LPSTATISTICS lpStats) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE Resume( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE Stop( 
+            /* [out] */ LPSTATISTICS lpStats) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetControlState( 
+            /* [out] */ BOOL *IsRunnning,
+            /* [out] */ BOOL *IsPaused) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE QueryStations( 
+            /* [out][in] */ QUERYTABLE *lpQueryTable) = 0;
+        
+    };
+    
+#else 	/* C style interface */
+
+    typedef struct IESPVtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IESP * This,
+            /* [in] */ REFIID riid,
+            /* [iid_is][out] */ void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IESP * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IESP * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *Connect )( 
+            IESP * This,
+            /* [in] */ HBLOB hInputBlob,
+            /* [in] */ LPVOID StatusCallbackProc,
+            /* [in] */ LPVOID UserContext,
+            /* [out] */ HBLOB hErrorBlob);
+        
+        HRESULT ( STDMETHODCALLTYPE *Disconnect )( 
+            IESP * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryStatus )( 
+            IESP * This,
+            /* [out] */ NETWORKSTATUS *pNetworkStatus);
+        
+        HRESULT ( STDMETHODCALLTYPE *Configure )( 
+            IESP * This,
+            /* [in] */ HBLOB hConfigurationBlob,
+            /* [out] */ HBLOB hErrorBlob);
+        
+        HRESULT ( STDMETHODCALLTYPE *Start )( 
+            IESP * This,
+            /* [out][string] */ char *pFileName);
+        
+        HRESULT ( STDMETHODCALLTYPE *Pause )( 
+            IESP * This,
+            /* [out] */ LPSTATISTICS lpStats);
+        
+        HRESULT ( STDMETHODCALLTYPE *Resume )( 
+            IESP * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *Stop )( 
+            IESP * This,
+            /* [out] */ LPSTATISTICS lpStats);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetControlState )( 
+            IESP * This,
+            /* [out] */ BOOL *IsRunnning,
+            /* [out] */ BOOL *IsPaused);
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryStations )( 
+            IESP * This,
+            /* [out][in] */ QUERYTABLE *lpQueryTable);
+        
+        END_INTERFACE
+    } IESPVtbl;
+
+    interface IESP
+    {
+        CONST_VTBL struct IESPVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IESP_QueryInterface(This,riid,ppvObject)	\
+    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
+
+#define IESP_AddRef(This)	\
+    (This)->lpVtbl -> AddRef(This)
+
+#define IESP_Release(This)	\
+    (This)->lpVtbl -> Release(This)
+
+
+#define IESP_Connect(This,hInputBlob,StatusCallbackProc,UserContext,hErrorBlob)	\
+    (This)->lpVtbl -> Connect(This,hInputBlob,StatusCallbackProc,UserContext,hErrorBlob)
+
+#define IESP_Disconnect(This)	\
+    (This)->lpVtbl -> Disconnect(This)
+
+#define IESP_QueryStatus(This,pNetworkStatus)	\
+    (This)->lpVtbl -> QueryStatus(This,pNetworkStatus)
+
+#define IESP_Configure(This,hConfigurationBlob,hErrorBlob)	\
+    (This)->lpVtbl -> Configure(This,hConfigurationBlob,hErrorBlob)
+
+#define IESP_Start(This,pFileName)	\
+    (This)->lpVtbl -> Start(This,pFileName)
+
+#define IESP_Pause(This,lpStats)	\
+    (This)->lpVtbl -> Pause(This,lpStats)
+
+#define IESP_Resume(This)	\
+    (This)->lpVtbl -> Resume(This)
+
+#define IESP_Stop(This,lpStats)	\
+    (This)->lpVtbl -> Stop(This,lpStats)
+
+#define IESP_GetControlState(This,IsRunnning,IsPaused)	\
+    (This)->lpVtbl -> GetControlState(This,IsRunnning,IsPaused)
+
+#define IESP_QueryStations(This,lpQueryTable)	\
+    (This)->lpVtbl -> QueryStations(This,lpQueryTable)
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+HRESULT STDMETHODCALLTYPE IESP_Connect_Proxy( 
+    IESP * This,
+    /* [in] */ HBLOB hInputBlob,
+    /* [in] */ LPVOID StatusCallbackProc,
+    /* [in] */ LPVOID UserContext,
+    /* [out] */ HBLOB hErrorBlob);
+
+
+void __RPC_STUB IESP_Connect_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+HRESULT STDMETHODCALLTYPE IESP_Disconnect_Proxy( 
+    IESP * This);
+
+
+void __RPC_STUB IESP_Disconnect_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+HRESULT STDMETHODCALLTYPE IESP_QueryStatus_Proxy( 
+    IESP * This,
+    /* [out] */ NETWORKSTATUS *pNetworkStatus);
+
+
+void __RPC_STUB IESP_QueryStatus_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+HRESULT STDMETHODCALLTYPE IESP_Configure_Proxy( 
+    IESP * This,
+    /* [in] */ HBLOB hConfigurationBlob,
+    /* [out] */ HBLOB hErrorBlob);
+
+
+void __RPC_STUB IESP_Configure_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+HRESULT STDMETHODCALLTYPE IESP_Start_Proxy( 
+    IESP * This,
+    /* [out][string] */ char *pFileName);
+
+
+void __RPC_STUB IESP_Start_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+HRESULT STDMETHODCALLTYPE IESP_Pause_Proxy( 
+    IESP * This,
+    /* [out] */ LPSTATISTICS lpStats);
+
+
+void __RPC_STUB IESP_Pause_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+HRESULT STDMETHODCALLTYPE IESP_Resume_Proxy( 
+    IESP * This);
+
+
+void __RPC_STUB IESP_Resume_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+HRESULT STDMETHODCALLTYPE IESP_Stop_Proxy( 
+    IESP * This,
+    /* [out] */ LPSTATISTICS lpStats);
+
+
+void __RPC_STUB IESP_Stop_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+HRESULT STDMETHODCALLTYPE IESP_GetControlState_Proxy( 
+    IESP * This,
+    /* [out] */ BOOL *IsRunnning,
+    /* [out] */ BOOL *IsPaused);
+
+
+void __RPC_STUB IESP_GetControlState_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+HRESULT STDMETHODCALLTYPE IESP_QueryStations_Proxy( 
+    IESP * This,
+    /* [out][in] */ QUERYTABLE *lpQueryTable);
+
+
+void __RPC_STUB IESP_QueryStations_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+
+#endif 	/* __IESP_INTERFACE_DEFINED__ */
+
+
+/* interface __MIDL_itf_netmon_0012 */
+/* [local] */ 
+
+//****************************************************************************
+//****************************************************************************
 // IRTC - used by a consumer to get an interface to local entry points
 // necessary to do real time capture processing.  It includes a method
 // for handing a callback to the NPP.
@@ -5427,8 +5954,8 @@ void __RPC_STUB IDelaydC_QueryStations_Stub(
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_netmon_0010_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_netmon_0010_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netmon_0012_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netmon_0012_v0_0_s_ifspec;
 
 #ifndef __IRTC_INTERFACE_DEFINED__
 #define __IRTC_INTERFACE_DEFINED__
@@ -5811,7 +6338,7 @@ void __RPC_STUB IRTC_QueryStations_Stub(
 #endif 	/* __IRTC_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_netmon_0012 */
+/* interface __MIDL_itf_netmon_0014 */
 /* [local] */ 
 
 //****************************************************************************
@@ -5821,8 +6348,8 @@ void __RPC_STUB IRTC_QueryStations_Stub(
 //****************************************************************************
 
 
-extern RPC_IF_HANDLE __MIDL_itf_netmon_0012_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_netmon_0012_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netmon_0014_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netmon_0014_v0_0_s_ifspec;
 
 #ifndef __IStats_INTERFACE_DEFINED__
 #define __IStats_INTERFACE_DEFINED__
@@ -6202,7 +6729,7 @@ void __RPC_STUB IStats_QueryStations_Stub(
 #endif 	/* __IStats_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_netmon_0014 */
+/* interface __MIDL_itf_netmon_0016 */
 /* [local] */ 
 
 #pragma warning(default:4200)
@@ -6210,8 +6737,8 @@ void __RPC_STUB IStats_QueryStations_Stub(
 #pragma pack()
 
 
-extern RPC_IF_HANDLE __MIDL_itf_netmon_0014_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_netmon_0014_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netmon_0016_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_netmon_0016_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

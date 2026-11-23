@@ -55,10 +55,10 @@ extern "C" {
 
 
 //
-//  Current version of the filter spec is 6.0
+//  Current version of the filter spec is 4.0
 //
 
-#define HTTP_FILTER_REVISION    MAKELONG( 0, 6 )
+#define HTTP_FILTER_REVISION    MAKELONG( 0, 4)
 
 #define SF_MAX_USERNAME         (256+1)
 #define SF_MAX_PASSWORD         (256+1)
@@ -409,47 +409,6 @@ typedef struct _HTTP_FILTER_URL_MAP
 
 } HTTP_FILTER_URL_MAP, *PHTTP_FILTER_URL_MAP;
 
-//
-//  Indicates the server is going to use the specific physical mapping for
-//  the specified URL.  Filters can modify the physical path in place.
-//
-//  Additional members beyond those from HTTP_FILTER_URL_MAP are
-//  informational.
-//
-
-typedef struct _HTTP_FILTER_URL_MAP_EX
-{
-    const CHAR * pszURL;
-
-    CHAR *       pszPhysicalPath;
-    DWORD        cbPathBuff;
-
-    //
-    // The AccessPerm metabase property that applies to this URL
-    //
-    DWORD        dwFlags;
-
-    //
-    // Number of matching characters in physical path corresponding
-    // to the metabase node that applies.
-    //
-    DWORD        cchMatchingPath;
-
-    //
-    // Number of matching characters in the URL corresponding
-    // to the metabase node that applies.
-    //
-    DWORD        cchMatchingURL;
-
-    //
-    // The physical path of the dll or exe that to which this
-    // URL is script mapped.  This member will be NULL if no
-    // script map applies.
-    //
-    const CHAR * pszScriptMapEntry;
-
-} HTTP_FILTER_URL_MAP_EX, *PHTTP_FILTER_URL_MAP_EX;
-
 
 //
 //  Bitfield indicating the requested resource has been denied by the server due
@@ -571,6 +530,26 @@ typedef struct _HTTP_FILTER_AUTH_COMPLETE_INFO
 } HTTP_FILTER_AUTH_COMPLETE_INFO, *PHTTP_FILTER_AUTH_COMPLETE_INFO;
 
 //
+// General purpose notification triggered by ISAPI extension
+//
+
+typedef struct _HTTP_FILTER_EXTENSION_TRIGGER_INFO
+{
+    //
+    // Type of triggered notification (client application specific)
+    //
+    
+    DWORD dwTriggerType;
+    
+    //
+    // Context of triggered notification
+    //
+    
+    VOID * pvTriggerContext;
+    
+} HTTP_FILTER_EXTENSION_TRIGGER_INFO, *PHTTP_FILTER_EXTENSION_TRIGGER_INFO;
+
+//
 //  Notification Flags
 //
 //  SF_NOTIFY_SECURE_PORT
@@ -603,6 +582,8 @@ typedef struct _HTTP_FILTER_AUTH_COMPLETE_INFO
 #define SF_NOTIFY_END_OF_REQUEST            0x00000080
 #define SF_NOTIFY_END_OF_NET_SESSION        0x00000100
 #define SF_NOTIFY_AUTH_COMPLETE             0x04000000
+#define SF_NOTIFY_EXTENSION_TRIGGER         0x02000000
+
 
 //
 //  Filter ordering flags
@@ -685,4 +666,5 @@ TerminateFilter(
 
 #endif //_HTTPFILT_H_
 
+
 

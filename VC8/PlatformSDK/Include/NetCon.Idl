@@ -34,7 +34,7 @@ cpp_quote("//These strings reference the HKEY_CURRENT_USER registry which")
 cpp_quote("//retains whether shortcuts are created on the desktop.")
 cpp_quote("#define NETCON_HKEYCURRENTUSERPATH      TEXT(\"Software\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Network\\\\Network Connections\")")
 cpp_quote("#define NETCON_DESKTOPSHORTCUT          TEXT(\"DesktopShortcut\")")
-cpp_quote("#define NETCON_MAX_NAME_LEN 256")
+cpp_quote("#define NETCON_MAX_NAME_LEN 246")
 cpp_quote("")
 
 // Reserved GUIDS for our use
@@ -776,13 +776,10 @@ interface INetSharingManager : IDispatch
         [out, retval] INetConnectionProps ** ppProps);
 };
 
-
-
-
 [
-	uuid(43E734CA-043D-4A70-9A2C-A8F254063D91),
-	version(1.0),
-	helpstring("NetCon 1.0 Type Library")
+    uuid(43E734CA-043D-4A70-9A2C-A8F254063D91),
+    version(1.0),
+    helpstring("NetCon 1.0 Type Library")
 ]
 library NETCONLib
 {

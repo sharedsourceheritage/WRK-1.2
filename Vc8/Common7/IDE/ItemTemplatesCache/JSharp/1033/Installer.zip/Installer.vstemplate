@@ -1,0 +1,25 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2269" />
+    <Description Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="2270" />
+    <Icon Package="{E6FDF8B0-F3D1-11D4-8576-0002A516ECE8}" ID="4518" />
+    <ProjectType>JSharp</ProjectType>
+    <SortOrder>10</SortOrder>
+    <DefaultName>Installer.jsl</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Configuration.Install</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Management</Assembly>
+			</Reference>
+		</References>
+
+    <ProjectItem ReplaceParameters="true" SubType="Component">Installer.jsl</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

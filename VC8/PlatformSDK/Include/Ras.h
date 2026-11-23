@@ -1645,7 +1645,7 @@ typedef DWORD (WINAPI *RasCustomHangUpFn) (
 typedef DWORD (WINAPI *RasCustomDialFn) (
 		HINSTANCE           hInstDll,
 		LPRASDIALEXTENSIONS lpRasDialExtensions,
-		LPCWSTR              lpszPhonebook,
+		LPCTSTR              lpszPhonebook,
 		LPRASDIALPARAMS     lpRasDialParams,
 		DWORD               dwNotifierType,
 		LPVOID              lpvNotifier,
@@ -1654,8 +1654,8 @@ typedef DWORD (WINAPI *RasCustomDialFn) (
         );
 
 typedef DWORD (WINAPI *RasCustomDeleteEntryNotifyFn) (
-        LPCWSTR             lpszPhonebook,
-        LPCWSTR             lpszEntry,
+        LPCTSTR             lpszPhonebook,
+        LPCTSTR             lpszEntry,
         DWORD               dwFlags);
 
 

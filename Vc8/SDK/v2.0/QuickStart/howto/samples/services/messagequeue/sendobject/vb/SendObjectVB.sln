@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SendObject", "SendObject\SendObject.vbproj", "{AE81702B-F806-4C88-A1E3-51811477948B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE81702B-F806-4C88-A1E3-51811477948B}.Debug|.NET.ActiveCfg = Debug|.NET
+		{AE81702B-F806-4C88-A1E3-51811477948B}.Debug|.NET.Build.0 = Debug|.NET
+		{AE81702B-F806-4C88-A1E3-51811477948B}.Release|.NET.ActiveCfg = Release|.NET
+		{AE81702B-F806-4C88-A1E3-51811477948B}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -3550,7 +3550,6 @@ DECLARE_INTERFACE_( IDragSourceHelper, IUnknown )
 #define CFSTR_TARGETCLSID                           TEXT("TargetCLSID")                         // HGLOBAL with a CLSID of the drop target
 #define CFSTR_LOGICALPERFORMEDDROPEFFECT    TEXT("Logical Performed DropEffect")
 #define CFSTR_AUTOPLAY_SHELLIDLISTS         TEXT("Autoplay Enumerated IDList Array")  //  (HGLOBAL with LPIDA)
-#define CFSTR_UNTRUSTEDDRAGDROP             TEXT("UntrustedDragDrop") //  DWORD 
 
 #ifdef UNICODE
 #define CFSTR_FILEDESCRIPTOR    CFSTR_FILEDESCRIPTORW
@@ -4147,10 +4146,10 @@ SHSTDAPI_(DWORD) SHFormatDrive(HWND hwnd, UINT drive, UINT fmtID, UINT options);
 #define HPSXA_DEFINED
 DECLARE_HANDLE( HPSXA );
 #endif
-WINSHELLAPI HPSXA WINAPI SHCreatePropSheetExtArray( HKEY hKey, LPCWSTR pszSubKey, UINT max_iface );
-WINSHELLAPI void WINAPI SHDestroyPropSheetExtArray( HPSXA hpsxa );
-WINSHELLAPI UINT WINAPI SHAddFromPropSheetExtArray( HPSXA hpsxa, LPFNADDPROPSHEETPAGE lpfnAddPage, LPARAM lParam );
-WINSHELLAPI UINT WINAPI SHReplaceFromPropSheetExtArray( HPSXA hpsxa, UINT uPageID, LPFNADDPROPSHEETPAGE lpfnReplaceWith, LPARAM lParam );
+WINSHELLAPI HPSXA SHCreatePropSheetExtArray( HKEY hKey, LPCWSTR pszSubKey, UINT max_iface );
+WINSHELLAPI void SHDestroyPropSheetExtArray( HPSXA hpsxa );
+WINSHELLAPI UINT SHAddFromPropSheetExtArray( HPSXA hpsxa, LPFNADDPROPSHEETPAGE lpfnAddPage, LPARAM lParam );
+WINSHELLAPI UINT SHReplaceFromPropSheetExtArray( HPSXA hpsxa, UINT uPageID, LPFNADDPROPSHEETPAGE lpfnReplaceWith, LPARAM lParam );
 SHSTDAPI_(LPITEMIDLIST) ILClone(LPCITEMIDLIST pidl);
 SHSTDAPI_(LPITEMIDLIST) ILGetNext(LPCITEMIDLIST pidl);
 SHSTDAPI_(UINT)         ILGetSize(LPCITEMIDLIST pidl);
@@ -5269,7 +5268,9 @@ HINSTANCE WINAPI SHGetShellStyleHInstance(void);
 STDAPI_(void) PerUserInit(void);
 WINSHELLAPI BOOL    WINAPI SHRunControlPanel(LPCWSTR lpcszCmdLine, HWND hwndMsgParent);
 
+#ifndef _SHLOBJ_NO_PICKICONDLG
 WINSHELLAPI int   WINAPI PickIconDlg(HWND hwnd, LPWSTR pszIconPath, UINT cbIconPath, int *piIconIndex);
+#endif
 
 
 typedef struct tagAAMENUFILENAME

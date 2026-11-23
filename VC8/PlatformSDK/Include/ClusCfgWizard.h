@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for cluscfgwizard.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -29,6 +28,10 @@
 #error this stub requires an updated version of <rpcndr.h>
 #endif // __RPCNDR_H_VERSION__
 
+#ifndef COM_NO_WINDOWS_H
+#include "windows.h"
+#include "ole2.h"
+#endif /*COM_NO_WINDOWS_H*/
 
 #ifndef __cluscfgwizard_h__
 #define __cluscfgwizard_h__
@@ -39,40 +42,22 @@
 
 /* Forward Declarations */ 
 
-#ifndef __IClusCfgCreateClusterWizard_FWD_DEFINED__
-#define __IClusCfgCreateClusterWizard_FWD_DEFINED__
-typedef interface IClusCfgCreateClusterWizard IClusCfgCreateClusterWizard;
-#endif 	/* __IClusCfgCreateClusterWizard_FWD_DEFINED__ */
+#ifndef __IClusCfgWizard_FWD_DEFINED__
+#define __IClusCfgWizard_FWD_DEFINED__
+typedef interface IClusCfgWizard IClusCfgWizard;
+#endif 	/* __IClusCfgWizard_FWD_DEFINED__ */
 
 
-#ifndef __IClusCfgAddNodesWizard_FWD_DEFINED__
-#define __IClusCfgAddNodesWizard_FWD_DEFINED__
-typedef interface IClusCfgAddNodesWizard IClusCfgAddNodesWizard;
-#endif 	/* __IClusCfgAddNodesWizard_FWD_DEFINED__ */
-
-
-#ifndef __ClusCfgCreateClusterWizard_FWD_DEFINED__
-#define __ClusCfgCreateClusterWizard_FWD_DEFINED__
+#ifndef __ClusCfgWizard_FWD_DEFINED__
+#define __ClusCfgWizard_FWD_DEFINED__
 
 #ifdef __cplusplus
-typedef class ClusCfgCreateClusterWizard ClusCfgCreateClusterWizard;
+typedef class ClusCfgWizard ClusCfgWizard;
 #else
-typedef struct ClusCfgCreateClusterWizard ClusCfgCreateClusterWizard;
+typedef struct ClusCfgWizard ClusCfgWizard;
 #endif /* __cplusplus */
 
-#endif 	/* __ClusCfgCreateClusterWizard_FWD_DEFINED__ */
-
-
-#ifndef __ClusCfgAddNodesWizard_FWD_DEFINED__
-#define __ClusCfgAddNodesWizard_FWD_DEFINED__
-
-#ifdef __cplusplus
-typedef class ClusCfgAddNodesWizard ClusCfgAddNodesWizard;
-#else
-typedef struct ClusCfgAddNodesWizard ClusCfgAddNodesWizard;
-#endif /* __cplusplus */
-
-#endif 	/* __ClusCfgAddNodesWizard_FWD_DEFINED__ */
+#endif 	/* __ClusCfgWizard_FWD_DEFINED__ */
 
 
 /* header files for imported files */
@@ -86,807 +71,576 @@ extern "C"{
 void * __RPC_USER MIDL_user_allocate(size_t);
 void __RPC_USER MIDL_user_free( void * ); 
 
+/* interface __MIDL_itf_cluscfgwizard_0000 */
+/* [local] */ 
+
+
+
+
+extern RPC_IF_HANDLE __MIDL_itf_cluscfgwizard_0000_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_cluscfgwizard_0000_v0_0_s_ifspec;
+
+#ifndef __IClusCfgWizard_INTERFACE_DEFINED__
+#define __IClusCfgWizard_INTERFACE_DEFINED__
+
+/* interface IClusCfgWizard */
+/* [unique][helpstring][dual][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IClusCfgWizard;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("2EB57A3B-DA8D-4B56-97CF-A3191BF8FD5B")
+    IClusCfgWizard : public IDispatch
+    {
+    public:
+        virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE CreateCluster( 
+            /* [defaultvalue][in] */ HWND ParentHwndIn,
+            /* [retval][out] */ BOOL *pfDoneOut) = 0;
+        
+        virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE AddClusterNodes( 
+            /* [defaultvalue][in] */ HWND ParentHwndIn,
+            /* [retval][out] */ BOOL *pfDoneOut) = 0;
+        
+        virtual /* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE get_ClusterName( 
+            /* [retval][out] */ BSTR *pbstrFQDNNameOut) = 0;
+        
+        virtual /* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE put_ClusterName( 
+            /* [in] */ BSTR bstrFQDNNameIn) = 0;
+        
+        virtual /* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE get_ServiceAccountUserName( 
+            /* [retval][out] */ BSTR *pbstrAccountNameOut) = 0;
+        
+        virtual /* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE put_ServiceAccountUserName( 
+            /* [in] */ BSTR bstrAccountNameIn) = 0;
+        
+        virtual /* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE get_ServiceAccountPassword( 
+            /* [retval][out] */ BSTR *pbstrPasswordOut) = 0;
+        
+        virtual /* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE put_ServiceAccountPassword( 
+            /* [in] */ BSTR bstrPasswordIn) = 0;
+        
+        virtual /* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE get_ServiceAccountDomainName( 
+            /* [retval][out] */ BSTR *pbstrDomainOut) = 0;
+        
+        virtual /* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE put_ServiceAccountDomainName( 
+            /* [in] */ BSTR bstrDomainIn) = 0;
+        
+        virtual /* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE get_ClusterIPAddress( 
+            /* [retval][out] */ BSTR *pbstrIPAddressOut) = 0;
+        
+        virtual /* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE put_ClusterIPAddress( 
+            /* [in] */ BSTR bstrIPAddressIn) = 0;
+        
+        virtual /* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE get_ClusterIPSubnet( 
+            /* [retval][out] */ BSTR *pbstrIPSubnetOut) = 0;
+        
+        virtual /* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE put_ClusterIPSubnet( 
+            /* [in] */ BSTR bstrSubnetIn) = 0;
+        
+        virtual /* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE get_ClusterIPAddressNetwork( 
+            /* [retval][out] */ BSTR *pbstrNetworkNameOut) = 0;
+        
+        virtual /* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE put_ClusterIPAddressNetwork( 
+            /* [in] */ BSTR bstrNetworkNameIn) = 0;
+        
+        virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE AddComputer( 
+            /* [unique][in] */ LPCWSTR pcszFQDNNameIn) = 0;
+        
+        virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE RemoveComputer( 
+            /* [unique][in] */ LPCWSTR pcszFQDNNameIn) = 0;
+        
+        virtual /* [helpstring][id] */ HRESULT STDMETHODCALLTYPE ClearComputerList( void) = 0;
+        
+    };
+    
+#else 	/* C style interface */
+
+    typedef struct IClusCfgWizardVtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IClusCfgWizard * This,
+            /* [in] */ REFIID riid,
+            /* [iid_is][out] */ void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IClusCfgWizard * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IClusCfgWizard * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetTypeInfoCount )( 
+            IClusCfgWizard * This,
+            /* [out] */ UINT *pctinfo);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetTypeInfo )( 
+            IClusCfgWizard * This,
+            /* [in] */ UINT iTInfo,
+            /* [in] */ LCID lcid,
+            /* [out] */ ITypeInfo **ppTInfo);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetIDsOfNames )( 
+            IClusCfgWizard * This,
+            /* [in] */ REFIID riid,
+            /* [size_is][in] */ LPOLESTR *rgszNames,
+            /* [in] */ UINT cNames,
+            /* [in] */ LCID lcid,
+            /* [size_is][out] */ DISPID *rgDispId);
+        
+        /* [local] */ HRESULT ( STDMETHODCALLTYPE *Invoke )( 
+            IClusCfgWizard * This,
+            /* [in] */ DISPID dispIdMember,
+            /* [in] */ REFIID riid,
+            /* [in] */ LCID lcid,
+            /* [in] */ WORD wFlags,
+            /* [out][in] */ DISPPARAMS *pDispParams,
+            /* [out] */ VARIANT *pVarResult,
+            /* [out] */ EXCEPINFO *pExcepInfo,
+            /* [out] */ UINT *puArgErr);
+        
+        /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *CreateCluster )( 
+            IClusCfgWizard * This,
+            /* [defaultvalue][in] */ HWND ParentHwndIn,
+            /* [retval][out] */ BOOL *pfDoneOut);
+        
+        /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *AddClusterNodes )( 
+            IClusCfgWizard * This,
+            /* [defaultvalue][in] */ HWND ParentHwndIn,
+            /* [retval][out] */ BOOL *pfDoneOut);
+        
+        /* [helpstring][id][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ClusterName )( 
+            IClusCfgWizard * This,
+            /* [retval][out] */ BSTR *pbstrFQDNNameOut);
+        
+        /* [helpstring][id][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ClusterName )( 
+            IClusCfgWizard * This,
+            /* [in] */ BSTR bstrFQDNNameIn);
+        
+        /* [helpstring][id][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ServiceAccountUserName )( 
+            IClusCfgWizard * This,
+            /* [retval][out] */ BSTR *pbstrAccountNameOut);
+        
+        /* [helpstring][id][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ServiceAccountUserName )( 
+            IClusCfgWizard * This,
+            /* [in] */ BSTR bstrAccountNameIn);
+        
+        /* [helpstring][id][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ServiceAccountPassword )( 
+            IClusCfgWizard * This,
+            /* [retval][out] */ BSTR *pbstrPasswordOut);
+        
+        /* [helpstring][id][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ServiceAccountPassword )( 
+            IClusCfgWizard * This,
+            /* [in] */ BSTR bstrPasswordIn);
+        
+        /* [helpstring][id][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ServiceAccountDomainName )( 
+            IClusCfgWizard * This,
+            /* [retval][out] */ BSTR *pbstrDomainOut);
+        
+        /* [helpstring][id][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ServiceAccountDomainName )( 
+            IClusCfgWizard * This,
+            /* [in] */ BSTR bstrDomainIn);
+        
+        /* [helpstring][id][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ClusterIPAddress )( 
+            IClusCfgWizard * This,
+            /* [retval][out] */ BSTR *pbstrIPAddressOut);
+        
+        /* [helpstring][id][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ClusterIPAddress )( 
+            IClusCfgWizard * This,
+            /* [in] */ BSTR bstrIPAddressIn);
+        
+        /* [helpstring][id][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ClusterIPSubnet )( 
+            IClusCfgWizard * This,
+            /* [retval][out] */ BSTR *pbstrIPSubnetOut);
+        
+        /* [helpstring][id][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ClusterIPSubnet )( 
+            IClusCfgWizard * This,
+            /* [in] */ BSTR bstrSubnetIn);
+        
+        /* [helpstring][id][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ClusterIPAddressNetwork )( 
+            IClusCfgWizard * This,
+            /* [retval][out] */ BSTR *pbstrNetworkNameOut);
+        
+        /* [helpstring][id][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ClusterIPAddressNetwork )( 
+            IClusCfgWizard * This,
+            /* [in] */ BSTR bstrNetworkNameIn);
+        
+        /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *AddComputer )( 
+            IClusCfgWizard * This,
+            /* [unique][in] */ LPCWSTR pcszFQDNNameIn);
+        
+        /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *RemoveComputer )( 
+            IClusCfgWizard * This,
+            /* [unique][in] */ LPCWSTR pcszFQDNNameIn);
+        
+        /* [helpstring][id] */ HRESULT ( STDMETHODCALLTYPE *ClearComputerList )( 
+            IClusCfgWizard * This);
+        
+        END_INTERFACE
+    } IClusCfgWizardVtbl;
+
+    interface IClusCfgWizard
+    {
+        CONST_VTBL struct IClusCfgWizardVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IClusCfgWizard_QueryInterface(This,riid,ppvObject)	\
+    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
+
+#define IClusCfgWizard_AddRef(This)	\
+    (This)->lpVtbl -> AddRef(This)
+
+#define IClusCfgWizard_Release(This)	\
+    (This)->lpVtbl -> Release(This)
+
+
+#define IClusCfgWizard_GetTypeInfoCount(This,pctinfo)	\
+    (This)->lpVtbl -> GetTypeInfoCount(This,pctinfo)
+
+#define IClusCfgWizard_GetTypeInfo(This,iTInfo,lcid,ppTInfo)	\
+    (This)->lpVtbl -> GetTypeInfo(This,iTInfo,lcid,ppTInfo)
+
+#define IClusCfgWizard_GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)	\
+    (This)->lpVtbl -> GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)
+
+#define IClusCfgWizard_Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)	\
+    (This)->lpVtbl -> Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)
+
+
+#define IClusCfgWizard_CreateCluster(This,ParentHwndIn,pfDoneOut)	\
+    (This)->lpVtbl -> CreateCluster(This,ParentHwndIn,pfDoneOut)
+
+#define IClusCfgWizard_AddClusterNodes(This,ParentHwndIn,pfDoneOut)	\
+    (This)->lpVtbl -> AddClusterNodes(This,ParentHwndIn,pfDoneOut)
+
+#define IClusCfgWizard_get_ClusterName(This,pbstrFQDNNameOut)	\
+    (This)->lpVtbl -> get_ClusterName(This,pbstrFQDNNameOut)
+
+#define IClusCfgWizard_put_ClusterName(This,bstrFQDNNameIn)	\
+    (This)->lpVtbl -> put_ClusterName(This,bstrFQDNNameIn)
+
+#define IClusCfgWizard_get_ServiceAccountUserName(This,pbstrAccountNameOut)	\
+    (This)->lpVtbl -> get_ServiceAccountUserName(This,pbstrAccountNameOut)
+
+#define IClusCfgWizard_put_ServiceAccountUserName(This,bstrAccountNameIn)	\
+    (This)->lpVtbl -> put_ServiceAccountUserName(This,bstrAccountNameIn)
+
+#define IClusCfgWizard_get_ServiceAccountPassword(This,pbstrPasswordOut)	\
+    (This)->lpVtbl -> get_ServiceAccountPassword(This,pbstrPasswordOut)
+
+#define IClusCfgWizard_put_ServiceAccountPassword(This,bstrPasswordIn)	\
+    (This)->lpVtbl -> put_ServiceAccountPassword(This,bstrPasswordIn)
+
+#define IClusCfgWizard_get_ServiceAccountDomainName(This,pbstrDomainOut)	\
+    (This)->lpVtbl -> get_ServiceAccountDomainName(This,pbstrDomainOut)
+
+#define IClusCfgWizard_put_ServiceAccountDomainName(This,bstrDomainIn)	\
+    (This)->lpVtbl -> put_ServiceAccountDomainName(This,bstrDomainIn)
+
+#define IClusCfgWizard_get_ClusterIPAddress(This,pbstrIPAddressOut)	\
+    (This)->lpVtbl -> get_ClusterIPAddress(This,pbstrIPAddressOut)
+
+#define IClusCfgWizard_put_ClusterIPAddress(This,bstrIPAddressIn)	\
+    (This)->lpVtbl -> put_ClusterIPAddress(This,bstrIPAddressIn)
+
+#define IClusCfgWizard_get_ClusterIPSubnet(This,pbstrIPSubnetOut)	\
+    (This)->lpVtbl -> get_ClusterIPSubnet(This,pbstrIPSubnetOut)
+
+#define IClusCfgWizard_put_ClusterIPSubnet(This,bstrSubnetIn)	\
+    (This)->lpVtbl -> put_ClusterIPSubnet(This,bstrSubnetIn)
+
+#define IClusCfgWizard_get_ClusterIPAddressNetwork(This,pbstrNetworkNameOut)	\
+    (This)->lpVtbl -> get_ClusterIPAddressNetwork(This,pbstrNetworkNameOut)
+
+#define IClusCfgWizard_put_ClusterIPAddressNetwork(This,bstrNetworkNameIn)	\
+    (This)->lpVtbl -> put_ClusterIPAddressNetwork(This,bstrNetworkNameIn)
+
+#define IClusCfgWizard_AddComputer(This,pcszFQDNNameIn)	\
+    (This)->lpVtbl -> AddComputer(This,pcszFQDNNameIn)
+
+#define IClusCfgWizard_RemoveComputer(This,pcszFQDNNameIn)	\
+    (This)->lpVtbl -> RemoveComputer(This,pcszFQDNNameIn)
+
+#define IClusCfgWizard_ClearComputerList(This)	\
+    (This)->lpVtbl -> ClearComputerList(This)
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+/* [helpstring][id] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_CreateCluster_Proxy( 
+    IClusCfgWizard * This,
+    /* [defaultvalue][in] */ HWND ParentHwndIn,
+    /* [retval][out] */ BOOL *pfDoneOut);
+
+
+void __RPC_STUB IClusCfgWizard_CreateCluster_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_AddClusterNodes_Proxy( 
+    IClusCfgWizard * This,
+    /* [defaultvalue][in] */ HWND ParentHwndIn,
+    /* [retval][out] */ BOOL *pfDoneOut);
+
+
+void __RPC_STUB IClusCfgWizard_AddClusterNodes_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_get_ClusterName_Proxy( 
+    IClusCfgWizard * This,
+    /* [retval][out] */ BSTR *pbstrFQDNNameOut);
+
+
+void __RPC_STUB IClusCfgWizard_get_ClusterName_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_put_ClusterName_Proxy( 
+    IClusCfgWizard * This,
+    /* [in] */ BSTR bstrFQDNNameIn);
+
+
+void __RPC_STUB IClusCfgWizard_put_ClusterName_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_get_ServiceAccountUserName_Proxy( 
+    IClusCfgWizard * This,
+    /* [retval][out] */ BSTR *pbstrAccountNameOut);
+
+
+void __RPC_STUB IClusCfgWizard_get_ServiceAccountUserName_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_put_ServiceAccountUserName_Proxy( 
+    IClusCfgWizard * This,
+    /* [in] */ BSTR bstrAccountNameIn);
+
+
+void __RPC_STUB IClusCfgWizard_put_ServiceAccountUserName_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_get_ServiceAccountPassword_Proxy( 
+    IClusCfgWizard * This,
+    /* [retval][out] */ BSTR *pbstrPasswordOut);
+
+
+void __RPC_STUB IClusCfgWizard_get_ServiceAccountPassword_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_put_ServiceAccountPassword_Proxy( 
+    IClusCfgWizard * This,
+    /* [in] */ BSTR bstrPasswordIn);
+
+
+void __RPC_STUB IClusCfgWizard_put_ServiceAccountPassword_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_get_ServiceAccountDomainName_Proxy( 
+    IClusCfgWizard * This,
+    /* [retval][out] */ BSTR *pbstrDomainOut);
+
+
+void __RPC_STUB IClusCfgWizard_get_ServiceAccountDomainName_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_put_ServiceAccountDomainName_Proxy( 
+    IClusCfgWizard * This,
+    /* [in] */ BSTR bstrDomainIn);
+
+
+void __RPC_STUB IClusCfgWizard_put_ServiceAccountDomainName_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_get_ClusterIPAddress_Proxy( 
+    IClusCfgWizard * This,
+    /* [retval][out] */ BSTR *pbstrIPAddressOut);
+
+
+void __RPC_STUB IClusCfgWizard_get_ClusterIPAddress_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_put_ClusterIPAddress_Proxy( 
+    IClusCfgWizard * This,
+    /* [in] */ BSTR bstrIPAddressIn);
+
+
+void __RPC_STUB IClusCfgWizard_put_ClusterIPAddress_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_get_ClusterIPSubnet_Proxy( 
+    IClusCfgWizard * This,
+    /* [retval][out] */ BSTR *pbstrIPSubnetOut);
+
+
+void __RPC_STUB IClusCfgWizard_get_ClusterIPSubnet_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_put_ClusterIPSubnet_Proxy( 
+    IClusCfgWizard * This,
+    /* [in] */ BSTR bstrSubnetIn);
+
+
+void __RPC_STUB IClusCfgWizard_put_ClusterIPSubnet_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_get_ClusterIPAddressNetwork_Proxy( 
+    IClusCfgWizard * This,
+    /* [retval][out] */ BSTR *pbstrNetworkNameOut);
+
+
+void __RPC_STUB IClusCfgWizard_get_ClusterIPAddressNetwork_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_put_ClusterIPAddressNetwork_Proxy( 
+    IClusCfgWizard * This,
+    /* [in] */ BSTR bstrNetworkNameIn);
+
+
+void __RPC_STUB IClusCfgWizard_put_ClusterIPAddressNetwork_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_AddComputer_Proxy( 
+    IClusCfgWizard * This,
+    /* [unique][in] */ LPCWSTR pcszFQDNNameIn);
+
+
+void __RPC_STUB IClusCfgWizard_AddComputer_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_RemoveComputer_Proxy( 
+    IClusCfgWizard * This,
+    /* [unique][in] */ LPCWSTR pcszFQDNNameIn);
+
+
+void __RPC_STUB IClusCfgWizard_RemoveComputer_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+/* [helpstring][id] */ HRESULT STDMETHODCALLTYPE IClusCfgWizard_ClearComputerList_Proxy( 
+    IClusCfgWizard * This);
+
+
+void __RPC_STUB IClusCfgWizard_ClearComputerList_Stub(
+    IRpcStubBuffer *This,
+    IRpcChannelBuffer *_pRpcChannelBuffer,
+    PRPC_MESSAGE _pRpcMessage,
+    DWORD *_pdwStubPhase);
+
+
+
+#endif 	/* __IClusCfgWizard_INTERFACE_DEFINED__ */
+
+
 
 #ifndef __ClusCfgWizard_LIBRARY_DEFINED__
 #define __ClusCfgWizard_LIBRARY_DEFINED__
 
 /* library ClusCfgWizard */
-/* [lcid][helpstring][version][uuid] */ 
+/* [helpstring][version][uuid] */ 
 
 
 EXTERN_C const IID LIBID_ClusCfgWizard;
 
-#ifndef __IClusCfgCreateClusterWizard_INTERFACE_DEFINED__
-#define __IClusCfgCreateClusterWizard_INTERFACE_DEFINED__
-
-/* interface IClusCfgCreateClusterWizard */
-/* [unique][helpstring][dual][uuid][object] */ 
-
-
-EXTERN_C const IID IID_IClusCfgCreateClusterWizard;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("f65c6990-a144-4127-ab6e-3712b75f1843")
-    IClusCfgCreateClusterWizard : public IDispatch
-    {
-    public:
-        virtual /* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE put_ClusterName( 
-            /* [in] */ BSTR bstrClusterNameIn) = 0;
-        
-        virtual /* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_ClusterName( 
-            /* [retval][out] */ BSTR *pbstrClusterNameOut) = 0;
-        
-        virtual /* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE put_ServiceAccountName( 
-            /* [in] */ BSTR bstrServiceAccountNameIn) = 0;
-        
-        virtual /* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_ServiceAccountName( 
-            /* [retval][out] */ BSTR *pbstrServiceAccountNameOut) = 0;
-        
-        virtual /* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE put_ServiceAccountDomain( 
-            /* [in] */ BSTR bstrServiceAccountDomainIn) = 0;
-        
-        virtual /* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_ServiceAccountDomain( 
-            /* [retval][out] */ BSTR *pbstrServiceAccountDomainOut) = 0;
-        
-        virtual /* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE put_ServiceAccountPassword( 
-            /* [in] */ BSTR bstrPasswordIn) = 0;
-        
-        virtual /* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE put_ClusterIPAddress( 
-            /* [in] */ BSTR bstrClusterIPAddressIn) = 0;
-        
-        virtual /* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_ClusterIPAddress( 
-            /* [retval][out] */ BSTR *pbstrClusterIPAddressOut) = 0;
-        
-        virtual /* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_ClusterIPSubnet( 
-            /* [retval][out] */ BSTR *pbstrClusterIPSubnetOut) = 0;
-        
-        virtual /* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_ClusterIPAddressNetwork( 
-            /* [retval][out] */ BSTR *pbstrClusterNetworkNameOut) = 0;
-        
-        virtual /* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE put_FirstNodeInCluster( 
-            /* [in] */ BSTR bstrFirstNodeInClusterIn) = 0;
-        
-        virtual /* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_FirstNodeInCluster( 
-            /* [retval][out] */ BSTR *pbstrFirstNodeInClusterOut) = 0;
-        
-        virtual /* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE put_MinimumConfiguration( 
-            /* [in] */ VARIANT_BOOL fMinConfigIn) = 0;
-        
-        virtual /* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_MinimumConfiguration( 
-            /* [retval][out] */ VARIANT_BOOL *pfMinConfigOut) = 0;
-        
-        virtual /* [helpstring] */ HRESULT STDMETHODCALLTYPE ShowWizard( 
-            /* [defaultvalue][in] */ long lParentWindowHandleIn,
-            /* [retval][out] */ VARIANT_BOOL *pfCompletedOut) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IClusCfgCreateClusterWizardVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IClusCfgCreateClusterWizard * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IClusCfgCreateClusterWizard * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetTypeInfoCount )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [out] */ UINT *pctinfo);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetTypeInfo )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [in] */ UINT iTInfo,
-            /* [in] */ LCID lcid,
-            /* [out] */ ITypeInfo **ppTInfo);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetIDsOfNames )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [in] */ REFIID riid,
-            /* [size_is][in] */ LPOLESTR *rgszNames,
-            /* [in] */ UINT cNames,
-            /* [in] */ LCID lcid,
-            /* [size_is][out] */ DISPID *rgDispId);
-        
-        /* [local] */ HRESULT ( STDMETHODCALLTYPE *Invoke )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [in] */ DISPID dispIdMember,
-            /* [in] */ REFIID riid,
-            /* [in] */ LCID lcid,
-            /* [in] */ WORD wFlags,
-            /* [out][in] */ DISPPARAMS *pDispParams,
-            /* [out] */ VARIANT *pVarResult,
-            /* [out] */ EXCEPINFO *pExcepInfo,
-            /* [out] */ UINT *puArgErr);
-        
-        /* [helpstring][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ClusterName )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [in] */ BSTR bstrClusterNameIn);
-        
-        /* [helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ClusterName )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [retval][out] */ BSTR *pbstrClusterNameOut);
-        
-        /* [helpstring][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ServiceAccountName )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [in] */ BSTR bstrServiceAccountNameIn);
-        
-        /* [helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ServiceAccountName )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [retval][out] */ BSTR *pbstrServiceAccountNameOut);
-        
-        /* [helpstring][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ServiceAccountDomain )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [in] */ BSTR bstrServiceAccountDomainIn);
-        
-        /* [helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ServiceAccountDomain )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [retval][out] */ BSTR *pbstrServiceAccountDomainOut);
-        
-        /* [helpstring][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ServiceAccountPassword )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [in] */ BSTR bstrPasswordIn);
-        
-        /* [helpstring][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ClusterIPAddress )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [in] */ BSTR bstrClusterIPAddressIn);
-        
-        /* [helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ClusterIPAddress )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [retval][out] */ BSTR *pbstrClusterIPAddressOut);
-        
-        /* [helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ClusterIPSubnet )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [retval][out] */ BSTR *pbstrClusterIPSubnetOut);
-        
-        /* [helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ClusterIPAddressNetwork )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [retval][out] */ BSTR *pbstrClusterNetworkNameOut);
-        
-        /* [helpstring][propput] */ HRESULT ( STDMETHODCALLTYPE *put_FirstNodeInCluster )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [in] */ BSTR bstrFirstNodeInClusterIn);
-        
-        /* [helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE *get_FirstNodeInCluster )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [retval][out] */ BSTR *pbstrFirstNodeInClusterOut);
-        
-        /* [helpstring][propput] */ HRESULT ( STDMETHODCALLTYPE *put_MinimumConfiguration )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [in] */ VARIANT_BOOL fMinConfigIn);
-        
-        /* [helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE *get_MinimumConfiguration )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [retval][out] */ VARIANT_BOOL *pfMinConfigOut);
-        
-        /* [helpstring] */ HRESULT ( STDMETHODCALLTYPE *ShowWizard )( 
-            IClusCfgCreateClusterWizard * This,
-            /* [defaultvalue][in] */ long lParentWindowHandleIn,
-            /* [retval][out] */ VARIANT_BOOL *pfCompletedOut);
-        
-        END_INTERFACE
-    } IClusCfgCreateClusterWizardVtbl;
-
-    interface IClusCfgCreateClusterWizard
-    {
-        CONST_VTBL struct IClusCfgCreateClusterWizardVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IClusCfgCreateClusterWizard_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IClusCfgCreateClusterWizard_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IClusCfgCreateClusterWizard_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IClusCfgCreateClusterWizard_GetTypeInfoCount(This,pctinfo)	\
-    (This)->lpVtbl -> GetTypeInfoCount(This,pctinfo)
-
-#define IClusCfgCreateClusterWizard_GetTypeInfo(This,iTInfo,lcid,ppTInfo)	\
-    (This)->lpVtbl -> GetTypeInfo(This,iTInfo,lcid,ppTInfo)
-
-#define IClusCfgCreateClusterWizard_GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)	\
-    (This)->lpVtbl -> GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)
-
-#define IClusCfgCreateClusterWizard_Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)	\
-    (This)->lpVtbl -> Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)
-
-
-#define IClusCfgCreateClusterWizard_put_ClusterName(This,bstrClusterNameIn)	\
-    (This)->lpVtbl -> put_ClusterName(This,bstrClusterNameIn)
-
-#define IClusCfgCreateClusterWizard_get_ClusterName(This,pbstrClusterNameOut)	\
-    (This)->lpVtbl -> get_ClusterName(This,pbstrClusterNameOut)
-
-#define IClusCfgCreateClusterWizard_put_ServiceAccountName(This,bstrServiceAccountNameIn)	\
-    (This)->lpVtbl -> put_ServiceAccountName(This,bstrServiceAccountNameIn)
-
-#define IClusCfgCreateClusterWizard_get_ServiceAccountName(This,pbstrServiceAccountNameOut)	\
-    (This)->lpVtbl -> get_ServiceAccountName(This,pbstrServiceAccountNameOut)
-
-#define IClusCfgCreateClusterWizard_put_ServiceAccountDomain(This,bstrServiceAccountDomainIn)	\
-    (This)->lpVtbl -> put_ServiceAccountDomain(This,bstrServiceAccountDomainIn)
-
-#define IClusCfgCreateClusterWizard_get_ServiceAccountDomain(This,pbstrServiceAccountDomainOut)	\
-    (This)->lpVtbl -> get_ServiceAccountDomain(This,pbstrServiceAccountDomainOut)
-
-#define IClusCfgCreateClusterWizard_put_ServiceAccountPassword(This,bstrPasswordIn)	\
-    (This)->lpVtbl -> put_ServiceAccountPassword(This,bstrPasswordIn)
-
-#define IClusCfgCreateClusterWizard_put_ClusterIPAddress(This,bstrClusterIPAddressIn)	\
-    (This)->lpVtbl -> put_ClusterIPAddress(This,bstrClusterIPAddressIn)
-
-#define IClusCfgCreateClusterWizard_get_ClusterIPAddress(This,pbstrClusterIPAddressOut)	\
-    (This)->lpVtbl -> get_ClusterIPAddress(This,pbstrClusterIPAddressOut)
-
-#define IClusCfgCreateClusterWizard_get_ClusterIPSubnet(This,pbstrClusterIPSubnetOut)	\
-    (This)->lpVtbl -> get_ClusterIPSubnet(This,pbstrClusterIPSubnetOut)
-
-#define IClusCfgCreateClusterWizard_get_ClusterIPAddressNetwork(This,pbstrClusterNetworkNameOut)	\
-    (This)->lpVtbl -> get_ClusterIPAddressNetwork(This,pbstrClusterNetworkNameOut)
-
-#define IClusCfgCreateClusterWizard_put_FirstNodeInCluster(This,bstrFirstNodeInClusterIn)	\
-    (This)->lpVtbl -> put_FirstNodeInCluster(This,bstrFirstNodeInClusterIn)
-
-#define IClusCfgCreateClusterWizard_get_FirstNodeInCluster(This,pbstrFirstNodeInClusterOut)	\
-    (This)->lpVtbl -> get_FirstNodeInCluster(This,pbstrFirstNodeInClusterOut)
-
-#define IClusCfgCreateClusterWizard_put_MinimumConfiguration(This,fMinConfigIn)	\
-    (This)->lpVtbl -> put_MinimumConfiguration(This,fMinConfigIn)
-
-#define IClusCfgCreateClusterWizard_get_MinimumConfiguration(This,pfMinConfigOut)	\
-    (This)->lpVtbl -> get_MinimumConfiguration(This,pfMinConfigOut)
-
-#define IClusCfgCreateClusterWizard_ShowWizard(This,lParentWindowHandleIn,pfCompletedOut)	\
-    (This)->lpVtbl -> ShowWizard(This,lParentWindowHandleIn,pfCompletedOut)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-/* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_put_ClusterName_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [in] */ BSTR bstrClusterNameIn);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_put_ClusterName_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_get_ClusterName_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [retval][out] */ BSTR *pbstrClusterNameOut);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_get_ClusterName_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_put_ServiceAccountName_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [in] */ BSTR bstrServiceAccountNameIn);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_put_ServiceAccountName_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_get_ServiceAccountName_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [retval][out] */ BSTR *pbstrServiceAccountNameOut);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_get_ServiceAccountName_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_put_ServiceAccountDomain_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [in] */ BSTR bstrServiceAccountDomainIn);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_put_ServiceAccountDomain_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_get_ServiceAccountDomain_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [retval][out] */ BSTR *pbstrServiceAccountDomainOut);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_get_ServiceAccountDomain_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_put_ServiceAccountPassword_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [in] */ BSTR bstrPasswordIn);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_put_ServiceAccountPassword_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_put_ClusterIPAddress_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [in] */ BSTR bstrClusterIPAddressIn);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_put_ClusterIPAddress_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_get_ClusterIPAddress_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [retval][out] */ BSTR *pbstrClusterIPAddressOut);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_get_ClusterIPAddress_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_get_ClusterIPSubnet_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [retval][out] */ BSTR *pbstrClusterIPSubnetOut);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_get_ClusterIPSubnet_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_get_ClusterIPAddressNetwork_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [retval][out] */ BSTR *pbstrClusterNetworkNameOut);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_get_ClusterIPAddressNetwork_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_put_FirstNodeInCluster_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [in] */ BSTR bstrFirstNodeInClusterIn);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_put_FirstNodeInCluster_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_get_FirstNodeInCluster_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [retval][out] */ BSTR *pbstrFirstNodeInClusterOut);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_get_FirstNodeInCluster_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_put_MinimumConfiguration_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [in] */ VARIANT_BOOL fMinConfigIn);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_put_MinimumConfiguration_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_get_MinimumConfiguration_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [retval][out] */ VARIANT_BOOL *pfMinConfigOut);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_get_MinimumConfiguration_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring] */ HRESULT STDMETHODCALLTYPE IClusCfgCreateClusterWizard_ShowWizard_Proxy( 
-    IClusCfgCreateClusterWizard * This,
-    /* [defaultvalue][in] */ long lParentWindowHandleIn,
-    /* [retval][out] */ VARIANT_BOOL *pfCompletedOut);
-
-
-void __RPC_STUB IClusCfgCreateClusterWizard_ShowWizard_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IClusCfgCreateClusterWizard_INTERFACE_DEFINED__ */
-
-
-#ifndef __IClusCfgAddNodesWizard_INTERFACE_DEFINED__
-#define __IClusCfgAddNodesWizard_INTERFACE_DEFINED__
-
-/* interface IClusCfgAddNodesWizard */
-/* [unique][helpstring][dual][uuid][object] */ 
-
-
-EXTERN_C const IID IID_IClusCfgAddNodesWizard;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("9da133cb-3b08-4c30-967e-56d96047f10c")
-    IClusCfgAddNodesWizard : public IDispatch
-    {
-    public:
-        virtual /* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE put_ClusterName( 
-            /* [in] */ BSTR bstrClusterNameIn) = 0;
-        
-        virtual /* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_ClusterName( 
-            /* [retval][out] */ BSTR *pbstrClusterNameOut) = 0;
-        
-        virtual /* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE put_ServiceAccountPassword( 
-            /* [in] */ BSTR bstrPasswordIn) = 0;
-        
-        virtual /* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE put_MinimumConfiguration( 
-            /* [in] */ VARIANT_BOOL fMinConfigIn) = 0;
-        
-        virtual /* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_MinimumConfiguration( 
-            /* [retval][out] */ VARIANT_BOOL *pfMinConfigOut) = 0;
-        
-        virtual /* [helpstring] */ HRESULT STDMETHODCALLTYPE AddNodeToList( 
-            /* [in] */ BSTR bstrNodeNameIn) = 0;
-        
-        virtual /* [helpstring] */ HRESULT STDMETHODCALLTYPE RemoveNodeFromList( 
-            /* [in] */ BSTR bstrNodeNameIn) = 0;
-        
-        virtual /* [helpstring] */ HRESULT STDMETHODCALLTYPE ClearNodeList( void) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE ShowWizard( 
-            /* [defaultvalue][in] */ long lParentWindowHandleIn,
-            /* [retval][out] */ VARIANT_BOOL *pfCompletedOut) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IClusCfgAddNodesWizardVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IClusCfgAddNodesWizard * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IClusCfgAddNodesWizard * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IClusCfgAddNodesWizard * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetTypeInfoCount )( 
-            IClusCfgAddNodesWizard * This,
-            /* [out] */ UINT *pctinfo);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetTypeInfo )( 
-            IClusCfgAddNodesWizard * This,
-            /* [in] */ UINT iTInfo,
-            /* [in] */ LCID lcid,
-            /* [out] */ ITypeInfo **ppTInfo);
-        
-        HRESULT ( STDMETHODCALLTYPE *GetIDsOfNames )( 
-            IClusCfgAddNodesWizard * This,
-            /* [in] */ REFIID riid,
-            /* [size_is][in] */ LPOLESTR *rgszNames,
-            /* [in] */ UINT cNames,
-            /* [in] */ LCID lcid,
-            /* [size_is][out] */ DISPID *rgDispId);
-        
-        /* [local] */ HRESULT ( STDMETHODCALLTYPE *Invoke )( 
-            IClusCfgAddNodesWizard * This,
-            /* [in] */ DISPID dispIdMember,
-            /* [in] */ REFIID riid,
-            /* [in] */ LCID lcid,
-            /* [in] */ WORD wFlags,
-            /* [out][in] */ DISPPARAMS *pDispParams,
-            /* [out] */ VARIANT *pVarResult,
-            /* [out] */ EXCEPINFO *pExcepInfo,
-            /* [out] */ UINT *puArgErr);
-        
-        /* [helpstring][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ClusterName )( 
-            IClusCfgAddNodesWizard * This,
-            /* [in] */ BSTR bstrClusterNameIn);
-        
-        /* [helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE *get_ClusterName )( 
-            IClusCfgAddNodesWizard * This,
-            /* [retval][out] */ BSTR *pbstrClusterNameOut);
-        
-        /* [helpstring][propput] */ HRESULT ( STDMETHODCALLTYPE *put_ServiceAccountPassword )( 
-            IClusCfgAddNodesWizard * This,
-            /* [in] */ BSTR bstrPasswordIn);
-        
-        /* [helpstring][propput] */ HRESULT ( STDMETHODCALLTYPE *put_MinimumConfiguration )( 
-            IClusCfgAddNodesWizard * This,
-            /* [in] */ VARIANT_BOOL fMinConfigIn);
-        
-        /* [helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE *get_MinimumConfiguration )( 
-            IClusCfgAddNodesWizard * This,
-            /* [retval][out] */ VARIANT_BOOL *pfMinConfigOut);
-        
-        /* [helpstring] */ HRESULT ( STDMETHODCALLTYPE *AddNodeToList )( 
-            IClusCfgAddNodesWizard * This,
-            /* [in] */ BSTR bstrNodeNameIn);
-        
-        /* [helpstring] */ HRESULT ( STDMETHODCALLTYPE *RemoveNodeFromList )( 
-            IClusCfgAddNodesWizard * This,
-            /* [in] */ BSTR bstrNodeNameIn);
-        
-        /* [helpstring] */ HRESULT ( STDMETHODCALLTYPE *ClearNodeList )( 
-            IClusCfgAddNodesWizard * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *ShowWizard )( 
-            IClusCfgAddNodesWizard * This,
-            /* [defaultvalue][in] */ long lParentWindowHandleIn,
-            /* [retval][out] */ VARIANT_BOOL *pfCompletedOut);
-        
-        END_INTERFACE
-    } IClusCfgAddNodesWizardVtbl;
-
-    interface IClusCfgAddNodesWizard
-    {
-        CONST_VTBL struct IClusCfgAddNodesWizardVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IClusCfgAddNodesWizard_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IClusCfgAddNodesWizard_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IClusCfgAddNodesWizard_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IClusCfgAddNodesWizard_GetTypeInfoCount(This,pctinfo)	\
-    (This)->lpVtbl -> GetTypeInfoCount(This,pctinfo)
-
-#define IClusCfgAddNodesWizard_GetTypeInfo(This,iTInfo,lcid,ppTInfo)	\
-    (This)->lpVtbl -> GetTypeInfo(This,iTInfo,lcid,ppTInfo)
-
-#define IClusCfgAddNodesWizard_GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)	\
-    (This)->lpVtbl -> GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)
-
-#define IClusCfgAddNodesWizard_Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)	\
-    (This)->lpVtbl -> Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)
-
-
-#define IClusCfgAddNodesWizard_put_ClusterName(This,bstrClusterNameIn)	\
-    (This)->lpVtbl -> put_ClusterName(This,bstrClusterNameIn)
-
-#define IClusCfgAddNodesWizard_get_ClusterName(This,pbstrClusterNameOut)	\
-    (This)->lpVtbl -> get_ClusterName(This,pbstrClusterNameOut)
-
-#define IClusCfgAddNodesWizard_put_ServiceAccountPassword(This,bstrPasswordIn)	\
-    (This)->lpVtbl -> put_ServiceAccountPassword(This,bstrPasswordIn)
-
-#define IClusCfgAddNodesWizard_put_MinimumConfiguration(This,fMinConfigIn)	\
-    (This)->lpVtbl -> put_MinimumConfiguration(This,fMinConfigIn)
-
-#define IClusCfgAddNodesWizard_get_MinimumConfiguration(This,pfMinConfigOut)	\
-    (This)->lpVtbl -> get_MinimumConfiguration(This,pfMinConfigOut)
-
-#define IClusCfgAddNodesWizard_AddNodeToList(This,bstrNodeNameIn)	\
-    (This)->lpVtbl -> AddNodeToList(This,bstrNodeNameIn)
-
-#define IClusCfgAddNodesWizard_RemoveNodeFromList(This,bstrNodeNameIn)	\
-    (This)->lpVtbl -> RemoveNodeFromList(This,bstrNodeNameIn)
-
-#define IClusCfgAddNodesWizard_ClearNodeList(This)	\
-    (This)->lpVtbl -> ClearNodeList(This)
-
-#define IClusCfgAddNodesWizard_ShowWizard(This,lParentWindowHandleIn,pfCompletedOut)	\
-    (This)->lpVtbl -> ShowWizard(This,lParentWindowHandleIn,pfCompletedOut)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-/* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgAddNodesWizard_put_ClusterName_Proxy( 
-    IClusCfgAddNodesWizard * This,
-    /* [in] */ BSTR bstrClusterNameIn);
-
-
-void __RPC_STUB IClusCfgAddNodesWizard_put_ClusterName_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgAddNodesWizard_get_ClusterName_Proxy( 
-    IClusCfgAddNodesWizard * This,
-    /* [retval][out] */ BSTR *pbstrClusterNameOut);
-
-
-void __RPC_STUB IClusCfgAddNodesWizard_get_ClusterName_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgAddNodesWizard_put_ServiceAccountPassword_Proxy( 
-    IClusCfgAddNodesWizard * This,
-    /* [in] */ BSTR bstrPasswordIn);
-
-
-void __RPC_STUB IClusCfgAddNodesWizard_put_ServiceAccountPassword_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE IClusCfgAddNodesWizard_put_MinimumConfiguration_Proxy( 
-    IClusCfgAddNodesWizard * This,
-    /* [in] */ VARIANT_BOOL fMinConfigIn);
-
-
-void __RPC_STUB IClusCfgAddNodesWizard_put_MinimumConfiguration_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring][propget] */ HRESULT STDMETHODCALLTYPE IClusCfgAddNodesWizard_get_MinimumConfiguration_Proxy( 
-    IClusCfgAddNodesWizard * This,
-    /* [retval][out] */ VARIANT_BOOL *pfMinConfigOut);
-
-
-void __RPC_STUB IClusCfgAddNodesWizard_get_MinimumConfiguration_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring] */ HRESULT STDMETHODCALLTYPE IClusCfgAddNodesWizard_AddNodeToList_Proxy( 
-    IClusCfgAddNodesWizard * This,
-    /* [in] */ BSTR bstrNodeNameIn);
-
-
-void __RPC_STUB IClusCfgAddNodesWizard_AddNodeToList_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring] */ HRESULT STDMETHODCALLTYPE IClusCfgAddNodesWizard_RemoveNodeFromList_Proxy( 
-    IClusCfgAddNodesWizard * This,
-    /* [in] */ BSTR bstrNodeNameIn);
-
-
-void __RPC_STUB IClusCfgAddNodesWizard_RemoveNodeFromList_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-/* [helpstring] */ HRESULT STDMETHODCALLTYPE IClusCfgAddNodesWizard_ClearNodeList_Proxy( 
-    IClusCfgAddNodesWizard * This);
-
-
-void __RPC_STUB IClusCfgAddNodesWizard_ClearNodeList_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IClusCfgAddNodesWizard_ShowWizard_Proxy( 
-    IClusCfgAddNodesWizard * This,
-    /* [defaultvalue][in] */ long lParentWindowHandleIn,
-    /* [retval][out] */ VARIANT_BOOL *pfCompletedOut);
-
-
-void __RPC_STUB IClusCfgAddNodesWizard_ShowWizard_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IClusCfgAddNodesWizard_INTERFACE_DEFINED__ */
-
-
-EXTERN_C const CLSID CLSID_ClusCfgCreateClusterWizard;
+EXTERN_C const CLSID CLSID_ClusCfgWizard;
 
 #ifdef __cplusplus
 
-class DECLSPEC_UUID("b929818e-f5b0-44dc-8a00-1b5f5f5aa1f0")
-ClusCfgCreateClusterWizard;
-#endif
-
-EXTERN_C const CLSID CLSID_ClusCfgAddNodesWizard;
-
-#ifdef __cplusplus
-
-class DECLSPEC_UUID("bb8d141e-c00a-469f-bc5c-ecd814f0bd74")
-ClusCfgAddNodesWizard;
+class DECLSPEC_UUID("1919C4FE-6F46-4027-977D-0EF1C8F26372")
+ClusCfgWizard;
 #endif
 #endif /* __ClusCfgWizard_LIBRARY_DEFINED__ */
 
 /* Additional Prototypes for ALL interfaces */
+
+unsigned long             __RPC_USER  BSTR_UserSize(     unsigned long *, unsigned long            , BSTR * ); 
+unsigned char * __RPC_USER  BSTR_UserMarshal(  unsigned long *, unsigned char *, BSTR * ); 
+unsigned char * __RPC_USER  BSTR_UserUnmarshal(unsigned long *, unsigned char *, BSTR * ); 
+void                      __RPC_USER  BSTR_UserFree(     unsigned long *, BSTR * ); 
+
+unsigned long             __RPC_USER  HWND_UserSize(     unsigned long *, unsigned long            , HWND * ); 
+unsigned char * __RPC_USER  HWND_UserMarshal(  unsigned long *, unsigned char *, HWND * ); 
+unsigned char * __RPC_USER  HWND_UserUnmarshal(unsigned long *, unsigned char *, HWND * ); 
+void                      __RPC_USER  HWND_UserFree(     unsigned long *, HWND * ); 
 
 /* end of Additional Prototypes */
 

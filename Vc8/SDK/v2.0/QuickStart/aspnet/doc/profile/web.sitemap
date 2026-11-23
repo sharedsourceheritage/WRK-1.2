@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+	<siteMapNode url="~/aspnet/doc/profile/default.aspx" title="Storing User Profiles">
+           <siteMapNode url="~/aspnet/doc/profile/default.aspx#schema" title="Defining the Profile Schema"/>
+           <siteMapNode url="~/aspnet/doc/profile/default.aspx#anon" title="Anonymous Profiles"/>
+           <siteMapNode url="~/aspnet/doc/profile/default.aspx#auth" title="Authenticated Profiles"/>
+           <siteMapNode url="~/aspnet/doc/profile/default.aspx#migrate" title="Migrating Profiles"/>
+           <siteMapNode url="~/aspnet/doc/profile/default.aspx#inherit" title="Defining a Custom Profile Base Class"/>
+           <siteMapNode url="~/aspnet/doc/profile/default.aspx#autosave" title="Automatic Profile Save Behavior"/>
+           <siteMapNode url="~/aspnet/doc/profile/default.aspx#delete" title="Deleting a Profile"/>
+        </siteMapNode>
+</siteMap>

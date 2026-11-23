@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MQASync", "MQASync\MQASync.vcproj", "{C993CE52-ECC2-4FD8-85B0-102455411718}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Debug|Itanium = Debug|Itanium
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+		Release|Itanium = Release|Itanium
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Debug|Win32.Build.0 = Debug|Win32
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Debug|x64.ActiveCfg = Debug|x64
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Debug|x64.Build.0 = Debug|x64
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Debug|Itanium.ActiveCfg = Debug|Itanium
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Debug|Itanium.Build.0 = Debug|Itanium
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Release|Win32.ActiveCfg = Release|Win32
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Release|Win32.Build.0 = Release|Win32
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Release|x64.ActiveCfg = Release|x64
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Release|x64.Build.0 = Release|x64
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Release|Itanium.ActiveCfg = Release|Itanium
+		{C993CE52-ECC2-4FD8-85B0-102455411718}.Release|Itanium.Build.0 = Release|Itanium
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

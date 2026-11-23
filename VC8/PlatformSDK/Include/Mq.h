@@ -1,4 +1,3 @@
- 
 /*++
 
 Copyright (c) 1996-2001, Microsoft Corporation
@@ -59,13 +58,13 @@ typedef struct tagMQPROPERTYRESTRICTION
 
 typedef struct tagMQRESTRICTION
     {
-    /* [range] */ ULONG cRes;
+    ULONG cRes;
     /* [size_is] */ MQPROPERTYRESTRICTION *paPropRes;
     } 	MQRESTRICTION;
 
 typedef struct tagMQCOLUMNSET
     {
-    /* [range] */ ULONG cCol;
+    ULONG cCol;
     /* [size_is] */ PROPID *aCol;
     } 	MQCOLUMNSET;
 
@@ -81,10 +80,14 @@ typedef struct tagMQSORTKEY
 
 typedef struct tagMQSORTSET
     {
-    /* [range] */ ULONG cCol;
+    ULONG cCol;
     /* [size_is] */ MQSORTKEY *aCol;
     } 	MQSORTSET;
 
+
+#define MQ_MAX_Q_NAME_LEN      124   // Maximal WCHAR length of a queue name.
+#define MQ_MAX_Q_LABEL_LEN     124
+#define MQ_MAX_MSG_LABEL_LEN   250
 
 typedef HANDLE QUEUEHANDLE;
 
@@ -175,7 +178,6 @@ typedef struct tagSEQUENCE_INFO
 //
 //  MQReceiveMessageByLookupId - Action values
 //
-#if(_WIN32_WINNT >= 0x0501)
 #define MQ_LOOKUP_PEEK_CURRENT    0x40000010
 #define MQ_LOOKUP_PEEK_NEXT       0x40000011
 #define MQ_LOOKUP_PEEK_PREV       0x40000012
@@ -187,7 +189,6 @@ typedef struct tagSEQUENCE_INFO
 #define MQ_LOOKUP_RECEIVE_PREV    0x40000022
 #define MQ_LOOKUP_RECEIVE_FIRST   0x40000024
 #define MQ_LOOKUP_RECEIVE_LAST    0x40000028
-#endif
 
 //
 // MQSendMessage,  MQReceiveMessage:  special cases for the transaction parameter
@@ -196,7 +197,6 @@ typedef struct tagSEQUENCE_INFO
 #define MQ_MTS_TRANSACTION            (ITransaction *)1
 #define MQ_XA_TRANSACTION             (ITransaction *)2
 #define MQ_SINGLE_MESSAGE             (ITransaction *)3
-
 
 //********************************************************************
 //  PRIORITY LIMITS
@@ -266,7 +266,6 @@ typedef struct tagSEQUENCE_INFO
 #define PROPID_M_LAST_IN_XACT            (PROPID_M_BASE + 51)    /* VT_UI1           */
 #define PROPID_M_XACTID                  (PROPID_M_BASE + 52)    /* VT_UI1|VT_VECTOR */
 #define PROPID_M_AUTHENTICATED_EX        (PROPID_M_BASE + 53)    /* VT_UI1           */
-#if(_WIN32_WINNT >= 0x0501)
 #define PROPID_M_RESP_FORMAT_NAME        (PROPID_M_BASE + 54)    /* VT_LPWSTR        */
 #define PROPID_M_RESP_FORMAT_NAME_LEN    (PROPID_M_BASE + 55)    /* VT_UI4           */
 #define PROPID_M_DEST_FORMAT_NAME        (PROPID_M_BASE + 58)    /* VT_LPWSTR        */
@@ -278,7 +277,6 @@ typedef struct tagSEQUENCE_INFO
 #define PROPID_M_COMPOUND_MESSAGE_SIZE	 (PROPID_M_BASE + 64)    /* VT_UI4           */
 #define PROPID_M_SOAP_HEADER             (PROPID_M_BASE + 65)    /* VT_LPWSTR        */
 #define PROPID_M_SOAP_BODY               (PROPID_M_BASE + 66)    /* VT_LPWSTR        */
-#endif
 
 //
 // Message Property Size
@@ -297,12 +295,10 @@ typedef struct tagSEQUENCE_INFO
 //   1 1 1 1 1 1
 //   5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0
 //  +-+-+-+-------+-----------------+
-//  |S|R|H| Rsrve |    Class code   |
+//  |S|R|H|Reserve|   Class code    |
 //  +-+-+-+-------+-----------------+
 //
 //  where
-//
-//  Class code must be 9 bits, to accomodate http too. (40X, 50X codes).
 //
 //      S - is the severity flag
 //          0 - Normal Message/Positive Acknowledgment (ACK)
@@ -314,8 +310,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //      H - is http flag
 //          0 - no http
-//          1 - http
-
+//          1 - http 
 
 #define MQCLASS_CODE(s, r, code) ((USHORT)(((s) << 15) | ((r) << 14) | (code)))
 #define MQCLASS_NACK(c)     ((c) & 0x8000)
@@ -411,11 +406,6 @@ typedef struct tagSEQUENCE_INFO
 //
 #define MQMSG_CLASS_NACK_UNSUPPORTED_CRYPTO_PROVIDER  MQCLASS_CODE(1, 0, 0x0B)
 
-//
-// The QM GUID has changed and therefore the messages was thrown away.
-//
-#define MQMSG_CLASS_NACK_SOURCE_COMPUTER_GUID_CHANGED MQCLASS_CODE(1, 0, 0x0C)
-
 
 //-----------------------------------------------
 //
@@ -488,6 +478,7 @@ typedef struct tagSEQUENCE_INFO
 
 //----- PROPID_M_PRIV_LEVEL -----------------
 #define MQMSG_PRIV_LEVEL_NONE               0
+#define MQMSG_PRIV_LEVEL_BODY               0x01
 #define MQMSG_PRIV_LEVEL_BODY_BASE          0x01
 #define MQMSG_PRIV_LEVEL_BODY_ENHANCED      0x03
 
@@ -496,7 +487,7 @@ typedef struct tagSEQUENCE_INFO
 #define MQMSG_AUTH_LEVEL_ALWAYS				1
 
 //
-// MQMSG_AUTH_LEVEL_MSMQxx are obsolete
+// MQMSG_AUTH_LEVEL_MSMQxx are obsolete 
 // you should use MQMSG_AUTH_LEVEL_SIGxx
 //
 #define MQMSG_AUTH_LEVEL_MSMQ10				2
@@ -513,7 +504,7 @@ typedef struct tagSEQUENCE_INFO
 #define MQMSG_AUTHENTICATION_REQUESTED      1
 
 //
-// MQMSG_AUTHENTICATION_REQUESTED_EX is obsolete
+// MQMSG_AUTHENTICATION_REQUESTED_EX is obsolete 
 // use the values MQMSG_AUTHENTICATED_SIGxx
 // for PROPID_M_AUTHENTICATED_EX
 //
@@ -656,10 +647,10 @@ typedef struct tagSEQUENCE_INFO
 
 
 //
-// Alternative names for "Bytes in ..."
+// Olbselete alternative names for "Bytes in ..."
 //
-#define PROPID_MGMT_QUEUE_USED_QUOTA            PROPID_MGMT_QUEUE_BYTES_IN_QUEUE
-#define PROPID_MGMT_QUEUE_JOURNAL_USED_QUOTA    PROPID_MGMT_QUEUE_BYTES_IN_JOURNAL
+#define PROPID_MGMT_QUEUE_USED_QUOTA            PROPID_MGMT_QUEUE_BYTES_IN_QUEUE          
+#define PROPID_MGMT_QUEUE_JOURNAL_USED_QUOTA    PROPID_MGMT_QUEUE_BYTES_IN_JOURNAL        
 
 //
 // Returned value for PROPID_MGMT_QUEUE_TYPE
@@ -681,7 +672,6 @@ typedef struct tagSEQUENCE_INFO
 #define MGMT_QUEUE_STATE_CONNECTED      L"CONNECTED"
 #define MGMT_QUEUE_STATE_DISCONNECTING  L"DISCONNECTING"
 #define MGMT_QUEUE_STATE_DISCONNECTED   L"DISCONNECTED"
-#define MGMT_QUEUE_STATE_LOCKED   L"LOCKED"
 
 //
 // Returned value for PROPID_MGMT_QUEUE_LOCATION
@@ -689,7 +679,7 @@ typedef struct tagSEQUENCE_INFO
 #define MGMT_QUEUE_LOCAL_LOCATION   L"LOCAL"
 #define MGMT_QUEUE_REMOTE_LOCATION  L"REMOTE"
 
-//
+// 
 // Returned Value for PROPID_MGMT_QUEUE_XACT and PROPID_MGMT_QUEUE_FOREIGN
 //
 
@@ -703,7 +693,7 @@ typedef struct tagSEQUENCE_INFO
 #define MGMT_QUEUE_INCORRECT_TYPE   L"NO"
 
 //
-// Names for Returned Value for PROPID_MGMT_QUEUE_XACT
+// Names for Returned Value for PROPID_MGMT_QUEUE_XACT 
 //
 
 //#define MGMT_QUEUE_UNKNOWN_TYPE     	L"UNKNOWN"
@@ -742,26 +732,20 @@ typedef struct tagSEQUENCE_INFO
 //
 #define LONG_LIVED    0xfffffffe
 
-#define MQ_MAX_Q_NAME_LEN      124   // Maximal WCHAR length of a queue name.
-#define MQ_MAX_Q_LABEL_LEN     124
-#define MQ_MAX_MSG_LABEL_LEN   250
+//
+// Success
+//
+#define MQ_OK                       0L
 
 
-/////////////////////////////////////////////////////////////////////////
-//
-// Message Queuing Success values
-//
-//
-/////////////////////////////////////////////////////////////////////////
+#ifndef FACILITY_MSMQ
+#define FACILITY_MSMQ               0x0E
+#endif
 
-#define MQ_OK                       ((HRESULT)0L)
 
-/////////////////////////////////////////////////////////////////////////
 //
-// Message Queuing Information values
+//  Error
 //
-//
-/////////////////////////////////////////////////////////////////////////
 
 //
 //  Values are 32 bit values layed out as follows:
@@ -800,104 +784,13 @@ typedef struct tagSEQUENCE_INFO
 
 
 //
-// MessageId: MQ_INFORMATION_PROPERTY
-//
-// MessageText:
-//
-//  One or more of the properties passed resulted in a warning, but the function completed.
-//
-#define MQ_INFORMATION_PROPERTY          ((HRESULT)0x400E0001L)
-
-//
-// MessageId: MQ_INFORMATION_ILLEGAL_PROPERTY
-//
-// MessageText:
-//
-//  The property ID is invalid.
-//
-#define MQ_INFORMATION_ILLEGAL_PROPERTY  ((HRESULT)0x400E0002L)
-
-//
-// MessageId: MQ_INFORMATION_PROPERTY_IGNORED
-//
-// MessageText:
-//
-//  The property specified was ignored for this operation (this occurs,
-//  for example, when PROPID_M_SENDERID is passed to SendMessage()).
-//
-#define MQ_INFORMATION_PROPERTY_IGNORED  ((HRESULT)0x400E0003L)
-
-//
-// MessageId: MQ_INFORMATION_UNSUPPORTED_PROPERTY
-//
-// MessageText:
-//
-//  The property specified is not supported and was ignored for this operation.
-//
-#define MQ_INFORMATION_UNSUPPORTED_PROPERTY ((HRESULT)0x400E0004L)
-
-//
-// MessageId: MQ_INFORMATION_DUPLICATE_PROPERTY
-//
-// MessageText:
-//
-//  The property specified is already in the property identifier array.
-//  The duplicate was ignored for this operation.
-//
-#define MQ_INFORMATION_DUPLICATE_PROPERTY ((HRESULT)0x400E0005L)
-
-//
-// MessageId: MQ_INFORMATION_OPERATION_PENDING
-//
-// MessageText:
-//
-//  An asynchronous operation is currently pending.
-//
-#define MQ_INFORMATION_OPERATION_PENDING ((HRESULT)0x400E0006L)
-
-//
-// MessageId: MQ_INFORMATION_FORMATNAME_BUFFER_TOO_SMALL
-//
-// MessageText:
-//
-//  The format name buffer supplied to MQCreateQueue was too small
-//  to hold the format name, however the queue was created successfully.
-//
-#define MQ_INFORMATION_FORMATNAME_BUFFER_TOO_SMALL ((HRESULT)0x400E0009L)
-
-//
-// MessageId: MQ_INFORMATION_INTERNAL_USER_CERT_EXIST
-//
-// MessageText:
-//
-//  An internal Message Queuing certificate already exists for this user.
-//
-#define MQ_INFORMATION_INTERNAL_USER_CERT_EXIST ((HRESULT)0x400E000AL)
-
-//
-// MessageId: MQ_INFORMATION_OWNER_IGNORED
-//
-// MessageText:
-//
-//  The queue owner was not set during the processing of this call to MQSetQueueSecurity().
-//
-#define MQ_INFORMATION_OWNER_IGNORED     ((HRESULT)0x400E000BL)
-
-/////////////////////////////////////////////////////////////////////////
-//
-//  Message Queuing Error values
-//
-//
-/////////////////////////////////////////////////////////////////////////
-
-//
 // MessageId: MQ_ERROR
 //
 // MessageText:
 //
 //  Generic error code.
 //
-#define MQ_ERROR                         ((HRESULT)0xC00E0001L)
+#define MQ_ERROR                         0xC00E0001L
 
 //
 // MessageId: MQ_ERROR_PROPERTY
@@ -906,25 +799,16 @@ typedef struct tagSEQUENCE_INFO
 //
 //  One or more of the properties passed are invalid.
 //
-#define MQ_ERROR_PROPERTY                ((HRESULT)0xC00E0002L)
+#define MQ_ERROR_PROPERTY                0xC00E0002L
 
 //
 // MessageId: MQ_ERROR_QUEUE_NOT_FOUND
 //
 // MessageText:
 //
-//  The queue does not exist or you do not have sufficient permissions to perform the operation.
+//  The queue does not exist, or you do not have sufficient permissions to perform the operation.
 //
-#define MQ_ERROR_QUEUE_NOT_FOUND         ((HRESULT)0xC00E0003L)
-
-//
-// MessageId: MQ_ERROR_QUEUE_NOT_ACTIVE
-//
-// MessageText:
-//
-//  The queue is not open or may not exist.
-//
-#define MQ_ERROR_QUEUE_NOT_ACTIVE        ((HRESULT)0xC00E0004L)
+#define MQ_ERROR_QUEUE_NOT_FOUND         0xC00E0003L
 
 //
 // MessageId: MQ_ERROR_QUEUE_EXISTS
@@ -933,7 +817,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A queue with the same path name already exists.
 //
-#define MQ_ERROR_QUEUE_EXISTS            ((HRESULT)0xC00E0005L)
+#define MQ_ERROR_QUEUE_EXISTS            0xC00E0005L
 
 //
 // MessageId: MQ_ERROR_INVALID_PARAMETER
@@ -942,7 +826,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  An invalid parameter was passed to a function.
 //
-#define MQ_ERROR_INVALID_PARAMETER       ((HRESULT)0xC00E0006L)
+#define MQ_ERROR_INVALID_PARAMETER       0xC00E0006L
 
 //
 // MessageId: MQ_ERROR_INVALID_HANDLE
@@ -951,7 +835,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  An invalid handle was passed to a function.
 //
-#define MQ_ERROR_INVALID_HANDLE          ((HRESULT)0xC00E0007L)
+#define MQ_ERROR_INVALID_HANDLE          0xC00E0007L
 
 //
 // MessageId: MQ_ERROR_OPERATION_CANCELLED
@@ -960,7 +844,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The operation was canceled before it could be completed.
 //
-#define MQ_ERROR_OPERATION_CANCELLED     ((HRESULT)0xC00E0008L)
+#define MQ_ERROR_OPERATION_CANCELLED     0xC00E0008L
 
 //
 // MessageId: MQ_ERROR_SHARING_VIOLATION
@@ -969,7 +853,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  There is a sharing violation. The queue is already open for exclusive retrieval.
 //
-#define MQ_ERROR_SHARING_VIOLATION       ((HRESULT)0xC00E0009L)
+#define MQ_ERROR_SHARING_VIOLATION       0xC00E0009L
 
 //
 // MessageId: MQ_ERROR_SERVICE_NOT_AVAILABLE
@@ -978,7 +862,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The Message Queuing service is not available
 //
-#define MQ_ERROR_SERVICE_NOT_AVAILABLE   ((HRESULT)0xC00E000BL)
+#define MQ_ERROR_SERVICE_NOT_AVAILABLE   0xC00E000BL
 
 //
 // MessageId: MQ_ERROR_MACHINE_NOT_FOUND
@@ -987,7 +871,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The computer specified cannot be found.
 //
-#define MQ_ERROR_MACHINE_NOT_FOUND       ((HRESULT)0xC00E000DL)
+#define MQ_ERROR_MACHINE_NOT_FOUND       0xC00E000DL
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_SORT
@@ -996,7 +880,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The sort operation specified in MQLocateBegin is invalid (for example, there are duplicate columns).
 //
-#define MQ_ERROR_ILLEGAL_SORT            ((HRESULT)0xC00E0010L)
+#define MQ_ERROR_ILLEGAL_SORT            0xC00E0010L
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_USER
@@ -1005,7 +889,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The user specified is not a valid user.
 //
-#define MQ_ERROR_ILLEGAL_USER            ((HRESULT)0xC00E0011L)
+#define MQ_ERROR_ILLEGAL_USER            0xC00E0011L
 
 //
 // MessageId: MQ_ERROR_NO_DS
@@ -1014,7 +898,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A connection with Active Directory cannot be established. Verify that there are sufficient permissions to perform this operation.
 //
-#define MQ_ERROR_NO_DS                   ((HRESULT)0xC00E0013L)
+#define MQ_ERROR_NO_DS                   0xC00E0013L
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_QUEUE_PATHNAME
@@ -1023,7 +907,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The queue path name specified is invalid.
 //
-#define MQ_ERROR_ILLEGAL_QUEUE_PATHNAME  ((HRESULT)0xC00E0014L)
+#define MQ_ERROR_ILLEGAL_QUEUE_PATHNAME  0xC00E0014L
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_PROPERTY_VALUE
@@ -1032,7 +916,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The property value specified is invalid.
 //
-#define MQ_ERROR_ILLEGAL_PROPERTY_VALUE  ((HRESULT)0xC00E0018L)
+#define MQ_ERROR_ILLEGAL_PROPERTY_VALUE  0xC00E0018L
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_PROPERTY_VT
@@ -1041,7 +925,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The VARTYPE value specified is invalid.
 //
-#define MQ_ERROR_ILLEGAL_PROPERTY_VT     ((HRESULT)0xC00E0019L)
+#define MQ_ERROR_ILLEGAL_PROPERTY_VT     0xC00E0019L
 
 //
 // MessageId: MQ_ERROR_BUFFER_OVERFLOW
@@ -1052,7 +936,7 @@ typedef struct tagSEQUENCE_INFO
 //  is too small. The message was not removed from the queue, but the part
 //  of the message property that was in the buffer was copied.
 //
-#define MQ_ERROR_BUFFER_OVERFLOW         ((HRESULT)0xC00E001AL)
+#define MQ_ERROR_BUFFER_OVERFLOW         0xC00E001AL
 
 //
 // MessageId: MQ_ERROR_IO_TIMEOUT
@@ -1061,7 +945,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The time specified for MQReceiveMessage to wait for the message elapsed.
 //
-#define MQ_ERROR_IO_TIMEOUT              ((HRESULT)0xC00E001BL)
+#define MQ_ERROR_IO_TIMEOUT              0xC00E001BL
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_CURSOR_ACTION
@@ -1071,7 +955,7 @@ typedef struct tagSEQUENCE_INFO
 //  The MQ_ACTION_PEEK_NEXT value specified for MQReceiveMessage cannot be used with
 //  the current cursor position.
 //
-#define MQ_ERROR_ILLEGAL_CURSOR_ACTION   ((HRESULT)0xC00E001CL)
+#define MQ_ERROR_ILLEGAL_CURSOR_ACTION   0xC00E001CL
 
 //
 // MessageId: MQ_ERROR_MESSAGE_ALREADY_RECEIVED
@@ -1082,7 +966,7 @@ typedef struct tagSEQUENCE_INFO
 //  the queue by another process or by another call to MQReceiveMessage
 //  without the use of this cursor.
 //
-#define MQ_ERROR_MESSAGE_ALREADY_RECEIVED ((HRESULT)0xC00E001DL)
+#define MQ_ERROR_MESSAGE_ALREADY_RECEIVED 0xC00E001DL
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_FORMATNAME
@@ -1091,7 +975,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The format name specified is invalid.
 //
-#define MQ_ERROR_ILLEGAL_FORMATNAME      ((HRESULT)0xC00E001EL)
+#define MQ_ERROR_ILLEGAL_FORMATNAME      0xC00E001EL
 
 //
 // MessageId: MQ_ERROR_FORMATNAME_BUFFER_TOO_SMALL
@@ -1101,7 +985,7 @@ typedef struct tagSEQUENCE_INFO
 //  The format name buffer supplied to the API was too small
 //  to hold the format name.
 //
-#define MQ_ERROR_FORMATNAME_BUFFER_TOO_SMALL ((HRESULT)0xC00E001FL)
+#define MQ_ERROR_FORMATNAME_BUFFER_TOO_SMALL 0xC00E001FL
 
 //
 // MessageId: MQ_ERROR_UNSUPPORTED_FORMATNAME_OPERATION
@@ -1111,7 +995,7 @@ typedef struct tagSEQUENCE_INFO
 //  Operations of the type requested (for example, deleting a queue using a direct format name)
 //  are not supported for the format name specified.
 //
-#define MQ_ERROR_UNSUPPORTED_FORMATNAME_OPERATION ((HRESULT)0xC00E0020L)
+#define MQ_ERROR_UNSUPPORTED_FORMATNAME_OPERATION 0xC00E0020L
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_SECURITY_DESCRIPTOR
@@ -1120,7 +1004,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The specified security descriptor is invalid.
 //
-#define MQ_ERROR_ILLEGAL_SECURITY_DESCRIPTOR ((HRESULT)0xC00E0021L)
+#define MQ_ERROR_ILLEGAL_SECURITY_DESCRIPTOR 0xC00E0021L
 
 //
 // MessageId: MQ_ERROR_SENDERID_BUFFER_TOO_SMALL
@@ -1129,7 +1013,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The size of the buffer for the user ID property is too small.
 //
-#define MQ_ERROR_SENDERID_BUFFER_TOO_SMALL ((HRESULT)0xC00E0022L)
+#define MQ_ERROR_SENDERID_BUFFER_TOO_SMALL 0xC00E0022L
 
 //
 // MessageId: MQ_ERROR_SECURITY_DESCRIPTOR_TOO_SMALL
@@ -1138,7 +1022,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The size of the buffer passed to MQGetQueueSecurity is too small.
 //
-#define MQ_ERROR_SECURITY_DESCRIPTOR_TOO_SMALL ((HRESULT)0xC00E0023L)
+#define MQ_ERROR_SECURITY_DESCRIPTOR_TOO_SMALL 0xC00E0023L
 
 //
 // MessageId: MQ_ERROR_CANNOT_IMPERSONATE_CLIENT
@@ -1148,7 +1032,7 @@ typedef struct tagSEQUENCE_INFO
 //  The security credentials cannot be verified because the RPC server
 //  cannot impersonate the client application.
 //
-#define MQ_ERROR_CANNOT_IMPERSONATE_CLIENT ((HRESULT)0xC00E0024L)
+#define MQ_ERROR_CANNOT_IMPERSONATE_CLIENT 0xC00E0024L
 
 //
 // MessageId: MQ_ERROR_ACCESS_DENIED
@@ -1157,7 +1041,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Access is denied.
 //
-#define MQ_ERROR_ACCESS_DENIED           ((HRESULT)0xC00E0025L)
+#define MQ_ERROR_ACCESS_DENIED           0xC00E0025L
 
 //
 // MessageId: MQ_ERROR_PRIVILEGE_NOT_HELD
@@ -1166,7 +1050,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The client does not have sufficient security privileges to perform the operation.
 //
-#define MQ_ERROR_PRIVILEGE_NOT_HELD      ((HRESULT)0xC00E0026L)
+#define MQ_ERROR_PRIVILEGE_NOT_HELD      0xC00E0026L
 
 //
 // MessageId: MQ_ERROR_INSUFFICIENT_RESOURCES
@@ -1175,7 +1059,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  There are insufficient resources to perform this operation.
 //
-#define MQ_ERROR_INSUFFICIENT_RESOURCES  ((HRESULT)0xC00E0027L)
+#define MQ_ERROR_INSUFFICIENT_RESOURCES  0xC00E0027L
 
 //
 // MessageId: MQ_ERROR_USER_BUFFER_TOO_SMALL
@@ -1184,7 +1068,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The request failed because the user buffer is too small to hold the information returned.
 //
-#define MQ_ERROR_USER_BUFFER_TOO_SMALL   ((HRESULT)0xC00E0028L)
+#define MQ_ERROR_USER_BUFFER_TOO_SMALL   0xC00E0028L
 
 //
 // MessageId: MQ_ERROR_MESSAGE_STORAGE_FAILED
@@ -1193,7 +1077,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A recoverable or journal message could not be stored. The message was not sent.
 //
-#define MQ_ERROR_MESSAGE_STORAGE_FAILED  ((HRESULT)0xC00E002AL)
+#define MQ_ERROR_MESSAGE_STORAGE_FAILED  0xC00E002AL
 
 //
 // MessageId: MQ_ERROR_SENDER_CERT_BUFFER_TOO_SMALL
@@ -1202,7 +1086,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The buffer for the user certificate property is too small.
 //
-#define MQ_ERROR_SENDER_CERT_BUFFER_TOO_SMALL ((HRESULT)0xC00E002BL)
+#define MQ_ERROR_SENDER_CERT_BUFFER_TOO_SMALL 0xC00E002BL
 
 //
 // MessageId: MQ_ERROR_INVALID_CERTIFICATE
@@ -1211,7 +1095,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The user certificate is invalid.
 //
-#define MQ_ERROR_INVALID_CERTIFICATE     ((HRESULT)0xC00E002CL)
+#define MQ_ERROR_INVALID_CERTIFICATE     0xC00E002CL
 
 //
 // MessageId: MQ_ERROR_CORRUPTED_INTERNAL_CERTIFICATE
@@ -1220,16 +1104,8 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The internal Message Queuing certificate is corrupted.
 //
-#define MQ_ERROR_CORRUPTED_INTERNAL_CERTIFICATE ((HRESULT)0xC00E002DL)
+#define MQ_ERROR_CORRUPTED_INTERNAL_CERTIFICATE 0xC00E002DL
 
-//
-// MessageId: MQ_ERROR_INTERNAL_USER_CERT_EXIST
-//
-// MessageText:
-//
-//  An internal Message Queuing certificate already exists for this user.
-//
-#define MQ_ERROR_INTERNAL_USER_CERT_EXIST ((HRESULT)0xC00E002EL)
 
 //
 // MessageId: MQ_ERROR_NO_INTERNAL_USER_CERT
@@ -1238,7 +1114,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  No internal Message Queuing certificate exists for the user.
 //
-#define MQ_ERROR_NO_INTERNAL_USER_CERT   ((HRESULT)0xC00E002FL)
+#define MQ_ERROR_NO_INTERNAL_USER_CERT   0xC00E002FL
 
 //
 // MessageId: MQ_ERROR_CORRUPTED_SECURITY_DATA
@@ -1247,7 +1123,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A cryptographic function failed.
 //
-#define MQ_ERROR_CORRUPTED_SECURITY_DATA ((HRESULT)0xC00E0030L)
+#define MQ_ERROR_CORRUPTED_SECURITY_DATA 0xC00E0030L
 
 //
 // MessageId: MQ_ERROR_CORRUPTED_PERSONAL_CERT_STORE
@@ -1256,7 +1132,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The personal certificate store is corrupted.
 //
-#define MQ_ERROR_CORRUPTED_PERSONAL_CERT_STORE ((HRESULT)0xC00E0031L)
+#define MQ_ERROR_CORRUPTED_PERSONAL_CERT_STORE 0xC00E0031L
 
 //
 // MessageId: MQ_ERROR_COMPUTER_DOES_NOT_SUPPORT_ENCRYPTION
@@ -1265,7 +1141,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The computer does not support encryption operations.
 //
-#define MQ_ERROR_COMPUTER_DOES_NOT_SUPPORT_ENCRYPTION ((HRESULT)0xC00E0033L)
+#define MQ_ERROR_COMPUTER_DOES_NOT_SUPPORT_ENCRYPTION 0xC00E0033L
 
 //
 // MessageId: MQ_ERROR_BAD_SECURITY_CONTEXT
@@ -1274,7 +1150,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The security context is invalid.
 //
-#define MQ_ERROR_BAD_SECURITY_CONTEXT    ((HRESULT)0xC00E0035L)
+#define MQ_ERROR_BAD_SECURITY_CONTEXT    0xC00E0035L
 
 //
 // MessageId: MQ_ERROR_COULD_NOT_GET_USER_SID
@@ -1283,7 +1159,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The SID cannot be obtained from the thread token.
 //
-#define MQ_ERROR_COULD_NOT_GET_USER_SID  ((HRESULT)0xC00E0036L)
+#define MQ_ERROR_COULD_NOT_GET_USER_SID  0xC00E0036L
 
 //
 // MessageId: MQ_ERROR_COULD_NOT_GET_ACCOUNT_INFO
@@ -1292,7 +1168,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The account information for the user cannot be obtained.
 //
-#define MQ_ERROR_COULD_NOT_GET_ACCOUNT_INFO ((HRESULT)0xC00E0037L)
+#define MQ_ERROR_COULD_NOT_GET_ACCOUNT_INFO 0xC00E0037L
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_MQCOLUMNS
@@ -1301,7 +1177,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The MQCOLUMNS parameter is invalid.
 //
-#define MQ_ERROR_ILLEGAL_MQCOLUMNS       ((HRESULT)0xC00E0038L)
+#define MQ_ERROR_ILLEGAL_MQCOLUMNS       0xC00E0038L
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_PROPID
@@ -1310,7 +1186,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A property identifier is invalid.
 //
-#define MQ_ERROR_ILLEGAL_PROPID          ((HRESULT)0xC00E0039L)
+#define MQ_ERROR_ILLEGAL_PROPID          0xC00E0039L
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_RELATION
@@ -1319,7 +1195,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A relationship parameter is invalid.
 //
-#define MQ_ERROR_ILLEGAL_RELATION        ((HRESULT)0xC00E003AL)
+#define MQ_ERROR_ILLEGAL_RELATION        0xC00E003AL
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_PROPERTY_SIZE
@@ -1328,7 +1204,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The size of the buffer for the message identifier or correlation identifier is invalid.
 //
-#define MQ_ERROR_ILLEGAL_PROPERTY_SIZE   ((HRESULT)0xC00E003BL)
+#define MQ_ERROR_ILLEGAL_PROPERTY_SIZE   0xC00E003BL
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_RESTRICTION_PROPID
@@ -1337,7 +1213,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A property identifier specified in MQRESTRICTION is invalid.
 //
-#define MQ_ERROR_ILLEGAL_RESTRICTION_PROPID ((HRESULT)0xC00E003CL)
+#define MQ_ERROR_ILLEGAL_RESTRICTION_PROPID 0xC00E003CL
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_MQQUEUEPROPS
@@ -1346,7 +1222,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Either the pointer to the MQQUEUEPROPS structure has a null value, or no properties are specified in it.
 //
-#define MQ_ERROR_ILLEGAL_MQQUEUEPROPS    ((HRESULT)0xC00E003DL)
+#define MQ_ERROR_ILLEGAL_MQQUEUEPROPS    0xC00E003DL
 
 //
 // MessageId: MQ_ERROR_PROPERTY_NOTALLOWED
@@ -1356,7 +1232,7 @@ typedef struct tagSEQUENCE_INFO
 //  The property identifier specified (for example, PROPID_Q_INSTANCE in MQSetQueueProperties)
 //  is invalid for the operation requested.
 //
-#define MQ_ERROR_PROPERTY_NOTALLOWED     ((HRESULT)0xC00E003EL)
+#define MQ_ERROR_PROPERTY_NOTALLOWED     0xC00E003EL
 
 //
 // MessageId: MQ_ERROR_INSUFFICIENT_PROPERTIES
@@ -1366,16 +1242,18 @@ typedef struct tagSEQUENCE_INFO
 //  Not all the properties required for the operation were specified
 //  for the input parameters.
 //
-#define MQ_ERROR_INSUFFICIENT_PROPERTIES ((HRESULT)0xC00E003FL)
+#define MQ_ERROR_INSUFFICIENT_PROPERTIES 0xC00E003FL
 
 //
 // MessageId: MQ_ERROR_MACHINE_EXISTS
 //
 // MessageText:
 //
-//  The MSMQ Configuration (msmq) object already exists in Active Directory.
+//  A computer with the same name already exists in the site. Either the computer object already exists
+//  (for a Windows NT enterprise), or the MSMQ Configuration (msmq) object already exists for the applicable computer
+//  object in Active directory (for a Windows 2000 or Windows Whistler forest).
 //
-#define MQ_ERROR_MACHINE_EXISTS          ((HRESULT)0xC00E0040L)
+#define MQ_ERROR_MACHINE_EXISTS          0xC00E0040L
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_MQQMPROPS
@@ -1384,7 +1262,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Either the pointer to the MQQMROPS structure has a null value, or no properties are specified in it.
 //
-#define MQ_ERROR_ILLEGAL_MQQMPROPS       ((HRESULT)0xC00E0041L)
+#define MQ_ERROR_ILLEGAL_MQQMPROPS       0xC00E0041L
 
 //
 // MessageId: MQ_ERROR_DS_IS_FULL
@@ -1393,7 +1271,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Obsolete, kept for backward compatibility
 //
-#define MQ_ERROR_DS_IS_FULL              ((HRESULT)0xC00E0042L)
+#define MQ_ERROR_DS_IS_FULL              0xC00E0042L
 
 //
 // MessageId: MQ_ERROR_DS_ERROR
@@ -1402,7 +1280,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  There is an internal Active Directory error.
 //
-#define MQ_ERROR_DS_ERROR                ((HRESULT)0xC00E0043L)
+#define MQ_ERROR_DS_ERROR                0xC00E0043L
 
 //
 // MessageId: MQ_ERROR_INVALID_OWNER
@@ -1412,7 +1290,7 @@ typedef struct tagSEQUENCE_INFO
 //  The object owner is invalid (for example, MQCreateQueue failed because the QM
 //  object is invalid).
 //
-#define MQ_ERROR_INVALID_OWNER           ((HRESULT)0xC00E0044L)
+#define MQ_ERROR_INVALID_OWNER           0xC00E0044L
 
 //
 // MessageId: MQ_ERROR_UNSUPPORTED_ACCESS_MODE
@@ -1421,7 +1299,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The access mode specified is unsupported.
 //
-#define MQ_ERROR_UNSUPPORTED_ACCESS_MODE ((HRESULT)0xC00E0045L)
+#define MQ_ERROR_UNSUPPORTED_ACCESS_MODE 0xC00E0045L
 
 //
 // MessageId: MQ_ERROR_RESULT_BUFFER_TOO_SMALL
@@ -1430,7 +1308,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The result buffer specified is too small.
 //
-#define MQ_ERROR_RESULT_BUFFER_TOO_SMALL ((HRESULT)0xC00E0046L)
+#define MQ_ERROR_RESULT_BUFFER_TOO_SMALL 0xC00E0046L
 
 //
 // MessageId: MQ_ERROR_DELETE_CN_IN_USE
@@ -1439,7 +1317,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Obsolete, kept for backward compatibility
 //
-#define MQ_ERROR_DELETE_CN_IN_USE        ((HRESULT)0xC00E0048L)
+#define MQ_ERROR_DELETE_CN_IN_USE        0xC00E0048L
 
 //
 // MessageId: MQ_ERROR_NO_RESPONSE_FROM_OBJECT_SERVER
@@ -1448,7 +1326,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  There was no response from the object owner.
 //
-#define MQ_ERROR_NO_RESPONSE_FROM_OBJECT_SERVER ((HRESULT)0xC00E0049L)
+#define MQ_ERROR_NO_RESPONSE_FROM_OBJECT_SERVER 0xC00E0049L
 
 //
 // MessageId: MQ_ERROR_OBJECT_SERVER_NOT_AVAILABLE
@@ -1457,7 +1335,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The object owner is not available.
 //
-#define MQ_ERROR_OBJECT_SERVER_NOT_AVAILABLE ((HRESULT)0xC00E004AL)
+#define MQ_ERROR_OBJECT_SERVER_NOT_AVAILABLE 0xC00E004AL
 
 //
 // MessageId: MQ_ERROR_QUEUE_NOT_AVAILABLE
@@ -1466,7 +1344,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  An error occurred while reading from a queue located on a remote computer.
 //
-#define MQ_ERROR_QUEUE_NOT_AVAILABLE     ((HRESULT)0xC00E004BL)
+#define MQ_ERROR_QUEUE_NOT_AVAILABLE     0xC00E004BL
 
 //
 // MessageId: MQ_ERROR_DTC_CONNECT
@@ -1475,7 +1353,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A connection cannot be established with the Distributed Transaction Coordinator.
 //
-#define MQ_ERROR_DTC_CONNECT             ((HRESULT)0xC00E004CL)
+#define MQ_ERROR_DTC_CONNECT             0xC00E004CL
 
 //
 // MessageId: MQ_ERROR_TRANSACTION_IMPORT
@@ -1484,7 +1362,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The transaction specified cannot be imported.
 //
-#define MQ_ERROR_TRANSACTION_IMPORT      ((HRESULT)0xC00E004EL)
+#define MQ_ERROR_TRANSACTION_IMPORT      0xC00E004EL
 
 //
 // MessageId: MQ_ERROR_TRANSACTION_USAGE
@@ -1493,7 +1371,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  An attempted action cannot be performed within a transaction.
 //
-#define MQ_ERROR_TRANSACTION_USAGE       ((HRESULT)0xC00E0050L)
+#define MQ_ERROR_TRANSACTION_USAGE       0xC00E0050L
 
 //
 // MessageId: MQ_ERROR_TRANSACTION_SEQUENCE
@@ -1502,7 +1380,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The transaction's operation sequence is incorrect.
 //
-#define MQ_ERROR_TRANSACTION_SEQUENCE    ((HRESULT)0xC00E0051L)
+#define MQ_ERROR_TRANSACTION_SEQUENCE    0xC00E0051L
 
 //
 // MessageId: MQ_ERROR_MISSING_CONNECTOR_TYPE
@@ -1511,7 +1389,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The connector type message property is not specified. This property is required for sending an acknowledgment message or a secure message.
 //
-#define MQ_ERROR_MISSING_CONNECTOR_TYPE  ((HRESULT)0xC00E0055L)
+#define MQ_ERROR_MISSING_CONNECTOR_TYPE  0xC00E0055L
 
 //
 // MessageId: MQ_ERROR_STALE_HANDLE
@@ -1520,7 +1398,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The Message Queuing service was restarted. Any open queue handles should be closed.
 //
-#define MQ_ERROR_STALE_HANDLE            ((HRESULT)0xC00E0056L)
+#define MQ_ERROR_STALE_HANDLE            0xC00E0056L
 
 //
 // MessageId: MQ_ERROR_TRANSACTION_ENLIST
@@ -1529,7 +1407,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The transaction specified cannot be enlisted.
 //
-#define MQ_ERROR_TRANSACTION_ENLIST      ((HRESULT)0xC00E0058L)
+#define MQ_ERROR_TRANSACTION_ENLIST      0xC00E0058L
 
 //
 // MessageId: MQ_ERROR_QUEUE_DELETED
@@ -1539,7 +1417,7 @@ typedef struct tagSEQUENCE_INFO
 //  The queue was deleted. Messages cannot be received anymore using this
 //  queue handle. The handle should be closed.
 //
-#define MQ_ERROR_QUEUE_DELETED           ((HRESULT)0xC00E005AL)
+#define MQ_ERROR_QUEUE_DELETED           0xC00E005AL
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_CONTEXT
@@ -1548,7 +1426,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The context parameter for MQLocateBegin is invalid.
 //
-#define MQ_ERROR_ILLEGAL_CONTEXT         ((HRESULT)0xC00E005BL)
+#define MQ_ERROR_ILLEGAL_CONTEXT         0xC00E005BL
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_SORT_PROPID
@@ -1557,7 +1435,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  An invalid property identifier is specified in MQSORTSET.
 //
-#define MQ_ERROR_ILLEGAL_SORT_PROPID     ((HRESULT)0xC00E005CL)
+#define MQ_ERROR_ILLEGAL_SORT_PROPID     0xC00E005CL
 
 //
 // MessageId: MQ_ERROR_LABEL_TOO_LONG
@@ -1566,7 +1444,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The message label is too long. Its length should be less than or equal to MQ_MAX_MSG_LABEL_LEN.
 //
-#define MQ_ERROR_LABEL_TOO_LONG          ((HRESULT)0xC00E005DL)
+#define MQ_ERROR_LABEL_TOO_LONG          0xC00E005DL
 
 //
 // MessageId: MQ_ERROR_LABEL_BUFFER_TOO_SMALL
@@ -1575,7 +1453,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The label buffer supplied to the API is too small.
 //
-#define MQ_ERROR_LABEL_BUFFER_TOO_SMALL  ((HRESULT)0xC00E005EL)
+#define MQ_ERROR_LABEL_BUFFER_TOO_SMALL  0xC00E005EL
 
 //
 // MessageId: MQ_ERROR_MQIS_SERVER_EMPTY
@@ -1584,7 +1462,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Obsolete, kept for backward compatibility
 //
-#define MQ_ERROR_MQIS_SERVER_EMPTY       ((HRESULT)0xC00E005FL)
+#define MQ_ERROR_MQIS_SERVER_EMPTY       0xC00E005FL
 
 //
 // MessageId: MQ_ERROR_MQIS_READONLY_MODE
@@ -1593,7 +1471,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Obsolete, kept for backward compatibility
 //
-#define MQ_ERROR_MQIS_READONLY_MODE      ((HRESULT)0xC00E0060L)
+#define MQ_ERROR_MQIS_READONLY_MODE      0xC00E0060L
 
 //
 // MessageId: MQ_ERROR_SYMM_KEY_BUFFER_TOO_SMALL
@@ -1602,7 +1480,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The buffer passed for the symmetric key is too small.
 //
-#define MQ_ERROR_SYMM_KEY_BUFFER_TOO_SMALL ((HRESULT)0xC00E0061L)
+#define MQ_ERROR_SYMM_KEY_BUFFER_TOO_SMALL 0xC00E0061L
 
 //
 // MessageId: MQ_ERROR_SIGNATURE_BUFFER_TOO_SMALL
@@ -1611,7 +1489,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The buffer passed for the signature property is too small.
 //
-#define MQ_ERROR_SIGNATURE_BUFFER_TOO_SMALL ((HRESULT)0xC00E0062L)
+#define MQ_ERROR_SIGNATURE_BUFFER_TOO_SMALL 0xC00E0062L
 
 //
 // MessageId: MQ_ERROR_PROV_NAME_BUFFER_TOO_SMALL
@@ -1620,7 +1498,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The buffer passed for the provider name property is too small.
 //
-#define MQ_ERROR_PROV_NAME_BUFFER_TOO_SMALL ((HRESULT)0xC00E0063L)
+#define MQ_ERROR_PROV_NAME_BUFFER_TOO_SMALL 0xC00E0063L
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_OPERATION
@@ -1629,7 +1507,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The operation is invalid for a foreign message queuing system.
 //
-#define MQ_ERROR_ILLEGAL_OPERATION       ((HRESULT)0xC00E0064L)
+#define MQ_ERROR_ILLEGAL_OPERATION       0xC00E0064L
 
 //
 // MessageId: MQ_ERROR_WRITE_NOT_ALLOWED
@@ -1638,16 +1516,16 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Obsolete; another MQIS server is being installed. Write operations to the database are not allowed at this stage.
 //
-#define MQ_ERROR_WRITE_NOT_ALLOWED       ((HRESULT)0xC00E0065L)
+#define MQ_ERROR_WRITE_NOT_ALLOWED       0xC00E0065L
 
 //
 // MessageId: MQ_ERROR_WKS_CANT_SERVE_CLIENT
 //
 // MessageText:
 //
-//  Independent clients cannot support dependent clients. A Message Queuing server is required.
+//  Independent clients cannot support dependent clients.
 //
-#define MQ_ERROR_WKS_CANT_SERVE_CLIENT   ((HRESULT)0xC00E0066L)
+#define MQ_ERROR_WKS_CANT_SERVE_CLIENT   0xC00E0066L
 
 //
 // MessageId: MQ_ERROR_DEPEND_WKS_LICENSE_OVERFLOW
@@ -1656,7 +1534,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The number of dependent clients served by the Message Queuing server reached its upper limit.
 //
-#define MQ_ERROR_DEPEND_WKS_LICENSE_OVERFLOW ((HRESULT)0xC00E0067L)
+#define MQ_ERROR_DEPEND_WKS_LICENSE_OVERFLOW 0xC00E0067L
 
 //
 // MessageId: MQ_CORRUPTED_QUEUE_WAS_DELETED
@@ -1665,7 +1543,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The file %1 for the queue %2 in the Lqs folder was deleted because it was corrupted.
 //
-#define MQ_CORRUPTED_QUEUE_WAS_DELETED   ((HRESULT)0xC00E0068L)
+#define MQ_CORRUPTED_QUEUE_WAS_DELETED   0xC00E0068L
 
 //
 // MessageId: MQ_ERROR_REMOTE_MACHINE_NOT_AVAILABLE
@@ -1674,7 +1552,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The remote computer is not available.
 //
-#define MQ_ERROR_REMOTE_MACHINE_NOT_AVAILABLE ((HRESULT)0xC00E0069L)
+#define MQ_ERROR_REMOTE_MACHINE_NOT_AVAILABLE 0xC00E0069L
 
 //
 // MessageId: MQ_ERROR_UNSUPPORTED_OPERATION
@@ -1683,7 +1561,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  This operation is not supported for Message Queuing installed in workgroup mode.
 //
-#define MQ_ERROR_UNSUPPORTED_OPERATION   ((HRESULT)0xC00E006AL)
+#define MQ_ERROR_UNSUPPORTED_OPERATION   0xC00E006AL
 
 //
 // MessageId: MQ_ERROR_ENCRYPTION_PROVIDER_NOT_SUPPORTED
@@ -1692,7 +1570,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The cryptographic service provider %1 is not supported by Message Queuing.
 //
-#define MQ_ERROR_ENCRYPTION_PROVIDER_NOT_SUPPORTED ((HRESULT)0xC00E006BL)
+#define MQ_ERROR_ENCRYPTION_PROVIDER_NOT_SUPPORTED 0xC00E006BL
 
 //
 // MessageId: MQ_ERROR_CANNOT_SET_CRYPTO_SEC_DESCR
@@ -1701,7 +1579,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The security descriptors for the cryptographic keys cannot be set.
 //
-#define MQ_ERROR_CANNOT_SET_CRYPTO_SEC_DESCR ((HRESULT)0xC00E006CL)
+#define MQ_ERROR_CANNOT_SET_CRYPTO_SEC_DESCR 0xC00E006CL
 
 //
 // MessageId: MQ_ERROR_CERTIFICATE_NOT_PROVIDED
@@ -1710,7 +1588,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A user attempted to send an authenticated message without a certificate.
 //
-#define MQ_ERROR_CERTIFICATE_NOT_PROVIDED ((HRESULT)0xC00E006DL)
+#define MQ_ERROR_CERTIFICATE_NOT_PROVIDED 0xC00E006DL
 
 //
 // MessageId: MQ_ERROR_Q_DNS_PROPERTY_NOT_SUPPORTED
@@ -1719,7 +1597,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The column PROPID_Q_PATHNAME_DNS is not supported for the MQLocateBegin API.
 //
-#define MQ_ERROR_Q_DNS_PROPERTY_NOT_SUPPORTED ((HRESULT)0xC00E006EL)
+#define MQ_ERROR_Q_DNS_PROPERTY_NOT_SUPPORTED 0xC00E006EL
 
 //
 // MessageId: MQ_ERROR_CANNOT_CREATE_CERT_STORE
@@ -1728,7 +1606,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A certificate store cannot be created for the internal certificate.
 //
-#define MQ_ERROR_CANNOT_CREATE_CERT_STORE ((HRESULT)0xC00E006FL)
+#define MQ_ERROR_CANNOT_CREATE_CERT_STORE 0xC00E006FL
 
 //
 // MessageId: MQ_ERROR_CANNOT_OPEN_CERT_STORE
@@ -1737,7 +1615,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The certificate store for the internal certificate cannot be opened.
 //
-#define MQ_ERROR_CANNOT_OPEN_CERT_STORE  ((HRESULT)0xC00E0070L)
+#define MQ_ERROR_CANNOT_OPEN_CERT_STORE  0xC00E0070L
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_ENTERPRISE_OPERATION
@@ -1746,7 +1624,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  This operation is invalid for an MsmqServices object.
 //
-#define MQ_ERROR_ILLEGAL_ENTERPRISE_OPERATION ((HRESULT)0xC00E0071L)
+#define MQ_ERROR_ILLEGAL_ENTERPRISE_OPERATION 0xC00E0071L
 
 //
 // MessageId: MQ_ERROR_CANNOT_GRANT_ADD_GUID
@@ -1755,7 +1633,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The Add GUID permission cannot be granted to the current user.
 //
-#define MQ_ERROR_CANNOT_GRANT_ADD_GUID   ((HRESULT)0xC00E0072L)
+#define MQ_ERROR_CANNOT_GRANT_ADD_GUID   0xC00E0072L
 
 //
 // MessageId: MQ_ERROR_CANNOT_LOAD_MSMQOCM
@@ -1764,7 +1642,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Obsolete: The dynamic-link library Msmqocm.dll cannot be loaded.
 //
-#define MQ_ERROR_CANNOT_LOAD_MSMQOCM     ((HRESULT)0xC00E0073L)
+#define MQ_ERROR_CANNOT_LOAD_MSMQOCM     0xC00E0073L
 
 //
 // MessageId: MQ_ERROR_NO_ENTRY_POINT_MSMQOCM
@@ -1773,7 +1651,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  An entry point cannot be located in Msmqocm.dll.
 //
-#define MQ_ERROR_NO_ENTRY_POINT_MSMQOCM  ((HRESULT)0xC00E0074L)
+#define MQ_ERROR_NO_ENTRY_POINT_MSMQOCM  0xC00E0074L
 
 //
 // MessageId: MQ_ERROR_NO_MSMQ_SERVERS_ON_DC
@@ -1782,7 +1660,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Message Queuing servers cannot be found on domain controllers.
 //
-#define MQ_ERROR_NO_MSMQ_SERVERS_ON_DC   ((HRESULT)0xC00E0075L)
+#define MQ_ERROR_NO_MSMQ_SERVERS_ON_DC   0xC00E0075L
 
 //
 // MessageId: MQ_ERROR_CANNOT_JOIN_DOMAIN
@@ -1791,7 +1669,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The computer joined the domain, but Message Queuing will continue to run in workgroup mode because it failed to register itself in Active Directory.
 //
-#define MQ_ERROR_CANNOT_JOIN_DOMAIN      ((HRESULT)0xC00E0076L)
+#define MQ_ERROR_CANNOT_JOIN_DOMAIN      0xC00E0076L
 
 //
 // MessageId: MQ_ERROR_CANNOT_CREATE_ON_GC
@@ -1800,16 +1678,16 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The object was not created on the Global Catalog server specified.
 //
-#define MQ_ERROR_CANNOT_CREATE_ON_GC     ((HRESULT)0xC00E0077L)
+#define MQ_ERROR_CANNOT_CREATE_ON_GC     0xC00E0077L
 
 //
 // MessageId: MQ_ERROR_GUID_NOT_MATCHING
 //
 // MessageText:
 //
-//  Obsolete, kept for backward compatibility
+//  Obsolete, kept for backward compatibility 
 //
-#define MQ_ERROR_GUID_NOT_MATCHING       ((HRESULT)0xC00E0078L)
+#define MQ_ERROR_GUID_NOT_MATCHING       0xC00E0078L
 
 //
 // MessageId: MQ_ERROR_PUBLIC_KEY_NOT_FOUND
@@ -1818,7 +1696,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The public key for the computer %1 cannot be found.
 //
-#define MQ_ERROR_PUBLIC_KEY_NOT_FOUND    ((HRESULT)0xC00E0079L)
+#define MQ_ERROR_PUBLIC_KEY_NOT_FOUND    0xC00E0079L
 
 //
 // MessageId: MQ_ERROR_PUBLIC_KEY_DOES_NOT_EXIST
@@ -1827,7 +1705,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The public key for the computer %1 does not exist.
 //
-#define MQ_ERROR_PUBLIC_KEY_DOES_NOT_EXIST ((HRESULT)0xC00E007AL)
+#define MQ_ERROR_PUBLIC_KEY_DOES_NOT_EXIST 0xC00E007AL
 
 //
 // MessageId: MQ_ERROR_ILLEGAL_MQPRIVATEPROPS
@@ -1836,7 +1714,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The parameters in MQPRIVATEPROPS are invalid. Either the pointer to the MQPRIVATEPROPS structure has a null value, or no properties are specified in it.
 //
-#define MQ_ERROR_ILLEGAL_MQPRIVATEPROPS  ((HRESULT)0xC00E007BL)
+#define MQ_ERROR_ILLEGAL_MQPRIVATEPROPS  0xC00E007BL
 
 //
 // MessageId: MQ_ERROR_NO_GC_IN_DOMAIN
@@ -1845,7 +1723,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Global Catalog servers cannot be found in the domain specified.
 //
-#define MQ_ERROR_NO_GC_IN_DOMAIN         ((HRESULT)0xC00E007CL)
+#define MQ_ERROR_NO_GC_IN_DOMAIN         0xC00E007CL
 
 //
 // MessageId: MQ_ERROR_NO_MSMQ_SERVERS_ON_GC
@@ -1854,16 +1732,16 @@ typedef struct tagSEQUENCE_INFO
 //
 //  No Message Queuing servers were found on Global Catalog servers.
 //
-#define MQ_ERROR_NO_MSMQ_SERVERS_ON_GC   ((HRESULT)0xC00E007DL)
+#define MQ_ERROR_NO_MSMQ_SERVERS_ON_GC   0xC00E007DL
 
 //
 // MessageId: MQ_ERROR_CANNOT_GET_DN
 //
 // MessageText:
 //
-//  Obsolete, kept for backward compatibility
+//  Obsolete, kept for backward compatibility 
 //
-#define MQ_ERROR_CANNOT_GET_DN           ((HRESULT)0xC00E007EL)
+#define MQ_ERROR_CANNOT_GET_DN           0xC00E007EL
 
 //
 // MessageId: MQ_ERROR_CANNOT_HASH_DATA_EX
@@ -1872,7 +1750,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Data for an authenticated message cannot be hashed.
 //
-#define MQ_ERROR_CANNOT_HASH_DATA_EX     ((HRESULT)0xC00E007FL)
+#define MQ_ERROR_CANNOT_HASH_DATA_EX     0xC00E007FL
 
 //
 // MessageId: MQ_ERROR_CANNOT_SIGN_DATA_EX
@@ -1881,7 +1759,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Data cannot be signed before sending an authenticated message.
 //
-#define MQ_ERROR_CANNOT_SIGN_DATA_EX     ((HRESULT)0xC00E0080L)
+#define MQ_ERROR_CANNOT_SIGN_DATA_EX     0xC00E0080L
 
 //
 // MessageId: MQ_ERROR_CANNOT_CREATE_HASH_EX
@@ -1890,7 +1768,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A hash object cannot be created for an authenticated message.
 //
-#define MQ_ERROR_CANNOT_CREATE_HASH_EX   ((HRESULT)0xC00E0081L)
+#define MQ_ERROR_CANNOT_CREATE_HASH_EX   0xC00E0081L
 
 //
 // MessageId: MQ_ERROR_FAIL_VERIFY_SIGNATURE_EX
@@ -1899,7 +1777,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The signature of the message received is not valid.
 //
-#define MQ_ERROR_FAIL_VERIFY_SIGNATURE_EX ((HRESULT)0xC00E0082L)
+#define MQ_ERROR_FAIL_VERIFY_SIGNATURE_EX 0xC00E0082L
 
 //
 // MessageId: MQ_ERROR_CANNOT_DELETE_PSC_OBJECTS
@@ -1908,7 +1786,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The object that will be deleted is owned by a primary site controller. The operation cannot be performed.
 //
-#define MQ_ERROR_CANNOT_DELETE_PSC_OBJECTS ((HRESULT)0xC00E0083L)
+#define MQ_ERROR_CANNOT_DELETE_PSC_OBJECTS 0xC00E0083L
 
 //
 // MessageId: MQ_ERROR_NO_MQUSER_OU
@@ -1917,7 +1795,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  There is no MSMQ Users organizational unit object in Active Directory for the domain. Please create one manually.
 //
-#define MQ_ERROR_NO_MQUSER_OU            ((HRESULT)0xC00E0084L)
+#define MQ_ERROR_NO_MQUSER_OU            0xC00E0084L
 
 //
 // MessageId: MQ_ERROR_CANNOT_LOAD_MQAD
@@ -1926,16 +1804,16 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The dynamic-link library Mqad.dll cannot be loaded.
 //
-#define MQ_ERROR_CANNOT_LOAD_MQAD        ((HRESULT)0xC00E0085L)
+#define MQ_ERROR_CANNOT_LOAD_MQAD        0xC00E0085L
 
 //
 // MessageId: MQ_ERROR_CANNOT_LOAD_MQDSSRV
 //
 // MessageText:
 //
-//  Obsolete, kept for backward compatibility
+//  Obsolete, kept for backward compatibility 
 //
-#define MQ_ERROR_CANNOT_LOAD_MQDSSRV     ((HRESULT)0xC00E0086L)
+#define MQ_ERROR_CANNOT_LOAD_MQDSSRV     0xC00E0086L
 
 //
 // MessageId: MQ_ERROR_PROPERTIES_CONFLICT
@@ -1945,7 +1823,7 @@ typedef struct tagSEQUENCE_INFO
 //  Two or more of the properties passed cannot co-exist.
 //  For example, you cannot set both PROPID_M_RESP_QUEUE and PROPID_M_RESP_FORMAT_NAME when sending a message.
 //
-#define MQ_ERROR_PROPERTIES_CONFLICT     ((HRESULT)0xC00E0087L)
+#define MQ_ERROR_PROPERTIES_CONFLICT     0xC00E0087L
 
 //
 // MessageId: MQ_ERROR_MESSAGE_NOT_FOUND
@@ -1954,7 +1832,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The message does not exist or was removed from the queue.
 //
-#define MQ_ERROR_MESSAGE_NOT_FOUND       ((HRESULT)0xC00E0088L)
+#define MQ_ERROR_MESSAGE_NOT_FOUND       0xC00E0088L
 
 //
 // MessageId: MQ_ERROR_CANT_RESOLVE_SITES
@@ -1963,7 +1841,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The sites where the computer resides cannot be resolved. Check that the subnets in your network are configured correctly in Active Directory and that each site is configured with the appropriate subnet.
 //
-#define MQ_ERROR_CANT_RESOLVE_SITES      ((HRESULT)0xC00E0089L)
+#define MQ_ERROR_CANT_RESOLVE_SITES      0xC00E0089L
 
 //
 // MessageId: MQ_ERROR_NOT_SUPPORTED_BY_DEPENDENT_CLIENTS
@@ -1972,7 +1850,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  This operation is not supported by dependent clients.
 //
-#define MQ_ERROR_NOT_SUPPORTED_BY_DEPENDENT_CLIENTS ((HRESULT)0xC00E008AL)
+#define MQ_ERROR_NOT_SUPPORTED_BY_DEPENDENT_CLIENTS 0xC00E008AL
 
 //
 // MessageId: MQ_ERROR_OPERATION_NOT_SUPPORTED_BY_REMOTE_COMPUTER
@@ -1981,7 +1859,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  This operation is not supported by the remote Message Queuing service. For example, MQReceiveMessageByLookupId is not supported by MSMQ 1.0/2.0.
 //
-#define MQ_ERROR_OPERATION_NOT_SUPPORTED_BY_REMOTE_COMPUTER ((HRESULT)0xC00E008BL)
+#define MQ_ERROR_OPERATION_NOT_SUPPORTED_BY_REMOTE_COMPUTER 0xC00E008BL
 
 //
 // MessageId: MQ_ERROR_NOT_A_CORRECT_OBJECT_CLASS
@@ -1990,7 +1868,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The object whose properties are being retrieved from Active Directory does not belong to the class requested.
 //
-#define MQ_ERROR_NOT_A_CORRECT_OBJECT_CLASS ((HRESULT)0xC00E008CL)
+#define MQ_ERROR_NOT_A_CORRECT_OBJECT_CLASS 0xC00E008CL
 
 //
 // MessageId: MQ_ERROR_MULTI_SORT_KEYS
@@ -1999,16 +1877,16 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The value of cCol in MQSORTSET cannot be greater than 1. Active Directory supports only a single sort key.
 //
-#define MQ_ERROR_MULTI_SORT_KEYS         ((HRESULT)0xC00E008DL)
+#define MQ_ERROR_MULTI_SORT_KEYS         0xC00E008DL
 
 //
 // MessageId: MQ_ERROR_GC_NEEDED
 //
 // MessageText:
 //
-//  An MSMQ Configuration (msmq) object with the GUID supplied cannot be created. By default, a Windows Server 2003 forest does not support adding an object with a supplied GUID.
+//  An MSMQ Configuration (msmq) object with the GUID supplied cannot be created. In order to support the creation of an MSMQ Configuration object with a given GUID, Message Queuing Downlevel Client Support must be installed on a domain controller that is configured as a Global Catalog (GC) server.
 //
-#define MQ_ERROR_GC_NEEDED               ((HRESULT)0xC00E008EL)
+#define MQ_ERROR_GC_NEEDED               0xC00E008EL
 
 //
 // MessageId: MQ_ERROR_DS_BIND_ROOT_FOREST
@@ -2017,7 +1895,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  Binding to the forest root failed. This error usually indicates a problem in the DNS configuration.
 //
-#define MQ_ERROR_DS_BIND_ROOT_FOREST     ((HRESULT)0xC00E008FL)
+#define MQ_ERROR_DS_BIND_ROOT_FOREST     0xC00E008FL
 
 //
 // MessageId: MQ_ERROR_DS_LOCAL_USER
@@ -2026,7 +1904,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  A local user is authenticated as an anonymous user and cannot access Active Directory. You need to log on as a domain user to access Active Directory.
 //
-#define MQ_ERROR_DS_LOCAL_USER           ((HRESULT)0xC00E0090L)
+#define MQ_ERROR_DS_LOCAL_USER           0xC00E0090L
 
 //
 // MessageId: MQ_ERROR_Q_ADS_PROPERTY_NOT_SUPPORTED
@@ -2035,7 +1913,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The column PROPID_Q_ADS_PATH is not supported for the MQLocateBegin API.
 //
-#define MQ_ERROR_Q_ADS_PROPERTY_NOT_SUPPORTED ((HRESULT)0xC00E0091L)
+#define MQ_ERROR_Q_ADS_PROPERTY_NOT_SUPPORTED 0xC00E0091L
 
 //
 // MessageId: MQ_ERROR_BAD_XML_FORMAT
@@ -2044,7 +1922,7 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The given property is not a valid XML document.
 //
-#define MQ_ERROR_BAD_XML_FORMAT          ((HRESULT)0xC00E0092L)
+#define MQ_ERROR_BAD_XML_FORMAT          0xC00E0092L
 
 //
 // MessageId: MQ_ERROR_UNSUPPORTED_CLASS
@@ -2053,34 +1931,103 @@ typedef struct tagSEQUENCE_INFO
 //
 //  The Active Directory object specified is not an instance of a supported class.
 //
-#define MQ_ERROR_UNSUPPORTED_CLASS       ((HRESULT)0xC00E0093L)
+#define MQ_ERROR_UNSUPPORTED_CLASS       0xC00E0093L
 
 //
 // MessageId: MQ_ERROR_UNINITIALIZED_OBJECT
 //
 // MessageText:
 //
-//  The MSMQManagement object must be initialized before it is used.
+//  The MSMQQueueState object must be initialized before it is used. 
 //
-#define MQ_ERROR_UNINITIALIZED_OBJECT    ((HRESULT)0xC00E0094L)
+#define MQ_ERROR_UNINITIALIZED_OBJECT    0xC00E0094L
 
 //
-// MessageId: MQ_ERROR_CANNOT_CREATE_PSC_OBJECTS
+// Informational
+//
+//
+// MessageId: MQ_INFORMATION_PROPERTY
 //
 // MessageText:
 //
-//  The object that will be created should be owned by a primary site controller. The operation cannot be performed.
+//  One or more of the properties passed resulted in a warning, but the function completed.
 //
-#define MQ_ERROR_CANNOT_CREATE_PSC_OBJECTS ((HRESULT)0xC00E0095L)
+#define MQ_INFORMATION_PROPERTY          0x400E0001L
 
 //
-// MessageId: MQ_ERROR_CANNOT_UPDATE_PSC_OBJECTS
+// MessageId: MQ_INFORMATION_ILLEGAL_PROPERTY
 //
 // MessageText:
 //
-//  The object that will be updated is owned by a primary site controller. The operation cannot be performed.
+//  The property ID is invalid.
 //
-#define MQ_ERROR_CANNOT_UPDATE_PSC_OBJECTS ((HRESULT)0xC00E0096L)
+#define MQ_INFORMATION_ILLEGAL_PROPERTY  0x400E0002L
+
+//
+// MessageId: MQ_INFORMATION_PROPERTY_IGNORED
+//
+// MessageText:
+//
+//  The property specified was ignored for this operation (this occurs,
+//  for example, when PROPID_M_SENDERID is passed to SendMessage()).
+//
+#define MQ_INFORMATION_PROPERTY_IGNORED  0x400E0003L
+
+//
+// MessageId: MQ_INFORMATION_UNSUPPORTED_PROPERTY
+//
+// MessageText:
+//
+//  The property specified is not supported and was ignored for this operation.
+//
+#define MQ_INFORMATION_UNSUPPORTED_PROPERTY 0x400E0004L
+
+//
+// MessageId: MQ_INFORMATION_DUPLICATE_PROPERTY
+//
+// MessageText:
+//
+//  The property specified is already in the property identifier array.
+//  The duplicate was ignored for this operation.
+//
+#define MQ_INFORMATION_DUPLICATE_PROPERTY 0x400E0005L
+
+//
+// MessageId: MQ_INFORMATION_OPERATION_PENDING
+//
+// MessageText:
+//
+//  An asynchronous operation is currently pending.
+//
+#define MQ_INFORMATION_OPERATION_PENDING 0x400E0006L
+
+//
+// MessageId: MQ_INFORMATION_FORMATNAME_BUFFER_TOO_SMALL
+//
+// MessageText:
+//
+//  The format name buffer supplied to MQCreateQueue was too small
+//  to hold the format name, however the queue was created successfully.
+//
+#define MQ_INFORMATION_FORMATNAME_BUFFER_TOO_SMALL 0x400E0009L
+
+//
+// MessageId: MQ_INFORMATION_INTERNAL_USER_CERT_EXIST
+//
+// MessageText:
+//
+//  An internal Message Queuing certificate already exists for this user.
+//
+#define MQ_INFORMATION_INTERNAL_USER_CERT_EXIST 0x400E000AL
+
+//
+// MessageId: MQ_INFORMATION_OWNER_IGNORED
+//
+// MessageText:
+//
+//  The queue owner was not set during the processing of this call to MQSetQueueSecurity().
+//
+#define MQ_INFORMATION_OWNER_IGNORED     0x400E000BL
 
 
 //+-----------------------------------------
@@ -2230,8 +2177,6 @@ MQReceiveMessage(
     IN ITransaction* pTransaction
     );
 
-#if(_WIN32_WINNT >= 0x0501)
-
 HRESULT
 APIENTRY
 MQReceiveMessageByLookupId(
@@ -2243,8 +2188,6 @@ MQReceiveMessageByLookupId(
     IN PMQRECEIVECALLBACK fnReceiveCallback,
     IN ITransaction *pTransaction
     );
-
-#endif
 
 HRESULT
 APIENTRY
@@ -2321,8 +2264,6 @@ MQInstanceToFormatName(
     IN OUT LPDWORD lpdwFormatNameLength
     );
 
-#if(_WIN32_WINNT >= 0x0501)
-
 HRESULT
 APIENTRY
 MQADsPathToFormatName(
@@ -2331,13 +2272,12 @@ MQADsPathToFormatName(
     IN OUT LPDWORD lpdwFormatNameLength
     );
 
-#endif
-
 VOID
 APIENTRY
 MQFreeMemory(
     IN PVOID pvMemory
     );
+
 
 HRESULT
 APIENTRY

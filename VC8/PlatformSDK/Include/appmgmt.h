@@ -124,22 +124,13 @@ typedef struct _APPCATEGORYINFOLIST
 
 DWORD WINAPI
 InstallApplication(
-#if !defined(__midl)
-    __in 
-#endif
-	PINSTALLDATA pInstallInfo
+    PINSTALLDATA pInstallInfo
     );
 
 DWORD WINAPI
 UninstallApplication(
-#if !defined(__midl)
-    __in 
-#endif
     WCHAR *     ProductCode,
-#if !defined(__midl)
-    __in 
-#endif
-	DWORD       dwStatus
+    DWORD       dwStatus
     );
 
 DWORD WINAPI
@@ -151,70 +142,31 @@ CommandLineFromMsiDescriptor(
 
 DWORD WINAPI
 GetManagedApplications(
-#if !defined(__midl)
-    __in 
-#endif
     GUID *               pCategory,
-#if !defined(__midl)
-    __in 
-#endif
     DWORD                dwQueryFlags,
-#if !defined(__midl)
-    __in 
-#endif
-	DWORD                dwInfoLevel,
-#if !defined(__midl)
-    __out 
-#endif
-	LPDWORD              pdwApps,
-#if !defined(__midl)
-    __out 
-#endif
-	PMANAGEDAPPLICATION* prgManagedApps
+    DWORD                dwInfoLevel,
+    LPDWORD              pdwApps,
+    PMANAGEDAPPLICATION* prgManagedApps
     );
 
 DWORD WINAPI
 GetLocalManagedApplications(
-#if !defined(__midl)
-    __in 
-#endif
-	BOOL                        bUserApps,
-#if !defined(__midl)
-    __out 
-#endif
-	LPDWORD                     pdwApps,
-#if !defined(__midl)
-    __out 
-#endif
-	PLOCALMANAGEDAPPLICATION*   prgLocalApps
+    BOOL                        bUserApps,
+    LPDWORD                     pdwApps,
+    PLOCALMANAGEDAPPLICATION*   prgLocalApps
     );
 
 void WINAPI
 GetLocalManagedApplicationData(
-#if !defined(__midl)
-    __in 
-#endif
-	WCHAR *             ProductCode,
-#if !defined(__midl)
-    __out 
-#endif
-	LPWSTR *            DisplayName,
-#if !defined(__midl)
-    __out 
-#endif
-	LPWSTR *            SupportUrl
+    WCHAR *             ProductCode,
+    LPWSTR *            DisplayName,
+    LPWSTR *            SupportUrl
     );
 
 DWORD WINAPI
 GetManagedApplicationCategories(
-#if !defined(__midl)
-    __reserved 
-#endif
-	DWORD                dwReserved,
-#if !defined(__midl)
-    __out 
-#endif
-	APPCATEGORYINFOLIST* pAppCategory
+    DWORD                dwReserved,
+    APPCATEGORYINFOLIST* pAppCategory
     );
 
 #ifdef __cplusplus

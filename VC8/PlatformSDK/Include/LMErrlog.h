@@ -806,12 +806,7 @@ NetErrorLogWrite (
 
 #define NELOG_Joined_Domain         (ERRLOG_BASE + 160)
     /*
-    * This computer has been successfully joined to domain '%1'.
-    */
-
-#define NELOG_Joined_Workgroup      (ERRLOG_BASE + 161)
-    /*
-    * This computer has been successfully joined to workgroup '%1'.
+    * This computer has been successfully joined to %1 '%2'.
     */
 
 
@@ -879,8 +874,8 @@ NetErrorLogWrite (
 
 #define NELOG_NetlogonChangeLogCorrupt          (ERRLOG2_BASE + 5)
     /*
-     * The change log cache maintained by the Netlogon service for %1
-     * database changes is inconsistent. The Netlogon service is resetting
+     * The change log cache maintained by the Netlogon service for
+     * database changes is corrupted. The Netlogon service is resetting
      * the change log.
      */
 
@@ -967,17 +962,9 @@ NetErrorLogWrite (
 
 #define NELOG_NetlogonAuthNoDomainController    (ERRLOG2_BASE + 19)
     /*
-     * This computer was not able to set up a secure session with a domain
-     * controller in domain %1 due to the following: %n%2
-     * %nThis may lead to authentication problems. Make sure that this
-     * computer is connected to the network. If the problem persists,
-     * please contact your domain administrator.
-     *
-     * %n%nADDITIONAL INFO
-     * %nIf this computer is a domain controller for the specified domain, it
-     * sets up the secure session to the primary domain controller emulator in the specified
-     * domain. Otherwise, this computer sets up the secure session to any domain controller
-     * in the specified domain.
+     * No Domain Controller is available for domain %1 due to the following: %n%2.
+     * %nMake sure that the computer is connected to the network and try
+     * again. If the problem persists, please contact your domain administrator.
      */
 
 #define NELOG_NetlogonAuthNoTrustLsaSecret      (ERRLOG2_BASE + 20)
@@ -989,13 +976,8 @@ NetErrorLogWrite (
 #define NELOG_NetlogonAuthNoTrustSamAccount     (ERRLOG2_BASE + 21)
     /*
      * The session setup to the Windows NT or Windows 2000 Domain Controller %1 for the domain %2
-     * failed because the Domain Controller did not have an account %4
-     * needed to set up the session by this computer %3.
-     *
-     * %n%nADDITIONAL DATA
-     * %nIf this computer is a member of or a Domain Controller in the specified domain, the
-     * aforementioned account is a computer account for this computer in the specified domain.
-     * Otherwise, the account is an interdomain trust account with the specified domain.
+     * failed because the Domain Controller does not have an account
+     * for the computer %3.
      */
 
 #define NELOG_NetlogonServerAuthFailed          (ERRLOG2_BASE + 22)
@@ -1007,27 +989,9 @@ NetErrorLogWrite (
 
 #define NELOG_NetlogonServerAuthNoTrustSamAccount (ERRLOG2_BASE + 23)
     /*
-     * The session setup from computer '%1' failed because the security database
-     * does not contain a trust account '%2' referenced by the specified computer.
-     *
-     * %n%nUSER ACTION
-     *
-     * %nIf this is the first occurrence of this event for the specified computer
-     * and account, this may be a transient issue that doesn't require any action
-     * at this time. Otherwise, the following steps may be taken to resolve this problem:
-     *
-     * %n%nIf '%2' is a legitimate machine account for the computer '%1', then '%1'
-     * should be rejoined to the domain.
-     *
-     * %n%nIf '%2' is a legitimate interdomain trust account, then the trust should
-     * be recreated.
-     *
-     * %n%nOtherwise, assuming that '%2' is not a legitimate account, the following
-     * action should be taken on '%1':
-     *
-     * %n%nIf '%1' is a Domain Controller, then the trust associated with '%2' should be deleted.
-     *
-     * %n%nIf '%1' is not a Domain Controller, it should be disjoined from the domain.
+     * The session setup from the computer %1 failed because there is
+     * no trust account in the security database for this computer. The name of
+     * the account referenced in the security database is %2.
      */
 
 //
@@ -1317,63 +1281,27 @@ NetErrorLogWrite (
      */
 #define NELOG_NetlogonNoDynamicDns                (ERRLOG2_BASE + 73)
     /*
-     * The following DNS server that is authoritative for the DNS domain controller
-     * locator records of this domain controller does not support dynamic DNS updates:
-     *
-     * %n%nDNS server IP address: %1
-     * %nReturned Response Code (RCODE): %2
-     * %nReturned Status Code: %3
-     *
-     * %n%nUSER ACTION
-     *
-     * %nConfigure the DNS server to allow dynamic DNS updates or manually add the DNS
-     * records from the file '%SystemRoot%\System32\Config\Netlogon.dns' to the DNS database.
+     * The DNS server (with IP address %1) for this DC does not support dynamic DNS.
+     * Add the DNS records from the file '%SystemRoot%\System32\Config\netlogon.dns'
+     * to the DNS server serving the domain referenced in that file. The DNS server
+     * returned an error code given in the Data field.
+     */
+#define NELOG_NetlogonDynamicDnsRegisterFailure   (ERRLOG2_BASE + 74)
+    /*
+     * Registration of the DNS record '%1' failed on the DNS server (with IP address %3)
+     * with the following error: %n%2
+     * %nThe DNS server returned an error code given in the Data field.
      */
 
-#define NELOG_NetlogonDynamicDnsRegisterFailure   (ERRLOG2_BASE + 74)
-     /*
-      * The dynamic registration of the DNS record '%1' failed on the following DNS server:
-      *
-      * %n%nDNS server IP address: %3
-      * %nReturned Response Code (RCODE): %4
-      * %nReturned Status Code: %5
-      *
-      * %n%nFor computers and users to locate this domain controller, this record must be
-      * registered in DNS.
-      *
-      * %n%nUSER ACTION
-      *
-      * %nDetermine what might have caused this failure, resolve the problem, and initiate
-      * registration of the DNS records by the domain controller. To determine what might
-      * have caused this failure, run DCDiag.exe. You can find this program on the Windows
-      * Server 2003 installation CD in Support\Tools\support.cab. To learn more about 
-      * DCDiag.exe, see Help and Support Center. To initiate registration of the DNS records by 
-      * this domain controller, run 'nltest.exe /dsregdns' from the command prompt on the domain 
-      * controller or restart Net Logon service. Nltest.exe is available in the Microsoft Windows 
-      * Server Resource Kit CD. %n  Or, you can manually add this record to DNS, but it is not
-      * recommended.
-      *
-      * %n%nADDITIONAL DATA
-      * %nError Value: %2
-      */
-
 #define NELOG_NetlogonDynamicDnsDeregisterFailure (ERRLOG2_BASE + 75)
-     /*
-      * The dynamic deletion of the DNS record '%1' failed on the following DNS server:
-      *
-      * %n%nDNS server IP address: %3
-      * %nReturned Response Code (RCODE): %4
-      * %nReturned Status Code: %5
-      *
-      * %n%nUSER ACTION
-      *
-      * %nTo prevent remote computers from connecting unnecessarily to the domain controller,
-      * delete the record manually or troubleshoot the failure to dynamically delete the
-      * record. To learn more about debugging DNS, see Help and Support Center.
-      *
-      * %n%nADDITIONAL DATA
-      * %nError Value: %2
-      */
+    /*
+     * Deregistration of the DNS record '%1' failed on the DNS server (with IP address %3)
+     * with the following error: %n%2
+     * %nThe DNS server returned an error code given in the Data field.
+     * %nAlthough this is not a critical error as it doesn't prevent normal behavior of
+     * the Domain Controller, we strongly recommend to ensure the deletion of the record
+     * from DNS to prevent unnecessary connections to this computer.
+     */
 
 #define NELOG_NetlogonFailedFileCreate            (ERRLOG2_BASE + 76)
     /*
@@ -1412,24 +1340,7 @@ NetErrorLogWrite (
 
 #define NELOG_NetlogonDynamicDnsServerFailure      (ERRLOG2_BASE + 81)
     /*
-     * Dynamic registration or deletion of one or more DNS records associated with DNS
-     * domain '%1' failed.  These records are used by other computers to locate this
-     * server as a domain controller (if the specified domain is an Active Directory
-     * domain) or as an LDAP server (if the specified domain is an application partition).
-     *
-     * %n%nPossible causes of failure include:
-     *
-     * %n- TCP/IP properties of the network connections of this computer contain wrong IP address(es) of the preferred and alternate DNS servers
-     * %n- Specified preferred and alternate DNS servers are not running
-     * %n- DNS server(s) primary for the records to be registered is not running
-     * %n- Preferred or alternate DNS servers are configured with wrong root hints
-     * %n- Parent DNS zone contains incorrect delegation to the child zone authoritative for the DNS records that failed registration
-     *
-     * %n%nUSER ACTION
-     *
-     * %nFix possible misconfiguration(s) specified above and initiate registration or deletion of
-     * the DNS records by running 'nltest.exe /dsregdns' from the command prompt or by restarting
-     * Net Logon service. Nltest.exe is available in the Microsoft Windows Server Resource Kit CD.
+     * Dynamic registration or deregistration of one or more DNS records failed because no DNS servers are available.
      */
 
 #define NELOG_NetlogonDynamicDnsFailure            (ERRLOG2_BASE + 82)
@@ -1617,16 +1528,6 @@ NetErrorLogWrite (
      * The following error occurred: %n%2
      */
 
-#define NELOG_NetlogonNoDynamicDnsManual             (ERRLOG2_BASE + 106)
-    /*
-     * Dynamic DNS updates have been manually disabled on this domain controller.
-     *
-     * %n%nUSER ACTION
-     *
-     * %nReconfigure this domain controller to use dynamic DNS updates or manually add the DNS
-     * records from the file '%SystemRoot%\System32\Config\Netlogon.dns' to the DNS database.
-     */
-
 #define NELOG_NetlogonNoSiteForClients               (ERRLOG2_BASE + 107)
     /*
      * During the past %1 hours there have been %2 connections to this Domain
@@ -1650,39 +1551,6 @@ NetErrorLogWrite (
      * the default is %3 bytes.  The current maximum size is %4 bytes.  To set a
      * different maximum size, create the above registry value and set the desired
      * maximum size in bytes.
-     */
-
-#define NELOG_NetlogonDnsDeregAborted                (ERRLOG2_BASE + 108)
-    /*
-     * The deregistration of some DNS domain controller locator records was aborted
-     * at the time of this domain controller demotion because the DNS deregistrations
-     * took too long.
-     *
-     * %n%nUSER ACTION
-     *
-     * %nManually delete the DNS records listed in the file
-     * '%SystemRoot%\System32\Config\Netlogon.dns' from the DNS database.
-     */
-
-#define NELOG_NetlogonRpcPortRequestFailure          (ERRLOG2_BASE + 109)
-    /*
-     * The NetLogon service on this domain controller has been configured to use port %1
-     * for incoming RPC connections over TCP/IP from remote machines. However, the
-     * following error occurred when Netlogon attempted to register this port with the RPC
-     * endpoint mapper service: %n%2 %nThis will prevent the NetLogon service on remote
-     * machines from connecting to this domain controller over TCP/IP that may result in
-     * authentication problems.
-     *
-     * %n%nUSER ACTION
-     *
-     * %nThe specified port is configured via the Group Policy or via a registry value 'DcTcpipPort'
-     * under the 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters'
-     * registry key; the value configured through the Group Policy takes precedence. If the
-     * port specified is in error, reset it to a correct value. You can also remove this
-     * configuration for the port in which case the port will be assigned dynamically by
-     * the endpoint mapper at the time the NetLogon service on remote machines makes RPC connections
-     * to this domain controller. After the misconfiguration is corrected, restart the NetLogon
-     * service on this machine and verify that this event log no longer appears.
      */
 
 #ifdef __cplusplus

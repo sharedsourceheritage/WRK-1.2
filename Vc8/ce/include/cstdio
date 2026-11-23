@@ -1,0 +1,83 @@
+// cstdio standard header
+#pragma once
+#ifndef _CSTDIO_
+#define _CSTDIO_
+#include <yvals.h>
+
+#ifdef _STD_USING
+ #undef _STD_USING
+  #include <stdio.h>
+ #define _STD_USING
+
+#else /* _STD_USING */
+ #include <stdio.h>
+#endif /* _STD_USING */
+
+ #define _HAS_CONVENTIONAL_CLIB	1
+ #define _IOBASE	_base
+ #define _IOPTR	_ptr
+ #define _IOCNT	_cnt
+
+#ifndef RC_INVOKED
+#if defined(_WIN32_WCE)
+// On the desktop these are defined in stdio.h but not on CE
+#ifndef BUFSIZ
+#define BUFSIZ 512
+#endif
+#ifndef _IOFBF
+#define _IOFBF          0x0000
+#endif
+#ifndef _IOLBF
+#define _IOLBF          0x0040
+#endif
+#ifndef _IONBF
+#define _IONBF          0x0004
+#endif
+
+#endif /* _WIN32_WCE */
+
+ #if _GLOBAL_USING
+_STD_BEGIN
+
+#if !defined(_WIN32_WCE)
+// These are not supported on CE
+using ::freopen; using ::getc; using ::perror;
+using ::putc; 
+using ::remove; using ::rename; using ::rewind;
+using ::setbuf; using ::tmpfile; using ::tmpnam;
+#endif
+
+using ::size_t; using ::fpos_t; using ::FILE;
+using ::clearerr; using ::fclose; using ::feof;
+using ::ferror; using ::fflush; using ::fgetc;
+using ::fgetpos; using ::fgets; using ::fopen;
+using ::fprintf; using ::fputc; using ::fputs;
+using ::fread; using ::fscanf;
+using ::fseek; using ::fsetpos; using ::ftell;
+using ::fwrite; using ::getchar;
+using ::gets; 
+using ::putchar;
+using ::printf; using ::puts; 
+using ::scanf;
+using ::setvbuf; using ::sprintf;
+using ::sscanf; 
+using ::ungetc; using ::vfprintf; using ::vprintf;
+using ::vsprintf;
+_STD_END
+ #endif /* _GLOBAL_USING */
+#endif /* RC_INVOKED */
+
+#ifndef _Filet
+ #define _Filet	FILE
+#endif /* _Filet */
+
+#ifndef _FPOSOFF
+  #define _FPOSOFF(fp)  ((long)(fp))
+#endif /* _FPOSOFF */
+
+#endif /* _CSTDIO_ */
+
+/*
+ * Copyright (c) 1992-2005 by P.J. Plauger.  ALL RIGHTS RESERVED.
+ * Consult your license regarding permissions and restrictions.
+ V4.05:0009 */

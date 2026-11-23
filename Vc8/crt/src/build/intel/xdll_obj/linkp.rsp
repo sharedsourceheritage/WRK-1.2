@@ -1,0 +1,17 @@
+-base:0x10480000
+-debug
+-def:.\sampld_p.def
+-dll
+-implib:build\intel\xdll_obj\tmpp.lib
+-incremental:no
+-map
+-out:build\intel\sampld_p.dll
+-release
+-nodefaultlib:sampld_p.lib
+-nodefaultlib:libcpmtd.lib
+-pdb:build\intel\sampld_p.pdb
+build\intel\xdll_obj\cerr.obj  build\intel\xdll_obj\cin.obj  build\intel\xdll_obj\clog.obj  build\intel\xdll_obj\cout.obj  build\intel\xdll_obj\dbgsec.obj  build\intel\xdll_obj\fiopen.obj  build\intel\xdll_obj\instances.obj  build\intel\xdll_obj\iomanip.obj  build\intel\xdll_obj\iosptrs.obj  build\intel\xdll_obj\iostream.obj  build\intel\xdll_obj\locale.obj  build\intel\xdll_obj\nomemory.obj  build\intel\xdll_obj\stdhndlr.obj  build\intel\xdll_obj\string.obj  build\intel\xdll_obj\strstrea.obj  build\intel\xdll_obj\ushcerr.obj  build\intel\xdll_obj\ushcout.obj  build\intel\xdll_obj\ushcin.obj  build\intel\xdll_obj\ushclog.obj  build\intel\xdll_obj\ushiostr.obj  build\intel\xdll_obj\uncaught.obj  build\intel\xdll_obj\wcerr.obj  build\intel\xdll_obj\wcin.obj  build\intel\xdll_obj\wclog.obj  build\intel\xdll_obj\wcout.obj  build\intel\xdll_obj\wctrans.obj  build\intel\xdll_obj\wctype.obj  build\intel\xdll_obj\wiostrea.obj  build\intel\xdll_obj\xmbtowc.obj  build\intel\xdll_obj\xstrcoll.obj  build\intel\xdll_obj\xstrxfrm.obj  build\intel\xdll_obj\xwctomb.obj
+build\intel\sampld_p.res
+build\intel\xdll_obj\stdcpp.lib
+build\intel\_sampld_.lib
+kernel32.lib

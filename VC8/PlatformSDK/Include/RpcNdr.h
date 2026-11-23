@@ -565,9 +565,7 @@ typedef struct _MIDL_STUB_MESSAGE
     unsigned char       *   Memory;
 
     /* Is the Ndr routine begin called from a client side stub. */
-    unsigned char           IsClient;
-    unsigned char           Pad;
-    unsigned short          uFlags2;
+    int                     IsClient;
 
     /* Can the buffer be re-used for memory on unmarshalling. */
     int                     ReuseBuffer;
@@ -595,7 +593,7 @@ typedef struct _MIDL_STUB_MESSAGE
     unsigned char           fBufferValid;
 
     unsigned char           uFlags;
-    unsigned short          UniquePtrCount;
+    unsigned short          Unused2;
 
     /*
      * Used internally by the Ndr routines.  Holds the max counts for
@@ -664,8 +662,7 @@ typedef struct _MIDL_STUB_MESSAGE
     int                             fHasExtensions    :1;
     int                             fHasNewCorrDesc   :1;
     int                             fIsOicfServer    :1;
-    int                             fHasMemoryValidateCallback: 1;
-    int                             fUnused           :8;
+    int                             fUnused           :9;
     int                             fUnused2          :16;
 
 
@@ -2440,12 +2437,14 @@ NdrClientCall2(
     ...
     );
 
-#if defined(_M_IX86) && (_MSC_FULL_VER >= 13103270) && !defined(NDR_IMPL)
+#if _MSC_FULL_VER >= 13103270
+#ifndef NDR_IMPL
 #ifdef __cplusplus
 extern "C"
 #endif
 void * _AddressOfReturnAddress(void);
 #define NdrClientCall2(x, y, z) NdrClientCall2(x, y, (unsigned char *)_AddressOfReturnAddress()+4)
+#endif
 #endif
 
 CLIENT_CALL_RETURN RPC_VAR_ENTRY

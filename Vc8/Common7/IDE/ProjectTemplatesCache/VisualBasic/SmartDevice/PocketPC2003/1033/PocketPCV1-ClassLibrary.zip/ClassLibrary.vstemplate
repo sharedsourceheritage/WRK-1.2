@@ -1,0 +1,27 @@
+<VSTemplate Version="2.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="3193" />
+    <Description Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="3195" />
+    <Icon Package="{66E325E6-8BA1-4688-8A67-B86CE7741D2A}" ID="221" />
+    <ProjectType>VisualBasic</ProjectType>
+    <SortOrder>315</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>ClassLibrary</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <PromptForSaveOnCreation>false</PromptForSaveOnCreation>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+  </TemplateData>
+  <TemplateContent>
+        <CustomParameters>
+            <CustomParameter Name="$PlatformID$" Value="3C41C503-53EF-4c2a-8DD4-A8217CAD115E"/>
+            <CustomParameter Name="$PlatformFamily$" Value="PocketPC"/>
+            <CustomParameter Name="$OSVersion$" Value="4.20"/>
+        </CustomParameters>
+    <Project File="ClassLibrary.vbproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true" OpenOrder="10">Class1.vb</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="My Project\AssemblyInfo.vb">AssemblyInfo.vb</ProjectItem>
+      <ProjectItem TargetFileName="My Project\Resources.resx">Resources.resx</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

@@ -95,36 +95,32 @@ MesIncrementalHandleReset(
 
 RPC_STATUS  RPC_ENTRY
 MesEncodeFixedBufferHandleCreate(
-    __bcount(BufferSize) char *pBuffer,
-    __in unsigned long BufferSize,
-    __out unsigned long *pEncodedSize,
-    __out handle_t *pHandle
-    );
+    char            *   pBuffer,
+    unsigned long       BufferSize,
+    unsigned long   *   pEncodedSize,
+    handle_t        *   pHandle );
 
 RPC_STATUS  RPC_ENTRY
 MesEncodeDynBufferHandleCreate(
-    __deref_out char **pBuffer,
-    __out unsigned long *pEncodedSize,
-    __out handle_t *pHandle
-    );
+    char            * * pBuffer,
+    unsigned long   *   pEncodedSize,
+    handle_t        *   pHandle );
 
 RPC_STATUS  RPC_ENTRY
 MesDecodeBufferHandleCreate(
-    __bcount(BufferSize) char *pBuffer,
-    __out unsigned long BufferSize,
-    __out handle_t *pHandle
-    );
+    char            *   pBuffer,
+    unsigned long       BufferSize,
+    handle_t        *   pHandle );
 
 
 RPC_STATUS  RPC_ENTRY
 MesBufferHandleReset(
-    __in handle_t Handle,
-    __in unsigned long HandleStyle,
-    __in MIDL_ES_CODE Operation,
-    __deref_bcount(BufferSize) char **pBuffer,
-    __in unsigned long BufferSize,
-    __out unsigned long *pEncodedSize
-    );
+    handle_t            Handle,
+    unsigned long       HandleStyle,
+    MIDL_ES_CODE        Operation,
+    char            * * pBuffer,
+    unsigned long       BufferSize,
+    unsigned long   *   pEncodedSize );
 
 
 RPC_STATUS  RPC_ENTRY

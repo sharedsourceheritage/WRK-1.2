@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+        <siteMapNode url="~/aspnet/doc/themes/default.aspx" title="Applying Styles, Themes, and Skins">
+           <siteMapNode url="~/aspnet/doc/themes/styles.aspx" title="Applying Styles to Controls">
+               <siteMapNode url="~/aspnet/doc/themes/styles.aspx#htmlstyles" title="Applying Styles to HTML Controls"/>
+               <siteMapNode url="~/aspnet/doc/themes/styles.aspx#webstyles" title="Applying Styles to Web Controls"/>
+           </siteMapNode>
+           <siteMapNode url="~/aspnet/doc/themes/themes.aspx" title="Using Themes to Customize a Site">
+               <siteMapNode url="~/aspnet/doc/themes/themes.aspx#folder" title="The App_Themes Folder"/>
+               <siteMapNode url="~/aspnet/doc/themes/themes.aspx#global" title="Global and Application Themes"/>
+               <siteMapNode url="~/aspnet/doc/themes/themes.aspx#directive" title="Assigning a Theme to a Page"/>
+               <siteMapNode url="~/aspnet/doc/themes/themes.aspx#config" title="Assigning a Theme in Config"/>
+               <siteMapNode url="~/aspnet/doc/themes/themes.aspx#disable" title="Disabling Themes for a Control"/>
+           </siteMapNode>
+           <siteMapNode url="~/aspnet/doc/themes/skins.aspx" title="Named Skins within a Theme">
+               <siteMapNode url="~/aspnet/doc/themes/skins.aspx#named" title="Default and Named Skins"/>
+           </siteMapNode>
+           <siteMapNode url="~/aspnet/doc/themes/stylesheettheme.aspx" title="Server-side Styles using Themes">
+               <siteMapNode url="~/aspnet/doc/themes/stylesheettheme.aspx#styles" title="Declarative Server-side Styles"/>
+               <siteMapNode url="~/aspnet/doc/themes/stylesheettheme.aspx#precedence" title="Theme and StyleSheetTheme Precedence"/>
+               <siteMapNode url="~/aspnet/doc/themes/stylesheettheme.aspx#vwd" title="Visual Web Developer Support"/>
+           </siteMapNode>
+           <siteMapNode url="~/aspnet/doc/themes/fileformat.aspx" title="Contents of a Theme and Skin">
+               <siteMapNode url="~/aspnet/doc/themes/fileformat.aspx#properties" title="Themable Properties"/>
+               <siteMapNode url="~/aspnet/doc/themes/fileformat.aspx#css" title="Using CSS in Themes"/>
+               <siteMapNode url="~/aspnet/doc/themes/fileformat.aspx#images" title="Using Images in Themes"/>
+               <siteMapNode url="~/aspnet/doc/themes/fileformat.aspx#collections" title="Theming Control Collections"/>
+               <siteMapNode url="~/aspnet/doc/themes/fileformat.aspx#templates" title="Theming Control Templates"/>
+               <siteMapNode url="~/aspnet/doc/themes/fileformat.aspx#databinding" title="DataBindings and Expressions"/>
+           </siteMapNode>
+           <siteMapNode url="~/aspnet/doc/themes/personalization.aspx" title="Themes and Profiles">
+               <siteMapNode url="~/aspnet/doc/themes/personalization.aspx#code" title="Assigning the Theme in Code"/>
+           </siteMapNode>
+        </siteMapNode>
+</siteMap>

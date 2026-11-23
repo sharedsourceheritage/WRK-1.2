@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for activscp.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -175,18 +174,6 @@ typedef interface IActiveScriptSIPInfo IActiveScriptSIPInfo;
 #endif 	/* __IActiveScriptSIPInfo_FWD_DEFINED__ */
 
 
-#ifndef __IActiveScriptSiteTraceInfo_FWD_DEFINED__
-#define __IActiveScriptSiteTraceInfo_FWD_DEFINED__
-typedef interface IActiveScriptSiteTraceInfo IActiveScriptSiteTraceInfo;
-#endif 	/* __IActiveScriptSiteTraceInfo_FWD_DEFINED__ */
-
-
-#ifndef __IActiveScriptTraceInfo_FWD_DEFINED__
-#define __IActiveScriptTraceInfo_FWD_DEFINED__
-typedef interface IActiveScriptTraceInfo IActiveScriptTraceInfo;
-#endif 	/* __IActiveScriptTraceInfo_FWD_DEFINED__ */
-
-
 /* header files for imported files */
 #include "ocidl.h"
 
@@ -264,9 +251,6 @@ DEFINE_GUID(IID_IActiveScriptParseProcedure2_64, 0xfe7c4271, 0x210c, 0x448d, 0x9
 // {DB01A1E3-A42B-11cf-8F20-00805F2CD064}
 DEFINE_GUID(IID_IActiveScriptSite, 0xdb01a1e3, 0xa42b, 0x11cf, 0x8f, 0x20, 0x00, 0x80, 0x5f, 0x2c, 0xd0, 0x64);
 
-// {4B7272AE-1955-4bfe-98B0-780621888569}
-DEFINE_GUID(IID_IActiveScriptSiteTraceInfo, 0x4b7272ae, 0x1955, 0x4bfe, 0x98, 0xb0, 0x78, 0x6, 0x21, 0x88, 0x85, 0x69);
-
 // {D10F6761-83E9-11cf-8F20-00805F2CD064}
 DEFINE_GUID(IID_IActiveScriptSiteWindow, 0xd10f6761, 0x83e9, 0x11cf, 0x8f, 0x20, 0x00, 0x80, 0x5f, 0x2c, 0xd0, 0x64);
 
@@ -295,9 +279,6 @@ DEFINE_GUID(IID_IActiveScriptGarbageCollector, 0x6aa2c4a0, 0x2b53, 0x11d4, 0xa2,
 
 // {764651D0-38DE-11d4-A2A3-00104BD35090}
 DEFINE_GUID(IID_IActiveScriptSIPInfo, 0x764651d0, 0x38de, 0x11d4, 0xa2, 0xa3, 0x00, 0x10, 0x4b, 0xd3, 0x50, 0x90);
-
-// {C35456E7-BEBF-4a1b-86A9-24D56BE8B369}
-DEFINE_GUID(IID_IActiveScriptTraceInfo, 0xC35456E7, 0xBEBF, 0x4a1b, 0x86, 0xA9, 0x24, 0xD5, 0x6B, 0xE8, 0xB3, 0x69);
 
 // {1629F04E-2799-4db5-8FE5-ACE10F17EBAB}
 DEFINE_GUID(OID_VBSSIP, 0x1629f04e, 0x2799, 0x4db5, 0x8f, 0xe5, 0xac, 0xe1, 0x0f, 0x17, 0xeb, 0xab);
@@ -415,18 +396,6 @@ enum tagSCRIPTSTATE
 	SCRIPTSTATE_DISCONNECTED	= 3,
 	SCRIPTSTATE_CLOSED	= 4
     } 	SCRIPTSTATE;
-
-typedef 
-enum tagSCRIPTTRACEINFO
-    {	SCRIPTTRACEINFO_SCRIPTSTART	= 0,
-	SCRIPTTRACEINFO_SCRIPTEND	= 1,
-	SCRIPTTRACEINFO_COMCALLSTART	= 2,
-	SCRIPTTRACEINFO_COMCALLEND	= 3,
-	SCRIPTTRACEINFO_CREATEOBJSTART	= 4,
-	SCRIPTTRACEINFO_CREATEOBJEND	= 5,
-	SCRIPTTRACEINFO_GETOBJSTART	= 6,
-	SCRIPTTRACEINFO_GETOBJEND	= 7
-    } 	SCRIPTTRACEINFO;
 
 
 /* script thread state values */
@@ -1950,7 +1919,7 @@ void __RPC_STUB IActiveScriptParse64_ParseScriptText_Stub(
 #endif 	/* __IActiveScriptParse64_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_activscp_0270 */
+/* interface __MIDL_itf_activscp_0265 */
 /* [local] */ 
 
 #ifdef _WIN64
@@ -1964,8 +1933,8 @@ typedef IActiveScriptParse *PIActiveScriptParse;
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_activscp_0270_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_activscp_0270_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_activscp_0265_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_activscp_0265_v0_0_s_ifspec;
 
 #ifndef __IActiveScriptParseProcedureOld32_INTERFACE_DEFINED__
 #define __IActiveScriptParseProcedureOld32_INTERFACE_DEFINED__
@@ -2195,7 +2164,7 @@ void __RPC_STUB IActiveScriptParseProcedureOld64_ParseProcedureText_Stub(
 #endif 	/* __IActiveScriptParseProcedureOld64_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_activscp_0272 */
+/* interface __MIDL_itf_activscp_0267 */
 /* [local] */ 
 
 #ifdef _WIN64
@@ -2208,8 +2177,8 @@ void __RPC_STUB IActiveScriptParseProcedureOld64_ParseProcedureText_Stub(
 typedef IActiveScriptParseProcedureOld *PIActiveScriptParseProcedureOld;
 
 
-extern RPC_IF_HANDLE __MIDL_itf_activscp_0272_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_activscp_0272_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_activscp_0267_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_activscp_0267_v0_0_s_ifspec;
 
 #ifndef __IActiveScriptParseProcedure32_INTERFACE_DEFINED__
 #define __IActiveScriptParseProcedure32_INTERFACE_DEFINED__
@@ -2445,7 +2414,7 @@ void __RPC_STUB IActiveScriptParseProcedure64_ParseProcedureText_Stub(
 #endif 	/* __IActiveScriptParseProcedure64_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_activscp_0274 */
+/* interface __MIDL_itf_activscp_0269 */
 /* [local] */ 
 
 #ifdef _WIN64
@@ -2458,8 +2427,8 @@ void __RPC_STUB IActiveScriptParseProcedure64_ParseProcedureText_Stub(
 typedef IActiveScriptParseProcedure *PIActiveScriptParseProcedure;
 
 
-extern RPC_IF_HANDLE __MIDL_itf_activscp_0274_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_activscp_0274_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_activscp_0269_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_activscp_0269_v0_0_s_ifspec;
 
 #ifndef __IActiveScriptParseProcedure2_32_INTERFACE_DEFINED__
 #define __IActiveScriptParseProcedure2_32_INTERFACE_DEFINED__
@@ -2631,7 +2600,7 @@ EXTERN_C const IID IID_IActiveScriptParseProcedure2_64;
 #endif 	/* __IActiveScriptParseProcedure2_64_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_activscp_0276 */
+/* interface __MIDL_itf_activscp_0271 */
 /* [local] */ 
 
 #ifdef _WIN64
@@ -2644,8 +2613,8 @@ EXTERN_C const IID IID_IActiveScriptParseProcedure2_64;
 typedef IActiveScriptParseProcedure2 *PIActiveScriptParseProcedure2;
 
 
-extern RPC_IF_HANDLE __MIDL_itf_activscp_0276_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_activscp_0276_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_activscp_0271_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_activscp_0271_v0_0_s_ifspec;
 
 #ifndef __IActiveScriptEncode_INTERFACE_DEFINED__
 #define __IActiveScriptEncode_INTERFACE_DEFINED__
@@ -3543,224 +3512,7 @@ void __RPC_STUB IActiveScriptSIPInfo_GetSIPOID_Stub(
 #endif 	/* __IActiveScriptSIPInfo_INTERFACE_DEFINED__ */
 
 
-#ifndef __IActiveScriptSiteTraceInfo_INTERFACE_DEFINED__
-#define __IActiveScriptSiteTraceInfo_INTERFACE_DEFINED__
-
-/* interface IActiveScriptSiteTraceInfo */
-/* [unique][uuid][object] */ 
-
-
-EXTERN_C const IID IID_IActiveScriptSiteTraceInfo;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("4B7272AE-1955-4bfe-98B0-780621888569")
-    IActiveScriptSiteTraceInfo : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE SendScriptTraceInfo( 
-            /* [in] */ SCRIPTTRACEINFO stiEventType,
-            /* [in] */ GUID guidContextID,
-            /* [in] */ DWORD dwScriptContextCookie,
-            /* [in] */ LONG lScriptStatementStart,
-            /* [in] */ LONG lScriptStatementEnd,
-            /* [in] */ DWORD64 dwReserved) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IActiveScriptSiteTraceInfoVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IActiveScriptSiteTraceInfo * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IActiveScriptSiteTraceInfo * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IActiveScriptSiteTraceInfo * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *SendScriptTraceInfo )( 
-            IActiveScriptSiteTraceInfo * This,
-            /* [in] */ SCRIPTTRACEINFO stiEventType,
-            /* [in] */ GUID guidContextID,
-            /* [in] */ DWORD dwScriptContextCookie,
-            /* [in] */ LONG lScriptStatementStart,
-            /* [in] */ LONG lScriptStatementEnd,
-            /* [in] */ DWORD64 dwReserved);
-        
-        END_INTERFACE
-    } IActiveScriptSiteTraceInfoVtbl;
-
-    interface IActiveScriptSiteTraceInfo
-    {
-        CONST_VTBL struct IActiveScriptSiteTraceInfoVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IActiveScriptSiteTraceInfo_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IActiveScriptSiteTraceInfo_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IActiveScriptSiteTraceInfo_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IActiveScriptSiteTraceInfo_SendScriptTraceInfo(This,stiEventType,guidContextID,dwScriptContextCookie,lScriptStatementStart,lScriptStatementEnd,dwReserved)	\
-    (This)->lpVtbl -> SendScriptTraceInfo(This,stiEventType,guidContextID,dwScriptContextCookie,lScriptStatementStart,lScriptStatementEnd,dwReserved)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IActiveScriptSiteTraceInfo_SendScriptTraceInfo_Proxy( 
-    IActiveScriptSiteTraceInfo * This,
-    /* [in] */ SCRIPTTRACEINFO stiEventType,
-    /* [in] */ GUID guidContextID,
-    /* [in] */ DWORD dwScriptContextCookie,
-    /* [in] */ LONG lScriptStatementStart,
-    /* [in] */ LONG lScriptStatementEnd,
-    /* [in] */ DWORD64 dwReserved);
-
-
-void __RPC_STUB IActiveScriptSiteTraceInfo_SendScriptTraceInfo_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IActiveScriptSiteTraceInfo_INTERFACE_DEFINED__ */
-
-
-#ifndef __IActiveScriptTraceInfo_INTERFACE_DEFINED__
-#define __IActiveScriptTraceInfo_INTERFACE_DEFINED__
-
-/* interface IActiveScriptTraceInfo */
-/* [unique][uuid][object] */ 
-
-
-EXTERN_C const IID IID_IActiveScriptTraceInfo;
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("C35456E7-BEBF-4a1b-86A9-24D56BE8B369")
-    IActiveScriptTraceInfo : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE StartScriptTracing( 
-            /* [in] */ IActiveScriptSiteTraceInfo *pSiteTraceInfo,
-            /* [in] */ GUID guidContextID) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE StopScriptTracing( void) = 0;
-        
-    };
-    
-#else 	/* C style interface */
-
-    typedef struct IActiveScriptTraceInfoVtbl
-    {
-        BEGIN_INTERFACE
-        
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IActiveScriptTraceInfo * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void **ppvObject);
-        
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IActiveScriptTraceInfo * This);
-        
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            IActiveScriptTraceInfo * This);
-        
-        HRESULT ( STDMETHODCALLTYPE *StartScriptTracing )( 
-            IActiveScriptTraceInfo * This,
-            /* [in] */ IActiveScriptSiteTraceInfo *pSiteTraceInfo,
-            /* [in] */ GUID guidContextID);
-        
-        HRESULT ( STDMETHODCALLTYPE *StopScriptTracing )( 
-            IActiveScriptTraceInfo * This);
-        
-        END_INTERFACE
-    } IActiveScriptTraceInfoVtbl;
-
-    interface IActiveScriptTraceInfo
-    {
-        CONST_VTBL struct IActiveScriptTraceInfoVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define IActiveScriptTraceInfo_QueryInterface(This,riid,ppvObject)	\
-    (This)->lpVtbl -> QueryInterface(This,riid,ppvObject)
-
-#define IActiveScriptTraceInfo_AddRef(This)	\
-    (This)->lpVtbl -> AddRef(This)
-
-#define IActiveScriptTraceInfo_Release(This)	\
-    (This)->lpVtbl -> Release(This)
-
-
-#define IActiveScriptTraceInfo_StartScriptTracing(This,pSiteTraceInfo,guidContextID)	\
-    (This)->lpVtbl -> StartScriptTracing(This,pSiteTraceInfo,guidContextID)
-
-#define IActiveScriptTraceInfo_StopScriptTracing(This)	\
-    (This)->lpVtbl -> StopScriptTracing(This)
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-HRESULT STDMETHODCALLTYPE IActiveScriptTraceInfo_StartScriptTracing_Proxy( 
-    IActiveScriptTraceInfo * This,
-    /* [in] */ IActiveScriptSiteTraceInfo *pSiteTraceInfo,
-    /* [in] */ GUID guidContextID);
-
-
-void __RPC_STUB IActiveScriptTraceInfo_StartScriptTracing_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-HRESULT STDMETHODCALLTYPE IActiveScriptTraceInfo_StopScriptTracing_Proxy( 
-    IActiveScriptTraceInfo * This);
-
-
-void __RPC_STUB IActiveScriptTraceInfo_StopScriptTracing_Stub(
-    IRpcStubBuffer *This,
-    IRpcChannelBuffer *_pRpcChannelBuffer,
-    PRPC_MESSAGE _pRpcMessage,
-    DWORD *_pdwStubPhase);
-
-
-
-#endif 	/* __IActiveScriptTraceInfo_INTERFACE_DEFINED__ */
-
-
-/* interface __MIDL_itf_activscp_0286 */
+/* interface __MIDL_itf_activscp_0279 */
 /* [local] */ 
 
 
@@ -3768,8 +3520,8 @@ void __RPC_STUB IActiveScriptTraceInfo_StopScriptTracing_Stub(
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_activscp_0286_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_activscp_0286_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_activscp_0279_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_activscp_0279_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

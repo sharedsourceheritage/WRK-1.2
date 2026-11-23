@@ -41,7 +41,7 @@ library MultiLanguage
 {
     importlib("stdole2.tlb");
 
-    typedef WORD LANGID;
+	typedef WORD LANGID;
 
     typedef enum tagMLSTR_FLAGS
     {
@@ -733,7 +733,7 @@ cpp_quote("#define CPIOD_FORCE_PROMPT  0x80000000L")
         {
             SCRIPTCONTF_FIXED_FONT          = 0x00000001,
             SCRIPTCONTF_PROPORTIONAL_FONT   = 0x00000002,
-            SCRIPTCONTF_SCRIPT_USER     = 0x00010000,
+            SCRIPTCONTF_SCRIPT_USER	    = 0x00010000,
             SCRIPTCONTF_SCRIPT_HIDE         = 0x00020000,
             SCRIPTCONTF_SCRIPT_SYSTEM       = 0x00040000
         } SCRIPTFONTCONTF;

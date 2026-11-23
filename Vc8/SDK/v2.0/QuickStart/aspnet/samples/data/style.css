@@ -1,0 +1,20 @@
+
+h1 {
+ font-family: verdana;
+ font-size: 20pt;
+}
+
+table {
+  border-color:black;
+  border-width:0;
+  border-style:solid;
+  background-color:white;
+  margin:15,15,15,15;
+  font:10pt verdana;
+}
+
+table td {
+  vertical-align:top;
+  font:10pt verdana;
+  padding-right:20;
+}

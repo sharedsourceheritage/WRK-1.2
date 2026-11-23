@@ -108,7 +108,6 @@ typedef struct _WINTRUST_DATA
 #       define WTD_HASH_ONLY_FLAG                       0x00000200
 #       define WTD_USE_DEFAULT_OSVER_CHECK              0x00000400
 #       define WTD_LIFETIME_SIGNING_FLAG                0x00000800
-#       define WTD_CACHE_ONLY_URL_RETRIEVAL             0x00001000 // affects CRL retrieval and AIA retrieval
 
     // 07-Jan-2004 tonyschr: added
     DWORD           dwUIContext;                // optional: used to determine action text in UI
@@ -252,7 +251,7 @@ typedef struct WINTRUST_CERT_INFO_
 //   - search the code hash and publisher databases for the WTD_UI_NONE
 //     dwUIChoice case. The default is to only search these databases when
 //     UI has been enabled or user trust has been disabled.
-//
+//  
 //
 //  Returns:
 //          ERROR_SUCCESS               If the trust is authenticated or
@@ -266,7 +265,7 @@ typedef struct WINTRUST_CERT_INFO_
 //  The following errors are returned when the
 //  WINTRUST_ACTION_GENERIC_VERIFY_V2 policy provider is specified in
 //  pgActionID:
-//
+//  
 //    TRUST_E_NOSIGNATURE (when WTD_SAFER_FLAG is set in dwProvFlags)
 //      The subject isn't signed, has an invalid signature or unable
 //      to find the signer certificate. All signature verification
@@ -279,16 +278,16 @@ typedef struct WINTRUST_CERT_INFO_
 //      The following LastErrors indicate that the file doesn't have a
 //      signature: TRUST_E_NOSIGNATURE, TRUST_E_SUBJECT_FORM_UNKNOWN or
 //      TRUST_E_PROVIDER_UNKNOWN.
-//
+//      
 //      UI will never be displayed for this case.
 //
 //    TRUST_E_EXPLICIT_DISTRUST
 //      Returned if the hash representing the subject is trusted as
 //      AUTHZLEVELID_DISALLOWED or the publisher is in the "Disallowed"
 //      store. Also returned if the publisher certificate is revoked.
-//
+//      
 //      UI will never be displayed for this case.
-//
+//      
 //    ERROR_SUCCESS
 //      No UI unless noted below.
 //
@@ -312,23 +311,13 @@ typedef struct WINTRUST_CERT_INFO_
 //
 //      The subject is signed and its signature successfully
 //      verified.
-//
+//      
 //    Any publisher or timestamp chain error. If WTD_SAFER_FLAG wasn't set in
 //    dwProvFlags, any signed code verification error.
 //
 extern LONG WINAPI WinVerifyTrust(HWND hwnd, GUID *pgActionID,
                                   LPVOID pWVTData);
 
-
-//////////////////////////////////////////////////////////////////////////////
-//
-// WinVerifyTrustEx
-//----------------------------------------------------------------------------
-//      *** DO NOT USE ***
-//
-//
-extern HRESULT WINAPI WinVerifyTrustEx(HWND hwnd, GUID *pgActionID, 
-                                       WINTRUST_DATA *pWinTrustData);
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -613,7 +602,7 @@ typedef struct _CRYPT_PROVIDER_DATA
     DWORD                               dwFinalError;
 
     // 20-May-1998 KeithV: added
-    PCERT_USAGE_MATCH                                   pRequestUsage;
+    PCERT_USAGE_MATCH					pRequestUsage;
 
     // 02-Aug-2000 philh: added
     DWORD                               dwTrustPubSettings;

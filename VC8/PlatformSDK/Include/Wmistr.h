@@ -15,9 +15,6 @@ Abstract:
 #ifndef _WMISTR_
 #define _WMISTR_
 
-#if _MSC_VER >= 1200
-#pragma warning(push)
-#endif
 #pragma warning(disable: 4200) // nonstandard extension used : zero-sized array in struct/union
 #pragma warning(disable: 4201) // nonstandard extension used : nameless struct/union
 
@@ -30,11 +27,11 @@ typedef struct _WNODE_HEADER
     union
     {
         ULONG64 HistoricalContext;  // Logger use
-        struct
-            {
+    	struct
+	    {
             ULONG Version;           // Reserved
             ULONG Linkage;           // Linkage field reserved for WMI
-        };
+    	};
     };
 
     union
@@ -148,7 +145,7 @@ typedef struct tagWNODE_ALL_DATA
     union
     {
         ULONG FixedInstanceSize;
-        OFFSETINSTANCEDATAANDLENGTH OffsetInstanceDataAndLength[];
+    	OFFSETINSTANCEDATAANDLENGTH OffsetInstanceDataAndLength[];
                                     /* [InstanceCount] */
     };
 
@@ -289,21 +286,21 @@ typedef struct
                      // to a list of InstanceCount counted UNICODE
                      // strings placed end to end.
         ULONG InstanceNameList;
-                        
+			
                      // If WMIREG_FLAG_INSTANCE_BASENAME then this has the
                      // offset to a single counted UNICODE string that
                      // has the basename for the instance names.
-                        
+			
         ULONG BaseNameOffset;
-                        
+			
                      // If WMIREG_FLAG_INSTANCE_PDO is set then InstanceInfo
                      // has the PDO whose device instance path will
                      // become the instance name
         ULONG_PTR Pdo;
-                        
+			
                      // If WMIREG_FLAG_INSTANCE_REFERENCE then this points to
                      // a WMIREGINSTANCEREF structure.
-                        
+			
         ULONG_PTR InstanceInfo;// Offset from beginning of the WMIREGINFO structure to
     };
 
@@ -357,7 +354,7 @@ typedef PWMIREGGUIDW PWMIREGGUID;
 
 typedef struct
 {
-// Size of entire WMIREGINFO structure including this ULONG     
+// Size of entire WMIREGINFO structure including this ULONG 	
 // and any static instance names that follow
     ULONG BufferSize;
 
@@ -367,8 +364,8 @@ typedef struct
                         // counted Unicode string containing
                         // the driver registry path (under HKLM\CCS\Services)
                         // This must be filled only by kernel mode data
-                                                // providers
-                                                        
+						// providers
+							
 // Offset from beginning of WMIREGINFO structure to a
 // counted Unicode string containing
 // the name of resource in driver file containing MOF info
@@ -460,13 +457,6 @@ typedef enum
                             TRACELOG_REGISTER_GUIDS  )
 
 #define WMI_GLOBAL_LOGGER_ID          0x0001
-#endif
-
-#if _MSC_VER >= 1200
-#pragma warning(pop)
-#else
-#pragma warning(default: 4200) // nonstandard extension used : zero-sized array in struct/union
-#pragma warning(default: 4201) // nonstandard extension used : nameless struct/union
 #endif
 
 #endif

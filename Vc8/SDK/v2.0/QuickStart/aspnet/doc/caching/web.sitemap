@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+  <siteMapNode url="~/aspnet/doc/caching/default.aspx" title="Caching For Performance">
+    <siteMapNode url="~/aspnet/doc/caching/output.aspx" title="Page Output Caching">
+        <siteMapNode url="~/aspnet/doc/caching/output.aspx#outputcache" title="The Output Cache Directive"/>
+        <siteMapNode url="~/aspnet/doc/caching/output.aspx#varyby" title="Vary By Parameters"/>
+        <siteMapNode url="~/aspnet/doc/caching/output.aspx#sqlcache" title="SQL Cache Notification"/>
+        <siteMapNode url="~/aspnet/doc/caching/output.aspx#postcache" title="Post-cache Substitution"/>
+        <siteMapNode url="~/aspnet/doc/caching/output.aspx#cacheapi" title="Using the Cache API"/>
+    </siteMapNode>
+    <siteMapNode url="~/aspnet/doc/caching/fragment.aspx" title="Page Fragment Caching">
+        <siteMapNode url="~/aspnet/doc/caching/fragment.aspx#api" title="Fragment Caching API"/>
+    </siteMapNode>
+    <siteMapNode url="~/aspnet/doc/caching/data.aspx" title="Caching Page Data ">
+        <siteMapNode url="~/aspnet/doc/caching/data.aspx#using" title="Using the Data Cache"/>
+        <siteMapNode url="~/aspnet/doc/caching/data.aspx#scavenging" title="Scavenging Cache Entries"/>
+        <siteMapNode url="~/aspnet/doc/caching/data.aspx#expiration" title="Expiration of Cache Entries"/>
+        <siteMapNode url="~/aspnet/doc/caching/data.aspx#dependencies" title="Cache Dependencies"/>
+    </siteMapNode>
+    <siteMapNode url="~/aspnet/doc/caching/SQLInvalidation.aspx" title="SQL Cache Invalidation">
+        <siteMapNode url="~/aspnet/doc/caching/SQLInvalidation.aspx#polling" title="Polling-based Invalidation"/>
+        <siteMapNode url="~/aspnet/doc/caching/SQLInvalidation.aspx#notification" title="Notification-based Invalidation"/>
+    </siteMapNode>
+    <siteMapNode url="~/aspnet/doc/caching/config.aspx" title="Cache Configuration">
+        <siteMapNode url="~/aspnet/doc/caching/config.aspx#profiles" title="Cache Profiles"/>
+        <siteMapNode url="~/aspnet/doc/caching/config.aspx#properties" title="Cache Properties"/>
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

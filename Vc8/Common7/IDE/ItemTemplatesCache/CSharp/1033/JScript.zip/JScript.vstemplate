@@ -1,0 +1,13 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="2306" />
+    <Description Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="2307" />
+    <Icon Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="4557" />
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>250</SortOrder>
+    <DefaultName>JScript.js</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectItem>JScript.js</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

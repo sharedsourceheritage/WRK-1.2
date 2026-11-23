@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for oleacc.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -1274,7 +1273,7 @@ void __RPC_STUB IAccessibleHandler_AccessibleObjectFromID_Stub(
 #endif 	/* __IAccessibleHandler_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_oleacc_0116 */
+/* interface __MIDL_itf_oleacc_0112 */
 /* [local] */ 
 
 typedef 
@@ -1287,8 +1286,8 @@ typedef GUID MSAAPROPID;
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_oleacc_0116_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_oleacc_0116_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_oleacc_0112_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_oleacc_0112_v0_0_s_ifspec;
 
 #ifndef __IAccIdentity_INTERFACE_DEFINED__
 #define __IAccIdentity_INTERFACE_DEFINED__
@@ -2057,7 +2056,7 @@ void __RPC_STUB IAccPropServices_DecomposeHmenuIdentityString_Stub(
 #endif 	/* __IAccPropServices_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_oleacc_0119 */
+/* interface __MIDL_itf_oleacc_0115 */
 /* [local] */ 
 
 
@@ -2067,8 +2066,8 @@ void __RPC_STUB IAccPropServices_DecomposeHmenuIdentityString_Stub(
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_oleacc_0119_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_oleacc_0119_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_oleacc_0115_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_oleacc_0115_v0_0_s_ifspec;
 
 
 #ifndef __Accessibility_LIBRARY_DEFINED__

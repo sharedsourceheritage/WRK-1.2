@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PInvokeSimple", "PInvokeSimple\PInvokeSimple.vcproj", "{C4F96349-F05B-47FF-BF92-B4C6612092FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Debug|Itanium = Debug|Itanium
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+		Release|Itanium = Release|Itanium
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Debug|Win32.Build.0 = Debug|Win32
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Debug|x64.ActiveCfg = Debug|x64
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Debug|x64.Build.0 = Debug|x64
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Debug|Itanium.ActiveCfg = Debug|Itanium
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Debug|Itanium.Build.0 = Debug|Itanium
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Release|Win32.ActiveCfg = Release|Win32
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Release|Win32.Build.0 = Release|Win32
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Release|x64.ActiveCfg = Release|x64
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Release|x64.Build.0 = Release|x64
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Release|Itanium.ActiveCfg = Release|Itanium
+		{C4F96349-F05B-47FF-BF92-B4C6612092FB}.Release|Itanium.Build.0 = Release|Itanium
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,88 @@
+package Microsoft.Samples.QuickStart.HowTo.Net.WebRequests;
+//-----------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+// This source code is intended only as a supplement to Microsoft
+// Development Tools and/or on-line documentation.  See these other
+// materials for detailed information regarding Microsoft code samples.
+// 
+// THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+// KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
+//-----------------------------------------------------------------------
+import System.*;
+import System.Net.*;
+import System.IO.*;
+import System.Text.*;
+
+class ClientGetWithNTLM
+{
+    private static boolean bShow;
+
+    public static void main(String[] args)
+    {
+        if (args.get_Length() < 4) {
+            ShowUsage();
+        }
+        else {
+            if (args.get_Length() > 4) {
+                bShow = false;
+            }
+            else {
+                bShow = true;
+            }
+            GetPage(args[0], args[1], args[2], args[3]);
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Press Enter to continue...");
+        Console.ReadLine();
+
+        return;
+    } //main
+
+    public static void ShowUsage()
+    {
+        Console.WriteLine("Attempts to GET a URL with NTLM authentication");
+        Console.WriteLine("\r\nUsage:");
+        Console.WriteLine("ClientGetWithNTLM URL username password domain");
+        Console.WriteLine("Examples:");
+        Console.WriteLine("ClientGetWithNTLM http://www.microsoft.com/net/"
+            + " Bobby BobbyLovesMangos THEDOMAIN");
+    } //ShowUsage
+
+    public static void GetPage(String url, String username, String password, 
+        String domain)
+    {
+        try {
+            WebRequest req = WebRequest.Create(url);
+            NetworkCredential sc = new NetworkCredential(username, password,
+                domain);
+            req.set_Credentials(sc);
+            WebResponse result = req.GetResponse();
+            Stream receiveStream = result.GetResponseStream();
+            Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
+            StreamReader sr = new StreamReader(receiveStream, encode);
+            Console.WriteLine("\r\nResponse stream received");
+            if (bShow) {
+                char read[] = new char[256];
+                int count = sr.Read(read, 0, 256);
+
+                Console.WriteLine("HTML...\r\n");
+                while (count > 0) {
+                    String str = new String(read, 0, count);
+                    Console.Write(str);
+                    count = sr.Read(read, 0, 256);
+                }
+                Console.WriteLine("");
+            }
+        }
+        catch (System.Exception exp) {
+            Console.WriteLine("\r\nThe request URI could not be found or "
+                + "was malformed");
+        }
+    } //GetPage
+} //ClientGetWithNTLM

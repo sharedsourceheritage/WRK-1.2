@@ -96,6 +96,7 @@
 #define SECPKG_ATTR_SESSION_INFO         0x5d   // returns SecPkgContext_SessionInfo
 #define SECPKG_ATTR_APP_DATA             0x5e   // sets/returns SecPkgContext_SessionAppData
 
+
 // OBSOLETE - included here for backward compatibility only
 typedef struct _SecPkgContext_IssuerListInfo
 {
@@ -210,6 +211,7 @@ typedef struct _SecPkgContext_SessionAppData
 } SecPkgContext_SessionAppData, *PSecPkgContext_SessionAppData;
 
 
+
 //
 // Schannel credentials data structure.
 //
@@ -241,26 +243,8 @@ typedef struct _SCHANNEL_CRED
     DWORD           dwMaximumCipherStrength;
     DWORD           dwSessionLifespan;
     DWORD           dwFlags;
-    DWORD           dwCredFormat;
+    DWORD           reserved;
 } SCHANNEL_CRED, *PSCHANNEL_CRED;
-
-
-// Values for SCHANNEL_CRED dwCredFormat field.
-#define SCH_CRED_FORMAT_CERT_HASH       0x00000001
-
-#define SCH_CRED_MAX_SUPPORTED_ALGS     256
-#define SCH_CRED_MAX_SUPPORTED_CERTS    100
-
-typedef struct _SCHANNEL_CERT_HASH
-{
-    DWORD           dwLength;
-    DWORD           dwFlags;
-    HCRYPTPROV      hProv;
-    BYTE            ShaHash[20];
-} SCHANNEL_CERT_HASH, *PSCHANNEL_CERT_HASH;
-
-// Values for SCHANNEL_CERT_HASH dwFlags field.
-#define SCH_MACHINE_CERT_HASH           0x00000001
 
 
 //+-------------------------------------------------------------------------
@@ -510,6 +494,27 @@ SslEmptyCacheW(LPWSTR pszTargetName,
 #define SslEmptyCache SslEmptyCacheA
 #endif
 
+//
+//
+//  Support for legacy applications
+//  NOTE: Do not use the following
+//  API's and structures for new code.
+//
+
+#define SSLOLD_NAME_A    "Microsoft SSL"
+#define SSLOLD_NAME_W    L"Microsoft SSL"
+#define PCTOLD_NAME_A    "Microsoft PCT"
+#define PCTOLD_NAME_W    L"Microsoft PCT"
+
+#ifdef UNICODE
+#define SSLOLD_NAME SSLOLD_NAME_W
+#define PCTOLD_NAME PCTOLD_NAME_W
+#else
+#define SSLOLD_NAME SSLOLD_NAME_A
+#define PCTOLD_NAME PCTOLD_NAME_A
+#endif
+
+#define NETWORK_DREP    0x00000000
 
 
 // Structures for compatability with the

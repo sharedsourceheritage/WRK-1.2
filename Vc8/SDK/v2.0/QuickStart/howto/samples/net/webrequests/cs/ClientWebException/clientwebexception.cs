@@ -1,0 +1,105 @@
+//-----------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//-----------------------------------------------------------------------
+
+using System;
+using System.Net;
+using System.IO;
+using System.Text;
+namespace Microsoft.Samples.QuickStart.HowTo.Net.WebRequests
+{
+    static class ClientWebErrorHandler 
+	{		
+		public static void Main(string[] args) 
+        {
+            bool resolvedUri = false;
+            String uriToResolve = null;
+
+            while ( !resolvedUri ) 
+            {
+                WebResponse response = null;
+                StreamReader reader = null;
+                try
+                {
+                    //Get a uri from the user
+                    Console.Write("Please enter the URI to resolve: ");
+                    uriToResolve = Console.ReadLine();
+                    Console.WriteLine();
+
+                    //Create the request object
+                    WebRequest request = WebRequest.Create(uriToResolve);
+
+                    request.Credentials = new NetworkCredential("invaliduser", "invalidpassword");
+
+                    //Create the response object
+                    response = request.GetResponse();
+                    Console.WriteLine("URI Resolved");
+
+                    //Successfully resolved the Uri
+                    resolvedUri = true;
+
+                    //Get a readable stream from the server
+                    Stream receiveStream = response.GetResponseStream();
+                    reader = new StreamReader(receiveStream);
+                    Console.WriteLine("\r\nResponse stream received");
+                    Char[] buffer = new Char[256];
+                    int count = reader.Read(buffer, 0, buffer.Length);
+
+                    Console.WriteLine("HTML...\r\n");
+                    while (count > 0)
+                    {
+                        Console.Write(new String(buffer, 0, count));
+                        count = reader.Read(buffer, 0, buffer.Length);
+                    }
+                    Console.WriteLine("");
+
+                }
+                catch (WebException webException)
+                {
+                    // If you get to this point, the exception has been caught
+                    Console.WriteLine("A WebException has been caught!");
+
+                    // Write out the Exception message
+                    Console.WriteLine(webException.ToString());
+
+                    // Get the WebException status code
+                    if (webException.Status == WebExceptionStatus.ProtocolError)
+                    {
+                        // Write out the WebResponse protocol status
+                        Console.WriteLine("There was an error retrieving the URI");
+                    }
+                }
+                catch (UriFormatException uriFormatException)
+                {
+                    // If you get to this point, the exception has been caught
+                    Console.WriteLine("A UriFormatException has been caught!");
+
+                    // Write out the Exception message
+                    Console.WriteLine(uriFormatException.ToString());
+                }
+                finally
+                {
+                    if (response != null)
+                        response.Close();
+                    if (reader != null)
+                        reader.Close();
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press Enter to continue...");
+            Console.ReadLine();
+        }
+    }
+}

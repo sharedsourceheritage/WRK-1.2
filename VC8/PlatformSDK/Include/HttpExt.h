@@ -75,20 +75,14 @@ extern "C" {
 #define   HSE_REQ_SEND_RESPONSE_HEADER_EX          (HSE_REQ_END_RESERVED+16)
 #define   HSE_REQ_CLOSE_CONNECTION                 (HSE_REQ_END_RESERVED+17)
 #define   HSE_REQ_IS_CONNECTED                     (HSE_REQ_END_RESERVED+18)
+#define   HSE_REQ_EXTENSION_TRIGGER                (HSE_REQ_END_RESERVED+20)
+#define   HSE_REQ_VECTOR_SEND                      (HSE_REQ_END_RESERVED+22)
 #define   HSE_REQ_MAP_UNICODE_URL_TO_PATH          (HSE_REQ_END_RESERVED+23)
 #define   HSE_REQ_MAP_UNICODE_URL_TO_PATH_EX       (HSE_REQ_END_RESERVED+24)
-#define   HSE_REQ_EXEC_UNICODE_URL                 (HSE_REQ_END_RESERVED+25)
 #define   HSE_REQ_EXEC_URL                         (HSE_REQ_END_RESERVED+26)
 #define   HSE_REQ_GET_EXEC_URL_STATUS              (HSE_REQ_END_RESERVED+27)
 #define   HSE_REQ_SEND_CUSTOM_ERROR                (HSE_REQ_END_RESERVED+28)
 #define   HSE_REQ_IS_IN_PROCESS                    (HSE_REQ_END_RESERVED+30)
-#define   HSE_REQ_REPORT_UNHEALTHY                 (HSE_REQ_END_RESERVED+32)
-#define   HSE_REQ_NORMALIZE_URL                    (HSE_REQ_END_RESERVED+33)
-#define   HSE_REQ_VECTOR_SEND                      (HSE_REQ_END_RESERVED+37)
-#define   HSE_REQ_GET_ANONYMOUS_TOKEN              (HSE_REQ_END_RESERVED+38)
-#define   HSE_REQ_GET_CACHE_INVALIDATION_CALLBACK  (HSE_REQ_END_RESERVED+40)
-#define   HSE_REQ_GET_UNICODE_ANONYMOUS_TOKEN      (HSE_REQ_END_RESERVED+41)
-#define   HSE_REQ_GET_TRACE_INFO                   (HSE_REQ_END_RESERVED+42)
 
 //
 //  Bit Flags for TerminateExtension
@@ -114,13 +108,6 @@ extern "C" {
 # define HSE_IO_DISCONNECT_AFTER_SEND     0x00000004   // for TF
 # define HSE_IO_SEND_HEADERS              0x00000008   // for TF
 # define HSE_IO_NODELAY                   0x00001000   // turn off nagling 
-
-//
-// These two are only used by VectorSend
-//
-
-# define HSE_IO_FINAL_SEND                0x00000010
-# define HSE_IO_CACHE_RESPONSE            0x00000020
 
 
 /************************************************************
@@ -314,11 +301,14 @@ typedef struct _HSE_SEND_HEADER_EX_INFO  {
 // Flags for use with HSE_REQ_EXEC_URL
 //
 
+#define HSE_EXEC_URL_SYNC                           0x01
 #define HSE_EXEC_URL_NO_HEADERS                     0x02
 #define HSE_EXEC_URL_IGNORE_CURRENT_INTERCEPTOR     0x04
+#define HSE_EXEC_URL_IGNORE_APPPOOL                 0x08
 #define HSE_EXEC_URL_IGNORE_VALIDATION_AND_RANGE    0x10
 #define HSE_EXEC_URL_DISABLE_CUSTOM_ERROR           0x20
 #define HSE_EXEC_URL_SSI_CMD                        0x40
+#define HSE_EXEC_URL_ASYNC                          0x80
           
 //
 // HSE_EXEC_URL_USER_INFO provides a new user content for use with
@@ -375,35 +365,6 @@ typedef struct _HSE_EXEC_URL_INFO  {
 } HSE_EXEC_URL_INFO, * LPHSE_EXEC_URL_INFO;
 
 //
-// HSE_EXEC_UNICODE_URL_USER_INFO provides a new user content for use with
-// HSE_REQ_EXEC_UNICODE_URL
-//
-
-typedef struct _HSE_EXEC_UNICODE_URL_USER_INFO  {
-
-    HANDLE hImpersonationToken;
-    LPWSTR pszCustomUserName;
-    LPSTR  pszCustomAuthType;
-
-} HSE_EXEC_UNICODE_URL_USER_INFO, * LPHSE_EXEC_UNICODE_URL_USER_INFO;
-
-//
-// HSE_EXEC_UNICODE_URL_INFO provides a description of the request to execute
-// on behalf of the ISAPI.  
-//
-
-typedef struct _HSE_EXEC_UNICODE_URL_INFO  {
-
-    LPWSTR pszUrl;                              // URL to execute
-    LPSTR  pszMethod;                           // Method
-    LPSTR  pszChildHeaders;                     // Request headers for child
-    LPHSE_EXEC_UNICODE_URL_USER_INFO pUserInfo; // User for new request
-    LPHSE_EXEC_URL_ENTITY_INFO pEntity;         // Entity body for new request
-    DWORD  dwExecUrlFlags;                      // Flags
-
-} HSE_EXEC_UNICODE_URL_INFO, * LPHSE_EXEC_UNICODE_URL_INFO;
-
-//
 // HSE_CUSTOM_ERROR_INFO structured used in HSE_REQ_SEND_CUSTOM_ERROR
 // 
 
@@ -420,23 +381,16 @@ typedef struct _HSE_CUSTOM_ERROR_INFO  {
 // structures for the HSE_REQ_VECTOR_SEND ServerSupportFunction
 //
 
-
-//
-// Types of vector-elements currently supported
-//
-#define HSE_VECTOR_ELEMENT_TYPE_MEMORY_BUFFER       0
-#define HSE_VECTOR_ELEMENT_TYPE_FILE_HANDLE         1
-
 //
 // element of the vector
 //
 
 typedef struct _HSE_VECTOR_ELEMENT
 {
-    DWORD ElementType;  // Type of element (buffer/file/fragment etc)
+    PVOID pBuffer;      // The buffer to be sent
 
-    PVOID pvContext;    // The context representing the element to be sent
-
+    HANDLE hFile;       // The handle to read the data from
+                        // Note: both pBuffer and hFile should not be non-null
     ULONGLONG cbOffset; // Offset from the start of hFile
 
     ULONGLONG cbSize;   // Number of bytes to send
@@ -457,12 +411,6 @@ typedef struct _HSE_RESPONSE_VECTOR
     LPHSE_VECTOR_ELEMENT lpElementArray;    // Pointer to those elements
 } HSE_RESPONSE_VECTOR, *LPHSE_RESPONSE_VECTOR;
 
-
-typedef HRESULT
-  (WINAPI * PFN_HSE_CACHE_INVALIDATION_CALLBACK)(
-        WCHAR *pszUrl);
-
-
 #if(_WIN32_WINNT >= 0x400)
 #include <wincrypt.h>
 //
@@ -477,36 +425,6 @@ typedef struct _CERT_CONTEXT_EX {
 } CERT_CONTEXT_EX;
 #endif
 
-
-
-//
-// HSE_TRACE_INFO structure used to get debug trace info
-// from core web server
-//
-
-typedef struct _HSE_TRACE_INFO
-{
-
-    //
-    // Recommendation from IIS to trace the request
-    //
-
-    BOOL        fTraceRequest; 
-    
-    //
-    // The unique trace context ID for the current request
-    //
-
-    BYTE        TraceContextId[16];
-    
-    //
-    // Reserved for future use
-    //
-
-    DWORD       dwReserved1;
-    DWORD       dwReserved2;
-    
-} HSE_TRACE_INFO, *LPHSE_TRACE_INFO;
 
 
 //

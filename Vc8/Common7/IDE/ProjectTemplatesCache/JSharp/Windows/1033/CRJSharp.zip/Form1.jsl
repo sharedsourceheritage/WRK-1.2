@@ -1,0 +1,63 @@
+﻿package $safeprojectname$;
+
+import System.Collections.Generic.*;
+import System.Data.*;
+import System.Drawing.*;
+import System.ComponentModel.*;
+import System.Windows.Forms.*;
+
+public class Form1 extends System.Windows.Forms.Form
+{
+	private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+	private CrystalReport1 CrystalReport11;
+
+	private System.ComponentModel.IContainer components = null;
+
+	public Form1()
+	{
+		InitializeComponent();
+
+	}
+
+	protected void Dispose(boolean disposing)
+	{
+		if (disposing)
+		{
+			if (components != null)
+			{
+				components.Dispose();
+			}
+		}
+		super.Dispose(disposing);
+	}
+
+	private void InitializeComponent()
+	{
+		this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+		this.CrystalReport11 = new $safeprojectname$.CrystalReport1();
+		this.SuspendLayout();
+// 
+// crystalReportViewer1
+// 
+		this.crystalReportViewer1.set_ActiveViewIndex(0);
+		this.crystalReportViewer1.set_BorderStyle(System.Windows.Forms.BorderStyle.FixedSingle);
+		this.crystalReportViewer1.set_Dock(System.Windows.Forms.DockStyle.Fill);
+		this.crystalReportViewer1.set_Location(new System.Drawing.Point(0, 0));
+		this.crystalReportViewer1.set_Name("crystalReportViewer1");
+		this.crystalReportViewer1.set_ReportSource(this.CrystalReport11);
+		this.crystalReportViewer1.set_Size(new System.Drawing.Size(292, 266));
+		this.crystalReportViewer1.set_TabIndex(0);
+// 
+// Form1
+// 
+		this.set_AutoScaleDimensions(new System.Drawing.SizeF(6F, 13F));
+		this.set_AutoScaleMode(System.Windows.Forms.AutoScaleMode.Font);
+		this.set_ClientSize(new System.Drawing.Size(799, 566));
+		this.get_Controls().Add(this.crystalReportViewer1);
+		this.set_Name("Form1");
+		this.set_Text("Form1");
+		this.ResumeLayout(false);
+
+	}
+	#endregion
+}

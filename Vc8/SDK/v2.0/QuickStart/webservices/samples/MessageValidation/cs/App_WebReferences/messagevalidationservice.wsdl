@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="Microsoft.Samples.XmlMessaging.WebServices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="Microsoft.Samples.XmlMessaging.WebServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="Microsoft.Samples.XmlMessaging.WebServices">
+      <s:element name="SendToValidator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendToValidatorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendToValidatorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendToValidatorSoapIn">
+    <wsdl:part name="parameters" element="tns:SendToValidator" />
+  </wsdl:message>
+  <wsdl:message name="SendToValidatorSoapOut">
+    <wsdl:part name="parameters" element="tns:SendToValidatorResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MessageValidationServiceSoap">
+    <wsdl:operation name="SendToValidator">
+      <wsdl:input message="tns:SendToValidatorSoapIn" />
+      <wsdl:output message="tns:SendToValidatorSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MessageValidationServiceSoap" type="tns:MessageValidationServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendToValidator">
+      <soap:operation soapAction="Microsoft.Samples.XmlMessaging.WebServices/SendToValidator" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MessageValidationServiceSoap12" type="tns:MessageValidationServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendToValidator">
+      <soap12:operation soapAction="Microsoft.Samples.XmlMessaging.WebServices/SendToValidator" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MessageValidationService">
+    <wsdl:port name="MessageValidationServiceSoap" binding="tns:MessageValidationServiceSoap">
+      <soap:address location="http://localhost/quickstartv20/webservices/samples/MessageValidation/cs/Server/MessageValidationService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MessageValidationServiceSoap12" binding="tns:MessageValidationServiceSoap12">
+      <soap12:address location="http://localhost/quickstartv20/webservices/samples/MessageValidation/cs/Server/MessageValidationService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

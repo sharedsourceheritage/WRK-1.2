@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for mmc.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -2274,11 +2273,11 @@ void __RPC_STUB IHeaderCtrl_GetColumnWidth_Stub(
 #endif 	/* __IHeaderCtrl_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mmc_0121 */
+/* interface __MIDL_itf_mmc_0117 */
 /* [local] */ 
 
 
-enum __MIDL___MIDL_itf_mmc_0121_0001
+enum __MIDL___MIDL_itf_mmc_0117_0001
     {	CCM_INSERTIONPOINTID_MASK_SPECIAL	= 0xffff0000,
 	CCM_INSERTIONPOINTID_MASK_SHARED	= 0x80000000,
 	CCM_INSERTIONPOINTID_MASK_CREATE_PRIMARY	= 0x40000000,
@@ -2295,18 +2294,18 @@ enum __MIDL___MIDL_itf_mmc_0121_0001
 	CCM_INSERTIONPOINTID_ROOT_MENU	= 0x80000000
     } ;
 
-enum __MIDL___MIDL_itf_mmc_0121_0002
+enum __MIDL___MIDL_itf_mmc_0117_0002
     {	CCM_INSERTIONALLOWED_TOP	= 1L << (CCM_INSERTIONPOINTID_PRIMARY_TOP & CCM_INSERTIONPOINTID_MASK_FLAGINDEX),
 	CCM_INSERTIONALLOWED_NEW	= 1L << (CCM_INSERTIONPOINTID_PRIMARY_NEW & CCM_INSERTIONPOINTID_MASK_FLAGINDEX),
 	CCM_INSERTIONALLOWED_TASK	= 1L << (CCM_INSERTIONPOINTID_PRIMARY_TASK & CCM_INSERTIONPOINTID_MASK_FLAGINDEX),
 	CCM_INSERTIONALLOWED_VIEW	= 1L << (CCM_INSERTIONPOINTID_PRIMARY_VIEW & CCM_INSERTIONPOINTID_MASK_FLAGINDEX)
     } ;
 
-enum __MIDL___MIDL_itf_mmc_0121_0003
+enum __MIDL___MIDL_itf_mmc_0117_0003
     {	CCM_COMMANDID_MASK_RESERVED	= 0xffff0000
     } ;
 
-enum __MIDL___MIDL_itf_mmc_0121_0004
+enum __MIDL___MIDL_itf_mmc_0117_0004
     {	CCM_SPECIAL_SEPARATOR	= 0x1,
 	CCM_SPECIAL_SUBMENU	= 0x2,
 	CCM_SPECIAL_DEFAULT_ITEM	= 0x4,
@@ -2315,8 +2314,8 @@ enum __MIDL___MIDL_itf_mmc_0121_0004
     } ;
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0121_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0121_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0117_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0117_v0_0_s_ifspec;
 
 #ifndef __IContextMenuCallback_INTERFACE_DEFINED__
 #define __IContextMenuCallback_INTERFACE_DEFINED__
@@ -2702,7 +2701,7 @@ void __RPC_STUB IExtendContextMenu_Command_Stub(
 #endif 	/* __IExtendContextMenu_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mmc_0124 */
+/* interface __MIDL_itf_mmc_0120 */
 /* [local] */ 
 
 #if (MMC_VER >= 0x0120)
@@ -2714,8 +2713,8 @@ void __RPC_STUB IExtendContextMenu_Command_Stub(
 #endif // MMC_VER >= 0x0120
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0124_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0124_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0120_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0120_v0_0_s_ifspec;
 
 #ifndef __IImageList_INTERFACE_DEFINED__
 #define __IImageList_INTERFACE_DEFINED__
@@ -3678,7 +3677,7 @@ void __RPC_STUB IConsoleNameSpace2_AddExtension_Stub(
 #endif 	/* __IConsoleNameSpace2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mmc_0129 */
+/* interface __MIDL_itf_mmc_0125 */
 /* [local] */ 
 
 
@@ -3686,8 +3685,8 @@ typedef struct _PSP *HPROPSHEETPAGE;
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0129_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0129_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0125_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0125_v0_0_s_ifspec;
 
 #ifndef __IPropertySheetCallback_INTERFACE_DEFINED__
 #define __IPropertySheetCallback_INTERFACE_DEFINED__
@@ -5212,14 +5211,14 @@ void __RPC_STUB ISnapinHelp_GetHelpTopic_Stub(
 #endif 	/* __ISnapinHelp_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mmc_0139 */
+/* interface __MIDL_itf_mmc_0135 */
 /* [local] */ 
 
 #if (MMC_VER >= 0x0110)
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0139_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0139_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0135_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0135_v0_0_s_ifspec;
 
 #ifndef __IExtendPropertySheet2_INTERFACE_DEFINED__
 #define __IExtendPropertySheet2_INTERFACE_DEFINED__
@@ -5634,7 +5633,7 @@ void __RPC_STUB ISnapinHelp2_GetLinkedTopics_Stub(
 #endif 	/* __ISnapinHelp2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mmc_0142 */
+/* interface __MIDL_itf_mmc_0138 */
 /* [local] */ 
 
 typedef 
@@ -5703,8 +5702,8 @@ typedef DWORD MMC_STRING_ID;
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0142_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0142_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0138_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0138_v0_0_s_ifspec;
 
 #ifndef __IEnumTASK_INTERFACE_DEFINED__
 #define __IEnumTASK_INTERFACE_DEFINED__
@@ -6765,7 +6764,7 @@ void __RPC_STUB IStringTable_Enumerate_Stub(
 #endif 	/* __IStringTable_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mmc_0148 */
+/* interface __MIDL_itf_mmc_0144 */
 /* [local] */ 
 
 #endif // MMC_VER >= 0x0110
@@ -6803,8 +6802,8 @@ typedef struct _MMC_SORT_SET_DATA
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0148_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0148_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0144_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0144_v0_0_s_ifspec;
 
 #ifndef __IColumnData_INTERFACE_DEFINED__
 #define __IColumnData_INTERFACE_DEFINED__
@@ -7138,7 +7137,7 @@ void __RPC_STUB IMessageView_Clear_Stub(
 #endif 	/* __IMessageView_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mmc_0150 */
+/* interface __MIDL_itf_mmc_0146 */
 /* [local] */ 
 
 typedef struct _RDCITEMHDR
@@ -7162,8 +7161,8 @@ typedef struct _RDCOMPARE
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0150_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0150_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0146_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0146_v0_0_s_ifspec;
 
 #ifndef __IResultDataCompareEx_INTERFACE_DEFINED__
 #define __IResultDataCompareEx_INTERFACE_DEFINED__
@@ -7258,7 +7257,7 @@ void __RPC_STUB IResultDataCompareEx_Compare_Stub(
 #endif 	/* __IResultDataCompareEx_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mmc_0151 */
+/* interface __MIDL_itf_mmc_0147 */
 /* [local] */ 
 
 #endif // MMC_VER >= 0x0120
@@ -7354,8 +7353,8 @@ typedef struct _MMC_EXT_VIEW_DATA *PMMC_EXT_VIEW_DATA;
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0151_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0151_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0147_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0147_v0_0_s_ifspec;
 
 #ifndef __IComponentData2_INTERFACE_DEFINED__
 #define __IComponentData2_INTERFACE_DEFINED__
@@ -8812,14 +8811,14 @@ void __RPC_STUB IResultData2_RenameResultItem_Stub(
 #endif 	/* __IResultData2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_mmc_0163 */
+/* interface __MIDL_itf_mmc_0159 */
 /* [local] */ 
 
 #endif // MMC_VER >= 0x0200
 
 
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0163_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_mmc_0163_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0159_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_mmc_0159_v0_0_s_ifspec;
 
 /* Additional Prototypes for ALL interfaces */
 

@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for rend.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -2339,7 +2338,7 @@ void __RPC_STUB ITRendezvous_CreateDirectoryObject_Stub(
 #endif 	/* __ITRendezvous_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_rend_0510 */
+/* interface __MIDL_itf_rend_0505 */
 /* [local] */ 
 
 
@@ -2368,8 +2367,8 @@ void __RPC_STUB ITRendezvous_CreateDirectoryObject_Stub(
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_rend_0510_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_rend_0510_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_rend_0505_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_rend_0505_v0_0_s_ifspec;
 
 
 #ifndef __RENDLib_LIBRARY_DEFINED__

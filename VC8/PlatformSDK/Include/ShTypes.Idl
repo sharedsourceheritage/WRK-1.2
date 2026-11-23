@@ -117,6 +117,7 @@ typedef struct _WIN32_FIND_DATAW
 } WIN32_FIND_DATAW;
 cpp_quote("#endif // WINBASE_DEFINED_MIDL")
 
+
 cpp_quote("//-------------------------------------------------------------------------")
 cpp_quote("//")
 cpp_quote("// struct STRRET")

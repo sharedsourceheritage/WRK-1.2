@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MQAsync", "MQAsync\MQAsync.vbproj", "{627AF4D2-1219-49CB-8C5A-C04F56B3FAD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{627AF4D2-1219-49CB-8C5A-C04F56B3FAD4}.Debug|.NET.ActiveCfg = Debug|.NET
+		{627AF4D2-1219-49CB-8C5A-C04F56B3FAD4}.Debug|.NET.Build.0 = Debug|.NET
+		{627AF4D2-1219-49CB-8C5A-C04F56B3FAD4}.Release|.NET.ActiveCfg = Release|.NET
+		{627AF4D2-1219-49CB-8C5A-C04F56B3FAD4}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

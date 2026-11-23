@@ -1,0 +1,42 @@
+package Microsoft.Samples;
+//-----------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//-----------------------------------------------------------------------
+
+import System.*;
+import System.Messaging.*;
+
+public class Formatters
+{
+    public static void main(String[] args)
+    {
+        String mqPath = ".\\FormattersSample";
+
+        if (!(MessageQueue.Exists(mqPath))) {
+            MessageQueue.Create(mqPath);
+        }
+
+        MessageQueue mq = new MessageQueue(mqPath);
+        Order order = new Order();
+
+        order.set_OrderId(102);
+        order.set_ItemDescription("MS Visual Studio 7");
+        mq.set_Formatter(new XmlMessageFormatter());
+        mq.Send(order);
+        mq.set_Formatter(new BinaryMessageFormatter());
+        mq.Send(order);
+        mq.set_Formatter(new ActiveXMessageFormatter());
+        mq.Send((Int32)10);
+    } //main
+} //Formatters

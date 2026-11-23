@@ -83,7 +83,6 @@ Notes:
 // Define the facility codes
 //
 #define FACILITY_USB_ERROR_CODE          0x10
-#define FACILITY_TRANSACTION             0x19
 #define FACILITY_TERMINAL_SERVER         0xA
 #define FACILITY_SXS_ERROR_CODE          0x15
 #define FACILITY_RPC_STUBS               0x3
@@ -92,7 +91,6 @@ Notes:
 #define FACILITY_HID_ERROR_CODE          0x11
 #define FACILITY_FIREWIRE_ERROR_CODE     0x12
 #define FACILITY_DEBUGGER                0x1
-#define FACILITY_COMMONLOG_ERROR_CODE    0x1A
 #define FACILITY_CLUSTER_ERROR_CODE      0x13
 #define FACILITY_ACPI_ERROR_CODE         0x14
 
@@ -465,16 +463,6 @@ Notes:
 //  The specified process is part of a job.
 //
 #define STATUS_PROCESS_IN_JOB            ((NTSTATUS)0x00000124L)
-
-//
-// MessageId: STATUS_VOLSNAP_HIBERNATE_READY
-//
-// MessageText:
-//
-//  {Volume Shadow Copy Service}
-//  The system is now ready for hibernation.
-//
-#define STATUS_VOLSNAP_HIBERNATE_READY   ((NTSTATUS)0x00000125L)
 
 //
 // MessageId: STATUS_FSFILTER_OP_COMPLETED_SUCCESSFULLY
@@ -941,15 +929,6 @@ Notes:
 #define STATUS_RESUME_HIBERNATION        ((NTSTATUS)0x4000002BL)    
 
 //
-// MessageId: STATUS_FIRMWARE_UPDATED
-//
-// MessageText:
-//
-//  Windows has detected that the system firmware (BIOS) was updated [previous firmware date = %2, current firmware date %3].
-//
-#define STATUS_FIRMWARE_UPDATED          ((NTSTATUS)0x4000002CL)
-
-//
 // MessageId: STATUS_DRIVERS_LEAKING_LOCKED_PAGES
 //
 // MessageText:
@@ -1008,7 +987,7 @@ Notes:
 //
 // MessageText:
 //
-//  Debugger printed exception on control C.
+//  Debugger printerd exception on control C.
 //
 #define DBG_PRINTEXCEPTION_C             ((NTSTATUS)0x40010006L)
 
@@ -1017,7 +996,7 @@ Notes:
 //
 // MessageText:
 //
-//  Debugger received RIP exception.
+//  Debugger recevice RIP exception.
 //
 #define DBG_RIPEXCEPTION                 ((NTSTATUS)0x40010007L)
 
@@ -1029,15 +1008,6 @@ Notes:
 //  Debugger received control break.
 //
 #define DBG_CONTROL_BREAK                ((NTSTATUS)0x40010008L)    // winnt
-
-//
-// MessageId: DBG_COMMAND_EXCEPTION
-//
-// MessageText:
-//
-//  Debugger command communication exception.
-//
-#define DBG_COMMAND_EXCEPTION            ((NTSTATUS)0x40010009L)    // winnt
 
 
 
@@ -1426,36 +1396,6 @@ Notes:
 //  A frame consolidation has been executed.
 //
 #define STATUS_UNWIND_CONSOLIDATE        ((NTSTATUS)0x80000029L)
-
-//
-// MessageId: STATUS_REGISTRY_HIVE_RECOVERED
-//
-// MessageText:
-//
-//  {Registry Hive Recovered}
-//  Registry hive (file):
-//  %hs
-//  was corrupted and it has been recovered. Some data might have been lost.
-//
-#define STATUS_REGISTRY_HIVE_RECOVERED   ((NTSTATUS)0x8000002AL)
-
-//
-// MessageId: STATUS_DLL_MIGHT_BE_INSECURE
-//
-// MessageText:
-//
-//  The application is attempting to run executable code from the module %hs.  This may be insecure.  An alternative, %hs, is available.  Should the application use the secure module %hs?
-//
-#define STATUS_DLL_MIGHT_BE_INSECURE     ((NTSTATUS)0x8000002BL)
-
-//
-// MessageId: STATUS_DLL_MIGHT_BE_INCOMPATIBLE
-//
-// MessageText:
-//
-//  The application is loading executable code from the module %hs.  This is secure, but may be incompatible with previous releases of the operating system.  An alternative, %hs, is available.  Should the application use the secure module %hs?
-//
-#define STATUS_DLL_MIGHT_BE_INCOMPATIBLE ((NTSTATUS)0x8000002CL)
 
 //
 // MessageId: DBG_EXCEPTION_NOT_HANDLED
@@ -2187,8 +2127,7 @@ Notes:
 //
 // MessageText:
 //
-//  An attempt to set a processes DebugPort or ExceptionPort was made, but a port already exists in the process or
-//  an attempt to set a file's CompletionPort made, but a port was already set in the file.
+//  An attempt to set a processes DebugPort or ExceptionPort was made, but a port already exists in the process.
 //
 #define STATUS_PORT_ALREADY_SET          ((NTSTATUS)0xC0000048L)
 
@@ -5248,7 +5187,7 @@ Notes:
 //
 // MessageText:
 //
-//  Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed. Disconnect all previous connections to the server or shared resource and try again.
+//  Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed. Disconnect all previous connections to the server or shared resource and try again..
 //
 #define STATUS_NETWORK_CREDENTIAL_CONFLICT ((NTSTATUS)0xC0000195L)
 
@@ -7424,8 +7363,7 @@ Notes:
 //
 // MessageText:
 //
-//  The client certificate does not contain a valid UPN, or does not match the client name 
-//  in the logon request.  Please contact your administrator.
+//  The client cert name does not matches the user name or the KDC name is incorrect.
 //
 #define STATUS_PKINIT_NAME_MISMATCH      ((NTSTATUS)0xC00002F9L)
 
@@ -7488,7 +7426,7 @@ Notes:
 //
 // MessageText:
 //
-//  This operation is not supported on a computer running Windows Server 2003 for Small Business Server
+//  This operation is not supported on a Microsoft Small Business Server
 //
 #define STATUS_NOT_SUPPORTED_ON_SBS      ((NTSTATUS)0xC0000300L)
 
@@ -7603,8 +7541,7 @@ Notes:
 //
 // MessageText:
 //
-//  The kerberos protocol encountered an error while validating the KDC certificate during smartcard Logon.  There
-//  is more information in the system event log.
+//  The kerberos protocol encountered an error while validating the KDC certificate during smartcard Logon
 //
 #define STATUS_PKINIT_FAILURE            ((NTSTATUS)0xC0000320L)
 
@@ -7863,7 +7800,7 @@ Notes:
 //
 // MessageText:
 //
-//  A Machine Check Error has occurred. Please check the system eventlog for additional information.
+//  A Machine Check Error has occured. Please check the system eventlog for additional information.
 //
 #define STATUS_MCA_OCCURED               ((NTSTATUS)0xC000036AL)
 
@@ -8063,88 +8000,15 @@ Notes:
 //
 #define STATUS_DRIVER_FAILED_PRIOR_UNLOAD ((NTSTATUS)0xC000038EL)
 
-//
-// MessageId: STATUS_SMARTCARD_SILENT_CONTEXT
-//
-// MessageText:
-//
-//  The smartcard provider could not perform the action since the context was acquired as silent.
-//
-#define STATUS_SMARTCARD_SILENT_CONTEXT  ((NTSTATUS)0xC000038FL)
-
  /* MessageId up to 0x400 is reserved for smart cards */
-//
-// MessageId: STATUS_PER_USER_TRUST_QUOTA_EXCEEDED
-//
-// MessageText:
-//
-//  The current user's delegated trust creation quota has been exceeded.
-//
-#define STATUS_PER_USER_TRUST_QUOTA_EXCEEDED ((NTSTATUS)0xC0000401L)
 
-//
-// MessageId: STATUS_ALL_USER_TRUST_QUOTA_EXCEEDED
-//
-// MessageText:
-//
-//  The total delegated trust creation quota has been exceeded.
-//
-#define STATUS_ALL_USER_TRUST_QUOTA_EXCEEDED ((NTSTATUS)0xC0000402L)
 
-//
-// MessageId: STATUS_USER_DELETE_TRUST_QUOTA_EXCEEDED
-//
-// MessageText:
-//
-//  The current user's delegated trust deletion quota has been exceeded.
-//
-#define STATUS_USER_DELETE_TRUST_QUOTA_EXCEEDED ((NTSTATUS)0xC0000403L)
+ /* This code is used by .Net server.  reserved. */
 
-//
-// MessageId: STATUS_DS_NAME_NOT_UNIQUE
-//
-// MessageText:
-//
-//  The requested name already exists as a unique identifier.
-//
-#define STATUS_DS_NAME_NOT_UNIQUE        ((NTSTATUS)0xC0000404L)
-
-//
-// MessageId: STATUS_DS_DUPLICATE_ID_FOUND
-//
-// MessageText:
-//
-//  The requested object has a non-unique identifier and cannot be retrieved.
-//
-#define STATUS_DS_DUPLICATE_ID_FOUND     ((NTSTATUS)0xC0000405L)
-
-//
-// MessageId: STATUS_DS_GROUP_CONVERSION_ERROR
-//
-// MessageText:
-//
-//  The group cannot be converted due to attribute restrictions on the requested group type.
-//
-#define STATUS_DS_GROUP_CONVERSION_ERROR ((NTSTATUS)0xC0000406L)
-
-//
-// MessageId: STATUS_VOLSNAP_PREPARE_HIBERNATE
-//
-// MessageText:
-//
-//  {Volume Shadow Copy Service}
-//  Please wait while the Volume Shadow Copy Service prepares volume %hs for hibernation.
-//
-#define STATUS_VOLSNAP_PREPARE_HIBERNATE ((NTSTATUS)0xC0000407L)
-
-//
-// MessageId: STATUS_USER2USER_REQUIRED
-//
-// MessageText:
-//
-//  Kerberos sub-protocol User2User is required.
-//
-#define STATUS_USER2USER_REQUIRED        ((NTSTATUS)0xC0000408L)
+ /* MessageId=0x408 Facility=System Severity=Error SymbolicName=STATUS_USER2USER_REQUIRED */
+ /* Language=English */
+ /* Kerberos sub-protocol User2User is required. */
+ /* . */
 
 //
 // MessageId: STATUS_STACK_BUFFER_OVERRUN
@@ -8156,167 +8020,14 @@ Notes:
 //
 #define STATUS_STACK_BUFFER_OVERRUN      ((NTSTATUS)0xC0000409L)
 
-//
-// MessageId: STATUS_NO_S4U_PROT_SUPPORT
-//
-// MessageText:
-//
-//  The Kerberos subsystem encountered an error.  A service for user protocol request was made 
-//  against a domain controller which does not support service for user.
-//
-#define STATUS_NO_S4U_PROT_SUPPORT       ((NTSTATUS)0xC000040AL)
+ /* This code is used by .Net server. reserved. */
 
-//
-// MessageId: STATUS_CROSSREALM_DELEGATION_FAILURE
-//
-// MessageText:
-//
-//  An attempt was made by this server to make a Kerberos constrained delegation request for a target
-//  outside of the server's realm.  This is not supported, and indicates a misconfiguration on this
-//  server's allowed to delegate to list.  Please contact your administrator.
-//
-#define STATUS_CROSSREALM_DELEGATION_FAILURE ((NTSTATUS)0xC000040BL)
-
-//
-// MessageId: STATUS_REVOCATION_OFFLINE_KDC
-//
-// MessageText:
-//
-//  The revocation status of the domain controller certificate used for smartcard
-//  authentication could not be determined.  There is additional information in the system event
-//  log. Please contact your system administrator.
-//
-#define STATUS_REVOCATION_OFFLINE_KDC    ((NTSTATUS)0xC000040CL)
-
-//
-// MessageId: STATUS_ISSUING_CA_UNTRUSTED_KDC
-//
-// MessageText:
-//
-//  An untrusted certificate authority was detected while processing the
-//  domain controller certificate used for authentication.  There is additional information in
-//  the system event log.  Please contact your system administrator.
-//
-#define STATUS_ISSUING_CA_UNTRUSTED_KDC  ((NTSTATUS)0xC000040DL)
-
-//
-// MessageId: STATUS_KDC_CERT_EXPIRED
-//
-// MessageText:
-//
-//  The domain controller certificate used for smartcard logon has expired.
-//  Please contact your system administrator with the contents of your system event log.
-//
-#define STATUS_KDC_CERT_EXPIRED          ((NTSTATUS)0xC000040EL)
-
-//
-// MessageId: STATUS_KDC_CERT_REVOKED
-//
-// MessageText:
-//
-//  The domain controller certificate used for smartcard logon has been revoked.
-//  Please contact your system administrator with the contents of your system event log.
-//
-#define STATUS_KDC_CERT_REVOKED          ((NTSTATUS)0xC000040FL)
-
-//
-// MessageId: STATUS_PARAMETER_QUOTA_EXCEEDED
-//
-// MessageText:
-//
-//  Data present in one of the parameters is more than the function can operate on.
-//
-#define STATUS_PARAMETER_QUOTA_EXCEEDED  ((NTSTATUS)0xC0000410L)
-
-//
-// MessageId: STATUS_HIBERNATION_FAILURE
-//
-// MessageText:
-//
-//  The system has failed to hibernate (The error code is %hs).  Hibernation will be disabled until the system is restarted.
-//
-#define STATUS_HIBERNATION_FAILURE       ((NTSTATUS)0xC0000411L)
-
-//
-// MessageId: STATUS_DELAY_LOAD_FAILED
-//
-// MessageText:
-//
-//  An attempt to delay-load a .dll or get a function address in a delay-loaded .dll failed.
-//
-#define STATUS_DELAY_LOAD_FAILED         ((NTSTATUS)0xC0000412L)
-
-//
-// MessageId: STATUS_AUTHENTICATION_FIREWALL_FAILED
-//
-// MessageText:
-//
-//  Logon Failure: The machine you are logging onto is protected by an authentication firewall.  The specified account is not allowed to authenticate to the machine.
-//
-#define STATUS_AUTHENTICATION_FIREWALL_FAILED ((NTSTATUS)0xC0000413L)
-
-//
-// MessageId: STATUS_VDM_DISALLOWED
-//
-// MessageText:
-//
-//  %hs is a 16-bit application. You do not have permissions to execute 16-bit applications. Check your permissions with your system administrator.
-//
-#define STATUS_VDM_DISALLOWED            ((NTSTATUS)0xC0000414L)
-
-//
-// MessageId: STATUS_HUNG_DISPLAY_DRIVER_THREAD
-//
-// MessageText:
-//
-//  {Display Driver Stopped Responding}
-//  The %hs display driver has stopped working normally.  Save your work and reboot the system to restore full display functionality.
-//  The next time you reboot the machine a dialog will be displayed giving you a chance to report this failure to Microsoft.
-//
-#define STATUS_HUNG_DISPLAY_DRIVER_THREAD ((NTSTATUS)0xC0000415L)
-
-/*++
-
-MessageId=0x0420 Facility=System Severity=ERROR SymbolicName=STATUS_ASSERTION_FAILURE
-Language=English
-An assertion failure has occurred.
-.
-
---*/
-
-#define STATUS_ASSERTION_FAILURE         ((NTSTATUS)0xC0000420L)
-
-/*++
-
- MessageId=0x0423 Facility=System Severity=ERROR SymbolicName=STATUS_CALLBACK_POP_STACK
- Language=English
- An exception has occurred in a user mode callback and the kernel callback frame should be removed.
- .
-
---*/
-
-#define STATUS_CALLBACK_POP_STACK        ((NTSTATUS)0xC0000423L)
-
-/*++
-
- MessageId=0x0424 Facility=System Severity=ERROR SymbolicName=STATUS_INCOMPATIBLE_DRIVER_BLOCKED
- Language=English
- %1 has been blocked from loading due to incompatibility with this system. Please contact your software
- vendor for a compatible version of the driver.
- .
-
---*/
-
-#define STATUS_INCOMPATIBLE_DRIVER_BLOCKED   ((NTSTATUS)0xC0000424L)
-
-//
-// MessageId: STATUS_ENCOUNTERED_WRITE_IN_PROGRESS
-//
-// MessageText:
-//
-//  The attempted write operation encountered a write already in progress for some portion of the range.
-//
-#define STATUS_ENCOUNTERED_WRITE_IN_PROGRESS ((NTSTATUS)0xC0000433L)
+ /* MessageId=0x0415 Facility=System Severity=ERROR SymbolicName=STATUS_HUNG_DISPLAY_DRIVER_THREAD */
+ /* Language=English */
+ /* {Display Driver Stopped Responding} */
+ /* The %hs display driver has stopped working normally.	Save your work and reboot the system to restore full display functionality. */
+ /* The next time you reboot the machine a dialog will be displayed giving you a chance to upload data about this failure to Microsoft. */
+ /* . */
 
 //
 // MessageId: STATUS_WOW_ASSERTION
@@ -9957,15 +9668,6 @@ An assertion failure has occurred.
 #define STATUS_PNP_IRQ_TRANSLATION_FAILED ((NTSTATUS)0xC0040037L)
 
 //
-// MessageId: STATUS_PNP_INVALID_ID
-//
-// MessageText:
-//
-//  Driver %2 returned invalid ID for a child device (%3).
-//
-#define STATUS_PNP_INVALID_ID            ((NTSTATUS)0xC0040038L)
-
-//
 // MessageId: STATUS_SXS_SECTION_NOT_FOUND
 //
 // MessageText:
@@ -10138,24 +9840,6 @@ An assertion failure has occurred.
 //  A component used by the isolation facility has requested to terminate the process.
 //
 #define STATUS_SXS_PROCESS_TERMINATION_REQUESTED ((NTSTATUS)0xC0150013L)
-
-//
-// MessageId: STATUS_SXS_CORRUPT_ACTIVATION_STACK
-//
-// MessageText:
-//
-//  The activation context activation stack for the running thread of execution is corrupt.
-//
-#define STATUS_SXS_CORRUPT_ACTIVATION_STACK ((NTSTATUS)0xC0150014L)
-
-//
-// MessageId: STATUS_SXS_CORRUPTION
-//
-// MessageText:
-//
-//  The application isolation metadata for this process or thread has become corrupt.
-//
-#define STATUS_SXS_CORRUPTION            ((NTSTATUS)0xC0150015L)
 
 //
 // MessageId: STATUS_CLUSTER_INVALID_NODE
@@ -10363,431 +10047,6 @@ An assertion failure has occurred.
 //  The cluster node has been poisoned.
 //
 #define STATUS_CLUSTER_POISONED          ((NTSTATUS)0xC0130017L)
-
-
-//
-// MessageId: STATUS_LOG_SECTOR_INVALID
-//
-// MessageText:
-//
-//  Log service found an invalid log sector.
-//
-#define STATUS_LOG_SECTOR_INVALID        ((NTSTATUS)0xC01A0001L)
-
-//
-// MessageId: STATUS_LOG_SECTOR_PARITY_INVALID
-//
-// MessageText:
-//
-//  Log service encountered a log sector with invalid block parity.
-//
-#define STATUS_LOG_SECTOR_PARITY_INVALID ((NTSTATUS)0xC01A0002L)
-
-//
-// MessageId: STATUS_LOG_SECTOR_REMAPPED
-//
-// MessageText:
-//
-//  Log service encountered a remapped log sector.
-//
-#define STATUS_LOG_SECTOR_REMAPPED       ((NTSTATUS)0xC01A0003L)
-
-//
-// MessageId: STATUS_LOG_BLOCK_INCOMPLETE
-//
-// MessageText:
-//
-//  Log service encountered a partial or incomplete log block.
-//
-#define STATUS_LOG_BLOCK_INCOMPLETE      ((NTSTATUS)0xC01A0004L)
-
-//
-// MessageId: STATUS_LOG_INVALID_RANGE
-//
-// MessageText:
-//
-//  Log service encountered an attempt access data outside the active log range.
-//
-#define STATUS_LOG_INVALID_RANGE         ((NTSTATUS)0xC01A0005L)
-
-//
-// MessageId: STATUS_LOG_BLOCKS_EXHAUSTED
-//
-// MessageText:
-//
-//  Log service user log marshalling buffers are exhausted.
-//
-#define STATUS_LOG_BLOCKS_EXHAUSTED      ((NTSTATUS)0xC01A0006L)
-
-//
-// MessageId: STATUS_LOG_READ_CONTEXT_INVALID
-//
-// MessageText:
-//
-//  Log service encountered an attempt read from a marshalling area with an invalid read context.
-//
-#define STATUS_LOG_READ_CONTEXT_INVALID  ((NTSTATUS)0xC01A0007L)
-
-//
-// MessageId: STATUS_LOG_RESTART_INVALID
-//
-// MessageText:
-//
-//  Log service encountered an invalid log restart area.
-//
-#define STATUS_LOG_RESTART_INVALID       ((NTSTATUS)0xC01A0008L)
-
-//
-// MessageId: STATUS_LOG_BLOCK_VERSION
-//
-// MessageText:
-//
-//  Log service encountered an invalid log block version.
-//
-#define STATUS_LOG_BLOCK_VERSION         ((NTSTATUS)0xC01A0009L)
-
-//
-// MessageId: STATUS_LOG_BLOCK_INVALID
-//
-// MessageText:
-//
-//  Log service encountered an invalid log block.
-//
-#define STATUS_LOG_BLOCK_INVALID         ((NTSTATUS)0xC01A000AL)
-
-//
-// MessageId: STATUS_LOG_READ_MODE_INVALID
-//
-// MessageText:
-//
-//  Log service encountered an attempt to read the log with an invalid read mode.
-//
-#define STATUS_LOG_READ_MODE_INVALID     ((NTSTATUS)0xC01A000BL)
-
-//
-// MessageId: STATUS_LOG_NO_RESTART
-//
-// MessageText:
-//
-//  Log service encountered a log stream with no restart area.
-//
-#define STATUS_LOG_NO_RESTART            ((NTSTATUS)0x401A000CL)
-
-//
-// MessageId: STATUS_LOG_METADATA_CORRUPT
-//
-// MessageText:
-//
-//  Log service encountered a corrupted metadata file.
-//
-#define STATUS_LOG_METADATA_CORRUPT      ((NTSTATUS)0xC01A000DL)
-
-//
-// MessageId: STATUS_LOG_METADATA_INVALID
-//
-// MessageText:
-//
-//  Log service encountered a metadata file that could not be created by the log file system.
-//
-#define STATUS_LOG_METADATA_INVALID      ((NTSTATUS)0xC01A000EL)
-
-//
-// MessageId: STATUS_LOG_METADATA_INCONSISTENT
-//
-// MessageText:
-//
-//  Log service encountered a metadata file with inconsistent data.
-//
-#define STATUS_LOG_METADATA_INCONSISTENT ((NTSTATUS)0xC01A000FL)
-
-//
-// MessageId: STATUS_LOG_RESERVATION_INVALID
-//
-// MessageText:
-//
-//  Log service encountered an attempt to erroneously allocate or dispose reservation space.
-//
-#define STATUS_LOG_RESERVATION_INVALID   ((NTSTATUS)0xC01A0010L)
-
-//
-// MessageId: STATUS_LOG_CANT_DELETE
-//
-// MessageText:
-//
-//  Log service cannot delete log file or file system container.
-//
-#define STATUS_LOG_CANT_DELETE           ((NTSTATUS)0xC01A0011L)
-
-//
-// MessageId: STATUS_LOG_CONTAINER_LIMIT_EXCEEDED
-//
-// MessageText:
-//
-//  Log service has reached the maximum allowable containers allocated to a log file.
-//
-#define STATUS_LOG_CONTAINER_LIMIT_EXCEEDED ((NTSTATUS)0xC01A0012L)
-
-//
-// MessageId: STATUS_LOG_START_OF_LOG
-//
-// MessageText:
-//
-//  Log service has attempted to read or write backwards past the start of the log.
-//
-#define STATUS_LOG_START_OF_LOG          ((NTSTATUS)0xC01A0013L)
-
-//
-// MessageId: STATUS_LOG_POLICY_ALREADY_INSTALLED
-//
-// MessageText:
-//
-//  Log policy could not be installed because a policy of the same type is already present.
-//
-#define STATUS_LOG_POLICY_ALREADY_INSTALLED ((NTSTATUS)0xC01A0014L)
-
-//
-// MessageId: STATUS_LOG_POLICY_NOT_INSTALLED
-//
-// MessageText:
-//
-//  Log policy in question was not installed at the time of the request.
-//
-#define STATUS_LOG_POLICY_NOT_INSTALLED  ((NTSTATUS)0xC01A0015L)
-
-//
-// MessageId: STATUS_LOG_POLICY_INVALID
-//
-// MessageText:
-//
-//  The installed set of policies on the log is invalid.
-//
-#define STATUS_LOG_POLICY_INVALID        ((NTSTATUS)0xC01A0016L)
-
-//
-// MessageId: STATUS_LOG_POLICY_CONFLICT
-//
-// MessageText:
-//
-//  A policy on the log in question prevented the operation from completing.
-//
-#define STATUS_LOG_POLICY_CONFLICT       ((NTSTATUS)0xC01A0017L)
-
-//
-// MessageId: STATUS_LOG_PINNED_ARCHIVE_TAIL
-//
-// MessageText:
-//
-//  Log space cannot be reclaimed because the log is pinned by the archive tail.
-//
-#define STATUS_LOG_PINNED_ARCHIVE_TAIL   ((NTSTATUS)0xC01A0018L)
-
-//
-// MessageId: STATUS_LOG_RECORD_NONEXISTENT
-//
-// MessageText:
-//
-//  Log record is not a record in the log file.
-//
-#define STATUS_LOG_RECORD_NONEXISTENT    ((NTSTATUS)0xC01A0019L)
-
-//
-// MessageId: STATUS_LOG_RECORDS_RESERVED_INVALID
-//
-// MessageText:
-//
-//  Number of reserved log records or the adjustment of the number of reserved log records is invalid.
-//
-#define STATUS_LOG_RECORDS_RESERVED_INVALID ((NTSTATUS)0xC01A001AL)
-
-//
-// MessageId: STATUS_LOG_SPACE_RESERVED_INVALID
-//
-// MessageText:
-//
-//  Reserved log space or the adjustment of the log space is invalid.
-//
-#define STATUS_LOG_SPACE_RESERVED_INVALID ((NTSTATUS)0xC01A001BL)
-
-//
-// MessageId: STATUS_LOG_TAIL_INVALID
-//
-// MessageText:
-//
-//  A new or existing archive tail or base of the active log is invalid.
-//
-#define STATUS_LOG_TAIL_INVALID          ((NTSTATUS)0xC01A001CL)
-
-//
-// MessageId: STATUS_LOG_FULL
-//
-// MessageText:
-//
-//  Log space is exhausted.
-//
-#define STATUS_LOG_FULL                  ((NTSTATUS)0xC01A001DL)
-
-//
-// MessageId: STATUS_LOG_MULTIPLEXED
-//
-// MessageText:
-//
-//  Log is multiplexed, no direct writes to the physical log is allowed.
-//
-#define STATUS_LOG_MULTIPLEXED           ((NTSTATUS)0xC01A001EL)
-
-//
-// MessageId: STATUS_LOG_DEDICATED
-//
-// MessageText:
-//
-//  The operation failed because the log is a dedicated log.
-//
-#define STATUS_LOG_DEDICATED             ((NTSTATUS)0xC01A001FL)
-
-//
-// MessageId: STATUS_LOG_ARCHIVE_NOT_IN_PROGRESS
-//
-// MessageText:
-//
-//  The operation requires an archive context.
-//
-#define STATUS_LOG_ARCHIVE_NOT_IN_PROGRESS ((NTSTATUS)0xC01A0020L)
-
-//
-// MessageId: STATUS_LOG_ARCHIVE_IN_PROGRESS
-//
-// MessageText:
-//
-//  Log archival is in progress.
-//
-#define STATUS_LOG_ARCHIVE_IN_PROGRESS   ((NTSTATUS)0xC01A0021L)
-
-//
-// MessageId: STATUS_LOG_EPHEMERAL
-//
-// MessageText:
-//
-//  The operation requires a non-ephemeral log, but the log is ephemeral.
-//
-#define STATUS_LOG_EPHEMERAL             ((NTSTATUS)0xC01A0022L)
-
-//
-// MessageId: STATUS_LOG_NOT_ENOUGH_CONTAINERS
-//
-// MessageText:
-//
-//  The log must have at least two containers before it can be read from or written to.
-//
-#define STATUS_LOG_NOT_ENOUGH_CONTAINERS ((NTSTATUS)0xC01A0023L)
-
-//
-// MessageId: STATUS_LOG_CLIENT_ALREADY_REGISTERED
-//
-// MessageText:
-//
-//  A log client has already registered on the stream.
-//
-#define STATUS_LOG_CLIENT_ALREADY_REGISTERED ((NTSTATUS)0xC01A0024L)
-
-//
-// MessageId: STATUS_LOG_CLIENT_NOT_REGISTERED
-//
-// MessageText:
-//
-//  A log client has not been registered on the stream.
-//
-#define STATUS_LOG_CLIENT_NOT_REGISTERED ((NTSTATUS)0xC01A0025L)
-
-//
-// MessageId: STATUS_LOG_FULL_HANDLER_IN_PROGRESS
-//
-// MessageText:
-//
-//  A request has already been made to handle the log full condition.
-//
-#define STATUS_LOG_FULL_HANDLER_IN_PROGRESS ((NTSTATUS)0xC01A0026L)
-
-//
-// MessageId: STATUS_LOG_CONTAINER_READ_FAILED
-//
-// MessageText:
-//
-//  Log service enountered an error when attempting to read from a log container.
-//
-#define STATUS_LOG_CONTAINER_READ_FAILED ((NTSTATUS)0xC01A0027L)
-
-//
-// MessageId: STATUS_LOG_CONTAINER_WRITE_FAILED
-//
-// MessageText:
-//
-//  Log service enountered an error when attempting to write to a log container.
-//
-#define STATUS_LOG_CONTAINER_WRITE_FAILED ((NTSTATUS)0xC01A0028L)
-
-//
-// MessageId: STATUS_LOG_CONTAINER_OPEN_FAILED
-//
-// MessageText:
-//
-//  Log service enountered an error when attempting open a log container.
-//
-#define STATUS_LOG_CONTAINER_OPEN_FAILED ((NTSTATUS)0xC01A0029L)
-
-//
-// MessageId: STATUS_LOG_CONTAINER_STATE_INVALID
-//
-// MessageText:
-//
-//  Log service enountered an invalid container state when attempting a requested action.
-//
-#define STATUS_LOG_CONTAINER_STATE_INVALID ((NTSTATUS)0xC01A002AL)
-
-//
-// MessageId: STATUS_LOG_STATE_INVALID
-//
-// MessageText:
-//
-//  Log service is not in the correct state to perform a requested action.
-//
-#define STATUS_LOG_STATE_INVALID         ((NTSTATUS)0xC01A002BL)
-
-//
-// MessageId: STATUS_LOG_PINNED
-//
-// MessageText:
-//
-//  Log space cannot be reclaimed because the log is pinned.
-//
-#define STATUS_LOG_PINNED                ((NTSTATUS)0xC01A002CL)
-
-//
-// MessageId: STATUS_LOG_METADATA_FLUSH_FAILED
-//
-// MessageText:
-//
-//  Log metadata flush failed.
-//
-#define STATUS_LOG_METADATA_FLUSH_FAILED ((NTSTATUS)0xC01A002DL)
-
-//
-// MessageId: STATUS_LOG_INCONSISTENT_SECURITY
-//
-// MessageText:
-//
-//  Security on the log and its containers is inconsistent.
-//
-#define STATUS_LOG_INCONSISTENT_SECURITY ((NTSTATUS)0xC01A002EL)
-
-//
-// MessageId: STATUS_COULD_NOT_RESIZE_LOG
-//
-// MessageText:
-//
-//  The log could not be set to the requested size.
-//
-#define STATUS_COULD_NOT_RESIZE_LOG      ((NTSTATUS)0x80190009L)
-
 
 /*lint -restore */  // Resume checking for different macro definitions // winnt
 // end_ntsecapi

@@ -1,0 +1,32 @@
+<books xmlns="http://www.example.com/my-bookshelf">
+  <book publisher="QUE">
+    <title>XML By Example</title>
+    <author>Benoit Marchal</author>
+    <publication-date>1999-12-31</publication-date>
+    <price>24.99</price>
+  </book>
+  <book publisher="Addison Wesley" on-loan="Dmitri">
+    <title>Essential C++</title>
+    <author>Stanley Lippman</author>
+    <publication-date>2000-10-31</publication-date>
+    <price>33.95</price>
+  </book>
+  <book publisher="WROX">
+    <title>XSLT Programmer's Reference</title>
+    <author>Michael Kay</author>
+    <publication-date>2001-04-30</publication-date>
+    <price>34.99</price>
+  </book>
+  <book publisher="Addison Wesley" on-loan="Sanjay">
+    <title>Mythical Man Month</title>
+    <author>Frederick Brooks</author>
+    <publication-date>1995-06-30</publication-date>
+    <price>29.95</price>
+  </book>
+  <book publisher="Apress">
+    <title>Programmer's Introduction to C#</title>
+    <author>Eric Gunnerson</author>
+    <publication-date>2001-06-30</publication-date>
+    <price>34.95</price>
+  </book>
+</books>

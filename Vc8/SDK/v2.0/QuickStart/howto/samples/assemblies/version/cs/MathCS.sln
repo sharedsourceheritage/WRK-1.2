@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcRV5", "CalcRV5\CalcRV5.csproj", "{2C652F35-1E1C-43B0-8931-0FA44155B0FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcRV6", "CalcRV6\CalcRV6.csproj", "{7335ECE4-38CA-4C46-874C-DE6E5AADFE61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parser", "Parser\Parser.csproj", "{E94234EB-F77D-420A-A3D2-EC61A2654EA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math", "Math\Math.csproj", "{ABDB897E-3A5D-4A90-86D8-8760FA5BD402}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABDB897E-3A5D-4A90-86D8-8760FA5BD402}.Debug|.NET.ActiveCfg = Debug|.NET
+		{ABDB897E-3A5D-4A90-86D8-8760FA5BD402}.Debug|.NET.Build.0 = Debug|.NET
+		{ABDB897E-3A5D-4A90-86D8-8760FA5BD402}.Release|.NET.ActiveCfg = Release|.NET
+		{ABDB897E-3A5D-4A90-86D8-8760FA5BD402}.Release|.NET.Build.0 = Release|.NET
+		{2C652F35-1E1C-43B0-8931-0FA44155B0FF}.Debug|.NET.ActiveCfg = Debug|.NET
+		{2C652F35-1E1C-43B0-8931-0FA44155B0FF}.Debug|.NET.Build.0 = Debug|.NET
+		{2C652F35-1E1C-43B0-8931-0FA44155B0FF}.Release|.NET.ActiveCfg = Release|.NET
+		{2C652F35-1E1C-43B0-8931-0FA44155B0FF}.Release|.NET.Build.0 = Release|.NET
+		{E94234EB-F77D-420A-A3D2-EC61A2654EA7}.Debug|.NET.ActiveCfg = Debug|.NET
+		{E94234EB-F77D-420A-A3D2-EC61A2654EA7}.Debug|.NET.Build.0 = Debug|.NET
+		{E94234EB-F77D-420A-A3D2-EC61A2654EA7}.Release|.NET.ActiveCfg = Release|.NET
+		{E94234EB-F77D-420A-A3D2-EC61A2654EA7}.Release|.NET.Build.0 = Release|.NET
+		{7335ECE4-38CA-4C46-874C-DE6E5AADFE61}.Debug|.NET.ActiveCfg = Debug|.NET
+		{7335ECE4-38CA-4C46-874C-DE6E5AADFE61}.Debug|.NET.Build.0 = Debug|.NET
+		{7335ECE4-38CA-4C46-874C-DE6E5AADFE61}.Release|.NET.ActiveCfg = Release|.NET
+		{7335ECE4-38CA-4C46-874C-DE6E5AADFE61}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

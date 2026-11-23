@@ -1499,10 +1499,6 @@ Revision History:
 #define DS_SHELLFONT        (DS_SETFONT | DS_FIXEDSYS)
 #endif /* WINVER >= 0x0400 */
 
-#if(_WIN32_WCE >= 0x0500)
-#define DS_USEPIXELS        0x8000L
-#endif
-
 
 /*
  * Listbox Styles
@@ -1524,7 +1520,7 @@ Revision History:
 #if(WINVER >= 0x0400)
 #define LBS_NOSEL             0x4000L
 #endif /* WINVER >= 0x0400 */
-#define LBS_COMBOBOX          0x8000L
+#define LBS_COMBOBOX          0x8000L  // Listbox is part of a Combobox - read-only
 
 #define LBS_STANDARD          (LBS_NOTIFY | LBS_SORT | WS_VSCROLL | WS_BORDER)
 
@@ -1544,8 +1540,8 @@ Revision History:
 #define CBS_NOINTEGRALHEIGHT  0x0400L
 #define CBS_DISABLENOSCROLL   0x0800L
 #if(WINVER >= 0x0400)
-#define CBS_UPPERCASE         0x2000L
-#define CBS_LOWERCASE         0x4000L
+#define CBS_UPPERCASE           0x2000L
+#define CBS_LOWERCASE           0x4000L
 #endif /* WINVER >= 0x0400 */
 
 

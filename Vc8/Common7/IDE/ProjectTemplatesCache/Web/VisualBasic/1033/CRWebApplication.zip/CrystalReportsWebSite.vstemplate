@@ -1,0 +1,31 @@
+<VSTemplate Version="2.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">>
+    <TemplateData>
+        <Name Package="{FFD3884E-978C-4134-BD20-E69CAD4C6629}" ID="450" />
+        <Description Package="{FFD3884E-978C-4134-BD20-E69CAD4C6629}" ID="451"/>
+        <Icon Package="{FFD3884E-978C-4134-BD20-E69CAD4C6629}" ID="5003"/>
+        <ProjectType>Web</ProjectType>
+        <ProjectSubType>VisualBasic</ProjectSubType>
+        <SortOrder>100</SortOrder>
+        <CreateNewFolder>true</CreateNewFolder>
+        <DefaultName>CrystalReportsWebSite</DefaultName>
+        <ProvideDefaultName>true</ProvideDefaultName>
+        <PromptForSaveOnCreation>true</PromptForSaveOnCreation>
+        <EnableEditOfLocationField>true</EnableEditOfLocationField>
+        <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+        <LocationField>hidden</LocationField>
+    </TemplateData>
+    <TemplateContent>
+        <Project File="CrystalReportsWebSite.webproj" ReplaceParameters="false">
+            <Folder Name="App_Data">
+            </Folder>
+            <ProjectItem OpenInEditor="true" OpenOrder="10">Default.aspx</ProjectItem>
+            <ProjectItem>Default.aspx.vb</ProjectItem>
+            <ProjectItem>Web.config</ProjectItem>
+            <ProjectItem>vwd.webinfo</ProjectItem>
+        </Project>
+    </TemplateContent>
+    <WizardExtension>
+        <Assembly>CrystalDecisions.VSDesigner, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, Custom=null</Assembly>
+        <FullClassName>CrystalDecisions.VSDesigner.Wizard.ReportProjectItemWizard</FullClassName>
+    </WizardExtension>
+</VSTemplate>

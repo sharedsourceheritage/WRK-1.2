@@ -1,0 +1,496 @@
+<?xml version="1.0" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			xmlns:vs="urn:schemas-microsoft-com:PolicyData" 
+			targetNamespace="http://schemas.microsoft.com/VSPolicy/PDLSchema" 
+			xmlns="http://schemas.microsoft.com/VSPolicy/PDLSchema" 
+			elementFormDefault="qualified">
+
+    <xsd:element name="PolicyDefinitions" type="PolicyDefinitionsType" />
+
+    <xsd:element name="PolicyActions" type="PolicyActionsType" />
+
+    <xsd:complexType name="PolicyDefinitionsType">
+        <xsd:sequence>
+            <xsd:element name="ElementDefs" type="ElementDefsType" minOccurs="0" />
+            <xsd:element name="CategoryDefs" type="CategoryDefsType" minOccurs="0" />
+            <xsd:element name="FeatureDefs" type="FeatureDefsType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Version" type="xsd:token" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="ElementDefsType">
+        <xsd:sequence>
+            <xsd:choice maxOccurs="unbounded">
+                <xsd:element name="CodeType" type="DefsCodeType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="CodeVariable" type="DefsCodeVariableType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="Reference" type="DefsReferenceType" vs:key="Id" vs:rep="Element" /> 
+                <xsd:element name="WebReference" type="DefsWebReferenceType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="HtmlElement" type="DefsHtmlElementType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="Project" type="DefsProjectType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="ProjectItem" type="DefsProjectItemType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="SolutionFolder" type="DefsSolutionFolderType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="Feature" type="DefsFeatureType" vs:key="Id" vs:rep="Element" />
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsCodeType">
+        <xsd:sequence>
+            <xsd:element name="Identifiers" type="DefsCodeIdentType" minOccurs="0" />
+            <xsd:element name="FeatureLinks" type="FeatureLinksCType" minOccurs="0" />
+            <xsd:element name="Prototypes" type="PrototypesType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsCodeIdentType">
+        <xsd:sequence>
+            <xsd:element name="Kind" type="xsd:string" minOccurs="0" vs:id="simple" />
+            <xsd:element name="Implements" type="xsd:string" minOccurs="0" maxOccurs="unbounded" vs:id="simple" />
+            <xsd:element name="Inherits" type="xsd:string" minOccurs="0" maxOccurs="unbounded" vs:id="simple" />
+            <xsd:element name="Attribute" type="NameValueType" minOccurs="0" maxOccurs="unbounded" vs:id="pair" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsCodeVariableType">
+        <xsd:sequence>
+            <xsd:element name="Identifiers" type="DefsCodeVariableIdentType" minOccurs="0" />
+            <xsd:element name="FeatureLinks" type="FeatureLinksTType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsCodeVariableIdentType">
+        <xsd:sequence>
+            <xsd:element name="TypeName" type="xsd:string" minOccurs="0" maxOccurs="unbounded" vs:id="simple" />
+            <xsd:element name="TypeInherits" type="xsd:string" minOccurs="0" maxOccurs="unbounded" vs:id="simple" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="DefsReferenceType">
+        <xsd:sequence>
+            <xsd:element name="Identifiers" type="DefsReferenceIdentType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsReferenceIdentType">
+        <xsd:sequence>
+            <xsd:element name="Filename" type="xsd:string" vs:id="simple" />
+            <xsd:element name="MajorVersion" type="xsd:string" minOccurs="0" vs:id="simple" />
+            <xsd:element name="MinorVersion" type="xsd:string" minOccurs="0" vs:id="simple" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="DefsWebReferenceType">
+        <xsd:sequence>
+            <xsd:element name="Identifiers" type="DefsWebReferenceIdentType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsWebReferenceIdentType">
+        <xsd:sequence>
+            <xsd:element name="Host" type="xsd:string" minOccurs="0" vs:id="simple" />
+            <xsd:element name="Path" type="xsd:string" minOccurs="0" vs:id="simple" />
+            <xsd:element name="Query" type="xsd:string" minOccurs="0" vs:id="simple" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="DefsHtmlElementType">
+        <xsd:sequence>
+            <xsd:element name="Identifiers" type="DefsHtmlElementIdentType" minOccurs="0" />
+            <xsd:element name="FeatureLinks" type="FeatureLinksTType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsHtmlElementIdentType">
+        <xsd:sequence>
+            <xsd:element name="Tag" type="xsd:string" vs:id="simple" />
+            <xsd:element name="Attribute" type="NameValueType" minOccurs="0" maxOccurs="unbounded" vs:id="pair" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="DefsProjectType">
+        <xsd:sequence>
+            <xsd:element name="Identifiers" type="DefsProjectIdentType" minOccurs="0" />
+            <xsd:element name="FeatureLinks" type="FeatureLinksCType" minOccurs="0" />
+            <xsd:element name="Prototypes" type="PrototypesType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsProjectIdentType">
+        <xsd:sequence>
+            <xsd:element name="Kind" type="xsd:string" minOccurs="0" vs:id="simple" />
+            <xsd:element name="UniqueId" type="xsd:string" minOccurs="0" vs:id="simple" />
+            <xsd:element name="FileExtension" type="xsd:string" minOccurs="0" vs:id="simple" />
+            <xsd:element name="Property" type="NameValueType" minOccurs="0" maxOccurs="unbounded" vs:id="pair" />
+            <xsd:element name="Global" type="NameValueType" minOccurs="0" maxOccurs="unbounded" vs:id="pair" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsProjectItemType">
+        <xsd:sequence>
+            <xsd:element name="Identifiers" type="DefsProjectItemIdentType" minOccurs="0" />
+            <xsd:element name="FeatureLinks" type="FeatureLinksCType" minOccurs="0" />
+            <xsd:element name="Prototypes" type="PrototypesType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsProjectItemIdentType">
+        <xsd:sequence>
+            <xsd:element name="Kind" type="xsd:string" minOccurs="0" vs:id="simple" />
+            <xsd:element name="FileExtension" type="xsd:string" minOccurs="0" vs:id="simple" />
+            <xsd:element name="Property" type="NameValueType" minOccurs="0" maxOccurs="unbounded" vs:id="pair" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsSolutionFolderType">
+        <xsd:sequence>
+            <xsd:element name="Identifiers" type="DefsSolutionFolderIdentType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsSolutionFolderIdentType">
+        <xsd:sequence>
+            <xsd:element name="Global" type="NameValueType" minOccurs="0" maxOccurs="unbounded" vs:id="pair" />
+            <xsd:element name="UniqueId" type="xsd:string" minOccurs="0" vs:id="simple" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="DefsFeatureType">
+        <xsd:sequence>
+            <xsd:element name="FeatureLinks" type="FeatureLinksTCType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="FeatureLinksTType">
+        <xsd:sequence>
+            <xsd:element name="ToolboxItemLinks" type="ToolboxItemLinksType" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="FeatureLinksCType">
+        <xsd:sequence>
+            <xsd:element name="CommandLinks" type="CommandLinksType" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="FeatureLinksTCType">
+        <xsd:sequence>
+            <xsd:element name="ToolboxItemLinks" type="ToolboxItemLinksType" minOccurs="0" />
+            <xsd:element name="CommandLinks" type="CommandLinksType" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ToolboxItemLinksType">
+        <xsd:sequence>
+            <xsd:element name="ToolboxItemLink" type="xsd:token" maxOccurs="unbounded" vs:prop="many" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="CommandLinksType">
+        <xsd:sequence>
+            <xsd:element name="CommandLink" type="xsd:token" maxOccurs="unbounded" vs:prop="many" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="PrototypesType">
+        <xsd:sequence>
+            <xsd:element name="Prototype" type="PrototypeType" maxOccurs="unbounded" vs:prop="list" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="PrototypeType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="Language" type="xsd:token"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="CategoryDefsType">
+        <xsd:sequence>
+            <xsd:element name="Category" type="DefsCategoryType" maxOccurs="unbounded" vs:key="Id" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsCategoryType">
+        <xsd:sequence>
+            <xsd:element name="CategoryMember" type="xsd:token" maxOccurs="unbounded" vs:prop="many" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="FeatureDefsType">
+        <xsd:sequence>
+            <xsd:element name="Commands" type="DefsCommandsType" minOccurs="0" />
+            <xsd:element name="ToolboxItems" type="DefsToolboxItemsType" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsCommandsType">
+        <xsd:sequence>
+            <xsd:element name="Command" type="DefsCommandType" maxOccurs="unbounded" vs:key="Id" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsCommandType">
+        <xsd:choice>
+            <xsd:sequence>
+                <xsd:element name="CmdId" type="xsd:integer" vs:prop="once" />
+                <xsd:element name="Guid" type="xsd:token" vs:prop="once" />
+            </xsd:sequence>
+            <xsd:sequence>
+                <xsd:element name="CmdName" type="xsd:token" vs:prop="once" />
+            </xsd:sequence>
+        </xsd:choice>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+    
+    <xsd:complexType name="DefsToolboxItemsType">
+        <xsd:sequence>
+            <xsd:element name="ToolboxItem" type="DefsToolboxItemType" maxOccurs="unbounded" vs:key="Id" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DefsToolboxItemType">
+        <xsd:sequence>
+            <xsd:element name="Descriptor" type="xsd:string" vs:prop="once" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="PolicyActionsType">
+        <xsd:sequence>
+            <xsd:element name="Definitions" type="DefinitionsType" />
+            <xsd:element name="DefaultSettings" type="DefaultSettingsType" minOccurs="0" />
+            <xsd:element name="Elements" type="ElementsType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Version" type="xsd:token" use="required" />
+    </xsd:complexType>
+    
+    <xsd:complexType name="DefinitionsType">
+        <xsd:sequence>
+            <xsd:element name="Definition" type="xsd:string" maxOccurs="unbounded" vs:prop="many" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DefaultSettingsType">
+        <xsd:sequence>
+            <xsd:element name="Constraints" type="ConstraintsType" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attribute name="DefaultAction" type="DefaultActionType" use="required" vs:prop="once" />
+        <xsd:attribute name="Order" type="OrderType" use="required" vs:prop="once" />
+        <xsd:attribute name="PolicyMode" type="PolicyModeType" use="required" vs:prop="once" />
+    </xsd:complexType>
+
+    <xsd:simpleType name="DefaultActionType">
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="Include" />
+            <xsd:enumeration value="Exclude" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="OrderType">
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="IncludeFirst" />
+            <xsd:enumeration value="ExcludeFirst" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="PolicyModeType">
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="Permissive" />
+            <xsd:enumeration value="Restrictive" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:complexType name="ConstraintsType">
+        <xsd:sequence>
+            <xsd:element name="ToolboxItemConstraints" type="ToolboxItemConstraintsType" minOccurs="0" />
+            <xsd:element name="CommandConstraints" type="CommandConstraintsType" minOccurs="0" />
+            <xsd:element name="PropertyConstraints" type="PropertyConstraintsType" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="MemberConstraintsType">
+        <xsd:sequence>
+            <xsd:element name="MemberConstraint" type="MemberConstraintType" minOccurs="0" maxOccurs="unbounded" vs:key="Id" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="MemberConstraintType">
+        <xsd:sequence>
+            <xsd:element name="ToolboxItemConstraints" type="ToolboxItemConstraintsType" minOccurs="0" />
+            <xsd:element name="CommandConstraints" type="CommandConstraintsType" minOccurs="0" />
+            <xsd:element name="PropertyConstraints" type="PropertyConstraintsType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="ToolboxItemConstraintsType">
+        <xsd:sequence>
+            <xsd:element name="ToolboxItemConstraint" type="ToolboxItemConstraintType" maxOccurs="unbounded" vs:key="Id" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ToolboxItemConstraintType">
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+        <xsd:attribute name="Visible" type="xsd:boolean" />
+    </xsd:complexType>
+
+    <xsd:complexType name="CommandConstraintsType">
+        <xsd:sequence>
+            <xsd:element name="CommandConstraint" type="CommandConstraintType" maxOccurs="unbounded" vs:key="Id" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="CommandConstraintType">
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+        <xsd:attribute name="Enabled" type="xsd:boolean" />
+    </xsd:complexType>
+
+    <xsd:complexType name="PropertyConstraintsType">
+        <xsd:sequence>
+            <xsd:element name="PropertyConstraint" type="PropertyConstraintType" maxOccurs="unbounded" vs:key="Name">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="PropertyConstraintType">
+        <xsd:sequence>
+            <xsd:choice minOccurs="0">
+                <xsd:element name="Fixed" type="xsd:string" vs:prop="once" />
+                <xsd:element name="Range" type="MinimumMaximumType" vs:flatten="true" />
+                <xsd:element name="EnumValues" type="EnumValuesType" />
+            </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="Name" type="xsd:string" use="required" />
+        <xsd:attribute name="ReadOnly" type="xsd:boolean" />
+        <xsd:attribute name="WarningLevel" type="WarningLevelType" />
+        <xsd:attribute name="WarningText" type="xsd:string" />
+    </xsd:complexType>
+    
+    <xsd:complexType name="EnumValuesType">
+        <xsd:sequence>
+            <xsd:element name="EnumValue" type="xsd:string" maxOccurs="unbounded" vs:prop="many"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ElementsType">
+        <xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="CodeType" type="ElementConsSetType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="CodeVariable" type="ElementConsSetType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="Reference" type="ElementConsType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="WebReference" type="ElementConsType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="HtmlElement" type="ElementConsSetType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="Project" type="ElementContConsSetType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="ProjectItem" type="ElementContConsSetType" vs:key="Id" vs:rep="Element" />
+                <xsd:element name="SolutionFolder" type="ElementContConsSetType" vs:key="Id" vs:rep="Element" />
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ElementConsType">
+        <xsd:sequence>
+            <xsd:element name="Constraints" type="ConstraintsType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="ElementConsSetType">
+        <xsd:sequence>
+            <xsd:element name="Constraints" type="ConstraintsType" minOccurs="0" />
+            <xsd:element name="ElementSet" type="ElementSetType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="ElementContConsSetType">
+        <xsd:sequence>
+            <xsd:element name="Context" type="ContextType" minOccurs="0" />
+            <xsd:element name="Constraints" type="ConstraintsType" minOccurs="0" />
+            <xsd:element name="ElementSet" type="ElementSetType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="Id" type="IdTokenType" use="required" />
+    </xsd:complexType>
+    
+    <xsd:complexType name="ContextType">
+        <xsd:sequence>
+            <xsd:element name="ContextKeyword" type="xsd:string" maxOccurs="unbounded" vs:prop="many" />
+            <xsd:element name="ContextAttribute" type="NameValueType" minOccurs="0" maxOccurs="unbounded" vs:key="Name" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ElementSetType">
+        <xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="Include" type="IncludeType" vs:prop="sec" />
+                <xsd:element name="Exclude" type="ExcludeType" vs:prop="sec" />
+            </xsd:choice>
+            <xsd:element name="Constraints" type="ConstraintsType" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="MemberConstraints" type="MemberConstraintsType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="DefaultAction" type="DefaultActionType" />
+        <xsd:attribute name="Order" type="OrderType" />
+        <xsd:attribute name="PolicyMode" type="PolicyModeType" />
+        <xsd:attribute name="DefaultWarningLevel" type="WarningLevelType" />
+        <xsd:attribute name="DefaultWarningText" type="xsd:string" />
+    </xsd:complexType>
+
+    <xsd:complexType name="IncludeType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:token">
+                <xsd:attribute name="MinOccurs" type="xsd:integer" />
+                <xsd:attribute name="MaxOccurs" type="xsd:integer" />
+                <xsd:attribute name="Exception" type="xsd:token" />
+                <xsd:attribute name="WarningLevel" type="WarningLevelType" />
+                <xsd:attribute name="WarningText" type="xsd:string" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ExcludeType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:token">
+                <xsd:attribute name="Exception" type="xsd:token" />
+                <xsd:attribute name="WarningLevel" type="WarningLevelType" />
+                <xsd:attribute name="WarningText" type="xsd:string" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="NameValueType">
+        <xsd:attribute name="Name" type="xsd:string" />
+        <xsd:attribute name="Value" type="xsd:string" />
+    </xsd:complexType>
+    
+    <xsd:complexType name="MinimumMaximumType">
+        <xsd:attribute name="Minimum" type="xsd:integer" />
+        <xsd:attribute name="Maximum" type="xsd:integer" />
+    </xsd:complexType>
+    
+    <xsd:simpleType name="WarningLevelType">
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="Information" />
+            <xsd:enumeration value="Warning" />
+            <xsd:enumeration value="Critical" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="IdTokenType">
+        <xsd:restriction base="xsd:token">
+            <xsd:minLength value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+    
+</xsd:schema>

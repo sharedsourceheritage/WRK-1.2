@@ -1,0 +1,2 @@
+<asp:label runat="server" font-bold="true" forecolor="orange" />
+<asp:label runat="server" SkinID="Blue" font-bold="true" forecolor="blue" />

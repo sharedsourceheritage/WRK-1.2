@@ -1,0 +1,35 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="2293" />
+    <Description Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="2294" />
+    <Icon Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="4527" />
+    <ProjectType>CSharp</ProjectType>
+    <TemplateGroupID>SmartDevice-NETCFv2</TemplateGroupID>
+    <TemplateID>SmartDevice-NETCFv2-CustomControl</TemplateID>
+    <ShowByDefault>false</ShowByDefault>
+    <SortOrder>90</SortOrder>
+    <DefaultName>CustomControl.cs</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Data</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Drawing</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Windows.Forms</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Xml</Assembly>
+			</Reference>
+		</References>
+
+    <ProjectItem ReplaceParameters="true" SubType="UserControl">CustomControl.cs</ProjectItem>
+    <ProjectItem ReplaceParameters="true">CustomControl.Designer.cs</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

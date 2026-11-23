@@ -1,9 +1,10 @@
 
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 6.00.0366 */
+ /* File created by MIDL compiler version 6.00.0347 */
 /* Compiler settings for shldisp.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext, robust
@@ -13,8 +14,6 @@
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 //@@MIDL_FILE_HEADING(  )
-
-#pragma warning( disable: 4049 )  /* more than 64k source lines */
 
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
@@ -8150,7 +8149,7 @@ PassportClientServices;
 #endif
 #endif /* __Shell32_LIBRARY_DEFINED__ */
 
-/* interface __MIDL_itf_shldisp_0287 */
+/* interface __MIDL_itf_shldisp_0282 */
 /* [local] */ 
 
 
@@ -8171,8 +8170,8 @@ PassportClientServices;
 //-------------------------------------------------------------------------
 
 
-extern RPC_IF_HANDLE __MIDL_itf_shldisp_0287_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_shldisp_0287_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_shldisp_0282_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_shldisp_0282_v0_0_s_ifspec;
 
 #ifndef __IAutoComplete_INTERFACE_DEFINED__
 #define __IAutoComplete_INTERFACE_DEFINED__
@@ -8441,7 +8440,7 @@ void __RPC_STUB IAutoComplete2_GetOptions_Stub(
 #endif 	/* __IAutoComplete2_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_shldisp_0289 */
+/* interface __MIDL_itf_shldisp_0284 */
 /* [local] */ 
 
 // INTERFACE: IEnumACString
@@ -8456,8 +8455,8 @@ void __RPC_STUB IAutoComplete2_GetOptions_Stub(
 //
 
 
-extern RPC_IF_HANDLE __MIDL_itf_shldisp_0289_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_shldisp_0289_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_shldisp_0284_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_shldisp_0284_v0_0_s_ifspec;
 
 #ifndef __IEnumACString_INTERFACE_DEFINED__
 #define __IEnumACString_INTERFACE_DEFINED__
@@ -8640,7 +8639,7 @@ void __RPC_STUB IEnumACString_GetEnumOptions_Stub(
 #endif 	/* __IEnumACString_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_shldisp_0290 */
+/* interface __MIDL_itf_shldisp_0285 */
 /* [local] */ 
 
 // INTERFACE: IAsyncOperation
@@ -8692,8 +8691,8 @@ void __RPC_STUB IEnumACString_GetEnumOptions_Stub(
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_shldisp_0290_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_shldisp_0290_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_shldisp_0285_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_shldisp_0285_v0_0_s_ifspec;
 
 #ifndef __IAsyncOperation_INTERFACE_DEFINED__
 #define __IAsyncOperation_INTERFACE_DEFINED__

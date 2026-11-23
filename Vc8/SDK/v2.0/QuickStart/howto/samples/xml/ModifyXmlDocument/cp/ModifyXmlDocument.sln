@@ -1,0 +1,32 @@
+
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ModifyXmlDocument", "ModifyXmlDocument\ModifyXmlDocument.vcproj", "{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		Debug|x64 = Debug|x64
+		Debug|Itanium = Debug|Itanium
+		Release|x64 = Release|x64
+		Release|Itanium = Release|Itanium
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Debug|Win32.Build.0 = Debug|Win32
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Release|Win32.ActiveCfg = Release|Win32
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Release|Win32.Build.0 = Release|Win32
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Debug|x64.ActiveCfg = Debug|x64
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Debug|x64.Build.0 = Debug|x64
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Debug|Itanium.ActiveCfg = Debug|Itanium
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Debug|Itanium.Build.0 = Debug|Itanium
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Release|x64.ActiveCfg = Release|x64
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Release|x64.Build.0 = Release|x64
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Release|Itanium.ActiveCfg = Release|Itanium
+		{BD427103-8B41-4C4F-A8B8-2E91A8E7779A}.Release|Itanium.Build.0 = Release|Itanium
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

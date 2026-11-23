@@ -1,0 +1,18 @@
+﻿import System.Reflection.*;
+import System.Runtime.CompilerServices.*;
+import System.Runtime.InteropServices.*;
+
+/** @assembly AssemblyTitle("$projectname$") */
+/** @assembly AssemblyDescription("") */
+/** @assembly AssemblyCompany("$registeredorganization$") */
+/** @assembly AssemblyProduct("$projectname$") */
+/** @assembly AssemblyCopyright("Copyright © $registeredorganization$ $year$") */
+/** @assembly AssemblyTrademark("") */
+/** @assembly AssemblyCulture("") */
+
+
+/** @assembly ComVisible(false) */
+
+
+
+/** @assembly AssemblyVersion("1.0.0.0") */

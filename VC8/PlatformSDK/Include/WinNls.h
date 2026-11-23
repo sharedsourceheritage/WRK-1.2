@@ -799,26 +799,6 @@ typedef CURRENCYFMTA CURRENCYFMT;
 typedef LPCURRENCYFMTA LPCURRENCYFMT;
 #endif // UNICODE
 
-//
-//  NLS function capabilities
-//
-
-enum SYSNLS_FUNCTION{
-    COMPARE_STRING    =  0x0001,
-};
-typedef DWORD NLS_FUNCTION;
-
-
-//
-//  NLS version structure.
-//
-
-typedef struct _nlsversioninfo{ 
-    DWORD dwNLSVersionInfoSize; 
-    DWORD dwNLSVersion; 
-    DWORD dwDefinedVersion; 
-} NLSVERSIONINFO, *LPNLSVERSIONINFO; 
-
 
 //
 //  GEO defines
@@ -972,7 +952,7 @@ WINBASEAPI
 BOOL
 WINAPI
 IsValidCodePage(
-    __in UINT  CodePage);
+    IN UINT  CodePage);
 
 WINBASEAPI
 UINT
@@ -988,23 +968,23 @@ WINBASEAPI
 BOOL
 WINAPI
 GetCPInfo(
-    __in UINT       CodePage,
-    __out LPCPINFO  lpCPInfo);
+    IN UINT       CodePage,
+    OUT LPCPINFO  lpCPInfo);
 
 WINBASEAPI
 BOOL
 WINAPI
 GetCPInfoExA(
-    __in UINT          CodePage,
-    __in DWORD         dwFlags,
-    __out LPCPINFOEXA  lpCPInfoEx);
+    IN UINT          CodePage,
+    IN DWORD         dwFlags,
+    OUT LPCPINFOEXA  lpCPInfoEx);
 WINBASEAPI
 BOOL
 WINAPI
 GetCPInfoExW(
-    __in UINT          CodePage,
-    __in DWORD         dwFlags,
-    __out LPCPINFOEXW  lpCPInfoEx);
+    IN UINT          CodePage,
+    IN DWORD         dwFlags,
+    OUT LPCPINFOEXW  lpCPInfoEx);
 #ifdef UNICODE
 #define GetCPInfoEx  GetCPInfoExW
 #else
@@ -1015,38 +995,38 @@ WINBASEAPI
 BOOL
 WINAPI
 IsDBCSLeadByte(
-    __in BYTE  TestChar);
+    IN BYTE  TestChar);
 
 WINBASEAPI
 BOOL
 WINAPI
 IsDBCSLeadByteEx(
-    __in UINT  CodePage,
-    __in BYTE  TestChar);
+    IN UINT  CodePage,
+    IN BYTE  TestChar);
 
 WINBASEAPI
 int
 WINAPI
 MultiByteToWideChar(
-    __in UINT     CodePage,
-    __in DWORD    dwFlags,
-    __in LPCSTR   lpMultiByteStr,
-    __in int      cbMultiByte,
-    __out_ecount_opt(cchWideChar) LPWSTR  lpWideCharStr,
-    __in int      cchWideChar);
+    IN UINT     CodePage,
+    IN DWORD    dwFlags,
+    IN LPCSTR   lpMultiByteStr,
+    IN int      cbMultiByte,
+    OUT LPWSTR  lpWideCharStr,
+    IN int      cchWideChar);
 
 WINBASEAPI
 int
 WINAPI
 WideCharToMultiByte(
-    __in UINT     CodePage,
-    __in DWORD    dwFlags,
-    __in_opt LPCWSTR  lpWideCharStr,
-    __in int      cchWideChar,
-    __out_bcount_opt(cbMultiByte) LPSTR   lpMultiByteStr,
-    __in int      cbMultiByte,
-    __in_opt LPCSTR   lpDefaultChar,
-    __out_opt LPBOOL  lpUsedDefaultChar);
+    IN UINT     CodePage,
+    IN DWORD    dwFlags,
+    IN LPCWSTR  lpWideCharStr,
+    IN int      cchWideChar,
+    OUT LPSTR   lpMultiByteStr,
+    IN int      cbMultiByte,
+    IN LPCSTR   lpDefaultChar,
+    OUT LPBOOL  lpUsedDefaultChar);
 
 
 //
@@ -1057,76 +1037,48 @@ WINBASEAPI
 int
 WINAPI
 CompareStringA(
-    __in LCID     Locale,
-    __in DWORD    dwCmpFlags,
-    __in LPCSTR  lpString1,
-    __in int      cchCount1,
-    __in LPCSTR  lpString2,
-    __in int      cchCount2);
+    IN LCID     Locale,
+    IN DWORD    dwCmpFlags,
+    IN LPCSTR  lpString1,
+    IN int      cchCount1,
+    IN LPCSTR  lpString2,
+    IN int      cchCount2);
 WINBASEAPI
 int
 WINAPI
 CompareStringW(
-    __in LCID     Locale,
-    __in DWORD    dwCmpFlags,
-    __in LPCWSTR  lpString1,
-    __in int      cchCount1,
-    __in LPCWSTR  lpString2,
-    __in int      cchCount2);
+    IN LCID     Locale,
+    IN DWORD    dwCmpFlags,
+    IN LPCWSTR  lpString1,
+    IN int      cchCount1,
+    IN LPCWSTR  lpString2,
+    IN int      cchCount2);
 #ifdef UNICODE
 #define CompareString  CompareStringW
 #else
 #define CompareString  CompareStringA
 #endif // !UNICODE
 
-#if defined(_M_CEE)
-#undef CompareString
-__inline
-int
-CompareString(
-    LCID     Locale,
-    DWORD    dwCmpFlags,
-    LPCTSTR  lpString1,
-    int      cchCount1,
-    LPCTSTR  lpString2,
-    int      cchCount2
-    )
-{
-#ifdef UNICODE
-    return CompareStringW(
-#else
-    return CompareStringA(
-#endif
-        Locale,
-        dwCmpFlags,
-        lpString1,
-        cchCount1,
-        lpString2,
-        cchCount2
-        );
-}
-#endif	/* _M_CEE */
-
 WINBASEAPI
 int
 WINAPI
 LCMapStringA(
-    __in LCID     Locale,
-    __in DWORD    dwMapFlags,
-    __in LPCSTR  lpSrcStr,
-    __in int      cchSrc,
-    __out_ecount_opt(cchDest) LPSTR  lpDestStr,
-    __in int      cchDest);
+    IN LCID     Locale,
+    IN DWORD    dwMapFlags,
+    IN LPCSTR  lpSrcStr,
+    IN int      cchSrc,
+    OUT LPSTR  lpDestStr,
+    IN int      cchDest);
 WINBASEAPI
 int
 WINAPI
 LCMapStringW(
-    __in LCID     Locale,
-    __in DWORD    dwMapFlags,
-    __in LPCWSTR  lpSrcStr,
-    __in int      cchSrc,
-    __out_ecount_opt(cchDest) LPWSTR  lpDestStr,
-    __in int      cchDest);
+    IN LCID     Locale,
+    IN DWORD    dwMapFlags,
+    IN LPCWSTR  lpSrcStr,
+    IN int      cchSrc,
+    OUT LPWSTR  lpDestStr,
+    IN int      cchDest);
 #ifdef UNICODE
 #define LCMapString  LCMapStringW
 #else
@@ -1137,18 +1089,18 @@ WINBASEAPI
 int
 WINAPI
 GetLocaleInfoA(
-    __in LCID     Locale,
-    __in LCTYPE   LCType,
-    __out_ecount_opt(cchData) LPSTR  lpLCData,
-    __in int      cchData);
+    IN LCID     Locale,
+    IN LCTYPE   LCType,
+    OUT LPSTR  lpLCData,
+    IN int      cchData);
 WINBASEAPI
 int
 WINAPI
 GetLocaleInfoW(
-    __in LCID     Locale,
-    __in LCTYPE   LCType,
-    __out_ecount_opt(cchData) LPWSTR  lpLCData,
-    __in int      cchData);
+    IN LCID     Locale,
+    IN LCTYPE   LCType,
+    OUT LPWSTR  lpLCData,
+    IN int      cchData);
 #ifdef UNICODE
 #define GetLocaleInfo  GetLocaleInfoW
 #else
@@ -1159,16 +1111,16 @@ WINBASEAPI
 BOOL
 WINAPI
 SetLocaleInfoA(
-    __in LCID     Locale,
-    __in LCTYPE   LCType,
-    __in LPCSTR  lpLCData);
+    IN LCID     Locale,
+    IN LCTYPE   LCType,
+    IN LPCSTR  lpLCData);
 WINBASEAPI
 BOOL
 WINAPI
 SetLocaleInfoW(
-    __in LCID     Locale,
-    __in LCTYPE   LCType,
-    __in LPCWSTR  lpLCData);
+    IN LCID     Locale,
+    IN LCTYPE   LCType,
+    IN LPCWSTR  lpLCData);
 #ifdef UNICODE
 #define SetLocaleInfo  SetLocaleInfoW
 #else
@@ -1180,22 +1132,22 @@ WINBASEAPI
 int
 WINAPI
 GetCalendarInfoA(
-    __in LCID     Locale,
-    __in CALID    Calendar,
-    __in CALTYPE  CalType,
-    __out_ecount_opt(cchData) LPSTR   lpCalData,
-    __in int      cchData,
-    __in_opt LPDWORD  lpValue);
+    LCID     Locale,
+    CALID    Calendar,
+    CALTYPE  CalType,
+    LPSTR   lpCalData,
+    int      cchData,
+    LPDWORD  lpValue);
 WINBASEAPI
 int
 WINAPI
 GetCalendarInfoW(
-    __in LCID     Locale,
-    __in CALID    Calendar,
-    __in CALTYPE  CalType,
-    __out_ecount_opt(cchData) LPWSTR   lpCalData,
-    __in int      cchData,
-    __in_opt LPDWORD  lpValue);
+    LCID     Locale,
+    CALID    Calendar,
+    CALTYPE  CalType,
+    LPWSTR   lpCalData,
+    int      cchData,
+    LPDWORD  lpValue);
 #ifdef UNICODE
 #define GetCalendarInfo  GetCalendarInfoW
 #else
@@ -1206,18 +1158,18 @@ WINBASEAPI
 BOOL
 WINAPI
 SetCalendarInfoA(
-    __in LCID     Locale,
-    __in CALID    Calendar,
-    __in CALTYPE  CalType,
-    __in LPCSTR  lpCalData);
+    LCID     Locale,
+    CALID    Calendar,
+    CALTYPE  CalType,
+    LPCSTR  lpCalData);
 WINBASEAPI
 BOOL
 WINAPI
 SetCalendarInfoW(
-    __in LCID     Locale,
-    __in CALID    Calendar,
-    __in CALTYPE  CalType,
-    __in LPCWSTR  lpCalData);
+    LCID     Locale,
+    CALID    Calendar,
+    CALTYPE  CalType,
+    LPCWSTR  lpCalData);
 #ifdef UNICODE
 #define SetCalendarInfo  SetCalendarInfoW
 #else
@@ -1229,22 +1181,22 @@ WINBASEAPI
 int
 WINAPI
 GetTimeFormatA(
-    __in LCID             Locale,
-    __in DWORD            dwFlags,
-    __in_opt CONST SYSTEMTIME *lpTime,
-    __in_opt LPCSTR          lpFormat,
-    __out_ecount_opt(cchTime) LPSTR          lpTimeStr,
-    __in int              cchTime);
+    IN LCID             Locale,
+    IN DWORD            dwFlags,
+    IN CONST SYSTEMTIME *lpTime,
+    IN LPCSTR          lpFormat,
+    OUT LPSTR          lpTimeStr,
+    IN int              cchTime);
 WINBASEAPI
 int
 WINAPI
 GetTimeFormatW(
-    __in LCID             Locale,
-    __in DWORD            dwFlags,
-    __in_opt CONST SYSTEMTIME *lpTime,
-    __in_opt LPCWSTR          lpFormat,
-    __out_ecount_opt(cchTime) LPWSTR          lpTimeStr,
-    __in int              cchTime);
+    IN LCID             Locale,
+    IN DWORD            dwFlags,
+    IN CONST SYSTEMTIME *lpTime,
+    IN LPCWSTR          lpFormat,
+    OUT LPWSTR          lpTimeStr,
+    IN int              cchTime);
 #ifdef UNICODE
 #define GetTimeFormat  GetTimeFormatW
 #else
@@ -1255,22 +1207,22 @@ WINBASEAPI
 int
 WINAPI
 GetDateFormatA(
-    __in LCID             Locale,
-    __in DWORD            dwFlags,
-    __in_opt CONST SYSTEMTIME *lpDate,
-    __in_opt LPCSTR          lpFormat,
-    __out_ecount_opt(cchDate) LPSTR          lpDateStr,
-    __in int              cchDate);
+    IN LCID             Locale,
+    IN DWORD            dwFlags,
+    IN CONST SYSTEMTIME *lpDate,
+    IN LPCSTR          lpFormat,
+    OUT LPSTR          lpDateStr,
+    IN int              cchDate);
 WINBASEAPI
 int
 WINAPI
 GetDateFormatW(
-    __in LCID             Locale,
-    __in DWORD            dwFlags,
-    __in_opt CONST SYSTEMTIME *lpDate,
-    __in_opt LPCWSTR          lpFormat,
-    __out_ecount_opt(cchDate) LPWSTR          lpDateStr,
-    __in int              cchDate);
+    IN LCID             Locale,
+    IN DWORD            dwFlags,
+    IN CONST SYSTEMTIME *lpDate,
+    IN LPCWSTR          lpFormat,
+    OUT LPWSTR          lpDateStr,
+    IN int              cchDate);
 #ifdef UNICODE
 #define GetDateFormat  GetDateFormatW
 #else
@@ -1281,22 +1233,22 @@ WINBASEAPI
 int
 WINAPI
 GetNumberFormatA(
-    __in LCID             Locale,
-    __in DWORD            dwFlags,
-    __in LPCSTR          lpValue,
-    __in_opt CONST NUMBERFMTA *lpFormat,
-    __out_ecount_opt(cchNumber) LPSTR          lpNumberStr,
-    __in int              cchNumber);
+    IN LCID             Locale,
+    IN DWORD            dwFlags,
+    IN LPCSTR          lpValue,
+    IN CONST NUMBERFMTA *lpFormat,
+    OUT LPSTR          lpNumberStr,
+    IN int              cchNumber);
 WINBASEAPI
 int
 WINAPI
 GetNumberFormatW(
-    __in LCID             Locale,
-    __in DWORD            dwFlags,
-    __in LPCWSTR          lpValue,
-    __in_opt CONST NUMBERFMTW *lpFormat,
-    __out_ecount_opt(cchNumber) LPWSTR          lpNumberStr,
-    __in int              cchNumber);
+    IN LCID             Locale,
+    IN DWORD            dwFlags,
+    IN LPCWSTR          lpValue,
+    IN CONST NUMBERFMTW *lpFormat,
+    OUT LPWSTR          lpNumberStr,
+    IN int              cchNumber);
 #ifdef UNICODE
 #define GetNumberFormat  GetNumberFormatW
 #else
@@ -1307,22 +1259,22 @@ WINBASEAPI
 int
 WINAPI
 GetCurrencyFormatA(
-    __in LCID               Locale,
-    __in DWORD              dwFlags,
-    __in LPCSTR            lpValue,
-    __in_opt CONST CURRENCYFMTA *lpFormat,
-    __out_ecount_opt(cchCurrency) LPSTR            lpCurrencyStr,
-    __in int                cchCurrency);
+    IN LCID               Locale,
+    IN DWORD              dwFlags,
+    IN LPCSTR            lpValue,
+    IN CONST CURRENCYFMTA *lpFormat,
+    OUT LPSTR            lpCurrencyStr,
+    IN int                cchCurrency);
 WINBASEAPI
 int
 WINAPI
 GetCurrencyFormatW(
-    __in LCID               Locale,
-    __in DWORD              dwFlags,
-    __in LPCWSTR            lpValue,
-    __in_opt CONST CURRENCYFMTW *lpFormat,
-    __out_ecount_opt(cchCurrency) LPWSTR            lpCurrencyStr,
-    __in int                cchCurrency);
+    IN LCID               Locale,
+    IN DWORD              dwFlags,
+    IN LPCWSTR            lpValue,
+    IN CONST CURRENCYFMTW *lpFormat,
+    OUT LPWSTR            lpCurrencyStr,
+    IN int                cchCurrency);
 #ifdef UNICODE
 #define GetCurrencyFormat  GetCurrencyFormatW
 #else
@@ -1333,18 +1285,18 @@ WINBASEAPI
 BOOL
 WINAPI
 EnumCalendarInfoA(
-    __in CALINFO_ENUMPROCA lpCalInfoEnumProc,
-    __in LCID              Locale,
-    __in CALID             Calendar,
-    __in CALTYPE           CalType);
+    IN CALINFO_ENUMPROCA lpCalInfoEnumProc,
+    IN LCID              Locale,
+    IN CALID             Calendar,
+    IN CALTYPE           CalType);
 WINBASEAPI
 BOOL
 WINAPI
 EnumCalendarInfoW(
-    __in CALINFO_ENUMPROCW lpCalInfoEnumProc,
-    __in LCID              Locale,
-    __in CALID             Calendar,
-    __in CALTYPE           CalType);
+    IN CALINFO_ENUMPROCW lpCalInfoEnumProc,
+    IN LCID              Locale,
+    IN CALID             Calendar,
+    IN CALTYPE           CalType);
 #ifdef UNICODE
 #define EnumCalendarInfo  EnumCalendarInfoW
 #else
@@ -1356,18 +1308,18 @@ WINBASEAPI
 BOOL
 WINAPI
 EnumCalendarInfoExA(
-    __in CALINFO_ENUMPROCEXA lpCalInfoEnumProcEx,
-    __in LCID                Locale,
-    __in CALID               Calendar,
-    __in CALTYPE             CalType);
+    IN CALINFO_ENUMPROCEXA lpCalInfoEnumProcEx,
+    IN LCID                Locale,
+    IN CALID               Calendar,
+    IN CALTYPE             CalType);
 WINBASEAPI
 BOOL
 WINAPI
 EnumCalendarInfoExW(
-    __in CALINFO_ENUMPROCEXW lpCalInfoEnumProcEx,
-    __in LCID                Locale,
-    __in CALID               Calendar,
-    __in CALTYPE             CalType);
+    IN CALINFO_ENUMPROCEXW lpCalInfoEnumProcEx,
+    IN LCID                Locale,
+    IN CALID               Calendar,
+    IN CALTYPE             CalType);
 #ifdef UNICODE
 #define EnumCalendarInfoEx  EnumCalendarInfoExW
 #else
@@ -1379,16 +1331,16 @@ WINBASEAPI
 BOOL
 WINAPI
 EnumTimeFormatsA(
-    __in TIMEFMT_ENUMPROCA lpTimeFmtEnumProc,
-    __in LCID              Locale,
-    __in DWORD             dwFlags);
+    IN TIMEFMT_ENUMPROCA lpTimeFmtEnumProc,
+    IN LCID              Locale,
+    IN DWORD             dwFlags);
 WINBASEAPI
 BOOL
 WINAPI
 EnumTimeFormatsW(
-    __in TIMEFMT_ENUMPROCW lpTimeFmtEnumProc,
-    __in LCID              Locale,
-    __in DWORD             dwFlags);
+    IN TIMEFMT_ENUMPROCW lpTimeFmtEnumProc,
+    IN LCID              Locale,
+    IN DWORD             dwFlags);
 #ifdef UNICODE
 #define EnumTimeFormats  EnumTimeFormatsW
 #else
@@ -1399,16 +1351,16 @@ WINBASEAPI
 BOOL
 WINAPI
 EnumDateFormatsA(
-    __in DATEFMT_ENUMPROCA lpDateFmtEnumProc,
-    __in LCID              Locale,
-    __in DWORD             dwFlags);
+    IN DATEFMT_ENUMPROCA lpDateFmtEnumProc,
+    IN LCID              Locale,
+    IN DWORD             dwFlags);
 WINBASEAPI
 BOOL
 WINAPI
 EnumDateFormatsW(
-    __in DATEFMT_ENUMPROCW lpDateFmtEnumProc,
-    __in LCID              Locale,
-    __in DWORD             dwFlags);
+    IN DATEFMT_ENUMPROCW lpDateFmtEnumProc,
+    IN LCID              Locale,
+    IN DWORD             dwFlags);
 #ifdef UNICODE
 #define EnumDateFormats  EnumDateFormatsW
 #else
@@ -1420,16 +1372,16 @@ WINBASEAPI
 BOOL
 WINAPI
 EnumDateFormatsExA(
-    __in DATEFMT_ENUMPROCEXA lpDateFmtEnumProcEx,
-    __in LCID                Locale,
-    __in DWORD               dwFlags);
+    IN DATEFMT_ENUMPROCEXA lpDateFmtEnumProcEx,
+    IN LCID                Locale,
+    IN DWORD               dwFlags);
 WINBASEAPI
 BOOL
 WINAPI
 EnumDateFormatsExW(
-    __in DATEFMT_ENUMPROCEXW lpDateFmtEnumProcEx,
-    __in LCID                Locale,
-    __in DWORD               dwFlags);
+    IN DATEFMT_ENUMPROCEXW lpDateFmtEnumProcEx,
+    IN LCID                Locale,
+    IN DWORD               dwFlags);
 #ifdef UNICODE
 #define EnumDateFormatsEx  EnumDateFormatsExW
 #else
@@ -1442,53 +1394,35 @@ WINBASEAPI
 BOOL
 WINAPI
 IsValidLanguageGroup(
-    __in LGRPID  LanguageGroup,
-    __in DWORD   dwFlags);
+    IN LGRPID  LanguageGroup,
+    IN DWORD   dwFlags);
 #endif /* WINVER >= 0x0500 */
 
 WINBASEAPI
 BOOL
 WINAPI
-GetNLSVersion(
-    __in NLS_FUNCTION     Function,
-    __in LCID             Locale,
-    __inout LPNLSVERSIONINFO lpVersionInformation);
-
-WINBASEAPI
-BOOL
-WINAPI
-IsNLSDefinedString(
-    __in NLS_FUNCTION     Function,
-    __in DWORD            dwFlags,
-    __in LPNLSVERSIONINFO lpVersionInformation,
-    __in LPCWSTR          lpString,
-    __in INT              cchStr);
-
-WINBASEAPI
-BOOL
-WINAPI
 IsValidLocale(
-    __in LCID   Locale,
-    __in DWORD  dwFlags);
+    IN LCID   Locale,
+    IN DWORD  dwFlags);
 
 WINBASEAPI
 int
 WINAPI
 GetGeoInfoA(
-    __in GEOID       Location,
-    __in GEOTYPE     GeoType,
-    __out_ecount_opt(cchData) LPSTR     lpGeoData,
-    __in int         cchData,
-    __in LANGID      LangId);
+    GEOID       Location,
+    GEOTYPE     GeoType,
+    LPSTR     lpGeoData,
+    int         cchData,
+    LANGID      LangId);
 WINBASEAPI
 int
 WINAPI
 GetGeoInfoW(
-    __in GEOID       Location,
-    __in GEOTYPE     GeoType,
-    __out_ecount_opt(cchData) LPWSTR     lpGeoData,
-    __in int         cchData,
-    __in LANGID      LangId);
+    GEOID       Location,
+    GEOTYPE     GeoType,
+    LPWSTR     lpGeoData,
+    int         cchData,
+    LANGID      LangId);
 #ifdef UNICODE
 #define GetGeoInfo  GetGeoInfoW
 #else
@@ -1499,27 +1433,27 @@ WINBASEAPI
 BOOL
 WINAPI
 EnumSystemGeoID(
-    __in GEOCLASS        GeoClass,
-    __in GEOID           ParentGeoId,
-    __in GEO_ENUMPROC    lpGeoEnumProc);
+    GEOCLASS        GeoClass,
+    GEOID           ParentGeoId,
+    GEO_ENUMPROC    lpGeoEnumProc);
 
 WINBASEAPI
 GEOID
 WINAPI
 GetUserGeoID(
-    __in GEOCLASS    GeoClass);
+    GEOCLASS    GeoClass);
 
 WINBASEAPI
 BOOL
 WINAPI
 SetUserGeoID(
-    __in GEOID       GeoId);
+    GEOID       GeoId);
 
 WINBASEAPI
 LCID
 WINAPI
 ConvertDefaultLocale(
-    __in LCID   Locale);
+    IN OUT LCID   Locale);
 
 WINBASEAPI
 LCID
@@ -1530,7 +1464,7 @@ WINBASEAPI
 BOOL
 WINAPI
 SetThreadLocale(
-    __in LCID  Locale
+    IN LCID  Locale
     );
 
 #if(WINVER >= 0x0500)
@@ -1575,20 +1509,20 @@ WINBASEAPI
 BOOL
 WINAPI
 GetStringTypeExA(
-    __in LCID     Locale,
-    __in DWORD    dwInfoType,
-    __in LPCSTR  lpSrcStr,
-    __in int      cchSrc,
-    __out LPWORD  lpCharType);
+    IN LCID     Locale,
+    IN DWORD    dwInfoType,
+    IN LPCSTR  lpSrcStr,
+    IN int      cchSrc,
+    OUT LPWORD  lpCharType);
 WINBASEAPI
 BOOL
 WINAPI
 GetStringTypeExW(
-    __in LCID     Locale,
-    __in DWORD    dwInfoType,
-    __in LPCWSTR  lpSrcStr,
-    __in int      cchSrc,
-    __out LPWORD  lpCharType);
+    IN LCID     Locale,
+    IN DWORD    dwInfoType,
+    IN LPCWSTR  lpSrcStr,
+    IN int      cchSrc,
+    OUT LPWORD  lpCharType);
 #ifdef UNICODE
 #define GetStringTypeEx  GetStringTypeExW
 #else
@@ -1610,40 +1544,40 @@ WINBASEAPI
 BOOL
 WINAPI
 GetStringTypeA(
-    __in LCID     Locale,
-    __in DWORD    dwInfoType,
-    __in LPCSTR   lpSrcStr,
-    __in int      cchSrc,
-    __out LPWORD  lpCharType);
+    IN LCID     Locale,
+    IN DWORD    dwInfoType,
+    IN LPCSTR   lpSrcStr,
+    IN int      cchSrc,
+    OUT LPWORD  lpCharType);
 
 WINBASEAPI
 BOOL
 WINAPI
 GetStringTypeW(
-    __in DWORD    dwInfoType,
-    __in LPCWSTR  lpSrcStr,
-    __in int      cchSrc,
-    __out LPWORD  lpCharType);
+    IN DWORD    dwInfoType,
+    IN LPCWSTR  lpSrcStr,
+    IN int      cchSrc,
+    OUT LPWORD  lpCharType);
 
 
 WINBASEAPI
 int
 WINAPI
 FoldStringA(
-    __in DWORD    dwMapFlags,
-    __in LPCSTR  lpSrcStr,
-    __in int      cchSrc,
-    __out_ecount_opt(cchDest) LPSTR  lpDestStr,
-    __in int      cchDest);
+    IN DWORD    dwMapFlags,
+    IN LPCSTR  lpSrcStr,
+    IN int      cchSrc,
+    OUT LPSTR  lpDestStr,
+    IN int      cchDest);
 WINBASEAPI
 int
 WINAPI
 FoldStringW(
-    __in DWORD    dwMapFlags,
-    __in LPCWSTR  lpSrcStr,
-    __in int      cchSrc,
-    __out_ecount_opt(cchDest) LPWSTR  lpDestStr,
-    __in int      cchDest);
+    IN DWORD    dwMapFlags,
+    IN LPCWSTR  lpSrcStr,
+    IN int      cchSrc,
+    OUT LPWSTR  lpDestStr,
+    IN int      cchDest);
 #ifdef UNICODE
 #define FoldString  FoldStringW
 #else
@@ -1655,16 +1589,16 @@ WINBASEAPI
 BOOL
 WINAPI
 EnumSystemLanguageGroupsA(
-    __in LANGUAGEGROUP_ENUMPROCA lpLanguageGroupEnumProc,
-    __in DWORD                   dwFlags,
-    __in LONG_PTR                lParam);
+    IN LANGUAGEGROUP_ENUMPROCA lpLanguageGroupEnumProc,
+    IN DWORD                   dwFlags,
+    IN LONG_PTR                lParam);
 WINBASEAPI
 BOOL
 WINAPI
 EnumSystemLanguageGroupsW(
-    __in LANGUAGEGROUP_ENUMPROCW lpLanguageGroupEnumProc,
-    __in DWORD                   dwFlags,
-    __in LONG_PTR                lParam);
+    IN LANGUAGEGROUP_ENUMPROCW lpLanguageGroupEnumProc,
+    IN DWORD                   dwFlags,
+    IN LONG_PTR                lParam);
 #ifdef UNICODE
 #define EnumSystemLanguageGroups  EnumSystemLanguageGroupsW
 #else
@@ -1675,18 +1609,18 @@ WINBASEAPI
 BOOL
 WINAPI
 EnumLanguageGroupLocalesA(
-    __in LANGGROUPLOCALE_ENUMPROCA lpLangGroupLocaleEnumProc,
-    __in LGRPID                    LanguageGroup,
-    __in DWORD                     dwFlags,
-    __in LONG_PTR                  lParam);
+    IN LANGGROUPLOCALE_ENUMPROCA lpLangGroupLocaleEnumProc,
+    IN LGRPID                    LanguageGroup,
+    IN DWORD                     dwFlags,
+    IN LONG_PTR                  lParam);
 WINBASEAPI
 BOOL
 WINAPI
 EnumLanguageGroupLocalesW(
-    __in LANGGROUPLOCALE_ENUMPROCW lpLangGroupLocaleEnumProc,
-    __in LGRPID                    LanguageGroup,
-    __in DWORD                     dwFlags,
-    __in LONG_PTR                  lParam);
+    IN LANGGROUPLOCALE_ENUMPROCW lpLangGroupLocaleEnumProc,
+    IN LGRPID                    LanguageGroup,
+    IN DWORD                     dwFlags,
+    IN LONG_PTR                  lParam);
 #ifdef UNICODE
 #define EnumLanguageGroupLocales  EnumLanguageGroupLocalesW
 #else
@@ -1697,16 +1631,16 @@ WINBASEAPI
 BOOL
 WINAPI
 EnumUILanguagesA(
-    __in UILANGUAGE_ENUMPROCA lpUILanguageEnumProc,
-    __in DWORD                dwFlags,
-    __in LONG_PTR             lParam);
+    IN UILANGUAGE_ENUMPROCA lpUILanguageEnumProc,
+    IN DWORD                dwFlags,
+    IN LONG_PTR             lParam);
 WINBASEAPI
 BOOL
 WINAPI
 EnumUILanguagesW(
-    __in UILANGUAGE_ENUMPROCW lpUILanguageEnumProc,
-    __in DWORD                dwFlags,
-    __in LONG_PTR             lParam);
+    IN UILANGUAGE_ENUMPROCW lpUILanguageEnumProc,
+    IN DWORD                dwFlags,
+    IN LONG_PTR             lParam);
 #ifdef UNICODE
 #define EnumUILanguages  EnumUILanguagesW
 #else
@@ -1718,14 +1652,14 @@ WINBASEAPI
 BOOL
 WINAPI
 EnumSystemLocalesA(
-    __in LOCALE_ENUMPROCA lpLocaleEnumProc,
-    __in DWORD            dwFlags);
+    IN LOCALE_ENUMPROCA lpLocaleEnumProc,
+    IN DWORD            dwFlags);
 WINBASEAPI
 BOOL
 WINAPI
 EnumSystemLocalesW(
-    __in LOCALE_ENUMPROCW lpLocaleEnumProc,
-    __in DWORD            dwFlags);
+    IN LOCALE_ENUMPROCW lpLocaleEnumProc,
+    IN DWORD            dwFlags);
 #ifdef UNICODE
 #define EnumSystemLocales  EnumSystemLocalesW
 #else
@@ -1736,14 +1670,14 @@ WINBASEAPI
 BOOL
 WINAPI
 EnumSystemCodePagesA(
-    __in CODEPAGE_ENUMPROCA lpCodePageEnumProc,
-    __in DWORD              dwFlags);
+    IN CODEPAGE_ENUMPROCA lpCodePageEnumProc,
+    IN DWORD              dwFlags);
 WINBASEAPI
 BOOL
 WINAPI
 EnumSystemCodePagesW(
-    __in CODEPAGE_ENUMPROCW lpCodePageEnumProc,
-    __in DWORD              dwFlags);
+    IN CODEPAGE_ENUMPROCW lpCodePageEnumProc,
+    IN DWORD              dwFlags);
 #ifdef UNICODE
 #define EnumSystemCodePages  EnumSystemCodePagesW
 #else
