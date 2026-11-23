@@ -1,7 +1,0 @@
-LIBRARY		PSMYPROP
-
-EXPORTS
-		DllRegisterServer private
-		DllUnregisterServer private
-		DllGetClassObject private
-		DllCanUnloadNow private

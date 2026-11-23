@@ -1,8 +1,0 @@
-<%@ master language="VB" masterpagefile="~/Site4.master"%>
-
-<asp:content contentplaceholderid="SectionContents" runat="server">
-    <h3>Perrenials</h3>
-    <asp:contentplaceholder id="FlowerText" runat="server"/>
-    <br /><br />
-    <asp:contentplaceholder id="FlowerPicture" runat="server"/>
-</asp:content>

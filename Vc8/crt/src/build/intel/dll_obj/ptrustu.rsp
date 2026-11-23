@@ -1,2 +1,0 @@
--out:build\intel\sample_pu.lib
-build\intel\dll_obj\pure_obj\msilexit.obj  build\intel\dll_obj\pure_obj\ptrust.obj  build\intel\dll_obj\pure_obj\managdeh.obj  build\intel\dll_obj\pure_obj\pureMSILcode.obj

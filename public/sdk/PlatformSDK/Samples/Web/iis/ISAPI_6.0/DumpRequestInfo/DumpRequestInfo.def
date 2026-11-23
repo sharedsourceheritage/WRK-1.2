@@ -1,5 +1,0 @@
-LIBRARY DumpRequestInfo
-
-EXPORTS
-	GetExtensionVersion
-	HttpExtensionProc

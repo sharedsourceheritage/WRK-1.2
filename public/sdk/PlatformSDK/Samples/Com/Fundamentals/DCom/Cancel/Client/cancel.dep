@@ -1,9 +1,0 @@
-# Microsoft Developer Studio Generated Dependency File, included by cancel.mak
-
-.\cancel.cpp : \
-	".\Resource.h"\
-	
-
-.\cancel.rc : \
-	".\Resource.h"\
-	

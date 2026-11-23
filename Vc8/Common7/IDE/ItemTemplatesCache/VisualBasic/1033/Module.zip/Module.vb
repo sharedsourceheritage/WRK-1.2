@@ -1,3 +1,0 @@
-Module $safeitemname$
-
-End Module

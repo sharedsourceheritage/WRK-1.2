@@ -1,2 +1,0 @@
-
-<asp:Image SkinID="Warning" ImageUrl="Images/warning.gif" runat="server"/>

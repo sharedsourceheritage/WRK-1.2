@@ -1,5 +1,0 @@
-LIBRARY UpCaseMap
-
-EXPORTS
-	GetExtensionVersion
-	HttpExtensionProc

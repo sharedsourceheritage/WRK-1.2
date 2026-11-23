@@ -1,5 +1,0 @@
-LIBRARY HelloIsapi
-
-EXPORTS
-	GetExtensionVersion
-	HttpExtensionProc

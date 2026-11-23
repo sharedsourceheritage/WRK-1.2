@@ -1,9 +1,0 @@
-LIBRARY FWRITE
-
-;DESCRIPTION 'File Transfer using WriteClient'
-
-EXPORTS
-
-    HttpExtensionProc
-    GetExtensionVersion
-    TerminateExtension

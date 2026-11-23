@@ -1,8 +1,0 @@
-LIBRARY     CLEANUP
-DESCRIPTION Disk Cleanup Sample Shell Extension
-
-EXPORTS
-            DllRegisterServer   Private
-            DllUnregisterServer Private
-            DllGetClassObject   Private
-            DllCanUnloadNow     Private

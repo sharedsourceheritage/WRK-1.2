@@ -1,2 +1,0 @@
--out:build\intel\sample_pm.lib
-build\intel\dll_obj\clr_obj\msilexit.obj  build\intel\dll_obj\clr_obj\ptrust.obj  build\intel\dll_obj\clr_obj\managdeh.obj  build\intel\dll_obj\clr_obj\pureMSILcode.obj

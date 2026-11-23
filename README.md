@@ -17,13 +17,13 @@ will produce kernel files in BUILD\EXE\%arch%
 
 set PROCESSOR_ARCHITECTURE=x86
 
-set VS80COMNTOOLS=J:\SphinxLogic\_git\OS\WRK-V1.2\Vc8\Common7\Tools\
+set VS80COMNTOOLS=J:\SphinxLogic\Common7\Tools\
 
 set _BUILDARCH=x86
 
 set 386=1
 
-J:\SphinxLogic\_git\OS\WRK-V1.2\Vc8\vcvarsall.bat
+J:\SphinxLogic\Vc8\vcvarsall.bat
 
 Simply setting the 2005 VC8 tools and the ENV.BAT and Building the PAL first.
 

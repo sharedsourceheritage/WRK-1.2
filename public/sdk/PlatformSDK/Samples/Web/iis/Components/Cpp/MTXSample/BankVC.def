@@ -1,9 +1,0 @@
-; BankVC.def : Declares the module parameters.
-
-LIBRARY      "BankVC.DLL"
-
-EXPORTS
-	DllCanUnloadNow     PRIVATE
-	DllGetClassObject   PRIVATE
-	DllRegisterServer   PRIVATE
-	DllUnregisterServer	PRIVATE

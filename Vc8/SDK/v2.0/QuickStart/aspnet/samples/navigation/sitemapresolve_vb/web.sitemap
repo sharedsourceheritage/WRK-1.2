@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
-  <siteMapNode title="Home Page of Site" url="Home.aspx">
-    <siteMapNode title="Newsgroup Home" url="Newsgroup.aspx">
-      <siteMapNode title="Posting" url="postings.aspx" />
-    </siteMapNode>
-  </siteMapNode>
-</siteMap>

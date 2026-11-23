@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE HelpTOC>
-<HelpTOC DTDVersion="1.0" PluginStyle="Flat"> 
-    <HelpTOCNode NodeType="Regular" Title="Getting Started" Url="sdkintro/html/9a2db508-5b77-43f8-afa4-1ca82d24bb83.htm">
-        <HelpTOCNode NodeType="TOC" Url="sdkintro"/>
-    </HelpTOCNode>
-    <HelpTOCNode Id="InsertTOC:NETFX30SDK" NodeType="TOC"/>
-    <HelpTOCNode Id="InsertTOC:WinSDK" NodeType="TOC"/>
-</HelpTOC>

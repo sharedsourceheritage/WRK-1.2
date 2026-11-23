@@ -1,6 +1,0 @@
-LIBRARY InvokObjThreads
-
-EXPORTS
-	GetExtensionVersion
-	HttpExtensionProc
-	TerminateExtension

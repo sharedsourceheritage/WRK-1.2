@@ -1,9 +1,0 @@
-; MyEvictListener.def : Declares the module parameters.
-
-LIBRARY      "MyEvictListener.DLL"
-
-EXPORTS
-	DllCanUnloadNow     PRIVATE
-	DllGetClassObject   PRIVATE
-	DllRegisterServer   PRIVATE
-	DllUnregisterServer	PRIVATE

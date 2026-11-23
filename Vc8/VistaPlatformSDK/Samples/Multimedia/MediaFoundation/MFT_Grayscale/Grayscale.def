@@ -1,7 +1,0 @@
-LIBRARY	"MFT_Grayscale"
-EXPORTS
-    DllMain             PRIVATE
-    DllCanUnloadNow     PRIVATE
-    DllRegisterServer   PRIVATE
-    DllUnregisterServer PRIVATE
-    DllGetClassObject   PRIVATE

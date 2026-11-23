@@ -1,9 +1,0 @@
-; ComSyncObject.def : Declares the module parameters.
-
-LIBRARY      "ComSyncObject.DLL"
-
-EXPORTS
-	DllCanUnloadNow      PRIVATE
-	DllGetClassObject    PRIVATE
-	DllRegisterServer    PRIVATE
-	DllUnregisterServer	 PRIVATE

@@ -1,9 +1,0 @@
-﻿<Page x:Class="ReferringPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    WindowTitle="ReferringPage"
-    >
-  <Grid>
-    <Button Click="Next_Click">Next</Button>
-  </Grid>
-</Page>

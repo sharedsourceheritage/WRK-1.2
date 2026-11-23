@@ -1,6 +1,0 @@
-[implicit_handle(handle_t hrepas)]
-interface repas
-{
-typedef [represent_as( CHAR_STRING )] WCHAR_STRING;
-
-}

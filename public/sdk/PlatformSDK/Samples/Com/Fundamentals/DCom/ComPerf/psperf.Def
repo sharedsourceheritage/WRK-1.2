@@ -1,8 +1,0 @@
-LIBRARY            PSPERF
-
-EXPORTS
-	DllGetClassObject private
-	DllCanUnloadNow private
-	DllRegisterServer private
-	DllUnregisterServer private
-

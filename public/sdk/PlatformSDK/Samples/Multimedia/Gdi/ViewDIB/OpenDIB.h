@@ -1,1 +1,0 @@
-BOOL GetDIBFilename(LPSTR, LPSTR, BOOL);

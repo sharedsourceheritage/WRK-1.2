@@ -1,5 +1,0 @@
-LIBRARY CacheIsapi
-
-EXPORTS
-	GetExtensionVersion
-	HttpExtensionProc

@@ -1,1 +1,0 @@
-Illustrates how to implement a custom exlorer browser contol for your application.

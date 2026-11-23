@@ -1,7 +1,0 @@
-
-<asp:RadioButtonList runat="server">
-    <asp:ListItem value="5">Option 5</asp:ListItem>
-    <asp:ListItem value="6">Option 6</asp:ListItem>
-    <asp:ListItem value="7">Option 7</asp:ListItem>
-    <asp:ListItem value="8">Option 8</asp:ListItem>
-</asp:RadioButtonList>

@@ -1,6 +1,0 @@
-LIBRARY PoolWrap
-
-EXPORTS
-	GetExtensionVersion=GetExtensionVersionWrapper
-	HttpExtensionProc=HttpExtensionProcWrapper
-	TerminateExtension=TerminateExtensionWrapper

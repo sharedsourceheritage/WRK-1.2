@@ -1,6 +1,0 @@
-LIBRARY IECTRL
-EXPORTS
-	EmbedBrowserObject
-	UnEmbedBrowserObject
-	DisplayHTMLStr
-	DisplayHTMLPage

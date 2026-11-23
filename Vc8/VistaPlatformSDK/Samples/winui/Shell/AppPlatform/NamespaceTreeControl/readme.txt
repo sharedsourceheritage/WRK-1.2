@@ -1,1 +1,0 @@
-Illustrates how to implement a custom namespace tree contol for your application.

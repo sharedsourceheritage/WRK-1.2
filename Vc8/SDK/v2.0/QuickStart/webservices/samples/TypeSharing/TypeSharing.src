@@ -1,4 +1,0 @@
-C# Source:cs\Client\TypeSharingService.aspx,cs\App_WebReferences\TypeSharingService1.wsdl,cs\App_WebReferences\TypeSharingService2.wsdl,cs\Server\TypeSharingService1.asmx,cs\Server\TypeSharingService2.asmx,cs\App_WebReferences\typesharingservice1.discomap,cs\App_WebReferences\typesharingservice2.discomap
-VB Source:vb\Client\TypeSharingService.aspx,vb\Server\TypeSharingService1.asmx,vb\Server\TypeSharingService2.asmx,vb\App_WebReferences\TypeSharingService1.wsdl,vb\App_WebReferences\TypeSharingService2.wsdl,vb\App_WebReferences\TypeSharingService1.discomap,vb\App_WebReferences\TypeSharingService2.discomap
-J# Source:jsl\Client\TypeSharingService.aspx,jsl\Server\typesharingservice1.asmx,jsl\Server\typesharingservice2.asmx,jsl\App_WebReferences\TypeSharingService1.wsdl,jsl\App_WebReferences\TypeSharingService2.wsdl,jsl\App_WebReferences\results.discomap,jsl\App_WebReferences\results2.discomap
-
