@@ -5,7 +5,7 @@
 # If you do not agree to the terms, do not use the code.
 # 
 
-wrk=C:\PROBERT\WORK\WRK-2.0\test-build\Drop01
+wrk=J:\SphinxLogic\_git\OS\WRK-V1.2
 subargs=/$(MAKEFLAGS) wrk=$(wrk)
 
 !if defined(x86) && !defined(amd64)

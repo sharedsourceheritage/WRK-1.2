@@ -443,7 +443,7 @@ sub SetLastKnownGoodVCVars
 {
     # Empty MSVCDIR means we use LKG.
     Set("MSVCDIR", "");
-    Set("ROTOR_TOOLSET", "VC8");
+    Set("ROTOR_TOOLSET", "MSVC");
     Set("ROTOR_TOOLSET_VERSION", "80");
     UseCheckedInManagedTools();
 }

@@ -2,12 +2,117 @@
 Microsoft (R) Program Maintenance Utility Version 8.00.50727.42
 Copyright (C) Microsoft Corporation.  All rights reserved.
 
-	if not exist J:\Releases\MICROSOFT.RESEARCH\binaries.x86chk.rotor\sdk\pal\inc mkdir J:\Releases\MICROSOFT.RESEARCH\binaries.x86chk.rotor\sdk\pal\inc
-	copy J:\Releases\_MICROSOFT.RESEARCH\Lab00_n\pal\inc\rotor_pal.h J:\Releases\MICROSOFT.RESEARCH\binaries.x86chk.rotor\sdk\pal\inc
+	if not exist J:\SphinxLogic\_git\OS\WRK-V1.2\binaries.x86chk.rotor\sdk\pal\inc mkdir J:\SphinxLogic\_git\OS\WRK-V1.2\binaries.x86chk.rotor\sdk\pal\inc
+	copy J:\SphinxLogic\_git\OS\WRK-V1.2\pal\inc\rotor_pal.h J:\SphinxLogic\_git\OS\WRK-V1.2\binaries.x86chk.rotor\sdk\pal\inc
         1 file(s) copied.
 
 Microsoft (R) Program Maintenance Utility Version 8.00.50727.42
 Copyright (C) Microsoft Corporation.  All rights reserved.
 
-NMAKE : fatal error U1073: don't know how to make 'J:\Releases\MICROSOFT.RESEARCH\Lab00_n\VC8\lib\msvcrtd.lib'
+	if not exist objc\rotor_x86 md objc\rotor_x86
+cl -nologo -Ii386\ -I. -I.. -I. -IJ:\SphinxLogic\_git\OS\WRK-V1.2\inc\version -IJ:\SphinxLogic\_git\OS\WRK-V1.2\Vc8\PlatformSDK\include -IJ:\SphinxLogic\_git\OS\WRK-V1.2\Vc8\Include -IJ:\SphinxLogic\_git\OS\WRK-V1.2\not_present\OAK_INC_PATH -IJ:\SphinxLogic\_git\OS\WRK-V1.2\pal\inc -IJ:\SphinxLogic\_git\OS\WRK-V1.2\palrt\inc -Di386 -D_X86_  -DSTD_CALL -DCONDITION_HANDLING=1 -DNT_UP=1  -DNT_INST=0 -DWIN32=100 -D_NT1X_=100 -DWINNT=1 -D_WIN32_WINNT=0x0500 -DWINVER=0x0500 -D_WIN32_IE=0x0400    -DWIN32_LEAN_AND_MEAN=1 -DDBG=1 -DDEVL=1 -DFPO=0    -D_DEBUG -D_DLL=1 -D_MT=1 -DFEATURE_PAL -DPAL_PORTABLE_SEH -DGC_SMP -DFJITONLY -DNTMAKEENV -D_DEBUG /DPAL_IMPLEMENTATION=1 -DFX_VFT=VFT_DLL -DFX_VER_INTERNALNAME_STR=rotor_pal.dll -DOFFICIAL_BUILD=0 -DBETA=0 -DFX_VER_PRIVATEBUILD_STR=SPHINXLOGIC -DURTBLDENV_FRIENDLY=Checked -DFX_BRANCH_SYNC_COUNTER_VALUE=0    /c /GS /Zp8 /Gy /W3 /WX /Gz   /Gm- /EHs-c-  /GR- /GF  -Z7 /O1 /Oy- /FRJ:\SphinxLogic\_git\OS\WRK-V1.2\pal\win32\objc\rotor_x86\    /WX /FIJ:\SphinxLogic\_git\OS\WRK-V1.2\clr\src\inc\WarningControl.h  .\exception.c
+exception.c
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(285) : error C2061: syntax error : identifier 'GUID_NULL'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(285) : error C2059: syntax error : ';'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(287) : error C2061: syntax error : identifier 'FAR'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(287) : error C2059: syntax error : ';'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(303) : error C2061: syntax error : identifier 'IID'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(303) : error C2059: syntax error : ';'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(314) : error C2061: syntax error : identifier 'CLSID'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(314) : error C2059: syntax error : ';'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(398) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(398) : error C2085: 'CoTaskMemAlloc' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(399) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(411) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(411) : error C2085: 'SysAllocString' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(412) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(413) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(413) : error C2085: 'SysAllocStringByteLen' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(414) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(415) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(415) : error C2085: 'SysStringLen' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(416) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(613) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(613) : error C2085: 'VariantInit' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(614) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(671) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(671) : error C2085: 'CreateStreamOnHGlobal' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(692) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(693) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(693) : error C2143: syntax error : missing ')' before '*'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(693) : error C2085: 'StringFromGUID2' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(693) : error C2143: syntax error : missing ';' before '*'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(693) : error C2059: syntax error : ')'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(695) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(695) : error C2143: syntax error : missing ')' before '*'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(695) : error C2085: 'CoCreateGuid' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(695) : error C2143: syntax error : missing ';' before '*'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(695) : error C2059: syntax error : ')'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(741) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(747) : error C2085: 'CryptAcquireContextW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(749) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(767) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(770) : error C2085: 'CryptReleaseContext' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(772) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(784) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(786) : error C2085: 'CryptDestroyHash' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(788) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(799) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(805) : error C2085: 'CryptGetHashParam' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(807) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(818) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(820) : error C2085: 'CryptDestroyKey' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(822) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(835) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(842) : error C2085: 'CryptExportKey' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(844) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(856) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(863) : error C2085: 'CryptVerifySignatureW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(865) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(884) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(891) : error C2085: 'CryptSignHashW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(893) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(972) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(972) : error C2085: 'StrNCatW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(973) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(974) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(974) : error C2085: 'StrStrIW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(975) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(976) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(976) : error C2085: 'StrCatBuffW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1348) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1349) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1349) : error C2085: 'PathCommonPrefixW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1350) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1351) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1351) : error C2085: 'PathFindExtensionW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1352) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1353) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1353) : error C2085: 'PathIsRelativeW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1354) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1355) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1355) : error C2085: 'PathAddBackslashW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1356) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1357) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1357) : error C2085: 'PathRemoveExtensionW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1358) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1359) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1359) : error C2085: 'PathCanonicalizeW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1360) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1361) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1361) : error C2085: 'PathRenameExtensionW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1362) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1363) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1363) : error C2085: 'PathStripPathW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1365) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1366) : error C2054: expected '(' to follow 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1366) : error C2085: 'PathIsURLW' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1373) : error C2057: expected constant expression
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1374) : error C2085: 'URLIS' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1377) : error C2057: expected constant expression
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1378) : error C2057: expected constant expression
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1379) : error C2085: 'URL_PART' : not in formal parameter list
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1381) : error C2061: syntax error : identifier 'EXTERN_C'
+j:\sphinxlogic\_git\os\wrk-v1.2\palrt\inc\rotor_palrt.h(1381) : fatal error C1003: error count exceeds 100; stopping compilation
+NMAKE : fatal error U1077: 'J:\SphinxLogic\_git\OS\WRK-V1.2\VC8\BIN\cl.EXE' : return code '0x2'
 Stop.

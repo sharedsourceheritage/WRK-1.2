@@ -136,7 +136,7 @@ IF "%~1" == "" goto :EOF
 IF EXIST "%~1\vsvars32.bat" call "%~1\vsvars32.bat"
 IF NOT "%MSVCDIR%"=="" goto :EOF
 IF "%VSINSTALLDIR%" == "" goto :EOF
-set MSVCDIR=%VSINSTALLDIR%\VC8
+set MSVCDIR=%VSINSTALLDIR%\VC
 goto :EOF
 
 :SetLKGVCDir
