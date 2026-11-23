@@ -1,7 +1,10 @@
-
 /*++
 
-Copyright(c) 1999 Microsoft Corporation
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -13,10 +16,6 @@ Abstract:
     pagefile. The boot loader loads this triage dump in an attempt to find
     out why the system crashed and (hopefully) prevent it from crashing
     again.
-
-Author:
-
-    Matthew D Hendel (math) 20-Jan-1999
 
 --*/
 
@@ -119,3 +118,4 @@ TriageGetProcess(
     );
 
 #endif // __TRIAGE_H__
+

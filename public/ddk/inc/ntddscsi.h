@@ -2,6 +2,10 @@
 
 Copyright (c) Microsoft Corporation. All rights reserved.
 
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
+
 Module Name:
 
     ntddscsi.h
@@ -10,12 +14,6 @@ Abstract:
 
     This is the include file that defines all constants and types for
     accessing the SCSI port adapters.
-
-Author:
-
-    Jeff Havens
-
-Revision History:
 
 --*/
 
@@ -252,6 +250,7 @@ typedef struct _ATA_PASS_THROUGH_DIRECT32 {
 #define ATA_FLAGS_DATA_IN               (1 << 1)
 #define ATA_FLAGS_DATA_OUT              (1 << 2)
 #define ATA_FLAGS_48BIT_COMMAND         (1 << 3)
+#define ATA_FLAGS_USE_DMA               (1 << 4)
 
 
 //
@@ -399,3 +398,4 @@ typedef struct _DUMP_POINTERS {
 #endif
 
 #endif
+

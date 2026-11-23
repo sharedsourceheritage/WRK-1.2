@@ -1,20 +1,29 @@
-/******************************************************************
-*                                                                 *
-*  strsafe.h -- This module defines safer C library string        *
-*               routine replacements. These are meant to make C   *
-*               a bit more safe in reference to security and      *
-*               robustness                                        *
-*                                                                 *
-*  Copyright (c) Microsoft Corp.  All rights reserved.            *
-*                                                                 *
-******************************************************************/
+/*++
+
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
+Module:
+
+    strsafe.h
+
+Abstract:
+
+    This module defines safer C library string routine replacements.
+    These are meant to make C a bit more safe in reference to security and robustness.
+
+--*/
+
 #ifndef _STRSAFE_H_INCLUDED_
 #define _STRSAFE_H_INCLUDED_
 #pragma once
 
-#include <stdio.h>      // for _vsnprintf, _vsnwprintf, getc, getwc
-#include <string.h>     // for memset
-#include <stdarg.h>     // for va_start, etc.
+#include <stdio.h>          // for _vsnprintf, _vsnwprintf, getc, getwc
+#include <string.h>         // for memset
+#include <stdarg.h>         // for va_start, etc.
+#include <specstrings.h>    // for __in, etc.
 
 
 #ifndef _SIZE_T_DEFINED
@@ -48,11 +57,25 @@ typedef long HRESULT;
 #define S_OK  ((HRESULT)0x00000000L)
 #endif
 
+// compiletime asserts (failure results in error C2118: negative subscript)
+#ifndef C_ASSERT
+#define C_ASSERT(e) typedef char __C_ASSERT__[(e)?1:-1]
+#endif
+
 #ifdef __cplusplus
 #define _STRSAFE_EXTERN_C    extern "C"
 #else
 #define _STRSAFE_EXTERN_C    extern
 #endif
+
+#ifndef _STRSAFE_USE_SECURE_CRT
+#if defined(__GOT_SECURE_LIB__) && (__GOT_SECURE_LIB__ >= 200402L)
+#define _STRSAFE_USE_SECURE_CRT 1
+#else
+#define _STRSAFE_USE_SECURE_CRT 0
+#endif
+#endif
+
 
 // If you do not want to use these functions inline (and instead want to link w/ strsafe.lib), then
 // #define STRSAFE_LIB before including this header file.
@@ -66,11 +89,12 @@ typedef long HRESULT;
 #define STRSAFE_INLINE
 #endif
 
-// Some functions always run inline because they use stdin and we want to avoid building multiple
-// versions of strsafe lib depending on if you use msvcrt, libcmt, etc.
+// Some functions we want to force inline because we want compiletime differences based on #defines, or they use 
+// stdin and we want to avoid building multiple versions of strsafe lib (depending on what #define or if 
+// you use msvcrt, libcmt, etc..)
 #define STRSAFE_INLINE_API  __inline HRESULT __stdcall
 
-// The user can request no "Cb" or no "Cch" fuctions, but not both!
+// The user can request no "Cb" or no "Cch" functions, but not both!
 #if defined(STRSAFE_NO_CB_FUNCTIONS) && defined(STRSAFE_NO_CCH_FUNCTIONS)
 #error cannot specify both STRSAFE_NO_CB_FUNCTIONS and STRSAFE_NO_CCH_FUNCTIONS !!
 #endif
@@ -80,28 +104,30 @@ typedef long HRESULT;
 #define STRSAFE_INLINE
 #endif
 
+#define STRSAFE_MAX_CCH     2147483647 // max # of characters we support (same as INT_MAX)
 
-// If both strsafe.h and ntstrsafe.h are included, only use definitions from one.
+// If both strsafe.h and ntstrsafe.h are included, only use definitions below from one.
 #ifndef _NTSTRSAFE_H_INCLUDED_
-
-#define STRSAFE_MAX_CCH  2147483647 // max # of characters we support (same as INT_MAX)
 
 // Flags for controling the Ex functions
 //
-//      STRSAFE_FILL_BYTE(0xFF)     0x000000FF  // bottom byte specifies fill pattern
-#define STRSAFE_IGNORE_NULLS        0x00000100  // treat null as TEXT("") -- don't fault on NULL buffers
-#define STRSAFE_FILL_BEHIND_NULL    0x00000200  // fill in extra space behind the null terminator
-#define STRSAFE_FILL_ON_FAILURE     0x00000400  // on failure, overwrite pszDest with fill pattern and null terminate it
-#define STRSAFE_NULL_ON_FAILURE     0x00000800  // on failure, set *pszDest = TEXT('\0')
-#define STRSAFE_NO_TRUNCATION       0x00001000  // instead of returning a truncated result, copy/append nothing to pszDest and null terminate it
+//      STRSAFE_FILL_BYTE(0xFF)                         0x000000FF  // bottom byte specifies fill pattern
+#define STRSAFE_IGNORE_NULLS                            0x00000100  // treat null string pointers as TEXT("") -- don't fault on NULL buffers
+#define STRSAFE_FILL_BEHIND_NULL                        0x00000200  // fill in extra space behind the null terminator
+#define STRSAFE_FILL_ON_FAILURE                         0x00000400  // on failure, overwrite pszDest with fill pattern and null terminate it
+#define STRSAFE_NULL_ON_FAILURE                         0x00000800  // on failure, set *pszDest = TEXT('\0')
+#define STRSAFE_NO_TRUNCATION                           0x00001000  // instead of returning a truncated result, copy/append nothing to pszDest and null terminate it
+#define STRSAFE_IGNORE_NULL_UNICODE_STRINGS             0x00010000  // don't crash on null UNICODE_STRING pointers (STRSAFE_IGNORE_NULLS implies this flag)
+#define STRSAFE_UNICODE_STRING_DEST_NULL_TERMINATED     0x00020000  // we will fail if the Dest PUNICODE_STRING's Buffer cannot be null terminated 
 
-#define STRSAFE_VALID_FLAGS         (0x000000FF | STRSAFE_IGNORE_NULLS | STRSAFE_FILL_BEHIND_NULL | STRSAFE_FILL_ON_FAILURE | STRSAFE_NULL_ON_FAILURE | STRSAFE_NO_TRUNCATION)
+#define STRSAFE_VALID_FLAGS                     (0x000000FF | STRSAFE_IGNORE_NULLS | STRSAFE_FILL_BEHIND_NULL | STRSAFE_FILL_ON_FAILURE | STRSAFE_NULL_ON_FAILURE | STRSAFE_NO_TRUNCATION)
+#define STRSAFE_UNICODE_STRING_VALID_FLAGS      (STRSAFE_VALID_FLAGS | STRSAFE_IGNORE_NULL_UNICODE_STRINGS | STRSAFE_UNICODE_STRING_DEST_NULL_TERMINATED)
 
 // helper macro to set the fill character and specify buffer filling
-#define STRSAFE_FILL_BYTE(x)        ((unsigned long)((x & 0x000000FF) | STRSAFE_FILL_BEHIND_NULL))
-#define STRSAFE_FAILURE_BYTE(x)     ((unsigned long)((x & 0x000000FF) | STRSAFE_FILL_ON_FAILURE))
+#define STRSAFE_FILL_BYTE(x)                    ((unsigned long)((x & 0x000000FF) | STRSAFE_FILL_BEHIND_NULL))
+#define STRSAFE_FAILURE_BYTE(x)                 ((unsigned long)((x & 0x000000FF) | STRSAFE_FILL_ON_FAILURE))
 
-#define STRSAFE_GET_FILL_PATTERN(dwFlags)  ((int)(dwFlags & 0x000000FF))
+#define STRSAFE_GET_FILL_PATTERN(dwFlags)       ((int)(dwFlags & 0x000000FF))
 
 #endif // _NTSTRSAFE_H_INCLUDED_
 
@@ -111,42 +137,233 @@ typedef long HRESULT;
 #define STRSAFE_E_INVALID_PARAMETER         ((HRESULT)0x80070057L)  // 0x57 =  87L = ERROR_INVALID_PARAMETER
 #define STRSAFE_E_END_OF_FILE               ((HRESULT)0x80070026L)  // 0x26 =  38L = ERROR_HANDLE_EOF
 
-// prototypes for the worker functions
-#ifdef STRSAFE_INLINE
-STRSAFEAPI StringCopyWorkerA(char* pszDest, size_t cchDest, const char* pszSrc);
-STRSAFEAPI StringCopyWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc);
-STRSAFEAPI StringCopyExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, const char* pszSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCopyExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCopyNWorkerA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchSrc);
-STRSAFEAPI StringCopyNWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchSrc);
-STRSAFEAPI StringCopyNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, const char* pszSrc, size_t cchSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCopyNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, const wchar_t* pszSrc, size_t cchSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCatWorkerA(char* pszDest, size_t cchDest, const char* pszSrc);
-STRSAFEAPI StringCatWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc);
-STRSAFEAPI StringCatExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, const char* pszSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCatExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCatNWorkerA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchMaxAppend);
-STRSAFEAPI StringCatNWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchMaxAppend);
-STRSAFEAPI StringCatNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, const char* pszSrc, size_t cchMaxAppend, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCatNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, const wchar_t* pszSrc, size_t cchMaxAppend, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringVPrintfWorkerA(char* pszDest, size_t cchDest, const char* pszFormat, va_list argList);
-STRSAFEAPI StringVPrintfWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszFormat, va_list argList);
-STRSAFEAPI StringVPrintfExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const char* pszFormat, va_list argList);
-STRSAFEAPI StringVPrintfExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const wchar_t* pszFormat, va_list argList);
-STRSAFEAPI StringLengthWorkerA(const char* psz, size_t cchMax, size_t* pcch);
-STRSAFEAPI StringLengthWorkerW(const wchar_t* psz, size_t cchMax, size_t* pcch);
-#endif  // STRSAFE_INLINE
+//
+// These typedefs are used in places where the string is guaranteed to
+// be null terminated.
+//
+typedef __nullterminated char* STRSAFE_LPSTR;
+typedef __nullterminated const char* STRSAFE_LPCSTR;
+typedef __nullterminated wchar_t* STRSAFE_LPWSTR;
+typedef __nullterminated const wchar_t* STRSAFE_LPCWSTR;
 
-#ifndef STRSAFE_LIB_IMPL
-// these functions are always inline
-STRSAFE_INLINE_API StringGetsExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFE_INLINE_API StringGetsExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-#endif
 
 #ifdef _NTSTRSAFE_H_INCLUDED_
 #pragma warning(push)
 #pragma warning(disable : 4995)
 #endif // _NTSTRSAFE_H_INCLUDED_
+
+
+// prototypes for the worker functions
+#ifdef STRSAFE_INLINE
+
+STRSAFEAPI
+StringCopyWorkerA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc);
+
+STRSAFEAPI
+StringCopyWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc);
+
+STRSAFEAPI
+StringCopyExWorkerA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCopyExWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCopyNWorkerA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToCopy);
+
+STRSAFEAPI
+StringCopyNWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToCopy);
+
+STRSAFEAPI
+StringCopyNExWorkerA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToCopy,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCopyNExWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToCopy,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCatWorkerA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc);
+
+STRSAFEAPI
+StringCatWorkerW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc);
+
+STRSAFEAPI
+StringCatExWorkerA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCatExWorkerW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCatNWorkerA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToAppend);
+
+STRSAFEAPI
+StringCatNWorkerW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToAppend);
+
+STRSAFEAPI
+StringCatNExWorkerA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToAppend,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCatNExWorkerW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToAppend,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringVPrintfWorkerA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    __in va_list argList);
+
+STRSAFEAPI
+StringVPrintfWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList);
+
+STRSAFEAPI
+StringVPrintfExWorkerA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    __in va_list argList);
+
+STRSAFEAPI
+StringVPrintfExWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList);
+
+STRSAFEAPI
+StringLengthWorkerA(
+    __in STRSAFE_LPCSTR psz,
+    __in size_t cchMax,
+    __out_opt size_t* pcchLength);
+
+STRSAFEAPI
+StringLengthWorkerW(
+    __in STRSAFE_LPCWSTR psz,
+    __in size_t cchMax,
+    __out_opt size_t* pcchLength);
+    
+#endif  // STRSAFE_INLINE
+    
+// these worker functions are always run inline
+#ifndef STRSAFE_LIB_IMPL
+
+STRSAFE_INLINE_API
+StringGetsExWorkerA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFE_INLINE_API
+StringGetsExWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+    
+#endif  //!STRSAFE_LIB_IMPL
 
 
 #ifndef STRSAFE_NO_CCH_FUNCTIONS
@@ -218,8 +435,17 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchCopyA(char* pszDest, size_t cchDest, const char* pszSrc);
-STRSAFEAPI StringCchCopyW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc);
+STRSAFEAPI
+StringCchCopyA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc);
+
+STRSAFEAPI
+StringCchCopyW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc);
 #ifdef UNICODE
 #define StringCchCopy  StringCchCopyW
 #else
@@ -227,7 +453,11 @@ STRSAFEAPI StringCchCopyW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSr
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchCopyA(char* pszDest, size_t cchDest, const char* pszSrc)
+STRSAFEAPI
+StringCchCopyA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc)
 {
     HRESULT hr;
 
@@ -243,7 +473,11 @@ STRSAFEAPI StringCchCopyA(char* pszDest, size_t cchDest, const char* pszSrc)
     return hr;
 }
 
-STRSAFEAPI StringCchCopyW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc)
+STRSAFEAPI
+StringCchCopyW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc)
 {
     HRESULT hr;
 
@@ -330,8 +564,17 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbCopyA(char* pszDest, size_t cbDest, const char* pszSrc);
-STRSAFEAPI StringCbCopyW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc);
+STRSAFEAPI
+StringCbCopyA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc);
+
+STRSAFEAPI
+StringCbCopyW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc);
 #ifdef UNICODE
 #define StringCbCopy  StringCbCopyW
 #else
@@ -339,7 +582,11 @@ STRSAFEAPI StringCbCopyW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc)
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbCopyA(char* pszDest, size_t cbDest, const char* pszSrc)
+STRSAFEAPI
+StringCbCopyA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc)
 {
     HRESULT hr;
     size_t cchDest;
@@ -359,7 +606,11 @@ STRSAFEAPI StringCbCopyA(char* pszDest, size_t cbDest, const char* pszSrc)
     return hr;
 }
 
-STRSAFEAPI StringCbCopyW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc)
+STRSAFEAPI
+StringCbCopyW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc)
 {
     HRESULT hr;
     size_t cchDest;
@@ -476,8 +727,23 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchCopyExA(char* pszDest, size_t cchDest, const char* pszSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCchCopyExW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
+STRSAFEAPI
+StringCchCopyExA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCchCopyExW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
 #ifdef UNICODE
 #define StringCchCopyEx  StringCchCopyExW
 #else
@@ -485,7 +751,14 @@ STRSAFEAPI StringCchCopyExW(wchar_t* pszDest, size_t cchDest, const wchar_t* psz
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchCopyExA(char* pszDest, size_t cchDest, const char* pszSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCchCopyExA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
 
@@ -506,7 +779,14 @@ STRSAFEAPI StringCchCopyExA(char* pszDest, size_t cchDest, const char* pszSrc, c
     return hr;
 }
 
-STRSAFEAPI StringCchCopyExW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCchCopyExW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
 
@@ -624,8 +904,23 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbCopyExA(char* pszDest, size_t cbDest, const char* pszSrc, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCbCopyExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags);
+STRSAFEAPI
+StringCbCopyExA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCbCopyExW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags);
 #ifdef UNICODE
 #define StringCbCopyEx  StringCbCopyExW
 #else
@@ -633,12 +928,20 @@ STRSAFEAPI StringCbCopyExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSr
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbCopyExA(char* pszDest, size_t cbDest, const char* pszSrc, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCbCopyExA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
     size_t cchDest;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(char);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -662,12 +965,20 @@ STRSAFEAPI StringCbCopyExA(char* pszDest, size_t cbDest, const char* pszSrc, cha
     return hr;
 }
 
-STRSAFEAPI StringCbCopyExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCbCopyExW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
     size_t cchDest;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -702,7 +1013,7 @@ StringCchCopyN(
     OUT LPTSTR  pszDest,
     IN  size_t  cchDest,
     IN  LPCTSTR pszSrc,
-    IN  size_t  cchSrc
+    IN  size_t  cchToCopy
     );
 
 Routine Description:
@@ -714,10 +1025,10 @@ Routine Description:
 
     This routine is meant as a replacement for strncpy, but it does behave
     differently. This function will not pad the destination buffer with extra
-    null termination characters if cchSrc is greater than the length of pszSrc.
+    null termination characters if cchToCopy is greater than the length of pszSrc.
 
     This function returns a hresult, and not a pointer.  It returns
-    S_OK if the entire string or the first cchSrc characters were copied
+    S_OK if the entire string or the first cchToCopy characters were copied
     without truncation and the resultant destination string was null terminated,
     otherwise it will return a failure code. In failure cases as much of pszSrc
     will be copied to pszDest as possible, and pszDest will be null terminated.
@@ -732,7 +1043,7 @@ Arguments:
 
     pszSrc         -   source string
 
-    cchSrc         -   maximum number of characters to copy from source string,
+    cchToCopy      -   maximum number of characters to copy from source string,
                        not including the null terminator.
 
 Notes:
@@ -763,8 +1074,19 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchCopyNA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchSrc);
-STRSAFEAPI StringCchCopyNW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchSrc);
+STRSAFEAPI
+StringCchCopyNA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToCopy);
+
+STRSAFEAPI
+StringCchCopyNW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToCopy);
 #ifdef UNICODE
 #define StringCchCopyN  StringCchCopyNW
 #else
@@ -772,35 +1094,45 @@ STRSAFEAPI StringCchCopyNW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszS
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchCopyNA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchSrc)
+STRSAFEAPI
+StringCchCopyNA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToCopy)
 {
     HRESULT hr;
 
     if ((cchDest > STRSAFE_MAX_CCH) ||
-        (cchSrc > STRSAFE_MAX_CCH))
+        (cchToCopy > STRSAFE_MAX_CCH))
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
     else
     {
-        hr = StringCopyNWorkerA(pszDest, cchDest, pszSrc, cchSrc);
+        hr = StringCopyNWorkerA(pszDest, cchDest, pszSrc, cchToCopy);
     }
 
     return hr;
 }
 
-STRSAFEAPI StringCchCopyNW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchSrc)
+STRSAFEAPI
+StringCchCopyNW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToCopy)
 {
     HRESULT hr;
 
     if ((cchDest > STRSAFE_MAX_CCH) ||
-        (cchSrc > STRSAFE_MAX_CCH))
+        (cchToCopy > STRSAFE_MAX_CCH))
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
     else
     {
-        hr = StringCopyNWorkerW(pszDest, cchDest, pszSrc, cchSrc);
+        hr = StringCopyNWorkerW(pszDest, cchDest, pszSrc, cchToCopy);
     }
 
     return hr;
@@ -817,7 +1149,7 @@ StringCbCopyN(
     OUT LPTSTR  pszDest,
     IN  size_t  cbDest,
     IN  LPCTSTR pszSrc,
-    IN  size_t  cbSrc
+    IN  size_t  cbToCopy
     );
 
 Routine Description:
@@ -829,10 +1161,10 @@ Routine Description:
 
     This routine is meant as a replacement for strncpy, but it does behave
     differently. This function will not pad the destination buffer with extra
-    null termination characters if cbSrc is greater than the size of pszSrc.
+    null termination characters if cbToCopy is greater than the size of pszSrc.
 
     This function returns a hresult, and not a pointer.  It returns
-    S_OK if the entire string or the first cbSrc characters were
+    S_OK if the entire string or the first cbToCopy characters were
     copied without truncation and the resultant destination string was null
     terminated, otherwise it will return a failure code. In failure cases as
     much of pszSrc will be copied to pszDest as possible, and pszDest will be
@@ -848,7 +1180,7 @@ Arguments:
 
     pszSrc         -   source string
 
-    cbSrc          -   maximum number of bytes to copy from source string,
+    cbToCopy       -   maximum number of bytes to copy from source string,
                        not including the null terminator.
 
 Notes:
@@ -879,8 +1211,19 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbCopyNA(char* pszDest, size_t cbDest, const char* pszSrc, size_t cbSrc);
-STRSAFEAPI StringCbCopyNW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, size_t cbSrc);
+STRSAFEAPI
+StringCbCopyNA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToCopy) STRSAFE_LPCSTR pszSrc,
+    __in size_t cbToCopy);
+
+STRSAFEAPI
+StringCbCopyNW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cbToCopy);
 #ifdef UNICODE
 #define StringCbCopyN  StringCbCopyNW
 #else
@@ -888,47 +1231,57 @@ STRSAFEAPI StringCbCopyNW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbCopyNA(char* pszDest, size_t cbDest, const char* pszSrc, size_t cbSrc)
+STRSAFEAPI
+StringCbCopyNA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToCopy) STRSAFE_LPCSTR pszSrc,
+    __in size_t cbToCopy)
 {
     HRESULT hr;
     size_t cchDest;
-    size_t cchSrc;
+    size_t cchToCopy;
 
     // convert to count of characters
     cchDest = cbDest / sizeof(char);
-    cchSrc = cbSrc / sizeof(char);
+    cchToCopy = cbToCopy / sizeof(char);
 
     if ((cchDest > STRSAFE_MAX_CCH) ||
-        (cchSrc > STRSAFE_MAX_CCH))
+        (cchToCopy > STRSAFE_MAX_CCH))
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
     else
     {
-        hr = StringCopyNWorkerA(pszDest, cchDest, pszSrc, cchSrc);
+        hr = StringCopyNWorkerA(pszDest, cchDest, pszSrc, cchToCopy);
     }
 
     return hr;
 }
 
-STRSAFEAPI StringCbCopyNW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, size_t cbSrc)
+STRSAFEAPI
+StringCbCopyNW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cbToCopy)
 {
     HRESULT hr;
     size_t cchDest;
-    size_t cchSrc;
+    size_t cchToCopy;
 
     // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
-    cchSrc = cbSrc / sizeof(wchar_t);
+    cchToCopy = cbToCopy / sizeof(wchar_t);
 
     if ((cchDest > STRSAFE_MAX_CCH) ||
-        (cchSrc > STRSAFE_MAX_CCH))
+        (cchToCopy > STRSAFE_MAX_CCH))
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
     else
     {
-        hr = StringCopyNWorkerW(pszDest, cchDest, pszSrc, cchSrc);
+        hr = StringCopyNWorkerW(pszDest, cchDest, pszSrc, cchToCopy);
     }
 
     return hr;
@@ -945,7 +1298,7 @@ StringCchCopyNEx(
     OUT LPTSTR  pszDest         OPTIONAL,
     IN  size_t  cchDest,
     IN  LPCTSTR pszSrc          OPTIONAL,
-    IN  size_t  cchSrc,
+    IN  size_t  cchToCopy,
     OUT LPTSTR* ppszDestEnd     OPTIONAL,
     OUT size_t* pcchRemaining   OPTIONAL,
     IN  DWORD   dwFlags
@@ -962,7 +1315,7 @@ Routine Description:
 
     This routine is meant as a replacement for strncpy, but it does behave
     differently. This function will not pad the destination buffer with extra
-    null termination characters if cchSrc is greater than the length of pszSrc.
+    null termination characters if cchToCopy is greater than the length of pszSrc.
 
 Arguments:
 
@@ -974,7 +1327,7 @@ Arguments:
 
     pszSrc          -   source string
 
-    cchSrc          -   maximum number of characters to copy from the source
+    cchToCopy       -   maximum number of characters to copy from the source
                         string
 
     ppszDestEnd     -   if ppszDestEnd is non-null, the function will return a
@@ -1040,8 +1393,25 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchCopyNExA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCchCopyNExW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
+STRSAFEAPI
+StringCchCopyNExA(
+    __in_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToCopy,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCchCopyNExW(
+    __in_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToCopy,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
 #ifdef UNICODE
 #define StringCchCopyNEx  StringCchCopyNExW
 #else
@@ -1049,12 +1419,19 @@ STRSAFEAPI StringCchCopyNExW(wchar_t* pszDest, size_t cchDest, const wchar_t* ps
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchCopyNExA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCchCopyNExA(
+    __in_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToCopy,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
 
-    if ((cchDest > STRSAFE_MAX_CCH) ||
-        (cchSrc > STRSAFE_MAX_CCH))
+    if (cchDest > STRSAFE_MAX_CCH)
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
@@ -1065,18 +1442,25 @@ STRSAFEAPI StringCchCopyNExA(char* pszDest, size_t cchDest, const char* pszSrc, 
         // safe to multiply cchDest * sizeof(char) since cchDest < STRSAFE_MAX_CCH and sizeof(char) is 1
         cbDest = cchDest * sizeof(char);
 
-        hr = StringCopyNExWorkerA(pszDest, cchDest, cbDest, pszSrc, cchSrc, ppszDestEnd, pcchRemaining, dwFlags);
+        hr = StringCopyNExWorkerA(pszDest, cchDest, cbDest, pszSrc, cchToCopy, ppszDestEnd, pcchRemaining, dwFlags);
     }
 
     return hr;
 }
 
-STRSAFEAPI StringCchCopyNExW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCchCopyNExW(
+    __in_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToCopy,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
 
-    if ((cchDest > STRSAFE_MAX_CCH) ||
-        (cchSrc > STRSAFE_MAX_CCH))
+    if (cchDest > STRSAFE_MAX_CCH)
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
@@ -1087,7 +1471,7 @@ STRSAFEAPI StringCchCopyNExW(wchar_t* pszDest, size_t cchDest, const wchar_t* ps
         // safe to multiply cchDest * sizeof(wchar_t) since cchDest < STRSAFE_MAX_CCH and sizeof(wchar_t) is 2
         cbDest = cchDest * sizeof(wchar_t);
 
-        hr = StringCopyNExWorkerW(pszDest, cchDest, cbDest, pszSrc, cchSrc, ppszDestEnd, pcchRemaining, dwFlags);
+        hr = StringCopyNExWorkerW(pszDest, cchDest, cbDest, pszSrc, cchToCopy, ppszDestEnd, pcchRemaining, dwFlags);
     }
 
     return hr;
@@ -1104,7 +1488,7 @@ StringCbCopyNEx(
     OUT LPTSTR  pszDest         OPTIONAL,
     IN  size_t  cbDest,
     IN  LPCTSTR pszSrc          OPTIONAL,
-    IN  size_t  cbSrc,
+    IN  size_t  cbToCopy,
     OUT LPTSTR* ppszDestEnd     OPTIONAL,
     OUT size_t* pcbRemaining    OPTIONAL,
     IN  DWORD   dwFlags
@@ -1120,7 +1504,7 @@ Routine Description:
 
     This routine is meant as a replacement for strncpy, but it does behave
     differently. This function will not pad the destination buffer with extra
-    null termination characters if cbSrc is greater than the size of pszSrc.
+    null termination characters if cbToCopy is greater than the size of pszSrc.
 
 Arguments:
 
@@ -1132,7 +1516,7 @@ Arguments:
 
     pszSrc          -   source string
 
-    cbSrc           -   maximum number of bytes to copy from source string
+    cbToCopy        -   maximum number of bytes to copy from source string
 
     ppszDestEnd     -   if ppszDestEnd is non-null, the function will return a
                         pointer to the end of the destination string.  If the
@@ -1197,8 +1581,25 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbCopyNExA(char* pszDest, size_t cbDest, const char* pszSrc, size_t cbSrc, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCbCopyNExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, size_t cbSrc, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags);
+STRSAFEAPI
+StringCbCopyNExA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToCopy) STRSAFE_LPCSTR pszSrc,
+    __in size_t cbToCopy,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCbCopyNExW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cbToCopy,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags);
 #ifdef UNICODE
 #define StringCbCopyNEx  StringCbCopyNExW
 #else
@@ -1206,24 +1607,32 @@ STRSAFEAPI StringCbCopyNExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszS
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbCopyNExA(char* pszDest, size_t cbDest, const char* pszSrc, size_t cbSrc, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCbCopyNExA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToCopy) STRSAFE_LPCSTR pszSrc,
+    __in size_t cbToCopy,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
     size_t cchDest;
-    size_t cchSrc;
+    size_t cchToCopy;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(char);
-    cchSrc = cbSrc / sizeof(char);
+    cchToCopy = cbToCopy / sizeof(char);
 
-    if ((cchDest > STRSAFE_MAX_CCH) ||
-        (cchSrc > STRSAFE_MAX_CCH))
+    if (cchDest > STRSAFE_MAX_CCH)
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
     else
     {
-        hr = StringCopyNExWorkerA(pszDest, cchDest, cbDest, pszSrc, cchSrc, ppszDestEnd, &cchRemaining, dwFlags);
+        hr = StringCopyNExWorkerA(pszDest, cchDest, cbDest, pszSrc, cchToCopy, ppszDestEnd, &cchRemaining, dwFlags);
     }
 
     if (SUCCEEDED(hr) || (hr == STRSAFE_E_INSUFFICIENT_BUFFER))
@@ -1238,24 +1647,32 @@ STRSAFEAPI StringCbCopyNExA(char* pszDest, size_t cbDest, const char* pszSrc, si
     return hr;
 }
 
-STRSAFEAPI StringCbCopyNExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, size_t cbSrc, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCbCopyNExW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cbToCopy,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
     size_t cchDest;
-    size_t cchSrc;
+    size_t cchToCopy;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
-    cchSrc = cbSrc / sizeof(wchar_t);
+    cchToCopy = cbToCopy / sizeof(wchar_t);
 
-    if ((cchDest > STRSAFE_MAX_CCH) ||
-        (cchSrc > STRSAFE_MAX_CCH))
+    if (cchDest > STRSAFE_MAX_CCH)
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
     else
     {
-        hr = StringCopyNExWorkerW(pszDest, cchDest, cbDest, pszSrc, cchSrc, ppszDestEnd, &cchRemaining, dwFlags);
+        hr = StringCopyNExWorkerW(pszDest, cchDest, cbDest, pszSrc, cchToCopy, ppszDestEnd, &cchRemaining, dwFlags);
     }
 
     if (SUCCEEDED(hr) || (hr == STRSAFE_E_INSUFFICIENT_BUFFER))
@@ -1334,8 +1751,17 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchCatA(char* pszDest, size_t cchDest, const char* pszSrc);
-STRSAFEAPI StringCchCatW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc);
+STRSAFEAPI
+StringCchCatA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc);
+
+STRSAFEAPI
+StringCchCatW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc);
 #ifdef UNICODE
 #define StringCchCat  StringCchCatW
 #else
@@ -1343,7 +1769,11 @@ STRSAFEAPI StringCchCatW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchCatA(char* pszDest, size_t cchDest, const char* pszSrc)
+STRSAFEAPI
+StringCchCatA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc)
 {
     HRESULT hr;
 
@@ -1359,7 +1789,11 @@ STRSAFEAPI StringCchCatA(char* pszDest, size_t cchDest, const char* pszSrc)
     return hr;
 }
 
-STRSAFEAPI StringCchCatW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc)
+STRSAFEAPI
+StringCchCatW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc)
 {
     HRESULT hr;
 
@@ -1439,8 +1873,17 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbCatA(char* pszDest, size_t cbDest, const char* pszSrc);
-STRSAFEAPI StringCbCatW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc);
+STRSAFEAPI
+StringCbCatA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc);
+
+STRSAFEAPI
+StringCbCatW(
+    __inout_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc);
 #ifdef UNICODE
 #define StringCbCat  StringCbCatW
 #else
@@ -1448,11 +1891,16 @@ STRSAFEAPI StringCbCatW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc);
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbCatA(char* pszDest, size_t cbDest, const char* pszSrc)
+STRSAFEAPI
+StringCbCatA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc)
 {
     HRESULT hr;
     size_t cchDest;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(char);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -1467,11 +1915,16 @@ STRSAFEAPI StringCbCatA(char* pszDest, size_t cbDest, const char* pszSrc)
     return hr;
 }
 
-STRSAFEAPI StringCbCatW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc)
+STRSAFEAPI
+StringCbCatW(
+    __inout_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc)
 {
     HRESULT hr;
     size_t cchDest;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -1586,8 +2039,23 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchCatExA(char* pszDest, size_t cchDest, const char* pszSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCchCatExW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
+STRSAFEAPI
+StringCchCatExA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCchCatExW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
 #ifdef UNICODE
 #define StringCchCatEx  StringCchCatExW
 #else
@@ -1595,7 +2063,14 @@ STRSAFEAPI StringCchCatExW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszS
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchCatExA(char* pszDest, size_t cchDest, const char* pszSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCchCatExA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
 
@@ -1616,7 +2091,14 @@ STRSAFEAPI StringCchCatExA(char* pszDest, size_t cchDest, const char* pszSrc, ch
     return hr;
 }
 
-STRSAFEAPI StringCchCatExW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCchCatExW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
 
@@ -1737,8 +2219,23 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbCatExA(char* pszDest, size_t cbDest, const char* pszSrc, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCbCatExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags);
+STRSAFEAPI
+StringCbCatExA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCbCatExW(
+    __inout_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags);
 #ifdef UNICODE
 #define StringCbCatEx  StringCbCatExW
 #else
@@ -1746,12 +2243,20 @@ STRSAFEAPI StringCbCatExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbCatExA(char* pszDest, size_t cbDest, const char* pszSrc, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCbCatExA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
     size_t cchDest;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(char);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -1775,12 +2280,20 @@ STRSAFEAPI StringCbCatExA(char* pszDest, size_t cbDest, const char* pszSrc, char
     return hr;
 }
 
-STRSAFEAPI StringCbCatExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCbCatExW(
+    __inout_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
     size_t cchDest;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -1815,7 +2328,7 @@ StringCchCatN(
     IN OUT LPTSTR  pszDest,
     IN     size_t  cchDest,
     IN     LPCTSTR pszSrc,
-    IN     size_t  cchMaxAppend
+    IN     size_t  cchToAppend
     );
 
 Routine Description:
@@ -1827,7 +2340,7 @@ Routine Description:
     ALWAYS null terminate pszDest (unless it is zero length).
 
     This function returns a hresult, and not a pointer.  It returns
-    S_OK if all of pszSrc or the first cchMaxAppend characters were appended
+    S_OK if all of pszSrc or the first cchToAppend characters were appended
     to the destination string and it was null terminated, otherwise it will
     return a failure code. In failure cases as much of pszSrc will be appended
     to pszDest as possible, and pszDest will be null terminated.
@@ -1837,13 +2350,13 @@ Arguments:
     pszDest         -   destination string which must be null terminated
 
     cchDest         -   size of destination buffer in characters.
-                        length must be (_tcslen(pszDest) + min(cchMaxAppend, _tcslen(pszSrc)) + 1)
+                        length must be (_tcslen(pszDest) + min(cchToAppend, _tcslen(pszSrc)) + 1)
                         to hold all of the combine string plus the null
                         terminator.
 
     pszSrc          -   source string
 
-    cchMaxAppend    -   maximum number of characters to append
+    cchToAppend     -   maximum number of characters to append
 
 Notes:
     Behavior is undefined if source and destination strings overlap.
@@ -1853,7 +2366,7 @@ Notes:
 
 Return Value:
 
-    S_OK           -   if all of pszSrc or the first cchMaxAppend characters
+    S_OK           -   if all of pszSrc or the first cchToAppend characters
                        were concatenated to pszDest and the resultant dest
                        string was null terminated
 
@@ -1874,8 +2387,19 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchCatNA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchMaxAppend);
-STRSAFEAPI StringCchCatNW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchMaxAppend);
+STRSAFEAPI
+StringCchCatNA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToAppend);
+
+STRSAFEAPI
+StringCchCatNW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToAppend);
 #ifdef UNICODE
 #define StringCchCatN  StringCchCatNW
 #else
@@ -1883,7 +2407,12 @@ STRSAFEAPI StringCchCatNW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSr
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchCatNA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchMaxAppend)
+STRSAFEAPI
+StringCchCatNA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToAppend)
 {
     HRESULT hr;
 
@@ -1893,13 +2422,18 @@ STRSAFEAPI StringCchCatNA(char* pszDest, size_t cchDest, const char* pszSrc, siz
     }
     else
     {
-        hr = StringCatNWorkerA(pszDest, cchDest, pszSrc, cchMaxAppend);
+        hr = StringCatNWorkerA(pszDest, cchDest, pszSrc, cchToAppend);
     }
 
     return hr;
 }
 
-STRSAFEAPI StringCchCatNW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchMaxAppend)
+STRSAFEAPI
+StringCchCatNW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToAppend)
 {
     HRESULT hr;
 
@@ -1909,7 +2443,7 @@ STRSAFEAPI StringCchCatNW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSr
     }
     else
     {
-        hr = StringCatNWorkerW(pszDest, cchDest, pszSrc, cchMaxAppend);
+        hr = StringCatNWorkerW(pszDest, cchDest, pszSrc, cchToAppend);
     }
 
     return hr;
@@ -1926,7 +2460,7 @@ StringCbCatN(
     IN OUT LPTSTR  pszDest,
     IN     size_t  cbDest,
     IN     LPCTSTR pszSrc,
-    IN     size_t  cbMaxAppend
+    IN     size_t  cbToAppend
     );
 
 Routine Description:
@@ -1938,7 +2472,7 @@ Routine Description:
     ALWAYS null terminate pszDest (unless it is zero length).
 
     This function returns a hresult, and not a pointer.  It returns
-    S_OK if all of pszSrc or the first cbMaxAppend bytes were appended
+    S_OK if all of pszSrc or the first cbToAppend bytes were appended
     to the destination string and it was null terminated, otherwise it will
     return a failure code. In failure cases as much of pszSrc will be appended
     to pszDest as possible, and pszDest will be null terminated.
@@ -1948,13 +2482,13 @@ Arguments:
     pszDest         -   destination string which must be null terminated
 
     cbDest          -   size of destination buffer in bytes.
-                        length must be ((_tcslen(pszDest) + min(cbMaxAppend / sizeof(TCHAR), _tcslen(pszSrc)) + 1) * sizeof(TCHAR)
+                        length must be ((_tcslen(pszDest) + min(cbToAppend / sizeof(TCHAR), _tcslen(pszSrc)) + 1) * sizeof(TCHAR)
                         to hold all of the combine string plus the null
                         terminator.
 
     pszSrc          -   source string
 
-    cbMaxAppend     -   maximum number of bytes to append
+    cbToAppend      -   maximum number of bytes to append
 
 Notes:
     Behavior is undefined if source and destination strings overlap.
@@ -1964,7 +2498,7 @@ Notes:
 
 Return Value:
 
-    S_OK           -   if all of pszSrc or the first cbMaxAppend bytes were
+    S_OK           -   if all of pszSrc or the first cbToAppend bytes were
                        concatenated to pszDest and the resultant dest string
                        was null terminated
 
@@ -1985,8 +2519,19 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbCatNA(char* pszDest, size_t cbDest, const char* pszSrc, size_t cbMaxAppend);
-STRSAFEAPI StringCbCatNW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, size_t cbMaxAppend);
+STRSAFEAPI
+StringCbCatNA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cbToAppend);
+
+STRSAFEAPI
+StringCbCatNW(
+    __inout_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cbToAppend);
 #ifdef UNICODE
 #define StringCbCatN  StringCbCatNW
 #else
@@ -1994,12 +2539,20 @@ STRSAFEAPI StringCbCatNW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc,
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbCatNA(char* pszDest, size_t cbDest, const char* pszSrc, size_t cbMaxAppend)
+STRSAFEAPI
+StringCbCatNA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cbToAppend)
 {
     HRESULT hr;
     size_t cchDest;
+    size_t cchToAppend;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(char);
+    cchToAppend = cbToAppend / sizeof(char);
 
     if (cchDest > STRSAFE_MAX_CCH)
     {
@@ -2007,22 +2560,26 @@ STRSAFEAPI StringCbCatNA(char* pszDest, size_t cbDest, const char* pszSrc, size_
     }
     else
     {
-        size_t cchMaxAppend;
-
-        cchMaxAppend = cbMaxAppend / sizeof(char);
-
-        hr = StringCatNWorkerA(pszDest, cchDest, pszSrc, cchMaxAppend);
+        hr = StringCatNWorkerA(pszDest, cchDest, pszSrc, cchToAppend);
     }
 
     return hr;
 }
 
-STRSAFEAPI StringCbCatNW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, size_t cbMaxAppend)
+STRSAFEAPI
+StringCbCatNW(
+    __inout_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cbToAppend)
 {
     HRESULT hr;
     size_t cchDest;
+    size_t cchToAppend;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
+    cchToAppend = cbToAppend / sizeof(wchar_t);
 
     if (cchDest > STRSAFE_MAX_CCH)
     {
@@ -2030,11 +2587,7 @@ STRSAFEAPI StringCbCatNW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc,
     }
     else
     {
-        size_t cchMaxAppend;
-
-        cchMaxAppend = cbMaxAppend / sizeof(wchar_t);
-
-        hr = StringCatNWorkerW(pszDest, cchDest, pszSrc, cchMaxAppend);
+        hr = StringCatNWorkerW(pszDest, cchDest, pszSrc, cchToAppend);
     }
 
     return hr;
@@ -2051,7 +2604,7 @@ StringCchCatNEx(
     IN OUT LPTSTR  pszDest         OPTIONAL,
     IN     size_t  cchDest,
     IN     LPCTSTR pszSrc          OPTIONAL,
-    IN     size_t  cchMaxAppend,
+    IN     size_t  cchToAppend,
     OUT    LPTSTR* ppszDestEnd     OPTIONAL,
     OUT    size_t* pcchRemaining   OPTIONAL,
     IN     DWORD   dwFlags
@@ -2070,13 +2623,13 @@ Arguments:
     pszDest         -   destination string which must be null terminated
 
     cchDest         -   size of destination buffer in characters.
-                        length must be (_tcslen(pszDest) + min(cchMaxAppend, _tcslen(pszSrc)) + 1)
+                        length must be (_tcslen(pszDest) + min(cchToAppend, _tcslen(pszSrc)) + 1)
                         to hold all of the combine string plus the null
                         terminator.
 
     pszSrc          -   source string
 
-    cchMaxAppend    -   maximum number of characters to append
+    cchToAppend     -   maximum number of characters to append
 
     ppszDestEnd     -   if ppszDestEnd is non-null, the function will return a
                         pointer to the end of the destination string.  If the
@@ -2122,7 +2675,7 @@ Notes:
 
 Return Value:
 
-    S_OK           -   if all of pszSrc or the first cchMaxAppend characters
+    S_OK           -   if all of pszSrc or the first cchToAppend characters
                        were concatenated to pszDest and the resultant dest
                        string was null terminated
 
@@ -2143,8 +2696,25 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchCatNExA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchMaxAppend, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCchCatNExW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchMaxAppend, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
+STRSAFEAPI
+StringCchCatNExA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToAppend,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCchCatNExW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToAppend,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
 #ifdef UNICODE
 #define StringCchCatNEx  StringCchCatNExW
 #else
@@ -2152,7 +2722,15 @@ STRSAFEAPI StringCchCatNExW(wchar_t* pszDest, size_t cchDest, const wchar_t* psz
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchCatNExA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchMaxAppend, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCchCatNExA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToAppend,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
 
@@ -2167,13 +2745,21 @@ STRSAFEAPI StringCchCatNExA(char* pszDest, size_t cchDest, const char* pszSrc, s
         // safe to multiply cchDest * sizeof(char) since cchDest < STRSAFE_MAX_CCH and sizeof(char) is 1
         cbDest = cchDest * sizeof(char);
 
-        hr = StringCatNExWorkerA(pszDest, cchDest, cbDest, pszSrc, cchMaxAppend, ppszDestEnd, pcchRemaining, dwFlags);
+        hr = StringCatNExWorkerA(pszDest, cchDest, cbDest, pszSrc, cchToAppend, ppszDestEnd, pcchRemaining, dwFlags);
     }
 
     return hr;
 }
 
-STRSAFEAPI StringCchCatNExW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchMaxAppend, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCchCatNExW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToAppend,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
 
@@ -2188,7 +2774,7 @@ STRSAFEAPI StringCchCatNExW(wchar_t* pszDest, size_t cchDest, const wchar_t* psz
         // safe to multiply cchDest * sizeof(wchar_t) since cchDest < STRSAFE_MAX_CCH and sizeof(wchar_t) is 2
         cbDest = cchDest * sizeof(wchar_t);
 
-        hr = StringCatNExWorkerW(pszDest, cchDest, cbDest, pszSrc, cchMaxAppend, ppszDestEnd, pcchRemaining, dwFlags);
+        hr = StringCatNExWorkerW(pszDest, cchDest, cbDest, pszSrc, cchToAppend, ppszDestEnd, pcchRemaining, dwFlags);
     }
 
     return hr;
@@ -2205,7 +2791,7 @@ StringCbCatNEx(
     IN OUT LPTSTR  pszDest         OPTIONAL,
     IN     size_t  cbDest,
     IN     LPCTSTR pszSrc          OPTIONAL,
-    IN     size_t  cbMaxAppend,
+    IN     size_t  cbToAppend,
     OUT    LPTSTR* ppszDestEnd     OPTIONAL,
     OUT    size_t* pcchRemaining   OPTIONAL,
     IN     DWORD   dwFlags
@@ -2224,13 +2810,13 @@ Arguments:
     pszDest         -   destination string which must be null terminated
 
     cbDest          -   size of destination buffer in bytes.
-                        length must be ((_tcslen(pszDest) + min(cbMaxAppend / sizeof(TCHAR), _tcslen(pszSrc)) + 1) * sizeof(TCHAR)
+                        length must be ((_tcslen(pszDest) + min(cbToAppend / sizeof(TCHAR), _tcslen(pszSrc)) + 1) * sizeof(TCHAR)
                         to hold all of the combine string plus the null
                         terminator.
 
     pszSrc          -   source string
 
-    cbMaxAppend     -   maximum number of bytes to append
+    cbToAppend      -   maximum number of bytes to append
 
     ppszDestEnd     -   if ppszDestEnd is non-null, the function will return a
                         pointer to the end of the destination string.  If the
@@ -2276,7 +2862,7 @@ Notes:
 
 Return Value:
 
-    S_OK           -   if all of pszSrc or the first cbMaxAppend bytes were
+    S_OK           -   if all of pszSrc or the first cbToAppend bytes were
                        concatenated to pszDest and the resultant dest string
                        was null terminated
 
@@ -2297,8 +2883,25 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbCatNExA(char* pszDest, size_t cbDest, const char* pszSrc, size_t cbMaxAppend, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags);
-STRSAFEAPI StringCbCatNExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, size_t cbMaxAppend, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags);
+STRSAFEAPI
+StringCbCatNExA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cbToAppend,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFEAPI
+StringCbCatNExW(
+    __inout_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cbToAppend,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags);
 #ifdef UNICODE
 #define StringCbCatNEx  StringCbCatNExW
 #else
@@ -2306,13 +2909,24 @@ STRSAFEAPI StringCbCatNExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSr
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbCatNExA(char* pszDest, size_t cbDest, const char* pszSrc, size_t cbMaxAppend, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCbCatNExA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cbToAppend,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
     size_t cchDest;
+    size_t cchToAppend;
     size_t cchRemaining = 0;
-
+     
+    // convert to count of characters
     cchDest = cbDest / sizeof(char);
+    cchToAppend = cbToAppend / sizeof(char);
 
     if (cchDest > STRSAFE_MAX_CCH)
     {
@@ -2320,11 +2934,7 @@ STRSAFEAPI StringCbCatNExA(char* pszDest, size_t cbDest, const char* pszSrc, siz
     }
     else
     {
-        size_t cchMaxAppend;
-
-        cchMaxAppend = cbMaxAppend / sizeof(char);
-
-        hr = StringCatNExWorkerA(pszDest, cchDest, cbDest, pszSrc, cchMaxAppend, ppszDestEnd, &cchRemaining, dwFlags);
+        hr = StringCatNExWorkerA(pszDest, cchDest, cbDest, pszSrc, cchToAppend, ppszDestEnd, &cchRemaining, dwFlags);
     }
 
     if (SUCCEEDED(hr) || (hr == STRSAFE_E_INSUFFICIENT_BUFFER))
@@ -2339,25 +2949,32 @@ STRSAFEAPI StringCbCatNExA(char* pszDest, size_t cbDest, const char* pszSrc, siz
     return hr;
 }
 
-STRSAFEAPI StringCbCatNExW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszSrc, size_t cbMaxAppend, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCbCatNExW(
+    __inout_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in_bcount(cbToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cbToAppend,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
     size_t cchDest;
+    size_t cchToAppend;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
-
+    cchToAppend = cbToAppend / sizeof(wchar_t);
+    
     if (cchDest > STRSAFE_MAX_CCH)
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
     else
     {
-        size_t cchMaxAppend;
-
-        cchMaxAppend = cbMaxAppend / sizeof(wchar_t);
-
-        hr = StringCatNExWorkerW(pszDest, cchDest, cbDest, pszSrc, cchMaxAppend, ppszDestEnd, &cchRemaining, dwFlags);
+        hr = StringCatNExWorkerW(pszDest, cchDest, cbDest, pszSrc, cchToAppend, ppszDestEnd, &cchRemaining, dwFlags);
     }
 
     if (SUCCEEDED(hr) || (hr == STRSAFE_E_INSUFFICIENT_BUFFER))
@@ -2440,8 +3057,19 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchVPrintfA(char* pszDest, size_t cchDest, const char* pszFormat, va_list argList);
-STRSAFEAPI StringCchVPrintfW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszFormat, va_list argList);
+STRSAFEAPI
+StringCchVPrintfA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    va_list argList);
+
+STRSAFEAPI
+StringCchVPrintfW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList);
 #ifdef UNICODE
 #define StringCchVPrintf  StringCchVPrintfW
 #else
@@ -2449,7 +3077,12 @@ STRSAFEAPI StringCchVPrintfW(wchar_t* pszDest, size_t cchDest, const wchar_t* ps
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchVPrintfA(char* pszDest, size_t cchDest, const char* pszFormat, va_list argList)
+STRSAFEAPI
+StringCchVPrintfA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr;
 
@@ -2465,7 +3098,12 @@ STRSAFEAPI StringCchVPrintfA(char* pszDest, size_t cchDest, const char* pszForma
     return hr;
 }
 
-STRSAFEAPI StringCchVPrintfW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszFormat, va_list argList)
+STRSAFEAPI
+StringCchVPrintfW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr;
 
@@ -2550,8 +3188,19 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbVPrintfA(char* pszDest, size_t cbDest, const char* pszFormat, va_list argList);
-STRSAFEAPI StringCbVPrintfW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszFormat, va_list argList);
+STRSAFEAPI
+StringCbVPrintfA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    __in va_list argList);
+
+STRSAFEAPI
+StringCbVPrintfW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList);
 #ifdef UNICODE
 #define StringCbVPrintf  StringCbVPrintfW
 #else
@@ -2559,11 +3208,17 @@ STRSAFEAPI StringCbVPrintfW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszF
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbVPrintfA(char* pszDest, size_t cbDest, const char* pszFormat, va_list argList)
+STRSAFEAPI
+StringCbVPrintfA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr;
     size_t cchDest;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(char);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -2578,11 +3233,17 @@ STRSAFEAPI StringCbVPrintfA(char* pszDest, size_t cbDest, const char* pszFormat,
     return hr;
 }
 
-STRSAFEAPI StringCbVPrintfW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszFormat, va_list argList)
+STRSAFEAPI
+StringCbVPrintfW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr;
     size_t cchDest;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -2598,7 +3259,6 @@ STRSAFEAPI StringCbVPrintfW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszF
 }
 #endif  // STRSAFE_INLINE
 #endif  // !STRSAFE_NO_CB_FUNCTIONS
-
 
 #ifndef STRSAFE_NO_CCH_FUNCTIONS
 /*++
@@ -2665,8 +3325,19 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchPrintfA(char* pszDest, size_t cchDest, const char* pszFormat, ...);
-STRSAFEAPI StringCchPrintfW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszFormat, ...);
+STRSAFEAPI
+StringCchPrintfA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    ...);
+
+STRSAFEAPI
+StringCchPrintfW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    ...);
 #ifdef UNICODE
 #define StringCchPrintf  StringCchPrintfW
 #else
@@ -2674,7 +3345,14 @@ STRSAFEAPI StringCchPrintfW(wchar_t* pszDest, size_t cchDest, const wchar_t* psz
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchPrintfA(char* pszDest, size_t cchDest, const char* pszFormat, ...)
+#pragma warning( push )
+#pragma warning( disable : 4793 )
+STRSAFEAPI
+StringCchPrintfA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    ...)
 {
     HRESULT hr;
 
@@ -2696,7 +3374,12 @@ STRSAFEAPI StringCchPrintfA(char* pszDest, size_t cchDest, const char* pszFormat
     return hr;
 }
 
-STRSAFEAPI StringCchPrintfW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszFormat, ...)
+STRSAFEAPI
+StringCchPrintfW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    ...)
 {
     HRESULT hr;
 
@@ -2717,6 +3400,7 @@ STRSAFEAPI StringCchPrintfW(wchar_t* pszDest, size_t cchDest, const wchar_t* psz
 
     return hr;
 }
+#pragma warning( pop )
 #endif  // STRSAFE_INLINE
 #endif  // !STRSAFE_NO_CCH_FUNCTIONS
 
@@ -2786,9 +3470,20 @@ Return Value:
     return value of this function
 
 --*/
+    
+STRSAFEAPI
+StringCbPrintfA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    ...);
 
-STRSAFEAPI StringCbPrintfA(char* pszDest, size_t cbDest, const char* pszFormat, ...);
-STRSAFEAPI StringCbPrintfW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszFormat, ...);
+STRSAFEAPI
+StringCbPrintfW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    ...);
 #ifdef UNICODE
 #define StringCbPrintf  StringCbPrintfW
 #else
@@ -2796,11 +3491,19 @@ STRSAFEAPI StringCbPrintfW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszFo
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbPrintfA(char* pszDest, size_t cbDest, const char* pszFormat, ...)
+#pragma warning( push )
+#pragma warning( disable : 4793 )
+STRSAFEAPI
+StringCbPrintfA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    ...)
 {
     HRESULT hr;
     size_t cchDest;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(char);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -2821,11 +3524,17 @@ STRSAFEAPI StringCbPrintfA(char* pszDest, size_t cbDest, const char* pszFormat, 
     return hr;
 }
 
-STRSAFEAPI StringCbPrintfW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszFormat, ...)
+STRSAFEAPI
+StringCbPrintfW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    ...)
 {
     HRESULT hr;
     size_t cchDest;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -2845,6 +3554,7 @@ STRSAFEAPI StringCbPrintfW(wchar_t* pszDest, size_t cbDest, const wchar_t* pszFo
 
     return hr;
 }
+#pragma warning ( pop )
 #endif  // STRSAFE_INLINE
 #endif  // !STRSAFE_NO_CB_FUNCTIONS
 
@@ -2947,8 +3657,25 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchPrintfExA(char* pszDest, size_t cchDest, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const char* pszFormat, ...);
-STRSAFEAPI StringCchPrintfExW(wchar_t* pszDest, size_t cchDest, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const wchar_t* pszFormat, ...);
+STRSAFEAPI
+StringCchPrintfExA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    ...);
+
+STRSAFEAPI
+StringCchPrintfExW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    ...);
 #ifdef UNICODE
 #define StringCchPrintfEx  StringCchPrintfExW
 #else
@@ -2956,7 +3683,17 @@ STRSAFEAPI StringCchPrintfExW(wchar_t* pszDest, size_t cchDest, wchar_t** ppszDe
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchPrintfExA(char* pszDest, size_t cchDest, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const char* pszFormat, ...)
+#pragma warning( push )
+#pragma warning( disable : 4793 )
+STRSAFEAPI
+StringCchPrintfExA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    ...)
 {
     HRESULT hr;
 
@@ -2981,7 +3718,15 @@ STRSAFEAPI StringCchPrintfExA(char* pszDest, size_t cchDest, char** ppszDestEnd,
     return hr;
 }
 
-STRSAFEAPI StringCchPrintfExW(wchar_t* pszDest, size_t cchDest, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const wchar_t* pszFormat, ...)
+STRSAFEAPI
+StringCchPrintfExW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    ...)
 {
     HRESULT hr;
 
@@ -3005,6 +3750,7 @@ STRSAFEAPI StringCchPrintfExW(wchar_t* pszDest, size_t cchDest, wchar_t** ppszDe
 
     return hr;
 }
+#pragma warning( pop )
 #endif  // STRSAFE_INLINE
 #endif  // !STRSAFE_NO_CCH_FUNCTIONS
 
@@ -3107,8 +3853,25 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbPrintfExA(char* pszDest, size_t cbDest, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags, const char* pszFormat, ...);
-STRSAFEAPI StringCbPrintfExW(wchar_t* pszDest, size_t cbDest, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags, const wchar_t* pszFormat, ...);
+STRSAFEAPI
+StringCbPrintfExA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    ...);
+
+STRSAFEAPI
+StringCbPrintfExW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    ...);
 #ifdef UNICODE
 #define StringCbPrintfEx  StringCbPrintfExW
 #else
@@ -3116,12 +3879,23 @@ STRSAFEAPI StringCbPrintfExW(wchar_t* pszDest, size_t cbDest, wchar_t** ppszDest
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbPrintfExA(char* pszDest, size_t cbDest, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags, const char* pszFormat, ...)
+#pragma warning( push )
+#pragma warning( disable : 4793 )
+STRSAFEAPI
+StringCbPrintfExA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    ...)
 {
     HRESULT hr;
     size_t cchDest;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(char);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -3151,12 +3925,21 @@ STRSAFEAPI StringCbPrintfExA(char* pszDest, size_t cbDest, char** ppszDestEnd, s
     return hr;
 }
 
-STRSAFEAPI StringCbPrintfExW(wchar_t* pszDest, size_t cbDest, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags, const wchar_t* pszFormat, ...)
+STRSAFEAPI
+StringCbPrintfExW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    ...)
 {
     HRESULT hr;
     size_t cchDest;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -3185,9 +3968,9 @@ STRSAFEAPI StringCbPrintfExW(wchar_t* pszDest, size_t cbDest, wchar_t** ppszDest
 
     return hr;
 }
+#pragma warning( pop )
 #endif  // STRSAFE_INLINE
 #endif  // !STRSAFE_NO_CB_FUNCTIONS
-
 
 #ifndef STRSAFE_NO_CCH_FUNCTIONS
 /*++
@@ -3287,8 +4070,25 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchVPrintfExA(char* pszDest, size_t cchDest, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const char* pszFormat, va_list argList);
-STRSAFEAPI StringCchVPrintfExW(wchar_t* pszDest, size_t cchDest, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const wchar_t* pszFormat, va_list argList);
+STRSAFEAPI
+StringCchVPrintfExA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    __in va_list argList);
+
+STRSAFEAPI
+StringCchVPrintfExW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList);
 #ifdef UNICODE
 #define StringCchVPrintfEx  StringCchVPrintfExW
 #else
@@ -3296,7 +4096,15 @@ STRSAFEAPI StringCchVPrintfExW(wchar_t* pszDest, size_t cchDest, wchar_t** ppszD
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchVPrintfExA(char* pszDest, size_t cchDest, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const char* pszFormat, va_list argList)
+STRSAFEAPI
+StringCchVPrintfExA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr;
 
@@ -3317,7 +4125,15 @@ STRSAFEAPI StringCchVPrintfExA(char* pszDest, size_t cchDest, char** ppszDestEnd
     return hr;
 }
 
-STRSAFEAPI StringCchVPrintfExW(wchar_t* pszDest, size_t cchDest, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const wchar_t* pszFormat, va_list argList)
+STRSAFEAPI
+StringCchVPrintfExW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr;
 
@@ -3439,8 +4255,25 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbVPrintfExA(char* pszDest, size_t cbDest, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags, const char* pszFormat, va_list argList);
-STRSAFEAPI StringCbVPrintfExW(wchar_t* pszDest, size_t cbDest, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags, const wchar_t* pszFormat, va_list argList);
+STRSAFEAPI
+StringCbVPrintfExA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    __in va_list argList);
+
+STRSAFEAPI
+StringCbVPrintfExW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList);
 #ifdef UNICODE
 #define StringCbVPrintfEx  StringCbVPrintfExW
 #else
@@ -3448,12 +4281,21 @@ STRSAFEAPI StringCbVPrintfExW(wchar_t* pszDest, size_t cbDest, wchar_t** ppszDes
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbVPrintfExA(char* pszDest, size_t cbDest, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags, const char* pszFormat, va_list argList)
+STRSAFEAPI
+StringCbVPrintfExA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr;
     size_t cchDest;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(char);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -3477,12 +4319,21 @@ STRSAFEAPI StringCbVPrintfExA(char* pszDest, size_t cbDest, char** ppszDestEnd, 
     return hr;
 }
 
-STRSAFEAPI StringCbVPrintfExW(wchar_t* pszDest, size_t cbDest, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags, const wchar_t* pszFormat, va_list argList)
+STRSAFEAPI
+StringCbVPrintfExW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr;
     size_t cchDest;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -3570,15 +4421,25 @@ Return Value:
 --*/
 
 #ifndef STRSAFE_LIB_IMPL
-STRSAFE_INLINE_API StringCchGetsA(char* pszDest, size_t cchDest);
-STRSAFE_INLINE_API StringCchGetsW(wchar_t* pszDest, size_t cchDest);
+STRSAFE_INLINE_API
+StringCchGetsA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest);
+
+STRSAFE_INLINE_API
+StringCchGetsW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest);
 #ifdef UNICODE
 #define StringCchGets  StringCchGetsW
 #else
 #define StringCchGets  StringCchGetsA
 #endif // !UNICODE
 
-STRSAFE_INLINE_API StringCchGetsA(char* pszDest, size_t cchDest)
+STRSAFE_INLINE_API
+StringCchGetsA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest)
 {
     HRESULT hr;
 
@@ -3599,7 +4460,10 @@ STRSAFE_INLINE_API StringCchGetsA(char* pszDest, size_t cchDest)
     return hr;
 }
 
-STRSAFE_INLINE_API StringCchGetsW(wchar_t* pszDest, size_t cchDest)
+STRSAFE_INLINE_API
+StringCchGetsW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest)
 {
     HRESULT hr;
 
@@ -3683,15 +4547,25 @@ Return Value:
 --*/
 
 #ifndef STRSAFE_LIB_IMPL
-STRSAFE_INLINE_API StringCbGetsA(char* pszDest, size_t cbDest);
-STRSAFE_INLINE_API StringCbGetsW(wchar_t* pszDest, size_t cbDest);
+STRSAFE_INLINE_API
+StringCbGetsA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest);
+
+STRSAFE_INLINE_API
+StringCbGetsW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest);
 #ifdef UNICODE
 #define StringCbGets  StringCbGetsW
 #else
 #define StringCbGets  StringCbGetsA
 #endif // !UNICODE
 
-STRSAFE_INLINE_API StringCbGetsA(char* pszDest, size_t cbDest)
+STRSAFE_INLINE_API
+StringCbGetsA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest)
 {
     HRESULT hr;
     size_t cchDest;
@@ -3711,7 +4585,10 @@ STRSAFE_INLINE_API StringCbGetsA(char* pszDest, size_t cbDest)
     return hr;
 }
 
-STRSAFE_INLINE_API StringCbGetsW(wchar_t* pszDest, size_t cbDest)
+STRSAFE_INLINE_API
+StringCbGetsW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest)
 {
     HRESULT hr;
     size_t cchDest;
@@ -3821,15 +4698,34 @@ Return Value:
 --*/
 
 #ifndef STRSAFE_LIB_IMPL
-STRSAFE_INLINE_API StringCchGetsExA(char* pszDest, size_t cchDest, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
-STRSAFE_INLINE_API StringCchGetsExW(wchar_t* pszDest, size_t cchDest, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags);
+STRSAFE_INLINE_API
+StringCchGetsExA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFE_INLINE_API
+StringCchGetsExW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags);
 #ifdef UNICODE
 #define StringCchGetsEx  StringCchGetsExW
 #else
 #define StringCchGetsEx  StringCchGetsExA
 #endif // !UNICODE
 
-STRSAFE_INLINE_API StringCchGetsExA(char* pszDest, size_t cchDest, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFE_INLINE_API
+StringCchGetsExA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
 
@@ -3850,7 +4746,13 @@ STRSAFE_INLINE_API StringCchGetsExA(char* pszDest, size_t cchDest, char** ppszDe
     return hr;
 }
 
-STRSAFE_INLINE_API StringCchGetsExW(wchar_t* pszDest, size_t cchDest, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFE_INLINE_API
+StringCchGetsExW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
 
@@ -3904,7 +4806,7 @@ Arguments:
                         function copied any data, the result will point to the
                         null termination character
 
-    pcbRemaining    -   if pbRemaining is non-null, the function will return the
+    pcbRemaining    -   if pcbRemaining is non-null, the function will return the
                         number of bytes left in the destination string,
                         including the null terminator
 
@@ -3961,20 +4863,40 @@ Return Value:
 --*/
 
 #ifndef STRSAFE_LIB_IMPL
-STRSAFE_INLINE_API StringCbGetsExA(char* pszDest, size_t cbDest, char** ppszDestEnd, size_t* pbRemaining, unsigned long dwFlags);
-STRSAFE_INLINE_API StringCbGetsExW(wchar_t* pszDest, size_t cbDest, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags);
+STRSAFE_INLINE_API
+StringCbGetsExA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags);
+
+STRSAFE_INLINE_API
+StringCbGetsExW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags);
 #ifdef UNICODE
 #define StringCbGetsEx  StringCbGetsExW
 #else
 #define StringCbGetsEx  StringCbGetsExA
 #endif // !UNICODE
 
-STRSAFE_INLINE_API StringCbGetsExA(char* pszDest, size_t cbDest, char** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags)
+STRSAFE_INLINE_API
+StringCbGetsExA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
     size_t cchDest;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(char);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -4000,12 +4922,19 @@ STRSAFE_INLINE_API StringCbGetsExA(char* pszDest, size_t cbDest, char** ppszDest
     return hr;
 }
 
-STRSAFE_INLINE_API StringCbGetsExW(wchar_t* pszDest, size_t cbDest, wchar_t** ppszDestEnd, size_t* pcbRemaining, unsigned long dwFlags)
+STRSAFE_INLINE_API
+StringCbGetsExW(
+    __out_bcount(cbDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cbDest,
+    __deref_opt_out_bcount(*pcbRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcbRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr;
     size_t cchDest;
     size_t cchRemaining = 0;
 
+    // convert to count of characters
     cchDest = cbDest / sizeof(wchar_t);
 
     if (cchDest > STRSAFE_MAX_CCH)
@@ -4040,7 +4969,7 @@ STDAPI
 StringCchLength(
     IN  LPCTSTR psz,
     IN  size_t  cchMax,
-    OUT size_t* pcch    OPTIONAL
+    OUT size_t* pcchLength  OPTIONAL
     );
 
 Routine Description:
@@ -4083,8 +5012,17 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCchLengthA(const char* psz, size_t cchMax, size_t* pcch);
-STRSAFEAPI StringCchLengthW(const wchar_t* psz, size_t cchMax, size_t* pcch);
+STRSAFEAPI
+StringCchLengthA(
+    __in STRSAFE_LPCSTR psz,
+    __in size_t cchMax,
+    __out_opt size_t* pcchLength);
+
+STRSAFEAPI
+StringCchLengthW(
+    __in STRSAFE_LPCWSTR psz,
+    __in size_t cchMax,
+    __out_opt size_t* pcchLength);
 #ifdef UNICODE
 #define StringCchLength  StringCchLengthW
 #else
@@ -4092,7 +5030,11 @@ STRSAFEAPI StringCchLengthW(const wchar_t* psz, size_t cchMax, size_t* pcch);
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCchLengthA(const char* psz, size_t cchMax, size_t* pcch)
+STRSAFEAPI
+StringCchLengthA(
+    __in STRSAFE_LPCSTR psz,
+    __in size_t cchMax,
+    __out_opt size_t* pcchLength)
 {
     HRESULT hr;
 
@@ -4102,13 +5044,22 @@ STRSAFEAPI StringCchLengthA(const char* psz, size_t cchMax, size_t* pcch)
     }
     else
     {
-        hr = StringLengthWorkerA(psz, cchMax, pcch);
+        hr = StringLengthWorkerA(psz, cchMax, pcchLength);
+    }
+    
+    if (FAILED(hr) && pcchLength)
+    {
+        *pcchLength = 0;
     }
 
     return hr;
 }
 
-STRSAFEAPI StringCchLengthW(const wchar_t* psz, size_t cchMax, size_t* pcch)
+STRSAFEAPI
+StringCchLengthW(
+    __in STRSAFE_LPCWSTR psz,
+    __in size_t cchMax,
+    __out_opt size_t* pcchLength)
 {
     HRESULT hr;
 
@@ -4118,7 +5069,12 @@ STRSAFEAPI StringCchLengthW(const wchar_t* psz, size_t cchMax, size_t* pcch)
     }
     else
     {
-        hr = StringLengthWorkerW(psz, cchMax, pcch);
+        hr = StringLengthWorkerW(psz, cchMax, pcchLength);
+    }
+    
+    if (FAILED(hr) && pcchLength)
+    {
+        *pcchLength = 0;
     }
 
     return hr;
@@ -4134,7 +5090,7 @@ STDAPI
 StringCbLength(
     IN  LPCTSTR psz,
     IN  size_t  cbMax,
-    OUT size_t* pcb     OPTIONAL
+    OUT size_t* pcbLength   OPTIONAL
     );
 
 Routine Description:
@@ -4177,8 +5133,17 @@ Return Value:
 
 --*/
 
-STRSAFEAPI StringCbLengthA(const char* psz, size_t cchMax, size_t* pcch);
-STRSAFEAPI StringCbLengthW(const wchar_t* psz, size_t cchMax, size_t* pcch);
+STRSAFEAPI
+StringCbLengthA(
+    __in STRSAFE_LPCSTR psz,
+    __in size_t cbMax,
+    __out_opt size_t* pcbLength);
+
+STRSAFEAPI
+StringCbLengthW(
+    __in STRSAFE_LPCWSTR psz,
+    __in size_t cbMax,
+    __out_opt size_t* pcbLength);
 #ifdef UNICODE
 #define StringCbLength  StringCbLengthW
 #else
@@ -4186,12 +5151,17 @@ STRSAFEAPI StringCbLengthW(const wchar_t* psz, size_t cchMax, size_t* pcch);
 #endif // !UNICODE
 
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCbLengthA(const char* psz, size_t cbMax, size_t* pcb)
+STRSAFEAPI
+StringCbLengthA(
+    __in STRSAFE_LPCSTR psz,
+    __in size_t cbMax,
+    __out_opt size_t* pcbLength)
 {
     HRESULT hr;
     size_t cchMax;
-    size_t cch = 0;
+    size_t cchLength = 0;
 
+    // convert to count of characters
     cchMax = cbMax / sizeof(char);
 
     if ((psz == NULL) || (cchMax > STRSAFE_MAX_CCH))
@@ -4200,24 +5170,36 @@ STRSAFEAPI StringCbLengthA(const char* psz, size_t cbMax, size_t* pcb)
     }
     else
     {
-        hr = StringLengthWorkerA(psz, cchMax, &cch);
+        hr = StringLengthWorkerA(psz, cchMax, &cchLength);
     }
 
-    if (SUCCEEDED(hr) && pcb)
+    if (pcbLength)
     {
-        // safe to multiply cch * sizeof(char) since cch < STRSAFE_MAX_CCH and sizeof(char) is 1
-        *pcb = cch * sizeof(char);
+        if (SUCCEEDED(hr))
+        {
+            // safe to multiply cch * sizeof(char) since cch < STRSAFE_MAX_CCH and sizeof(char) is 1
+            *pcbLength = cchLength * sizeof(char);
+        }
+        else
+        {
+            *pcbLength = 0;
+        }
     }
 
     return hr;
 }
 
-STRSAFEAPI StringCbLengthW(const wchar_t* psz, size_t cbMax, size_t* pcb)
+STRSAFEAPI
+StringCbLengthW(
+    __in STRSAFE_LPCWSTR psz,
+    __in size_t cbMax,
+    __out_opt size_t* pcbLength)
 {
     HRESULT hr;
     size_t cchMax;
-    size_t cch = 0;
+    size_t cchLength = 0;
 
+    // convert to count of characters
     cchMax = cbMax / sizeof(wchar_t);
 
     if ((psz == NULL) || (cchMax > STRSAFE_MAX_CCH))
@@ -4226,13 +5208,20 @@ STRSAFEAPI StringCbLengthW(const wchar_t* psz, size_t cbMax, size_t* pcb)
     }
     else
     {
-        hr = StringLengthWorkerW(psz, cchMax, &cch);
+        hr = StringLengthWorkerW(psz, cchMax, &cchLength);
     }
 
-    if (SUCCEEDED(hr) && pcb)
+    if (pcbLength)
     {
-        // safe to multiply cch * sizeof(wchar_t) since cch < STRSAFE_MAX_CCH and sizeof(wchar_t) is 2
-        *pcb = cch * sizeof(wchar_t);
+        if (SUCCEEDED(hr))
+        {
+            // safe to multiply cch * sizeof(wchar_t) since cch < STRSAFE_MAX_CCH and sizeof(wchar_t) is 2
+            *pcbLength = cchLength * sizeof(wchar_t);
+        }
+        else
+        {
+            *pcbLength = 0;
+        }
     }
 
     return hr;
@@ -4241,9 +5230,14 @@ STRSAFEAPI StringCbLengthW(const wchar_t* psz, size_t cbMax, size_t* pcb)
 #endif  // !STRSAFE_NO_CB_FUNCTIONS
 
 
-// these are the worker functions that actually do the work
+// Below here are the worker functions that actually do the work
 #ifdef STRSAFE_INLINE
-STRSAFEAPI StringCopyWorkerA(char* pszDest, size_t cchDest, const char* pszSrc)
+
+STRSAFEAPI
+StringCopyWorkerA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc)
 {
     HRESULT hr = S_OK;
 
@@ -4273,7 +5267,11 @@ STRSAFEAPI StringCopyWorkerA(char* pszDest, size_t cchDest, const char* pszSrc)
     return hr;
 }
 
-STRSAFEAPI StringCopyWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc)
+STRSAFEAPI
+StringCopyWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc)
 {
     HRESULT hr = S_OK;
 
@@ -4303,14 +5301,19 @@ STRSAFEAPI StringCopyWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* ps
     return hr;
 }
 
-STRSAFEAPI StringCopyExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, const char* pszSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCopyExWorkerA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr = S_OK;
-    char* pszDestEnd = pszDest;
+    STRSAFE_LPSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-
-    // ASSERT(cbDest == (cchDest * sizeof(char))    ||
-    //        cbDest == (cchDest * sizeof(char)) + (cbDest % sizeof(char)));
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
@@ -4363,7 +5366,7 @@ STRSAFEAPI StringCopyExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, con
 
                 while (cchRemaining && (*pszSrc != '\0'))
                 {
-                    *pszDestEnd++= *pszSrc++;
+                    *pszDestEnd++ = *pszSrc++;
                     cchRemaining--;
                 }
 
@@ -4441,14 +5444,19 @@ STRSAFEAPI StringCopyExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, con
     return hr;
 }
 
-STRSAFEAPI StringCopyExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCopyExWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr = S_OK;
-    wchar_t* pszDestEnd = pszDest;
+    STRSAFE_LPWSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-
-    // ASSERT(cbDest == (cchDest * sizeof(wchar_t)) ||
-    //        cbDest == (cchDest * sizeof(wchar_t)) + (cbDest % sizeof(wchar_t)));
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
@@ -4501,7 +5509,7 @@ STRSAFEAPI StringCopyExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, 
 
                 while (cchRemaining && (*pszSrc != L'\0'))
                 {
-                    *pszDestEnd++= *pszSrc++;
+                    *pszDestEnd++ = *pszSrc++;
                     cchRemaining--;
                 }
 
@@ -4579,7 +5587,12 @@ STRSAFEAPI StringCopyExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, 
     return hr;
 }
 
-STRSAFEAPI StringCopyNWorkerA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchSrc)
+STRSAFEAPI
+StringCopyNWorkerA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchSrc) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchSrc)
 {
     HRESULT hr = S_OK;
 
@@ -4592,7 +5605,7 @@ STRSAFEAPI StringCopyNWorkerA(char* pszDest, size_t cchDest, const char* pszSrc,
     {
         while (cchDest && cchSrc && (*pszSrc != '\0'))
         {
-            *pszDest++= *pszSrc++;
+            *pszDest++ = *pszSrc++;
             cchDest--;
             cchSrc--;
         }
@@ -4610,7 +5623,12 @@ STRSAFEAPI StringCopyNWorkerA(char* pszDest, size_t cchDest, const char* pszSrc,
     return hr;
 }
 
-STRSAFEAPI StringCopyNWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchSrc)
+STRSAFEAPI
+StringCopyNWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToCopy)
 {
     HRESULT hr = S_OK;
 
@@ -4621,11 +5639,11 @@ STRSAFEAPI StringCopyNWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* p
     }
     else
     {
-        while (cchDest && cchSrc && (*pszSrc != L'\0'))
+        while (cchDest && cchToCopy && (*pszSrc != L'\0'))
         {
-            *pszDest++= *pszSrc++;
+            *pszDest++ = *pszSrc++;
             cchDest--;
-            cchSrc--;
+            cchToCopy--;
         }
 
         if (cchDest == 0)
@@ -4641,17 +5659,27 @@ STRSAFEAPI StringCopyNWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* p
     return hr;
 }
 
-STRSAFEAPI StringCopyNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, const char* pszSrc, size_t cchSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCopyNExWorkerA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToCopy,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr = S_OK;
-    char* pszDestEnd = pszDest;
+    STRSAFE_LPSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-
-    // ASSERT(cbDest == (cchDest * sizeof(char))    ||
-    //        cbDest == (cchDest * sizeof(char)) + (cbDest % sizeof(char)));
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
+    {
+        hr = STRSAFE_E_INVALID_PARAMETER;
+    }
+    else if (cchToCopy > STRSAFE_MAX_CCH)
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
@@ -4682,7 +5710,7 @@ STRSAFEAPI StringCopyNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, co
                 cchRemaining = 0;
 
                 // only fail if there was actually src data to copy
-                if (*pszSrc != '\0')
+                if ((cchToCopy != 0) && (*pszSrc != '\0'))
                 {
                     if (pszDest == NULL)
                     {
@@ -4699,11 +5727,11 @@ STRSAFEAPI StringCopyNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, co
                 pszDestEnd = pszDest;
                 cchRemaining = cchDest;
 
-                while (cchRemaining && cchSrc && (*pszSrc != '\0'))
+                while (cchRemaining && cchToCopy && (*pszSrc != '\0'))
                 {
-                    *pszDestEnd++= *pszSrc++;
+                    *pszDestEnd++ = *pszSrc++;
                     cchRemaining--;
-                    cchSrc--;
+                    cchToCopy--;
                 }
 
                 if (cchRemaining > 0)
@@ -4780,17 +5808,27 @@ STRSAFEAPI StringCopyNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, co
     return hr;
 }
 
-STRSAFEAPI StringCopyNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, const wchar_t* pszSrc, size_t cchSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCopyNExWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in_ecount(cchToCopy) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToCopy,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr = S_OK;
-    wchar_t* pszDestEnd = pszDest;
+    STRSAFE_LPWSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-
-    // ASSERT(cbDest == (cchDest * sizeof(wchar_t)) ||
-    //        cbDest == (cchDest * sizeof(wchar_t)) + (cbDest % sizeof(wchar_t)));
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
+    {
+        hr = STRSAFE_E_INVALID_PARAMETER;
+    }
+    else if (cchToCopy > STRSAFE_MAX_CCH)
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
@@ -4821,7 +5859,7 @@ STRSAFEAPI StringCopyNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest,
                 cchRemaining = 0;
 
                 // only fail if there was actually src data to copy
-                if (*pszSrc != L'\0')
+                if ((cchToCopy != 0) && (*pszSrc != L'\0'))
                 {
                     if (pszDest == NULL)
                     {
@@ -4838,11 +5876,11 @@ STRSAFEAPI StringCopyNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest,
                 pszDestEnd = pszDest;
                 cchRemaining = cchDest;
 
-                while (cchRemaining && cchSrc && (*pszSrc != L'\0'))
+                while (cchRemaining && cchToCopy && (*pszSrc != L'\0'))
                 {
-                    *pszDestEnd++= *pszSrc++;
+                    *pszDestEnd++ = *pszSrc++;
                     cchRemaining--;
-                    cchSrc--;
+                    cchToCopy--;
                 }
 
                 if (cchRemaining > 0)
@@ -4919,48 +5957,61 @@ STRSAFEAPI StringCopyNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest,
     return hr;
 }
 
-STRSAFEAPI StringCatWorkerA(char* pszDest, size_t cchDest, const char* pszSrc)
+STRSAFEAPI
+StringCatWorkerA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCSTR pszSrc)
 {
    HRESULT hr;
-   size_t cchDestCurrent;
+   size_t cchDestLength;
 
-   hr = StringLengthWorkerA(pszDest, cchDest, &cchDestCurrent);
+   hr = StringLengthWorkerA(pszDest, cchDest, &cchDestLength);
 
    if (SUCCEEDED(hr))
    {
-       hr = StringCopyWorkerA(pszDest + cchDestCurrent,
-                              cchDest - cchDestCurrent,
+       hr = StringCopyWorkerA(pszDest + cchDestLength,
+                              cchDest - cchDestLength,
                               pszSrc);
    }
 
    return hr;
 }
 
-STRSAFEAPI StringCatWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc)
+STRSAFEAPI
+StringCatWorkerW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in STRSAFE_LPCWSTR pszSrc)
 {
    HRESULT hr;
-   size_t cchDestCurrent;
+   size_t cchDestLength;
 
-   hr = StringLengthWorkerW(pszDest, cchDest, &cchDestCurrent);
+   hr = StringLengthWorkerW(pszDest, cchDest, &cchDestLength);
 
    if (SUCCEEDED(hr))
    {
-       hr = StringCopyWorkerW(pszDest + cchDestCurrent,
-                              cchDest - cchDestCurrent,
+       hr = StringCopyWorkerW(pszDest + cchDestLength,
+                              cchDest - cchDestLength,
                               pszSrc);
    }
 
    return hr;
 }
 
-STRSAFEAPI StringCatExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, const char* pszSrc, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCatExWorkerA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr = S_OK;
-    char* pszDestEnd = pszDest;
+    STRSAFE_LPSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-
-    // ASSERT(cbDest == (cchDest * sizeof(char))    ||
-    //        cbDest == (cchDest * sizeof(char)) + (cbDest % sizeof(char)));
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
@@ -4969,7 +6020,7 @@ STRSAFEAPI StringCatExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, cons
     }
     else
     {
-        size_t cchDestCurrent;
+        size_t cchDestLength;
 
         if (dwFlags & STRSAFE_IGNORE_NULLS)
         {
@@ -4977,7 +6028,7 @@ STRSAFEAPI StringCatExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, cons
             {
                 if ((cchDest == 0) && (cbDest == 0))
                 {
-                    cchDestCurrent = 0;
+                    cchDestLength = 0;
                 }
                 else
                 {
@@ -4987,12 +6038,12 @@ STRSAFEAPI StringCatExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, cons
             }
             else
             {
-                hr = StringLengthWorkerA(pszDest, cchDest, &cchDestCurrent);
+                hr = StringLengthWorkerA(pszDest, cchDest, &cchDestLength);
 
                 if (SUCCEEDED(hr))
                 {
-                    pszDestEnd = pszDest + cchDestCurrent;
-                    cchRemaining = cchDest - cchDestCurrent;
+                    pszDestEnd = pszDest + cchDestLength;
+                    cchRemaining = cchDest - cchDestLength;
                 }
             }
 
@@ -5003,12 +6054,12 @@ STRSAFEAPI StringCatExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, cons
         }
         else
         {
-            hr = StringLengthWorkerA(pszDest, cchDest, &cchDestCurrent);
+            hr = StringLengthWorkerA(pszDest, cchDest, &cchDestLength);
 
             if (SUCCEEDED(hr))
             {
-                pszDestEnd = pszDest + cchDestCurrent;
-                cchRemaining = cchDest - cchDestCurrent;
+                pszDestEnd = pszDest + cchDestLength;
+                cchRemaining = cchDest - cchDestLength;
             }
         }
 
@@ -5100,14 +6151,19 @@ STRSAFEAPI StringCatExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, cons
     return hr;
 }
 
-STRSAFEAPI StringCatExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, const wchar_t* pszSrc, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCatExWorkerW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in STRSAFE_LPCWSTR pszSrc,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr = S_OK;
-    wchar_t* pszDestEnd = pszDest;
+    STRSAFE_LPWSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-
-    // ASSERT(cbDest == (cchDest * sizeof(wchar_t)) ||
-    //        cbDest == (cchDest * sizeof(wchar_t)) + (cbDest % sizeof(wchar_t)));
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
@@ -5116,7 +6172,7 @@ STRSAFEAPI StringCatExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, c
     }
     else
     {
-        size_t cchDestCurrent;
+        size_t cchDestLength;
 
         if (dwFlags & STRSAFE_IGNORE_NULLS)
         {
@@ -5124,7 +6180,7 @@ STRSAFEAPI StringCatExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, c
             {
                 if ((cchDest == 0) && (cbDest == 0))
                 {
-                    cchDestCurrent = 0;
+                    cchDestLength = 0;
                 }
                 else
                 {
@@ -5134,12 +6190,12 @@ STRSAFEAPI StringCatExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, c
             }
             else
             {
-                hr = StringLengthWorkerW(pszDest, cchDest, &cchDestCurrent);
+                hr = StringLengthWorkerW(pszDest, cchDest, &cchDestLength);
 
                 if (SUCCEEDED(hr))
                 {
-                    pszDestEnd = pszDest + cchDestCurrent;
-                    cchRemaining = cchDest - cchDestCurrent;
+                    pszDestEnd = pszDest + cchDestLength;
+                    cchRemaining = cchDest - cchDestLength;
                 }
             }
 
@@ -5150,12 +6206,12 @@ STRSAFEAPI StringCatExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, c
         }
         else
         {
-            hr = StringLengthWorkerW(pszDest, cchDest, &cchDestCurrent);
+            hr = StringLengthWorkerW(pszDest, cchDest, &cchDestLength);
 
             if (SUCCEEDED(hr))
             {
-                pszDestEnd = pszDest + cchDestCurrent;
-                cchRemaining = cchDest - cchDestCurrent;
+                pszDestEnd = pszDest + cchDestLength;
+                cchRemaining = cchDest - cchDestLength;
             }
         }
 
@@ -5246,54 +6302,74 @@ STRSAFEAPI StringCatExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, c
     return hr;
 }
 
-STRSAFEAPI StringCatNWorkerA(char* pszDest, size_t cchDest, const char* pszSrc, size_t cchMaxAppend)
+STRSAFEAPI
+StringCatNWorkerA(
+    __inout_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToAppend)
 {
     HRESULT hr;
-    size_t cchDestCurrent;
+    size_t cchDestLength;
 
-    hr = StringLengthWorkerA(pszDest, cchDest, &cchDestCurrent);
+    hr = StringLengthWorkerA(pszDest, cchDest, &cchDestLength);
 
     if (SUCCEEDED(hr))
     {
-        hr = StringCopyNWorkerA(pszDest + cchDestCurrent,
-                                cchDest - cchDestCurrent,
+        hr = StringCopyNWorkerA(pszDest + cchDestLength,
+                                cchDest - cchDestLength,
                                 pszSrc,
-                                cchMaxAppend);
+                                cchToAppend);
     }
 
     return hr;
 }
 
-STRSAFEAPI StringCatNWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszSrc, size_t cchMaxAppend)
+STRSAFEAPI
+StringCatNWorkerW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToAppend)
 {
     HRESULT hr;
-    size_t cchDestCurrent;
+    size_t cchDestLength;
 
-    hr = StringLengthWorkerW(pszDest, cchDest, &cchDestCurrent);
+    hr = StringLengthWorkerW(pszDest, cchDest, &cchDestLength);
 
     if (SUCCEEDED(hr))
     {
-        hr = StringCopyNWorkerW(pszDest + cchDestCurrent,
-                                cchDest - cchDestCurrent,
+        hr = StringCopyNWorkerW(pszDest + cchDestLength,
+                                cchDest - cchDestLength,
                                 pszSrc,
-                                cchMaxAppend);
+                                cchToAppend);
     }
 
     return hr;
 }
 
-STRSAFEAPI StringCatNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, const char* pszSrc, size_t cchMaxAppend, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCatNExWorkerA(
+    __inout_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCSTR pszSrc,
+    __in size_t cchToAppend,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr = S_OK;
-    char* pszDestEnd = pszDest;
+    STRSAFE_LPSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-    size_t cchDestCurrent = 0;
-
-    // ASSERT(cbDest == (cchDest * sizeof(char))    ||
-    //        cbDest == (cchDest * sizeof(char)) + (cbDest % sizeof(char)));
+    size_t cchDestLength = 0;
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
+    {
+        hr = STRSAFE_E_INVALID_PARAMETER;
+    }
+    else if (cchToAppend > STRSAFE_MAX_CCH)
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
@@ -5305,7 +6381,7 @@ STRSAFEAPI StringCatNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, con
             {
                 if ((cchDest == 0) && (cbDest == 0))
                 {
-                    cchDestCurrent = 0;
+                    cchDestLength = 0;
                 }
                 else
                 {
@@ -5315,12 +6391,12 @@ STRSAFEAPI StringCatNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, con
             }
             else
             {
-                hr = StringLengthWorkerA(pszDest, cchDest, &cchDestCurrent);
+                hr = StringLengthWorkerA(pszDest, cchDest, &cchDestLength);
 
                 if (SUCCEEDED(hr))
                 {
-                    pszDestEnd = pszDest + cchDestCurrent;
-                    cchRemaining = cchDest - cchDestCurrent;
+                    pszDestEnd = pszDest + cchDestLength;
+                    cchRemaining = cchDest - cchDestLength;
                 }
             }
 
@@ -5331,12 +6407,12 @@ STRSAFEAPI StringCatNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, con
         }
         else
         {
-            hr = StringLengthWorkerA(pszDest, cchDest, &cchDestCurrent);
+            hr = StringLengthWorkerA(pszDest, cchDest, &cchDestLength);
 
             if (SUCCEEDED(hr))
             {
-                pszDestEnd = pszDest + cchDestCurrent;
-                cchRemaining = cchDest - cchDestCurrent;
+                pszDestEnd = pszDest + cchDestLength;
+                cchRemaining = cchDest - cchDestLength;
             }
         }
 
@@ -5345,7 +6421,7 @@ STRSAFEAPI StringCatNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, con
             if (cchDest == 0)
             {
                 // only fail if there was actually src data to append
-                if (*pszSrc != '\0')
+                if ((cchToAppend != 0) && (*pszSrc != '\0'))
                 {
                     if (pszDest == NULL)
                     {
@@ -5365,7 +6441,7 @@ STRSAFEAPI StringCatNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, con
                                           cchRemaining,
                                           (cchRemaining * sizeof(char)) + (cbDest % sizeof(char)),
                                           pszSrc,
-                                          cchMaxAppend,
+                                          cchToAppend,
                                           &pszDestEnd,
                                           &cchRemaining,
                                           dwFlags & (~(STRSAFE_FILL_ON_FAILURE | STRSAFE_NULL_ON_FAILURE)));
@@ -5428,19 +6504,29 @@ STRSAFEAPI StringCatNExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, con
     return hr;
 }
 
-STRSAFEAPI StringCatNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, const wchar_t* pszSrc, size_t cchMaxAppend, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFEAPI
+StringCatNExWorkerW(
+    __inout_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __in_ecount(cchToAppend) STRSAFE_LPCWSTR pszSrc,
+    __in size_t cchToAppend,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr = S_OK;
-    wchar_t* pszDestEnd = pszDest;
+    STRSAFE_LPWSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-    size_t cchDestCurrent = 0;
+    size_t cchDestLength = 0;
 
-
-    // ASSERT(cbDest == (cchDest * sizeof(wchar_t)) ||
-    //        cbDest == (cchDest * sizeof(wchar_t)) + (cbDest % sizeof(wchar_t)));
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
+    {
+        hr = STRSAFE_E_INVALID_PARAMETER;
+    }
+    else if (cchToAppend > STRSAFE_MAX_CCH)
     {
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
@@ -5452,7 +6538,7 @@ STRSAFEAPI StringCatNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, 
             {
                 if ((cchDest == 0) && (cbDest == 0))
                 {
-                    cchDestCurrent = 0;
+                    cchDestLength = 0;
                 }
                 else
                 {
@@ -5462,12 +6548,12 @@ STRSAFEAPI StringCatNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, 
             }
             else
             {
-                hr = StringLengthWorkerW(pszDest, cchDest, &cchDestCurrent);
+                hr = StringLengthWorkerW(pszDest, cchDest, &cchDestLength);
 
                 if (SUCCEEDED(hr))
                 {
-                    pszDestEnd = pszDest + cchDestCurrent;
-                    cchRemaining = cchDest - cchDestCurrent;
+                    pszDestEnd = pszDest + cchDestLength;
+                    cchRemaining = cchDest - cchDestLength;
                 }
             }
 
@@ -5478,12 +6564,12 @@ STRSAFEAPI StringCatNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, 
         }
         else
         {
-            hr = StringLengthWorkerW(pszDest, cchDest, &cchDestCurrent);
+            hr = StringLengthWorkerW(pszDest, cchDest, &cchDestLength);
 
             if (SUCCEEDED(hr))
             {
-                pszDestEnd = pszDest + cchDestCurrent;
-                cchRemaining = cchDest - cchDestCurrent;
+                pszDestEnd = pszDest + cchDestLength;
+                cchRemaining = cchDest - cchDestLength;
             }
         }
 
@@ -5492,7 +6578,7 @@ STRSAFEAPI StringCatNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, 
             if (cchDest == 0)
             {
                 // only fail if there was actually src data to append
-                if (*pszSrc != L'\0')
+                if ((cchToAppend != 0) && (*pszSrc != L'\0'))
                 {
                     if (pszDest == NULL)
                     {
@@ -5512,7 +6598,7 @@ STRSAFEAPI StringCatNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, 
                                           cchRemaining,
                                           (cchRemaining * sizeof(wchar_t)) + (cbDest % sizeof(wchar_t)),
                                           pszSrc,
-                                          cchMaxAppend,
+                                          cchToAppend,
                                           &pszDestEnd,
                                           &cchRemaining,
                                           dwFlags & (~(STRSAFE_FILL_ON_FAILURE | STRSAFE_NULL_ON_FAILURE)));
@@ -5575,7 +6661,12 @@ STRSAFEAPI StringCatNExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, 
     return hr;
 }
 
-STRSAFEAPI StringVPrintfWorkerA(char* pszDest, size_t cchDest, const char* pszFormat, va_list argList)
+STRSAFEAPI
+StringVPrintfWorkerA(
+    __out_ecount(cchDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr = S_OK;
 
@@ -5592,8 +6683,11 @@ STRSAFEAPI StringVPrintfWorkerA(char* pszDest, size_t cchDest, const char* pszFo
         // leave the last space for the null terminator
         cchMax = cchDest - 1;
 
+#if (_STRSAFE_USE_SECURE_CRT == 1) && !defined(STRSAFE_LIB_IMPL)
+        iRet = _vsnprintf_s(pszDest, cchDest, cchMax, pszFormat, argList);
+#else
         iRet = _vsnprintf(pszDest, cchMax, pszFormat, argList);
-        // ASSERT((iRet < 0) || (((size_t)iRet) <= cchMax));
+#endif
 
         if ((iRet < 0) || (((size_t)iRet) > cchMax))
         {
@@ -5615,7 +6709,12 @@ STRSAFEAPI StringVPrintfWorkerA(char* pszDest, size_t cchDest, const char* pszFo
     return hr;
 }
 
-STRSAFEAPI StringVPrintfWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t* pszFormat, va_list argList)
+STRSAFEAPI
+StringVPrintfWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr = S_OK;
 
@@ -5632,8 +6731,11 @@ STRSAFEAPI StringVPrintfWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t*
         // leave the last space for the null terminator
         cchMax = cchDest - 1;
 
+#if (_STRSAFE_USE_SECURE_CRT == 1) && !defined(STRSAFE_LIB_IMPL)
+        iRet = _vsnwprintf_s(pszDest, cchDest, cchMax, pszFormat, argList);
+#else
         iRet = _vsnwprintf(pszDest, cchMax, pszFormat, argList);
-        // ASSERT((iRet < 0) || (((size_t)iRet) <= cchMax));
+#endif
 
         if ((iRet < 0) || (((size_t)iRet) > cchMax))
         {
@@ -5655,14 +6757,20 @@ STRSAFEAPI StringVPrintfWorkerW(wchar_t* pszDest, size_t cchDest, const wchar_t*
     return hr;
 }
 
-STRSAFEAPI StringVPrintfExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const char* pszFormat, va_list argList)
+STRSAFEAPI
+StringVPrintfExWorkerA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr = S_OK;
-    char* pszDestEnd = pszDest;
+    STRSAFE_LPSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-
-    // ASSERT(cbDest == (cchDest * sizeof(char))    ||
-    //        cbDest == (cchDest * sizeof(char)) + (cbDest % sizeof(char)));
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
@@ -5716,9 +6824,11 @@ STRSAFEAPI StringVPrintfExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, 
                 // leave the last space for the null terminator
                 cchMax = cchDest - 1;
 
+#if (_STRSAFE_USE_SECURE_CRT == 1) && !defined(STRSAFE_LIB_IMPL)
+                iRet = _vsnprintf_s(pszDest, cchDest, cchMax, pszFormat, argList);
+#else
                 iRet = _vsnprintf(pszDest, cchMax, pszFormat, argList);
-                // ASSERT((iRet < 0) || (((size_t)iRet) <= cchMax));
-
+#endif
                 if ((iRet < 0) || (((size_t)iRet) > cchMax))
                 {
                     // we have truncated pszDest
@@ -5807,14 +6917,20 @@ STRSAFEAPI StringVPrintfExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, 
     return hr;
 }
 
-STRSAFEAPI StringVPrintfExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags, const wchar_t* pszFormat, va_list argList)
+STRSAFEAPI
+StringVPrintfExWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags,
+    __in __format_string STRSAFE_LPCWSTR pszFormat,
+    __in va_list argList)
 {
     HRESULT hr = S_OK;
-    wchar_t* pszDestEnd = pszDest;
+    STRSAFE_LPWSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-
-    // ASSERT(cbDest == (cchDest * sizeof(wchar_t)) ||
-    //        cbDest == (cchDest * sizeof(wchar_t)) + (cbDest % sizeof(wchar_t)));
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
@@ -5868,8 +6984,11 @@ STRSAFEAPI StringVPrintfExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDes
                 // leave the last space for the null terminator
                 cchMax = cchDest - 1;
 
+#if (_STRSAFE_USE_SECURE_CRT == 1) && !defined(STRSAFE_LIB_IMPL)
+                iRet = _vsnwprintf_s(pszDest, cchDest, cchMax, pszFormat, argList);
+#else
                 iRet = _vsnwprintf(pszDest, cchMax, pszFormat, argList);
-                // ASSERT((iRet < 0) || (((size_t)iRet) <= cchMax));
+#endif
 
                 if ((iRet < 0) || (((size_t)iRet) > cchMax))
                 {
@@ -5959,7 +7078,11 @@ STRSAFEAPI StringVPrintfExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDes
     return hr;
 }
 
-STRSAFEAPI StringLengthWorkerA(const char* psz, size_t cchMax, size_t* pcch)
+STRSAFEAPI
+StringLengthWorkerA(
+    __in STRSAFE_LPCSTR psz,
+    __in size_t cchMax,
+    __out_opt size_t* pcchLength)
 {
     HRESULT hr = S_OK;
     size_t cchMaxPrev = cchMax;
@@ -5976,15 +7099,26 @@ STRSAFEAPI StringLengthWorkerA(const char* psz, size_t cchMax, size_t* pcch)
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
 
-    if (SUCCEEDED(hr) && pcch)
+    if (pcchLength)
     {
-        *pcch = cchMaxPrev - cchMax;
+        if (SUCCEEDED(hr))
+        {
+            *pcchLength = cchMaxPrev - cchMax;
+        }
+        else
+        {
+            *pcchLength = 0;
+        }
     }
 
     return hr;
 }
 
-STRSAFEAPI StringLengthWorkerW(const wchar_t* psz, size_t cchMax, size_t* pcch)
+STRSAFEAPI
+StringLengthWorkerW(
+    __in STRSAFE_LPCWSTR psz,
+    __in size_t cchMax,
+    __out_opt size_t* pcchLength)
 {
     HRESULT hr = S_OK;
     size_t cchMaxPrev = cchMax;
@@ -6001,24 +7135,37 @@ STRSAFEAPI StringLengthWorkerW(const wchar_t* psz, size_t cchMax, size_t* pcch)
         hr = STRSAFE_E_INVALID_PARAMETER;
     }
 
-    if (SUCCEEDED(hr) && pcch)
+    if (pcchLength)
     {
-        *pcch = cchMaxPrev - cchMax;
+        if (SUCCEEDED(hr))
+        {
+            *pcchLength = cchMaxPrev - cchMax;
+        }
+        else
+        {
+            *pcchLength = 0;
+        }
     }
 
     return hr;
 }
+
 #endif  // STRSAFE_INLINE
 
 #ifndef STRSAFE_LIB_IMPL
-STRSAFE_INLINE_API StringGetsExWorkerA(char* pszDest, size_t cchDest, size_t cbDest, char** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+
+STRSAFE_INLINE_API
+StringGetsExWorkerA(
+    __out_bcount(cbDest) STRSAFE_LPSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr = S_OK;
-    char* pszDestEnd = pszDest;
+    STRSAFE_LPSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-
-    // ASSERT(cbDest == (cchDest * sizeof(char))    ||
-    //        cbDest == (cchDest * sizeof(char)) + (cbDest % sizeof(char)));
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
@@ -6055,20 +7202,28 @@ STRSAFE_INLINE_API StringGetsExWorkerA(char* pszDest, size_t cchDest, size_t cbD
             }
             else
             {
-                char ch;
-
                 pszDestEnd = pszDest;
                 cchRemaining = cchDest;
 
-                while ((cchRemaining > 1) && (ch = (char)getc(stdin)) != '\n')
+                while (cchRemaining > 1)
                 {
-                    if (ch == EOF)
+                    char ch;
+                    int i = getc(stdin);
+                    
+                    if (i == EOF)
                     {
                         if (pszDestEnd == pszDest)
                         {
                             // we failed to read anything from stdin
                             hr = STRSAFE_E_END_OF_FILE;
                         }
+                        break;
+                    }
+                    
+                    ch = (char)i;
+
+                    if (ch == '\n')
+                    {
                         break;
                     }
 
@@ -6147,14 +7302,18 @@ STRSAFE_INLINE_API StringGetsExWorkerA(char* pszDest, size_t cchDest, size_t cbD
     return hr;
 }
 
-STRSAFE_INLINE_API StringGetsExWorkerW(wchar_t* pszDest, size_t cchDest, size_t cbDest, wchar_t** ppszDestEnd, size_t* pcchRemaining, unsigned long dwFlags)
+STRSAFE_INLINE_API
+StringGetsExWorkerW(
+    __out_ecount(cchDest) STRSAFE_LPWSTR pszDest,
+    __in size_t cchDest,
+    __in size_t cbDest,
+    __deref_opt_out_ecount(*pcchRemaining) STRSAFE_LPWSTR* ppszDestEnd,
+    __out_opt size_t* pcchRemaining,
+    __in unsigned long dwFlags)
 {
     HRESULT hr = S_OK;
-    wchar_t* pszDestEnd = pszDest;
+    STRSAFE_LPWSTR pszDestEnd = pszDest;
     size_t cchRemaining = 0;
-
-    // ASSERT(cbDest == (cchDest * sizeof(char))    ||
-    //        cbDest == (cchDest * sizeof(char)) + (cbDest % sizeof(char)));
 
     // only accept valid flags
     if (dwFlags & (~STRSAFE_VALID_FLAGS))
@@ -6191,20 +7350,25 @@ STRSAFE_INLINE_API StringGetsExWorkerW(wchar_t* pszDest, size_t cchDest, size_t 
             }
             else
             {
-                wchar_t ch;
-
                 pszDestEnd = pszDest;
                 cchRemaining = cchDest;
 
-                while ((cchRemaining > 1) && (ch = (wchar_t)getwc(stdin)) != L'\n')
+                while (cchRemaining > 1)
                 {
-                    if (ch == EOF)
+                    wchar_t ch = getwc(stdin);
+                    
+                    if (ch == WEOF)
                     {
                         if (pszDestEnd == pszDest)
                         {
                             // we failed to read anything from stdin
                             hr = STRSAFE_E_END_OF_FILE;
                         }
+                        break;
+                    }
+                    
+                    if (ch == L'\n')
+                    {
                         break;
                     }
 
@@ -6282,6 +7446,7 @@ STRSAFE_INLINE_API StringGetsExWorkerW(wchar_t* pszDest, size_t cchDest, size_t 
 
     return hr;
 }
+
 #endif  // !STRSAFE_LIB_IMPL
 
 
@@ -6305,25 +7470,29 @@ STRSAFE_INLINE_API StringGetsExWorkerW(wchar_t* pszDest, size_t cchDest, size_t 
 #pragma deprecated(StringVPrintfExWorkerW)
 #pragma deprecated(StringLengthWorkerA)
 #pragma deprecated(StringLengthWorkerW)
+#pragma deprecated(StringGetsExWorkerA)
+#pragma deprecated(StringGetsExWorkerW)
 #else
-#define StringCopyWorkerA        StringCopyWorkerA_instead_use_StringCchCopyA_or_StringCchCopyExA;
-#define StringCopyWorkerW        StringCopyWorkerW_instead_use_StringCchCopyW_or_StringCchCopyExW;
-#define StringCopyExWorkerA      StringCopyExWorkerA_instead_use_StringCchCopyA_or_StringCchCopyExA;
-#define StringCopyExWorkerW      StringCopyExWorkerW_instead_use_StringCchCopyW_or_StringCchCopyExW;
-#define StringCatWorkerA         StringCatWorkerA_instead_use_StringCchCatA_or_StringCchCatExA;
-#define StringCatWorkerW         StringCatWorkerW_instead_use_StringCchCatW_or_StringCchCatExW;
-#define StringCatExWorkerA       StringCatExWorkerA_instead_use_StringCchCatA_or_StringCchCatExA;
-#define StringCatExWorkerW       StringCatExWorkerW_instead_use_StringCchCatW_or_StringCchCatExW;
-#define StringCatNWorkerA        StringCatNWorkerA_instead_use_StringCchCatNA_or_StrincCbCatNA;
-#define StringCatNWorkerW        StringCatNWorkerW_instead_use_StringCchCatNW_or_StringCbCatNW;
-#define StringCatNExWorkerA      StringCatNExWorkerA_instead_use_StringCchCatNExA_or_StringCbCatNExA;
-#define StringCatNExWorkerW      StringCatNExWorkerW_instead_use_StringCchCatNExW_or_StringCbCatNExW;
-#define StringVPrintfWorkerA     StringVPrintfWorkerA_instead_use_StringCchVPrintfA_or_StringCchVPrintfExA;
-#define StringVPrintfWorkerW     StringVPrintfWorkerW_instead_use_StringCchVPrintfW_or_StringCchVPrintfExW;
-#define StringVPrintfExWorkerA   StringVPrintfExWorkerA_instead_use_StringCchVPrintfA_or_StringCchVPrintfExA;
-#define StringVPrintfExWorkerW   StringVPrintfExWorkerW_instead_use_StringCchVPrintfW_or_StringCchVPrintfExW;
-#define StringLengthWorkerA      StringLengthWorkerA_instead_use_StringCchLengthA_or_StringCbLengthA;
-#define StringLengthWorkerW      StringLengthWorkerW_instead_use_StringCchLengthW_or_StringCbLengthW;
+#define StringCopyWorkerA       StringCopyWorkerA_instead_use_StringCchCopyA_or_StringCchCopyExA;
+#define StringCopyWorkerW       StringCopyWorkerW_instead_use_StringCchCopyW_or_StringCchCopyExW;
+#define StringCopyExWorkerA     StringCopyExWorkerA_instead_use_StringCchCopyA_or_StringCchCopyExA;
+#define StringCopyExWorkerW     StringCopyExWorkerW_instead_use_StringCchCopyW_or_StringCchCopyExW;
+#define StringCatWorkerA        StringCatWorkerA_instead_use_StringCchCatA_or_StringCchCatExA;
+#define StringCatWorkerW        StringCatWorkerW_instead_use_StringCchCatW_or_StringCchCatExW;
+#define StringCatExWorkerA      StringCatExWorkerA_instead_use_StringCchCatA_or_StringCchCatExA;
+#define StringCatExWorkerW      StringCatExWorkerW_instead_use_StringCchCatW_or_StringCchCatExW;
+#define StringCatNWorkerA       StringCatNWorkerA_instead_use_StringCchCatNA_or_StrincCbCatNA;
+#define StringCatNWorkerW       StringCatNWorkerW_instead_use_StringCchCatNW_or_StringCbCatNW;
+#define StringCatNExWorkerA     StringCatNExWorkerA_instead_use_StringCchCatNExA_or_StringCbCatNExA;
+#define StringCatNExWorkerW     StringCatNExWorkerW_instead_use_StringCchCatNExW_or_StringCbCatNExW;
+#define StringVPrintfWorkerA    StringVPrintfWorkerA_instead_use_StringCchVPrintfA_or_StringCchVPrintfExA;
+#define StringVPrintfWorkerW    StringVPrintfWorkerW_instead_use_StringCchVPrintfW_or_StringCchVPrintfExW;
+#define StringVPrintfExWorkerA  StringVPrintfExWorkerA_instead_use_StringCchVPrintfA_or_StringCchVPrintfExA;
+#define StringVPrintfExWorkerW  StringVPrintfExWorkerW_instead_use_StringCchVPrintfW_or_StringCchVPrintfExW;
+#define StringLengthWorkerA     StringLengthWorkerA_instead_use_StringCchLengthA_or_StringCbLengthA;
+#define StringLengthWorkerW     StringLengthWorkerW_instead_use_StringCchLengthW_or_StringCbLengthW;
+#define StringGetsExWorkerA     StringGetsExWorkerA_instead_use_StringCchGetsA_or_StringCbGetsA
+#define StringGetsExWorkerW     StringGetsExWorkerW_instead_use_StringCchGetsW_or_StringCbGetsW
 #endif // !DEPRECATE_SUPPORTED
 
 
@@ -6609,3 +7778,4 @@ STRSAFE_INLINE_API StringGetsExWorkerW(wchar_t* pszDest, size_t cchDest, size_t 
 #endif // _NTSTRSAFE_H_INCLUDED_
 
 #endif  // _STRSAFE_H_INCLUDED_
+

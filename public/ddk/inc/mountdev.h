@@ -1,6 +1,10 @@
 /*++
 
-Copyright (c) 1997  Microsoft Corporation
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -10,12 +14,6 @@ Abstract:
 
     This file defines the private interfaces between the mount point manager
     and the mounted devices.
-
-Author:
-
-    norbertk
-
-Revision History:
 
 --*/
 
@@ -79,3 +77,4 @@ typedef struct _MOUNTDEV_STABLE_GUID {
 } MOUNTDEV_STABLE_GUID, *PMOUNTDEV_STABLE_GUID;
 
 #endif
+

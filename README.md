@@ -5,6 +5,16 @@ cd tools
 In ntenv.cmd set your PROJDIR INCLUDE and LIB environment varibles, then run razzle.cmd They use VC7 or VC8
 which is on my GitHub.
 
+Building/deploying a WRK kernel for x86 [or amd64]
+
+0. set WRK=  
+1. set arch=x86 [or amd64]
+2. path %wrk%\tools\%arch%;%path%
+3. cd %wrk%\base\ntos
+4. nmake -nologo %arch%=
+will produce kernel files in BUILD\EXE\%arch%
+[wrkx86.* or wrkx64.*]
+
 set PROCESSOR_ARCHITECTURE=x86
 
 set VS80COMNTOOLS=J:\Releases\_git\WRK-V1.2\Vc8\Common7\Tools\

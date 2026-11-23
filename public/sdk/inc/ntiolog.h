@@ -1,6 +1,10 @@
 /*++ BUILD Version: 0001    // Increment this if a change has global effects
 
-Copyright (c) Microsoft Corporation.  All rights reserved.
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -9,12 +13,6 @@ Module Name:
 Abstract:
 
     Constant definitions for the I/O error code log values.
-
-Author:
-
-    Jeff Havens (jhavens) 21-Aug-1991
-
-Revision History:
 
 --*/
 
@@ -120,3 +118,4 @@ typedef struct _IO_ERROR_LOG_MESSAGE {
 #endif
 
 #endif // _NTIOLOG_
+

@@ -1,6 +1,10 @@
 /*++ BUILD Version: 0002    // Increment this if a change has global effects
 
-Copyright (c) 1989-1999 Microsoft Corporation
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -10,12 +14,6 @@ Abstract:
 
     This is the include file for the Local Procedure Call (LPC) sub-component
     of NTOS.
-
-Author:
-
-    Steve Wood (stevewo) 13-Mar-1989
-
-Revision History:
 
 --*/
 
@@ -132,6 +130,11 @@ typedef struct _PORT_DATA_INFORMATION {
 #else
 #define PORT_MAXIMUM_MESSAGE_LENGTH 256
 #endif
+
+#define LPC_MAX_CONNECTION_INFO_SIZE (16 * sizeof(ULONG_PTR)) 
+
+#define PORT_TOTAL_MAXIMUM_MESSAGE_LENGTH ((PORT_MAXIMUM_MESSAGE_LENGTH + sizeof (PORT_MESSAGE) + LPC_MAX_CONNECTION_INFO_SIZE + 15) & ~15)
+
 // end_ntddk end_wdm
 
 #if defined(USE_LPC6432)
@@ -167,22 +170,22 @@ NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtCreatePort(
-    OUT PHANDLE PortHandle,
-    IN POBJECT_ATTRIBUTES ObjectAttributes,
-    IN ULONG MaxConnectionInfoLength,
-    IN ULONG MaxMessageLength,
-    IN ULONG MaxPoolUsage
+    __out PHANDLE PortHandle,
+    __in POBJECT_ATTRIBUTES ObjectAttributes,
+    __in ULONG MaxConnectionInfoLength,
+    __in ULONG MaxMessageLength,
+    __in_opt ULONG MaxPoolUsage
     );
 
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtCreateWaitablePort(
-    OUT PHANDLE PortHandle,
-    IN POBJECT_ATTRIBUTES ObjectAttributes,
-    IN ULONG MaxConnectionInfoLength,
-    IN ULONG MaxMessageLength,
-    IN ULONG MaxPoolUsage
+    __out PHANDLE PortHandle,
+    __in POBJECT_ATTRIBUTES ObjectAttributes,
+    __in ULONG MaxConnectionInfoLength,
+    __in ULONG MaxMessageLength,
+    __in_opt ULONG MaxPoolUsage
     );
 
 
@@ -192,29 +195,29 @@ NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtConnectPort(
-    OUT PHANDLE PortHandle,
-    IN PUNICODE_STRING PortName,
-    IN PSECURITY_QUALITY_OF_SERVICE SecurityQos,
-    IN OUT PPORT_VIEW ClientView OPTIONAL,
-    IN OUT PREMOTE_PORT_VIEW ServerView OPTIONAL,
-    OUT PULONG MaxMessageLength OPTIONAL,
-    IN OUT PVOID ConnectionInformation OPTIONAL,
-    IN OUT PULONG ConnectionInformationLength OPTIONAL
+    __out PHANDLE PortHandle,
+    __in PUNICODE_STRING PortName,
+    __in PSECURITY_QUALITY_OF_SERVICE SecurityQos,
+    __inout_opt PPORT_VIEW ClientView,
+    __inout_opt PREMOTE_PORT_VIEW ServerView,
+    __out_opt PULONG MaxMessageLength,
+    __inout_opt PVOID ConnectionInformation,
+    __inout_opt PULONG ConnectionInformationLength
     );
 
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtSecureConnectPort(
-    OUT PHANDLE PortHandle,
-    IN PUNICODE_STRING PortName,
-    IN PSECURITY_QUALITY_OF_SERVICE SecurityQos,
-    IN OUT PPORT_VIEW ClientView OPTIONAL,
-    IN PSID RequiredServerSid,
-    IN OUT PREMOTE_PORT_VIEW ServerView OPTIONAL,
-    OUT PULONG MaxMessageLength OPTIONAL,
-    IN OUT PVOID ConnectionInformation OPTIONAL,
-    IN OUT PULONG ConnectionInformationLength OPTIONAL
+    __out PHANDLE PortHandle,
+    __in PUNICODE_STRING PortName,
+    __in PSECURITY_QUALITY_OF_SERVICE SecurityQos,
+    __inout_opt PPORT_VIEW ClientView,
+    __in_opt PSID RequiredServerSid,
+    __inout_opt PREMOTE_PORT_VIEW ServerView,
+    __out_opt PULONG MaxMessageLength,
+    __inout_opt PVOID ConnectionInformation,
+    __inout_opt PULONG ConnectionInformationLength
     );
 
 // end_ntifs
@@ -223,35 +226,35 @@ NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtListenPort(
-    IN HANDLE PortHandle,
-    OUT PPORT_MESSAGE ConnectionRequest
+    __in HANDLE PortHandle,
+    __out PPORT_MESSAGE ConnectionRequest
     );
 
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtAcceptConnectPort(
-    OUT PHANDLE PortHandle,
-    IN PVOID PortContext,
-    IN PPORT_MESSAGE ConnectionRequest,
-    IN BOOLEAN AcceptConnection,
-    IN OUT PPORT_VIEW ServerView OPTIONAL,
-    OUT PREMOTE_PORT_VIEW ClientView OPTIONAL
+    __out PHANDLE PortHandle,
+    __in_opt PVOID PortContext,
+    __in PPORT_MESSAGE ConnectionRequest,
+    __in BOOLEAN AcceptConnection,
+    __inout_opt PPORT_VIEW ServerView,
+    __out_opt PREMOTE_PORT_VIEW ClientView
     );
 
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtCompleteConnectPort(
-    IN HANDLE PortHandle
+    __in HANDLE PortHandle
     );
 
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtRequestPort(
-    IN HANDLE PortHandle,
-    IN PPORT_MESSAGE RequestMessage
+    __in HANDLE PortHandle,
+    __in PPORT_MESSAGE RequestMessage
     );
 
 // begin_ntifs
@@ -260,9 +263,9 @@ NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtRequestWaitReplyPort(
-    IN HANDLE PortHandle,
-    IN PPORT_MESSAGE RequestMessage,
-    OUT PPORT_MESSAGE ReplyMessage
+    __in HANDLE PortHandle,
+    __in PPORT_MESSAGE RequestMessage,
+    __out PPORT_MESSAGE ReplyMessage
     );
 
 // end_ntifs
@@ -271,8 +274,8 @@ NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtReplyPort(
-    IN HANDLE PortHandle,
-    IN PPORT_MESSAGE ReplyMessage
+    __in HANDLE PortHandle,
+    __in PPORT_MESSAGE ReplyMessage
     );
 
 
@@ -280,61 +283,61 @@ NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtReplyWaitReplyPort(
-    IN HANDLE PortHandle,
-    IN OUT PPORT_MESSAGE ReplyMessage
+    __in HANDLE PortHandle,
+    __inout PPORT_MESSAGE ReplyMessage
     );
 
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtReplyWaitReceivePort(
-    IN HANDLE PortHandle,
-    OUT PVOID *PortContext OPTIONAL,
-    IN PPORT_MESSAGE ReplyMessage OPTIONAL,
-    OUT PPORT_MESSAGE ReceiveMessage
+    __in HANDLE PortHandle,
+    __out_opt PVOID *PortContext ,
+    __in_opt PPORT_MESSAGE ReplyMessage,
+    __out PPORT_MESSAGE ReceiveMessage
     );
 
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtReplyWaitReceivePortEx(
-    IN HANDLE PortHandle,
-    OUT PVOID *PortContext OPTIONAL,
-    IN PPORT_MESSAGE ReplyMessage OPTIONAL,
-    OUT PPORT_MESSAGE ReceiveMessage,
-    IN PLARGE_INTEGER Timeout OPTIONAL
+    __in HANDLE PortHandle,
+    __out_opt PVOID *PortContext,
+    __in_opt PPORT_MESSAGE ReplyMessage,
+    __out PPORT_MESSAGE ReceiveMessage,
+    __in_opt PLARGE_INTEGER Timeout
     );
 
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtImpersonateClientOfPort(
-    IN HANDLE PortHandle,
-    IN PPORT_MESSAGE Message
+    __in HANDLE PortHandle,
+    __in PPORT_MESSAGE Message
     );
 
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtReadRequestData(
-    IN HANDLE PortHandle,
-    IN PPORT_MESSAGE Message,
-    IN ULONG DataEntryIndex,
-    OUT PVOID Buffer,
-    IN SIZE_T BufferSize,
-    OUT PSIZE_T NumberOfBytesRead OPTIONAL
+    __in HANDLE PortHandle,
+    __in PPORT_MESSAGE Message,
+    __in ULONG DataEntryIndex,
+    __out_bcount(BufferSize) PVOID Buffer,
+    __in SIZE_T BufferSize,
+    __out_opt PSIZE_T NumberOfBytesRead
     );
 
 NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtWriteRequestData(
-    IN HANDLE PortHandle,
-    IN PPORT_MESSAGE Message,
-    IN ULONG DataEntryIndex,
-    IN PVOID Buffer,
-    IN SIZE_T BufferSize,
-    OUT PSIZE_T NumberOfBytesWritten OPTIONAL
+    __in HANDLE PortHandle,
+    __in PPORT_MESSAGE Message,
+    __in ULONG DataEntryIndex,
+    __in_bcount(BufferSize) PVOID Buffer,
+    __in SIZE_T BufferSize,
+    __out_opt PSIZE_T NumberOfBytesWritten
     );
 
 
@@ -350,11 +353,11 @@ NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtQueryInformationPort(
-    IN HANDLE PortHandle,
-    IN PORT_INFORMATION_CLASS PortInformationClass,
-    OUT PVOID PortInformation,
-    IN ULONG Length,
-    OUT PULONG ReturnLength OPTIONAL
+    __in HANDLE PortHandle,
+    __in PORT_INFORMATION_CLASS PortInformationClass,
+    __out_bcount(Length) PVOID PortInformation,
+    __in ULONG Length,
+    __out_opt PULONG ReturnLength
     );
 
 #ifdef __cplusplus
@@ -362,3 +365,4 @@ NtQueryInformationPort(
 #endif
 
 #endif  // _NTLPCAPI_
+

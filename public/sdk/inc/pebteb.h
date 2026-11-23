@@ -1,6 +1,10 @@
 /*++ BUILD Version: 0001    // Increment this if a change has global effects
 
-Copyright (c) 2001  Microsoft Corporation
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -13,12 +17,6 @@ Abstract:
     Address the maintenance problem that resulted from PEB and TEB being
     defined three times, once "native" in ntpsapi.w, and twice, 32bit and 64bit
     in wow64t.w.
-
-Author:
-
-    Jay Krell (JayKrell) April 2001
-
-Revision History:
 
 --*/
 
@@ -37,7 +35,6 @@ Revision History:
 //
 // wow64t.h #defines the macro PEBTEB_BITS to guide the declarations.
 //
-
 
 #define PEBTEB_PRIVATE_PASTE(x,y)       x##y
 #define PEBTEB_PASTE(x,y)               PEBTEB_PRIVATE_PASTE(x,y)
@@ -79,7 +76,13 @@ typedef struct PEBTEB_STRUCT(_PEB) {
     BOOLEAN InheritedAddressSpace;      // These four fields cannot change unless the
     BOOLEAN ReadImageFileExecOptions;   //
     BOOLEAN BeingDebugged;              //
-    BOOLEAN SpareBool;                  //
+    union {
+        BOOLEAN BitField;                  //
+        struct {
+            BOOLEAN ImageUsesLargePages : 1;
+            BOOLEAN SpareBits : 7;
+         };
+    };
     PEBTEB_POINTER(HANDLE) Mutant;      // INITIAL_PEB structure is also updated.
 
     PEBTEB_POINTER(PVOID) ImageBaseAddress;
@@ -88,18 +91,12 @@ typedef struct PEBTEB_STRUCT(_PEB) {
     PEBTEB_POINTER(PVOID) SubSystemData;
     PEBTEB_POINTER(PVOID) ProcessHeap;
     PEBTEB_POINTER(struct _RTL_CRITICAL_SECTION*) FastPebLock;
-    PEBTEB_POINTER(PVOID) SparePtr1;
+    PEBTEB_POINTER(PVOID) AtlThunkSListPtr;     // Used only for AMD64
     PEBTEB_POINTER(PVOID) SparePtr2;
     ULONG EnvironmentUpdateCount;
     PEBTEB_POINTER(PVOID) KernelCallbackTable;
     ULONG SystemReserved[1];
-
-    struct {
-        ULONG ExecuteOptions : 2;
-        ULONG SpareBits : 30;
-    };    
-
-
+    ULONG SpareUlong;
     PEBTEB_POINTER(PPEB_FREE_BLOCK) FreeList;
     ULONG TlsExpansionCounter;
     PEBTEB_POINTER(PVOID) TlsBitmap;
@@ -226,10 +223,11 @@ typedef struct PEBTEB_STRUCT(_PEB) {
 #define ACTIVATION_CONTEXT_STACK_FLAG_QUERIES_DISABLED (0x00000001)
 
 typedef struct PEBTEB_STRUCT(_ACTIVATION_CONTEXT_STACK) {
-    ULONG Flags;
-    ULONG NextCookieSequenceNumber;
     PEBTEB_POINTER(struct _RTL_ACTIVATION_CONTEXT_STACK_FRAME *) ActiveFrame;
     PEBTEB_STRUCT(LIST_ENTRY) FrameListCache;
+    ULONG Flags;
+    ULONG NextCookieSequenceNumber;
+    ULONG StackId;
 } PEBTEB_STRUCT(ACTIVATION_CONTEXT_STACK), * PEBTEB_STRUCT(PACTIVATION_CONTEXT_STACK);
 
 typedef const PEBTEB_STRUCT(ACTIVATION_CONTEXT_STACK) * PEBTEB_STRUCT(PCACTIVATION_CONTEXT_STACK);
@@ -290,9 +288,13 @@ typedef struct PEBTEB_STRUCT(_TEB) {
     ULONG FpSoftwareStatusRegister; // offset known by outsiders!
     PEBTEB_POINTER(PVOID) SystemReserved1[54];      // Used by FP emulator
     NTSTATUS ExceptionCode;         // for RaiseUserException
-    PEBTEB_STRUCT(ACTIVATION_CONTEXT_STACK) ActivationContextStack;   // Fusion activation stack
-    // sizeof(PEBTEB_POINTER(PVOID)) is a way to express processor-dependence, more generally than #ifdef _WIN64
-    UCHAR SpareBytes1[48 - sizeof(PEBTEB_POINTER(PVOID)) - sizeof(PEBTEB_STRUCT(ACTIVATION_CONTEXT_STACK))];
+    // 4 bytes of padding here on native 64bit TEB and TEB64
+    PEBTEB_POINTER(PACTIVATION_CONTEXT_STACK) ActivationContextStackPointer; // Fusion activation stack
+#if (defined(PEBTEB_BITS) && (PEBTEB_BITS == 64)) || (!defined(PEBTEB_BITS) && defined(_WIN64))
+    UCHAR SpareBytes1[28]; // native 64bit TEB and TEB64
+#else
+    UCHAR SpareBytes1[40]; // native 32bit TEB and TEB32
+#endif
     PEBTEB_STRUCT(GDI_TEB_BATCH) GdiTebBatch;      // Gdi batching
     PEBTEB_STRUCT(CLIENT_ID) RealClientId;
     PEBTEB_POINTER(HANDLE) GdiCachedProcessHandle;
@@ -318,18 +320,22 @@ typedef struct PEBTEB_STRUCT(_TEB) {
     PEBTEB_POINTER(PVOID) ReservedForNtRpc;
     PEBTEB_POINTER(PVOID) DbgSsReserved[2];
     ULONG HardErrorMode;
-    PEBTEB_POINTER(PVOID) Instrumentation[16];
+    PEBTEB_POINTER(PVOID) Instrumentation[14];
+    PEBTEB_POINTER(PVOID) SubProcessTag;
+    PEBTEB_POINTER(PVOID) EtwTraceData;
     PEBTEB_POINTER(PVOID) WinSockData;              // WinSock
     ULONG GdiBatchCount;
     BOOLEAN InDbgPrint;
     BOOLEAN FreeStackOnTermination;
     BOOLEAN HasFiberData;
     BOOLEAN IdealProcessor;
-    ULONG Spare3;
+    ULONG GuaranteedStackBytes;
     PEBTEB_POINTER(PVOID) ReservedForPerf;
     PEBTEB_POINTER(PVOID) ReservedForOle;
     ULONG WaitingOnLoaderLock;
-    PEBTEB_STRUCT(WX86THREAD) Wx86Thread;
+    PEBTEB_POINTER(ULONG_PTR) SparePointer1;
+    PEBTEB_POINTER(ULONG_PTR) SoftPatchPtr1;
+    PEBTEB_POINTER(ULONG_PTR) SoftPatchPtr2;    
     PEBTEB_POINTER(PPVOID) TlsExpansionSlots;
 #if (defined(_WIN64) && !defined(PEBTEB_BITS)) \
     || ((defined(_WIN64) || defined(_X86_)) && defined(PEBTEB_BITS) && PEBTEB_BITS == 64)
@@ -347,6 +353,8 @@ typedef struct PEBTEB_STRUCT(_TEB) {
     PEBTEB_POINTER(HANDLE) CurrentTransactionHandle;// reserved for TxF transaction context
     PEBTEB_POINTER(PTEB_ACTIVE_FRAME) ActiveFrame;
     PEBTEB_POINTER(PVOID) FlsData;
+    BOOLEAN SafeThunkCall;
+    BOOLEAN BooleanSpare [3];
     
 } PEBTEB_STRUCT(TEB), *PEBTEB_STRUCT(PTEB);
 
@@ -354,3 +362,4 @@ typedef struct PEBTEB_STRUCT(_TEB) {
 #undef PEBTEB_STRUCT
 #undef PEBTEB_PRIVATE_PASTE
 #undef PEBTEB_PASTE
+

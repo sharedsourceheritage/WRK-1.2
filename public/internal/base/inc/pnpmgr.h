@@ -1,6 +1,10 @@
 /*++
 
-Copyright (c) Microsoft Corporation.  All rights reserved.
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -9,12 +13,6 @@ Module Name:
 Abstract:
 
     Internal definitions used by kernel-mode and user-mode pnp managers.
-
-Author:
-
-    Paula Tomlinson (paulat) 06-Feb-1997
-
-Revision History:
 
 --*/
 

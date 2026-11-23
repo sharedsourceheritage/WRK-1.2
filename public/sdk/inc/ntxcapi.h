@@ -1,6 +1,10 @@
 /*++ BUILD Version: 0001    // Increment this if a change has global effects
 
-Copyright (c) Microsoft Corporation.  All rights reserved.
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -10,12 +14,6 @@ Abstract:
 
     This module contains procedure prototypes and data structures
     that support structured exception handling.
-
-Author:
-
-    Mark Lucovsky (markl) 29-Jun-1989
-
-Revision History:
 
 --*/
 
@@ -253,7 +251,7 @@ typedef struct _FP_IEEE_VALUE {
 } FP_IEEE_VALUE, *PFP_IEEE_VALUE;
 
 //
-// Define IEEE exception infomation structure.
+// Define IEEE exception information structure.
 //
 
 #include "pshpack4.h"
@@ -281,6 +279,7 @@ RtlDispatchException (
 //
 
 NTSYSAPI
+DECLSPEC_NORETURN
 VOID
 NTAPI
 RtlRaiseStatus (
@@ -318,31 +317,6 @@ RtlUnwindEx (
     IN PUNWIND_HISTORY_TABLE HistoryTable OPTIONAL
     );
 
-#elif defined(_IA64_)
-
-NTSYSAPI
-VOID
-NTAPI
-RtlUnwind2 (
-    IN FRAME_POINTERS TargetFrame OPTIONAL,
-    IN PVOID TargetIp OPTIONAL,
-    IN PEXCEPTION_RECORD ExceptionRecord OPTIONAL,
-    IN PVOID ReturnValue,
-    IN PCONTEXT ContextRecord
-    );
-
-NTSYSAPI
-VOID
-NTAPI
-RtlUnwindEx (
-    IN FRAME_POINTERS TargetFrame OPTIONAL,
-    IN PVOID TargetIp OPTIONAL,
-    IN PEXCEPTION_RECORD ExceptionRecord OPTIONAL,
-    IN PVOID ReturnValue,
-    IN PCONTEXT ContextRecord,
-    IN PUNWIND_HISTORY_TABLE HistoryTable OPTIONAL
-    );
-
 #endif
 
 //
@@ -353,8 +327,8 @@ NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtContinue (
-    IN PCONTEXT ContextRecord,
-    IN BOOLEAN TestAlert
+    __in PCONTEXT ContextRecord,
+    __in BOOLEAN TestAlert
     );
 
 //
@@ -365,9 +339,9 @@ NTSYSCALLAPI
 NTSTATUS
 NTAPI
 NtRaiseException (
-    IN PEXCEPTION_RECORD ExceptionRecord,
-    IN PCONTEXT ContextRecord,
-    IN BOOLEAN FirstChance
+    __in PEXCEPTION_RECORD ExceptionRecord,
+    __in PCONTEXT ContextRecord,
+    __in BOOLEAN FirstChance
     );
 
 #ifdef __cplusplus
@@ -375,3 +349,4 @@ NtRaiseException (
 #endif
 
 #endif //_NTXCAPI_
+

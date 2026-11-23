@@ -1,6 +1,10 @@
 /*++ BUILD Version: 0004    // Increment this if a change has global effects
 
-Copyright (c) Microsoft Corporation.  All rights reserved.
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -11,20 +15,6 @@ Abstract:
     This module implements the public interfaces of the Loader (Ldr)
     subsystem. Ldr is coupled with the session manager. It is not
     a separate process.
-
-Author:
-
-    Mike O'Leary (mikeol) 22-Mar-1990
-
-[Environment:]
-
-    optional-environment-info (e.g. kernel mode only...)
-
-[Notes:]
-
-    optional-notes
-
-Revision History:
 
 --*/
 
@@ -64,6 +54,7 @@ extern "C" {
 #define LDRP_REDIRECTED                 0x10000000
 #define LDRP_NON_PAGED_DEBUG_INFO       0x20000000
 #define LDRP_MM_LOADED                  0x40000000
+#define LDRP_COMPAT_DATABASE_PROCESSED  0x80000000
 
 //
 // Loader Data Table. Used to track DLLs loaded into an
@@ -98,9 +89,9 @@ typedef struct _LDR_DATA_TABLE_ENTRY {
         };
     };
     struct _ACTIVATION_CONTEXT * EntryPointActivationContext;
-    
-    PVOID PatchInformation; 
-    
+
+    PVOID PatchInformation;
+
 } LDR_DATA_TABLE_ENTRY, *PLDR_DATA_TABLE_ENTRY;
 
 typedef const struct _LDR_DATA_TABLE_ENTRY *PCLDR_DATA_TABLE_ENTRY;
@@ -124,7 +115,7 @@ typedef struct _KLDR_DATA_TABLE_ENTRY {
     ULONG CheckSum;
     // ULONG padding on IA64
     PVOID LoadedImports;
-    PVOID PatchInformation; 
+    PVOID PatchInformation;
 } KLDR_DATA_TABLE_ENTRY, *PKLDR_DATA_TABLE_ENTRY;
 
 typedef struct _LDR_DATA_TABLE_ENTRY32 {
@@ -269,24 +260,28 @@ BOOLEAN
     IN PVOID RealStartAddress
     );
 
+NTSYSAPI
 VOID
 LdrProcessStarterHelper(
     IN PPROCESS_STARTER_ROUTINE ProcessStarter,
     IN PVOID RealStartAddress
     );
 
+NTSYSAPI
 VOID
 NTAPI
 LdrShutdownProcess(
     VOID
     );
 
+NTSYSAPI
 VOID
 NTAPI
 LdrShutdownThread(
     VOID
     );
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrLoadDll(
@@ -296,6 +291,7 @@ LdrLoadDll(
     OUT PVOID *DllHandle
     );
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrGetDllHandle(
@@ -305,6 +301,7 @@ LdrGetDllHandle(
     OUT PVOID *DllHandle
     );
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrUnloadDll(
@@ -319,6 +316,7 @@ NTSTATUS
     OUT PVOID *ActivationContext
     );
 
+NTSYSAPI
 VOID
 NTAPI
 LdrSetDllManifestProber(
@@ -338,35 +336,21 @@ typedef NTSTATUS LDR_RELOCATE_IMAGE_RETURN_TYPE;
 
 LDR_RELOCATE_IMAGE_RETURN_TYPE
 LdrRelocateImage (
-    IN PVOID NewBase,
-    IN CONST CHAR* LoaderName,
-    IN LDR_RELOCATE_IMAGE_RETURN_TYPE Success,
-    IN LDR_RELOCATE_IMAGE_RETURN_TYPE Conflict,
-    IN LDR_RELOCATE_IMAGE_RETURN_TYPE Invalid
+    __in PVOID NewBase,
+    __in PCSTR LoaderName,
+    __in LDR_RELOCATE_IMAGE_RETURN_TYPE Success,
+    __in LDR_RELOCATE_IMAGE_RETURN_TYPE Conflict,
+    __in LDR_RELOCATE_IMAGE_RETURN_TYPE Invalid
     );
-
-#if defined(NTOS_KERNEL_RUNTIME) && defined(_ALPHA_)
-
-NTSTATUS
-LdrDoubleRelocateImage (
-    IN PVOID NewBase,
-    IN PVOID CurrentBase,
-    IN CONST CHAR* LoaderName,
-    IN NTSTATUS Success,
-    IN NTSTATUS Conflict,
-    IN NTSTATUS Invalid
-    );
-
-#endif
 
 LDR_RELOCATE_IMAGE_RETURN_TYPE
 LdrRelocateImageWithBias (
-    IN PVOID NewBase,
-    IN LONGLONG Bias,
-    IN CONST CHAR* LoaderName,
-    IN LDR_RELOCATE_IMAGE_RETURN_TYPE Success,
-    IN LDR_RELOCATE_IMAGE_RETURN_TYPE Conflict,
-    IN LDR_RELOCATE_IMAGE_RETURN_TYPE Invalid
+    __in PVOID NewBase,
+    __in LONGLONG Bias,
+    __in PCSTR LoaderName,
+    __in LDR_RELOCATE_IMAGE_RETURN_TYPE Success,
+    __in LDR_RELOCATE_IMAGE_RETURN_TYPE Conflict,
+    __in LDR_RELOCATE_IMAGE_RETURN_TYPE Invalid
     );
 
 PIMAGE_BASE_RELOCATION
@@ -382,6 +366,7 @@ BOOLEAN
 NTAPI
 LdrVerifyMappedImageMatchesChecksum (
     IN PVOID BaseAddress,
+    IN SIZE_T NumberOfBytes,
     IN ULONG FileLength
     );
 
@@ -401,6 +386,7 @@ LdrVerifyImageMatchesChecksum (
     OUT PUSHORT ImageCharacteristics OPTIONAL
     );
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrGetProcedureAddress(
@@ -459,6 +445,7 @@ LdrGetProcedureAddress(
 #define LDR_FIND_RESOURCE_LANGUAGE_EXACT                   (0x00000004)
 #define LDR_FIND_RESOURCE_LANGUAGE_REDIRECT_VERSION        (0x00000008)
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrFindResourceDirectory_U(
@@ -468,6 +455,7 @@ LdrFindResourceDirectory_U(
     OUT PIMAGE_RESOURCE_DIRECTORY *ResourceDirectory
     );
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrFindResource_U(
@@ -476,7 +464,7 @@ LdrFindResource_U(
     IN ULONG ResourceIdPathLength,
     OUT PIMAGE_RESOURCE_DATA_ENTRY *ResourceDataEntry
     );
-    
+
 NTSTATUS
 NTAPI
 LdrFindResourceEx_U(
@@ -486,7 +474,7 @@ LdrFindResourceEx_U(
     IN ULONG ResourceIdPathLength,
     OUT PIMAGE_RESOURCE_DATA_ENTRY *ResourceDataEntry
     );
-    
+
 
 #ifndef NTOS_KERNEL_RUNTIME
 
@@ -536,6 +524,8 @@ LdrCreateOutOfProcessImage(
 // - You may destroy an out of process image that is all zeros.
 // - You may destroy an out of process image repeatedly.
 //
+
+NTSYSAPI
 VOID
 NTAPI
 LdrDestroyOutOfProcessImage(
@@ -581,6 +571,7 @@ typedef struct _LDR_ENUM_RESOURCE_ENTRY {
     ULONG Reserved;
 } LDR_ENUM_RESOURCE_ENTRY, *PLDR_ENUM_RESOURCE_ENTRY;
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrEnumResources(
@@ -591,6 +582,7 @@ LdrEnumResources(
     OUT PLDR_ENUM_RESOURCE_ENTRY Resources OPTIONAL
     );
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrAccessResource(
@@ -607,7 +599,7 @@ LdrFindEntryForAddress(
     OUT PLDR_DATA_TABLE_ENTRY *TableEntry
     );
 
-
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrDisableThreadCalloutsForDll (
@@ -641,6 +633,18 @@ LdrQueryProcessModuleInformation(
     OUT PULONG ReturnLength OPTIONAL
     );
 
+#define LDR_IMAGE_FILE_OPTIONS_KEY_LARGE_PAGE_DLLS L"LargePageDLLs"
+
+NTSYSAPI
+NTSTATUS
+NTAPI
+LdrOpenImageFileOptionsKey (
+    IN PCUNICODE_STRING ImagePathName,
+    IN BOOLEAN Wow64Path,
+    OUT PHANDLE KeyHandle
+    );
+
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrQueryImageFileExecutionOptions(
@@ -652,6 +656,7 @@ LdrQueryImageFileExecutionOptions(
     OUT PULONG ResultSize OPTIONAL
     );
 
+NTSYSAPI
 NTSTATUS
 LdrQueryImageFileExecutionOptionsEx(
     IN PCUNICODE_STRING ImagePathName,
@@ -663,6 +668,19 @@ LdrQueryImageFileExecutionOptionsEx(
     IN BOOLEAN Wow64Path
     );
 
+NTSYSAPI
+NTSTATUS
+NTAPI
+LdrQueryImageFileKeyOption (
+    IN HANDLE KeyHandle,
+    IN PCWSTR OptionName,
+    IN ULONG Type,
+    OUT PVOID Buffer,
+    IN ULONG BufferSize,
+    OUT PULONG ResultSize OPTIONAL
+    );
+
+NTSYSAPI
 BOOLEAN
 NTAPI
 LdrAlternateResourcesEnabled(
@@ -675,6 +693,7 @@ LdrGetAlternateResourceModuleHandle(
     IN PVOID Module
     );
 
+NTSYSAPI
 PVOID
 NTAPI
 LdrLoadAlternateResourceModule(
@@ -682,12 +701,14 @@ LdrLoadAlternateResourceModule(
     IN LPCWSTR PathToAlternateModule OPTIONAL
     );
 
+NTSYSAPI
 BOOLEAN
 NTAPI
 LdrUnloadAlternateResourceModule(
     IN PVOID Module
     );
 
+NTSYSAPI
 BOOLEAN
 NTAPI
 LdrFlushAlternateResourceModules(
@@ -757,6 +778,7 @@ VOID (NTAPI *PLDR_LOADED_MODULE_ENUMERATION_CALLBACK_FUNCTION)(
     IN OUT BOOLEAN *StopEnumeration
     );
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrEnumerateLoadedModules(
@@ -772,6 +794,7 @@ LdrEnumerateLoadedModules(
 #define LDR_LOCK_LOADER_LOCK_DISPOSITION_LOCK_ACQUIRED (1)
 #define LDR_LOCK_LOADER_LOCK_DISPOSITION_LOCK_NOT_ACQUIRED (2)
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrLockLoaderLock(
@@ -782,6 +805,7 @@ LdrLockLoaderLock(
 
 #define LDR_UNLOCK_LOADER_LOCK_FLAG_RAISE_ON_ERRORS (0x00000001)
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrUnlockLoaderLock(
@@ -792,6 +816,7 @@ LdrUnlockLoaderLock(
 #define LDR_GET_DLL_HANDLE_EX_UNCHANGED_REFCOUNT (0x00000001)
 #define LDR_GET_DLL_HANDLE_EX_PIN                (0x00000002)
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrGetDllHandleEx(
@@ -804,6 +829,7 @@ LdrGetDllHandleEx(
 
 #define LDR_ADDREF_DLL_PIN (0x00000001)
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrAddRefDll(
@@ -821,6 +847,7 @@ NTSTATUS (NTAPI *PLDR_APP_COMPAT_DLL_REDIRECTION_CALLBACK_FUNCTION)(
     OUT PWSTR *EffectiveDllPath
     );
 
+NTSYSAPI
 NTSTATUS
 NTAPI
 LdrSetAppCompatDllRedirectionCallback(
@@ -834,3 +861,4 @@ LdrSetAppCompatDllRedirectionCallback(
 #endif
 
 #endif // _NTLDRAPI_
+

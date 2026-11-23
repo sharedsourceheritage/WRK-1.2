@@ -1,6 +1,10 @@
 /*++ BUILD Version: 0001    // Increment this if a change has global effects
 
-Copyright (c) Microsoft Corporation.  All rights reserved.
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -14,13 +18,6 @@ Abstract:
 
     Initial clients of this include file are the NT Shell, along with
     the Windows, OS2 and POSIX subsystems.
-
-
-Author:
-
-    Steve Wood   [stevewo]   23-Feb-1989
-
-Revision History:
 
 --*/
 
@@ -66,9 +63,6 @@ Revision History:
 #elif defined(_X86_)
 #include "nti386.h"
 
-#elif defined(_IA64_)
-#include "ntia64.h"
-
 #else
 #error "no target defined"
 #endif // _AMD64_
@@ -104,9 +98,6 @@ Revision History:
 #elif defined(_X86_)
 #include "nxi386.h"
 
-#elif defined(_IA64_)
-#include "nxia64.h"
-
 #else
 #error "no target defined"
 #endif // _AMD64_
@@ -122,3 +113,4 @@ Revision History:
 #endif
 
 #endif // NT_INCLUDED
+

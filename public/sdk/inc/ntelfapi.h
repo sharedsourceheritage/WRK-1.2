@@ -1,6 +1,10 @@
 /*++
 
-Copyright (c) Microsoft Corporation.  All rights reserved.
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -9,12 +13,6 @@ Module Name:
 Abstract:
 
     This file contains the prototypes for the user-level Elf APIs.
-
-Author:
-
-    Rajen Shah (rajens) 30-Jul-1991
-
-Revision History:
 
 --*/
 
@@ -99,8 +97,6 @@ typedef struct _EVENTLOGRECORD {
     //
 } EVENTLOGRECORD, *PEVENTLOGRECORD;
 
-//SS: start of changes to support clustering
-//SS: ideally the
 #define MAXLOGICALLOGNAMESIZE   256
 
 #if _MSC_VER >= 1200
@@ -125,7 +121,6 @@ typedef struct _PACKEDEVENTINFO{
 #else
 #pragma warning(default : 4200)
 #endif
-//SS: end of changes to support clustering
 // end_winnt
 
 #ifdef UNICODE
@@ -158,211 +153,230 @@ typedef struct _PACKEDEVENTINFO{
 NTSTATUS
 NTAPI
 ElfClearEventLogFileW (
-    IN  HANDLE LogHandle,
-    IN  PUNICODE_STRING BackupFileName
+    __in HANDLE LogHandle,
+    __in_opt PUNICODE_STRING BackupFileName
     );
 
 NTSTATUS
 NTAPI
 ElfClearEventLogFileA (
-    IN  HANDLE LogHandle,
-    IN  PSTRING BackupFileName
+    __in  HANDLE LogHandle,
+    __in_opt  PSTRING BackupFileName
     );
 
 NTSTATUS
 NTAPI
 ElfBackupEventLogFileW (
-    IN  HANDLE LogHandle,
-    IN  PUNICODE_STRING BackupFileName
+    __in  HANDLE LogHandle,
+    __in  PUNICODE_STRING BackupFileName
     );
 
 NTSTATUS
 NTAPI
 ElfBackupEventLogFileA (
-    IN  HANDLE LogHandle,
-    IN  PSTRING BackupFileName
+    __in  HANDLE LogHandle,
+    __in  PSTRING BackupFileName
     );
 
 NTSTATUS
 NTAPI
 ElfCloseEventLog (
-    IN  HANDLE LogHandle
+    __in  HANDLE LogHandle
     );
 
 NTSTATUS
 NTAPI
 ElfDeregisterEventSource (
-    IN  HANDLE LogHandle
+    __in  HANDLE LogHandle
     );
 
 NTSTATUS
 NTAPI
 ElfNumberOfRecords (
-    IN  HANDLE LogHandle,
-    OUT PULONG NumberOfRecords
+    __in  HANDLE LogHandle,
+    __out PULONG NumberOfRecords
     );
 
 NTSTATUS
 NTAPI
 ElfOldestRecord (
-    IN  HANDLE LogHandle,
-    OUT PULONG OldestRecord
+    __in  HANDLE LogHandle,
+    __out PULONG OldestRecord
     );
 
 
 NTSTATUS
 NTAPI
 ElfChangeNotify (
-    IN  HANDLE LogHandle,
-    IN  HANDLE Event
+    __in  HANDLE LogHandle,
+    __in  HANDLE Event
     );
 
 
 NTSTATUS
 ElfGetLogInformation (
-    IN     HANDLE                LogHandle,
-    IN     ULONG                 InfoLevel,
-    OUT    PVOID                 lpBuffer,
-    IN     ULONG                 cbBufSize,
-    OUT    PULONG                pcbBytesNeeded
+    __in     HANDLE                LogHandle,
+    __in     ULONG                 InfoLevel,
+    __out_bcount(cbBufSize)    PVOID                 lpBuffer,
+    __in     ULONG                 cbBufSize,
+    __out    PULONG                pcbBytesNeeded
     );
 
 
 NTSTATUS
 NTAPI
 ElfOpenEventLogW (
-    IN  PUNICODE_STRING UNCServerName,
-    IN  PUNICODE_STRING SourceName,
-    OUT PHANDLE         LogHandle
+    __in_opt	PUNICODE_STRING UNCServerName,
+    __in		PUNICODE_STRING SourceName,
+    __out		PHANDLE         LogHandle
     );
 
 NTSTATUS
 NTAPI
 ElfRegisterEventSourceW (
-    IN  PUNICODE_STRING UNCServerName,
-    IN  PUNICODE_STRING SourceName,
-    OUT PHANDLE         LogHandle
+    __in_opt	PUNICODE_STRING UNCServerName,
+    __in		PUNICODE_STRING SourceName,
+    __out		PHANDLE         LogHandle
     );
 
 NTSTATUS
 NTAPI
 ElfOpenBackupEventLogW (
-    IN  PUNICODE_STRING UNCServerName,
-    IN  PUNICODE_STRING FileName,
-    OUT PHANDLE         LogHandle
+    __in_opt	PUNICODE_STRING UNCServerName,
+    __in		PUNICODE_STRING FileName,
+    __out		PHANDLE         LogHandle
     );
 
 NTSTATUS
 NTAPI
 ElfOpenEventLogA (
-    IN  PSTRING UNCServerName,
-    IN  PSTRING SourceName,
-    OUT PHANDLE LogHandle
+    __in_opt	PSTRING UNCServerName,
+    __in		PSTRING SourceName,
+    __in		PHANDLE LogHandle
     );
 
 NTSTATUS
 NTAPI
 ElfRegisterEventSourceA (
-    IN  PSTRING UNCServerName,
-    IN  PSTRING SourceName,
-    OUT PHANDLE LogHandle
+    __in_opt  PSTRING UNCServerName,
+    __in  PSTRING SourceName,
+    __out PHANDLE LogHandle
     );
 
 NTSTATUS
 NTAPI
 ElfOpenBackupEventLogA (
-    IN  PSTRING UNCServerName,
-    IN  PSTRING FileName,
-    OUT PHANDLE LogHandle
+    __in_opt  PSTRING UNCServerName,
+    __in  PSTRING FileName,
+    __out PHANDLE LogHandle
     );
 
 
 NTSTATUS
 NTAPI
 ElfReadEventLogW (
-    IN  HANDLE LogHandle,
-    IN  ULONG  ReadFlags,
-    IN  ULONG  RecordNumber,
-    OUT PVOID  Buffer,
-    IN  ULONG  NumberOfBytesToRead,
-    OUT PULONG NumberOfBytesRead,
-    OUT PULONG MinNumberOfBytesNeeded
+    __in  HANDLE LogHandle,
+    __in  ULONG  ReadFlags,
+    __in  ULONG  RecordNumber,
+    __out_bcount(NumberOfBytesToRead) PVOID  Buffer,
+    __in  ULONG  NumberOfBytesToRead,
+    __out PULONG NumberOfBytesRead,
+    __out PULONG MinNumberOfBytesNeeded
     );
 
 
 NTSTATUS
 NTAPI
 ElfReadEventLogA (
-    IN  HANDLE LogHandle,
-    IN  ULONG  ReadFlags,
-    IN  ULONG  RecordNumber,
-    OUT PVOID  Buffer,
-    IN  ULONG  NumberOfBytesToRead,
-    OUT PULONG NumberOfBytesRead,
-    OUT PULONG MinNumberOfBytesNeeded
+    __in  HANDLE LogHandle,
+    __in  ULONG  ReadFlags,
+    __in  ULONG  RecordNumber,
+    __out_bcount(NumberOfBytesToRead) PVOID  Buffer,
+    __in  ULONG  NumberOfBytesToRead,
+    __out PULONG NumberOfBytesRead,
+    __out PULONG MinNumberOfBytesNeeded
     );
 
 
 NTSTATUS
 NTAPI
 ElfReportEventW (
-    IN     HANDLE      LogHandle,
-    IN     USHORT      EventType,
-    IN     USHORT      EventCategory   OPTIONAL,
-    IN     ULONG       EventID,
-    IN     PSID        UserSid         OPTIONAL,
-    IN     USHORT      NumStrings,
-    IN     ULONG       DataSize,
-    IN     PUNICODE_STRING *Strings    OPTIONAL,
-    IN     PVOID       Data            OPTIONAL,
-    IN     USHORT      Flags,
-    IN OUT PULONG      RecordNumber    OPTIONAL,
-    IN OUT PULONG      TimeWritten     OPTIONAL
+    __in     HANDLE      LogHandle,
+    __in     USHORT      EventType,
+    __in_opt     USHORT      EventCategory,
+    __in     ULONG       EventID,
+    __in_opt     PSID        UserSid,
+    __in     USHORT      NumStrings,
+    __in     ULONG       DataSize,
+    __in_ecount_opt(NumStrings)     PUNICODE_STRING *Strings,
+    __in_bcount_opt(DataSize)     PVOID       Data,
+    __in     USHORT      Flags,
+    __inout_opt PULONG      RecordNumber,
+    __inout_opt PULONG      TimeWritten
     );
 
 NTSTATUS
 NTAPI
 ElfReportEventA (
-    IN     HANDLE      LogHandle,
-    IN     USHORT      EventType,
-    IN     USHORT      EventCategory   OPTIONAL,
-    IN     ULONG       EventID,
-    IN     PSID        UserSid         OPTIONAL,
-    IN     USHORT      NumStrings,
-    IN     ULONG       DataSize,
-    IN     PANSI_STRING *Strings       OPTIONAL,
-    IN     PVOID       Data            OPTIONAL,
-    IN     USHORT      Flags,
-    IN OUT PULONG      RecordNumber    OPTIONAL,
-    IN OUT PULONG      TimeWritten     OPTIONAL
+    __in     HANDLE      LogHandle,
+    __in     USHORT      EventType,
+    __in_opt     USHORT      EventCategory,
+    __in     ULONG       EventID,
+    __in_opt     PSID        UserSid,
+    __in     USHORT      NumStrings,
+    __in     ULONG       DataSize,
+    __in_ecount_opt(NumStrings)     PANSI_STRING *Strings,
+    __in_bcount_opt(DataSize)     PVOID       Data,
+    __in     USHORT      Flags,
+    __inout_opt PULONG      RecordNumber,
+    __inout_opt PULONG      TimeWritten
     );
 
 NTSTATUS
 NTAPI
 ElfRegisterClusterSvc(
-    IN  PUNICODE_STRING UNCServerName,
-	OUT PULONG pulEventInfoSize,
-	OUT PVOID  *ppPackedEventInfo
+    __in_opt  PUNICODE_STRING UNCServerName,
+    __out PULONG pulEventInfoSize,
+    __out PVOID  *ppPackedEventInfo
 );
 
 NTSTATUS
 NTAPI
 ElfDeregisterClusterSvc(
-    IN  PUNICODE_STRING UNCServerName
-	);
+    __in_opt  PUNICODE_STRING UNCServerName
+    );
 
 NTSTATUS
 NTAPI
 ElfWriteClusterEvents(
-    IN  PUNICODE_STRING UNCServerName,
-    IN  ULONG ulEventInfoSize,
-	IN PVOID  pPackedEventInfo
-	);
+    __in_opt PUNICODE_STRING UNCServerName,
+    __in ULONG ulEventInfoSize,
+    __in_bcount(ulEventInfoSize) PVOID pPackedEventInfo
+    );
 
 NTSTATUS
 NTAPI
 ElfFlushEventLog (
-    IN  HANDLE LogHandle
+    __in  HANDLE LogHandle
+    );
+
+NTSTATUS
+ElfReportEventAndSourceW (
+    __in      HANDLE          LogHandle,
+    __in      ULONG EventTime,
+    __in      PUNICODE_STRING pComputerNameU,
+    __in      USHORT          EventType,
+    __in_opt      USHORT          EventCategory,
+    __in      ULONG           EventID,
+    __in_opt      PSID            UserSid,
+    __in      PUNICODE_STRING     UNCSourceName,
+    __in      USHORT          NumStrings,
+    __in      ULONG           DataSize,
+    __in_ecount_opt(NumStrings)           PUNICODE_STRING *Strings,
+    __in_bcount_opt(DataSize)      PVOID           Data,
+    __in      USHORT          Flags,
+    __inout_opt  PULONG          RecordNumber,
+    __inout_opt  PULONG          TimeWritten
     );
 
 #ifdef __cplusplus
@@ -370,3 +384,4 @@ ElfFlushEventLog (
 #endif
 
 #endif // _NTELFAPI_
+

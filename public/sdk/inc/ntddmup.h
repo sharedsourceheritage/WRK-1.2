@@ -1,6 +1,10 @@
-/*++ BUILD Version: 0001    // Increent this if a change has global effects
+/*++ BUILD Version: 0001    // Increment this if a change has global effects
 
-Copyright (c) 1990-1999  Microsoft Corporation
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -9,13 +13,7 @@ Module Name:
 Abstract:
 
     This is the include file that defines all constants and types for
-    accessing the Multiple UNC prodiver system device.
-
-Author:
-
-    Manny Weiser (mannyw) 27-Dec-1991
-
-Revision History:
+    accessing the Multiple UNC provider system device.
 
 --*/
 
@@ -54,16 +52,11 @@ typedef struct _REDIRECTOR_REGISTRATION {
     ULONG ShortNameOffset;
     ULONG ShortNameLength;
     BOOLEAN MailslotsSupported;
-    // PWCH DeviceName[];
-    // PWCH ShortName[];
 } REDIRECTOR_REGISTRATION, *PREDIRECTOR_REGISTRATION;
 
 #ifndef _NTIFS_
 
-//!!! Move to redir
-//
-// NtDeviceIoControlFile calls to the redirector
-//
+
 // begin_ntifs
 
 #define IOCTL_REDIR_QUERY_PATH              CTL_CODE(FILE_DEVICE_NETWORK_FILE_SYSTEM, 99, METHOD_NEITHER, FILE_ANY_ACCESS)
@@ -86,3 +79,4 @@ typedef struct _QUERY_PATH_RESPONSE {
 #endif
 
 #endif  // _NTDDMUP_
+

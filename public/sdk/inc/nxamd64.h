@@ -1,6 +1,10 @@
 /*++
 
-Copyright (c) Microsoft Corporation.  All rights reserved.
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -12,12 +16,6 @@ Abstract:
 
     This file contains platform specific definitions that are included
     after all other files have been included from nt.h.
-
-Author:
-
-    David N. Cutler (davec) 6-May-2000
-
-Revision History:
 
 --*/
 
@@ -40,19 +38,15 @@ extern "C" {
 
 #if defined(_M_AMD64) && !defined(__midl)
 
-// end_winnt
-
 __forceinline
-PTEB
+struct _TEB *
 NtCurrentTeb (
     VOID
     )
 
 {
-    return (PTEB)__readgsqword(FIELD_OFFSET(NT_TIB, Self));
+    return (struct _TEB *)__readgsqword(FIELD_OFFSET(NT_TIB, Self));
 }
-
-// begin_winnt
 
 __forceinline
 PVOID
@@ -85,3 +79,4 @@ GetFiberData (
 #endif
 
 #endif // _NXAMD64_
+

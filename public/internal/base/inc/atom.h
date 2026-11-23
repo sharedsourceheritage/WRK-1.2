@@ -1,6 +1,10 @@
 /*++
 
-Copyright (c) Microsoft Corporation.  All rights reserved.
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -13,12 +17,6 @@ Abstract:
     ntrtl.lib
 
     Procedure prototypes are defined in ntrtl.h
-
-Author:
-
-    Steve Wood (stevewo) 27-Nov-1995
-
-Revision History:
 
 --*/
 
@@ -53,3 +51,4 @@ typedef struct _RTL_ATOM_HANDLE_TABLE_ENTRY {
     USHORT LockCount;
     PRTL_ATOM_TABLE_ENTRY Atom;
 } RTL_ATOM_HANDLE_TABLE_ENTRY, *PRTL_ATOM_HANDLE_TABLE_ENTRY;
+

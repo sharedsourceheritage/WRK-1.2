@@ -1,6 +1,10 @@
 /*++
 
-Copyright (c) Microsoft Corporation.  All rights reserved.
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
+If you do not agree to the terms, do not use the code.
+
 
 Module Name:
 
@@ -14,17 +18,6 @@ Abstract:
 
     The routines in this file should not be used outside of the security
     related rtl files.
-
-Author:
-
-    Robert P. Reichel (robertre)    6-12-91
-
-Environment:
-
-    These routines are statically linked in the caller's executable and
-    are callable in either kernel mode or user mode.
-
-Revision History:
 
 --*/
 
@@ -226,7 +219,7 @@ RtlpInitializeDeniedAce(
     );
 
 NTSTATUS
-RtlpInitializeAuditAce(
+RtlpInitializeAuditAce (
     IN  PACCESS_ALLOWED_ACE AuditAce,
     IN  USHORT AceSize,
     IN  UCHAR InheritFlags,
@@ -236,7 +229,7 @@ RtlpInitializeAuditAce(
     );
 
 BOOLEAN
-RtlpValidOwnerSubjectContext(
+RtlpValidOwnerSubjectContext (
     IN HANDLE Token,
     IN PSID Owner,
     IN BOOLEAN ServerObject,
@@ -244,24 +237,23 @@ RtlpValidOwnerSubjectContext(
     );
 
 VOID
-RtlpQuerySecurityDescriptor(
-    IN PISECURITY_DESCRIPTOR SecurityDescriptor,
-    OUT PSID *Owner,
-    OUT PULONG OwnerSize,
-    OUT PSID *PrimaryGroup,
-    OUT PULONG PrimaryGroupSize,
-    OUT PACL *Dacl,
-    OUT PULONG DaclSize,
-    OUT PACL *Sacl,
-    OUT PULONG SaclSize
+RtlpQuerySecurityDescriptor (
+    __in PISECURITY_DESCRIPTOR SecurityDescriptor,
+    __deref_out PSID *Owner,
+    __out PULONG OwnerSize,
+    __deref_out PSID *PrimaryGroup,
+    __out PULONG PrimaryGroupSize,
+    __deref_out PACL *Dacl,
+    __out PULONG DaclSize,
+    __deref_out PACL *Sacl,
+    __out PULONG SaclSize
     );
-
-
 
 NTSTATUS
 RtlpFreeVM(
     IN PVOID *Base
     );
+
 NTSTATUS
 RtlpConvertToAutoInheritSecurityObject(
     IN PSECURITY_DESCRIPTOR ParentDescriptor OPTIONAL,
