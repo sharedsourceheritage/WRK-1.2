@@ -35,5 +35,7 @@ razzle win32 offline
 
 Supports Windows 10 2019 Enterprise LTSC, USE AT YOU OWN RISK! Works on my Machine.
 
+Files are checked in as is and checked out as is.
+
 ![lab00_n](lab00_n.png)
 
