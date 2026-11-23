@@ -2,9 +2,12 @@
 /suse/
 /cygwin/
 /isc/
+/binaries.ia64chk/
+/binaries.amdchk/
 /binaries.x86chk/
 /binaries.x86fre/
 /binaries.amd64fre/
+/binaries.ia64fre/
 /windowsserverdocs/
 /onboarding/
 /craftroot/
