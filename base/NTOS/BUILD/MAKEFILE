@@ -24,7 +24,7 @@ bootlibs = bootvid.lib sdbapint.lib kdcom.lib
 fullkernel	  = EXE\$(kernel)
 
 # kernel link definitions
-LINKFLAGS = -IGNORE:4087,4001,4010,4037,4039,4065,4070,4078,4087,4089,4221,4198 -WX -NODEFAULTLIB -machine:$(machine) $(linklibpath)
+LINKFLAGS = -IGNORE:4087,4001,4010,4037,4039,4065,4070,4078,4087,4089,4221,4198 -NODEFAULTLIB -machine:$(machine) $(linklibpath)
 LINK 	  = link.exe -nologo
 LINKEDIT  = link.exe -edit -nologo
 
