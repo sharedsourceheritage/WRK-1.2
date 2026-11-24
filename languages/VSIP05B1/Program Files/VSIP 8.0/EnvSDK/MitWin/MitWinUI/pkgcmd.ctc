@@ -1,0 +1,81 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+// Package Command Bar Definition
+//
+
+#include "stdidcmd.h"
+#include "vsshlids.h"
+#include "msobtnid.h"
+#include "virtkeys.h"
+#include "PkgCmdID.h"
+#include "Resource.h"
+
+#define _CTC_GUIDS_
+#include "..\Guids.h"
+    // defines the following guid
+    // guidMitWinPkg - CommandBar Package Guid
+    // guidMitWinMenuGrp - CommandBar Command Group Guid
+    // guidMitWinCmdSet - CommandBar Command Guid
+
+CMDS_SECTION guidMitWinPkg
+
+    MENUS_BEGIN
+        // NewMenu                              Relative to Group                     Priority    Type        Name                    Text
+        
+        // Toolbars
+        guidMitWinMenuGrp:IDM_TLB_MWTOOL,       guidMitWinMenuGrp:IDM_TLB_MWTOOL,       0x0000, TOOLWINDOWTOOLBAR, "MitWinTool",  "MitWinTool";
+
+        // MW Cascading Menu
+        guidMitWinMenuGrp:IDM_MW_CASCADE,       guidSHLMainMenu:IDG_VS_VIEW_BROWSER,    0x0000,     , "MWToolWindow",   "&MWToolWindow";
+
+    MENUS_END
+
+    NEWGROUPS_BEGIN
+        // NewGroup                     Parent Group                            Priority
+
+        // MW Cascading Menu Group
+        guidMitWinMenuGrp:IDG_MW_LIST,          guidMitWinMenuGrp:IDM_MW_CASCADE,       0x0010;
+
+        guidMitWinMenuGrp:IDG_MAINTOOL_VIEW,  guidMitWinMenuGrp:IDM_TLB_MWTOOL,       0x0010;
+
+    NEWGROUPS_END
+
+    BUTTONS_BEGIN
+    guidMitWinCmdSet:icmdMWToolWindow,          guidSHLMainMenu:IDG_VS_VIEW_BROWSER,    0x0100,     guidMitWinMenuGrp:bmpidMWTool,  BUTTON,  DYNAMICVISIBILITY  ,   "&MWToolWindow";
+        // This icmdMWToolWindow is not defined as a shared command, so it uses our package CLSID
+        // as the command set GUID. Also, by specifying blank for the FLAGS, this command is
+        // default visible and enabled. Other valid values for FLAGS are the following:
+        //    DEFAULTDISABLED, DEFAULTINVISIBLE, DYNAMICVISIBILITY, TEXTCHANGES
+        // These values for FLAGS can be or'ed together, e.g. "DEFAULTINVISIBLE | DYNAMICVISIBILITY"
+
+    // Cascading menu commands
+    guidMitWinCmdSet:icmdListFirst, guidMitWinMenuGrp:IDG_MW_LIST,  0x0001,     guidMitWinMenuGrp:bmpidMWTool,  BUTTON,     DYNAMICITEMSTART | TEXTCHANGES | DYNAMICVISIBILITY | DEFAULTINVISIBLE | DEFAULTDISABLED ,   " ";
+
+    // Main Tool Commands
+    guidMitWinCmdSet:icmdNewWindow,   guidMitWinMenuGrp:IDG_MAINTOOL_VIEW,   0x0010,  guidMitWinMenuGrp:bmpidNewWindow,    BUTTON,  ,                "New Window";
+
+    BUTTONS_END
+
+    BITMAPS_BEGIN
+        // Bitmap                          Bitmap Index, Bitmap Index ...
+        guidMitWinMenuGrp:IDB_CMDBAR,      bmpidMWTool, bmpidNewWindow;
+    BITMAPS_END
+
+CMDS_END
+
+CMDPLACEMENT_SECTION
+    // Command                             Group                                Priority
+CMDPLACEMENT_END
+
+VISIBILITY_SECTION
+    // Command                             GUID when visible
+VISIBILITY_END
+
+KEYBINDINGS_SECTION
+    // Command                             when available   emulation    keystate
+KEYBINDINGS_END

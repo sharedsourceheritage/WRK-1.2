@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "652178",
+    "ThreadId": "267681",
+    "Html": "\r\n<p>I've been attempting to write preconditions and post-conditions for the &quot;Heapify&quot; method for a Min Priority Queue.</p>\r\n<p>Anyways, like the title says, I would like to say something like this in my requires clause:</p>\r\n<p>private void Heapify(int i)</p>\r\n<p><span style=\"white-space:pre\"></span>requires 1 &lt;= i &amp;&amp; i &lt;= Max_Length;</p>\r\n<p><span style=\"white-space:pre\"></span>requires forall{ int j in (i&#43;1: Size); if (2*j &lt;= Size) then Data[j] &lt; Data[(2*j) &amp;&amp; if ((2*j)&#43;1 &lt;= Size) then&nbsp;Data[j] &lt; Data[((2*j) &#43; 1)]};</p>\r\n<p><span style=\"white-space:pre\"></span>ensures forall{ int j in (i: Size); if (2*j &lt;= Size) then&nbsp;Data[j] &lt; Data[(2*j) &amp;&amp; if ((2*j)&#43;1 &lt;= Size) then&nbsp;Data[j] &lt; Data[((2*j) &#43; 1)]};</p>\r\n<p><span style=\"white-space:pre\"></span>{ ... }</p>\r\n<p>Note the presence of the if-then.</p>\r\n<p>Is this currently possible to do this with spec#?</p>\r\n<p>I'm using a fixed-size array to represent my heap, however, in order to access the left and right children from any possible index, I'm using the typical 'formula' of 2*index and (2*index) &#43; 1. The reason this ends up being an issue is because - during a\r\n typical call to heapify - it is commonly the case where &nbsp;index * 2 or index*2&#43;1 outsteps the bounds of Size (an instance variable of my Queue class that describes how much the user has inserted into the array) the actual heapify code handles this though.\r\n While there is legitimate data in the array at indices &gt; Size, I want to ignore them since they are no longer part of the heap. Anyways, without that &quot;if&quot;&nbsp;check the verifier - rightfully so - picks up on failed conditions entering heapify since I am\r\n not trying to guarantee that anything greater than size is a valid min heap.&nbsp;</p>\r\n",
+    "PostedDate": "2011-08-04T00:12:16.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "652227",
+    "ThreadId": "267681",
+    "Html": "<p>Hi!</p>\r\n<p>syntactically there is no if-then construct in Spec#. However, the implication operator (==&gt; in Spec#) can be used here. The following code should verify:</p>\r\n<p>class Heap {<br />&nbsp; int[]! Data = new int[10];<br />&nbsp; int Size;<br />&nbsp; invariant Size &lt;= Data.Length;<br /><br />&nbsp; private void Heapify(int i)<br />&nbsp; &nbsp; requires 1 &lt;= i &amp;&amp; i &lt;= Data.Length;<br />&nbsp; &nbsp; requires forall{ int j in (i+1: Size); ((2*j &lt;= Size) ==&gt; Data[j] &lt; Data[2*j]) &amp;&amp; (((2*j)+1 &lt;= Size) ==&gt; Data[j] &lt; Data[((2*j) + 1)]) };<br />&nbsp; {}<br />}</p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2011-08-04T01:42:08.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

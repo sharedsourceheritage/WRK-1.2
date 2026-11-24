@@ -1,0 +1,131 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// SlnExt.idl : IDL source for SlnExt.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SlnExt.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+
+
+//standard dispids
+#define DISPID_Name                     (-800)
+#define DISPID_Delete                   (-801)
+#define DISPID_Object                   (-802)
+#define DISPID_Parent                   (-803)
+#define DISPID_NewEnum					(-4)
+#define DISPID_Value					(0)
+
+[
+	uuid(4e77ed36-f826-11d2-8072-00c04f8ec1b3),
+	version(1.0),
+	helpstring("SlnExt 1.0 Type Library")
+]
+library SlnExtLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	importlib("dte.tlb");
+	
+	interface ISolutionNotes;
+	interface ISolutionNote;
+	dispinterface DSolutionNotesEvents;
+
+	[
+		uuid(4e77ed3a-f826-11d2-8072-00c04f8ec1b3),
+		object,
+		dual,
+		helpstring("ISolutionNotes Collection")
+	]
+	interface ISolutionNotes : IDispatch
+	{
+		[propget, id(1), helpstring("property DTE")] HRESULT DTE([out, retval] _DTE* *pVal);
+		[propget, id(DISPID_Parent), helpstring("property Parent")] HRESULT Parent([out, retval] _DTE* *pVal);
+		[propget, id(3), helpstring("property Count")] HRESULT Count([out, retval] long *pVal);
+		[propget, id(DISPID_NewEnum), helpstring("property _NewEnum"), restricted] HRESULT _NewEnum([out, retval] IUnknown**pVal);
+		[id(DISPID_Value), helpstring("method Item")] HRESULT Item([in] VARIANT Index, [out, retval] ISolutionNote** ppVal);
+		[id(5), helpstring("method Add")] HRESULT Add([out, retval]ISolutionNote** ppVal);
+	};
+
+	[
+		uuid(4e77ed3b-f826-11d2-8072-00c04f8ec1b3),
+		helpstring("DSolutionNotes Events")
+	]
+	dispinterface DSolutionNotesEvents
+	{
+		properties:
+		methods:
+		[id(1)] void NoteAdded([in] ISolutionNote* pNewNote);
+		[id(2)] void NoteRenamed([in] ISolutionNote* pNote, [in, out] BSTR* pNewName);
+		[id(3)] void NoteDeleted([in] ISolutionNote* pNote, [in, out] VARIANT_BOOL* pfCancel);
+	};
+
+	[
+		uuid(4e77ed3c-f826-11d2-8072-00c04f8ec1b3),
+		object,
+		dual,
+		helpstring("ISolutionNote Object")
+	]
+	interface ISolutionNote : IDispatch
+	{
+		[propget, id(1), helpstring("property DTE")] HRESULT DTE([out, retval] _DTE* *pVal);
+		[propget, id(DISPID_Parent), helpstring("property Parent")] HRESULT Parent([out, retval] _DTE* *pVal);
+		[propget, id(2), helpstring("Collection")] HRESULT Collection([out, retval] ISolutionNotes** pVal);
+		[propget, id(DISPID_Name), helpstring("Name property")] HRESULT Name([out, retval] BSTR* pVal);
+		[propput, id(DISPID_Name), helpstring("Name property")] HRESULT Name([in] BSTR bstrName);
+		[propget, id(3), helpstring("IsShared property")] HRESULT IsShared([out, retval] VARIANT_BOOL* pfShared);
+		[propput, id(3), helpstring("IsShared property")] HRESULT IsShared([in] VARIANT_BOOL fShared);
+		[propget, id(4), helpstring("IsIssue property")] HRESULT IsIssue([out, retval] VARIANT_BOOL* pfShared);
+		[propput, id(4), helpstring("IsIssue property")] HRESULT IsIssue([in] VARIANT_BOOL fShared);
+		[propget, id(5), helpstring("Size property")] HRESULT Size([out, retval] long* pVal);
+		[propget, id(6), helpstring("Show/Hide the note"), nonbrowsable] HRESULT Visible([out, retval] VARIANT_BOOL* pfVisible);
+		[propput, id(6), helpstring("Show/Hide the note"), nonbrowsable] HRESULT Visible([in] VARIANT_BOOL fVisible);
+		[propget, id(7), helpstring("Get the modified state"), nonbrowsable] HRESULT Modified([out, retval] VARIANT_BOOL* pfModified);
+	};
+
+
+	[
+		uuid(4e77ed3d-f826-11d2-8072-00c04f8ec1b3),
+		helpstring( "SolutionNotes Object")
+	]
+	coclass SolutionNotes
+	{
+		[default] interface ISolutionNotes;
+		[default, source] dispinterface DSolutionNotesEvents;
+	};
+
+	[
+		uuid(4e77ed3e-f826-11d2-8072-00c04f8ec1b3),
+		helpstring( "SolutionNote Object" )
+	]
+	coclass SolutionNote
+	{
+		[default] interface ISolutionNote;
+	};
+
+
+	[
+		uuid(4e77ed37-f826-11d2-8072-00c04f8ec1b3),
+		helpstring("SlnExt Package")
+	]
+	coclass SlnExtPackage
+	{
+		[default] interface IVsPackage;
+	};
+};

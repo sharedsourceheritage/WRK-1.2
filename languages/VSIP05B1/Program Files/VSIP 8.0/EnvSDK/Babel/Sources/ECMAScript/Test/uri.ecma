@@ -1,0 +1,60 @@
+var good = true;
+
+String.prototype.toCharCode = function () {
+	var array = new Array(this.length);
+	for (var i = 0; i < this.length; i++)
+		array[i] = this.charCodeAt(i);
+	return array;
+}
+
+function URITest(array) {
+	var str1 = String.fromCharCode(array);
+
+	try {
+		var str2 = encodeURI(str1);
+	} catch (err) {
+		print("[" + array + "]: " + err.description);
+		good = false;
+	}
+
+	try {
+		var str3 = decodeURI(str2);
+	} catch (err) {
+		print("[" + array + "] -> \"" + str2 + "\": " + err.description);
+		good = false;
+	}
+
+	if (str1 != str3) {
+		print("[" + array + "] -> \"" + str2 + "\" -> [" + str3.charCodeAt() + "]");
+		good = false;
+	}
+}
+
+var major = ScriptEngineMajorVersion();
+var minor = ScriptEngineMinorVersion();
+if (major > 5 || major == 5 && minor >= 5) {
+	array = new Array(1);
+	for (var i = 0; i < 0x80; i++) {
+		array[0] = i;
+		URITest(array);
+	}
+	for (i = 0x80; i < 0xd800; i += 0x20) {
+		array[0] = i;
+		URITest(array);
+	}
+	for (i = 0xe000; i < 0x10000; i += 0x20) {
+		array[0] = i;
+		URITest(array);
+	}
+	var array = new Array(2);
+	for (i = 0xd800; i < 0xdc00; i += 0x20) {
+		array[0] = i;
+		for (var j = 0xdc00; j < 0xe000; j += 0x20) {
+			array[1] = j;
+			URITest(array);
+		}
+	}
+}
+
+if (good)
+	print("No errors");

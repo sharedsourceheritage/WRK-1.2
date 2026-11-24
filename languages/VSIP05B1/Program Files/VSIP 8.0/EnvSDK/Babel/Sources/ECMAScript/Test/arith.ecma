@@ -1,0 +1,82 @@
+function Nob() { return "9.8"; }
+var obj = new Object;
+var nob = new Object;
+nob.toString = Nob;
+
+var undef = undefined;
+var objects = [ 77.5, true, false, "285.3", nob, "hello", obj, null, undef ];
+
+var fvtNum   = 1 << 0;
+var fvtTrue  = 1 << 1;
+var fvtFalse = 1 << 2;
+var fvtNst   = 1 << 3;
+var fvtNob   = 1 << 4;
+var fvtStr   = 1 << 5;
+var fvtObj   = 1 << 6;
+var fvtNull  = 1 << 7;
+var fvtUndef = 1 << 8;
+
+var grfvtAll       = ~0;
+var grfvtScalar    = fvtNum  | fvtTrue | fvtFalse;
+var grfvtScalarStr = fvtNst  | fvtNob;
+var grfvtStr       = fvtNst  | fvtStr;
+var grfvtObj       = fvtNob  | fvtObj;
+var grfvtBad       = fvtNull | fvtUndef;
+
+function DoBinOp(op, grfvt1, grfvt2)
+{
+	var str = "objects[i] " + op + " objects[j]";
+
+	for (var i = 0; i < objects.length; i++)
+		if (grfvt1 & 1 << i) {
+			for (var j = 0; j < objects.length; j++)
+				if (grfvt2 & 1 << j)
+					print("[", objects[i], op, objects[j], " = ", eval(str), "]");
+			print("");
+		}
+}
+
+print("***** Add *****");
+DoBinOp(" + ", ~grfvtBad, ~grfvtBad);
+DoBinOp(" + ", grfvtBad, grfvtObj | grfvtStr);
+DoBinOp(" + ", grfvtObj | grfvtStr, grfvtBad);
+
+print("***** Sub *****");
+DoBinOp(" - ", grfvtScalar | grfvtScalarStr, grfvtScalar | grfvtScalarStr);
+
+print("***** Mul *****");
+DoBinOp(" * ", grfvtScalar | grfvtScalarStr, grfvtScalar | grfvtScalarStr);
+
+print("***** Div *****");
+DoBinOp(" / ", grfvtScalar | grfvtScalarStr, grfvtScalar | grfvtScalarStr);
+
+print("***** Mod *****");
+DoBinOp(" % ", grfvtScalar | grfvtScalarStr, grfvtScalar | grfvtScalarStr);
+
+print("***** And *****");
+DoBinOp(" & ", grfvtScalar | grfvtScalarStr, grfvtScalar | grfvtScalarStr);
+
+print("***** Xor *****");
+DoBinOp(" ^ ", grfvtScalar | grfvtScalarStr, grfvtScalar | grfvtScalarStr);
+
+print("***** Or *****");
+DoBinOp(" | ", grfvtScalar | grfvtScalarStr, grfvtScalar | grfvtScalarStr);
+
+print("***** Lsh *****");
+DoBinOp(" << ", grfvtScalar | grfvtScalarStr, grfvtScalar | grfvtScalarStr);
+
+print("***** Rsh *****");
+DoBinOp(" >> ", grfvtScalar | grfvtScalarStr, grfvtScalar | grfvtScalarStr);
+
+print("***** Rs2 *****");
+DoBinOp(" >>> ", grfvtScalar | grfvtScalarStr, grfvtScalar | grfvtScalarStr);
+
+print("***** EQ *****");
+DoBinOp(" == ", grfvtAll, grfvtAll);
+
+print("***** NE *****");
+DoBinOp(" != ", grfvtAll, grfvtAll);
+
+print("***** LT *****");
+DoBinOp(" < ", grfvtStr | grfvtObj, grfvtStr | grfvtObj);
+DoBinOp(" < ", grfvtScalarStr | grfvtScalar, grfvtScalarStr | grfvtScalar);

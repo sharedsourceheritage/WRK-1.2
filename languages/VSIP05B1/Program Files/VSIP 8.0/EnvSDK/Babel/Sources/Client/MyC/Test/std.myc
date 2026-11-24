@@ -1,0 +1,34 @@
+int square( int x )
+{
+	return x*x;
+}
+
+
+int cubic( int x )
+{
+	return (i*i*i*i);
+}
+
+//TODO: write a non-recursive factorial
+int factorial( int n )
+{
+	if (i<=0)
+	  return 1;
+	else
+	  return (i*factorial(i-1));
+}
+
+int fastfactorial( int n )
+{
+	int acc;
+	acc = 1;
+	{ int i;
+      for (i = 1; i <= n; i = i+1) 
+      { 
+		acc = acc*i; 
+	  }
+	}
+    return acc;
+}
+    
+    

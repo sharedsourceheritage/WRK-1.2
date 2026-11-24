@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "531193",
+    "ThreadId": "237152",
+    "Html": "\r\n<p>EDIT: Nvm I solved it just expressed the post condition in another way. Mod can delete this topic now!</p>\r\n",
+    "PostedDate": "2010-12-04T12:42:08.02-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "534975",
+    "ThreadId": "237152",
+    "Html": "\r\n<p>I just looked at your emaple anyway. The problem is that the loop invariant was wrong. Here is a version that verifies. Note that the range of the min-operator in the loop invariant needs to go until a.Length (not i). I also cleaned up the method body a\r\n bit.</p>\r\n<p>&nbsp;&nbsp; Peter</p>\r\n<p>&nbsp; static void selectionSort(int[]! a)<br>\r\n&nbsp; modifies a[*];<br>\r\n&nbsp; ensures forall{int k in (0:a.Length);&nbsp; a[k]==min{int l in (k: a.Length); a[l]}};<br>\r\n&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp; int smallest = 0;<br>\r\n&nbsp;&nbsp;&nbsp; int i = 0;<br>\r\n&nbsp;&nbsp;&nbsp; int temp = 0;<br>\r\n&nbsp;&nbsp;&nbsp; if (a.Length&gt;1) {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while (i&lt;a.Length)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; invariant 0&lt;=i &amp;&amp; i&lt;=a.Length;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; invariant forall{int k in(0:i); a[k]==min{int l in (k:a.Length); a[l]}};<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; smallest = returnMinIndex(a,i);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp = a[i];<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a[i]=a[smallest];<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a[smallest]=temp;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i&#43;&#43;;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp; <br>\r\n&nbsp; }<br>\r\n&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-13T05:49:49.853-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

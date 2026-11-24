@@ -1,0 +1,135 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// FigEdit.idl : IDL source for the custom editor Package
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (FigEdit.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+import "parse.idl";
+#include "..\FigPkgUI\resource.h"
+
+#define HELP(str) helpstringcontext(IDS_HELP_##str) 
+
+	[
+		uuid(52C91110-8158-11d1-AF83-006097DF568C),
+		helpstring("IFigLineSelect Interface for FigPkgs Sample"),
+		pointer_default(unique)
+	]
+	interface IFigLineSelect : IUnknown
+	{
+		HRESULT SetSelection( [in] BOOL fSelected );
+		HRESULT GetSelection( [out] BOOL *pfSelected );
+	};
+
+
+	[
+		object,
+		uuid(C213B5F0-8C5A-11d1-AF8C-006097DF568C),
+		dual,
+		helpstring("IFigEditLine Interface"),
+		pointer_default(unique)
+	]
+	interface IFigEditLine : IDispatch
+	{
+        // Properties
+		[propput, id(100), HELP(IFigEditLine_Type)]
+		HRESULT Type( [in] enum FigLineType Type );
+		[propget, id(100), HELP(IFigEditLine_Type)]
+		HRESULT Type( [out,retval] enum FigLineType *pType );
+
+		[propput, id(101), HELP(IFigEditLine_Parameter1)]
+		HRESULT Parameter1( [in] long Param );
+		[propget, id(101), HELP(IFigEditLine_Parameter1)]
+		HRESULT Parameter1( [out,retval] long *pParam );
+
+		[propput, id(102), HELP(IFigEditLine_Parameter2)]
+		HRESULT Parameter2( [in] long Param );
+		[propget, id(102), HELP(IFigEditLine_Parameter2)]
+		HRESULT Parameter2( [out,retval] long *pParam );
+
+		[propput, id(103), HELP(IFigEditLine_Parameter3)]
+		HRESULT Parameter3( [in] long Param );
+		[propget, id(103), HELP(IFigEditLine_Parameter3)]
+		HRESULT Parameter3( [out,retval] long *pParam );
+
+		[propput, id(104), HELP(IFigEditLine_Parameter4)]
+		HRESULT Parameter4( [in] long Param );
+		[propget, id(104), HELP(IFigEditLine_Parameter4)]
+		HRESULT Parameter4( [out,retval] long *pParam );
+
+		[propput, id(105), HELP(IFigEditLine_Comment)]
+		HRESULT Comment( [in] BSTR pbstrComment );
+		[propget, id(105), HELP(IFigEditLine_Comment)]
+		HRESULT Comment( [out,retval] BSTR *ppbstrComment );
+	};
+
+
+	[
+		uuid(28739E64-69A8-4bae-BB58-F0AB15F64293),
+		helpstring("IFigOutline Interface"),
+		pointer_default(unique)
+	]
+	interface IFigOutline : IUnknown
+	{
+        HRESULT Init(
+             [in] IVsTextLines* pIVsTextLines,
+             [in] HWND hwndParent,
+             [in] IVsTextView* pIVsTextViewPrimary); // can be NULL
+                       
+        HRESULT Close();
+	};
+
+	cpp_quote("#define SID_SFigOutline IID_IFigOutline")
+
+
+[
+	uuid(FA554DC0-6DD4-11d1-AF71-006097DF568C),
+	version(1.0),
+
+    // Set the name of the DLL to use to perform the document string lookup 
+    // (localization).
+    // DLLGetDocumentation will be called with the id specified in helpstringcontext
+    helpstringdll("figedit.dll"),
+    helpstring("FigEdit custom editor Package for FigPkgs Sample 1.0 Type Library"),
+]
+library FigPkgLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(FA554DC1-6DD4-11d1-AF71-006097DF568C),
+        helpstring("FigEdit custom editor Class for FigPkgs Sample")
+	]
+	coclass FigEditPackage
+	{
+		[default] interface IVsPackage;
+	};
+
+	[
+		uuid(E9A81BE0-8D29-11d1-AF8D-006097DF568C),
+        helpstring("CFigEditLine Class")
+	]
+	coclass CFigEditLine
+	{
+		[default] interface IFigEditLine;
+	};
+
+};

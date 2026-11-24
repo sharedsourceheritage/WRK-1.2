@@ -1,0 +1,75 @@
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove Packages
+    {
+        '%CLSID_Package%' = s 'Environment Utilities'
+        {
+            val InprocServer32 = s '%MODULE%'
+
+            val CompanyName = s 'Microsoft'
+            val ProductName = s 'File Explorer Sample'
+            val ProductVersion  = s '7.1'
+            val MinEdition  = s 'professional'
+            val ID  = d '%IDS_PACKAGE_LOAD_KEY%'
+ 
+            SatelliteDll
+            {
+                val DllName = s '%RESOURCE_DLL%'
+                val Path = s '%RESOURCE_PATH%'
+            }
+            ExData
+            {
+                val '%GUID_ExDataEE%' = s ''
+            }
+        }
+    }
+    NoRemove Menus
+    {
+	    val '%CLSID_Package%' = s ', 1000, 1'
+    }
+    NoRemove ToolWindows
+    {
+        '%guidFileSysTool%' = s '%CLSID_Package%'
+        {
+            val Name = s 'File System Browser'
+			val Style = s 'Float'
+			val Orientation = s 'Left'
+			val Float = s '100,100,300,400'
+			val Window = s '%GUID_TaskList%'
+        }
+    }
+    NoRemove OutputWindow
+    {
+        '%guidFileSysOutputWindow%' = s '#%IDS_OUTPUTWIN_TITLE%'
+        {
+            val Name = s 'File System Browser Output'
+            val InitiallyVisible = d '0'
+            val Package = s '%CLSID_Package%'
+            val ClearWithSolution = d '1'
+        }
+    }
+    NoRemove Services
+    {
+        '%SID_SMagicDisplay%' = s '%CLSID_Package%'
+        {
+            val Name = s 'SMagicDisplay Service'
+        }
+        '%SID_SCommandExecuter%' = s '%CLSID_Package%'
+        {
+            val Name = s 'SCommandExecuter Service'
+        }
+    }
+    NoRemove InstalledProducts
+    {
+        'FileExplorerSample' = s '#%IDS_OFFICIALNAME%'
+        {
+            val Package = s '%CLSID_Package%'
+            val ProductDetails = s '#%IDS_PRODUCTDETAILS%'
+            val PID = s '7.1'
+            val LogoID = s '#%IDI_ABOUT%'
+            val UseInterface = d '0'
+        }
+    }
+    %REGROOTEND%
+}

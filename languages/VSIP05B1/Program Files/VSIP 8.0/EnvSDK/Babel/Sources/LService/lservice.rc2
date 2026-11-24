@@ -1,0 +1,30 @@
+#ifndef APSTUDIO_INVOKED
+
+/////////////////////////////////////////////////////////////////////////////
+// Version stamp for this .DLL
+
+#include <winver.h>
+#ifdef SXS_TARGET
+#include "verstamp.h"	// includes version.h; defines common parts of versioninfo
+#endif
+
+///////////////////////////////////////////
+//
+// Set up the defines for use in common.ver
+//
+
+// defines for the VS_VERSION block
+
+#define VER_FILETYPE			VFT_DLL
+#define VER_FILESUBTYPE 		VFT_UNKNOWN
+
+// strings for the "StringFileInfo" block
+#define VER_FILEDESCRIPTION_STR "Babel Package\0"
+#define VER_INTERNALNAME_STR "BabelPackage.dll\0"
+#define VER_ORIGINALFILENAME_STR "BabelPackage.dll\0"
+
+#ifdef SXS_TARGET
+#include <common.ver>
+#endif
+
+#endif // APSTUDIO_INVOKED

@@ -1,0 +1,24 @@
+using System;
+using Microsoft.Contracts;
+
+public class Range
+{
+	long _value;
+	const long _max_value = 100000;
+	
+	public Range() {
+		_value = 0;
+	}
+	
+	public void increase(long amount)
+	ensures amount >  0  ==>  _value == min{ old(_value) + amount, _max_value };
+	ensures amount <= 0  ==>  _value == max{ old(_value) + amount, 0 };
+	{
+		if(amount <= -_value) {
+			_value = 0;
+		} else if(amount <= _max_value -_value) {
+			_value += amount;
+		}
+		else _value = _max_value;
+	}
+}

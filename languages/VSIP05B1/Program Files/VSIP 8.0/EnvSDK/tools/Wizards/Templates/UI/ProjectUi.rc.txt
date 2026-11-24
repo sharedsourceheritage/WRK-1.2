@@ -1,0 +1,103 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1000  CTMENU       ""PkgCmd.cto""\r\n"
+    "#define VER_FILEDESCRIPTION_STR ""%ProjectName% Package Resources\\0""\r\n"
+    "#define VER_INTERNALNAME_STR ""%ProjectName%UI.dll\\0""\r\n"
+    "#define VER_ORIGINALFILENAME_STR ""%ProjectName%UI.dll\\0""\r\n"
+    "#include ""EnvSdkVersion.ver""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OFFICIALNAME        "%PackageName%"
+    IDS_COMPANYNAME         "%CompanyName%"
+    IDS_PRODUCTDETAILS      "%DetailedInfo%"
+    IDS_VERSION             "%PackageVersion%"
+    IDS_MINVSEDITION        "%MinVsEdition%"
+%EditorStart%
+    IDS_EDITOR_NAME         "%EditorName%"
+    IDS_DEFAULT_NAME        "%DefaultName%.%Extension%"
+    IDS_EDITOR_TEMPLATE     "%EditorName%"
+    IDS_FILE_DESCRIPTION    "%EditorName% File (%Extension%)"
+    IDS_READONLY            " [Read Only]"
+    IDS_FORMATSTR           "%PackageName% files (*.%Extension%)\n*.%Extension%\n\n"
+    IDS_OUTSIDEEDITORFILECHANGE 
+                            "This file has changed outside the editor. Do you wish to reload it?"
+%EditorEnd%
+%ToolWindowItemStart%
+    IDS_WINDOW_TITLE        "%ToolWindowName%"
+    IDS_E_CANTCREATETOOL    "Unable to create the tool"
+%ToolWindowItemEnd%
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1000               CTMENU    "PkgCmd.cto"
+IDB_MENU_IMAGES    BITMAP    "Images.bmp"
+IDI_PACKAGE_ICON   ICON      "Package.ico"
+%EditorStart%IDI_FILE_ICON    ICON    "File.ico"%EditorEnd%
+#define VER_FILEDESCRIPTION_STR "%ProjectName% Package Resources\0"
+#define VER_INTERNALNAME_STR "%ProjectName%UI.dll\0"
+#define VER_ORIGINALFILENAME_STR "%ProjectName%UI.dll\0"
+#include "EnvSdkVersion.ver"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

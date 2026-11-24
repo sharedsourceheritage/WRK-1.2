@@ -1,0 +1,70 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// OptPkg.idl : IDL source for OptPkg.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (OptPkg.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+
+interface _OptionsPreferences;
+
+[
+	uuid(F1234270-F211-11d1-9D6C-0060081840F3),
+	version(1.0),
+	helpstring("OptPkg 1.0 Type Library")
+]
+library OptPkgLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		object,
+		uuid(40770773-3E9E-11D2-9761-00A0C90A6BFE),
+		dual,
+		helpstring("_OptionsPreferences Interface"),
+		pointer_default(unique),
+		hidden
+	]
+	interface _OptionsPreferences : IDispatch
+	{
+		[propget, id(1), helpstring("property Setting")] HRESULT Setting([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("property Setting")] HRESULT Setting([in] BSTR newVal);
+	};
+
+	[
+		uuid(40770774-3E9E-11D2-9761-00A0C90A6BFE),
+		helpstring("OptionsPreferences Class")
+	]
+	coclass OptionsPreferences
+	{
+		[default] interface _OptionsPreferences;
+	};
+
+	[
+		uuid(F1234271-F211-11d1-9D6C-0060081840F3),
+		helpstring("OptPkg Object"),
+		hidden, restricted
+	]
+	coclass OptPkgPackage
+	{
+		[default] interface IVsPackage;
+	};
+};

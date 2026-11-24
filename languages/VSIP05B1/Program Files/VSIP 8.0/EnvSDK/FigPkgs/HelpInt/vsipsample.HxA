@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<HelpAttributes DTDVersion="1.0">
+	<AttName Name="DevLang" >
+		<AttVal Name="vs.envsdk.figure" />
+	</AttName>
+	<AttName Name="Item" >
+		<AttVal Name="project" />
+		<AttVal Name="vs.envsdk.figprj.csfilenode" />
+		<AttVal Name="vs.envsdk.figprj.figfilenode" />
+		<AttVal Name="vs.envsdk.figprj.buildprjnode" />
+		<AttVal Name="vs.envsdk.figprj.projectnode" />
+	</AttName>
+	<AttName Name="Product" >
+		<AttVal Name="vs.envsdk.figprj" />
+	</AttName>
+</HelpAttributes>

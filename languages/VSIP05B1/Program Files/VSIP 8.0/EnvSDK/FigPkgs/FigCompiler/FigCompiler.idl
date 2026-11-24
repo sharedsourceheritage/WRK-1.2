@@ -1,0 +1,63 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// FigCompiler.idl : IDL source for FigCompiler.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (FigCompiler.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+    [
+	uuid(DB928292-6469-11d2-9702-006008EB6BF1),
+	helpstring("IFigCompiler Interface"),
+	pointer_default(unique)
+	]
+	interface IFigCompiler : IUnknown
+	{	HRESULT Compile(
+		    [in] BSTR bstrXOffset,
+			[in] BSTR bstrYOffset,
+			[in] BSTR bstrPenColor,
+			[in] BSTR bstrSourceFile,
+			[in] BSTR bstrSourcePath,
+			[in] BSTR bstrOutputDirectory,
+			[in] BOOL fPropertyChanged,
+			[in,out] BSTR* pbstrErrorString);
+	};
+
+
+[
+	uuid(FD548B41-2653-11D2-96B3-006008EB6BF1),
+	version(1.0),
+	helpstring("NewParser 1.0 Type Library")
+]
+library FIGCOMPILERLib
+{ 
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(DB928291-6469-11d2-9702-006008EB6BF1),
+		helpstring("NewFigComp Class")
+	]
+	coclass FigCompiler
+	{
+		[default] interface IFigCompiler;
+	};
+
+
+};

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "696111",
+    "ThreadId": "278915",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I am using DateTime objects in the invariants of a class; they pass the verification but when I build the project the following errors and other&nbsp;similar&nbsp;errors pops up with no location specified for them.</p>\r\n<p>Error<span> </span>1<span> </span>The member 'System.DateTime.op_LessThan' must be pure, confined or state independent (use custom attributes Contracts.Pure and Contracts.Reads).</p>\r\n<p>Error<span> </span>2<span> </span>The member 'System.DateTime.op_Equality' must be pure, confined or state independent (use custom attributes Contracts.Pure and Contracts.Reads).</p>\r\n<p>Error<span> </span>4<span> </span>Static methods must be StateIndependent in invariants and model-field satisfies clauses.<span>\r\n</span></p>\r\n<p><span>My question is how I can fix these errors and still use DataTime type? The following code&nbsp;describes&nbsp;how I am using DateTime:</span></p>\r\n<p><span></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">private</span> DateTime departureTime;\r\n<span style=\"color:blue\">private</span> DateTime arrivalTime;\r\n\r\ninvariant departureTime &lt; arrivalTime;\r\n\r\ninvariant (arrivalTime.Year == departureTime.Year &amp;&amp; arrivalTime.Month == departureTime.Month &amp;&amp; arrivalTime.Day == departureTime.Day &amp;&amp; arrivalTime.Hour == departureTime.Hour) ==&gt; (arrivalTime.Minute - departureTime.Minute &gt; 20);\r\n\r\ninvariant (arrivalTime.Year == departureTime.Year &amp;&amp; arrivalTime.Month == departureTime.Month &amp;&amp; arrivalTime.Day == departureTime.Day &amp;&amp; (arrivalTime.Hour - departureTime.Hour == 1)) ==&gt; (arrivalTime.Minute &lt;= 50 &amp;&amp; departureTime.Minute &gt;= 10);\r\n\r\nInvariant DateTime.Now &gt; arrivalTime ==&gt; <span style=\"color:blue\">this</span>.flightStatus == FlightStatus.Idle;\r\n\r\ninvariant DateTime.Now &lt; departureTime ==&gt; <span style=\"color:blue\">this</span>.flightStatus == FlightStatus.Idle;</pre>\r\n</div>\r\n</span>\r\n<p></p>\r\n<p>Thanks,</p>\r\n<p>Adnan</p>\r\n",
+    "PostedDate": "2011-11-09T13:14:56.827-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "696637",
+    "ThreadId": "278915",
+    "Html": "<p>Hi Adnan,</p>\r\n<p>The Spec# compiler contains so-called out-of-band contracts for many types of the .NET API. These contracts also include purity annotation. So far, we have added out-of-band contracts mostly on demand; therefore, they are rather incomplete. I just tried to add the necessary annotations to DateTime, but without any success. I will try to figure out why it does not work, I supposed it is because DateTime is a struct, and Spec#'s support for structs has always been rather weak.</p>\r\n<p>&nbsp;&nbsp; Peter</p>",
+    "PostedDate": "2011-11-10T12:26:17.57-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "696644",
+    "ThreadId": "278915",
+    "Html": "<p>Thanks</p>",
+    "PostedDate": "2011-11-10T12:47:52.057-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "701661",
+    "ThreadId": "278915",
+    "Html": "<p>Hi Adnan,</p>\r\n<p>I've just committed a fix for this. Please let me know if that doesn't do the trick.</p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2011-11-22T01:10:40.467-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "701842",
+    "ThreadId": "278915",
+    "Html": "<p>Excellent, It's working now.</p>\r\n<p>Thanks,</p>\r\n<p>Adnan</p>",
+    "PostedDate": "2011-11-22T08:21:17.117-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704925",
+    "ThreadId": "278915",
+    "Html": "<p>Hi,</p>\r\n<p>Unfortunately&nbsp;the same problem returned back, I don't know what happened but I did not change any thing in my code.</p>\r\n<p>Thanks,</p>\r\n<p>Adnan</p>",
+    "PostedDate": "2011-11-29T11:40:36.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

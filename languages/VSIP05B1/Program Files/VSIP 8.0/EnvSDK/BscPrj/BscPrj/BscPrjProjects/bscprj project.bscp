@@ -1,0 +1,33 @@
+"General"
+{
+"ProjectGuids" = "{06D95370-B7D2-11D1-87B4-00A0C91E2A46}"
+"ProjFileMajorVersion" = "8"
+"ProjFileMinorVersion" = "0"
+"ProjectIdGuid" = "{00000000-0000-0000-0000-000000000000}"
+}
+"Configurations"
+{
+    "Debug|Win32"
+    {
+    "LaunchCmdLine" = ""
+    "LaunchArgs" = ""
+    "BuildCmdLine" = ""
+    "BuildOutputs" = ""
+    }
+    "Release|Win32"
+    {
+    "LaunchCmdLine" = ""
+    "LaunchArgs" = ""
+    "BuildCmdLine" = ""
+    "BuildOutputs" = ""
+    }
+}
+"Files"
+{
+}
+"ProjStartupServices"
+{
+}
+"Globals"
+{
+}

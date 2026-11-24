@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Ok, I decided to try Spec# and created a test project, the problem is that anything I do in VS2010 takes seconds to accomplish, like editing project properties, compiling, etc. I am not sure if that is how it's supposed to be. Is there any way to fight this problem?\r\n\r\nThanks!",
+    "LastUpdatedDate": "2012-09-23T15:53:16.057-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "specsharp",
+    "ReportedDate": "2012-03-23T07:35:28.767-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "VS2010 gets very slow ",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 10113
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Dear anonymous Spec# user, I have not experienced such a slow-down. I am also using Spec# in VS2010, and the performance is just fine. Do you see the slow-down even when you turn off the verifier or when you are not editing/compiling the program? Do you see it only when you are working on a Spec# project or did the installation slow down VS for other languages as well? Peter",
+      "PostedDate": "2012-03-29T08:36:22.737-07:00",
+      "Id": 60174
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BscPkg", "bscpkg\BscPkg.vcproj", "{3E207E0B-59BC-4F56-A9D9-BC8C5BFF2621}"
+	ProjectSection(ProjectDependencies) = postProject
+		{82C70E89-9B1D-4C09-A64A-12A2C2CBD156} = {82C70E89-9B1D-4C09-A64A-12A2C2CBD156}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BscPkgUI", "BscPkgUI\BscPkgUI.vcproj", "{82C70E89-9B1D-4C09-A64A-12A2C2CBD156}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VsEnvSdkUtil", "..\common\VsEnvSdkUtil\vsenvsdkutil.vcproj", "{8EA40995-378E-4221-A5EE-9FBD94498C16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E207E0B-59BC-4F56-A9D9-BC8C5BFF2621}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3E207E0B-59BC-4F56-A9D9-BC8C5BFF2621}.Debug|Win32.Build.0 = Debug|Win32
+		{3E207E0B-59BC-4F56-A9D9-BC8C5BFF2621}.Release|Win32.ActiveCfg = Release|Win32
+		{3E207E0B-59BC-4F56-A9D9-BC8C5BFF2621}.Release|Win32.Build.0 = Release|Win32
+		{82C70E89-9B1D-4C09-A64A-12A2C2CBD156}.Debug|Win32.ActiveCfg = Debug|Win32
+		{82C70E89-9B1D-4C09-A64A-12A2C2CBD156}.Debug|Win32.Build.0 = Debug|Win32
+		{82C70E89-9B1D-4C09-A64A-12A2C2CBD156}.Release|Win32.ActiveCfg = Release|Win32
+		{82C70E89-9B1D-4C09-A64A-12A2C2CBD156}.Release|Win32.Build.0 = Release|Win32
+		{8EA40995-378E-4221-A5EE-9FBD94498C16}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8EA40995-378E-4221-A5EE-9FBD94498C16}.Debug|Win32.Build.0 = Debug|Win32
+		{8EA40995-378E-4221-A5EE-9FBD94498C16}.Debug|Win32.Deploy.0 = Debug|Win32
+		{8EA40995-378E-4221-A5EE-9FBD94498C16}.Release|Win32.ActiveCfg = Release|Win32
+		{8EA40995-378E-4221-A5EE-9FBD94498C16}.Release|Win32.Build.0 = Release|Win32
+		{8EA40995-378E-4221-A5EE-9FBD94498C16}.Release|Win32.Deploy.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SolutionNotes) = postSolution
+		NumNotes = 0
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "SpecSharp2 incorrectly binds names to private inherited fields that should be inaccessible.  This allows incorrect programs to be accepted.  For example, the following is compiled without error -\n\n    public class Base { public int pblc; }\n    public class Derived : Base { private float prvt; }\n    public sealed class MoreDerived : Derived { }\n    public static class Program  {\n        public static void Main(string[] args) {\n            MoreDerived m = new MoreDerived();\n            m.prvt = 0.42F; // Should be error: Base.prvt is inaccessible.\n        }\n    }\n\nAlso correct programs may be rejected, as in this version of the above snippet -\n\n    public class Base  {  public int pblc;  }\n    public class Derived : Base  {  new private float pblc; // obscures Base.pblc;  }\n    public sealed class MoreDerived : Derived { // Base.pblc should be accessible again.  }\n    public static class Program  {\n        public static void Main(string[] args) {\n            MoreDerived m = new MoreDerived();\n            int foo = m.pblc; // Should bind to Base.pblc, specsharp2 gives type error.\n        }\n    }",
+    "LastUpdatedDate": "2009-12-05T15:50:07.91-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "specsharp",
+    "ReportedDate": "2009-12-01T11:20:05.41-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Name binding of inherited members",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6434
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Changest 35363 in cciast.codeplex.com takes care of the second problem.",
+      "PostedDate": "2009-12-03T23:08:43.973-08:00",
+      "Id": 31377
+    },
+    {
+      "Message": "Changeset 40897 in this project and changeset 35410 in cciast.codeplex.com take care of the first problem.",
+      "PostedDate": "2009-12-05T15:50:07.91-08:00",
+      "Id": 31378
+    }
+  ]
+}

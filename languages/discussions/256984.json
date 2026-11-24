@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "609909",
+    "ThreadId": "256984",
+    "Html": "\r\n<p>Hey So I followed the directions on <a href=\"http://specsharp.codeplex.com/wikipage?title=Binaries&referringTitle=Home\">\r\nhttp://specsharp.codeplex.com/wikipage?title=Binaries&amp;referringTitle=Home</a>. I tried to create/open a&nbsp;spec project and had no luck. When I try to create one,&nbsp;I find no projects for spec. When I try to open, it states cannot be opened because\r\n its project type (.sscproj) is not supported by this version of the application.. &nbsp;&nbsp;I then did some searching the forms (<a href=\"http://specsharp.codeplex.com/discussions/227607\">http://specsharp.codeplex.com/discussions/227607</a>&nbsp;and\r\n<a href=\"http://specsharp.codeplex.com/discussions/227607\">http://specsharp.codeplex.com/discussions/227607</a>) and tried the suggestions.</p>\r\n<p>&nbsp;</p>\r\n<p>VS 2010 Professional - 32-bit&nbsp;(got it from Dreamspark)</p>\r\n<p>Windows 7 Professional 64-bit.&nbsp;</p>\r\n<p>Let me know if anything other information.</p>\r\n<p>Thanks,</p>\r\n<p>Brad</p>\r\n",
+    "PostedDate": "2011-05-09T19:32:35.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610016",
+    "ThreadId": "256984",
+    "Html": "<p>Hi Brad,</p>\r\n<p>which version of Spec# did you download? Have you tried out the nightly builds (Downloads ==&gt; Planned ==&gt; Nightly builds) yet? Please let me know if this solves the issue.</p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2011-05-10T00:44:33.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610162",
+    "ThreadId": "256984",
+    "Html": "<p>Ok I had downloaded the latest release one (<span class=\"smartDate full\">Wed Oct 13 2010 at 2:00 AM). I am know able to create the projects and use it with the latest nightly build. However, when I downloaded the tutorial code (<a href=\"http://specsharp.codeplex.com/wikipage?title=Tutorial\">http://specsharp.codeplex.com/wikipage?title=Tutorial</a>), I had converted it before spec# was installed to the VS 2010 project from 2008. I got the following error.</span></p>\n<p><span class=\"smartDate full\">&nbsp;</span><br />The 'Microsoft VisualStudio CodeTools PropertyPage Package' package did not load correctly.</p>\n<p>&nbsp;</p>\n<p>The problem may have been caused by a configuration change or by the installation of another extension. You can get more information by running the application together with the /log parameter on the command line, and then examining the file '[my users path]AppData\\Roaming\\Microsoft\\VisualStudio\\10.0\\ActivityLog.xml'.</p>\n<p>I got this error when opening the project before I installed spec# and when converting a whole new tutorial I got the same error with spec# installed. Also from what I gather with this (<a href=\"http://specsharp.codeplex.com/discussions/227607\">http://specsharp.codeplex.com/discussions/227607</a>), it should be fixed now.</p>\n<p>Thanks,</p>\n<p>&nbsp;</p>\n<p>Brad</p>",
+    "PostedDate": "2011-05-10T06:01:26.04-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610795",
+    "ThreadId": "256984",
+    "Html": "<p>I've seen this error a few times and I believe that I was able to resolve it by cleaning and re-registering Spec#.</p>\r\n<p>For opening and building the Spec# tutorial, the following worked for me: 1) Unzip the the project. 2) Open Tutorial.sln in VS 2010 and convert it.</p>\r\n<p>Please let me know if that does not work on your machine.</p>\r\n<p>Thanks,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2011-05-11T01:56:18.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

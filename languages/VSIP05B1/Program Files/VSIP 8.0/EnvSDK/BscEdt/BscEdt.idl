@@ -1,0 +1,96 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// BscEdt.idl : IDL source for the BscEdt Package
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Proj.tlb) and marshalling code.
+
+//import "oaidl.idl";
+//import "ocidl.idl";
+import "vsshell.idl";
+
+//standard dispids
+#define DISPID_Name                     (-800)
+#define DISPID_Delete                   (-801)
+#define DISPID_Object                   (-802)
+#define DISPID_Parent                   (-803)
+#define DISPID_NewEnum					(-4)
+#define DISPID_Value					(0)
+
+[
+	uuid(12093B30-EF68-11d1-9429-00AA00A3EFFF),
+	version(1.0),
+	helpstring("BscEdt package 1.0 Type Library")
+]
+
+library BscEdtLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	importlib("dte.tlb");
+	importlib("riched20.dll");
+
+	interface IBscEditor;
+
+	[
+		uuid(e8ddd220-921b-11d3-a567-00c04f61330d),
+		object,
+		dual,
+		helpstring("BscEditor Object")
+	]
+	interface IBscEditor : IDispatch
+	{
+		[propget, id(1), helpstring("property DTE")] HRESULT DTE([out, retval] _DTE* *pVal);
+		[propget, id(DISPID_Parent), helpstring("property Parent")] HRESULT Parent([out, retval] _DTE* *pVal);
+		[propget, id(2), helpstring("property DefaultTabStop")] HRESULT DefaultTabStop([out, retval] float *pdVal);
+		[propput, id(2), helpstring("property DefaultTabStop")] HRESULT DefaultTabStop([in] float dVal);
+		[propget, id(3), helpstring("property Range")] HRESULT Range([out, retval] ITextRange* *ppRange);
+		[propget, id(4), helpstring("property Selection")] HRESULT Selection([out, retval] ITextSelection* *ppSelection);
+		[propget, id(5), helpstring("property Flags")] HRESULT Flags([out, retval] long *plFlags);
+		[propput, id(5), helpstring("property Flags")] HRESULT Flags([in] long lFlags);
+		[id(6), helpstring("method FindText")] HRESULT FindText([in] BSTR pStr);
+		[id(7), helpstring("method SetText")] HRESULT SetText([in] BSTR pStr);
+		[id(8), helpstring("method TypeText")] HRESULT TypeText([in] BSTR pStr);
+		[id(9), helpstring("method Cut")] HRESULT Cut(void);
+		[id(10), helpstring("method Copy")] HRESULT Copy(void);
+		[id(11), helpstring("method Paste")] HRESULT Paste(void);
+		[id(12), helpstring("method Delete")] HRESULT Delete([in] long lUnit, [in] long cUnit);
+		[id(13), helpstring("method MoveUp")] HRESULT MoveUp([in] long lUnit, [in] long cUnit, [in] long lExtend);
+		[id(14), helpstring("method MoveDown")] HRESULT MoveDown([in] long lUnit, [in] long cUnit, [in] long lExtend);
+		[id(15), helpstring("method MoveLeft")] HRESULT MoveLeft([in] long lUnit, [in] long cUnit, [in] long lExtend);
+		[id(16), helpstring("method MoveRight")] HRESULT MoveRight([in] long lUnit, [in] long cUnit, [in] long lExtend);
+		[id(17), helpstring("method EndKey")] HRESULT EndKey([in] long lUnit, [in] long lExtend);
+		[id(18), helpstring("method HomeKey")] HRESULT HomeKey([in] long lUnit, [in] long lExtend);
+	};
+
+	[
+		uuid(fbabb6ba-9225-11d3-a567-00c04f61330d)
+	]
+	coclass BscEditor
+	{
+		[default] interface IBscEditor;
+	};
+		
+	[
+		uuid(12093B31-EF68-11d1-9429-00AA00A3EFFF),
+		helpstring("BscEdt Package Class")
+	]
+	coclass BscEdtPackage
+	{
+		[default] interface IVsPackage;
+	};
+};

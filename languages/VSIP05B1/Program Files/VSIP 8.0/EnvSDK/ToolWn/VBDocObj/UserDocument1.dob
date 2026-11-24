@@ -1,0 +1,63 @@
+VERSION 5.00
+Begin VB.UserDocument UserDocument1 
+   BackColor       =   &H80000005&
+   ClientHeight    =   510
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   1215
+   HScrollSmallChange=   225
+   ScaleHeight     =   510
+   ScaleWidth      =   1215
+   VScrollSmallChange=   225
+   Begin VB.CommandButton Command1 
+      Caption         =   "Click Me!"
+      Height          =   375
+      Left            =   0
+      TabIndex        =   0
+      Top             =   0
+      Width           =   1095
+   End
+End
+Attribute VB_Name = "UserDocument1"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+
+Rem This "Implements" statement adds support for the IHelloWorldTool
+Rem interface to our object.
+Implements IHelloWorldTool
+
+Dim sGreeting As String
+Rem Our object exposes a [get,set] Greeting property via IDispatch
+Public Property Get Greeting() As String
+    Greeting = sGreeting
+End Property
+Public Property Let Greeting(s As String)
+    sGreeting = s
+End Property
+Rem Our object exposes a SayGreeting method via IDispatch
+Public Sub SayGreeting()
+    IHelloWorldTool_SayHello sGreeting
+End Sub
+Private Sub Command1_Click()
+    SayGreeting
+End Sub
+
+Rem Implementation of a custom interface used to demonstrate
+Rem how to easily call from the External C++ world into the VB DocObject
+Private Sub IHelloWorldTool_SayHello(ByVal bstrMsg As String)
+    MsgBox bstrMsg, , "Hello World Tool"
+End Sub
+
+Private Sub UserDocument_Initialize()
+    sGreeting = "Hello World!"
+End Sub
+
+Private Sub UserDocument_Resize()
+    Command1.Height = (UserDocument.Height) * 0.5
+    Command1.Width = (UserDocument.Width) * 0.5
+    Command1.Top = (UserDocument.Height - Command1.Height) / 2
+    Command1.Left = (UserDocument.Width - Command1.Width) / 2
+End Sub

@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OptPkg", "OptPkg\OptPkg.vcproj", "{7CCADA5E-1C11-470B-8C3B-1624BAD4E16B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9AE53543-B126-4CE0-AC0A-5CF546372742} = {9AE53543-B126-4CE0-AC0A-5CF546372742}
+		{93C8139A-D43E-4A62-906C-0D780B070F9A} = {93C8139A-D43E-4A62-906C-0D780B070F9A}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OptPkgUI", "OptPkgUI\OptPkgUI.vcproj", "{9AE53543-B126-4CE0-AC0A-5CF546372742}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VsEnvSdkUtil", "..\common\VsEnvSdkUtil\VsEnvSdkUtil.vcproj", "{93C8139A-D43E-4A62-906C-0D780B070F9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CCADA5E-1C11-470B-8C3B-1624BAD4E16B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7CCADA5E-1C11-470B-8C3B-1624BAD4E16B}.Debug|Win32.Build.0 = Debug|Win32
+		{7CCADA5E-1C11-470B-8C3B-1624BAD4E16B}.Release|Win32.ActiveCfg = Release|Win32
+		{7CCADA5E-1C11-470B-8C3B-1624BAD4E16B}.Release|Win32.Build.0 = Release|Win32
+		{9AE53543-B126-4CE0-AC0A-5CF546372742}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9AE53543-B126-4CE0-AC0A-5CF546372742}.Debug|Win32.Build.0 = Debug|Win32
+		{9AE53543-B126-4CE0-AC0A-5CF546372742}.Release|Win32.ActiveCfg = Release|Win32
+		{9AE53543-B126-4CE0-AC0A-5CF546372742}.Release|Win32.Build.0 = Release|Win32
+		{93C8139A-D43E-4A62-906C-0D780B070F9A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{93C8139A-D43E-4A62-906C-0D780B070F9A}.Debug|Win32.Build.0 = Debug|Win32
+		{93C8139A-D43E-4A62-906C-0D780B070F9A}.Release|Win32.ActiveCfg = Release|Win32
+		{93C8139A-D43E-4A62-906C-0D780B070F9A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SolutionNotes) = postSolution
+	EndGlobalSection
+EndGlobal

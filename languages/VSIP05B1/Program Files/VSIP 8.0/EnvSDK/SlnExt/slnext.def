@@ -1,0 +1,9 @@
+; SlnExt.def : Declares the module parameters.
+
+LIBRARY      "SlnExt.DLL"
+
+EXPORTS
+	DllCanUnloadNow        PRIVATE
+	DllGetClassObject      PRIVATE
+	DllRegisterServer      PRIVATE
+	DllUnregisterServer    PRIVATE

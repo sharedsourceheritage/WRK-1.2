@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE HelpCollection>
+
+<HelpCollection Id="vsip" 
+	DTDVersion="1.0" 
+	FileVersion="8.0.40318.0" 
+	LangId="1033" 
+	Title="Visual Studio Industry Partner Program Collection" 
+	Copyright="Copyright (c) 2004 Microsoft Corporation. All Rights Reserved." >
+
+	<TOCDef File="Vsip.HxT"/>
+
+	<KeywordIndexDef File = "Vsip_ALinks.HxK" />
+	<KeywordIndexDef File = "Vsip_BLinks.HxK" />
+	<KeywordIndexDef File = "Vsip_KLinks.HxK" />
+	<KeywordIndexDef File = "Vsip_FLinks.HxK" />
+	<KeywordIndexDef File = "Vsip_NamedUrls.HxK" />
+	<KeywordIndexDef File = "Vsip_SLinks.HxK" />
+	<KeywordIndexDef File = "Vsip_Samples.HxK" />
+
+	<ItemMoniker Name = "!DefaultNamedUrlIndex"      ProgId = "HxDs.HxIndex"     InitData = "VsipNamedUrls" />
+	<ItemMoniker Name = "!DefaultToc"                ProgId = "HxDs.HxHierarchy" InitData = "" />
+
+	<ItemMoniker Name = "!DefaultAssociativeIndex"   ProgId = "HxDs.HxIndex" InitData = "A" />
+	<ItemMoniker Name = "!DefaultDynamicLinkIndex"   ProgId = "HxDs.HxIndex" InitData = "B" />
+	<ItemMoniker Name = "!DefaultContextWindowIndex" ProgId = "HxDs.HxIndex" InitData = "F" />
+	<ItemMoniker Name = "!DefaultKeywordIndex"       ProgId = "HxDs.HxIndex" InitData = "K" />
+	<ItemMoniker Name = "!DefaultSearchWindowIndex"  ProgId = "HxDs.HxIndex" InitData = "S" />
+	<ItemMoniker Name = "!DefaultSampleIndex"        ProgId = "HxDs.HxIndex" InitData = "Samples" />
+
+	<ItemMoniker Name = "!SampleInfo"                ProgId = "HxDs.HxSampleCollection" InitData = "Samples" />
+	<ItemMoniker Name = "!DefaultFullTextSearch"     ProgId = "HxDs.HxFullTextSearch"   InitData = "" />
+
+</HelpCollection>

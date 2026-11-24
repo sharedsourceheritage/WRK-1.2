@@ -1,0 +1,55 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// FigLgSvc.idl : IDL source for Figure Product Langue Service Package
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (FigLgSvc.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+
+	[
+		uuid(A7CD5760-C977-11d1-AFBE-006097DF568C),
+		helpstring("IFigTaskManager Interface for FigPkgs Sample"),
+		pointer_default(unique)
+	]
+	interface IFigTaskManager : IUnknown
+	{
+		HRESULT CreateTask( [in] long nLine, [in] IVsTextView *pView  );
+	};
+
+
+[
+	uuid(8E7704E0-6523-11d1-AF67-006097DF568C),
+	version(1.0),
+	helpstring("FigLgSvc Package for FigPkgs Sample 1.0 Type Library")
+]
+library FigLgSvcLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(8E7704E1-6523-11d1-AF67-006097DF568C),
+		helpstring("FigLgSvc Package for FigPkgs Sample Class")
+	]
+	coclass FigLgSvcPackage
+	{
+		[default] interface IVsPackage;
+	};
+};

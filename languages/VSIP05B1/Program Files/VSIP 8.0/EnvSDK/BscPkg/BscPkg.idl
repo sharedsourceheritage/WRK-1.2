@@ -1,0 +1,44 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// BscPkg.idl : IDL source for BscPkg.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (BscPkg.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+
+[
+	uuid(53E207A0-5ED6-11d2-BF4A-0080C71D86A1),
+	version(1.0),
+	helpstring("BscPkg 1.0 Type Library")
+]
+library BscPkgLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(53E207A1-5ED6-11d2-BF4A-0080C71D86A1),
+		helpstring("BscPkg Package")
+	]
+	coclass BscPkgPackage
+	{
+		[default] interface IVsPackage;
+	};
+};

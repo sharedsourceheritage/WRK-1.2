@@ -1,0 +1,57 @@
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove Packages
+    {
+        %CLSID_Package% = s 'MitWin Package'
+        {
+            val InprocServer32 = s '%MODULE%'
+
+            val CompanyName = s 'Microsoft'
+            val ProductName = s 'Multi Instance ToolWin Sample'
+            val ProductVersion  = s '7.1'
+            val MinEdition  = s 'professional'
+            val ID  = d '%IDS_PACKAGE_LOAD_KEY%'
+ 
+            SatelliteDll
+            {
+                val DllName = s '%RESOURCE_DLL%'
+                val Path = s '%RESOURCE_PATH%'
+            }
+        }
+    }
+    NoRemove Menus
+    {
+        val %CLSID_Package% = s ', 1000, 1'
+    }
+    NoRemove Services
+    {
+        %SID_SMWTool% = s '%CLSID_Package%'
+        {
+            val Name = s 'SID_SMWTool'
+        }
+    }
+    NoRemove ToolWindows
+    {
+        %GUID_MWTool% = s '%CLSID_Package%'
+        {
+            val Name = s 'MitWin Tool Window'
+            val Float = s '100,100,300,400'
+            val Orientation = s 'Right'
+            val Style = s 'Float'
+            val Window = s '%GUID_TaskList%'
+        }
+    }
+    NoRemove InstalledProducts
+    {
+        'MultiInstancedToolWindowSample' = s #%IDS_OFFICIALNAME%
+        {
+            val Package = s '%CLSID_Package%'
+            val ProductDetails = s #%IDS_PRODUCTDETAILS%
+            val LogoID = s '#0'
+            val PID = s '7.1'
+            val UseInterface = d '0'
+        }
+    }
+%REGROOTEND%
+}

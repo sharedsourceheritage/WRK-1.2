@@ -1,0 +1,174 @@
+HKCR
+{
+    .figp = s 'VisualStudio.figp.%PROGID_VERSION%'
+    {
+        val 'Content Type' = s 'text/plain'
+        'OpenWithList'
+        {
+            'devenv.exe'
+            {
+            }
+        }
+        'OpenWithProgids'
+        {
+            val 'VisualStudio.figp.%PROGID_VERSION%' = s ''
+            val 'FigPrjFile' = s ''
+        }
+    }
+    VisualStudio.figp.%PROGID_VERSION% = s 'Figure Project File'
+    {
+        DefaultIcon = s '%MODULE%,-206'
+        shell
+        {
+            open
+            {
+                command = s '"%DEVENV_PATH%" "%%1"'
+            }
+        }
+    }
+}
+
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove Packages
+    {
+        %CLSID_Package% = s 'FigPrj Project Package'
+        {
+            val InprocServer32 = s '%MODULE%'
+
+            val CompanyName = s 'Microsoft'
+            val ProductName = s 'Figure Project Sample'
+            val ProductVersion  = s '7.1'
+            val MinEdition  = s 'professional'
+            val ID  = d '%IDS_PACKAGE_LOAD_KEY%'
+ 
+            SatelliteDll
+            {
+                val DllName = s '%RESOURCE_DLL%'
+                val Path = s '%RESOURCE_PATH%'
+            }
+            Automation
+            {
+                val %AutomationProjects% = s ''
+            }
+            AutomationEvents
+            {
+                val %AutomationProjectsEvents% = s 'Returns the FigProjectsEvents Object'
+                val %AutomationProjectItemsEvents% = s 'Returns the FigProjectItemsEvents Object'
+            }
+        }
+    }
+
+    NoRemove Projects
+    {
+        %GUID_MyProjectType% = s 'FigPrj Project'
+        {
+            val DisplayName = s '#%IDS_PROJECT_TYPE%'
+            val Package = s '%CLSID_Package%'
+            val ProjectTemplatesDir = s '%TEMPLATE_PATH%FigPrjProjects'
+            val ItemTemplatesDir = s '%TEMPLATE_PATH%FigPrjProjectItems'
+            val DisplayProjectFileExtensions = s '#%IDS_DISPLAY_PROJ_FILE_EXT%'
+            val PossibleProjectExtensions = s 'figp'
+            val DefaultProjectExtension = s '.figp'
+            Filters
+            {
+                1 = s '#%IDS_OPENFILES_FILTER%'
+                {
+                    val CommonOpenFilesFilter = d 0
+                    val CommonFindFilesFilter = d 0
+                    val NotAddExistingItemFilter = d 0
+                    val FindInFilesFilter = d 0
+                    val NotOpenFileFilter = d 0
+                    val SortPriority = d 1000
+                }
+                2 = s '#%IDS_FINDFILES_FILTER%'
+                {
+                    val CommonOpenFilesFilter = d 0
+                    val CommonFindFilesFilter = d 0
+                    val NotAddExistingItemFilter = d 1
+                    val FindInFilesFilter = d 1
+                    val NotOpenFileFilter = d 0
+                    val SortPriority = d 1000
+                }
+            }
+            AddItemTemplates
+            {
+                TemplateDirs
+                {
+                    %CLSID_Package%
+                    {
+                        1 = s '#%IDS_ADDITEM_TEMPLATES_ENTRY%'
+                        {
+                            val TemplatesDir = s '%TEMPLATE_PATH%FigPrjProjectItems'
+                            val SortPriority = d 100
+                        }
+                    }
+                }
+            }
+        }
+        NoRemove '%GUID_EFProjectType%'
+        {
+            NoRemove AddItemTemplates
+            {
+                NoRemove TemplateDirs
+                {
+                    %CLSID_Package%
+                    {
+                        1 = s '#%IDS_NEWPROJ_TEMPLATES_ENTRY%'
+                        {
+                            val TemplatesDir = s '%TEMPLATE_PATH%FigPrjProjects'
+                            val SortPriority = d 41
+                            val NewProjectDialogOnly = d '0'
+                        }
+                    }
+                }
+            }
+        }
+        NoRemove %CLSID_MiscFilesProject%
+        {
+            NoRemove AddItemTemplates
+            {
+                NoRemove TemplateDirs
+                {
+                    %CLSID_Package%
+                    {
+                        /1 = s '#%IDS_ADDITEM_TEMPLATES_ENTRY%'
+                        {
+                            val TemplatesDir = s '%TEMPLATE_PATH%FigPrjProjectItems'
+                            val SortPriority = d 100
+                        }
+                    }
+                }
+            }
+        }
+    }
+    NoRemove Menus
+    {
+        val %CLSID_Package% = s ',1000,1'
+    }
+    NoRemove NewProjectTemplates
+    {
+        NoRemove TemplateDirs
+        {
+            %CLSID_Package%
+            {
+                1 = s '#%IDS_NEWPROJ_TEMPLATES_ENTRY%'
+                {
+                    val TemplatesDir = s '%TEMPLATE_PATH%FigPrjProjects'
+                    val SortPriority = d 41
+                    val NewProjectDialogOnly = d '0'
+                }
+            }
+        }
+    }
+    NoRemove InstalledProducts
+    {
+        'FiguresProductSample'
+        {
+            val Package = s '%CLSID_Package%'
+            val UseInterface = d 1
+        }
+    }
+    %REGROOTEND%
+}

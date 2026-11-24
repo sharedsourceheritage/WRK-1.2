@@ -1,0 +1,574 @@
+#include "shellver.h"
+#include "indentstyle.idh"
+
+#define STRING(x) #x
+#define XSTRING(x) STRING(x)
+
+
+#ifdef HELP
+#error HELP() macro is already defined!
+#endif
+
+#ifndef VARIANT_FALSE
+#define VARIANT_FALSE 0
+#endif
+
+#ifndef VARIANT_TRUE
+#define VARIANT_TRUE 0xffff
+#endif
+
+// Don't use these directly....
+#define HELPID_(devstring) HID_ ## devstring
+#define BROWSERSTR_(devstring) BS_ ## devstring
+
+#define HELP(devstring) helpcontext(HID_ ## devstring), helpstring(BS_ ## devstring), helpstringcontext(HID_ ## devstring)
+
+#include "VSEXTid.h"
+#include "VSEXTbs.h"
+
+
+[
+	uuid(1A31287A-4D7D-413e-8E32-3B374931BD89),
+	helpfile("csext.chm"),
+	helpstring("Microsoft Development Environment 8.0"),
+	version(8.0)
+]
+library EnvDTE80
+{
+	importlib("stdole2.tlb");  // Needed for IDispatch
+	importlib("dte.tlb");
+
+	enum vsTaskPriority;
+	enum wizardResult;
+	interface Commands2;
+	interface CodeElement;
+
+#include "codemodel2.idl"
+#include "debugger80.idl"
+
+	[ uuid(2AAE0C73-D8A3-49C0-8070-630DC0F2BE16), dllname(XSTRING(PRODBIN)), HELP(vsextEnvDTE80WindowKinds) ]
+	module WindowKinds
+	{
+		const LPSTR vsWindowKindKindStartPage                = "{387CB18D-6153-4156-9257-9AC3F9207BBE}";
+		const LPSTR vsWindowKindCommunityWindow              = "{96DB1F3B-0E7A-4406-B73E-C6F0A2C67B97}";
+		const LPSTR vsWindowKindDeviceExplorer               = "{B65E9355-A4C7-4855-96BB-1D3EC8514E8F}";
+		const LPSTR vsWindowKindBookmarks                    = "{A0C5197D-0AC7-4B63-97CD-8872A789D233}";
+		const LPSTR vsWindowKindApplicationBrowser           = "{399832EA-70A8-4AE7-9B99-3C0850DAD152}";
+		const LPSTR vsWindowKindFavorites                    = "{57DC5D59-11C2-4955-A7B4-D7699D677E93}";
+		const LPSTR vsWindowKindErrorList                    = "{D78612C7-9962-4B83-95D9-268046DAD23A}";
+		const LPSTR vsWindowKindHelpSearch                   = "{46C87F81-5A06-43A8-9E25-85D33BAC49F8}";
+		const LPSTR vsWindowKindHelpIndex                    = "{73F6DD58-437E-11D3-B88E-00C04F79F802}";
+		const LPSTR vsWindowKindHelpContents                 = "{4A791147-19E4-11D3-B86B-00C04F79F802}";
+		const LPSTR vsWindowKindCallBrowser                  = "{5415EA3A-D813-4948-B51E-562082CE0887}";
+		const LPSTR vsWindowKindCodeDefinition               = "{588470CC-84F8-4A57-9AC4-86BCA0625FF4}";
+	}
+
+	[ uuid(88BFE631-54CD-4FCF-958E-F31187BE32D2), dllname(XSTRING(PRODBIN)), HELP(vsextEnvDTE80ProjectKinds) ] 
+	module ProjectKinds
+	{
+		const LPSTR vsProjectKindSolutionFolder                = "{66A26720-8FB5-11D2-AA7E-00C04F688DDE}";
+	}
+
+	[ odl, dual, oleautomation, object, uuid(19AC6F68-3019-4D65-8D98-404DFB96B8E2), HELP(vsextEnvDTE80ToolWindows) ]
+	interface ToolWindows : IDispatch
+	{
+		[id(1), propget, HELP(vsproDTEProperty) ] 
+		HRESULT DTE ([out, retval] DTE **DTEObject);
+
+		[id(DISPID_VALUE), HELP(vsextEnvDTE80ToolWindowsGetToolWindow) ] 
+		HRESULT GetToolWindow(BSTR Name, [out, retval] IDispatch **ppObject);
+
+		[id(3), propget, HELP(vsextEnvDTE80ToolWindowsClassView) ] 
+		HRESULT ClassView ([out, retval] UIHierarchy **ppClassView);
+
+		[id(4), propget, HELP(vsextEnvDTE80ToolWindowsToolBox) ] 
+		HRESULT ToolBox([out, retval] ToolBox **ppToolBox);
+
+		[id(5), propget, HELP(vsextEnvDTE80ToolWindowsCommandWindow) ] 
+		HRESULT CommandWindow([out, retval] CommandWindow **ppOutputWindow);
+
+		[id(7), propget, HELP(vsextEnvDTE80ToolWindowsOutputWindow) ] 
+		HRESULT OutputWindow([out, retval] OutputWindow **ppOutputWindow);
+
+		[id(8), propget, HELP(vsextEnvDTE80ToolWindowsSolutionExplorer) ] 
+		HRESULT SolutionExplorer([out, retval] UIHierarchy **ppUIHierarchy);
+
+		[id(9), propget, HELP(vsextEnvDTE80ToolWindowsTaskList) ] 
+		HRESULT TaskList([out, retval] TaskList **ppTaskList);
+	};
+
+
+	typedef [uuid(6FB22721-008A-41a0-B4A9-23A7AB2A02B7), HELP(vsextEnvDTE80CommandStyle) ]
+	enum vsCommandStyle
+	{
+		vsCommandStylePict = 1,
+		vsCommandStyleText = 2,
+		vsCommandStylePictAndText = 3,
+		vsCommandStyleContextUseButton = 4,
+		vsCommandStyleTextMenuUseButton = 8,
+		vsCommandStyleTextMenuControlUseMenu = 16,
+		vsCommandStyleTextCascadeUseButton = 32,
+		vsCommandStyleComboNoAutoComplete = 64,
+		vsCommandStyleComboCaseSensitive = 128
+	} vsCommandStyle;
+
+	typedef [uuid(765724FE-DDE5-422a-A008-198376C7B641), HELP(vsextEnvDTE80CommandControlType) ]
+	enum vsCommandControlType
+	{
+		vsCommandControlTypeSeparator = 1,
+		vsCommandControlTypeButton = 2,
+		vsCommandControlTypeMenuButton = 4,
+		vsCommandControlTypeSwatch = 8,
+		vsCommandControlTypeSplitDropDown = 16,
+		vsCommandControlTypeDropDownCombo = 32,
+		vsCommandControlTypeMRUCombo = 64,
+		vsCommandControlTypeDynamicCombo = 128
+	} vsCommandControlType;
+
+
+	[ odl, dual, oleautomation, object, uuid(7EAA857B-2356-494B-9E13-0F6EEFA86E43), HELP(vsobjCommandsObject) ]
+	interface Commands2 : Commands
+	{
+		[id(20), HELP(vsobjAddNamedCommand) ] 
+		HRESULT AddNamedCommand2([in] AddIn *AddInInstance, [in] BSTR Name, [in] BSTR ButtonText, [in] BSTR Tooltip, 
+			[in] VARIANT_BOOL MSOButton, [in, defaultvalue(0)] long Bitmap, 
+			[in, optional] SAFEARRAY(VARIANT)* ContextUIGUIDs, 
+			[in, defaultvalue(3 /*vsCommandDisabledFlagsGrey*/)] long vsCommandStatusValue, 
+			[in, defaultvalue(3 /*TODO: vsCommandStylePictAndText*/)] long CommandStyleFlags, 
+			[in, defaultvalue(vsCommandControlTypeButton)] vsCommandControlType ControlType, 
+			[out, retval] Command **pVal);
+
+		[id(21)/*TODO: , HELP()*/]
+		HRESULT UpdateCommandUI(VARIANT_BOOL PerformImmediately);
+	}
+
+	[ odl, dual, oleautomation, object, uuid(31EFB5B1-C655-4ada-BB52-3ED87FB2A4AE), HELP(vsobjWindowObjColl) ]
+	interface Windows2 : Windows
+	{
+		[id(400), HELP(vsextEnvDTE80WindowsCreateToolWindow2) ] 
+		HRESULT CreateToolWindow2(AddIn *Addin, BSTR Assembly, BSTR Class, BSTR Caption, BSTR GuidPosition, [in, out] IDispatch **ControlObject, [out, retval] Window **ppwindowOut);
+	}
+
+	[ odl, dual, oleautomation, object, uuid(25731932-3283-4ae0-B7CF-F4691B8BE523), HELP(vsobjWindowObjColl) ]
+	interface Window2 : Window
+	{
+		[id(200), propget, HELP(vsextEnvDTE80Window2CommandBars) ] 
+		HRESULT CommandBars([out, retval]IDispatch **ppcbs);
+	}
+
+	typedef [uuid(2C23EF05-01A5-4684-AC27-4EFD8D840BA9)/*, HELP()*/ ]
+	enum vsThemeColors
+	{
+		vsThemeColorLight                                          = 1,
+		vsThemeColorMedium                                         = 2,
+		vsThemeColorDark                                           = 3,
+		vsThemeColorLightCaption                                   = 4,
+		vsThemeColorCommandBarSelected                             = 5,
+		vsThemeColorCommandBarHover                                = 6,
+		vsThemeColorCommandBarHoverOverSelected                    = 7,
+		vsThemeColorCommandBarBorder                               = 8,
+		vsThemeColorAccentPale                                     = 9,
+		vsThemeColorAccentLight                                    = 10,
+		vsThemeColorAccentMedium                                   = 11,
+		vsThemeColorAccentDark                                     = 12,
+		vsThemeColorAccentBorder                                   = 13,
+		vsThemeColorToolboxGradientLight                           = 14,
+		vsThemeColorToolboxGradientDark                            = 15,
+		vsThemeColorPanelBorder                                    = 16,
+		vsThemeColorPanelGradientLight                             = 17,
+		vsThemeColorPanelGradientDark                              = 18,
+		vsThemeColorPanelHyperlink                                 = 19,
+		vsThemeColorPanelTitleBar                                  = 20,
+		vsThemeColorPanelTitleBarUnselected                        = 21,
+		vsThemeColorPanelHoverOverCloseFill                        = 22,
+		vsThemeColorPanelHoverOverCloseBorder                      = 23,
+		vsThemeColorPanelSeparator                                 = 24,
+		vsThemeColorPanelSubgroupSeparator                         = 25,
+		vsThemeColorControlOutline                                 = 26,
+		vsThemeColorSidebarGradientLight                           = 27,
+		vsThemeColorSidebarGradientDark                            = 28,
+		vsThemeColorSidebarBackground                              = 29,
+		vsThemeColorSmartTagHoverFill                              = 30,
+		vsThemeColorSmartTagHoverBorder                            = 31,
+		vsThemeColorEditorSmartTagEphemeralMarkerFill              = 32,
+		vsThemeColorEditorSmartTagEphemeralMarkerBorder            = 33,
+		vsThemeColorEditorSmartTagFactoidMarkerFill                = 34,
+		vsThemeColorEditorSmartTagFactoidMarkerBorder              = 35,
+		vsThemeColorEditorSmartTagIndirectHoverFill                = 36,
+		vsThemeColorEditorSmartTagIndirectHoverBorder              = 37,
+		vsThemeColorFormSmartTagObjectTagFill                      = 38,
+		vsThemeColorFormSmartTagObjectTagBorder                    = 39,
+		vsThemeColorFormSmartTagActionTagFill                      = 40,
+		vsThemeColorFormSmartTagActionTagBorder                    = 41,
+		vsThemeColorFileTabChannelBackground                       = 42,
+		vsThemeColorFileTabGradientLight                           = 43,
+		vsThemeColorFileTabGradientDark                            = 44,
+		vsThemeColorFileTabBorder                                  = 45,
+		vsThemeColorFileTabSelectedBorder                          = 46,
+		vsThemeColorFileTabSelectedBackground                      = 47,
+		vsThemeColorSnapLines                                      = 48,
+		vsThemeColorSnapLinesTextBaseline                          = 49,
+		vsThemeColorTitleBarActive                                 = 50,
+		vsThemeColorTitleBarActiveText                             = 51,
+		vsThemeColorTitleBarInActive                               = 52,
+		vsThemeColorTitleBarInActiveText                           = 53,
+		vsThemeColorPaleGray                                       = 54,
+		vsThemeColorSideBarText                                    = 55,
+		vsThemeColorToolBoxBackground                              = 56,
+		vsThemeColorToolBoxGradientBegin                           = 57,
+		vsThemeColorToolBoxGradientEnd                             = 58,
+		vsThemeColorToolBoxHeadingBegin                            = 59,
+		vsThemeColorToolBoxHeadingEnd                              = 60,
+		vsThemeColorToolBoxHeadingAccent                           = 61,
+		vsThemeColorToolBoxDivider                                 = 62,
+		vsThemeColorTaskListGridLines                              = 63
+	} vsThemeColors;
+
+	[ odl, dual, oleautomation, object, uuid(2EE1E9FA-0AFE-4348-A89F-ED9CB45C99CF), HELP(vsobjDTEObject) ]
+	interface DTE2 : _DTE
+	{
+		[id(300), propget, HELP(vsextEnvDTE80DTE2ToolWindows) ] 
+		HRESULT ToolWindows([out, retval]ToolWindows **ppcbs);
+
+		[id(301) /*, HELP()*/ ] 
+		HRESULT GetThemeColor(vsThemeColors Element, [out, retval] OLE_COLOR *pColor);
+	}
+
+	[ odl, dual, oleautomation, object, uuid (C7B4BCC9-E23E-400C-8821-C85B6B31369E), hidden ]
+	interface WindowVisibilityEventsRoot : IDispatch
+	{
+		[id(1), propget, hidden] 
+		HRESULT _stdcall WindowVisibilityEvents([in] Window *WindowFilter, [out, retval] IDispatch **ppdisp);
+	};
+
+	[ odl, dual, oleautomation, object, uuid (84DE07BC-43A2-4275-BCF9-D207D20E49ED) ]
+	interface _WindowVisibilityEvents : IDispatch
+	{
+	};
+
+	[ uuid (94259E4B-A44A-4B77-B18F-F2CC9A601D03) ]
+	dispinterface _dispWindowVisibilityEvents
+	{
+	properties:
+	methods: // Events
+		[id(1), HELP(vsextEnvDTE80WindowVisibilityEventsWindowHiding)] 
+		void WindowHiding(Window *pWindow);
+
+		[id(2), HELP(vsextEnvDTE80WindowVisibilityEventsWindowShowing)] 
+		void WindowShowing(Window *pWindow);
+	};
+
+	[ uuid (8B7E04AD-B109-4B96-8BA3-2F348813F238) ]
+	coclass WindowVisibilityEvents
+	{
+		[default] interface _WindowVisibilityEvents;
+		[default, source] dispinterface _dispWindowVisibilityEvents;
+	};
+
+	[ odl, dual, oleautomation, object, uuid (D7EADE3F-BD19-4422-9C4C-85A02535437C), hidden ]
+	interface _TextDocumentKeyPressEventsRoot : IDispatch
+	{
+		[id(1), propget, hidden] 
+		HRESULT _stdcall TextDocumentKeyPressEvents([in] TextDocument *TextDocument, [out, retval] IDispatch **ppdisp);
+	};
+
+	[ odl, dual, oleautomation, object, uuid (505B7600-8FCC-487c-9E4F-C7FD0B5FB690) ]
+	interface _TextDocumentKeyPressEvents : IDispatch
+	{
+	};
+
+	[ uuid (4B57C85E-5100-4caf-9301-4544B85C7945) ]
+	dispinterface _dispTextDocumentKeyPressEvents
+	{
+	properties:
+	methods: // Events
+		[ id(1), HELP(vsextEnvDTE80WindowTextDocumentKeyPressEventsBefore)] 
+		void BeforeKeyPress(BSTR Keypress, TextSelection *Selection, VARIANT_BOOL InStatementCompletion, VARIANT_BOOL *CancelKeypress);
+
+		[ id(2), HELP(vsextEnvDTE80WindowTextDocumentKeyPressEventsAfter) ] 
+		void AfterKeyPress(BSTR Keypress, TextSelection *Selection, VARIANT_BOOL InStatementCompletion);
+	};
+
+
+	[ uuid (E7532A4E-AB9E-41DF-BB9A-7C764677E5C3), HELP(vsobjTextEditorEventsObject) ]
+	coclass TextDocumentKeyPressEvents
+	{
+		[default] interface _TextDocumentKeyPressEvents;
+		[default, source] dispinterface _dispTextDocumentKeyPressEvents;
+	};
+
+  [ uuid(827be7dc-1817-4171-a8ff-aab3854913bf), oleautomation, odl/*, HELP()*/]
+  interface _PublishEvents : IDispatch 
+  {
+  };
+
+  [ uuid(a0b40b93-9311-410f-b210-1f65bafb0e27) ]
+  dispinterface _dispPublishEvents
+  {
+    properties:
+    methods:
+
+    [id(1)]
+    void OnPublishBegin([in, out] VARIANT_BOOL *Continue);
+
+    [id(2)]
+    void OnPublishDone(VARIANT_BOOL Success);
+  }
+
+  [ uuid(045448ea-e8c1-4122-ac7b-d96d8e5c6e5b)/*TODO: , HELP()*/ ]
+  coclass PublishEvents
+  {
+    [default] interface _PublishEvents;
+    [default, source] dispinterface _dispPublishEvents;
+  };
+
+	[ odl, dual, oleautomation, object, uuid(BED31E8C-F845-4397-AF13-6B82A6996C0D), HELP(vsobjEventsObject) ]
+	interface Events2 : Events
+	{
+		[id(400), propget, HELP(vsextEnvDTE80Events2ProjectItemsEvents) ] 
+		HRESULT ProjectItemsEvents([out, retval] ProjectItemsEvents **ppProjectItemsEvents);
+
+		[id(401), propget, HELP(vsextEnvDTE80Events2ProjectsEvents) ] 
+		HRESULT ProjectsEvents([out, retval] ProjectsEvents **ppProjectsEvents);
+
+		[id(402), propget, HELP(vsextEnvDTE80Events2TextDocumentKeyPressEvents) ] 
+		HRESULT TextDocumentKeyPressEvents([in, defaultvalue(0)] TextDocument *TextDocument, [out, retval] TextDocumentKeyPressEvents **ppEditorKeyPressEvents);
+
+		[id(403), propget, HELP(vsextEnvDTE80Events2CodeModelEvents) ] 
+		HRESULT CodeModelEvents([in, defaultvalue(0)] CodeElement *Reserved, [out, retval] CodeModelEvents **ppdisp);
+
+		[id(404), propget, HELP(vsextEnvDTE80Events2WindowVisibilityEvents) ] 
+		HRESULT WindowVisibilityEvents([in, defaultvalue(0)] Window *WindowFilter, [out, retval] WindowVisibilityEvents **ppdisp);
+
+		[id(405), propget, HELP(vsextEnvDTE80Events2DebuggerProcessEvents) ] 
+		HRESULT DebuggerProcessEvents([out, retval] DebuggerProcessEvents **ppDebuggerProcessEvents);
+
+		[id(406), propget, HELP(vsextEnvDTE80Events2DebuggerExpressionEvaluationEvents) ] 
+		HRESULT DebuggerExpressionEvaluationEvents([out, retval] DebuggerExpressionEvaluationEvents **ppDebuggerExpressionEvalutionEvents);
+
+		[id(407), propget/*, TODO: HELP()*/]
+		HRESULT PublishEvents([out, retval] PublishEvents **ppPublishEvents);
+	}
+
+	[ odl, dual, oleautomation, object, uuid(FA238614-FBB1-4314-A7F7-49AE8BB6C6BA), HELP(vsobjSolutionObject) ]
+	interface Solution2 : _Solution
+	{
+		[ id(102), HELP(vsextEnvDTE80Solution2AddSolutionFolder) ] 
+		HRESULT AddSolutionFolder(BSTR Name, [out, retval] Project **pProject);
+		
+    [id(103), HELP(vsSlnProjectItemsTemplatePath)]
+    HRESULT GetProjectTemplate(BSTR TemplateName, BSTR Language, [out, retval] BSTR *pFullPath);  
+
+    [id(104), HELP(vsSlnProjectItemsTemplatePath)]
+    HRESULT GetProjectItemTemplate(BSTR TemplateName, BSTR Language, [out, retval] BSTR *pFullPath);
+	}
+
+	[ odl, dual, oleautomation, object, uuid(F8F69788-267C-4408-8967-74F26108C438), HELP(vsextEnvDTE80SolutionFolder) ]
+	interface SolutionFolder : IDispatch
+	{
+		[propget, id(1), HELP(vsproDTEProperty)] 
+		HRESULT DTE([out, retval] DTE **pDTE);
+
+		[propget, id(2), HELP(vsproDTEProperty)] 
+		HRESULT Parent([out, retval] Project **ppProject);
+
+		[id(3), HELP(vsextEnvDTE80SolutionFolderAddSolutionFolder)] 
+		HRESULT AddSolutionFolder(BSTR Name, [out, retval] Project **pProject);
+
+		[id(4), HELP(vsextEnvDTE80SolutionFolderAddFromFile) ] 
+		HRESULT AddFromFile([in] BSTR FileName, [out,retval] Project **ppProject);
+
+		[id(5), HELP(vsextEnvDTE80SolutionFolderAddFromTemplate) ] 
+		HRESULT AddFromTemplate([in] BSTR FileName, [in] BSTR Destination, [in] BSTR ProjectName, [out,retval] Project **ppProject);
+	}
+
+	[ odl, dual, oleautomation, object, uuid(B820F931-645A-473F-8246-922CF069E1FE), HELP(vsobjTaskListItems) ]
+	interface TaskItems2 : TaskItems 
+	{
+		[id(7), HELP(vsobjTLIAddProperty)]
+		HRESULT Add2([in] BSTR Category, [in] BSTR SubCategory, [in] BSTR Description, [in, defaultvalue(2 /*vsTaskPriorityMedium*/)] /*TODO: Change this to vsTaskPriority*/ long Priority,
+			[in, optional] VARIANT Icon, [in, defaultvalue(VARIANT_FALSE)] VARIANT_BOOL Checkable, [in, defaultvalue("")] BSTR File, 
+			[in, defaultvalue(-1)] long Line, [in, defaultvalue(-1)] VARIANT_BOOL CanUserDelete,
+			[in, defaultvalue(VARIANT_TRUE)] VARIANT_BOOL FlushItem, [in, defaultvalue(VARIANT_FALSE)] VARIANT_BOOL AutoNavigate, 
+			[out, retval] TaskItem **pTaskItem);
+	}
+
+	[ odl, dual, oleautomation, object, uuid (136AFA9F-F243-4abb-A8F8-4C2D26C47163), HELP(vsobjEditPoint) ]
+	interface EditPoint2 : EditPoint
+	{
+		[id(200), HELP(vsextEnvDTE80EditPoint2InsertNewLine) ]
+		HRESULT InsertNewLine([in, defaultvalue(1)] long Count);
+	};
+
+	[ odl, dual, oleautomation, object, uuid(12133BC2-390A-4b30-AD5B-504C1D1C89E7), hidden, restricted ]
+	interface IVsExtensibility2 : IVsExtensibility
+	{
+		[id(21)] HRESULT FireProjectsEvent_ItemAdded([in] Project *Project);
+		[id(22)] HRESULT FireProjectsEvent_ItemRemoved([in] Project *Project);
+		[id(23)] HRESULT FireProjectsEvent_ItemRenamed([in] Project *Project, [in] BSTR OldName);
+		[id(24)] HRESULT FireProjectItemsEvent_ItemAdded([in] ProjectItem *ProjectItem);
+		[id(25)] HRESULT FireProjectItemsEvent_ItemRemoved([in] ProjectItem *ProjectItem);
+		[id(26)] HRESULT FireProjectItemsEvent_ItemRenamed([in] ProjectItem *ProjectItem, [in] BSTR OldName);
+		[id(27)] HRESULT BuildUIHierarchyFromTree(OLE_HANDLE hwnd, Window *pParent, [out, retval] UIHierarchy **ppUIHierarchy);
+		[id(28)] HRESULT FireCodeModelEvent(DISPID dispid, CodeElement *pElement, vsCMChangeKind changeKind);
+		//[id(29)] HRESULT IsFireCodeModelEventNeeded(VARIANT_BOOL *vbNeeded);
+		[id(30)] HRESULT RunWizardFileEx([in] BSTR bstrWizFilename, [in] long hwndOwner, [in] SAFEARRAY (VARIANT)* vContextParams, [in] SAFEARRAY (VARIANT)* vCustomParams, [out, retval] /*TODO change this to wizardResult*/ long *pResult);
+		[id(31)] HRESULT FireCodeModelEvent3(DISPID dispid, IDispatch *pParent, CodeElement *pElement, vsCMChangeKind changeKind);
+	};
+
+	[ odl, dual, oleautomation, object, hidden, restricted, uuid (B85F43C4-C765-4984-AE3D-695E8CD8E992) ]
+	interface IInternalExtenderProvider : IDispatch
+	{
+		[ id(1) ] HRESULT GetExtenderNames([in] BSTR ExtenderCATID, [in] IUnknown *ExtendeeObject, [out, retval] VARIANT *ExtenderNames);
+		[ id(2) ] HRESULT GetExtender ([in] BSTR ExtenderCATID, [in] BSTR ExtenderName, [in] IDispatch *ExtendeeObject, [in] IExtenderSite *ExtenderSite, [in] long Cookie, [out, retval] IDispatch **Extender);
+		[ id(3) ] HRESULT CanExtend([in] BSTR ExtenderCATID, [in] BSTR ExtenderName, [in] IDispatch *ExtendeeObject, [out, retval] VARIANT_BOOL *fRetval);
+	};
+
+	// these values are consistent with the old Devstudio values (DsTextSearchOptions) whenever applicable
+	typedef [ uuid(A3ACF727-0590-4467-A9C7-5557B9C0F3F6), HELP(vsenumFindOptions) ]
+	enum vsFindOptions2
+	{
+		/*vsFindOptionsNone                       = 0x00000000,
+		vsFindOptionsMatchWholeWord             = 0x00000002,
+		vsFindOptionsMatchCase                  = 0x00000004,
+		vsFindOptionsRegularExpression          = 0x00000008,
+		// range of values 0x10 - 0x040 unused as DevStudio defined these for RegExpE, RegExpB & RegExpCurrent
+		vsFindOptionsBackwards                  = 0x00000080,
+		vsFindOptionsFromStart                  = 0x00000100,
+		vsFindOptionsMatchInHiddenText          = 0x00000200,
+		vsFindOptionsWildcards                  = 0x00000400,
+		vsFindOptionsSearchSubfolders           = 0x00001000,
+		vsFindOptionsKeepModifiedDocumentsOpen  = 0x00002000,*/
+		vsFindOptionsWaitForFindToComplete      = 0x00004000
+	} vsFindOptions2;
+
+	[ odl, dual, oleautomation, object, uuid (01568308-5b2a-4f30-8d0a-e10ee0f28f4a), HELP(vsobjFindSymbol) ]
+	interface Find2 : Find
+	{
+		[id(100), propget, HELP(vsextEnvDTE80Find2WaitForFindToComplete) ]
+		HRESULT WaitForFindToComplete([out, retval] VARIANT_BOOL *pWait);
+
+		[id(100), propput, HELP(vsextEnvDTE80Find2WaitForFindToComplete) ]
+		HRESULT WaitForFindToComplete(VARIANT_BOOL Wait);
+	};
+
+	[ odl, dual, oleautomation, object, uuid(C8F4F9CC-B7E5-4458-BCE3-E1542468F26B), HELP(vsextEnvDTE80LifetimeInformation) ]
+	interface LifetimeInformation : IDispatch
+	{
+		[id(1), propget, HELP(vsextEnvDTE80LifetimeInformationHasBeenDeleted) ] 
+		HRESULT HasBeenDeleted([out, retval] VARIANT_BOOL *pDeleted);
+	};
+
+	[ odl, dual, oleautomation, object, uuid(82C9DBF2-1DA8-4ED6-A5EC-8B876B46317C), HELP(vsobjToolBoxItemObject) ]
+	interface ToolBoxItem2 : ToolBoxItem
+	{
+		[id(10), propget, HELP(vsextEnvDTE80ToolBoxItem2Data) ] 
+		HRESULT Data([out, retval] VARIANT *pData);
+	};
+
+	[ odl, dual, oleautomation, object, uuid(A64715CB-85D7-41c3-8E71-2302D4EEBC34), HELP(vsobjToolBoxTabObject)]
+	interface ToolBoxTab2 : ToolBoxTab
+	{
+		[id(9), propget, HELP(vsextUniqueIDProperty)]
+		HRESULT UniqueID([out, retval] BSTR *pbstrID);
+
+		[id(9), propput, HELP(vsextUniqueIDProperty)]
+		HRESULT UniqueID([in] BSTR bstrID);
+	};
+
+	typedef [uuid(FD6530D0-1A2C-4073-AAE9-3C2B3AA8BC4D), HELP(vsextEnvDTE80IncrementalSearchResult)  ]
+	enum vsIncrementalSearchResult
+	{
+		vsIncrementalSearchResultFound = 1,
+    vsIncrementalSearchResultPassedEOB = 2,
+		vsIncrementalSearchResultPassedStart = 4,
+		vsIncrementalSearchResultFailed = 8
+	} vsIncrementalSearchResult;
+
+	[ odl, dual, oleautomation, object, uuid(C5BEE6D8-ED45-4317-96BF-97EB88EA3A07), HELP(vsextEnvDTE80IncrementalSearch) ]
+	interface IncrementalSearch : IDispatch
+	{
+		[id(1), propget, HELP(vsproDTEProperty)] 
+		HRESULT DTE ([out, retval] DTE **DTEObject);
+
+		[id(2), HELP(vsextEnvDTE80IncrementalSearchStartForward) ] 
+		HRESULT StartForward();
+
+		[id(3), HELP(vsextEnvDTE80IncrementalSearchStartBackward) ] 
+		HRESULT StartBackward();
+
+		[id(4), propget, HELP(vsextEnvDTE80IncrementalSearchIncrementalSearchModeOn) ] 
+		HRESULT IncrementalSearchModeOn([out, retval] VARIANT_BOOL *pOn);
+
+		[id(5), HELP(vsextEnvDTE80IncrementalSearchSearchWithLastPattern) ] 
+		HRESULT SearchWithLastPattern([out, retval] vsIncrementalSearchResult *pResult);
+
+		[id(DISPID_VALUE), propget, HELP(vsextEnvDTE80IncrementalSearchPattern) ] 
+		HRESULT Pattern([out, retval] BSTR *pPattern);
+
+		[id(7), HELP(vsextEnvDTE80IncrementalSearchAppendCharAndSearch) ] 
+		HRESULT AppendCharAndSearch(short Character, [out, retval] vsIncrementalSearchResult *pResult);
+
+		[id(8), HELP(vsextEnvDTE80IncrementalSearchDeleteCharAndBackup) ] 
+    HRESULT DeleteCharAndBackup([out, retval] vsIncrementalSearchResult *pResult);
+
+		[id(9), HELP(vsextEnvDTE80IncrementalSearchExit) ] 
+		HRESULT Exit();
+
+		[id(10), HELP(vsextEnvDTE80IncrementalSearchSearchForward) ] 
+		HRESULT SearchForward([out, retval] vsIncrementalSearchResult *pResult);
+
+		[id(11), HELP(vsextEnvDTE80IncrementalSearchSearchBackward) ] 
+		HRESULT SearchBackward([out, retval] vsIncrementalSearchResult *pResult);
+	};
+
+	[ odl, dual, oleautomation, object, uuid(ACE19C7B-A0AC-4089-94FD-749CF4380E1F), HELP(vsobjTextPane) ]
+	interface TextPane2 : TextPane
+	{
+		[id(20), propget, HELP(vsextEnvDTE80TextPane2IncrementalSearch) ] 
+		HRESULT IncrementalSearch ([out, retval] IncrementalSearch **ppIncrementalSearch);
+	};
+
+	[ odl, dual, oleautomation, object, uuid(1099AAA6-4169-430D-9F57-0B4C76624B3B) /*, HELP()*/ ]
+	interface SolutionConfiguration2 : SolutionConfiguration
+	{
+		[id(10), propget /*, HELP()*/ ] 
+		HRESULT PlatformName([out, retval] BSTR *pName);
+	};
+
+
+    [uuid(c508b13c-06c5-40c7-b405-d327d4f8e268), version(1.0), odl, hidden, restricted]
+    interface IVsProfferCommands2 : IVsProfferCommands
+    {
+        HRESULT AddNamedCommand2 ([in] const GUID *pguidPackage, [in] const GUID *pguidCmdGroup, [in, string] const LPCOLESTR pszCmdNameCanonical,
+                                [out] DWORD *pdwCmdId, [in, string] const LPCOLESTR pszCmdNameLocalized,
+                                [in, string] const LPCOLESTR pszBtnText, [in, string] const LPCOLESTR pszCmdTooltip,
+                                [in, string] const LPCOLESTR pszSatelliteDLL, [in] DWORD dwBitmapResourceId, [in] DWORD dwBitmapImageIndex,
+                                [in] DWORD dwCmdFlagsDefault, [in] DWORD cUIContexts, [in, size_is(cUIContexts)] const GUID *rgguidUIContexts, [in] DWORD dwUIElementType);
+    }
+
+	typedef [uuid(861474e5-de58-4924-b6d3-8d48ba712944)/*, HELP()*/ ]
+	enum vsPublishState
+	{
+		vsPublishStateDone = 1,
+		vsPublishStateInProgress = 2,
+		vsPublishStateNotStarted = 4
+	} vsPublishState;
+
+
+	[ odl, dual, oleautomation, object, uuid(c2516e4b-5d69-459d-b539-c95a71c4fa3d) ]
+	interface SolutionBuild2 : SolutionBuild
+	{
+		[id(100)/*, HELP()*/]
+		HRESULT Publish([defaultvalue(VARIANT_FALSE)] VARIANT_BOOL WaitForPublishToFinish);
+
+		[id(101)/*, HELP()*/]
+		HRESULT PublishProject(BSTR SolutionConfiguration, BSTR ProjectUniqueName, [defaultvalue(VARIANT_FALSE)] VARIANT_BOOL WaitForPublishToFinish);
+
+		[id(102), propget/*, HELP()*/]
+		HRESULT LastPublishInfo([out, retval] long *Info);
+
+		[id(103), propget/*, HELP()*/]
+		HRESULT PublishState([out, retval] vsPublishState *State);
+	}
+}

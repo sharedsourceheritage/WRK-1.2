@@ -1,0 +1,56 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// ToolWn.idl : IDL source for ToolWn.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ToolWn.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+
+[
+	uuid(C3814680-4C40-11d2-976D-00A0C90A6BFE),
+	version(1.0),
+	helpstring("ToolWn 1.0 Type Library")
+]
+library ToolWnLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(C3814684-4C40-11d2-976D-00A0C90A6BFE),
+		helpstring("IHelloWorldTool Interface"),
+		pointer_default(unique)
+	]
+	interface IHelloWorldTool : IUnknown
+	{
+		HRESULT SayHello([in] BSTR bstrMsg);
+	};
+
+	cpp_quote("#define SID_SHelloWorldTool IID_IHelloWorldTool")
+
+	[
+		uuid(C3814681-4C40-11d2-976D-00A0C90A6BFE),
+		helpstring("ToolWn Package")
+	]
+	coclass ToolWnPackage
+	{
+		[default] interface IVsPackage;
+	};
+};

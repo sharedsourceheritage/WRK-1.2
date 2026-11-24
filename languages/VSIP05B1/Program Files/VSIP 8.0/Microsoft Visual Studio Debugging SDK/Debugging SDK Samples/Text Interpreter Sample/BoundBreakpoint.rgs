@@ -1,0 +1,23 @@
+HKCR
+{
+    TextInterpreter.BoundBreakpoint.1 = s 'BoundBreakpoint Class'
+    {
+        CLSID = s '{6A36812E-897C-411A-833C-940F6AE5F6B1}'
+    }
+    TextInterpreter.BoundBreakpoint = s 'BoundBreakpoint Class'
+    {
+        CLSID = s '{6A36812E-897C-411A-833C-940F6AE5F6B1}'
+        CurVer = s 'TextInterpreter.BoundBreakpoint.1'
+    }
+    NoRemove CLSID
+    {
+        {6A36812E-897C-411A-833C-940F6AE5F6B1} = s 'BoundBreakpoint Class'
+        {
+            ProgID = s 'TextInterpreter.BoundBreakpoint.1'
+            VersionIndependentProgID = s 'TextInterpreter.BoundBreakpoint'
+            LocalServer32 = s '%MODULE%'
+            val AppID = s '{138A9B67-A2AB-4A64-A16F-ACE68B2FF77A}'
+            'TypeLib' = s '{510FC0E1-41E9-416F-9EDD-7277BD4538DB}'
+        }
+    }
+}

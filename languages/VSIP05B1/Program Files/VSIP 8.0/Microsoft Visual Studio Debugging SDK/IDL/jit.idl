@@ -1,0 +1,222 @@
+// jit.idl: Intefaces implemented and consumed by an IDE for JIT debugging
+
+// notes:
+//
+// - define AD7_NO_LIB to exclude library statement
+// - define AD7_NO_AD7_IMPORTS to exclude all AD7 imports
+
+#ifndef AD7_NO_AD7_IMPORTS
+import "msdbg.idl";
+#endif
+
+// ------------------------------------------------------------------
+// constants used for defining the JIT debugging shared memory. Each
+// debugger creates this shared memory section to 'publish' an interface
+// used when attaching to a running jit debugger.
+// Note: JIT debugger data is explicitly in the 'Local' namespace
+// which keeps the debugger from being used in another session.
+cpp_quote("#define JIT_DEUBUGGER_SHARED_MEMORY_PREFIX L\"Local\\\\Microsoft_VS80_JIT_Debugger-\"")
+cpp_quote("#define MAX_JIT_DEUBUGGER_SHARED_MEMORY_SIZE 0x4000")
+cpp_quote("#define MAX_MARSHALLED_DEBUGGER_SIZE (0x4000 - offsetof(JIT_DEUBUGGER_SHARED_MEMORY, MarshalledDebuggerData))")
+cpp_quote("#define JIT_DEBUGGER_MAGIC_NUMBER ((DWORD)'JIT8')")
+
+cpp_quote("struct JIT_DEUBUGGER_SHARED_MEMORY {")
+cpp_quote("		DWORD dwMagicNumber;")
+cpp_quote("		CLSID clsidDebugger;")
+cpp_quote("		DWORD dwMarshalledDebuggerSize;")
+cpp_quote("     BYTE  MarshalledDebuggerData[ANYSIZE_ARRAY];")
+cpp_quote("};")
+
+
+interface IDebugSetJITEventCallback2;
+
+enum enum_JIT_FLAGS
+{
+	JIT_FLAG_RPC			= 0x0001,   // This is an RPC jit
+	JIT_FLAG_NOCRASH        = 0x0002,   // This is a JIT started by '-p' or debug exe, not because a program crashed
+	JIT_FLAG_DEBUGEXE       = 0x0004,   // This flag was started by debug exe, not '-p'
+	JIT_FLAG_SELECT_ENGINES = 0x0008    // User wants to select engines to attach.
+};
+typedef DWORD JIT_FLAGS;
+
+typedef struct tagCRASHING_PROGRAM_INFO
+{
+	GUID guidEngine;
+	DWORD dwProcessId;
+	UINT64 ProgramId;
+	[ptr] LPCOLESTR szExceptionText;
+	JIT_FLAGS JitFlags;
+	IDebugSetJITEventCallback2 * pSetEventCallback;
+	
+} CRASHING_PROGRAM_INFO;
+
+// ------------------------------------------------------------------
+// IDebugIDEJIT2
+//
+// Purpose: An interface representing a JIT debugger's IDE
+[
+	object,
+	uuid(B2F73449-98EA-4866-90A0-425837FC5E23),
+	pointer_default(unique)
+]
+interface IDebugIDEJIT2: IUnknown
+{
+    // This method will show a dialog asking the user to select which types of
+    // programs they want to attach to, and then will call Attach through the
+    // passed in IDebugProcess2.
+    HRESULT AttachJITDebugger(
+        [in] IDebugProcess2 *pProcess,
+        [in] IDebugProgram2 *pJITProgram,
+		[in] JIT_FLAGS JitFlags);
+};
+
+// ------------------------------------------------------------------
+// IDebugJIT2
+//
+// Purpose: An interface representing a JIT debugger. This is implemented by the SDM
+[
+	object,
+	uuid(2ea4c00d-7156-4f8e-b990-fb4271147617),
+	pointer_default(unique)
+]
+interface IDebugJIT2: IUnknown
+{
+	HRESULT JITDebug(
+		[in] CRASHING_PROGRAM_INFO CrashingProgram
+		);
+};
+
+// ------------------------------------------------------------------
+// IDebugRuntimeJITServerProvider2
+//
+// Implemented by a JIT debugger for debugging into a running instance of that debugger
+[
+	object,
+	uuid(e7f35f78-362c-4d8a-8f76-3a7dbae0a237),
+	pointer_default(unique)
+]
+interface IDebugRuntimeJITServerProvider2 : IUnknown
+{
+    //Gets an IDebugJIT2 interface for the caller so the caller can attach
+    //the JIT server to a debuggee.
+    HRESULT GetRuntimeJITSession(
+        [out] IDebugJIT2 **ppJITServer);
+
+    //S_OK means yes, S_FALSE means no.  Allows a debugger instance to be unavailable for JIT,
+    //for example when it is already debugging another process and is in break mode.
+    HRESULT IsAvailable();
+};
+
+
+// ------------------------------------------------------------------
+// IDebugSetJITEventCallback2
+[
+	object,
+	uuid(92DCA9C3-37A3-4498-8466-4C57EA885E49),
+	pointer_default(unique)
+]
+interface IDebugSetJITEventCallback2: IUnknown
+{
+	HRESULT SetJITEvent();
+};
+
+// ------------------------------------------------------------------
+// IDebugProgramJIT2 -- Interface on a program used to retrieve a
+// callback to set the JIT event
+[
+	object,
+	uuid(87379803-2fad-4801-abdf-218b5d2f076f),
+	pointer_default(unique)
+]
+interface IDebugProgramJIT2: IUnknown
+{
+	HRESULT GetJITCallback(
+		[out] IDebugSetJITEventCallback2 **ppCallback);
+};
+
+
+// ------------------------------------------------------------------
+// IJITDebuggingHost2 -- Interface implemented by VSJITDebugger.exe
+// to show UI for a JIT
+[
+	object,
+	uuid(42ef9f29-7777-42ed-ba74-944aefd663da),
+	pointer_default(unique)
+]
+interface IJITDebuggingHost2: IUnknown
+{
+	HRESULT JITAsLoggedInUser(
+		[in] CRASHING_PROGRAM_INFO CrashingProgram
+		);
+};
+
+// ------------------------------------------------------------------
+// IDebugWrappedJITDebugger2 -- interface to a adaptation layer
+// used to proxy between AD7, and a non-AD7 JIT debugger.
+//
+[
+	object,
+	uuid(4dfa78ac-43c1-4de5-8179-3c3ec9010a31),
+	pointer_default(unique)
+]
+interface IDebugWrappedJITDebugger2: IDebugJIT2
+{
+	HRESULT GetName(
+		[out] BSTR *pbstrName
+		);
+};
+
+// ------------------------------------------------------------------
+// IDebugEngineJITSettings2 -- optional third party interface to allow:
+//
+// 1. An engine to plug more deeply into Tools->Options->Debugging->JIT
+// 2. An engine to wrap legacy or third party debuggers so that they
+//    can be used with the JIT chooser dialog
+//
+// Registered at:
+// [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\Debugger\JIT\<ENGINE_GUID>]
+// "JITSettings"="<CLSID_OF_JITSETTINGS>"
+[
+	object,
+	uuid(b9f3fdf1-7b6d-4899-bd94-72e4d4acd2e1),
+	pointer_default(unique)
+]
+interface IDebugEngineJITSettings2: IUnknown
+{
+	typedef struct tagWRAPPED_DEBUGGER_ARRAY
+	{
+		DWORD dwCount;
+		[size_is(dwCount)] IDebugWrappedJITDebugger2 **Members;
+	} WRAPPED_DEBUGGER_ARRAY;
+
+	HRESULT QueryIsEnabled(
+		);
+
+	HRESULT Enable(
+		);
+
+	HRESULT GetWrappedDebuggers(
+		[out] WRAPPED_DEBUGGER_ARRAY * pWrappedDebuggers
+		);
+};
+
+
+#ifndef AD7_NO_LIB
+[
+    uuid(d7ad58e4-b96c-48a3-962a-7ebe374ca4a4)
+]
+library JITLib
+{
+	[ uuid(46D26D39-F692-4f6c-8153-086E6DA9F059) ]
+	coclass IDEJITServer
+	{
+		[default] interface IDebugIDEJIT2;
+	};
+
+	[ uuid(36bbb745-0999-4fd8-a538-4d4d84e4bd09) ]
+	coclass JITDebuggingHost
+	{
+		[default] interface IJITDebuggingHost2;
+	};
+}
+#endif

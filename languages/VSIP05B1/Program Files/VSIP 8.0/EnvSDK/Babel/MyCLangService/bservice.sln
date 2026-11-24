@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bservice", "bservice.vcproj", "{97B0CA23-C2A2-4CB5-A9D5-86FF51A7B9C4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47CED74D-BAC6-4046-A8DB-9885A886CB7B} = {47CED74D-BAC6-4046-A8DB-9885A886CB7B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "common", "..\common\common.vcproj", "{47CED74D-BAC6-4046-A8DB-9885A886CB7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97B0CA23-C2A2-4CB5-A9D5-86FF51A7B9C4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{97B0CA23-C2A2-4CB5-A9D5-86FF51A7B9C4}.Debug|Win32.Build.0 = Debug|Win32
+		{97B0CA23-C2A2-4CB5-A9D5-86FF51A7B9C4}.Release|Win32.ActiveCfg = Release|Win32
+		{97B0CA23-C2A2-4CB5-A9D5-86FF51A7B9C4}.Release|Win32.Build.0 = Release|Win32
+		{47CED74D-BAC6-4046-A8DB-9885A886CB7B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{47CED74D-BAC6-4046-A8DB-9885A886CB7B}.Debug|Win32.Build.0 = Debug|Win32
+		{47CED74D-BAC6-4046-A8DB-9885A886CB7B}.Release|Win32.ActiveCfg = Release|Win32
+		{47CED74D-BAC6-4046-A8DB-9885A886CB7B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SolutionNotes) = postSolution
+		NumNotes = 0
+	EndGlobalSection
+EndGlobal

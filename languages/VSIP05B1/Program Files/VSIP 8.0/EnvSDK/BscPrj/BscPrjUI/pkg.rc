@@ -1,0 +1,271 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "1000  CTMENU       ""pkg.cto""\r\n"
+    "#define VER_FILEDESCRIPTION_STR ""BscPrj Package Resources\\0""\r\n"
+    "#define VER_INTERNALNAME_STR ""BscPrjUI.dll\\0""\r\n"
+    "#define VER_ORIGINALFILENAME_STR ""BscPrjUI.dll\\0""\r\n"
+    "#include ""EnvSdkVersion.ver""\r\n"
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_APPLYTOALL DIALOG  0, 0, 272, 82
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "<Caption goes here>"
+FONT 8, "Tahoma"
+BEGIN
+    ICON            32515,IDC_STATIC,7,7,20,20,WS_GROUP
+    LTEXT           "<Message text goes here>",IDC_MSGTEXT,38,7,227,26,
+                    SS_NOPREFIX
+    CONTROL         "&Apply to all items",IDC_CHK_APPLYTOALL,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,38,41,227,10
+    DEFPUSHBUTTON   "&Yes",IDYES,107,61,50,14
+    PUSHBUTTON      "&No",IDNO,161,61,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,215,61,50,14
+END
+
+IDD_PP_LAUNCH DIALOG  0, 0, 250, 150
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "Tahoma"
+BEGIN
+    LTEXT           "When project is run, launch the program (command line to program):",
+                    IDC_STATIC,7,7,220,8
+    EDITTEXT        IDC_LAUNCHPRG,17,18,226,14,ES_AUTOHSCROLL
+    LTEXT           "Send these command line arguments to launched program:",
+                    IDC_STATIC,7,41,236,8
+    EDITTEXT        IDC_CMDLINEPARAM,17,54,226,14,ES_AUTOHSCROLL
+END
+
+IDD_PP_CUSTOM DIALOG  0, 0, 250, 150
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "Tahoma"
+BEGIN
+    LTEXT           "Build commands:",IDC_STATIC,7,7,54,8
+    EDITTEXT        IDC_BUILDCMDS,17,18,226,50,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | WS_VSCROLL
+    LTEXT           "Build Outputs:",IDC_STATIC,7,81,46,8
+    EDITTEXT        IDC_BUILDOUTPUTS,17,93,226,50,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | WS_VSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_APPLYTOALL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 265
+        VERTGUIDE, 265
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+
+    IDD_PP_LAUNCH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 243
+        VERTGUIDE, 17
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 143
+    END
+
+    IDD_PP_CUSTOM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 243
+        VERTGUIDE, 17
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 143
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_PROJ_OPEN_WAIT      "Creating a Project..."
+    IDS_PROJECT_TYPE        "BscPrj Project"
+    IDS_DISPLAY_PROJ_FILE_EXT "BscPrj Project Files (*.bscp);*.bscp"
+    IDS_OPENFILES_FILTER    "BscPrj Files (*.txt, *.html, *.htm, *.gif, *.jpg, *.bmp);*.txt, *.html, *.htm, *.gif, *.jpg, *.bmp"
+    IDS_FINDFILES_FILTER    "BscPrj Files (*.txt, *.html, *.htm);*.txt, *.html, *.htm"
+    IDS_ADDITEM_TEMPLATES_ENTRY "BscPrj Project Items"
+    IDS_NEWPROJ_TEMPLATES_ENTRY "BscPrj Projects"
+    IDS_FILENODE_TYPE       "File"
+    IDS_FOLDERNODE_TYPE     "Folder"
+    IDS_E_INVCHARSINNAME    "File or folder names cannot contain any of the following characters:\n               \\  /  :  *  ?   """" <  > | "
+    IDS_INVALIDFILENAME     "Invalid file name - '%1'"
+    IDS_CONFIRMREPLACE      "File '%1' already exists. Do you want to overwrite?"
+    IDS_E_COPY_FAILED       "Could not copy file '%1' to project. %2"
+    IDS_FILEALREADYEXISTS   "File '%1' is already a member of the project"
+    IDS_E_AUTO_NOPROJECTS   "Projects collection unavailable."
+    IDS_E_AUTO_NOPROJECTITEMS "ProjectItems collection unavailable."
+    IDS_E_PROJECTFILEVERSION_MISMATCH   "The project '%1' was created with a newer version of Visual Studio .NET which is incompatible with your version. You can only open this project with newer versions of Visual Studio .NET."
+    IDS_E_PROJECTFILEVERSION_OLDER_PROMPT "The project '%1' was created with an older version of Visual Studio .NET. If you open it with this version of Visual Studio .NET, you may not be able to open it with older versions of Visual Studio .NET. Do you want to continue and open this project?"
+    IDS_E_READONLY_UNDER_SCC "The project file '%1' cannot be updated to this Visual Studio .NET version format because it is under source code control and cannot be checked out. Please set the permissions on the project file and re-open it to migrate the project."
+    IDS_E_READONLY_NOT_SCC  "The project file '%1' cannot be updated to this Visual Studio .NET version format because it is read-only on disk. Please set the permissions on the project file and re-open it to migrate the project."
+    IDS_E_INVALID_OUTPUT    "The specified output is not a valid file name or is in a directory that does not exist."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_PROJNODE_TYPE       "Project"
+    IDS_CONFIRMREPLACE_CAPTION "Confirm Replace"
+    IDS_REMOVEFILE          "Remove %1"
+    IDS_E_AUTO_NOPROJECT    "Project object unavailable."
+    IDS_E_AUTO_NOPROJECTITEM "ProjectItem object unavailable."
+    IDS_MULTISELECT         "Multiple Selection"
+    IDS_CUSTOM_PAGE         "Custom"
+    IDS_LAUNCH_PAGE         "Launch"
+    IDS_FILE                "file"
+    IDS_SPACEFILE           "%1 file"
+    IDS_COMPILING           "Compiling Project  %s ..."
+    IDS_BUILDCANCELLED      "%s build cancelled."
+    IDS_BUILDSUCCEEDED      "%s build succeeded.\n"
+    IDS_BUILDFAILED         "%s build failed."
+    IDP_ISP_ERRLAUNCHINGAPP "Unable to launch application for this file."
+    IDS_OFFICIALNAME        "Basic Project Sample"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_PRODUCTDETAILS      "Basic Project Product Sample. For more information about Basic Project, see the Microsoft website at <http://www.microsoft.com>. For customer support call 1-800-xxx-xxxx. Basic Project Copyright 2000 Microsoft Corporation."
+    IDS_OUTPUTGROUP_EXECUTABLES "Built"
+    IDS_OUTPUTGROUP_CONTENTFILES "Content Files"
+    IDS_OUTPUTGROUP_SATELLITEDLLS "Localized Resource Dlls"
+    IDS_OUTPUTGROUP_SOURCEFILES "Source Files"
+    IDS_RENAMEFILEFAILED    "Rename failed!"
+    IDS_RENAMEFILEALREADYEXISTS "File '%1' already exists."
+    IDS_E_NEEDTOENTERFILENAME "You must type a file name."
+    IDS_E_NOLEADINGPERIOD   "File names cannot contain a leading period."
+    IDS_E_AUTO_NOSELECTEDITEM "SelectedItem object unavailable."
+    IDS_E_RENAMINGITEM      "Cannot rename '%1'."
+    IDS_E_PATHNOTINPRJ      "The project file can only be saved into the project location."
+    IDS_E_PROJECTLOADFAILED "Project failed to load. Default settings will be used to create the project."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_NEWITEM_FOLD_GENERAL_NAME "General Files"
+    IDS_NEWITEM_FOLD_SRCFILES_NAME "C++ Files"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_NEWITEM_FOLD_CTCFILES_NAME "CTC Files"
+    IDS_NEWITEM_FIGURE_LOCALIZEDNAME "Figure File"
+    IDS_NEWITEM_FIGURE_DESCRIPTION "A new Figure file."
+    IDS_NEWITEM_FIGURE_SUGGESTEDBASENAME "Figure"
+    IDS_NEWITEM_HTML_LOCALIZEDNAME "HTML File"
+    IDS_NEWITEM_HTML_DESCRIPTION "A new HTML file."
+    IDS_NEWITEM_HTML_SUGGESTEDBASENAME "Html"
+    IDS_NEWITEM_TEXT_LOCALIZEDNAME "Text File"
+    IDS_NEWITEM_TEXT_DESCRIPTION "A new text file."
+    IDS_NEWITEM_TEXT_SUGGESTEDBASENAME "Text"
+    IDS_NEWITEM_CPP_LOCALIZEDNAME "C++ Source File"
+    IDS_NEWITEM_CPP_DESCRIPTION "A new C++ source file."
+    IDS_NEWITEM_CPP_SUGGESTEDBASENAME "Class"
+    IDS_NEWITEM_H_LOCALIZEDNAME "C++ Header File"
+    IDS_NEWITEM_H_DESCRIPTION "A new C++ header file."
+    IDS_NEWITEM_H_SUGGESTEDBASENAME "Class"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_NEWITEM_CTC_LOCALIZEDNAME "CTC File"
+    IDS_NEWITEM_CTC_DESCRIPTION "A new CTC file."
+    IDS_NEWITEM_CTC_SUGGESTEDBASENAME "Pkg"
+    IDS_NEWPROJECT_BSCPRJ_LOCALIZEDNAME "BscPrj Project"
+    IDS_NEWPROJECT_BSCPRJ_DESCRIPTION "Create a new BscPrj project."
+    IDS_NEWPROJECT_BSCPRJ_SUGGESTEDBASENAME "BscProject"
+    IDS_E_OWNERPROJECTNOTFOUND 
+                            "This project needs to be opened in the context of a templates project. The owning project can not be created"
+    IDS_E_METHODDISABLED    "This method/property is not available for this application."
+    IDS_E_FILENOTINPRJECT   "The file '%1' is not in the project '%2'."
+    IDS_E_RUNWIZARD         "Could not run wizard from file '%1'."
+    IDS_E_THREADTERMINATED  "Build thread was terminated."
+    IDS_CAPTION_SAVEFILE    "Save File"
+    IDS_P_SAVEONPREVIEW     "The file '%1' is open in an editor with unsaved changes. Do you want to save your changes before previewing this file?"
+    IDS_VISUALSTUDIO        "Microsoft Development Environment"
+    IDS_PROMPT_SAVEDIRTYDOCS 
+                            "One or more open documents have unsaved changes.\nDo you want to save uncommitted changes before proceeding?"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1000  CTMENU       "pkg.cto"
+#define VER_FILEDESCRIPTION_STR "BscPrj Package Resources\0"
+#define VER_INTERNALNAME_STR "BscPrjUI.dll\0"
+#define VER_ORIGINALFILENAME_STR "BscPrjUI.dll\0"
+#include "EnvSdkVersion.ver"
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

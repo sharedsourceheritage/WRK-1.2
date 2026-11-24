@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "467655",
+    "ThreadId": "219539",
+    "Html": "<p>Hi, I am having trouble establishing invariants for inherited classes after a constructor.</p>\r\n<p>For example here, basically, the inheriting class contains an extra int field that is passed the same value as the int field 'val' that it inherits from TreeNode.</p>\r\n<p>It flags 'object invariant might not hold' after leaving the constructor. I've also tried making the call base(v) inside the constructor, as shown, and have dabbled with Delayed/NotDelayed to no avail.</p>\r\n<p>I have used [Additive], additive expose etc, in the base class, and this is the only message that I am getting.</p>\r\n<p>I kind of feel the object invariant should hold (as they equal the same value),&nbsp; but am I going wrong somewhere here in my understanding of things? Thanks!</p>\r\n<p>class CompNode : TreeNode<br>{<br>&nbsp;&nbsp; &nbsp;[SpecPublic] int sum;<br>&nbsp;&nbsp; &nbsp;invariant val&lt;=sum;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;//DOES NOT HOLD<br>&nbsp;&nbsp; &nbsp;<br>&nbsp;&nbsp; &nbsp;public CompNode(int v): base(v)<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;requires 0&lt;v;<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;ensures sum &lt;= v;<br>&nbsp;&nbsp; &nbsp;{<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;left = null;<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;right = null;</p>\r\n<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;parent = null;</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sum = v;<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // base(v);&nbsp; //I've tried base(v) at different points inside constructor<br>&nbsp;&nbsp; &nbsp;}</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-07-15T02:42:56.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

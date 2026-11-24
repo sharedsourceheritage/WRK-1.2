@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FileRegistration xmlns="urn:FileExtReg-Schema">
+    <!-- ================================================================== -->
+    <!-- FileExtension section:                                             -->
+    <!--     enter normal file extentions here                              -->
+    <!--                                                                    -->
+    <!-- ================================================================== -->
+    <FileExtension>
+        <Extension>.cs</Extension>
+        <ProgID>VisualStudio.cs.%PROGID_VERSION%</ProgID>
+        <ProgIDName>C# Source file</ProgIDName>
+        <ContentType>text/plain</ContentType>
+        <PerceivedType>text</PerceivedType>
+        <DefaultIcon>%MODULE%,1</DefaultIcon>
+        <AlwaysShowExtension>1</AlwaysShowExtension>
+        <OpenWithListName>%EXE_NAME%</OpenWithListName>
+        <Command>"%COMMONIDE%%EXE_NAME%" /dde "%%1"</Command>
+        <DdeApp>%DDE_NAME%</DdeApp>
+    </FileExtension>
+
+    <!-- ================================================================== -->
+    <!-- FileExtensionOSShared section:                                     -->
+    <!--     enter file extentions owned and registed by the OS here        -->
+    <!--                                                                    -->
+    <!-- ================================================================== -->
+    <FileExtensionOSShared>
+        <Extension>.asp</Extension>
+        <ProgID>VisualStudio.asp.%PROGID_VERSION%</ProgID>
+        <ProgIDName>Active Server Page</ProgIDName>
+        <OpenWithListName>%EXE_NAME%</OpenWithListName>
+        <Command>"%COMMONIDE%%EXE_NAME%" /dde "%%1"</Command>
+        <DdeApp>%DDE_NAME%</DdeApp>
+    </FileExtensionOSShared>
+
+    <!-- ================================================================== -->
+    <!-- FileExtensionNoOpen section:                                       -->
+    <!--     enter file extentions with no shell verbs here                 -->
+    <!--                                                                    -->
+    <!-- ================================================================== -->
+    <FileExtensionNoOpen>
+        <Extension>.user</Extension>
+        <ProgID>VisualStudio.user.%PROGID_VERSION%</ProgID>
+        <ProgIDName>Visual Studio Project User Options</ProgIDName>
+        <ContentType>text/plain</ContentType>
+        <DefaultIcon>%MODULE%,4</DefaultIcon>
+    </FileExtensionNoOpen>
+</FileRegistration>

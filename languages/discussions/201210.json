@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "410026",
+    "ThreadId": "201210",
+    "Html": "<p>Hi,</p>\r\n<p>I am trying to define some pure abstract methods to use later in writing specifications. I get errors when running Boogie on these methods about not being able to establish pure method consistency.&nbsp;</p>\r\n<p>I would appreciate any help about writing reference-type pure methods.</p>\r\n<p>Thanks!</p>\r\n<p>Iman</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-26T11:21:55.243-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "426177",
+    "ThreadId": "201210",
+    "Html": "<p>There are a number of difficulties involved in using pure methods in Spec#.&nbsp; They may get especially tricky when you return references, because there are issues like &quot;Is the reference returned a peer of the receiver?&quot;, &quot;Is it a representation object of the receiver?&quot;, &quot;Is the returned object consistent?&quot;, and &quot;Is the object newly allocated?&quot;.&nbsp; I would recommend looking at section 7 (&quot;Abstraction&quot;) of the Spec# tutorial:&nbsp; <a href=\"http://research.microsoft.com/en-us/um/people/leino/papers/krml189.pdf\">http://research.microsoft.com/en-us/um/people/leino/papers/krml189.pdf</a>.&nbsp; It attempts to explain what's going on.</p>",
+    "PostedDate": "2010-03-31T14:03:02.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

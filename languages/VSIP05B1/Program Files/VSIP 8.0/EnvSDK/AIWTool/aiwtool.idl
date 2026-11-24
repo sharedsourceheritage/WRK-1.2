@@ -1,0 +1,59 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// AIWTool.idl : IDL source for AIWTool.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (AIWTool.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+
+
+[
+	uuid(0C5C8610-4E77-11d2-976E-00A0C90A6BFE),
+	version(1.0),
+	helpstring("AIWTool 1.0 Type Library")
+]
+library AIWToolLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(29609E11-E480-11d1-87C1-00A0C91E2A46),
+		helpstring("IVBSCommandLine Interface"),
+		pointer_default(unique)
+	]
+	interface IVBSCommandLine : IUnknown
+	{
+		HRESULT Init([in] int FontCharset, [in] BSTR FontName, [in] double FontSize);
+		HRESULT AddObject([in] BSTR bstrName, [in] IDispatch* pObj, [in] VARIANT_BOOL fGlobal);
+		HRESULT ReadFile([in] BSTR bstrFilename, VARIANT_BOOL fPrintFile);
+		HRESULT ExecuteStatement([in] BSTR bstrStmt);
+		HRESULT Reset(void);
+	};
+
+	[
+		uuid(0C5C8611-4E77-11d2-976E-00A0C90A6BFE),
+		helpstring("AIWTool Package")
+	]
+	coclass AIWToolPackage
+	{
+		[default] interface IVsPackage;
+	};
+};

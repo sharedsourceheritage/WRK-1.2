@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1092962",
+    "ThreadId": "456992",
+    "Html": "The subject says it all:  Is there a way to run Spec# under VS 2012 or VS2013?<br />\n",
+    "PostedDate": "2013-09-15T19:24:18.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1104629",
+    "ThreadId": "456992",
+    "Html": "Hi,\r<br />\n<br />\ncurrently, there is no straight-forward way of running Spec# within VS 2012 or VS 2013, due to dependencies on certain dlls that don't ship with later versions of Visual Studio. If you have VS 2010 installed as well, you might be able to get it to run within VS 2012 by building from the sources.\r<br />\n<br />\nBest regards,\r<br />\n<br />\nValentin<br />\n",
+    "PostedDate": "2013-10-07T09:29:36.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

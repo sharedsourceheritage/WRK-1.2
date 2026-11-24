@@ -1,0 +1,89 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// Automation.idl : IDL source for SlnExt automation objects
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Automation.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+    uuid(844D868F-7E9F-4708-8460-4B9F654C5492),
+    version(1.0),
+    helpstring("SlnExt Automation")
+]
+library SlnExtAutoLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    // Static extender for Solution browse object and 
+    // VB, C#, and VC project browse objects
+    [
+        object,
+        uuid(E13B4D87-04DF-4a37-B839-E42A6788CC20),
+        helpstring("ISlnStaticExtender Interface"),
+        pointer_default(unique)
+    ]
+    interface ISlnStaticExtender : IDispatch
+    {
+        [id(1), propput]
+        HRESULT MyProperty([in] BSTR bstrPropVal);
+
+        [id(1), propget]
+        HRESULT MyProperty([out, retval] BSTR * pbstrPropVal);
+    };
+
+    [
+        object,
+        uuid(3D4677C0-3929-473f-9E17-B34CB4FF0A5D),
+        dual,
+        helpstring("ISlnStaticExtenderProvider Interface"),
+        pointer_default(unique)
+    ]
+    interface ISlnStaticExtenderProvider : IDispatch
+    {
+    };
+
+    [
+        uuid(C9105D99-28BF-4bfb-A000-3729E903BA3F),
+        helpstring("SlnStaticExtenderProvider Class")
+    ]
+    coclass SlnStaticExtenderProvider
+    {
+        [default] interface ISlnStaticExtenderProvider;
+    };
+
+
+    // Dynamic Extender for our SolutionNotes object
+    [
+        uuid(67475fde-6a01-11d3-8098-00c04f8ec1b3),
+        object,
+        dual,
+        helpstring("ISlnDynamicExtender")
+    ]
+    interface ISlnDynamicExtender : IDispatch
+    {
+        [propget] HRESULT NoteCount([out, retval] long* Count);
+    };
+
+    [ uuid(67475fdf-6a01-11d3-8098-00c04f8ec1b3)]
+    coclass SlnDynamicExtender
+    {
+        [default] interface ISlnDynamicExtender;
+    };
+};

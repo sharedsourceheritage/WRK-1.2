@@ -1,0 +1,14 @@
+
+using System;
+
+namespace DelegateInstantiation
+{
+    public delegate void Printer(string arg);
+
+    public class Program {
+      public static void Main(string[] args) {
+        Printer p = Console.WriteLine;       // SSC compiles this.
+        p = new Printer(Console.WriteLine);  // SSC can't find WriteLine here.
+      }
+    }
+}

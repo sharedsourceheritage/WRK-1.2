@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "When I run SscBoogie on a .Net 4.0 dll (e.g. Core.dll from Boogie) it throws an AssumeException.\n\nThe following command can be used to reproduce the crash:\nsscboogie /noVerify Core.dll",
+    "LastUpdatedDate": "2010-11-05T06:32:05.43-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "specsharp",
+    "ReportedDate": "2010-11-05T06:29:47.403-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "SscBoogie crashes when it is run on .Net 4.0 dll",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 9789
+  },
+  "FileAttachments": [
+    {
+      "FileId": 219673,
+      "FileName": "Core.dll",
+      "DownloadUrl": ".\\219673"
+    },
+    {
+      "FileId": 219674,
+      "FileName": "Core.pdb",
+      "DownloadUrl": ".\\219674"
+    }
+  ],
+  "Comments": []
+}

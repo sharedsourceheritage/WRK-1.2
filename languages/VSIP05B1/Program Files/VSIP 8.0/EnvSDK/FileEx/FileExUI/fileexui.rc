@@ -1,0 +1,215 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "UIResID.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "UIResID.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1000  CTMENU     ""PkgCmd.cto""\r\n"
+    "#define VER_FILEDESCRIPTION_STR ""FileEx Package Resources\\0""\r\n"
+    "#define VER_INTERNALNAME_STR ""FileExUI.dll\\0""\r\n"
+    "#define VER_ORIGINALFILENAME_STR ""FileExUI.dll\\0""\r\n"
+    "#include ""EnvSdkVersion.ver""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CMDBAR              BITMAP  DISCARDABLE     "res\\CmdBar.bmp"
+IDB_ILFOLDERS           BITMAP  DISCARDABLE     "res\\ILFolders.bmp"
+IDB_ILFILES             BITMAP  DISCARDABLE     "res\\ILFiles.bmp"
+IDB_ILSTATE             BITMAP  DISCARDABLE     "res\\ILState.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_COMMANDS, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 245
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 187
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_COMMANDS DIALOG DISCARDABLE  0, 0, 249, 184
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Define Commands"
+FONT 8, "Tahoma"
+BEGIN
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,26,8,219,1
+    LTEXT           "Commands &List ",IDC_STATIC,4,4,50,8
+    LISTBOX         IDC_CMD_COMMANDLIST,4,16,212,58,LBS_NOINTEGRALHEIGHT | 
+                    LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "U",IDC_CMD_CMDUP,220,16,18,16,BS_ICON
+    PUSHBUTTON      "D",IDC_CMD_CMDDOWN,220,34,18,16,BS_ICON
+    PUSHBUTTON      "X",IDC_CMD_CMDDEL,220,58,18,16,BS_ICON
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,26,82,219,1
+    LTEXT           "Command &Details ",IDC_STATIC,4,78,58,8
+    LTEXT           "&Name:",IDC_STATIC,8,91,22,8
+    EDITTEXT        IDC_CMD_NAME,60,88,156,14,ES_AUTOHSCROLL
+    LTEXT           "&Command:",IDC_STATIC,8,108,35,8
+    EDITTEXT        IDC_CMD_COMMAND,60,105,156,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_CMD_CMDBROWSE,220,105,17,14
+    LTEXT           "&Arguments:",IDC_STATIC,8,125,38,8
+    EDITTEXT        IDC_CMD_ARGUMENTS,60,122,156,14,ES_AUTOHSCROLL
+    PUSHBUTTON      ">",IDC_CMD_ARGMACRO,220,122,17,14,BS_ICON
+    CONTROL         "Use &Output Window",IDC_CMD_USEOUTPUT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,144,80,10
+    CONTROL         "Cl&ear Output Window",IDC_CMD_CLEAROUTPUT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,126,144,85,10
+    PUSHBUTTON      "&Update",IDC_CMD_UPDATE,4,166,50,14
+    PUSHBUTTON      "A&dd",IDC_CMD_ADD,57,166,50,14
+    DEFPUSHBUTTON   "OK",IDOK,195,166,50,14
+END
+
+IDD_MAGIC DIALOGEX 0, 0, 174, 87
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Magic"
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ABOUT               ICON    DISCARDABLE     "res\\About.ico"
+IDI_CMD_SORTUP          ICON    DISCARDABLE     "res\\SortUp.ico"
+IDI_CMD_SORTDOWN        ICON    DISCARDABLE     "res\\SortDown.ico"
+IDI_CMD_DELETE          ICON    DISCARDABLE     "res\\Delete.ico"
+IDI_CMD_PROMPT          ICON    DISCARDABLE     "res\\Prompt.ico"
+IDI_FILES_CMDEXEC       ICON    DISCARDABLE     "res\\CmdExec.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// HTML
+//
+
+ABOUT_HTM               HTML    DISCARDABLE     "res\\About.htm"
+ABOUT_GIF               HTML    DISCARDABLE     "res\\About.gif"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OFFICIALNAME        "File Explorer Sample"
+    IDS_PRODUCTDETAILS      "File Explorer Product Sample. For more information about File Explorer, see the Microsoft website at <http://www.microsoft.com>. For customer support call 1-800-xxx-xxxx. File Explorer Copyright 2000 Microsoft Corporation."
+    IDS_PRODUCTID           "7.1"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FILESYSTOOL         "File System Browser"
+    IDS_FILESYS_FOLDER_DRIVE "Drive"
+    IDS_FILESYS_FOLDER_FOLDER "Folder"
+    IDS_FILESYS_FOLDER_SHORTCUT "Folder Shortcut"
+    IDS_FILESYS_FOLDER_SHFOLDER "Folder"
+    IDS_FILESYS_FILE_FILE   "File"
+    IDS_FILESYS_FILE_APP    "Application"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FILESYS_BROWSE_SHORTCUT "Select the folder to add a shortcut to:"
+    IDS_FILESYS_BRSHCUT_TITLE "Unable to create a shortcut"
+    IDS_FILESYS_BRSHCUT_ERROR "A shortcut cannot be created to '%s'."
+    IDS_FILESYS_MAGIC       "File System Browser Credits"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROPCAT_GENERAL     "General"
+    IDS_PROPCAT_ATTRIBS     "Attributes"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OUTPUTWIN_TITLE     "File System Browser"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CMD_BROWSECAPTION   "Select Command Program"
+    IDS_CMD_BROWSEFILTER    "Executables (*.exe)|*.exe|Batch Files (*.cmd,*.bat)|*.cmd;*.bat|All Files (*.*)|*.*|"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1000  CTMENU     "PkgCmd.cto"
+#define VER_FILEDESCRIPTION_STR "FileEx Package Resources\0"
+#define VER_INTERNALNAME_STR "FileExUI.dll\0"
+#define VER_ORIGINALFILENAME_STR "FileExUI.dll\0"
+#include "EnvSdkVersion.ver"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

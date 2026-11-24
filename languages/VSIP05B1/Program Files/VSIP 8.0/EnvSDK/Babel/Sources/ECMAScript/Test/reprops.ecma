@@ -1,0 +1,201 @@
+var version = ScriptEngineMajorVersion() * 10 + ScriptEngineMinorVersion();
+
+var unchRE = new RegExp(version >= 55
+	? "(((((((((UNCH)))))))))(?=UNCH$)"
+	: "(((((((((UNCH)))))))))");
+var unchSrc = "UNCHUNCHUNCH";
+
+var reProps = ["source", "global", "ignoreCase", "lastIndex", "multiline"];
+
+var RegExpProps = ["length", "index", "lastIndex",
+               "leftContext", "rightContext", "lastMatch", "lastParen", "input",
+               "$`", "$'", "$&", "$+", "$_",
+               "$1", "$2", "$3", "$4", "$5", "$6", "$7", "$8", "$9"];
+
+function PrintProp(prop, value) {
+	var type = typeof(value);
+	switch (type) {
+		case "string":
+			return prop + "=\"" + value + "\"";
+		case "number":
+		case "boolean":
+			return prop + "=" + value;
+		case "undefined":
+		case "null":
+			return prop + "=" + type;
+		default:
+			return prop + "=" + value + " (" + type + ")";
+	}
+}
+
+function PrintArray(array) {
+	if (array == null)
+		return "null";
+	var sorted = new Array();
+	sorted[0] = PrintProp("length", array.length);
+	var i = 1;
+	for (var prop in array)
+		sorted[i++] = PrintProp(prop, array[prop]);
+	return sorted.sort().join(" ");
+}
+
+function PrintProps(obj, props) {
+	var msg = "";
+	var value = undefined
+	for (var prop in obj)
+		msg += PrintProp(prop, obj[prop]) + " ";
+	if (props != null)
+		for (var p in props)
+			if ((value = obj[prop = props[p]]) != null)
+				msg += PrintProp(prop, value) + " ";
+	return msg;
+}
+
+function Test(pat, flags, src, replStr, replFunc, extraProps) {
+	var regExpProps = extraProps == null ? RegExpProps : RegExpProps.concat(extraProps);
+
+	// ****************************** NON-GLOBAL ******************************
+
+	var re = new RegExp(pat, flags);
+	var reStates = new Array();
+	var regExpStates = new Array();
+	print(re + ", \"" + src + "\":");
+
+	unchRE.exec(unchSrc);
+	print("\tmatch: <" + PrintArray(src.match(re)) + ">");
+	reStates[PrintProps(re, reProps)] = true;
+	regExpStates[PrintProps(RegExp, regExpProps)] = true;
+
+	if (replStr != null) {
+		unchRE.exec(unchSrc);
+		print("\treplace: <" + src.replace(re, replStr) + ">");
+		reStates[PrintProps(re, reProps)] = true;
+		regExpStates[PrintProps(RegExp, regExpProps)] = true;
+	}
+
+	if (version >= 55 && replFunc != null) {
+		unchRE.exec(unchSrc);
+		print("\treplace: <" + src.replace(re, replFunc) + ">");
+		reStates[PrintProps(re, reProps)] = true;
+		regExpStates[PrintProps(RegExp, regExpProps)] = true;
+	}
+
+	unchRE.exec(unchSrc);
+	print("\tsearch: <" + src.search(re) + ">");
+	reStates[PrintProps(re, reProps)] = true;
+	regExpStates[PrintProps(RegExp, regExpProps)] = true;
+
+	unchRE.exec(unchSrc);
+	print("\texec: <" + PrintArray(re.exec(src)) + ">");
+	reStates[PrintProps(re, reProps)] = true;
+	regExpStates[PrintProps(RegExp, regExpProps)] = true;
+
+	unchRE.exec(unchSrc);
+	print("\ttest: <" + re.test(src) + ">");
+	reStates[PrintProps(re, reProps)] = true;
+	regExpStates[PrintProps(RegExp, regExpProps)] = true;
+
+	for (var reMember in reStates)
+		print("\t\t< " + reMember + ">");
+	for (var regExpMember in regExpStates)
+		print("\t\t< " + regExpMember + ">");
+	print("");
+
+	// ******************************** GLOBAL ********************************
+
+	re = new RegExp(pat, flags + "g");
+	reStates = new Array();
+	regExpStates = new Array();
+	print(re + ", \"" + src + "\":");
+
+	unchRE.exec(unchSrc);
+	print("\tmatch: <" + PrintArray(src.match(re)) + ">");
+	reStates[PrintProps(re, reProps)] = true;
+	regExpStates[PrintProps(RegExp, regExpProps)] = true;
+
+	if (replStr != null) {
+		unchRE.exec(unchSrc);
+		print("\treplace: <" + src.replace(re, replStr) + ">");
+		reStates[PrintProps(re, reProps)] = true;
+		regExpStates[PrintProps(RegExp, regExpProps)] = true;
+	}
+
+	if (version >= 55 && replFunc != null) {
+		unchRE.exec(unchSrc);
+		print("\treplace: <" + src.replace(re, replFunc) + ">");
+		reStates[PrintProps(re, reProps)] = true;
+		regExpStates[PrintProps(RegExp, regExpProps)] = true;
+	}
+
+	unchRE.exec(unchSrc);
+	print("\tsplit: <" + PrintArray(src.split(re)) + ">");
+	reStates[PrintProps(re, reProps)] = true;
+	regExpStates[PrintProps(RegExp, regExpProps)] = true;
+
+	if (version >= 55) {
+		unchRE.exec(unchSrc);
+		re.lastIndex = 0;
+		var array = re.exec(src);
+		reMember = PrintProps(re, reProps);
+		regExpMember = PrintProps(RegExp, regExpProps);
+		print("\texec: <" + PrintArray(array) + ">");
+		if (array != null) {
+			while ((array = re.exec(src)) != null) {
+				print("\t\t< " + reMember + ">");
+				print("\t\t< " + regExpMember + ">");
+				print("\texec: <" + PrintArray(array) + ">");
+				reMember = PrintProps(re, reProps);
+				regExpMember = PrintProps(RegExp, regExpProps);
+			}
+		}
+		reStates[reMember] = true;
+		regExpStates[regExpMember] = true;
+	}
+
+	for (reMember in reStates)
+		print("\t\t< " + reMember + ">");
+	for (regExpMember in regExpStates)
+		print("\t\t< " + regExpMember + ">");
+	print("");
+
+}
+
+function ReplFunc0(match, index, input) {
+	return "<" + match
+	     + ":" + index
+	     + ":" + input + ">";
+}
+
+function ReplFunc1(match, capture1, index, input) {
+	return "<" + match
+	     + ":" + capture1
+	     + ":" + index
+	     + ":" + input + ">";
+}
+
+function ReplFunc2(match, capture1, capture2, index, input) {
+	return "<" + match
+	     + ":" + capture1
+	     + ":" + capture2
+	     + ":" + index
+	     + ":" + input + ">";
+}
+
+if (version >= 55) {
+	var replStr0 = "<$&>";
+	var replStr1 = "<$&:$1>";
+	var replStr2 = "<$&:$1:$2>";
+} else
+	replStr0 = replStr1  = replStr2  = "X";
+
+var srcStr = "a1b2c";
+
+print("\t\t< " + PrintProps(RegExp, RegExpProps) + ">");
+print("");
+
+Test("(.)(.)",        "", srcStr, replStr2, ReplFunc2, null);
+Test("(\\d*)",        "", srcStr, replStr1, ReplFunc1, null);
+Test("(\\d)|([a-z])", "", srcStr, replStr2, ReplFunc2, null);
+// if (version >= 70)
+//	Test("(?<one>\\d)|(?<two>[a-z])", "", srcStr, replStr0, replFunc2, ["$one", "$two"]);
+Test("(x)",           "", srcStr, replStr0, null,      null);

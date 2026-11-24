@@ -1,0 +1,552 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<style>@import url(readme.htm);</style>
+<base target="CONTENTS"></HEAD>
+<BODY>
+
+<H1><A NAME="contents"></A>Visual Studio .NET Integration Program Readme</H1>
+
+<P>This document contains last-minute notes from the Visual Studio .NET VSIP product teams that are intended to help you work around known issues in this release. </P>
+
+<H1>1. <A NAME="start"></A>Visual Studio .NET Integration Program</H1>
+
+<H1>1.1.<A NAME="overview"></A>Overview</H1>
+
+<P>The Microsoft Visual Studio .NET Integration Program (VSIP) provides resources, documentation, and tools you can use to seamlessly integrate your product into the Visual Studio .NET environment. As a VSIP partner, you can take advantage of the latest innovations in Microsoft technologies and programming models. VSIP offers advanced integration scenarios &#0151; such as the incorporation of new project systems, new languages, and custom editors &#0151; into the Visual Studio .NET programming environment. </P>
+
+<P>VSIP consists of two sets of SDKs, as follows:
+
+<UL type="disc"><li>Visual Studio .NET Integration (VSI) SDK</li>
+<li>Visual Studio .NET for Applications (VSA) SDK</li>
+</UL>
+
+<H1>1.2. <A NAME="system"></A>System Requirements</H1>
+
+<P>The system requirements for VSIP and Visual Studio .NET are the same. VSIP also supports the same platforms as Visual Studio .NET.</P>
+
+<P>For more information, see the Visual Studio .NET documentation and Readme file.</P>
+
+<H1>1.3. <A NAME="install"></A>Installation</H1>
+
+<P>Before installing the VSIP Technologies, you must first install the following:
+
+<UL type="disc"><li>A supported operating system</li>
+<li>Microsoft Visual Studio .NET</li>
+</UL>
+
+<P class="labelproc"><B>To install the VSIP Technologies</B>
+
+<OL type="1"><li>Place the VSIP CD in your CD-ROM drive. The autorun sequence should start up.
+<P>If the autorun sequence does not work, run the setup.exe file from the root directory on the CD.
+</li>
+<li>After reading the licensing agreement, choose <B>I Accept</B> and click <B>Continue </B>at the bottom of the page.</li>
+</OL>
+
+<H1>1.3.1. Uninstalling VSIP</H1>
+
+<P>You can uninstall the SDKs easily using the Add/Remove Programs option provided by Windows. </P>
+
+<P class="labelproc"><B>To uninstall the VSIP Technologies</B>
+
+<OL type="1"><li>In the Control Panel, double-click <B>Add/Remove Programs</B>. </li>
+<li>In the list of Currently Installed Programs, select <B>Microsoft VSIP Technologies</B>. </li>
+<li>Click <B>Remove</B>.</li>
+</OL>
+
+<H1>1.3.2. Changing the Default Help Collection</H1>
+
+<P>To see the documentation installed with the VSIP Technologies, choose the VSIP collection or the Visual Studio .NET Combined Help Collection from the IDE. The VSIP collection contains only VSIP documentation, while the Visual Studio .NET Combined Help Collection consists of the Visual Studio .NET documentation, the MSDN Library documentation, and the VSIP collection.</P>
+
+<BLOCKQUOTE>
+<b>Note&nbsp;&nbsp;&nbsp;</b>To view the VSIP documentation and use context-sensitive Help, choose the combined collection.</BLOCKQUOTE>
+
+<P class="labelproc"><B>To choose the appropriate Help collection</B>
+
+<OL type="1"><li>Open Visual Studio .NET.</li>
+<li>From the <B>Tools</B> menu, choose <B>Options</B>.
+<P>The Options dialog box opens.
+</li>
+<li>Under <B>Environment</B>, choose <B>Help</B>.</li>
+<li>From the <B>Preferred Collection</B> drop-down list, choose <B>VSIP</B> or <B>Visual Studio .NET Combined Help Collection</B>, and then click <B>OK</B>.</li>
+<li>Close the IDE, and then reopen it.</li>
+<li>From the <B>Help</B> menu, choose <B>Contents</B>.
+<P>The Contents window opens and displays the specified table of contents.
+</li>
+</OL>
+
+<H1>1.4. <A NAME="issues"></A>VSI Known Issues</H1>
+
+<P>The Visual Studio .NET Integration (VSI) SDK consists of the following documentation:
+
+<UL type="disc"><li>Visual Studio .NET Environment SDK</li>
+<li>Microsoft Help 2.0 SDK</li>
+<li>Microsoft Help Authoring Guide</li>
+<li>Microsoft Help Integration Guide</li>
+<li>Visual Studio .NET Debugging SDK</li>
+<li>Data Source Reference SDK</li>
+</UL>
+
+<H1>1.4.1. Visual Studio .NET Environment SDK</H1>
+
+<P>The following are known issues associated with the Visual Studio .NET Environment SDK:
+
+<UL type="disc"><li>If you are using Visual Studio .NET as your development environment, you might experience some exceptions when debugging Visual Studio. In the debug output, you might see several instances of the following message: 
+<P>First-chance exception in devenv.exe (MSO.DLL): 0xC0000005: Access Violation. 
+
+<P>To avoid seeing this message:
+
+<OL type="a"><li>Click <B>Exceptions</B> on the <B>Debug</B> menu.</li>
+<li>Select "c0000005 Access violation" in the Win32 Exceptions section of the <B>Exceptions</B> dialog box.</li>
+<li>Make sure that the action under <B>When the exception is thrown</B> is set to <B>Continue</B>.</li>
+</OL>
+</li>
+<li>Your existing VSPackage will not load in a new build of Visual Studio .NET if you do not rebuild it with the current headers and .lib files provided with the VSIP SDKs.</li>
+<li>The EnvSDKBase.txt file that appears in the [drive:][path]\VSIP\EnvSDK\ directory contains information about .dll base addresses for all of the samples. It is specified for use by the linker in the .vcproj files, through the /BASE:@envsdkbase.txt;&lt;dllname&gt; option. The base address of a .dll file can also be stated explicitly, using the option /BASE:0x50000000. The hex number represents the actual base address.
+<P>To get the best performance for your VSPackages, you should avoid loading your VSPackages within the following address spaces, which are used by Visual Studio .NET:
+<pre>0x30B00000 to 0x31449FFF
+0x4f000000 to 0x5fffffff </pre>
+</li>
+<li>When developing and shipping your VSPackages, be aware that if a user logs onto a machine as a guest, no third-party VSPackages load. This is not a failure of the Visual Studio .NET code, but rather an express design of the security mechanism of the CryptoAPI.</li>
+<li>When building any sample on Windows NT 4.0, you receive an error such as the following: 
+<P>Error PRJ0002: error result returned from 'D:\TEMP\BAT00000D.bat.' 
+
+<P>The error occurs during registration. This error is invalid and your sample project will work as designed.
+</li>
+<li>After building the Figures sample and adding a new Figures project to a solution, "Circle", "Arrow", and "Rectangle" appear in the toolbox. Dynamic Help will not display specific information for any of these three items. However, "Rectangle" information from the Platform SDK is displayed in the Dynamic Help window. This is typical behavior as a result of the extensibility of keywords within the Help system.</li>
+<li>If your VSPackage provides any objects that extend the Visual Studio automation model, then you must create runtime callable wrapper assemblies for your objects and place the assemblies in the Microsoft Visual Studio .NET\Common7\IDE\PublicAssemblies directory of the machine on which your VSPackage is installed. Without proper assemblies in this directory, your automation objects will not be available to the VSMacros IDE. For more information, see "Advanced COM Interop" in the .NET Framework SDK.</li>
+<li>If your setup runs custom actions (such as, devenv.exe /setup) you should include the <B>msidbCustomActionTypeContinue</B> type in the CustomAction table of your MSI. If you do not include this type, your uninstall might roll back if Visual Studio&nbsp;.NET is uninstalled prior to your product being uninstalled. For more information, see the Custom Action Return Processing Options topic in the Windows Installer 2.0 SDK.</li>
+<li>The documentation for the <B>IVsTextManager:EnumViews </B>method is incorrect. Do not pass a value of <B>NULL</B> in the <I>pBuffer</I> parameter to return all views for all buffers. This will cause Visual Studio to crash.</li>
+<li>When naming a satellite .dll for your VSPackage, use a unique name that is different than the name of any Visual Studio satellite .dll. If you use a name that is not unique, the Visual Studio .dll files will fail to load. To determine the names of the Visual Studio satellite .dll files, search for *.dll in the &lt;drive&gt;\Program Files\Microsoft Visual Studio .NET folder. Do not use the name of any .dll file found in a \1033 folder.</li>
+</UL>
+
+<H1>1.4.2. Microsoft Help 2.0 SDK</H1>
+
+<P>The following are known issues associated with the Microsoft Help 2.0 SDK:
+
+<UL type="disc"><li>Help collections without merged query (.HxQ) files must be installed on the user's machine.
+<P>If a Help collection does not use .HxQ files and is installed to run from a CD, any search will return zero hits after an Advanced Media Support (AMS, a CD-swapping dialog box) request until the Help collection is restarted.
+
+<P>Resolution: Design small documentation sets to always install content to the user's hard drive. Design large documentation sets that require a run-from-source option to use .HxQ files. 
+</li>
+</UL>
+
+<H1>1.4.3. Microsoft Help Authoring Guide</H1>
+
+<P>There are no known issues.</P>
+
+<H1>1.4.4. Microsoft Help Integration Guide</H1>
+
+<UL type="disc"><li>Administrator privileges are required when end users are plugging a complied help (.HxS) file into the Visual Studio Combined Collection (VSCC) on NTFS computers
+<P>On computers formatted using NTFS, end users must have administrator privileges to plug Help collections in to the VSCC. This behavior is by design. Your setup should not allow the plug-in registration unless it is installed under administrator privileges.
+</li>
+<li>Add VIntegration_VS7_RTL_---_---.msm and VIntegration_VS7_AppSearch_RTL_---_---.msm to installation packages.
+<P>If Visual Studio .NET is not installed to the default location, the Visual Studio documentation cannot be viewed after installing a VSIP partner product. If a VSIP partner product integrates documentation with the Visual Studio .NET Combined Help Collection, the Visual Studio .NET Combined Collection files are installed and registered to the default location, thus breaking the MSDN plug-in.
+
+<P>Workaround: Consume VIntegration_VS7_RTL_---_---.msm and VIntegration_VS7_AppSearch_RTL_---_---.msm in your setup. By default, the .msm files are installed to the \Program Files\VSIP\Deployment\Redistributable MSMs directory. These .msm files ensure that the Visual Studio .NET Combined Help Collection files are installed to the same location as the current version of Visual Studio on the machine.
+</li>
+</UL>
+
+<H1>1.4.5. Visual Studio .NET Debugging SDK</H1>
+
+<P>There are no known issues.</P>
+
+<H1>1.4.6. Data Source Reference SDK</H1>
+
+<P>There are no known issues.</P>
+
+<H1>1.5. <A NAME="support"></A>VSIP Support</H1>
+
+<P>Microsoft offers VSIP partners support through Summit Software, Microsoft's authorized agent for VSIP support. </P>
+
+<P class="labelproc"><B>To submit product support requests to Summit Software by e-mail</B>
+
+<UL type="disc"><li>Send mail to <A HREF="mailto:vsipsupport@summsoft.com">vsipsupport@summsoft.com</A>. In the incident description, clearly indicate that you are a VSIP partner. Your VSIP incident will be routed to a Developer Support Engineer at Summit Software for resolution.</li>
+</UL>
+
+<P class="labelproc"><B>To learn more about Summit's support and contact information</B>
+
+<OL type="1"><li>Access the Summit Software Web site for Microsoft VSIP at <A HREF="http://vsip.summsoft.com">http://vsip.summsoft.com/</A>.</li>
+<li>For support information, click <B>VSIP Support</B>, and then <B>Summit Premier Support</B>.
+<P>-or-
+
+<P>For contact information, click <B>VSIP Support</B>, and then <B>Get Support Now</B>.
+</li>
+</OL>
+
+<H1>2. <A NAME="vsasdk_contents"></A>Visual Studio for Applications (VSA) SDK Readme</H1>
+
+<H1>2.1. <A NAME="vsasdk_overview"></A>Overview</H1>
+
+<P>The Visual Studio for Applications (VSA) SDK provides source code, resource files, samples, and documentation that you can use to integrate VSA technology into host applications.</P>
+
+<H1>2.1.1. Files Provided with the SDK</H1>
+
+<P>The VSA SDK includes the following:
+
+<UL type="disc"><li>Source code</li>
+<li>Resource files</li>
+<li>West Coast Sales sample</li>
+<li>West Coast HelpDesk sample</li>
+<li>Conceptual documentation</li>
+<li>API references and general reference documentation</li>
+<li>Redistributable files are available through the Visual Studio Integrator's Program (VSIP)</li>
+</UL>
+
+<H1>2.1.2. Supported Platforms</H1>
+
+<P>The following table shows the main components of the VSA SDK, as well as information about the platforms on which the components are supported.</P>
+<div><table border=1 cellspacing="0" cols=5 frame=box rules=all>
+
+<TR VALIGN="top">
+<TH width=20%>VSA component</TH>
+<TH width=16%>Windows 98 and ME</TH>
+<TH width=18%>Windows NT 4.0</TH>
+<TH width=26%>Windows 2000, Windows XP, and .NET Server family</TH>
+<TH width=20%>Ships with .NET Framework</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Visual Basic .NET Script Engine</TD>
+<TD width=16%>No</TD>
+<TD width=18%>Yes</TD>
+<TD width=26%>Yes</TD>
+<TD width=20%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>JScript .NET Script Engine</TD>
+<TD width=16%>Yes</TD>
+<TD width=18%>Yes</TD>
+<TD width=26%>Yes</TD>
+<TD width=20%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Runtime Loader</TD>
+<TD width=16%>Yes</TD>
+<TD width=18%>Yes</TD>
+<TD width=26%>Yes</TD>
+<TD width=20%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Visual Basic .NET Design-Time Engine</TD>
+<TD width=16%>No</TD>
+<TD width=18%>Yes</TD>
+<TD width=26%>Yes</TD>
+<TD width=20%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>VSA IDE</TD>
+<TD width=16%>No</TD>
+<TD width=18%>Yes</TD>
+<TD width=26%>Yes</TD>
+<TD width=20%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Runtime hosting class</TD>
+<TD width=16%>Yes</TD>
+<TD width=18%>Yes</TD>
+<TD width=26%>Yes</TD>
+<TD width=20%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Design-time hosting class</TD>
+<TD width=16%>No</TD>
+<TD width=18%>Yes</TD>
+<TD width=26%>Yes</TD>
+<TD width=20%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>JScript .NET Command Line Compiler</TD>
+<TD width=16%>Yes</TD>
+<TD width=18%>Yes</TD>
+<TD width=26%>Yes</TD>
+<TD width=20%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Sample Setup</TD>
+<TD width=16%>No</TD>
+<TD width=18%>No</TD>
+<TD width=26%>Yes</TD>
+<TD width=20%>No</TD>
+</TR>
+</table></div>
+
+<H1>2.1.3. Redistributable Files</H1>
+
+<P>The VSA SDK includes a library of redistributable files that allow you to deploy your VSA-enabled application with a full complement of both runtime and design-time components. The VSA redistributable files will be translated into the eight natural languages that VSA supports. </P>
+
+<P>The complete list of files and components is provided with the VSA SDK Redistributables CD, which is available only through the VSIP program. For more information, see <A HREF="http://msdn.microsoft.com/vstudio/vsip/">http://msdn.microsoft.com/vstudio/vsip/</A> or <A HREF="http://vsip.summsoft.com/">http://vsip.summsoft.com/</A>.</P>
+
+<P>The VSA SDK Redistributables CD contains a Readme file that provides extensive information, including a catalog of redistributable files, descriptions of their supported scenarios, and instructions for deploying the redistributable files.</P>
+
+<H1>2.2. <A NAME="vsasdk_system"></A>System Requirements</H1>
+
+<P>The system requirements for VSA SDK are the same as for Visual Studio .NET. </P>
+
+<H1>2.3. <A NAME="vsasdk_install"></A>Installation</H1>
+
+<P>Before installing the VSA SDK, you must first install the following: 
+
+<UL type="disc"><li>Supported operating system with Internet Information Services (IIS)</li>
+<li>Microsoft&reg; Visual Studio&reg; .NET (must be installed to a local hard drive)</li>
+<li>IIS Extensions, which should be installed with Visual Studio .NET</li>
+<li>Microsoft&reg; FrontPage Extensions, which should be installed with Visual Studio .NET</li>
+</UL>
+
+<BLOCKQUOTE>
+<b>Note</b>&nbsp;&nbsp;&nbsp;To run the West Coast HelpDesk sample, you must also install SQL Server&trade; 2000 or SQL Server 7.0. During the West Coast HelpDesk sample installation, you will be asked to provide a SQL Server administrator password.</BLOCKQUOTE>
+
+<P class="labelproc"><B>To install the VSA SDK from the CD </B>
+
+<OL type="1"><li>Place the CD in your CD-ROM drive. Double-click the VSA SDK Setup.msi file located in the root directory on the CD.</li>
+<li>After reading the end-user licensing agreement, click the <B>I Accept</B> button at the bottom of the page. </li>
+</OL>
+
+<BLOCKQUOTE>
+<b>Note</b>&nbsp;&nbsp;&nbsp;During installation, a dialog box appears with the message "Removing Backup Files." Subsequently, the installation pauses for some minutes while the install updates the full, extensive set of Visual Studio.NET Help files. While it might seem that the install has hung, it has not.</BLOCKQUOTE>
+
+<P class="labelproc"><B>To view VSA SDK documentation</B></P>
+
+<P>The VSA SDK provides two means for accessing the VSA SDK documentation. 
+
+<OL type="1"><li>In the Visual Studio .NET IDE, choose <B>Contents</B> from the <B>Help</B> menu. Alternatively, press CTRL+ALT+F1.
+<P>The Contents window opens.
+</li>
+<li>Click the <B>Visual Studio for Applications SDK</B> node. 
+<P>-or-
+</li>
+<li>From the <B>Start</B> menu, under <B>Programs</B>, choose <B>Microsoft Visual Studio .NET</B>, and then choose <B>Microsoft Visual Studio .NET Documentation</B>. 
+<P>The Contents window opens.
+</li>
+<li>Click the <B>Visual Studio for Applications SDK</B> node.</li>
+</OL>
+
+<BLOCKQUOTE>
+<b>Note</b>&nbsp;&nbsp;&nbsp;Please refer to the Known Issues section (Section 5) for a discussion of a known error in the Help system that might cause VSA SDK documentation to not be visible.</BLOCKQUOTE>
+
+<H1>2.3.1. Setting up and Running the West Coast Sales Sample</H1>
+
+<P>The following procedure explains how to set up and run the West Coast Sales sample. The instructions assume that you have successfully installed the VSA SDK.</P>
+
+<P class="labelproc"><B>To set up the West Coast Sales sample</B></P>
+
+<BLOCKQUOTE>
+<b>Note</b>&nbsp;&nbsp;&nbsp;To run the sample, you must be logged on as Administrator on the machine on which the sample runs.</BLOCKQUOTE>
+
+<OL type="1"><li>Install the sample by running the VSA sample setup at <code>&lt;drive&gt;:\Program Files\VSIP\Visual Studio for Applications SDK\Samples\Samples Setup.exe</code>
+<P><code>-or-</code>
+
+<P><code>From the </code><B>Start</B> menu, a<code>ccess the setup shortcut selection by </code>choosing <B>Programs</B>, then <B>VSIP</B>, and <B>Visual Studio for Applications SDK</B>. Next, from <B>Samples</B>, choose <B>Setup</B><code>.</code>
+
+<BLOCKQUOTE>
+<b>Note</b>&nbsp;&nbsp;&nbsp;Running the samples setup by either method installs both the West Coast Sales sample and the West Coast HelpDesk sample.</BLOCKQUOTE>
+</li>
+<li>Save the customization code.
+<OL type="a"><li>From the <B>Start</B> menu, under <B>Programs</B>, choose <B>VSIP</B>, followed by <B>Visual Studio for Applications SDK</B>. Then, from <B>Samples</B>, choose <B>Workbench</B> and <B>WestCoast Sales Workbench</B>.</li>
+<li>From the <B>Tools</B> menu, select <B>Show IDE</B>. This will launch the VSA IDE.
+<P>-or-
+
+<P>Press ALT+F11 or fully expand the tree structure in the workbench and double-click the OpportunityCustomization node.
+</li>
+<li>Save the code and then close the IDE and Workbench. The sample is now ready to run.</li>
+</OL>
+</li>
+</OL>
+
+<H1>2.3.2. Setting up and Running the West Coast HelpDesk Sample</H1>
+
+<P>The following procedure explains how to set up and run the West Coast HelpDesk sample. The instructions assume that you have successfully installed the VSA SDK.</P>
+
+<BLOCKQUOTE>
+<b>Note&nbsp;&nbsp;&nbsp;</b>The sample requires SQL Server authentication.</BLOCKQUOTE>
+
+<P class="labelproc"><B>To enable SQL Server authentication </B>
+
+<OL type="1"><li>Run Microsoft SQL Server Enterprise Manager.</li>
+<li>Navigate through the tree structure under Microsoft SQL Server until you have located your server name.</li>
+<li>Right-click your server name and choose <B>Properties</B>. 
+<P>The <B>Properties</B> dialog box appears. 
+</li>
+<li>On the <B>Security</B> tab, verify that Authentication has been set to "SQL Server and Windows". Click <B>OK</B>.</li>
+</OL>
+
+<P class="labelproc"><B>To set up the West Coast HelpDesk sample</B></P>
+
+<BLOCKQUOTE>
+<b>Note</b>&nbsp;&nbsp;&nbsp;You must be logged on as Administrator to run the sample.</BLOCKQUOTE>
+
+<OL type="1"><li>Install the sample by running the VSA sample setup at <code>&lt;drive&gt;:\Program Files\VSIP\Visual Studio for Applications SDK\Samples\Samples Setup.exe</code>
+<P><code>-or-</code>
+
+<P><code>Access the setup shortcut selection by following this menu path: </code><B>Start</B><code> | </code><B>Programs</B><code>| </code><B>VSIP</B><code> | </code><B>Visual Studio for Applications SDK</B><code> | </code><B>Samples</B><code> | </code><B>Setup</B>.
+
+<BLOCKQUOTE>
+<b>Note</b>&nbsp;&nbsp;&nbsp;Running the samples setup using either method installs both the West Coast Sales sample and the West Coast HelpDesk sample.</BLOCKQUOTE>
+</li>
+<li>Save the customization code.
+<OL type="a"><li>From the <B>Start</B> menu, launch the Workbench.exe by following this path: <B>Programs</B> | <B>VSIP</B>| <B>Visual Studio for Applications SDK</B> | <B>Samples</B> | <B>Workbench</B> | <B>WestCoast HelpDesk Workbench</B>.</li>
+<li>From the <B>Tools</B> menu, select <B>Show IDE</B>. This will launch the VSA IDE. 
+<P>-or-
+
+<P>Press ALT+F11 or fully expand the tree structure in the workbench and double-click the IncidentCustomization or WorkItemCustomization nodes.
+</li>
+<li>Save the code and then close the IDE and Workbench. The sample is now ready to run.</li>
+</OL>
+</li>
+</OL>
+
+<H1>2.4. <A NAME="vsasdk_feedback"></A>Providing Feedback</H1>
+
+<P>You can provide feedback about the VSA release, its documentation, or other features of the SDK. Each topic in the VSA SDK documentation includes a link at the bottom of the page for posting messages to a monitored feedback alias. For more information about product service and support, see <A HREF="#vsasdk_support">Support</A>.</P>
+
+<H1>2.5. <A NAME="vsasdk_issues"></A>Known Issues</H1>
+
+<UL type="disc"><li>You should not use the <B>IVsaEngine.Evidence</B> property to change the permission set granted to an assembly. By default, customization code runs in the security context of the host, which must be set to Full Trust. Reducing this permission level using the <B>Evidence</B> property will cause the script engine to fail at runtime.
+<P>In future releases of the .NET Framework, the <B>IVsaEngine.Evidence</B> property will allow hosts to run customization code under a more restrictive permission set. In the present release, however, both the host and the customization code must run with Full Trust, which is the default for locally executing programs.
+
+<P>Because customization code must run with Full Trust, you should never run script code from untrusted sources, such as the Internet. Only code that has been written or reviewed by trusted employees should be allowed to execute inside a VSA host application.
+
+<P><B>Resolution</B>: Not applicable.
+</li>
+<li>Global function in JScript .NET can only be called internally by the JScript .NET script engine.
+<P>The JScript language allows users to write global functions, and the JScript .NET script engine provided with VSA fully supports this feature. Nevertheless, these functions have special signatures and can only be called internally by the JScript engine. VSA hosts should not attempt to use Reflection to extract and call global functions from a JScript assembly. A host should only use Reflection to retrieve and call functions that are declared inside classes, which are also known as methods.
+
+<P><B>Resolution</B>: Not applicable.
+</li>
+<li>When running the West Coast HelpDesk sample on your local machine, but with the SQL Server database located on a remote computer, both the Windows and Web clients will fail to connect to the database. The problem occurs because there is no user account with adequate permissions on the remote computer.
+<P><B>Resolution</B>: Resolving this problem requires you to modify the Web client, Windows client, Workbench, and code provider source file, as shown in the following procedures.
+
+<UL type="disc"><li><B>Web Client</B></li>
+</UL>
+
+<OL type="a"><li>On the remote machine, set up the SQL Server database using the SQL scripts installed with the VSA SDK on your local machine.</li>
+<li>On the remote, create a new user Login.</li>
+<li>Add this new user Login to each database that you created with the SQL scripts, granting read/write access to the West Coast HelpDesk database and read/write and execute permissions to the VSACustomization database.</li>
+<li>Open the Web.config file for West Coast HelpDesk on the local machine from the path &lt;drive&gt;:\Program Files\VSIP\Visual Studio for Applications SDK\Samples\wwwroot\WestCoastHelpDesk\.</li>
+<li>In the web.config file, change the values for the dsn key to include the following: <code>User ID=&lt;new user account&gt;</code>; <code>password=&lt;new user account password&gt;</code>; <code>server=&lt;machine name of remote computer&gt;</code>, where "new user Login" is the one you created in previous steps.</li>
+<li>In the Web.config file, remove the <code>Trusted_connection=true</code> key; next, replace <code>server=localhost</code> with <code>server=&lt;database name&gt;</code>.</li>
+<li>In the Web.config file, change the following: 
+<P><code>&lt;add key="moniker" value="Fabrikam://WestCoastHelpDesk/localhost/mycustomer/VSACustomizations/Incident"/&gt;</code>
+
+<P>-to&#0150; 
+
+<P><code>&lt;add key="moniker" value="Fabrikam://WestCoastHelpDesk/&lt;machine name&gt;/mycustomer/VSACustomizations/Incident"/&gt;</code>.
+</li>
+<li>Save and close the Web.config file.</li>
+</OL>
+
+<UL type="disc"><li><B>Windows Client</B></li>
+</UL>
+
+<OL type="a"><li>Locate the Fabrikam.WestCoastHelpDesk.WinClient.exe.config file at the path &lt;drive&gt;:\Program Files\VSIP\Visual Studio for Applications SDK\Samples\WestCoastHelpDesk\WinClient\WinClientUI\Bin\Release</li>
+<li>In Fabrikam.WestCoastHelpDesk.WinClient.exe.config, change the moniker key such that moniker reference is to the machine on which the database is installed rather than to localhost, as follows:
+<P><code>Fabrikam://WestCoastHelpDesk/&lt;machine name&gt;/mycustomer/VSACustomizations/WorkItem</code>
+
+<P>where <code>&lt;machine name&gt;</code> is the name of the remote computer on which the database is running.
+</li>
+</OL>
+
+<UL type="disc"><li><B>Workbench</B></li>
+</UL>
+
+<OL type="a"><li>Locate the WestCoastHelpDesk.wct file at the path &lt;drive&gt;:\Program Files\VSIP\Visual Studio for Applications SDK\Samples\Workbench\.</li>
+<li>In the WestCoastHelpDesk.wct file, change the monikers for both the Incident and WorkItem customizations such that their monikers refer to the remote machine on which the database is running rather than localhost, as follows:
+<P><code>Fabrikam://WestCoastHelpDesk/&lt;machine name&gt;/mycustomer/VSACustomizations/Incident</code>
+
+<P>-and-
+
+<P><code>Fabrikam://WestCoastHelpDesk/&lt;machine name&gt;/mycustomer/VSACustomizations/WorkItem</code> 
+
+<P>where <code>&lt;machine name&gt;</code> is the name of the remote computer on which the database is running.
+</li>
+</OL>
+
+<UL type="disc"><li><B>Code provider source file</B>
+<P>The following steps are required for the Workbench to work, and to run the VSA customization in either the Web or Windows clients.
+</li>
+</UL>
+
+<OL type="a"><li>Locate the SQLCodeProvider.cs file at the path &lt;drive&gt;:\Program Files\VSIP\Visual Studio for Applications SDK\Samples\WestCoastHelpDesk\SQLCodeProvider</li>
+<li>In SQLCodeProvider.cs, in the <B>BuildConnectionString</B> method, remove the <code>Trusted_Connection </code>key from the connection string.</li>
+<li>Also in the <B>BuildConnectionString</B> method, add <code>User ID=&lt;login name&gt;</code> and <code>password=&lt;password&gt;</code>, where <code>&lt;login name&gt;</code> and <code>&lt;password&gt;</code> are those provided when you created the user account with read/write and execute permissions for the VSACustomization database in step (c) of the <B>Web Client</B> section, above.</li>
+<li>Build the WestCoastHelpDesk solution.</li>
+<li>Copy the newly compiled Fabrikam.WestCoastHelpDesk.SQLCodeProvider.dll from the WestCoastHelpDesk\SQLCodeProvider\Bin\&lt;Release/Debug&gt; folder into the wwwroot\webcodeprovider\Bin folder.</li>
+</OL>
+</li>
+<li>While the VSA runtime is thread-neutral, the VSA design time can be hosted only in a single-threaded apartment. As a result there is no guarantee that the VSA design time will work properly if hosted in any other type of threaded environment.
+<P><b>Resolution:</b> Not applicable. 
+</li>
+<li>Before compiling source files provided with the VSA SDK that you have modified, you must change the namespace for that code file to avoid overwriting the original assemblies. You must also change the name of the output DLL. 
+<P>The VSA SDK provides source files for the Microsoft.Vsa.Hosting.dll and Microsoft.Vsa.Hosting.Designtime.dll assemblies, which you can open, edit, and build. However, if you do not change the namespace of these components before you compile them, the rebuilt files will overwrite the original DLLs provided with the SDK.
+
+<P><b>Resolution:</b> Change the namespace for SDK components that you modify prior to compiling them, and also change the name of the output DLL. Before changing the original source files, you should copy them to a new directory.
+</li>
+<li>Calling the <B>LoadEngineSource</B> method on the <B>DesignTime</B> class with the moniker argument set to NULL, that is, with no customization specified, makes it impossible to create a new engine.
+<P><b>Resolution:</b> Always call the <B>LoadEngineSource</B> method with a valid moniker.
+</li>
+<li>Modifying pre-generated code that is marked in the editor "Automatically generated code, do not modify" could result in end users getting an error reading "Check IDE for errors"; however, the error dialog box appears behind the VSA IDE and may go undetected by the user. Examples of occurrences that may cause this error include the following:
+<UL type="disc"><li>The user changes the constructor of the <code>opportunity_Customization</code> class to be private rather than public.</li>
+<li>The user changes the constructor signature to include an additional parameter.</li>
+<li>The user renames the class that exposes customization events.</li>
+</UL>
+
+<P><b>Resolution:</b> Users should not modify pre-generated code.
+</li>
+<li>The VSA SDK installation appears to hang during the period when it shows a dialog box that reads "Removing Backup Files." At this point, the installation pauses for some minutes while updating the full set of Visual Studio.NET Help files, which are extensive. While it may seem that the install has hung, in fact it has not.
+<P><b>Resolution:</b> Not applicable.
+</li>
+<li>Code developed using the VSA SDK Beta 2 release must be recompiled using the current version of the VSA SDK. Additionally, changes to VSA code require that you remove HTTP handlers if you use a Web.Config file, and that you set the <B>IVsaEngine.RootNamespace</B> property for your runtime script engine.
+<P><b>Resolution:</b> Recompile all customization code using the current version of the VSA SDK. Set the <B>RootNamespace</B> property for your runtime script engine. Remove HTTP handlers from your Web.Config file, if applicable.
+</li>
+<li>You must be logged on with an account that has Administrator privileges to run the VSA SDK samples.
+<P><b>Resolution:</b> Log on with an account that has Administrator privileges.
+</li>
+<li>An error in the Help system causes VSA SDK documentation to not be visible if you set it as the preferred collection.
+<P><b>Resolution:</b> You can correct this problem by editing the filter. 
+
+<OL type="a"><li>From the <B>Help</B> menu, select <B>Edit Filters</B>.</li>
+<li>In the resulting window, select Visual Studio for Applications. The filter is displayed with the following values set: DocSet="VSM" or DocSet="URTFramework".</li>
+<li>Change the filter values as follows: DocSet="VSA SDK" or DocSet="VSIPSDK".</li>
+<li>Save the filter.</li>
+</OL>
+
+<P>You can now select the VSA SDK as your preferred Help collection.
+</li>
+</UL>
+
+<H1>2.5.1. Documentation Errata</H1>
+
+<P>Product changes or errors detected after completion of VSA SDK documentation have resulted in incorrect information persisting in the documentation. Following are known instances of incorrect information in the VSA SDK documentation:
+
+<UL type="disc"><li>In the Help topic "Installing the West Coast Sales Sample," in the section labeled "To run the sample," instruction number 4 should be ignored.</li>
+<li>Under the node for the VSA SDK samples, the topic "Developer Workbench" includes incorrect file paths to the West Coast Sales and West Coast HelpDesk samples' .wct project schema files. The correct paths for the samples' schema files follow:
+<P><code>..\Samples\Workbench\WestCoastSales.wct</code>
+
+<P><code>..\Samples\Workbench\WestCoastHelpDesk.wct</code>
+</li>
+<li>In the VSA SDK Samples node, in the topic "Developer Workbench," step number 7 of the procedure "To edit customization code in the VSA IDE" incorrectly directs you to revoke the code cache by calling the file revokecache.aspx. The samples now automatically revoke the code cache through the revokecache.asmx Web service. There is no longer any need to manually revoke the cache, so you should disregard step number 7.</li>
+<li>The topic "Developer Workbench" includes an erroneous Note in step number 1 of the procedure "To edit customization code in the VSA IDE." The note incorrectly states: "The first time you open the West Coast HelpDesk sample you must save the Incident and WorkItem customizations." In fact, customizations should be saved for both samples because the VSA SDK does not ship pre-compiled DLLs with customization code.</li>
+<li>In the topic "Sample Walkthrough," in the West Coast Sales sample abstract, the procedure "To edit the Sales_Opportunity MTO" includes an incorrect file path for accessing the WestCoastSales.wct configuration file. The correct path follows:
+<P>..\Samples\Workbench\
+</li>
+</UL>
+
+<H1>2.6. <A NAME="vsasdk_support"></A>Support</H1>
+
+<P>For VSA product service and support, contact Summit Software by the following means:
+
+<UL type="disc"><li>Phone: (315) 445-9000</li>
+<li>Web: <A HREF="http://vsip.summsoft.com/vsa">http://vsip.summsoft.com/vsa</A></li>
+<li>E-mail: <A HREF="mailto:vsasupport@summsoft.com">vsasupport@summsoft.com</A></li>
+</UL>
+
+</BODY>
+</HTML>

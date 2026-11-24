@@ -1,0 +1,53 @@
+; ******** Environment SDK ******************
+; <REBASE> 0x4e000000 EnvSDK
+;
+; envsdk	0x4e000000	0x4f08ffff
+
+aiwtool                  0x4e000000    0x00060000
+aiwtoolui                0x4e060000    0x00010000
+bscpkg                   0x4e070000    0x00090000
+bscpkgui                 0x4e100000    0x00010000
+bscedt                   0x4e110000    0x000f0000
+bscedtui                 0x4e200000    0x00010000
+bscprj                   0x4e210000    0x00170000
+bscprjui                 0x4e380000    0x00010000
+figcompiler              0x4e390000    0x000d0000
+figedit                  0x4e460000    0x000e0000
+figlgsvc                 0x4e540000    0x000e0000
+figpkgui                 0x4e620000    0x00010000
+figprj                   0x4e630000    0x00190000
+figprjui                 0x4e7c0000    0x00010000
+parse                    0x4e7d0000    0x000b0000
+fileex                   0x4e880000    0x00100000
+fileexui                 0x4e980000    0x00010000
+mitwin                   0x4e990000    0x000a0000
+mitwinui                 0x4ea30000    0x00010000
+mycprj                   0x4ea40000    0x001c0000
+mycprjui                 0x4ec00000    0x00010000
+mycee                    0x4ec10000    0x00080000
+myceeui                  0x4ec90000    0x00010000
+optpkg                   0x4eca0000    0x00060000
+optpkgui                 0x4ed00000    0x00010000
+owauto                   0x4ed10000    0x00060000
+owautoui                 0x4ed70000    0x00010000
+toolwn                   0x4ed80000    0x00090000
+toolwnui                 0x4ee10000    0x00010000
+slnext                   0x4ee20000    0x000c0000
+slnextui                 0x4eee0000    0x00010000
+dsreftool                0x4eef0000    0x000a0000    ; in the DSREF SDK
+dsreftoolui              0x4ef90000    0x00010000    ; in the DSREF SDK
+BabelMyCLgSvc            0x4efa0000    0x00030000
+SccPkg                   0x4efd0000    0x00060000
+SccPkgUI                 0x4f030000    0x00010000
+VsaSdkCustomActions      0x4f040000    0x00040000
+VsEnvSdkCustomActions    0x4f080000    0x00040000
+BasicPkgUi               0x4f0C0000    0x00010000
+ToolWindowUi             0x4f0D0000    0x00010000
+BasicEditorUi            0x4f0E0000    0x00010000
+DynamicMenuUi            0x4f0F0000    0x00010000
+ToolWindowMCPPUI         0x4f100000    0x00010000
+ProvidesObjectUi         0x4f110000    0x00010000
+OptionsPageUi            0x4f120000    0x00010000
+BMetadata                0x4f130000    0x00020000
+
+;usable space from 0x4f150000 to 0x500000000

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "983417",
+    "ThreadId": "428625",
+    "Html": "\r\n<p>Does Spec# support nested use of quantifications.</p>\r\n<p>If it does, can anyone please correct the example given below so that it gets compiled</p>\r\n<p>(The postcondition i want to verify is given commented, but i cannot even get the uncommented one to compile)</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">public</span> <span style=\"color:blue\">class</span> C\r\n{\r\n<span style=\"color:blue\">int</span> p11x,p11y,p12x,p12y,p21x,p21y,p22x,p22y;\r\n<span style=\"color:blue\">public</span> C(<span style=\"color:blue\">int</span> p1,<span style=\"color:blue\">int</span> p2,<span style=\"color:blue\">int</span> p3,<span style=\"color:blue\">int</span> p4,<span style=\"color:blue\">int</span> p5,<span style=\"color:blue\">int</span> p6,<span style=\"color:blue\">int</span> p7,<span style=\"color:blue\">int</span> p8)\r\n{\r\n    p11x=p1;\r\n    p11y=p2;\r\n    p12x=p3;\r\n    p12y=p4;\r\n    p21x=p5;\r\n    p21y=p6;\r\n    p22x=p7;\r\n    p22y=p8;\r\n\r\n    \r\n }\r\n<span style=\"color:blue\">bool</span> intersect()\r\nensures (result == <span style=\"color:blue\">true</span>) ==&gt; exists{ <span style=\"color:blue\">int</span> x <span style=\"color:blue\">in</span> (-100:100);{exists{<span style=\"color:blue\">int</span> y <span style=\"color:blue\">in</span> (-100:100); y==10};\r\n<span style=\"color:green\">//ensures (result == true) ==&gt; exists{ int x in (-100:100);{exists{int y in (-100:100);{(y-p11y)*(p12x-p11x) -(p12y-p11y)*(x-p11x)==0 && (p11x &lt;= x) && (x &lt;= p12x) }}};</span>\r\n{\r\n\t<span style=\"color:blue\">int</span> test1, test2;\r\n\ttest1 = (( (p12x - p11x) * (p21y -p11y ))- ((p21x - p11x) * (p12y - p11y))) * (( (p12x - p11x) * (p22y -p11y ))- ((p22x - p11x) * (p12y - p11y)));\r\n\ttest2 = (( (p22x - p21x) * (p11y -p21y ))- ((p11x - p21x) * (p22y - p21y))) * (( (p22x - p21x) * (p12y -p21y ))- ((p12x - p21x) * (p22y - p21y)));\r\n\t<span style=\"color:blue\">bool</span> result =(test1 &lt;= 0) && (test2 &lt;= 0);\r\n  <span style=\"color:blue\">return</span> result;\r\n}\r\n}\r\n</pre>\r\n</div>\r\n<p></p>\r\n",
+    "PostedDate": "2013-01-05T17:17:09.963-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "986122",
+    "ThreadId": "428625",
+    "Html": "\r\n<p>After fixing the curly braces in the postcondition to</p>\r\n<p>&nbsp;&nbsp;&nbsp; ensures (result == true) ==&gt; <br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exists{ int x in (-100:100); exists{int y in (-100:100); y==10}};</p>\r\n<p>the code compiles on my Spec# installation (which I built from the sources). However, it throws an exception on rise4fun. We'll try to investigate why.</p>\r\n<p>Both postconditions do not verify, which is due to the weak support for existential quantifiers.</p>\r\n<p>&nbsp;&nbsp;&nbsp; Peter</p>\r\n",
+    "PostedDate": "2013-01-13T07:26:55.277-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "986123",
+    "ThreadId": "428625",
+    "Html": "\r\n<p>Thanks</p>\r\n",
+    "PostedDate": "2013-01-13T07:33:59.203-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

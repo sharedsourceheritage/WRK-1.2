@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<STYLE>SPAN.Italic {
+	FONT-STYLE: italic
+}
+.NumberedListCustom1 { text-align: Left; text-indent: 0; list-style-type: upper-roman; margin-left: 
+               .25; margin-top: 3; margin-bottom: 3 }
+SPAN.Bold {
+	FONT-WEIGHT: bold
+}
+SPAN.CodeFeaturedElement {
+	FONT-WEIGHT: bold; COLOR: navy; FONT-FAMILY: "Courier New"
+}
+div.Section1
+	{page:Section1;}
+ li.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+</STYLE>
+
+<META content="Microsoft FrontPage 6.0" name=GENERATOR>
+</HEAD>
+<BODY lang=EN-US style="tab-interval: .5in" vLink=blue link=blue>
+<h2 align="center"><font face="Verdana" size="4">Visual Studio .NET Industry Partner Program 
+<span style="background-color: #FFFFFF; background-position: 0% 0%">2005 Beta</span>  
+One  Readme&nbsp;</font></h2>
+<p align="center"><font size="2" face="MS Sans Serif"><b>(c) Microsoft
+Corporation, 2004. All rights reserved</b></font></p>
+<hr><P><font size="2" face="Verdana">This document contains late-breaking or other
+information about the Visual Studio .NET Industry Partner Program (VSIP)
+<span style="background-color: #FFFFFF; background-position: 0% 0%">2005 Beta 
+One release</span>.&nbsp;
+This Readme is intended to help you work around known issues in this release of
+VSIP 2005 Beta One.</font> 
+</P>
+	<ol>
+		<li><font size="2" face="Verdana">You must run Visual Studio 2005 Exp 
+		with the default General Development Settings.&nbsp; If you don't, your 
+		commands may not show up in the menus.</font></li>
+		<p><font size="2" face="Verdana">If you're launching Visual Studio 2005 
+		Exp for the first time, you'll be asked to choose your default 
+		environment setting.</font></p>
+		<ul style="margin-top: 0in; margin-bottom: 0in" type="disc">
+			<li class="MsoNormal" style="color: navy">
+			<font size="2" face="Verdana">Select General Development Settings, 
+			then click Start Visual Studio. </font></li>
+		</ul>
+		<p><font size="2" face="Verdana">If instead you’ve already launched 
+		Visual Studio 2005 Exp.</font></p>
+		<ul style="margin-top: 0in; margin-bottom: 0in" type="disc">
+			<li class="MsoNormal" style="color: navy">
+			<font size="2" face="Verdana">From the Tools menu, select 
+			Import/Export Settings... </font></li>
+			<li class="MsoNormal" style="color: navy">
+			<font size="2" face="Verdana">Click the Reset IDE Settings radio 
+			button. </font></li>
+			<li class="MsoNormal" style="color: navy">
+			<font size="2" face="Verdana">Select General Development Settings 
+			from the list, then click Reset Settings. </font></li>
+			<li class="MsoNormal" style="color: navy">
+			<font size="2" face="Verdana">When prompted, Don't Save your current 
+			settings. <br>&nbsp;</font></li>
+		</ul>
+		<li><font face="Verdana" size="2">When using VSIP help do not use the 
+		VSIP filter. At this time, using that filter will cause some VSIP 
+		content to be hidden.<br>&nbsp;</font></li>
+		<li><font face="Verdana" size="2">In the automation Immediate Toolwindow 
+		sample, the Script control project is not set to be registered for COM 
+		interop.&nbsp; Trying to create the control gives a <b>Class not 
+		registered</b> error.&nbsp; To work around this problem, add a Guid 
+		attribute to the ScriptControl class, and check the Register for COM 
+		Interop property.<br>&nbsp;</font></li>
+		<li><font face="Verdana" size="2">Keybindings that package developers 
+		write will not show up in the Visual Studio UI. This is due to the fact 
+		that users are forced to select a profile, which gives them only the 
+		keybindings explicitly defined in the profile. Since VSIP developers 
+		can't participate in the preinstalled profiles including the general 
+		profile, they can't hook their keybindings in.<br>&nbsp;</font></li>
+		<li><font face="Verdana" size="2">The DynamicMenu sample does not 
+		compile. When you attempt to build, mt.exe throws an error about the 
+		build output. To correct this problem, go to the Project Properties for 
+		the C++ project, then select <b>Linker -&gt; Manifest File</b>.&nbsp; 
+		Change &quot;Generate Manifest&quot; to <b>No</b>.<br>&nbsp;</font></li>
+		<li><font face="Verdana" size="2">VSIP 2003 Extras and VSIP 2005 Beta 
+		One use the same PackageWizard progid and classid.&nbsp; If both are 
+		installed (side-by-side), and then one is uninstalled, the wizard will 
+		no longer function.&nbsp; There is no workaround at this time.<br>&nbsp;</font></li>
+		<li><font face="Verdana" size="2">VSIP 2003 Extras and VSIP 2005 Beta 
+		One both use the ENVSDK_REGKEY environment variable.&nbsp; If both are 
+		installed (side-by-side), and then one is uninstalled, C++ packages 
+		created in VSIP 2003 Extras will register in the 7.1 hive rather than in 
+		the experimental 7.1Exp hive.&nbsp; There is no workaround at this time.<br>
+&nbsp;</font></li>
+		<li><font face="Verdana" size="2">VSIP 2003 Extras and VSIP 2005 Beta 
+		One both register wizards in the same location.&nbsp; Whichever one is 
+		installed last will break the wizards of the other.<br>
+&nbsp;</font></li>
+		<li><font face="Verdana" size="2">Running devenv /setup from the command 
+		line will cause the following empty folders to be generated:</font></li>
+</ol>
+<blockquote>
+	<p><font face="Verdana" size="2">Visual Basic<br>
+	Visual C#<br>
+	Visual J#<br>
+	Web Projects</font></p>
+	<p><font face="Verdana" size="2">These folders can be deleted or ignored.</font></p>
+</blockquote>
+<ol>
+	<li value="9"><font face="Verdana" size="2">The Setup.msi sample does not 
+	install the right binaries and so does not register them either. It installs 
+	only the project item and project templates.&nbsp; There is no workaround 
+	for this issue.<br>
+&nbsp;</font></li>
+	<li><font face="Verdana" size="2">When you create a MyCPrj project and add an item you will get a 
+	debug assertion. This is related to changes to the ALT CComBSTR class. This 
+	happens when you need to pass a BSTR* for an [out] param. This particular 
+	assertion is coming from CFileVwProjNode::OnCmdAddItem method. To workaround 
+	the issue, create an array of BSTRs (see below) and pass that to the 
+	IVsAddProjectItemDlg::AddProjectItemDlg method.<br>
+	<br>
+	BSTR rgbstrFilters[] = {bstrFilter};<br>
+&nbsp;</font></li>
+	<li><font face="Verdana" size="2">The VSIP 2005 regpkg.exe program does not 
+	register VSIP 2003 Extra packages correctly in the Visual Studio 2005 Beta 
+	One IDE, even though the output from the tool suggests it succeeded. Use&nbsp; 
+	the VSIP 2003 Extras VsipRegPkg.exe program instead.<br>
+&nbsp;</font></li>
+	<li><font face="Verdana" size="2">You will see an unhandled exception when 
+	you try to reopen a wizard too quickly or return to the welcome screen from 
+	later pages in a wizard.&nbsp; If you see this exception, click Continue to 
+	return to Visual Studio.&nbsp; The only data lost is the data given to the 
+	wizard.<br>
+&nbsp;</font></li>
+	<li><font face="Verdana" size="2">The VSIP 2005 wizards create packages for 
+	Visual Studio 2005, even though their description says they target Visual 
+	Studio 2003.<br>
+	<br>
+&nbsp;</font></li>
+	<li><font face="Verdana" size="2">Due to a late breaking change in Whidbey 
+Beta1, a New Help project cannot be compiled. The workaround would be to build the 
+project from the command line using hxcomp.exe.<br>
+	<br><br><br>&nbsp;</font></li>
+</ol>
+<P>&nbsp;</P>
+</BODY></HTML>

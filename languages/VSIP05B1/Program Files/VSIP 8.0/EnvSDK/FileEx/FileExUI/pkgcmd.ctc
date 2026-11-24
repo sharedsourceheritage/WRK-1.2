@@ -1,0 +1,168 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+//*****************************************************************************
+// PkgCmd.ctc
+//
+// CommandBar definition for the package
+//
+//*****************************************************************************
+
+#include <stdidcmd.h>
+#include <vsshlids.h>
+#include <msobtnid.h>
+#include <virtkeys.h>
+#include "PkgCmdID.h"
+#include "UIResID.h"
+
+#define _CTC_GUIDS_
+#include "Guids.h"
+    // defines the following guids
+    // guidFileEx - CommandBar Package Guid
+    // guidEUGrp - CommandBar Command Group Guid
+    // guidEUCmd - CommandBar Command Guid
+
+CMDS_SECTION guidFileEx
+
+    MENUS_BEGIN
+        // NewMenu                         Relative to Group                       Priority    Type                     Name                            Text
+        // Toolbars
+        guidEUGrp:IDM_TLB_FILESYSFOLDER,   guidEUGrp:IDM_TLB_FILESYSFOLDER,        0x0000,     TOOLWINDOWTOOLBAR,       "File System Browser Folders",  "Folders";
+        guidEUGrp:IDM_TLB_FILESYSFILE,     guidEUGrp:IDM_TLB_FILESYSFILE,          0x0000,     TOOLWINDOWTOOLBAR,       "File System Browser Files",    "Files";
+
+        // Context menus
+        guidEUGrp:IDM_CTX_FILESYSFOLDER,   guidEUGrp:0,                            0x0000,     CONTEXT,                 "FileSysFolder Context",        "FoldersContext";
+        guidEUGrp:IDM_CTX_FILESYSFILE,     guidEUGrp:0,                            0x0000,     CONTEXT,                 "FileSysFile Context",          "FilesContext";
+        guidEUGrp:IDM_CTX_CMDMACRO,        guidEUGrp:0,                            0x0000,     CONTEXT,                 "Command Macro Context",        "CommandMacro";
+
+        // Sort Cascading menu
+        guidEUGrp:IDM_MNU_FILESYSFILE_SORT,guidEUGrp:IDG_FILEPANECTX_ARRANGE,      0x0000,     CONTEXT,                 "Arrange Files",                "&Arrange Files";
+
+        // Commands Cascading menu
+        guidEUGrp:IDM_MNU_FILESYS_COMMANDS,guidEUGrp:IDG_FILESYSCTX_COMMANDS,      0x0000,     CONTEXT,                 "Commands",                     "&Commands";
+    MENUS_END
+
+    NEWGROUPS_BEGIN
+        // NewGroup                        Parent Group                            Priority
+        // File Pane Toolbar Groups
+        guidEUGrp:IDG_FILEPANE_COMMANDS,   guidEUGrp:IDM_TLB_FILESYSFILE,          0x0010;
+        guidEUGrp:IDG_FILEPANE_REFRESH,    guidEUGrp:IDM_TLB_FILESYSFILE,          0x0020;
+        guidEUGrp:IDG_FILEPANE_PROPS,      guidEUGrp:IDM_TLB_FILESYSFILE,          0x0030;
+        guidEUGrp:IDG_FILEPANE_FILTER,     guidEUGrp:IDM_TLB_FILESYSFILE,          0x0040;
+
+        // File Pane Context Menu Groups
+        guidEUGrp:IDG_FILEPANECTX_COMMANDS,guidEUGrp:IDM_CTX_FILESYSFILE,          0x0010;
+        guidEUGrp:IDG_FILEPANECTX_ARRANGE, guidEUGrp:IDM_CTX_FILESYSFILE,          0x0020;
+
+        // File Pane Context Menu Arrange Cascading Menu Groups
+        guidEUGrp:IDG_FILEPANE_SORT,       guidEUGrp:IDM_MNU_FILESYSFILE_SORT,     0x0010;
+
+        // Folder Pane Toolbar Groups
+        guidEUGrp:IDG_FOLDERPANE_VIEW,     guidEUGrp:IDM_TLB_FILESYSFOLDER,        0x0010;
+        guidEUGrp:IDG_FOLDERPANE_COMMANDS, guidEUGrp:IDM_TLB_FILESYSFOLDER,        0x0020;
+        guidEUGrp:IDG_FOLDERPANE_REFRESH,  guidEUGrp:IDM_TLB_FILESYSFOLDER,        0x0030;
+        guidEUGrp:IDG_FOLDERPANE_PROPS,    guidEUGrp:IDM_TLB_FILESYSFOLDER,        0x0040;
+
+        // Folder Pane Context Menu Groups
+        guidEUGrp:IDG_FOLDERCTX_SHORTCUT,  guidEUGrp:IDM_CTX_FILESYSFOLDER,        0x0010;
+        guidEUGrp:IDG_FOLDERCTX_FIND,      guidEUGrp:IDM_CTX_FILESYSFOLDER,        0x0020;
+        guidEUGrp:IDG_FOLDERCTX_WINDOS,    guidEUGrp:IDM_CTX_FILESYSFOLDER,        0x0030;
+        guidEUGrp:IDG_FOLDERCTX_REFRESH,   guidEUGrp:IDM_CTX_FILESYSFOLDER,        0x0050;
+        guidEUGrp:IDG_FOLDERCTX_PROPS,     guidEUGrp:IDM_CTX_FILESYSFOLDER,        0xFF00;
+
+        // Shared Commands Group
+        guidEUGrp:IDG_FILESYSCTX_COMMANDS, guidEUGrp:IDM_CTX_FILESYSFILE,          0x0030;
+
+        // Shared Commands Cascading Menu Groups
+        guidEUGrp:IDG_COMMANDS_LIST,       guidEUGrp:IDM_MNU_FILESYS_COMMANDS,     0x0010;
+        guidEUGrp:IDG_COMMANDS_DEFINE,     guidEUGrp:IDM_MNU_FILESYS_COMMANDS,     0x0020;
+
+        // Command Macro Context Menu Groups
+        guidEUGrp:IDG_CMDCTX_FOLDER,       guidEUGrp:IDM_CTX_CMDMACRO,             0x0010;
+        guidEUGrp:IDG_CMDCTX_FILE,         guidEUGrp:IDM_CTX_CMDMACRO,             0x0020;
+    NEWGROUPS_END
+
+    BUTTONS_BEGIN
+        // Button/Menu Item                Item Group                              Priority Icon                          Type    Flags                                                   Text
+        guidEUCmd:cmdidFileSysTool,        guidSHLMainMenu:IDG_VS_WNDO_WINDOWS2,   0xFF00,  guidEUGrp:bmpidFileSysTool,   BUTTON, 0,                                                      "&File System Browser";
+
+        // File Pane Commands
+        guidEUCmd:cmdidFilesOpenFile,      guidEUGrp:IDG_FILEPANE_COMMANDS,        0x0010,  guidEUGrp:bmpidOpenFile,      BUTTON, DEFAULTDISABLED,                                        "&Open";
+        guidEUCmd:cmdidFilesPreviewFile,   guidEUGrp:IDG_FILEPANE_COMMANDS,        0x0015,  guidEUGrp:bmpidPreviewFile,   BUTTON, DEFAULTDISABLED,                                        "&Preview";
+        guidEUCmd:cmdidFilesRefresh,       guidEUGrp:IDG_FILEPANE_REFRESH,         0x0010,  guidEUGrp:bmpidRefresh,       BUTTON, 0,                                                      "&Refresh";
+
+        guidEUCmd:cmdidFilesOpenFileWith,  guidEUGrp:IDG_FILEPANECTX_COMMANDS,     0x0011,  guidOfficeIcon:msotcidNoIcon, BUTTON, DEFAULTDISABLED,                                        "Open &With...";
+
+        // File Pane Arrange Cascading menu commands
+        guidEUCmd:cmdidFilesSortName,      guidEUGrp:IDG_FILEPANE_SORT,            0x0010,  guidOfficeIcon:msotcidNoIcon, BUTTON, 0,                                                      "by &Name";
+        guidEUCmd:cmdidFilesSortExtension, guidEUGrp:IDG_FILEPANE_SORT,            0x0011,  guidOfficeIcon:msotcidNoIcon, BUTTON, 0,                                                      "by &Extension";
+        guidEUCmd:cmdidFilesSortReadOnly,  guidEUGrp:IDG_FILEPANE_SORT,            0x0012,  guidOfficeIcon:msotcidNoIcon, BUTTON, 0,                                                      "by &Read-Only status";
+
+        // Folder Pane Commands
+        guidEUCmd:cmdidFolderView,         guidEUGrp:IDG_FOLDERPANE_VIEW,          0x0010,  guidEUGrp:bmpidFolderView,    BUTTON, 0,                                                      "Folders";
+        guidEUCmd:cmdidShortcutView,       guidEUGrp:IDG_FOLDERPANE_VIEW,          0x0011,  guidEUGrp:bmpidShortcutView,  BUTTON, 0,                                                      "Shortcuts";
+        guidEUCmd:cmdidBrowseShortcut,     guidEUGrp:IDG_FOLDERPANE_COMMANDS,      0x0010,  guidEUGrp:bmpidAddShortcut,   BUTTON, DYNAMICVISIBILITY | DEFAULTINVISIBLE | DEFAULTDISABLED  "Add Shortcut";
+        guidEUCmd:cmdidFoldersRefresh,     guidEUGrp:IDG_FOLDERPANE_REFRESH,       0x0010,  guidEUGrp:bmpidRefresh,       BUTTON, 0,                                                      "Refresh";
+
+        guidEUCmd:cmdidAddShortcut,        guidEUGrp:IDG_FOLDERCTX_SHORTCUT,       0x0010,  guidEUGrp:bmpidAddShortcut,   BUTTON, DYNAMICVISIBILITY | DEFAULTINVISIBLE | DEFAULTDISABLED, "&Add Shortcut";
+        guidEUCmd:cmdidDeleteShortcut,     guidEUGrp:IDG_FOLDERCTX_SHORTCUT,       0x0011,  guidEUGrp:bmpidDeleteShortcut,BUTTON, DYNAMICVISIBILITY | DEFAULTINVISIBLE | DEFAULTDISABLED, "&Delete Shortcut";
+        guidEUCmd:cmdidFoldersRefreshThis, guidEUGrp:IDG_FOLDERCTX_REFRESH,        0x0010,  guidEUGrp:bmpidRefresh,       BUTTON, DYNAMICVISIBILITY | DEFAULTINVISIBLE | DEFAULTDISABLED, "&Refresh";
+        guidEUCmd:cmdidFindHere,           guidEUGrp:IDG_FOLDERCTX_FIND,           0x0010,  guidOfficeIcon:msotcidFind,   BUTTON, DYNAMICVISIBILITY | DEFAULTINVISIBLE | DEFAULTDISABLED, "&Find...";
+        guidEUCmd:cmdidExplorer,           guidEUGrp:IDG_FOLDERCTX_WINDOS,         0x0010,  guidEUGrp:bmpidExplorer,      BUTTON, DYNAMICVISIBILITY | DEFAULTINVISIBLE | DEFAULTDISABLED, "&Explorer here";
+        guidEUCmd:cmdidMSDOS,              guidEUGrp:IDG_FOLDERCTX_WINDOS,         0x0011,  guidEUGrp:bmpidMSDOS,         BUTTON, DYNAMICVISIBILITY | DEFAULTINVISIBLE | DEFAULTDISABLED, "&Command Prompt here";
+
+        // Commands Cascading menu commands
+        guidEUCmd:cmdidDefineCommands,     guidEUGrp:IDG_COMMANDS_DEFINE,          0x0010,  guidOfficeIcon:msotcidNoIcon, BUTTON, 0,                                                      "&Define Commands...";
+        guidEUCmd:cmdidNoCommands,         guidEUGrp:IDG_COMMANDS_LIST,            0x0000,  guidOfficeIcon:msotcidNoIcon, BUTTON, DYNAMICVISIBILITY | DEFAULTDISABLED,                    "(No Commands)";
+        guidEUCmd:cmdidCommandList0,       guidEUGrp:IDG_COMMANDS_LIST,            0x0001,  guidEUGrp:bmpidCommand,       BUTTON, DYNAMICITEMSTART | TEXTCHANGES | DYNAMICVISIBILITY | DEFAULTINVISIBLE | DEFAULTDISABLED, " ";
+
+        // Commands Macro Context menu commands
+        guidEUCmd:cmdidMacroSelFolder,     guidEUGrp:IDG_CMDCTX_FOLDER,            0x0010,  guidOfficeIcon:msotcidNoIcon, BUTTON, ,                                                       "Selected Folder";
+        guidEUCmd:cmdidMacroFileDir,       guidEUGrp:IDG_CMDCTX_FILE,              0x0010,  guidOfficeIcon:msotcidNoIcon, BUTTON, ,                                                       "File Directory";
+        guidEUCmd:cmdidMacroFileName,      guidEUGrp:IDG_CMDCTX_FILE,              0x0020,  guidOfficeIcon:msotcidNoIcon, BUTTON, ,                                                       "File Name";
+        guidEUCmd:cmdidMacroFilePath,      guidEUGrp:IDG_CMDCTX_FILE,              0x0030,  guidOfficeIcon:msotcidNoIcon, BUTTON, ,                                                       "File Path";
+        guidEUCmd:cmdidMacroFileExt,       guidEUGrp:IDG_CMDCTX_FILE,              0x0040,  guidOfficeIcon:msotcidNoIcon, BUTTON, ,                                                       "File Extension";
+    BUTTONS_END
+
+    COMBOS_BEGIN
+        // Combo Item                      Item Group                              Priority CmdId to get list             Width   ComboType     Flags                                     ButtonText MenuText ToolTipText CommandName
+        guidEUCmd:cmdidFilesFilter,        guidEUGrp:IDG_FILEPANE_FILTER,          0x0010,  cmdidFilesFilterHandler,      75,     DYNAMICCOMBO, DEFAULTDISABLED,                          "Filter",  ,        "Filter";
+    COMBOS_END
+
+    BITMAPS_BEGIN
+        // Bitmap                          Bitmap Index, Bitmap Index ...
+        guidEUGrp:IDB_CMDBAR,              bmpidFileSysTool, bmpidFolderView, bmpidShortcutView, bmpidRefresh, bmpidOpenFile, bmpidPreviewFile, bmpidAddShortcut, bmpidDeleteShortcut,
+                                           bmpidExplorer, bmpidMSDOS, bmpidCommand;
+    BITMAPS_END
+
+CMDS_END
+
+CMDPLACEMENT_SECTION
+    // Command/Group                       Group/Menu                              Priority
+
+    // Commands appearing in multiple groups
+    guidVSStd97:cmdidPropSheetOrProperties,guidEUGrp:IDG_FILEPANE_PROPS,           0x0010;
+    guidVSStd97:cmdidPropSheetOrProperties,guidEUGrp:IDG_FOLDERPANE_PROPS,         0x0010;
+    guidVSStd97:cmdidPropSheetOrProperties,guidEUGrp:IDG_FOLDERCTX_PROPS,          0x0010;
+
+    guidEUCmd:cmdidFilesOpenFile,          guidEUGrp:IDG_FILEPANECTX_COMMANDS,     0x0010;
+    guidEUCmd:cmdidFilesPreviewFile,       guidEUGrp:IDG_FILEPANECTX_COMMANDS,     0x0015;
+
+    // Groups appearing in multiple menus
+    guidEUGrp:IDG_FILEPANE_REFRESH,        guidEUGrp:IDM_CTX_FILESYSFILE,          0x0040;
+    guidEUGrp:IDG_FILEPANE_PROPS,          guidEUGrp:IDM_CTX_FILESYSFILE,          0xFF00;
+
+    guidEUGrp:IDG_FILESYSCTX_COMMANDS,     guidEUGrp:IDM_CTX_FILESYSFOLDER,        0x0040;
+CMDPLACEMENT_END
+
+VISIBILITY_SECTION
+    // Command/Group/Menu                  GUID when visible
+VISIBILITY_END
+
+KEYBINDINGS_SECTION
+    // Command                             when available   emulation    keystate
+KEYBINDINGS_END

@@ -1,0 +1,29 @@
+// autoattach.idl : API for server-invoked auto attach
+
+import "ocidl.idl";
+import "oleidl.idl";
+
+// ------------------------------------------------------------------
+// IDebugAutoAttach
+[
+	object,
+	uuid(E9958F1F-0A56-424a-A300-530EBB2E9865),
+	pointer_default(unique)
+]
+interface IDebugAutoAttach: IUnknown
+{
+	enum
+	{
+		AUTOATTACH_PROGRAM_WIN32             = 0x00000001,
+		AUTOATTACH_PROGRAM_COMPLUS           = 0x00000002,
+		AUTOATTACH_PROGRAM_UNKNOWN           = 0x00000003
+	};
+	typedef DWORD AUTOATTACH_PROGRAM_TYPE;
+
+	HRESULT AutoAttach(
+		[in] REFGUID guidPort,
+		[in] DWORD dwPid,
+		[in] AUTOATTACH_PROGRAM_TYPE dwProgramType,
+		[in] DWORD dwProgramId,
+		[in] LPCWSTR pszSessionId);
+};

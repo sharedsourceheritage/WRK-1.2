@@ -1,0 +1,138 @@
+[
+  {
+    "Id": "494921",
+    "ThreadId": "227607",
+    "Html": "<p>Hello,</p>\r\n<p>to solve the problem described in thread http://specsharp.codeplex.com/Thread/View.aspx?ThreadId=223121 , I logged in as root and removed Spec# using the explorer. Then I re-installed Spec# as described in http://specsharp.codeplex.com/wikipage?title=Binaries&amp;referringTitle=Home. Now I'm unable to open any of my Spec#-projects from VS. VS complains that files of type .sscproj aren't supported. Also, I can't create new Spec# projects. This happens when I'm logged in as normal user and also when logged in as root.</p>\r\n<p>I use VS 2008 on Windows 7.</p>\r\n<p>Regards,</p>\r\n<p>Boris</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-09-17T05:42:32.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "504529",
+    "ThreadId": "227607",
+    "Html": "<p>Hi Boris</p>\r\n<p>I have just reinstalled Spec# as described in http://specsharp.codeplex.com/wikipage?title=Binaries&amp;referringTitle=Home and I have exactly the same problem as you describe. Have you been able to solve the problem?</p>\r\n<p>Rosemary</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-10-08T14:05:29.5-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "505721",
+    "ThreadId": "227607",
+    "Html": "<p>Rosemary and Mike worked to figure out that there are two separate problems:&nbsp; creating new projects and opening projects.</p>\r\n<p>For the problem of creating new Spec# projects, Mike&nbsp;noticed that some files are missing from the Spec# installation .zip file.&nbsp; We're working on producing a new such .zip file (but ran into some problems now that Boogie compiles from C#).&nbsp; In the meantime, here's a workaround:&nbsp; Get the contents of the directory tree rooted at SpecSharp\\Microsoft.SpecSharp\\Templates (you can get these from the Source tab here in codeplex).&nbsp; Copy this tree to a directory to become a sibling directory of the directory where you put the Spec# binaries.</p>\r\n<p>The problem of not being able to open Spec# projects is more mysterious and we are not able to reproduce it here.&nbsp; On a clean machine running Windows 7 (64-bit), I installed Visual Studio 2008 Professional and&nbsp;installed the binary Spec# distribution from codeplex.&nbsp; Spec# projects then open without problems.&nbsp; I then added the Templates directory as described above, and then I'm also able to create new Spec# projects.</p>\r\n<p>&nbsp; Rustan</p>",
+    "PostedDate": "2010-10-11T18:18:24.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "505855",
+    "ThreadId": "227607",
+    "Html": "<p>I'll try to reinstall Spec# with the upcoming installation .zip file. Since there is no uninstaller, what is the correct procedure to uninstall Spec# before doing a clean reinstall? Should I also reinstall Z3?</p>\r\n<p>Boris</p>",
+    "PostedDate": "2010-10-12T01:17:12.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "505892",
+    "ThreadId": "227607",
+    "Html": "<span style=\"font-family:Verdana\">Hi Boris<br><br>When you install the new version of Spec# run clean.cmd before running register.cmd. You should not need to reinstall Z3. I had some problems with the newest version of Z3 (v2.12).  Version 2.11 works fine.<br><br>Rosemary<br></span>",
+    "PostedDate": "2010-10-12T02:15:57.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "506871",
+    "ThreadId": "227607",
+    "Html": "<p>I incorporated the needed Templates directory into the .zip file that you get from the binary distribution.&nbsp; Previously, the binaries were in the root directory of that folder; now, they are in a subdirectory called Binaries.&nbsp; Note, you need to make the Templates directory be a sibling directory of Binaries in order for Spec# to find them.</p>\r\n<p>This updated release thus addresses the problem with creating new Spec# projects from within Visual Studio.&nbsp; We are still not able to reproduce the other problem with opening Spec# solutions.</p>\r\n<p>&nbsp; Rustan</p>",
+    "PostedDate": "2010-10-13T13:45:22.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "507161",
+    "ThreadId": "227607",
+    "Html": "<p>Ok, I logged in as root, removed C:\\Program Files\\SpecSharp, extracted SpecSharp-2010-10-13.zip to C:\\Program Files\\SpecSharp, ran clean.cmd and then register.cmd from a VisualStudio command prompt, executed as Administrator. Then I logged out and logged in as normal user.&nbsp; I'm still unable to open any Spec# project from VS 2008. VS complains that files of type .sscproj aren't supported. However, Spec# projects are listed as project type&nbsp;in File-&gt;New-&gt;Project. Nonetheless, trying to create a new Spec# project results in an error message &quot;C:\\Program Files\\SpecSharp\\Templates\\Projects\\ConsoleApplication.sscproj&quot; cannot be opened because this project type (.sscproj) is not supported&quot;. I verified that C:\\Program Files\\SpecSharp\\Templates\\Projects\\ConsoleApplication.sscproj exists and I have read and execute permissions.</p>\r\n<p>Boris</p>",
+    "PostedDate": "2010-10-14T04:03:57.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "507222",
+    "ThreadId": "227607",
+    "Html": "<p>Unfortunately, I report the same problem as Boris with VS 2008 on Windows 7. Both the July release of Spec#&nbsp; (with the templates workaround) and the October release do not allow me to open Spec# projects (.sscproj is not supported) or allow the creation of Spec# projects although Spec# projects do appear in the list of project types that I can create (File-&gt;New-&gt;Project).</p>\r\n<p>Rosemary</p>",
+    "PostedDate": "2010-10-14T06:45:03.347-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "507321",
+    "ThreadId": "227607",
+    "Html": "<p>Mike and I tried re-install on a machine, which still works for us.&nbsp; Previously, we have not placed Spec# under c:\\Program Files, but we tried that and it still worked for us.</p>\r\n<p>Here's something you can try.&nbsp; Start Visual Studio 2008 from the command prompt and give it the /log file, as follows:</p>\r\n<p>&nbsp; devenv /log c:\\tmp\\MyLog.xml</p>\r\n<p>(where c:\\tmp is an existing directory).&nbsp; Then try opening or creating a Spec# project in VS (which presumably gives you the same error as before).&nbsp; Then, quite VS.</p>\r\n<p>Now, inspect the MyLog.xml file and search for &quot;Spec#&quot; (and possibly also &quot;SpecSharp&quot;).&nbsp; This .xml file is a binary file, so you'll have to open it in an editor that understands that format, like Notepad or Visual Studio.&nbsp; We get:</p>\r\n<div style=\"color:black;background-color:white\">\r\n<pre>  <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">entry</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">record</span><span style=\"color:blue\">&gt;</span>42<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">record</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">time</span><span style=\"color:blue\">&gt;</span>2010/10/14 17:13:45.368<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">time</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">type</span><span style=\"color:blue\">&gt;</span>Information<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">type</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">source</span><span style=\"color:blue\">&gt;</span>Microsoft Visual Studio<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">source</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">description</span><span style=\"color:blue\">&gt;</span>Begin package load [Microsoft Spec# Package]<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">description</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">guid</span><span style=\"color:blue\">&gt;</span>{83043D9C-4AAE-4C70-9C52-8AFD6B388CCA}<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">guid</span><span style=\"color:blue\">&gt;</span>\r\n  <span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">entry</span><span style=\"color:blue\">&gt;</span>\r\n  <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">entry</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">record</span><span style=\"color:blue\">&gt;</span>43<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">record</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">time</span><span style=\"color:blue\">&gt;</span>2010/10/14 17:13:45.586<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">time</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">type</span><span style=\"color:blue\">&gt;</span>Information<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">type</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">source</span><span style=\"color:blue\">&gt;</span>Microsoft Visual Studio<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">source</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">description</span><span style=\"color:blue\">&gt;</span>End package load [Microsoft Spec# Package]<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">description</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">guid</span><span style=\"color:blue\">&gt;</span>{83043D9C-4AAE-4C70-9C52-8AFD6B388CCA}<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">guid</span><span style=\"color:blue\">&gt;</span>\r\n  <span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">entry</span><span style=\"color:blue\">&gt;</span>\r\n\r\n</pre>\r\n</div>\r\n<p>What do you get?</p>\r\n<p>By the way, if everything is installed properly, then you should see:</p>\r\n<p>&nbsp; Microsoft.SpecSharp&nbsp; 1.0.21126.0</p>\r\n<p>in the &quot;Installed products&quot; box from Help-&gt;About in Visual Studio.</p>\r\n<p>&nbsp; Rustan and Mike</p>",
+    "PostedDate": "2010-10-14T10:21:37.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "507471",
+    "ThreadId": "227607",
+    "Html": "<p><br> I have exactly the same installation&nbsp; (13 Oct) installation on an XP and a Win 7 machine. The XP version installs with VS2008 allowing me to open existing projects but not create them.</p>\r\n<p>The Windows 7 machine does not even install Spec# with VS. When I&nbsp; go to &quot;Installed products&quot; in Help-&gt;About in Visual Studio Spec# does not appear (on the windows 7 machine) .</p>\r\n<p>The Spec# components of the&nbsp; xml file generated by devenv /log c:\\tmp\\MyLog.xml on the Xp machine is:</p>\r\n<p>&nbsp; &lt;entry&gt;<br>&nbsp;&nbsp;&nbsp; &lt;record&gt;40&lt;/record&gt;<br>&nbsp;&nbsp;&nbsp; &lt;time&gt;2010/10/14 18:10:17.968&lt;/time&gt;<br>&nbsp;&nbsp;&nbsp; &lt;type&gt;Information&lt;/type&gt;<br>&nbsp;&nbsp;&nbsp; &lt;source&gt;Microsoft Visual Studio&lt;/source&gt;<br>&nbsp;&nbsp;&nbsp; &lt;description&gt;Begin package load [Microsoft Spec# Package]&lt;/description&gt;<br>&nbsp;&nbsp;&nbsp; &lt;guid&gt;{83043D9C-4AAE-4C70-9C52-8AFD6B388CCA}&lt;/guid&gt;<br>&nbsp; &lt;/entry&gt;</p>\r\n<p>&nbsp; &lt;entry&gt;<br>&nbsp;&nbsp;&nbsp; &lt;record&gt;44&lt;/record&gt;<br>&nbsp;&nbsp;&nbsp; &lt;time&gt;2010/10/14 18:10:18.125&lt;/time&gt;<br>&nbsp;&nbsp;&nbsp; &lt;type&gt;Information&lt;/type&gt;<br>&nbsp;&nbsp;&nbsp; &lt;source&gt;Microsoft Visual Studio&lt;/source&gt;<br>&nbsp;&nbsp;&nbsp; &lt;description&gt;End package load [Microsoft Spec# Package]&lt;/description&gt;<br>&nbsp;&nbsp;&nbsp; &lt;guid&gt;{83043D9C-4AAE-4C70-9C52-8AFD6B388CCA}&lt;/guid&gt;<br>&nbsp; &lt;/entry&gt;</p>\r\n<p>Rosemary</p>",
+    "PostedDate": "2010-10-14T15:26:11.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "508836",
+    "ThreadId": "227607",
+    "Html": "<p>Neither SpecSharp nor Spec# appear in the log file. There&nbsp;are one error and 3 warnings in the log, such as these:</p>\r\n<div style=\"color:black;background-color:white\">\r\n<div style=\"color:black;background-color:white\">\r\n<pre> <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">entry</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">record</span><span style=\"color:blue\">&gt;</span>10<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">record</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">time</span><span style=\"color:blue\">&gt;</span>2010/10/18 14:54:17.325<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">time</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">type</span><span style=\"color:blue\">&gt;</span>Error<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">type</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">source</span><span style=\"color:blue\">&gt;</span>Microsoft Visual Studio<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">source</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">description</span><span style=\"color:blue\">&gt;</span>Error checking App Path<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">description</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">hr</span><span style=\"color:blue\">&gt;</span>80070005 - E_ACCESSDENIED<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">hr</span><span style=\"color:blue\">&gt;</span>\r\n  <span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">entry</span><span style=\"color:blue\">&gt;</span>\r\n  <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">entry</span><span style=\"color:blue\">&gt;</span>  \r\n  <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">entry</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">record</span><span style=\"color:blue\">&gt;</span>56<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">record</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">time</span><span style=\"color:blue\">&gt;</span>2010/10/18 14:54:51.366<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">time</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">type</span><span style=\"color:blue\">&gt;</span>Warning<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">type</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">source</span><span style=\"color:blue\">&gt;</span>Microsoft Visual Studio<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">source</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">description</span><span style=\"color:blue\">&gt;</span>Appid skipped the loading of package<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">description</span><span style=\"color:blue\">&gt;</span>\r\n    <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">guid</span><span style=\"color:blue\">&gt;</span>{DA85543E-97EC-4478-90EC-45CBCB4FA5C1}<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">guid</span><span style=\"color:blue\">&gt;</span>\r\n  <span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">entry</span><span style=\"color:blue\">&gt;</span>\r\n\r\nThe complete log is quite lengthy.</pre>\r\n<pre>Boris</pre>\r\n</div>\r\n</div>",
+    "PostedDate": "2010-10-18T08:05:45.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "511893",
+    "ThreadId": "227607",
+    "Html": "\r\n<p>Boris, can you retry the installation and this time pick another path to install it under? Something that is *not* under C:\\Program Files?</p>\r\n<p>I'm really sorry you are having all of these issues. I really wish I could repro the problem on my machine so I could come up with a solution for you.</p>\r\n",
+    "PostedDate": "2010-10-24T19:11:42.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "515902",
+    "ThreadId": "227607",
+    "Html": "\r\n<p>I've installed Spec# in C:\\. The same problems as before: VS complains that files of type .sscproj aren't supported. Neither can I open Spec# projects nor created new ones, although Spec# projects do appear in the list of project types (File-&gt;New-&gt;Project).\r\n I've installed Spec# as admin and use it as normal user.</p>\r\n",
+    "PostedDate": "2010-11-02T06:12:25.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "516733",
+    "ThreadId": "227607",
+    "Html": "\r\n<p>Can you check that log with the regasm command again and see if you have those same errors you had last time? This is getting totally ridiculous. I am so sorry you're having such problems.</p>\r\n",
+    "PostedDate": "2010-11-03T15:19:07.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "517052",
+    "ThreadId": "227607",
+    "Html": "\r\n<p>As before, neither SpecSharp nor Spec# appear in the log file. Also, Spec# isn't listed in the &quot;Installed products&quot; box from Help-&gt;About in Visual Studio. I previously executed Register.cmd as administrator. There are various entries in the registry about\r\n Spec*, some of them point to C:\\Program Files\\Spec#\\bin, which doesn't exists now that I've installed Spec# in C:\\.</p>\r\n<p>The log contains those same errors I had last time. I sent it to Rustan but he's out of office until Nov 15.</p>\r\n",
+    "PostedDate": "2010-11-04T06:55:57.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "522113",
+    "ThreadId": "227607",
+    "Html": "\r\n<p>Meanwhile. I've installed the nighly build that Peter submitted a few days ago. Now I can create Spec# projects, but only as Administrator. I have the same problems as before If I log in as normal user. I verifified that i have read &amp; execute permissions\r\n for C:\\sscboogie, its subdirectories and the files in templates.</p>\r\n<p>I installed Spec# as Administrator, ie I logged in as Administrator, unzipped the files and ran register.cmd from a VS command shell as Administrator.</p>\r\n",
+    "PostedDate": "2010-11-15T06:18:47.69-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "580820",
+    "ThreadId": "227607",
+    "Html": "A post by alex on <br>\r\n<br>\r\nhttp://specsharp.codeplex.com/discussions/230181<br>\r\n<br>\r\nsuggests that our problems with a lack of Spec# projects in VS 2008 happened in VS 2010 and the problem is now fixed.<br>\r\n<br>\r\n<br>\r\n<br>\r\n----- Original Message -----<br>\r\nFrom: mikebarnett &lt;notifications@codeplex.com&gt;<br>\r\nDate: Monday, October 25, 2010 3:11<br>\r\nSubject: Re: Installation problem [specsharp:227607]<br>\r\nTo: [email removed]<br>\r\n<br>\r\n<span>\r\n<p><font style=\"font-style:normal; font-weight:normal; background-color:rgb(245,248,240); font-size:14px\">&gt;\r\n</font></p>\r\n<p>From: mikebarnett</p>\r\n<div id=\"x_x_ThreadNotificationPostBody\">\r\n<p><font style=\"font-style:normal; font-weight:normal; background-color:rgb(245,248,240); font-size:14px\">&gt;\r\n</font>Boris, can you retry the installation and this time pick another path to install it under? Something that is *not* under C:\\Program Files?</p>\r\n<p><font style=\"font-style:normal; font-weight:normal; background-color:rgb(245,248,240); font-size:14px\">&gt;\r\n</font>I'm really sorry you are having all of these issues. I really wish I could repro the problem on my machine so I could come up with a solution for you.</p>\r\n</div>\r\n<font style=\"font-style:normal; font-weight:normal; background-color:rgb(245,248,240); font-size:14px\">&gt;\r\n</font><font style=\"font-style:normal; font-weight:normal; background-color:rgb(245,248,240); font-size:14px\">&gt;\r\n</font>\r\n<p></p>\r\n</span><br>\r\n<br>\r\nRosemary Monahan<br>\r\nDepartment of Computer Science<br>\r\nNational University of Ireland Maynooth,<br>\r\nMaynooth,<br>\r\nCo. Kildare,<br>\r\nIreland<br>\r\n<br>\r\nTel: &#43;353-1-7083463<br>\r\n",
+    "PostedDate": "2011-03-15T09:42:24.453-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

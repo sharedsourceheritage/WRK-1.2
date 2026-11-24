@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "I'm using Visual Studio 2010 Ultimate and the Spec# Plugin does not work for me - installing it the described way using the Binaries does not change anything. Obviously, I'm not the only one with the problem (see comment in the Binary installation description).",
+    "LastUpdatedDate": "2011-12-21T22:39:14.143-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "specsharp",
+    "ReportedDate": "2011-12-21T02:10:33.48-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Does not work with VS2010 Ultimate",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10112
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Since I don't have VS 2010 Ultimate, I would be glad if you could be a bit more specific about what exactly doesn't work. (The comment that you refer to is from before we added support for VS 2010.)",
+      "PostedDate": "2011-12-21T22:39:14.143-08:00",
+      "Id": 51548
+    }
+  ]
+}

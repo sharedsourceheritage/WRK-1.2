@@ -1,0 +1,1815 @@
+\documentclass[twoside,dvipdfm]{article}
+
+\usepackage{htmx}
+
+
+%<![HTML[
+%    <style>
+%    <!--
+%    h1,h2,h3,h4 { font-family : verdana,helvetica,sans-serif }
+%    pre,code    { color: #202080 }
+%    body        { padding: 3%  }
+%    li          { margin-bottom: 0.5ex }
+%    -->
+%    </style>
+%]]>
+
+
+
+
+\renewenvironment{verbatim}{\small\begin{verbatim}}{\end{verbatim}}
+
+
+\begin{document}
+\title{Babel, integrating languages into Visual Studio}
+
+
+\author{DAAN LEIJEN
+\\
+University of Utrecht\strut \\ 
+Dept. of Computer Science\strut \\
+PO.Box 80.089, 3508 TB Utrecht\strut \\ 
+The Netherlands\strut \\
+\email{daan@cs.uu.nl}, 
+\url{http://www.cs.uu.nl/~daan}
+}\maketitle
+
+
+\hypertarget{Introduction}{\section{Introduction}}\label{Introduction}
+
+This document describes how to integrate programming languages into Visual Studio using 
+the {\itshape{}Babel} package. The {\itshape{}Babel package} is available
+for both the Visual J++ 6.0 environment and Visual Studio 7.0.
+By a language integration we mean: 
+Syntax highlighting (including customizable color classes);
+Syntax checking, show red squiglies in the source
+and show messages in a special task window;
+Statement completion; Method tips,  show the type of the method when 
+providing parameters; Member selection lists; Quick info, show information
+when hovering the mouse over identifiers; Highlight matching braces; find
+matching braces; Browsing; Build and deploy management; Project support and
+Debugger integration.
+
+There are basically three ways to integrate a language into Visual Studio:
+\begin{itemize}
+\item{}The Visual Studio Integration Partner (VSIP) program. By becoming a member
+of the VSIP program, you get the VSIP SDK which exposes all the core API's of
+the Visual Studio environment. Allthough the most flexible and powerful method
+of integration, it requires a lot of work to integrate a language. 
+\item{}The \texttt{IBabelService} interface. The \texttt{IBabelService} interface 
+represents the essential functionality that a language should provide in order to
+be integrated into Visual Studio. The {\itshape{}Babel} package provides all
+the glue code between this interface and the Visual Studio environment. 
+Creating an implementation of the \texttt{IBabelService} is much easier
+than using the VSIP SDK and might be the right approach if your language
+compiler is easily adapted to support this interface.
+\item{}The {\itshape{}Babel} SDK. This SDK implements a default \texttt{IBabelService}
+interface in C++ which is customized through a lexical and grammar specification of the language. 
+A client only needs to provide these specifications to integrate into Visual Studio.
+This is by far the easiest way to create a language service and this document 
+describes how to use this approach.
+\end{itemize}
+
+The {\itshape{}Babel} package supports (automatic) method tips, 
+(automatic) member selection, statement completion,
+quick info (automatic info when hovering the
+mouse over an identifier), (automatic) highlight matching brace, find matching
+brace and block (un)commenting.
+We hope to extend the 
+{\itshape{}Babel} package soon with browsing, a build system with automatic 
+dependency analysis, projects and help integration.
+
+
+\hypertarget{Getting started}{\section{Getting started}}\label{Getting started}
+
+Figure \href{#fig:overview}{[fig:overview]} shows how the {\itshape{}Babel} 
+framework is works. The dynamic link library \texttt{babelpackage.dll} 
+is a Visual Studio package that interfaces 
+between {\itshape{}Babel} services and Visual Studio. A {\itshape{}Babel} service
+is simply a COM component that implements the \texttt{IBabelService} interface
+and is registered in a special way. 
+This document will explain how to implement such service using the SDK.
+
+\hypertarget{Installation}{\subsection{Installation}}\label{Installation} 
+After installing the {\itshape{}Babel} SDK, there is 
+a root folder called \texttt{babel\char92{}client}. The root folder contains the following 
+sub folders:
+
+\begin{itemize} 
+\item{} \texttt{client\char92{}doc}. Contains the documentation about 
+{\itshape{}Babel}, FLEX and BISON.
+
+\item{} \texttt{client\char92{}tools}. Contains FLEX and BISON. Both are free GNU 
+programs. FLEX generates lexical analysers and BISON generates parsers\footnote{The 
+output of both programs is completely free without any licensing issue.}. 
+
+\item{} \texttt{client\char92{}common}. This folder contains the sources of the 
+\texttt{common.lib} library. This library implements the standard code 
+that implements the \texttt{IBabelService} and interfaces with the generated
+lexer and parser.
+
+\item{} \texttt{client\char92{}template}. This is the simplest possible language 
+service. This project is used as a template for implementing a language service.
+
+\item{} \texttt{client\char92{}myc} and \texttt{client\char92{}forth}.
+These folders 
+contain examples of a language integrated into Visual Studio using the 
+{\itshape{}Babel} framework. 
+\end{itemize}
+
+\hypertarget{Conventions}{\subsection{Conventions}}\label{Conventions}
+
+The interface to the {\itshape{}Babel} language package is specified in 
+\texttt{client\char92{}common\char92{}babelservice.idl}. 
+
+The code in \texttt{client\char92{}common} uses the following conventions:
+
+\begin{itemize}
+\item{} Types and constants start with a {\bf{}C}apital letter; \texttt{class 
+StdService, enum Color \char123{} ColorBlack \char125{}}.
+
+\item{} Variables start with a {\bf{}l}ower case letter; \texttt{token, 
+g\_service}. Global variables are prefixed with \texttt{g\_} and member 
+variable are prefixed with \texttt{m\_}. 
+
+\item{} Argument use is marked as \texttt{in}, \texttt{out} or 
+\texttt{inout}; \texttt{void increment( inout int* i );}. All three 
+identifiers are empty \#defines.
+
+\item{} Methods are marked as \texttt{final}, \texttt{virtual} or 
+\texttt{override}. \texttt{final} is used for a non-virtual method. 
+\texttt{override} is used whenever a virtual method is redefined. Both are 
+empty \#defines. 
+\end{itemize}
+
+\hypertarget{Adding a language}{\section{Adding a language}}\label{Adding a language}
+
+Adding a language using the {\itshape{}Babel} SDK is very much an evolutionary
+process, adding new features one at a time:
+\begin{enumerate}
+\item{} Set the language information. This step doesn't add any functionality
+but enables the integration into Visual Studio.
+\item{} Syntax highlighting. This is enabled through a lexical specification.
+\item{} Syntax checking. This is enabled trhough a grammar specification.
+\item{} Custom colors. Some languages need extended color sets.
+\item{} Automatic brace matching. 
+\item{} Block commenting.
+\item{} Statement completion.
+\item{} Member completion.
+\item{} Quick info.
+\item{} Method tips.
+\end{enumerate}
+
+The following sections will elaborate on each step. 
+As a running example I will use the {\itshape{}MyC} 
+language. {\itshape{}MyC} is an extremely simple C-like language which
+only uses integers. 
+
+\hypertarget{Set the language information}{\section{Set the language information}}\label{Set the language information}
+
+This step installs all the basic machinery needed by a language service.
+
+\hypertarget{Create a new project}{\subsection{Create a new project}}\label{Create a new project} 
+
+First a new project for your language is needed. 
+Luckily, there is a template project with all the boilerplate code and 
+correct settings provided by the SDK. 
+Copy the subfolder \texttt{client\char92{}template} to a new subfolder with
+the name of your language, for example \texttt{client\char92{}myc}
+Click now on 
+the \texttt{bservice.dsw} workspace file in your new
+subfolder to startup the Visual Studio environment. 
+
+\hypertarget{Language information}{\subsection{Language information}}\label{Language information} 
+
+Open the \texttt{service.cpp} file (in 
+{\bf{}source files}). At the top of this file three values need to be 
+supplied that are used during the registration of the package:
+
+\begin{itemize}    
+\item{} \texttt{g\_languageCLSID} is the CLSID of this specific language. 
+The \texttt{guidgen} utility (which can be run from
+the \texttt{start-run} menu) is used to generate a fresh CLSID.    
+\item{} 
+\texttt{g\_languageName} is the human readable name of the language, in our 
+case \texttt{"MyC"}.
+\item{} \texttt{g\_languageExtensions} are the extensions of the source files
+ending with a \texttt{NULL}, for MyC this is simply \texttt{\char123{}".myc",NULL\char125{}}\end{itemize}
+
+For the {\itshape{}MyC} language, the definitions look like:
+
+\begin{alltt}
+  const char*  g\_languageName              = "MyC";
+  const char*  g\_languageFileExtensions[]  = \char123{} ".myc", NULL \char125{};
+  const CLSID  g\_languageCLSID = 
+     \char123{}0x54D21404,0x5E7F,0x11D3,\char123{}0xB4,0x07,0x00,0x60,0x08,0xD1,0xBF,0x8C\char125{}\char125{};
+\end{alltt}
+
+From this moment on it is safe to build the service, allthough 
+no functionality is yet implemented.
+
+\hypertarget{Language properties}{\subsection{Language properties}}\label{Language properties}
+
+The language properties are defined in the \texttt{g\_languageProperties}
+variable. This is an array of \texttt{LanguageProperty} structures.
+Each property consists of a name and a numeric value. The properties
+will be put in the registry on registration and determine the behaviour
+of certain features in the language service. For example, automatic
+brace matching is only enabled if the property \texttt{"MatchBraces"}
+is set to one. When no features are implemented yet, the set of
+properties should probably look like:
+\begin{alltt}
+const LanguageProperty g\_languageProperties[] =
+\char123{}
+  \char123{} "RequestStockColors", 1     \char125{},
+  \char123{} "ShowCompletion",     1     \char125{},
+
+  \char123{} "CodeSense",          0     \char125{},
+  \char123{} "MaxErrorMessages",   5     \char125{},
+  \char123{} "QuickInfo",          0     \char125{},
+  \char123{} "MatchBraces",        0     \char125{},
+
+  \char123{} NULL, 0 \char125{}
+\char125{};
+\end{alltt}
+
+\hypertarget{Syntax highlighting}{\section{Syntax highlighting}}\label{Syntax highlighting}
+
+Syntax highlighting is enabled through a lexical specification. The 
+specification consists of regular expressions that recognise the tokens
+of the language. These tokens are than mapped to color classes which
+are used by Visual Studio to highlight the source. 
+Implementing syntax highlighting is done in three steps:
+\begin{itemize}
+\item{}Define the tokens of the language.
+\item{}Define a mapping from tokens to color classes.
+\item{}Define the lexical specication.
+\end{itemize}
+
+\hypertarget{Define the tokens of the language}{\subsection{Define the tokens of the language}}\label{Define the tokens of the language} 
+
+Open \texttt{parser.y} (in {\bf{}source files}). Language tokens 
+are defined using the \texttt{\%token} definitions of BISON. The 
+{\itshape{}MyC} language contains the following definitions:
+
+\begin{alltt}
+  \%token IDENTIFIER NUMBER 
+  \%token KWIF KWELSE KWWHILE KWFOR KWCONTINUE KWBREAK KWRETURN
+  \%token KWEXTERN KWSTATIC KWAUTO KWINT KWVOID
+  \%token ',' ';' '(' ')' '\char123{}' '\char125{}' '=' 
+  \%token '+' '-' '*' '/' '!' '\&' '|' '\char94{}'
+  \%token EQ NEQ GT GTE LT LTE AMPAMP BARBAR 
+  \%token LEX\_WHITE LEX\_COMMENT LEX\_LINE\_COMMENT
+\end{alltt}
+
+The service should now be build. A 
+file called \texttt{parser.cpp.h} is automatically generated by 
+{\itshape{}bison} that contains the {\itshape{}C} definitions of the tokens. 
+
+\hypertarget{Define a mapping from tokens to color classes}{\subsection{Define a mapping from tokens to color classes}}\label{Define a mapping from tokens to color classes} 
+
+The tokens 
+in the language should be mapped to a specific color class. For example, the 
+token \texttt{KWIF} should map to the \texttt{ClassKeyword} color class, a 
+\texttt{NUMBER} token to the \texttt{ClassNumber} color class, etc. 
+
+In \texttt{service.cpp}, this information is provided by the 
+\texttt{Service::getTokenInfo} method. This method returns a pointer to a 
+static \texttt{TokenInfo} array. There is an entry for each defined token. 
+Each \texttt{TokenInfo} structure contains the token, the color class for 
+this token, a description, a character class and sometimes a trigger class.
+The character classes and trigger classes will be explained later in
+more detail.
+Part of the table for the MyC language looks like:
+
+\begin{alltt}
+  static TokenInfo tokenInfoTable[] =
+  \char123{}
+    //TODO: add your own token information here
+    \char123{} IDENTIFIER, ClassIdentifier,  "identifier '\%s'", CharIdentifier \char125{},
+    \char123{} NUMBER,     ClassNumber,      "number ('\%s')"  , CharLiteral    \char125{},
+    \char123{} KWIF,       ClassKeyword,     "if"             , CharKeyword \char125{},
+    \char123{} KWELSE,     ClassKeyword,     "else"           , CharKeyword \char125{},
+    \char123{} KWWHILE,    ClassKeyword,     "while"          , CharKeyword \char125{}, 
+  
+    \char123{} LEX\_WHITE,  ClassText,        "white space"    , CharWhiteSpace \char125{},
+    \char123{} LEX\_LINE\_COMMENT, ClassComment, "comment"      , CharLineComment \char125{},
+    \char123{} LEX\_COMMENT,ClassComment,     "comment"        , CharComment \char125{},
+
+    //always end with the 'TokenEnd' token.
+    \char123{} TokenEnd,     ClassText,      "<unknown>" \char125{}
+  \char125{};
+\end{alltt}
+
+The color classes of MyC are only the default ones. 
+However {\itshape{}Babel} allows for custom 
+color classes. The 
+default color classes are defined in \texttt{client\char92{}common\char92{}babelservice.idl}:
+
+\begin{alltt}
+  enum DefaultColorClass
+  \char123{}
+    ClassText,
+    ClassKeyword,
+    ClassComment,
+    ClassIdentifier,
+    ClassString,
+    ClassNumber
+  \char125{};
+\end{alltt}
+
+\hypertarget{The lexical specification}{\subsection{The lexical specification}}\label{The lexical specification} 
+
+Finally, the lexical specification of the language 
+can be added. This specification is used directly by the colorizer to provide 
+syntax high-lighting. The same specification is also used later by the 
+syntax-checker to provide tokens for the grammar. 
+
+Open the file 
+\texttt{lexer.lex} in {\bf{}source files} and add the LEX 
+rules for your language. The document \url{flex.html} gives more 
+information on how to specify lexical rules. Most languages already have a LEX 
+specification. If you have one, you can simply copy the rules into the 
+\texttt{lexer.lex} file. However, to meet the requirements of the colorizer, 
+there are some constraints on the form of the LEX rules. 
+
+To explain the constraints, we will briefly look into the implementation of the colorizer.
+The colorizer 
+automatically saves the state of the lexer at every line of text. Whenever the 
+line colors could change, the lexer is restarted at this state to colorize this 
+line again. Each time that a token is returned by the lexer, the colorizer will 
+lookup the color class in the table provided by the \texttt{getTokenInfo} 
+method. All the characters scanned for this token are colored with this color 
+class. In order to make this work, the colorizer assumes two things from the 
+lexical specification:
+
+\begin{itemize}
+\item{} The lexer returns a token at the end of a line.
+\item{} No scanned characters are dropped or added during scanning.
+\end{itemize}
+
+The first constraint assures that the lexer is in a known state at the end of 
+the line. The second constraint is needed to determine how many characters are 
+to be colored. The first constraint can be easily satisfied by adding a rule at 
+each lexer state that returns a token on seeing a new-line. For example, many 
+lexical specifications contain the following rule for discarding white space:
+
+\begin{alltt}
+  [ \char92{}t\char92{}r\char92{}n]+    \char123{} /* ignore */ \char125{}
+\end{alltt}
+
+Since this rule does not directly return a token on a new-line, it should be redefined to:
+
+\begin{alltt}
+  [ \char92{}t\char92{}r]+    \char123{} /* ignore */ \char125{}
+  \char92{}n          \char123{} /* ignore */ \char125{}
+\end{alltt}
+
+However, now it doesn't satisfy the second constraint since it forgets
+about the scanned characters. The final and correct definition returns
+a white space token:
+
+\begin{alltt}
+  [ \char92{}t\char92{}r]+    \char123{} return LEX\_WHITE; \char125{}
+  \char92{}n          \char123{} return LEX\_WHITE; \char125{}
+\end{alltt}
+
+Since the token mapping specifies the character class \texttt{CharWhiteSpace}
+for \texttt{LEX\_WHITE}
+only the  colorizer will know about the white space, the parser ignores all white 
+space tokens. 
+(You can change this behaviour by overriding the \texttt{Service::isGrammarToken}
+method).
+
+The second constraint can be enforced in general by always adding an action 
+to a lexical rule (so we don't lose characters) and to allow only three ways to 
+end that action:
+
+\begin{enumerate}
+\item{} \texttt{return {\itshape{}Token};}. "I have scanned a token and return its 
+name". This is the normal way of ending an action.
+
+\item{} \texttt{yymore();}. "I have scanned something but don't want to return 
+a token yet; continue scanning". \texttt{yymore()} is used here to avoid 
+losing characters in \texttt{yytext} (the currently scanned text) 
+while continuing scanning. It is used 
+in situations like comments where we only want to return the comment token at 
+the end of a comment or line.
+
+\item{} \texttt{yyless(0);}. "I have scanned something and changed my state, 
+scan this input again". Here, \texttt{yyless(0)} is used to prevent 
+duplication of characters. \end{enumerate}
+
+During lexing, there is a global variable \texttt{g\_service} available. This 
+variable points to the current language service. The complete interface of a 
+language service can be found in \texttt{client\char92{}common\char92{}babelservice.idl} 
+and \texttt{client\char92{}common\char92{}stdservice.h}. Important functions during 
+lexical analysis are:
+
+\begin{itemize}
+
+\item{} \texttt{void setLexState( in LexState state);}. \strut \\
+Sets the lexer state. Should be used instead of the FLEX \texttt{BEGIN} macro.
+
+\item{} \texttt{void lexicalError( in Severity sev, in const char* msg );}. \strut \\
+Used to send a lexical error. These messages show  up at run-time in the task 
+window. Note that this method has only effect during syntax checking and will 
+not work yet during colorizing. An important kind of error is the `hint' which
+is used to set for example \texttt{TODO} messages in the task list. A hint is
+given by setting the severity to \texttt{SevHint}. The error message should
+start with the hint token, not including the comment start. Take a look at
+MyC for an example.
+
+\item{} \texttt{void enterComment(in LexState commentState = 0);}. \strut \\
+If the \texttt{commentState} argument is given, the lexer is put into that 
+state and the current state is saved. Each time this method is called, the 
+comment nesting level is incremented.
+
+\item{} \texttt{void leaveComment();}. \strut \\
+Each time this method is called, the comment nesting level is decremented. 
+Whenever it reaches zero, the lexer is put into the state where 
+\texttt{enterComment} was called the first time. 
+\end{itemize}
+
+After adding the lexical rules, the colorizer will be working. Open some source 
+files of your language in the Visual Studio environment and enjoy them in multiple
+colors!
+
+\hypertarget{Syntax checking}{\section{Syntax checking}}\label{Syntax checking}
+
+Open the file 
+\texttt{parser.y} again and add the grammar rules for the language. The document
+\url{bison.html} contains more information about specifying 
+grammar rules. Most languages already have a YACC compatible grammar. You can 
+simply copy these rules into \texttt{parser.y}. Unlike the lexer, there are 
+no restrictions on the grammar rules. Here are some 
+(simplified) rules for {\itshape{}MyC} expressions:
+
+\begin{alltt}
+Expr: MulExpr AddOp Expr
+    | MulExpr
+    ;
+
+AddOp
+    : '+' | '-'
+    ;
+
+
+MulExpr
+    : PreExpr MulOp MulExpr
+    | PreExpr 
+    ;
+
+MulOp 
+    : '*' | '/'
+    ;
+
+
+Factor
+    : IDENTIFIER
+    | NUMBER
+    | '(' Expr ')'
+    ;     
+\end{alltt}
+
+\hypertarget{Properties}{\subsection{Properties}}\label{Properties}
+After having added the language grammar rules, you should set the
+language property \texttt{CodeSense} to one (in \texttt{service.cpp})
+to enable syntax checking. The property \texttt{CodeSenseDelay} specifies
+the number of milliseconds delay before errors are displayed. 
+In practice a value between 1000 or 2000 milliseconds works well, the
+default value is 1500.
+The property \texttt{CodeSenseFastOnChangeLine} should be set to one
+if errors should be displayed immediately when the user leaves a changed
+line. This property is enabled by default\footnote{This feature is not 
+supported in the Visual J++ 6.0 environment}.
+The property \texttt{MaxErrorMessages} gives the maximum number of
+displayed error messages (per source file). The default value is 5.
+
+\hypertarget{Adding error productions}{\subsection{Adding error productions}}\label{Adding error productions}
+Now, error productions should be added in order to provide useful feedback 
+to the user. Error productions should be added in such a way 
+that they both provide specific information about the error and, most important, 
+that they allow parsing to {\itshape{}recover}. The global language service 
+(\texttt{g\_service}) can be used to send error messages about errors that 
+are detected during parsing: 
+
+\begin{alltt}
+void syntaxError(  in const char*     construct, 
+                   in const Location* loc = NULL );
+
+void expectError(  in const char*     construct,
+                   in const char*     expecting,
+                   in const Location* loc = NULL );
+
+void errorMessage( in Severity        severity,
+                   in const char*     message,
+                   in const Location* loc = NULL );
+\end{alltt}
+
+\texttt{syntaxError} is used for general errors during parsing. For example, 
+you probably want to add this 'catch all' error production to your grammar:
+
+\begin{alltt}
+SourceFile: Program
+          | error     \char123{} g\_service->syntaxError( "program" ); \char125{}
+          ;
+\end{alltt}
+
+\texttt{expectError} is used whenever a certain closing token is expected. 
+For example, in the {\itshape{}MyC} binding there is an error production for 
+catching situations where the closing parenthesis of an expression is absent:
+
+\begin{alltt}
+ParenExpr
+    : '(' Expr ')'    
+    | '(' Expr error  
+              \char123{} g\_service->expectError( "unmatched parenthesis", ")" ); \char125{}
+    ;
+\end{alltt}
+
+Sometimes, the location of the error token is not determined by the current 
+point in the input. In that case, the location can be given using the 
+\texttt{\$} notation of BISON which specifies which token determines 
+the position.
+
+\begin{alltt}
+ImportStatement
+  : IMPORT QualifiedName SemiColons
+  | IMPORT QualifiedName '.' '*' SemiColons
+  | IMPORT error SemiColons        
+       \char123{} g\_service->syntaxError( "import  declaration", \&\$2 ); \char125{}
+  ;
+\end{alltt}
+
+Putting error productions in the right spot is quite hard, many times error 
+productions add a lot of shift-reduce (not so bad) or reduce-reduce (very bad!) 
+conflicts to the grammar. Try to aim for adding error productions for `common' 
+errors, together with some `catch-all' productions. The MyC sample contains
+lots of common error productions.
+
+\hypertarget{Custom color classes}{\section{Custom color classes}}\label{Custom color classes}
+
+For most languages, the default color classes are good enough but some
+languages have more token categories. For example, {\itshape{}Haskell} has special
+color classes for constructors, literate text and non-standard keywords.
+I will use the \texttt{client\char92{}haskell} language as the example for adding
+custom color classes.
+
+First of all, we need to specify that we are going to use custom color classes.
+Set the language property \texttt{"RequestStockColors"} to zero.
+
+Secondly, we will define our custom color classes. Open \texttt{service.cpp}
+again and add a enumeration definition for your language right after
+the language information. You should start the
+enumeration with the last default color class and still use the default color
+classes where appropiate. The Haskell sample defines:
+\begin{alltt}
+enum HaskellColorClass 
+\char123{}
+  ClassPragma      = ClassDefaultLast + 1,
+
+  ClassOperator,
+  ClassConsId,
+  ClassConsOp,
+
+  ClassSpecialOp,
+  ClassReservedOp,
+
+  ClassGreencard,
+
+  ClassLiterateText,
+  ClassLiterateStart,
+
+  //some short hands
+  ClassSpecial     = ClassSpecialOp,	
+  ClassReservedId  = ClassKeyword,
+  ClassSpecialId   = ClassKeyword,
+  ClassExtensionId = ClassKeyword,	
+  ClassCharacter   = ClassString,	
+  ClassSelector	   = ClassIdentifier,
+  ClassImplicit	   = ClassIdentifier
+\char125{};
+\end{alltt}
+
+In the token definition array, we can now use the new custom color classes. Here is an
+excerpt from the Haskell sample:
+\begin{alltt}
+override const TokenInfo* Service::getTokenInfo() const
+\char123{}
+  static TokenInfo tokenInfoTable[] =
+  \char123{}
+    ...      
+    \char123{} VAROP    , ClassOperator	, "operator (\%s)",    CharIdentifier \char125{},
+    \char123{} VARID    , ClassIdentifier, "identifier (\%s)",  CharIdentifier \char125{},
+    \char123{} CONOP    , ClassConsOp	, "constructor (\%s)", CharIdentifier \char125{},
+    \char123{} CONID    , ClassConsId	, "constructor (\%s)", CharIdentifier \char125{},
+    \char123{} QVAROP   , ClassOperator	, "operator (\%s)",    CharIdentifier \char125{},
+    \char123{} QVARID   , ClassIdentifier, "identifier (\%s)",  CharIdentifier \char125{},
+    \char123{} QCONOP   , ClassConsOp	, "constructor (\%s)", CharIdentifier \char125{},
+    \char123{} QCONID   , ClassConsId	, "constructor (\%s)", CharIdentifier \char125{},
+    \char123{} RECSELID , ClassSelector	, "selector",         CharIdentifier \char125{}, 
+    \char123{} IPVARID  , ClassImplicit	, "implicit parameter", CharIdentifier \char125{},
+    ...
+  \char125{};
+  return tokenInfoTable;
+\char125{}
+\end{alltt}
+
+The last step consists of adding default color information for the new custom colors. 
+The method \texttt{Service::getColorInfo} returns a pointer to a static array of
+color information \texttt{ColorInfo}. Each \texttt{ColorInfo} consists of the
+color class, its name and a CSS style specification of its appearance. 
+The \texttt{getColorInfo} method should be added right after the custom color
+class enumeration. The {\itshape{}Haskell} sample has the following implementation:
+{\small
+\begin{alltt}
+override const ColorInfo* Service::getColorInfo() const
+\char123{}
+ static ColorInfo colorInfoTable[] =
+ \char123{}
+  \char123{} ClassKeyword,   "Keyword",    "color: blue; font-weight: bold"  \char125{},
+  \char123{} ClassComment,   "Comment",    "background-color: lightgray"     \char125{},
+  \char123{} ClassIdentifier,"Identifier", ""                                \char125{},
+  \char123{} ClassString,    "String",     "color: purple"                   \char125{},
+  \char123{} ClassNumber,    "Number",     ""                                \char125{},
+      
+  \char123{} ClassPragma,    "Pragma",                   "color: aqua"       \char125{},
+  \char123{} ClassOperator,  "Haskell Operator",         ""                  \char125{},
+  \char123{} ClassConsId,    "Haskell Constructor",      "font-weight: bold" \char125{},
+  \char123{} ClassConsOp,    "Haskell Cons Operator",    "font-weight: bold" \char125{},
+  \char123{} ClassSpecialOp, "Haskell Special Operator", ""                  \char125{},
+  \char123{} ClassReservedOp,"Haskell Reserved Operator","color: purple"     \char125{},
+  \char123{} ClassGreencard, "Greencard directive",      
+                 "color: darkblue; text-decoration: line-through"   \char125{},
+
+  \char123{} ClassLiterateText, "Haskell Literate Text", "color: darkgreen"  \char125{},    
+  \char123{} ClassLiterateStart,"Haskell Literate Start","color: darkgray"   \char125{},
+
+  \char123{} ColorClassEnd,     "<unknown>",       ""                  \char125{}
+ \char125{};
+
+ return colorInfoTable;
+\char125{}
+\end{alltt}
+}
+
+And we should add this method to the class declaration in \texttt{service.h}:
+\begin{alltt}
+class Service : public CommentService
+\char123{}
+protected:
+  override const ColorInfo* getColorInfo() const;
+  override const TokenInfo* getTokenInfo() const;
+\char125{};
+\end{alltt}
+
+More information about CSS style specifications can be found on
+\url{http://www.w3c.org} Allthough it is possible to specify any legal CSS
+style, only a small subset is recognised by Visual Studio. Here is a list
+of recognised properties and values:
+
+
+
+
+%<![HTML[
+%<table border=1 cellpadding=3>
+%<tr><td><strong>property</strong></td><td><strong>values</strong></td>
+%</tr>
+%<tr valign=top><td><strong>font-weight</strong></td>
+%<td>
+%default<br>
+%normal<br>
+%bold<br>
+%bolder<br>
+%lighter<br>
+%100<br>
+%200<br>
+%300<br>
+%400<br>
+%500<br>
+%600<br>
+%700<br>
+%800<br>
+%900
+%</td>
+%</tr>
+%
+%<tr valign=top><td><strong>text-decoration</strong></td>
+%<td>
+%default<br>
+%normal<br>
+%line-through<br>
+%strike-through<br>
+%</td></tr>
+%
+%<tr valign=top><td><strong>color</strong><br><strong>background-color</strong></td>
+%<td>
+%default<br>
+%normal<br>
+%auto<br>
+%selected<br>
+%inactive<br>
+%plaintext<br>
+%margin<br>
+%black<br>
+%white<br>
+%maroon<br>
+%darkgreen<br>
+%brown<br>
+%darkblue<br>
+%purple<br>
+%aquamarine<br>
+%lightgray<br>
+%darkgray<br>
+%red<br>
+%green<br>
+%yellow<br>
+%blue<br>
+%magenta<br>
+%cyan<br>
+%lime<br>
+%aqua<br>
+%silver<br>
+%olive<br>
+%teal<br>
+%navy
+%</td></tr>
+%<tr valign=top><td><strong>text-kind</strong></td>
+%<td>
+%default<br>
+%normal<br>
+%humantext<br>
+%programtext
+%</td></tr>
+%</table>
+%]]>
+
+
+
+\begin{tabular}{|l|l|}
+\hline
+\textbf{color}
+& default \\
+\textbf{background-color}
+& normal \\
+& auto \\
+& selected \\
+& inactive \\
+& plaintext \\
+& margin \\
+& black \\
+& white \\
+& maroon \\
+& darkgreen \\
+& brown \\
+& darkblue \\
+& purple \\
+& aquamarine \\
+& lightgray \\
+& darkgray \\
+& red \\
+& green \\
+& yellow \\
+& blue \\
+& magenta \\
+& cyan \\
+\hline
+& lime \\
+& aqua \\
+& silver \\
+& olive \\
+& teal \\
+& navy \\
+\hline
+\end{tabular}
+
+
+\begin{tabular}{|l|l|}
+\hline
+\textbf{text-decoration}
+& default \\
+& normal \\
+& line-through \\
+& strike-through \\
+\hline 
+\end{tabular}
+
+
+\begin{tabular}{|l|l|}
+\hline
+\textbf{text-kind}
+& default \\
+& normal \\
+& humantext \\
+& programtext \\
+\hline
+\end{tabular}
+
+\begin{tabular}{|l|l|}
+\hline 
+\textbf{font-weight} 
+& default \\
+& normal \\
+& bold  \\
+& bolder \\
+& lighter \\
+& 100 \\
+& 200 \\
+& 300 \\
+& 400 \\
+& 500 \\
+& 600 \\
+& 700 \\
+& 800 \\
+& 900 \\
+\hline
+\end{tabular}
+
+
+\hypertarget{Block commenting}{\section{Block commenting}}\label{Block commenting}
+
+Using \texttt{ctrl-k, ctrl-c} or \texttt{ctrl-k, ctrl-u} in Visual Studio 7,
+you can comment or uncomment selected text. This feature is not
+supported in the Visual J++ 6.0 environment. To enable block commenting you
+should implement the \texttt{Service::getCommentFormat} method.
+
+First open \texttt{service.h} and add a declaration of the \texttt{getCommentFormat}
+method:
+\begin{alltt}
+class Service : public CommentService
+\char123{}
+protected:
+  override const CommentFormat* getCommentFormat() const;
+  override const ColorInfo*     getColorInfo()     const;
+  override const TokenInfo*     getTokenInfo()     const;
+\char125{};
+\end{alltt}
+
+The method returns
+a pointer to a \texttt{CommentFormat} structure which is defined in 
+\texttt{client\char92{}common\char92{}stdservice.h}:
+\begin{alltt}
+struct CommentFormat
+\char123{}
+  const char* lineStart;
+  const char* blockStart;
+  const char* blockEnd;
+  bool        useLineComments; 
+\char125{};
+\end{alltt}
+
+The \texttt{lineStart} string should be the character sequence that
+starts line comments, or \texttt{NULL} if not supported. \texttt{blockStart}
+and \texttt{blockEnd} are the block comment start and end characters.
+The \texttt{useLineComments} flag should be true if line comment characters
+are preferred to block comments. This is used when the user selects a
+block of lines; these can be commented using either line- or block comments.
+
+Open \texttt{service.cpp} and implement this method. The MyC implementation is as follows:
+\begin{alltt}
+override const CommentFormat* Service::getCommentFormat() const
+\char123{}
+  static CommentFormat commentFormat =  \char123{} "//", "/*", "*/", true  \char125{};
+  return \&commentFormat;
+\char125{}
+\end{alltt}
+
+\hypertarget{Automatic brace matching}{\section{Automatic brace matching}}\label{Automatic brace matching}
+
+When automatic brace matching is enabled, the language service will
+highlight matching braces whenever the user types them\footnote{This
+feature is not supported in the Visual J++ 6.0 environment}. The code in
+the babels service also handles brace `jumping' when the user
+types \texttt{ctrl-]} in Visual Studio.
+
+\hypertarget{Properties}{\subsection{Properties}}\label{Properties}
+First of all, the property \texttt{MatchBraces} should be set to one to
+enable brace matching. When the property \texttt{ShowMatchingBrace} is
+set to one, Visual Studio will show the line of the matching brace in 
+the status bar; useful when the matching brace is not visible in the view.
+The property \texttt{MatchBracesAtCaret} determines if the environment
+will highlight matching braces even when just positioning the caret
+on a brace, normally it will only highlight when a brace is typed. Be 
+careful before enabling this feature since it might make the user experience
+of the environment more distracting.
+
+\hypertarget{Adding brace match rules}{\subsection{Adding brace match rules}}\label{Adding brace match rules}
+Next, we are going to add grammar rules to \texttt{parser.y}
+that specify when matching 
+braces are found. The standard service \texttt{g\_service} provides the
+following methods to signal matching braces:
+\begin{alltt}
+void matchPair  ( in const Location\& loc1, 
+                  in const Location\& loc2 ) const;
+void matchTriple( in const Location\& loc1, 
+                  in const Location\& loc2, 
+                  in const Location\& loc3 ) const;
+\end{alltt}
+
+Simple call one of these with the locations of the braces whenever
+a matching pair (or triple!) is found. Here is for example
+the code to match parenthesised expressions from the MyC sample:
+\begin{alltt}
+ParenExpr
+    : '(' Expr ')'   \char123{} g\_service->matchPair(\$1,\$3); \char125{}
+    | '(' Expr error 
+          \char123{} g\_service->expectError( "unmatched parenthesis", ")" ); \char125{}
+    ;
+\end{alltt}
+
+Off course, you should match braces whenever appropiate, also for example
+when parsing a parameter list:
+\begin{alltt}
+ParenParams
+    :  '(' ')'            \char123{} g\_service->matchPair(\$1,\$2); \char125{}
+    |  '(' Params1 ')'    \char123{} g\_service->matchPair(\$1,\$3); \char125{}
+    |  '(' Params1 error  \char123{} g\_service->expectError( "unmatched parenthesis", ")" ); \char125{}
+    |  '(' error ')'      \char123{} g\_service->matchPair(\$1,\$3); 
+                            g\_service->syntaxError( "parameters", \&\$2 ); \char125{}
+\end{alltt}
+
+Arbitrary ranges of text can be braces. Even triples can be matched as the
+following code for recognising \texttt{if-else-then} statements from 
+the Forth sample shows:
+\begin{alltt}
+IfBlock
+  : KWIF IfWordList KWTHEN \char123{} g\_service->matchPair(\$1,\$3); \char125{}
+  | KWIF IfWordList KWELSE IfWordList KWTHEN  
+                           \char123{} g\_service->matchTriple(\$1,\$3,\$5); \char125{}
+  | KWIF IfWordList error  \char123{} g\_service->expectError( "IFBlock", "THEN" ); \char125{}
+  | KWIF IfWordList KWELSE IfWordList error   
+                           \char123{} g\_service->matchPair(\$1,\$3);
+                             g\_service->expectError( "IFBlock", "THEN" ); \char125{}
+\end{alltt}
+
+\hypertarget{Adding triggers}{\subsection{Adding triggers}}\label{Adding triggers}
+Due to speed reasons, it is not possible to run the parser on each 
+editor command. In order to recognise matching braces the babel service
+needs to know when a parse might be needed, ie. when a token is entered
+that looks like a brace token. The babel service implements this using
+{\itshape{}triggers}. Triggers are specified in the \texttt{Service::getTokenInfo}
+method in the \texttt{service.cpp} file. 
+
+Open this file and add the trigger \texttt{TriggerMatchBraces} to each
+token which is (or might be) a brace for your language.
+Some relevant entries in the MyC sample are:
+\begin{alltt}
+override const TokenInfo* Service::getTokenInfo() const
+\char123{}
+  static TokenInfo tokenInfoTable[] =
+  \char123{}
+    //TODO: add your own token information here
+    \char123{} IDENTIFIER, ClassIdentifier,  "identifier '\%s'",  CharIdentifier \char125{},
+    ...
+    \char123{} KWVOID, ClassKeyword, "void", CharKeyword   \char125{},
+    \char123{} '(',    ClassText,  "'('"   , CharDelimiter, TriggerMatchBraces \char125{}, 
+    \char123{} ')',    ClassText,  "')'"   , CharDelimiter, TriggerMatchBraces \char125{},
+    \char123{} '\char123{}',    ClassText,  "'\char123{}'"   , CharDelimiter, TriggerMatchBraces \char125{},
+    \char123{} '\char125{}',    ClassText,  "'\char125{}'"   , CharDelimiter, TriggerMatchBraces \char125{},
+    \char123{} '.',    ClassText,  "'.'"   , CharDelimiter \char125{},
+    ...
+    //always end with the 'TokenEnd' token.
+    \char123{} TokenEnd,     ClassText,      "<unknown>"   \char125{}
+  \char125{};
+
+  return tokenInfoTable;
+\char125{};
+\end{alltt}
+
+The Forth language service will for example add the trigger too 
+for the \texttt{KWIF}, \texttt{KWTHEN} and \texttt{KWELSE} tokens.
+
+
+\hypertarget{Statement completion}{\section{Statement completion}}\label{Statement completion}
+
+{\itshape{}warning: these interfaces might still change}
+
+
+
+Statement completion shows up in many ways in Visual Studio. The traditional
+statement completion is invoked whenever you type 
+\texttt{ctrl-<left arrow>} or \texttt{ctrl-<space>}. The environment
+will complete the current word if possible or show a list possible candidates
+if there is ambiguity. The key combination \texttt{ctrl-j} always shows the
+list of identifiers in scope. 
+
+\hypertarget{Properties}{\subsection{Properties}}\label{Properties}
+The property \texttt{ShowCompletion} determines if the options
+{\itshape{}show member list} and {\itshape{}show parameter list} are visible
+in the Visual Studio environment. This property is enabled by default.
+The property \texttt{SortMemberList} determines if the identifier
+list is alphabetized. This is enabled by default.
+
+\hypertarget{Giving scope information}{\subsection{Giving scope information}}\label{Giving scope information}
+In order to do statement completion, information about the declarations
+and scopes in the source file has to be known to the system.
+The most general and powerful method to
+give scope information is by implementing the \texttt{IScope} interface.
+
+However, the babel package provides a default implementation that can
+deal with almost any language is satisfying manner. This document only
+describes this approach.
+
+The standard service \texttt{g\_service} has two methods to give scope
+and declaration information:
+\begin{alltt}
+void addScope( in const Location\& start, in const Location\& end,
+               in ScopeKind       kind, 
+               in ScopeAccess     access, 
+               in ScopeStorage    storage,
+               in const Location\& name, 
+               in const Location\& descStart, 
+               in const Location\& descEnd,
+               in const Location* type = NULL,             
+               in bool            merge = false 
+              );
+void addScopeText( in const Location\& start, in const Location\& end,
+                   in ScopeKind     kind, 
+                   in ScopeAccess   access, 
+                   in ScopeStorage  storage,
+                   in const char*   name    = NULL, 
+                   in const char*   description = NULL,
+                   in const char*   type    = NULL,
+                   in const char*   display = NULL, 
+                   in bool          merge = false );
+\end{alltt}
+
+The first method takes raw locations for descriptions while the second
+one takes arbitrary text. The following functions can be used to combine
+text locations or to get a pointer to the text at a location:
+\begin{alltt}
+Location    range( in const Location\& loc1, 
+                   in const Location\& loc2 ) const;
+const char* tokenText( in const Location* = NULL, 
+                       in const Location* = NULL ) const;   
+\end{alltt}
+
+(The pointer returned by \texttt{tokenText} is in \texttt{static} memory).
+For each declaration and scope, the method \texttt{addScope} (or
+\texttt{addScopeText}) is called with the start and ending location. These
+locations give the lexical scope of this declarations. If a declaration
+doesn't have a lexical scope, like  a variable declaration, the locations
+might simply coincide. The \texttt{kind} determines if this declaration
+has parameters or if it can contain other scopes; it contains no other
+semantic information. The kinds are declared in \texttt{babelservice.idl}:
+\begin{alltt}
+enum ScopeKind
+\char123{}
+  ScopeUnknown = 0,
+  ScopeModule,
+  ScopeClass,
+  ScopeInterface,
+  ScopeUnion,
+
+  ScopeProcedure,
+  ScopeVariable,
+
+  ScopeBlock
+\char125{};
+\end{alltt}
+
+The \texttt{access} determines the visibility of the declaration and
+its members:
+\begin{alltt}
+enum ScopeAccess
+\char123{}
+  AccessPrivate = 0,
+  AccessProtected,
+  AccessPublic
+\char125{};
+\end{alltt}
+
+The \texttt{storage} determines, together with the kind, the icon that
+is displayed for this declaration and it is used to find member information.
+\begin{alltt}
+enum ScopeStorage
+\char123{}
+  StorageConstant = 0,
+  StorageStatic,
+  StorageMember,
+  StorageParameter,
+  StorageResult,
+  StorageLocal,
+  StorageType,
+  StorageOther
+\char125{};
+\end{alltt}
+
+The \texttt{name} contains the name of this declaration. The 
+\texttt{descStart} and \texttt{descEnd} parameters contain the start
+and end location of the declaration. The text between those location
+is the description of this declaration. The \texttt{type} location 
+contains the type of this declaration. The \texttt{merge} flag should be
+set to \texttt{true} if the declaration is specified in multiple places
+and the information should be merged with the previous entries.
+
+The rules in \texttt{parser.y} should now be extended with calls
+to \texttt{addScope}. Let's look at some of the rules in the MyC sample:
+\begin{alltt}
+Declaration
+  : Type IDENTIFIER ParenParams Block                                                                       
+    \char123{} g\_service->addScope( \$1, \$4, 
+                           ScopeProcedure, AccessPublic, StorageType,
+                           \$2, \$1, \$3, \&\$1 ); \char125{} 
+  ;
+\end{alltt}
+
+This rule describes a declaration of a public procedure in MyC.
+The scope of the method extends from the start of \texttt{Type} to
+the end of \texttt{Block}, ie. \texttt{\$1} to \texttt{\$4}.
+The name is given by \texttt{IDENTIFIER}, ie. \texttt{\$2}.
+The description that should be shown in the quick info, is just
+the declaration without the block of code, ie. \texttt{\$1} to \texttt{\$3}.
+
+
+
+By default, the location of a production is the same as that of its first
+token; each rule contains the implicit assignment: \texttt{\$\$ = \$0;}.
+Since we want to make sure that the location of \texttt{Block} entails the
+entire block (and not just the first token \texttt{\char123{}}) we need to add some
+rules to the \texttt{Block} too:
+\begin{alltt}
+Block
+  : '\char123{}' '\char125{}'   
+      \char123{} \$\$ = g\_service->range(\$1,\$2);
+        g\_service->matchPair(\$1,\$2); 
+        g\_service->addScopeText( \$1, \$2, 
+                                 ScopeBlock, AccessPublic, StorageOther); 
+      \char125{}
+  | '\char123{}' BlockContent1 '\char125{}'
+      \char123{} \$\$ = g\_service->range(\$1,\$3);
+        g\_service->matchPair(\$1,\$3);
+        g\_service->addScopeText( \$1, \$3, 
+                                 ScopeBlock, AccessPublic, StorageOther);  
+      \char125{}
+  ;
+\end{alltt}
+
+The first action of the rules is to assign the whole range from begin 
+to end to the location of the \texttt{Block} production. In this particular
+case it would even be good enough to do \texttt{\$\$ = \$2} and \texttt{\$\$ = \$3}
+respectively but using \texttt{range} is good coding style.
+
+
+
+A block itself imposes a lexical scope allthough it has no name or description.
+Here the method \texttt{addScopeText} is called with the \texttt{ScopeBlock}
+kind and no text for the name, description or type.
+
+\hypertarget{Member completion}{\section{Member completion}}\label{Member completion}
+
+Most languages have some kind of modules, classes or structures
+that have members. These members are normally selected using some kind of
+operator, like the \texttt{'.'} in Java or the \texttt{'->'} in C++.
+The grammar rules need to be extended let statement completion work 
+correctly when members are involved. The service has two methods that
+specify how a member is selected:
+\begin{alltt}
+void startSelect( in const Location\& name) const;
+void addSelect( in const Location\& selector, 
+                in const Location\& name) const;
+\end{alltt}
+
+The grammar should call \texttt{startSelect} whenever a identifier is
+used in an expression. The method \texttt{addSelect} should be called for
+every identifier that is selected. For example, a Java grammar should
+contain the following rules for {\itshape{}qualified} names:
+\begin{alltt}
+QualifiedName
+  : IDENTIFIER                    \char123{} g\_service->startSelect(\$1); \char125{}
+  | QualifiedName '.' IDENTIFIER  \char123{} g\_service->addSelect(\$2,\$3); \char125{} 
+  | QualifiedName '.' error       \char123{} g\_service->addSelect(\$2,\$2); 
+                                    g\_service->expectError( "qualified name","identifier" ); \char125{}
+\end{alltt}
+
+The last production with the \texttt{error} is important in practice since
+this case will occur quite often when the user is typing its source. In
+the case where the name is completely lacking, the location of the selector
+should be passed (\texttt{\$2} in the example).
+
+\hypertarget{Adding member list triggers}{\subsection{Adding member list triggers}}\label{Adding member list triggers}
+When typing a selector token, the member selection list should automatically 
+pop up (unless disabled in the option settings of Visual Studio).
+Again this is implemented by triggers. The trigger \texttt{TriggerMemberSelect}
+triggers a member completion list.
+Here is a typical example of such entry in the \texttt{getTokenInfo} method:
+\begin{alltt}
+ ...
+ \char123{} '.',  ClassText,  "'.'", CharDelimiter, TriggerMemberSelect \char125{},   
+ ...
+\end{alltt}
+
+\hypertarget{Quick Info}{\section{Quick Info}}\label{Quick Info}
+Quick info is a feature that will pop up a small text box that describes
+an identifier when the user hovers the mouse above it. The property
+\texttt{QuickInfo} should be set to zero to disable quick info. It is
+enabled by default. Quick info will work when you have member completion 
+implemented. Even when the language doesn't have member selection, you
+should still call \texttt{startSelect} at every identifier expression.
+
+\hypertarget{Method tips}{\section{Method tips}}\label{Method tips}
+Method tips are windows with parameter information about the procedure
+or method that is called. A method tip normally pops up whenever the
+user types a parameter list token, for example an open parenthesis.
+It can also be invoked manually by typing \texttt{ctrl-shift-<space>}
+\footnote{\texttt{ctrl-shift-I} in VJ++ 6.0}. 
+Method tips are automatically supported by Babel when parameter information
+is added to the parser rules.
+
+\hypertarget{Adding parameter information}{\subsection{Adding parameter information}}\label{Adding parameter information}
+The global service has three methods that support parameter information.
+\begin{alltt}
+void startParameters( in const Location\& ) const;
+void parameter(in const Location\& ) const;
+void endParameters(in const Location\& ) const;
+\end{alltt}
+
+The method \texttt{startParameters} is called whenever a parameter list
+starts with the location of the parameter list start token. \texttt{parameter}
+is called for every parameter seperator found and \texttt{endParameters}
+when the parameter list is terminated. Here is a typical example from MyC:
+\begin{alltt}
+ParenArguments
+    : StartArg EndArg            \char123{} g\_service->matchPair(\$1,\$2); \char125{} 
+    | StartArg Arguments1 EndArg \char123{} g\_service->matchPair(\$1,\$3); \char125{}
+    | StartArg Arguments1 error  
+              \char123{} g\_service->endParameters(@3);
+                g\_service->expectError( "unmatched parenthesis", ")" ); \char125{}
+    ;
+
+StartArg
+    : '('     \char123{} g\_service->startParameters(\$1); \char125{}
+    ;
+
+EndArg
+    : ')'     \char123{} g\_service->endParameters(\$1); \char125{}
+    ;    
+
+Arguments1
+    : Expr ','  \char123{} g\_service->parameter(\$2); \char125{}  Arguments1
+    | Expr
+    ;
+\end{alltt}
+
+In MyC, parenthesis enclose a parameter list. The example is complicated
+by the need to call the different methods exactly at the moment one of 
+those tokens is recognised. In the rule \texttt{Arguments1} a mid-rule
+action is needed in order to call \texttt{parameter} at the right moment.
+Suppose that rule would have been written like this:
+\begin{alltt}
+Arguments1
+    : Expr ','  Arguments1  \char123{} g\_service->parameter(\$2); \char125{}  
+    | Expr
+    ;
+\end{alltt}
+In this case \texttt{parameter} will called {\itshape{}after} the 
+other arguments in the production \texttt{Arguments1} are recognised.
+Now all \texttt{parameter}'s calls are done in a reverse order! 
+
+The same kind of problem occura when calling \texttt{startParameter} and
+\texttt{endParameter}, that is why the \texttt{StartArg} and \texttt{EndArg}
+productions are explicitly added.
+
+\hypertarget{Adding parameter triggers}{\subsection{Adding parameter triggers}}\label{Adding parameter triggers}
+Allthough methods tips can now be explicitly invoked, they are much more
+useful when they pop up automatically when the user opens a parameter list.
+The triggers \texttt{TriggerParamStart}, \texttt{TriggerParamEnd} and
+\texttt{TriggerParamNext} trigger a method tip.
+Simply add the relevant entries to the token info table. The
+entries for MyC look like:
+\begin{alltt}
+   ...
+   \char123{} '(', ClassText,  "'('", 
+          CharDelimiter, TriggerParamStart | TriggerMatchBraces \char125{}, 
+   \char123{} ')', ClassText,  "')'", 
+          CharDelimiter, TriggerParamEnd | TriggerMatchBraces   \char125{},
+   \char123{} ',', ClassText,  "','", CharDelimiter, TriggerParamNext    \char125{},     
+   ...
+\end{alltt}
+
+Not all languages distinguish the parameter list open token from
+the parameter seperator or closing token. It is always legal to combine
+triggers. Allthough triggers will trigger a parser action in order
+to show or dismiss a method tip, the distinction in triggers is only used
+to optimize some common cases. The parser always has the final decision
+in showing the appropiate information.
+
+For example, in the language Haskell, white space can open a 
+parameter list but also seperates parameters. At the same time there is
+no specific token for closing a parameter list but a whole set of tokens
+can close a parameter list. All those tokens should get the \texttt{TriggerParamEnd}
+trigger while white space gets two triggers:
+\begin{alltt}
+  ...
+  \char123{} LEX\_WHITE, ClassText, "white space", 
+               CharWhiteSpace, TriggerParamStart | TriggerParamNext \char125{},
+  ...
+\end{alltt}
+
+In the Haskell case, there is a more serious problem. Since white space
+now triggers the parameter info, the parser is called on each white space
+character typed which will degrade the responsiveness of the editor.
+The solution is to recognise `special' white space that might trigger
+a method tip in the lexer. In Haskell, that is the first white space after
+a valid identifier. The following rules in \texttt{lexer.lex} recognise
+this case:
+\begin{alltt}
+<init>\char123{}Identifier\char125{}    \char123{} g\_service->setLexState(afterid); 
+                        return IDENTIFIER; \char125{}
+
+<afterid>\char123{}White\char125{}      \char123{} g\_service->setLexState(init);
+                        return LEX\_SPECIAL\_WHITE; \char125{}
+<afterid>.            \char123{} g\_service->setLexState(init);
+                        yyless(0); \char125{}
+\end{alltt}
+
+
+\hypertarget{IDL specification}{\section{IDL specification}}\label{IDL specification}
+{\small
+\begin{alltt}
+/*---------------------------------------------------------
+BabelServiceLib:
+  Interface specification for the Babel language services.  
+  
+  Midl will convert this file to 
+  - a type library [babelservice.tlb]
+  - a header file [babelservice.h]
+  - a GUID definition file [babelservice\_i.c].
+---------------------------------------------------------*/  
+[
+  uuid(4E71BA42-5C36-11d3-B3FD-006008D1BF8C),
+  version(1.0),
+  helpstring("BabelService 1.0 Type Library")
+]
+library BabelServiceLib
+\char123{}
+  importlib("stdole32.tlb");
+  importlib("stdole2.tlb");
+
+  /*---------------------------------------------------------
+  Severity:
+    The severity of an error. Used for example to select
+    an appropiate bitmap in the task window.
+  ---------------------------------------------------------*/
+  enum Severity 
+  \char123{}
+    SevHint,
+    SevWarning,
+    SevError,
+    SevFatal
+  \char125{};
+
+  /*---------------------------------------------------------
+  ParseReason:
+    The reason why the parser is called.
+  ---------------------------------------------------------*/
+  enum ParseReason
+  \char123{}
+	ReasonColorize,
+    ReasonCheck,
+    ReasonMemberSelect,
+    ReasonCompleteWord,
+    ReasonQuickInfo,
+    ReasonMethodTip,
+    ReasonMatchBraces
+  \char125{};
+
+  /*---------------------------------------------------------
+  CharClass:
+    The class of the current character. Used for example
+    to determine the word extent and search ranges.
+  ---------------------------------------------------------*/
+  enum CharClass
+  \char123{}
+    CharDefault     = 0,
+    CharText        = CharDefault,
+    CharKeyword,
+    CharIdentifier,
+    CharString,
+    CharLiteral,
+
+    CharOperator,
+    CharDelimiter,
+    CharEmbedded,
+
+    CharWhiteSpace,
+    CharLineComment,
+    CharComment,
+
+    CharDefaultLast = CharComment
+  \char125{};
+
+  /*---------------------------------------------------------
+  TriggerClass:
+    If a character has (a) trigger(s) associated with it, it may
+    fire one of the following actions when it is entered by a user:
+    [TriggerMemberSelect]  a member selection tip window
+    [TriggerMethodTip]     a method tip window
+    [TriggerMatchBraces]   highlight matching braces
+  ---------------------------------------------------------*/
+  typedef long TriggerClass;
+
+  enum DefaultTriggerClass
+  \char123{}
+    TriggerNone             = 0,
+    TriggerMemberSelect     = 0x01,
+    TriggerMatchBraces      = 0x02,
+
+    TriggerMethodTip        = 0xf0,
+    TriggerParamStart       = 0x10,
+    TriggerParamNext        = 0x20,
+    TriggerParamEnd         = 0x40,
+    TriggerParam            = 0x80
+  \char125{};
+
+  /*---------------------------------------------------------
+  ColorClass:
+    Determines the color of a character.
+  ---------------------------------------------------------*/
+  typedef long ColorClass;
+
+  /*---------------------------------------------------------
+  DefaultColorClass:
+    These default color classes are always available. If a 
+    client doesn't need custom color classes, it can set
+    the registry entry "RequestStockColors" to 1 and use
+    these defaults.
+  ---------------------------------------------------------*/
+  enum DefaultColorClass
+  \char123{}
+    ClassDefault    = 0,
+    ClassText       = ClassDefault,
+    ClassKeyword,
+    ClassComment,
+    ClassIdentifier,
+    ClassString,
+    ClassNumber,
+    ClassDefaultLast = ClassNumber,
+  \char125{};
+
+  /*---------------------------------------------------------
+  ScopeKind:
+    The kind of scope that is opened. These kinds have no
+    semantic significance. They are only used to determine
+    the bitmaps used when displaying scope information
+  ---------------------------------------------------------*/
+  enum ScopeKind
+  \char123{}
+    ScopeUnknown = 0,
+    ScopeModule,
+    ScopeClass,
+    ScopeInterface,
+    ScopeUnion,
+
+    ScopeProcedure,
+    ScopeVariable,
+
+    ScopeBlock,
+  \char125{};
+
+  enum ScopeAccess
+  \char123{}
+    AccessPrivate = 0,
+    AccessProtected,
+    AccessPublic
+  \char125{};
+
+  enum ScopeStorage
+  \char123{}
+    StorageConstant = 0,
+    StorageStatic,
+    StorageMember,
+    StorageParameter,
+    StorageResult,
+    StorageLocal,
+    StorageType,
+    StorageOther
+  \char125{};
+
+         
+  /*---------------------------------------------------------
+  IColorSink:
+    This interface is passed as an argument to the [ColorLine]
+    method. Its main use is to set the color class of each
+    character but it is also be used to pass the character class
+    and trigger information.
+  ---------------------------------------------------------*/
+  [ object
+  , uuid(4E71BA43-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring("IColorSink Interface")
+  , oleautomation
+  , dual
+  ]
+  interface IColorSink : IDispatch
+  \char123{}       
+    /*---------------------------------------------------------
+    Colorize:   
+      Set the colorclasses for a range of characters in a line.
+      The [startIdx] and [endIdx]  arguments specify the character 
+      index in the line (in constrast to columns, this means that 
+      '\char92{}t' characters are treated as single character). 
+      The indices are 0 based, ie. the first character has index 0.
+    ---------------------------------------------------------*/
+    [helpstring("method Colorize")] 
+    HRESULT Colorize( [in] long startIdx,
+                      [in] long endIdx,
+                      [in] ColorClass colorClass,
+                      [in] enum CharClass charClass,
+                      [in] TriggerClass trigger );
+  \char125{};
+
+
+  /*---------------------------------------------------------
+  IParseSink:
+    This interface is passed as an argument to the [ParseSource]
+    function. It is used to return information gathered
+    during parsing to the VS environment. 
+    It is mainly used to send (warning/error) messages.
+  ---------------------------------------------------------*/
+  [ object
+  , uuid(4E71BA40-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring("IParseSink Interface")
+  , oleautomation
+  , dual
+  ]
+  interface IParseSink : IDispatch
+  \char123{}
+    /*---------------------------------------------------------
+    ErrorMessage:
+      Send a [message] to the VS enviroment. The kind of message
+      is specified through the severity [sev]. Note that
+      lines and indices are all 0 based.
+    ---------------------------------------------------------*/
+    [helpstring("method ErrorMessage")] 
+    HRESULT ErrorMessage( [in] long startLine, [in] long endLine, 
+                          [in] long startIdx,  [in] long endIdx,
+                          [in] enum Severity sev, [in] BSTR message );
+
+    /*---------------------------------------------------------
+    MatchPair:
+      Whenever a matching pair is parsed, this method is called
+      with the text span of both the left and right item. The
+      information is used to when a user types "ctrl-]" in VS
+      to find a matching brace and when auto-highlight matching
+      braces is enabled.
+    ---------------------------------------------------------*/    
+    HRESULT MatchPair( [in] long startLine1, [in] long startIdx1,
+                       [in] long endLine1,   [in] long endIdx1, 
+                       [in] long startLine2, [in] long startIdx2,
+                       [in] long endLine2,   [in] long endIdx2 );
+
+    HRESULT MatchTriple( [in] long startLine1, [in] long startIdx1,
+                         [in] long endLine1,   [in] long endIdx1, 
+                         [in] long startLine2, [in] long startIdx2,
+                         [in] long endLine2,   [in] long endIdx2,
+                         [in] long startLine3, [in] long startIdx3,
+                         [in] long endLine3,   [in] long endIdx3 );
+
+    /*---------------------------------------------------------
+    Member Selection:
+      [StartSelect] is called for each name that is parsed ("Stack").
+      [AddSelect] is called for each qualification with both
+      the text span of the selector (".")  and the text span 
+      of the name ("Push").
+    ---------------------------------------------------------*/    
+    HRESULT StartSelect( [in] long line, [in] long startIdx, [in] long endIdx );
+    HRESULT AddSelect( [in] long lineSelector,
+                       [in] long startIdxSelector, [in] long endIdxSelector,
+                       [in] long line, [in] long startIdx, [in] long endIdx );
+
+    /*---------------------------------------------------------
+    Method Info:
+      [StartParameters] is called when the parameters of a method
+                        are started "(".
+      [Parameter] is called on the start of a new parameter ",".
+      [EndParameter] is called on the end of the paramters ")".
+    ---------------------------------------------------------*/    
+    HRESULT StartParameters( [in] long line, [in] long idx );
+    HRESULT Parameter      ( [in] long line, [in] long idx );
+    HRESULT EndParameters  ( [in] long line, [in] long idx );
+
+
+    /*---------------------------------------------------------
+    Scope Builder:
+      The babel package provides a default implementation
+      of the [IScope] interface which can be used through the
+      following methods. If you want to provide your own
+      [IScope] implementation, don't call these methods and
+      return the scope trough the [scope] parameter of the
+      [IBabelService::ParseSource] method.
+    ---------------------------------------------------------*/            
+    HRESULT AddScope( [in] long startLine, [in] long startIdx,
+                      [in] long endLine,   [in] long endIdx,
+                      [in] enum ScopeKind kind,
+                      [in] enum ScopeAccess access,
+                      [in] enum ScopeStorage storage,
+                      [in] BSTR name,     [in] BSTR type,
+                      [in] BSTR display,  [in] BSTR description,
+                      [in] VARIANT\_BOOL merge
+                    );                       
+    HRESULT AddInclude( [in] enum ScopeAccess access, [in] BSTR name );
+    HRESULT AddExtern( [in] BSTR external );
+  \char125{};
+  
+  /*---------------------------------------------------------
+  INames
+  ---------------------------------------------------------*/    
+  [ object
+  , uuid(4E71BA45-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring("INames Interface")
+  , oleautomation
+  , dual
+  ]
+  interface INames : IDispatch
+  \char123{}
+    HRESULT GetCount( [out,ref,retval] long* count );
+    HRESULT GetName( [in] long index, [out,ref,retval] BSTR* name );
+  \char125{};
+  
+  /*---------------------------------------------------------
+  IDeclarations
+  ---------------------------------------------------------*/    
+  [ object
+  , uuid(4E71BA46-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring("IDeclarations Interface")
+  , oleautomation
+  , dual
+  ]
+  interface IDeclarations : IDispatch
+  \char123{}
+    HRESULT GetCount      ( [out,ref,retval] long* count );
+    HRESULT GetName       ( [in] long index, [out,ref,retval] BSTR* name );
+    HRESULT GetDescription( [in] long index, [out,ref,retval] BSTR* description );    
+    HRESULT GetGlyph      ( [in] long index, [out,ref,retval] long* glyph );
+
+    HRESULT GetBestMatch( [in] BSTR text, [out] long* index, [out] VARIANT\_BOOL* uniqueMatch );
+  \char125{};
+  
+
+  /*---------------------------------------------------------
+  IMethods
+  ---------------------------------------------------------*/    
+  [ object
+  , uuid(4E71BA47-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring("IMethods Interface")
+  , oleautomation
+  , dual
+  ]
+  interface IMethods : IDispatch
+  \char123{}
+    HRESULT GetName ( [out,ref,retval] BSTR* name  );
+    HRESULT GetCount( [out,ref,retval] long* count );
+
+    HRESULT GetDescription( [in] long index, [out,ref,retval] BSTR* description );    
+    HRESULT GetType       ( [in] long index, [out,ref,retval] BSTR* type );
+    
+    HRESULT GetParameterCount( [in] long index, [out,ref,retval] long* count );
+    HRESULT GetParameterInfo ( [in] long index, 
+                               [in] long parameter, 
+                               [out,unique] BSTR* name,
+                               [out,unique] BSTR* display,
+                               [out,unique] BSTR* description );
+  \char125{};
+  
+  
+
+  /*---------------------------------------------------------
+  IScope:
+  ---------------------------------------------------------*/    
+  [ object
+  , uuid(4E71BA44-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring("IScope Interface")
+  , oleautomation
+  , dual
+  ]
+  interface IScope : IDispatch
+  \char123{}
+    HRESULT GetDeclarations( [in] long line, 
+                             [in] long idx, 
+                             [in,unique] INames* names,
+                             [out,ref,retval] IDeclarations** decls );  
+
+    HRESULT GetDataTipText ( [in] long line, 
+                             [in] long idx, 
+                             [in,unique] INames* names,
+                             [out,ref,retval] BSTR* text );  
+
+    HRESULT GetMethods     ( [in] long line,
+                             [in] long idx,
+                             [in,unique] INames* names,
+                             [out,ref,retval] IMethods** imethods );
+  \char125{};
+
+
+  /*---------------------------------------------------------
+  IBabelService:
+    By implementing this interface, a client gets a full language 
+    service automatically provided by Visual Studio.
+  ---------------------------------------------------------*/
+  [ object
+  , uuid(4E71BA41-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring("IBabelService Interface")
+  , oleautomation
+  , dual
+  ]
+  interface IBabelService : IDispatch
+  \char123{}
+    [helpstring( "ColorCount: return the number of custom color classes" )]
+    HRESULT ColorCount( [out,ref,retval] ColorClass* count );
+
+    /*---------------------------------------------------------
+      GetColorInfo:
+        retrieve color information for a specific color class.
+        This method is only called if the registry entry
+        [RequestStockColors] is set to 0.
+      pre: 
+        [index] < [ColorCount()]
+      returns: 
+        a [description] of the color class ("keyword")
+        and a CSS [style] for this color class, for example
+        "color: blue; font-weight: bold"
+    ---------------------------------------------------------*/
+    [helpstring("GetColorInfo: get color class information")]
+    HRESULT GetColorInfo( [in]  ColorClass index, 
+                          [out,ref] BSTR* description,
+                          [out,ref] BSTR* style );
+
+    /*---------------------------------------------------------
+      ColorLine: 
+        colorize a line [line]. Colors can be set through the
+        [sink] that is passed too. The [state] can be used by
+        the client in anyway it wants; it always corresponds to
+        the state that was set at the end of the previous line.
+        [state] is 0 if no state is known (start of the file).
+      pre:          
+        [sink] may be NULL in order to just retrieve the 
+        new state at the end of the line
+    ----------------------------------------------------------*/
+    [helpstring("ColorLine: colorize a line")]    
+    HRESULT ColorLine( [in] BSTR line, 
+                       [in,unique] IColorSink* sink,
+                       [in,out,ref] long* state 
+                     );
+    
+    /*---------------------------------------------------------
+      ParseSource:
+        parses the program source in [text]. Messages containing
+        warnings or errors can be sent to the [sink]. The reason
+        for calling [ParseSource] is passed in [reason]; a client
+        can always choose not to do anything.
+    ---------------------------------------------------------*/
+    [helpstring("ParseSource: parse the source")] 
+    HRESULT ParseSource( [in] BSTR text, 
+                         [in,unique] IParseSink* sink,
+                         [in] enum ParseReason reason,
+                         [out,unique,retval] IScope** scope 
+                        );
+
+    /*---------------------------------------------------------
+      GetMethodFormat:
+        Used for formatting method data tips.
+        [typePrefixed] is [true] if the return type should be
+        in front of the name: [long foo()] and [false]
+        if it comes last: [foo() as long].
+        [parStart],[parSep] and [parEnd] give the parameter start
+        token, the seperator and end token respectively. 
+        [typeStart] and [typeEnd] surround the return type.
+        All parameters can be set to NULL in which case they
+        default to a C-style formatting.
+    ---------------------------------------------------------*/
+    [helpstring("GetMethodFormat: return format tokens for method data tips")]
+    HRESULT GetMethodFormat( [out,ref] BSTR* parStart,
+                             [out,ref] BSTR* parSep, 
+                             [out,ref] BSTR* parEnd,
+                             [out,ref] BSTR* typeStart, 
+                             [out,ref] BSTR* typeEnd,
+                             [out,ref] VARIANT\_BOOL* typePrefixed );
+
+    /*---------------------------------------------------------
+      GetCommentFormat:
+        Used for (un)commenting selected text.
+        [lineStart] is the token used to start line comments (//)
+        [blockStart] is the token used to start block comments
+        [blockEnd] is the token used to end block comments
+        if [useLineComments]  is true, selected text is commented
+        using line comments, otherwise it is commented using
+        block comments.
+    ---------------------------------------------------------*/
+    [helpstring("GetCommentFormat: return format tokens for comments")]
+    HRESULT GetCommentFormat( [out,ref] BSTR* lineStart, 
+                              [out,ref] BSTR* blockStart,
+                              [out,ref] BSTR* blockEnd,
+                              [out,ref] VARIANT\_BOOL* useLineComments );
+
+    
+    [helpstring("GetImageList: return HIMAGELIST for glyphs")]
+    HRESULT GetImageList( [out] long* imageListHandle );
+  \char125{};
+\char125{};
+\end{alltt}
+}
+
+
+\end{document}
+

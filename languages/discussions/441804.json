@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1036627",
+    "ThreadId": "441804",
+    "Html": "Hello.\r<br />\n<br />\nI have a question, if anybody has a minute.\r<br />\n<br />\nThe Spec# tutorial introduces at some point a Rectangle class. This class has a Clone() method.<br />\n<pre><code>  public Rectangle Clone()\n  {\n    Rectangle res = new Rectangle();\n    res.X = X;\n    res.Y = Y;\n    res.Dx = Dx;\n    res.Dy = Dy;\n    return res;\n  }</code></pre>\n\nNow, I am trying to do this:<br />\n<pre><code>// Somewhere in the code\n    static void foo() {\n        Rectangle rect = new Rectangle();\n        rect.MoveToOrigin(); // no problems here\n        Rectangle rect2 = rect.Clone();\n        rect2.MoveToOrigin(); // the verifier complains here!\n    }</code></pre>\n\nThe verifier's warning is this: <em>method invocation may violate the modifies clause of the enclosing method</em>\r<br />\n<br />\nNow, I think this happens because the verifier doesn't know that the rectangle returned by clone is a new, fresh clone created on the spot and to which the previous rectangle doesn't hold any reference.\r<br />\n<br />\nMy intuition is that there must be some tag/attribute/whatever that I should add to the Clone() method which basically promises this, but I don't know how and I can't find any documentation about this. The Spec# tutorial doesn't seem to mention that. I tried [Fresh], ensures Owner.None(result) and other stuff with no luck.\r<br />\n<br />\nAny hints?\r<br />\n<br />\nThank you<br />\n",
+    "PostedDate": "2013-04-27T14:21:53.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1037478",
+    "ThreadId": "441804",
+    "Html": "Hi,\r<br />\n<br />\nYour reasoning is correct. All you need to add to your Clone method is<br />\n<pre><code>ensures result.IsNew;\n</code></pre>\n\nCheers,\r<br />\n  Peter<br />\n",
+    "PostedDate": "2013-04-29T21:25:58.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1038281",
+    "ThreadId": "441804",
+    "Html": "Hello.\r<br />\n<br />\nAs expected, it worked. Thank you very much!\r<br />\n<br />\nCheers,\r<br />\nPaolo<br />\n",
+    "PostedDate": "2013-05-01T14:05:17.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

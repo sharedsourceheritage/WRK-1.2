@@ -1,0 +1,97 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+// Package Command Bar Definition
+//
+
+#include "stdidcmd.h"
+#include "vsshlids.h"
+#include "msobtnid.h"
+#include "virtkeys.h"
+#include "PkgCmdID.h"
+#include "Resource.h"
+
+#define _CTC_GUIDS_
+#include "Guids.h"
+
+// shorthand macros for a more compact and manageable table
+
+#define OI_NOID         guidOfficeIcon:msotcidNoIcon
+#define DIS_DEF         DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY
+#define VIS_DEF         COMMANDWELLONLY
+
+
+CMDS_SECTION guidBasicEditorPkg
+
+    MENUS_BEGIN
+        // NewMenu                              Relative to Group                       Priority    Type        Name                    Text
+
+    MENUS_END
+
+    NEWGROUPS_BEGIN
+        // NewGroup                             Parent Group                            Priority
+    guidBasicEditorCmdSet:MyMenuGroup,    guidSHLMainMenu:IDM_VS_MENU_TOOLS,    0x0600;
+
+    // cmd well only editor commands (Edit menu)
+    guidBasicEditorCmdSet:IDG_RTF_EDITOR_CMDS,      guidSHLMainMenu:IDM_VS_MENU_EDIT,       0xFE00;
+
+    // toolbar groups
+    guidBasicEditorCmdSet:IDG_RTF_TLB_FONT1,		guidBasicEditorCmdSet:IDM_TLB_RTF,				0x0100;
+    guidBasicEditorCmdSet:IDG_RTF_TLB_FONT2,		guidBasicEditorCmdSet:IDM_TLB_RTF,				0x0200;
+    guidBasicEditorCmdSet:IDG_RTF_TLB_INDENT,		guidBasicEditorCmdSet:IDM_TLB_RTF,				0x0300;
+    guidBasicEditorCmdSet:IDG_RTF_TLB_BULLET,		guidBasicEditorCmdSet:IDM_TLB_RTF,				0x0400;
+    guidBasicEditorCmdSet:IDG_RTF_TLB_FONT_COMBOS,	guidBasicEditorCmdSet:IDM_TLB_RTF,				0x0040;
+
+    // context menu groups
+    guidSHLMainMenu:IDG_VS_EDIT_CUTCOPY,	guidBasicEditorCmdSet:IDMX_RTF,					0x0100;
+    guidBasicEditorCmdSet:IDG_RTF_CTX_PROPS,		guidBasicEditorCmdSet:IDMX_RTF,					0x0200;
+    guidSharedMenuGroup:IDG_VS_FORMAT_FONTFACE,	guidBasicEditorCmdSet:IDMX_RTF,				0x0300;
+
+    NEWGROUPS_END
+
+    BUTTONS_BEGIN
+    // Command                    Parent Group                Priority    Image            Type    Visibility        
+
+
+    BUTTONS_END
+
+    BITMAPS_BEGIN
+        // Bitmap                          Bitmap Index, Bitmap Index, ...
+    BITMAPS_END
+
+CMDS_END
+
+CMDUSED_SECTION
+CMDUSED_END
+
+CMDPLACEMENT_SECTION
+    // Command                             Group                                Priority
+CMDPLACEMENT_END
+
+VISIBILITY_SECTION
+    // Command                          GUID when visible
+VISIBILITY_END
+
+//////////////////////////////////////////////////////////////////////////////
+// KEYBINDINGS_SECTION
+// 
+// This sections defines the keystroke mappings for the commands.
+//
+// The Keystate field is done using the following:
+//    A = Alt, S = Shift, C = Control, W = Windows Key
+//
+// Example of the Keystate assignment, if you want a two key combination
+// of Ctrl-X, Ctrl-Shift-C then the syntax would be :
+//
+//	'x':C:'c':CS
+//
+//////////////////////////////////////////////////////////////////////////////
+
+KEYBINDINGS_SECTION
+	// Command                		when available  		emulation   			keystate
+KEYBINDINGS_END
+

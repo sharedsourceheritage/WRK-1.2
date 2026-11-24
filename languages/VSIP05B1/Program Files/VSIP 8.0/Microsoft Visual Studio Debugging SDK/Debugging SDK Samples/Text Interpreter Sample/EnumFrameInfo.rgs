@@ -1,0 +1,23 @@
+HKCR
+{
+    TextInterpreter.EnumFrameInfo.1 = s 'EnumFrameInfo Class'
+    {
+        CLSID = s '{1757A890-F9AF-443A-9AD8-343D5BF07E07}'
+    }
+    TextInterpreter.EnumFrameInfo = s 'EnumFrameInfo Class'
+    {
+        CLSID = s '{1757A890-F9AF-443A-9AD8-343D5BF07E07}'
+        CurVer = s 'TextInterpreter.EnumFrameInfo.1'
+    }
+    NoRemove CLSID
+    {
+        {1757A890-F9AF-443A-9AD8-343D5BF07E07} = s 'EnumFrameInfo Class'
+        {
+            ProgID = s 'TextInterpreter.EnumFrameInfo.1'
+            VersionIndependentProgID = s 'TextInterpreter.EnumFrameInfo'
+            LocalServer32 = s '%MODULE%'
+            val AppID = s '{138A9B67-A2AB-4A64-A16F-ACE68B2FF77A}'
+            'TypeLib' = s '{510FC0E1-41E9-416F-9EDD-7277BD4538DB}'
+        }
+    }
+}

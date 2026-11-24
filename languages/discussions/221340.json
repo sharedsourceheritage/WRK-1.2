@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "472367",
+    "ThreadId": "221340",
+    "Html": "<p style=\"margin-bottom:0in\"><span style=\"font-family:LMMono10\"><span style=\"font-family:Liberation Sans,sans-serif\">Hi,</span></span></p>\r\n<p style=\"margin-bottom:0in\"><span style=\"font-family:LMMono10\"><span style=\"font-family:Liberation Sans,sans-serif\">the following code  contains a call to an impure method of a committed object in the line  marked with (*). Still, this code verifies. I don't understand why as  calls to impure methods are allowed for consistent targets only.</span></span></p>\r\n<p style=\"margin-bottom:0in\"><span style=\"font-family:LMMono10\"><span style=\"font-family:Liberation Sans,sans-serif\">Regards,</span></span></p>\r\n<p style=\"margin-bottom:0in\"><span style=\"font-family:LMMono10\"><span style=\"font-family:Liberation Sans,sans-serif\">Boris</span></span></p>\r\n<p style=\"margin-bottom:0in\">&nbsp;</p>\r\n<p style=\"margin-bottom:0in\"><span style=\"font-family:LMMono10\"><span style=\"font-family:Liberation Sans,sans-serif\">\r\n<div style=\"color:black;background-color:white\">\r\n<pre><span style=\"color:blue\">using</span> System;\r\n\r\n<span style=\"color:blue\">using</span> Microsoft.Contracts;\r\n\r\n\r\n\r\n\r\n\r\n<span style=\"color:blue\">public</span> <span style=\"color:blue\">class</span> A\r\n\r\n{\r\n\r\n\t<span style=\"color:blue\">int</span> a;\r\n\r\n\t\r\n\r\n\t<span style=\"color:blue\">public</span> <span style=\"color:blue\">void</span> f(<span style=\"color:blue\">int</span> m)\r\n\r\n\t{\r\n\r\n\t\ta = m;\r\n\r\n\t}\r\n\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<span style=\"color:blue\">public</span> <span style=\"color:blue\">class</span> B\r\n\r\n{\r\n\r\n\t[Pure] <span style=\"color:blue\">public</span> <span style=\"color:blue\">int</span> g()\r\n\r\n\t{\r\n\r\n\t\t<span style=\"color:blue\">return</span> 0;\r\n\r\n\t}\r\n\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<span style=\"color:blue\">public</span> <span style=\"color:blue\">class</span> C \r\n\r\n{\r\n\r\n\t[Rep] <span style=\"color:blue\">public</span> A a = <span style=\"color:blue\">new</span> A();\r\n\r\n\t[Rep] <span style=\"color:blue\">public</span> B b = <span style=\"color:blue\">new</span> B();\t\r\n\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n<span style=\"color:blue\">public</span> <span style=\"color:blue\">class</span> D\r\n\r\n{\r\n\r\n\t[Rep] <span style=\"color:blue\">public</span> C c = <span style=\"color:blue\">new</span> C();\r\n\r\n\r\n\r\n\t<span style=\"color:blue\">public</span> <span style=\"color:blue\">void</span> f() {\r\n\r\n\t\t<span style=\"color:blue\">int</span> m;\r\n\r\n\t\t\r\n\r\n\t\tm = c.b.g();\r\n\r\n\t\tc.a.f(m);  // (*) \r\n\t}\r\n\r\n}\r\n</pre>\r\n</div>\r\n<br></span></span></p>",
+    "PostedDate": "2010-07-25T11:23:31.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "472626",
+    "ThreadId": "221340",
+    "Html": "Hi Boris,\r\n\r\nYou ran into a bug in the Spec# verifier. The variation of your code below illustrates the bug. I am working on the fix and will commit it soon (I believe I have fixed it, but I am having trouble accessing the sources on CodePlex). \r\n\r\n  Peter\r\n\r\n\r\nusing System;\r\nusing Microsoft.Contracts;\r\n\r\npublic class B {\r\n  [Pure] public int g()\r\n  {\r\n    return 0;\r\n  }\r\n}\r\n\r\npublic class C {\r\n  [Rep] public B b = new B();  \r\n}\r\n\r\npublic class D {\r\n  [Rep] public C c = new C();\r\n\r\n  public void f() {\r\n    int m;\r\n    m = c.b.g();\r\n    assert false;  // verifies\r\n  }\r\n}\r\n",
+    "PostedDate": "2010-07-26T05:31:43.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "472680",
+    "ThreadId": "221340",
+    "Html": "Hello Peter,\r\n\r\nI encounter this problem with the Spec# release for VS 2008 that was previously available on the CodePlex site. I've seen there's a new version from last week (change set 55325) which I haven't tested. Is this bug also present in this version?\r\n\r\nRegards, Boris",
+    "PostedDate": "2010-07-26T08:35:53.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "472701",
+    "ThreadId": "221340",
+    "Html": "Hi Boris,\r\nI work with the source distribution. As I said, I am having problems with the svn access. But I believe my sources are up to date, and there is defninitely a bug there.\r\n\r\nCheers,\r\n   Peter",
+    "PostedDate": "2010-07-26T09:12:53.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "505846",
+    "ThreadId": "221340",
+    "Html": "<p>Hello Peter, any news on this? Boris</p>",
+    "PostedDate": "2010-10-12T01:09:50.003-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "505933",
+    "ThreadId": "221340",
+    "Html": "<p>Hi Boris, I fixed the problem, but currently I cannot build sscboogie because the Boogie source has been parted to C#, which breaks the sscboogie build. We are working on changing the sscboogie code, and as soon as I can build again, I will test and commit my fix for your problem. Sorry about the delay! Peter</p>",
+    "PostedDate": "2010-10-12T04:00:25.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "519885",
+    "ThreadId": "221340",
+    "Html": "\r\n<p>Hi Boris,</p>\r\n<p>I was finally able to test and upload my fix for your bug. Sorry this has taken so long! The bugfix is already in the source repository. Tomorrow you should be able to download the nightly build of Nov 11, which will then include the fix. To do that, go\r\n to Downloads, click on &quot;Planned&quot; next to &quot;Other Downloads&quot; on the right-hand side of the page. Then click on &quot;Nightly builds&quot; below and download the latest one (it should have &quot;2010-11-11&quot; in the file name).</p>\r\n<p>&nbsp;&nbsp; Peter</p>\r\n",
+    "PostedDate": "2010-11-10T04:01:55.523-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

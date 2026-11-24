@@ -1,0 +1,110 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1000  CTMENU       ""PkgCmd.cto""\r\n"
+    "#define VER_FILEDESCRIPTION_STR ""DSRefTool Package Resources\\0""\r\n"
+    "#define VER_INTERNALNAME_STR ""DSRefToolUI.dll\\0""\r\n"
+    "#define VER_ORIGINALFILENAME_STR ""DSRefToolUI.dll\\0""\r\n"
+    "#include ""EnvSdkVersion.ver""\r\n"
+    "\r\n"
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+// the ids for these strings are the same as their enumeration values
+// for the DSREFTYPE, to simpligy loading them
+0x100		"Field"
+0x200		"Table"
+0x400		"Query"
+0x800		"Database"
+0x1000		"Trigger"
+0x2000		"Stored Procedure"
+0x4000		"Extended"
+0x8000		"Schema Diagram"
+0x1002	"View"
+0x8002	"Synonym"
+0x1003	"Function"
+0x2003	"Package"
+0x4003	"Package Body"
+0x8003	"Relationship"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+IDS_UNKNOWNTYPE		"Unknown Type"
+IDS_FORMATSTRING	"Data Source Reference Node: %s\r\nOwner:\t%s\r\nType:\t%S\r\nCreated:\t%d:%d:%d.%d %d\\%d\\%d\r\nVersion:\t%d"
+IDS_NOREF			"No Data Source Reference available."
+IDS_WINDOW_TITLE        "DSRef Viewer"
+IDS_E_CANTCREATETOOL    "The DSRefTool could not be created."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1000  CTMENU       "PkgCmd.cto"
+#define VER_FILEDESCRIPTION_STR "DSRefTool Package Resources\0"
+#define VER_INTERNALNAME_STR "DSRefToolUI.dll\0"
+#define VER_ORIGINALFILENAME_STR "DSRefToolUI.dll\0"
+#include "EnvSdkVersion.ver"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

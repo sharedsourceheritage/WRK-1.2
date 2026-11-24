@@ -1,0 +1,10 @@
+; FigPrj.def : Declares the module parameters.
+
+LIBRARY      "FigPrj.DLL"
+
+EXPORTS
+	DllCanUnloadNow        PRIVATE
+	DllGetClassObject      PRIVATE
+	DllRegisterServer      PRIVATE
+	DllUnregisterServer    PRIVATE
+    DLLGetDocumentation    PRIVATE

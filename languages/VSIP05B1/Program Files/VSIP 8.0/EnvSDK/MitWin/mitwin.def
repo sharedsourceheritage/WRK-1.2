@@ -1,0 +1,9 @@
+; MitWin.def : Declares the module parameters.
+
+LIBRARY      "MitWin.DLL"
+
+EXPORTS
+	DllCanUnloadNow        PRIVATE
+	DllGetClassObject      PRIVATE
+	DllRegisterServer      PRIVATE
+	DllUnregisterServer    PRIVATE

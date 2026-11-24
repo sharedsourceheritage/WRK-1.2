@@ -1,0 +1,92 @@
+<Project MSBuildVersion="2.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProductVersion>8.0.40319</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D50E281B-0159-4C5A-BE6C-FBC8F6D213F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <StartupObject>
+    </StartupObject>
+    <RootNamespace>OptionsPageBackup2</RootNamespace>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>OptionsPageBackup2</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <IncrementalBuild>false</IncrementalBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <IncrementalBuild>false</IncrementalBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop">
+      <Name>Microsoft.VisualStudio.OLE.Interop</Name>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell">
+      <Name>Microsoft.VisualStudio.Shell</Name>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop">
+      <Name>Microsoft.VisualStudio.Shell.Interop</Name>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0">
+      <Name>Microsoft.VisualStudio.Shell.Interop.8.0</Name>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.XML">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="MyOptionsCompositeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OptionsPageCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OptionsPageGeneral.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VsPkg.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Project\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MyOptionsCompositeControl.resx">
+      <DependentUpon>MyOptionsCompositeControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Project\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>..\..\..\..\..\tools\bin\x86\RegPkg /codebase /root:Software\Microsoft\VisualStudio\8.0Exp "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

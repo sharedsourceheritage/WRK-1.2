@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "432493",
+    "ThreadId": "209726",
+    "Html": "<p>Hi,</p>\r\n<p>I am doing some experimentation with sscBoogie. I use it to verify one of the Spec# examples that counts non-null values in an array (code below). I introduced an error in the loop boundaries; the correct version is&nbsp; for (int i = 0; i &lt; a.Length; i++).</p>\r\n<p>When verifying the program, sscBoogie fails to generate an array bound error. The erroneous code also violates the invariant which should produce an error. If I remove the invariants, sscBoogie detects the error! Any ideas why this is happening?</p>\r\n<p>Thanks,</p>\r\n<p>Iman</p>\r\n<p>----------------------------------------------------------------------------------------------------------------------</p>\r\n<p>public void CountNonNull()<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp; expose(this){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int ct = 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &gt; a.Length; i++)&nbsp; // This is an erroneous loop!<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; invariant i &lt;= a.Length; //infers 0&lt;=i<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; invariant 0 &lt;= ct &amp;&amp; ct &lt;= i; //needed to help verify next //invariant<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; invariant ct == count{int j in (0: i); (a[j]!=null)};<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (a[i]!=null) ct++;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count = ct;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }</p>",
+    "PostedDate": "2010-04-18T15:03:21.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "432831",
+    "ThreadId": "209726",
+    "Html": "<p>Your program text given here contains no array bounds error, so SscBoogie is correct is not issuing any complaint.&nbsp; The loop variable i is initialized to 0, which is not greater than a.Length for any array a.&nbsp; Thus, SscBoogie knows that control will never flow into the loop.&nbsp; It will check that the loop invariant holds initially (which it does) and will then procede to consider control flow after the loop exit.</p>",
+    "PostedDate": "2010-04-19T12:18:59.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "432844",
+    "ThreadId": "209726",
+    "Html": "<p>That makes total sense that there will be no array bound violation since the control will never flow into the loop. But, why does it generate an error &quot; Array index possibly above upper bound&quot; when the invariant is removed?</p>\r\n<p>Thank you for your response!</p>\r\n<p>Iman</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-19T12:43:02.4-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "432862",
+    "ThreadId": "209726",
+    "Html": "<p>The way the verifier handles loops is that it checks that the loop invariant (which may be just &quot;true&quot;) holds initially.&nbsp; Then, it shakes up the state of the program in a way that satisfies the (enclosing method's modifies clause and the) loop's invariant; from that state, it continues execution by evaluating the loop guard and branching accordingly.&nbsp; If it gets to the end of&nbsp;a loop&nbsp;iteration, it checks that the loop invariant holds there as well.&nbsp; So, for the program above, if you don't supply a loop invariant, the verifier will change i to an arbitrary value and will <em>then</em> check the loop guard.&nbsp; In particular, it will consider the possibility that an iteration will start with a value of i that exceeds a.Length.</p>\r\n<p>For more information, there are a number of texts you could read, including section 1.3 of the Spec# tutorial (<a href=\"http://research.microsoft.com/en-us/um/people/leino/papers/krml189.pdf\">http://research.microsoft.com/en-us/um/people/leino/papers/krml189.pdf</a>) and page 6 of the lecture notes&nbsp;&quot;A verifying compiler for a multi-threaded object-oriented language&quot; (<a href=\"http://research.microsoft.com/en-us/um/people/leino/papers/krml168.pdf\">http://research.microsoft.com/en-us/um/people/leino/papers/krml168.pdf</a>).</p>",
+    "PostedDate": "2010-04-19T13:27:34.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,9 @@
+; AIWTool.def : Declares the module parameters.
+
+LIBRARY      "AIWTool.DLL"
+
+EXPORTS
+	DllCanUnloadNow        PRIVATE
+	DllGetClassObject      PRIVATE
+	DllRegisterServer      PRIVATE
+	DllUnregisterServer    PRIVATE

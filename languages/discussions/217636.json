@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "460877",
+    "ThreadId": "217636",
+    "Html": "<p>Hi,</p>\r\n<p>&nbsp;I am trying to specify an abstract method and marking it as Pure to use it in specifying other classes. I get a verifier error stating that method purity cannot be verified.</p>\r\n<p>An example would be the definition of a stack top method:</p>\r\n<pre> public /*@ pure @*/ abstract Object top( );<br><br>in  http://www.eecs.ucf.edu/~leavens/JML/prelimdesign/prelimdesign_2.html#SEC12<br></pre>\r\n<p>How can this be done in Spec#?</p>\r\n<p>Thanks,</p>\r\n<p>&nbsp;</p>\r\n<p>Iman</p>",
+    "PostedDate": "2010-06-28T16:01:29.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "460909",
+    "ThreadId": "217636",
+    "Html": "<p>Hello Iman,</p>\r\n<p>What you're trying to do is alarmingly difficult in Spec#.</p>\r\n<p>One major thing that makes this difficult is that Spec# does not build in theory types, nor does not provide a practical way to provide user-defined theory types.</p>\r\n<p>A second major thing that makes this difficult, and this is more specifically what you're seeing in the error message, is that Spec# wants to make sure the pure methods in your program do not give rise to inconsistent axioms in the verifier.&nbsp; Doing so involves producing a witness that shows the ensures clause to be attainable.&nbsp; The place where we usually see this break is when the return type is of a non-null type.&nbsp; In your case, you can change the return types to object?, but you will still see trouble because you have to decide if theStack, which is an object,&nbsp;should be [Rep] or [Peer].&nbsp; [Peer] may seem the natural choice, because you're not hiding theStack as an implementation detail, but using [Peer] won't let you write the specifications that dereference theStack.&nbsp; On the other hand, [Rep] will cause the problem when proving the consistency of Top(), because that proof needs the axiom about the pure method First, and Spec# conservatively turns off all pure-method axioms while checking the consistency of other pure methods.</p>\r\n<p>Things get a little better if you use a struct instead of a class for the &quot;theory value&quot;.&nbsp; Still, no cigar.</p>\r\n<p>Since I wrote them anyway, I'm including below my attempts at doing this with a class and a struct, respectively.&nbsp; However, neither program verifies.&nbsp; (The struct version happened upon a bug in SscBoogie, for which I just checked in a fix.)</p>\r\n<p>(Shameless plug:&nbsp; The language and verifier Dafny has&nbsp;significantly better support for these things, though it does not include subclassing.)</p>\r\n<p>----------&nbsp; class version&nbsp; ----------</p>\r\n<p>using Microsoft.Contracts;</p>\r\n<p>[Verify(false)]<br>public abstract class JMLObjectSequence {<br>&nbsp; [Pure]<br>&nbsp; public abstract bool IsEmpty();<br>&nbsp; [Pure]<br>&nbsp; public abstract JMLObjectSequence Trailer();<br>&nbsp; [Pure]<br>&nbsp; public abstract JMLObjectSequence InsertFront(object? x);<br>&nbsp; [Pure] [ResultNotNewlyAllocated]<br>&nbsp; public abstract object? First();<br>}<br>[Verify(false)]<br>public sealed class Default_JMLObjectSequence : JMLObjectSequence {<br>&nbsp; [NotDelayed]<br>&nbsp; public Default_JMLObjectSequence()<br>&nbsp;&nbsp;&nbsp; ensures IsEmpty();<br>&nbsp; {<br>&nbsp; }<br>&nbsp; [Pure]<br>&nbsp; public override bool IsEmpty() { return true; } // bogus<br>&nbsp; [Pure]<br>&nbsp; public override JMLObjectSequence Trailer() { return this; }&nbsp; // bogus<br>&nbsp; [Pure]<br>&nbsp; public override JMLObjectSequence InsertFront(object? x) { return this; }&nbsp; // bogus<br>&nbsp; [Pure] [ResultNotNewlyAllocated]<br>&nbsp; public override object? First() { return this; }&nbsp; // bogus<br>}</p>\r\n<p>public abstract class UnboundedStack {</p>\r\n<p>&nbsp; [SpecPublic] [Rep]<br>&nbsp; public JMLObjectSequence theStack;</p>\r\n<p>&nbsp; [NotDelayed]<br>&nbsp; public UnboundedStack()<br>&nbsp;&nbsp;&nbsp; ensures theStack.IsEmpty();<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; theStack = new Default_JMLObjectSequence();<br>&nbsp;&nbsp;&nbsp; base();<br>&nbsp; }</p>\r\n<p>&nbsp; public abstract void Pop();<br>&nbsp;&nbsp;&nbsp; requires !theStack.IsEmpty();<br>&nbsp;&nbsp;&nbsp; modifies theStack;<br>&nbsp;&nbsp;&nbsp; ensures theStack.Equals(old(theStack.Trailer()));</p>\r\n<p>&nbsp; public abstract void Push(object? x);<br>&nbsp;&nbsp;&nbsp; modifies theStack;<br>&nbsp;&nbsp;&nbsp; ensures theStack.Equals(old(theStack.InsertFront(x)));</p>\r\n<p>&nbsp; [Pure]<br>&nbsp; public abstract object? Top();<br>&nbsp;&nbsp;&nbsp; requires !theStack.IsEmpty();<br>&nbsp;&nbsp;&nbsp; ensures result == theStack.First();<br>}</p>\r\n<p>----------&nbsp; struct version&nbsp; ----------</p>\r\n<p>using Microsoft.Contracts;</p>\r\n<p>public struct JMLObjectSequence {<br>&nbsp; [Pure] public bool IsEmpty()<br>&nbsp;&nbsp;&nbsp; ensures true;<br>&nbsp; { return false; }</p>\r\n<p>&nbsp; [Pure]<br>&nbsp; public JMLObjectSequence Trailer()<br>&nbsp;&nbsp;&nbsp; ensures true;<br>&nbsp; { return this; }&nbsp; // bogus</p>\r\n<p>&nbsp; [Pure]<br>&nbsp; public JMLObjectSequence InsertFront(object? x)<br>&nbsp;&nbsp;&nbsp; ensures true;<br>&nbsp; { return this; }&nbsp; // bogus</p>\r\n<p>&nbsp; [Pure] [ResultNotNewlyAllocated]<br>&nbsp; public object? First()<br>&nbsp;&nbsp;&nbsp; ensures true;<br>&nbsp; { return null; }&nbsp; // bogus</p>\r\n<p>&nbsp; [Pure]<br>&nbsp; public override bool Equals(object? other)<br>&nbsp;&nbsp;&nbsp; ensures true;<br>&nbsp; { return false; }&nbsp; // bogus<br>}</p>\r\n<p>public abstract class UnboundedStack {</p>\r\n<p>&nbsp; [SpecPublic]<br>&nbsp; public JMLObjectSequence theStack;</p>\r\n<p>&nbsp; [NotDelayed]<br>&nbsp; public UnboundedStack()<br>&nbsp;&nbsp;&nbsp; ensures theStack.IsEmpty();<br>&nbsp; {<br>&nbsp;&nbsp;&nbsp; assume theStack.IsEmpty();<br>&nbsp; }</p>\r\n<p>&nbsp; public abstract void Pop();<br>&nbsp;&nbsp;&nbsp; requires !theStack.IsEmpty();<br>&nbsp;&nbsp;&nbsp; modifies theStack;<br>&nbsp;&nbsp;&nbsp; ensures theStack.Equals(old(theStack.Trailer()));</p>\r\n<p>&nbsp; public abstract void Push(object? x);<br>&nbsp;&nbsp;&nbsp; modifies theStack;<br>&nbsp;&nbsp;&nbsp; ensures theStack.Equals(old(theStack.InsertFront(x)));</p>\r\n<p>&nbsp; [Pure]<br>&nbsp; public abstract object? Top();<br>&nbsp;&nbsp;&nbsp; requires !theStack.IsEmpty();<br>&nbsp;&nbsp;&nbsp; ensures result == theStack.First();<br>}</p>",
+    "PostedDate": "2010-06-28T18:18:57.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "483414",
+    "ThreadId": "217636",
+    "Html": "<p>Thanks for the comprehensive reply. I am currently experimenting with Dafny.</p>\r\n<p>I am wondering is there an editor for the Dafny language?</p>\r\n<p>Thanks,</p>\r\n<p>Iman</p>",
+    "PostedDate": "2010-08-22T22:05:14.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "483907",
+    "ThreadId": "217636",
+    "Html": "<p>I found the editor I was looking for, for anyone interested refer to: http://boogie.codeplex.com/wikipage?title=Sources&amp;referringTitle=Home</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-08-23T20:07:31.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "483915",
+    "ThreadId": "217636",
+    "Html": "<p>&nbsp;</p>\r\n<p>Is there a reason why functions in Dafny cannot have an ensures clause in their specs?</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks,</p>\r\n<p>&nbsp;</p>\r\n<p>Iman</p>",
+    "PostedDate": "2010-08-23T20:27:04.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "575690",
+    "ThreadId": "217636",
+    "Html": "<p>For what it's worth..</p>\r\n<p>My understanding (which is based on Chalice, but I suspect it's the same in Dafny) is that function bodies are effectively their own post-conditions (i.e., you know exactly what the function does, by seeing its body). Of course, this doesn't give you information hiding with respect to the implementation details, but I don't think Dafny has a notion of visibility for function definitions anyway.</p>\r\n<p>Cheers,</p>\r\n<p>Alex</p>",
+    "PostedDate": "2011-03-04T10:21:54.673-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

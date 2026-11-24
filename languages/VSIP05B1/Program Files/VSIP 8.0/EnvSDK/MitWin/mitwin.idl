@@ -1,0 +1,58 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// MitWin.idl : IDL source for MitWin.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (MitWin.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+
+[
+	uuid(26C5ACF7-CEEB-4ebe-A083-ED8E530DC1B8),
+	version(1.0),
+	helpstring("MitWin 1.0 Type Library")
+]
+library MitWinLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(B9CA6A8E-6B85-4495-AAC6-EEF67AD3DBA9),
+		helpstring("IMWTool Interface"),
+		pointer_default(unique)
+	]
+	interface IMWTool : IUnknown
+	{
+		HRESULT CreateMWToolWindow(
+                    [in] REFGUID rguidPersistenceSlot, // GUID_NULL for default
+                    [in] DWORD dwId);                  // 0 for next available
+	};
+
+	cpp_quote("#define SID_SMWTool IID_IMWTool")
+
+	[
+		uuid(3CEF0176-3736-4c41-99DB-758663E17425),
+		helpstring("MitWin Package")
+	]
+	coclass MitWinPackage
+	{
+		[default] interface IVsPackage;
+	};
+};

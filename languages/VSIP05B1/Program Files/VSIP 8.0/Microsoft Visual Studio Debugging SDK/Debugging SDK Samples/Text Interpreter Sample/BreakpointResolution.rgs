@@ -1,0 +1,46 @@
+HKCR
+{
+    TextInterpreter.BreakpointResolution.1 = s 'BreakpointResolution Class'
+    {
+        CLSID = s '{D6095F16-9CBE-4A37-93C5-688181047133}'
+    }
+    TextInterpreter.BreakpointResolution = s 'BreakpointResolution Class'
+    {
+        CLSID = s '{D6095F16-9CBE-4A37-93C5-688181047133}'
+        CurVer = s 'TextInterpreter.BreakpointResolution.1'
+    }
+    NoRemove CLSID
+    {
+        {D6095F16-9CBE-4A37-93C5-688181047133} = s 'BreakpointResolution Class'
+        {
+            ProgID = s 'TextInterpreter.BreakpointResolution.1'
+            VersionIndependentProgID = s 'TextInterpreter.BreakpointResolution'
+            LocalServer32 = s '%MODULE%'
+            val AppID = s '{138A9B67-A2AB-4A64-A16F-ACE68B2FF77A}'
+            'TypeLib' = s '{510FC0E1-41E9-416F-9EDD-7277BD4538DB}'
+        }
+    }
+}
+HKCR
+{
+    TextInterpreter.BreakpointResolution.1 = s 'BreakpointResolution Class'
+    {
+        CLSID = s '{7DDE4B5B-32CB-4409-AB83-A194A383995D}'
+    }
+    TextInterpreter.BreakpointResolution = s 'BreakpointResolution Class'
+    {
+        CLSID = s '{7DDE4B5B-32CB-4409-AB83-A194A383995D}'
+        CurVer = s 'TextInterpreter.BreakpointResolution.1'
+    }
+    NoRemove CLSID
+    {
+        {7DDE4B5B-32CB-4409-AB83-A194A383995D} = s 'BreakpointResolution Class'
+        {
+            ProgID = s 'TextInterpreter.BreakpointResolution.1'
+            VersionIndependentProgID = s 'TextInterpreter.BreakpointResolution'
+            LocalServer32 = s '%MODULE%'
+            val AppID = s '{138A9B67-A2AB-4A64-A16F-ACE68B2FF77A}'
+            'TypeLib' = s '{510FC0E1-41E9-416F-9EDD-7277BD4538DB}'
+        }
+    }
+}

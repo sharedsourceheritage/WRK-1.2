@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "914489",
+    "ThreadId": "396038",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I am reading &quot;Modular Verification of Static Class Invariants&quot; and &quot;Class-Local Object Invariants&quot; papers and would like to try the examples from the papers.</p>\r\n<p>Are these implemented in Spec# tool? If yes, is it possible to find syntax examples somewhere?</p>\r\n<p>Thank you,</p>\r\n<p>Boriss&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-09-19T01:49:47.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "914605",
+    "ThreadId": "396038",
+    "Html": "<p>Hi Boriss,</p>\r\n<p>Unfortunately we never got around to implementing the static class invariants. However, the class-local object invariants are implemented. In fact, the expose statement in Spec# is a local expose that uses the static type of the expression to determine the class frame that gets exposed (the other one is called additive expose), and fields are by default non-additive (use the [Additive] attribute to make a field additive). A short discussion is contained in the Spec# tutorial (http://pm.inf.ethz.ch/publications/getpdf.php?bibname=Own&amp;id=LeinoMueller09a.pdf, page 23).</p>\r\n<p>You can find examples for additive fields/expose/invariants in the SscBoogie\\Test directory, e.g., tutorial\\Sec2.2-Additive.ssc. Most other examples in the tutorial folder show the use of non-additive fields/expose/invariants.</p>\r\n<p>Cheers,<br />&nbsp;&nbsp;&nbsp; Peter</p>",
+    "PostedDate": "2012-09-19T06:50:11.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

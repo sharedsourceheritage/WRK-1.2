@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<HelpTOC DTDVersion="1.0" PluginStyle="Flat">
+	<HelpTOCNode Id="Dev2" NodeType="Regular" Url="/dv_vsipcommon/html/e22b75d8-709e-4463-aa7f-27450444ad22.htm" Title="Visual Studio Industry Partner (VSIP) Program">
+		<HelpTOCNode Id="Dev3" NodeType="TOC" Url="dv_vsipcommon"/>
+		<HelpTOCNode Id="Dev4" NodeType="TOC" Url="dv_vsenvsdk"/>
+		<HelpTOCNode Id="Dev5" NodeType="Regular" Url="/dv_vsenvsdk/html/8221ca50-8c46-4c2f-ac68-a46121b798ba.htm" Title="Managed References in Visual Studio Environment SDK">
+			<HelpTOCNode Id="Dev6" NodeType="Regular" Url="/dv_vsenvsdk/html/8313a9cb-a348-4d0c-bccc-9a2f48623deb.htm" Title="Managed Package Framework Reference">
+				<HelpTOCNode Id="Dev7" NodeType="TOC" Url="dv_mpfref"/>
+			</HelpTOCNode>
+			<HelpTOCNode Id="Dev8" NodeType="Regular" Url="/dv_vsenvsdk/html/e49e2b6a-41b9-458f-b67b-b1355555e2e3.htm" Title="Visual Studio Shell Interop Reference">
+				<HelpTOCNode Id="Dev9" NodeType="TOC" Url="dv_iashrf"/>
+			</HelpTOCNode>
+			<HelpTOCNode Id="Dev10" NodeType="Regular" Url="/dv_vsenvsdk/html/b98d0e3a-c237-483b-9a68-2ad533da5f90.htm" Title="Visual Studio TextManager Interop Reference">
+				<HelpTOCNode Id="Dev11" NodeType="TOC" Url="dv_tmiarf"/>
+			</HelpTOCNode>
+		</HelpTOCNode>
+		<HelpTOCNode Id="Dev12" NodeType="TOC" Url="dv_vsdbgsdk"/>
+		<HelpTOCNode Id="Dev13" NodeType="Regular" Url="/dv_vshik_2/html/6af78ecf-1af4-47ae-8965-3e0e4433becb.htm" Title="Help Integration Guides">
+			<HelpTOCNode Id="Dev14" NodeType="TOC" Url="dv_mshlpwrk"/>
+			<HelpTOCNode Id="Dev15" NodeType="TOC" Url="dv_vshik_2"/>
+		</HelpTOCNode>
+		<HelpTOCNode Id="Dev16" NodeType="Regular" Url="/dv_vsscntrlsdk/html/39bdc826-25f8-42e5-a219-5ba1a5c6481c.htm" Title="Source Code Control SDKs">
+			<HelpTOCNode Id="Dev17" NodeType="TOC" Url="dv_vsscntrlsdk"/>
+			<HelpTOCNode Id="Dev18" NodeType="TOC" Url="dv_vsvsipscc"/>
+	</HelpTOCNode>
+</HelpTOCNode>
+</HelpTOC>

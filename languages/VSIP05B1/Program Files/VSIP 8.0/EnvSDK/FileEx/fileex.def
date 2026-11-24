@@ -1,0 +1,9 @@
+; FileEx.def : Declares the module parameters.
+
+LIBRARY      "FileEx.DLL"
+
+EXPORTS
+	DllCanUnloadNow            PRIVATE
+	DllGetClassObject          PRIVATE
+	DllRegisterServer          PRIVATE
+	DllUnregisterServer        PRIVATE

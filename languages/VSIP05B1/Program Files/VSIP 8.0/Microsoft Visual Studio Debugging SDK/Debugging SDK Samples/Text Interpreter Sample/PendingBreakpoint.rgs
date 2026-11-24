@@ -1,0 +1,23 @@
+HKCR
+{
+    TextInterpreter.PendingBreakpoint.1 = s 'PendingBreakpoint Class'
+    {
+        CLSID = s '{7B59D07A-AF06-49F5-A155-8A8BE7612607}'
+    }
+    TextInterpreter.PendingBreakpoint = s 'PendingBreakpoint Class'
+    {
+        CLSID = s '{7B59D07A-AF06-49F5-A155-8A8BE7612607}'
+        CurVer = s 'TextInterpreter.PendingBreakpoint.1'
+    }
+    NoRemove CLSID
+    {
+        {7B59D07A-AF06-49F5-A155-8A8BE7612607} = s 'PendingBreakpoint Class'
+        {
+            ProgID = s 'TextInterpreter.PendingBreakpoint.1'
+            VersionIndependentProgID = s 'TextInterpreter.PendingBreakpoint'
+            LocalServer32 = s '%MODULE%'
+            val AppID = s '{138A9B67-A2AB-4A64-A16F-ACE68B2FF77A}'
+            'TypeLib' = s '{510FC0E1-41E9-416F-9EDD-7277BD4538DB}'
+        }
+    }
+}

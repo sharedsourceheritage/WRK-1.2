@@ -1,0 +1,39 @@
+HKCR
+{
+    FigParse.FigParse.1 = s 'FigParse Class'
+    {
+        CLSID = s '%CLSID_FigParse%'
+    }
+    FigParse.FigParse = s 'FigParse Class'
+    {
+        CurVer = s 'FigParse.FigParse.1'
+    }
+    NoRemove CLSID
+    {
+        %CLSID_FigParse% = s 'FigParse Class for FigPkgs Sample'
+        {
+            ProgID = s 'FigParse.FigParse.1'
+            VersionIndependentProgID = s 'FigParse.FigParse'
+            InprocServer32 = s '%MODULE%'
+            {
+            }
+        }
+    }
+}
+
+HKLM
+{
+    %REGROOTBEGIN%
+        NoRemove CLSID
+        {
+            %CLSID_FigParse% = s 'FigParse Class for FigPkgs Sample'
+            {
+                ProgID = s 'FigParse.FigParse.1'
+                VersionIndependentProgID = s 'FigParse.FigParse'
+                InprocServer32 = s '%MODULE%'
+                {
+                }
+            }
+        }
+    %REGROOTEND%
+}

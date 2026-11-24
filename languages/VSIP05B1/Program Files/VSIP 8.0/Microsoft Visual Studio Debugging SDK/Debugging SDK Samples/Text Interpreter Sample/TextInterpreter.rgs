@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		{138A9B67-A2AB-4A64-A16F-ACE68B2FF77A} = s 'TextInterpreter'
+		'TextInterpreter.EXE'
+		{
+			val AppID = s {138A9B67-A2AB-4A64-A16F-ACE68B2FF77A}
+		}
+	}
+}

@@ -1,0 +1,89 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// MycExt.idl : IDL source for MycPrj Project Extensibility
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+cpp_quote("#include \"oleipc.h\"")
+
+[
+	uuid(9df935d8-a274-4707-bdf2-59f4503955f7),
+
+	version(1.0),
+	helpstring("MycPrj Extensibility")
+]
+
+library MycPrjExtLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	importlib("DTE.tlb");
+
+
+    //---------------------------------------------------------------------
+    // Constants
+    //---------------------------------------------------------------------
+	[ uuid(78dd3aed-8d41-4f3c-9654-11c3bbee6fb9) ] 
+	module MycConstants 
+	{
+        // Automation Project(s) Item(s) Kinds.
+
+        [helpstring("Projects automation object kind")]          
+        const LPSTR prjKindMycPrjProjects        = "{7c56574c-38ee-489c-8d79-9cd3cb628188}";
+
+        [helpstring("Project automation object kind")]          
+        const LPSTR prjKindMycPrjProject         = "{26b0179b-5a92-4fbe-bf64-63830a06883a}";
+
+        [helpstring("ProjectItems automation object kind")]          
+        const LPSTR prjKindMycPrjProjectItems    = "{d9d60215-762f-4326-91a8-b11f1d88a76a}";
+        
+        [helpstring("MycPrj Project automation object CATID")]     
+        const LPSTR prjCATIDMycPrjProject          = "{A739FB95-E091-40bc-9F59-A8B79D640328}";
+
+        [helpstring("MycPrj ProjectItem automation object CATID")]     
+        const LPSTR prjCATIDMycPrjProjectItem      = "{B284F579-D380-418d-B740-2C4639345064}";
+	}
+
+
+    //---------------------------------------------------------------------
+    // Events Root interface. Needs to be in the type lib since the 
+    //  properties need to be called thru Invoke. 
+    //---------------------------------------------------------------------
+    [ uuid(D924C1CF-4AFB-4c11-9E4F-22FA830D2C52), dual, object, hidden]
+    interface IMycEventsRoot : IDispatch
+    {
+        [id(1), propget] HRESULT _stdcall MycProjectsEvents([out, retval] IDispatch** ppdisp);
+        [id(2), propget] HRESULT _stdcall MycProjectItemsEvents([in, optional, defaultvalue(0)] IDispatch* Filter, [out, retval] IDispatch** ppdisp);
+    };
+
+
+    //---------------------------------------------------------------------
+    // Project specific objects
+    //---------------------------------------------------------------------
+    // MycProject
+    [ uuid(26b0179b-5a92-4fbe-bf64-63830a06883a), dual, object ]
+    interface MycProject : IDispatch
+    {
+    };
+
+	// MycProjectItem
+	[ uuid(2a9229d6-c892-4bc5-ab1d-bfe72bb3996f), dual, object ]
+    interface MycProjectItem : IDispatch
+    {
+    };
+
+};

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Apparently all tests pass if you force ssc to run in 32-bit mode using the CorFlags.exe utility.",
+    "ClosedDate": "2011-10-13T12:35:13.543-07:00",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "When run on a 64bit Windows 7 the Spec# Checkin test suite (Microsoft.SpecSharp\\Checkin Tests\\Runtests.bat) fails with over 50 unexpected errors, whereas it runs as expected on Windows XP.\n\nStrangely, most of the errors are about not implementing interface members of System.Collections, although the reported classes do implement these interfaces (and compile successfully on 32bit Windows XP).\n\nI uploaded a summary of the errors to http://n.ethz.ch/~scmalte/aste/checkintests.html, the document also contains a link to the suite output.",
+    "LastUpdatedDate": "2011-10-13T12:35:13.543-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "specsharp",
+    "ReportedDate": "2010-05-12T03:02:09.45-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Spec# Checkin tests fail on 64bit Windows 7",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 8334
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

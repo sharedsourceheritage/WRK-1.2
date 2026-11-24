@@ -1,0 +1,147 @@
+HKCR
+{
+    '.fig' = s 'VisualStudio.fig.%PROGID_VERSION%'
+    {
+        val 'Content Type' = s 'text/plain'
+        'OpenWithList'
+        {
+            'devenv.exe'
+            {
+            }
+        }
+        'OpenWithProgids'
+        {
+            val 'VisualStudio.fig.%PROGID_VERSION%' = s ''
+            val 'figfile' = s ''
+        }
+    }
+    VisualStudio.fig.%PROGID_VERSION% = s 'Figure Source File'
+    {
+        DefaultIcon = s '%MODULE%,-206'
+        shell
+        {
+            open
+            {
+                command = s '"%DEVENV_PATH%" /dde'
+                ddeexec = s 'Open("%%1")'
+                {
+                    application = s '%DDE_NAME%'
+                    topic = s 'system'
+                }
+            }
+        }
+    }
+}
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove Packages
+    {
+        %CLSID_Package% = s 'FigEdit Package for FigPkgs Sample'
+        {
+            val InprocServer32 = s '%MODULE%'
+
+            val CompanyName = s 'Microsoft'
+            val ProductName = s 'Figure Project Sample'
+            val ProductVersion  = s '7.1'
+            val MinEdition  = s 'professional'
+            val ID  = d '%IDS_PACKAGE_LOAD_KEY%'
+ 
+            Toolbox
+            {
+                val 'Default Items' = d 1
+                val 'Formats'       = s 'Figure Sample Line'
+            }
+
+            SatelliteDll
+            {
+                val DllName = s '%RESOURCE_DLL%'
+                val Path = s '%RESOURCE_PATH%'
+            }
+        }
+    }
+    NoRemove Menus
+    {
+        val %CLSID_Package% = s ',1000,1'
+    }
+    NoRemove Editors
+    {
+        %GUID_EditorFactory% = s 'Figure Editor for FigPkgs'
+        {
+            val Package = s '%CLSID_Package%'
+            val DisplayName = s '#%IDS_EDITOR_NAME%'
+            val ExcludeDefTextEditor = d 1
+            val AcceptBinaryFiles = d 0
+            val DefaultToolboxTab = s 'FigPkg Sample'
+
+            LogicalViews
+            {
+                val %LOGVIEWID_Code% = s ''
+                val %LOGVIEWID_Designer% = s 'Form'
+            }
+            OpenWithEntries
+            {
+                val %LOGVIEWID_Code% = s '#%IDS_CODE_EDITOR%'
+                val %LOGVIEWID_Designer% = s '#%IDS_FORM_EDITOR%'
+            }
+            Extensions
+            {
+                val fig = d '40'
+            }
+        }
+        %GUID_FigEditorFactoryEncoding% = s 'FigPkgs Figure Editor with Encoding'
+        {
+            val Package = s '%CLSID_Package%'
+            val DisplayName = s '#%IDS_CODEPAGE_EDITOR_NAME%'
+            val ExcludeDefTextEditor = d 1
+            val AcceptBinaryFiles = d 0
+            val DefaultToolboxTab = s 'FigPkg Sample'
+            val LinkedEditorGuid = s '%GUID_EditorFactory%'
+
+            LogicalViews
+            {
+                val %LOGVIEWID_Code% = s ''
+                val %LOGVIEWID_Designer% = s 'Form'
+            }
+            OpenWithEntries
+            {
+            }
+            Extensions
+            {
+                val fig = d '39'
+            }
+        }
+    }
+
+    NoRemove ToolboxPages
+    {
+        FigEdit = s '#%IDS_FP_TBXPROPPAGE_NAME%'
+        {
+            val Package = s '%CLSID_Package%'
+            val Page = s '%guidFigEditTbxPropPage%'
+        }
+    }
+
+    NoRemove Services
+    {
+        %SID_SFigOutline% = s '%CLSID_Package%'
+        {
+            val Name = s 'SID_SFigOutline'
+        }
+    }
+ 
+    NoRemove ToolWindows
+    {
+        NoRemove %GUID_DocOutline%
+        {
+            NoRemove Visibility
+            {
+                val %guidFigEditCmdUI% = s 'Fig Designer View'
+                val %guidFigCodeCmdUI% = s 'Fig Code View'
+            }
+        }
+    }
+    
+    %REGROOTEND%
+}
+

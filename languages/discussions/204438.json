@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "416337",
+    "ThreadId": "204438",
+    "Html": "<p>Hi!</p>\r\n<p>&nbsp;</p>\r\n<p>Been trying to find out if you're projecting the code to CCI codemodel or not, with not much success, it's pretty hard for me to get familiarized with the source code.</p>\r\n<p>Could you please answer if you actually do that?</p>\r\n<p>If yes, which classes should I look after?</p>\r\n<p>&nbsp;</p>\r\n<p>Thank you very much</p>",
+    "PostedDate": "2010-03-10T05:02:40.937-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417849",
+    "ThreadId": "204438",
+    "Html": "<p>I assume this question is about Spec# v2. When compiling from source the parser builds an AST using classes from the AstsProjectedAsCodeModel project found in cciast.codeplex.com.</p>\r\n<p>The projection that happens here does not involve the construction of a new object model, but an &quot;on demand&quot; projection of each node in the AST onto one or more nodes of the Code Model, often by the simple means of an AST nodes implementing the appropriate CodeModel interface.</p>\r\n<p>When the root node of the AST is visited via the appropriate visitor using CodeModel interfaces, the visitor sees only CodeModel nodes and behaves exactly as if it were dealing with a Code Model constructed in any old manner.</p>",
+    "PostedDate": "2010-03-13T22:30:53.98-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

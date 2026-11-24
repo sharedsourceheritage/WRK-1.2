@@ -1,0 +1,360 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// MyCPrj.idl : IDL source for the Package
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Proj.tlb) and marshalling code.
+
+// All objects defined in this file are internal to the Package, 
+// and will not be seen by the user.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+cpp_quote("#include \"oleipc.h\"")
+
+#define MEMID_Name            (0x80010000)  // as defined by OLE controls spec.
+
+
+// this list includes config and project properties.
+// if you add new properties, please add config props in the config section and
+// project props in the project section.
+enum
+{
+    // project properties
+    MyCPrjPROJPROPID_ProjectPath = 1,
+    MyCPrjPROJPROPID_IsDirty,
+    MyCPrjPROJPROPID_Extender,
+    MyCPrjPROJPROPID_ExtenderNames,
+    MyCPrjPROJPROPID_ExtenderCATID,
+
+    // project cfg properties
+    MyCPrjPROJPROPID_SourceFile,
+    MyCPrjPROJPROPID_ProjectType,
+    MyCPrjPROJPROPID_OutputPath,
+    MyCPrjPROJPROPID_DebugInfoChecked,
+    MyCPrjPROJPROPID_ListingFileChecked,
+    MyCPrjPROJPROPID_CommandLine,
+    MyCPrjPROJPROPID_OutputFile,
+    MyCPrjPROJPROPID_DebugStartMode,
+    MyCPrjPROJPROPID_StartApp,
+    MyCPrjPROJPROPID_StartAppPath,
+    MyCPrjPROJPROPID_CustomStartupArguments,
+};
+
+
+enum 
+{
+    DISPID_MyCPrjSourceFile_FilePath = 1,
+    DISPID_MyCPrjSourceFile_IsOutput,
+    DISPID_MyCPrjSourceFile_ModifiedDate,
+    DISPID_MyCPrjSourceFile_Size,
+    DISPID_MyCPrjSourceFile_FileType,
+    DISPID_MyCPrjSourceFile_ReadOnly,
+    DISPID_MyCPrjSourceFile_Extender,
+    DISPID_MyCPrjSourceFile_ExtenderNames,
+    DISPID_MyCPrjSourceFile_ExtenderCATID
+};
+
+
+[
+	uuid(dba8370b-bd08-4512-9318-d2a9b7ec7dff),
+
+	version(1.0),
+	helpstring("MyCPrj Sample Project Package 1.0 Type Library")
+]
+
+library MyCPrjPKGLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+    cpp_quote("// CATID's for automation extension of browse objects")
+    [ uuid(7067A943-310C-4519-B999-8CF4FB13F064)]
+    module MyCPrjCATID
+    {
+        // Project browse object CATID.
+        // 0x6cff5378, 0x704e, 0x4b6b, 0xa7, 0xef, 0x5, 0x2a, 0xf4, 0xab, 0xb4, 0x77);
+        [helpstring("MyCPrj Project browse object CATID")]     
+        const LPSTR prjCATIDMyCPrjProjectBrowseObject = "{6CFF5378-704E-4b6b-A7EF-052AF4ABB477}";     
+        
+        // Project config browse object CATID.
+        // 0x75794057, 0xba6a, 0x491a, 0xaf, 0xbb, 0x23, 0xdc, 0xd1, 0x7b, 0xbe, 0xe3);
+        [helpstring("MyCPrj Project config browse object CATID")]          
+        const LPSTR prjCATIDMyCPrjProjectConfigBrowseObject = "{75794057-BA6A-491a-AFBB-23DCD17BBEE3}";
+        
+        // File browse object CATID.
+        // 0xd8c6a3e3, 0x58a4, 0x45cc, 0x97, 0x70, 0xfb, 0xba, 0x88, 0x66, 0xcd, 0xf9);
+        [helpstring("MyCPrj File browse object CATID")]          
+        const LPSTR prjCATIDMyCPrjFileBrowseObject =  "{D8C6A3E3-58A4-45cc-9770-FBBA8866CDF9}";                 
+    }
+
+    // MyCPrjPROJPROPID_DebugStartMode
+    typedef [uuid(8005E86F-372F-434c-B523-AA66F2C07ABB)]
+    enum MyCPrjDebugStartMode
+    {
+        MyCPrjDebugStartMode_Project = 0,
+        MyCPrjDebugStartMode_Application,
+    } MyCPrjDebugStartMode;
+    cpp_quote("#define MyCPrjDebugStartModeMin  MyCPrjDebugStartMode_Project")
+    cpp_quote("#define MyCPrjDebugStartModeMax  MyCPrjDebugStartMode_Application")
+
+
+	[
+		uuid(a376b661-dbab-4b35-bafe-d79f92489de9),
+		helpstring("MyCPrj Sample Project Package Class")
+	]
+	coclass MyCPrjPackage
+	{
+		[default] interface IVsPackage;
+	};
+
+	[
+        uuid(4f53d066-5e15-42bb-b9f0-45501d887be5), dual, object
+    ]
+    interface IMyCPrjProjHierItemProps : IDispatch
+    {
+		[id(DISPID_VALUE), propget, helpstring("File name of the file")] 
+        HRESULT FileName([out, retval] BSTR *pVal);
+
+		[id(DISPID_VALUE), propput, helpstring("File name of the file")] 
+        HRESULT FileName([in] BSTR NewName);
+
+		[id(DISPID_MyCPrjSourceFile_FilePath), propget, helpstring("Path to the file on disk")] 
+        HRESULT FilePath([out, retval] BSTR *pVal);
+
+		[id(DISPID_MyCPrjSourceFile_IsOutput), propget] 
+        HRESULT IsOutput([out, retval] VARIANT_BOOL *pVal);
+
+		[id(DISPID_MyCPrjSourceFile_ModifiedDate), propget, helpstring("Time the file was last saved to disk")] 
+        HRESULT ModifiedDate([out, retval] VARIANT *pVal);
+
+		[id(DISPID_MyCPrjSourceFile_Size), propget, helpstring("Size of the file on disk")] 
+        HRESULT Size([out, retval] double *pVal);
+
+		[id(DISPID_MyCPrjSourceFile_FileType), propget, helpstring("Registered type of the file")] 
+        HRESULT FileType([out, retval] BSTR *pVal);
+
+		[id(DISPID_MyCPrjSourceFile_ReadOnly), propget, helpstring("Read Only attribute of the file on disk")] 
+        HRESULT ReadOnly([out, retval] VARIANT_BOOL *pVal);
+
+		[id(DISPID_MyCPrjSourceFile_ReadOnly), propput, helpstring("Read Only attribute of the file on disk")] 
+        HRESULT ReadOnly([in] VARIANT_BOOL pVal);
+
+        [id(DISPID_MyCPrjSourceFile_Extender), propget, nonbrowsable, helpstring("Extender"), hidden]
+        HRESULT Extender([in] BSTR ExtenderName, [out, retval] IDispatch **Extender);
+
+        [id(DISPID_MyCPrjSourceFile_ExtenderNames), propget, nonbrowsable, helpstring("ExtenderNames"), hidden] 
+        HRESULT ExtenderNames([out, retval] VARIANT *ExtenderNames);
+
+        [id(DISPID_MyCPrjSourceFile_ExtenderCATID), propget, nonbrowsable, helpstring("ExtenderCATID"), hidden]
+        HRESULT ExtenderCATID ([out, retval] BSTR *pRetval);
+    };
+
+    [
+        uuid(534b7485-a6d0-4981-9cc1-1e8f711eb200)
+    ]
+    coclass MyCProjProjHierItemProps
+    {
+        [default] interface IMyCPrjProjHierItemProps;
+    };
+
+	[
+        uuid(1ea6a2c9-0026-412c-88ab-63dcc18f9e6b), dual, object
+    ]
+    interface IMyCPrjProjHierProps : IDispatch
+    {
+		[id(MEMID_Name), propget, helpstring("Name of the project")] 
+        HRESULT Name([out, retval] BSTR *pVal);
+		[id(MEMID_Name), propput, helpstring("Name of the project")] 
+        HRESULT Name([in] BSTR NewName);
+
+		[id(MyCPrjPROJPROPID_ProjectPath), propget, helpstring("Path to where the project is stored on disk")] 
+        HRESULT ProjectPath([out, retval] BSTR *pVal);
+
+		[id(MyCPrjPROJPROPID_IsDirty), propget, nonbrowsable, helpstring("Marks if the file has been modified, and has to be saved")] 
+        HRESULT IsDirty([out, retval] VARIANT_BOOL *pVal);
+
+		[id(MyCPrjPROJPROPID_IsDirty), propput, nonbrowsable, helpstring("Marks if the file has been modified, and has to be saved")] 
+        HRESULT IsDirty([in] VARIANT_BOOL pVal);		
+
+        [id(MyCPrjPROJPROPID_Extender), propget, nonbrowsable, helpstring("Extender"), hidden]
+        HRESULT Extender([in] BSTR ExtenderName, [out, retval] IDispatch **Extender);
+
+        [id(MyCPrjPROJPROPID_ExtenderNames), propget, nonbrowsable, helpstring("ExtenderNames"), hidden] 
+        HRESULT ExtenderNames([out, retval] VARIANT *ExtenderNames);
+
+        [id(MyCPrjPROJPROPID_ExtenderCATID), propget, nonbrowsable, helpstring("ExtenderCATID"), hidden]
+        HRESULT ExtenderCATID ([out, retval] BSTR *pRetval);
+    };
+
+    [
+        uuid(ec01ba3b-c54c-4f4a-8046-7d5b70805088)
+    ]
+    coclass MyCProjProjHierProps
+    {
+        [default] interface IMyCPrjProjHierProps;
+    };
+
+	[
+		uuid(090faa2b-d860-4ec9-8b48-8df9c3376df1),
+		helpstring("BuildPPG Class")
+	]
+	coclass BuildPPG
+	{
+		interface IUnknown;
+	};
+
+	[
+		uuid(1F514B13-59E0-4f0a-A654-D3F526435EA3),
+		helpstring("DebugPPG Class")
+	]
+	coclass DebugPPG
+	{
+		interface IUnknown;
+	};
+
+	[
+        uuid(ff3b25db-5898-4b55-b349-cd317fac1d69), dual, object
+    ]
+    interface IMyCProjCfgProps : IDispatch
+    {
+		//.Build Category -------------------------------------
+		[id(MyCPrjPROJPROPID_SourceFile),  propget, helpstring("")] 
+        HRESULT SourceFile([out, retval] BSTR * pbstr);
+		[id(MyCPrjPROJPROPID_SourceFile),  propput, helpstring("")] 
+        HRESULT SourceFile([in]		   BSTR bstr);
+
+		[id(MyCPrjPROJPROPID_ProjectType),  propget, helpstring("")] 
+        HRESULT ProjectType([out, retval] BSTR *pbstr);
+		[id(MyCPrjPROJPROPID_ProjectType),  propput, helpstring("")]
+        HRESULT ProjectType([in] BSTR bstr);
+
+		[id(MyCPrjPROJPROPID_OutputPath),  propget, helpstring("")] 
+        HRESULT OutputPath([out, retval] BSTR *pbstr);
+		[id(MyCPrjPROJPROPID_OutputPath),  propput, helpstring("")] 
+        HRESULT OutputPath([in] BSTR bstr);
+
+		[id(MyCPrjPROJPROPID_DebugInfoChecked),  propget, helpstring("")] 
+        HRESULT DebugInfoChecked([out, retval] VARIANT_BOOL * pvb);
+		[id(MyCPrjPROJPROPID_DebugInfoChecked),  propput, helpstring("")] 
+        HRESULT DebugInfoChecked([in] VARIANT_BOOL vb);
+
+		[id(MyCPrjPROJPROPID_ListingFileChecked),  propget, helpstring("")] 
+        HRESULT ListingFileChecked([out, retval] VARIANT_BOOL *pvb);
+		[id(MyCPrjPROJPROPID_ListingFileChecked),  propput, helpstring("")] 
+        HRESULT ListingFileChecked([in] VARIANT_BOOL vb);
+
+		[id(MyCPrjPROJPROPID_CommandLine),  propget, helpstring("")] 
+        HRESULT CommandLine([out, retval] BSTR *pbstr);
+
+		[id(MyCPrjPROJPROPID_OutputFile),  propget, helpstring("")] 
+        HRESULT OutputFile([out, retval] BSTR *pbstr);
+
+
+		//Debug Category -------------------------------------
+        [propget, id(MyCPrjPROJPROPID_DebugStartMode), helpstring("Debug start mode")]
+        HRESULT DebugStartMode([out, retval]MyCPrjDebugStartMode *pdebugStartMode);
+        [propput, id(MyCPrjPROJPROPID_DebugStartMode), helpstring("Debug start mode")]
+        HRESULT DebugStartMode([in]MyCPrjDebugStartMode debugStartMode);
+
+        [propget, id(MyCPrjPROJPROPID_StartApp), helpstring("Start Application")]
+        HRESULT StartApp([out, retval]BSTR* pbstrStartApp);
+        [propput, id(MyCPrjPROJPROPID_StartApp), helpstring("Start Application")]
+        HRESULT StartApp([in]BSTR bstrStartApp);
+
+        [propget, id(MyCPrjPROJPROPID_StartAppPath), helpstring("Start Application Path")]
+        HRESULT StartAppPath([out, retval]BSTR *pbstrStartAppPath);
+        [propput, id(MyCPrjPROJPROPID_StartAppPath), helpstring("Start Application Path")]
+        HRESULT StartAppPath([in]BSTR bstrStartAppPath);
+        
+        [propget, id(MyCPrjPROJPROPID_CustomStartupArguments), helpstring("Custom startup arguments")]
+        HRESULT CustomStartupArguments([out, retval]BSTR *pbstrCustomStartupArguments);
+        [propput, id(MyCPrjPROJPROPID_CustomStartupArguments), helpstring("Custom startup arguments")]
+        HRESULT CustomStartupArguments([in]BSTR bstrCustomStartupArguments);
+
+    };
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    // IMyCDebugPropPage
+    //
+    [
+        uuid(D31E8979-9495-4d0a-8D94-826F33FFD79F),
+        dual
+    ]
+    interface IMyCDebugPropPage : IDispatch
+    {
+        [propget, id(MyCPrjPROJPROPID_DebugStartMode), helpstring("Debug start mode")]
+        HRESULT DebugStartMode([out, retval]MyCPrjDebugStartMode *pdebugStartMode);
+        [propput, id(MyCPrjPROJPROPID_DebugStartMode), helpstring("Debug start mode")]
+        HRESULT DebugStartMode([in]MyCPrjDebugStartMode debugStartMode);
+
+        [propget, id(MyCPrjPROJPROPID_StartApp), helpstring("Start Application")]
+        HRESULT StartApp([out, retval]BSTR* pbstrStartApp);
+        [propput, id(MyCPrjPROJPROPID_StartApp), helpstring("Start Application")]
+        HRESULT StartApp([in]BSTR bstrStartApp);
+
+        [propget, id(MyCPrjPROJPROPID_StartAppPath), helpstring("Start Application Path")]
+        HRESULT StartAppPath([out, retval]BSTR *pbstrStartAppPath);
+        [propput, id(MyCPrjPROJPROPID_StartAppPath), helpstring("Start Application Path")]
+        HRESULT StartAppPath([in]BSTR bstrStartAppPath);
+
+        [propget, id(MyCPrjPROJPROPID_CustomStartupArguments), helpstring("Custom startup arguments")]
+        HRESULT CustomStartupArguments([out, retval]BSTR *pbstrCustomStartupArguments);
+        [propput, id(MyCPrjPROJPROPID_CustomStartupArguments), helpstring("Custom startup arguments")]
+        HRESULT CustomStartupArguments([in]BSTR bstrCustomStartupArguments);
+    };
+
+    [
+        uuid(dbb78a94-ceee-4962-8e2a-9b8730c2b2aa)
+    ]
+    coclass MyCProjCfgProps
+    {
+        [default] interface IMyCProjCfgProps;
+    };
+};
+
+
+// {D9590C84-BFDC-4606-9299-154985088A94}
+// DEFINE_GUID(<<name>>, 
+// 0xd9590c84, 0xbfdc, 0x4606, 0x92, 0x99, 0x15, 0x49, 0x85, 0x8, 0x8a, 0x94);
+[
+    object,
+    uuid(D9590C84-BFDC-4606-9299-154985088A94),
+    helpstring("IMyCPropertyContainer Interface"),
+    pointer_default(unique)
+]
+interface IMyCPropertyContainer : IUnknown
+{
+    HRESULT Commit();
+};
+
+
+// {81D35685-B5AA-4227-81F7-A3E742D956DD}
+// DEFINE_GUID(<<name>>, 
+// 0x81d35685, 0xb5aa, 0x4227, 0x81, 0xf7, 0xa3, 0xe7, 0x42, 0xd9, 0x56, 0xdd);
+[
+    object,
+    uuid(81D35685-B5AA-4227-81F7-A3E742D956DD),
+    pointer_default(unique)
+]
+interface IMyCSettingsPage : IUnknown
+{
+    HRESULT Dirty();
+    HRESULT Refresh();
+};

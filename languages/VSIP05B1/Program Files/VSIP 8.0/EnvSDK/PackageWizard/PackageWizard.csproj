@@ -1,0 +1,207 @@
+<Project MSBuildVersion="2.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.31003</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{28B5206B-65C2-4612-B7A7-24B99A38339E}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>PackageWizard</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PackageWizard</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <IncrementalBuild>true</IncrementalBuild>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <IncrementalBuild>false</IncrementalBuild>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EnvDTE">
+      <Name>envdte</Name>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="VSLangProj">
+      <Name>VSLangProj</Name>
+      <AssemblyFolderKey>hklm\publicassemblies</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.VSHelp">
+      <Name>Microsoft.VisualStudio.VSHelp</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GrammarFiles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IconWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="KeyGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LanguageOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LanguageToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Page1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Page2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Page3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Page4.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Page5.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Page6.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Page7.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Page8.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StringProcessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="titlePage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TokenProcessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wizard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WizardLibrary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="GrammarFiles.resx">
+      <DependentUpon>GrammarFiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguageOptions.resx">
+      <DependentUpon>LanguageOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page1.resx">
+      <DependentUpon>Page1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page2.resx">
+      <DependentUpon>Page2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page3.resx">
+      <DependentUpon>Page3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page4.resx">
+      <DependentUpon>Page4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page5.resx">
+      <DependentUpon>Page5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page6.resx">
+      <DependentUpon>Page6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page7.resx">
+      <DependentUpon>Page7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page8.resx">
+      <DependentUpon>Page8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SmallArtWork.bmp" />
+    <EmbeddedResource Include="titlePage.resx">
+      <DependentUpon>titlePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WizardLibrary.resx">
+      <DependentUpon>WizardLibrary.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <CommonProperties>
+        <FL_FAE04EC0_301F_11D3_BF4B_00C04F79EFBC />
+      </CommonProperties>
+      <UserProperties />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,6 @@
+var x = "abc\0dEf";
+print(x.substr(4, 7) == "dEf");
+var y = x.toUpperCase();
+print(y.substr(4, 7) == "DEF" );
+var z = x.toLowerCase();
+print(z.substr(4, 7) == "def" );

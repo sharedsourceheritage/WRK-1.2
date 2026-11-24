@@ -1,0 +1,13 @@
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove CLSID
+    {
+        %CLSID_LaunchPPG% = s 'LaunchPPG Class'
+        {
+            val InprocServer32 = s '%MODULE%'
+            val ThreadingModel = s 'Apartment'
+        }
+    }
+    %REGROOTEND%
+}

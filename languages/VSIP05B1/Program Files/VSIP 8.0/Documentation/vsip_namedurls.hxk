@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE HelpIndex>
+<HelpIndex Name = "VsipNamedUrls"
+	Id = "vsip_NamedUrls"	
+	DTDVersion = "1.0"
+	Merge="Yes"
+	Sort="Yes"
+	Title="vsip NamedUrl Index"
+	Visible="No"
+	LangId="1033"
+	FontSize="10">
+</HelpIndex>

@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToolWindowMCPP", "ToolWindow.vcproj", "{028871AC-A781-4C34-8E52-FFF515D9CF82}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToolWindowMCPPUI", "..\ToolWindowUi\ToolWindowUi.vcproj", "{B0D01661-B66B-4D8E-8195-B8F9B5E87A7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{028871AC-A781-4C34-8E52-FFF515D9CF82}.Debug|Win32.ActiveCfg = Debug|Win32
+		{028871AC-A781-4C34-8E52-FFF515D9CF82}.Debug|Win32.Build.0 = Debug|Win32
+		{028871AC-A781-4C34-8E52-FFF515D9CF82}.Release|Win32.ActiveCfg = Release|Win32
+		{028871AC-A781-4C34-8E52-FFF515D9CF82}.Release|Win32.Build.0 = Release|Win32
+		{B0D01661-B66B-4D8E-8195-B8F9B5E87A7B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B0D01661-B66B-4D8E-8195-B8F9B5E87A7B}.Debug|Win32.Build.0 = Debug|Win32
+		{B0D01661-B66B-4D8E-8195-B8F9B5E87A7B}.Release|Win32.ActiveCfg = Release|Win32
+		{B0D01661-B66B-4D8E-8195-B8F9B5E87A7B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

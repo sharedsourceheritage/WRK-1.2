@@ -1,0 +1,130 @@
+[
+  {
+    "Id": "504375",
+    "ThreadId": "230181",
+    "Html": "<p>Is a Visual Studio 2010 compatible Spec# package in the works?</p>\r\n<p>Why is there no discussion/issues of this (that I can find, anyway) yet?</p>\r\n<p>Thanks!</p>",
+    "PostedDate": "2010-10-08T10:03:12.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "504632",
+    "ThreadId": "230181",
+    "Html": "<p>Such a mode would be nice to have, but we have no current plans (in RiSE at Microsoft Research) to provide one.&nbsp; I don't know if it would be easy or if it would be a lot of work.</p>\r\n<p>&nbsp; Rustan</p>",
+    "PostedDate": "2010-10-08T20:07:49.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "575687",
+    "ThreadId": "230181",
+    "Html": "<p>Hi,</p>\n<p>As of recently, the source distribution compiles and registers/runs with Visual Studio 2010 (and not 2008 - but see instructions). As far as we know, it all works (but please let us know if not :)). The build process has also been changed to make it  more robust - please check out the instructions for building the sources via the \"Home\" link, which have been updated.</p>\n<p>If you just want the binaries, this should be reflected in the nightly build zip files which our build server produces, which you can find at Downloads-&gt;Other Downloads-&gt;Planned-&gt;Nighty Builds. But if you do try this, please wait a few days first, as we  haven't properly tested yet that we are generating complete zip files with the new build process. You probably also want to double-check the messages from \"codeplexbot\" on the Source Code page, just to see that the results of the nightly build were reasonably ok :)</p>\n<p>Hope that helps,</p>\n<p>Alex</p>",
+    "PostedDate": "2011-03-04T10:16:59.873-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "575764",
+    "ThreadId": "230181",
+    "Html": "<p>That is fantastic!&nbsp; I've been experimenting with CodeContracts but they just aren't the same as the potential I see in Spec#.&nbsp; I love the clarity of Spec# and hope that the intellisense can be implemented (if it hasn't been already) to improve the learning curve for dabblers like myself.</p>\r\n<p>If intellisense support is not yet present, what would it take to implement?&nbsp; Can the community help?&nbsp; Can we support the project monetarily?</p>\r\n<p>Thanks!</p>",
+    "PostedDate": "2011-03-04T13:12:08.837-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "576537",
+    "ThreadId": "230181",
+    "Html": "<p>Hi - quick update. Unfortunately it seems we are not quite there yet. Although Spec# itself runs and compile fine in Visual Studio 2010, the Spec# project type doesn't yet show up in the menus when trying to create a new project. Not sure why this is - hopefully  it will be easy to fix..... [EDIT: we think this is now fixed :) ]</p>\n<p>Thanks for the encouraging message :) I don't know intellisense in much depth, but I think at least some of the features are already implemented (unless I misunderstand what it's all about). Is something specific missing?</p>\n<p>Cheers,</p>\n<p>Alex</p>",
+    "PostedDate": "2011-03-07T02:42:05.54-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "576819",
+    "ThreadId": "230181",
+    "Html": "<p>Hi!</p>\r\n<p>The problem that Alex mentioned should be fixed by now. Feel free to try out the most recent nightly build (under Downloads ==&gt; Other Downloads ==&gt; Planned ==&gt; Nightly builds) and let us know if that works for you.</p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2011-03-07T12:37:22.683-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "600105",
+    "ThreadId": "230181",
+    "Html": "<p>Unfortunately, I am still having trouble creating new Spec# projects. I can create a new project, but all files are in a template folder. Editing them changes the templates, and new files get added to the template folder instead of the specified project folder. The best workaround seems to be to manually copy the files and edit the Project entry in the solution (.sln) file.</p>",
+    "PostedDate": "2011-04-19T18:05:27.887-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "600457",
+    "ThreadId": "230181",
+    "Html": "<p>Hi!</p>\r\n<p>I can't reproduce this behavior on my Spec# installation. Which version of Visual Studio and Windows are you using? Are you using the Spec# nightly builds?</p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2011-04-20T08:19:13.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "916823",
+    "ThreadId": "230181",
+    "Html": "<p>I have downloaded the 2011-10-03 version.&nbsp; And I have Visual Studio 2010.&nbsp; Now the .zip file contains two directories (Binaries and Templates) but no README.txt file, no setup.exe file, no install.msi file. Can someone please tell me how to install Spec# so that I can use it from VS-2010?&nbsp; I'm using Win7.</p>\r\n<p>(Just taking a wild stab, I tried running Register.cmd, but I got a bunch of error messages.</p>\r\n<p><span style=\"color: #0000ff;\">C:\\Users\\theo\\Documents\\SpecSharp-2011-10-03\\SpecSharp-2011-10-03\\Binaries&gt;<span style=\"color: #000000;\">Register.cmd</span></span><br /><span style=\"color: #0000ff;\">'regasm' is not recognized as an internal or external command, operable program or batch file.</span><br /><span style=\"color: #0000ff;\">'regasm' is not recognized as an internal or external command, operable program or batch file.</span><br /><span style=\"color: #0000ff;\">'regasm' is not recognized as an internal or external command, operable program or batch file.</span> )</p>",
+    "PostedDate": "2012-09-24T12:08:05.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "916827",
+    "ThreadId": "230181",
+    "Html": "<p>&nbsp;</p>\r\n<p>Initial guess based on the regasm errors is that you need to run this from the Visual Studio Command Prompt.</p>",
+    "PostedDate": "2012-09-24T12:12:55.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "916851",
+    "ThreadId": "230181",
+    "Html": "<p>See the installation instructions here:&nbsp;<a href=\"http://specsharp.codeplex.com/wikipage?title=Binaries&amp;referringTitle=Home\"></a><a href=\"http://specsharp.codeplex.com/wikipage?title=Binaries\">http://specsharp.codeplex.com/wikipage?title=Binaries</a></p>",
+    "PostedDate": "2012-09-24T13:10:22.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "916895",
+    "ThreadId": "230181",
+    "Html": "\r\n<p>Thanks.&nbsp; That helped a lot.&nbsp; I manually unblocked the 41 .dlls and then it worked. (I'm not sure it would have worked if I hadn't already added the directory containing regasm to my system path variable.) Three suggestions: Put the instructions\r\n in the .zip as a README.txt file; tell people what a visual studio command prompt is; tell the user to run that thing as an administrator.&nbsp; An msi or setup.exe file would help the more windows challenged among us. (I wasn't always windows challenged,\r\n but each version of windows seems to make it harder to do any systems administrations tasks.)</p>\r\n",
+    "PostedDate": "2012-09-24T14:57:35.003-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "916979",
+    "ThreadId": "230181",
+    "Html": "<p>Now that I can create a Spec# project, I'm ready to start verifyin' stuff. I was a bit disappointed not to see a \"Verify\" menu as with VCC. I did manage to use sscBoogie to find some bugs from cmd.exe. Is there a way to use VS-2010 for verification, e.g. as part of the build process or as a separate step.</p>",
+    "PostedDate": "2012-09-24T19:11:18.71-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "917028",
+    "ThreadId": "230181",
+    "Html": "<p>Hi,</p>\r\n<p>The verifier can indeed be run from Visual Studio. If it isn't running, you might need to edit your solution Properties to check that the verifier is chosen to run there. You can also choose to run the verifier in the background (while editing) if you wish, and a few other options. You can find details in the Spec# tutorial, and there are also some introductory presentations on the Microsoft Research site (although they are less about running the tool, I think). Links are on the home page:&nbsp;<a href=\"http://specsharp.codeplex.com/\">http://specsharp.codeplex.com/</a></p>\r\n<p>The issue with unblocking .dlls is a (frustrating) Windows security feature (for any downloaded .dlls), that I don't think it can be avoided. You can, however, make it less painful - it is possible to unblock the .zip file before unzipping it, and then all of the .dlls should be dealt with for free. So, hopefully that'll help next time.</p>",
+    "PostedDate": "2012-09-24T23:17:32.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "917405",
+    "ThreadId": "230181",
+    "Html": "<p>Thanks Alexander.&nbsp; I am now verifying to my heart's content.</p>",
+    "PostedDate": "2012-09-25T11:28:26.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "917421",
+    "ThreadId": "230181",
+    "Html": "You're welcome! I'm glad to hear it's working now. And thanks for the suggestions - a readme seems a good idea!<br>\r\n<br>\r\n----- Reply message -----<br>\r\nFrom: &quot;TheodoreNorvell&quot; &lt;[email removed]&gt;<br>\r\nTo: &quot;Summers Alexander John&quot; &lt;[email removed]&gt;<br>\r\nSubject: Visual Studio 2010 [specsharp:230181]<br>\r\nDate: Tue, Sep 25, 2012 20:28<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\nFrom: TheodoreNorvell<br>\r\n<br>\r\nThanks Alexander. I am now verifying to my heart's content.<br>\r\n<br>\r\nRead the full discussion online&lt;http://specsharp.codeplex.com/discussions/230181#post917405&gt;.<br>\r\n<br>\r\nTo add a post to this discussion, reply to this email ([email removed]&lt;mailto:[email removed]?subject=[specsharp:230181]&gt;)<br>\r\n<br>\r\nTo start a new discussion for this project, email [email removed]&lt;mailto:[email removed]&gt;<br>\r\n<br>\r\nYou are receiving this email because you subscribed to this discussion on CodePlex. You can unsubscribe&lt;https://specsharp.codeplex.com/discussions/230181/unsubscribe/&gt; on CodePlex.com.<br>\r\n<br>\r\nPlease note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com",
+    "PostedDate": "2012-09-25T11:49:32.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

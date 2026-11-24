@@ -1,0 +1,314 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "1000  CTMENU       ""pkg.cto""\r\n"
+    "#define VER_FILEDESCRIPTION_STR ""MycPrj Package Resources\\0""\r\n"
+    "#define VER_INTERNALNAME_STR ""MycPrjUI.dll\\0""\r\n"
+    "#define VER_ORIGINALFILENAME_STR ""MycPrjUI.dll\\0""\r\n"
+    "#include ""EnvSdkVersion.ver""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_APPLYTOALL DIALOG  0, 0, 272, 82
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "<Caption goes here>"
+FONT 8, "Tahoma"
+BEGIN
+    ICON            32515,IDC_STATIC,7,7,20,20,WS_GROUP
+    LTEXT           "<Message text goes here>",IDC_MSGTEXT,38,7,227,26,
+                    SS_NOPREFIX
+    CONTROL         "&Apply to all items",IDC_CHK_APPLYTOALL,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,38,41,227,10
+    DEFPUSHBUTTON   "&Yes",IDYES,107,61,50,14
+    PUSHBUTTON      "&No",IDNO,161,61,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,215,61,50,14
+END
+
+IDD_PP_BUILD DIALOG  0, 0, 248, 158
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "Tahoma"
+BEGIN
+    LTEXT           "Source file:",IDC_STATIC,7,0,37,8
+    CONTROL         "Tree1",IDC_SOURCEFILE,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | 
+                    WS_BORDER | WS_TABSTOP,7,9,106,76
+    LTEXT           "Command line options:",IDC_STATIC,7,113,73,8
+    EDITTEXT        IDC_CMDLINE,7,122,236,35,ES_MULTILINE | ES_READONLY | 
+                    WS_VSCROLL | NOT WS_TABSTOP
+    LTEXT           "Project type:",IDC_STATIC,7,96,43,11
+    COMBOBOX        IDC_PROJECTTYPE,55,95,58,44,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    LTEXT           "Output path:",IDC_STATIC,123,60,43,8
+    EDITTEXT        IDC_OUTPUTPATH,123,70,94,14,ES_AUTOHSCROLL
+    LTEXT           "Output file:",IDC_STATIC,124,85,38,8
+    EDITTEXT        IDC_OUTPUT_FILE,124,95,113,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_TABSTOP
+    CONTROL         "Generate debug info",IDC_DEBUGCHECK,"Button",
+                    BS_AUTO3STATE | WS_TABSTOP,123,9,82,8
+    CONTROL         "Generate listing file",IDC_LISTINGCHECK,"Button",
+                    BS_AUTO3STATE | WS_TABSTOP,123,36,77,8
+    EDITTEXT        IDC_DEBUGNAME,134,20,105,12,ES_AUTOHSCROLL | ES_READONLY | 
+                    NOT WS_BORDER | NOT WS_TABSTOP
+    EDITTEXT        IDC_LISTINGNAME,134,47,105,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    PUSHBUTTON      "...",IDC_OUTPUTPATHBROWSE,219,70,18,14
+    GROUPBOX        "Output",IDC_STATIC,118,0,125,113
+END
+
+IDDP_SETTINGSPAGE DIALOG  0, 0, 300, 200
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "If you can read this you need to VSReg ComPlus",
+                    IDC_GRIDPOS,1,1,295,195,NOT WS_VISIBLE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_APPLYTOALL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 265
+        VERTGUIDE, 265
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+
+    IDD_PP_BUILD, DIALOG
+    BEGIN
+        RIGHTMARGIN, 246
+        VERTGUIDE, 124
+        VERTGUIDE, 135
+        BOTTOMMARGIN, 157
+        HORZGUIDE, 150
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_PP_BUILD DLGINIT
+BEGIN
+    IDC_PROJECTTYPE, 0x403, 4, 0
+0x5845, 0x0045, 
+    IDC_PROJECTTYPE, 0x403, 4, 0
+0x4c44, 0x004c, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BROWSER_GLYPH       BITMAP                  "..\\MyCPrj\\res\\BrowserGlyph.bmp"
+IDB_SPLASHSCREEN        BITMAP                  "..\\MyCPrj\\res\\MycSplash.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_HELPABOUT           ICON                    "..\\MyCPrj\\res\\project.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_PROJ_OPEN_WAIT      "Creating a Project..."
+    IDS_PROJECT_TYPE        "MyC Project"
+    IDS_DISPLAY_PROJ_FILE_EXT "MyC Project Files (*.mycp);*.mycp"
+    IDS_OPENFILES_FILTER    "Common MyC Files (*.myc);*.myc"
+    IDS_FINDFILES_FILTER    "Common MyC Files (*.myc);*.myc"
+    IDS_ADDITEM_TEMPLATES_ENTRY "MyC Project Items"
+    IDS_NEWPROJ_TEMPLATES_ENTRY "MyC Projects"
+    IDS_FILENODE_TYPE       "File"
+    IDS_E_INVCHARSINNAME    "File or folder names cannot contain any of the following characters:\n               \\  /  :  *  ?   """" <  > | "
+    IDS_INVALIDFILENAME     "Invalid file name - '%1'"
+    IDS_CONFIRMREPLACE      "File '%1' already exists. Do you want to overwrite?"
+    IDS_E_COPY_FAILED       "Could not copy file '%1' to project. %2"
+    IDS_FILEALREADYEXISTS   "File '%1' is already a member of the project"
+    IDS_E_AUTO_NOPROJECTS   "Projects collection unavailable."
+    IDS_E_AUTO_NOPROJECTITEMS "ProjectItems collection unavailable."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_PROJNODE_TYPE       "Project"
+    IDS_CONFIRMREPLACE_CAPTION "Confirm Replace"
+    IDS_REMOVEFILE          "Remove %1"
+    IDS_E_AUTO_NOPROJECT    "Project object unavailable."
+    IDS_E_AUTO_NOPROJECTITEM "ProjectItem object unavailable."
+    IDS_MULTISELECT         "Multiple Selection"
+    IDS_E_AUTO_NOSELECTEDITEM "SelectedItem object unavailable."
+    IDS_FILE                "file"
+    IDS_SPACEFILE           "%1 file"
+    IDS_COMPILING           "Compiling Project  %s ..."
+    IDS_BUILDCANCELLED      "%s build cancelled."
+    IDS_BUILDSUCCEEDED      "%s build succeeded.\n"
+    IDS_BUILDFAILED         "%s build failed."
+    IDP_ISP_ERRLAUNCHINGAPP "Unable to launch application for this file."
+    IDS_BUILD_PAGE          "Build"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_BROWSEFORFOLDERTITLE "Output path:"
+    IDS_BUILD_EMPTY_COMMAND_LINE 
+                            "Build options are not specified in the project properties."
+    IDS_BUILD_NO_SOURCE_FILE 
+                            "Source file is not specified in the project build properties."
+    IDS_OBJBRW_PROJECT_NAME "MyC Project"
+    IDS_BUILD_NO_PROJECT_TYPE 
+                            "Project type is not specified in the project build properties."
+    IDS_DEBUG_PAGE          "Debug"
+    IDS_E_DEBUGTARGETMISSING 
+                            "Visual Studio cannot debug because the debug target '%1' is missing."
+    IDS_E_DEBUGTARGETDLLPROJ 
+                            "Visual Studio can only start up EXE projects for local debugging. Reference this project from another EXE project and then set the EXE project as your startup project."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_E_DEBUGTARGETNOTEXE "Visual Studio cannot debug because the debug target '%1' is not an EXE file."
+    IDS_OUTPUTGROUP_EXECUTABLES "Built"
+    IDS_OUTPUTGROUP_CONTENTFILES "Content Files"
+    IDS_OUTPUTGROUP_SATELLITEDLLS "Localized Resource DLLs"
+    IDS_OUTPUTGROUP_SOURCEFILES "Source Files"
+    IDS_RENAMEFILEFAILED    "Rename failed!"
+    IDS_RENAMEFILEALREADYEXISTS "File '%1' already exists."
+    IDS_E_NEEDTOENTERFILENAME "You must type a file name."
+    IDS_E_NOLEADINGPERIOD   "File names cannot contain a leading period."
+    IDS_E_RENAMINGITEM      "Cannot rename '%1'."
+    IDS_E_PATHNOTINPRJ      "The project file can only be saved into the project location."
+    IDS_E_PROJECTLOADFAILED "Project failed to load. Default settings will be used to create the project."
+    IDS_E_COMPILERNOTFOUND  "The compiler (myc.exe) can not be found."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_NEWITEM_FOLD_SRCFILES_NAME "MyC Source Files"
+    IDS_NEWITEM_MYC_LOCALIZEDNAME "MyC Source File"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_NEWITEM_MYC_DESCRIPTION "A new MyC file."
+    IDS_NEWITEM_MYC_SUGGESTEDBASENAME "SourceFile"
+    IDS_NEWPROJECT_MYCPRJ_LOCALIZEDNAME "MyC Project"
+    IDS_NEWPROJECT_MYCPRJ_DESCRIPTION "Create a new MyC project."
+    IDS_NEWPROJECT_MYCPRJ_SUGGESTEDBASENAME "MycProject"
+    IDS_OFFICIALNAME        "MyC Product Sample"
+    IDS_PRODUCTID           "7.1"
+    IDS_PRODUCTDETAILS      "MyC Product Sample. For more information about MyC, see the Microsoft website at <http://www.microsoft.com>. For customer support call 1-800-xxx-xxxx. MyC Copyright 2000 Microsoft Corporation."
+    IDS_E_OWNERPROJECTNOTFOUND 
+                            "This project needs to be opened in the context of a templates project. The owning project can not be created"
+    IDS_E_METHODDISABLED    "This method/property is not available for this application."
+    IDS_E_FILENOTINPRJECT   "The file '%1' is not in the project '%2'."
+    IDS_E_RUNWIZARD         "Could not run wizard from file '%1'."
+    IDS_E_THREADTERMINATED  "Build thread was terminated."
+    IDS_CAPTION_SAVEFILE    "Save File"
+    IDS_P_SAVEONPREVIEW     "The file '%1' is open in an editor with unsaved changes. Do you want to save your changes before previewing this file?"
+    IDS_DEBUGSTARTMODE_APPLICATION "Program"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_DEBUGSTARTMODE_PROJECT "Project"
+    IDS_PROP_DEBUGSTARTMODE_LOCNAME "Debug Mode"
+    IDS_PROP_DEBUGSTARTMODE_LOCDESC "Debug Mode"
+    IDS_PROP_STARTAPP_LOCNAME "Start Application"
+    IDS_PROP_STARTAPP_LOCDESC "Start Application"
+    IDS_PROP_STARTAPPPATH_LOCNAME "Start Application Path"
+    IDS_PROP_STARTAPPPATH_LOCDESC "Start Application Path"
+    IDS_PROP_CUSTOMSTARTUPARGUMENTS_LOCNAME "Arguments"
+    IDS_PROP_CUSTOMSTARTUPARGUMENTS_LOCDESC "Arguments"
+    IDS_UPTODATE            "The project is up-to-date."
+    IDS_VISUALSTUDIO        "Microsoft Development Environment"
+    IDS_PROMPT_SAVEDIRTYDOCS 
+                            "One or more open documents have unsaved changes.\nDo you want to save uncommitted changes before proceeding?"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1000  CTMENU       "pkg.cto"
+#define VER_FILEDESCRIPTION_STR "MycPrj Package Resources\0"
+#define VER_INTERNALNAME_STR "MycPrjUI.dll\0"
+#define VER_ORIGINALFILENAME_STR "MycPrjUI.dll\0"
+#include "EnvSdkVersion.ver"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,115 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "IDTLIB_PRJ TYPELIB ""FigPrj.tlb""\r\n"
+    "IDTLIB_PRJEXT TYPELIB ""FigExt.tlb""\r\n"
+    "#define VER_FILEDESCRIPTION_STR ""FigPrj Package\\0""\r\n"
+    "#define VER_INTERNALNAME_STR ""FigPrj.dll\\0""\r\n"
+    "#define VER_ORIGINALFILENAME_STR ""FigPrj.dll\\0""\r\n"
+    "#define VER_LANGUAGENEUTRAL\r\n"
+    "#include ""EnvSdkVersion.ver""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_REGISTRYSCRIPT      REGISTRY DISCARDABLE    "vspkg.rgs"
+IDR_OUTPUT              REGISTRY DISCARDABLE    "OutputDirectoryPPG.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_FILEVW_FOLDER       ICON    DISCARDABLE     "res\\folder.ico"
+IDI_FILEVW_FILE         ICON    DISCARDABLE     "res\\miscfile.ico"
+IDI_FILEVW_OPENFOLDER   ICON    DISCARDABLE     "res\\openfldr.ico"
+IDI_FILEVW_PROJECT      ICON    DISCARDABLE     "res\\projnode.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Data
+//
+
+IDF_BUILDPROJECTTEMPLATE RCDATA  DISCARDABLE     "res\\BuildProj.csproj"
+IDF_FIGUREDRAWINGOBJECT RCDATA  DISCARDABLE     "res\\FigureDrawingObject.cs"
+IDF_MAINFORM            RCDATA  DISCARDABLE     "res\\MainForm.cs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PACKAGE_LOAD_KEY    "I2A9IDAZIDACM3QIQ2QARDA3DEM2D2I2PRQAQQZDK3KDQHQHHAZIZ3HPH3KIAZAMHJM3RACEAJKHH1RHRHHIE2KPIQZQIADCRJPZH1R8DAC9KHHQMEE1IIMDD9RZCDC0"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+IDTLIB_PRJ TYPELIB "FigPrj.tlb"
+IDTLIB_PRJEXT TYPELIB "FigExt.tlb"
+#define VER_FILEDESCRIPTION_STR "FigPrj Package\0"
+#define VER_INTERNALNAME_STR "FigPrj.dll\0"
+#define VER_ORIGINALFILENAME_STR "FigPrj.dll\0"
+#define VER_LANGUAGENEUTRAL
+#include "EnvSdkVersion.ver"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

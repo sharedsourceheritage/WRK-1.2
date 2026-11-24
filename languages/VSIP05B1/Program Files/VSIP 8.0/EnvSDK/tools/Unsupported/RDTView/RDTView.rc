@@ -1,0 +1,91 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""RDTView.tlb""\r\n"
+	"#define VER_FILEDESCRIPTION_STR ""RDT Viewer Package\\0""\r\n"
+	"#define VER_INTERNALNAME_STR ""rdtview.dll\\0""\r\n"
+	"#define VER_ORIGINALFILENAME_STR ""rdtview.dll\\0""\r\n"
+	"#define VER_LANGUAGENEUTRAL\r\n"
+	"#include ""EnvSDKVersion.ver""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_REGISTRYSCRIPT             REGISTRY DISCARDABLE    "res\\VsPkg.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "RDTView"
+    IDS_PACKAGE_LOAD_KEY    "For use by VSIP developers only"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "RDTView.tlb"
+#define VER_FILEDESCRIPTION_STR "RDT Viewer Package\0"
+#define VER_INTERNALNAME_STR "rdtview.dll\0"
+#define VER_ORIGINALFILENAME_STR "rdtview.dll\0"
+#define VER_LANGUAGENEUTRAL
+#include "EnvSDKVersion.ver"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

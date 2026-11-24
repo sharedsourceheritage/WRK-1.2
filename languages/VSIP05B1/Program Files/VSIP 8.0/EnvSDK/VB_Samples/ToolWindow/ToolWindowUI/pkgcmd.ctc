@@ -1,0 +1,58 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+// Package Command Bar Definition
+//
+
+#include "stdidcmd.h"
+#include "vsshlids.h"
+#include "msobtnid.h"
+#include "virtkeys.h"
+#include "PkgCmdID.h"
+#include "Resource.h"
+
+#define _CTC_GUIDS_
+#include "Guids.h"
+
+CMDS_SECTION guidToolWindowPkg
+
+    MENUS_BEGIN
+    	// NewMenu                      Relative to Group                       Priority    Type        Name                    Text
+    MENUS_END
+
+    NEWGROUPS_BEGIN
+        // NewGroup                     Parent Group                            Priority
+    NEWGROUPS_END
+
+    BUTTONS_BEGIN
+	guidToolWindowCmdSet:icmdMyTool,	guidSHLMainMenu:IDG_VS_VIEW_BROWSER,	0x0100,		guidOfficeIcon:msotcidNoIcon,	BUTTON,	     ,	"&My ToolWindow (VB)";
+		// This icmdMyCommand is not defined as a shared command, so it uses our package CLSID
+		// as the command set GUID. Also, by specifying blank for the FLAGS, this command is
+		// default visible and enabled. Other valid values for FLAGS are the following:
+		//    DEFAULTDISABLED, DEFAULTINVISIBLE, DYNAMICVISIBILITY, TEXTCHANGES
+		// These values for FLAGS can be or'ed together, e.g. "DEFAULTINVISIBLE | DYNAMICVISIBILITY"
+
+    BUTTONS_END
+
+    BITMAPS_BEGIN
+        // Bitmap                          Bitmap Index, Bitmap Index ...
+    BITMAPS_END
+
+CMDS_END
+
+CMDPLACEMENT_SECTION
+    // Command                             Group                                Priority
+CMDPLACEMENT_END
+
+VISIBILITY_SECTION
+    // Command                             GUID when visible
+VISIBILITY_END
+
+KEYBINDINGS_SECTION
+    // Command                             when available   emulation    keystate
+KEYBINDINGS_END
+

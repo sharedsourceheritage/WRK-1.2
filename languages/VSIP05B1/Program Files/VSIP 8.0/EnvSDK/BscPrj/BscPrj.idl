@@ -1,0 +1,255 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// BscPrj.idl : IDL source for BasicProject Package
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Proj.tlb) and marshalling code.
+
+// All objects defined in this file are internal to the Package, 
+// and will not be seen by the user.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+import "vsshell2.idl";
+import "vsshell80.idl";
+cpp_quote("#include \"oleipc.h\"")
+
+#define MEMID_Name            (0x80010000)  // as defined by OLE controls spec.
+
+
+// this list includes config and project properties.
+// if you add new properties, please add config props in the config section and
+// project props in the project section.
+enum
+{
+    BscPrjPROJPROPID_ProjectPath = 1,
+    BscPrjPROJPROPID_IsDirty,
+    BscPrjPROJPROPID_Extender,
+    BscPrjPROJPROPID_ExtenderNames,
+    BscPrjPROJPROPID_ExtenderCATID
+};
+
+enum 
+{
+    DISPID_BscPrjSourceFile_FilePath = 1,
+    DISPID_BscPrjSourceFile_IsOutput,
+    DISPID_BscPrjSourceFile_ModifiedDate,
+    DISPID_BscPrjSourceFile_Size,
+    DISPID_BscPrjSourceFile_FileType,
+    DISPID_BscPrjSourceFile_ReadOnly,
+    DISPID_BscPrjSourceFile_Extender,
+    DISPID_BscPrjSourceFile_ExtenderNames,
+    DISPID_BscPrjSourceFile_ExtenderCATID
+};
+
+
+[
+    uuid(E59935A0-6156-11d1-87A6-00A0C91E2A46),
+
+    version(1.0),
+    helpstring("BscPrj Sample Project Package 1.0 Type Library")
+]
+
+library BscPrjPKGLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+    importlib("..\MsEnv\tlb\DTE.tlb");
+
+    cpp_quote("// CATID's for automation extension of browse objects")
+    [ uuid(964A70A8-716A-4d1e-BE5C-4E742C0FA38C)]
+    module BscPrjCATID
+    {
+        // Project browse object CATID.
+        // 0x7052f1c, 0xf5ae, 0x411f, 0x9e, 0x2e, 0xa1, 0x59, 0x4d, 0x6, 0x62, 0xba);
+        [helpstring("BscPrj Project browse object CATID")]     
+        const LPSTR prjCATIDBscPrjProjectBrowseObject = "{07052F1C-F5AE-411f-9E2E-A1594D0662BA}";     
+        
+        // Project config browse object CATID.
+        // 0x3bf9819b, 0x76ed, 0x43a0, 0xbd, 0xac, 0x4e, 0x35, 0xa9, 0xf6, 0x53, 0x5);
+        [helpstring("BscPrj Project config browse object CATID")]          
+        const LPSTR prjCATIDBscPrjProjectConfigBrowseObject = "{3BF9819B-76ED-43a0-BDAC-4E35A9F65305}";
+        
+        // File browse object CATID.
+        // 0xd5425dc7, 0x2b53, 0x4c08, 0x99, 0xaa, 0x35, 0x31, 0x20, 0x98, 0x35, 0xd8);
+        [helpstring("BscPrj File browse object CATID")]          
+        const LPSTR prjCATIDBscPrjFileBrowseObject =  "{D5425DC7-2B53-4c08-99AA-3531209835D8}";                 
+
+        // Folder browse object CATID.
+        // 0xdc529485, 0xbd62, 0x48c3, 0xbb, 0x0c, 0x57, 0x8e, 0x53, 0x38, 0x71, 0x41
+        [helpstring("BscPrj Folder browse object CATID")]          
+        const LPSTR prjCATIDBscPrjFolderBrowseObject =  "{DC529485-BD62-48C3-BB0C-578E53387141}";
+    }
+
+
+    [
+        uuid(E59935A1-6156-11d1-87A6-00A0C91E2A46),
+        helpstring("BscPrj Sample Project Package Class")
+    ]
+    coclass BscPrjPackage
+    {
+        [default] interface IVsPackage;
+    };
+
+    [
+        uuid(7DAB1AAA-20BE-11d2-8DA5-00C04FB6C6FF), dual, object
+    ]
+    interface IBscPrjProjHierItemProps : IDispatch
+    {
+        [id(DISPID_VALUE), propget, helpstring("File name of the file")] 
+        HRESULT FileName([out, retval] BSTR *pVal);
+        [id(DISPID_VALUE), propput, helpstring("File name of the file")] 
+        HRESULT FileName([in] BSTR NewName);
+
+        [id(DISPID_BscPrjSourceFile_FilePath), propget, helpstring("Path to the file on disk")] 
+        HRESULT FilePath([out, retval] BSTR *pVal);
+
+        [id(DISPID_BscPrjSourceFile_IsOutput), propget] 
+        HRESULT IsOutput([out, retval] VARIANT_BOOL *pVal);
+
+        [id(DISPID_BscPrjSourceFile_ModifiedDate), propget, helpstring("Time the file was last saved to disk")] 
+        HRESULT ModifiedDate([out, retval] VARIANT *pVal);
+
+        [id(DISPID_BscPrjSourceFile_Size), propget, helpstring("Size of the file on disk")] 
+        HRESULT Size([out, retval] double *pVal);
+
+        [id(DISPID_BscPrjSourceFile_FileType), propget, helpstring("Registered type of the file")] 
+        HRESULT FileType([out, retval] BSTR *pVal);
+
+        [id(DISPID_BscPrjSourceFile_ReadOnly), propget, helpstring("Read Only attribute of the file on disk")] 
+        HRESULT ReadOnly([out, retval] VARIANT_BOOL *pVal);
+
+        [id(DISPID_BscPrjSourceFile_ReadOnly), propput, helpstring("Read Only attribute of the file on disk")] 
+        HRESULT ReadOnly([in] VARIANT_BOOL pVal);
+
+        [id(DISPID_BscPrjSourceFile_Extender), propget, nonbrowsable, helpstring("Extender"), hidden]
+        HRESULT Extender([in] BSTR ExtenderName, [out, retval] IDispatch **Extender);
+
+        [id(DISPID_BscPrjSourceFile_ExtenderNames), propget, nonbrowsable, helpstring("ExtenderNames"), hidden] 
+        HRESULT ExtenderNames([out, retval] VARIANT *ExtenderNames);
+
+        [id(DISPID_BscPrjSourceFile_ExtenderCATID), propget, nonbrowsable, helpstring("ExtenderCATID"), hidden]
+        HRESULT ExtenderCATID ([out, retval] BSTR *pRetval);
+
+    };
+
+    [
+        uuid(7DAB1AAB-20BE-11d2-8DA5-00C04FB6C6FF)
+    ]
+    coclass BscProjProjHierItemProps
+    {
+        [default] interface IBscPrjProjHierItemProps;
+    };
+
+    [
+        uuid(7DAB1AAE-20BE-11d2-8DA5-00C04FB6C6FF), dual, object
+    ]
+    interface IBscProjProjHierFolderProps : IDispatch
+    {
+        [id(DISPID_VALUE), propget, helpstring("Folder Name")] 
+        HRESULT FolderName([out, retval] BSTR *pVal);
+        [id(DISPID_VALUE), propput, helpstring("Folder Name")] 
+        HRESULT FolderName([in] BSTR NewName);
+    };
+
+    [
+        uuid(7DAB1AAF-20BE-11d2-8DA5-00C04FB6C6FF)
+    ]
+    coclass BscProjProjHierFolderProps
+    {
+        [default] interface IBscProjProjHierFolderProps;
+    };
+
+    [
+        uuid(7DAB1AAC-20BE-11d2-8DA5-00C04FB6C6FF), dual, object
+    ]
+    interface IBscPrjProjHierProps : IDispatch
+    {
+        [id(MEMID_Name), propget, helpstring("Name of the project")] 
+        HRESULT Name([out, retval] BSTR *pVal);
+        [id(MEMID_Name), propput, helpstring("Name of the project")] 
+        HRESULT Name([in] BSTR NewName);
+
+        [id(BscPrjPROJPROPID_ProjectPath), propget, helpstring("Path to where the project is stored on disk")] 
+        HRESULT ProjectPath([out, retval] BSTR *pVal);
+        
+        [id(BscPrjPROJPROPID_IsDirty), propget, nonbrowsable, helpstring("Marks if the file has been modified, and has to be saved")] 
+        HRESULT IsDirty([out, retval] VARIANT_BOOL *pVal);
+        
+        [id(BscPrjPROJPROPID_IsDirty), propput, nonbrowsable, helpstring("Marks if the file has been modified, and has to be saved")] 
+        HRESULT IsDirty([in] VARIANT_BOOL pVal);        
+
+        [id(BscPrjPROJPROPID_Extender), propget, nonbrowsable, helpstring("Extender"), hidden]
+        HRESULT Extender([in] BSTR ExtenderName, [out, retval] IDispatch **Extender);
+
+        [id(BscPrjPROJPROPID_ExtenderNames), propget, nonbrowsable, helpstring("ExtenderNames"), hidden] 
+        HRESULT ExtenderNames([out, retval] VARIANT *ExtenderNames);
+
+        [id(BscPrjPROJPROPID_ExtenderCATID), propget, nonbrowsable, helpstring("ExtenderCATID"), hidden]
+        HRESULT ExtenderCATID ([out, retval] BSTR *pRetval);
+    };
+
+    [
+        uuid(7DAB1AAD-20BE-11d2-8DA5-00C04FB6C6FF)
+    ]
+    coclass BscProjProjHierProps
+    {
+        [default] interface IBscPrjProjHierProps;
+    };
+
+    [
+        uuid(3F6B89B9-2021-11D2-8DA5-00C04FB6C6FF),
+        helpstring("LaunchPPG Class")
+    ]
+    coclass LaunchPPG
+    {
+        interface IUnknown;
+    };
+
+    [
+        uuid(3F6B89BA-2021-11D2-8DA5-00C04FB6C6FF),
+        helpstring("CustomPPG Class")
+    ]
+    coclass CustomPPG
+    {
+        interface IUnknown;
+    };
+
+    [
+        uuid(4B24273E-3167-11d2-8DB1-00C04FB6C6FF), dual, object
+    ]
+    interface IBscProjCfgProps : IDispatch
+    {
+        [id(1), propget, helpstring("")] HRESULT CommandLine([out, retval] BSTR *pVal);
+        [id(1), propput, helpstring("")] HRESULT CommandLine([in] BSTR NewName);
+        [id(2), propget, helpstring("")] HRESULT CommandLineArguments([out, retval] BSTR *pVal);
+        [id(2), propput, helpstring("")] HRESULT CommandLineArguments([in] BSTR NewName);
+        [id(3), propget, helpstring("")] HRESULT BuildArguments([out, retval] BSTR *pVal);
+        [id(3), propput, helpstring("")] HRESULT BuildArguments([in] BSTR NewName);
+        [id(4), propget, helpstring("")] HRESULT Outputs([out, retval] BSTR *pVal);
+        [id(4), propput, helpstring("")] HRESULT Outputs([in] BSTR NewName);
+    };
+
+    [
+        uuid(4B24273F-3167-11d2-8DB1-00C04FB6C6FF)
+    ]
+    coclass BscProjCfgProps
+    {
+        [default] interface IBscProjCfgProps;
+    };
+};

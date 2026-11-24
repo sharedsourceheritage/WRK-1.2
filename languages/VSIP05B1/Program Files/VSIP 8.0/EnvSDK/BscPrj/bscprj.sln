@@ -1,0 +1,44 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BscPrj", "BscPrj\BscPrj.vcproj", "{0EC8C69A-3B30-4D61-B34B-7FDC4DE4F3C6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{62ABB140-E664-4696-B368-927FEB34AC8A} = {62ABB140-E664-4696-B368-927FEB34AC8A}
+		{563FB2B8-793D-485E-A45E-2DF7EB7E8242} = {563FB2B8-793D-485E-A45E-2DF7EB7E8242}
+		{13CA22E0-C932-4C1A-83CD-AFC89DA04EC4} = {13CA22E0-C932-4C1A-83CD-AFC89DA04EC4}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hierutil7", "..\common\Hierutil7\Hierutil7.vcproj", "{563FB2B8-793D-485E-A45E-2DF7EB7E8242}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BscPrjUI", "BscPrjUI\BscPrjUI.vcproj", "{13CA22E0-C932-4C1A-83CD-AFC89DA04EC4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VsEnvSdkUtil", "..\common\VsEnvSdkUtil\VsEnvSdkUtil.vcproj", "{62ABB140-E664-4696-B368-927FEB34AC8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0EC8C69A-3B30-4D61-B34B-7FDC4DE4F3C6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0EC8C69A-3B30-4D61-B34B-7FDC4DE4F3C6}.Debug|Win32.Build.0 = Debug|Win32
+		{0EC8C69A-3B30-4D61-B34B-7FDC4DE4F3C6}.Release|Win32.ActiveCfg = Release|Win32
+		{0EC8C69A-3B30-4D61-B34B-7FDC4DE4F3C6}.Release|Win32.Build.0 = Release|Win32
+		{563FB2B8-793D-485E-A45E-2DF7EB7E8242}.Debug|Win32.ActiveCfg = Debug|Win32
+		{563FB2B8-793D-485E-A45E-2DF7EB7E8242}.Debug|Win32.Build.0 = Debug|Win32
+		{563FB2B8-793D-485E-A45E-2DF7EB7E8242}.Release|Win32.ActiveCfg = Release|Win32
+		{563FB2B8-793D-485E-A45E-2DF7EB7E8242}.Release|Win32.Build.0 = Release|Win32
+		{13CA22E0-C932-4C1A-83CD-AFC89DA04EC4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{13CA22E0-C932-4C1A-83CD-AFC89DA04EC4}.Debug|Win32.Build.0 = Debug|Win32
+		{13CA22E0-C932-4C1A-83CD-AFC89DA04EC4}.Release|Win32.ActiveCfg = Release|Win32
+		{13CA22E0-C932-4C1A-83CD-AFC89DA04EC4}.Release|Win32.Build.0 = Release|Win32
+		{62ABB140-E664-4696-B368-927FEB34AC8A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{62ABB140-E664-4696-B368-927FEB34AC8A}.Debug|Win32.Build.0 = Debug|Win32
+		{62ABB140-E664-4696-B368-927FEB34AC8A}.Release|Win32.ActiveCfg = Release|Win32
+		{62ABB140-E664-4696-B368-927FEB34AC8A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SolutionNotes) = postSolution
+		NumNotes = 0
+	EndGlobalSection
+EndGlobal

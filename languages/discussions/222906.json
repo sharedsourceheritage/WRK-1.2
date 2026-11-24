@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "478021",
+    "ThreadId": "222906",
+    "Html": "<p>Hi,</p>\r\n<p>I just installed <span id=TitleLabel>Spec# 2010-07-20 and the latest stable release of Z3. I discovered that in the code I try to verify, some methods didn't verify anymore. The reason is that these methods use a pure method of the form<br></span></p>\r\n<p><span>\r\n<pre>[pure] public bool foo() {\r\n  return internal_object.bar() &gt; 0;\r\n}</pre>\r\n</span></p>\r\n<p>If I supply a postcondition ensures result == (internal_object.bar() &gt; 0), then these methods verify. However, according to p. 43 of the tutorial, this postcondition should be added automatically. Hence, I suspect there's a bug in Spec#.</p>\r\n<p>Regards, Boris</p>",
+    "PostedDate": "2010-08-09T04:08:01.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "478343",
+    "ThreadId": "222906",
+    "Html": "<p>By golly.&nbsp; I am able to reproduce this with the current version.&nbsp; It seems that the admissibility check that is performed on the returned expression (to see if it is legal to make an automatic ensures clause from it) is somehow different from the admissibility check performed on a manually supplied ensures clause.&nbsp; I don't particularly remember any change to that code in the last year, so I'm surprised it's not working now if it used to work in a previous version.&nbsp; It seems to have something to do with the call to bar(), because I can see that the automatic ensures clause is generated if bar were a field.</p>\r\n<p>So, it seems you have found a bug.</p>",
+    "PostedDate": "2010-08-09T17:36:15.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

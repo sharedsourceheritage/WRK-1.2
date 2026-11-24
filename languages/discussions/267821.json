@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "652750",
+    "ThreadId": "267821",
+    "Html": "\r\n<p>I've been encountering this error with my &quot;swap&quot; method during verification: &quot;Target array of assignment is not allowed to be committed.&quot;&nbsp;However, even after reading about this error in the tutorial pdf I'm still not quite sure I understand how to avoid\r\n it. Here is the small amount of code I have so far (the swap method is pretty much identical to the one shown inside the tutorial with the exception that &quot;int[] a&quot; is not one of the parameters. Instead I wanted to modify my class's main array (this is at the\r\n root of the problem I think).</p>\r\n<p>Anyways, my class currently looks like the following:</p>\r\n<p>class Priority_Queue{</p>\r\n<p><span style=\"white-space:pre\"></span>int[]! Data = new int[10];</p>\r\n<p><span style=\"white-space:pre\"></span>int Size;</p>\r\n<p><span style=\"white-space:pre\"></span>invariant Size &lt;= Data.Length;<span> </span>\r\n</p>\r\n<p><span style=\"white-space:pre\"></span>private void Swap(int i, int j)</p>\r\n<p><span style=\"white-space:pre\"></span>requires 0 &lt;= i &amp;&amp; i &lt; Data.Length;</p>\r\n<p><span style=\"white-space:pre\"></span>requires 0 &lt;= j &amp;&amp; j &lt; Data.Length;<span>\r\n</span></p>\r\n<p><span style=\"white-space:pre\"></span>modifies Data[i], Data[j];<span> </span></p>\r\n<p><span style=\"white-space:pre\"></span>ensures Data[i] == old(Data[j]) &amp;&amp; Data[j] == old(Data[i]);&nbsp;<span>\r\n</span></p>\r\n<p><span style=\"white-space:pre\"></span>{</p>\r\n<p><span style=\"white-space:pre\"></span>int temp = Data[i]; &nbsp;<span> </span></p>\r\n<p><span style=\"white-space:pre\"></span>Data[i] = Data[j]; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&lt;-- this gets underlined in green. I must be doing something fundamentally wrong here...</p>\r\n<p><span style=\"white-space:pre\"></span>Data[j] = temp;<span> </span></p>\r\n<p><span style=\"white-space:pre\"></span>}</p>\r\n<p>Thanks, I appreciate all the help I've&nbsp;received&nbsp;so far.&nbsp;</p>\r\n",
+    "PostedDate": "2011-08-04T16:26:29.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "652920",
+    "ThreadId": "267821",
+    "Html": "<p>Hi,</p>\r\n<p>this error tells you that you try to modify a committed object. However, if you want to modify some object it generally needs to be consistent. There are multiple ways of achieving this in your example:</p>\r\n<p>1) Require the object 'Data' to be consistent.</p>\r\n<p>2) Mark the 'Data' field as [Peer]. Since the 'this' object (and method parameters; this is why the example in the tutorial works) is consistent implicitly, its peers are also consistent.</p>\r\n<p>3) Mark the 'Data' field as [Rep] and expose the 'this' object before you modify the object 'Data'. This is probably what you would want in your case.</p>\r\n<p>The following code should verify:</p>\r\n<pre>class Priority_Queue {\r\n  // Option 2:\r\n  // [Peer]\r\n\r\n  // Option 3:\r\n  [Rep]\r\n  int[]! Data = new int[10];\r\n  int Size;\r\n  invariant Size &lt;= Data.Length;\r\n\r\n  private void Swap(int i, int j)\r\n    requires 0 &lt;= i &amp;&amp; i &lt; Data.Length;\r\n    requires 0 &lt;= j &amp;&amp; j &lt; Data.Length;\r\n    // Option 1:\r\n    // requires Data.IsConsistent;\r\n    modifies Data[i], Data[j];\r\n    ensures Data[i] == old(Data[j]) &amp;&amp; Data[j] == old(Data[i]);\r\n  {\r\n      int temp = Data[i];\r\n\r\n      // Option 3:\r\n      expose (this) {\r\n          Data[i] = Data[j];\r\n\r\n          Data[j] = temp;\r\n      }\r\n  }\r\n\r\n}\r\n</pre>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2011-08-05T01:54:08.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "653545",
+    "ThreadId": "267821",
+    "Html": "<p>Thanks for the help. This may seem like a sort of weird question to ask, but after getting this to check without error, is there any way I can print out a nice, clean, ordered list of verification conditions that SscBoogie generated for this Swap method? I've been looking through all the commands that \"SscBoogie /help\" brings and am unsure which, command, if any, would allow me to see the final string of implications and substitutions that were made when the code was backed over.&nbsp;</p>",
+    "PostedDate": "2011-08-05T22:34:15.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "654376",
+    "ThreadId": "267821",
+    "Html": "<p>Hi,</p>\r\n<p>I know of three interesting options that allow you to see what goes on behind the scenes:</p>\r\n<p>- sscboogie /print:&lt;filename&gt;.bpl &lt;filename&gt;.dll (to get the Boogie program that is used to produce the verification conditions; this is quite readable and useful)</p>\r\n<p>- boogie /traceverify &lt;filename&gt;.bpl (to see how the Boogie program is desugared before the prover is invoked)</p>\r\n<p>- boogie &lt;filename&gt;.bpl /proverLog:&lt;output file&gt; (to get the verification conditions that are sent to the prover; this is not very readable)</p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-08-08T02:26:43.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

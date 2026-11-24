@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Due to the way the trace position filtering currently works, we get unnecessary trace positions for the 'pack' operation of an 'expose' block. In principle, we should never get trace positions for 'pack' operations.",
+    "LastUpdatedDate": "2011-01-11T02:06:38.35-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "specsharp",
+    "ReportedDate": "2011-01-11T02:03:37.247-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unnecessary trace positions for the 'pack' operation of an 'expose' block",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10109
+  },
+  "FileAttachments": [
+    {
+      "FileId": 219675,
+      "FileName": "ExactTypes.ssc",
+      "DownloadUrl": ".\\219675"
+    },
+    {
+      "FileId": 219676,
+      "FileName": "AssignToNonInvariantField.ssc",
+      "DownloadUrl": ".\\219676"
+    },
+    {
+      "FileId": 219677,
+      "FileName": "Test1.ssc",
+      "DownloadUrl": ".\\219677"
+    }
+  ],
+  "Comments": []
+}

@@ -1,0 +1,114 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+#if _MSC_VER > 1000
+//#pragma once
+#endif  /* _MSC_VER > 1000 */
+
+#ifndef PKG_CTC
+#define PKG_CTC
+
+#include "stdidcmd.h"	    // Shell specified commands
+#include "vsshlids.h"	    // Shell specified groups/guids
+#include "msobtnid.h"	    // Shell specified commands
+#include "pkgicmd.h"
+
+// This value must match CLSID_MyPackage defined in '<project>id.h'
+#define guidMyPkg {0xACEF4EB2,0x57CF,0x11d2,{0x96,0xF4,0x00,0x00,0x00,0x00,0x00,0x00}}
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Within FigPrj we are using the standard context menus.
+// Note that it is allowable to add package specific menus, groups 
+// or commands to existing standard groups. Any such package specific
+// menu data will appear in the sections below.
+//
+//////////////////////////////////////////////////////////////////////////////
+CMDS_SECTION guidMyPkg
+  MENUS_BEGIN
+   // GUID:CMDID							PARENT MENU								PRIORITY	ICON							TYPE	FLAGS	                           BUTTON TEXT
+   //-------------------------------------------------------------------------------------------
+  MENUS_END
+
+  NEWGROUPS_BEGIN
+    // GUID:GROUPID							PARENT MENU								PRIORITY  FLAG
+    //-------------------------------------------------------------------------------------------
+  NEWGROUPS_END	
+
+  BUTTONS_BEGIN
+    // GUID:MENUID								PARENT GROUP		PRIORITY	TYPE		BUTTONTEXT			MENUTEXT		    TOOLTIPTEXT	      COMMANDTEXT
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------			
+  BUTTONS_END
+CMDS_END
+
+
+CMDUSED_SECTION   // for shared commands
+  // GUID:GROUPID	
+        guidVSStd2K:ECMD_SHOWALLFILES;
+
+CMDUSED_END
+
+//////////////////////////////////////////////////////////////////////////////
+// CMDPLACEMENT_SECTION
+// 
+// This sections defines where the commands will be placed if not just in 
+// their primary groups.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+CMDPLACEMENT_SECTION
+   // GUID:GROUPID									PARENT MENU								PRIORITY 
+   //-----------------------------------------------------------------------------------------------
+
+CMDPLACEMENT_END
+
+
+//////////////////////////////////////////////////////////////////////////////
+// VISIBILITY_SECTION
+//
+// This sections determines when commands will be visible, in a static sense
+// as opposed to dynamically.  If you put a command in here and give it a
+// GUID that it should be active for, then the shell checks the GUID provided
+// versus the current project or document GUIDs that are active.  If the
+// command appears in this section, but the GUID it should be active for is
+// not the currently active one, then the command will not show up.
+//
+// ** Commands that do not appear in this section are statically visible by
+//    default
+//
+// You should use this section if you don't want specific commands to appear
+// in the shell unless a specific GUID (such as your package GUID) is active.
+//
+//////////////////////////////////////////////////////////////////////////////
+VISIBILITY_SECTION
+  // GUID:CMDID			    GUID when VISIBLE
+  guidVSStd2K:ECMD_SHOWALLFILES,    guidMyPkg;
+VISIBILITY_END
+
+//////////////////////////////////////////////////////////////////////////////
+// KEYBINDINGS_SECTION
+// 
+// This sections defines the keystroke mappings for the commands.
+//
+// The Keystate field is done using the following:
+//    A = Alt, S = Shift, C = Control, W = Windows Key
+//
+// Example of the Keystate assignment, if you want a two key combination
+// of Ctrl-X, Ctrl-Shift-C then the syntax would be :
+//
+//	'x':C:'c':CS
+//
+//////////////////////////////////////////////////////////////////////////////
+
+KEYBINDINGS_SECTION
+  // GUID:CMDID				    EDITORGUID		      EMULATIONGUID		KEYSTATE
+  
+
+KEYBINDINGS_END
+
+
+#endif // PKG_CTC

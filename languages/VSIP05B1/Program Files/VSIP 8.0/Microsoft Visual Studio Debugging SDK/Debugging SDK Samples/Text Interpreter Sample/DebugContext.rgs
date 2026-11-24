@@ -1,0 +1,23 @@
+HKCR
+{
+    TextInterpreter.DebugContext.1 = s 'DebugContext Class'
+    {
+        CLSID = s '{A2C57E36-FDFF-49F0-A8D3-AB9296AC9A0C}'
+    }
+    TextInterpreter.DebugContext = s 'DebugContext Class'
+    {
+        CLSID = s '{A2C57E36-FDFF-49F0-A8D3-AB9296AC9A0C}'
+        CurVer = s 'TextInterpreter.DebugContext.1'
+    }
+    NoRemove CLSID
+    {
+        {A2C57E36-FDFF-49F0-A8D3-AB9296AC9A0C} = s 'DebugContext Class'
+        {
+            ProgID = s 'TextInterpreter.DebugContext.1'
+            VersionIndependentProgID = s 'TextInterpreter.DebugContext'
+            LocalServer32 = s '%MODULE%'
+            val AppID = s '{138A9B67-A2AB-4A64-A16F-ACE68B2FF77A}'
+            'TypeLib' = s '{510FC0E1-41E9-416F-9EDD-7277BD4538DB}'
+        }
+    }
+}

@@ -1,0 +1,8 @@
+draw circle 30 50 40            'circle with upper left at 30, 50 with diameter of 40
+draw rectangle 100 100 50 30    'rectangle with upper left at 100, 100; 50 x 30 
+xxxxxxxxxxxxxxxx
+draw circle 10 20 30 ' this is my circle
+
+
+draw arrow 70 70 100 115        'arrow from 70, 70 to 100, 115
+'full line comment

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "510800",
+    "ThreadId": "231881",
+    "Html": "<p>Hi,</p>\r\n<p>I'm new to Spec# and I'm confused about a case involving an array field</p>\r\n<p>and a call to method which is not inlined.</p>\r\n<p>In m1 method below this.fa is an array and precondition is this.fa[0] == 42.</p>\r\n<p>m1 takes one int[] a as argument. it calls another method aSet which sets a[0] to 5.</p>\r\n<p>the method is not inlined so its post condition/modifies clause would be used for</p>\r\n<p>vc purposes. aSet has a frame condition of &quot;modifies a[0]&quot;.</p>\r\n<p>Why is it that after this method call, the assertion this.fa[0] == 42 fails?</p>\r\n<p>In other words, how should I express the fact that fields of &quot;this&quot; after a call to the</p>\r\n<p>static method aSet() are not changed, without explicitly making that a post condition of</p>\r\n<p>aSet()? Even if I make aSet() non-static and include &quot;modifies this.0&quot; the same happens.</p>\r\n<p>The instance is below.</p>\r\n<p>Thanks!</p>\r\n<p>Hesam</p>\r\n<p>---------------------------------------------------------------------------------------------</p>\r\n<p>FrameTest.ssc(15,2): Error: Assertion might not hold: this.fa[0] == 42</p>\r\n<p>---------------------------------------------------------------------------------------------</p>\r\n<p>using Microsoft.Contracts;<br><br>class FrameTest {<br><br>&nbsp;&nbsp;&nbsp; int[] fa;<br><br>&nbsp;&nbsp;&nbsp; void m1(int[]! a)<br>&nbsp;&nbsp;&nbsp; &nbsp;modifies a[0], this.0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; requires this.fa != a;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; requires a.Length &gt; 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; requires this.fa.Length &gt; 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; requires this.fa[0] == 42;<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp; aSet(a);<br>&nbsp;&nbsp;&nbsp; assert this.fa[0] == 42;<br>&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; static void aSet(int[]! a)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; requires a.Length &gt; 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; modifies a[0];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ensures a[0] == 5;<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp; a[0] = 5;<br>&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; [Verify(false)]<br>&nbsp;&nbsp;&nbsp; public static void Main(string[] args) { }<br><br>}</p>",
+    "PostedDate": "2010-10-21T15:26:50.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "512754",
+    "ThreadId": "231881",
+    "Html": "\r\n<p>Hi Hesam,</p>\r\n<p>Spec# allows a method to modify objects whose owner is not exposed. In your example, Spec# does not know who owns the array object fa. In particular, its owner could be not exposed when aSet is called and, thus, the method might change the contents of fa.\r\n You can fix this problem for instance by declaring fa with the attribute [Peer], which expresses that the array object has the same owner as &quot;this&quot;, which by default is required to have an exposed owner. Alternatively, you could add a precondition &quot;&nbsp;fa.IsConsistent&quot;\r\n to m1, which also expresses that fa's owner is exposed. Both options work for me.</p>\r\n<p>Cheers,<br>\r\n&nbsp;&nbsp; Peter</p>\r\n",
+    "PostedDate": "2010-10-26T07:54:15.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "514710",
+    "ThreadId": "231881",
+    "Html": "\r\n<p>Thanks very much Peter. Makes sense, and both work for me as well. Cheers, -Hesam</p>\r\n",
+    "PostedDate": "2010-10-29T12:30:56.073-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

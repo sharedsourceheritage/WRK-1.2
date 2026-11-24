@@ -1,0 +1,91 @@
+
+/***************************************************************************
+         Copyright  Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+// TextInterpreter.idl : IDL source for TextInterpreter.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (TextInterpreter.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(510FC0E1-41E9-416F-9EDD-7277BD4538DB),
+	version(1.0),
+	helpstring("TextInterpreter 1.0 Type Library")
+]
+library TEXTINTERPRETERLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(76B0612B-294B-41FD-B66F-77ED8D125453),
+		helpstring("Engine Class")
+	]
+	coclass Engine
+	{
+		[default] interface IUnknown;
+	};
+	[
+		uuid(60F29080-1AD2-4823-A6A3-5E635010889C),
+		helpstring("Program Class")
+	]
+	coclass Program
+	{
+		[default] interface IUnknown;
+	};
+	[
+		uuid(7B59D07A-AF06-49F5-A155-8A8BE7612607),
+		helpstring("PendingBreakpoint Class")
+	]
+	coclass PendingBreakpoint
+	{
+		[default] interface IUnknown;
+	};
+	[
+		uuid(6A36812E-897C-411A-833C-940F6AE5F6B1),
+		helpstring("BoundBreakpoint Class")
+	]
+	coclass BoundBreakpoint
+	{
+		[default] interface IUnknown;
+	};
+	[
+		uuid(A2C57E36-FDFF-49F0-A8D3-AB9296AC9A0C),
+		helpstring("DebugContext Class")
+	]
+	coclass DebugContext
+	{
+		[default] interface IUnknown;
+	};
+	[
+		uuid(7DDE4B5B-32CB-4409-AB83-A194A383995D),
+		helpstring("BreakpointResolution Class")
+	]
+	coclass BreakpointResolution
+	{
+		[default] interface IUnknown;
+	};
+	[
+		uuid(A4DAAEF8-B680-4A5A-BAA6-75EF33F7B0C7),
+		helpstring("StackFrame Class")
+	]
+	coclass StackFrame
+	{
+		[default] interface IUnknown;
+	};
+	[
+		uuid(1757A890-F9AF-443A-9AD8-343D5BF07E07),
+		helpstring("EnumFrameInfo Class")
+	]
+	coclass EnumFrameInfo
+	{
+		[default] interface IUnknown;
+	};
+};

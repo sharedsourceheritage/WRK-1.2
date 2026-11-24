@@ -1,0 +1,23 @@
+print(!isNaN(parseFloat("1.23")));
+print(!isNaN(parseInt("1.23")));
+print(isNaN(parseFloat("hello")));
+print(isNaN(parseInt("hello")));
+print(isNaN(parseFloat("hello") + 1));
+print(isNaN(parseInt("hello") + 1));
+
+// Regression test for VBE 34421
+print(isNaN(parseInt(123,1)));
+print(isNaN(parseInt(123,-1)));
+print(isNaN(parseInt(123,-2)));
+print(isNaN(parseInt(123,-10)));
+print(isNaN(parseInt(123,37)));
+print(isNaN(parseInt(123,40)));
+print(isNaN(parseInt(123,100)));
+print(isNaN(parseInt(123,100000)));
+print(!isNaN(parseInt(123,10)));
+print(!isNaN(parseInt(123,36)));
+print(!isNaN(parseInt(123,0)));
+
+var chartest = "hello";
+
+print(isNaN(chartest.charCodeAt(-1)));

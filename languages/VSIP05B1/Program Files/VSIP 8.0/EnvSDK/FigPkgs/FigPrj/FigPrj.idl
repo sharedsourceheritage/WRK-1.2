@@ -1,0 +1,287 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// FigPrj.idl : IDL source for BasicProject Package
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Proj.tlb) and marshalling code.
+
+// All objects defined in this file are internal to the Package, 
+// and will not be seen by the user.
+    
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+cpp_quote("#include \"oleipc.h\"")
+#include "..\FigPrjUI\resource.h"
+
+#define HELP(str) helpstringcontext(IDS_HELP_##str) 
+
+// Used for the fig project
+enum FigLineColor {
+		Red = 0,
+		White,
+		Blue,
+		Black,
+		Yellow
+	};
+
+#define MEMID_Name            (0x80010000)  // as defined by OLE controls spec.
+
+
+// this list includes config and project properties.
+// if you add new properties, please add config props in the config section and
+// project props in the project section.
+enum
+{
+    FigPrjPROJPROPID_ProjectPath = 1,
+    FigPrjPROJPROPID_IsDirty,
+    FigPrjPROJPROPID_Extender,
+    FigPrjPROJPROPID_ExtenderNames,
+    FigPrjPROJPROPID_ExtenderCATID
+};
+
+enum 
+{
+    DISPID_FigPrjSourceFile_FilePath = 1,
+    DISPID_FigPrjSourceFile_ModifiedDate,
+    DISPID_FigPrjSourceFile_Size,
+    DISPID_FigPrjSourceFile_FileType,
+    DISPID_FigPrjSourceFile_ReadOnly,
+	// Note that DISPID_FigPrjSourceFile_ExcludeFromBuild is used in 
+	// ICategorizeProperties::MapPropertyToCategory implementation.
+	// Keep this enum and MapPropertyToCategory in sync.
+    DISPID_FigPrjSourceFile_ExcludeFromBuild,
+    DISPID_FigPrjSourceFile_XOffset,
+    DISPID_FigPrjSourceFile_YOffset,
+    DISPID_FigPrjSourceFile_PenColor,
+    DISPID_FigPrjSourceFile_StartupItem,
+    DISPID_FigPrjSourceFile_Extender,
+    DISPID_FigPrjSourceFile_ExtenderNames,
+    DISPID_FigPrjSourceFile_ExtenderCATID
+};
+
+
+[
+	//Re-guided
+	uuid(ACEF4EB1-57CF-11d2-96F4-000000000000),
+
+	version(1.0),
+    helpstring("FigPrj Sample Project Package 1.0 Type Library"),
+
+    // Set the name of the DLL to use to perform the document string lookup 
+    // (localization).
+    // DLLGetDocumentation will be called with the id specified in helpstringcontext
+    helpstringdll("figprj.dll") 
+]
+library FigPrjPKGLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+    cpp_quote("// CATID's for automation extension of browse objects")
+    [ uuid(54BC9446-D00F-4c23-BC69-EB5F9490DCA3)]
+    module FigPrjCATID
+    {
+        // Project browse object CATID.
+		// 0xd17069f2, 0xb83b, 0x4adb, 0x88, 0x4f, 0x55, 0x4d, 0x91, 0x2, 0xdb, 0xb8);
+		[helpstring("FigPrj Project browse object CATID")]
+        const LPSTR prjCATIDFigPrjProjectBrowseObject = "{D17069F2-B83B-4adb-884F-554D9102DBB8}";     
+        
+        // Project config browse object CATID.
+		// 0x8767559a, 0xecc5, 0x4b23, 0xbd, 0xfb, 0x7b, 0xc6, 0x21, 0x57, 0x29, 0x6d);
+		[helpstring("FigPrj Project config browse object CATID")]
+        const LPSTR prjCATIDFigPrjProjectConfigBrowseObject = "{8767559A-ECC5-4b23-BDFB-7BC62157296D}";
+        
+        // File browse object CATID.
+		// 0x72ed92f7, 0x9246, 0x4c1c, 0xb1, 0xc, 0x75, 0x72, 0x39, 0xed, 0xdf, 0x4e);
+		[helpstring("FigPrj File browse object CATID")]
+        const LPSTR prjCATIDFigPrjFileBrowseObject =  "{72ED92F7-9246-4c1c-B10C-757239EDDF4E}";                 
+    }
+
+
+	[
+		uuid(ACEF4EB2-57CF-11d2-96F4-000000000000),
+		helpstring("FigPrj Sample Project Package Class")
+	]
+	coclass FigPrjPackage
+	{
+		[default] interface IVsPackage;
+	};
+
+	[
+		//Re-guid
+        uuid(ACEF4EB3-57CF-11d2-96F4-000000000000), dual, object
+    ]
+    interface FigureSourceFile : IDispatch
+    {
+		[id(DISPID_VALUE), propget, HELP(FileName)]
+        HRESULT FileName([out, retval] BSTR *pVal);
+		[id(DISPID_VALUE), propput, nonbrowsable, HELP(FileName)]
+        HRESULT FileName([in] BSTR NewName);
+		
+        [id(DISPID_FigPrjSourceFile_FilePath), propget, HELP(FilePath)] 
+        HRESULT FilePath([out, retval] BSTR *pVal);
+
+		[id(DISPID_FigPrjSourceFile_ModifiedDate), propget, HELP(ModifiedDate)] 
+        HRESULT ModifiedDate([out, retval] VARIANT *pVal);
+
+		[id(DISPID_FigPrjSourceFile_Size), propget, HELP(Size)] 
+        HRESULT Size([out, retval] double *pVal);
+
+		[id(DISPID_FigPrjSourceFile_FileType), propget, HELP(FileType)] 
+        HRESULT FileType([out, retval] BSTR *pVal);
+
+		[id(DISPID_FigPrjSourceFile_ReadOnly), propget, HELP(ReadOnly)] 
+        HRESULT ReadOnly([out, retval] VARIANT_BOOL *pVal);
+		[id(DISPID_FigPrjSourceFile_ReadOnly), propput, HELP(ReadOnly)] 
+        HRESULT ReadOnly([in] VARIANT_BOOL Val);
+
+		[id(DISPID_FigPrjSourceFile_ExcludeFromBuild), propget, HELP(ExcludeFromBuild)] 
+        HRESULT ExcludeFromBuild([out, retval] VARIANT_BOOL *pVal);
+		[id(DISPID_FigPrjSourceFile_ExcludeFromBuild), propput, HELP(ExcludeFromBuild)] 
+        HRESULT ExcludeFromBuild([in] VARIANT_BOOL Val);
+	
+		[id(DISPID_FigPrjSourceFile_XOffset), propget, HELP(XOffset)] 
+        HRESULT XOffset([out, retval] BSTR *pXOffset);
+		[id(DISPID_FigPrjSourceFile_XOffset), propput, HELP(XOffset)] 
+        HRESULT XOffset([in] BSTR XOffset);
+
+		[id(DISPID_FigPrjSourceFile_YOffset), propget, HELP(YOffset)] 
+        HRESULT YOffset([out, retval] BSTR *pYOffset);
+		[id(DISPID_FigPrjSourceFile_YOffset), propput, HELP(YOffset)] 
+        HRESULT YOffset([in] BSTR YOffset);
+
+		[id(DISPID_FigPrjSourceFile_PenColor), propget, HELP(PenColor)] 
+        HRESULT PenColor( [out,retval] enum FigLineColor *pPenColor );
+		[id(DISPID_FigPrjSourceFile_PenColor), propput, HELP(PenColor)] 
+        HRESULT PenColor( [in] enum FigLineColor PenColor );
+
+        [id(DISPID_FigPrjSourceFile_Extender), propget, nonbrowsable, HELP(Extender), hidden]
+        HRESULT Extender([in] BSTR ExtenderName, [out, retval] IDispatch **Extender);
+
+        [id(DISPID_FigPrjSourceFile_ExtenderNames), propget, nonbrowsable, HELP(ExtenderNames), hidden] 
+        HRESULT ExtenderNames([out, retval] VARIANT *ExtenderNames);
+
+        [id(DISPID_FigPrjSourceFile_ExtenderCATID), propget, nonbrowsable, HELP(ExtenderCATID), hidden]
+        HRESULT ExtenderCATID ([out, retval] BSTR *pRetval);
+    };
+
+//Added
+
+	[
+		//Re-guid
+        uuid(5ACAB930-62DE-11d2-9700-006008EB6BF1), dual, object
+    ]
+    interface LangSourceFile : IDispatch
+    {
+		[id(DISPID_VALUE), propget, HELP(FileName)] 
+        HRESULT FileName([out, retval] BSTR *pVal);
+		[id(DISPID_VALUE), propput, nonbrowsable, HELP(FileName)] 
+        HRESULT FileName([in] BSTR NewName);
+		
+        [id(DISPID_FigPrjSourceFile_FilePath), propget, HELP(FilePath)] 
+        HRESULT FilePath([out, retval] BSTR *pVal);
+
+		[id(DISPID_FigPrjSourceFile_ModifiedDate), propget, HELP(ModifiedDate)] 
+        HRESULT ModifiedDate([out, retval] VARIANT *pVal);
+
+		[id(DISPID_FigPrjSourceFile_Size), propget, HELP(Size)] 
+        HRESULT Size([out, retval] double *pVal);
+
+		[id(DISPID_FigPrjSourceFile_FileType), propget, HELP(FileType)] 
+        HRESULT FileType([out, retval] BSTR *pVal);
+
+		[id(DISPID_FigPrjSourceFile_ReadOnly), propget, HELP(ReadOnly)] 
+        HRESULT ReadOnly([out, retval] VARIANT_BOOL *pVal);
+		[id(DISPID_FigPrjSourceFile_ReadOnly), propput, HELP(ReadOnly)] 
+        HRESULT ReadOnly([in] VARIANT_BOOL Val);
+
+		[id(DISPID_FigPrjSourceFile_ExcludeFromBuild), propget, HELP(ExcludeFromBuild)] 
+        HRESULT ExcludeFromBuild([out, retval] VARIANT_BOOL *pVal);
+		[id(DISPID_FigPrjSourceFile_ExcludeFromBuild), propput, HELP(ExcludeFromBuild)] 
+        HRESULT ExcludeFromBuild([in] VARIANT_BOOL Val);
+
+		[id(DISPID_FigPrjSourceFile_StartupItem), propget, HELP(StartupItem)] 
+        HRESULT StartupItem([out, retval] VARIANT_BOOL *pVal);
+		[id(DISPID_FigPrjSourceFile_StartupItem), propput, HELP(StartupItem)] 
+        HRESULT StartupItem([in] VARIANT_BOOL Val);
+
+        [id(DISPID_FigPrjSourceFile_Extender), propget, nonbrowsable, HELP(Extender), hidden]
+        HRESULT Extender([in] BSTR ExtenderName, [out, retval] IDispatch **Extender);
+
+        [id(DISPID_FigPrjSourceFile_ExtenderNames), propget, nonbrowsable, HELP(ExtenderNames), hidden] 
+        HRESULT ExtenderNames([out, retval] VARIANT *ExtenderNames);
+
+        [id(DISPID_FigPrjSourceFile_ExtenderCATID), propget, nonbrowsable, HELP(ExtenderCATID), hidden]
+        HRESULT ExtenderCATID ([out, retval] BSTR *pRetval);
+    };
+
+//End of new interface
+
+
+
+	[
+		//Re-guid
+        uuid(ACEF4EB5-57CF-11d2-96F4-000000000000), dual, object
+    ]
+    interface FigureProject : IDispatch
+    {
+		[id(MEMID_Name), propget, HELP(ProjectName)] 
+        HRESULT Name([out, retval] BSTR *pVal);
+		[id(MEMID_Name), propput, HELP(ProjectName)] 
+        HRESULT Name([in] BSTR NewName);
+
+		[id(FigPrjPROJPROPID_ProjectPath), propget, HELP(ProjectPath)] 
+		HRESULT ProjectPath([out, retval] BSTR *pVal);
+
+		[id(FigPrjPROJPROPID_IsDirty), propget, nonbrowsable, HELP(IsDirty)] 
+		HRESULT IsDirty([out, retval] VARIANT_BOOL *pVal);
+		[id(FigPrjPROJPROPID_IsDirty), propput, nonbrowsable, HELP(IsDirty)] 
+		HRESULT IsDirty([in] VARIANT_BOOL Val);		
+
+        [id(FigPrjPROJPROPID_Extender), propget, nonbrowsable, HELP(Extender), hidden]
+        HRESULT Extender([in] BSTR ExtenderName, [out, retval] IDispatch **Extender);
+
+        [id(FigPrjPROJPROPID_ExtenderNames), propget, nonbrowsable, HELP(ExtenderNames), hidden] 
+        HRESULT ExtenderNames([out, retval] VARIANT *ExtenderNames);
+
+        [id(FigPrjPROJPROPID_ExtenderCATID), propget, nonbrowsable, HELP(ExtenderCATID), hidden]
+        HRESULT ExtenderCATID ([out, retval] BSTR *pRetval);
+    };
+
+	[
+		//New COM object for a dialog
+		uuid(947E3320-63BA-11d2-9702-006008EB6BF1),
+		helpstring("OutputDirectoryPPG Class")
+	]
+	coclass OutputDirectoryPPG
+	{
+		interface IUnknown;
+	};
+
+	[
+		//Re-guid
+        uuid(ACEF4EB9-57CF-11d2-96F4-000000000000), dual, object
+    ]
+    interface FigureProjectCfg : IDispatch
+    {
+		[id(1), propget, HELP(OutputDirectory)] 
+        HRESULT OutputDirectory([out, retval] BSTR *pVal);
+		[id(1), propput, HELP(OutputDirectory)] 
+        HRESULT OutputDirectory([in] BSTR Val);
+    };
+};

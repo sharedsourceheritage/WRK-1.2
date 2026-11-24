@@ -1,0 +1,3 @@
+lservice:
+  remove the IServiceProvider iface and pass directly m_provider
+  instead of "this"

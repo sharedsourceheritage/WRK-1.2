@@ -1,0 +1,69 @@
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove Packages
+    {
+        %CLSID_Package% = s 'FigLgSvc Package for FigPkgs Sample'
+        {
+            val InprocServer32 = s '%MODULE%'
+
+            val CompanyName = s 'Microsoft'
+            val ProductName = s 'Figure Project Sample'
+            val ProductVersion  = s '7.1'
+            val MinEdition  = s 'professional'
+            val ID  = d '%IDS_PACKAGE_LOAD_KEY%'
+ 
+            SatelliteDll
+            {
+                val DllName = s '%RESOURCE_DLL%'
+                val Path = s '%RESOURCE_PATH%'
+            }
+        }
+    }
+    NoRemove Languages
+    {
+        NoRemove 'File Extensions'
+        {
+            '.fig' = s '%SID_SFigLgSvc%'
+            {
+                val Name = s 'FigLgSvc Package for FigPkgs Sample'
+            }
+        }
+        NoRemove 'Language Services'
+        {
+            'Figure' = s '%SID_SFigLgSvc%'
+            {
+                val LangResID = d 0
+                val Package = s '%CLSID_Package%'
+                val ShowCompletion = d 1
+                val ShowSmartIndent = d 0
+                val RequestStockColors = d 1
+
+                val ShowHotURLs = d 0
+                val 'Default to Non Hot URLs' = d 0
+                val DefaultToInsertSpaces = d 0
+                val ShowDropdownBarOption = d 0    
+                val 'Single Code Window Only' = d 0
+                val EnableAdvancedMembersOption = d 0
+                val 'Support CF_HTML' = d 0
+
+                'Debugger Languages'
+                {
+                }
+                EditorToolsOptions
+                {
+                }
+            }
+
+        }
+    }
+    NoRemove Services
+    {
+        '%SID_SFigLgSvc%' = s '%CLSID_Package%'
+        {
+            val Name = s 'SID_SFigLgSvc Language Service for FigPkgs Sample'
+        }
+    }
+    %REGROOTEND%
+}
+

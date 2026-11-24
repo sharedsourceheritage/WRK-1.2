@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>DevEnv WebBrowser Credits</title>
+<style>
+body
+{
+    margin: 0px;
+    background-color: white;
+    color: black;
+}
+.Credits
+{
+    width: 500px;
+    text-align: center;
+}
+.Section
+{
+    font-family: Verdana;
+    font-size: 16pt;
+    font-weight: bold;
+    color: #808080;
+}
+.SectionData
+{
+    font-family: Arial;
+    font-size: 16pt;
+    font-weight: bold;
+    color: #000000;
+    filter: DropShadow(enabled=1, color=#c0c0c0, offx=2, offy=2, positive=1);
+    height: 1;
+}
+.SolidLine
+{
+    height: 2px;
+    color: black;
+}
+</style>
+</head>
+<body scroll=no onload="beginSeq()">
+<img src="ABOUT_GIF">
+<br>
+<div class="Credits">
+ <hr class="SolidLine" noshade>
+ <div id="divDev" style="width: 100%; filter:revealTrans(duration=1.25,transition=12);" onfilterchange="stepSeq()">
+  <span class="Section">&nbsp;</span>
+ </div>
+ <span id="spanDev" dynamicanimation="spiral" style="position: relative; left: 10000" class="SectionData"> </span><br>
+ <hr class="SolidLine" noshade>
+</div>
+<script language="JavaScript">
+  animateElements = new Array();
+  speed = 0;
+  stepsSpiral = 116;
+  step = 0;
+  nDir = 1;
+
+  // begins our whole credit sequence
+  function beginSeq()
+  {
+    divDev.filters[0].Apply();
+    divDev.innerHTML = '<span class="Section">Designed and Developed by</span>';
+    divDev.filters[0].Play();
+  }
+
+  // begins animations once section headings dissolve in completely
+  function stepSeq()
+  {
+    if (window.event.srcElement.id == 'divDev')
+    {
+      dynAnimation('spanDev', false);
+    }
+  }
+
+  // called when an animation is complete
+  function onFinishAnim(strElemID)
+  {
+    if (strElemID == 'spanDev')
+    {
+    }
+  }
+
+  // sets up an animation for an element and starts the timer
+  function dynAnimation(strElem, fReverse)
+  {
+    // if we want to mirror the animation (fReverse = true), then we simply
+    // multiple both x and y coordinates with -1
+    nDir = fReverse ? -1 : 1;
+    step = 0;
+
+    var elem = document.all[strElem];
+    elem.style.posLeft = 10000-offsetLeft(elem)-elem.offsetWidth;
+    elem.style.posTop = document.body.scrollTop-offsetTop(elem)-elem.offsetHeight;
+    elem.initLeft = elem.style.posLeft;
+    elem.initTop = elem.style.posTop;
+    animateElements[0] = elem;
+    window.setTimeout("animate();", speed);
+  }
+  function offsetLeft(el)
+  {
+    x = el.offsetLeft;
+    for (e = el.offsetParent; e; e = e.offsetParent)
+      x += e.offsetLeft;
+    return x;
+  } 
+  function offsetTop(el)
+  {
+    y = el.offsetTop;
+    for (e = el.offsetParent; e; e = e.offsetParent)
+      y += e.offsetTop;
+    return y;
+  }
+
+  // out animation loop ... runs once per timer tick
+  function animate()
+  {
+    el = animateElements[0];
+
+    // next step in animation
+    step++;
+
+    // calculate how much of the animation is done
+    fraction = step/stepsSpiral;
+
+    // calculate the x and y radii of position the element needs to be
+    radiusFraction = 1.0 - fraction;
+    angle = fraction * 2.0*Math.PI;
+
+    // radii used to scale the position out
+    radiusX = Math.max(Math.abs(el.initLeft), 200);
+    radiusY = Math.max(Math.abs(el.initTop),  200);
+
+    // set the position ... its basically along an ellipse with the current angle and the radius
+    // multiplied by the actual radius to scale
+    el.style.posLeft = nDir * Math.ceil(-radiusFraction*Math.cos(angle)*radiusX);
+    el.style.posTop  = nDir * Math.ceil(-radiusFraction*Math.sin(angle)*radiusY);
+
+    if (step >= stepsSpiral) 
+    {
+      // done with this element
+      el.style.posLeft = 0;
+      el.style.posTop = 0;
+
+      // notify that animation is complete
+      onFinishAnim(el.id);
+    }
+    else
+    {
+      // hook on to timer for next step of animation
+      window.setTimeout("animate();", speed);
+    }
+  }
+</script>
+</body>
+</html>

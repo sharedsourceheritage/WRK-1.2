@@ -1,0 +1,80 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+// Package Command Bar Definition
+//
+
+#include "stdidcmd.h"
+#include "vsshlids.h"
+#include "msobtnid.h"
+#include "virtkeys.h"
+#include "PkgCmdID.h"
+#include "Resource.h"
+
+#define _CTC_GUIDS_
+#include "..\Guids.h"
+    // defines the following guid
+    // guidSlnExtPkg - CommandBar Package Guid
+    // guidSlnExtMenuGrp - CommandBar Command Group Guid
+    // guidSlnExtCmdSet - CommandBar Command Guid
+	// guidSlnExtCtxCmdSet - Context Menu Command Set
+
+
+CMDS_SECTION guidSlnExtPkg
+
+  MENUS_BEGIN
+	// main menu bar menus
+	// GUID:MENUID						PARENT GROUP								   PRI.		TYPE			BUTTONTEXT			MENUTEXT	TOOLTIPTEXT		COMMANDTEXT
+	guidSlnExtPkg:IDM_SLNNOTES,		    guidSlnExtMenuGrp:IDG_SLNNOTE_CTXT_SOLUTION,   0x1000,     ,            "Solution No&tes",	"Solution No&tes";
+
+	// context menus
+	// GUID:MENUID						PARENT GROUP								PRI.		TYPE			BUTTONTEXT			MENUTEXT			TOOLTIPTEXT		COMMANDTEXT
+	guidSlnExtPkg:IDMX_SLNNOTE_CTX		guidSlnExtPkg:0,							0x1000,		CONTEXT,		"SlnNoteCtxMenu",   "SlnNoteStxMenu";
+  MENUS_END
+
+  NEWGROUPS_BEGIN
+    // GUID:GROUPID							        PARENT MENU								PRIORITY	FLAG
+    
+    // our group in the solution context menu
+    guidSlnExtMenuGrp:IDG_SLNNOTE_CTXT_SOLUTION,	guidSHLMainMenu:IDM_VS_CTXT_SOLNNODE,	0x0750;
+	
+    guidSlnExtMenuGrp:IDG_SLNNOTES,				    guidSlnExtPkg:IDM_SLNNOTES,				0x1000;	
+	guidSlnExtMenuGrp:IDG_SLNNOTE_CTX,		        guidSlnExtPkg:IDMX_SLNNOTE_CTX,			0x1000;
+
+  NEWGROUPS_END
+
+  BUTTONS_BEGIN
+    // GUID:CMDID							GROUP ID									PRIORITY	ICON							TYPE		FLAGS														BUTTON TEXT			MENU TEXT	TOOLTIP TEXT	COMMAND NAME
+	guidSlnExtCmdSet:icmdAddNote,		  guidSlnExtMenuGrp:IDG_SLNNOTES,				0x0100,		guidOfficeIcon:msotcidNoIcon,	BUTTON,	    DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY,															"Add New &Solution Note";
+	guidSlnExtCmdSet:icmdViewNotes,		  guidSlnExtMenuGrp:IDG_SLNNOTES,				0x0200,		guidSlnExtMenuGrp:bmpidNote,	BUTTON,	     ,															"&View Solution Notes";
+	guidSlnExtCtxCmdSet:icmdDeleteNote,   guidSlnExtMenuGrp:IDG_SLNNOTE_CTX,			0x0000,     guidOfficeIcon:msotcidDelete,   BUTTON,		DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY,     "&Delete";
+	guidSlnExtCtxCmdSet:icmdRenameNote,   guidSlnExtMenuGrp:IDG_SLNNOTE_CTX,			0x0010,     guidOfficeIcon:msotcidNoIcon,   BUTTON,		DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY,		"&Rename";
+  BUTTONS_END
+
+    BITMAPS_BEGIN
+        // Bitmap                          Bitmap Index, Bitmap Index ...
+		guidSlnExtMenuGrp:IDB_NOTES			bmpidNote, bmpidIssue;
+	BITMAPS_END
+
+CMDS_END
+
+CMDPLACEMENT_SECTION
+    // Command                             Group                                Priority
+	guidSlnExtCmdSet:icmdViewNotes,		  guidSHLMainMenu:IDG_VS_WNDO_WINDOWS2,			0x0100;		
+	guidSlnExtCmdSet:icmdAddNote,		  guidSHLMainMenu:IDG_VS_PROJ_ADD,				0x0100;
+CMDPLACEMENT_END
+
+VISIBILITY_SECTION
+    // Command                             GUID when visible
+	guidSlnExtCmdSet:icmdAddNote,			UICONTEXT_EmptySolution;
+	guidSlnExtCmdSet:icmdAddNote,			UICONTEXT_SolutionHasMultipleProjects;
+	guidSlnExtCmdSet:icmdAddNote,			UICONTEXT_SolutionHasSingleProject;
+VISIBILITY_END
+
+KEYBINDINGS_SECTION
+    // Command                             when available   emulation    keystate
+KEYBINDINGS_END

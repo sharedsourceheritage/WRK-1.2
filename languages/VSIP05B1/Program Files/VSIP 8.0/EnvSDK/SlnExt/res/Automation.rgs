@@ -1,0 +1,43 @@
+
+HKLM
+{
+    %REGROOTBEGIN%
+
+    NoRemove CLSID
+    {
+        %CLSID_ExtenderProvider% = s 'SlnStaticExtenderProvider Class'
+        {
+            val InprocServer32 = s '%MODULE%'
+        }
+    }
+
+    NoRemove Extenders
+    {
+        NoRemove %CATIDSolutionBrowseObject%
+        {
+            %wszMyExtension% = s '%CLSID_ExtenderProvider%'
+            {
+            }
+        }
+        NoRemove %CATIDVBProjectBrowseObject%
+        {
+            %wszMyExtension% = s '%CLSID_ExtenderProvider%'
+            {
+            }
+        }
+        NoRemove %CATIDCSharpProjectBrowseObject%
+        {
+            %wszMyExtension% = s '%CLSID_ExtenderProvider%'
+            {
+            }
+        }
+        NoRemove %CATIDVCProjectBrowseObject%
+        {
+            %wszMyExtension% = s '%CLSID_ExtenderProvider%'
+            {
+            }
+        }
+    }
+
+    %REGROOTEND%
+}

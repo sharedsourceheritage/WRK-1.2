@@ -1,0 +1,36 @@
+function CreatePrimes( max )
+{
+        var mask   = new Array();
+        var primes = new Array();
+        var n      = 0;
+
+        //start with number 2
+        for (var i = 0x2; i <= max; i++)
+                if (!mask[i]) {
+                        primes[n++] = i;
+                        for (var j = i*i; j <= max; j += i)
+                                mask[j] = true;
+                }
+        return primes;
+}
+
+//TODO: add other orders too
+function NumericOrder(a, b) { return a - b; }
+
+print( "START \"now\" \u2003" );
+
+var a0 = CreatePrimes(100);
+var a1 = a0.concat().reverse();
+var a2 = a0.slice(0, a0.length/2);
+var a3 = a0.slice(a0.length/2);
+var a4 = a2.concat(a3);
+var a5 = a1.concat().sort();
+var a6 = a1.concat().sort(NumericOrder);
+
+print("INITIAL: ",         a0.join(" "));
+print("REVERSED: ",        a1.join(" "));
+print("LEFT: ",            a2.join(" "));
+print("RIGHT: ",           a3.join(" "));
+print("CONCATENATED: ",    a4.join(" "));
+print("ALPHABETIC SORT: ", a5.join(" "));
+print("NUMERIC SORT: ",    a6.join(" "));

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "478792",
+    "ThreadId": "223121",
+    "Html": "<p>Hi,  today, I noticed that I am unable to enter the project properties for all of my Spec# projects in VS 2008. If I select Project/Properties in the menu, nothing happens. If I right-click on the project in the side pane on the right and select Properties, an error message &quot;The action was not terminated&quot; appears. If I quit VS, a message window &quot;VS detected an error and must be terminated&quot; appears. Sometimes, VS starts again after quitting.  This happens with VS 2008 on Windows 7 and Spec# 2010-07-20.  BTW, does the VS plug-in also work with VS 2010?  Boris</p>",
+    "PostedDate": "2010-08-10T13:21:59.57-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "482453",
+    "ThreadId": "223121",
+    "Html": "hi,\r\n\r\n I experienced something similar as you have stated, but i did not do anything with properties... Didn't think that this could be an issue with the latest SpecSharp plugin in VS 2008. \r\n\r\nBut i am also getting an exception after i installed the latest version of Specsharp (Spec# 2010-07-20). \r\n\r\nError 6 Plugin type 'Microsoft.Boogie.BoogiePluginVisitor' threw exception 'Method not found: 'Microsoft.Boogie.TranslatedProgram Microsoft.Boogie.CilTranslator.TranslateAstToBoogie(System.Compiler.CompilationUnit, System.Compiler.Analyzer, System.Compiler.ErrorHandler)'.'.\\nStack:    at Microsoft.Boogie.BoogiePluginVisitor.VisitCompilationUnit(CompilationUnit unit)   at System.Compiler.StandardVisitor.VisitCompilationUnitSnippet(CompilationUnitSnippet snippet) in C:\\specsharp\\SpecSharp\\System.Compiler\\StandardVisitor.cs:line 849   at System.Compiler.StandardVisitor.Visit(Node node) in C:\\specsharp\\SpecSharp\\System.Compiler\\StandardVisitor.cs:line 167   at Microsoft.SpecSharp.SpecSharpCompilation.RunPlugins(Node node, ErrorHandler errorHandler) in C:\\specsharp\\SpecSharp\\Microsoft.SpecSharp\\Compiler.cs:line 150 C:\\Documents and Settings\\My Documents\\Visual Studio 2008\\Projects\\XMLSpecProj\\XMLSpecProj\\....\r\n\r\nAny Idea?? \r\n\r\nWonder if anyone else has encountered the same problem. I have looked into the Specsharp code as well .. it is some plugin issue but i do have boogie within the specsharp installer.. \r\n\r\n",
+    "PostedDate": "2010-08-19T12:31:20.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "486477",
+    "ThreadId": "223121",
+    "Html": "<p>Another problem that was already present in the previous release of Spec# is that it takes about 5 seconds from clicking on &quot;build&quot; until the menu pops up.</p>\r\n<p>Boris</p>",
+    "PostedDate": "2010-08-30T09:12:12.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487893",
+    "ThreadId": "223121",
+    "Html": "<p>We have also noticed the long delay when clicking on the Build menu, but I have no idea what&nbsp;causes it.&nbsp; I have not been able to reproduce the first problem you report.&nbsp; If someone understands what goes into the Properties pane implementation and would like to look into it, I would welcome it.</p>\r\n<p>&nbsp; Rustan</p>",
+    "PostedDate": "2010-09-01T15:40:05.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

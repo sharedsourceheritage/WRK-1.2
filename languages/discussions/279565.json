@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "698636",
+    "ThreadId": "279565",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>When the static verification in Spec# is enough and when the compiler will emits run-time checks for contracts already passed the static&nbsp;verification?</p>\r\n<p>I still did not get an answer for my previous question about a compiler internal error, although I posted the code.</p>\r\n<p>Thanks,</p>\r\n<p>Adnan</p>\r\n",
+    "PostedDate": "2011-11-15T13:21:14.443-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699398",
+    "ThreadId": "279565",
+    "Html": "<p>Hi,</p>\r\n<p>are you asking if the runtime checks are only emitted for assertions that didn't pass the verification? If so, the answer is no. However, the idea of removing some of the runtime checks, if the corresponding assertions were verified, seems interesting.</p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2011-11-17T00:35:13.113-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699651",
+    "ThreadId": "279565",
+    "Html": "<p>Hi,</p>\r\n<p>The Spec# tutorial document saying that static verification proves that the implementation will not&nbsp;violate&nbsp;the assertions.&nbsp;Although&nbsp;I understand that there will be some assertions will still need run-time check for obvious reasons but I&nbsp;thought&nbsp;that for example assertions that already have all their data inside the implementation will not produce run-time checks; Or assertions that has been proved by deduction that there is no way to violate them if &nbsp;some preconditions hold.&nbsp;</p>\r\n<p>Now my question is:&nbsp;If a peice of a code is verified under the assumption that some conditions and constraints hold when this peice of code started, in this case provided that it is guaranteed that those conditions and constraints hold, can I rely only on the static verification of spec# and avoid the run-time checks ?</p>\r\n<p>Thanks,</p>\r\n<p>Adnan</p>",
+    "PostedDate": "2011-11-17T08:38:40.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "700109",
+    "ThreadId": "279565",
+    "Html": "<p>Hi Adnan,</p>\r\n<p>generally static verification can't fully replace testing or runtime checking. Static verification for general-purpose programming languages usually does not check for every possible error (e.g., stack overflow, arithmetic overflows). Therefore you cannot rely on static verification exclusively. However, it might be desirable to remove certain runtime checks if you can guarantee that they can never be violated. Currently Spec# doesn't do this.</p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2011-11-18T03:29:04.783-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

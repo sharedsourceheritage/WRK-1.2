@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "482021",
+    "ThreadId": "224005",
+    "Html": "<p>Hi</p>\r\n<p>I installed the latest version of Spec Sharp binaries and got the following error.&nbsp;</p>\r\n<p>Error<span> </span>6<span> </span>Plugin type 'Microsoft.Boogie.BoogiePluginVisitor' threw exception '<strong>Method not found: 'Microsoft.Boogie.TranslatedProgram</strong> Microsoft.Boogie.CilTranslator.TranslateAstToBoogie(System.Compiler.CompilationUnit, System.Compiler.Analyzer, System.Compiler.ErrorHandler)'.'.\\nStack: &nbsp; &nbsp;at Microsoft.Boogie.BoogiePluginVisitor.VisitCompilationUnit(CompilationUnit unit)&nbsp;&nbsp; at System.Compiler.StandardVisitor.VisitCompilationUnitSnippet(CompilationUnitSnippet snippet) in C:\\specsharp\\SpecSharp\\System.Compiler\\StandardVisitor.cs:line 849&nbsp;&nbsp; at System.Compiler.StandardVisitor.Visit(Node node) in C:\\specsharp\\SpecSharp\\System.Compiler\\StandardVisitor.cs:line 167&nbsp;&nbsp; at Microsoft.SpecSharp.SpecSharpCompilation.RunPlugins(Node node, ErrorHandler errorHandler) in C:\\specsharp\\SpecSharp\\Microsoft.SpecSharp\\Compiler.cs:line 150<span> </span>C:\\Documents and Settings\\My Documents\\Visual Studio 2008\\Projects\\XMLSpecProj\\XMLSpecProj\\Transaction.ssc<span> </span>1<span> </span>1<span> </span>XMLSpecProj</p>\r\n<p>&nbsp;</p>\r\n<p>I am sort of hitting the wall now, because, i reinstalled my Visual Studio 2008, got latest Z3 verifier, got the latest version of SpecSharp .. registered the .dll's successfully .. but still getting the same error.&nbsp;</p>\r\n<p>Does anyone have any Idea about this error? I am not able to proceed at all as this isn't working. My project is not even compiling any more. It does not look like some kind of a logical error.</p>\r\n<p>PLEASE HELP!</p>\r\n<p>Thanks in advance..&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-08-18T12:56:47.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "482904",
+    "ThreadId": "224005",
+    "Html": "<p>Is it that the following code in &nbsp;Compiler class</p>\r\n<p><span style=\"white-space:pre\"> </span>&nbsp;pluginVisitor.Visit(node);&nbsp;</p>\r\n<p>is failing to find the boogie plugin?&nbsp;</p>\r\n<p>Should i work with the Source Code instead of binaries? Would that solve the plugin exception i am running into ?&nbsp;</p>\r\n<p>I also tried the same thing (download and register latest specsharp binaries) on another machine afresh. But encountered the same problem. Is there any workaround?</p>\r\n<p>Thanks</p>\r\n<p>Ruchi</p>",
+    "PostedDate": "2010-08-20T11:52:15.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "482982",
+    "ThreadId": "224005",
+    "Html": "<p>Ok .. So i have resolved the issue stated above</p>\r\n<p>Apparently, there are two downloads, i downloaded the july load, which throws the plugin&nbsp;exception. However, the August 5 version resolved the problem.</p>\r\n<p>&nbsp;</p>\r\n<table cellspacing=0 cellpadding=0 width=\"100%\">\r\n<tbody>\r\n<tr>\r\n<td><a id=ReleaseLinkStable1 title=1.0.21125.0 href=\"http://specsharp.codeplex.com/releases/view/31172\">1.0.21125.0</a>&nbsp;-&nbsp;<span id=releaseListReleaseDateStable1>Aug 5 2009</span>, Stable</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p>THANKS!!</p>",
+    "PostedDate": "2010-08-20T19:03:54.203-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

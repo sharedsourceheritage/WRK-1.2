@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "467201",
+    "ThreadId": "219410",
+    "Html": "Hello,\r\n\r\nin the following code, Spec# complains that &quot;A.a&quot; is inaccesible du to its protection level. I can get rid of this error message by declaring &quot;a&quot; public. I feel that a contract of a method should have acces to a private member. What is wrong?\r\n\r\nusing System;\r\n\r\nusing Microsoft.Contracts;\r\n\r\n\r\n\r\n\r\nclass A \r\n\r\n{\r\n\r\n\tint a;\r\n\r\n\tinvariant 0 &lt;= a;\r\n\r\n\r\n\r\n\r\n\tpublic void foo(int k)\r\n\r\n\trequires 0 &lt;= k &lt;= a;\r\n\r\n\t{\r\n\r\n\t\ta -= k;\r\n\r\n\t}\r\n\r\n\r\n\r\n}\r\n\r\nRegards,\r\nBoris",
+    "PostedDate": "2010-07-14T04:51:08.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "467401",
+    "ThreadId": "219410",
+    "Html": "Ok, after having advanced to section 7 of the tutorial, I understand why this doesn't work. However, the error message could be improved to eg &quot;Access to private members is not allowed in precondition of public method. Use a public getter method instead.&quot; Users may be tempted to just change the protection level from private to public.",
+    "PostedDate": "2010-07-14T11:40:55.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "467639",
+    "ThreadId": "219410",
+    "Html": "<p>Just include</p>\r\n<p>using Microsoft.Contracts;</p>\r\n<p>at the start of your file.</p>\r\n<p>Then prepend your int declaration like this:</p>\r\n<p>[SpecPublic]int a;</p>\r\n<p>I think this basically makes your variable publically visibile to the specification tools while not altering its actual privacy level in C#.</p>\r\n<p>There's one or two other issues in your code though.</p>\r\n<p>S</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-07-15T02:06:44.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "598792",
+    "ThreadId": "254272",
+    "Html": "\r\n<p>When verifying the following code, I am getting different answers with different versions of Z3, which really puzzles me.</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">public</span> <span style=\"color:blue\">class</span> Program {\r\n  <span style=\"color:blue\">static</span> <span style=\"color:blue\">void</span> Main(<span style=\"color:blue\">string</span>![]! args)\r\n    ensures <span style=\"color:blue\">false</span>;\r\n  {\r\n    Console.WriteLine(<span style=\"color:#a31515\">&quot;Spec# says hello!&quot;</span>);\r\n  }\r\n}\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>I am expecting to get an error about an unsatisfied postcondition. With Z3 versions 2.9, 2.13, 2.15, and 2.16 I get &quot;unsatisfied postcondition: false&quot;, as expected.</p>\r\n<p>With Z3 version 2.17 and 2.18, I get &quot;verification inconclusive&quot;, which is a bit unsatisfactory.</p>\r\n<p>With Z3 version 2.19, I get no error at all, so this verifier seems to think 'false' can be a correct postcondition?</p>\r\n<p>I am using the 2011-04-17 nightly build of sscboogie, registered in VS 2010. Each time I install a new version of Z3, I first remove all others. I have set RunProgramVerifier and RunProgramVerifierWhileEditing to true. I also get an error with no version\r\n of Z3 installed, as expected.</p>\r\n<p>What is the right version of Z3 to use with Spec#? Any hint would be appreciated ...</p>\r\n",
+    "PostedDate": "2011-04-17T17:41:39.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "598805",
+    "ThreadId": "254272",
+    "Html": "<p>See <a href=\"http://boogie.codeplex.com/discussions/251963\">http://boogie.codeplex.com/discussions/251963</a>.&nbsp; Use Z3 version 2.15.</p>",
+    "PostedDate": "2011-04-17T18:57:18.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "715810",
+    "ThreadId": "283830",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I'm developing a project in Spec# and I got the warning:</p>\r\n<p><span style=\"white-space:pre\"></span>Warning<span> </span>1<span> </span>method invocation may violate the modifies clause of the enclosing method<span>&nbsp;</span></p>\r\n<p>I have this class structure:</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">public</span> <span style=\"color:blue\">bool</span> createNewTask(TeamDevelop teamDevelop, <span style=\"color:blue\">string</span> description, <span style=\"color:blue\">int</span> startingDate, <span style=\"color:blue\">int</span> endDate)\r\n\t\t\t\r\n\t\t\trequires startingDate&lt;=endDate;\r\n\t\t{\r\n\t\t\t<span style=\"color:blue\">bool</span> result = <span style=\"color:blue\">false</span>;\r\n\r\n\t\t\t<span style=\"color:blue\">if</span>(<span style=\"color:blue\">this</span>.isManager()){\r\n\t\t\t\t<span style=\"color:blue\">if</span>(datesAreValid(teamDevelop.project,startingDate,endDate)){\r\n\t\t\t\t\t<span style=\"color:blue\">if</span>(checkTeamDevelopAvailability(teamDevelop)){\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\tTask t = <span style=\"text-decoration:underline\"><span style=\"color:blue\">new</span> Task(teamDevelop,description,startingDate,endDate);</span>\r\n\t\t\t\t\t\t\tteamDevelop.tasks.Add(t);\r\n\t\t\t\t\t\t\tresult  = <span style=\"color:blue\">true</span>;\r\n\t\t\t\t\t\t\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t\t}\r\n\t\t\t<span style=\"color:blue\">return</span> result;\r\n\t\t}\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>And in the class Task I have:</p>\r\n<p>&nbsp;</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">public</span> <span style=\"color:blue\">class</span> Task {\r\n\r\n\t\t...\r\n        [Peer] <span style=\"color:blue\">public</span> TeamDevelop developer;\r\n\t\t\r\n\tinvariant <span style=\"color:blue\">this</span>.startingDate &lt;= <span style=\"color:blue\">this</span>.endDate;\r\n\r\n        <span style=\"color:blue\">public</span> Task([Captured]TeamDevelop t ,<span style=\"color:blue\">string</span> desc , <span style=\"color:blue\">int</span> sdate , <span style=\"color:blue\">int</span> edate)\r\n\t\t\trequires sdate &lt;= edate;\r\n        {\r\n\t\t\tassert sdate&lt;= edate;\r\n\r\n\t\t\t<span style=\"color:blue\">this</span>.description = desc;\r\n\t\t\t<span style=\"color:blue\">this</span>.startingDate = sdate;\r\n\t\t\t<span style=\"color:blue\">this</span>.endDate = edate;\r\n\t\t\t<span style=\"color:blue\">this</span>.developer = t;\r\n\t\t\t<span style=\"color:blue\">this</span>.isClose = <span style=\"color:blue\">false</span>;\r\n\t\t\t<span style=\"color:blue\">this</span>.isOpen = <span style=\"color:blue\">false</span>;\r\n\t\t\t<span style=\"color:blue\">this</span>.isWaitingForAcceptance = <span style=\"color:blue\">false</span>;\r\n        }\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>The warning is on the underlined line. What can I be doing wrong to get that error?</p>\r\n<p>&nbsp;</p>\r\n<p>Best Regards,</p>\r\n<p>mbalves</p>\r\n",
+    "PostedDate": "2011-12-21T16:16:43.917-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "715814",
+    "ThreadId": "283830",
+    "Html": "<p>I suspect it's because Task captures t, which means it will change the owner of t.&nbsp; But the caller does not have the right to change the caller of teamDevelop.&nbsp; I didn't try it, but I'm guessing the error will go away if you mark createNewTask's teamDevelop with [Captured] as well.</p>\r\n<p>&nbsp; Rustan</p>",
+    "PostedDate": "2011-12-21T16:40:07.303-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "715819",
+    "ThreadId": "283830",
+    "Html": "<p>Thanks for the reply. I tried to mark teamDevelop with Captured and the warning is now on :</p>\r\n<p>&nbsp;</p>\r\n<p>\r\n<pre>teamDevelop.tasks.Add(t);</pre>\r\n<pre><br /></pre>\r\n</p>\r\n<pre>I got now two warning in that line.</pre>\r\n<pre>- Call of System.Collections.Generic.ICollection&lt;Task!&gt;.Add(Task! item), unsatisfied precondition: !this.IsReadOnly</pre>\r\n<pre>- method invocation may violate the modifies clause of the enclosing method<span> </span></pre>\r\n<div></div>\r\n<div><span>Do you know why?</span></div>\r\n<div></div>\r\n<div><span>Best Regards,</span></div>\r\n<div>Miguel Alves</div>\r\n<p>\r\n<pre><br /></pre>\r\n</p>",
+    "PostedDate": "2011-12-21T16:51:19.997-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "715821",
+    "ThreadId": "283830",
+    "Html": "<p>I think these warnings are just what you'd expect.</p>\r\n<p>The first warning simply means that it is not known whether or not teamDevelop.tasks is readonly (and you're not allowed to invoke Add on a readonly collection).&nbsp; I don't know how you would like to ensure that teamDevelop.tasks is not readonly.&nbsp; One possibility would be to add it as a precondition of createNewTask, but it may be better to try to add something to the object invariant of TeamDevelop.</p>\r\n<p>The second warning simply means that the effect of Add is not allowed in createNewTask.&nbsp; One possible way to resolve this is to add teamDevelop.tasks to the modifies clause of createNewTask (I'm assuming \"tasks\" is probably&nbsp;declared with&nbsp;[Peer]).</p>\r\n<p>For your application, I can't determine if the suggestions I made here are the design decisions you want, so you may need to give it some thought or experiment a bit until you figure out what design you want.</p>\r\n<p>By the way, the Task constructor puts the \"t\" parameter into the \"developer\" field, which is declared with [Peer].&nbsp; An alternative to declaring \"t\" with [Captured], you may want to consider declaring the Task being constructed as [Captured].&nbsp; I think (hope) there is a section in the Spec# Tutorial that explains how to do this and the pros and cons.</p>\r\n<p>&nbsp; Rustan</p>",
+    "PostedDate": "2011-12-21T17:04:40.367-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

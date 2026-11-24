@@ -1,0 +1,51 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-12-03T09:09:59.313-08:00",
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "SpecSharp version 2011-10-03\r\nVisual Studio 2010 Professional\r\n\r\nOn attach SpecSharp says \"internal error: 2 typechecking errors detected\" on \"using System;\"",
+    "LastUpdatedDate": "2011-12-03T09:09:59.313-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "specsharp",
+    "ReportedDate": "2011-10-25T06:14:33.423-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "internal error: 2 typechecking errors detected",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10111
+  },
+  "FileAttachments": [
+    {
+      "FileId": 296512,
+      "FileName": "S.ssc",
+      "DownloadUrl": ".\\296512"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This has been fixed in change set b797fa8ecf66.",
+      "PostedDate": "2011-11-24T08:14:29.28-08:00",
+      "Id": 49490
+    }
+  ]
+}

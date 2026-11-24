@@ -1,0 +1,50 @@
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove Packages
+    {
+        {D5CCCF20-A7F6-4569-AA9E-845ED57FBB74} = s 'RDTView Package'
+        {
+            val InprocServer32 = s '%MODULE%'
+
+            val CompanyName = s 'microsoft vsenv qa'
+            val ProductName = s 'running document table viewer package'
+            val ProductVersion  = s '7.1'
+            val MinEdition  = s 'standard'
+            val ID  = d '%IDS_PACKAGE_LOAD_KEY%' 
+
+            SatelliteDll
+            {
+                val DllName = s '%RESOURCE_DLL%'
+                val Path = s '%RESOURCE_PATH%'
+            }
+        }
+    }
+    NoRemove Menus
+    {
+        val {D5CCCF20-A7F6-4569-AA9E-845ED57FBB74} = s ', 1000, 1'
+    }
+    NoRemove ToolWindows
+    {
+        {C1AE19B0-8DC9-47db-9D18-9EB1887570E3} = s '{D5CCCF20-A7F6-4569-AA9E-845ED57FBB74}'
+        {
+            val Name = s 'RDT Viewer'
+            val Float = s '200,200,700,300'
+            val Orientation = s 'Left'
+            val Style = s 'Float'
+        }
+    }
+    NoRemove InstalledProducts
+    {
+        'RDTViewer' = s #%IDS_OFFICIALNAME%
+        {
+            val Package = s '{D5CCCF20-A7F6-4569-AA9E-845ED57FBB74}'
+            val ProductDetails = s #%IDS_PRODUCTDETAILS%
+            val LogoID = s '#0'
+            val PID = s '7.1'
+            val UseInterface = d '0'
+        }
+    }
+
+    %REGROOTEND%
+}

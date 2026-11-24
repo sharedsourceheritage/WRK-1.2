@@ -1,0 +1,19 @@
+/*
+int square( int x )
+{
+  return x*x;
+}
+*/
+int mult( int a, int b )
+{
+  return a*b;
+}
+
+void test( int p, int q )
+{
+  int a;
+  {
+    {int b;
+    b = a;}
+  }
+}

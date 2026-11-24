@@ -1,0 +1,98 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//Microsoft Confidential
+//Copyright 1996-1997 Microsoft Corporation.  All Rights Reserved.
+//
+//File: pkg.ctc
+//
+//Contents:
+//////////////////////////////////////////////////////////////////////////////
+
+#if _MSC_VER > 1000
+//#pragma once
+#endif  /* _MSC_VER > 1000 */
+
+#ifndef PKG_CTC
+#define PKG_CTC
+
+#include "stdidcmd.h"	    // Shell specified commands
+#include "vsshlids.h"	    // Shell specified groups/guids
+#include "msobtnid.h"	    // Shell specified commands
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+#include "pkgicmd.h"
+
+// This value must match CLSID_MyPackage defined in '<project>id.h'
+#define guidMyPkg { 0xa376b661, 0xdbab, 0x4b35, { 0xba, 0xfe, 0xd7, 0x9f, 0x92, 0x48, 0x9d, 0xe9 } }
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Within the project we are using the standard context menus defined in
+// src\appid\inc\SharedCmdPlace.ctc. Please examine that file for full
+// details. 
+// Note that it is allowable to add package specific menus, groups 
+// or commands to existing standard groups. Any such package specific
+// menu data will appear in the sections below.
+//
+//////////////////////////////////////////////////////////////////////////////
+CMDS_SECTION guidMyPkg
+  MENUS_BEGIN
+    // GUID:MENUID								PARENT GROUP		PRIORITY	TYPE		BUTTONTEXT			MENUTEXT		    TOOLTIPTEXT	      COMMANDTEXT
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------			
+  MENUS_END
+
+  NEWGROUPS_BEGIN
+    // GUID:GROUPID							PARENT MENU								PRIORITY  FLAG
+    //-------------------------------------------------------------------------------------------
+  NEWGROUPS_END	
+
+  BUTTONS_BEGIN
+   // GUID:CMDID							PARENT MENU								PRIORITY	ICON							TYPE	FLAGS	BUTTON TEXT
+   //-------------------------------------------------------------------------------------------
+  BUTTONS_END
+CMDS_END
+
+//////////////////////////////////////////////////////////////////////////////
+// CMDPLACEMENT_SECTION
+// 
+// This sections defines where the commands will be placed if not just in 
+// their primary groups.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+CMDPLACEMENT_SECTION
+   // GUID:GROUPID									PARENT MENU								PRIORITY 
+   //-----------------------------------------------------------------------------------------------
+
+CMDPLACEMENT_END
+
+
+//////////////////////////////////////////////////////////////////////////////
+// KEYBINDINGS_SECTION
+// 
+// This sections defines the keystroke mappings for the commands.
+//
+// The Keystate field is done using the following:
+//    A = Alt, S = Shift, C = Control, W = Windows Key
+//
+// Example of the Keystate assignment, if you want a two key combination
+// of Ctrl-X, Ctrl-Shift-C then the syntax would be :
+//
+//	'x':C:'c':CS
+//
+//////////////////////////////////////////////////////////////////////////////
+
+KEYBINDINGS_SECTION
+  // GUID:CMDID				    EDITORGUID		      EMULATIONGUID		KEYSTATE
+  
+
+KEYBINDINGS_END
+
+
+#endif // PKG_CTC

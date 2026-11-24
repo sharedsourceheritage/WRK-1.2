@@ -1,0 +1,122 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// Parse.idl : IDL source for Parse.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Parse.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+
+    enum FigLineType 
+    {
+		FigArrow = 0,
+		FigCircle,
+		FigRectangle,
+		FigComment,
+		FigInvalid
+	};
+
+cpp_quote("// structs for FigParse interface methods")
+cpp_quote("// enumerate the types of tokens")
+typedef enum
+	{
+	eUnknown = 1,
+	eError,				
+	eCommand,				
+	eType,				
+	eParameter,				
+	eComment,				
+	}	FIGTYPE;
+
+cpp_quote("// a token to be marked")
+typedef struct  tagFIGMARK
+    {
+	FIGTYPE	eTokenType;
+    ULONG	nStart;
+    ULONG	nEnd;
+    }	FIGMARK;
+
+typedef struct tagFIGMARK *LPFIGMARK;
+
+cpp_quote("#define FIG_PARAM_MIN 0")
+cpp_quote("#define FIG_PARAM_MAX 1000")
+
+cpp_quote("// FigParse interface to parse our Figure language")
+	[
+		uuid(43952C4E-5B9E-11D1-AF50-006097DF568C),
+		helpstring("IFigParse Interface for FigPkgs Sample"),
+		pointer_default(unique)
+	]
+	interface IFigParse : IUnknown
+	{
+cpp_quote("// Line() method:")
+cpp_quote("// LPOLESTR szLine      : line to parse (wide char string)")
+cpp_quote("// long* pcnMarks       : [in] max number of mark structs, [out] number of marks found")
+cpp_quote("// LPFIGMARK* prgMarks  : array of mark structs")
+cpp_quote("// BSTR* bstrError      : possible error, SysFreeString if not null")
+
+		HRESULT Line(
+			[in] LPOLESTR szLine,
+			[in, out] long* pcnMarks, 
+			[in, out, size_is(,*pcnMarks)] LPFIGMARK* prgMarks,
+			[out] BSTR*	bstrError );
+
+cpp_quote("// ParseLine() method:")
+cpp_quote("//	The method parses a line of text from the text buffer")
+cpp_quote("// [in]  IVsTextLines* pIVsTextLines : specify the text buffer")
+cpp_quote("// [in]  long nLine					: specify the line number")
+cpp_quote("// [out] enum FigLineType * pType	: return the type (FigInvalid, FigComment,FigArrow, etc.")
+cpp_quote("// [out] long *pP1					: return parameter 1 if any")
+cpp_quote("// [out] long *pP2					: return parameter 2 if any")
+cpp_quote("// [out] long *pP3					: return parameter 3 if any")
+cpp_quote("// [out] long *pP4					: return parameter 4 if any")
+cpp_quote("// [out] BSTR *pbstrComment			: in case of FigInvalid, return the error")
+cpp_quote("//									: in case of FigComment, return the comment")
+        HRESULT ParseLine(
+            [in]  IVsTextLines* pIVsTextLines, 
+            [in]  long nLine, 
+            [out] enum FigLineType * pType, 
+            [out] long *pP1, 
+            [out] long *pP2, 
+            [out] long *pP3, 
+            [out] long *pP4, 
+            [out] BSTR *pbstrComment);
+	};
+
+
+cpp_quote("// type library")
+[
+	uuid(43952C41-5B9E-11D1-AF50-006097DF568C),
+	version(1.0),
+	helpstring("Parse 1.0 Type Library for FigPkgs Sample")
+]
+library PARSELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(3B77B4BF-5AFF-11D1-AF4E-006097DF568C),
+		helpstring("FigParse Class")
+	]
+	coclass FigParse
+	{
+		[default] interface IFigParse;
+	};
+};

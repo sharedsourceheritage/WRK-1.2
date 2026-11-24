@@ -1,0 +1,259 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "1000  CTMENU       ""pkg.cto""\r\n"
+    "#define VER_FILEDESCRIPTION_STR ""FigPrj Package Resources\\0""\r\n"
+    "#define VER_INTERNALNAME_STR ""FigPrjUI.dll\\0""\r\n"
+    "#define VER_ORIGINALFILENAME_STR ""FigPrjUI.dll\\0""\r\n"
+    "#include ""EnvSdkVersion.ver""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PP_OUTPUT DIALOG  0, 0, 234, 140
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Output Directory",IDC_STATIC,7,4,220,131
+    EDITTEXT        IDC_OUTPUTDIR,18,17,201,14,ES_AUTOHSCROLL
+END
+
+IDD_APPLYTOALL DIALOG  0, 0, 263, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "&Yes",IDYES,45,98,61,14
+    PUSHBUTTON      "Cancel",IDCANCEL,195,98,61,14
+    DEFPUSHBUTTON   "&No",IDNO,111,98,61,14
+    CONTROL         "&Apply to all items",IDC_CHK_APPLYTOALL,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,55,249,10
+    LTEXT           "<Message text goes here>",IDC_MSGTEXT,52,7,204,45
+    ICON            32515,IDC_STATIC,7,7,21,20
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_PP_OUTPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 227
+        TOPMARGIN, 4
+    END
+
+    IDD_APPLYTOALL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 256
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 112
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_HELPABOUT           ICON                    "..\\figedit\\figicon.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_SPLASHSCREEN        BITMAP                  "..\\figprj\\res\\splash.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_PROJ_OPEN_WAIT      "Creating a project..."
+    IDS_PROJECT_TYPE        "FigPrj Project"
+    IDS_DISPLAY_PROJ_FILE_EXT "FigPrj Project Files (*.figp);*.figp"
+    IDS_OPENFILES_FILTER    "Common FigPrj Files (*.txt, *.html, *.htm, *.gif, *.jpg, *.bmp);*.txt, *.html, *.htm, *.gif, *.jpg, *.bmp, *.fig"
+    IDS_FINDFILES_FILTER    "Common FigPrj Files (*.txt, *.html, *.htm);*.txt, *.html, *.htm, *.fig"
+    IDS_ADDITEM_TEMPLATES_ENTRY "Figures Project Items"
+    IDS_NEWPROJ_TEMPLATES_ENTRY "Figures Projects"
+    IDS_FILENODE_TYPE       "File"
+    IDS_E_INVCHARSINNAME    "File or folder names cannot contain any of the following characters:\n               \\  /  :  *  ?   """" <  > | "
+    IDS_INVALIDFILENAME     "Invalid file name - '%1'"
+    IDS_CONFIRMREPLACE      "File '%1' already exists. Do you want to overwrite?"
+    IDS_E_COPY_FAILED       "Could not copy file '%1' to project. %2"
+    IDS_FILEALREADYEXISTS   "File '%1' is already a member of the project"
+    IDS_E_AUTO_NOPROJECTS   "Projects collection unavailable."
+    IDS_E_AUTO_NOPROJECTITEMS "ProjectItems collection unavailable."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_PROJNODE_TYPE       "Project"
+    IDS_CONFIRMREPLACE_CAPTION "Confirm Replace"
+    IDS_REMOVEFILE          "Remove %1"
+    IDS_E_AUTO_NOPROJECT    "Project object unavailable."
+    IDS_E_AUTO_NOPROJECTITEM "ProjectItem object unavailable."
+    IDS_MULTISELECT         "Multiple Selection"
+    IDS_CUSTOM_PAGE         "Custom"
+    IDS_OUTPUTDIRECTORY_PAGE "Output Directory"
+    IDS_FILE                "File"
+    IDS_SPACEFILE           "%1 file"
+    IDS_UNSUPPORTEDFILETYPE "File '%1' is not valid. Only '.fig' and '.cs' files are supported."
+    IDS_NYI                 "Not Yet Implemented"
+    IDS_SHOW_FIGFILESONLY   "Show .Fig files only."
+    IDS_SHOW_ALLFILES       "Show all files."
+    IDS_E_NEEDTOENTERFILENAME "You must type a file name."
+    IDS_E_NOLEADINGPERIOD   "File names cannot contain a leading period."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_E_AUTO_NOFIGPROJECT "FigProject object unavailable."
+    IDS_E_RENAMINGITEM      "Cannot rename '%1'."
+    IDS_E_PATHNOTINPRJ      "The project file can only be saved into the project location."
+    IDS_E_PROJECTLOADFAILED "Project failed to load. Default settings will be used to create the project."
+    IDS_E_AUTO_NOFIGFILE    "FigFile object unavailable."
+    IDS_RENAMEFILEALREADYEXISTS "File '%1' already exists."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_OFFICIALNAME        "Figures Product Sample"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_PRODUCTID           "8.0"
+    IDS_PRODUCTDETAILS      "Figures Product Sample. For more information about Figures, see the Microsoft website at <http://www.microsoft.com>. For customer support call 1-800-xxx-xxxx. Figures Copyright 2000 Microsoft Corporation."
+    IDS_QUERYRELOADPROJECT  "The project file '%1' has been modified outside the environment.  Do you want to reload the project?"
+    IDS_VISUALSTUDIO        "Microsoft Development Environment"
+    IDS_UPTODATE            "The project is up-to-date."
+    IDS_E_FILENOTINPRJECT   "The file '%1' is not in the project '%2'."
+    IDS_E_RUNWIZARD         "Could not run wizard from file '%1'."
+    IDS_E_DEBUGTARGETMISSING 
+                            "Visual Studio cannot debug because the debug target '%1' is missing."
+    IDS_HELP_FileName       "File name"
+    IDS_HELP_FilePath       "Path to the file on disk"
+    IDS_HELP_ModifiedDate   "Time the file was last saved to disk"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_NEWPROJECT_FIGPRJ_LOCALIZEDNAME "Empty Project"
+    IDS_NEWPROJECT_FIGPRJ_DESCRIPTION "Create a new Figures project."
+    IDS_NEWPROJECT_FIGPRJ_SUGGESTEDBASENAME "Project"
+    IDS_NEWITEM_FIGURE_LOCALIZEDNAME "Figure File"
+    IDS_NEWITEM_FIGURE_DESCRIPTION "A new Figure file."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_NEWITEM_FIGURE_SUGGESTEDBASENAME "Figure"
+    IDS_E_OWNERPROJECTNOTFOUND 
+                            "This project needs to be opened in the context of a templates project. The owning project can not be created"
+    IDS_E_METHODDISABLED    "This method/property is not available for this application."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_HELP_Size           "Size of the file on disk"
+    IDS_HELP_FileType       "Registered type of the file"
+    IDS_HELP_ReadOnly       "Read Only attribute of the file on disk"
+    IDS_HELP_ExcludeFromBuild "Exclude from build"
+    IDS_HELP_XOffset        "X Offset"
+    IDS_HELP_YOffset        "Y Offset"
+    IDS_HELP_PenColor       "Pen Color"
+    IDS_HELP_Extender       "Extender"
+    IDS_HELP_ExtenderNames  "ExtenderNames"
+    IDS_HELP_ExtenderCATID  "ExtenderCATID"
+    IDS_HELP_StartupItem    "Startup item when project runs"
+    IDS_HELP_ProjectName    "Name of the project"
+    IDS_HELP_ProjectPath    "Path to where the project is stored on disk"
+    IDS_HELP_IsDirty        "Marks if the file has been modified, and has to be saved"
+    IDS_HELP_OutputDirectory "Output Directory"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_PROMPT_SAVEDIRTYDOCS 
+                            "One or more open documents have unsaved changes.\nDo you want to save uncommitted changes before proceeding?"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1000  CTMENU       "pkg.cto"
+#define VER_FILEDESCRIPTION_STR "FigPrj Package Resources\0"
+#define VER_INTERNALNAME_STR "FigPrjUI.dll\0"
+#define VER_ORIGINALFILENAME_STR "FigPrjUI.dll\0"
+#include "EnvSdkVersion.ver"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

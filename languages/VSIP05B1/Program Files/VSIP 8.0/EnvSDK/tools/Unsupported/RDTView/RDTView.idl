@@ -1,0 +1,72 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// RDTView.idl : IDL source for RDTView.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (RDTView.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+
+[
+	uuid(77D2CC12-968C-4a24-8A73-0066D2F4D85D),
+	version(1.0),
+	helpstring("RDTView 1.0 Type Library")
+]
+library RDTViewLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(D5CCCF20-A7F6-4569-AA9E-845ED57FBB74),
+		helpstring("RDTView Package")
+	]
+	coclass RDTViewPackage
+	{
+		[default] interface IVsPackage;
+	};
+
+// IDocViewer interface
+	[
+		uuid(A91CA7BE-B965-4e49-BEE9-3F7BF2CB844F),
+		helpstring("IDocViewer interface")
+	]
+	interface IDocViewer : IUnknown
+	{
+		HRESULT Advise([out] VSCOOKIE* pdwCookie);
+		HRESULT Populate([in] IVsWindowPane* pWindowPane);
+		HRESULT Unadvise();
+		HRESULT UnadviseEx([in] VSCOOKIE dwCookie);
+		HRESULT PopulateProperties([in] HWND hwndListDocs, [in] HWND hwndListProp);
+	};
+
+// IRDTViewTool interface
+	[
+		uuid(360BDA8D-3301-412f-88C6-1457D02806FE),
+		helpstring("IRDTViewTool interface")
+	]
+	interface IRDTViewTool : IUnknown
+	{
+		HRESULT GetListDocsHwnd([out] HWND* phwnd);
+		HRESULT GetListPropHwnd([out] HWND* phwnd);
+		HRESULT SetDocViewer([in] IDocViewer* pDocViewer);
+		HRESULT PopulateProperties([in] HWND hwndListDocs, [in] HWND hwndListProp);
+	};
+
+};

@@ -1,0 +1,18 @@
+String.prototype.values = function ()
+{
+	var array = new Array(this.length);
+	for (var i = 0; i < this.length; i++)
+		array[i] = this.charCodeAt(i);
+	return array;
+}
+
+var array1 = new Array(128);
+var string = "";
+for (var i = 0; i < 128; i++) {
+	array1[i] = i;
+	string += String.fromCharCode(i);
+}
+
+var array2 = string.values();
+print(array1.length == array2.length
+   && array1.join() == array2.join());

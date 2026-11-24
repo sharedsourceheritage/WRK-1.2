@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "The following code results in a Nullreference Exception when built with Visual Studio 2008.\n<p>\nI'm not sure whether this syntax of min and max is supported as I have seen some examples only.",
+    "LastUpdatedDate": "2010-08-09T16:46:01.59-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "specsharp",
+    "ReportedDate": "2010-07-21T01:59:26.79-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "min/max causes nullpointer exception",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 9016
+  },
+  "FileAttachments": [
+    {
+      "FileId": 219672,
+      "FileName": "Program.ssc",
+      "DownloadUrl": ".\\219672"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This problem persists with Spec# 2010-07-20.",
+      "PostedDate": "2010-08-09T04:10:30.147-07:00",
+      "Id": 31380
+    },
+    {
+      "Message": "This is a bug.  It seems that the combination of \"old\" with min/max causes the compiler to crash.\r\n\r\nBeyond that, it seems there's also a second bug, which is that the type of min/max comes out as \"int\", even when the operands are \"long\" as in this case.\r\n\r\nAs a workaround, you can write:\r\n\r\n    ensures 0   _value == (old(_value) + amount   _value == (old(_value) + amount \r\n        _value \r\n        old(_value) + amount <= _value && 0 <= _value &&\r\n        (_value == old(_value) + amount || _value == 0);\r\n\r\nAlso, the body of the \"increase\" method is not correct.\r\n",
+      "PostedDate": "2010-08-09T16:46:01.59-07:00",
+      "Id": 31381
+    }
+  ]
+}

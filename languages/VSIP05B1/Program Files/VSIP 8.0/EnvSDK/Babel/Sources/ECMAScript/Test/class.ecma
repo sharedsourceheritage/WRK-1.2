@@ -1,0 +1,16 @@
+import System
+
+class foo extends System.Object{
+  var abc : System.Int32 = 1;
+  static var def : System.Int32 = 2;
+  static {def *= 10}
+  function foo(x){
+    print("initializing foo "+x);
+  }
+  function bar(i : System.Int32) : System.Int32{
+    return i - this.abc + this.def;
+  }
+}
+
+var f = new foo("asdfasdf")
+print(f.bar(1));

@@ -1,0 +1,167 @@
+print(1)
+print(1.2)
+print("1")
+print(true)
+print(false)
+print(null)
+print(this.undefined)
+import System
+print(System.Boolean)
+print(System.Boolean.True)
+print(System.Boolean.False)
+print(System.Boolean.TrueString)
+print(System.Boolean.FalseString)
+print(System.Boolean.Parse("True"))
+print(System.Boolean.Parse("False"))
+var x = 1
+print(x)
+var p = System.Boolean.Parse
+print(p("True"))
+var g = System.Type.GetType
+print(g("Microsoft.JScript.Expression"))
+var v = new System.Collections.ArrayList(32)
+print(v.GetType().FullName)
+print(v)
+print(v.Count)
+print(v.Capacity)
+v.Capacity = 16;
+print(v.Capacity)
+v[0] = "hello"
+v[1] = "there"
+print(v[0])
+print(v[1])
+var ob = {}
+ob.my_prop = "Hey I can do Expando!"
+print(ob.my_prop)
+print(true == true)
+print(true != false)
+print(1 != 2)
+print(2 == 2)
+print(true == (1 == 1))
+print(false != (1 != 1))
+var n = 3
+while (n > 0){
+  if (n == 3)
+    print("three")
+  else if (n == 2)
+    print("two")
+  else
+    print("one")
+  n -= 1
+} 
+var scrob = {"hello":"hallo", "bye":"totsiens"}
+print(scrob.hello)
+print(scrob.bye)
+var str = "xx = 123"
+eval(str)
+str = "xx"
+print(eval(str))
+print(this.xx)
+function fac(xyz){
+  if (xyz > 0)
+    return xyz * fac(xyz-1)
+  else
+    return 1
+}
+print(fac(3))
+print(fac.toString())
+print(parseInt.toString())
+function foo(x, y, z){
+  print(arguments.length)
+  print(arguments[0])
+  print(arguments[1])
+  print(arguments[2])
+  print(arguments[3])
+  print(arguments[4])
+  print(arguments[5])
+}
+foo(1, 2, 3, 4, 5)
+
+function foob(bar){
+  if (bar == "hello"){
+    function bas(){
+      print(bar)
+    }
+    return bas
+  }
+}
+
+var foobb = foob("hello")
+foobb()
+print(foobb)
+i = 1
+print(++i)
+print(i)
+i = 10.5
+print(i++)
+print(i)
+i = "3"
+print(--i)
+print(i)
+i = true
+print(i--)
+print(i)
+i = void 0
+print (i++)
+i = null
+print (--i)
+i = System.Double.PositiveInfinity
+print(i)
+function foofor(){
+  for (var fi = 1, fj = 10; fi < fj; fi++)
+    print(fi)
+  print(typeof fi)
+  print(typeof fj)
+}
+
+foofor()
+print(typeof this.fi)
+print(typeof this.fj)
+ob = {withfoo:"bar"}
+with (ob){
+  print(withfoo)
+  var withvar = "abc"
+  print(withvar)
+  var withfoo = "bas"
+  print(withfoo)
+}
+print(typeof withfoo)
+print(withfoo)
+looplab: for (var i = 1; i < 10; i++){
+  print(i);
+  switch (i){
+    case 1:
+      print("one")
+      continue looplab
+    case 2:
+      print("two")
+      break
+    default:
+      print("default")
+      break looplab
+    case 3:
+      print("three")
+    case 4:
+      print("four")
+  }
+}  
+str = new String("1 plus 2 equals 3.")
+var m = str.replace(/\d+/g, "x")
+print(m)
+var re = /(a)b/g
+print(re.lastIndex)
+print(RegExp.index)
+print(RegExp.input)
+print(RegExp.lastIndex)
+str = "1ab2"
+print("xxxxxxxxxxxxxx")
+print(str.search(re))
+print(re.lastIndex)
+print(RegExp.index)
+print(RegExp.input)
+print(RegExp.lastIndex)
+print(RegExp["$1"])
+Object.prototype.ababab = 2
+Math.syxsdf = 1
+for (x in Math)
+  print(x)

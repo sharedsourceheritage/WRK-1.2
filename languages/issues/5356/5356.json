@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-03-05T03:48:00.55-08:00",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "The ?? operator, inherited from C# and with the meaning \"return the left-hand operand unless it is null; if it is null, return the right-hand operator\", is not compiled correctly by the Spec# compiler.  In particular, I found that (s.Tok.filename ?? \".dfy\") compiles the str2 in:\n\n        string str;\n        string str2;\n        if (str == null)\n        {\n            str2 = \".dfy\";\n        }\n        else\n        {\n            str2 = str;\n        }\n\nNote that \"str\" is uninitialized.  It should have been initialized to the left-hand operand of ??.",
+    "LastUpdatedDate": "2011-03-05T03:48:00.55-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "specsharp",
+    "ReportedDate": "2009-08-07T11:50:34.983-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "?? does not compile correctly",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 5356
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Fixed in revision 63112. The bug happened when the first operator was neither a local variable nor a parameter.",
+      "PostedDate": "2011-03-05T03:47:51.193-08:00",
+      "Id": 31376
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+HKCR
+{
+    TextInterpreter.Program.1 = s 'Program Class'
+    {
+        CLSID = s '{60F29080-1AD2-4823-A6A3-5E635010889C}'
+    }
+    TextInterpreter.Program = s 'Program Class'
+    {
+        CLSID = s '{60F29080-1AD2-4823-A6A3-5E635010889C}'
+        CurVer = s 'TextInterpreter.Program.1'
+    }
+    NoRemove CLSID
+    {
+        {60F29080-1AD2-4823-A6A3-5E635010889C} = s 'Program Class'
+        {
+            ProgID = s 'TextInterpreter.Program.1'
+            VersionIndependentProgID = s 'TextInterpreter.Program'
+            LocalServer32 = s '%MODULE%'
+            val AppID = s '{138A9B67-A2AB-4A64-A16F-ACE68B2FF77A}'
+            'TypeLib' = s '{510FC0E1-41E9-416F-9EDD-7277BD4538DB}'
+        }
+    }
+}

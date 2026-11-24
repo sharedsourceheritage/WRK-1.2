@@ -1,0 +1,39 @@
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove Packages
+    {
+        %CLSID_Package% = s 'DSRefTool Package'
+        {
+            val InprocServer32 = s '%MODULE%'
+
+            val CompanyName = s 'Microsoft'
+            val ProductName = s 'DSRef Tool Window Sample'
+            val ProductVersion  = s '7.1'
+            val MinEdition  = s 'professional'
+            val ID  = d '%IDS_PACKAGE_LOAD_KEY%' 
+
+            SatelliteDll
+            {
+                val DllName = s '%RESOURCE_DLL%'
+                val Path = s '%RESOURCE_PATH%'
+            }
+        }
+    }
+    NoRemove Menus
+    {
+        val %CLSID_Package% = s ', 1000, 1'
+    }
+    NoRemove ToolWindows
+    {
+        %GUID_DSRefToolWindow% = s '%CLSID_Package%'
+        {
+            val Name = s 'DSRef Viewer'
+            val Float = s '100,100,300,400'
+            val Orientation = s 'Right'
+            val Style = s 'Float'
+            val Window = s '%GUID_TaskList%'
+        }
+    }
+    %REGROOTEND%
+}

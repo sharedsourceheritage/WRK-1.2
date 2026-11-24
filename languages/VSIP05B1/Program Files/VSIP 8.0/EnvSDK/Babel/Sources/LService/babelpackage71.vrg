@@ -1,0 +1,5 @@
+VSREG7
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\7.1\Packages\{221F0EB7-30F7-45FF-AE73-5968B167CF09}]
+@="Babel Language Package"
+"InprocServer32"="[#FilePath]"

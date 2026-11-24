@@ -1,0 +1,87 @@
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove Packages
+    {
+        %CLSID_Package% = s '%ProjectName% Package'
+        {
+            val InprocServer32 = s '%MODULE%'
+
+            val CompanyName = s '%CompanyName%'
+            val ProductName = s '%PackageName%'
+            val ProductVersion  = s '%PackageVersion%'
+            val MinEdition  = s '%MinVsEdition%'
+            val ID  = d '%IDS_PACKAGE_LOAD_KEY%'
+ 
+            SatelliteDll
+            {
+                val DllName = s '%RESOURCE_DLL%'
+                val Path = s '%RESOURCE_PATH%'
+            }
+        }
+    }
+    NoRemove Menus
+    {
+        val %CLSID_Package% = s ', 1000, 1'
+    }
+%EditorStart%
+    NoRemove Editors
+    {
+        %GUID_BscEditorFactory% = s '%EditorName%'
+        {
+            val Package = s '%CLSID_Package%'
+            val DisplayName = s '%EditorName%'
+            val ExcludeDefTextEditor = d 1
+            val AcceptBinaryFiles = d 0
+
+            LogicalViews
+            {
+                val %LOGVIEWID_TextView% = s ''
+            }
+
+            OpenWithEntries
+            {
+            }
+
+            Extensions
+            {
+                val %Extension% = d 50
+            }
+        }
+    }
+%EditorEnd%
+    NoRemove InstalledProducts
+    {
+        '%ProjectName%' = s #%IDS_OFFICIALNAME%
+        {
+            val Package = s '%CLSID_Package%'
+            val ProductDetails = s #%IDS_PRODUCTDETAILS%
+            val LogoID = s '#0'
+            val PID = s 'Unknown Product ID'
+            val UseInterface = d '0'
+        }
+    }
+%EditorStart%
+    NoRemove Projects
+    {
+        NoRemove %CLSID_MiscFilesProject%
+        {
+            NoRemove AddItemTemplates
+            {
+                NoRemove TemplateDirs
+                {
+                    %CLSID_Package%
+                    {
+                        /1 = s '#%IDS_EDITOR_TEMPLATE%'
+                        {
+                            val TemplatesDir = s '%TEMPLATE_PATH%Templates'
+                            val SortPriority = d 20000
+                        }
+                    }
+                }
+            }
+        }
+    }
+%EditorEnd%
+%REGROOTEND%
+}

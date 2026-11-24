@@ -1,0 +1,26 @@
+
+// simple test function
+void main()
+{
+  int a;
+  int b;
+
+  a = 1;
+  b = 2;
+
+  if (1)
+    {
+    b = 3;
+    a = 3;
+    }
+
+  if (0)
+    {
+    a = 4;
+    }
+}
+
+int test( int x )
+{
+  return x;
+}

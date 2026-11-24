@@ -1,0 +1,23 @@
+HKCR
+{
+    TextInterpreter.Engine.1 = s 'Engine Class'
+    {
+        CLSID = s '{76B0612B-294B-41FD-B66F-77ED8D125453}'
+    }
+    TextInterpreter.Engine = s 'Engine Class'
+    {
+        CLSID = s '{76B0612B-294B-41FD-B66F-77ED8D125453}'
+        CurVer = s 'TextInterpreter.Engine.1'
+    }
+    NoRemove CLSID
+    {
+        {76B0612B-294B-41FD-B66F-77ED8D125453} = s 'Engine Class'
+        {
+            ProgID = s 'TextInterpreter.Engine.1'
+            VersionIndependentProgID = s 'TextInterpreter.Engine'
+            LocalServer32 = s '%MODULE%'
+            val AppID = s '{138A9B67-A2AB-4A64-A16F-ACE68B2FF77A}'
+            'TypeLib' = s '{510FC0E1-41E9-416F-9EDD-7277BD4538DB}'
+        }
+    }
+}

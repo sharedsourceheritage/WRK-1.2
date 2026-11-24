@@ -1,0 +1,52 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+// Package Command Bar Definition
+//
+
+#include "stdidcmd.h"
+#include "vsshlids.h"
+#include "msobtnid.h"
+#include "virtkeys.h"
+#include "PkgCmdID.h"
+#include "Resource.h"
+
+#define guidOptPkgPackage      { 0xF1234271, 0xF211, 0x11D1, { 0x9D, 0x6C, 0x00, 0x60, 0x08, 0x18, 0x40, 0xF3 } }
+#define guidOptMenuGrp      { 0xF1234272, 0xF211, 0x11D1, { 0x9D, 0x6C, 0x00, 0x60, 0x08, 0x18, 0x40, 0xF3 } }
+#define guidOptCmdSet      { 0xF1234273, 0xF211, 0x11D1, { 0x9D, 0x6C, 0x00, 0x60, 0x08, 0x18, 0x40, 0xF3 } }
+
+CMDS_SECTION guidOptPkgPackage
+
+    MENUS_BEGIN
+    	// NewMenu                      Relative to Group                       Priority    Type        Name                    Text
+    MENUS_END
+
+    NEWGROUPS_BEGIN
+        // NewGroup                     Parent Group                            Priority
+    NEWGROUPS_END
+
+    BUTTONS_BEGIN
+        // Button/Menu Item                Item Group                            Priority Icon                          Type    Flags                                                   Text
+    BUTTONS_END
+
+    BITMAPS_BEGIN
+        // Bitmap                          Bitmap Index, Bitmap Index ...
+    BITMAPS_END
+
+CMDS_END
+
+CMDPLACEMENT_SECTION
+    // Command                             Group                                 Priority
+CMDPLACEMENT_END
+
+VISIBILITY_SECTION
+    // Command                             GUID when visible
+VISIBILITY_END
+
+KEYBINDINGS_SECTION
+    // Command                             when available   emulation    keystate
+KEYBINDINGS_END

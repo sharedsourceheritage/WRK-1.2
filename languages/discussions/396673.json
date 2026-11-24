@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "916664",
+    "ThreadId": "396673",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I've installed Spec# in Visual Studio. When I create a new Spec# project, it gives me a &quot;Hello World&quot; example which I can run but whenever I make any change to the file and run, it just runs the original &quot;Hello World&quot; example. I can make any number of syntax\r\n errors, never mind Spec# errors, and they are not highlighted anywhere. When I turn on RunProgramVerifier, I am told that there are Build Errors but I am not allowed to see any of them. The Error List at the bottom of the screen still gives no errors.</p>\r\n<p>When I try to run the Tutorial examples, I get &quot;the debugger cannot continue running the process. Unable to start debugging.&quot;</p>\r\n<p>Also, I have tried running ssc from the command line and ssc is not recognised as a command. I can't add it to the PATH because I don't know where it is.</p>\r\n<p>Please help. It is so frustrating that I can't seem to get anything to work.</p>\r\n<p>Ian</p>\r\n",
+    "PostedDate": "2012-09-24T07:28:34.483-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "916856",
+    "ThreadId": "396673",
+    "Html": "<p>Hi Ian,</p>\r\n<p>what version of Spec# are you running? The most recent binary release (2011-10-03) or the are you building from the sources? What version of Visual Studio are you using?</p>\r\n<p>If you just want to try out some small examples, you could also give this a try:&nbsp;<a href=\"http://rise4fun.com/SpecSharp\">http://rise4fun.com/SpecSharp</a></p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2012-09-24T13:17:24.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "916910",
+    "ThreadId": "396673",
+    "Html": "\r\n<p>The most recent binary release I think and certainly Visual Studio 2010.<br>\r\n<br>\r\nThe reason I say &quot;I think&quot; is that this has been installed by our IT<br>\r\nsupport in our labs (we're a university) and I've just gone to check<br>\r\nit works ok.<br>\r\n<br>\r\nHowever, the instructions he would have followed are these, given by a<br>\r\nstudent who managed to install it successfully: (I forwarded the<br>\r\n50-page tutorial .pdf file too)<br>\r\n<br>\r\n&gt; Download Spec# binaries from http://specsharp.codeplex.com/<br>\r\n&gt; Extract the contents of the downloaded .ZIP to any directory you wish. (I Made a Spec# directory on the hard disk just so it was easy to find)<br>\r\n&gt; Open Visual Studio Command Prompt (2010). (It should be located under Visual Studio 2010 &gt; Visual Studio Tools, on the start menu.)<br>\r\n&gt; Once the command prompt is open, navigate the prompt to Binaries folder within the directory where you extracted the .ZIP from earlier.<br>\r\n&gt; Enter &quot;register.cmd&quot; without the quotes, you should see 3 messages appear saying something along the lines of &quot;the types have been registered&quot;.<br>\r\n&gt; Download the Z3 theorem prover here, Version 2.15 is recommended, although I used v3.2. It is no longer included with the spec# binaries for some reason even though it is required for verification (the download speed for me was VERY slow on this): http://research.microsoft.com/en-us/um/redmond/projects/z3/older_z3.html<br>\r\n&gt; Run the .MSI downloaded, it should automatically install it to Program Files\\Microsoft Research\\Z3-2.15 (or Program Files\\Microsoft Research\\Z3-3.2 if you used the latest version).<br>\r\n&gt; Navigate to the folder Z3 installed to and now you need to choose 1 of 4 directories to copy elsewhere. The contents of the folder (not the folder itself, just the files inside) need to be copied to the Binaries directory of Spec# as used in Step 4. For\r\n 32 bit windows the &quot;bin&quot; folder within the Z3 directory is needed, &quot;x64&quot; for 64 bit Windows. This is for the Sequential version of Z3. For the Parallel versions use the contents of &quot;bin_mt&quot; or &quot;x64_mt&quot;. (I used Sequential and the bin directory contents).<br>\r\n&gt;<br>\r\n&gt; I'm 99% sure that's what I did in that order to get it working.<br>\r\n&gt;<br>\r\n&gt; In Visual Studios 2010 you should now have the option to create a Spec# project. Building the project seems to complete the verification. If you don't have Z3 installed it will still let you create a Spec# project, but doesn't do any verification when\r\n building.<br>\r\n<br>\r\n</p>\r\n",
+    "PostedDate": "2012-09-24T15:42:35.227-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "917094",
+    "ThreadId": "396673",
+    "Html": "<p>Hi Ian,</p>\r\n<p>in case you still have trouble getting it to run, here are a few comments/additions on the installation instructions that were used by the student:</p>\r\n<p>- Make sure to run the&nbsp;<span>Visual Studio 2010 command prompt as administrator.</span></p>\r\n<p><span>- Make sure to use Z3 2.15. Spec# (actually Boogie) should be able to find this version if it is installed in the default location (\"C:\\Program Files (x86)\\Microsoft Research\\Z3-2.15\"). There's no need to move the Z3 binaries. I don't think that later versions are compatible with Spec#.</span></p>\r\n<p>I hope that helps.</p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2012-09-25T01:34:23.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "917737",
+    "ThreadId": "396673",
+    "Html": "Hi Valentin,<br>\r\n<br>\r\nApologies for the wait. I'm looking into how it was done.<br>\r\n<br>\r\nIan",
+    "PostedDate": "2012-09-26T03:52:51.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925435",
+    "ThreadId": "396673",
+    "Html": "<p>Hi Valentin,</p>\r\n<p>Thanks for waiting. Using 2.15 and following the instructions I've given plus your ammendments, we can install it on Windows XP with Visual Studio 2010 but we cannot install on Windows 7. Unfortunately, the labs use Windows 7. We get no errors during installation but Spec# projects have no errors displayed and Visual Studio refuses to compile any of them except for the Hello World created by the Wizard.</p>\r\n<p>Ian</p>",
+    "PostedDate": "2012-10-11T11:32:29.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925679",
+    "ThreadId": "396673",
+    "Html": "<p>Hi Ian,</p>\r\n<p>that's very strange since I've been using it on Windows 7 for quite some time without any problems. Could you maybe try to run Spec# from the command line to see if it's Visual Studio that causes the problem?</p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>",
+    "PostedDate": "2012-10-12T01:22:50.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "926246",
+    "ThreadId": "396673",
+    "Html": "<p>Is it possible that this is the problem?&nbsp; <a href=\"http://boogie.codeplex.com/discussions/272436\">http://boogie.codeplex.com/discussions/272436</a></p>\r\n<p>&nbsp; Rustan</p>",
+    "PostedDate": "2012-10-13T15:49:38.01-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "927474",
+    "ThreadId": "396673",
+    "Html": "HI,<br>\r\n<br>\r\nThanks. We'll try that, and look for the possible error message I<br>\r\nmight get from the link that Rustan posted.<br>\r\n<br>\r\nIan<br>\r\n<br>\r\nOn 12 October 2012 09:22, wuestholz &lt;notifications@codeplex.com&gt; wrote:<br>\r\n&gt; From: wuestholz<br>\r\n&gt;<br>\r\n&gt; Hi Ian,<br>\r\n&gt;<br>\r\n&gt; that's very strange since I've been using it on Windows 7 for quite some<br>\r\n&gt; time without any problems. Could you maybe try to run Spec# from the command<br>\r\n&gt; line to see if it's Visual Studio that causes the problem?<br>\r\n&gt;<br>\r\n&gt; Best regards,<br>\r\n&gt;<br>\r\n&gt; Valentin<br>\r\n&gt;<br>\r\n&gt; Read the full discussion online.<br>\r\n&gt;<br>\r\n&gt; To add a post to this discussion, reply to this email<br>\r\n&gt; ([email removed])<br>\r\n&gt;<br>\r\n&gt; To start a new discussion for this project, email<br>\r\n&gt; [email removed]<br>\r\n&gt;<br>\r\n&gt; You are receiving this email because you subscribed to this discussion on<br>\r\n&gt; CodePlex. You can unsubscribe on CodePlex.com.<br>\r\n&gt;<br>\r\n&gt; Please note: Images and attachments will be removed from emails. Any posts<br>\r\n&gt; to this discussion will also be available online at CodePlex.com",
+    "PostedDate": "2012-10-16T08:24:07.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

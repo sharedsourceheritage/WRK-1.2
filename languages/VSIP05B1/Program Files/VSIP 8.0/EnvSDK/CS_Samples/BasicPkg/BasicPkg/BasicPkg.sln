@@ -1,0 +1,34 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicPkg", "BasicPkg.csproj", "{0194A6C5-F335-490D-9A57-287B55CC6B68}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasicPkgUI", "..\BasicPkgUi\BasicPkgUi.vcproj", "{27488512-8929-4FE3-BA93-CA0DAC29BFDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Debug|Win32 = Debug|Win32
+		Release|.NET = Release|.NET
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0194A6C5-F335-490D-9A57-287B55CC6B68}.Debug|.NET.ActiveCfg = Debug|.NET
+		{0194A6C5-F335-490D-9A57-287B55CC6B68}.Debug|.NET.Build.0 = Debug|.NET
+		{0194A6C5-F335-490D-9A57-287B55CC6B68}.Debug|Win32.ActiveCfg = Debug|.NET
+		{0194A6C5-F335-490D-9A57-287B55CC6B68}.Debug|Win32.Build.0 = Debug|.NET
+		{0194A6C5-F335-490D-9A57-287B55CC6B68}.Release|.NET.ActiveCfg = Release|.NET
+		{0194A6C5-F335-490D-9A57-287B55CC6B68}.Release|.NET.Build.0 = Release|.NET
+		{0194A6C5-F335-490D-9A57-287B55CC6B68}.Release|Win32.ActiveCfg = Release|.NET
+		{0194A6C5-F335-490D-9A57-287B55CC6B68}.Release|Win32.Build.0 = Release|.NET
+		{27488512-8929-4FE3-BA93-CA0DAC29BFDD}.Debug|.NET.ActiveCfg = Debug|Win32
+		{27488512-8929-4FE3-BA93-CA0DAC29BFDD}.Debug|.NET.Build.0 = Debug|Win32
+		{27488512-8929-4FE3-BA93-CA0DAC29BFDD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{27488512-8929-4FE3-BA93-CA0DAC29BFDD}.Debug|Win32.Build.0 = Debug|Win32
+		{27488512-8929-4FE3-BA93-CA0DAC29BFDD}.Release|.NET.ActiveCfg = Release|Win32
+		{27488512-8929-4FE3-BA93-CA0DAC29BFDD}.Release|.NET.Build.0 = Release|Win32
+		{27488512-8929-4FE3-BA93-CA0DAC29BFDD}.Release|Win32.ActiveCfg = Release|Win32
+		{27488512-8929-4FE3-BA93-CA0DAC29BFDD}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE HelpCollection>
+<HelpCollection 
+	DTDVersion = "1.0" 
+	Id = "vscc.8.0" 
+	FileVersion = "8.0.0.0" 
+	LangId = "1033" 
+	Title = "Visual Studio .Net Whidbey Combined Collection" 
+	Copyright = "Copyright (c) 2004 Microsoft Corporation"
+	>
+	<TOCDef File = "vscc.HxT" />
+
+	<KeywordIndexDef File = "vsccALinks.HxK"/>
+	<KeywordIndexDef File = "vsccBLinks.HxK"/>
+	<KeywordIndexDef File = "vsccCLinks.HxK"/>
+	<KeywordIndexDef File = "vsccFLinks.HxK"/>
+	<KeywordIndexDef File = "vsccKLinks.HxK"/>
+	<KeywordIndexDef File = "vsccSLinks.HxK"/>
+	<KeywordIndexDef File = "vsccNamedUrls.HxK"/>
+	<KeywordIndexDef File=	"vsccSamples.HxK" />
+
+	<ItemMoniker Name = "!DefaultNamedUrlIndex" ProgId = "HxDs.HxIndex" InitData = "VsccNamedUrls"/>
+	<ItemMoniker Name = "!SampleInfo" ProgId = "HxDs.HxSampleCollection" InitData = "Samples"/>
+	<ItemMoniker Name = "!DefaultTOC" ProgId = "HxDs.HxHierarchy" InitData = "TOC"/>
+	<ItemMoniker Name = "!DefaultFullTextSearch" ProgId = "HxDs.HxFullTextSearch" InitData = ""/>
+	<ItemMoniker Name = "!DefaultAssociativeIndex" ProgId = "HxDs.HxIndex" InitData = "A"/>
+	<ItemMoniker Name = "!DefaultDynamicLinkIndex" ProgId = "HxDs.HxIndex" InitData = "B"/>
+	<ItemMoniker Name = "!DefaultContextWindowIndex" ProgId = "HxDs.HxIndex" InitData = "F"/>
+	<ItemMoniker Name = "!DefaultKeywordIndex" ProgId = "HxDs.HxIndex" InitData = "K"/>
+	<ItemMoniker Name = "!DefaultSearchWindowIndex" ProgId = "HxDs.HxIndex" InitData = "S"/>
+	<ItemMoniker Name="!DefaultSampleIndex" ProgId="HxDs.HxIndex" InitData="Samples" />
+</HelpCollection>
+

@@ -1,0 +1,78 @@
+import System
+
+function Permute(array, upcall, index)
+{
+	if (index == null)
+		index = 0;
+
+	if (index == array.length)
+		upcall(array);
+	else {
+		var index1 = index+1;
+
+		for (var i = index1; i < array.length; i++) {
+			Permute(array, upcall, index1);
+			var temp         = array[index];
+			array[index] = array[i];
+			array[i]     = temp;
+		}
+
+		Permute(array, upcall, index1);
+		temp = array[index];
+		for (i = index1; i < array.length; i++)
+			array[i-1] = array[i];
+		array[i-1] = temp;
+	}
+}
+
+function AddToDict(array)
+{
+	var index = parseInt(array.join(""), 10);
+	var key   = index.toString(10);
+	var item  = index.toString(36);
+	permList[index] = item;
+	dict.add(key, item);
+}
+
+function PrintDict(dict)
+{
+	var keyList  = (new VBArray(dict.Keys ())).toArray();
+	var itemList = (new VBArray(dict.Items())).toArray();
+
+	if (keyList.length == itemList.length)
+		var length = keyList.length;
+	else {
+		print("ERROR: #KEYS=", keyList.length,
+		           " #ITEMS=", itemList.length);
+		length = keyList.length < itemList.length
+		       ? keyList.length : itemList.length;
+	}
+
+	for (var i = 0; i < length; i++) {
+		var key    = keyList [i];
+		var item   = itemList[i];
+		var exists = dict.Exists(key);
+		print((exists && permList[key] == item), " ", key, " ", item);
+	}
+}
+
+var perm     = new Array(1,2,3,4,5);
+var permList = new Array();
+var dict     = new (Type.GetTypeFromProgID("Scripting.Dictionary"));
+
+Permute(perm, AddToDict, null);
+
+print("INITIAL DICTIONARY");
+PrintDict(dict);
+
+for (var key in permList)
+	if (key % 2 == 0)
+		dict.Remove(key);
+
+print("REMOVED EVEN KEYS");
+PrintDict(dict);
+
+dict.RemoveAll();
+
+print("REMOVED REMAINING KEYS");
+PrintDict(dict);

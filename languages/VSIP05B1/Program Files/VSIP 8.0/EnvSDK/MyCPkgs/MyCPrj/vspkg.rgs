@@ -1,0 +1,220 @@
+HKCR
+{
+    .myc = s 'mycfile'
+    {
+        val 'Content Type' = s 'text/plain'
+        'OpenWithList'
+        {
+            'devenv.exe'
+            {
+            }
+        }
+        'OpenWithProgids'
+        {
+            val 'VisualStudio.myc.%PROGID_VERSION%' = s ''
+        }
+    }
+    mycfile = s 'Myc Source File'
+    {
+        shell
+        {
+            open.VisualStudio.myc.%PROGID_VERSION% = s 'Open with Visual Studio .NET 2003'
+            {
+                command = s '"%DEVENV_PATH%" /dde'
+                ddeexec = s 'Open("%%1")'
+                {
+                    application = s '%DDE_NAME%'
+                    topic = s 'system'
+                }
+            }
+        }
+    }
+
+    VisualStudio.myc.%PROGID_VERSION% = s 'Myc Source File'
+    {
+        DefaultIcon = s '%MODULE%,-206'
+        shell
+        {
+            open
+            {
+                command = s '"%DEVENV_PATH%" /dde'
+                ddeexec = s 'Open("%%1")'
+                {
+                    application = s '%DDE_NAME%'
+                    topic = s 'system'
+                }
+            }
+        }
+    }
+
+    '.mycp' = s 'VisualStudio.mycp.%PROGID_VERSION%'
+    {
+        val 'Content Type' = s 'text/plain'
+        'OpenWithList'
+        {
+            'devenv.exe'
+            {
+            }
+        }
+        'OpenWithProgids'
+        {
+            val 'VisualStudio.mycp.%PROGID_VERSION%' = s ''
+            val 'MyCPrjFile' = s ''
+        }
+    }
+    VisualStudio.mycp.%PROGID_VERSION% = s 'MyC Project File'
+    {
+        DefaultIcon = s '%MODULE%,-206'
+        shell
+        {
+            open
+            {
+                command = s '"%DEVENV_PATH%" "%%1"'
+            }
+        }
+    }
+}
+
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove Packages
+    {
+        %CLSID_Package% = s 'MyCPrj Project Package'
+        {
+            val InprocServer32 = s '%MODULE%'
+
+            val CompanyName = s 'Microsoft'
+            val ProductName = s 'MyCe Project Sample'
+            val ProductVersion  = s '7.1'
+            val MinEdition  = s 'professional'
+            val ID  = d '%IDS_PACKAGE_LOAD_KEY%'
+ 
+            SatelliteDll
+            {
+                val DllName = s '%RESOURCE_DLL%'
+                val Path = s '%RESOURCE_PATH%'
+            }
+            Automation
+            {
+                val %AutomationProjects% = s ''
+            }
+            AutomationEvents
+            {
+                val %AutomationProjectsEvents% = s 'Returns the MycProjectsEvents Object'
+                val %AutomationProjectItemsEvents% = s 'Returns the MycProjectItemsEvents Object'
+            }
+        }
+    }
+    NoRemove Projects
+    {
+        %GUID_MyProjectType% = s 'MyCPrj Project'
+        {
+            val DisplayName = s '#%IDS_PROJECT_TYPE%'
+            val Package = s '%CLSID_Package%'
+            val ProjectTemplatesDir = s '%TEMPLATE_PATH%MyCPrjProjects'
+            val DisplayProjectFileExtensions = s '#%IDS_DISPLAY_PROJ_FILE_EXT%'
+            val PossibleProjectExtensions = s 'mycp'
+            val DefaultProjectExtension = s '.mycp'
+            Filters
+            {
+                1 = s '#%IDS_OPENFILES_FILTER%'
+                {
+                    val CommonOpenFilesFilter = d 0
+                    val CommonFindFilesFilter = d 0
+                    val NotAddExistingItemFilter = d 0
+                    val FindInFilesFilter = d 0
+                    val NotOpenFileFilter = d 0
+                    val SortPriority = d 1000
+                }
+                2 = s '#%IDS_FINDFILES_FILTER%'
+                {
+                    val CommonOpenFilesFilter = d 0
+                    val CommonFindFilesFilter = d 0
+                    val NotAddExistingItemFilter = d 1
+                    val FindInFilesFilter = d 1
+                    val NotOpenFileFilter = d 0
+                    val SortPriority = d 1000
+                }
+            }
+            AddItemTemplates
+            {
+                TemplateDirs
+                {
+                    %CLSID_Package%
+                    {
+                        1 = s '#%IDS_ADDITEM_TEMPLATES_ENTRY%'
+                        {
+                            %CLSID_Package%
+                            {
+                                1 = s '#%IDS_NEWPROJ_TEMPLATES_ENTRY%'
+                                {
+                                    val Folder = s '%GUID_VsNewProjectPseudoFolder%'
+                                    val TemplatesDir = s '%TEMPLATE_PATH%MyCPrjProjects'
+                                    val SortPriority = d 1000
+                                }
+                            }
+                            val TemplatesDir = s '%TEMPLATE_PATH%MyCPrjProjectItems'
+                            val SortPriority = d 100
+                        }
+                    }
+
+                }
+            }
+        }
+        NoRemove '%GUID_EFProjectType%'
+        {
+            NoRemove AddItemTemplates
+            {
+                NoRemove TemplateDirs
+                {
+                    %CLSID_Package%
+                    {
+                        1 = s '#%IDS_NEWPROJ_TEMPLATES_ENTRY%'
+                        {
+                            val TemplatesDir = s '%TEMPLATE_PATH%MyCPrjProjects'
+                            val SortPriority = d 1000
+                        }
+                    }
+                }
+            }
+        }
+    }
+    NoRemove Menus
+    {
+        val %CLSID_Package% = s ',1000,1'
+    }
+    NoRemove NewProjectTemplates
+    {
+        NoRemove PseudoFolders
+        {
+            NoRemove %GUID_VsNewProjectPseudoFolder%
+            {
+                val DisplayName = s '#13016'
+                val Package = s '%CLSID_VsEnvironmentPackage%'
+                val SortPriority = d 900
+            }
+        }
+        NoRemove TemplateDirs
+        {
+            %CLSID_Package%
+            {
+                1 = s '#%IDS_NEWPROJ_TEMPLATES_ENTRY%'
+                {
+                    val Folder = s '%GUID_VsNewProjectPseudoFolder%'
+                    val TemplatesDir = s '%TEMPLATE_PATH%MyCPrjProjects'
+                    val SortPriority = d 1000
+                }
+            }
+        }
+    }
+    NoRemove InstalledProducts
+    {
+        'MyCProductSample'
+        {
+            val Package = s '%CLSID_Package%'
+            val UseInterface = d 1
+        }
+    }
+    %REGROOTEND%
+}

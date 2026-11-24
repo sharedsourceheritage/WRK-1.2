@@ -1,0 +1,37 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DSRefTool", "dsreftool\dsreftool.vcproj", "{EB54D7BF-6975-4011-BA0E-3109BC0697D1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{03DEBF01-6594-4F1A-849E-8C29FDE8E72D} = {03DEBF01-6594-4F1A-849E-8C29FDE8E72D}
+		{7928AC42-E932-4B79-A105-8EB5AFF76115} = {7928AC42-E932-4B79-A105-8EB5AFF76115}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DSRefToolUI", "dsreftoolui\dsreftoolui.vcproj", "{03DEBF01-6594-4F1A-849E-8C29FDE8E72D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VsEnvSdkUtil", "..\common\VsEnvSdkUtil\VsEnvSdkUtil.vcproj", "{7928AC42-E932-4B79-A105-8EB5AFF76115}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB54D7BF-6975-4011-BA0E-3109BC0697D1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EB54D7BF-6975-4011-BA0E-3109BC0697D1}.Debug|Win32.Build.0 = Debug|Win32
+		{EB54D7BF-6975-4011-BA0E-3109BC0697D1}.Release|Win32.ActiveCfg = Release|Win32
+		{EB54D7BF-6975-4011-BA0E-3109BC0697D1}.Release|Win32.Build.0 = Release|Win32
+		{03DEBF01-6594-4F1A-849E-8C29FDE8E72D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{03DEBF01-6594-4F1A-849E-8C29FDE8E72D}.Debug|Win32.Build.0 = Debug|Win32
+		{03DEBF01-6594-4F1A-849E-8C29FDE8E72D}.Release|Win32.ActiveCfg = Release|Win32
+		{03DEBF01-6594-4F1A-849E-8C29FDE8E72D}.Release|Win32.Build.0 = Release|Win32
+		{7928AC42-E932-4B79-A105-8EB5AFF76115}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7928AC42-E932-4B79-A105-8EB5AFF76115}.Debug|Win32.Build.0 = Debug|Win32
+		{7928AC42-E932-4B79-A105-8EB5AFF76115}.Release|Win32.ActiveCfg = Release|Win32
+		{7928AC42-E932-4B79-A105-8EB5AFF76115}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SolutionNotes) = postSolution
+		NumNotes = 0
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,25 @@
+print(typeof undefined);
+print(typeof 1);
+print(typeof 1.0);
+print(typeof 1/0);
+print(typeof Number.NaN);
+print(typeof new Number(1));
+print(typeof new Number(1.0));
+print(typeof new Number(1/0));
+print(typeof new Number(Number.NaN));
+print(typeof "");
+print(typeof "string");
+print(typeof new String("abc"));
+print(typeof null);
+print(typeof new Array(1,2,3));
+print(typeof new Object());
+var d = new Date();
+print(typeof d);
+print(typeof d.getVarDate());
+d = new Date(Number.NaN);
+print(typeof d);
+print(typeof d.getVarDate());
+function f() { }
+print(typeof f);
+print(typeof ScriptEngine);
+print(typeof Number.toString);

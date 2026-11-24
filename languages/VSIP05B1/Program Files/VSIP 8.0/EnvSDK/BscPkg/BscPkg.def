@@ -1,0 +1,9 @@
+; BscPkg.def : Declares the module parameters.
+
+LIBRARY      "BscPkg.DLL"
+
+EXPORTS
+	DllCanUnloadNow        PRIVATE
+	DllGetClassObject      PRIVATE
+	DllRegisterServer      PRIVATE
+	DllUnregisterServer    PRIVATE

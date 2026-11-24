@@ -1,0 +1,227 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// FileEx.idl : FileEx Package interfaces
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (FileEx.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+
+interface IFileSystemToolWindow;
+interface IFileSystemPane;
+interface IFileSystemFolderPane;
+interface IFileSystemFilePane;
+interface IFileSystemSelectionContainer;
+interface IFileSystemSelection;
+
+interface IMagicDisplay;
+interface ICommandExecuter;
+
+///////////////////////////////////////////////////////////////////////////////
+// IFileSystemToolWindow
+[
+    uuid(ED7B8ACA-05C1-11d3-9AA9-00C04F79EFC3),
+    version(1.0),
+    helpstring("IFileSystemToolWindow Interface")
+]
+interface IFileSystemToolWindow : IUnknown
+{
+};
+
+cpp_quote("#define SID_SFileSystemToolWindow IID_IFileSystemToolWindow")
+
+
+///////////////////////////////////////////////////////////////////////////////
+// IFileSystemPane
+[
+    uuid(ED7B8AC5-05C1-11d3-9AA9-00C04F79EFC3),
+    version(1.0),
+    helpstring("IFileSystemPane Interface")
+]
+interface IFileSystemPane : IUnknown
+{
+    HRESULT Initialize(
+                    [in] IServiceProvider* pSP,
+                    [in] HWND              hwndParent,
+                    [in] HFONT             hFont);
+    HRESULT GetPaneWindow(
+                    [out] HWND* phwndPane);
+};
+
+///////////////////////////////////////////////////////////////////////////////
+// IFileSystemFolderPane
+[
+    uuid(ED7B8AC6-05C1-11d3-9AA9-00C04F79EFC3),
+    version(1.0),
+    helpstring("IFileSystemFolderPane Interface")
+]
+interface IFileSystemFolderPane : IUnknown
+{
+};
+
+cpp_quote("#define SID_SFileSystemFolderPane IID_IFileSystemFolderPane")
+
+///////////////////////////////////////////////////////////////////////////////
+// IFileSystemFilePane
+[
+    uuid(ED7B8AC7-05C1-11d3-9AA9-00C04F79EFC3),
+    version(1.0),
+    helpstring("IFileSystemFilePane Interface")
+]
+interface IFileSystemFilePane : IUnknown
+{
+    HRESULT SetCurrentFolder(
+                    [in] DWORD_PTR dwFolderPtr);
+};
+
+cpp_quote("#define SID_SFileSystemFilePane IID_IFileSystemFilePane")
+
+
+///////////////////////////////////////////////////////////////////////////////
+// IFileSystemSelection
+[
+    uuid(ED7B8AC9-05C1-11d3-9AA9-00C04F79EFC3),
+    version(1.0),
+    helpstring("IFileSystemSelectionContainer Interface")
+]
+interface IFileSystemSelectionContainer : IUnknown
+{
+    HRESULT Initialize(
+                    [in] IServiceProvider* pSP);
+    HRESULT Close();
+    HRESULT UpdateFolderSelection(
+                    [in] DWORD_PTR dwFolderPtr);
+    HRESULT UpdateFileSelection(
+                    [in] DWORD_PTR dwFilePtr);
+};
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// DISPIDs
+enum 
+{
+    DISPID_FileEx_Name      = 0,
+    DISPID_FileEx_Path      = 100,
+    DISPID_FileEx_Type,
+    DISPID_FileEx_Size,
+    DISPID_FileEx_ReadOnly  = 200,
+    DISPID_FileEx_Hidden,
+    DISPID_FileEx_Compressed
+};
+
+///////////////////////////////////////////////////////////////////////////////
+// Library
+[
+    uuid(ED7B8AC0-05C1-11d3-9AA9-00C04F79EFC3),
+    version(1.0),
+    helpstring("FileEx Package Type Library")
+]
+library FileExLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+    importlib("vsshell.tlb");
+
+    ///////////////////////////////////////////////////////////////////////////////
+    // IFileSystemItem
+    [
+        uuid(ED7B8AC8-05C1-11d3-9AA9-00C04F79EFC3),
+        version(1.0),
+		dual,
+        helpstring("IFileSystemSelection Interface")
+    ]
+    interface IFileSystemSelection : IDispatch
+    {
+        [id(DISPID_FileEx_Name), propget, nonbrowsable] HRESULT Name(
+                    [out, retval] BSTR* pbstrName);
+        [id(DISPID_FileEx_Path), propget] HRESULT Path(
+                    [out, retval] BSTR* pbstrPath);
+        [id(DISPID_FileEx_Type), propget] HRESULT Type(
+                    [out, retval] BSTR* pbstrType);
+        [id(DISPID_FileEx_Size), propget] HRESULT Size(
+                    [out, retval] BSTR* pbstrSize);
+        [id(DISPID_FileEx_ReadOnly), propget] HRESULT ReadOnly(
+                    [out, retval] VARIANT_BOOL* pfReadOnly);
+        [id(DISPID_FileEx_Hidden), propget] HRESULT Hidden(
+                    [out, retval] VARIANT_BOOL* pfHidden);
+        [id(DISPID_FileEx_Compressed), propget] HRESULT Compressed(
+                    [out, retval] VARIANT_BOOL* pfCompressed);
+    };
+
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Package CoClass
+    [
+        uuid(ED7B8AC1-05C1-11d3-9AA9-00C04F79EFC3),
+        helpstring("FileEx Package")
+    ]
+    coclass FileExPackage
+    {
+        [default] interface IVsPackage;
+    };
+};
+
+
+///////////////////////////////////////////////////////////////////////////////
+// IMagicDisplay
+[
+    uuid(C64EDE54-3751-11d3-9AB2-00C04F79EFC3),
+    version(1.0),
+    helpstring("IMagicDisplay Interface")
+]
+interface IMagicDisplay : IUnknown
+{
+    HRESULT ShowMagic(
+                    [in] LPCOLESTR lpszMagicURL,
+                    [in] LPCOLESTR lpszTitle,
+                    [in] long      cx,
+                    [in] long      cy);
+};
+
+cpp_quote("#define SID_SMagicDisplay IID_IMagicDisplay")
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// ICommandExecuter
+
+enum __CMDFLAGS
+{
+    CMF_UseOutput = 1,
+    CMF_ClearOutput = 2,
+    CMF_CreateTasks = 4
+};
+typedef DWORD __CMDFLAGs;
+
+[
+    uuid(C64EDE55-3751-11d3-9AB2-00C04F79EFC3),
+    version(1.0),
+    helpstring("ICommandExecuter Interface")
+]
+interface ICommandExecuter : IUnknown
+{
+    HRESULT ExecuteCommand(
+                    [in] LPCOLESTR lpszCommand,
+                    [in] LPCOLESTR lpszArguments,
+                    [in] LPCOLESTR lpszWorkingDir,
+                    [in] DWORD     dwFlags);
+};
+
+cpp_quote("#define SID_SCommandExecuter IID_ICommandExecuter")

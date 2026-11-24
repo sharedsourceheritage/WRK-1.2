@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "497359",
+    "ThreadId": "228271",
+    "Html": "<p>Hi,&nbsp;</p>\r\n<p>I installed the latest version of Specsharp (August version) and Z3 as well. I do not get any error in my Project now. Which is kind of unacceptable, because i do expect some.&nbsp;</p>\r\n<p>Wonder if it is&nbsp;because&nbsp;of the only warning that i am getting -&nbsp;</p>\r\n<p><span style=\"color:#800080\">Warning 1 internal error: 2 typechecking errors detected C:\\Users\\......\\ ...ssc 1 1 SpecXML</span></p>\r\n<p>Could someone please help in understanding this warning/error?</p>\r\n<p>Thanks,</p>\r\n<p>ruchija</p>",
+    "PostedDate": "2010-09-22T21:26:12.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540476",
+    "ThreadId": "228271",
+    "Html": "\r\n<p>Could someone please help me understand the above stated warning. . It is really inexplicable.</p>\r\n<p><span>Warning 1 internal error: 2 typechecking errors detected C:\\Users\\......\\ ...ssc 1 1 SpecXML</span></p>\r\n<div><span>Thanks!</span></div>\r\n",
+    "PostedDate": "2010-12-25T19:24:05.207-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "575677",
+    "ThreadId": "228271",
+    "Html": "<p>Hi, could you let us know how to reproduce this error, please? If you post it as an issue on the Issue Tracker then you can also attach the files which are needed. It sounds like something which needs fixing :)</p>\r\n<p>Thanks,</p>\r\n<p>Alex</p>",
+    "PostedDate": "2011-03-04T10:01:30.983-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

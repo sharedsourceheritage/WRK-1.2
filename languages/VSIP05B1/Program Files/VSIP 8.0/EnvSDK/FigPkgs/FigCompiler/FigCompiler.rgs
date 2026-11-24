@@ -1,0 +1,13 @@
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove CLSID
+    {
+        %CLSID_FigCompiler% = s 'In Process Figure Compilation'
+        {
+            val InprocServer32 = s '%MODULE%'
+            val ThreadingModel = s 'Apartment'		
+        }
+    }
+    %REGROOTEND%
+}

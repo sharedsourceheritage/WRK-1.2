@@ -1,0 +1,9 @@
+; FigLgSvc.def : Declares the module parameters.
+
+LIBRARY      "FigLgSvc.DLL"
+
+EXPORTS
+	DllCanUnloadNow        PRIVATE
+	DllGetClassObject      PRIVATE
+	DllRegisterServer      PRIVATE
+	DllUnregisterServer    PRIVATE

@@ -1,0 +1,70 @@
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove Packages
+    {
+        %CLSID_Package% = s 'SlnExt Package'
+        {
+            val InprocServer32 = s '%MODULE%'
+
+            val CompanyName = s 'Microsoft'
+            val ProductName = s 'Solution Extender Sample'
+            val ProductVersion  = s '7.1'
+            val MinEdition  = s 'professional'
+            val ID  = d '%IDS_PACKAGE_LOAD_KEY%'
+ 
+            SatelliteDll
+            {
+                val DllName = s '%RESOURCE_DLL%'
+                val Path = s '%RESOURCE_PATH%'
+            }
+
+            Automation
+            {
+                val SolutionNotes = s ''
+            }
+
+            AutomationEvents
+            {
+                val SolutionNotesEvents = s ''
+            }
+        }
+    }
+    NoRemove Menus
+    {
+        val %CLSID_Package% = s ', 1000, 1'
+    }
+    NoRemove ToolWindows
+    {
+        %GUID_SlnNotesTool% = s '%CLSID_Package%'
+        {
+            val Name = s 'Notes'
+            val Style = s 'Float'
+            val Orientation = s 'Right'
+            val Float = s '100,100,300,400'
+        }
+    }
+    NoRemove SolutionPersistence
+    {
+        SolutionNotes = s '%CLSID_Package%'
+    }
+    NoRemove InstalledProducts
+    {
+        'SolutionExtenderSample' = s #%IDS_OFFICIALNAME%
+        {
+            val Package = s '%CLSID_Package%'
+            val ProductDetails = s #%IDS_PRODUCTDETAILS%
+            val LogoID = s '#0'
+            val PID = s '7.1'
+            val UseInterface = d '0'
+        }
+    }
+    NoRemove AutoLoadPackages
+    {
+        '%UICONTEXT_SolutionExists%'
+        {
+            val '%CLSID_Package%' = d '0'
+        }
+    }
+     %REGROOTEND%
+}

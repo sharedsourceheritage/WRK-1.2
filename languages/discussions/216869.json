@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "458491",
+    "ThreadId": "216869",
+    "Html": "<p>Hello,</p>\r\n<p>I am trying to use specsharp with the z3 v2 verifier.</p>\r\n<p>I am unsure exactly what steps I am supposed to take in order to implement it.</p>\r\n<p>I have simply put the z3.exe file in the lastknowngood9 directory.</p>\r\n<p>Now, this works with z3 v1 but with z3 v2 I get yellow font errors: 'Mc.[a name] SKIPPED because of internal error: unexpected prover output : Expected &quot;: &quot;, found: ' &amp;</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'Error setting 'PARTIAL_MODELS', reason: unknown parameter'</p>\r\n<p>&nbsp;</p>\r\n<p>I got these errors when I installed the binaries. I also tried the source code and I have exactly the same problem.</p>\r\n<p>Do you think you might be able to tell me exactly what steps I should take to get the z3 v2 verifier working?</p>\r\n<p>Thanks!</p>",
+    "PostedDate": "2010-06-22T06:01:40.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "467927",
+    "ThreadId": "216869",
+    "Html": "<p>Dear Simon</p>\r\n<p>&nbsp;</p>\r\n<p>I am new to SpecSharp and face exactly the same problems as you describe above: the yellow error messages.</p>\r\n<p>&nbsp;</p>\r\n<p>In addition, I can't see SpecSharp projects in Visual Studio.&nbsp; However, I have installed Visual Studio 2010, not 2008.</p>\r\n<p>&nbsp;</p>\r\n<p>I would be glad if you could provide some help, in the case you have already solved those problems.</p>\r\n<p>&nbsp;</p>\r\n<p>Many thanks in advance</p>\r\n<p>&nbsp;</p>\r\n<p>Edgar</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-07-15T11:18:54.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "467993",
+    "ThreadId": "216869",
+    "Html": "<p>Hi Edgar,</p>\r\n<p>I have not solved the problems, but I understand it is only a contingent problem that will be resolved in due course.</p>\r\n<p>The z3.1 tool works, and can handle most situations, all or most of the class commands (object invariants, [Additive], expose, [Rep], [Peer] etc.).</p>\r\n<p>There are issues using the product comprehension, and often multiplying two variables in e.g. an invariant.</p>\r\n<p>However, the Simplify verifier seems to handle many, but not all, of these issues, as the tools stand.</p>\r\n<p>There are instructions about installing Simplify here:</p>\r\n<p>http://people.cs.kuleuven.be/~bart.jacobs/specleuven/</p>\r\n<p>You can use it like this: sscboogie file.exe /prover:Simplify</p>\r\n<p>Also, you can append /simplifyMatchDepth:5, or another integer, and this will sometimes encourage the prover enough to return a positive.</p>\r\n<p>However z3.1 still works best in most circumstances.</p>\r\n<p>I also use Visual Studio 2010 at home, and cannot use the as-you-code Visual Studio 2008 features.</p>\r\n<p>However I find the VS command line works well - I just save textfiles from VS as .ssc.</p>\r\n<p>Hope some of that helps,</p>\r\n<p>Simon</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-07-15T15:40:55.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "468396",
+    "ThreadId": "216869",
+    "Html": "<p>Please see my answer today to Discussion issue &quot;<span>Unable to start the process z3.exe from default location&quot;.&nbsp; We're working on a new binary release that will install correctly (if you're willing to build everything from source, it seems to work).</span></p>",
+    "PostedDate": "2010-07-16T17:20:18.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "468530",
+    "ThreadId": "216869",
+    "Html": "<p>Many thanks to Simon for your big help (Z3 version 1.2 as well as Simplify seem to work) and to Rustan for your detailed explanations.</p>\r\n<p>Edgar</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-07-17T09:22:58.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "470049",
+    "ThreadId": "216869",
+    "Html": "<p>Edgar and Simon,</p>\r\n<p>Thanks for your patience.&nbsp;&nbsp;We just cut a new binary release, which I hope will solve these problems.&nbsp; Please see the updated installation instructions &quot;How to install the binaries&quot;.&nbsp; While you can use command-line switches with the program verifier to ask it to use Simplify or Z3 version 1.x, I recommend you install the latest Z3 (which is version 2.9), which this new Spec# release will find in the place where Z3 wants to install itself.</p>\r\n<p>Let me know of further problems.</p>\r\n<p>&nbsp; Rustan</p>",
+    "PostedDate": "2010-07-20T22:40:10.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

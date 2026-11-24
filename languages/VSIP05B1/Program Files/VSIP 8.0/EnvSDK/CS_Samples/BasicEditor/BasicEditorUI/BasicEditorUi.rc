@@ -1,0 +1,99 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1000  CTMENU       ""PkgCmd.cto""\r\n"
+    "#define VER_FILEDESCRIPTION_STR ""BasicEditor Package Resources\\0""\r\n"
+    "#define VER_INTERNALNAME_STR ""BasicEditorUI.dll\\0""\r\n"
+    "#define VER_ORIGINALFILENAME_STR ""BasicEditorUI.dll\\0""\r\n"
+    "#include ""EnvSdkVersion.ver""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OFFICIALNAME        "Basic Managed Editor (C#)"
+    IDS_COMPANYNAME         "Microsoft"
+    IDS_PRODUCTDETAILS      "This package implement a basic editor. It is used to edit files with the .myext extention."
+    IDS_VERSION             "7.1"
+    IDS_MINVSEDITION        "Standard"
+
+    IDS_EDITOR_NAME         "My Editor"
+    IDS_DEFAULT_NAME        "myextFile.myext"
+    IDS_EDITOR_TEMPLATE     "Other Files"
+    IDS_FILE_DESCRIPTION    "My Editor File (myext)"
+    IDS_READONLY            " [Read Only]"
+    IDS_FORMATSTR           "Basic Managed Editor files (*.myext)\n*.myext\n\n"
+    IDS_OUTSIDEEDITORFILECHANGE 
+                            "This file has changed outside the editor. Do you wish to reload it?"
+
+
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1000               CTMENU    "PkgCmd.cto"
+IDI_PACKAGE_ICON   ICON      "Package.ico"
+IDI_FILE_ICON    ICON    "File.ico"
+#define VER_FILEDESCRIPTION_STR "BasicEditor Package Resources\0"
+#define VER_INTERNALNAME_STR "BasicEditorUI.dll\0"
+#define VER_ORIGINALFILENAME_STR "BasicEditorUI.dll\0"
+#include "EnvSdkVersion.ver"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

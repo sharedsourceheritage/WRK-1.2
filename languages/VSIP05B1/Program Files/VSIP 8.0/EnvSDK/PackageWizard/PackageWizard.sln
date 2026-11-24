@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageWizard", "PackageWizard.csproj", "{28B5206B-65C2-4612-B7A7-24B99A38339E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28B5206B-65C2-4612-B7A7-24B99A38339E}.Debug|.NET.ActiveCfg = Debug|.NET
+		{28B5206B-65C2-4612-B7A7-24B99A38339E}.Debug|.NET.Build.0 = Debug|.NET
+		{28B5206B-65C2-4612-B7A7-24B99A38339E}.Release|.NET.ActiveCfg = Release|.NET
+		{28B5206B-65C2-4612-B7A7-24B99A38339E}.Release|.NET.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

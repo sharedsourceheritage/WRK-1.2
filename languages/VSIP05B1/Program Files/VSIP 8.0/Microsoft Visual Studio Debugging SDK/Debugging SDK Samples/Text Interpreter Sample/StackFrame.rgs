@@ -1,0 +1,23 @@
+HKCR
+{
+    TextInterpreter.StackFrame.1 = s 'StackFrame Class'
+    {
+        CLSID = s '{A4DAAEF8-B680-4A5A-BAA6-75EF33F7B0C7}'
+    }
+    TextInterpreter.StackFrame = s 'StackFrame Class'
+    {
+        CLSID = s '{A4DAAEF8-B680-4A5A-BAA6-75EF33F7B0C7}'
+        CurVer = s 'TextInterpreter.StackFrame.1'
+    }
+    NoRemove CLSID
+    {
+        {A4DAAEF8-B680-4A5A-BAA6-75EF33F7B0C7} = s 'StackFrame Class'
+        {
+            ProgID = s 'TextInterpreter.StackFrame.1'
+            VersionIndependentProgID = s 'TextInterpreter.StackFrame'
+            LocalServer32 = s '%MODULE%'
+            val AppID = s '{138A9B67-A2AB-4A64-A16F-ACE68B2FF77A}'
+            'TypeLib' = s '{510FC0E1-41E9-416F-9EDD-7277BD4538DB}'
+        }
+    }
+}

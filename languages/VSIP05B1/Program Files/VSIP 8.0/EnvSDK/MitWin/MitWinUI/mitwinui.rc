@@ -1,0 +1,107 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1000  CTMENU       ""PkgCmd.cto""\r\n"
+    "#define VER_FILEDESCRIPTION_STR ""MitWin Package Resources\\0""\r\n"
+    "#define VER_INTERNALNAME_STR ""MitWinUI.dll\\0""\r\n"
+    "#define VER_ORIGINALFILENAME_STR ""MitWinUI.dll\\0""\r\n"
+    "#include ""EnvSdkVersion.ver""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MWTOOLDIALOG DIALOG DISCARDABLE  0, 0, 186, 94
+STYLE WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "Click me to say hello",IDC_BUTTON,43,26,96,40
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CMDBAR              BITMAP  DISCARDABLE     "res\\CmdBar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_WINDOW_TITLE        "MW Tool Window"
+    IDS_E_CANTCREATETOOL    "The MitWin tool is not properly installed. Please re-run setup."
+    IDS_E_SRVCNOTINSTALLED  "The MitWin service is not properly installed. Please re-run setup."
+    IDS_HELLOMESSAGE        "Hello there!"
+    IDS_OFFICIALNAME        "Multi-Instanced Tool Window Sample"
+    IDS_PRODUCTDETAILS      "Multi-Instanced Tool Window Product Sample. For more information about Multi-Instanced Tool Window, see the Microsoft website at <http://www.microsoft.com>. For customer support call 1-800-xxx-xxxx. Multi-Instanced Tool Window Copyright 2000 Microsoft Corporation."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1000  CTMENU       "PkgCmd.cto"
+#define VER_FILEDESCRIPTION_STR "MitWin Package Resources\0"
+#define VER_INTERNALNAME_STR "MitWinUI.dll\0"
+#define VER_ORIGINALFILENAME_STR "MitWinUI.dll\0"
+#include "EnvSdkVersion.ver"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

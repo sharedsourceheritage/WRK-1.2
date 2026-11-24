@@ -1,0 +1,40 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BscEdt", "bscedt\BscEdt.vcproj", "{9ADFFB8C-312B-4262-95ED-2792F4843C8C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{33D38745-E2DE-4F69-BAB3-1A604DEFB139} = {33D38745-E2DE-4F69-BAB3-1A604DEFB139}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BscEdtUI", "bscedtui\BscEdtUI.vcproj", "{33D38745-E2DE-4F69-BAB3-1A604DEFB139}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug ActiveX Editor|Win32 = Debug ActiveX Editor|Win32
+		Debug|Win32 = Debug|Win32
+		Release ActiveX Editor|Win32 = Release ActiveX Editor|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9ADFFB8C-312B-4262-95ED-2792F4843C8C}.Debug ActiveX Editor|Win32.ActiveCfg = Debug ActiveX Editor|Win32
+		{9ADFFB8C-312B-4262-95ED-2792F4843C8C}.Debug ActiveX Editor|Win32.Build.0 = Debug ActiveX Editor|Win32
+		{9ADFFB8C-312B-4262-95ED-2792F4843C8C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9ADFFB8C-312B-4262-95ED-2792F4843C8C}.Debug|Win32.Build.0 = Debug|Win32
+		{9ADFFB8C-312B-4262-95ED-2792F4843C8C}.Release ActiveX Editor|Win32.ActiveCfg = Release ActiveX Editor|Win32
+		{9ADFFB8C-312B-4262-95ED-2792F4843C8C}.Release ActiveX Editor|Win32.Build.0 = Release ActiveX Editor|Win32
+		{9ADFFB8C-312B-4262-95ED-2792F4843C8C}.Release|Win32.ActiveCfg = Release|Win32
+		{9ADFFB8C-312B-4262-95ED-2792F4843C8C}.Release|Win32.Build.0 = Release|Win32
+		{33D38745-E2DE-4F69-BAB3-1A604DEFB139}.Debug ActiveX Editor|Win32.ActiveCfg = Debug|Win32
+		{33D38745-E2DE-4F69-BAB3-1A604DEFB139}.Debug ActiveX Editor|Win32.Build.0 = Debug|Win32
+		{33D38745-E2DE-4F69-BAB3-1A604DEFB139}.Debug|Win32.ActiveCfg = Debug|Win32
+		{33D38745-E2DE-4F69-BAB3-1A604DEFB139}.Debug|Win32.Build.0 = Debug|Win32
+		{33D38745-E2DE-4F69-BAB3-1A604DEFB139}.Release ActiveX Editor|Win32.ActiveCfg = Release|Win32
+		{33D38745-E2DE-4F69-BAB3-1A604DEFB139}.Release ActiveX Editor|Win32.Build.0 = Release|Win32
+		{33D38745-E2DE-4F69-BAB3-1A604DEFB139}.Release|Win32.ActiveCfg = Release|Win32
+		{33D38745-E2DE-4F69-BAB3-1A604DEFB139}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SolutionNotes) = postSolution
+		NumNotes = 0
+	EndGlobalSection
+EndGlobal

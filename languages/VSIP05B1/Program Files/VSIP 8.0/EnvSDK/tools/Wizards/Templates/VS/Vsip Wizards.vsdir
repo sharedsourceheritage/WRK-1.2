@@ -1,0 +1,2 @@
+Visual Studio Integration Package.vsz|0|Visual Studio Integration Package|300|Create a VSPackage loadable in Visual Studio 2003.|0|0|0|VsPackage
+Language Package.vsz|0|Language Package|400|Create a Language Service Package loadable in Visual Studio 2003.|0|0|0|VsLangPackage

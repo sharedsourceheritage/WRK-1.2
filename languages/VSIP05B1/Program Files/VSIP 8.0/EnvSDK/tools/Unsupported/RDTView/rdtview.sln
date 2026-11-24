@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RDTView", "RDTView\RDTView.vcproj", "{614D5562-039B-47CF-A946-E3F16CA67FD0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7DDDB23E-0D90-4EA5-948C-BED589A872B7} = {7DDDB23E-0D90-4EA5-948C-BED589A872B7}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RDTViewUI", "RDTViewUI\RDTViewUI.vcproj", "{7DDDB23E-0D90-4EA5-948C-BED589A872B7}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionNotes) = postSolution
+		NumNotes = 0
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{614D5562-039B-47CF-A946-E3F16CA67FD0}.Debug.ActiveCfg = Debug|Win32
+		{614D5562-039B-47CF-A946-E3F16CA67FD0}.Debug.Build.0 = Debug|Win32
+		{614D5562-039B-47CF-A946-E3F16CA67FD0}.Release.ActiveCfg = Release|Win32
+		{614D5562-039B-47CF-A946-E3F16CA67FD0}.Release.Build.0 = Release|Win32
+		{7DDDB23E-0D90-4EA5-948C-BED589A872B7}.Debug.ActiveCfg = Debug|Win32
+		{7DDDB23E-0D90-4EA5-948C-BED589A872B7}.Debug.Build.0 = Debug|Win32
+		{7DDDB23E-0D90-4EA5-948C-BED589A872B7}.Release.ActiveCfg = Release|Win32
+		{7DDDB23E-0D90-4EA5-948C-BED589A872B7}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

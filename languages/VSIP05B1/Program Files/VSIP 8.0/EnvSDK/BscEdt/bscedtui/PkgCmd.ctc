@@ -1,0 +1,208 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+#if _MSC_VER > 1000
+//#pragma once
+#endif  /* _MSC_VER > 1000 */
+
+#ifndef PKG_CTC
+#define PKG_CTC
+
+#include <stdidcmd.h>
+#include <vsshlids.h>
+#include <msobtnid.h>
+#include <virtkeys.h>
+#include "PkgCmdID.h"
+
+
+// {12093B31-EF68-11d1-9429-00AA00A3EFFF}
+#define guidBscEdtPkg	{ 0x12093B31, 0xEF68, 0x11d1, { 0x94, 0x29, 0x00, 0xAA, 0x00, 0xA3, 0xEF, 0xFF } }
+#define guidBscEdtEdtr	{ 0x12093B32, 0xEF68, 0x11d1, { 0x94, 0x29, 0x00, 0xAA, 0x00, 0xA3, 0xEF, 0xFF } }
+#define guidBscEdtCmd	{ 0x12093B33, 0xEF68, 0x11d1, { 0x94, 0x29, 0x00, 0xAA, 0x00, 0xA3, 0xEF, 0xFF } }
+#define guidBscEdtGrp	{ 0x12093B34, 0xEF68, 0x11d1, { 0x94, 0x29, 0x00, 0xAA, 0x00, 0xA3, 0xEF, 0xFF } }
+// #define CMDSETID_StandardCommandSet97  { 0x5efc7975, 0x14bc, 0x11cf, { 0x9b, 0x2b, 0x00, 0xaa, 0x00, 0x57, 0x38, 0x19 } }
+
+// shorthand macros for a more compact and manageable table
+
+#define OI_NOID         guidOfficeIcon:msotcidNoIcon
+#define DIS_DEF         DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY
+#define VIS_DEF         COMMANDWELLONLY
+
+
+CMDS_SECTION guidBscEdtPkg
+  MENUS_BEGIN
+    // GUID:MENUID                  PARENT GROUP        PRIORITY    TYPE        COMMANDTEXT         MENUTEXT
+
+// toolbars
+    guidBscEdtGrp:IDM_TLB_RTF,      guidBscEdtGrp:0,    0x0000,     TOOLBAR,    "RichText",         "Rich Text";
+
+// context menu
+    guidBscEdtGrp:IDMX_RTF,         guidBscEdtGrp:0,    0x0000,     CONTEXT,    "RichTextContext",  "Rich Text Context";
+
+  MENUS_END
+
+
+  NEWGROUPS_BEGIN
+    // GUID:GROUPID                             PARENT MENU                             PRIORITY       FLAG
+
+    // cmd well only editor commands (Edit menu)
+    guidBscEdtGrp:IDG_RTF_EDITOR_CMDS,          guidSHLMainMenu:IDM_VS_MENU_EDIT,       0xFE00;
+
+    // toolbar groups
+    guidBscEdtGrp:IDG_RTF_TLB_FONT1,            guidBscEdtGrp:IDM_TLB_RTF,              0x0100;
+    guidBscEdtGrp:IDG_RTF_TLB_FONT2,            guidBscEdtGrp:IDM_TLB_RTF,              0x0200;
+    guidBscEdtGrp:IDG_RTF_TLB_INDENT,           guidBscEdtGrp:IDM_TLB_RTF,              0x0300;
+    guidBscEdtGrp:IDG_RTF_TLB_BULLET,           guidBscEdtGrp:IDM_TLB_RTF,              0x0400;
+    guidBscEdtGrp:IDG_RTF_TLB_FONT_COMBOS,      guidBscEdtGrp:IDM_TLB_RTF,              0x0040;
+
+    // context menu groups
+    guidSHLMainMenu:IDG_VS_EDIT_CUTCOPY,        guidBscEdtGrp:IDMX_RTF,                 0x0100;
+    guidBscEdtGrp:IDG_RTF_CTX_PROPS,            guidBscEdtGrp:IDMX_RTF,                 0x0200;
+    guidSharedMenuGroup:IDG_VS_FORMAT_FONTFACE, guidBscEdtGrp:IDMX_RTF,                 0x0300;
+
+  NEWGROUPS_END	
+
+
+  BUTTONS_BEGIN
+    // GUID:CMDID                   PARENT MENU                                     PRIORITY    ICON                                    TYPE    FLAGS       BUTTONTEXT          MENUTEXT            TOOLTIPTXT                  COMMANDNAME
+    guidBscEdtCmd:icmdStrike,       guidSharedMenuGroup:IDG_VS_FORMAT_FONTFACE,     0x0400,     guidOfficeIcon:msotcidStrikethrough,    BUTTON, DIS_DEF,    "&Strike-through",  "&Strike-through"   "Strikes through text"      "Strike-through";
+    guidVSStd2K:ECMD_BULLETEDLIST,  guidBscEdtGrp:IDG_RTF_FMT_BULLET,               0x0100,     guidOfficeIcon:msotcidBullets,          BUTTON, DIS_DEF,    "Bullet",           "Bullet"            "Creates a bulleted list"   "Bullet";
+
+    guidVSStd2K:ECMD_INSERT,        guidBscEdtGrp:IDG_RTF_EDITOR_CMDS,              0x0100,     OI_NOID,                                BUTTON, VIS_DEF,    "Overtype Mode",    "Overtype Mode",    "Toggles between insert and overtype insertion modes.", "InsertModeToggle";
+
+  BUTTONS_END
+
+////////////////////////////////////////////////////////////////////////////////
+// Note that with COMBO boxes we have effectively two commands in one. Below
+// we have two pairs of commands; 1st pair icmdFontName and icmdFontNameHandler,
+// 2nd pair icmdFontSize and icmdFontSizeHandler. Note that:-
+//   - icmdFontName and icmdFontSize handle the displaying and setting
+//     of the font name and font size respectively
+//   - icmdFontNameHandler and icmdFontSizeHandler fill the drop down menus
+//     with the available font names and font sizes respectively
+// Note also that the shell will call QueryStatus only on icmdFontName and 
+// icmdFontSize, but not on cmdFontNameHandler and icmdFontSizeHandler whereas
+// Exec will be called on all four commands.
+// Note also that Exec will be called for icmdFontName and icmdFontSize for
+// two cases; firstly to get the current font name or size and secondly to
+// set the font name or size whereas the Exec call for icmdFontNameHandler and 
+// icmdFontSizeHandler always has the same meaning - fill the drop down menu.
+// Finally note that placement for the COMBO boxes is defined in the COMBO
+// section below by the PRIORITY and not in the CMDPLACEMENT_SECTION.
+////////////////////////////////////////////////////////////////////////////////
+
+CMDS_END
+
+
+CMDUSED_SECTION   // for shared commands
+  // GUID:GROUPID			    PARENT MENU			   PRIORITY 
+
+  guidVSStd97:cmdidBold;
+  guidVSStd97:cmdidItalic;
+  guidVSStd97:cmdidUnderline;
+  guidVSStd97:cmdidJustifyLeft;
+  guidVSStd97:cmdidJustifyCenter;
+  guidVSStd97:cmdidJustifyRight;
+  guidVSStd97:cmdidFontName;
+  guidVSStd97:cmdidFontSize;
+  guidVSStd97:cmdidCut;
+  guidVSStd97:cmdidCopy;
+  guidVSStd97:cmdidPaste;
+  guidVSStd97:cmdidDelete;
+
+CMDUSED_END
+
+//////////////////////////////////////////////////////////////////////////////
+// CMDPLACEMENT_SECTION
+// 
+// This sections defines where the commands will be placed if not just in 
+// their primary groups.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+CMDPLACEMENT_SECTION
+  // GUID:GROUPID                           PARENT MENU                                 PRIORITY 
+
+// Toolbar
+    guidVSStd97:cmdidFontName,              guidBscEdtGrp:IDG_RTF_TLB_FONT_COMBOS,      0x0100;
+    guidVSStd97:cmdidFontSize,              guidBscEdtGrp:IDG_RTF_TLB_FONT_COMBOS,      0x0200;
+    // ----------------------
+    guidVSStd97:cmdidBold,                  guidBscEdtGrp:IDG_RTF_TLB_FONT1,            0x0100;
+    guidVSStd97:cmdidItalic,                guidBscEdtGrp:IDG_RTF_TLB_FONT1,            0x0200;
+    guidVSStd97:cmdidUnderline,             guidBscEdtGrp:IDG_RTF_TLB_FONT1,            0x0300;
+    guidBscEdtCmd:icmdStrike,               guidBscEdtGrp:IDG_RTF_TLB_FONT1,            0x0400;
+    // ----------------------
+    guidVSStd97:cmdidJustifyLeft,           guidBscEdtGrp:IDG_RTF_TLB_INDENT,           0x0100;
+    guidVSStd97:cmdidJustifyCenter,         guidBscEdtGrp:IDG_RTF_TLB_INDENT,           0x0200;
+    guidVSStd97:cmdidJustifyRight,          guidBscEdtGrp:IDG_RTF_TLB_INDENT,           0x0300;
+    // ----------------------
+    guidVSStd2K:ECMD_BULLETEDLIST,          guidBscEdtGrp:IDG_RTF_TLB_BULLET,           0x0100;
+    // ----------------------
+
+// Context menu
+    guidVSStd2K:ECMD_BULLETEDLIST,          guidBscEdtGrp:IDG_RTF_CTX_PROPS,            0x0100;
+
+CMDPLACEMENT_END
+
+
+//////////////////////////////////////////////////////////////////////////////
+// VISIBILITY_SECTION
+//
+// This sections determines when commands will be visible, in a static sense
+// as opposed to dynamically.  If you put a command in here and give it a
+// GUID that it should be active for, then the shell checks the GUID provided
+// versus the current project or document GUIDs that are active.  If the
+// command appears in this section, but the GUID it should be active for is
+// not the currently active one, then the command will not show up.
+//
+// ** Commands that do not appear in this section are statically visible by
+//    default
+//
+// You should use this section if you don't want specific commands to appear
+// in the shell unless a specific GUID (such as your package GUID) is active.
+//
+//////////////////////////////////////////////////////////////////////////////
+VISIBILITY_SECTION
+  // GUID:CMDID						GUID when VISIBLE
+  guidBscEdtGrp:IDM_TLB_RTF,		guidBscEdtEdtr;
+
+VISIBILITY_END
+
+
+//////////////////////////////////////////////////////////////////////////////
+// KEYBINDINGS_SECTION
+// 
+// This sections defines the keystroke mappings for the commands.
+//
+// The Keystate field is done using the following:
+//    A = Alt, S = Shift, C = Control, W = Windows Key
+//
+// Example of the Keystate assignment, if you want a two key combination
+// of Ctrl-X, Ctrl-Shift-C then the syntax would be :
+//
+//	'x':C:'c':CS
+//
+//////////////////////////////////////////////////////////////////////////////
+
+KEYBINDINGS_SECTION
+  //    GUID:CMDID                          EDITORGUID              EMULATIONGUID           KEYSTATE
+
+	guidVSStd97:cmdidBold,              guidBscEdtEdtr,         guidBscEdtEdtr,         'B':C;
+	guidVSStd97:cmdidBold,              guidBscEdtEdtr,         guidBscEdtEdtr,         'B':CS;
+	guidVSStd97:cmdidItalic,            guidBscEdtEdtr,         guidBscEdtEdtr,         'I':C;
+	guidVSStd97:cmdidUnderline,         guidBscEdtEdtr,         guidBscEdtEdtr,         'U':C;
+
+	guidVSStd97:cmdidJustifyLeft,       guidBscEdtEdtr,         guidBscEdtEdtr,         'L':C;
+	guidVSStd97:cmdidJustifyCenter,     guidBscEdtEdtr,         guidBscEdtEdtr,         'E':C;
+	guidVSStd97:cmdidJustifyRight,      guidBscEdtEdtr,         guidBscEdtEdtr,         'R':C;
+		
+	guidVSStd2K:ECMD_INSERT,            guidBscEdtEdtr,         guidBscEdtEdtr,         VK_INSERT:;	
+
+KEYBINDINGS_END
+
+
+#endif // PKG_CTC

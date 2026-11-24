@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "520609",
+    "ThreadId": "234322",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I am not sure if this is the right place to ask, but there's not much information or other communities on spec# so I'll give it a try.</p>\r\n<p>I have this code, which takes the first two elements of a fibonacci serie with length n and returns the fibonacci sequence:</p>\r\n<p>public static int[]! sequenceGenerate(int n, int a, int b)<br>\r\n&nbsp;&nbsp;&nbsp; requires n&gt;=2;<br>\r\n&nbsp;&nbsp;&nbsp; ensures result.Length==n;<br>\r\n&nbsp;&nbsp;&nbsp; ensures result[0] == a &amp;&amp; result[1] == b;<br>\r\n&nbsp;&nbsp;&nbsp; ensures forall{int j in (2: n); result[j]==(result[j-1]&#43;result[j-2])};<br>\r\n&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int a0=a;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int a1=b;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int a2=a&#43;b;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int[]! r=new int[n];<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r[0]=a0;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r[1]=a1;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int i=2;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; while(i&lt;n)<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; invariant i&gt;=2 &amp;&amp; i&lt;=n;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; invariant r[0]==a;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; invariant r[1]==b;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; invariant forall{int k in (2: i); r[k]==(r[k-1]&#43;r[k-2])};<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; r[i]=a2;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; a0=a1;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;\r\n<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; a1=a2;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; a2=a0&#43;a1;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; i&#43;&#43;;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return r;<br>\r\n&nbsp;&nbsp;&nbsp; }</p>\r\n<p>&nbsp;</p>\r\n<p>When running the verifier it says the last invariant might not hold after loop iteration. Now I have checked this many times I have no idea why this is! For example, given n=4, a=0 and b=1:</p>\r\n<p>&nbsp;</p>\r\n<p>After 1st loop:</p>\r\n<p>r[0] = 0</p>\r\n<p>r[1] = 1</p>\r\n<p>r[2] = 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r[1]&#43;r[0]</p>\r\n<p>After 2nd loop:</p>\r\n<p>r[0] = 0</p>\r\n<p>r[1] = 1</p>\r\n<p>r[2] = 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r[1]&#43;r[0]</p>\r\n<p>r[3] = 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r[2]&#43;r[1]</p>\r\n<p>&nbsp;</p>\r\n<p>Does anyone have a suggestion to why this is? What detail have I missed?</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-11-11T07:46:58.073-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "520675",
+    "ThreadId": "234322",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I believe that you need some additional loop invariants like these:</p>\r\n<p>&nbsp;</p>\r\n<p>invariant a0 == r[i-2];<br>\r\ninvariant a1 == r[i-1];<br>\r\ninvariant a2 == a0 &#43; a1;</p>\r\n<p>&nbsp;</p>\r\n<p>If you add them, it should verify.</p>\r\n<p>Is there some reason why you introduce these variables? The following code also verifies just fine:</p>\r\n<p>&nbsp;</p>\r\n<p>public static int[]! sequenceGenerate(int n, int a, int b)<br>\r\n&nbsp; &nbsp; requires n &gt;= 2;<br>\r\n&nbsp; &nbsp;ensures result.Length == n;<br>\r\n&nbsp; &nbsp;ensures result[0] == a &amp;&amp; result[1] == b;<br>\r\n&nbsp; &nbsp;ensures forall{int j in (2: n); result[j] == (result[j-1] &#43; result[j-2])};<br>\r\n{<br>\r\n&nbsp; &nbsp;int[]! r = new int[n];<br>\r\n&nbsp; &nbsp;r[0] = a;<br>\r\n&nbsp; &nbsp;r[1] = b;<br>\r\n<br>\r\n&nbsp; &nbsp;for (int i = 2; i &lt; n; i&#43;&#43;)<br>\r\n&nbsp; &nbsp;&nbsp; &nbsp;invariant 2 &lt;= i &amp;&amp; i &lt;= n;<br>\r\n&nbsp; &nbsp;&nbsp; &nbsp;invariant r[0] == a;<br>\r\n&nbsp; &nbsp;&nbsp; &nbsp;invariant r[1] == b;<br>\r\n&nbsp; &nbsp;&nbsp; &nbsp;invariant forall{int k in (2: i); r[k] == (r[k-1] &#43; r[k-2])};<br>\r\n&nbsp; &nbsp;{<br>\r\n&nbsp; &nbsp;&nbsp; &nbsp;r[i] = r[i - 1] &#43; r[i - 2];<br>\r\n&nbsp; &nbsp;}<br>\r\n&nbsp; &nbsp;return r;<br>\r\n}</p>\r\n<p>&nbsp;</p>\r\n<p>Regards,</p>\r\n<p>Valentin</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-11-11T09:37:36.567-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "522735",
+    "ThreadId": "234322",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>&nbsp;</p>\r\n<p>Yes, that worked nicely!</p>\r\n<p>&nbsp;</p>\r\n<p>I have another question, regarding recursive methods, such as a recursive fibonacci or similiar; how do you deal with the postcondition(ensures)? Whenever I add a recursive call as a postcondition, it wants the method to be pure, confined, etc. I've read\r\n up on the tutorials but I am unsure how to solve this.</p>\r\n<p>If I add the [Pure]tag, I get a verficiation error saying &quot;Cannot translate expression postfixexpression&quot; on the method. What does that error mean? What do you have to do to make recursive methods verify?</p>\r\n<p>&nbsp;</p>\r\n<p>Cheers</p>\r\n",
+    "PostedDate": "2010-11-16T08:11:18.337-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "522865",
+    "ThreadId": "234322",
+    "Html": "\r\n<p>Dear annonymous Spec# user,</p>\r\n<p>Could you please post the method that exhibts the problem?</p>\r\n<p>Thanks,<br>\r\n&nbsp;&nbsp; Peter</p>\r\n",
+    "PostedDate": "2010-11-16T11:29:09.287-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "522876",
+    "ThreadId": "234322",
+    "Html": "\r\n<p>EDIT</p>\r\n",
+    "PostedDate": "2010-11-16T11:44:56.427-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "523084",
+    "ThreadId": "234322",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>the reason this doesn't compile seems to be that you use the postfix expression &quot;time--&quot; instead of &quot;time-1&quot;. &nbsp;&quot;time--&quot; is not side-effect free, which is why you should not use it in an assertion/contract.</p>\r\n<p>If I replace both postfix expressions and make the 'bang2' method pure, the code verifies.</p>\r\n<p>Regards,<br>\r\n<br>\r\nValentin</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-11-17T00:38:40.367-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "523101",
+    "ThreadId": "234322",
+    "Html": "\r\n<p>The verifier works good now :) but I have a very very wierd runtime problem</p>\r\n<p>using these values:</p>\r\n<p>int courierA = 0;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int courierB = 9;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int time = 15;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int[] locations = new int[10] {1,2,3,4,5,5,5,6,7,8};<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Console.WriteLine(bang2(locations,courierA,courierB,time));</p>\r\n<p>The function should stop around time=10 or time=11 , when courierA==courierB. However, I get this:</p>\r\n<p>&nbsp;</p>\r\n<p>Time: 15&nbsp;&nbsp;&nbsp; Courier A: 0&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 9<br>\r\nTime: 14&nbsp;&nbsp;&nbsp; Courier A: 1&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 8<br>\r\nTime: 13&nbsp;&nbsp;&nbsp; Courier A: 2&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 7<br>\r\nTime: 12&nbsp;&nbsp;&nbsp; Courier A: 3&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 6<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 12&nbsp;&nbsp;&nbsp; Courier A: 3&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 6<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 13&nbsp;&nbsp;&nbsp; Courier A: 2&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 7<br>\r\nTime: 12&nbsp;&nbsp;&nbsp; Courier A: 3&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 6<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 12&nbsp;&nbsp;&nbsp; Courier A: 3&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 6<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 14&nbsp;&nbsp;&nbsp; Courier A: 1&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 8<br>\r\nTime: 13&nbsp;&nbsp;&nbsp; Courier A: 2&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 7<br>\r\nTime: 12&nbsp;&nbsp;&nbsp; Courier A: 3&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 6<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 12&nbsp;&nbsp;&nbsp; Courier A: 3&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 6<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 13&nbsp;&nbsp;&nbsp; Courier A: 2&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 7<br>\r\nTime: 12&nbsp;&nbsp;&nbsp; Courier A: 3&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 6<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 12&nbsp;&nbsp;&nbsp; Courier A: 3&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 6<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 11&nbsp;&nbsp;&nbsp; Courier A: 4&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5<br>\r\nTime: 10&nbsp;&nbsp;&nbsp; Courier A: 5&nbsp;&nbsp;&nbsp;&nbsp; Courier B: 5</p>\r\n<p>True</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>How on earth does that add up? The function should terminate upon courierA==courierB! Where do even these other recursive calls come from?! How can time increase? I'm not sure how this adds up</p>\r\n<p>[P </p>\r\n<pre>[Pure]</pre>\r\n<p></p>\r\n",
+    "PostedDate": "2010-11-17T01:17:54.083-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "523201",
+    "ThreadId": "234322",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>Spec# adds runtime assertion checks in the generated code. In your case, it checks the postcondition of 'bang2' after every execution of that method. To check your last ensures clause, it needs to call the 'bang2' method recursively. Since you do IO in a\r\n pure method, this will result in additional output.</p>\r\n<p>Best regards,</p>\r\n<p>Valentin</p>\r\n<p>&nbsp;</p>\r\n<p>P.S.: Since other people might also be interested in this discussion, I would be glad if you could &quot;unedit&quot; your previous post.</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-11-17T05:30:23.627-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "523802",
+    "ThreadId": "234322",
+    "Html": "\r\n<p>Ah, I see. So there's nothing wrong with the code I guess, it's just the console messing.</p>\r\n<p>&nbsp;</p>\r\n<p>Is there any way of observing the results while the method executes without this issue?</p>\r\n",
+    "PostedDate": "2010-11-18T06:37:51.51-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

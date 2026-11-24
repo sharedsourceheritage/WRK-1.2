@@ -1,0 +1,34 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicEditor", "BasicEditor.csproj", "{CE61F2BC-CEA2-44F3-B927-B69B35EF218D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasicEditorUI", "..\BasicEditorUi\BasicEditorUi.vcproj", "{83C94EE2-C5EE-436C-860E-B62331369783}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Debug|Win32 = Debug|Win32
+		Release|.NET = Release|.NET
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE61F2BC-CEA2-44F3-B927-B69B35EF218D}.Debug|.NET.ActiveCfg = Debug|.NET
+		{CE61F2BC-CEA2-44F3-B927-B69B35EF218D}.Debug|.NET.Build.0 = Debug|.NET
+		{CE61F2BC-CEA2-44F3-B927-B69B35EF218D}.Debug|Win32.ActiveCfg = Debug|.NET
+		{CE61F2BC-CEA2-44F3-B927-B69B35EF218D}.Debug|Win32.Build.0 = Debug|.NET
+		{CE61F2BC-CEA2-44F3-B927-B69B35EF218D}.Release|.NET.ActiveCfg = Release|.NET
+		{CE61F2BC-CEA2-44F3-B927-B69B35EF218D}.Release|.NET.Build.0 = Release|.NET
+		{CE61F2BC-CEA2-44F3-B927-B69B35EF218D}.Release|Win32.ActiveCfg = Release|.NET
+		{CE61F2BC-CEA2-44F3-B927-B69B35EF218D}.Release|Win32.Build.0 = Release|.NET
+		{83C94EE2-C5EE-436C-860E-B62331369783}.Debug|.NET.ActiveCfg = Debug|Win32
+		{83C94EE2-C5EE-436C-860E-B62331369783}.Debug|.NET.Build.0 = Debug|Win32
+		{83C94EE2-C5EE-436C-860E-B62331369783}.Debug|Win32.ActiveCfg = Debug|Win32
+		{83C94EE2-C5EE-436C-860E-B62331369783}.Debug|Win32.Build.0 = Debug|Win32
+		{83C94EE2-C5EE-436C-860E-B62331369783}.Release|.NET.ActiveCfg = Release|Win32
+		{83C94EE2-C5EE-436C-860E-B62331369783}.Release|.NET.Build.0 = Release|Win32
+		{83C94EE2-C5EE-436C-860E-B62331369783}.Release|Win32.ActiveCfg = Release|Win32
+		{83C94EE2-C5EE-436C-860E-B62331369783}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="FileExtReg" targetNamespace="urn:FileExtReg-Schema" elementFormDefault="qualified"
+	xmlns="urn:FileExtReg-Schema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="FileRegistration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FileExtension" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+            Regular file extension. Most file extensions will fall into this category.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Extension" type="xs:string" maxOccurs="1" minOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                  The actual file extension, e.g. .cs
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ProgID" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>
+                  This progid _MUST_ be version dependent.  
+                  If you append the registry variable as shown below, 
+                  then you get devenv's built-in versioning, 
+                  which is gauranteed to be automatically updated with each SxS push in the future.
+                  e.g. VisualStudio.cs.%PROGID_VERSION%
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ProgIDName" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>
+                  This is just a friendly name for your progid
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ContentType" type="xs:string" maxOccurs="1" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                  e.g. "text/plain" or "text/xml".
+                  Do not use "application/octet-stream" -- this content type should never be 
+                  explicitly registered, per RichardS.  
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="PerceivedType" type="xs:string" maxOccurs="1" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                  New for WinXP, allows other apps to be used for this file extension (e.g. notepad for text)
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="DefaultIcon" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>
+                  e.g. "%MODULE%,1".  
+                  This should be copied directly from your existing file registration.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="AlwaysShowExtension" type="xs:string" maxOccurs="1" minOccurs="0" >
+                <xs:annotation>
+                  <xs:documentation>
+                  e.g. "1". Only use this if you have it in your existing registration.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="OpenWithListName" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>
+                  e.g. "%EXE_NAME%". 
+                  Use the %EXE_NAME% registry variable to use devenv as your entry in the openwithlist.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Command" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>
+                  e.g. "%COMMONIDE%%EXE_NAME%" /dde "%%1"
+                  This should be copied directly from your existing registration.  
+                  If you don't have a command, then you should be using &lt;FileExtensionNoOpen&gt;
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="DdeApp" type="xs:string" maxOccurs="1" minOccurs="0" >
+                <xs:annotation>
+                  <xs:documentation>
+                  e.g. "%DDE_NAME%"
+                  Include this exactly as above if you want to have DDE support for your 
+                  file extension (loads the file in any running devenv process, instead of 
+                  launching a new one.)
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="RgsFileSxS" type="xs:string" maxOccurs="1" minOccurs="0" >
+                <xs:annotation>
+                  <xs:documentation>
+                  Use this if you have multiple file extensions associated with the same dll, 
+                  they can then all use the same SxS file.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="RgsFileShared" type="xs:string" maxOccurs="1" minOccurs="0" >
+                <xs:annotation>
+                  <xs:documentation>                  
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FileExtensionOSShared" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+            Use this element if your file extension is installed and owned by the OS (e.g. .txt).  
+            This allows you to specify an open verb for devenv.exe, but does not put any 
+            registration in place that will cause the .txt extension to get ripped out when 
+            devenv uninstalls.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Extension" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>
+                  The actual file extension, e.g. .cs 
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ProgID" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>    
+                  This progid _MUST_ be version dependent.  
+                  If you append the registry variable as shown below, 
+                  then you get devenv's built-in versioning, 
+                  which is gauranteed to be automatically updated with each SxS push in the future.
+                  e.g. VisualStudio.cs.%PROGID_VERSION%              
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ProgIDName" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>      
+                  This is just a friendly name for your progid            
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="AlwaysShowExtension" type="xs:string" maxOccurs="1" minOccurs="0" >
+                <xs:annotation>
+                  <xs:documentation> 
+                  e.g. "1". Only use this if you have it in your existing registration.                 
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="OpenWithListName" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation> 
+                  e.g. "%EXE_NAME%". 
+                  Use the %EXE_NAME% registry variable to use devenv as your entry in the openwithlist.     
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Command" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>               
+                  e.g. "%COMMONIDE%%EXE_NAME%" /dde "%%1"
+                  This should be copied directly from your existing registration.  
+                  If you don't have a command, then you should be using &lt;FileExtensionNoOpen&gt;   
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="DdeApp" type="xs:string" maxOccurs="1" minOccurs="0" >
+                <xs:annotation>
+                  <xs:documentation>       
+                  e.g. "%DDE_NAME%"
+                  Include this exactly as above if you want to have DDE support for your 
+                  file extension (loads the file in any running devenv process, instead of 
+                  launching a new one.)           
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="RgsFileSxS" type="xs:string" maxOccurs="1" minOccurs="0" >
+                <xs:annotation>
+                  <xs:documentation>                  
+                  Use this if you have multiple file extensions associated with the same dll, 
+                  they can then all use the same SxS file.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FileExtensionNoOpen" maxOccurs="unbounded" minOccurs="0">
+           <xs:annotation>
+            <xs:documentation>
+            Use this element if you are registering a file extension that devenv will never have open verbs.  You're just declaring a type and specifying an icon.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Extension" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>                  
+                  The actual file extension, e.g. .cs
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ProgID" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>     
+                  This progid _MUST_ be version dependent.  
+                  If you append the registry variable as shown below, 
+                  then you get devenv's built-in versioning, 
+                  which is gauranteed to be automatically updated with each SxS push in the future.
+                  e.g. VisualStudio.cs.%PROGID_VERSION%             
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ProgIDName" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>      
+                  This is just a friendly name for your progid            
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ContentType" type="xs:string" maxOccurs="1" minOccurs="0" >
+                <xs:annotation>
+                  <xs:documentation>  
+                  e.g. "text/plain" or "text/xml".
+                  Do not use "application/octet-stream" -- this content type should never be 
+                  explicitly registered, per RichardS.                                    
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="DefaultIcon" type="xs:string" maxOccurs="1" minOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>                  
+                  e.g. "%MODULE%,1".  
+                  This should be copied directly from your existing file registration.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="RgsFileSxS" type="xs:string" maxOccurs="1" minOccurs="0" >
+                <xs:annotation>
+                  <xs:documentation>                  
+                  Use this if you have multiple file extensions associated with the same dll, 
+                  they can then all use the same SxS file.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="RgsFileShared" type="xs:string" maxOccurs="1" minOccurs="0" >
+                <xs:annotation>
+                  <xs:documentation>                  
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

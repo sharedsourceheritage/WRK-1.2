@@ -1,0 +1,68 @@
+function A(x)
+{
+	print(arguments.callee == A);
+	print(A.caller == null);
+	print(arguments.caller == null);
+	B(arguments);
+}
+
+
+function B(x)
+{
+	print(arguments.callee == B);
+	print(B.caller == A);
+	print(B.caller.caller == null);
+	print(arguments.caller == x);
+	C(arguments);
+}
+
+
+function C(x)
+{
+	print(arguments.callee == C);
+	print(C.caller == B);
+	print(C.caller.caller == A);
+	print(C.caller.caller.caller == null);
+	print(arguments.caller == x);
+}
+A(null);
+
+function AE(x)
+{
+	print(arguments.callee == AE);
+	print(AE.caller == null);
+	print(arguments.caller == null);
+	eval("BE(arguments)");
+}
+
+
+function BE(x)
+{
+	print(arguments.callee == BE);
+	print(BE.caller != null);
+	print(arguments.caller != null);
+	eval("CE(arguments)");
+}
+
+
+function CE(x)
+{
+	print(arguments.callee == CE);
+	print(CE.caller != null);
+	print(arguments.caller != null);
+}
+eval("AE(null)");
+
+
+function AR(c)
+{
+	if (c < 1)
+		{
+		print(AR.caller == null);
+		AR(c + 1);
+		}
+	else
+		print(AR.caller == AR);
+}
+AR(0);
+

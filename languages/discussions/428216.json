@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "982202",
+    "ThreadId": "428216",
+    "Html": "\r\n<p>When I try to write a simple program postcondition, which should be trivially true,I get &nbsp;unsatisfied postcondition &nbsp;as output.</p>\r\n<p>Here is my postcondition:</p>\r\n<p>there exists an integer i in range (-10:10), such that i==0,i.e.</p>\r\n<p><strong>ensures exists{int i in (-10:10); i==0};</strong></p>\r\n<p>according to me this postcondition should be trivially true for all examples, but thats not the case.</p>\r\n<p>Please help me</p>\r\n<p>Thanks, in advance</p>\r\n",
+    "PostedDate": "2013-01-01T19:42:58.14-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "982458",
+    "ThreadId": "428216",
+    "Html": "\r\n<p>Unfortunately, SMT solvers such as Z3, which is the prover behind Spec#, have weak support for existential quantifiers. It is sometimes possible to provide intermediate assertions that help Z3 find a witness for the quantified variable, but I have no suggestion\r\n how to fix your example. If this is part of a bigger example, you could post the entire method; maybe we can come up with a fix then.</p>\r\n<p>Cheers,<br>\r\n&nbsp;&nbsp; Peter</p>\r\n",
+    "PostedDate": "2013-01-02T14:18:22.963-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "982982",
+    "ThreadId": "428216",
+    "Html": "\r\n<p>I am not talking about any specific example, but in general. The post-condition and example i have is pretty complex,so I am not posting it here, I tried, in all the examples provided on the page, this assertion seems to fail for all of them. It would nice\r\n of you even if you could give me any workaround,such that I could write my conditions in a different way and make them work(I tried negating, and using forall quantifier but that doesnot works ).</p>\r\n<p>For example:</p>\r\n<p>class Example</p>\r\n<p>{</p>\r\n<p>&nbsp; int x;<br>\r\n&nbsp; void Inc(int y)&nbsp;</p>\r\n<p>&nbsp; ensures exists{int i in (-10:10); i==0};</p>\r\n<p>&nbsp; &nbsp;{&nbsp; &nbsp; x += y;&nbsp;</p>\r\n<p>&nbsp; &nbsp;}</p>\r\n<p>}</p>\r\n",
+    "PostedDate": "2013-01-04T02:58:09.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

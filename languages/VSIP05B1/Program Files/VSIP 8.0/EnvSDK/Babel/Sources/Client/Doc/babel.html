@@ -1,0 +1,1814 @@
+<html  >
+
+
+    <style>
+    <!--
+    h1,h2,h3,h4 { font-family : verdana,helvetica,sans-serif }
+    pre,code    { color: #202080 }
+    body        { padding: 3%  }
+    li          { margin-bottom: 0.5ex }
+    -->
+    </style>
+
+
+
+<!--
+<![TEX[
+\renewenvironment{verbatim}{\small\begin{verbatim}}{\end{verbatim}}
+]]>
+-->
+
+<head  ><title  >Babel, integrating languages into Visual Studio</title></head>
+<body  title="Babel, integrating languages into Visual Studio" ><h1 align="center" ><em  >Babel, integrating languages into Visual Studio</em></h1>
+
+
+<center  >Daan Leijen
+
+<font size="-1" ><em  ><br><br>
+
+University of Utrecht<br> 
+Dept. of Computer Science<br>
+PO.Box 80.089, 3508 TB Utrecht<br> 
+The Netherlands<br>
+<a href="mailto:daan@cs.uu.nl">daan@cs.uu.nl</a>, 
+<a href="http://www.cs.uu.nl/~daan">http://www.cs.uu.nl/~daan</a>
+</em></font></center>
+
+
+<a name="Introduction"><h2  >Introduction</h2></a>
+
+This document describes how to integrate programming languages into Visual Studio using 
+the <em>Babel</em> package. The <em>Babel package</em> is available
+for both the Visual J++ 6.0 environment and Visual Studio 7.0.
+By a language integration we mean: 
+Syntax highlighting (including customizable color classes);
+Syntax checking, show red squiglies in the source
+and show messages in a special task window;
+Statement completion; Method tips,  show the type of the method when 
+providing parameters; Member selection lists; Quick info, show information
+when hovering the mouse over identifiers; Highlight matching braces; find
+matching braces; Browsing; Build and deploy management; Project support and
+Debugger integration.
+
+There are basically three ways to integrate a language into Visual Studio:
+<ul>
+<li>The Visual Studio Integration Partner (VSIP) program. By becoming a member
+of the VSIP program, you get the VSIP SDK which exposes all the core API's of
+the Visual Studio environment. Allthough the most flexible and powerful method
+of integration, it requires a lot of work to integrate a language. 
+</li><li>The <code>IBabelService</code> interface. The <code>IBabelService</code> interface 
+represents the essential functionality that a language should provide in order to
+be integrated into Visual Studio. The <em>Babel</em> package provides all
+the glue code between this interface and the Visual Studio environment. 
+Creating an implementation of the <code>IBabelService</code> is much easier
+than using the VSIP SDK and might be the right approach if your language
+compiler is easily adapted to support this interface.
+</li><li>The <em>Babel</em> SDK. This SDK implements a default <code>IBabelService</code>
+interface in C++ which is customized through a lexical and grammar specification of the language. 
+A client only needs to provide these specifications to integrate into Visual Studio.
+This is by far the easiest way to create a language service and this document 
+describes how to use this approach.
+</li></ul>
+
+The <em>Babel</em> package supports (automatic) method tips, 
+(automatic) member selection, statement completion,
+quick info (automatic info when hovering the
+mouse over an identifier), (automatic) highlight matching brace, find matching
+brace and block (un)commenting.
+We hope to extend the 
+<em>Babel</em> package soon with browsing, a build system with automatic 
+dependency analysis, projects and help integration.
+
+
+<a name="Getting started"><h2  >Getting started</h2></a>
+
+Figure <a href="#fig:overview">[fig:overview]</a> shows how the <em>Babel</em> 
+framework is works. The dynamic link library <code>babelpackage.dll</code> 
+is a Visual Studio package that interfaces 
+between <em>Babel</em> services and Visual Studio. A <em>Babel</em> service
+is simply a COM component that implements the <code>IBabelService</code> interface
+and is registered in a special way. 
+This document will explain how to implement such service using the SDK.
+
+<a name="Installation"><h3  >Installation</h3></a> 
+After installing the <em>Babel</em> SDK, there is 
+a root folder called <code>babel\client</code>. The root folder contains the following 
+sub folders:
+
+<ul> 
+<li> <code>client\doc</code>. Contains the documentation about 
+<em>Babel</em>, FLEX and BISON.
+
+</li><li> <code>client\tools</code>. Contains FLEX and BISON. Both are free GNU 
+programs. FLEX generates lexical analysers and BISON generates parsers<strong>[footnote: </strong><em>The 
+output of both programs is completely free without any licensing issue.</em><strong>]</strong>. 
+
+</li><li> <code>client\common</code>. This folder contains the sources of the 
+<code>common.lib</code> library. This library implements the standard code 
+that implements the <code>IBabelService</code> and interfaces with the generated
+lexer and parser.
+
+</li><li> <code>client\template</code>. This is the simplest possible language 
+service. This project is used as a template for implementing a language service.
+
+</li><li> <code>client\myc</code> and <code>client\forth</code>.
+These folders 
+contain examples of a language integrated into Visual Studio using the 
+<em>Babel</em> framework. 
+</li></ul>
+
+<a name="Conventions"><h3  >Conventions</h3></a>
+
+The interface to the <em>Babel</em> language package is specified in 
+<code>client\common\babelservice.idl</code>. 
+
+The code in <code>client\common</code> uses the following conventions:
+
+<ul>
+<li> Types and constants start with a <strong>C</strong>apital letter; <code>class 
+StdService, enum Color { ColorBlack }</code>.
+
+</li><li> Variables start with a <strong>l</strong>ower case letter; <code>token, 
+g_service</code>. Global variables are prefixed with <code>g_</code> and member 
+variable are prefixed with <code>m_</code>. 
+
+</li><li> Argument use is marked as <code>in</code>, <code>out</code> or 
+<code>inout</code>; <code>void increment( inout int* i );</code>. All three 
+identifiers are empty #defines.
+
+</li><li> Methods are marked as <code>final</code>, <code>virtual</code> or 
+<code>override</code>. <code>final</code> is used for a non-virtual method. 
+<code>override</code> is used whenever a virtual method is redefined. Both are 
+empty #defines. 
+</li></ul>
+
+<a name="Adding a language"><h2  >Adding a language</h2></a>
+
+Adding a language using the <em>Babel</em> SDK is very much an evolutionary
+process, adding new features one at a time:
+<ol>
+<li> Set the language information. This step doesn't add any functionality
+but enables the integration into Visual Studio.
+</li><li> Syntax highlighting. This is enabled through a lexical specification.
+</li><li> Syntax checking. This is enabled trhough a grammar specification.
+</li><li> Custom colors. Some languages need extended color sets.
+</li><li> Automatic brace matching. 
+</li><li> Block commenting.
+</li><li> Statement completion.
+</li><li> Member completion.
+</li><li> Quick info.
+</li><li> Method tips.
+</li></ol>
+
+The following sections will elaborate on each step. 
+As a running example I will use the <em>MyC</em> 
+language. <em>MyC</em> is an extremely simple C-like language which
+only uses integers. 
+
+<a name="Set the language information"><h2  >Set the language information</h2></a>
+
+This step installs all the basic machinery needed by a language service.
+
+<a name="Create a new project"><h3  >Create a new project</h3></a> 
+
+First a new project for your language is needed. 
+Luckily, there is a template project with all the boilerplate code and 
+correct settings provided by the SDK. 
+Copy the subfolder <code>client\template</code> to a new subfolder with
+the name of your language, for example <code>client\myc</code>
+Click now on 
+the <code>bservice.dsw</code> workspace file in your new
+subfolder to startup the Visual Studio environment. 
+
+<a name="Language information"><h3  >Language information</h3></a> 
+
+Open the <code>service.cpp</code> file (in 
+<strong>source files</strong>). At the top of this file three values need to be 
+supplied that are used during the registration of the package:
+
+<ul>    
+<li> <code>g_languageCLSID</code> is the CLSID of this specific language. 
+The <code>guidgen</code> utility (which can be run from
+the <code>start-run</code> menu) is used to generate a fresh CLSID.    
+</li><li> 
+<code>g_languageName</code> is the human readable name of the language, in our 
+case <code>&quot;MyC&quot;</code>.
+</li><li> <code>g_languageExtensions</code> are the extensions of the source files
+ending with a <code>NULL</code>, for MyC this is simply <code>{&quot;.myc&quot;,NULL}</code></li></ul>
+
+For the <em>MyC</em> language, the definitions look like:
+
+<pre  >
+  const char*  g_languageName              = &quot;MyC&quot;;
+  const char*  g_languageFileExtensions[]  = { &quot;.myc&quot;, NULL };
+  const CLSID  g_languageCLSID = 
+     {0x54D21404,0x5E7F,0x11D3,{0xB4,0x07,0x00,0x60,0x08,0xD1,0xBF,0x8C}};
+</pre>
+
+From this moment on it is safe to build the service, allthough 
+no functionality is yet implemented.
+
+<a name="Language properties"><h3  >Language properties</h3></a>
+
+The language properties are defined in the <code>g_languageProperties</code>
+variable. This is an array of <code>LanguageProperty</code> structures.
+Each property consists of a name and a numeric value. The properties
+will be put in the registry on registration and determine the behaviour
+of certain features in the language service. For example, automatic
+brace matching is only enabled if the property <code>&quot;MatchBraces&quot;</code>
+is set to one. When no features are implemented yet, the set of
+properties should probably look like:
+<pre  >
+const LanguageProperty g_languageProperties[] =
+{
+  { &quot;RequestStockColors&quot;, 1     },
+  { &quot;ShowCompletion&quot;,     1     },
+
+  { &quot;CodeSense&quot;,          0     },
+  { &quot;MaxErrorMessages&quot;,   5     },
+  { &quot;QuickInfo&quot;,          0     },
+  { &quot;MatchBraces&quot;,        0     },
+
+  { NULL, 0 }
+};
+</pre>
+
+<a name="Syntax highlighting"><h2  >Syntax highlighting</h2></a>
+
+Syntax highlighting is enabled through a lexical specification. The 
+specification consists of regular expressions that recognise the tokens
+of the language. These tokens are than mapped to color classes which
+are used by Visual Studio to highlight the source. 
+Implementing syntax highlighting is done in three steps:
+<ul>
+<li>Define the tokens of the language.
+</li><li>Define a mapping from tokens to color classes.
+</li><li>Define the lexical specication.
+</li></ul>
+
+<a name="Define the tokens of the language"><h3  >Define the tokens of the language</h3></a> 
+
+Open <code>parser.y</code> (in <strong>source files</strong>). Language tokens 
+are defined using the <code>%token</code> definitions of BISON. The 
+<em>MyC</em> language contains the following definitions:
+
+<pre  >
+  %token IDENTIFIER NUMBER 
+  %token KWIF KWELSE KWWHILE KWFOR KWCONTINUE KWBREAK KWRETURN
+  %token KWEXTERN KWSTATIC KWAUTO KWINT KWVOID
+  %token ',' ';' '(' ')' '{' '}' '=' 
+  %token '+' '-' '*' '/' '!' '&amp;' '|' '^'
+  %token EQ NEQ GT GTE LT LTE AMPAMP BARBAR 
+  %token LEX_WHITE LEX_COMMENT LEX_LINE_COMMENT
+</pre>
+
+The service should now be build. A 
+file called <code>parser.cpp.h</code> is automatically generated by 
+<em>bison</em> that contains the <em>C</em> definitions of the tokens. 
+
+<a name="Define a mapping from tokens to color classes"><h3  >Define a mapping from tokens to color classes</h3></a> 
+
+The tokens 
+in the language should be mapped to a specific color class. For example, the 
+token <code>KWIF</code> should map to the <code>ClassKeyword</code> color class, a 
+<code>NUMBER</code> token to the <code>ClassNumber</code> color class, etc. 
+
+In <code>service.cpp</code>, this information is provided by the 
+<code>Service::getTokenInfo</code> method. This method returns a pointer to a 
+static <code>TokenInfo</code> array. There is an entry for each defined token. 
+Each <code>TokenInfo</code> structure contains the token, the color class for 
+this token, a description, a character class and sometimes a trigger class.
+The character classes and trigger classes will be explained later in
+more detail.
+Part of the table for the MyC language looks like:
+
+<pre  >
+  static TokenInfo tokenInfoTable[] =
+  {
+    //TODO: add your own token information here
+    { IDENTIFIER, ClassIdentifier,  &quot;identifier '%s'&quot;, CharIdentifier },
+    { NUMBER,     ClassNumber,      &quot;number ('%s')&quot;  , CharLiteral    },
+    { KWIF,       ClassKeyword,     &quot;if&quot;             , CharKeyword },
+    { KWELSE,     ClassKeyword,     &quot;else&quot;           , CharKeyword },
+    { KWWHILE,    ClassKeyword,     &quot;while&quot;          , CharKeyword }, 
+  
+    { LEX_WHITE,  ClassText,        &quot;white space&quot;    , CharWhiteSpace },
+    { LEX_LINE_COMMENT, ClassComment, &quot;comment&quot;      , CharLineComment },
+    { LEX_COMMENT,ClassComment,     &quot;comment&quot;        , CharComment },
+
+    //always end with the 'TokenEnd' token.
+    { TokenEnd,     ClassText,      &quot;&lt;unknown&gt;&quot; }
+  };
+</pre>
+
+The color classes of MyC are only the default ones. 
+However <em>Babel</em> allows for custom 
+color classes. The 
+default color classes are defined in <code>client\common\babelservice.idl</code>:
+
+<pre  >
+  enum DefaultColorClass
+  {
+    ClassText,
+    ClassKeyword,
+    ClassComment,
+    ClassIdentifier,
+    ClassString,
+    ClassNumber
+  };
+</pre>
+
+<a name="The lexical specification"><h3  >The lexical specification</h3></a> 
+
+Finally, the lexical specification of the language 
+can be added. This specification is used directly by the colorizer to provide 
+syntax high-lighting. The same specification is also used later by the 
+syntax-checker to provide tokens for the grammar. 
+
+Open the file 
+<code>lexer.lex</code> in <strong>source files</strong> and add the LEX 
+rules for your language. The document <a href="flex.html">flex.html</a> gives more 
+information on how to specify lexical rules. Most languages already have a LEX 
+specification. If you have one, you can simply copy the rules into the 
+<code>lexer.lex</code> file. However, to meet the requirements of the colorizer, 
+there are some constraints on the form of the LEX rules. 
+
+To explain the constraints, we will briefly look into the implementation of the colorizer.
+The colorizer 
+automatically saves the state of the lexer at every line of text. Whenever the 
+line colors could change, the lexer is restarted at this state to colorize this 
+line again. Each time that a token is returned by the lexer, the colorizer will 
+lookup the color class in the table provided by the <code>getTokenInfo</code> 
+method. All the characters scanned for this token are colored with this color 
+class. In order to make this work, the colorizer assumes two things from the 
+lexical specification:
+
+<ul>
+<li> The lexer returns a token at the end of a line.
+</li><li> No scanned characters are dropped or added during scanning.
+</li></ul>
+
+The first constraint assures that the lexer is in a known state at the end of 
+the line. The second constraint is needed to determine how many characters are 
+to be colored. The first constraint can be easily satisfied by adding a rule at 
+each lexer state that returns a token on seeing a new-line. For example, many 
+lexical specifications contain the following rule for discarding white space:
+
+<pre  >
+  [ \t\r\n]+    { /* ignore */ }
+</pre>
+
+Since this rule does not directly return a token on a new-line, it should be redefined to:
+
+<pre  >
+  [ \t\r]+    { /* ignore */ }
+  \n          { /* ignore */ }
+</pre>
+
+However, now it doesn't satisfy the second constraint since it forgets
+about the scanned characters. The final and correct definition returns
+a white space token:
+
+<pre  >
+  [ \t\r]+    { return LEX_WHITE; }
+  \n          { return LEX_WHITE; }
+</pre>
+
+Since the token mapping specifies the character class <code>CharWhiteSpace</code>
+for <code>LEX_WHITE</code>
+only the  colorizer will know about the white space, the parser ignores all white 
+space tokens. 
+(You can change this behaviour by overriding the <code>Service::isGrammarToken</code>
+method).
+
+The second constraint can be enforced in general by always adding an action 
+to a lexical rule (so we don't lose characters) and to allow only three ways to 
+end that action:
+
+<ol>
+<li> <code>return <em>Token</em>;</code>. &quot;I have scanned a token and return its 
+name&quot;. This is the normal way of ending an action.
+
+</li><li> <code>yymore();</code>. &quot;I have scanned something but don't want to return 
+a token yet; continue scanning&quot;. <code>yymore()</code> is used here to avoid 
+losing characters in <code>yytext</code> (the currently scanned text) 
+while continuing scanning. It is used 
+in situations like comments where we only want to return the comment token at 
+the end of a comment or line.
+
+</li><li> <code>yyless(0);</code>. &quot;I have scanned something and changed my state, 
+scan this input again&quot;. Here, <code>yyless(0)</code> is used to prevent 
+duplication of characters. </li></ol>
+
+During lexing, there is a global variable <code>g_service</code> available. This 
+variable points to the current language service. The complete interface of a 
+language service can be found in <code>client\common\babelservice.idl</code> 
+and <code>client\common\stdservice.h</code>. Important functions during 
+lexical analysis are:
+
+<ul>
+
+<li> <code>void setLexState( in LexState state);</code>. <br>
+Sets the lexer state. Should be used instead of the FLEX <code>BEGIN</code> macro.
+
+</li><li> <code>void lexicalError( in Severity sev, in const char* msg );</code>. <br>
+Used to send a lexical error. These messages show  up at run-time in the task 
+window. Note that this method has only effect during syntax checking and will 
+not work yet during colorizing. An important kind of error is the `hint' which
+is used to set for example <code>TODO</code> messages in the task list. A hint is
+given by setting the severity to <code>SevHint</code>. The error message should
+start with the hint token, not including the comment start. Take a look at
+MyC for an example.
+
+</li><li> <code>void enterComment(in LexState commentState = 0);</code>. <br>
+If the <code>commentState</code> argument is given, the lexer is put into that 
+state and the current state is saved. Each time this method is called, the 
+comment nesting level is incremented.
+
+</li><li> <code>void leaveComment();</code>. <br>
+Each time this method is called, the comment nesting level is decremented. 
+Whenever it reaches zero, the lexer is put into the state where 
+<code>enterComment</code> was called the first time. 
+</li></ul>
+
+After adding the lexical rules, the colorizer will be working. Open some source 
+files of your language in the Visual Studio environment and enjoy them in multiple
+colors!
+
+<a name="Syntax checking"><h2  >Syntax checking</h2></a>
+
+Open the file 
+<code>parser.y</code> again and add the grammar rules for the language. The document
+<a href="bison.html">bison.html</a> contains more information about specifying 
+grammar rules. Most languages already have a YACC compatible grammar. You can 
+simply copy these rules into <code>parser.y</code>. Unlike the lexer, there are 
+no restrictions on the grammar rules. Here are some 
+(simplified) rules for <em>MyC</em> expressions:
+
+<pre  >
+Expr: MulExpr AddOp Expr
+    | MulExpr
+    ;
+
+AddOp
+    : '+' | '-'
+    ;
+
+
+MulExpr
+    : PreExpr MulOp MulExpr
+    | PreExpr 
+    ;
+
+MulOp 
+    : '*' | '/'
+    ;
+
+
+Factor
+    : IDENTIFIER
+    | NUMBER
+    | '(' Expr ')'
+    ;     
+</pre>
+
+<a name="Properties"><h3  >Properties</h3></a>
+After having added the language grammar rules, you should set the
+language property <code>CodeSense</code> to one (in <code>service.cpp</code>)
+to enable syntax checking. The property <code>CodeSenseDelay</code> specifies
+the number of milliseconds delay before errors are displayed. 
+In practice a value between 1000 or 2000 milliseconds works well, the
+default value is 1500.
+The property <code>CodeSenseFastOnChangeLine</code> should be set to one
+if errors should be displayed immediately when the user leaves a changed
+line. This property is enabled by default<strong>[footnote: </strong><em>This feature is not 
+supported in the Visual J++ 6.0 environment</em><strong>]</strong>.
+The property <code>MaxErrorMessages</code> gives the maximum number of
+displayed error messages (per source file). The default value is 5.
+
+<a name="Adding error productions"><h3  >Adding error productions</h3></a>
+Now, error productions should be added in order to provide useful feedback 
+to the user. Error productions should be added in such a way 
+that they both provide specific information about the error and, most important, 
+that they allow parsing to <em>recover</em>. The global language service 
+(<code>g_service</code>) can be used to send error messages about errors that 
+are detected during parsing: 
+
+<pre  >
+void syntaxError(  in const char*     construct, 
+                   in const Location* loc = NULL );
+
+void expectError(  in const char*     construct,
+                   in const char*     expecting,
+                   in const Location* loc = NULL );
+
+void errorMessage( in Severity        severity,
+                   in const char*     message,
+                   in const Location* loc = NULL );
+</pre>
+
+<code>syntaxError</code> is used for general errors during parsing. For example, 
+you probably want to add this 'catch all' error production to your grammar:
+
+<pre  >
+SourceFile: Program
+          | error     { g_service-&gt;syntaxError( &quot;program&quot; ); }
+          ;
+</pre>
+
+<code>expectError</code> is used whenever a certain closing token is expected. 
+For example, in the <em>MyC</em> binding there is an error production for 
+catching situations where the closing parenthesis of an expression is absent:
+
+<pre  >
+ParenExpr
+    : '(' Expr ')'    
+    | '(' Expr error  
+              { g_service-&gt;expectError( &quot;unmatched parenthesis&quot;, &quot;)&quot; ); }
+    ;
+</pre>
+
+Sometimes, the location of the error token is not determined by the current 
+point in the input. In that case, the location can be given using the 
+<code>$</code> notation of BISON which specifies which token determines 
+the position.
+
+<pre  >
+ImportStatement
+  : IMPORT QualifiedName SemiColons
+  | IMPORT QualifiedName '.' '*' SemiColons
+  | IMPORT error SemiColons        
+       { g_service-&gt;syntaxError( &quot;import  declaration&quot;, &amp;$2 ); }
+  ;
+</pre>
+
+Putting error productions in the right spot is quite hard, many times error 
+productions add a lot of shift-reduce (not so bad) or reduce-reduce (very bad!) 
+conflicts to the grammar. Try to aim for adding error productions for `common' 
+errors, together with some `catch-all' productions. The MyC sample contains
+lots of common error productions.
+
+<a name="Custom color classes"><h2  >Custom color classes</h2></a>
+
+For most languages, the default color classes are good enough but some
+languages have more token categories. For example, <em>Haskell</em> has special
+color classes for constructors, literate text and non-standard keywords.
+I will use the <code>client\haskell</code> language as the example for adding
+custom color classes.
+
+First of all, we need to specify that we are going to use custom color classes.
+Set the language property <code>&quot;RequestStockColors&quot;</code> to zero.
+
+Secondly, we will define our custom color classes. Open <code>service.cpp</code>
+again and add a enumeration definition for your language right after
+the language information. You should start the
+enumeration with the last default color class and still use the default color
+classes where appropiate. The Haskell sample defines:
+<pre  >
+enum HaskellColorClass 
+{
+  ClassPragma      = ClassDefaultLast + 1,
+
+  ClassOperator,
+  ClassConsId,
+  ClassConsOp,
+
+  ClassSpecialOp,
+  ClassReservedOp,
+
+  ClassGreencard,
+
+  ClassLiterateText,
+  ClassLiterateStart,
+
+  //some short hands
+  ClassSpecial     = ClassSpecialOp,	
+  ClassReservedId  = ClassKeyword,
+  ClassSpecialId   = ClassKeyword,
+  ClassExtensionId = ClassKeyword,	
+  ClassCharacter   = ClassString,	
+  ClassSelector	   = ClassIdentifier,
+  ClassImplicit	   = ClassIdentifier
+};
+</pre>
+
+In the token definition array, we can now use the new custom color classes. Here is an
+excerpt from the Haskell sample:
+<pre  >
+override const TokenInfo* Service::getTokenInfo() const
+{
+  static TokenInfo tokenInfoTable[] =
+  {
+    ...      
+    { VAROP    , ClassOperator	, &quot;operator (%s)&quot;,    CharIdentifier },
+    { VARID    , ClassIdentifier, &quot;identifier (%s)&quot;,  CharIdentifier },
+    { CONOP    , ClassConsOp	, &quot;constructor (%s)&quot;, CharIdentifier },
+    { CONID    , ClassConsId	, &quot;constructor (%s)&quot;, CharIdentifier },
+    { QVAROP   , ClassOperator	, &quot;operator (%s)&quot;,    CharIdentifier },
+    { QVARID   , ClassIdentifier, &quot;identifier (%s)&quot;,  CharIdentifier },
+    { QCONOP   , ClassConsOp	, &quot;constructor (%s)&quot;, CharIdentifier },
+    { QCONID   , ClassConsId	, &quot;constructor (%s)&quot;, CharIdentifier },
+    { RECSELID , ClassSelector	, &quot;selector&quot;,         CharIdentifier }, 
+    { IPVARID  , ClassImplicit	, &quot;implicit parameter&quot;, CharIdentifier },
+    ...
+  };
+  return tokenInfoTable;
+}
+</pre>
+
+The last step consists of adding default color information for the new custom colors. 
+The method <code>Service::getColorInfo</code> returns a pointer to a static array of
+color information <code>ColorInfo</code>. Each <code>ColorInfo</code> consists of the
+color class, its name and a CSS style specification of its appearance. 
+The <code>getColorInfo</code> method should be added right after the custom color
+class enumeration. The <em>Haskell</em> sample has the following implementation:
+<!--
+<![TEX[{\small]]>
+-->
+<pre  >
+override const ColorInfo* Service::getColorInfo() const
+{
+ static ColorInfo colorInfoTable[] =
+ {
+  { ClassKeyword,   &quot;Keyword&quot;,    &quot;color: blue; font-weight: bold&quot;  },
+  { ClassComment,   &quot;Comment&quot;,    &quot;background-color: lightgray&quot;     },
+  { ClassIdentifier,&quot;Identifier&quot;, &quot;&quot;                                },
+  { ClassString,    &quot;String&quot;,     &quot;color: purple&quot;                   },
+  { ClassNumber,    &quot;Number&quot;,     &quot;&quot;                                },
+      
+  { ClassPragma,    &quot;Pragma&quot;,                   &quot;color: aqua&quot;       },
+  { ClassOperator,  &quot;Haskell Operator&quot;,         &quot;&quot;                  },
+  { ClassConsId,    &quot;Haskell Constructor&quot;,      &quot;font-weight: bold&quot; },
+  { ClassConsOp,    &quot;Haskell Cons Operator&quot;,    &quot;font-weight: bold&quot; },
+  { ClassSpecialOp, &quot;Haskell Special Operator&quot;, &quot;&quot;                  },
+  { ClassReservedOp,&quot;Haskell Reserved Operator&quot;,&quot;color: purple&quot;     },
+  { ClassGreencard, &quot;Greencard directive&quot;,      
+                 &quot;color: darkblue; text-decoration: line-through&quot;   },
+
+  { ClassLiterateText, &quot;Haskell Literate Text&quot;, &quot;color: darkgreen&quot;  },    
+  { ClassLiterateStart,&quot;Haskell Literate Start&quot;,&quot;color: darkgray&quot;   },
+
+  { ColorClassEnd,     &quot;&lt;unknown&gt;&quot;,       &quot;&quot;                  }
+ };
+
+ return colorInfoTable;
+}
+</pre>
+<!--
+<![TEX[}]]>
+-->
+
+And we should add this method to the class declaration in <code>service.h</code>:
+<pre  >
+class Service : public CommentService
+{
+protected:
+  override const ColorInfo* getColorInfo() const;
+  override const TokenInfo* getTokenInfo() const;
+};
+</pre>
+
+More information about CSS style specifications can be found on
+<a href="http://www.w3c.org">http://www.w3c.org</a> Allthough it is possible to specify any legal CSS
+style, only a small subset is recognised by Visual Studio. Here is a list
+of recognised properties and values:
+<p>
+
+<table border=1 cellpadding=3>
+<tr><td><strong>property</strong></td><td><strong>values</strong></td>
+</tr>
+<tr valign=top><td><strong>font-weight</strong></td>
+<td>
+default<br>
+normal<br>
+bold<br>
+bolder<br>
+lighter<br>
+100<br>
+200<br>
+300<br>
+400<br>
+500<br>
+600<br>
+700<br>
+800<br>
+900
+</td>
+</tr>
+
+<tr valign=top><td><strong>text-decoration</strong></td>
+<td>
+default<br>
+normal<br>
+line-through<br>
+strike-through<br>
+</td></tr>
+
+<tr valign=top><td><strong>color</strong><br><strong>background-color</strong></td>
+<td>
+default<br>
+normal<br>
+auto<br>
+selected<br>
+inactive<br>
+plaintext<br>
+margin<br>
+black<br>
+white<br>
+maroon<br>
+darkgreen<br>
+brown<br>
+darkblue<br>
+purple<br>
+aquamarine<br>
+lightgray<br>
+darkgray<br>
+red<br>
+green<br>
+yellow<br>
+blue<br>
+magenta<br>
+cyan<br>
+lime<br>
+aqua<br>
+silver<br>
+olive<br>
+teal<br>
+navy
+</td></tr>
+<tr valign=top><td><strong>text-kind</strong></td>
+<td>
+default<br>
+normal<br>
+humantext<br>
+programtext
+</td></tr>
+</table>
+
+
+<!--
+<![TEX[
+\begin{tabular}{|l|l|}
+\hline
+\textbf{color}
+& default \\
+\textbf{background-color}
+& normal \\
+& auto \\
+& selected \\
+& inactive \\
+& plaintext \\
+& margin \\
+& black \\
+& white \\
+& maroon \\
+& darkgreen \\
+& brown \\
+& darkblue \\
+& purple \\
+& aquamarine \\
+& lightgray \\
+& darkgray \\
+& red \\
+& green \\
+& yellow \\
+& blue \\
+& magenta \\
+& cyan \\
+\hline
+& lime \\
+& aqua \\
+& silver \\
+& olive \\
+& teal \\
+& navy \\
+\hline
+\end{tabular}
+
+
+\begin{tabular}{|l|l|}
+\hline
+\textbf{text-decoration}
+& default \\
+& normal \\
+& line-through \\
+& strike-through \\
+\hline 
+\end{tabular}
+
+
+\begin{tabular}{|l|l|}
+\hline
+\textbf{text-kind}
+& default \\
+& normal \\
+& humantext \\
+& programtext \\
+\hline
+\end{tabular}
+
+\begin{tabular}{|l|l|}
+\hline 
+\textbf{font-weight} 
+& default \\
+& normal \\
+& bold  \\
+& bolder \\
+& lighter \\
+& 100 \\
+& 200 \\
+& 300 \\
+& 400 \\
+& 500 \\
+& 600 \\
+& 700 \\
+& 800 \\
+& 900 \\
+\hline
+\end{tabular}
+]]>
+-->
+
+<a name="Block commenting"><h2  >Block commenting</h2></a>
+
+Using <code>ctrl-k, ctrl-c</code> or <code>ctrl-k, ctrl-u</code> in Visual Studio 7,
+you can comment or uncomment selected text. This feature is not
+supported in the Visual J++ 6.0 environment. To enable block commenting you
+should implement the <code>Service::getCommentFormat</code> method.
+
+First open <code>service.h</code> and add a declaration of the <code>getCommentFormat</code>
+method:
+<pre  >
+class Service : public CommentService
+{
+protected:
+  override const CommentFormat* getCommentFormat() const;
+  override const ColorInfo*     getColorInfo()     const;
+  override const TokenInfo*     getTokenInfo()     const;
+};
+</pre>
+
+The method returns
+a pointer to a <code>CommentFormat</code> structure which is defined in 
+<code>client\common\stdservice.h</code>:
+<pre  >
+struct CommentFormat
+{
+  const char* lineStart;
+  const char* blockStart;
+  const char* blockEnd;
+  bool        useLineComments; 
+};
+</pre>
+
+The <code>lineStart</code> string should be the character sequence that
+starts line comments, or <code>NULL</code> if not supported. <code>blockStart</code>
+and <code>blockEnd</code> are the block comment start and end characters.
+The <code>useLineComments</code> flag should be true if line comment characters
+are preferred to block comments. This is used when the user selects a
+block of lines; these can be commented using either line- or block comments.
+
+Open <code>service.cpp</code> and implement this method. The MyC implementation is as follows:
+<pre  >
+override const CommentFormat* Service::getCommentFormat() const
+{
+  static CommentFormat commentFormat =  { &quot;//&quot;, &quot;/*&quot;, &quot;*/&quot;, true  };
+  return &amp;commentFormat;
+}
+</pre>
+
+<a name="Automatic brace matching"><h2  >Automatic brace matching</h2></a>
+
+When automatic brace matching is enabled, the language service will
+highlight matching braces whenever the user types them<strong>[footnote: </strong><em>This
+feature is not supported in the Visual J++ 6.0 environment</em><strong>]</strong>. The code in
+the babels service also handles brace `jumping' when the user
+types <code>ctrl-]</code> in Visual Studio.
+
+<a name="Properties"><h3  >Properties</h3></a>
+First of all, the property <code>MatchBraces</code> should be set to one to
+enable brace matching. When the property <code>ShowMatchingBrace</code> is
+set to one, Visual Studio will show the line of the matching brace in 
+the status bar; useful when the matching brace is not visible in the view.
+The property <code>MatchBracesAtCaret</code> determines if the environment
+will highlight matching braces even when just positioning the caret
+on a brace, normally it will only highlight when a brace is typed. Be 
+careful before enabling this feature since it might make the user experience
+of the environment more distracting.
+
+<a name="Adding brace match rules"><h3  >Adding brace match rules</h3></a>
+Next, we are going to add grammar rules to <code>parser.y</code>
+that specify when matching 
+braces are found. The standard service <code>g_service</code> provides the
+following methods to signal matching braces:
+<pre  >
+void matchPair  ( in const Location&amp; loc1, 
+                  in const Location&amp; loc2 ) const;
+void matchTriple( in const Location&amp; loc1, 
+                  in const Location&amp; loc2, 
+                  in const Location&amp; loc3 ) const;
+</pre>
+
+Simple call one of these with the locations of the braces whenever
+a matching pair (or triple!) is found. Here is for example
+the code to match parenthesised expressions from the MyC sample:
+<pre  >
+ParenExpr
+    : '(' Expr ')'   { g_service-&gt;matchPair($1,$3); }
+    | '(' Expr error 
+          { g_service-&gt;expectError( &quot;unmatched parenthesis&quot;, &quot;)&quot; ); }
+    ;
+</pre>
+
+Off course, you should match braces whenever appropiate, also for example
+when parsing a parameter list:
+<pre  >
+ParenParams
+    :  '(' ')'            { g_service-&gt;matchPair($1,$2); }
+    |  '(' Params1 ')'    { g_service-&gt;matchPair($1,$3); }
+    |  '(' Params1 error  { g_service-&gt;expectError( &quot;unmatched parenthesis&quot;, &quot;)&quot; ); }
+    |  '(' error ')'      { g_service-&gt;matchPair($1,$3); 
+                            g_service-&gt;syntaxError( &quot;parameters&quot;, &amp;$2 ); }
+</pre>
+
+Arbitrary ranges of text can be braces. Even triples can be matched as the
+following code for recognising <code>if-else-then</code> statements from 
+the Forth sample shows:
+<pre  >
+IfBlock
+  : KWIF IfWordList KWTHEN { g_service-&gt;matchPair($1,$3); }
+  | KWIF IfWordList KWELSE IfWordList KWTHEN  
+                           { g_service-&gt;matchTriple($1,$3,$5); }
+  | KWIF IfWordList error  { g_service-&gt;expectError( &quot;IFBlock&quot;, &quot;THEN&quot; ); }
+  | KWIF IfWordList KWELSE IfWordList error   
+                           { g_service-&gt;matchPair($1,$3);
+                             g_service-&gt;expectError( &quot;IFBlock&quot;, &quot;THEN&quot; ); }
+</pre>
+
+<a name="Adding triggers"><h3  >Adding triggers</h3></a>
+Due to speed reasons, it is not possible to run the parser on each 
+editor command. In order to recognise matching braces the babel service
+needs to know when a parse might be needed, ie. when a token is entered
+that looks like a brace token. The babel service implements this using
+<em>triggers</em>. Triggers are specified in the <code>Service::getTokenInfo</code>
+method in the <code>service.cpp</code> file. 
+
+Open this file and add the trigger <code>TriggerMatchBraces</code> to each
+token which is (or might be) a brace for your language.
+Some relevant entries in the MyC sample are:
+<pre  >
+override const TokenInfo* Service::getTokenInfo() const
+{
+  static TokenInfo tokenInfoTable[] =
+  {
+    //TODO: add your own token information here
+    { IDENTIFIER, ClassIdentifier,  &quot;identifier '%s'&quot;,  CharIdentifier },
+    ...
+    { KWVOID, ClassKeyword, &quot;void&quot;, CharKeyword   },
+    { '(',    ClassText,  &quot;'('&quot;   , CharDelimiter, TriggerMatchBraces }, 
+    { ')',    ClassText,  &quot;')'&quot;   , CharDelimiter, TriggerMatchBraces },
+    { '{',    ClassText,  &quot;'{'&quot;   , CharDelimiter, TriggerMatchBraces },
+    { '}',    ClassText,  &quot;'}'&quot;   , CharDelimiter, TriggerMatchBraces },
+    { '.',    ClassText,  &quot;'.'&quot;   , CharDelimiter },
+    ...
+    //always end with the 'TokenEnd' token.
+    { TokenEnd,     ClassText,      &quot;&lt;unknown&gt;&quot;   }
+  };
+
+  return tokenInfoTable;
+};
+</pre>
+
+The Forth language service will for example add the trigger too 
+for the <code>KWIF</code>, <code>KWTHEN</code> and <code>KWELSE</code> tokens.
+
+
+<a name="Statement completion"><h2  >Statement completion</h2></a>
+
+<em>warning: these interfaces might still change</em>
+
+</p><p>Statement completion shows up in many ways in Visual Studio. The traditional
+statement completion is invoked whenever you type 
+<code>ctrl-&lt;left arrow&gt;</code> or <code>ctrl-&lt;space&gt;</code>. The environment
+will complete the current word if possible or show a list possible candidates
+if there is ambiguity. The key combination <code>ctrl-j</code> always shows the
+list of identifiers in scope. 
+
+<a name="Properties"><h3  >Properties</h3></a>
+The property <code>ShowCompletion</code> determines if the options
+<em>show member list</em> and <em>show parameter list</em> are visible
+in the Visual Studio environment. This property is enabled by default.
+The property <code>SortMemberList</code> determines if the identifier
+list is alphabetized. This is enabled by default.
+
+<a name="Giving scope information"><h3  >Giving scope information</h3></a>
+In order to do statement completion, information about the declarations
+and scopes in the source file has to be known to the system.
+The most general and powerful method to
+give scope information is by implementing the <code>IScope</code> interface.
+
+However, the babel package provides a default implementation that can
+deal with almost any language is satisfying manner. This document only
+describes this approach.
+
+The standard service <code>g_service</code> has two methods to give scope
+and declaration information:
+<pre  >
+void addScope( in const Location&amp; start, in const Location&amp; end,
+               in ScopeKind       kind, 
+               in ScopeAccess     access, 
+               in ScopeStorage    storage,
+               in const Location&amp; name, 
+               in const Location&amp; descStart, 
+               in const Location&amp; descEnd,
+               in const Location* type = NULL,             
+               in bool            merge = false 
+              );
+void addScopeText( in const Location&amp; start, in const Location&amp; end,
+                   in ScopeKind     kind, 
+                   in ScopeAccess   access, 
+                   in ScopeStorage  storage,
+                   in const char*   name    = NULL, 
+                   in const char*   description = NULL,
+                   in const char*   type    = NULL,
+                   in const char*   display = NULL, 
+                   in bool          merge = false );
+</pre>
+
+The first method takes raw locations for descriptions while the second
+one takes arbitrary text. The following functions can be used to combine
+text locations or to get a pointer to the text at a location:
+<pre  >
+Location    range( in const Location&amp; loc1, 
+                   in const Location&amp; loc2 ) const;
+const char* tokenText( in const Location* = NULL, 
+                       in const Location* = NULL ) const;   
+</pre>
+
+(The pointer returned by <code>tokenText</code> is in <code>static</code> memory).
+For each declaration and scope, the method <code>addScope</code> (or
+<code>addScopeText</code>) is called with the start and ending location. These
+locations give the lexical scope of this declarations. If a declaration
+doesn't have a lexical scope, like  a variable declaration, the locations
+might simply coincide. The <code>kind</code> determines if this declaration
+has parameters or if it can contain other scopes; it contains no other
+semantic information. The kinds are declared in <code>babelservice.idl</code>:
+<pre  >
+enum ScopeKind
+{
+  ScopeUnknown = 0,
+  ScopeModule,
+  ScopeClass,
+  ScopeInterface,
+  ScopeUnion,
+
+  ScopeProcedure,
+  ScopeVariable,
+
+  ScopeBlock
+};
+</pre>
+
+The <code>access</code> determines the visibility of the declaration and
+its members:
+<pre  >
+enum ScopeAccess
+{
+  AccessPrivate = 0,
+  AccessProtected,
+  AccessPublic
+};
+</pre>
+
+The <code>storage</code> determines, together with the kind, the icon that
+is displayed for this declaration and it is used to find member information.
+<pre  >
+enum ScopeStorage
+{
+  StorageConstant = 0,
+  StorageStatic,
+  StorageMember,
+  StorageParameter,
+  StorageResult,
+  StorageLocal,
+  StorageType,
+  StorageOther
+};
+</pre>
+
+The <code>name</code> contains the name of this declaration. The 
+<code>descStart</code> and <code>descEnd</code> parameters contain the start
+and end location of the declaration. The text between those location
+is the description of this declaration. The <code>type</code> location 
+contains the type of this declaration. The <code>merge</code> flag should be
+set to <code>true</code> if the declaration is specified in multiple places
+and the information should be merged with the previous entries.
+
+The rules in <code>parser.y</code> should now be extended with calls
+to <code>addScope</code>. Let's look at some of the rules in the MyC sample:
+<pre  >
+Declaration
+  : Type IDENTIFIER ParenParams Block                                                                       
+    { g_service-&gt;addScope( $1, $4, 
+                           ScopeProcedure, AccessPublic, StorageType,
+                           $2, $1, $3, &amp;$1 ); } 
+  ;
+</pre>
+
+This rule describes a declaration of a public procedure in MyC.
+The scope of the method extends from the start of <code>Type</code> to
+the end of <code>Block</code>, ie. <code>$1</code> to <code>$4</code>.
+The name is given by <code>IDENTIFIER</code>, ie. <code>$2</code>.
+The description that should be shown in the quick info, is just
+the declaration without the block of code, ie. <code>$1</code> to <code>$3</code>.
+
+</p><p>By default, the location of a production is the same as that of its first
+token; each rule contains the implicit assignment: <code>$$ = $0;</code>.
+Since we want to make sure that the location of <code>Block</code> entails the
+entire block (and not just the first token <code>{</code>) we need to add some
+rules to the <code>Block</code> too:
+<pre  >
+Block
+  : '{' '}'   
+      { $$ = g_service-&gt;range($1,$2);
+        g_service-&gt;matchPair($1,$2); 
+        g_service-&gt;addScopeText( $1, $2, 
+                                 ScopeBlock, AccessPublic, StorageOther); 
+      }
+  | '{' BlockContent1 '}'
+      { $$ = g_service-&gt;range($1,$3);
+        g_service-&gt;matchPair($1,$3);
+        g_service-&gt;addScopeText( $1, $3, 
+                                 ScopeBlock, AccessPublic, StorageOther);  
+      }
+  ;
+</pre>
+
+The first action of the rules is to assign the whole range from begin 
+to end to the location of the <code>Block</code> production. In this particular
+case it would even be good enough to do <code>$$ = $2</code> and <code>$$ = $3</code>
+respectively but using <code>range</code> is good coding style.
+
+</p><p>A block itself imposes a lexical scope allthough it has no name or description.
+Here the method <code>addScopeText</code> is called with the <code>ScopeBlock</code>
+kind and no text for the name, description or type.
+
+<a name="Member completion"><h2  >Member completion</h2></a>
+
+Most languages have some kind of modules, classes or structures
+that have members. These members are normally selected using some kind of
+operator, like the <code>'.'</code> in Java or the <code>'-&gt;'</code> in C++.
+The grammar rules need to be extended let statement completion work 
+correctly when members are involved. The service has two methods that
+specify how a member is selected:
+<pre  >
+void startSelect( in const Location&amp; name) const;
+void addSelect( in const Location&amp; selector, 
+                in const Location&amp; name) const;
+</pre>
+
+The grammar should call <code>startSelect</code> whenever a identifier is
+used in an expression. The method <code>addSelect</code> should be called for
+every identifier that is selected. For example, a Java grammar should
+contain the following rules for <em>qualified</em> names:
+<pre  >
+QualifiedName
+  : IDENTIFIER                    { g_service-&gt;startSelect($1); }
+  | QualifiedName '.' IDENTIFIER  { g_service-&gt;addSelect($2,$3); } 
+  | QualifiedName '.' error       { g_service-&gt;addSelect($2,$2); 
+                                    g_service-&gt;expectError( &quot;qualified name&quot;,&quot;identifier&quot; ); }
+</pre>
+
+The last production with the <code>error</code> is important in practice since
+this case will occur quite often when the user is typing its source. In
+the case where the name is completely lacking, the location of the selector
+should be passed (<code>$2</code> in the example).
+
+<a name="Adding member list triggers"><h3  >Adding member list triggers</h3></a>
+When typing a selector token, the member selection list should automatically 
+pop up (unless disabled in the option settings of Visual Studio).
+Again this is implemented by triggers. The trigger <code>TriggerMemberSelect</code>
+triggers a member completion list.
+Here is a typical example of such entry in the <code>getTokenInfo</code> method:
+<pre  >
+ ...
+ { '.',  ClassText,  &quot;'.'&quot;, CharDelimiter, TriggerMemberSelect },   
+ ...
+</pre>
+
+<a name="Quick Info"><h2  >Quick Info</h2></a>
+Quick info is a feature that will pop up a small text box that describes
+an identifier when the user hovers the mouse above it. The property
+<code>QuickInfo</code> should be set to zero to disable quick info. It is
+enabled by default. Quick info will work when you have member completion 
+implemented. Even when the language doesn't have member selection, you
+should still call <code>startSelect</code> at every identifier expression.
+
+<a name="Method tips"><h2  >Method tips</h2></a>
+Method tips are windows with parameter information about the procedure
+or method that is called. A method tip normally pops up whenever the
+user types a parameter list token, for example an open parenthesis.
+It can also be invoked manually by typing <code>ctrl-shift-&lt;space&gt;</code>
+<strong>[footnote: </strong><em><code>ctrl-shift-I</code> in VJ++ 6.0</em><strong>]</strong>. 
+Method tips are automatically supported by Babel when parameter information
+is added to the parser rules.
+
+<a name="Adding parameter information"><h3  >Adding parameter information</h3></a>
+The global service has three methods that support parameter information.
+<pre  >
+void startParameters( in const Location&amp; ) const;
+void parameter(in const Location&amp; ) const;
+void endParameters(in const Location&amp; ) const;
+</pre>
+
+The method <code>startParameters</code> is called whenever a parameter list
+starts with the location of the parameter list start token. <code>parameter</code>
+is called for every parameter seperator found and <code>endParameters</code>
+when the parameter list is terminated. Here is a typical example from MyC:
+<pre  >
+ParenArguments
+    : StartArg EndArg            { g_service-&gt;matchPair($1,$2); } 
+    | StartArg Arguments1 EndArg { g_service-&gt;matchPair($1,$3); }
+    | StartArg Arguments1 error  
+              { g_service-&gt;endParameters(@3);
+                g_service-&gt;expectError( &quot;unmatched parenthesis&quot;, &quot;)&quot; ); }
+    ;
+
+StartArg
+    : '('     { g_service-&gt;startParameters($1); }
+    ;
+
+EndArg
+    : ')'     { g_service-&gt;endParameters($1); }
+    ;    
+
+Arguments1
+    : Expr ','  { g_service-&gt;parameter($2); }  Arguments1
+    | Expr
+    ;
+</pre>
+
+In MyC, parenthesis enclose a parameter list. The example is complicated
+by the need to call the different methods exactly at the moment one of 
+those tokens is recognised. In the rule <code>Arguments1</code> a mid-rule
+action is needed in order to call <code>parameter</code> at the right moment.
+Suppose that rule would have been written like this:
+<pre  >
+Arguments1
+    : Expr ','  Arguments1  { g_service-&gt;parameter($2); }  
+    | Expr
+    ;
+</pre>
+In this case <code>parameter</code> will called <em>after</em> the 
+other arguments in the production <code>Arguments1</code> are recognised.
+Now all <code>parameter</code>'s calls are done in a reverse order! 
+
+The same kind of problem occura when calling <code>startParameter</code> and
+<code>endParameter</code>, that is why the <code>StartArg</code> and <code>EndArg</code>
+productions are explicitly added.
+
+<a name="Adding parameter triggers"><h3  >Adding parameter triggers</h3></a>
+Allthough methods tips can now be explicitly invoked, they are much more
+useful when they pop up automatically when the user opens a parameter list.
+The triggers <code>TriggerParamStart</code>, <code>TriggerParamEnd</code> and
+<code>TriggerParamNext</code> trigger a method tip.
+Simply add the relevant entries to the token info table. The
+entries for MyC look like:
+<pre  >
+   ...
+   { '(', ClassText,  &quot;'('&quot;, 
+          CharDelimiter, TriggerParamStart | TriggerMatchBraces }, 
+   { ')', ClassText,  &quot;')'&quot;, 
+          CharDelimiter, TriggerParamEnd | TriggerMatchBraces   },
+   { ',', ClassText,  &quot;','&quot;, CharDelimiter, TriggerParamNext    },     
+   ...
+</pre>
+
+Not all languages distinguish the parameter list open token from
+the parameter seperator or closing token. It is always legal to combine
+triggers. Allthough triggers will trigger a parser action in order
+to show or dismiss a method tip, the distinction in triggers is only used
+to optimize some common cases. The parser always has the final decision
+in showing the appropiate information.
+
+For example, in the language Haskell, white space can open a 
+parameter list but also seperates parameters. At the same time there is
+no specific token for closing a parameter list but a whole set of tokens
+can close a parameter list. All those tokens should get the <code>TriggerParamEnd</code>
+trigger while white space gets two triggers:
+<pre  >
+  ...
+  { LEX_WHITE, ClassText, &quot;white space&quot;, 
+               CharWhiteSpace, TriggerParamStart | TriggerParamNext },
+  ...
+</pre>
+
+In the Haskell case, there is a more serious problem. Since white space
+now triggers the parameter info, the parser is called on each white space
+character typed which will degrade the responsiveness of the editor.
+The solution is to recognise `special' white space that might trigger
+a method tip in the lexer. In Haskell, that is the first white space after
+a valid identifier. The following rules in <code>lexer.lex</code> recognise
+this case:
+<pre  >
+&lt;init&gt;{Identifier}    { g_service-&gt;setLexState(afterid); 
+                        return IDENTIFIER; }
+
+&lt;afterid&gt;{White}      { g_service-&gt;setLexState(init);
+                        return LEX_SPECIAL_WHITE; }
+&lt;afterid&gt;.            { g_service-&gt;setLexState(init);
+                        yyless(0); }
+</pre>
+
+
+<a name="IDL specification"><h2  >IDL specification</h2></a>
+<!--
+<![TEX[{\small]]>
+-->
+<pre  >
+/*---------------------------------------------------------
+BabelServiceLib:
+  Interface specification for the Babel language services.  
+  
+  Midl will convert this file to 
+  - a type library [babelservice.tlb]
+  - a header file [babelservice.h]
+  - a GUID definition file [babelservice_i.c].
+---------------------------------------------------------*/  
+[
+  uuid(4E71BA42-5C36-11d3-B3FD-006008D1BF8C),
+  version(1.0),
+  helpstring(&quot;BabelService 1.0 Type Library&quot;)
+]
+library BabelServiceLib
+{
+  importlib(&quot;stdole32.tlb&quot;);
+  importlib(&quot;stdole2.tlb&quot;);
+
+  /*---------------------------------------------------------
+  Severity:
+    The severity of an error. Used for example to select
+    an appropiate bitmap in the task window.
+  ---------------------------------------------------------*/
+  enum Severity 
+  {
+    SevHint,
+    SevWarning,
+    SevError,
+    SevFatal
+  };
+
+  /*---------------------------------------------------------
+  ParseReason:
+    The reason why the parser is called.
+  ---------------------------------------------------------*/
+  enum ParseReason
+  {
+	ReasonColorize,
+    ReasonCheck,
+    ReasonMemberSelect,
+    ReasonCompleteWord,
+    ReasonQuickInfo,
+    ReasonMethodTip,
+    ReasonMatchBraces
+  };
+
+  /*---------------------------------------------------------
+  CharClass:
+    The class of the current character. Used for example
+    to determine the word extent and search ranges.
+  ---------------------------------------------------------*/
+  enum CharClass
+  {
+    CharDefault     = 0,
+    CharText        = CharDefault,
+    CharKeyword,
+    CharIdentifier,
+    CharString,
+    CharLiteral,
+
+    CharOperator,
+    CharDelimiter,
+    CharEmbedded,
+
+    CharWhiteSpace,
+    CharLineComment,
+    CharComment,
+
+    CharDefaultLast = CharComment
+  };
+
+  /*---------------------------------------------------------
+  TriggerClass:
+    If a character has (a) trigger(s) associated with it, it may
+    fire one of the following actions when it is entered by a user:
+    [TriggerMemberSelect]  a member selection tip window
+    [TriggerMethodTip]     a method tip window
+    [TriggerMatchBraces]   highlight matching braces
+  ---------------------------------------------------------*/
+  typedef long TriggerClass;
+
+  enum DefaultTriggerClass
+  {
+    TriggerNone             = 0,
+    TriggerMemberSelect     = 0x01,
+    TriggerMatchBraces      = 0x02,
+
+    TriggerMethodTip        = 0xf0,
+    TriggerParamStart       = 0x10,
+    TriggerParamNext        = 0x20,
+    TriggerParamEnd         = 0x40,
+    TriggerParam            = 0x80
+  };
+
+  /*---------------------------------------------------------
+  ColorClass:
+    Determines the color of a character.
+  ---------------------------------------------------------*/
+  typedef long ColorClass;
+
+  /*---------------------------------------------------------
+  DefaultColorClass:
+    These default color classes are always available. If a 
+    client doesn't need custom color classes, it can set
+    the registry entry &quot;RequestStockColors&quot; to 1 and use
+    these defaults.
+  ---------------------------------------------------------*/
+  enum DefaultColorClass
+  {
+    ClassDefault    = 0,
+    ClassText       = ClassDefault,
+    ClassKeyword,
+    ClassComment,
+    ClassIdentifier,
+    ClassString,
+    ClassNumber,
+    ClassDefaultLast = ClassNumber,
+  };
+
+  /*---------------------------------------------------------
+  ScopeKind:
+    The kind of scope that is opened. These kinds have no
+    semantic significance. They are only used to determine
+    the bitmaps used when displaying scope information
+  ---------------------------------------------------------*/
+  enum ScopeKind
+  {
+    ScopeUnknown = 0,
+    ScopeModule,
+    ScopeClass,
+    ScopeInterface,
+    ScopeUnion,
+
+    ScopeProcedure,
+    ScopeVariable,
+
+    ScopeBlock,
+  };
+
+  enum ScopeAccess
+  {
+    AccessPrivate = 0,
+    AccessProtected,
+    AccessPublic
+  };
+
+  enum ScopeStorage
+  {
+    StorageConstant = 0,
+    StorageStatic,
+    StorageMember,
+    StorageParameter,
+    StorageResult,
+    StorageLocal,
+    StorageType,
+    StorageOther
+  };
+
+         
+  /*---------------------------------------------------------
+  IColorSink:
+    This interface is passed as an argument to the [ColorLine]
+    method. Its main use is to set the color class of each
+    character but it is also be used to pass the character class
+    and trigger information.
+  ---------------------------------------------------------*/
+  [ object
+  , uuid(4E71BA43-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring(&quot;IColorSink Interface&quot;)
+  , oleautomation
+  , dual
+  ]
+  interface IColorSink : IDispatch
+  {       
+    /*---------------------------------------------------------
+    Colorize:   
+      Set the colorclasses for a range of characters in a line.
+      The [startIdx] and [endIdx]  arguments specify the character 
+      index in the line (in constrast to columns, this means that 
+      '\t' characters are treated as single character). 
+      The indices are 0 based, ie. the first character has index 0.
+    ---------------------------------------------------------*/
+    [helpstring(&quot;method Colorize&quot;)] 
+    HRESULT Colorize( [in] long startIdx,
+                      [in] long endIdx,
+                      [in] ColorClass colorClass,
+                      [in] enum CharClass charClass,
+                      [in] TriggerClass trigger );
+  };
+
+
+  /*---------------------------------------------------------
+  IParseSink:
+    This interface is passed as an argument to the [ParseSource]
+    function. It is used to return information gathered
+    during parsing to the VS environment. 
+    It is mainly used to send (warning/error) messages.
+  ---------------------------------------------------------*/
+  [ object
+  , uuid(4E71BA40-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring(&quot;IParseSink Interface&quot;)
+  , oleautomation
+  , dual
+  ]
+  interface IParseSink : IDispatch
+  {
+    /*---------------------------------------------------------
+    ErrorMessage:
+      Send a [message] to the VS enviroment. The kind of message
+      is specified through the severity [sev]. Note that
+      lines and indices are all 0 based.
+    ---------------------------------------------------------*/
+    [helpstring(&quot;method ErrorMessage&quot;)] 
+    HRESULT ErrorMessage( [in] long startLine, [in] long endLine, 
+                          [in] long startIdx,  [in] long endIdx,
+                          [in] enum Severity sev, [in] BSTR message );
+
+    /*---------------------------------------------------------
+    MatchPair:
+      Whenever a matching pair is parsed, this method is called
+      with the text span of both the left and right item. The
+      information is used to when a user types &quot;ctrl-]&quot; in VS
+      to find a matching brace and when auto-highlight matching
+      braces is enabled.
+    ---------------------------------------------------------*/    
+    HRESULT MatchPair( [in] long startLine1, [in] long startIdx1,
+                       [in] long endLine1,   [in] long endIdx1, 
+                       [in] long startLine2, [in] long startIdx2,
+                       [in] long endLine2,   [in] long endIdx2 );
+
+    HRESULT MatchTriple( [in] long startLine1, [in] long startIdx1,
+                         [in] long endLine1,   [in] long endIdx1, 
+                         [in] long startLine2, [in] long startIdx2,
+                         [in] long endLine2,   [in] long endIdx2,
+                         [in] long startLine3, [in] long startIdx3,
+                         [in] long endLine3,   [in] long endIdx3 );
+
+    /*---------------------------------------------------------
+    Member Selection:
+      [StartSelect] is called for each name that is parsed (&quot;Stack&quot;).
+      [AddSelect] is called for each qualification with both
+      the text span of the selector (&quot;.&quot;)  and the text span 
+      of the name (&quot;Push&quot;).
+    ---------------------------------------------------------*/    
+    HRESULT StartSelect( [in] long line, [in] long startIdx, [in] long endIdx );
+    HRESULT AddSelect( [in] long lineSelector,
+                       [in] long startIdxSelector, [in] long endIdxSelector,
+                       [in] long line, [in] long startIdx, [in] long endIdx );
+
+    /*---------------------------------------------------------
+    Method Info:
+      [StartParameters] is called when the parameters of a method
+                        are started &quot;(&quot;.
+      [Parameter] is called on the start of a new parameter &quot;,&quot;.
+      [EndParameter] is called on the end of the paramters &quot;)&quot;.
+    ---------------------------------------------------------*/    
+    HRESULT StartParameters( [in] long line, [in] long idx );
+    HRESULT Parameter      ( [in] long line, [in] long idx );
+    HRESULT EndParameters  ( [in] long line, [in] long idx );
+
+
+    /*---------------------------------------------------------
+    Scope Builder:
+      The babel package provides a default implementation
+      of the [IScope] interface which can be used through the
+      following methods. If you want to provide your own
+      [IScope] implementation, don't call these methods and
+      return the scope trough the [scope] parameter of the
+      [IBabelService::ParseSource] method.
+    ---------------------------------------------------------*/            
+    HRESULT AddScope( [in] long startLine, [in] long startIdx,
+                      [in] long endLine,   [in] long endIdx,
+                      [in] enum ScopeKind kind,
+                      [in] enum ScopeAccess access,
+                      [in] enum ScopeStorage storage,
+                      [in] BSTR name,     [in] BSTR type,
+                      [in] BSTR display,  [in] BSTR description,
+                      [in] VARIANT_BOOL merge
+                    );                       
+    HRESULT AddInclude( [in] enum ScopeAccess access, [in] BSTR name );
+    HRESULT AddExtern( [in] BSTR external );
+  };
+  
+  /*---------------------------------------------------------
+  INames
+  ---------------------------------------------------------*/    
+  [ object
+  , uuid(4E71BA45-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring(&quot;INames Interface&quot;)
+  , oleautomation
+  , dual
+  ]
+  interface INames : IDispatch
+  {
+    HRESULT GetCount( [out,ref,retval] long* count );
+    HRESULT GetName( [in] long index, [out,ref,retval] BSTR* name );
+  };
+  
+  /*---------------------------------------------------------
+  IDeclarations
+  ---------------------------------------------------------*/    
+  [ object
+  , uuid(4E71BA46-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring(&quot;IDeclarations Interface&quot;)
+  , oleautomation
+  , dual
+  ]
+  interface IDeclarations : IDispatch
+  {
+    HRESULT GetCount      ( [out,ref,retval] long* count );
+    HRESULT GetName       ( [in] long index, [out,ref,retval] BSTR* name );
+    HRESULT GetDescription( [in] long index, [out,ref,retval] BSTR* description );    
+    HRESULT GetGlyph      ( [in] long index, [out,ref,retval] long* glyph );
+
+    HRESULT GetBestMatch( [in] BSTR text, [out] long* index, [out] VARIANT_BOOL* uniqueMatch );
+  };
+  
+
+  /*---------------------------------------------------------
+  IMethods
+  ---------------------------------------------------------*/    
+  [ object
+  , uuid(4E71BA47-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring(&quot;IMethods Interface&quot;)
+  , oleautomation
+  , dual
+  ]
+  interface IMethods : IDispatch
+  {
+    HRESULT GetName ( [out,ref,retval] BSTR* name  );
+    HRESULT GetCount( [out,ref,retval] long* count );
+
+    HRESULT GetDescription( [in] long index, [out,ref,retval] BSTR* description );    
+    HRESULT GetType       ( [in] long index, [out,ref,retval] BSTR* type );
+    
+    HRESULT GetParameterCount( [in] long index, [out,ref,retval] long* count );
+    HRESULT GetParameterInfo ( [in] long index, 
+                               [in] long parameter, 
+                               [out,unique] BSTR* name,
+                               [out,unique] BSTR* display,
+                               [out,unique] BSTR* description );
+  };
+  
+  
+
+  /*---------------------------------------------------------
+  IScope:
+  ---------------------------------------------------------*/    
+  [ object
+  , uuid(4E71BA44-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring(&quot;IScope Interface&quot;)
+  , oleautomation
+  , dual
+  ]
+  interface IScope : IDispatch
+  {
+    HRESULT GetDeclarations( [in] long line, 
+                             [in] long idx, 
+                             [in,unique] INames* names,
+                             [out,ref,retval] IDeclarations** decls );  
+
+    HRESULT GetDataTipText ( [in] long line, 
+                             [in] long idx, 
+                             [in,unique] INames* names,
+                             [out,ref,retval] BSTR* text );  
+
+    HRESULT GetMethods     ( [in] long line,
+                             [in] long idx,
+                             [in,unique] INames* names,
+                             [out,ref,retval] IMethods** imethods );
+  };
+
+
+  /*---------------------------------------------------------
+  IBabelService:
+    By implementing this interface, a client gets a full language 
+    service automatically provided by Visual Studio.
+  ---------------------------------------------------------*/
+  [ object
+  , uuid(4E71BA41-5C36-11d3-B3FD-006008D1BF8C)
+  , helpstring(&quot;IBabelService Interface&quot;)
+  , oleautomation
+  , dual
+  ]
+  interface IBabelService : IDispatch
+  {
+    [helpstring( &quot;ColorCount: return the number of custom color classes&quot; )]
+    HRESULT ColorCount( [out,ref,retval] ColorClass* count );
+
+    /*---------------------------------------------------------
+      GetColorInfo:
+        retrieve color information for a specific color class.
+        This method is only called if the registry entry
+        [RequestStockColors] is set to 0.
+      pre: 
+        [index] &lt; [ColorCount()]
+      returns: 
+        a [description] of the color class (&quot;keyword&quot;)
+        and a CSS [style] for this color class, for example
+        &quot;color: blue; font-weight: bold&quot;
+    ---------------------------------------------------------*/
+    [helpstring(&quot;GetColorInfo: get color class information&quot;)]
+    HRESULT GetColorInfo( [in]  ColorClass index, 
+                          [out,ref] BSTR* description,
+                          [out,ref] BSTR* style );
+
+    /*---------------------------------------------------------
+      ColorLine: 
+        colorize a line [line]. Colors can be set through the
+        [sink] that is passed too. The [state] can be used by
+        the client in anyway it wants; it always corresponds to
+        the state that was set at the end of the previous line.
+        [state] is 0 if no state is known (start of the file).
+      pre:          
+        [sink] may be NULL in order to just retrieve the 
+        new state at the end of the line
+    ----------------------------------------------------------*/
+    [helpstring(&quot;ColorLine: colorize a line&quot;)]    
+    HRESULT ColorLine( [in] BSTR line, 
+                       [in,unique] IColorSink* sink,
+                       [in,out,ref] long* state 
+                     );
+    
+    /*---------------------------------------------------------
+      ParseSource:
+        parses the program source in [text]. Messages containing
+        warnings or errors can be sent to the [sink]. The reason
+        for calling [ParseSource] is passed in [reason]; a client
+        can always choose not to do anything.
+    ---------------------------------------------------------*/
+    [helpstring(&quot;ParseSource: parse the source&quot;)] 
+    HRESULT ParseSource( [in] BSTR text, 
+                         [in,unique] IParseSink* sink,
+                         [in] enum ParseReason reason,
+                         [out,unique,retval] IScope** scope 
+                        );
+
+    /*---------------------------------------------------------
+      GetMethodFormat:
+        Used for formatting method data tips.
+        [typePrefixed] is [true] if the return type should be
+        in front of the name: [long foo()] and [false]
+        if it comes last: [foo() as long].
+        [parStart],[parSep] and [parEnd] give the parameter start
+        token, the seperator and end token respectively. 
+        [typeStart] and [typeEnd] surround the return type.
+        All parameters can be set to NULL in which case they
+        default to a C-style formatting.
+    ---------------------------------------------------------*/
+    [helpstring(&quot;GetMethodFormat: return format tokens for method data tips&quot;)]
+    HRESULT GetMethodFormat( [out,ref] BSTR* parStart,
+                             [out,ref] BSTR* parSep, 
+                             [out,ref] BSTR* parEnd,
+                             [out,ref] BSTR* typeStart, 
+                             [out,ref] BSTR* typeEnd,
+                             [out,ref] VARIANT_BOOL* typePrefixed );
+
+    /*---------------------------------------------------------
+      GetCommentFormat:
+        Used for (un)commenting selected text.
+        [lineStart] is the token used to start line comments (//)
+        [blockStart] is the token used to start block comments
+        [blockEnd] is the token used to end block comments
+        if [useLineComments]  is true, selected text is commented
+        using line comments, otherwise it is commented using
+        block comments.
+    ---------------------------------------------------------*/
+    [helpstring(&quot;GetCommentFormat: return format tokens for comments&quot;)]
+    HRESULT GetCommentFormat( [out,ref] BSTR* lineStart, 
+                              [out,ref] BSTR* blockStart,
+                              [out,ref] BSTR* blockEnd,
+                              [out,ref] VARIANT_BOOL* useLineComments );
+
+    
+    [helpstring(&quot;GetImageList: return HIMAGELIST for glyphs&quot;)]
+    HRESULT GetImageList( [out] long* imageListHandle );
+  };
+};
+</pre>
+<!--
+<![TEX[}]]>
+-->
+
+</p></body>
+</html>

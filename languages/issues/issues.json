@@ -1,0 +1,66 @@
+[
+  {
+    "Id": 5356,
+    "Title": "?? does not compile correctly"
+  },
+  {
+    "Id": 6147,
+    "Title": "F# binaries included with SSCBoogie not compatible with those included with Boogie"
+  },
+  {
+    "Id": 6434,
+    "Title": "Name binding of inherited members"
+  },
+  {
+    "Id": 6552,
+    "Title": "Unused local variable crashes PeWriter initialization."
+  },
+  {
+    "Id": 6639,
+    "Title": "Error in Delegate creation."
+  },
+  {
+    "Id": 8334,
+    "Title": "Spec# Checkin tests fail on 64bit Windows 7"
+  },
+  {
+    "Id": 8398,
+    "Title": "NoDefaultContract attribute should be allowed for return values"
+  },
+  {
+    "Id": 9016,
+    "Title": "min/max causes nullpointer exception"
+  },
+  {
+    "Id": 9789,
+    "Title": "SscBoogie crashes when it is run on .Net 4.0 dll"
+  },
+  {
+    "Id": 10109,
+    "Title": "Unnecessary trace positions for the 'pack' operation of an 'expose' block"
+  },
+  {
+    "Id": 10110,
+    "Title": "Project creation wizard does not copy the templates (Visual Studio 2010)"
+  },
+  {
+    "Id": 10111,
+    "Title": "internal error: 2 typechecking errors detected"
+  },
+  {
+    "Id": 10112,
+    "Title": "Does not work with VS2010 Ultimate"
+  },
+  {
+    "Id": 10113,
+    "Title": "VS2010 gets very slow "
+  },
+  {
+    "Id": 10114,
+    "Title": "website link for z3 on the home page should be updated"
+  },
+  {
+    "Id": 10115,
+    "Title": "Old expressions should be allowed in assertions"
+  }
+]

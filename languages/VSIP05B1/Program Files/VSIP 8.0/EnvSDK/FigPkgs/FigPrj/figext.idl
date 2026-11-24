@@ -1,0 +1,109 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+cpp_quote("")
+cpp_quote("/***************************************************************************")
+cpp_quote("         Copyright (c) Microsoft Corporation, All rights reserved.          ")
+cpp_quote("    This code sample is provided \"AS IS\" without warranty of any kind,    ")
+cpp_quote("    it is not recommended for use in a production environment.              ")
+cpp_quote("***************************************************************************/")
+cpp_quote("")
+
+// FigExt.idl : IDL source for BasicProject Project Extensibility
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "vsshell.idl";
+cpp_quote("#include \"oleipc.h\"")
+
+[
+	//Re-guid
+	uuid(ACEF4EBB-57CF-11d2-96F4-000000000000),
+
+	version(1.0),
+	helpstring("FigPrj Extensibility")
+]
+
+library FigPrjExtLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	importlib("DTE.tlb");
+
+
+    //---------------------------------------------------------------------
+    // Constants
+    //---------------------------------------------------------------------
+	[ uuid(9B3F23F1-7DD0-45db-A04D-E7639F27E0A1) 	]
+	module FigConstants 
+	{   
+        // Automation Project(s) Item(s) Kinds.
+
+        [helpstring("Projects automation object kind")]          
+        const LPSTR prjKindFigPrjProjects        = "{ACEF4EC8-57CF-11d2-96F4-000000000000}";
+
+        [helpstring("Project automation object kind")]          
+        const LPSTR prjKindFigPrjProject         = "{ACEF4EC6-57CF-11d2-96F4-000000000000}";
+
+        [helpstring("ProjectItems automation object kind")]          
+        const LPSTR prjKindFigPrjProjectItems    = "{ACEF4EC2-57CF-11d2-96F4-000000000000}";
+        
+        [helpstring("FigPrj Project automation object CATID")]     
+        const LPSTR prjCATIDFigPrjProject          = "{09D0FDD2-D8C9-43fa-B2B5-D128BCCA9ECE}";
+
+        [helpstring("FigPrj ProjectItem automation object CATID")]     
+        const LPSTR prjCATIDFigPrjProjectItem      = "{4AA4DB27-9A31-46f9-8C09-302A3A9E7553}";
+    }
+
+
+    //---------------------------------------------------------------------
+    // Events Root interface. Needs to be in the type lib since the 
+    //  properties need to be called thru Invoke. 
+    //---------------------------------------------------------------------
+    [ uuid(105B9BCA-E60B-427d-942B-EFFAC5236D8F), dual, object, hidden]
+    interface IFigEventsRoot : IDispatch
+    {
+        [id(1), propget] HRESULT _stdcall FigProjectsEvents([out, retval] IDispatch** ppdisp);
+        [id(2), propget] HRESULT _stdcall FigProjectItemsEvents([in, optional, defaultvalue(0)] IDispatch* Filter, [out, retval] IDispatch** ppdisp);
+    }
+
+
+    //---------------------------------------------------------------------
+    // Project specific objects
+    //---------------------------------------------------------------------
+	// FigProject 
+    // // {F11870D9-47CE-4b8d-8608-046B0395B1F3}
+    // DEFINE_GUID(<<name>>, 
+    // 0xf11870d9, 0x47ce, 0x4b8d, 0x86, 0x8, 0x4, 0x6b, 0x3, 0x95, 0xb1, 0xf3);
+    [ uuid(F11870D9-47CE-4b8d-8608-046B0395B1F3), dual, object ]
+    interface FigProject : IDispatch
+    {
+        [id(1), propget, helpstring("DTE")]
+        HRESULT DTE([out, retval] DTE **ppDTE);
+
+        [id(2), propget, helpstring("Project")]
+        HRESULT Project([out, retval] Project **ppProject);
+
+		[id(3), propget, helpstring("ProjectPath")] 
+		HRESULT ProjectPath([out, retval] BSTR *pVal);
+    };
+
+	// FigFile 
+	[  uuid(ACEF4ECD-57CF-11d2-96F4-000000000000), dual, object  ]
+    interface FigFile : IDispatch
+    {
+        [id(1), propget, helpstring("DTE")]
+        HRESULT DTE([out, retval] DTE **ppDTE);
+
+        [id(2), propget, helpstring("ProjectItem")]
+        HRESULT ProjectItem([out, retval] ProjectItem **ppProjectItem);
+
+		[id(3), propget, helpstring("Exclude From Build")] 
+        HRESULT ExcludeFromBuild([out, retval] VARIANT_BOOL *pVal);
+    };
+
+};

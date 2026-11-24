@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1309415",
+    "ThreadId": "568735",
+    "Html": "It seems almost any example I put into <a href=\"http://rise4fun.com/SpecSharp\" rel=\"nofollow\">http://rise4fun.com/SpecSharp</a> results in a message<br />\n<pre><code>   Unhandled Exception:\n       Cannot print exception string because Exception.ToString() failed.</code></pre>\n\nFor example the following program causes this problem<br />\n<pre><code>class Example {\n  int x;\n\n  int Inc()\n    ensures old(x) &lt; result;\n  {\n    x += 1;\n    return x ;\n  }\n}</code></pre>\n\nas does<br />\n<pre><code>class Example {\n  \n}</code></pre>\n\n",
+    "PostedDate": "2014-09-30T17:14:45.497-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

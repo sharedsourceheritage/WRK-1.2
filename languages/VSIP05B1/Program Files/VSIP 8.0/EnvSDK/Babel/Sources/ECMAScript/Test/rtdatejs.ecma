@@ -1,0 +1,72 @@
+function Right(str, len)
+{
+	return str.substr(str.length - len);
+}
+
+var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var day   = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+function PrintDate(date)
+{
+	print(            day  [date.getDay()]
+	  + " " +               date.getFullYear()
+	  + "-" +         month[date.getMonth()]
+	  + "-" + Right("0"   + date.getDate(),         2)
+	  + " " + Right("0"   + date.getHours(),        2)
+	  + ":" + Right("0"   + date.getMinutes(),      2)
+	  + ":" + Right("0"   + date.getSeconds(),      2)
+	  + "." + Right("00"  + date.getMilliseconds(), 3));
+
+	print(            day  [date.getUTCDay()]
+	  + " " +               date.getUTCFullYear()
+	  + "-" +         month[date.getUTCMonth()]
+	  + "-" + Right("0"   + date.getUTCDate(),         2)
+	  + " " + Right("0"   + date.getUTCHours(),        2)
+	  + ":" + Right("0"   + date.getUTCMinutes(),      2)
+	  + ":" + Right("0"   + date.getUTCSeconds(),      2)
+	  + "." + Right("00"  + date.getUTCMilliseconds(), 3));
+
+	var str = null;
+	for (var prop in date)
+		str += prop + "=" + date[prop] + " ";
+	if (str != null)
+		print(str);
+
+	print(date);
+	//print(date.toLocaleString());
+	print(date.toGMTString());
+	print(date.toUTCString());
+
+	print(date.getTime() + " " + date.getTimezoneOffset() + " " + date.getYear());
+
+	var newDate = new Date();
+	newDate.setDate           (date.getDate());
+	newDate.setFullYear       (date.getFullYear());
+	newDate.setHours          (date.getHours());
+	newDate.setMilliseconds   (date.getMilliseconds());
+	newDate.setMinutes        (date.getMinutes());
+	newDate.setMonth          (date.getMonth());
+	newDate.getSeconds        (date.getSeconds());
+	newDate.getTime           (date.getTime());
+	newDate.setUTCDate        (date.getUTCDate());
+	newDate.setUTCFullYear    (date.getUTCFullYear());
+	newDate.setUTCHours       (date.getUTCHours());
+	newDate.setUTCMilliseconds(date.getUTCMilliseconds());
+	newDate.setUTCMinutes     (date.getUTCMinutes());
+	newDate.setUTCMonth       (date.getUTCMonth());
+	newDate.setUTCSeconds     (date.getUTCSeconds());
+	newDate.setYear           (date.getYear());
+
+	var str1 = date              + "";
+	var str2 = date.getVarDate() + "";
+	var str3 = newDate           + "";
+	if (str1 != str2 || str1 != str3)
+		print("BAD");
+
+	print("");
+}
+
+PrintDate(new Date(0));
+PrintDate(new Date(1000000000000));
+PrintDate(new Date(2029, 3, 8, 2, 30));
+PrintDate(new Date("3/8/1958 05:56"));

@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "598718",
+    "ThreadId": "254253",
+    "Html": "<p>Hi,</p>\n<p>Playing with spec#, I am trying to verify my quicksort algorithm. I think the partitioning algorithm is correct (boogie agrees), but the recursive part of quicksort is not verified. The postcondition seems to be invalid, can somebody help me with this? Thanks  in advance.</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<pre>static void quicksort(int[]! a, int p, int q)\n  requires (p &gt;= 0 &amp;&amp; q &lt; a.Length &amp;&amp; p &lt;= q) || ( p &gt;= q ); \n  ensures forall { n in ( p..q ), x in ( 0..n ); a[x] &lt;= a[n]  };\n  modifies a[*];\n  {\n\tif ( q &gt; p )\n\t{\n\t\tint pivot = partition(a, p, q);\n\t\tassert forall { n in ( p..pivot); a[n] &lt;= a[pivot] } &amp;&amp; forall { n in ( pivot+1..q ); a[n] &gt; a[pivot] };\n\t\tquicksort(a, p, pivot-1); \n\t\tquicksort(a, pivot+1, q); \n\t} \n  }\n\n  static int partition(int[]! a, int p, int q)\n  requires p &gt;= 0 &amp;&amp; q &lt; a.Length &amp;&amp; p &lt;= q; \n  ensures forall { n in ( p..result); a[n] &lt;= a[result] };\n  ensures forall { n in ( result+1..q ); a[n] &gt; a[result] };\n  ensures result &gt;= p &amp;&amp; result &lt;= q;\n  modifies a[*];\n  {\n\tint pivot = a[p];\n\tint i = 0;\n\tint k = p;\n\t\n\ta[p] = a[q];\n\ta[q] = pivot;\n\n\tfor ( i = p; i &lt; q; i++ )\n\tinvariant forall { n in (p:k); a[n] &lt;= pivot };\n\tinvariant forall { n in (k:i); a[n] &gt; pivot };\n\tinvariant i &gt;= p;\n\tinvariant i &lt;= q;\n\tinvariant k &gt;= p &amp;&amp; k &lt;= i;\n\t{\n\t\tif ( a[i] &lt;= pivot )\n\t\t{\n\t\t\tint tmp = a[k];\n\t\t\ta[k++] = a[i];\n\t\t\ta[i] = tmp;\n\t\t}\n\t}\n\n\ta[q] = a[k];\n\ta[k] = pivot;\n\n\treturn k;\n  }</pre>",
+    "PostedDate": "2011-04-17T10:54:43.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "598747",
+    "ThreadId": "254253",
+    "Html": "<p>Hi,</p>\r\n<p>I have to quick remarks that might help you.</p>\r\n<p>First, intervals in Spec# are half-open. So I guess in the first postcondition of partition, you want to say:</p>\r\n<p>ensures forall { n in ( p..result + 1); a[n] &lt;= a[result] };</p>\r\n<p>Otherwise, the value of a[result] is unspecified.</p>\r\n<p>Second, quicksort is a bit tricky to verify because it is not sufficient to specify that the array segment after the method call is sorted; one also needs to specify the range of values of the segment. Consider the input a={1,0}, p=0, q=1. After the call to partition, we have a={0,1} and pivot=0 or pivot=1. But now the recursive calls to quicksort might actually change a to something like {200,5} because they only guarantee that the segment they work on will be sorted. This is the case here, because {200} is sorted and {5} is sorted, but of course {200,5} is not. So the verifier needs to know that the minimum and maximum of the segments are preserved such that it can conclude that the maximum of the left segment is less or equal to the minimum of the right segment.</p>\r\n<p>Hope this helps,<br />&nbsp;&nbsp; Peter</p>",
+    "PostedDate": "2011-04-17T12:44:25.543-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "598752",
+    "ThreadId": "254253",
+    "Html": "<p>Hi Peter,</p>\r\n<p>Thanks for your quick reply. I believe the interval (p..result) also includes result, while (p:result) does not. Your point about the method possibly changing the array makes sense, thanks. The proper way of dealing with this is to ensure that the resulting segment is a permutation of the input segment, correct? I'm having some issues properly formulating an expression that checks this. The old() method does not seem to work on individual array elements, do you have any ideas on how I can fix this without resorting to allocating new arrays?&nbsp;</p>",
+    "PostedDate": "2011-04-17T13:09:56.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "598753",
+    "ThreadId": "254253",
+    "Html": "<p>Furthermore, the range of x in the postcondition of quicksort should start at p, not 0.</p>\r\n<p>Also, you need to say, for both quicksort and partition,&nbsp;that the array elements outside the range p..q are not modified.&nbsp; To prove that for partition, the loop invariant of partition needs to say that those array elements are unmodified.&nbsp; That's tricky to do in Spec#, because Spec# does not allow you to use \"old\" expressions in loop invariants.</p>\r\n<p>By the way, it's a bit unfortunate that the precondition of quicksort has that disjunction.&nbsp; You can eliminate it in various ways.&nbsp; For example, I would have started by letting p,q denote a half-open interval of array indices, in which case your quicksort&nbsp;precondition would be simply:&nbsp; 0 &lt;= p &amp;&amp; p &lt;= q &amp;&amp; q &lt;= a.Length.&nbsp; (Note also that by writing all arithmetic inequalities like &lt; or &lt;=, as opposed to a mix of those and&nbsp;&gt; and &gt;=, you can directly&nbsp;\"see\" from the formula that p lies between 0 and q and that q lies between p and a.Length, which is not as easy to detect when the inequalities are written in an arbitrary order.)</p>\r\n<p>Best wishes,<br />&nbsp; Rustan</p>",
+    "PostedDate": "2011-04-17T13:10:24.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "598755",
+    "ThreadId": "254253",
+    "Html": "<p>\"old\" does work on array elements.&nbsp; For example, old(a[i]) refers to the value of a[i] in the pre-state.&nbsp; However, you cannot in Spec# use \"old\" in loop invariants.&nbsp; To work around that is somewhat of a pain.&nbsp; As one of those possible but painful ways is to recode \"partition\" using recursion instead of the loop.</p>\r\n<p>To specify that the output is a permutation of the input would indeed be the most complete specification.&nbsp; One way to do that is for you to construct the partition as you go along in another array.&nbsp; (I think there may be some Dafny example in boogie.codeplex.com under the Test folder that does that, but perhaps I'm misremembering.)&nbsp; Something awkward with that is that Spec# does not support ghost variables and ghost arrays.</p>",
+    "PostedDate": "2011-04-17T13:15:28.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "598939",
+    "ThreadId": "254253",
+    "Html": "<p>Thanks for your feedback. Are there any plans on supporting old() inside loop invariants? By the way, I appreciate your videos on channel9. Do you plan on creating more?</p>",
+    "PostedDate": "2011-04-18T02:30:01.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "598946",
+    "ThreadId": "254253",
+    "Html": "<p>One other issue, when I try to use old(a[x]) inside a comprehension, it fails. It will yield either 'use of unassigned variable x' or 'internal error: name resolution errors detected'. For example:&nbsp;</p>\n<pre>product { int x in (p..q); old(a[x]) } == 1;  </pre>",
+    "PostedDate": "2011-04-18T02:38:43.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,105 @@
+
+/***************************************************************************
+         Copyright (c) Microsoft Corporation, All rights reserved.             
+    This code sample is provided "AS IS" without warranty of any kind, 
+    it is not recommended for use in a production environment.
+***************************************************************************/
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//File: FigPkgUI.ctc
+//
+//Contents:  Menus for the Fig packages (all)
+//
+//
+//If you change this file, run DEVENV /setup.  This will cause the shell to
+//re-merge this menu definition for the package.
+//////////////////////////////////////////////////////////////////////////////
+
+#if _MSC_VER > 1000
+//#pragma once
+#endif  /* _MSC_VER > 1000 */
+
+#ifndef PKG_CTC
+#define PKG_CTC
+
+
+#include "vsshlids.h"  // menu groups in the shell that packages may want to reference 
+#include "msobtnid.h"
+#include "pkgicmd.h"
+
+CMDS_SECTION guidEditPkg
+  MENUS_BEGIN
+	// main menu bar menus
+	// GUID:MENUID							PARENT GROUP							PRI.		TYPE						BUTTONTEXT	MENUTEXT	TOOLTIPTEXT		COMMANDTEXT
+	guidEditPkg:IDM_FIG_INSERT,				guidSHLMainMenu:IDG_VS_MM_TOOLSADDINS,		0x0000,		,							"&Insert",	"&Insert"; 
+
+	// context menus
+	// GUID:MENUID							PARENT GROUP							PRI.		TYPE						BUTTONTEXT			MENUTEXT			TOOLTIPTEXT		COMMANDTEXT
+	guidEditPkg:IDMX_FIG_FIGLINE,			guidEditPkg:0,							0x0000,		CONTEXT,					"FigLineCntxtMenu",	"FigLineCntxtMenu";	
+	guidEditPkg:IDMX_FIG_FIGLINE_INSERT,	guidEditPkg:IDG_FIG_INSERT_LINEGRP,		0x0400,		,							"Insert &Figure";
+  MENUS_END
+
+  NEWGROUPS_BEGIN
+    // GUID:GROUPID							PARENT MENU								PRIORITY	FLAG
+	guidEditPkg:IDG_FIG_INSERT_INSERTLINE,	guidEditPkg:IDM_FIG_INSERT,				0x0000;		// flag not used
+    guidSHLMainMenu:IDG_VS_EDIT_CUTCOPY,	guidEditPkg:IDMX_FIG_FIGLINE,			0x0100;
+	guidEditPkg:IDG_FIG_INSERT_LINEGRP,		guidEditPkg:IDMX_FIG_FIGLINE,			0x0200;	// empty group as placeholder for Insert Figure menu
+    guidSHLMainMenu:IDG_VS_EDIT_SELECT,		guidEditPkg:IDMX_FIG_FIGLINE,			0x0300;
+	guidEditPkg:IDG_FIG_INSERT_INSERTLINE,	guidEditPkg:IDMX_FIG_FIGLINE_INSERT,	0x0000;
+  NEWGROUPS_END	
+
+  BUTTONS_BEGIN
+    // GUID:CMDID					GROUP ID								PRIORITY	ICON							TYPE	FLAGS														BUTTON TEXT			MENU TEXT	TOOLTIP TEXT	COMMAND NAME
+	guidEditPkg:icmdAddArrow,		guidEditPkg:IDG_FIG_INSERT_INSERTLINE,	0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON,	DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY,		"&Arrow";			// rest are not used
+	guidEditPkg:icmdAddCircle,		guidEditPkg:IDG_FIG_INSERT_INSERTLINE,	0x0100,		guidOfficeIcon:msotcidNoIcon,	BUTTON,	DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY,		"&Circle";			// rest are not used
+	guidEditPkg:icmdAddRectangle,	guidEditPkg:IDG_FIG_INSERT_INSERTLINE,	0x0200,		guidOfficeIcon:msotcidNoIcon,	BUTTON,	DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY,		"&Rectangle";		// rest are not used
+	guidEditPkg:icmdAddComment,		guidEditPkg:IDG_FIG_INSERT_INSERTLINE,	0x0300,		guidOfficeIcon:msotcidNoIcon,	BUTTON,	DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY,		"Co&mment";			// rest are not used
+  BUTTONS_END 
+CMDS_END
+
+
+//////////////////////////////////////////////////////////////////////////////
+// CMDPLACEMENT_SECTION
+// 
+// This sections defines where the commands will be placed if not just in 
+// their primary groups.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+CMDPLACEMENT_SECTION
+	// GUID:GROUPID							PARENT MENU								PRIORITY - or -
+	// GUID:MENUID							PARENT GROUP							PRIORITY
+	guidEditPkg:IDG_FIG_INSERT_LINEGRP,		guidSHLMainMenu:IDM_VS_CTXT_CODEWIN,	0x0400;	// empty group as placeholder for Insert Figure menu
+
+CMDPLACEMENT_END
+
+
+//////////////////////////////////////////////////////////////////////////////
+// KEYBINDINGS_SECTION
+// 
+// This sections defines the keystroke mappings for the commands.
+//
+// The Keystate field is done using the following:
+//    A = Alt, S = Shift, C = Control, W = Windows Key
+//
+// Example of the Keystate assignment, if you want a two key combination
+// of Ctrl-X, Ctrl-Shift-C then the syntax would be :
+//
+//	'x':C:'c':CS
+//
+//////////////////////////////////////////////////////////////////////////////
+
+KEYBINDINGS_SECTION
+  // GUID:CMDID				    EDITORGUID		      EMULATIONGUID		KEYSTATE
+  
+
+KEYBINDINGS_END
+
+VISIBILITY_SECTION
+  // GUID:CMDID					                GUID when VISIBLE
+  guidStdEditor:IDM_VS_TOOL_TEXTEDITOR,        	guidFigCodeCmdUI;
+
+VISIBILITY_END
+
+#endif // PKG_CTC

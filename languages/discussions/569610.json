@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1312594",
+    "ThreadId": "569610",
+    "Html": "Hello,\r<br />\n<br />\nI am a beginner in using verification tools. I came across Dafny recently and considered trying it out to develop some verified codebase. I started using it and found that Dafny has limited pre-defined datatypes (I believe there are no strings etc). Then I stumbled upon Spec# which also internally uses the Boogie+Z3 SMT solver stack to verify Spec# programs. I started using Spec# with VS2010. It seems to be giving the same set of verification features like Dafny and also it has all pre-defined types (I believe Spec# is a superset of C#). \r<br />\n<br />\nQuestion: Is there any reason why someone would prefer Dafny over Spec# ? Does Spec# have lesser or less rigorous verification guarantees? \r<br />\n<br />\nAlso, is there anyway to get the integrated BVD experience with Spec# like in Dafny?\r<br />\n<br />\n-Ram<br />\n",
+    "PostedDate": "2014-10-12T15:31:38.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1321467",
+    "ThreadId": "569610",
+    "Html": "Hello Ram,\r<br />\n<br />\nSpec# is an old language and tool. The main research project ended about 6 years ago (if you're interested in reading our &quot;retrospective&quot; of the project, please see our article in the June 2011 issue of CACM).  Spec# is still being used in teaching, but we're finding various problems in trying to maintain it.  The reason for this is that Spec# is a superset of C# version 2.0, and .NET has since moved on to version 4.5, so it's difficult to build Spec# these days.  We have also had some problems recently with getting Spec# to run on rise4fun.com, but I'm hoping that we have now found a suitable workaround for that problem.\r<br />\n<br />\nSpec# does give access to all the .NET (version 2.0) types and libraries. However, if you are planning to write a larger .NET application that uses these libraries, you're probably better off using the .NET <a href=\"http://research.microsoft.com/en-us/projects/contracts/\" rel=\"nofollow\">Code Contracts</a> and the associated tooling (which does not include a full-fledged verifier, but does give some support for both static checking and dynamic testing).  If your main objective is to verify some algorithm or some new code, then Dafny would be a good choice.  Dafny's specifications and verifier are a generation later than Spec# and there are many improvements.  For example, Dafny supports mathematical types like sets and sequences, inductive datatypes, recursive predicates and functions, full quantifier support, ghost constructs, and many other things that are really useful when specifying programs, whereas Spec# does not support any of these features.\r<br />\n<br />\nDafny is an active research project, and it is being used by an increasing number of universities in teaching.  Dafny compiles to (the latest version of) .NET, but there is currently no support for directly accessing the .NET libraries.  There are ways you can do this, by asking the Dafny compiler to compile to C# code and then linking that C# code yourself with appropriate wrapper methods.  Spec# was the first tool to including background verification in the IDE with &quot;red squigglies&quot;, but Dafny's IDE now outshines Spec# in many ways, including caching of verification results and integrated support of the Verification Debugger.\r<br />\n<br />\nWhen I saw your comment about strings, I felt compelled to move that to-do item to the top of my list.  So Dafny now supports characters and strings. :)\r<br />\n<br />\n  Rustan<br />\n",
+    "PostedDate": "2014-11-12T14:28:58.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2014-11-12T14:33:42.637-08:00"
+  },
+  {
+    "Id": "1321470",
+    "ThreadId": "569610",
+    "Html": "I forgot to address one part of your question: verification guarantees.  While the Spec# specification methodology is sound, there are a number of features in Spec# that were never implemented and that make the checking unsound.  For example, the Spec# verifier treats type <code>int</code> as mathematical integers, even though the runtime type for it is 32-bit integers.   Dafny is sound (with the usual caveats:  sound module bugs in the implementation and other possible unknown flaws).\r<br />\n<br />\n  Rustan<br />\n",
+    "PostedDate": "2014-11-12T14:33:40.25-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2015-01-16T15:43:33.403-08:00"
+  }
+]

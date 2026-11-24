@@ -1,0 +1,101 @@
+using System;
+using Microsoft.Contracts;
+
+/////////////////////////////////////////////////////////////////////////////////
+// start your Spec#
+/////////////////////////////////////////////////////////////////////////////////
+
+class S
+{
+	[Rep] string[]! elements;
+	int size;
+
+	invariant size <= elements.Length;
+	invariant size >= 0;
+	invariant forall { i in (0:size); elements[i] != null };
+
+	public S(int c)
+		requires c > 0;
+		ensures size == 0;
+		ensures elements.Length == c;
+	{
+		elements = new string[c];
+		//NonNullType.AssertInitialized(elements);
+	}
+
+	[Pure]
+	public bool IsFull()
+		ensures result == (size == elements.Length);
+	{
+		return size == elements.Length;
+	}
+
+	[Pure]
+	public bool InBounds(int index)
+		ensures result == (0 <= index && index < size);
+	{
+		return 0 <= index && index < size;
+	}
+
+	[Pure]
+	public string GetElement(int index)
+		requires InBounds(index);
+		ensures result != null;
+		ensures result.Equals( elements[index] );
+	{
+		return elements[index];
+	}
+
+	public void Push(string! s)
+		requires !IsFull();
+		ensures size == old(size) + 1;
+		ensures elements.Length == old(elements.Length);
+		ensures forall {i in (0:old(size));
+					elements[i] == old(elements[i]) };
+	{
+		expose(this)
+		{
+			elements[size++] = s;
+		}
+	}
+
+	[Pure]
+	public bool IsEmpty()
+		ensures result == (size == 0);
+	{
+		return size == 0;
+	}
+
+	public string! Pop()
+		requires !IsEmpty();
+		ensures size == old(size) - 1;
+		ensures elements.Length == old(elements.Length);
+		ensures result == elements[size];
+		ensures result.Equals( GetElement(size) );
+		ensures elements == old(elements);
+		ensures forall {i in (0:size); elements[i] == old(elements[i])};
+	{
+		string s = elements[size - 1];
+		assert s != null;
+ 		assert s.Equals(GetElement(size-1));
+		size --;
+		assert s.Equals(elements[size]);
+		assert s.Equals(GetElement(size));
+		return s;
+	}
+}
+
+class S_Test
+{
+
+	public static void test()
+	{
+		S s = new S(1024);
+		s.Push("");
+//		s.Push("");
+//		s.Pop();
+		string! s1 = s.Pop();
+		assert s.IsEmpty();
+		assert s1.Equals("");
+	} 
+}

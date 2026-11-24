@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "919406",
+    "ThreadId": "397400",
+    "Html": "\r\n<p>Thanks for your help in an earlier thread. I do now have Spec# installed in my office without problems (though not in the labs yet) and I have tried writing my first example. I would like to define as an invariant a simple subset&nbsp; relationship between\r\n two arrays (see below) but I am told the relationship may not hold an after initialising to particular constants where the relationship is clearly true.</p>\r\n<p>This is by umpteenth attempt to write this. All the others have produced error messages for one reason or the other, so I would appreciate it if you could tell me whether I should have been able to do what I was trying to do.</p>\r\n<p>1. I would like to use sets for this except that I understand the sets were introduced into C# too late (I have Visual Studio 2010).</p>\r\n<p>2. I wanted to avoid indices too by using this:</p>\r\n<p>&nbsp;invariant forall{int ii in a; exists{jj in b; ii.Equals(jj)}};</p>\r\n<p>but I then learned I needed to use Custom Attribute Contacts.Pure - does this mean editting the library code that defines equality on Strings?</p>\r\n<p>3. I tried using List too but I got a &quot;must be owned by self&quot; error even though I used [Rep] to indicate an aggregation.</p>\r\n<p>-------------------------------------------------------------------------------------------------------------------------------------------</p>\r\n<p>using System;<br>\r\nusing Microsoft.Contracts;<br>\r\n<br>\r\npublic class Program<br>\r\n{<br>\r\n<br>\r\n<br>\r\n&nbsp; class State {<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;invariant forall{int i in (0: a.Length); exists{int j in (0: b.Length);a[i].Equals(b[j])}};<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp; invariant a[0].Equals(b[0]); // array index possibly above bound??<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;invariant forall{int i in (0: a.Length); a[i].Equals(&quot;hello&quot;)}; // True<br>\r\n<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;[Rep] string[] a = {&quot;hello&quot;}; <br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;[Rep] string[] b = {&quot;hello&quot;, &quot;world&quot;, &quot;bye&quot;};<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;public State() {<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;}<br>\r\n<br>\r\n&nbsp; }<br>\r\n<br>\r\n&nbsp; static void Main(string![]! args) {<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;Console.WriteLine(&quot;hello&quot;.Equals(&quot;hello&quot;)); // True<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;Console.ReadLine();<br>\r\n<br>\r\n&nbsp; }<br>\r\n}</p>\r\n",
+    "PostedDate": "2012-09-29T09:46:52.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "919415",
+    "ThreadId": "397400",
+    "Html": "<p>This problem somehow disappeared when I created a new project and copy-and-pasted. Then I got errors about nullness which I fixed:</p>\r\n<p>[Rep] string![]! a = {\"hello\"};</p>\r\n<p>However, can you tell me please if I should be able to use List or Set and if I should be able to use the other form of the invariant quoted above?</p>",
+    "PostedDate": "2012-09-29T10:16:04.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "927051",
+    "ThreadId": "397400",
+    "Html": "<p>It's tricky to use .Equals in specifications, because of what it may read.&nbsp; Hopefully, the error messages will guide you to ways of representing what you want.</p>\r\n<p>If your program has a List or Set class, Spec# would be able to use them.&nbsp; As you have run into, Spec# is a superset of C# 2.0, so many of the syntax enhancements in newer versions of C# are not available in Spec#.</p>\r\n<p>By the way, I'm guessing you're using Spec# for the run-time checking?&nbsp; I'd be interested in learing more about what your aim is.&nbsp; For example, if you want to teach writing contracts and getting run-time checking, then it's possible that Code Contracts in .NET (which you can use with the latest C#) would suit your needs.&nbsp; If, on the other hand, you're trying to do more serious static verification, then have you considered using Dafny (<a href=\"http://research.microsoft.com/dafny\">http://research.microsoft.com/dafny</a>)?</p>\r\n<p>&nbsp; Rustan</p>",
+    "PostedDate": "2012-10-15T17:42:57.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "927475",
+    "ThreadId": "397400",
+    "Html": "Hi Rustan,<br>\r\n<br>\r\nThanks for your thoughts. I was thinking about having a class that<br>\r\nrepresents the state of a scrabble game. Thinking about it in Z<br>\r\nterminology, there is a set of tiles in a bag (or even a bag of tiles<br>\r\nin a bag), two size-7 sets on two racks and a partial function from<br>\r\n{0..WIDTH-1} x {0..WIDTH-1} to tile, commonly called a 2D array. Tiles<br>\r\ncould be characters but perhaps should be tagged to keep tiles unique<br>\r\neg the 1st A, 2nd A etc. An important decision but one yet to be made.<br>\r\nI'm keeping it open because maybe Spec# would be better with<br>\r\nprimitives, though counting the A's would be a bit tricky.<br>\r\n<br>\r\nI don't know whether this is an appropriate use of Spec# but you could<br>\r\nhave an object invariant that says every tile must have been in the<br>\r\nbag originally and every tile that was in the bag has not &quot;fallen<br>\r\nunder the table&quot; ie it's still in the bag, on a rack or on the board.<br>\r\nExcept for the board, I certainly want sets (but I think they were<br>\r\nintroduced to C# later than 2.0 and I can't use later libraries).<br>\r\nHowever, even if I can't have sets, I want to model sets as 1D arrays<br>\r\nand be able to test for subset inclusion. I thought I would write a<br>\r\nmethod to check for this, so I could then use it in the object<br>\r\ninvariant. That's why you see the method I've shown you.<br>\r\n<br>\r\nI'm not really experienced enough with Spec# to know what I can expect<br>\r\nit to do for me but maybe you can tell me how this sounds. Also, on a<br>\r\nminor, more easily correctable point, I don't know if I should be<br>\r\nusing == or Equals, but I had no luck with == either; I'm sure I have<br>\r\nbigger problems that just that though.<br>\r\n<br>\r\nIan",
+    "PostedDate": "2012-10-16T08:24:47.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "928416",
+    "ThreadId": "397400",
+    "Html": "<p>Sounds like a nice exercise.&nbsp; Are you hoping to (statically) verify properties about the program, or is your focus the writing of the specifications (and perhaps getting run-time checks)?</p>\r\n<p>If it's the latter, then Spec# is probably fine.&nbsp; The ownership of the tiles will require some care.&nbsp; I don't remember, but I think Spec# does this better (or&nbsp;only?) for single-dimensional arrays.&nbsp; If it is possible for you to represent the tiles as integers, you'll avoid both the == vs. .Equals issue as well as ownership issues.</p>\r\n<p>If it's the former (that is, you want to verify the program statically), then Dafny will be a much better choice.&nbsp; You can also compile and execute Dafny programs, but there are no UI libraries, for example.&nbsp; (I'd be delighted if someone would write such libraries for Dafny, even simple ones.)</p>\r\n<p>&nbsp; Rustan</p>",
+    "PostedDate": "2012-10-17T14:59:07.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

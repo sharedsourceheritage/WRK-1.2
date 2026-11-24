@@ -1,0 +1,14 @@
+HKLM
+{
+    %REGROOTBEGIN%
+    NoRemove CLSID
+    {
+        %CLSID_DebugPPG% = s 'DebugPPG Class'
+        {
+            val InprocServer32 = s '%MODULE%'
+            val ThreadingModel = s 'Apartment'
+        }
+    }
+    %REGROOTEND%
+}
+

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "651491",
+    "ThreadId": "267520",
+    "Html": "\r\n<p>I'm attempting to install this using msvs 2010 express and have extracted the contents of this zip file: &quot;SpecSharp-2010-10-13&quot;&nbsp;to my desktop.</p>\r\n<p>the files in the zip are &quot;Binaries&quot; and &quot;Templates.&quot; I think I was successful in registering the types since I&nbsp;received&nbsp;three notifications saying that the &quot;Types were registered correctly.&quot;</p>\r\n<p>However, after reading though the early parts of tutorials I've found, it seems that there should now be an option in visual studio under 'new-&gt;projects' of something along the lines of &quot;spec# project&quot;.</p>\r\n<p>I don't have anything like that and am unsure where I need to place the other folder labeled &quot;Templates&quot; (As this probably has something to do with this). The instructions are not clear about where these files need to be placed. Was it wrong to simply extract\r\n the binaries to the desktop? If so, could you let me know where they are supposed to go?</p>\r\n",
+    "PostedDate": "2011-08-02T20:15:18.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "651788",
+    "ThreadId": "267520",
+    "Html": "<p>Unfortunately, I believe VS Express does not provide the extensibility that the Spec# system requires for its integration. Sorry!</p>",
+    "PostedDate": "2011-08-03T07:58:06.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
