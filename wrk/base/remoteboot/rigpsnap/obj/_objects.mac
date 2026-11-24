@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\rigpsnap.res \
+    $(_OBJ_DIR)\i386\compdata.obj \
+    $(_OBJ_DIR)\i386\dataobj.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\rigpsnap.obj \
+    $(_OBJ_DIR)\i386\layout.obj \
+    $(_OBJ_DIR)\i386\snapin.obj \
+    $(_OBJ_DIR)\i386\util.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\rigpsnap.res \
+    $(_OBJ_DIR)\ia64\compdata.obj \
+    $(_OBJ_DIR)\ia64\dataobj.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\rigpsnap.obj \
+    $(_OBJ_DIR)\ia64\layout.obj \
+    $(_OBJ_DIR)\ia64\snapin.obj \
+    $(_OBJ_DIR)\ia64\util.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\rigpsnap.res \
+    $(_OBJ_DIR)\amd64\compdata.obj \
+    $(_OBJ_DIR)\amd64\dataobj.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\rigpsnap.obj \
+    $(_OBJ_DIR)\amd64\layout.obj \
+    $(_OBJ_DIR)\amd64\snapin.obj \
+    $(_OBJ_DIR)\amd64\util.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\rigpsnap.res \
+    $(_OBJ_DIR)\arm\compdata.obj \
+    $(_OBJ_DIR)\arm\dataobj.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\rigpsnap.obj \
+    $(_OBJ_DIR)\arm\layout.obj \
+    $(_OBJ_DIR)\arm\snapin.obj \
+    $(_OBJ_DIR)\arm\util.obj
+
+PASS0_ARM_OBJECTS=
+

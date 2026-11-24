@@ -1,0 +1,64 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\hotplug.res \
+    $(_OBJ_DIR)\i386\blkdrv.obj \
+    $(_OBJ_DIR)\i386\driver.obj \
+    $(_OBJ_DIR)\i386\devicecol.obj \
+    $(_OBJ_DIR)\i386\devtree.obj \
+    $(_OBJ_DIR)\i386\hotplug.obj \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\miscutil.obj \
+    $(_OBJ_DIR)\i386\notify.obj \
+    $(_OBJ_DIR)\i386\rconfirm.obj \
+    $(_OBJ_DIR)\i386\stdafx.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\blkdrv.h
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\hotplug.res \
+    $(_OBJ_DIR)\ia64\blkdrv.obj \
+    $(_OBJ_DIR)\ia64\driver.obj \
+    $(_OBJ_DIR)\ia64\devicecol.obj \
+    $(_OBJ_DIR)\ia64\devtree.obj \
+    $(_OBJ_DIR)\ia64\hotplug.obj \
+    $(_OBJ_DIR)\ia64\init.obj \
+    $(_OBJ_DIR)\ia64\miscutil.obj \
+    $(_OBJ_DIR)\ia64\notify.obj \
+    $(_OBJ_DIR)\ia64\rconfirm.obj \
+    $(_OBJ_DIR)\ia64\stdafx.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\blkdrv.h
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\hotplug.res \
+    $(_OBJ_DIR)\amd64\blkdrv.obj \
+    $(_OBJ_DIR)\amd64\driver.obj \
+    $(_OBJ_DIR)\amd64\devicecol.obj \
+    $(_OBJ_DIR)\amd64\devtree.obj \
+    $(_OBJ_DIR)\amd64\hotplug.obj \
+    $(_OBJ_DIR)\amd64\init.obj \
+    $(_OBJ_DIR)\amd64\miscutil.obj \
+    $(_OBJ_DIR)\amd64\notify.obj \
+    $(_OBJ_DIR)\amd64\rconfirm.obj \
+    $(_OBJ_DIR)\amd64\stdafx.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\blkdrv.h
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\hotplug.res \
+    $(_OBJ_DIR)\arm\blkdrv.obj \
+    $(_OBJ_DIR)\arm\driver.obj \
+    $(_OBJ_DIR)\arm\devicecol.obj \
+    $(_OBJ_DIR)\arm\devtree.obj \
+    $(_OBJ_DIR)\arm\hotplug.obj \
+    $(_OBJ_DIR)\arm\init.obj \
+    $(_OBJ_DIR)\arm\miscutil.obj \
+    $(_OBJ_DIR)\arm\notify.obj \
+    $(_OBJ_DIR)\arm\rconfirm.obj \
+    $(_OBJ_DIR)\arm\stdafx.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\blkdrv.h
+

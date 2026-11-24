@@ -1,0 +1,72 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\bios.obj \
+    $(_OBJ_DIR)\i386\cmos_bis.obj \
+    $(_OBJ_DIR)\i386\cntlbop.obj \
+    $(_OBJ_DIR)\i386\emm_fncs.obj \
+    $(_OBJ_DIR)\i386\reset.obj \
+    $(_OBJ_DIR)\i386\rom_basc.obj \
+    $(_OBJ_DIR)\i386\rtc_bios.obj \
+    $(_OBJ_DIR)\i386\slave_bs.obj \
+    $(_OBJ_DIR)\i386\tape_io.obj \
+    $(_OBJ_DIR)\i386\equipmnt.obj \
+    $(_OBJ_DIR)\i386\ill_bop.obj \
+    $(_OBJ_DIR)\i386\build_id.obj \
+    $(_OBJ_DIR)\i386\virtual.obj \
+    $(_OBJ_DIR)\i386\mem_size.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\bios.obj \
+    $(_OBJ_DIR)\ia64\cmos_bis.obj \
+    $(_OBJ_DIR)\ia64\cntlbop.obj \
+    $(_OBJ_DIR)\ia64\emm_fncs.obj \
+    $(_OBJ_DIR)\ia64\reset.obj \
+    $(_OBJ_DIR)\ia64\rom_basc.obj \
+    $(_OBJ_DIR)\ia64\rtc_bios.obj \
+    $(_OBJ_DIR)\ia64\slave_bs.obj \
+    $(_OBJ_DIR)\ia64\tape_io.obj \
+    $(_OBJ_DIR)\ia64\equipmnt.obj \
+    $(_OBJ_DIR)\ia64\ill_bop.obj \
+    $(_OBJ_DIR)\ia64\build_id.obj \
+    $(_OBJ_DIR)\ia64\virtual.obj \
+    $(_OBJ_DIR)\ia64\mem_size.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\bios.obj \
+    $(_OBJ_DIR)\amd64\cmos_bis.obj \
+    $(_OBJ_DIR)\amd64\cntlbop.obj \
+    $(_OBJ_DIR)\amd64\emm_fncs.obj \
+    $(_OBJ_DIR)\amd64\reset.obj \
+    $(_OBJ_DIR)\amd64\rom_basc.obj \
+    $(_OBJ_DIR)\amd64\rtc_bios.obj \
+    $(_OBJ_DIR)\amd64\slave_bs.obj \
+    $(_OBJ_DIR)\amd64\tape_io.obj \
+    $(_OBJ_DIR)\amd64\equipmnt.obj \
+    $(_OBJ_DIR)\amd64\ill_bop.obj \
+    $(_OBJ_DIR)\amd64\build_id.obj \
+    $(_OBJ_DIR)\amd64\virtual.obj \
+    $(_OBJ_DIR)\amd64\mem_size.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\bios.obj \
+    $(_OBJ_DIR)\arm\cmos_bis.obj \
+    $(_OBJ_DIR)\arm\cntlbop.obj \
+    $(_OBJ_DIR)\arm\emm_fncs.obj \
+    $(_OBJ_DIR)\arm\reset.obj \
+    $(_OBJ_DIR)\arm\rom_basc.obj \
+    $(_OBJ_DIR)\arm\rtc_bios.obj \
+    $(_OBJ_DIR)\arm\slave_bs.obj \
+    $(_OBJ_DIR)\arm\tape_io.obj \
+    $(_OBJ_DIR)\arm\equipmnt.obj \
+    $(_OBJ_DIR)\arm\ill_bop.obj \
+    $(_OBJ_DIR)\arm\build_id.obj \
+    $(_OBJ_DIR)\arm\virtual.obj \
+    $(_OBJ_DIR)\arm\mem_size.obj
+
+PASS0_ARM_OBJECTS=
+

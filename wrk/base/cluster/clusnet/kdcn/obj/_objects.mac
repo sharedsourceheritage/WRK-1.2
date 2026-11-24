@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\kdcn.res \
+    $(_OBJ_DIR)\i386\kdcn.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\kdcn.res \
+    $(_OBJ_DIR)\ia64\kdcn.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\kdcn.res \
+    $(_OBJ_DIR)\amd64\kdcn.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\kdcn.res \
+    $(_OBJ_DIR)\arm\kdcn.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dmnd2.obj \
+    $(_OBJ_DIR)\i386\driveex.obj \
+    $(_OBJ_DIR)\i386\setup.obj \
+    $(_OBJ_DIR)\i386\virwinn.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dmnd2.obj \
+    $(_OBJ_DIR)\ia64\driveex.obj \
+    $(_OBJ_DIR)\ia64\setup.obj \
+    $(_OBJ_DIR)\ia64\virwinn.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dmnd2.obj \
+    $(_OBJ_DIR)\amd64\driveex.obj \
+    $(_OBJ_DIR)\amd64\setup.obj \
+    $(_OBJ_DIR)\amd64\virwinn.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dmnd2.obj \
+    $(_OBJ_DIR)\arm\driveex.obj \
+    $(_OBJ_DIR)\arm\setup.obj \
+    $(_OBJ_DIR)\arm\virwinn.obj
+
+PASS0_ARM_OBJECTS=
+

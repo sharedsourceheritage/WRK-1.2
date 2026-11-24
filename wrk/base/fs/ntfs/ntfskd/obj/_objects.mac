@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ntfskd.res \
+    $(_OBJ_DIR)\i386\gentable.obj \
+    $(_OBJ_DIR)\i386\ntfskd.obj \
+    $(_OBJ_DIR)\i386\ntfskdapi.obj \
+    $(_OBJ_DIR)\i386\kdext.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ntfskd.res \
+    $(_OBJ_DIR)\ia64\gentable.obj \
+    $(_OBJ_DIR)\ia64\ntfskd.obj \
+    $(_OBJ_DIR)\ia64\ntfskdapi.obj \
+    $(_OBJ_DIR)\ia64\kdext.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ntfskd.res \
+    $(_OBJ_DIR)\amd64\gentable.obj \
+    $(_OBJ_DIR)\amd64\ntfskd.obj \
+    $(_OBJ_DIR)\amd64\ntfskdapi.obj \
+    $(_OBJ_DIR)\amd64\kdext.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ntfskd.res \
+    $(_OBJ_DIR)\arm\gentable.obj \
+    $(_OBJ_DIR)\arm\ntfskd.obj \
+    $(_OBJ_DIR)\arm\ntfskdapi.obj \
+    $(_OBJ_DIR)\arm\kdext.obj
+
+PASS0_ARM_OBJECTS=
+

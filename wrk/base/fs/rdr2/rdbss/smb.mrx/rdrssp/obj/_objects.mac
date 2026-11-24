@@ -1,0 +1,64 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ksecdd.obj \
+    $(_OBJ_DIR)\i386\stubs.obj \
+    $(_OBJ_DIR)\i386\support.obj \
+    $(_OBJ_DIR)\i386\memmgr.obj \
+    $(_OBJ_DIR)\i386\ntlm.obj \
+    $(_OBJ_DIR)\i386\context.obj \
+    $(_OBJ_DIR)\i386\chal.obj \
+    $(_OBJ_DIR)\i386\owf.obj \
+    $(_OBJ_DIR)\i386\block.obj \
+    $(_OBJ_DIR)\i386\response.obj \
+    $(_OBJ_DIR)\i386\userkey.obj \
+    $(_OBJ_DIR)\i386\secret.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ksecdd.obj \
+    $(_OBJ_DIR)\ia64\stubs.obj \
+    $(_OBJ_DIR)\ia64\support.obj \
+    $(_OBJ_DIR)\ia64\memmgr.obj \
+    $(_OBJ_DIR)\ia64\ntlm.obj \
+    $(_OBJ_DIR)\ia64\context.obj \
+    $(_OBJ_DIR)\ia64\chal.obj \
+    $(_OBJ_DIR)\ia64\owf.obj \
+    $(_OBJ_DIR)\ia64\block.obj \
+    $(_OBJ_DIR)\ia64\response.obj \
+    $(_OBJ_DIR)\ia64\userkey.obj \
+    $(_OBJ_DIR)\ia64\secret.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ksecdd.obj \
+    $(_OBJ_DIR)\amd64\stubs.obj \
+    $(_OBJ_DIR)\amd64\support.obj \
+    $(_OBJ_DIR)\amd64\memmgr.obj \
+    $(_OBJ_DIR)\amd64\ntlm.obj \
+    $(_OBJ_DIR)\amd64\context.obj \
+    $(_OBJ_DIR)\amd64\chal.obj \
+    $(_OBJ_DIR)\amd64\owf.obj \
+    $(_OBJ_DIR)\amd64\block.obj \
+    $(_OBJ_DIR)\amd64\response.obj \
+    $(_OBJ_DIR)\amd64\userkey.obj \
+    $(_OBJ_DIR)\amd64\secret.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ksecdd.obj \
+    $(_OBJ_DIR)\arm\stubs.obj \
+    $(_OBJ_DIR)\arm\support.obj \
+    $(_OBJ_DIR)\arm\memmgr.obj \
+    $(_OBJ_DIR)\arm\ntlm.obj \
+    $(_OBJ_DIR)\arm\context.obj \
+    $(_OBJ_DIR)\arm\chal.obj \
+    $(_OBJ_DIR)\arm\owf.obj \
+    $(_OBJ_DIR)\arm\block.obj \
+    $(_OBJ_DIR)\arm\response.obj \
+    $(_OBJ_DIR)\arm\userkey.obj \
+    $(_OBJ_DIR)\arm\secret.obj
+
+PASS0_ARM_OBJECTS=
+

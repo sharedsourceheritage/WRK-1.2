@@ -364,15 +364,15 @@ if "%UseUnsupportedOS%" == "" (
     )
 )
 
-REM
-REM Install the URT.
-REM
-if "%MANAGED_TOOL_PATH%" == "" goto NoURTInstall
-if "%_ArgNoURT%" == "true" set MANAGED_TOOL_PATH=&goto NoURTInstall
-call %MANAGED_TOOL_PATH%\urtinstall\urtinstall.cmd
+::REM
+::REM Install the URT.
+::REM
+::if "%MANAGED_TOOL_PATH%" == "" goto NoURTInstall
+::if "%_ArgNoURT%" == "true" set MANAGED_TOOL_PATH=&goto NoURTInstall
+::call %MANAGED_TOOL_PATH%\urtinstall\urtinstall.cmd
 
-@rem set BUILD_PATH=%BUILD_PATH%;%MANAGED_TOOL_PATH%\urt\%COMPLUS_VERSION%
-@rem set BUILD_PATH=%BUILD_PATH%;%MANAGED_TOOL_PATH%\sdk\bin
+::@rem set BUILD_PATH=%BUILD_PATH%;%MANAGED_TOOL_PATH%\urt\%COMPLUS_VERSION%
+::@rem set BUILD_PATH=%BUILD_PATH%;%MANAGED_TOOL_PATH%\sdk\bin
 
 
 

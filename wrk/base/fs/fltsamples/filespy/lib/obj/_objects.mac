@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\irpnames.obj \
+    $(_OBJ_DIR)\i386\namelists.obj \
+    $(_OBJ_DIR)\i386\fastionames.obj \
+    $(_OBJ_DIR)\i386\fsfilteroperationnames.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\irpnames.obj \
+    $(_OBJ_DIR)\ia64\namelists.obj \
+    $(_OBJ_DIR)\ia64\fastionames.obj \
+    $(_OBJ_DIR)\ia64\fsfilteroperationnames.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\irpnames.obj \
+    $(_OBJ_DIR)\amd64\namelists.obj \
+    $(_OBJ_DIR)\amd64\fastionames.obj \
+    $(_OBJ_DIR)\amd64\fsfilteroperationnames.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\irpnames.obj \
+    $(_OBJ_DIR)\arm\namelists.obj \
+    $(_OBJ_DIR)\arm\fastionames.obj \
+    $(_OBJ_DIR)\arm\fsfilteroperationnames.obj
+
+PASS0_ARM_OBJECTS=
+

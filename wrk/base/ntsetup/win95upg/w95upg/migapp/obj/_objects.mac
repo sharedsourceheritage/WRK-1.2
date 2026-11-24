@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\migapp.obj \
+    $(_OBJ_DIR)\i386\links.obj \
+    $(_OBJ_DIR)\i386\masys32.obj \
+    $(_OBJ_DIR)\i386\maioctl.obj \
+    $(_OBJ_DIR)\i386\filescan.obj \
+    $(_OBJ_DIR)\i386\helpers.obj \
+    $(_OBJ_DIR)\i386\hlpfiles.obj \
+    $(_OBJ_DIR)\i386\modules.obj \
+    $(_OBJ_DIR)\i386\migdb.obj \
+    $(_OBJ_DIR)\i386\dbattrib.obj \
+    $(_OBJ_DIR)\i386\dbaction.obj \
+    $(_OBJ_DIR)\i386\apcompat.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

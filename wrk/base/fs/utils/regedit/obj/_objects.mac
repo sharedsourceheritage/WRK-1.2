@@ -1,0 +1,124 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\regedit.res \
+    $(_OBJ_DIR)\i386\regbined.obj \
+    $(_OBJ_DIR)\i386\regcdhk.obj \
+    $(_OBJ_DIR)\i386\regdebug.obj \
+    $(_OBJ_DIR)\i386\regdwded.obj \
+    $(_OBJ_DIR)\i386\regedit.obj \
+    $(_OBJ_DIR)\i386\regfile.obj \
+    $(_OBJ_DIR)\i386\regfind.obj \
+    $(_OBJ_DIR)\i386\regkey.obj \
+    $(_OBJ_DIR)\i386\regmain.obj \
+    $(_OBJ_DIR)\i386\regmisc.obj \
+    $(_OBJ_DIR)\i386\regnet.obj \
+    $(_OBJ_DIR)\i386\regporte.obj \
+    $(_OBJ_DIR)\i386\regprint.obj \
+    $(_OBJ_DIR)\i386\regstred.obj \
+    $(_OBJ_DIR)\i386\regvalue.obj \
+    $(_OBJ_DIR)\i386\regsec.obj \
+    $(_OBJ_DIR)\i386\regobjpkr.obj \
+    $(_OBJ_DIR)\i386\regprintres.obj \
+    $(_OBJ_DIR)\i386\regdata.obj \
+    $(_OBJ_DIR)\i386\regsys.obj \
+    $(_OBJ_DIR)\i386\regresls.obj \
+    $(_OBJ_DIR)\i386\regfdesc.obj \
+    $(_OBJ_DIR)\i386\regdesc.obj \
+    $(_OBJ_DIR)\i386\regiodsc.obj \
+    $(_OBJ_DIR)\i386\regiodls.obj \
+    $(_OBJ_DIR)\i386\regioreq.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\regedit.res \
+    $(_OBJ_DIR)\ia64\regbined.obj \
+    $(_OBJ_DIR)\ia64\regcdhk.obj \
+    $(_OBJ_DIR)\ia64\regdebug.obj \
+    $(_OBJ_DIR)\ia64\regdwded.obj \
+    $(_OBJ_DIR)\ia64\regedit.obj \
+    $(_OBJ_DIR)\ia64\regfile.obj \
+    $(_OBJ_DIR)\ia64\regfind.obj \
+    $(_OBJ_DIR)\ia64\regkey.obj \
+    $(_OBJ_DIR)\ia64\regmain.obj \
+    $(_OBJ_DIR)\ia64\regmisc.obj \
+    $(_OBJ_DIR)\ia64\regnet.obj \
+    $(_OBJ_DIR)\ia64\regporte.obj \
+    $(_OBJ_DIR)\ia64\regprint.obj \
+    $(_OBJ_DIR)\ia64\regstred.obj \
+    $(_OBJ_DIR)\ia64\regvalue.obj \
+    $(_OBJ_DIR)\ia64\regsec.obj \
+    $(_OBJ_DIR)\ia64\regobjpkr.obj \
+    $(_OBJ_DIR)\ia64\regprintres.obj \
+    $(_OBJ_DIR)\ia64\regdata.obj \
+    $(_OBJ_DIR)\ia64\regsys.obj \
+    $(_OBJ_DIR)\ia64\regresls.obj \
+    $(_OBJ_DIR)\ia64\regfdesc.obj \
+    $(_OBJ_DIR)\ia64\regdesc.obj \
+    $(_OBJ_DIR)\ia64\regiodsc.obj \
+    $(_OBJ_DIR)\ia64\regiodls.obj \
+    $(_OBJ_DIR)\ia64\regioreq.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\regedit.res \
+    $(_OBJ_DIR)\amd64\regbined.obj \
+    $(_OBJ_DIR)\amd64\regcdhk.obj \
+    $(_OBJ_DIR)\amd64\regdebug.obj \
+    $(_OBJ_DIR)\amd64\regdwded.obj \
+    $(_OBJ_DIR)\amd64\regedit.obj \
+    $(_OBJ_DIR)\amd64\regfile.obj \
+    $(_OBJ_DIR)\amd64\regfind.obj \
+    $(_OBJ_DIR)\amd64\regkey.obj \
+    $(_OBJ_DIR)\amd64\regmain.obj \
+    $(_OBJ_DIR)\amd64\regmisc.obj \
+    $(_OBJ_DIR)\amd64\regnet.obj \
+    $(_OBJ_DIR)\amd64\regporte.obj \
+    $(_OBJ_DIR)\amd64\regprint.obj \
+    $(_OBJ_DIR)\amd64\regstred.obj \
+    $(_OBJ_DIR)\amd64\regvalue.obj \
+    $(_OBJ_DIR)\amd64\regsec.obj \
+    $(_OBJ_DIR)\amd64\regobjpkr.obj \
+    $(_OBJ_DIR)\amd64\regprintres.obj \
+    $(_OBJ_DIR)\amd64\regdata.obj \
+    $(_OBJ_DIR)\amd64\regsys.obj \
+    $(_OBJ_DIR)\amd64\regresls.obj \
+    $(_OBJ_DIR)\amd64\regfdesc.obj \
+    $(_OBJ_DIR)\amd64\regdesc.obj \
+    $(_OBJ_DIR)\amd64\regiodsc.obj \
+    $(_OBJ_DIR)\amd64\regiodls.obj \
+    $(_OBJ_DIR)\amd64\regioreq.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\regedit.res \
+    $(_OBJ_DIR)\arm\regbined.obj \
+    $(_OBJ_DIR)\arm\regcdhk.obj \
+    $(_OBJ_DIR)\arm\regdebug.obj \
+    $(_OBJ_DIR)\arm\regdwded.obj \
+    $(_OBJ_DIR)\arm\regedit.obj \
+    $(_OBJ_DIR)\arm\regfile.obj \
+    $(_OBJ_DIR)\arm\regfind.obj \
+    $(_OBJ_DIR)\arm\regkey.obj \
+    $(_OBJ_DIR)\arm\regmain.obj \
+    $(_OBJ_DIR)\arm\regmisc.obj \
+    $(_OBJ_DIR)\arm\regnet.obj \
+    $(_OBJ_DIR)\arm\regporte.obj \
+    $(_OBJ_DIR)\arm\regprint.obj \
+    $(_OBJ_DIR)\arm\regstred.obj \
+    $(_OBJ_DIR)\arm\regvalue.obj \
+    $(_OBJ_DIR)\arm\regsec.obj \
+    $(_OBJ_DIR)\arm\regobjpkr.obj \
+    $(_OBJ_DIR)\arm\regprintres.obj \
+    $(_OBJ_DIR)\arm\regdata.obj \
+    $(_OBJ_DIR)\arm\regsys.obj \
+    $(_OBJ_DIR)\arm\regresls.obj \
+    $(_OBJ_DIR)\arm\regfdesc.obj \
+    $(_OBJ_DIR)\arm\regdesc.obj \
+    $(_OBJ_DIR)\arm\regiodsc.obj \
+    $(_OBJ_DIR)\arm\regiodls.obj \
+    $(_OBJ_DIR)\arm\regioreq.obj
+
+PASS0_ARM_OBJECTS=
+

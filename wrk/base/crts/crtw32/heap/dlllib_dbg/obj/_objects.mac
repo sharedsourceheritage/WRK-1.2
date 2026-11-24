@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\_newmode.obj \
+    $(_OBJ_DIR)\i386\crtheap.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\_newmode.obj \
+    $(_OBJ_DIR)\ia64\crtheap.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\_newmode.obj \
+    $(_OBJ_DIR)\amd64\crtheap.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\_newmode.obj \
+    $(_OBJ_DIR)\arm\crtheap.obj
+
+PASS0_ARM_OBJECTS=
+

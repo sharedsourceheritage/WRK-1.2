@@ -1,10 +1,6 @@
 /*++ BUILD Version: 0001    // Increment this if a change has global effects
 
-Copyright (c) Microsoft Corporation. All rights reserved.
-
-You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
-If you do not agree to the terms, do not use the code.
-
+Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Module Name:
 
@@ -13,6 +9,13 @@ Module Name:
 Abstract:
 
     This header file defines the ARC status codes.
+
+Author:
+
+    David N. Cutler (davec) 20-Sep-1991
+
+
+Revision History:
 
 --*/
 
@@ -46,9 +49,7 @@ typedef enum _ARC_CODES {
     ENOTTY,         // 19
     ENXIO,          // 20
     EROFS,          // 21
-    EWRONGARCH,     // 22
-    EMAXIMUM        // 23
+    EMAXIMUM        // 22
     } ARC_CODES;
 
 #endif // ARCCODES
-

@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dlldata.obj \
+    $(_OBJ_DIR)\i386\cluscfgserver_p.obj \
+    $(_OBJ_DIR)\i386\cluscfgclient_p.obj \
+    $(_OBJ_DIR)\i386\cluscfgprivate_p.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\cluscfgserver.h \
+    $(PASS0_HEADERDIR)\cluscfgclient.h \
+    $(PASS0_HEADERDIR)\cluscfgwizard.h \
+    $(PASS0_HEADERDIR)\cluscfgprivate.h
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dlldata.obj \
+    $(_OBJ_DIR)\ia64\cluscfgserver_p.obj \
+    $(_OBJ_DIR)\ia64\cluscfgclient_p.obj \
+    $(_OBJ_DIR)\ia64\cluscfgprivate_p.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\cluscfgserver.h \
+    $(PASS0_HEADERDIR)\cluscfgclient.h \
+    $(PASS0_HEADERDIR)\cluscfgwizard.h \
+    $(PASS0_HEADERDIR)\cluscfgprivate.h
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dlldata.obj \
+    $(_OBJ_DIR)\amd64\cluscfgserver_p.obj \
+    $(_OBJ_DIR)\amd64\cluscfgclient_p.obj \
+    $(_OBJ_DIR)\amd64\cluscfgprivate_p.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\cluscfgserver.h \
+    $(PASS0_HEADERDIR)\cluscfgclient.h \
+    $(PASS0_HEADERDIR)\cluscfgwizard.h \
+    $(PASS0_HEADERDIR)\cluscfgprivate.h
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dlldata.obj \
+    $(_OBJ_DIR)\arm\cluscfgserver_p.obj \
+    $(_OBJ_DIR)\arm\cluscfgclient_p.obj \
+    $(_OBJ_DIR)\arm\cluscfgprivate_p.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\cluscfgserver.h \
+    $(PASS0_HEADERDIR)\cluscfgclient.h \
+    $(PASS0_HEADERDIR)\cluscfgwizard.h \
+    $(PASS0_HEADERDIR)\cluscfgprivate.h
+

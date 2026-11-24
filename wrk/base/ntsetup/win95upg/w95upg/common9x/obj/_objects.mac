@@ -1,0 +1,21 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\common9x.obj \
+    $(_OBJ_DIR)\i386\ntenv.obj \
+    $(_OBJ_DIR)\i386\userenum.obj \
+    $(_OBJ_DIR)\i386\namefix.obj \
+    $(_OBJ_DIR)\i386\twain.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

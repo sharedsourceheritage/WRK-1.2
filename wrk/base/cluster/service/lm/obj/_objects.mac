@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\logger.obj \
+    $(_OBJ_DIR)\i386\lmmgmt.obj \
+    $(_OBJ_DIR)\i386\timeract.obj \
+    $(_OBJ_DIR)\i386\xsaction.obj \
+    $(_OBJ_DIR)\i386\lmutils.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\logger.obj \
+    $(_OBJ_DIR)\ia64\lmmgmt.obj \
+    $(_OBJ_DIR)\ia64\timeract.obj \
+    $(_OBJ_DIR)\ia64\xsaction.obj \
+    $(_OBJ_DIR)\ia64\lmutils.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\logger.obj \
+    $(_OBJ_DIR)\amd64\lmmgmt.obj \
+    $(_OBJ_DIR)\amd64\timeract.obj \
+    $(_OBJ_DIR)\amd64\xsaction.obj \
+    $(_OBJ_DIR)\amd64\lmutils.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\logger.obj \
+    $(_OBJ_DIR)\arm\lmmgmt.obj \
+    $(_OBJ_DIR)\arm\timeract.obj \
+    $(_OBJ_DIR)\arm\xsaction.obj \
+    $(_OBJ_DIR)\arm\lmutils.obj
+
+PASS0_ARM_OBJECTS=
+

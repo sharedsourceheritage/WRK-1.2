@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dbgkport.obj \
+    $(_OBJ_DIR)\i386\dbgkproc.obj \
+    $(_OBJ_DIR)\i386\dbgkobj.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dbgkport.obj \
+    $(_OBJ_DIR)\ia64\dbgkproc.obj \
+    $(_OBJ_DIR)\ia64\dbgkobj.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dbgkport.obj \
+    $(_OBJ_DIR)\amd64\dbgkproc.obj \
+    $(_OBJ_DIR)\amd64\dbgkobj.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dbgkport.obj \
+    $(_OBJ_DIR)\arm\dbgkproc.obj \
+    $(_OBJ_DIR)\arm\dbgkobj.obj
+
+PASS0_ARM_OBJECTS=
+

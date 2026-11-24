@@ -1,0 +1,140 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\groveler.res \
+    $(_OBJ_DIR)\i386\centctrl.obj \
+    $(_OBJ_DIR)\i386\confest.obj \
+    $(_OBJ_DIR)\i386\database.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\decayacc.obj \
+    $(_OBJ_DIR)\i386\diskinfo.obj \
+    $(_OBJ_DIR)\i386\etimer.obj \
+    $(_OBJ_DIR)\i386\event.obj \
+    $(_OBJ_DIR)\i386\eventlog.obj \
+    $(_OBJ_DIR)\i386\extract.obj \
+    $(_OBJ_DIR)\i386\filter.obj \
+    $(_OBJ_DIR)\i386\grovel.obj \
+    $(_OBJ_DIR)\i386\groveler.obj \
+    $(_OBJ_DIR)\i386\inifile.obj \
+    $(_OBJ_DIR)\i386\logdrive.obj \
+    $(_OBJ_DIR)\i386\meancomp.obj \
+    $(_OBJ_DIR)\i386\mutex.obj \
+    $(_OBJ_DIR)\i386\params.obj \
+    $(_OBJ_DIR)\i386\partctrl.obj \
+    $(_OBJ_DIR)\i386\pathlist.obj \
+    $(_OBJ_DIR)\i386\peakfind.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\scan.obj \
+    $(_OBJ_DIR)\i386\service.obj \
+    $(_OBJ_DIR)\i386\share.obj \
+    $(_OBJ_DIR)\i386\sisdrive.obj \
+    $(_OBJ_DIR)\i386\timeseq.obj \
+    $(_OBJ_DIR)\i386\trace.obj \
+    $(_OBJ_DIR)\i386\utility.obj \
+    $(_OBJ_DIR)\i386\volumes.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\groveler.res \
+    $(_OBJ_DIR)\ia64\centctrl.obj \
+    $(_OBJ_DIR)\ia64\confest.obj \
+    $(_OBJ_DIR)\ia64\database.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\decayacc.obj \
+    $(_OBJ_DIR)\ia64\diskinfo.obj \
+    $(_OBJ_DIR)\ia64\etimer.obj \
+    $(_OBJ_DIR)\ia64\event.obj \
+    $(_OBJ_DIR)\ia64\eventlog.obj \
+    $(_OBJ_DIR)\ia64\extract.obj \
+    $(_OBJ_DIR)\ia64\filter.obj \
+    $(_OBJ_DIR)\ia64\grovel.obj \
+    $(_OBJ_DIR)\ia64\groveler.obj \
+    $(_OBJ_DIR)\ia64\inifile.obj \
+    $(_OBJ_DIR)\ia64\logdrive.obj \
+    $(_OBJ_DIR)\ia64\meancomp.obj \
+    $(_OBJ_DIR)\ia64\mutex.obj \
+    $(_OBJ_DIR)\ia64\params.obj \
+    $(_OBJ_DIR)\ia64\partctrl.obj \
+    $(_OBJ_DIR)\ia64\pathlist.obj \
+    $(_OBJ_DIR)\ia64\peakfind.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\scan.obj \
+    $(_OBJ_DIR)\ia64\service.obj \
+    $(_OBJ_DIR)\ia64\share.obj \
+    $(_OBJ_DIR)\ia64\sisdrive.obj \
+    $(_OBJ_DIR)\ia64\timeseq.obj \
+    $(_OBJ_DIR)\ia64\trace.obj \
+    $(_OBJ_DIR)\ia64\utility.obj \
+    $(_OBJ_DIR)\ia64\volumes.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\groveler.res \
+    $(_OBJ_DIR)\amd64\centctrl.obj \
+    $(_OBJ_DIR)\amd64\confest.obj \
+    $(_OBJ_DIR)\amd64\database.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\decayacc.obj \
+    $(_OBJ_DIR)\amd64\diskinfo.obj \
+    $(_OBJ_DIR)\amd64\etimer.obj \
+    $(_OBJ_DIR)\amd64\event.obj \
+    $(_OBJ_DIR)\amd64\eventlog.obj \
+    $(_OBJ_DIR)\amd64\extract.obj \
+    $(_OBJ_DIR)\amd64\filter.obj \
+    $(_OBJ_DIR)\amd64\grovel.obj \
+    $(_OBJ_DIR)\amd64\groveler.obj \
+    $(_OBJ_DIR)\amd64\inifile.obj \
+    $(_OBJ_DIR)\amd64\logdrive.obj \
+    $(_OBJ_DIR)\amd64\meancomp.obj \
+    $(_OBJ_DIR)\amd64\mutex.obj \
+    $(_OBJ_DIR)\amd64\params.obj \
+    $(_OBJ_DIR)\amd64\partctrl.obj \
+    $(_OBJ_DIR)\amd64\pathlist.obj \
+    $(_OBJ_DIR)\amd64\peakfind.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\scan.obj \
+    $(_OBJ_DIR)\amd64\service.obj \
+    $(_OBJ_DIR)\amd64\share.obj \
+    $(_OBJ_DIR)\amd64\sisdrive.obj \
+    $(_OBJ_DIR)\amd64\timeseq.obj \
+    $(_OBJ_DIR)\amd64\trace.obj \
+    $(_OBJ_DIR)\amd64\utility.obj \
+    $(_OBJ_DIR)\amd64\volumes.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\groveler.res \
+    $(_OBJ_DIR)\arm\centctrl.obj \
+    $(_OBJ_DIR)\arm\confest.obj \
+    $(_OBJ_DIR)\arm\database.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\decayacc.obj \
+    $(_OBJ_DIR)\arm\diskinfo.obj \
+    $(_OBJ_DIR)\arm\etimer.obj \
+    $(_OBJ_DIR)\arm\event.obj \
+    $(_OBJ_DIR)\arm\eventlog.obj \
+    $(_OBJ_DIR)\arm\extract.obj \
+    $(_OBJ_DIR)\arm\filter.obj \
+    $(_OBJ_DIR)\arm\grovel.obj \
+    $(_OBJ_DIR)\arm\groveler.obj \
+    $(_OBJ_DIR)\arm\inifile.obj \
+    $(_OBJ_DIR)\arm\logdrive.obj \
+    $(_OBJ_DIR)\arm\meancomp.obj \
+    $(_OBJ_DIR)\arm\mutex.obj \
+    $(_OBJ_DIR)\arm\params.obj \
+    $(_OBJ_DIR)\arm\partctrl.obj \
+    $(_OBJ_DIR)\arm\pathlist.obj \
+    $(_OBJ_DIR)\arm\peakfind.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\scan.obj \
+    $(_OBJ_DIR)\arm\service.obj \
+    $(_OBJ_DIR)\arm\share.obj \
+    $(_OBJ_DIR)\arm\sisdrive.obj \
+    $(_OBJ_DIR)\arm\timeseq.obj \
+    $(_OBJ_DIR)\arm\trace.obj \
+    $(_OBJ_DIR)\arm\utility.obj \
+    $(_OBJ_DIR)\arm\volumes.obj
+
+PASS0_ARM_OBJECTS=
+

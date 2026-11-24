@@ -1,0 +1,72 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\hookcmmn.obj \
+    $(_OBJ_DIR)\i386\cshadow.obj \
+    $(_OBJ_DIR)\i386\ioctl.obj \
+    $(_OBJ_DIR)\i386\log.obj \
+    $(_OBJ_DIR)\i386\record.obj \
+    $(_OBJ_DIR)\i386\oslayer.obj \
+    $(_OBJ_DIR)\i386\utils.obj \
+    $(_OBJ_DIR)\i386\sprintf.obj \
+    $(_OBJ_DIR)\i386\shadowse.obj \
+    $(_OBJ_DIR)\i386\recordse.obj \
+    $(_OBJ_DIR)\i386\recchk.obj \
+    $(_OBJ_DIR)\i386\csc_bmpk.obj \
+    $(_OBJ_DIR)\i386\ifsmgr.obj \
+    $(_OBJ_DIR)\i386\ntcsclow.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\hookcmmn.obj \
+    $(_OBJ_DIR)\ia64\cshadow.obj \
+    $(_OBJ_DIR)\ia64\ioctl.obj \
+    $(_OBJ_DIR)\ia64\log.obj \
+    $(_OBJ_DIR)\ia64\record.obj \
+    $(_OBJ_DIR)\ia64\oslayer.obj \
+    $(_OBJ_DIR)\ia64\utils.obj \
+    $(_OBJ_DIR)\ia64\sprintf.obj \
+    $(_OBJ_DIR)\ia64\shadowse.obj \
+    $(_OBJ_DIR)\ia64\recordse.obj \
+    $(_OBJ_DIR)\ia64\recchk.obj \
+    $(_OBJ_DIR)\ia64\csc_bmpk.obj \
+    $(_OBJ_DIR)\ia64\ifsmgr.obj \
+    $(_OBJ_DIR)\ia64\ntcsclow.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\hookcmmn.obj \
+    $(_OBJ_DIR)\amd64\cshadow.obj \
+    $(_OBJ_DIR)\amd64\ioctl.obj \
+    $(_OBJ_DIR)\amd64\log.obj \
+    $(_OBJ_DIR)\amd64\record.obj \
+    $(_OBJ_DIR)\amd64\oslayer.obj \
+    $(_OBJ_DIR)\amd64\utils.obj \
+    $(_OBJ_DIR)\amd64\sprintf.obj \
+    $(_OBJ_DIR)\amd64\shadowse.obj \
+    $(_OBJ_DIR)\amd64\recordse.obj \
+    $(_OBJ_DIR)\amd64\recchk.obj \
+    $(_OBJ_DIR)\amd64\csc_bmpk.obj \
+    $(_OBJ_DIR)\amd64\ifsmgr.obj \
+    $(_OBJ_DIR)\amd64\ntcsclow.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\hookcmmn.obj \
+    $(_OBJ_DIR)\arm\cshadow.obj \
+    $(_OBJ_DIR)\arm\ioctl.obj \
+    $(_OBJ_DIR)\arm\log.obj \
+    $(_OBJ_DIR)\arm\record.obj \
+    $(_OBJ_DIR)\arm\oslayer.obj \
+    $(_OBJ_DIR)\arm\utils.obj \
+    $(_OBJ_DIR)\arm\sprintf.obj \
+    $(_OBJ_DIR)\arm\shadowse.obj \
+    $(_OBJ_DIR)\arm\recordse.obj \
+    $(_OBJ_DIR)\arm\recchk.obj \
+    $(_OBJ_DIR)\arm\csc_bmpk.obj \
+    $(_OBJ_DIR)\arm\ifsmgr.obj \
+    $(_OBJ_DIR)\arm\ntcsclow.obj
+
+PASS0_ARM_OBJECTS=
+

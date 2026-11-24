@@ -1,0 +1,76 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ifioctl.obj \
+    $(_OBJ_DIR)\i386\ioctl.obj \
+    $(_OBJ_DIR)\i386\interfac.obj \
+    $(_OBJ_DIR)\i386\member.obj \
+    $(_OBJ_DIR)\i386\network.obj \
+    $(_OBJ_DIR)\i386\nminit.obj \
+    $(_OBJ_DIR)\i386\nmpnp.obj \
+    $(_OBJ_DIR)\i386\nmutil.obj \
+    $(_OBJ_DIR)\i386\node.obj \
+    $(_OBJ_DIR)\i386\setpass.obj \
+    $(_OBJ_DIR)\i386\netioctl.obj \
+    $(_OBJ_DIR)\i386\nmver.obj \
+    $(_OBJ_DIR)\i386\nmfixup.obj \
+    $(_OBJ_DIR)\i386\mcast.obj \
+    $(_OBJ_DIR)\i386\connsink.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ifioctl.obj \
+    $(_OBJ_DIR)\ia64\ioctl.obj \
+    $(_OBJ_DIR)\ia64\interfac.obj \
+    $(_OBJ_DIR)\ia64\member.obj \
+    $(_OBJ_DIR)\ia64\network.obj \
+    $(_OBJ_DIR)\ia64\nminit.obj \
+    $(_OBJ_DIR)\ia64\nmpnp.obj \
+    $(_OBJ_DIR)\ia64\nmutil.obj \
+    $(_OBJ_DIR)\ia64\node.obj \
+    $(_OBJ_DIR)\ia64\setpass.obj \
+    $(_OBJ_DIR)\ia64\netioctl.obj \
+    $(_OBJ_DIR)\ia64\nmver.obj \
+    $(_OBJ_DIR)\ia64\nmfixup.obj \
+    $(_OBJ_DIR)\ia64\mcast.obj \
+    $(_OBJ_DIR)\ia64\connsink.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ifioctl.obj \
+    $(_OBJ_DIR)\amd64\ioctl.obj \
+    $(_OBJ_DIR)\amd64\interfac.obj \
+    $(_OBJ_DIR)\amd64\member.obj \
+    $(_OBJ_DIR)\amd64\network.obj \
+    $(_OBJ_DIR)\amd64\nminit.obj \
+    $(_OBJ_DIR)\amd64\nmpnp.obj \
+    $(_OBJ_DIR)\amd64\nmutil.obj \
+    $(_OBJ_DIR)\amd64\node.obj \
+    $(_OBJ_DIR)\amd64\setpass.obj \
+    $(_OBJ_DIR)\amd64\netioctl.obj \
+    $(_OBJ_DIR)\amd64\nmver.obj \
+    $(_OBJ_DIR)\amd64\nmfixup.obj \
+    $(_OBJ_DIR)\amd64\mcast.obj \
+    $(_OBJ_DIR)\amd64\connsink.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ifioctl.obj \
+    $(_OBJ_DIR)\arm\ioctl.obj \
+    $(_OBJ_DIR)\arm\interfac.obj \
+    $(_OBJ_DIR)\arm\member.obj \
+    $(_OBJ_DIR)\arm\network.obj \
+    $(_OBJ_DIR)\arm\nminit.obj \
+    $(_OBJ_DIR)\arm\nmpnp.obj \
+    $(_OBJ_DIR)\arm\nmutil.obj \
+    $(_OBJ_DIR)\arm\node.obj \
+    $(_OBJ_DIR)\arm\setpass.obj \
+    $(_OBJ_DIR)\arm\netioctl.obj \
+    $(_OBJ_DIR)\arm\nmver.obj \
+    $(_OBJ_DIR)\arm\nmfixup.obj \
+    $(_OBJ_DIR)\arm\mcast.obj \
+    $(_OBJ_DIR)\arm\connsink.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,40 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\openfiles.res \
+    $(_OBJ_DIR)\i386\openfiles.obj \
+    $(_OBJ_DIR)\i386\disconnect.obj \
+    $(_OBJ_DIR)\i386\query.obj \
+    $(_OBJ_DIR)\i386\handle.obj \
+    $(_OBJ_DIR)\i386\processowner.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\openfiles.res \
+    $(_OBJ_DIR)\ia64\openfiles.obj \
+    $(_OBJ_DIR)\ia64\disconnect.obj \
+    $(_OBJ_DIR)\ia64\query.obj \
+    $(_OBJ_DIR)\ia64\handle.obj \
+    $(_OBJ_DIR)\ia64\processowner.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\openfiles.res \
+    $(_OBJ_DIR)\amd64\openfiles.obj \
+    $(_OBJ_DIR)\amd64\disconnect.obj \
+    $(_OBJ_DIR)\amd64\query.obj \
+    $(_OBJ_DIR)\amd64\handle.obj \
+    $(_OBJ_DIR)\amd64\processowner.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\openfiles.res \
+    $(_OBJ_DIR)\arm\openfiles.obj \
+    $(_OBJ_DIR)\arm\disconnect.obj \
+    $(_OBJ_DIR)\arm\query.obj \
+    $(_OBJ_DIR)\arm\handle.obj \
+    $(_OBJ_DIR)\arm\processowner.obj
+
+PASS0_ARM_OBJECTS=
+

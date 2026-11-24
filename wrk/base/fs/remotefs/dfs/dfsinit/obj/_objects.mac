@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dfsinit.res \
+    $(_OBJ_DIR)\i386\dfsinit.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dfsinit.res \
+    $(_OBJ_DIR)\ia64\dfsinit.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dfsinit.res \
+    $(_OBJ_DIR)\amd64\dfsinit.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dfsinit.res \
+    $(_OBJ_DIR)\arm\dfsinit.obj
+
+PASS0_ARM_OBJECTS=
+

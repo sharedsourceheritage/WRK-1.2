@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dcapi.obj \
+    $(_OBJ_DIR)\i386\chunk.obj \
+    $(_OBJ_DIR)\i386\tracedc.obj \
+    $(_OBJ_DIR)\i386\tracert.obj \
+    $(_OBJ_DIR)\i386\tracesup.obj \
+    $(_OBJ_DIR)\i386\intrnldp.obj \
+    $(_OBJ_DIR)\i386\srvmain.obj \
+    $(_OBJ_DIR)\i386\mofapi.obj \
+    $(_OBJ_DIR)\i386\tracehw.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dcapi.obj \
+    $(_OBJ_DIR)\ia64\chunk.obj \
+    $(_OBJ_DIR)\ia64\tracedc.obj \
+    $(_OBJ_DIR)\ia64\tracert.obj \
+    $(_OBJ_DIR)\ia64\tracesup.obj \
+    $(_OBJ_DIR)\ia64\intrnldp.obj \
+    $(_OBJ_DIR)\ia64\srvmain.obj \
+    $(_OBJ_DIR)\ia64\mofapi.obj \
+    $(_OBJ_DIR)\ia64\tracehw.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dcapi.obj \
+    $(_OBJ_DIR)\amd64\chunk.obj \
+    $(_OBJ_DIR)\amd64\tracedc.obj \
+    $(_OBJ_DIR)\amd64\tracert.obj \
+    $(_OBJ_DIR)\amd64\tracesup.obj \
+    $(_OBJ_DIR)\amd64\intrnldp.obj \
+    $(_OBJ_DIR)\amd64\srvmain.obj \
+    $(_OBJ_DIR)\amd64\mofapi.obj \
+    $(_OBJ_DIR)\amd64\tracehw.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dcapi.obj \
+    $(_OBJ_DIR)\arm\chunk.obj \
+    $(_OBJ_DIR)\arm\tracedc.obj \
+    $(_OBJ_DIR)\arm\tracert.obj \
+    $(_OBJ_DIR)\arm\tracesup.obj \
+    $(_OBJ_DIR)\arm\intrnldp.obj \
+    $(_OBJ_DIR)\arm\srvmain.obj \
+    $(_OBJ_DIR)\arm\mofapi.obj \
+    $(_OBJ_DIR)\arm\tracehw.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\runas.res \
+    $(_OBJ_DIR)\i386\utils.obj \
+    $(_OBJ_DIR)\i386\runas.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\runasmsg.h \
+    $(MC_SOURCEDIR)\runasmsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\runas.res \
+    $(_OBJ_DIR)\ia64\utils.obj \
+    $(_OBJ_DIR)\ia64\runas.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\runasmsg.h \
+    $(MC_SOURCEDIR)\runasmsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\runas.res \
+    $(_OBJ_DIR)\amd64\utils.obj \
+    $(_OBJ_DIR)\amd64\runas.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\runasmsg.h \
+    $(MC_SOURCEDIR)\runasmsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\runas.res \
+    $(_OBJ_DIR)\arm\utils.obj \
+    $(_OBJ_DIR)\arm\runas.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\runasmsg.h \
+    $(MC_SOURCEDIR)\runasmsg.rc
+

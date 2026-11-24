@@ -1,0 +1,432 @@
+//1ff82c4cf4a17dab6604140a7f6e8ea9 Generated File. Do not edit.
+// File created by WPP compiler version 0.01-Wed May 15 12:38:55 2002
+// on 11/24/2026 at 02:11:12 UTC from a template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\simple.tpl
+
+// PLEASE NOTE:
+//    Using simple.tpl for production environment without overriding
+//    WPP_ENABLED and WPP_LOGGER macro is NOT RECOMMENDED.
+//
+//    If WPP_ENABLED is not provided, the logging is always on
+//    If WPP_LOGGER is not provided, traces always go to the logger named stdout (if it is running)
+//
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\header.tpl
+
+#define WPP_KERNEL_MODE 
+#define WPP_THIS_FILE xssupp_c
+
+#if !defined(WPP_KERNEL_MODE)
+#  include <windows.h>
+#  pragma warning(disable: 4201)
+#  include <wmistr.h>
+#  include <evntrace.h>
+#  define WPP_TRACE TraceMessage
+#else
+#define WPP_TRACE WmiTraceMessage
+#endif
+
+#if !defined(WPP_PRIVATE)
+#  define WPP_INLINE __inline
+#  define WPP_SELECT_ANY extern "C" __declspec(selectany)
+#else
+#  define WPP_INLINE static
+#  define WPP_SELECT_ANY static
+#endif
+
+__inline TRACEHANDLE WppQueryLogger(PCWSTR LoggerName)
+{
+    if (!LoggerName) {LoggerName = L"stdout";}
+    {
+#if defined(WPP_KERNEL_MODE)
+        ULONG ReturnLength ;
+        NTSTATUS Status ;
+        TRACEHANDLE TraceHandle ;
+        UNICODE_STRING  Buffer  ;
+
+        RtlInitUnicodeString(&Buffer, LoggerName);
+    
+        if ((Status = WmiQueryTraceInformation(TraceHandleByNameClass,
+                                                 (PVOID)&TraceHandle,
+                                                  sizeof(TraceHandle),
+                                                  &ReturnLength,
+                                                  (PVOID)&Buffer)) == STATUS_SUCCESS) {
+        return TraceHandle ;
+        }
+#else
+        ULONG status;
+        EVENT_TRACE_PROPERTIES LoggerInfo; 
+
+        ZeroMemory(&LoggerInfo, sizeof(LoggerInfo));
+        LoggerInfo.Wnode.BufferSize = sizeof(LoggerInfo);
+        LoggerInfo.Wnode.Flags = WNODE_FLAG_TRACED_GUID;
+        
+        status = QueryTraceW(0, LoggerName, &LoggerInfo);    
+        if (status == ERROR_SUCCESS || status == ERROR_MORE_DATA) {
+            return (TRACEHANDLE) LoggerInfo.Wnode.HistoricalContext;
+        }
+#endif
+    }
+    return 0;
+}
+
+
+ 
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\stdout.tpl
+
+#define WPP_LEVEL_LOGGER(LEVEL) // DoTraceMessage
+#define WPP_LOGGER() // KdPrint
+#define WPP_LOGGER() // SrvPrint0
+#define WPP_LOGGER() // SrvPrint1
+#define WPP_LOGGER() // SrvPrint2
+#define WPP_LOGGER() // SrvPrint3
+#define WPP_LOGGER() // SrvPrint4
+#ifndef WPP_LOGGER_ARG
+#  define WPP_LOGGER_ARG
+#endif
+
+#ifndef WPP_GET_LOGGER
+  #define WPP_GET_LOGGER WppGetLogger()
+  __inline TRACEHANDLE WppGetLogger() 
+  {
+      static TRACEHANDLE Logger;
+      if (Logger) {return Logger;}
+      return Logger = WppQueryLogger(0);
+  }
+#endif
+
+#ifndef WPP_ENABLED
+#  define WPP_ENABLED() 1
+#endif
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\trmacro.tpl
+//   expects:
+//      WPP_THIS_FILE defined (see header.tpl)
+//      WPP_LOGGER_ARG  defined
+//      WPP_GET_LOGGER  defined
+//      WPP_ENABLED() defined
+
+#ifndef NO_CHECK_FOR_NULL_STRING
+#ifndef WPP_CHECK_FOR_NULL_STRING
+#define WPP_CHECK_FOR_NULL_STRING 1
+#endif
+#endif
+
+#define WPP_EVAL(_value_) _value_
+#define WPP_(Id) WPP_EVAL(WPP_) ## WPP_EVAL(Id) ## WPP_EVAL(_) ## WPP_EVAL(WPP_THIS_FILE) ## WPP_EVAL(__LINE__)
+
+#if !defined(WPP_INLINE)
+#  define WPP_INLINE __inline
+#endif
+
+#if !defined(WPP_NO_ANNOTATIONS) 
+#if !defined(WPP_ANSI_ANNOTATION) 
+# define WPP_ANNOTATE_xssupp_c1015	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c1015 38 \"%0SrvXsAllocateHeap: RtlAllocateHeap failed to allocate %10!d! bytes.\" //  ", L"{", L"SizeOfAllocation, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c1028	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c1028 39 \"%0SrvXsAllocateHeap: SrvXsResource released.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_xssupp_c1068	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c1068 40 \"%0SrvXsFreeHeap: SrvXsResource acquired.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_xssupp_c1078	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c1078 41 \"%0SrvXsFreeHeap: Heap %10!p! freed.\" //  ", L"{", L"MemoryToFree, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c1094	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c1094 42 \"%0SrvXsFreeHeap: Decrement transaction count = %10!d!.\" //  ", L"{", L"SrvXsSharedMemoryReference, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c1111	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c1111 43 \"%0SrvXsFreeHeap: SrvXsResource released.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_xssupp_c115	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c115 10 \"%0SrvXsConnect: NtCreateSection failed: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c122	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c122 11 \"%0SrvXsConnect: created section of %10!ld! bytes, handle %11!p!\" //  ", L"{", L"SrvXsSectionSize.LowPart, ItemLong -- 10" , L"SrvXsSectionHandle, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_xssupp_c167	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c167 12 \"%0SrvXsConnect: NtConnectPort for port %10!s! failed: %11!X!\" //  ", L"{", L"PortName, ItemPWString -- 10" , L"status, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_xssupp_c174	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c174 13 \"%0SrvXsConnect: conected to port %10!s!, handle %11!p!\" //  ", L"{", L"PortName, ItemPWString -- 10" , L"SrvXsPortHandle, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_xssupp_c188	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c188 14 \"%0SrvXsConnect: port mem base %10!p!, port mem delta %11!p!\" //  ", L"{", L"SrvXsPortMemoryBase, ItemPtr -- 10" , L"(PVOID)SrvXsPortMemoryDelta, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_xssupp_c298	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c298 15 \"%0SrvXsRequest: Null session tried to call api.%10!d!\" //  ", L"{", L"apiNumber, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c445	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c445 16 \"%0SrvXsRequest: Sending message at %10!p!, port mem %11!p!.\" //  ", L"{", L"&requestMessage, ItemPtr -- 10" , L"transaction, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_xssupp_c464	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c464 17 \"%0SrvXsRequest: NtRequestWaitReplyPort failed: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c472	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c472 18 \"%0SrvXsRequest: Received response at %10!p!\" //  ", L"{", L"&replyMessage, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c483	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c483 19 \"%0SrvXsRequest: XACTSRV reply had status %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c637	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c637 20 \"%0XACTSRV_MESSAGE_LSREQUEST: %10!s!, IsAdmin: %11!d!\" //  ", L"{", L"requestMessage.Message.LSRequest.UserName, ItemWString -- 10" , L"requestMessage.Message.LSRequest.IsAdmin, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_xssupp_c655	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c655 21 \"%0XACTSRV_MESSAGE_LSRELEASE: Handle %10!p!\" //  ", L"{", L"Session->hLicense, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c690	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c690 22 \"%0SrvXsLSOperation: NtRequestWaitReplyPort failed: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c709	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c709 23 \"%0  hLicense = %10!p!\" //  ", L"{", L"Session->hLicense, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c723	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c723 24 \"%0    SrvXsLSOperation returning status %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c756	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c756 25 \"%0SRV: SrvXsPnpOperation no SRVSVC handle!\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_xssupp_c767	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c767 26 \"%0SRV: SrvXsPnpOperation unable to allocate memory: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c810	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c810 27 \"%0SRV: Sending PNP %10!s!bind request for %11!s! to SRVSVC\" //  ", L"{", L"requestMessage->Message.Pnp.Bind ? '' : 'un', ItemString -- 10" , L"DeviceName, ItemPWString -- 11" , L"}")
+# define WPP_ANNOTATE_xssupp_c822	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c822 28 \"%0SRV: PNP response from xactsrv status %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c843	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c843 29 \"%0SrvXsDisconnect: Xactsrv disconnect called.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_xssupp_c855	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c855 30 \"%0SrvXsDisconnect: SrvXsResource released.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_xssupp_c910	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c910 31 \"%0SrvXsFreeSharedMemory: Xactsrv memory freed.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_xssupp_c915	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c915 32 \"%0SrvXsFreeSharedMemory: Active transactions %10!d!.\" //  ", L"{", L"SrvXsSharedMemoryReference, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c963	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c963 33 \"%0SrvXsAllocateHeap: SrvXsResource acquired.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_xssupp_c968	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c968 34 \"%0SrvXsAllocateHeap: XACTSRV is not active.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_xssupp_c972	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c972 35 \"%0SrvXsAllocateHeap: SrvXsResource released.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_xssupp_c987	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c987 36 \"%0SrvXsAllocateHeap: Incremented transaction count = %10!d!.\" //  ", L"{", L"SrvXsSharedMemoryReference, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_xssupp_c998	__annotation(L"TMF:", L"4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", L"#typev  xssupp_c998 37 \"%0SrvXsAllocateHeap: Heap to allocate %10!d! bytes.\" //  ", L"{", L"SizeOfAllocation, ItemLong -- 10" , L"}")
+#else
+# define WPP_ANNOTATE_xssupp_c1015	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c1015 38 \"%0SrvXsAllocateHeap: RtlAllocateHeap failed to allocate %10!d! bytes.\" //  ", "{", "SizeOfAllocation, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c1028	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c1028 39 \"%0SrvXsAllocateHeap: SrvXsResource released.\" //  ", "{", "}")
+# define WPP_ANNOTATE_xssupp_c1068	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c1068 40 \"%0SrvXsFreeHeap: SrvXsResource acquired.\" //  ", "{", "}")
+# define WPP_ANNOTATE_xssupp_c1078	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c1078 41 \"%0SrvXsFreeHeap: Heap %10!p! freed.\" //  ", "{", "MemoryToFree, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c1094	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c1094 42 \"%0SrvXsFreeHeap: Decrement transaction count = %10!d!.\" //  ", "{", "SrvXsSharedMemoryReference, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c1111	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c1111 43 \"%0SrvXsFreeHeap: SrvXsResource released.\" //  ", "{", "}")
+# define WPP_ANNOTATE_xssupp_c115	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c115 10 \"%0SrvXsConnect: NtCreateSection failed: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c122	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c122 11 \"%0SrvXsConnect: created section of %10!ld! bytes, handle %11!p!\" //  ", "{", "SrvXsSectionSize.LowPart, ItemLong -- 10" , "SrvXsSectionHandle, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_xssupp_c167	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c167 12 \"%0SrvXsConnect: NtConnectPort for port %10!s! failed: %11!X!\" //  ", "{", "PortName, ItemPWString -- 10" , "status, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_xssupp_c174	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c174 13 \"%0SrvXsConnect: conected to port %10!s!, handle %11!p!\" //  ", "{", "PortName, ItemPWString -- 10" , "SrvXsPortHandle, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_xssupp_c188	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c188 14 \"%0SrvXsConnect: port mem base %10!p!, port mem delta %11!p!\" //  ", "{", "SrvXsPortMemoryBase, ItemPtr -- 10" , "(PVOID)SrvXsPortMemoryDelta, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_xssupp_c298	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c298 15 \"%0SrvXsRequest: Null session tried to call api.%10!d!\" //  ", "{", "apiNumber, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c445	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c445 16 \"%0SrvXsRequest: Sending message at %10!p!, port mem %11!p!.\" //  ", "{", "&requestMessage, ItemPtr -- 10" , "transaction, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_xssupp_c464	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c464 17 \"%0SrvXsRequest: NtRequestWaitReplyPort failed: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c472	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c472 18 \"%0SrvXsRequest: Received response at %10!p!\" //  ", "{", "&replyMessage, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c483	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c483 19 \"%0SrvXsRequest: XACTSRV reply had status %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c637	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c637 20 \"%0XACTSRV_MESSAGE_LSREQUEST: %10!s!, IsAdmin: %11!d!\" //  ", "{", "requestMessage.Message.LSRequest.UserName, ItemWString -- 10" , "requestMessage.Message.LSRequest.IsAdmin, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_xssupp_c655	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c655 21 \"%0XACTSRV_MESSAGE_LSRELEASE: Handle %10!p!\" //  ", "{", "Session->hLicense, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c690	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c690 22 \"%0SrvXsLSOperation: NtRequestWaitReplyPort failed: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c709	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c709 23 \"%0  hLicense = %10!p!\" //  ", "{", "Session->hLicense, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c723	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c723 24 \"%0    SrvXsLSOperation returning status %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c756	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c756 25 \"%0SRV: SrvXsPnpOperation no SRVSVC handle!\" //  ", "{", "}")
+# define WPP_ANNOTATE_xssupp_c767	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c767 26 \"%0SRV: SrvXsPnpOperation unable to allocate memory: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c810	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c810 27 \"%0SRV: Sending PNP %10!s!bind request for %11!s! to SRVSVC\" //  ", "{", "requestMessage->Message.Pnp.Bind ? '' : 'un', ItemString -- 10" , "DeviceName, ItemPWString -- 11" , "}")
+# define WPP_ANNOTATE_xssupp_c822	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c822 28 \"%0SRV: PNP response from xactsrv status %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c843	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c843 29 \"%0SrvXsDisconnect: Xactsrv disconnect called.\" //  ", "{", "}")
+# define WPP_ANNOTATE_xssupp_c855	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c855 30 \"%0SrvXsDisconnect: SrvXsResource released.\" //  ", "{", "}")
+# define WPP_ANNOTATE_xssupp_c910	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c910 31 \"%0SrvXsFreeSharedMemory: Xactsrv memory freed.\" //  ", "{", "}")
+# define WPP_ANNOTATE_xssupp_c915	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c915 32 \"%0SrvXsFreeSharedMemory: Active transactions %10!d!.\" //  ", "{", "SrvXsSharedMemoryReference, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c963	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c963 33 \"%0SrvXsAllocateHeap: SrvXsResource acquired.\" //  ", "{", "}")
+# define WPP_ANNOTATE_xssupp_c968	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c968 34 \"%0SrvXsAllocateHeap: XACTSRV is not active.\" //  ", "{", "}")
+# define WPP_ANNOTATE_xssupp_c972	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c972 35 \"%0SrvXsAllocateHeap: SrvXsResource released.\" //  ", "{", "}")
+# define WPP_ANNOTATE_xssupp_c987	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c987 36 \"%0SrvXsAllocateHeap: Incremented transaction count = %10!d!.\" //  ", "{", "SrvXsSharedMemoryReference, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_xssupp_c998	__annotation("TMF:", "4c2cf81f-a1f4-ab7d-6604-140a7f6e8ea9 daytonam // SRC=xssupp.c MJ= MN=", "#typev  xssupp_c998 37 \"%0SrvXsAllocateHeap: Heap to allocate %10!d! bytes.\" //  ", "{", "SizeOfAllocation, ItemLong -- 10" , "}")
+#endif
+# define WPP_ANNOTATE WPP_(ANNOTATE),
+#else
+# define WPP_ANNOTATE 
+#endif
+
+#if 1
+static const GUID WPP_LOCAL_TraceGuids[] = { {0x4c2cf81f,0xa1f4,0xab7d,{0x66,0x04,0x14,0x0a,0x7f,0x6e,0x8e,0xa9}}, };
+#endif
+
+#if !defined(WPP_TRACE_OPTIONS)
+enum {WPP_TRACE_OPTIONS = TRACE_MESSAGE_SEQUENCE   | TRACE_MESSAGE_GUID
+                        | TRACE_MESSAGE_SYSTEMINFO | TRACE_MESSAGE_TIMESTAMP };
+#endif
+
+#if !defined(WPP_LOGPAIR)
+# define WPP_LOGPAIR(_Size, _Addr)     (_Addr),((SIZE_T)_Size),
+#endif
+
+#define WPP_LOGTYPEVAL(_Type, _Value) WPP_LOGPAIR(sizeof(_Type), &(_Value))
+#define WPP_LOGTYPEPTR(_Value)        WPP_LOGPAIR(sizeof(*(_Value)), (_Value))
+
+// Marshalling macros.
+
+#if !defined(WPP_LOGASTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR(strlen(_value) + 1, _value )
+# else
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR( (_value)?strlen(_value) + 1:5, (_value)?(_value):"NULL" )
+# endif
+#endif
+
+#if !defined(WPP_LOGWSTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (wcslen(_value)+1) * sizeof(WCHAR), _value)
+# else
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (_value)?(wcslen(_value) + 1)* sizeof(WCHAR):5 * sizeof(WCHAR), (_value)?(_value):L"NULL") 
+# endif
+#endif
+
+#if !defined(WPP_LOGPGUID)
+# define WPP_LOGPGUID(_value) WPP_LOGPAIR( sizeof(GUID), (_value) )
+#endif
+
+
+#if !defined(WPP_LOGPSID)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( GetLengthSid(_value), (_value) )
+# else
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( (_value)? (IsValidSid(_value)? \
+                                                                        GetLengthSid(_value):5):5, \
+                                                                        (_value)? (IsValidSid(_value)?\
+                                                                        (_value):"NULL"):"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGCSTR)
+# define WPP_LOGCSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGUSTR)
+# define WPP_LOGUSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGPUSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPUSTR(_x) WPP_LOGUSTR(*(_x))
+#else
+# define WPP_LOGPUSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5*sizeof(WCHAR), (_x)?(*(_x)).Buffer:L"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGPCSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPCSTR(_x) WPP_LOGCSTR(*(_x))
+#else
+# define WPP_LOGPCSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5, (_x)?((const char *)(*(_x)).Buffer):"NULL")
+#endif
+#endif
+
+
+#if !defined(WPP_LOGSTDSTR)
+#define WPP_LOGSTDSTR(_value)  WPP_LOGPAIR( (_value).size()+1, (_value).c_str() )
+#endif
+
+WPP_INLINE void WPP_SF_(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id,  0); }
+WPP_INLINE void WPP_SF_D(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1)  0); }
+WPP_INLINE void WPP_SF_Sd(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, LPCWSTR _a1, signed int _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGWSTR(_a1) WPP_LOGTYPEVAL(signed int,_a2)  0); }
+WPP_INLINE void WPP_SF_ZD(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1, unsigned int _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1) WPP_LOGTYPEVAL(unsigned int,_a2)  0); }
+WPP_INLINE void WPP_SF_Zq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1, const void* _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1) WPP_LOGTYPEVAL(const void*,_a2)  0); }
+WPP_INLINE void WPP_SF_d(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, signed int _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(signed int,_a1)  0); }
+WPP_INLINE void WPP_SF_lq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, signed long _a1, const void* _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(signed long,_a1) WPP_LOGTYPEVAL(const void*,_a2)  0); }
+WPP_INLINE void WPP_SF_q(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1)  0); }
+WPP_INLINE void WPP_SF_qq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1, const void* _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1) WPP_LOGTYPEVAL(const void*,_a2)  0); }
+WPP_INLINE void WPP_SF_sZ(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const char* _a1, PCUNICODE_STRING _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGASTR(_a1) WPP_LOGPUSTR(_a2)  0); }
+#ifdef WPP_DEBUG
+#define WPP_CALL_xssupp_c1015(MSG,a10) ((WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c1028(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_xssupp_c1068(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_xssupp_c1078(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c1094(MSG,a10) ((WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c1111(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_xssupp_c115(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c122(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_lq(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_xssupp_c167(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_ZD(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_xssupp_c174(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Zq(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_xssupp_c188(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_xssupp_c298(MSG,a10) ((WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c445(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_xssupp_c464(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c472(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c483(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c637(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Sd(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_xssupp_c655(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c690(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c709(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c723(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c756(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_xssupp_c767(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c810(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_sZ(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_xssupp_c822(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c843(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_xssupp_c855(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_xssupp_c910(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_xssupp_c915(MSG,a10) ((WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c963(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_xssupp_c968(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_xssupp_c972(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_xssupp_c987(MSG,a10) ((WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_xssupp_c998(MSG,a10) ((WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#else
+#define WPP_CALL_xssupp_c1015(MSG,a10) (WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c1028(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_xssupp_c1068(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_xssupp_c1078(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c1094(MSG,a10) (WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c1111(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_xssupp_c115(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c122(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_lq(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_xssupp_c167(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_ZD(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_xssupp_c174(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Zq(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_xssupp_c188(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_xssupp_c298(MSG,a10) (WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c445(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_xssupp_c464(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c472(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c483(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c637(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Sd(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_xssupp_c655(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c690(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c709(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c723(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c756(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_xssupp_c767(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c810(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_sZ(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_xssupp_c822(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c843(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_xssupp_c855(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_xssupp_c910(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_xssupp_c915(MSG,a10) (WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c963(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_xssupp_c968(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_xssupp_c972(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_xssupp_c987(MSG,a10) (WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_xssupp_c998(MSG,a10) (WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#endif
+
+// NoMsgArgs
+
+#undef DoTraceMessage
+#define DoTraceMessage WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint0
+#define SrvPrint0 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint1
+#define SrvPrint1 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint2
+#define SrvPrint2 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint3
+#define SrvPrint3 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint4
+#define SrvPrint4 WPP_ANNOTATE WPP_(CALL)
+#undef KdPrint
+#define KdPrint(ARGS) WPP_ANNOTATE WPP_(CALL) ARGS
+// MsgArgs
+
+#ifdef WPP_DEBUG
+#else
+#endif
+
+
+/// more stuff
+
+

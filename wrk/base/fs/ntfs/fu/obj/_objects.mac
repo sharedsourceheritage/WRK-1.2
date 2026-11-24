@@ -1,0 +1,80 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\resource.res \
+    $(_OBJ_DIR)\i386\behavior.obj \
+    $(_OBJ_DIR)\i386\dirty.obj \
+    $(_OBJ_DIR)\i386\fsfile.obj \
+    $(_OBJ_DIR)\i386\fsinfo.obj \
+    $(_OBJ_DIR)\i386\hardlink.obj \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\objectid.obj \
+    $(_OBJ_DIR)\i386\quota.obj \
+    $(_OBJ_DIR)\i386\reparse.obj \
+    $(_OBJ_DIR)\i386\sparse.obj \
+    $(_OBJ_DIR)\i386\usn.obj \
+    $(_OBJ_DIR)\i386\utility.obj \
+    $(_OBJ_DIR)\i386\volume.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\resource.res \
+    $(_OBJ_DIR)\ia64\behavior.obj \
+    $(_OBJ_DIR)\ia64\dirty.obj \
+    $(_OBJ_DIR)\ia64\fsfile.obj \
+    $(_OBJ_DIR)\ia64\fsinfo.obj \
+    $(_OBJ_DIR)\ia64\hardlink.obj \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\objectid.obj \
+    $(_OBJ_DIR)\ia64\quota.obj \
+    $(_OBJ_DIR)\ia64\reparse.obj \
+    $(_OBJ_DIR)\ia64\sparse.obj \
+    $(_OBJ_DIR)\ia64\usn.obj \
+    $(_OBJ_DIR)\ia64\utility.obj \
+    $(_OBJ_DIR)\ia64\volume.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\resource.res \
+    $(_OBJ_DIR)\amd64\behavior.obj \
+    $(_OBJ_DIR)\amd64\dirty.obj \
+    $(_OBJ_DIR)\amd64\fsfile.obj \
+    $(_OBJ_DIR)\amd64\fsinfo.obj \
+    $(_OBJ_DIR)\amd64\hardlink.obj \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\objectid.obj \
+    $(_OBJ_DIR)\amd64\quota.obj \
+    $(_OBJ_DIR)\amd64\reparse.obj \
+    $(_OBJ_DIR)\amd64\sparse.obj \
+    $(_OBJ_DIR)\amd64\usn.obj \
+    $(_OBJ_DIR)\amd64\utility.obj \
+    $(_OBJ_DIR)\amd64\volume.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\resource.res \
+    $(_OBJ_DIR)\arm\behavior.obj \
+    $(_OBJ_DIR)\arm\dirty.obj \
+    $(_OBJ_DIR)\arm\fsfile.obj \
+    $(_OBJ_DIR)\arm\fsinfo.obj \
+    $(_OBJ_DIR)\arm\hardlink.obj \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\objectid.obj \
+    $(_OBJ_DIR)\arm\quota.obj \
+    $(_OBJ_DIR)\arm\reparse.obj \
+    $(_OBJ_DIR)\arm\sparse.obj \
+    $(_OBJ_DIR)\arm\usn.obj \
+    $(_OBJ_DIR)\arm\utility.obj \
+    $(_OBJ_DIR)\arm\volume.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+

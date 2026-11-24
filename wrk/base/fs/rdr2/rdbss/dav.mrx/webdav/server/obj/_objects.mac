@@ -1,0 +1,96 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\server.res \
+    $(_OBJ_DIR)\i386\davrpc_server.obj \
+    $(_OBJ_DIR)\i386\uniutf.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\dllmain.obj \
+    $(_OBJ_DIR)\i386\davsrv.obj \
+    $(_OBJ_DIR)\i386\midluser.obj \
+    $(_OBJ_DIR)\i386\utils.obj \
+    $(_OBJ_DIR)\i386\worker.obj \
+    $(_OBJ_DIR)\i386\davutil.obj \
+    $(_OBJ_DIR)\i386\davcreat.obj \
+    $(_OBJ_DIR)\i386\netroot.obj \
+    $(_OBJ_DIR)\i386\rename.obj \
+    $(_OBJ_DIR)\i386\davclose.obj \
+    $(_OBJ_DIR)\i386\srvcall.obj \
+    $(_OBJ_DIR)\i386\socket.obj \
+    $(_OBJ_DIR)\i386\querydir.obj \
+    $(_OBJ_DIR)\i386\fcbfobx.obj \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\nodefac.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\server.res \
+    $(_OBJ_DIR)\ia64\davrpc_server.obj \
+    $(_OBJ_DIR)\ia64\uniutf.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\dllmain.obj \
+    $(_OBJ_DIR)\ia64\davsrv.obj \
+    $(_OBJ_DIR)\ia64\midluser.obj \
+    $(_OBJ_DIR)\ia64\utils.obj \
+    $(_OBJ_DIR)\ia64\worker.obj \
+    $(_OBJ_DIR)\ia64\davutil.obj \
+    $(_OBJ_DIR)\ia64\davcreat.obj \
+    $(_OBJ_DIR)\ia64\netroot.obj \
+    $(_OBJ_DIR)\ia64\rename.obj \
+    $(_OBJ_DIR)\ia64\davclose.obj \
+    $(_OBJ_DIR)\ia64\srvcall.obj \
+    $(_OBJ_DIR)\ia64\socket.obj \
+    $(_OBJ_DIR)\ia64\querydir.obj \
+    $(_OBJ_DIR)\ia64\fcbfobx.obj \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\nodefac.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\server.res \
+    $(_OBJ_DIR)\amd64\davrpc_server.obj \
+    $(_OBJ_DIR)\amd64\uniutf.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\dllmain.obj \
+    $(_OBJ_DIR)\amd64\davsrv.obj \
+    $(_OBJ_DIR)\amd64\midluser.obj \
+    $(_OBJ_DIR)\amd64\utils.obj \
+    $(_OBJ_DIR)\amd64\worker.obj \
+    $(_OBJ_DIR)\amd64\davutil.obj \
+    $(_OBJ_DIR)\amd64\davcreat.obj \
+    $(_OBJ_DIR)\amd64\netroot.obj \
+    $(_OBJ_DIR)\amd64\rename.obj \
+    $(_OBJ_DIR)\amd64\davclose.obj \
+    $(_OBJ_DIR)\amd64\srvcall.obj \
+    $(_OBJ_DIR)\amd64\socket.obj \
+    $(_OBJ_DIR)\amd64\querydir.obj \
+    $(_OBJ_DIR)\amd64\fcbfobx.obj \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\nodefac.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\server.res \
+    $(_OBJ_DIR)\arm\davrpc_server.obj \
+    $(_OBJ_DIR)\arm\uniutf.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\dllmain.obj \
+    $(_OBJ_DIR)\arm\davsrv.obj \
+    $(_OBJ_DIR)\arm\midluser.obj \
+    $(_OBJ_DIR)\arm\utils.obj \
+    $(_OBJ_DIR)\arm\worker.obj \
+    $(_OBJ_DIR)\arm\davutil.obj \
+    $(_OBJ_DIR)\arm\davcreat.obj \
+    $(_OBJ_DIR)\arm\netroot.obj \
+    $(_OBJ_DIR)\arm\rename.obj \
+    $(_OBJ_DIR)\arm\davclose.obj \
+    $(_OBJ_DIR)\arm\srvcall.obj \
+    $(_OBJ_DIR)\arm\socket.obj \
+    $(_OBJ_DIR)\arm\querydir.obj \
+    $(_OBJ_DIR)\arm\fcbfobx.obj \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\nodefac.obj
+
+PASS0_ARM_OBJECTS=
+

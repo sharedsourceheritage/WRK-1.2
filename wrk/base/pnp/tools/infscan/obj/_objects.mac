@@ -1,0 +1,64 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\infscan.res \
+    $(_OBJ_DIR)\i386\filters.obj \
+    $(_OBJ_DIR)\i386\globals.obj \
+    $(_OBJ_DIR)\i386\globalscan.obj \
+    $(_OBJ_DIR)\i386\infscan.obj \
+    $(_OBJ_DIR)\i386\installscan.obj \
+    $(_OBJ_DIR)\i386\parseinfctx.obj \
+    $(_OBJ_DIR)\i386\sppriv.obj \
+    $(_OBJ_DIR)\i386\verinfo.obj \
+    $(_OBJ_DIR)\i386\worker.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\infscan.res \
+    $(_OBJ_DIR)\ia64\filters.obj \
+    $(_OBJ_DIR)\ia64\globals.obj \
+    $(_OBJ_DIR)\ia64\globalscan.obj \
+    $(_OBJ_DIR)\ia64\infscan.obj \
+    $(_OBJ_DIR)\ia64\installscan.obj \
+    $(_OBJ_DIR)\ia64\parseinfctx.obj \
+    $(_OBJ_DIR)\ia64\sppriv.obj \
+    $(_OBJ_DIR)\ia64\verinfo.obj \
+    $(_OBJ_DIR)\ia64\worker.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\infscan.res \
+    $(_OBJ_DIR)\amd64\filters.obj \
+    $(_OBJ_DIR)\amd64\globals.obj \
+    $(_OBJ_DIR)\amd64\globalscan.obj \
+    $(_OBJ_DIR)\amd64\infscan.obj \
+    $(_OBJ_DIR)\amd64\installscan.obj \
+    $(_OBJ_DIR)\amd64\parseinfctx.obj \
+    $(_OBJ_DIR)\amd64\sppriv.obj \
+    $(_OBJ_DIR)\amd64\verinfo.obj \
+    $(_OBJ_DIR)\amd64\worker.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\infscan.res \
+    $(_OBJ_DIR)\arm\filters.obj \
+    $(_OBJ_DIR)\arm\globals.obj \
+    $(_OBJ_DIR)\arm\globalscan.obj \
+    $(_OBJ_DIR)\arm\infscan.obj \
+    $(_OBJ_DIR)\arm\installscan.obj \
+    $(_OBJ_DIR)\arm\parseinfctx.obj \
+    $(_OBJ_DIR)\arm\sppriv.obj \
+    $(_OBJ_DIR)\arm\verinfo.obj \
+    $(_OBJ_DIR)\arm\worker.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+

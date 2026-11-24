@@ -1,0 +1,68 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clusocmresources.res \
+    $(_OBJ_DIR)\i386\cclusocm.obj \
+    $(_OBJ_DIR)\i386\cclusocmapp.obj \
+    $(_OBJ_DIR)\i386\cclusocmtask.obj \
+    $(_OBJ_DIR)\i386\ctaskcleaninstall.obj \
+    $(_OBJ_DIR)\i386\ctaskupgrade.obj \
+    $(_OBJ_DIR)\i386\ctaskupgradewin2k.obj \
+    $(_OBJ_DIR)\i386\ctaskupgradewhistler.obj \
+    $(_OBJ_DIR)\i386\ctaskupgradent4.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\dll.obj \
+    $(_OBJ_DIR)\i386\globalfuncs.obj \
+    $(_OBJ_DIR)\i386\log.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clusocmresources.res \
+    $(_OBJ_DIR)\ia64\cclusocm.obj \
+    $(_OBJ_DIR)\ia64\cclusocmapp.obj \
+    $(_OBJ_DIR)\ia64\cclusocmtask.obj \
+    $(_OBJ_DIR)\ia64\ctaskcleaninstall.obj \
+    $(_OBJ_DIR)\ia64\ctaskupgrade.obj \
+    $(_OBJ_DIR)\ia64\ctaskupgradewin2k.obj \
+    $(_OBJ_DIR)\ia64\ctaskupgradewhistler.obj \
+    $(_OBJ_DIR)\ia64\ctaskupgradent4.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\dll.obj \
+    $(_OBJ_DIR)\ia64\globalfuncs.obj \
+    $(_OBJ_DIR)\ia64\log.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clusocmresources.res \
+    $(_OBJ_DIR)\amd64\cclusocm.obj \
+    $(_OBJ_DIR)\amd64\cclusocmapp.obj \
+    $(_OBJ_DIR)\amd64\cclusocmtask.obj \
+    $(_OBJ_DIR)\amd64\ctaskcleaninstall.obj \
+    $(_OBJ_DIR)\amd64\ctaskupgrade.obj \
+    $(_OBJ_DIR)\amd64\ctaskupgradewin2k.obj \
+    $(_OBJ_DIR)\amd64\ctaskupgradewhistler.obj \
+    $(_OBJ_DIR)\amd64\ctaskupgradent4.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\dll.obj \
+    $(_OBJ_DIR)\amd64\globalfuncs.obj \
+    $(_OBJ_DIR)\amd64\log.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clusocmresources.res \
+    $(_OBJ_DIR)\arm\cclusocm.obj \
+    $(_OBJ_DIR)\arm\cclusocmapp.obj \
+    $(_OBJ_DIR)\arm\cclusocmtask.obj \
+    $(_OBJ_DIR)\arm\ctaskcleaninstall.obj \
+    $(_OBJ_DIR)\arm\ctaskupgrade.obj \
+    $(_OBJ_DIR)\arm\ctaskupgradewin2k.obj \
+    $(_OBJ_DIR)\arm\ctaskupgradewhistler.obj \
+    $(_OBJ_DIR)\arm\ctaskupgradent4.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\dll.obj \
+    $(_OBJ_DIR)\arm\globalfuncs.obj \
+    $(_OBJ_DIR)\arm\log.obj
+
+PASS0_ARM_OBJECTS=
+

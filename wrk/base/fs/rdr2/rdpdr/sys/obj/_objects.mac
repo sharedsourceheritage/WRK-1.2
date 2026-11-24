@@ -1,0 +1,116 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dr.res \
+    $(_OBJ_DIR)\i386\dbg.obj \
+    $(_OBJ_DIR)\i386\drive.obj \
+    $(_OBJ_DIR)\i386\file.obj \
+    $(_OBJ_DIR)\i386\trc.obj \
+    $(_OBJ_DIR)\i386\rdpdr.obj \
+    $(_OBJ_DIR)\i386\drioctl.obj \
+    $(_OBJ_DIR)\i386\rdpevlst.obj \
+    $(_OBJ_DIR)\i386\rdpdyn.obj \
+    $(_OBJ_DIR)\i386\namespc.obj \
+    $(_OBJ_DIR)\i386\channel.obj \
+    $(_OBJ_DIR)\i386\rdpdrpnp.obj \
+    $(_OBJ_DIR)\i386\rdpdrprt.obj \
+    $(_OBJ_DIR)\i386\exchnge.obj \
+    $(_OBJ_DIR)\i386\session.obj \
+    $(_OBJ_DIR)\i386\sessmgr.obj \
+    $(_OBJ_DIR)\i386\serport.obj \
+    $(_OBJ_DIR)\i386\parport.obj \
+    $(_OBJ_DIR)\i386\prnport.obj \
+    $(_OBJ_DIR)\i386\device.obj \
+    $(_OBJ_DIR)\i386\scardss.obj \
+    $(_OBJ_DIR)\i386\devmgr.obj \
+    $(_OBJ_DIR)\i386\kernutil.obj \
+    $(_OBJ_DIR)\i386\strcnv.obj \
+    $(_OBJ_DIR)\i386\smartptr.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dr.res \
+    $(_OBJ_DIR)\ia64\dbg.obj \
+    $(_OBJ_DIR)\ia64\drive.obj \
+    $(_OBJ_DIR)\ia64\file.obj \
+    $(_OBJ_DIR)\ia64\trc.obj \
+    $(_OBJ_DIR)\ia64\rdpdr.obj \
+    $(_OBJ_DIR)\ia64\drioctl.obj \
+    $(_OBJ_DIR)\ia64\rdpevlst.obj \
+    $(_OBJ_DIR)\ia64\rdpdyn.obj \
+    $(_OBJ_DIR)\ia64\namespc.obj \
+    $(_OBJ_DIR)\ia64\channel.obj \
+    $(_OBJ_DIR)\ia64\rdpdrpnp.obj \
+    $(_OBJ_DIR)\ia64\rdpdrprt.obj \
+    $(_OBJ_DIR)\ia64\exchnge.obj \
+    $(_OBJ_DIR)\ia64\session.obj \
+    $(_OBJ_DIR)\ia64\sessmgr.obj \
+    $(_OBJ_DIR)\ia64\serport.obj \
+    $(_OBJ_DIR)\ia64\parport.obj \
+    $(_OBJ_DIR)\ia64\prnport.obj \
+    $(_OBJ_DIR)\ia64\device.obj \
+    $(_OBJ_DIR)\ia64\scardss.obj \
+    $(_OBJ_DIR)\ia64\devmgr.obj \
+    $(_OBJ_DIR)\ia64\kernutil.obj \
+    $(_OBJ_DIR)\ia64\strcnv.obj \
+    $(_OBJ_DIR)\ia64\smartptr.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dr.res \
+    $(_OBJ_DIR)\amd64\dbg.obj \
+    $(_OBJ_DIR)\amd64\drive.obj \
+    $(_OBJ_DIR)\amd64\file.obj \
+    $(_OBJ_DIR)\amd64\trc.obj \
+    $(_OBJ_DIR)\amd64\rdpdr.obj \
+    $(_OBJ_DIR)\amd64\drioctl.obj \
+    $(_OBJ_DIR)\amd64\rdpevlst.obj \
+    $(_OBJ_DIR)\amd64\rdpdyn.obj \
+    $(_OBJ_DIR)\amd64\namespc.obj \
+    $(_OBJ_DIR)\amd64\channel.obj \
+    $(_OBJ_DIR)\amd64\rdpdrpnp.obj \
+    $(_OBJ_DIR)\amd64\rdpdrprt.obj \
+    $(_OBJ_DIR)\amd64\exchnge.obj \
+    $(_OBJ_DIR)\amd64\session.obj \
+    $(_OBJ_DIR)\amd64\sessmgr.obj \
+    $(_OBJ_DIR)\amd64\serport.obj \
+    $(_OBJ_DIR)\amd64\parport.obj \
+    $(_OBJ_DIR)\amd64\prnport.obj \
+    $(_OBJ_DIR)\amd64\device.obj \
+    $(_OBJ_DIR)\amd64\scardss.obj \
+    $(_OBJ_DIR)\amd64\devmgr.obj \
+    $(_OBJ_DIR)\amd64\kernutil.obj \
+    $(_OBJ_DIR)\amd64\strcnv.obj \
+    $(_OBJ_DIR)\amd64\smartptr.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dr.res \
+    $(_OBJ_DIR)\arm\dbg.obj \
+    $(_OBJ_DIR)\arm\drive.obj \
+    $(_OBJ_DIR)\arm\file.obj \
+    $(_OBJ_DIR)\arm\trc.obj \
+    $(_OBJ_DIR)\arm\rdpdr.obj \
+    $(_OBJ_DIR)\arm\drioctl.obj \
+    $(_OBJ_DIR)\arm\rdpevlst.obj \
+    $(_OBJ_DIR)\arm\rdpdyn.obj \
+    $(_OBJ_DIR)\arm\namespc.obj \
+    $(_OBJ_DIR)\arm\channel.obj \
+    $(_OBJ_DIR)\arm\rdpdrpnp.obj \
+    $(_OBJ_DIR)\arm\rdpdrprt.obj \
+    $(_OBJ_DIR)\arm\exchnge.obj \
+    $(_OBJ_DIR)\arm\session.obj \
+    $(_OBJ_DIR)\arm\sessmgr.obj \
+    $(_OBJ_DIR)\arm\serport.obj \
+    $(_OBJ_DIR)\arm\parport.obj \
+    $(_OBJ_DIR)\arm\prnport.obj \
+    $(_OBJ_DIR)\arm\device.obj \
+    $(_OBJ_DIR)\arm\scardss.obj \
+    $(_OBJ_DIR)\arm\devmgr.obj \
+    $(_OBJ_DIR)\arm\kernutil.obj \
+    $(_OBJ_DIR)\arm\strcnv.obj \
+    $(_OBJ_DIR)\arm\smartptr.obj
+
+PASS0_ARM_OBJECTS=
+

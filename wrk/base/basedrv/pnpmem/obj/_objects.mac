@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\pnpmem.res \
+    $(_OBJ_DIR)\i386\memory.obj \
+    $(_OBJ_DIR)\i386\pnp.obj \
+    $(_OBJ_DIR)\i386\pnpmem.obj \
+    $(_OBJ_DIR)\i386\range.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\errlog.h \
+    $(MC_SOURCEDIR)\errlog.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\pnpmem.res \
+    $(_OBJ_DIR)\ia64\memory.obj \
+    $(_OBJ_DIR)\ia64\pnp.obj \
+    $(_OBJ_DIR)\ia64\pnpmem.obj \
+    $(_OBJ_DIR)\ia64\range.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\errlog.h \
+    $(MC_SOURCEDIR)\errlog.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\pnpmem.res \
+    $(_OBJ_DIR)\amd64\memory.obj \
+    $(_OBJ_DIR)\amd64\pnp.obj \
+    $(_OBJ_DIR)\amd64\pnpmem.obj \
+    $(_OBJ_DIR)\amd64\range.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\errlog.h \
+    $(MC_SOURCEDIR)\errlog.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\pnpmem.res \
+    $(_OBJ_DIR)\arm\memory.obj \
+    $(_OBJ_DIR)\arm\pnp.obj \
+    $(_OBJ_DIR)\arm\pnpmem.obj \
+    $(_OBJ_DIR)\arm\range.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\errlog.h \
+    $(MC_SOURCEDIR)\errlog.rc
+

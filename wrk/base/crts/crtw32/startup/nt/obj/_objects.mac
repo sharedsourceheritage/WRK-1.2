@@ -1,0 +1,23 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\chkstk.obj \
+    $(_OBJ_DIR)\i386\crt0fp.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\crt0fp.obj \
+    $(_OBJ_DIR)\ia64\chkstk.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\chkstk.obj \
+    $(_OBJ_DIR)\amd64\crt0fp.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\crt0fp.obj
+
+PASS0_ARM_OBJECTS=
+

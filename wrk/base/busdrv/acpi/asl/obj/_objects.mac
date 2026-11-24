@@ -1,0 +1,88 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\asl.res \
+    $(_OBJ_DIR)\i386\acpins.obj \
+    $(_OBJ_DIR)\i386\asl.obj \
+    $(_OBJ_DIR)\i386\aslterms.obj \
+    $(_OBJ_DIR)\i386\binfmt.obj \
+    $(_OBJ_DIR)\i386\data.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\list.obj \
+    $(_OBJ_DIR)\i386\line.obj \
+    $(_OBJ_DIR)\i386\misc.obj \
+    $(_OBJ_DIR)\i386\parsearg.obj \
+    $(_OBJ_DIR)\i386\parseasl.obj \
+    $(_OBJ_DIR)\i386\pnpmacro.obj \
+    $(_OBJ_DIR)\i386\scanasl.obj \
+    $(_OBJ_DIR)\i386\tables.obj \
+    $(_OBJ_DIR)\i386\token.obj \
+    $(_OBJ_DIR)\i386\uasmdata.obj \
+    $(_OBJ_DIR)\i386\unasm.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\asl.res \
+    $(_OBJ_DIR)\ia64\acpins.obj \
+    $(_OBJ_DIR)\ia64\asl.obj \
+    $(_OBJ_DIR)\ia64\aslterms.obj \
+    $(_OBJ_DIR)\ia64\binfmt.obj \
+    $(_OBJ_DIR)\ia64\data.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\list.obj \
+    $(_OBJ_DIR)\ia64\line.obj \
+    $(_OBJ_DIR)\ia64\misc.obj \
+    $(_OBJ_DIR)\ia64\parsearg.obj \
+    $(_OBJ_DIR)\ia64\parseasl.obj \
+    $(_OBJ_DIR)\ia64\pnpmacro.obj \
+    $(_OBJ_DIR)\ia64\scanasl.obj \
+    $(_OBJ_DIR)\ia64\tables.obj \
+    $(_OBJ_DIR)\ia64\token.obj \
+    $(_OBJ_DIR)\ia64\uasmdata.obj \
+    $(_OBJ_DIR)\ia64\unasm.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\asl.res \
+    $(_OBJ_DIR)\amd64\acpins.obj \
+    $(_OBJ_DIR)\amd64\asl.obj \
+    $(_OBJ_DIR)\amd64\aslterms.obj \
+    $(_OBJ_DIR)\amd64\binfmt.obj \
+    $(_OBJ_DIR)\amd64\data.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\list.obj \
+    $(_OBJ_DIR)\amd64\line.obj \
+    $(_OBJ_DIR)\amd64\misc.obj \
+    $(_OBJ_DIR)\amd64\parsearg.obj \
+    $(_OBJ_DIR)\amd64\parseasl.obj \
+    $(_OBJ_DIR)\amd64\pnpmacro.obj \
+    $(_OBJ_DIR)\amd64\scanasl.obj \
+    $(_OBJ_DIR)\amd64\tables.obj \
+    $(_OBJ_DIR)\amd64\token.obj \
+    $(_OBJ_DIR)\amd64\uasmdata.obj \
+    $(_OBJ_DIR)\amd64\unasm.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\asl.res \
+    $(_OBJ_DIR)\arm\acpins.obj \
+    $(_OBJ_DIR)\arm\asl.obj \
+    $(_OBJ_DIR)\arm\aslterms.obj \
+    $(_OBJ_DIR)\arm\binfmt.obj \
+    $(_OBJ_DIR)\arm\data.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\list.obj \
+    $(_OBJ_DIR)\arm\line.obj \
+    $(_OBJ_DIR)\arm\misc.obj \
+    $(_OBJ_DIR)\arm\parsearg.obj \
+    $(_OBJ_DIR)\arm\parseasl.obj \
+    $(_OBJ_DIR)\arm\pnpmacro.obj \
+    $(_OBJ_DIR)\arm\scanasl.obj \
+    $(_OBJ_DIR)\arm\tables.obj \
+    $(_OBJ_DIR)\arm\token.obj \
+    $(_OBJ_DIR)\arm\uasmdata.obj \
+    $(_OBJ_DIR)\arm\unasm.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,124 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\accessck.obj \
+    $(_OBJ_DIR)\i386\capture.obj \
+    $(_OBJ_DIR)\i386\privileg.obj \
+    $(_OBJ_DIR)\i386\rmlogon.obj \
+    $(_OBJ_DIR)\i386\rmmain.obj \
+    $(_OBJ_DIR)\i386\rmvars.obj \
+    $(_OBJ_DIR)\i386\seassign.obj \
+    $(_OBJ_DIR)\i386\seaudit.obj \
+    $(_OBJ_DIR)\i386\sepaudit.obj \
+    $(_OBJ_DIR)\i386\seclient.obj \
+    $(_OBJ_DIR)\i386\seglobal.obj \
+    $(_OBJ_DIR)\i386\seinit.obj \
+    $(_OBJ_DIR)\i386\semethod.obj \
+    $(_OBJ_DIR)\i386\sep.obj \
+    $(_OBJ_DIR)\i386\subject.obj \
+    $(_OBJ_DIR)\i386\seastate.obj \
+    $(_OBJ_DIR)\i386\token.obj \
+    $(_OBJ_DIR)\i386\tokenadj.obj \
+    $(_OBJ_DIR)\i386\tokendup.obj \
+    $(_OBJ_DIR)\i386\tokenopn.obj \
+    $(_OBJ_DIR)\i386\tokenqry.obj \
+    $(_OBJ_DIR)\i386\tokenset.obj \
+    $(_OBJ_DIR)\i386\adtlog.obj \
+    $(_OBJ_DIR)\i386\adtinit.obj \
+    $(_OBJ_DIR)\i386\adtvars.obj \
+    $(_OBJ_DIR)\i386\adtutil.obj \
+    $(_OBJ_DIR)\i386\rmaudit.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\accessck.obj \
+    $(_OBJ_DIR)\ia64\capture.obj \
+    $(_OBJ_DIR)\ia64\privileg.obj \
+    $(_OBJ_DIR)\ia64\rmlogon.obj \
+    $(_OBJ_DIR)\ia64\rmmain.obj \
+    $(_OBJ_DIR)\ia64\rmvars.obj \
+    $(_OBJ_DIR)\ia64\seassign.obj \
+    $(_OBJ_DIR)\ia64\seaudit.obj \
+    $(_OBJ_DIR)\ia64\sepaudit.obj \
+    $(_OBJ_DIR)\ia64\seclient.obj \
+    $(_OBJ_DIR)\ia64\seglobal.obj \
+    $(_OBJ_DIR)\ia64\seinit.obj \
+    $(_OBJ_DIR)\ia64\semethod.obj \
+    $(_OBJ_DIR)\ia64\sep.obj \
+    $(_OBJ_DIR)\ia64\subject.obj \
+    $(_OBJ_DIR)\ia64\seastate.obj \
+    $(_OBJ_DIR)\ia64\token.obj \
+    $(_OBJ_DIR)\ia64\tokenadj.obj \
+    $(_OBJ_DIR)\ia64\tokendup.obj \
+    $(_OBJ_DIR)\ia64\tokenopn.obj \
+    $(_OBJ_DIR)\ia64\tokenqry.obj \
+    $(_OBJ_DIR)\ia64\tokenset.obj \
+    $(_OBJ_DIR)\ia64\adtlog.obj \
+    $(_OBJ_DIR)\ia64\adtinit.obj \
+    $(_OBJ_DIR)\ia64\adtvars.obj \
+    $(_OBJ_DIR)\ia64\adtutil.obj \
+    $(_OBJ_DIR)\ia64\rmaudit.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\accessck.obj \
+    $(_OBJ_DIR)\amd64\capture.obj \
+    $(_OBJ_DIR)\amd64\privileg.obj \
+    $(_OBJ_DIR)\amd64\rmlogon.obj \
+    $(_OBJ_DIR)\amd64\rmmain.obj \
+    $(_OBJ_DIR)\amd64\rmvars.obj \
+    $(_OBJ_DIR)\amd64\seassign.obj \
+    $(_OBJ_DIR)\amd64\seaudit.obj \
+    $(_OBJ_DIR)\amd64\sepaudit.obj \
+    $(_OBJ_DIR)\amd64\seclient.obj \
+    $(_OBJ_DIR)\amd64\seglobal.obj \
+    $(_OBJ_DIR)\amd64\seinit.obj \
+    $(_OBJ_DIR)\amd64\semethod.obj \
+    $(_OBJ_DIR)\amd64\sep.obj \
+    $(_OBJ_DIR)\amd64\subject.obj \
+    $(_OBJ_DIR)\amd64\seastate.obj \
+    $(_OBJ_DIR)\amd64\token.obj \
+    $(_OBJ_DIR)\amd64\tokenadj.obj \
+    $(_OBJ_DIR)\amd64\tokendup.obj \
+    $(_OBJ_DIR)\amd64\tokenopn.obj \
+    $(_OBJ_DIR)\amd64\tokenqry.obj \
+    $(_OBJ_DIR)\amd64\tokenset.obj \
+    $(_OBJ_DIR)\amd64\adtlog.obj \
+    $(_OBJ_DIR)\amd64\adtinit.obj \
+    $(_OBJ_DIR)\amd64\adtvars.obj \
+    $(_OBJ_DIR)\amd64\adtutil.obj \
+    $(_OBJ_DIR)\amd64\rmaudit.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\accessck.obj \
+    $(_OBJ_DIR)\arm\capture.obj \
+    $(_OBJ_DIR)\arm\privileg.obj \
+    $(_OBJ_DIR)\arm\rmlogon.obj \
+    $(_OBJ_DIR)\arm\rmmain.obj \
+    $(_OBJ_DIR)\arm\rmvars.obj \
+    $(_OBJ_DIR)\arm\seassign.obj \
+    $(_OBJ_DIR)\arm\seaudit.obj \
+    $(_OBJ_DIR)\arm\sepaudit.obj \
+    $(_OBJ_DIR)\arm\seclient.obj \
+    $(_OBJ_DIR)\arm\seglobal.obj \
+    $(_OBJ_DIR)\arm\seinit.obj \
+    $(_OBJ_DIR)\arm\semethod.obj \
+    $(_OBJ_DIR)\arm\sep.obj \
+    $(_OBJ_DIR)\arm\subject.obj \
+    $(_OBJ_DIR)\arm\seastate.obj \
+    $(_OBJ_DIR)\arm\token.obj \
+    $(_OBJ_DIR)\arm\tokenadj.obj \
+    $(_OBJ_DIR)\arm\tokendup.obj \
+    $(_OBJ_DIR)\arm\tokenopn.obj \
+    $(_OBJ_DIR)\arm\tokenqry.obj \
+    $(_OBJ_DIR)\arm\tokenset.obj \
+    $(_OBJ_DIR)\arm\adtlog.obj \
+    $(_OBJ_DIR)\arm\adtinit.obj \
+    $(_OBJ_DIR)\arm\adtvars.obj \
+    $(_OBJ_DIR)\arm\adtutil.obj \
+    $(_OBJ_DIR)\arm\rmaudit.obj
+
+PASS0_ARM_OBJECTS=
+

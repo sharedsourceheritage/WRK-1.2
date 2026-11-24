@@ -1,0 +1,148 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dfsadblobcache.obj \
+    $(_OBJ_DIR)\i386\dfsadblobrootfolder.obj \
+    $(_OBJ_DIR)\i386\dfsadblobstore.obj \
+    $(_OBJ_DIR)\i386\dfsapifrontend.obj \
+    $(_OBJ_DIR)\i386\dfsclustersupport.obj \
+    $(_OBJ_DIR)\i386\dfsdownlevel.obj \
+    $(_OBJ_DIR)\i386\dfsfolder.obj \
+    $(_OBJ_DIR)\i386\dfserror.obj \
+    $(_OBJ_DIR)\i386\dfsinit.obj \
+    $(_OBJ_DIR)\i386\dfsmigrate.obj \
+    $(_OBJ_DIR)\i386\dfsreferral.obj \
+    $(_OBJ_DIR)\i386\dfsregistryrootfolder.obj \
+    $(_OBJ_DIR)\i386\dfsregistrystore.obj \
+    $(_OBJ_DIR)\i386\dfsrootfolder.obj \
+    $(_OBJ_DIR)\i386\dfsstatistics.obj \
+    $(_OBJ_DIR)\i386\dfsstore.obj \
+    $(_OBJ_DIR)\i386\dfsprocessreferral.obj \
+    $(_OBJ_DIR)\i386\dfslogmacros.obj \
+    $(_OBJ_DIR)\i386\dfseventlog.obj \
+    $(_OBJ_DIR)\i386\dfssynchronizeroots.obj \
+    $(_OBJ_DIR)\i386\domaincontrollersupport.obj \
+    $(_OBJ_DIR)\i386\dfstrusteddomain.obj \
+    $(_OBJ_DIR)\i386\dfsadsiapi.obj \
+    $(_OBJ_DIR)\i386\dfssitecache.obj \
+    $(_OBJ_DIR)\i386\dfscompat.obj \
+    $(_OBJ_DIR)\i386\dfssitecostcache.obj \
+    $(_OBJ_DIR)\i386\dfssite.obj \
+    $(_OBJ_DIR)\i386\dfsreferraldata.obj \
+    $(_OBJ_DIR)\i386\dfssitenamesupport.obj \
+    $(_OBJ_DIR)\i386\dfsistgsupport.obj \
+    $(_OBJ_DIR)\i386\dfsreparsesupport.obj \
+    $(_OBJ_DIR)\i386\dfsdomaininformation.obj \
+    $(_OBJ_DIR)\i386\dfsxforest.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dfsadblobcache.obj \
+    $(_OBJ_DIR)\ia64\dfsadblobrootfolder.obj \
+    $(_OBJ_DIR)\ia64\dfsadblobstore.obj \
+    $(_OBJ_DIR)\ia64\dfsapifrontend.obj \
+    $(_OBJ_DIR)\ia64\dfsclustersupport.obj \
+    $(_OBJ_DIR)\ia64\dfsdownlevel.obj \
+    $(_OBJ_DIR)\ia64\dfsfolder.obj \
+    $(_OBJ_DIR)\ia64\dfserror.obj \
+    $(_OBJ_DIR)\ia64\dfsinit.obj \
+    $(_OBJ_DIR)\ia64\dfsmigrate.obj \
+    $(_OBJ_DIR)\ia64\dfsreferral.obj \
+    $(_OBJ_DIR)\ia64\dfsregistryrootfolder.obj \
+    $(_OBJ_DIR)\ia64\dfsregistrystore.obj \
+    $(_OBJ_DIR)\ia64\dfsrootfolder.obj \
+    $(_OBJ_DIR)\ia64\dfsstatistics.obj \
+    $(_OBJ_DIR)\ia64\dfsstore.obj \
+    $(_OBJ_DIR)\ia64\dfsprocessreferral.obj \
+    $(_OBJ_DIR)\ia64\dfslogmacros.obj \
+    $(_OBJ_DIR)\ia64\dfseventlog.obj \
+    $(_OBJ_DIR)\ia64\dfssynchronizeroots.obj \
+    $(_OBJ_DIR)\ia64\domaincontrollersupport.obj \
+    $(_OBJ_DIR)\ia64\dfstrusteddomain.obj \
+    $(_OBJ_DIR)\ia64\dfsadsiapi.obj \
+    $(_OBJ_DIR)\ia64\dfssitecache.obj \
+    $(_OBJ_DIR)\ia64\dfscompat.obj \
+    $(_OBJ_DIR)\ia64\dfssitecostcache.obj \
+    $(_OBJ_DIR)\ia64\dfssite.obj \
+    $(_OBJ_DIR)\ia64\dfsreferraldata.obj \
+    $(_OBJ_DIR)\ia64\dfssitenamesupport.obj \
+    $(_OBJ_DIR)\ia64\dfsistgsupport.obj \
+    $(_OBJ_DIR)\ia64\dfsreparsesupport.obj \
+    $(_OBJ_DIR)\ia64\dfsdomaininformation.obj \
+    $(_OBJ_DIR)\ia64\dfsxforest.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dfsadblobcache.obj \
+    $(_OBJ_DIR)\amd64\dfsadblobrootfolder.obj \
+    $(_OBJ_DIR)\amd64\dfsadblobstore.obj \
+    $(_OBJ_DIR)\amd64\dfsapifrontend.obj \
+    $(_OBJ_DIR)\amd64\dfsclustersupport.obj \
+    $(_OBJ_DIR)\amd64\dfsdownlevel.obj \
+    $(_OBJ_DIR)\amd64\dfsfolder.obj \
+    $(_OBJ_DIR)\amd64\dfserror.obj \
+    $(_OBJ_DIR)\amd64\dfsinit.obj \
+    $(_OBJ_DIR)\amd64\dfsmigrate.obj \
+    $(_OBJ_DIR)\amd64\dfsreferral.obj \
+    $(_OBJ_DIR)\amd64\dfsregistryrootfolder.obj \
+    $(_OBJ_DIR)\amd64\dfsregistrystore.obj \
+    $(_OBJ_DIR)\amd64\dfsrootfolder.obj \
+    $(_OBJ_DIR)\amd64\dfsstatistics.obj \
+    $(_OBJ_DIR)\amd64\dfsstore.obj \
+    $(_OBJ_DIR)\amd64\dfsprocessreferral.obj \
+    $(_OBJ_DIR)\amd64\dfslogmacros.obj \
+    $(_OBJ_DIR)\amd64\dfseventlog.obj \
+    $(_OBJ_DIR)\amd64\dfssynchronizeroots.obj \
+    $(_OBJ_DIR)\amd64\domaincontrollersupport.obj \
+    $(_OBJ_DIR)\amd64\dfstrusteddomain.obj \
+    $(_OBJ_DIR)\amd64\dfsadsiapi.obj \
+    $(_OBJ_DIR)\amd64\dfssitecache.obj \
+    $(_OBJ_DIR)\amd64\dfscompat.obj \
+    $(_OBJ_DIR)\amd64\dfssitecostcache.obj \
+    $(_OBJ_DIR)\amd64\dfssite.obj \
+    $(_OBJ_DIR)\amd64\dfsreferraldata.obj \
+    $(_OBJ_DIR)\amd64\dfssitenamesupport.obj \
+    $(_OBJ_DIR)\amd64\dfsistgsupport.obj \
+    $(_OBJ_DIR)\amd64\dfsreparsesupport.obj \
+    $(_OBJ_DIR)\amd64\dfsdomaininformation.obj \
+    $(_OBJ_DIR)\amd64\dfsxforest.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dfsadblobcache.obj \
+    $(_OBJ_DIR)\arm\dfsadblobrootfolder.obj \
+    $(_OBJ_DIR)\arm\dfsadblobstore.obj \
+    $(_OBJ_DIR)\arm\dfsapifrontend.obj \
+    $(_OBJ_DIR)\arm\dfsclustersupport.obj \
+    $(_OBJ_DIR)\arm\dfsdownlevel.obj \
+    $(_OBJ_DIR)\arm\dfsfolder.obj \
+    $(_OBJ_DIR)\arm\dfserror.obj \
+    $(_OBJ_DIR)\arm\dfsinit.obj \
+    $(_OBJ_DIR)\arm\dfsmigrate.obj \
+    $(_OBJ_DIR)\arm\dfsreferral.obj \
+    $(_OBJ_DIR)\arm\dfsregistryrootfolder.obj \
+    $(_OBJ_DIR)\arm\dfsregistrystore.obj \
+    $(_OBJ_DIR)\arm\dfsrootfolder.obj \
+    $(_OBJ_DIR)\arm\dfsstatistics.obj \
+    $(_OBJ_DIR)\arm\dfsstore.obj \
+    $(_OBJ_DIR)\arm\dfsprocessreferral.obj \
+    $(_OBJ_DIR)\arm\dfslogmacros.obj \
+    $(_OBJ_DIR)\arm\dfseventlog.obj \
+    $(_OBJ_DIR)\arm\dfssynchronizeroots.obj \
+    $(_OBJ_DIR)\arm\domaincontrollersupport.obj \
+    $(_OBJ_DIR)\arm\dfstrusteddomain.obj \
+    $(_OBJ_DIR)\arm\dfsadsiapi.obj \
+    $(_OBJ_DIR)\arm\dfssitecache.obj \
+    $(_OBJ_DIR)\arm\dfscompat.obj \
+    $(_OBJ_DIR)\arm\dfssitecostcache.obj \
+    $(_OBJ_DIR)\arm\dfssite.obj \
+    $(_OBJ_DIR)\arm\dfsreferraldata.obj \
+    $(_OBJ_DIR)\arm\dfssitenamesupport.obj \
+    $(_OBJ_DIR)\arm\dfsistgsupport.obj \
+    $(_OBJ_DIR)\arm\dfsreparsesupport.obj \
+    $(_OBJ_DIR)\arm\dfsdomaininformation.obj \
+    $(_OBJ_DIR)\arm\dfsxforest.obj
+
+PASS0_ARM_OBJECTS=
+

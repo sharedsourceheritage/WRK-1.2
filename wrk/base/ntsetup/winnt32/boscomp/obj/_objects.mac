@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\boscomp.res \
+    $(_OBJ_DIR)\i386\boscomp.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\boscomp.res \
+    $(_OBJ_DIR)\ia64\boscomp.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\boscomp.res \
+    $(_OBJ_DIR)\amd64\boscomp.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\boscomp.res \
+    $(_OBJ_DIR)\arm\boscomp.obj
+
+PASS0_ARM_OBJECTS=
+

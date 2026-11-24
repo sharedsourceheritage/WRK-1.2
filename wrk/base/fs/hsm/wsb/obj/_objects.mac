@@ -1,0 +1,124 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\wsb.res \
+    $(_OBJ_DIR)\i386\dlldatax.obj \
+    $(_OBJ_DIR)\i386\stdafx.obj \
+    $(_OBJ_DIR)\i386\wsb.obj \
+    $(_OBJ_DIR)\i386\wsbaccnt.obj \
+    $(_OBJ_DIR)\i386\wsbbstrg.obj \
+    $(_OBJ_DIR)\i386\wsbcltbl.obj \
+    $(_OBJ_DIR)\i386\wsbcltn.obj \
+    $(_OBJ_DIR)\i386\wsbcore.obj \
+    $(_OBJ_DIR)\i386\wsbenum.obj \
+    $(_OBJ_DIR)\i386\wsbfile.obj \
+    $(_OBJ_DIR)\i386\wsbguid.obj \
+    $(_OBJ_DIR)\i386\wsbhash.obj \
+    $(_OBJ_DIR)\i386\wsbport.obj \
+    $(_OBJ_DIR)\i386\wsbpstbl.obj \
+    $(_OBJ_DIR)\i386\wsbpstrg.obj \
+    $(_OBJ_DIR)\i386\wsbregty.obj \
+    $(_OBJ_DIR)\i386\wsbserv.obj \
+    $(_OBJ_DIR)\i386\wsbstrg.obj \
+    $(_OBJ_DIR)\i386\wsbsvc.obj \
+    $(_OBJ_DIR)\i386\wsbtrace.obj \
+    $(_OBJ_DIR)\i386\wsbtrak.obj \
+    $(_OBJ_DIR)\i386\wsbtrc.obj \
+    $(_OBJ_DIR)\i386\wsbusn.obj \
+    $(_OBJ_DIR)\i386\wsbvar.obj \
+    $(_OBJ_DIR)\i386\wsbfmt.obj \
+    $(_OBJ_DIR)\i386\wsbvol.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\wsb.res \
+    $(_OBJ_DIR)\ia64\dlldatax.obj \
+    $(_OBJ_DIR)\ia64\stdafx.obj \
+    $(_OBJ_DIR)\ia64\wsb.obj \
+    $(_OBJ_DIR)\ia64\wsbaccnt.obj \
+    $(_OBJ_DIR)\ia64\wsbbstrg.obj \
+    $(_OBJ_DIR)\ia64\wsbcltbl.obj \
+    $(_OBJ_DIR)\ia64\wsbcltn.obj \
+    $(_OBJ_DIR)\ia64\wsbcore.obj \
+    $(_OBJ_DIR)\ia64\wsbenum.obj \
+    $(_OBJ_DIR)\ia64\wsbfile.obj \
+    $(_OBJ_DIR)\ia64\wsbguid.obj \
+    $(_OBJ_DIR)\ia64\wsbhash.obj \
+    $(_OBJ_DIR)\ia64\wsbport.obj \
+    $(_OBJ_DIR)\ia64\wsbpstbl.obj \
+    $(_OBJ_DIR)\ia64\wsbpstrg.obj \
+    $(_OBJ_DIR)\ia64\wsbregty.obj \
+    $(_OBJ_DIR)\ia64\wsbserv.obj \
+    $(_OBJ_DIR)\ia64\wsbstrg.obj \
+    $(_OBJ_DIR)\ia64\wsbsvc.obj \
+    $(_OBJ_DIR)\ia64\wsbtrace.obj \
+    $(_OBJ_DIR)\ia64\wsbtrak.obj \
+    $(_OBJ_DIR)\ia64\wsbtrc.obj \
+    $(_OBJ_DIR)\ia64\wsbusn.obj \
+    $(_OBJ_DIR)\ia64\wsbvar.obj \
+    $(_OBJ_DIR)\ia64\wsbfmt.obj \
+    $(_OBJ_DIR)\ia64\wsbvol.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\wsb.res \
+    $(_OBJ_DIR)\amd64\dlldatax.obj \
+    $(_OBJ_DIR)\amd64\stdafx.obj \
+    $(_OBJ_DIR)\amd64\wsb.obj \
+    $(_OBJ_DIR)\amd64\wsbaccnt.obj \
+    $(_OBJ_DIR)\amd64\wsbbstrg.obj \
+    $(_OBJ_DIR)\amd64\wsbcltbl.obj \
+    $(_OBJ_DIR)\amd64\wsbcltn.obj \
+    $(_OBJ_DIR)\amd64\wsbcore.obj \
+    $(_OBJ_DIR)\amd64\wsbenum.obj \
+    $(_OBJ_DIR)\amd64\wsbfile.obj \
+    $(_OBJ_DIR)\amd64\wsbguid.obj \
+    $(_OBJ_DIR)\amd64\wsbhash.obj \
+    $(_OBJ_DIR)\amd64\wsbport.obj \
+    $(_OBJ_DIR)\amd64\wsbpstbl.obj \
+    $(_OBJ_DIR)\amd64\wsbpstrg.obj \
+    $(_OBJ_DIR)\amd64\wsbregty.obj \
+    $(_OBJ_DIR)\amd64\wsbserv.obj \
+    $(_OBJ_DIR)\amd64\wsbstrg.obj \
+    $(_OBJ_DIR)\amd64\wsbsvc.obj \
+    $(_OBJ_DIR)\amd64\wsbtrace.obj \
+    $(_OBJ_DIR)\amd64\wsbtrak.obj \
+    $(_OBJ_DIR)\amd64\wsbtrc.obj \
+    $(_OBJ_DIR)\amd64\wsbusn.obj \
+    $(_OBJ_DIR)\amd64\wsbvar.obj \
+    $(_OBJ_DIR)\amd64\wsbfmt.obj \
+    $(_OBJ_DIR)\amd64\wsbvol.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\wsb.res \
+    $(_OBJ_DIR)\arm\dlldatax.obj \
+    $(_OBJ_DIR)\arm\stdafx.obj \
+    $(_OBJ_DIR)\arm\wsb.obj \
+    $(_OBJ_DIR)\arm\wsbaccnt.obj \
+    $(_OBJ_DIR)\arm\wsbbstrg.obj \
+    $(_OBJ_DIR)\arm\wsbcltbl.obj \
+    $(_OBJ_DIR)\arm\wsbcltn.obj \
+    $(_OBJ_DIR)\arm\wsbcore.obj \
+    $(_OBJ_DIR)\arm\wsbenum.obj \
+    $(_OBJ_DIR)\arm\wsbfile.obj \
+    $(_OBJ_DIR)\arm\wsbguid.obj \
+    $(_OBJ_DIR)\arm\wsbhash.obj \
+    $(_OBJ_DIR)\arm\wsbport.obj \
+    $(_OBJ_DIR)\arm\wsbpstbl.obj \
+    $(_OBJ_DIR)\arm\wsbpstrg.obj \
+    $(_OBJ_DIR)\arm\wsbregty.obj \
+    $(_OBJ_DIR)\arm\wsbserv.obj \
+    $(_OBJ_DIR)\arm\wsbstrg.obj \
+    $(_OBJ_DIR)\arm\wsbsvc.obj \
+    $(_OBJ_DIR)\arm\wsbtrace.obj \
+    $(_OBJ_DIR)\arm\wsbtrak.obj \
+    $(_OBJ_DIR)\arm\wsbtrc.obj \
+    $(_OBJ_DIR)\arm\wsbusn.obj \
+    $(_OBJ_DIR)\arm\wsbvar.obj \
+    $(_OBJ_DIR)\arm\wsbfmt.obj \
+    $(_OBJ_DIR)\arm\wsbvol.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\gumevent.obj \
+    $(_OBJ_DIR)\i386\guminit.obj \
+    $(_OBJ_DIR)\i386\marshal.obj \
+    $(_OBJ_DIR)\i386\send.obj \
+    $(_OBJ_DIR)\i386\receive.obj \
+    $(_OBJ_DIR)\i386\locker.obj \
+    $(_OBJ_DIR)\i386\join.obj \
+    $(_OBJ_DIR)\i386\vote.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\gumevent.obj \
+    $(_OBJ_DIR)\ia64\guminit.obj \
+    $(_OBJ_DIR)\ia64\marshal.obj \
+    $(_OBJ_DIR)\ia64\send.obj \
+    $(_OBJ_DIR)\ia64\receive.obj \
+    $(_OBJ_DIR)\ia64\locker.obj \
+    $(_OBJ_DIR)\ia64\join.obj \
+    $(_OBJ_DIR)\ia64\vote.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\gumevent.obj \
+    $(_OBJ_DIR)\amd64\guminit.obj \
+    $(_OBJ_DIR)\amd64\marshal.obj \
+    $(_OBJ_DIR)\amd64\send.obj \
+    $(_OBJ_DIR)\amd64\receive.obj \
+    $(_OBJ_DIR)\amd64\locker.obj \
+    $(_OBJ_DIR)\amd64\join.obj \
+    $(_OBJ_DIR)\amd64\vote.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\gumevent.obj \
+    $(_OBJ_DIR)\arm\guminit.obj \
+    $(_OBJ_DIR)\arm\marshal.obj \
+    $(_OBJ_DIR)\arm\send.obj \
+    $(_OBJ_DIR)\arm\receive.obj \
+    $(_OBJ_DIR)\arm\locker.obj \
+    $(_OBJ_DIR)\arm\join.obj \
+    $(_OBJ_DIR)\arm\vote.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,64 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\csrss.res \
+    $(_OBJ_DIR)\i386\srvinit.obj \
+    $(_OBJ_DIR)\i386\srvloadr.obj \
+    $(_OBJ_DIR)\i386\sbinit.obj \
+    $(_OBJ_DIR)\i386\sbreqst.obj \
+    $(_OBJ_DIR)\i386\sbapi.obj \
+    $(_OBJ_DIR)\i386\apiinit.obj \
+    $(_OBJ_DIR)\i386\apireqst.obj \
+    $(_OBJ_DIR)\i386\session.obj \
+    $(_OBJ_DIR)\i386\process.obj \
+    $(_OBJ_DIR)\i386\csrdebug.obj \
+    $(_OBJ_DIR)\i386\wait.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\csrss.res \
+    $(_OBJ_DIR)\ia64\srvinit.obj \
+    $(_OBJ_DIR)\ia64\srvloadr.obj \
+    $(_OBJ_DIR)\ia64\sbinit.obj \
+    $(_OBJ_DIR)\ia64\sbreqst.obj \
+    $(_OBJ_DIR)\ia64\sbapi.obj \
+    $(_OBJ_DIR)\ia64\apiinit.obj \
+    $(_OBJ_DIR)\ia64\apireqst.obj \
+    $(_OBJ_DIR)\ia64\session.obj \
+    $(_OBJ_DIR)\ia64\process.obj \
+    $(_OBJ_DIR)\ia64\csrdebug.obj \
+    $(_OBJ_DIR)\ia64\wait.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\csrss.res \
+    $(_OBJ_DIR)\amd64\srvinit.obj \
+    $(_OBJ_DIR)\amd64\srvloadr.obj \
+    $(_OBJ_DIR)\amd64\sbinit.obj \
+    $(_OBJ_DIR)\amd64\sbreqst.obj \
+    $(_OBJ_DIR)\amd64\sbapi.obj \
+    $(_OBJ_DIR)\amd64\apiinit.obj \
+    $(_OBJ_DIR)\amd64\apireqst.obj \
+    $(_OBJ_DIR)\amd64\session.obj \
+    $(_OBJ_DIR)\amd64\process.obj \
+    $(_OBJ_DIR)\amd64\csrdebug.obj \
+    $(_OBJ_DIR)\amd64\wait.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\csrss.res \
+    $(_OBJ_DIR)\arm\srvinit.obj \
+    $(_OBJ_DIR)\arm\srvloadr.obj \
+    $(_OBJ_DIR)\arm\sbinit.obj \
+    $(_OBJ_DIR)\arm\sbreqst.obj \
+    $(_OBJ_DIR)\arm\sbapi.obj \
+    $(_OBJ_DIR)\arm\apiinit.obj \
+    $(_OBJ_DIR)\arm\apireqst.obj \
+    $(_OBJ_DIR)\arm\session.obj \
+    $(_OBJ_DIR)\arm\process.obj \
+    $(_OBJ_DIR)\arm\csrdebug.obj \
+    $(_OBJ_DIR)\arm\wait.obj
+
+PASS0_ARM_OBJECTS=
+

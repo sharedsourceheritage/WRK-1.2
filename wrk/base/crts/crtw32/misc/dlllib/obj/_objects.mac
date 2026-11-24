@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sehprolg.obj \
+    $(_OBJ_DIR)\i386\eh3valid.obj \
+    $(_OBJ_DIR)\i386\loadcfg.obj \
+    $(_OBJ_DIR)\i386\seccook.obj \
+    $(_OBJ_DIR)\i386\charmax.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\charmax.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\charmax.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\charmax.obj
+
+PASS0_ARM_OBJECTS=
+

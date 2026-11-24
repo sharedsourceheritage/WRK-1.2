@@ -1,0 +1,140 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\_ctype.obj \
+    $(_OBJ_DIR)\i386\_fptostr.obj \
+    $(_OBJ_DIR)\i386\_mbslen.obj \
+    $(_OBJ_DIR)\i386\_wctype.obj \
+    $(_OBJ_DIR)\i386\atof.obj \
+    $(_OBJ_DIR)\i386\atox.obj \
+    $(_OBJ_DIR)\i386\fcvt.obj \
+    $(_OBJ_DIR)\i386\gcvt.obj \
+    $(_OBJ_DIR)\i386\isctype.obj \
+    $(_OBJ_DIR)\i386\iswctype.obj \
+    $(_OBJ_DIR)\i386\mblen.obj \
+    $(_OBJ_DIR)\i386\mbstowcs.obj \
+    $(_OBJ_DIR)\i386\mbtowc.obj \
+    $(_OBJ_DIR)\i386\strtod.obj \
+    $(_OBJ_DIR)\i386\strtol.obj \
+    $(_OBJ_DIR)\i386\strtoq.obj \
+    $(_OBJ_DIR)\i386\swab.obj \
+    $(_OBJ_DIR)\i386\tolower.obj \
+    $(_OBJ_DIR)\i386\toupper.obj \
+    $(_OBJ_DIR)\i386\towlower.obj \
+    $(_OBJ_DIR)\i386\towupper.obj \
+    $(_OBJ_DIR)\i386\wchtodig.obj \
+    $(_OBJ_DIR)\i386\wcstod.obj \
+    $(_OBJ_DIR)\i386\wcstol.obj \
+    $(_OBJ_DIR)\i386\wcstoq.obj \
+    $(_OBJ_DIR)\i386\wcstombs.obj \
+    $(_OBJ_DIR)\i386\wctomb.obj \
+    $(_OBJ_DIR)\i386\wtof.obj \
+    $(_OBJ_DIR)\i386\wtox.obj \
+    $(_OBJ_DIR)\i386\xtoa.obj \
+    $(_OBJ_DIR)\i386\xtow.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\_ctype.obj \
+    $(_OBJ_DIR)\ia64\_fptostr.obj \
+    $(_OBJ_DIR)\ia64\_mbslen.obj \
+    $(_OBJ_DIR)\ia64\_wctype.obj \
+    $(_OBJ_DIR)\ia64\atof.obj \
+    $(_OBJ_DIR)\ia64\atox.obj \
+    $(_OBJ_DIR)\ia64\fcvt.obj \
+    $(_OBJ_DIR)\ia64\gcvt.obj \
+    $(_OBJ_DIR)\ia64\isctype.obj \
+    $(_OBJ_DIR)\ia64\iswctype.obj \
+    $(_OBJ_DIR)\ia64\mblen.obj \
+    $(_OBJ_DIR)\ia64\mbstowcs.obj \
+    $(_OBJ_DIR)\ia64\mbtowc.obj \
+    $(_OBJ_DIR)\ia64\strtod.obj \
+    $(_OBJ_DIR)\ia64\strtol.obj \
+    $(_OBJ_DIR)\ia64\strtoq.obj \
+    $(_OBJ_DIR)\ia64\swab.obj \
+    $(_OBJ_DIR)\ia64\tolower.obj \
+    $(_OBJ_DIR)\ia64\toupper.obj \
+    $(_OBJ_DIR)\ia64\towlower.obj \
+    $(_OBJ_DIR)\ia64\towupper.obj \
+    $(_OBJ_DIR)\ia64\wchtodig.obj \
+    $(_OBJ_DIR)\ia64\wcstod.obj \
+    $(_OBJ_DIR)\ia64\wcstol.obj \
+    $(_OBJ_DIR)\ia64\wcstoq.obj \
+    $(_OBJ_DIR)\ia64\wcstombs.obj \
+    $(_OBJ_DIR)\ia64\wctomb.obj \
+    $(_OBJ_DIR)\ia64\wtof.obj \
+    $(_OBJ_DIR)\ia64\wtox.obj \
+    $(_OBJ_DIR)\ia64\xtoa.obj \
+    $(_OBJ_DIR)\ia64\xtow.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\_ctype.obj \
+    $(_OBJ_DIR)\amd64\_fptostr.obj \
+    $(_OBJ_DIR)\amd64\_mbslen.obj \
+    $(_OBJ_DIR)\amd64\_wctype.obj \
+    $(_OBJ_DIR)\amd64\atof.obj \
+    $(_OBJ_DIR)\amd64\atox.obj \
+    $(_OBJ_DIR)\amd64\fcvt.obj \
+    $(_OBJ_DIR)\amd64\gcvt.obj \
+    $(_OBJ_DIR)\amd64\isctype.obj \
+    $(_OBJ_DIR)\amd64\iswctype.obj \
+    $(_OBJ_DIR)\amd64\mblen.obj \
+    $(_OBJ_DIR)\amd64\mbstowcs.obj \
+    $(_OBJ_DIR)\amd64\mbtowc.obj \
+    $(_OBJ_DIR)\amd64\strtod.obj \
+    $(_OBJ_DIR)\amd64\strtol.obj \
+    $(_OBJ_DIR)\amd64\strtoq.obj \
+    $(_OBJ_DIR)\amd64\swab.obj \
+    $(_OBJ_DIR)\amd64\tolower.obj \
+    $(_OBJ_DIR)\amd64\toupper.obj \
+    $(_OBJ_DIR)\amd64\towlower.obj \
+    $(_OBJ_DIR)\amd64\towupper.obj \
+    $(_OBJ_DIR)\amd64\wchtodig.obj \
+    $(_OBJ_DIR)\amd64\wcstod.obj \
+    $(_OBJ_DIR)\amd64\wcstol.obj \
+    $(_OBJ_DIR)\amd64\wcstoq.obj \
+    $(_OBJ_DIR)\amd64\wcstombs.obj \
+    $(_OBJ_DIR)\amd64\wctomb.obj \
+    $(_OBJ_DIR)\amd64\wtof.obj \
+    $(_OBJ_DIR)\amd64\wtox.obj \
+    $(_OBJ_DIR)\amd64\xtoa.obj \
+    $(_OBJ_DIR)\amd64\xtow.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\_ctype.obj \
+    $(_OBJ_DIR)\arm\_fptostr.obj \
+    $(_OBJ_DIR)\arm\_mbslen.obj \
+    $(_OBJ_DIR)\arm\_wctype.obj \
+    $(_OBJ_DIR)\arm\atof.obj \
+    $(_OBJ_DIR)\arm\atox.obj \
+    $(_OBJ_DIR)\arm\fcvt.obj \
+    $(_OBJ_DIR)\arm\gcvt.obj \
+    $(_OBJ_DIR)\arm\isctype.obj \
+    $(_OBJ_DIR)\arm\iswctype.obj \
+    $(_OBJ_DIR)\arm\mblen.obj \
+    $(_OBJ_DIR)\arm\mbstowcs.obj \
+    $(_OBJ_DIR)\arm\mbtowc.obj \
+    $(_OBJ_DIR)\arm\strtod.obj \
+    $(_OBJ_DIR)\arm\strtol.obj \
+    $(_OBJ_DIR)\arm\strtoq.obj \
+    $(_OBJ_DIR)\arm\swab.obj \
+    $(_OBJ_DIR)\arm\tolower.obj \
+    $(_OBJ_DIR)\arm\toupper.obj \
+    $(_OBJ_DIR)\arm\towlower.obj \
+    $(_OBJ_DIR)\arm\towupper.obj \
+    $(_OBJ_DIR)\arm\wchtodig.obj \
+    $(_OBJ_DIR)\arm\wcstod.obj \
+    $(_OBJ_DIR)\arm\wcstol.obj \
+    $(_OBJ_DIR)\arm\wcstoq.obj \
+    $(_OBJ_DIR)\arm\wcstombs.obj \
+    $(_OBJ_DIR)\arm\wctomb.obj \
+    $(_OBJ_DIR)\arm\wtof.obj \
+    $(_OBJ_DIR)\arm\wtox.obj \
+    $(_OBJ_DIR)\arm\xtoa.obj \
+    $(_OBJ_DIR)\arm\xtow.obj
+
+PASS0_ARM_OBJECTS=
+

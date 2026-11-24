@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\prefix.obj \
+    $(_OBJ_DIR)\i386\name_table.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\prefix.obj \
+    $(_OBJ_DIR)\ia64\name_table.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\prefix.obj \
+    $(_OBJ_DIR)\amd64\name_table.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\prefix.obj \
+    $(_OBJ_DIR)\arm\name_table.obj
+
+PASS0_ARM_OBJECTS=
+

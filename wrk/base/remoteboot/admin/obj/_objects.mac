@@ -1,0 +1,116 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\resource.res \
+    $(_OBJ_DIR)\i386\addwiz.obj \
+    $(_OBJ_DIR)\i386\ccomputr.obj \
+    $(_OBJ_DIR)\i386\cenumsif.obj \
+    $(_OBJ_DIR)\i386\cfactory.obj \
+    $(_OBJ_DIR)\i386\client.obj \
+    $(_OBJ_DIR)\i386\cservice.obj \
+    $(_OBJ_DIR)\i386\dpguidqy.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\dll.obj \
+    $(_OBJ_DIR)\i386\guids.obj \
+    $(_OBJ_DIR)\i386\hostdlg.obj \
+    $(_OBJ_DIR)\i386\imos.obj \
+    $(_OBJ_DIR)\i386\mangdlg.obj \
+    $(_OBJ_DIR)\i386\newclnts.obj \
+    $(_OBJ_DIR)\i386\newcmptr.obj \
+    $(_OBJ_DIR)\i386\qi.obj \
+    $(_OBJ_DIR)\i386\querypb.obj \
+    $(_OBJ_DIR)\i386\register.obj \
+    $(_OBJ_DIR)\i386\server.obj \
+    $(_OBJ_DIR)\i386\serverqy.obj \
+    $(_OBJ_DIR)\i386\sifprop.obj \
+    $(_OBJ_DIR)\i386\tools.obj \
+    $(_OBJ_DIR)\i386\utils.obj \
+    $(_OBJ_DIR)\i386\varconv.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\resource.res \
+    $(_OBJ_DIR)\ia64\addwiz.obj \
+    $(_OBJ_DIR)\ia64\ccomputr.obj \
+    $(_OBJ_DIR)\ia64\cenumsif.obj \
+    $(_OBJ_DIR)\ia64\cfactory.obj \
+    $(_OBJ_DIR)\ia64\client.obj \
+    $(_OBJ_DIR)\ia64\cservice.obj \
+    $(_OBJ_DIR)\ia64\dpguidqy.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\dll.obj \
+    $(_OBJ_DIR)\ia64\guids.obj \
+    $(_OBJ_DIR)\ia64\hostdlg.obj \
+    $(_OBJ_DIR)\ia64\imos.obj \
+    $(_OBJ_DIR)\ia64\mangdlg.obj \
+    $(_OBJ_DIR)\ia64\newclnts.obj \
+    $(_OBJ_DIR)\ia64\newcmptr.obj \
+    $(_OBJ_DIR)\ia64\qi.obj \
+    $(_OBJ_DIR)\ia64\querypb.obj \
+    $(_OBJ_DIR)\ia64\register.obj \
+    $(_OBJ_DIR)\ia64\server.obj \
+    $(_OBJ_DIR)\ia64\serverqy.obj \
+    $(_OBJ_DIR)\ia64\sifprop.obj \
+    $(_OBJ_DIR)\ia64\tools.obj \
+    $(_OBJ_DIR)\ia64\utils.obj \
+    $(_OBJ_DIR)\ia64\varconv.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\resource.res \
+    $(_OBJ_DIR)\amd64\addwiz.obj \
+    $(_OBJ_DIR)\amd64\ccomputr.obj \
+    $(_OBJ_DIR)\amd64\cenumsif.obj \
+    $(_OBJ_DIR)\amd64\cfactory.obj \
+    $(_OBJ_DIR)\amd64\client.obj \
+    $(_OBJ_DIR)\amd64\cservice.obj \
+    $(_OBJ_DIR)\amd64\dpguidqy.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\dll.obj \
+    $(_OBJ_DIR)\amd64\guids.obj \
+    $(_OBJ_DIR)\amd64\hostdlg.obj \
+    $(_OBJ_DIR)\amd64\imos.obj \
+    $(_OBJ_DIR)\amd64\mangdlg.obj \
+    $(_OBJ_DIR)\amd64\newclnts.obj \
+    $(_OBJ_DIR)\amd64\newcmptr.obj \
+    $(_OBJ_DIR)\amd64\qi.obj \
+    $(_OBJ_DIR)\amd64\querypb.obj \
+    $(_OBJ_DIR)\amd64\register.obj \
+    $(_OBJ_DIR)\amd64\server.obj \
+    $(_OBJ_DIR)\amd64\serverqy.obj \
+    $(_OBJ_DIR)\amd64\sifprop.obj \
+    $(_OBJ_DIR)\amd64\tools.obj \
+    $(_OBJ_DIR)\amd64\utils.obj \
+    $(_OBJ_DIR)\amd64\varconv.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\resource.res \
+    $(_OBJ_DIR)\arm\addwiz.obj \
+    $(_OBJ_DIR)\arm\ccomputr.obj \
+    $(_OBJ_DIR)\arm\cenumsif.obj \
+    $(_OBJ_DIR)\arm\cfactory.obj \
+    $(_OBJ_DIR)\arm\client.obj \
+    $(_OBJ_DIR)\arm\cservice.obj \
+    $(_OBJ_DIR)\arm\dpguidqy.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\dll.obj \
+    $(_OBJ_DIR)\arm\guids.obj \
+    $(_OBJ_DIR)\arm\hostdlg.obj \
+    $(_OBJ_DIR)\arm\imos.obj \
+    $(_OBJ_DIR)\arm\mangdlg.obj \
+    $(_OBJ_DIR)\arm\newclnts.obj \
+    $(_OBJ_DIR)\arm\newcmptr.obj \
+    $(_OBJ_DIR)\arm\qi.obj \
+    $(_OBJ_DIR)\arm\querypb.obj \
+    $(_OBJ_DIR)\arm\register.obj \
+    $(_OBJ_DIR)\arm\server.obj \
+    $(_OBJ_DIR)\arm\serverqy.obj \
+    $(_OBJ_DIR)\arm\sifprop.obj \
+    $(_OBJ_DIR)\arm\tools.obj \
+    $(_OBJ_DIR)\arm\utils.obj \
+    $(_OBJ_DIR)\arm\varconv.obj
+
+PASS0_ARM_OBJECTS=
+

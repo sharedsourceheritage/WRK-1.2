@@ -1,0 +1,168 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\untfs.res \
+    $(_OBJ_DIR)\i386\largemcb.obj \
+    $(_OBJ_DIR)\i386\attrcol.obj \
+    $(_OBJ_DIR)\i386\attrdef.obj \
+    $(_OBJ_DIR)\i386\attrib.obj \
+    $(_OBJ_DIR)\i386\attrlist.obj \
+    $(_OBJ_DIR)\i386\attrrec.obj \
+    $(_OBJ_DIR)\i386\badfile.obj \
+    $(_OBJ_DIR)\i386\bitfrs.obj \
+    $(_OBJ_DIR)\i386\bootfile.obj \
+    $(_OBJ_DIR)\i386\clusrun.obj \
+    $(_OBJ_DIR)\i386\downgrad.obj \
+    $(_OBJ_DIR)\i386\entry.obj \
+    $(_OBJ_DIR)\i386\extents.obj \
+    $(_OBJ_DIR)\i386\format.obj \
+    $(_OBJ_DIR)\i386\frs.obj \
+    $(_OBJ_DIR)\i386\frsstruc.obj \
+    $(_OBJ_DIR)\i386\hackwc.obj \
+    $(_OBJ_DIR)\i386\indxbuff.obj \
+    $(_OBJ_DIR)\i386\indxchk.obj \
+    $(_OBJ_DIR)\i386\indxroot.obj \
+    $(_OBJ_DIR)\i386\indxtree.obj \
+    $(_OBJ_DIR)\i386\logfile.obj \
+    $(_OBJ_DIR)\i386\mft.obj \
+    $(_OBJ_DIR)\i386\mftfile.obj \
+    $(_OBJ_DIR)\i386\mftinfo.obj \
+    $(_OBJ_DIR)\i386\mftref.obj \
+    $(_OBJ_DIR)\i386\ntfsbit.obj \
+    $(_OBJ_DIR)\i386\ntfschk.obj \
+    $(_OBJ_DIR)\i386\ntfssa.obj \
+    $(_OBJ_DIR)\i386\ntfsvol.obj \
+    $(_OBJ_DIR)\i386\rafile.obj \
+    $(_OBJ_DIR)\i386\rasd.obj \
+    $(_OBJ_DIR)\i386\sdchk.obj \
+    $(_OBJ_DIR)\i386\untfs.obj \
+    $(_OBJ_DIR)\i386\upcase.obj \
+    $(_OBJ_DIR)\i386\upfile.obj \
+    $(_OBJ_DIR)\i386\usnjrnl.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\untfs.res \
+    $(_OBJ_DIR)\ia64\largemcb.obj \
+    $(_OBJ_DIR)\ia64\attrcol.obj \
+    $(_OBJ_DIR)\ia64\attrdef.obj \
+    $(_OBJ_DIR)\ia64\attrib.obj \
+    $(_OBJ_DIR)\ia64\attrlist.obj \
+    $(_OBJ_DIR)\ia64\attrrec.obj \
+    $(_OBJ_DIR)\ia64\badfile.obj \
+    $(_OBJ_DIR)\ia64\bitfrs.obj \
+    $(_OBJ_DIR)\ia64\bootfile.obj \
+    $(_OBJ_DIR)\ia64\clusrun.obj \
+    $(_OBJ_DIR)\ia64\downgrad.obj \
+    $(_OBJ_DIR)\ia64\entry.obj \
+    $(_OBJ_DIR)\ia64\extents.obj \
+    $(_OBJ_DIR)\ia64\format.obj \
+    $(_OBJ_DIR)\ia64\frs.obj \
+    $(_OBJ_DIR)\ia64\frsstruc.obj \
+    $(_OBJ_DIR)\ia64\hackwc.obj \
+    $(_OBJ_DIR)\ia64\indxbuff.obj \
+    $(_OBJ_DIR)\ia64\indxchk.obj \
+    $(_OBJ_DIR)\ia64\indxroot.obj \
+    $(_OBJ_DIR)\ia64\indxtree.obj \
+    $(_OBJ_DIR)\ia64\logfile.obj \
+    $(_OBJ_DIR)\ia64\mft.obj \
+    $(_OBJ_DIR)\ia64\mftfile.obj \
+    $(_OBJ_DIR)\ia64\mftinfo.obj \
+    $(_OBJ_DIR)\ia64\mftref.obj \
+    $(_OBJ_DIR)\ia64\ntfsbit.obj \
+    $(_OBJ_DIR)\ia64\ntfschk.obj \
+    $(_OBJ_DIR)\ia64\ntfssa.obj \
+    $(_OBJ_DIR)\ia64\ntfsvol.obj \
+    $(_OBJ_DIR)\ia64\rafile.obj \
+    $(_OBJ_DIR)\ia64\rasd.obj \
+    $(_OBJ_DIR)\ia64\sdchk.obj \
+    $(_OBJ_DIR)\ia64\untfs.obj \
+    $(_OBJ_DIR)\ia64\upcase.obj \
+    $(_OBJ_DIR)\ia64\upfile.obj \
+    $(_OBJ_DIR)\ia64\usnjrnl.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\untfs.res \
+    $(_OBJ_DIR)\amd64\largemcb.obj \
+    $(_OBJ_DIR)\amd64\attrcol.obj \
+    $(_OBJ_DIR)\amd64\attrdef.obj \
+    $(_OBJ_DIR)\amd64\attrib.obj \
+    $(_OBJ_DIR)\amd64\attrlist.obj \
+    $(_OBJ_DIR)\amd64\attrrec.obj \
+    $(_OBJ_DIR)\amd64\badfile.obj \
+    $(_OBJ_DIR)\amd64\bitfrs.obj \
+    $(_OBJ_DIR)\amd64\bootfile.obj \
+    $(_OBJ_DIR)\amd64\clusrun.obj \
+    $(_OBJ_DIR)\amd64\downgrad.obj \
+    $(_OBJ_DIR)\amd64\entry.obj \
+    $(_OBJ_DIR)\amd64\extents.obj \
+    $(_OBJ_DIR)\amd64\format.obj \
+    $(_OBJ_DIR)\amd64\frs.obj \
+    $(_OBJ_DIR)\amd64\frsstruc.obj \
+    $(_OBJ_DIR)\amd64\hackwc.obj \
+    $(_OBJ_DIR)\amd64\indxbuff.obj \
+    $(_OBJ_DIR)\amd64\indxchk.obj \
+    $(_OBJ_DIR)\amd64\indxroot.obj \
+    $(_OBJ_DIR)\amd64\indxtree.obj \
+    $(_OBJ_DIR)\amd64\logfile.obj \
+    $(_OBJ_DIR)\amd64\mft.obj \
+    $(_OBJ_DIR)\amd64\mftfile.obj \
+    $(_OBJ_DIR)\amd64\mftinfo.obj \
+    $(_OBJ_DIR)\amd64\mftref.obj \
+    $(_OBJ_DIR)\amd64\ntfsbit.obj \
+    $(_OBJ_DIR)\amd64\ntfschk.obj \
+    $(_OBJ_DIR)\amd64\ntfssa.obj \
+    $(_OBJ_DIR)\amd64\ntfsvol.obj \
+    $(_OBJ_DIR)\amd64\rafile.obj \
+    $(_OBJ_DIR)\amd64\rasd.obj \
+    $(_OBJ_DIR)\amd64\sdchk.obj \
+    $(_OBJ_DIR)\amd64\untfs.obj \
+    $(_OBJ_DIR)\amd64\upcase.obj \
+    $(_OBJ_DIR)\amd64\upfile.obj \
+    $(_OBJ_DIR)\amd64\usnjrnl.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\untfs.res \
+    $(_OBJ_DIR)\arm\largemcb.obj \
+    $(_OBJ_DIR)\arm\attrcol.obj \
+    $(_OBJ_DIR)\arm\attrdef.obj \
+    $(_OBJ_DIR)\arm\attrib.obj \
+    $(_OBJ_DIR)\arm\attrlist.obj \
+    $(_OBJ_DIR)\arm\attrrec.obj \
+    $(_OBJ_DIR)\arm\badfile.obj \
+    $(_OBJ_DIR)\arm\bitfrs.obj \
+    $(_OBJ_DIR)\arm\bootfile.obj \
+    $(_OBJ_DIR)\arm\clusrun.obj \
+    $(_OBJ_DIR)\arm\downgrad.obj \
+    $(_OBJ_DIR)\arm\entry.obj \
+    $(_OBJ_DIR)\arm\extents.obj \
+    $(_OBJ_DIR)\arm\format.obj \
+    $(_OBJ_DIR)\arm\frs.obj \
+    $(_OBJ_DIR)\arm\frsstruc.obj \
+    $(_OBJ_DIR)\arm\hackwc.obj \
+    $(_OBJ_DIR)\arm\indxbuff.obj \
+    $(_OBJ_DIR)\arm\indxchk.obj \
+    $(_OBJ_DIR)\arm\indxroot.obj \
+    $(_OBJ_DIR)\arm\indxtree.obj \
+    $(_OBJ_DIR)\arm\logfile.obj \
+    $(_OBJ_DIR)\arm\mft.obj \
+    $(_OBJ_DIR)\arm\mftfile.obj \
+    $(_OBJ_DIR)\arm\mftinfo.obj \
+    $(_OBJ_DIR)\arm\mftref.obj \
+    $(_OBJ_DIR)\arm\ntfsbit.obj \
+    $(_OBJ_DIR)\arm\ntfschk.obj \
+    $(_OBJ_DIR)\arm\ntfssa.obj \
+    $(_OBJ_DIR)\arm\ntfsvol.obj \
+    $(_OBJ_DIR)\arm\rafile.obj \
+    $(_OBJ_DIR)\arm\rasd.obj \
+    $(_OBJ_DIR)\arm\sdchk.obj \
+    $(_OBJ_DIR)\arm\untfs.obj \
+    $(_OBJ_DIR)\arm\upcase.obj \
+    $(_OBJ_DIR)\arm\upfile.obj \
+    $(_OBJ_DIR)\arm\usnjrnl.obj
+
+PASS0_ARM_OBJECTS=
+

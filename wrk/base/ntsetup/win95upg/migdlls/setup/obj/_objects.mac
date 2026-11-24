@@ -1,0 +1,25 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\migrate.res \
+    $(_OBJ_DIR)\i386\migrate.obj \
+    $(_OBJ_DIR)\i386\kkimgpro.obj \
+    $(_OBJ_DIR)\i386\office.obj \
+    $(_OBJ_DIR)\i386\photosii.obj \
+    $(_OBJ_DIR)\i386\plus95.obj \
+    $(_OBJ_DIR)\i386\coreldr8.obj \
+    $(_OBJ_DIR)\i386\winmine.obj \
+    $(_OBJ_DIR)\i386\winfax.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sisbkup.res \
+    $(_OBJ_DIR)\i386\sisbkup.obj \
+    $(_OBJ_DIR)\i386\pool.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sisbkup.res \
+    $(_OBJ_DIR)\ia64\sisbkup.obj \
+    $(_OBJ_DIR)\ia64\pool.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sisbkup.res \
+    $(_OBJ_DIR)\amd64\sisbkup.obj \
+    $(_OBJ_DIR)\amd64\pool.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sisbkup.res \
+    $(_OBJ_DIR)\arm\sisbkup.obj \
+    $(_OBJ_DIR)\arm\pool.obj
+
+PASS0_ARM_OBJECTS=
+

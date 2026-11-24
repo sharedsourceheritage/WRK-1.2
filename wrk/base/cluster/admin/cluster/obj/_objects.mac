@@ -1,0 +1,116 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cluster.res \
+    $(_OBJ_DIR)\i386\cluscfg.obj \
+    $(_OBJ_DIR)\i386\cluscmd.obj \
+    $(_OBJ_DIR)\i386\cluster.obj \
+    $(_OBJ_DIR)\i386\cmdline.obj \
+    $(_OBJ_DIR)\i386\encryptedbstrstub.obj \
+    $(_OBJ_DIR)\i386\getcomputernamestub.obj \
+    $(_OBJ_DIR)\i386\intrfc.obj \
+    $(_OBJ_DIR)\i386\loadstringstub.obj \
+    $(_OBJ_DIR)\i386\modcmd.obj \
+    $(_OBJ_DIR)\i386\nameutilstub.obj \
+    $(_OBJ_DIR)\i386\nodecmd.obj \
+    $(_OBJ_DIR)\i386\passwordcmd.obj \
+    $(_OBJ_DIR)\i386\rename.obj \
+    $(_OBJ_DIR)\i386\rescmd.obj \
+    $(_OBJ_DIR)\i386\resumb.obj \
+    $(_OBJ_DIR)\i386\netcmd.obj \
+    $(_OBJ_DIR)\i386\neticmd.obj \
+    $(_OBJ_DIR)\i386\resgcmd.obj \
+    $(_OBJ_DIR)\i386\restcmd.obj \
+    $(_OBJ_DIR)\i386\token.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\proplsts.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\cmderror.h \
+    $(MC_SOURCEDIR)\cmderror.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cluster.res \
+    $(_OBJ_DIR)\ia64\cluscfg.obj \
+    $(_OBJ_DIR)\ia64\cluscmd.obj \
+    $(_OBJ_DIR)\ia64\cluster.obj \
+    $(_OBJ_DIR)\ia64\cmdline.obj \
+    $(_OBJ_DIR)\ia64\encryptedbstrstub.obj \
+    $(_OBJ_DIR)\ia64\getcomputernamestub.obj \
+    $(_OBJ_DIR)\ia64\intrfc.obj \
+    $(_OBJ_DIR)\ia64\loadstringstub.obj \
+    $(_OBJ_DIR)\ia64\modcmd.obj \
+    $(_OBJ_DIR)\ia64\nameutilstub.obj \
+    $(_OBJ_DIR)\ia64\nodecmd.obj \
+    $(_OBJ_DIR)\ia64\passwordcmd.obj \
+    $(_OBJ_DIR)\ia64\rename.obj \
+    $(_OBJ_DIR)\ia64\rescmd.obj \
+    $(_OBJ_DIR)\ia64\resumb.obj \
+    $(_OBJ_DIR)\ia64\netcmd.obj \
+    $(_OBJ_DIR)\ia64\neticmd.obj \
+    $(_OBJ_DIR)\ia64\resgcmd.obj \
+    $(_OBJ_DIR)\ia64\restcmd.obj \
+    $(_OBJ_DIR)\ia64\token.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\proplsts.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\cmderror.h \
+    $(MC_SOURCEDIR)\cmderror.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cluster.res \
+    $(_OBJ_DIR)\amd64\cluscfg.obj \
+    $(_OBJ_DIR)\amd64\cluscmd.obj \
+    $(_OBJ_DIR)\amd64\cluster.obj \
+    $(_OBJ_DIR)\amd64\cmdline.obj \
+    $(_OBJ_DIR)\amd64\encryptedbstrstub.obj \
+    $(_OBJ_DIR)\amd64\getcomputernamestub.obj \
+    $(_OBJ_DIR)\amd64\intrfc.obj \
+    $(_OBJ_DIR)\amd64\loadstringstub.obj \
+    $(_OBJ_DIR)\amd64\modcmd.obj \
+    $(_OBJ_DIR)\amd64\nameutilstub.obj \
+    $(_OBJ_DIR)\amd64\nodecmd.obj \
+    $(_OBJ_DIR)\amd64\passwordcmd.obj \
+    $(_OBJ_DIR)\amd64\rename.obj \
+    $(_OBJ_DIR)\amd64\rescmd.obj \
+    $(_OBJ_DIR)\amd64\resumb.obj \
+    $(_OBJ_DIR)\amd64\netcmd.obj \
+    $(_OBJ_DIR)\amd64\neticmd.obj \
+    $(_OBJ_DIR)\amd64\resgcmd.obj \
+    $(_OBJ_DIR)\amd64\restcmd.obj \
+    $(_OBJ_DIR)\amd64\token.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\proplsts.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\cmderror.h \
+    $(MC_SOURCEDIR)\cmderror.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cluster.res \
+    $(_OBJ_DIR)\arm\cluscfg.obj \
+    $(_OBJ_DIR)\arm\cluscmd.obj \
+    $(_OBJ_DIR)\arm\cluster.obj \
+    $(_OBJ_DIR)\arm\cmdline.obj \
+    $(_OBJ_DIR)\arm\encryptedbstrstub.obj \
+    $(_OBJ_DIR)\arm\getcomputernamestub.obj \
+    $(_OBJ_DIR)\arm\intrfc.obj \
+    $(_OBJ_DIR)\arm\loadstringstub.obj \
+    $(_OBJ_DIR)\arm\modcmd.obj \
+    $(_OBJ_DIR)\arm\nameutilstub.obj \
+    $(_OBJ_DIR)\arm\nodecmd.obj \
+    $(_OBJ_DIR)\arm\passwordcmd.obj \
+    $(_OBJ_DIR)\arm\rename.obj \
+    $(_OBJ_DIR)\arm\rescmd.obj \
+    $(_OBJ_DIR)\arm\resumb.obj \
+    $(_OBJ_DIR)\arm\netcmd.obj \
+    $(_OBJ_DIR)\arm\neticmd.obj \
+    $(_OBJ_DIR)\arm\resgcmd.obj \
+    $(_OBJ_DIR)\arm\restcmd.obj \
+    $(_OBJ_DIR)\arm\token.obj \
+    $(_OBJ_DIR)\arm\util.obj \
+    $(_OBJ_DIR)\arm\proplsts.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\cmderror.h \
+    $(MC_SOURCEDIR)\cmderror.rc
+

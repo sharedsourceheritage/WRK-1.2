@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\rpver.res \
+    $(_OBJ_DIR)\i386\rpfilter.obj \
+    $(_OBJ_DIR)\i386\rpfilfun.obj \
+    $(_OBJ_DIR)\i386\rpsec.obj \
+    $(_OBJ_DIR)\i386\rpzw.obj \
+    $(_OBJ_DIR)\i386\rpcache.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\rpfilter.h \
+    $(MC_SOURCEDIR)\rpfilter.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\rpver.res \
+    $(_OBJ_DIR)\ia64\rpfilter.obj \
+    $(_OBJ_DIR)\ia64\rpfilfun.obj \
+    $(_OBJ_DIR)\ia64\rpsec.obj \
+    $(_OBJ_DIR)\ia64\rpzw.obj \
+    $(_OBJ_DIR)\ia64\rpcache.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\rpfilter.h \
+    $(MC_SOURCEDIR)\rpfilter.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\rpver.res \
+    $(_OBJ_DIR)\amd64\rpfilter.obj \
+    $(_OBJ_DIR)\amd64\rpfilfun.obj \
+    $(_OBJ_DIR)\amd64\rpsec.obj \
+    $(_OBJ_DIR)\amd64\rpzw.obj \
+    $(_OBJ_DIR)\amd64\rpcache.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\rpfilter.h \
+    $(MC_SOURCEDIR)\rpfilter.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\rpver.res \
+    $(_OBJ_DIR)\arm\rpfilter.obj \
+    $(_OBJ_DIR)\arm\rpfilfun.obj \
+    $(_OBJ_DIR)\arm\rpsec.obj \
+    $(_OBJ_DIR)\arm\rpzw.obj \
+    $(_OBJ_DIR)\arm\rpcache.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\rpfilter.h \
+    $(MC_SOURCEDIR)\rpfilter.rc
+

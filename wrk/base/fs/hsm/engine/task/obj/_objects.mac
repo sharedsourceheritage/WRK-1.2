@@ -1,0 +1,76 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\task.res \
+    $(_OBJ_DIR)\i386\stdafx.obj \
+    $(_OBJ_DIR)\i386\task.obj \
+    $(_OBJ_DIR)\i386\tskmgr.obj \
+    $(_OBJ_DIR)\i386\hsmworkq.obj \
+    $(_OBJ_DIR)\i386\hsmworki.obj \
+    $(_OBJ_DIR)\i386\hsmreclq.obj \
+    $(_OBJ_DIR)\i386\hsmrecli.obj \
+    $(_OBJ_DIR)\i386\tsktrace.obj \
+    $(_OBJ_DIR)\i386\baghole.obj \
+    $(_OBJ_DIR)\i386\segrec.obj \
+    $(_OBJ_DIR)\i386\segdb.obj \
+    $(_OBJ_DIR)\i386\baginfo.obj \
+    $(_OBJ_DIR)\i386\medinfo.obj \
+    $(_OBJ_DIR)\i386\volasgn.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\task.res \
+    $(_OBJ_DIR)\ia64\stdafx.obj \
+    $(_OBJ_DIR)\ia64\task.obj \
+    $(_OBJ_DIR)\ia64\tskmgr.obj \
+    $(_OBJ_DIR)\ia64\hsmworkq.obj \
+    $(_OBJ_DIR)\ia64\hsmworki.obj \
+    $(_OBJ_DIR)\ia64\hsmreclq.obj \
+    $(_OBJ_DIR)\ia64\hsmrecli.obj \
+    $(_OBJ_DIR)\ia64\tsktrace.obj \
+    $(_OBJ_DIR)\ia64\baghole.obj \
+    $(_OBJ_DIR)\ia64\segrec.obj \
+    $(_OBJ_DIR)\ia64\segdb.obj \
+    $(_OBJ_DIR)\ia64\baginfo.obj \
+    $(_OBJ_DIR)\ia64\medinfo.obj \
+    $(_OBJ_DIR)\ia64\volasgn.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\task.res \
+    $(_OBJ_DIR)\amd64\stdafx.obj \
+    $(_OBJ_DIR)\amd64\task.obj \
+    $(_OBJ_DIR)\amd64\tskmgr.obj \
+    $(_OBJ_DIR)\amd64\hsmworkq.obj \
+    $(_OBJ_DIR)\amd64\hsmworki.obj \
+    $(_OBJ_DIR)\amd64\hsmreclq.obj \
+    $(_OBJ_DIR)\amd64\hsmrecli.obj \
+    $(_OBJ_DIR)\amd64\tsktrace.obj \
+    $(_OBJ_DIR)\amd64\baghole.obj \
+    $(_OBJ_DIR)\amd64\segrec.obj \
+    $(_OBJ_DIR)\amd64\segdb.obj \
+    $(_OBJ_DIR)\amd64\baginfo.obj \
+    $(_OBJ_DIR)\amd64\medinfo.obj \
+    $(_OBJ_DIR)\amd64\volasgn.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\task.res \
+    $(_OBJ_DIR)\arm\stdafx.obj \
+    $(_OBJ_DIR)\arm\task.obj \
+    $(_OBJ_DIR)\arm\tskmgr.obj \
+    $(_OBJ_DIR)\arm\hsmworkq.obj \
+    $(_OBJ_DIR)\arm\hsmworki.obj \
+    $(_OBJ_DIR)\arm\hsmreclq.obj \
+    $(_OBJ_DIR)\arm\hsmrecli.obj \
+    $(_OBJ_DIR)\arm\tsktrace.obj \
+    $(_OBJ_DIR)\arm\baghole.obj \
+    $(_OBJ_DIR)\arm\segrec.obj \
+    $(_OBJ_DIR)\arm\segdb.obj \
+    $(_OBJ_DIR)\arm\baginfo.obj \
+    $(_OBJ_DIR)\arm\medinfo.obj \
+    $(_OBJ_DIR)\arm\volasgn.obj
+
+PASS0_ARM_OBJECTS=
+

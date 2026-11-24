@@ -1,0 +1,112 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\fmapi.obj \
+    $(_OBJ_DIR)\i386\fmgum.obj \
+    $(_OBJ_DIR)\i386\fminit.obj \
+    $(_OBJ_DIR)\i386\fmclient.obj \
+    $(_OBJ_DIR)\i386\monitor.obj \
+    $(_OBJ_DIR)\i386\resfail.obj \
+    $(_OBJ_DIR)\i386\resource.obj \
+    $(_OBJ_DIR)\i386\reslist.obj \
+    $(_OBJ_DIR)\i386\restype.obj \
+    $(_OBJ_DIR)\i386\rmnotify.obj \
+    $(_OBJ_DIR)\i386\group.obj \
+    $(_OBJ_DIR)\i386\fmreg.obj \
+    $(_OBJ_DIR)\i386\fmevent.obj \
+    $(_OBJ_DIR)\i386\grouparb.obj \
+    $(_OBJ_DIR)\i386\recv.obj \
+    $(_OBJ_DIR)\i386\resmon.obj \
+    $(_OBJ_DIR)\i386\rpcbind.obj \
+    $(_OBJ_DIR)\i386\tree.obj \
+    $(_OBJ_DIR)\i386\ioctl.obj \
+    $(_OBJ_DIR)\i386\fmprop.obj \
+    $(_OBJ_DIR)\i386\worker.obj \
+    $(_OBJ_DIR)\i386\fmvote.obj \
+    $(_OBJ_DIR)\i386\dllupgd.obj \
+    $(_OBJ_DIR)\i386\timer.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\fmapi.obj \
+    $(_OBJ_DIR)\ia64\fmgum.obj \
+    $(_OBJ_DIR)\ia64\fminit.obj \
+    $(_OBJ_DIR)\ia64\fmclient.obj \
+    $(_OBJ_DIR)\ia64\monitor.obj \
+    $(_OBJ_DIR)\ia64\resfail.obj \
+    $(_OBJ_DIR)\ia64\resource.obj \
+    $(_OBJ_DIR)\ia64\reslist.obj \
+    $(_OBJ_DIR)\ia64\restype.obj \
+    $(_OBJ_DIR)\ia64\rmnotify.obj \
+    $(_OBJ_DIR)\ia64\group.obj \
+    $(_OBJ_DIR)\ia64\fmreg.obj \
+    $(_OBJ_DIR)\ia64\fmevent.obj \
+    $(_OBJ_DIR)\ia64\grouparb.obj \
+    $(_OBJ_DIR)\ia64\recv.obj \
+    $(_OBJ_DIR)\ia64\resmon.obj \
+    $(_OBJ_DIR)\ia64\rpcbind.obj \
+    $(_OBJ_DIR)\ia64\tree.obj \
+    $(_OBJ_DIR)\ia64\ioctl.obj \
+    $(_OBJ_DIR)\ia64\fmprop.obj \
+    $(_OBJ_DIR)\ia64\worker.obj \
+    $(_OBJ_DIR)\ia64\fmvote.obj \
+    $(_OBJ_DIR)\ia64\dllupgd.obj \
+    $(_OBJ_DIR)\ia64\timer.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\fmapi.obj \
+    $(_OBJ_DIR)\amd64\fmgum.obj \
+    $(_OBJ_DIR)\amd64\fminit.obj \
+    $(_OBJ_DIR)\amd64\fmclient.obj \
+    $(_OBJ_DIR)\amd64\monitor.obj \
+    $(_OBJ_DIR)\amd64\resfail.obj \
+    $(_OBJ_DIR)\amd64\resource.obj \
+    $(_OBJ_DIR)\amd64\reslist.obj \
+    $(_OBJ_DIR)\amd64\restype.obj \
+    $(_OBJ_DIR)\amd64\rmnotify.obj \
+    $(_OBJ_DIR)\amd64\group.obj \
+    $(_OBJ_DIR)\amd64\fmreg.obj \
+    $(_OBJ_DIR)\amd64\fmevent.obj \
+    $(_OBJ_DIR)\amd64\grouparb.obj \
+    $(_OBJ_DIR)\amd64\recv.obj \
+    $(_OBJ_DIR)\amd64\resmon.obj \
+    $(_OBJ_DIR)\amd64\rpcbind.obj \
+    $(_OBJ_DIR)\amd64\tree.obj \
+    $(_OBJ_DIR)\amd64\ioctl.obj \
+    $(_OBJ_DIR)\amd64\fmprop.obj \
+    $(_OBJ_DIR)\amd64\worker.obj \
+    $(_OBJ_DIR)\amd64\fmvote.obj \
+    $(_OBJ_DIR)\amd64\dllupgd.obj \
+    $(_OBJ_DIR)\amd64\timer.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\fmapi.obj \
+    $(_OBJ_DIR)\arm\fmgum.obj \
+    $(_OBJ_DIR)\arm\fminit.obj \
+    $(_OBJ_DIR)\arm\fmclient.obj \
+    $(_OBJ_DIR)\arm\monitor.obj \
+    $(_OBJ_DIR)\arm\resfail.obj \
+    $(_OBJ_DIR)\arm\resource.obj \
+    $(_OBJ_DIR)\arm\reslist.obj \
+    $(_OBJ_DIR)\arm\restype.obj \
+    $(_OBJ_DIR)\arm\rmnotify.obj \
+    $(_OBJ_DIR)\arm\group.obj \
+    $(_OBJ_DIR)\arm\fmreg.obj \
+    $(_OBJ_DIR)\arm\fmevent.obj \
+    $(_OBJ_DIR)\arm\grouparb.obj \
+    $(_OBJ_DIR)\arm\recv.obj \
+    $(_OBJ_DIR)\arm\resmon.obj \
+    $(_OBJ_DIR)\arm\rpcbind.obj \
+    $(_OBJ_DIR)\arm\tree.obj \
+    $(_OBJ_DIR)\arm\ioctl.obj \
+    $(_OBJ_DIR)\arm\fmprop.obj \
+    $(_OBJ_DIR)\arm\worker.obj \
+    $(_OBJ_DIR)\arm\fmvote.obj \
+    $(_OBJ_DIR)\arm\dllupgd.obj \
+    $(_OBJ_DIR)\arm\timer.obj
+
+PASS0_ARM_OBJECTS=
+

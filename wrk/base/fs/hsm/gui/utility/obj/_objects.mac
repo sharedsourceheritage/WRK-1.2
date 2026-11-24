@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\proppage.obj \
+    $(_OBJ_DIR)\i386\wizsht.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\proppage.obj \
+    $(_OBJ_DIR)\ia64\wizsht.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\proppage.obj \
+    $(_OBJ_DIR)\amd64\wizsht.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\proppage.obj \
+    $(_OBJ_DIR)\arm\wizsht.obj
+
+PASS0_ARM_OBJECTS=
+

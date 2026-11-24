@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\loadperf.res \
+    $(_OBJ_DIR)\i386\common.obj \
+    $(_OBJ_DIR)\i386\lodctr.obj \
+    $(_OBJ_DIR)\i386\unlodctr.obj \
+    $(_OBJ_DIR)\i386\dumpload.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\ldprfmsg.h \
+    $(MC_SOURCEDIR)\ldprfmsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\loadperf.res \
+    $(_OBJ_DIR)\ia64\common.obj \
+    $(_OBJ_DIR)\ia64\lodctr.obj \
+    $(_OBJ_DIR)\ia64\unlodctr.obj \
+    $(_OBJ_DIR)\ia64\dumpload.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\ldprfmsg.h \
+    $(MC_SOURCEDIR)\ldprfmsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\loadperf.res \
+    $(_OBJ_DIR)\amd64\common.obj \
+    $(_OBJ_DIR)\amd64\lodctr.obj \
+    $(_OBJ_DIR)\amd64\unlodctr.obj \
+    $(_OBJ_DIR)\amd64\dumpload.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\ldprfmsg.h \
+    $(MC_SOURCEDIR)\ldprfmsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\loadperf.res \
+    $(_OBJ_DIR)\arm\common.obj \
+    $(_OBJ_DIR)\arm\lodctr.obj \
+    $(_OBJ_DIR)\arm\unlodctr.obj \
+    $(_OBJ_DIR)\arm\dumpload.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\ldprfmsg.h \
+    $(MC_SOURCEDIR)\ldprfmsg.rc
+

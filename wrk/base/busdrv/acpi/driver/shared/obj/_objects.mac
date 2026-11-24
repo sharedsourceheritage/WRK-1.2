@@ -1,0 +1,64 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\acpictl.obj \
+    $(_OBJ_DIR)\i386\acpienbl.obj \
+    $(_OBJ_DIR)\i386\acpigpio.obj \
+    $(_OBJ_DIR)\i386\acpiinit.obj \
+    $(_OBJ_DIR)\i386\acpiio.obj \
+    $(_OBJ_DIR)\i386\acpilock.obj \
+    $(_OBJ_DIR)\i386\acpintfy.obj \
+    $(_OBJ_DIR)\i386\acpioprg.obj \
+    $(_OBJ_DIR)\i386\acpisi.obj \
+    $(_OBJ_DIR)\i386\acpiterm.obj \
+    $(_OBJ_DIR)\i386\loaddsdt.obj \
+    $(_OBJ_DIR)\i386\reg.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\acpictl.obj \
+    $(_OBJ_DIR)\ia64\acpienbl.obj \
+    $(_OBJ_DIR)\ia64\acpigpio.obj \
+    $(_OBJ_DIR)\ia64\acpiinit.obj \
+    $(_OBJ_DIR)\ia64\acpiio.obj \
+    $(_OBJ_DIR)\ia64\acpilock.obj \
+    $(_OBJ_DIR)\ia64\acpintfy.obj \
+    $(_OBJ_DIR)\ia64\acpioprg.obj \
+    $(_OBJ_DIR)\ia64\acpisi.obj \
+    $(_OBJ_DIR)\ia64\acpiterm.obj \
+    $(_OBJ_DIR)\ia64\loaddsdt.obj \
+    $(_OBJ_DIR)\ia64\reg.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\acpictl.obj \
+    $(_OBJ_DIR)\amd64\acpienbl.obj \
+    $(_OBJ_DIR)\amd64\acpigpio.obj \
+    $(_OBJ_DIR)\amd64\acpiinit.obj \
+    $(_OBJ_DIR)\amd64\acpiio.obj \
+    $(_OBJ_DIR)\amd64\acpilock.obj \
+    $(_OBJ_DIR)\amd64\acpintfy.obj \
+    $(_OBJ_DIR)\amd64\acpioprg.obj \
+    $(_OBJ_DIR)\amd64\acpisi.obj \
+    $(_OBJ_DIR)\amd64\acpiterm.obj \
+    $(_OBJ_DIR)\amd64\loaddsdt.obj \
+    $(_OBJ_DIR)\amd64\reg.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\acpictl.obj \
+    $(_OBJ_DIR)\arm\acpienbl.obj \
+    $(_OBJ_DIR)\arm\acpigpio.obj \
+    $(_OBJ_DIR)\arm\acpiinit.obj \
+    $(_OBJ_DIR)\arm\acpiio.obj \
+    $(_OBJ_DIR)\arm\acpilock.obj \
+    $(_OBJ_DIR)\arm\acpintfy.obj \
+    $(_OBJ_DIR)\arm\acpioprg.obj \
+    $(_OBJ_DIR)\arm\acpisi.obj \
+    $(_OBJ_DIR)\arm\acpiterm.obj \
+    $(_OBJ_DIR)\arm\loaddsdt.obj \
+    $(_OBJ_DIR)\arm\reg.obj
+
+PASS0_ARM_OBJECTS=
+

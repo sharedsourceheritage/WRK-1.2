@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\recab.res \
+    $(_OBJ_DIR)\i386\recab.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\recab.res \
+    $(_OBJ_DIR)\ia64\recab.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\recab.res \
+    $(_OBJ_DIR)\amd64\recab.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\recab.res \
+    $(_OBJ_DIR)\arm\recab.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\bmof.obj \
+    $(_OBJ_DIR)\i386\mrcicode.obj \
+    $(_OBJ_DIR)\i386\bmofio.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\bmof.obj \
+    $(_OBJ_DIR)\ia64\mrcicode.obj \
+    $(_OBJ_DIR)\ia64\bmofio.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\bmof.obj \
+    $(_OBJ_DIR)\amd64\mrcicode.obj \
+    $(_OBJ_DIR)\amd64\bmofio.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\bmof.obj \
+    $(_OBJ_DIR)\arm\mrcicode.obj \
+    $(_OBJ_DIR)\arm\bmofio.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\smbbatt.res \
+    $(_OBJ_DIR)\i386\smbbatt.obj \
+    $(_OBJ_DIR)\i386\smbmisc.obj \
+    $(_OBJ_DIR)\i386\pnppower.obj \
+    $(_OBJ_DIR)\i386\smbwmi.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\smbbatt.res \
+    $(_OBJ_DIR)\ia64\smbbatt.obj \
+    $(_OBJ_DIR)\ia64\smbmisc.obj \
+    $(_OBJ_DIR)\ia64\pnppower.obj \
+    $(_OBJ_DIR)\ia64\smbwmi.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\smbbatt.res \
+    $(_OBJ_DIR)\amd64\smbbatt.obj \
+    $(_OBJ_DIR)\amd64\smbmisc.obj \
+    $(_OBJ_DIR)\amd64\pnppower.obj \
+    $(_OBJ_DIR)\amd64\smbwmi.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\smbbatt.res \
+    $(_OBJ_DIR)\arm\smbbatt.obj \
+    $(_OBJ_DIR)\arm\smbmisc.obj \
+    $(_OBJ_DIR)\arm\pnppower.obj \
+    $(_OBJ_DIR)\arm\smbwmi.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,22 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\pperf.res \
+    $(_OBJ_DIR)\i386\pperf.obj \
+    $(_OBJ_DIR)\i386\draw.obj \
+    $(_OBJ_DIR)\i386\calc.obj \
+    $(_OBJ_DIR)\i386\calcperf.obj \
+    $(_OBJ_DIR)\i386\thunk.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

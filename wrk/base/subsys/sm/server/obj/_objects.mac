@@ -1,0 +1,64 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\smss.res \
+    $(_OBJ_DIR)\i386\dbgloop.obj \
+    $(_OBJ_DIR)\i386\pagefile.obj \
+    $(_OBJ_DIR)\i386\smcrash.obj \
+    $(_OBJ_DIR)\i386\sminit.obj \
+    $(_OBJ_DIR)\i386\smloop.obj \
+    $(_OBJ_DIR)\i386\smsbapi.obj \
+    $(_OBJ_DIR)\i386\smsesnid.obj \
+    $(_OBJ_DIR)\i386\smsmapi.obj \
+    $(_OBJ_DIR)\i386\smss.obj \
+    $(_OBJ_DIR)\i386\smutil.obj \
+    $(_OBJ_DIR)\i386\termsrv.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\smss.res \
+    $(_OBJ_DIR)\ia64\dbgloop.obj \
+    $(_OBJ_DIR)\ia64\pagefile.obj \
+    $(_OBJ_DIR)\ia64\smcrash.obj \
+    $(_OBJ_DIR)\ia64\sminit.obj \
+    $(_OBJ_DIR)\ia64\smloop.obj \
+    $(_OBJ_DIR)\ia64\smsbapi.obj \
+    $(_OBJ_DIR)\ia64\smsesnid.obj \
+    $(_OBJ_DIR)\ia64\smsmapi.obj \
+    $(_OBJ_DIR)\ia64\smss.obj \
+    $(_OBJ_DIR)\ia64\smutil.obj \
+    $(_OBJ_DIR)\ia64\termsrv.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\smss.res \
+    $(_OBJ_DIR)\amd64\dbgloop.obj \
+    $(_OBJ_DIR)\amd64\pagefile.obj \
+    $(_OBJ_DIR)\amd64\smcrash.obj \
+    $(_OBJ_DIR)\amd64\sminit.obj \
+    $(_OBJ_DIR)\amd64\smloop.obj \
+    $(_OBJ_DIR)\amd64\smsbapi.obj \
+    $(_OBJ_DIR)\amd64\smsesnid.obj \
+    $(_OBJ_DIR)\amd64\smsmapi.obj \
+    $(_OBJ_DIR)\amd64\smss.obj \
+    $(_OBJ_DIR)\amd64\smutil.obj \
+    $(_OBJ_DIR)\amd64\termsrv.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\smss.res \
+    $(_OBJ_DIR)\arm\dbgloop.obj \
+    $(_OBJ_DIR)\arm\pagefile.obj \
+    $(_OBJ_DIR)\arm\smcrash.obj \
+    $(_OBJ_DIR)\arm\sminit.obj \
+    $(_OBJ_DIR)\arm\smloop.obj \
+    $(_OBJ_DIR)\arm\smsbapi.obj \
+    $(_OBJ_DIR)\arm\smsesnid.obj \
+    $(_OBJ_DIR)\arm\smsmapi.obj \
+    $(_OBJ_DIR)\arm\smss.obj \
+    $(_OBJ_DIR)\arm\smutil.obj \
+    $(_OBJ_DIR)\arm\termsrv.obj
+
+PASS0_ARM_OBJECTS=
+

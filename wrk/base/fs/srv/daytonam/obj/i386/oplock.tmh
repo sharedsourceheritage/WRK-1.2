@@ -1,0 +1,458 @@
+//38f03e1a5a45aba1da36fcae3f1058cd Generated File. Do not edit.
+// File created by WPP compiler version 0.01-Wed May 15 12:38:55 2002
+// on 11/24/2026 at 02:11:12 UTC from a template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\simple.tpl
+
+// PLEASE NOTE:
+//    Using simple.tpl for production environment without overriding
+//    WPP_ENABLED and WPP_LOGGER macro is NOT RECOMMENDED.
+//
+//    If WPP_ENABLED is not provided, the logging is always on
+//    If WPP_LOGGER is not provided, traces always go to the logger named stdout (if it is running)
+//
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\header.tpl
+
+#define WPP_KERNEL_MODE 
+#define WPP_THIS_FILE oplock_c
+
+#if !defined(WPP_KERNEL_MODE)
+#  include <windows.h>
+#  pragma warning(disable: 4201)
+#  include <wmistr.h>
+#  include <evntrace.h>
+#  define WPP_TRACE TraceMessage
+#else
+#define WPP_TRACE WmiTraceMessage
+#endif
+
+#if !defined(WPP_PRIVATE)
+#  define WPP_INLINE __inline
+#  define WPP_SELECT_ANY extern "C" __declspec(selectany)
+#else
+#  define WPP_INLINE static
+#  define WPP_SELECT_ANY static
+#endif
+
+__inline TRACEHANDLE WppQueryLogger(PCWSTR LoggerName)
+{
+    if (!LoggerName) {LoggerName = L"stdout";}
+    {
+#if defined(WPP_KERNEL_MODE)
+        ULONG ReturnLength ;
+        NTSTATUS Status ;
+        TRACEHANDLE TraceHandle ;
+        UNICODE_STRING  Buffer  ;
+
+        RtlInitUnicodeString(&Buffer, LoggerName);
+    
+        if ((Status = WmiQueryTraceInformation(TraceHandleByNameClass,
+                                                 (PVOID)&TraceHandle,
+                                                  sizeof(TraceHandle),
+                                                  &ReturnLength,
+                                                  (PVOID)&Buffer)) == STATUS_SUCCESS) {
+        return TraceHandle ;
+        }
+#else
+        ULONG status;
+        EVENT_TRACE_PROPERTIES LoggerInfo; 
+
+        ZeroMemory(&LoggerInfo, sizeof(LoggerInfo));
+        LoggerInfo.Wnode.BufferSize = sizeof(LoggerInfo);
+        LoggerInfo.Wnode.Flags = WNODE_FLAG_TRACED_GUID;
+        
+        status = QueryTraceW(0, LoggerName, &LoggerInfo);    
+        if (status == ERROR_SUCCESS || status == ERROR_MORE_DATA) {
+            return (TRACEHANDLE) LoggerInfo.Wnode.HistoricalContext;
+        }
+#endif
+    }
+    return 0;
+}
+
+
+ 
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\stdout.tpl
+
+#define WPP_LEVEL_LOGGER(LEVEL) // DoTraceMessage
+#define WPP_LOGGER() // KdPrint
+#define WPP_LOGGER() // SrvPrint0
+#define WPP_LOGGER() // SrvPrint1
+#define WPP_LOGGER() // SrvPrint2
+#define WPP_LOGGER() // SrvPrint3
+#define WPP_LOGGER() // SrvPrint4
+#ifndef WPP_LOGGER_ARG
+#  define WPP_LOGGER_ARG
+#endif
+
+#ifndef WPP_GET_LOGGER
+  #define WPP_GET_LOGGER WppGetLogger()
+  __inline TRACEHANDLE WppGetLogger() 
+  {
+      static TRACEHANDLE Logger;
+      if (Logger) {return Logger;}
+      return Logger = WppQueryLogger(0);
+  }
+#endif
+
+#ifndef WPP_ENABLED
+#  define WPP_ENABLED() 1
+#endif
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\trmacro.tpl
+//   expects:
+//      WPP_THIS_FILE defined (see header.tpl)
+//      WPP_LOGGER_ARG  defined
+//      WPP_GET_LOGGER  defined
+//      WPP_ENABLED() defined
+
+#ifndef NO_CHECK_FOR_NULL_STRING
+#ifndef WPP_CHECK_FOR_NULL_STRING
+#define WPP_CHECK_FOR_NULL_STRING 1
+#endif
+#endif
+
+#define WPP_EVAL(_value_) _value_
+#define WPP_(Id) WPP_EVAL(WPP_) ## WPP_EVAL(Id) ## WPP_EVAL(_) ## WPP_EVAL(WPP_THIS_FILE) ## WPP_EVAL(__LINE__)
+
+#if !defined(WPP_INLINE)
+#  define WPP_INLINE __inline
+#endif
+
+#if !defined(WPP_NO_ANNOTATIONS) 
+#if !defined(WPP_ANSI_ANNOTATION) 
+# define WPP_ANNOTATE_oplock_c1030	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1030 31 \"%0Oplock request REJECTED for system file: <%10!s!>!\" //  ", L"{", L"&rfcb->Mfcb->FileName, ItemPWString -- 10" , L"}")
+# define WPP_ANNOTATE_oplock_c1049	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1049 32 \"%0Oplock request REJECTED for substream: <%10!s!>!\" //  ", L"{", L"&rfcb->Mfcb->FileName, ItemPWString -- 10" , L"}")
+# define WPP_ANNOTATE_oplock_c1057	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1057 33 \"%0SrvRequestOplock: Attempting to obtain oplock for RFCB %10!p!\" //  ", L"{", L"rfcb, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_oplock_c1059	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1059 34 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c1079	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1079 35 \"%0SrvRequestOplock: requesting server oplock for\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c1081	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1081 36 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c1141	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1141 37 \"%0SrvRequestOplock: oplock attempt failed, could not allocate IRP\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c1195	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1195 38 \"%0RequestOplock: oplock attempt successful\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c1211	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1211 39 \"%0SrvRequestOplock: Oplock request failed. OplockII being attempted.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c1232	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1232 40 \"%0SrvRequestOplock: Oplock retry event signalled.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c1285	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1285 41 \"%0SrvRequestOplock: OplockII attempt successful\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c1298	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1298 42 \"%0SrvRequestOplock: oplock attempt unsuccessful\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c1362	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1362 43 \"%0Starting wait for oplock break.  Context = %10!p!\" //  ", L"{", L"waitForOplockBreak, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_oplock_c1518	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1518 44 \"%0Starting wait for oplock break.  Context = %10!p!\" //  ", L"{", L"waitForOplockBreak, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_oplock_c1662	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1662 45 \"%0SrvSendDelayedOplockBreak: sent %10!d!\" //  ", L"{", L"oplockBreaksSent, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_oplock_c168	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c168 10 \"%0SrvOplockBreakNotification: Received notification for\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c1680	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1680 46 \"%0SrvSendDelayedOplockBreak: sent %10!d!\" //  ", L"{", L"oplockBreaksSent, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_oplock_c170	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c170 11 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c172	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c172 12 \"%0  status 0x%10!x!, information %11!X!, connection %12!p!\" //  ", L"{", L"status, ItemLong -- 10" , L"information, ItemLong -- 11" , L"connection, ItemPtr -- 12" , L"}")
+# define WPP_ANNOTATE_oplock_c1726	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1726 47 \"%0SrvCheckOplockWaitState: Oplock wait timed out\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c173	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c173 13 \"%0  Rfcb->OplockState = %10!X!\" //  ", L"{", L"Rfcb->OplockState, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_oplock_c1735	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1735 48 \"%0SrvCheckOplockWaitState: Oplock wait succeeded\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c1917	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c1917 49 \"%0SrvOplockBreakNotification: Read raw in progress; oplock break deferred\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c199	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c199 14 \"%0BUG: SrvOplockBreakNotification:\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c201	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c201 15 \"%0 is not closing.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c218	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c218 16 \"%0SrvOplockBreakNotification: Breaking to none\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c261	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c261 17 \"%0SrvOplockBreakNotification: server oplock broken for %10!p!, file %11!s!\" //  ", L"{", L"Rfcb, ItemPtr -- 10" , L"&Rfcb->Mfcb->FileName, ItemPWString -- 11" , L"}")
+# define WPP_ANNOTATE_oplock_c267	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c267 18 \"%0SrvOplockBreakNotification: ack close pending for\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c269	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c269 19 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c300	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c300 20 \"%0SrvOplockBreakNotification: closing cached rfcb for\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c302	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c302 21 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c321	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c321 22 \"%0SrvOplockBreakNotification: Breaking to level 2\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c323	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c323 23 \"%0SrvOplockBreakNotification: Breaking to level none\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c615	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c615 24 \"%0SrvRestartOplockBreakSend entered.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c641	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c641 25 \"%0SrvRestartOplockBreakSend: Oplock break from  II to none sent.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c676	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c676 26 \"%0SrvRestartOplockBreakSend: Rfcb %10!p! closing.\" //  ", L"{", L"rfcb, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_oplock_c710	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c710 27 \"%0SrvRestartOplockBreakSend: Oplock sent.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c863	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c863 28 \"%0Dereferencing WaitForOplockBreak %10!p!; old refcnt %11!x!\" //  ", L"{", L"WaitForOplockBreak, ItemPtr -- 10" , L"oldCount, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_oplock_c984	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c984 29 \"%0SrvRequestOplock: already own server oplock for\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_oplock_c986	__annotation(L"TMF:", L"1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", L"#typev  oplock_c986 30 \"%0\" //  ", L"{", L"}")
+#else
+# define WPP_ANNOTATE_oplock_c1030	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1030 31 \"%0Oplock request REJECTED for system file: <%10!s!>!\" //  ", "{", "&rfcb->Mfcb->FileName, ItemPWString -- 10" , "}")
+# define WPP_ANNOTATE_oplock_c1049	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1049 32 \"%0Oplock request REJECTED for substream: <%10!s!>!\" //  ", "{", "&rfcb->Mfcb->FileName, ItemPWString -- 10" , "}")
+# define WPP_ANNOTATE_oplock_c1057	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1057 33 \"%0SrvRequestOplock: Attempting to obtain oplock for RFCB %10!p!\" //  ", "{", "rfcb, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_oplock_c1059	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1059 34 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c1079	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1079 35 \"%0SrvRequestOplock: requesting server oplock for\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c1081	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1081 36 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c1141	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1141 37 \"%0SrvRequestOplock: oplock attempt failed, could not allocate IRP\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c1195	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1195 38 \"%0RequestOplock: oplock attempt successful\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c1211	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1211 39 \"%0SrvRequestOplock: Oplock request failed. OplockII being attempted.\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c1232	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1232 40 \"%0SrvRequestOplock: Oplock retry event signalled.\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c1285	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1285 41 \"%0SrvRequestOplock: OplockII attempt successful\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c1298	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1298 42 \"%0SrvRequestOplock: oplock attempt unsuccessful\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c1362	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1362 43 \"%0Starting wait for oplock break.  Context = %10!p!\" //  ", "{", "waitForOplockBreak, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_oplock_c1518	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1518 44 \"%0Starting wait for oplock break.  Context = %10!p!\" //  ", "{", "waitForOplockBreak, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_oplock_c1662	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1662 45 \"%0SrvSendDelayedOplockBreak: sent %10!d!\" //  ", "{", "oplockBreaksSent, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_oplock_c168	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c168 10 \"%0SrvOplockBreakNotification: Received notification for\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c1680	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1680 46 \"%0SrvSendDelayedOplockBreak: sent %10!d!\" //  ", "{", "oplockBreaksSent, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_oplock_c170	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c170 11 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c172	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c172 12 \"%0  status 0x%10!x!, information %11!X!, connection %12!p!\" //  ", "{", "status, ItemLong -- 10" , "information, ItemLong -- 11" , "connection, ItemPtr -- 12" , "}")
+# define WPP_ANNOTATE_oplock_c1726	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1726 47 \"%0SrvCheckOplockWaitState: Oplock wait timed out\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c173	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c173 13 \"%0  Rfcb->OplockState = %10!X!\" //  ", "{", "Rfcb->OplockState, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_oplock_c1735	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1735 48 \"%0SrvCheckOplockWaitState: Oplock wait succeeded\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c1917	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c1917 49 \"%0SrvOplockBreakNotification: Read raw in progress; oplock break deferred\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c199	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c199 14 \"%0BUG: SrvOplockBreakNotification:\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c201	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c201 15 \"%0 is not closing.\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c218	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c218 16 \"%0SrvOplockBreakNotification: Breaking to none\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c261	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c261 17 \"%0SrvOplockBreakNotification: server oplock broken for %10!p!, file %11!s!\" //  ", "{", "Rfcb, ItemPtr -- 10" , "&Rfcb->Mfcb->FileName, ItemPWString -- 11" , "}")
+# define WPP_ANNOTATE_oplock_c267	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c267 18 \"%0SrvOplockBreakNotification: ack close pending for\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c269	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c269 19 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c300	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c300 20 \"%0SrvOplockBreakNotification: closing cached rfcb for\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c302	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c302 21 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c321	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c321 22 \"%0SrvOplockBreakNotification: Breaking to level 2\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c323	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c323 23 \"%0SrvOplockBreakNotification: Breaking to level none\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c615	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c615 24 \"%0SrvRestartOplockBreakSend entered.\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c641	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c641 25 \"%0SrvRestartOplockBreakSend: Oplock break from  II to none sent.\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c676	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c676 26 \"%0SrvRestartOplockBreakSend: Rfcb %10!p! closing.\" //  ", "{", "rfcb, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_oplock_c710	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c710 27 \"%0SrvRestartOplockBreakSend: Oplock sent.\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c863	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c863 28 \"%0Dereferencing WaitForOplockBreak %10!p!; old refcnt %11!x!\" //  ", "{", "WaitForOplockBreak, ItemPtr -- 10" , "oldCount, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_oplock_c984	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c984 29 \"%0SrvRequestOplock: already own server oplock for\" //  ", "{", "}")
+# define WPP_ANNOTATE_oplock_c986	__annotation("TMF:", "1a3ef038-455a-a1ab-da36-fcae3f1058cd daytonam // SRC=oplock.c MJ= MN=", "#typev  oplock_c986 30 \"%0\" //  ", "{", "}")
+#endif
+# define WPP_ANNOTATE WPP_(ANNOTATE),
+#else
+# define WPP_ANNOTATE 
+#endif
+
+#if 1
+static const GUID WPP_LOCAL_TraceGuids[] = { {0x1a3ef038,0x455a,0xa1ab,{0xda,0x36,0xfc,0xae,0x3f,0x10,0x58,0xcd}}, };
+#endif
+
+#if !defined(WPP_TRACE_OPTIONS)
+enum {WPP_TRACE_OPTIONS = TRACE_MESSAGE_SEQUENCE   | TRACE_MESSAGE_GUID
+                        | TRACE_MESSAGE_SYSTEMINFO | TRACE_MESSAGE_TIMESTAMP };
+#endif
+
+#if !defined(WPP_LOGPAIR)
+# define WPP_LOGPAIR(_Size, _Addr)     (_Addr),((SIZE_T)_Size),
+#endif
+
+#define WPP_LOGTYPEVAL(_Type, _Value) WPP_LOGPAIR(sizeof(_Type), &(_Value))
+#define WPP_LOGTYPEPTR(_Value)        WPP_LOGPAIR(sizeof(*(_Value)), (_Value))
+
+// Marshalling macros.
+
+#if !defined(WPP_LOGASTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR(strlen(_value) + 1, _value )
+# else
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR( (_value)?strlen(_value) + 1:5, (_value)?(_value):"NULL" )
+# endif
+#endif
+
+#if !defined(WPP_LOGWSTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (wcslen(_value)+1) * sizeof(WCHAR), _value)
+# else
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (_value)?(wcslen(_value) + 1)* sizeof(WCHAR):5 * sizeof(WCHAR), (_value)?(_value):L"NULL") 
+# endif
+#endif
+
+#if !defined(WPP_LOGPGUID)
+# define WPP_LOGPGUID(_value) WPP_LOGPAIR( sizeof(GUID), (_value) )
+#endif
+
+
+#if !defined(WPP_LOGPSID)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( GetLengthSid(_value), (_value) )
+# else
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( (_value)? (IsValidSid(_value)? \
+                                                                        GetLengthSid(_value):5):5, \
+                                                                        (_value)? (IsValidSid(_value)?\
+                                                                        (_value):"NULL"):"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGCSTR)
+# define WPP_LOGCSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGUSTR)
+# define WPP_LOGUSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGPUSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPUSTR(_x) WPP_LOGUSTR(*(_x))
+#else
+# define WPP_LOGPUSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5*sizeof(WCHAR), (_x)?(*(_x)).Buffer:L"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGPCSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPCSTR(_x) WPP_LOGCSTR(*(_x))
+#else
+# define WPP_LOGPCSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5, (_x)?((const char *)(*(_x)).Buffer):"NULL")
+#endif
+#endif
+
+
+#if !defined(WPP_LOGSTDSTR)
+#define WPP_LOGSTDSTR(_value)  WPP_LOGPAIR( (_value).size()+1, (_value).c_str() )
+#endif
+
+WPP_INLINE void WPP_SF_(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id,  0); }
+WPP_INLINE void WPP_SF_D(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1)  0); }
+WPP_INLINE void WPP_SF_DDq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1, unsigned int _a2, const void* _a3)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1) WPP_LOGTYPEVAL(unsigned int,_a2) WPP_LOGTYPEVAL(const void*,_a3)  0); }
+WPP_INLINE void WPP_SF_Z(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1)  0); }
+WPP_INLINE void WPP_SF_d(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, signed int _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(signed int,_a1)  0); }
+WPP_INLINE void WPP_SF_q(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1)  0); }
+WPP_INLINE void WPP_SF_qL(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1, unsigned long _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1) WPP_LOGTYPEVAL(unsigned long,_a2)  0); }
+WPP_INLINE void WPP_SF_qZ(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1, PCUNICODE_STRING _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1) WPP_LOGPUSTR(_a2)  0); }
+#ifdef WPP_DEBUG
+#define WPP_CALL_oplock_c1030(MSG,a10) ((WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_oplock_c1049(MSG,a10) ((WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_oplock_c1057(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_oplock_c1059(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c1079(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c1081(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c1141(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c1195(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c1211(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c1232(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c1285(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c1298(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c1362(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_oplock_c1518(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 44,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_oplock_c1662(MSG,a10) ((WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 45,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_oplock_c168(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c1680(MSG,a10) ((WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 46,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_oplock_c170(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c172(MSG,a10,a11,a12) ((WPP_ENABLED()?WPP_SF_DDq(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12))) 
+#define WPP_CALL_oplock_c1726(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 47,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c173(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_oplock_c1735(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 48,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c1917(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 49,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c199(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c201(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c218(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c261(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qZ(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_oplock_c267(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c269(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c300(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c302(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c321(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c323(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c615(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c641(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c676(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_oplock_c710(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c863(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qL(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_oplock_c984(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_oplock_c986(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#else
+#define WPP_CALL_oplock_c1030(MSG,a10) (WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_oplock_c1049(MSG,a10) (WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_oplock_c1057(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_oplock_c1059(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c1079(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c1081(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c1141(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c1195(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c1211(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c1232(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c1285(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c1298(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c1362(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_oplock_c1518(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 44,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_oplock_c1662(MSG,a10) (WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 45,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_oplock_c168(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c1680(MSG,a10) (WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 46,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_oplock_c170(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c172(MSG,a10,a11,a12) (WPP_ENABLED()?WPP_SF_DDq(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0)
+#define WPP_CALL_oplock_c1726(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 47,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c173(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_oplock_c1735(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 48,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c1917(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 49,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c199(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c201(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c218(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c261(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qZ(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_oplock_c267(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c269(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c300(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c302(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c321(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c323(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c615(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c641(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c676(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_oplock_c710(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c863(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qL(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_oplock_c984(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_oplock_c986(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0),1:0)
+#endif
+
+// NoMsgArgs
+
+#undef DoTraceMessage
+#define DoTraceMessage WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint0
+#define SrvPrint0 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint1
+#define SrvPrint1 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint2
+#define SrvPrint2 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint3
+#define SrvPrint3 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint4
+#define SrvPrint4 WPP_ANNOTATE WPP_(CALL)
+#undef KdPrint
+#define KdPrint(ARGS) WPP_ANNOTATE WPP_(CALL) ARGS
+// MsgArgs
+
+#ifdef WPP_DEBUG
+#else
+#endif
+
+
+/// more stuff
+
+

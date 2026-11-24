@@ -1,0 +1,76 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cmdat.obj \
+    $(_OBJ_DIR)\i386\conflist.obj \
+    $(_OBJ_DIR)\i386\devnode.obj \
+    $(_OBJ_DIR)\i386\event.obj \
+    $(_OBJ_DIR)\i386\hwprof.obj \
+    $(_OBJ_DIR)\i386\logconf.obj \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\misc.obj \
+    $(_OBJ_DIR)\i386\range.obj \
+    $(_OBJ_DIR)\i386\regprop.obj \
+    $(_OBJ_DIR)\i386\resdes.obj \
+    $(_OBJ_DIR)\i386\rpcbind.obj \
+    $(_OBJ_DIR)\i386\traverse.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\pnp_c_stub.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cmdat.obj \
+    $(_OBJ_DIR)\ia64\conflist.obj \
+    $(_OBJ_DIR)\ia64\devnode.obj \
+    $(_OBJ_DIR)\ia64\event.obj \
+    $(_OBJ_DIR)\ia64\hwprof.obj \
+    $(_OBJ_DIR)\ia64\logconf.obj \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\misc.obj \
+    $(_OBJ_DIR)\ia64\range.obj \
+    $(_OBJ_DIR)\ia64\regprop.obj \
+    $(_OBJ_DIR)\ia64\resdes.obj \
+    $(_OBJ_DIR)\ia64\rpcbind.obj \
+    $(_OBJ_DIR)\ia64\traverse.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\pnp_c_stub.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cmdat.obj \
+    $(_OBJ_DIR)\amd64\conflist.obj \
+    $(_OBJ_DIR)\amd64\devnode.obj \
+    $(_OBJ_DIR)\amd64\event.obj \
+    $(_OBJ_DIR)\amd64\hwprof.obj \
+    $(_OBJ_DIR)\amd64\logconf.obj \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\misc.obj \
+    $(_OBJ_DIR)\amd64\range.obj \
+    $(_OBJ_DIR)\amd64\regprop.obj \
+    $(_OBJ_DIR)\amd64\resdes.obj \
+    $(_OBJ_DIR)\amd64\rpcbind.obj \
+    $(_OBJ_DIR)\amd64\traverse.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\pnp_c_stub.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cmdat.obj \
+    $(_OBJ_DIR)\arm\conflist.obj \
+    $(_OBJ_DIR)\arm\devnode.obj \
+    $(_OBJ_DIR)\arm\event.obj \
+    $(_OBJ_DIR)\arm\hwprof.obj \
+    $(_OBJ_DIR)\arm\logconf.obj \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\misc.obj \
+    $(_OBJ_DIR)\arm\range.obj \
+    $(_OBJ_DIR)\arm\regprop.obj \
+    $(_OBJ_DIR)\arm\resdes.obj \
+    $(_OBJ_DIR)\arm\rpcbind.obj \
+    $(_OBJ_DIR)\arm\traverse.obj \
+    $(_OBJ_DIR)\arm\util.obj \
+    $(_OBJ_DIR)\arm\pnp_c_stub.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,96 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\hsmadmin.res \
+    $(_OBJ_DIR)\i386\hsmadmin_i.obj \
+    $(_OBJ_DIR)\i386\about.obj \
+    $(_OBJ_DIR)\i386\basehsm.obj \
+    $(_OBJ_DIR)\i386\choohsm.obj \
+    $(_OBJ_DIR)\i386\cpropsht.obj \
+    $(_OBJ_DIR)\i386\csakdata.obj \
+    $(_OBJ_DIR)\i386\csaksnap.obj \
+    $(_OBJ_DIR)\i386\dataobj.obj \
+    $(_OBJ_DIR)\i386\evntdata.obj \
+    $(_OBJ_DIR)\i386\evntsnap.obj \
+    $(_OBJ_DIR)\i386\hsmadmin.obj \
+    $(_OBJ_DIR)\i386\hsmcreat.obj \
+    $(_OBJ_DIR)\i386\msdatobj.obj \
+    $(_OBJ_DIR)\i386\rsadutil.obj \
+    $(_OBJ_DIR)\i386\sakmenu.obj \
+    $(_OBJ_DIR)\i386\sakvlls.obj \
+    $(_OBJ_DIR)\i386\schdtask.obj \
+    $(_OBJ_DIR)\i386\schedsht.obj \
+    $(_OBJ_DIR)\i386\stdafx.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\hsmadmin.res \
+    $(_OBJ_DIR)\ia64\hsmadmin_i.obj \
+    $(_OBJ_DIR)\ia64\about.obj \
+    $(_OBJ_DIR)\ia64\basehsm.obj \
+    $(_OBJ_DIR)\ia64\choohsm.obj \
+    $(_OBJ_DIR)\ia64\cpropsht.obj \
+    $(_OBJ_DIR)\ia64\csakdata.obj \
+    $(_OBJ_DIR)\ia64\csaksnap.obj \
+    $(_OBJ_DIR)\ia64\dataobj.obj \
+    $(_OBJ_DIR)\ia64\evntdata.obj \
+    $(_OBJ_DIR)\ia64\evntsnap.obj \
+    $(_OBJ_DIR)\ia64\hsmadmin.obj \
+    $(_OBJ_DIR)\ia64\hsmcreat.obj \
+    $(_OBJ_DIR)\ia64\msdatobj.obj \
+    $(_OBJ_DIR)\ia64\rsadutil.obj \
+    $(_OBJ_DIR)\ia64\sakmenu.obj \
+    $(_OBJ_DIR)\ia64\sakvlls.obj \
+    $(_OBJ_DIR)\ia64\schdtask.obj \
+    $(_OBJ_DIR)\ia64\schedsht.obj \
+    $(_OBJ_DIR)\ia64\stdafx.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\hsmadmin.res \
+    $(_OBJ_DIR)\amd64\hsmadmin_i.obj \
+    $(_OBJ_DIR)\amd64\about.obj \
+    $(_OBJ_DIR)\amd64\basehsm.obj \
+    $(_OBJ_DIR)\amd64\choohsm.obj \
+    $(_OBJ_DIR)\amd64\cpropsht.obj \
+    $(_OBJ_DIR)\amd64\csakdata.obj \
+    $(_OBJ_DIR)\amd64\csaksnap.obj \
+    $(_OBJ_DIR)\amd64\dataobj.obj \
+    $(_OBJ_DIR)\amd64\evntdata.obj \
+    $(_OBJ_DIR)\amd64\evntsnap.obj \
+    $(_OBJ_DIR)\amd64\hsmadmin.obj \
+    $(_OBJ_DIR)\amd64\hsmcreat.obj \
+    $(_OBJ_DIR)\amd64\msdatobj.obj \
+    $(_OBJ_DIR)\amd64\rsadutil.obj \
+    $(_OBJ_DIR)\amd64\sakmenu.obj \
+    $(_OBJ_DIR)\amd64\sakvlls.obj \
+    $(_OBJ_DIR)\amd64\schdtask.obj \
+    $(_OBJ_DIR)\amd64\schedsht.obj \
+    $(_OBJ_DIR)\amd64\stdafx.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\hsmadmin.res \
+    $(_OBJ_DIR)\arm\hsmadmin_i.obj \
+    $(_OBJ_DIR)\arm\about.obj \
+    $(_OBJ_DIR)\arm\basehsm.obj \
+    $(_OBJ_DIR)\arm\choohsm.obj \
+    $(_OBJ_DIR)\arm\cpropsht.obj \
+    $(_OBJ_DIR)\arm\csakdata.obj \
+    $(_OBJ_DIR)\arm\csaksnap.obj \
+    $(_OBJ_DIR)\arm\dataobj.obj \
+    $(_OBJ_DIR)\arm\evntdata.obj \
+    $(_OBJ_DIR)\arm\evntsnap.obj \
+    $(_OBJ_DIR)\arm\hsmadmin.obj \
+    $(_OBJ_DIR)\arm\hsmcreat.obj \
+    $(_OBJ_DIR)\arm\msdatobj.obj \
+    $(_OBJ_DIR)\arm\rsadutil.obj \
+    $(_OBJ_DIR)\arm\sakmenu.obj \
+    $(_OBJ_DIR)\arm\sakvlls.obj \
+    $(_OBJ_DIR)\arm\schdtask.obj \
+    $(_OBJ_DIR)\arm\schedsht.obj \
+    $(_OBJ_DIR)\arm\stdafx.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dock.res \
+    $(_OBJ_DIR)\i386\dock.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dock.res \
+    $(_OBJ_DIR)\ia64\dock.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dock.res \
+    $(_OBJ_DIR)\amd64\dock.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dock.res \
+    $(_OBJ_DIR)\arm\dock.obj
+
+PASS0_ARM_OBJECTS=
+

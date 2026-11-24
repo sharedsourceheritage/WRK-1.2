@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\iohandler.res \
+    $(_OBJ_DIR)\i386\sacio.obj \
+    $(_OBJ_DIR)\i386\nullio.obj \
+    $(_OBJ_DIR)\i386\iohandler.obj \
+    $(_OBJ_DIR)\i386\lockio.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\iohandler.res \
+    $(_OBJ_DIR)\ia64\sacio.obj \
+    $(_OBJ_DIR)\ia64\nullio.obj \
+    $(_OBJ_DIR)\ia64\iohandler.obj \
+    $(_OBJ_DIR)\ia64\lockio.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\iohandler.res \
+    $(_OBJ_DIR)\amd64\sacio.obj \
+    $(_OBJ_DIR)\amd64\nullio.obj \
+    $(_OBJ_DIR)\amd64\iohandler.obj \
+    $(_OBJ_DIR)\amd64\lockio.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\iohandler.res \
+    $(_OBJ_DIR)\arm\sacio.obj \
+    $(_OBJ_DIR)\arm\nullio.obj \
+    $(_OBJ_DIR)\arm\iohandler.obj \
+    $(_OBJ_DIR)\arm\lockio.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,33 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\machine.obj \
+    $(_OBJ_DIR)\i386\instaler.res \
+    $(_OBJ_DIR)\i386\instutil.obj \
+    $(_OBJ_DIR)\i386\iml.obj \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\handler.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\process.obj \
+    $(_OBJ_DIR)\i386\handledb.obj \
+    $(_OBJ_DIR)\i386\namedb.obj \
+    $(_OBJ_DIR)\i386\file.obj \
+    $(_OBJ_DIR)\i386\key.obj \
+    $(_OBJ_DIR)\i386\ini.obj \
+    $(_OBJ_DIR)\i386\error.obj \
+    $(_OBJ_DIR)\i386\event.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\errormsg.h \
+    $(MC_SOURCEDIR)\errormsg.rc
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

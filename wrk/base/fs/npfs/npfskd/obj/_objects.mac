@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\npfskd.res \
+    $(_OBJ_DIR)\i386\npfskd.obj \
+    $(_OBJ_DIR)\i386\kdext.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\npfskd.res \
+    $(_OBJ_DIR)\ia64\npfskd.obj \
+    $(_OBJ_DIR)\ia64\kdext.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\npfskd.res \
+    $(_OBJ_DIR)\amd64\npfskd.obj \
+    $(_OBJ_DIR)\amd64\kdext.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\npfskd.res \
+    $(_OBJ_DIR)\arm\npfskd.obj \
+    $(_OBJ_DIR)\arm\kdext.obj
+
+PASS0_ARM_OBJECTS=
+

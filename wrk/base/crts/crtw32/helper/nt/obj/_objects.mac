@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\lldiv.obj \
+    $(_OBJ_DIR)\i386\lldvrm.obj \
+    $(_OBJ_DIR)\i386\llmul.obj \
+    $(_OBJ_DIR)\i386\llrem.obj \
+    $(_OBJ_DIR)\i386\llshl.obj \
+    $(_OBJ_DIR)\i386\llshr.obj \
+    $(_OBJ_DIR)\i386\ulldiv.obj \
+    $(_OBJ_DIR)\i386\ulldvrm.obj \
+    $(_OBJ_DIR)\i386\ullrem.obj \
+    $(_OBJ_DIR)\i386\ullshr.obj \
+    $(_OBJ_DIR)\i386\sehprolg.obj \
+    $(_OBJ_DIR)\i386\empty.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\divhelp.obj \
+    $(_OBJ_DIR)\ia64\empty.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\empty.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\empty.obj
+
+PASS0_ARM_OBJECTS=
+

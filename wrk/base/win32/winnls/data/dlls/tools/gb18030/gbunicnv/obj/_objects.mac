@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\convert.res \
+    $(_OBJ_DIR)\i386\conveng.obj \
+    $(_OBJ_DIR)\i386\convert.obj \
+    $(_OBJ_DIR)\i386\convertdlg.obj \
+    $(_OBJ_DIR)\i386\fileconv.obj \
+    $(_OBJ_DIR)\i386\msg.obj \
+    $(_OBJ_DIR)\i386\rtfparser.obj \
+    $(_OBJ_DIR)\i386\stdafx.obj \
+    $(_OBJ_DIR)\i386\textfile.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\convert.res \
+    $(_OBJ_DIR)\ia64\conveng.obj \
+    $(_OBJ_DIR)\ia64\convert.obj \
+    $(_OBJ_DIR)\ia64\convertdlg.obj \
+    $(_OBJ_DIR)\ia64\fileconv.obj \
+    $(_OBJ_DIR)\ia64\msg.obj \
+    $(_OBJ_DIR)\ia64\rtfparser.obj \
+    $(_OBJ_DIR)\ia64\stdafx.obj \
+    $(_OBJ_DIR)\ia64\textfile.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\convert.res \
+    $(_OBJ_DIR)\amd64\conveng.obj \
+    $(_OBJ_DIR)\amd64\convert.obj \
+    $(_OBJ_DIR)\amd64\convertdlg.obj \
+    $(_OBJ_DIR)\amd64\fileconv.obj \
+    $(_OBJ_DIR)\amd64\msg.obj \
+    $(_OBJ_DIR)\amd64\rtfparser.obj \
+    $(_OBJ_DIR)\amd64\stdafx.obj \
+    $(_OBJ_DIR)\amd64\textfile.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\convert.res \
+    $(_OBJ_DIR)\arm\conveng.obj \
+    $(_OBJ_DIR)\arm\convert.obj \
+    $(_OBJ_DIR)\arm\convertdlg.obj \
+    $(_OBJ_DIR)\arm\fileconv.obj \
+    $(_OBJ_DIR)\arm\msg.obj \
+    $(_OBJ_DIR)\arm\rtfparser.obj \
+    $(_OBJ_DIR)\arm\stdafx.obj \
+    $(_OBJ_DIR)\arm\textfile.obj
+
+PASS0_ARM_OBJECTS=
+

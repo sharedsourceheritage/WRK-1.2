@@ -1,0 +1,529 @@
+
+
+NAME NTOSKRNL
+
+EXPORTS
+
+    CmRegisterCallback
+    CmUnRegisterCallback
+    DbgBreakPoint
+    DbgPrint
+    ExAcquireFastMutexUnsafe
+    ExAcquireResourceExclusiveLite
+    ExAcquireResourceSharedLite
+    ExAcquireSharedStarveExclusive
+    ExAcquireSharedWaitForExclusive
+    ExAllocatePool
+    ExAllocatePoolWithQuota
+    ExAllocatePoolWithQuotaTag
+    ExAllocatePoolWithTag
+    ExAllocatePoolWithTagPriority
+    ExConvertExclusiveToSharedLite
+    ExCreateCallback
+    ExDeleteNPagedLookasideList
+    ExDeletePagedLookasideList
+    ExDeleteResourceLite
+    ExEventObjectType CONSTANT          
+    ExFreePool
+    ExFreePoolWithTag
+    ExGetExclusiveWaiterCount
+    ExGetPreviousMode
+    ExGetSharedWaiterCount
+    ExInitializeNPagedLookasideList
+    ExInitializePagedLookasideList
+    ExInitializeResourceLite
+    ExInterlockedAddLargeInteger
+
+
+
+    ExInterlockedAddLargeStatistic
+
+
+
+    ExIsProcessorFeaturePresent
+    ExIsResourceAcquiredExclusiveLite
+    ExIsResourceAcquiredSharedLite
+    ExLocalTimeToSystemTime
+    ExNotifyCallback
+    ExQueueWorkItem
+    ExRaiseStatus
+    ExRegisterCallback
+    ExReinitializeResourceLite
+    ExReleaseFastMutexUnsafe
+    ExReleaseResourceForThreadLite
+    ExReleaseResourceLite
+    ExSemaphoreObjectType CONSTANT      
+    ExSetResourceOwnerPointer
+    ExSetTimerResolution
+    ExSystemTimeToLocalTime
+    ExUnregisterCallback
+    ExVerifySuite
+    IoAcquireCancelSpinLock
+    IoAcquireRemoveLockEx
+    IoAllocateAdapterChannel
+    IoAllocateDriverObjectExtension
+    IoAllocateErrorLogEntry
+    IoAllocateIrp
+    IoAllocateMdl
+    IoAllocateWorkItem
+    IoAttachDevice
+    IoAttachDeviceToDeviceStack
+    IoBuildAsynchronousFsdRequest
+    IoBuildDeviceIoControlRequest
+    IoBuildPartialMdl
+    IoBuildSynchronousFsdRequest
+    IoCancelIrp
+    IoCheckShareAccess
+    IoConnectInterrupt
+    IoCreateDevice
+    IoCreateFile
+    IoCreateNotificationEvent
+    IoCreateSymbolicLink
+    IoCreateSynchronizationEvent
+    IoCreateUnprotectedSymbolicLink
+    IoCsqInitialize
+    IoCsqInsertIrp
+    IoCsqRemoveIrp
+    IoCsqRemoveNextIrp
+    IoDeleteDevice
+    IoDeleteSymbolicLink
+    IoDetachDevice
+    IoDisconnectInterrupt
+    IoFileObjectType CONSTANT          
+    IoForwardIrpSynchronously
+    IoFreeErrorLogEntry
+    IoFreeIrp
+    IoFreeMdl
+    IoFreeWorkItem
+    IoGetAttachedDeviceReference
+    IoGetCurrentProcess
+    IoGetDeviceInterfaceAlias
+    IoGetDeviceInterfaces
+    IoGetDeviceObjectPointer
+    IoGetDeviceProperty
+    IoGetDmaAdapter
+    IoGetDriverObjectExtension
+    IoGetInitialStack
+    IoGetRelatedDeviceObject
+    IoGetStackLimits
+    IoInitializeIrp
+    IoInitializeRemoveLockEx
+    IoInitializeTimer
+    IoInvalidateDeviceRelations
+    IoInvalidateDeviceState
+    IoIsWdmVersionAvailable
+
+
+
+    IoOpenDeviceInterfaceRegistryKey
+    IoOpenDeviceRegistryKey
+    IoQueueWorkItem
+    IoRegisterDeviceInterface
+    IoRegisterPlugPlayNotification
+    IoRegisterShutdownNotification
+    IoReleaseCancelSpinLock
+    IoReleaseRemoveLockAndWaitEx
+    IoReleaseRemoveLockEx
+    IoReuseIrp
+    IoReportTargetDeviceChange
+    IoReportTargetDeviceChangeAsynchronous
+    IoRequestDeviceEject
+    IoSetCompletionRoutineEx
+    IoSetDeviceInterfaceState
+    IoSetShareAccess
+    IoSetStartIoAttributes
+    IoStartNextPacket
+    IoStartNextPacketByKey
+    IoStartPacket
+    IoStartTimer
+    IoStopTimer
+    IoUnregisterPlugPlayNotification
+    IoUnregisterShutdownNotification
+    IoWMIAllocateInstanceIds
+    IoWMIDeviceObjectToInstanceName
+
+
+
+    IoWMIExecuteMethod
+    IoWMIHandleToInstanceName
+    IoWMIOpenBlock
+    IoWMIRegistrationControl
+    IoWMIQueryAllData
+    IoWMIQueryAllDataMultiple
+    IoWMIQuerySingleInstance
+    IoWMIQuerySingleInstanceMultiple
+    IoWMISetNotificationCallback
+    IoWMISetSingleInstance
+    IoWMISetSingleItem
+    IoWMISuggestInstanceName
+    IoWMIWriteEvent
+    IoWriteErrorLogEntry
+    IofCallDriver
+    IofCompleteRequest
+    KeAcquireSpinLockAtDpcLevel
+    KdDebuggerNotPresent CONSTANT       
+    KeAcquireInterruptSpinLock
+    KeAreApcsDisabled
+    KeDeregisterBugCheckCallback
+    KeReleaseInterruptSpinLock
+    KeBugCheckEx
+    KeCancelTimer
+    KeClearEvent
+    KeDelayExecutionThread
+    KeEnterCriticalRegion
+    KeGetCurrentThread
+    KeGetRecommendedSharedDataAlignment
+    KeInitializeDeviceQueue
+    KeInitializeDpc
+    KeInitializeEvent
+    KeInitializeMutex
+    KeInitializeSemaphore
+
+    KeInitializeSpinLock
+
+    KeInitializeTimer
+    KeInitializeTimerEx
+    KeInsertByKeyDeviceQueue
+    KeInsertDeviceQueue
+    KeInsertQueueDpc
+    KeLeaveCriticalRegion
+
+
+
+    KeQueryInterruptTime
+    KeQuerySystemTime
+
+
+
+    KeQueryPriorityThread
+    KeQueryRuntimeThread
+    KeQueryTimeIncrement
+    KeReadStateEvent
+    KeReadStateSemaphore
+    KeReadStateTimer
+    KeRegisterBugCheckCallback
+    KeReleaseMutex
+    KeReleaseSemaphore
+    KeReleaseSpinLockFromDpcLevel
+    KeRemoveByKeyDeviceQueue
+    KeRemoveByKeyDeviceQueueIfBusy
+    KeRemoveDeviceQueue
+    KeRemoveEntryDeviceQueue
+    KeRemoveQueueDpc
+    KeResetEvent
+    KeRestoreFloatingPointState
+    KeSaveFloatingPointState
+    KeSetEvent
+    KeSetPriorityThread
+    KeSetTimer
+    KeSetTimerEx
+    KeSynchronizeExecution
+
+
+
+    KeTickCount               CONSTANT           
+
+
+
+    KeWaitForSingleObject
+    KeWaitForMultipleObjects
+    MmIsVerifierEnabled
+    MmAddVerifierThunks
+    MmAdvanceMdl
+    Mm64BitPhysicalAddress CONSTANT             
+    MmCreateMdl
+    MmAllocatePagesForMdl
+    MmBuildMdlForNonPagedPool
+    MmFreePagesFromMdl
+    MmGetSystemRoutineAddress
+    MmIsDriverVerifying
+    MmMapIoSpace
+    MmMapLockedPages
+    MmMapLockedPagesSpecifyCache
+    MmAllocateMappingAddress
+    MmFreeMappingAddress
+    MmMapLockedPagesWithReservedMapping
+    MmUnmapReservedMapping
+    MmPageEntireDriver
+    MmProbeAndLockPages
+    MmProbeAndLockProcessPages
+    MmProtectMdlSystemAddress
+    MmResetDriverPaging
+    MmQuerySystemSize
+    MmSizeOfMdl
+    MmUnlockPages
+    MmUnmapIoSpace
+    MmUnmapLockedPages
+    NlsMbCodePageTag        CONSTANT           
+    NtClose
+    ObfDereferenceObject
+    ObGetObjectSecurity
+    ObLogSecurityDescriptor
+    ObReferenceSecurityDescriptor
+    ObDereferenceSecurityDescriptor
+    ObfReferenceObject
+    ObReferenceObjectByHandle
+    ObReferenceObjectByPointer
+    ObReleaseObjectSecurity
+    PoCallDriver
+    PoSetPowerState
+    PoRegisterDeviceForIdleDetection
+    PoRequestPowerIrp
+    PoRegisterSystemState
+    PoRequestShutdownEvent
+    PoSetSystemState
+    PoStartNextPowerIrp
+    PoUnregisterSystemState
+    ProbeForRead
+    ProbeForWrite
+    PsCreateSystemThread
+    PsTerminateSystemThread
+    RtlAnsiStringToUnicodeString
+    RtlAppendUnicodeStringToString
+    RtlAppendUnicodeToString
+    RtlAreBitsClear
+    RtlAreBitsSet
+    RtlAssert
+    RtlClearAllBits
+    RtlClearBit
+    RtlClearBits
+    RtlCompareMemory
+    RtlCompareUnicodeString
+
+    RtlConvertLongToLargeInteger
+    RtlConvertUlongToLargeInteger
+
+    RtlCopyMemory = memcpy
+    RtlCopyUnicodeString
+    RtlCreateSecurityDescriptor
+    RtlDeleteRegistryValue
+    RtlEqualUnicodeString
+
+    RtlExtendedIntegerMultiply
+    RtlExtendedLargeIntegerDivide
+
+
+    RtlExtendedMagicDivide
+
+
+    RtlFillMemory
+
+    RtlFindClearBits
+    RtlFindClearBitsAndSet
+    RtlFindClearRuns
+    RtlFindFirstRunClear
+    RtlFindLastBackwardRunClear
+    RtlFindLeastSignificantBit
+    RtlFindLongestRunClear
+    RtlFindSetBits
+    RtlFindSetBitsAndClear
+    RtlFreeAnsiString
+    RtlFreeUnicodeString
+    RtlGUIDFromString
+    RtlHashUnicodeString
+    RtlInitAnsiString
+    RtlInitString
+    RtlInitUnicodeString
+    RtlInitializeBitMap
+    RtlInt64ToUnicodeString
+    RtlIntegerToUnicodeString
+    RtlLengthSecurityDescriptor
+
+    RtlMoveMemory
+
+    RtlNumberOfClearBits
+    RtlNumberOfSetBits
+    RtlPrefetchMemoryNonTemporal
+    RtlQueryRegistryValues
+    RtlRaiseException
+    RtlSetAllBits
+    RtlSetBit
+    RtlSetBits
+    RtlSetDaclSecurityDescriptor
+    RtlStringFromGUID
+    RtlTestBit
+    RtlTimeFieldsToTime
+    RtlTimeToTimeFields
+
+
+
+    RtlUlongByteSwap
+    RtlUlonglongByteSwap
+
+
+
+    RtlUnicodeStringToAnsiString
+    RtlUnicodeStringToInteger
+    RtlUnwind
+
+
+
+    RtlUshortByteSwap
+
+
+
+    RtlValidSecurityDescriptor
+    RtlValidRelativeSecurityDescriptor
+    RtlWriteRegistryValue
+    RtlxAnsiStringToUnicodeSize
+    RtlxUnicodeStringToAnsiSize
+
+    RtlZeroMemory
+
+    WmiQueryTraceInformation
+    WmiTraceMessage
+    WmiTraceMessageVa
+    ZwClose
+    ZwCreateDirectoryObject
+    ZwCreateFile
+    ZwCreateKey
+    ZwDeleteKey
+    ZwDeleteValueKey
+    ZwEnumerateKey
+    ZwEnumerateValueKey
+    ZwFlushKey
+    ZwMakeTemporaryObject
+    ZwMapViewOfSection
+    ZwOpenKey
+    ZwOpenSection
+    ZwOpenSymbolicLinkObject
+    ZwPowerInformation
+    ZwQueryInformationFile
+    ZwQueryKey
+    ZwQuerySymbolicLinkObject
+    ZwQueryValueKey
+    ZwReadFile
+    ZwSetInformationFile
+    ZwSetValueKey
+    ZwUnmapViewOfSection
+    ZwWriteFile
+
+    _itoa
+    _purecall
+    _snprintf
+    _snwprintf
+    _stricmp
+    _strlwr
+    _strnicmp
+    _strnset
+    _strrev
+
+    _strset
+
+    _strupr
+    _vsnprintf
+    _wcsicmp
+    _wcslwr
+    _wcsnicmp
+    _wcsnset
+    _wcsrev
+    _wcsupr
+    atoi
+    atol
+    isdigit
+    islower
+    isprint
+    isspace
+    isupper
+    isxdigit
+    mbstowcs
+    mbtowc
+    memchr
+    qsort
+    rand
+    sprintf
+    srand
+
+    strcat
+
+    strchr
+
+    strcmp
+    strcpy
+    strlen
+
+    strncat
+    strncmp
+    strncpy
+    strrchr
+    strspn
+    strstr
+    swprintf
+    tolower
+    toupper
+    towlower
+    towupper
+    vsprintf
+    wcscat
+    wcschr
+    wcscmp
+    wcscpy
+    wcscspn
+    wcslen
+    wcsncat
+    wcsncmp
+    wcsncpy
+    wcsrchr
+    wcsspn
+    wcsstr
+    wcstombs
+    wctomb
+
+    
+    
+    Exfi386InterlockedExchangeUlong
+    ExfInterlockedAddUlong
+    ExfInterlockedInsertHeadList
+    ExfInterlockedInsertTailList
+    ExfInterlockedPopEntryList
+    ExfInterlockedPushEntryList
+    ExfInterlockedRemoveHeadList
+
+    ExInterlockedCompareExchange64
+    ExInterlockedPopEntrySList
+    ExInterlockedPushEntrySList
+
+    ExAllocateFromPagedLookasideList
+    ExFreeToPagedLookasideList
+
+    InterlockedCompareExchange
+    InterlockedDecrement
+    InterlockedExchange
+    InterlockedIncrement
+    InterlockedPushEntrySList
+    InterlockedPopEntrySList
+
+    KefAcquireSpinLockAtDpcLevel
+    KefReleaseSpinLockFromDpcLevel
+
+    MmLockPagableDataSection = MmLockPagableDataSection
+    MmUnlockPagableImageSection
+
+    memcpy
+    memmove
+    memset
+
+    READ_REGISTER_BUFFER_UCHAR
+    READ_REGISTER_BUFFER_ULONG
+    READ_REGISTER_BUFFER_USHORT
+    READ_REGISTER_UCHAR
+    READ_REGISTER_ULONG
+    READ_REGISTER_USHORT
+    WRITE_REGISTER_BUFFER_UCHAR
+    WRITE_REGISTER_BUFFER_ULONG
+    WRITE_REGISTER_BUFFER_USHORT
+    WRITE_REGISTER_UCHAR
+    WRITE_REGISTER_ULONG
+    WRITE_REGISTER_USHORT
+
+
+
+
+    
+
+
+
+
+
+
+

@@ -1,0 +1,84 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\obinit.obj \
+    $(_OBJ_DIR)\i386\obcreate.obj \
+    $(_OBJ_DIR)\i386\obhandle.obj \
+    $(_OBJ_DIR)\i386\obinsert.obj \
+    $(_OBJ_DIR)\i386\obperf.obj \
+    $(_OBJ_DIR)\i386\obref.obj \
+    $(_OBJ_DIR)\i386\obse.obj \
+    $(_OBJ_DIR)\i386\obtype.obj \
+    $(_OBJ_DIR)\i386\obdir.obj \
+    $(_OBJ_DIR)\i386\obdevmap.obj \
+    $(_OBJ_DIR)\i386\oblink.obj \
+    $(_OBJ_DIR)\i386\obclose.obj \
+    $(_OBJ_DIR)\i386\obquery.obj \
+    $(_OBJ_DIR)\i386\obsdata.obj \
+    $(_OBJ_DIR)\i386\obwait.obj \
+    $(_OBJ_DIR)\i386\obvutil.obj \
+    $(_OBJ_DIR)\i386\fastref.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\obinit.obj \
+    $(_OBJ_DIR)\ia64\obcreate.obj \
+    $(_OBJ_DIR)\ia64\obhandle.obj \
+    $(_OBJ_DIR)\ia64\obinsert.obj \
+    $(_OBJ_DIR)\ia64\obperf.obj \
+    $(_OBJ_DIR)\ia64\obref.obj \
+    $(_OBJ_DIR)\ia64\obse.obj \
+    $(_OBJ_DIR)\ia64\obtype.obj \
+    $(_OBJ_DIR)\ia64\obdir.obj \
+    $(_OBJ_DIR)\ia64\obdevmap.obj \
+    $(_OBJ_DIR)\ia64\oblink.obj \
+    $(_OBJ_DIR)\ia64\obclose.obj \
+    $(_OBJ_DIR)\ia64\obquery.obj \
+    $(_OBJ_DIR)\ia64\obsdata.obj \
+    $(_OBJ_DIR)\ia64\obwait.obj \
+    $(_OBJ_DIR)\ia64\obvutil.obj \
+    $(_OBJ_DIR)\ia64\fastref.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\obinit.obj \
+    $(_OBJ_DIR)\amd64\obcreate.obj \
+    $(_OBJ_DIR)\amd64\obhandle.obj \
+    $(_OBJ_DIR)\amd64\obinsert.obj \
+    $(_OBJ_DIR)\amd64\obperf.obj \
+    $(_OBJ_DIR)\amd64\obref.obj \
+    $(_OBJ_DIR)\amd64\obse.obj \
+    $(_OBJ_DIR)\amd64\obtype.obj \
+    $(_OBJ_DIR)\amd64\obdir.obj \
+    $(_OBJ_DIR)\amd64\obdevmap.obj \
+    $(_OBJ_DIR)\amd64\oblink.obj \
+    $(_OBJ_DIR)\amd64\obclose.obj \
+    $(_OBJ_DIR)\amd64\obquery.obj \
+    $(_OBJ_DIR)\amd64\obsdata.obj \
+    $(_OBJ_DIR)\amd64\obwait.obj \
+    $(_OBJ_DIR)\amd64\obvutil.obj \
+    $(_OBJ_DIR)\amd64\fastref.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\obinit.obj \
+    $(_OBJ_DIR)\arm\obcreate.obj \
+    $(_OBJ_DIR)\arm\obhandle.obj \
+    $(_OBJ_DIR)\arm\obinsert.obj \
+    $(_OBJ_DIR)\arm\obperf.obj \
+    $(_OBJ_DIR)\arm\obref.obj \
+    $(_OBJ_DIR)\arm\obse.obj \
+    $(_OBJ_DIR)\arm\obtype.obj \
+    $(_OBJ_DIR)\arm\obdir.obj \
+    $(_OBJ_DIR)\arm\obdevmap.obj \
+    $(_OBJ_DIR)\arm\oblink.obj \
+    $(_OBJ_DIR)\arm\obclose.obj \
+    $(_OBJ_DIR)\arm\obquery.obj \
+    $(_OBJ_DIR)\arm\obsdata.obj \
+    $(_OBJ_DIR)\arm\obwait.obj \
+    $(_OBJ_DIR)\arm\obvutil.obj \
+    $(_OBJ_DIR)\arm\fastref.obj
+
+PASS0_ARM_OBJECTS=
+

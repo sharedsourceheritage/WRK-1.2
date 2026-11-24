@@ -1,0 +1,213 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\rtmsg.res \
+    $(_OBJ_DIR)\i386\dosttr.obj \
+    $(_OBJ_DIR)\i386\arg.obj \
+    $(_OBJ_DIR)\i386\array.obj \
+    $(_OBJ_DIR)\i386\arrayit.obj \
+    $(_OBJ_DIR)\i386\basesys.obj \
+    $(_OBJ_DIR)\i386\bitvect.obj \
+    $(_OBJ_DIR)\i386\bstring.obj \
+    $(_OBJ_DIR)\i386\bytestrm.obj \
+    $(_OBJ_DIR)\i386\bufstrm.obj \
+    $(_OBJ_DIR)\i386\chkmsg.obj \
+    $(_OBJ_DIR)\i386\clasdesc.obj \
+    $(_OBJ_DIR)\i386\cmem.obj \
+    $(_OBJ_DIR)\i386\comm.obj \
+    $(_OBJ_DIR)\i386\contain.obj \
+    $(_OBJ_DIR)\i386\dir.obj \
+    $(_OBJ_DIR)\i386\file.obj \
+    $(_OBJ_DIR)\i386\filestrm.obj \
+    $(_OBJ_DIR)\i386\filter.obj \
+    $(_OBJ_DIR)\i386\fsnode.obj \
+    $(_OBJ_DIR)\i386\hmem.obj \
+    $(_OBJ_DIR)\i386\iterator.obj \
+    $(_OBJ_DIR)\i386\keyboard.obj \
+    $(_OBJ_DIR)\i386\list.obj \
+    $(_OBJ_DIR)\i386\listit.obj \
+    $(_OBJ_DIR)\i386\machine.obj \
+    $(_OBJ_DIR)\i386\mbstr.obj \
+    $(_OBJ_DIR)\i386\mem.obj \
+    $(_OBJ_DIR)\i386\membmgr.obj \
+    $(_OBJ_DIR)\i386\membmgr2.obj \
+    $(_OBJ_DIR)\i386\message.obj \
+    $(_OBJ_DIR)\i386\newdel.obj \
+    $(_OBJ_DIR)\i386\object.obj \
+    $(_OBJ_DIR)\i386\path.obj \
+    $(_OBJ_DIR)\i386\pipe.obj \
+    $(_OBJ_DIR)\i386\pipestrm.obj \
+    $(_OBJ_DIR)\i386\program.obj \
+    $(_OBJ_DIR)\i386\prtstrm.obj \
+    $(_OBJ_DIR)\i386\screen.obj \
+    $(_OBJ_DIR)\i386\seqcnt.obj \
+    $(_OBJ_DIR)\i386\smsg.obj \
+    $(_OBJ_DIR)\i386\sortcnt.obj \
+    $(_OBJ_DIR)\i386\sortlist.obj \
+    $(_OBJ_DIR)\i386\sortlit.obj \
+    $(_OBJ_DIR)\i386\stream.obj \
+    $(_OBJ_DIR)\i386\stringar.obj \
+    $(_OBJ_DIR)\i386\system.obj \
+    $(_OBJ_DIR)\i386\timeinfo.obj \
+    $(_OBJ_DIR)\i386\ulib.obj \
+    $(_OBJ_DIR)\i386\wstring.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\rtmsg.res \
+    $(_OBJ_DIR)\ia64\arg.obj \
+    $(_OBJ_DIR)\ia64\array.obj \
+    $(_OBJ_DIR)\ia64\arrayit.obj \
+    $(_OBJ_DIR)\ia64\basesys.obj \
+    $(_OBJ_DIR)\ia64\bitvect.obj \
+    $(_OBJ_DIR)\ia64\bstring.obj \
+    $(_OBJ_DIR)\ia64\bytestrm.obj \
+    $(_OBJ_DIR)\ia64\bufstrm.obj \
+    $(_OBJ_DIR)\ia64\chkmsg.obj \
+    $(_OBJ_DIR)\ia64\clasdesc.obj \
+    $(_OBJ_DIR)\ia64\cmem.obj \
+    $(_OBJ_DIR)\ia64\comm.obj \
+    $(_OBJ_DIR)\ia64\contain.obj \
+    $(_OBJ_DIR)\ia64\dir.obj \
+    $(_OBJ_DIR)\ia64\file.obj \
+    $(_OBJ_DIR)\ia64\filestrm.obj \
+    $(_OBJ_DIR)\ia64\filter.obj \
+    $(_OBJ_DIR)\ia64\fsnode.obj \
+    $(_OBJ_DIR)\ia64\hmem.obj \
+    $(_OBJ_DIR)\ia64\iterator.obj \
+    $(_OBJ_DIR)\ia64\keyboard.obj \
+    $(_OBJ_DIR)\ia64\list.obj \
+    $(_OBJ_DIR)\ia64\listit.obj \
+    $(_OBJ_DIR)\ia64\machine.obj \
+    $(_OBJ_DIR)\ia64\mbstr.obj \
+    $(_OBJ_DIR)\ia64\mem.obj \
+    $(_OBJ_DIR)\ia64\membmgr.obj \
+    $(_OBJ_DIR)\ia64\membmgr2.obj \
+    $(_OBJ_DIR)\ia64\message.obj \
+    $(_OBJ_DIR)\ia64\newdel.obj \
+    $(_OBJ_DIR)\ia64\object.obj \
+    $(_OBJ_DIR)\ia64\path.obj \
+    $(_OBJ_DIR)\ia64\pipe.obj \
+    $(_OBJ_DIR)\ia64\pipestrm.obj \
+    $(_OBJ_DIR)\ia64\program.obj \
+    $(_OBJ_DIR)\ia64\prtstrm.obj \
+    $(_OBJ_DIR)\ia64\screen.obj \
+    $(_OBJ_DIR)\ia64\seqcnt.obj \
+    $(_OBJ_DIR)\ia64\smsg.obj \
+    $(_OBJ_DIR)\ia64\sortcnt.obj \
+    $(_OBJ_DIR)\ia64\sortlist.obj \
+    $(_OBJ_DIR)\ia64\sortlit.obj \
+    $(_OBJ_DIR)\ia64\stream.obj \
+    $(_OBJ_DIR)\ia64\stringar.obj \
+    $(_OBJ_DIR)\ia64\system.obj \
+    $(_OBJ_DIR)\ia64\timeinfo.obj \
+    $(_OBJ_DIR)\ia64\ulib.obj \
+    $(_OBJ_DIR)\ia64\wstring.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\rtmsg.res \
+    $(_OBJ_DIR)\amd64\arg.obj \
+    $(_OBJ_DIR)\amd64\array.obj \
+    $(_OBJ_DIR)\amd64\arrayit.obj \
+    $(_OBJ_DIR)\amd64\basesys.obj \
+    $(_OBJ_DIR)\amd64\bitvect.obj \
+    $(_OBJ_DIR)\amd64\bstring.obj \
+    $(_OBJ_DIR)\amd64\bytestrm.obj \
+    $(_OBJ_DIR)\amd64\bufstrm.obj \
+    $(_OBJ_DIR)\amd64\chkmsg.obj \
+    $(_OBJ_DIR)\amd64\clasdesc.obj \
+    $(_OBJ_DIR)\amd64\cmem.obj \
+    $(_OBJ_DIR)\amd64\comm.obj \
+    $(_OBJ_DIR)\amd64\contain.obj \
+    $(_OBJ_DIR)\amd64\dir.obj \
+    $(_OBJ_DIR)\amd64\file.obj \
+    $(_OBJ_DIR)\amd64\filestrm.obj \
+    $(_OBJ_DIR)\amd64\filter.obj \
+    $(_OBJ_DIR)\amd64\fsnode.obj \
+    $(_OBJ_DIR)\amd64\hmem.obj \
+    $(_OBJ_DIR)\amd64\iterator.obj \
+    $(_OBJ_DIR)\amd64\keyboard.obj \
+    $(_OBJ_DIR)\amd64\list.obj \
+    $(_OBJ_DIR)\amd64\listit.obj \
+    $(_OBJ_DIR)\amd64\machine.obj \
+    $(_OBJ_DIR)\amd64\mbstr.obj \
+    $(_OBJ_DIR)\amd64\mem.obj \
+    $(_OBJ_DIR)\amd64\membmgr.obj \
+    $(_OBJ_DIR)\amd64\membmgr2.obj \
+    $(_OBJ_DIR)\amd64\message.obj \
+    $(_OBJ_DIR)\amd64\newdel.obj \
+    $(_OBJ_DIR)\amd64\object.obj \
+    $(_OBJ_DIR)\amd64\path.obj \
+    $(_OBJ_DIR)\amd64\pipe.obj \
+    $(_OBJ_DIR)\amd64\pipestrm.obj \
+    $(_OBJ_DIR)\amd64\program.obj \
+    $(_OBJ_DIR)\amd64\prtstrm.obj \
+    $(_OBJ_DIR)\amd64\screen.obj \
+    $(_OBJ_DIR)\amd64\seqcnt.obj \
+    $(_OBJ_DIR)\amd64\smsg.obj \
+    $(_OBJ_DIR)\amd64\sortcnt.obj \
+    $(_OBJ_DIR)\amd64\sortlist.obj \
+    $(_OBJ_DIR)\amd64\sortlit.obj \
+    $(_OBJ_DIR)\amd64\stream.obj \
+    $(_OBJ_DIR)\amd64\stringar.obj \
+    $(_OBJ_DIR)\amd64\system.obj \
+    $(_OBJ_DIR)\amd64\timeinfo.obj \
+    $(_OBJ_DIR)\amd64\ulib.obj \
+    $(_OBJ_DIR)\amd64\wstring.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\rtmsg.res \
+    $(_OBJ_DIR)\arm\arg.obj \
+    $(_OBJ_DIR)\arm\array.obj \
+    $(_OBJ_DIR)\arm\arrayit.obj \
+    $(_OBJ_DIR)\arm\basesys.obj \
+    $(_OBJ_DIR)\arm\bitvect.obj \
+    $(_OBJ_DIR)\arm\bstring.obj \
+    $(_OBJ_DIR)\arm\bytestrm.obj \
+    $(_OBJ_DIR)\arm\bufstrm.obj \
+    $(_OBJ_DIR)\arm\chkmsg.obj \
+    $(_OBJ_DIR)\arm\clasdesc.obj \
+    $(_OBJ_DIR)\arm\cmem.obj \
+    $(_OBJ_DIR)\arm\comm.obj \
+    $(_OBJ_DIR)\arm\contain.obj \
+    $(_OBJ_DIR)\arm\dir.obj \
+    $(_OBJ_DIR)\arm\file.obj \
+    $(_OBJ_DIR)\arm\filestrm.obj \
+    $(_OBJ_DIR)\arm\filter.obj \
+    $(_OBJ_DIR)\arm\fsnode.obj \
+    $(_OBJ_DIR)\arm\hmem.obj \
+    $(_OBJ_DIR)\arm\iterator.obj \
+    $(_OBJ_DIR)\arm\keyboard.obj \
+    $(_OBJ_DIR)\arm\list.obj \
+    $(_OBJ_DIR)\arm\listit.obj \
+    $(_OBJ_DIR)\arm\machine.obj \
+    $(_OBJ_DIR)\arm\mbstr.obj \
+    $(_OBJ_DIR)\arm\mem.obj \
+    $(_OBJ_DIR)\arm\membmgr.obj \
+    $(_OBJ_DIR)\arm\membmgr2.obj \
+    $(_OBJ_DIR)\arm\message.obj \
+    $(_OBJ_DIR)\arm\newdel.obj \
+    $(_OBJ_DIR)\arm\object.obj \
+    $(_OBJ_DIR)\arm\path.obj \
+    $(_OBJ_DIR)\arm\pipe.obj \
+    $(_OBJ_DIR)\arm\pipestrm.obj \
+    $(_OBJ_DIR)\arm\program.obj \
+    $(_OBJ_DIR)\arm\prtstrm.obj \
+    $(_OBJ_DIR)\arm\screen.obj \
+    $(_OBJ_DIR)\arm\seqcnt.obj \
+    $(_OBJ_DIR)\arm\smsg.obj \
+    $(_OBJ_DIR)\arm\sortcnt.obj \
+    $(_OBJ_DIR)\arm\sortlist.obj \
+    $(_OBJ_DIR)\arm\sortlit.obj \
+    $(_OBJ_DIR)\arm\stream.obj \
+    $(_OBJ_DIR)\arm\stringar.obj \
+    $(_OBJ_DIR)\arm\system.obj \
+    $(_OBJ_DIR)\arm\timeinfo.obj \
+    $(_OBJ_DIR)\arm\ulib.obj \
+    $(_OBJ_DIR)\arm\wstring.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\rsidb.res \
+    $(_OBJ_DIR)\i386\stdafx.obj \
+    $(_OBJ_DIR)\i386\rsidb.obj \
+    $(_OBJ_DIR)\i386\wsbdb.obj \
+    $(_OBJ_DIR)\i386\wsbdbkey.obj \
+    $(_OBJ_DIR)\i386\wsbdbent.obj \
+    $(_OBJ_DIR)\i386\wsbdbses.obj \
+    $(_OBJ_DIR)\i386\wsbdbsys.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\rsidb.res \
+    $(_OBJ_DIR)\ia64\stdafx.obj \
+    $(_OBJ_DIR)\ia64\rsidb.obj \
+    $(_OBJ_DIR)\ia64\wsbdb.obj \
+    $(_OBJ_DIR)\ia64\wsbdbkey.obj \
+    $(_OBJ_DIR)\ia64\wsbdbent.obj \
+    $(_OBJ_DIR)\ia64\wsbdbses.obj \
+    $(_OBJ_DIR)\ia64\wsbdbsys.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\rsidb.res \
+    $(_OBJ_DIR)\amd64\stdafx.obj \
+    $(_OBJ_DIR)\amd64\rsidb.obj \
+    $(_OBJ_DIR)\amd64\wsbdb.obj \
+    $(_OBJ_DIR)\amd64\wsbdbkey.obj \
+    $(_OBJ_DIR)\amd64\wsbdbent.obj \
+    $(_OBJ_DIR)\amd64\wsbdbses.obj \
+    $(_OBJ_DIR)\amd64\wsbdbsys.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\rsidb.res \
+    $(_OBJ_DIR)\arm\stdafx.obj \
+    $(_OBJ_DIR)\arm\rsidb.obj \
+    $(_OBJ_DIR)\arm\wsbdb.obj \
+    $(_OBJ_DIR)\arm\wsbdbkey.obj \
+    $(_OBJ_DIR)\arm\wsbdbent.obj \
+    $(_OBJ_DIR)\arm\wsbdbses.obj \
+    $(_OBJ_DIR)\arm\wsbdbsys.obj
+
+PASS0_ARM_OBJECTS=
+

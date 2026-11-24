@@ -1,0 +1,174 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\87cdisp.obj \
+    $(_OBJ_DIR)\i386\87csqrt.obj \
+    $(_OBJ_DIR)\i386\87ctran.obj \
+    $(_OBJ_DIR)\i386\87ctrig.obj \
+    $(_OBJ_DIR)\i386\87ctriga.obj \
+    $(_OBJ_DIR)\i386\87ctrigh.obj \
+    $(_OBJ_DIR)\i386\87disp.obj \
+    $(_OBJ_DIR)\i386\87fmod.obj \
+    $(_OBJ_DIR)\i386\87sqrt.obj \
+    $(_OBJ_DIR)\i386\87tran.obj \
+    $(_OBJ_DIR)\i386\87trig.obj \
+    $(_OBJ_DIR)\i386\87triga.obj \
+    $(_OBJ_DIR)\i386\87trigh.obj \
+    $(_OBJ_DIR)\i386\acos.obj \
+    $(_OBJ_DIR)\i386\adj_fdiv.obj \
+    $(_OBJ_DIR)\i386\asin.obj \
+    $(_OBJ_DIR)\i386\atan.obj \
+    $(_OBJ_DIR)\i386\common.obj \
+    $(_OBJ_DIR)\i386\cos.obj \
+    $(_OBJ_DIR)\i386\ftol.obj \
+    $(_OBJ_DIR)\i386\ftol2.obj \
+    $(_OBJ_DIR)\i386\genexcep.obj \
+    $(_OBJ_DIR)\i386\huge.obj \
+    $(_OBJ_DIR)\i386\log.obj \
+    $(_OBJ_DIR)\i386\log10.obj \
+    $(_OBJ_DIR)\i386\pow.obj \
+    $(_OBJ_DIR)\i386\sin.obj \
+    $(_OBJ_DIR)\i386\sqrt.obj \
+    $(_OBJ_DIR)\i386\ceil_pentium4.obj \
+    $(_OBJ_DIR)\i386\floor_pentium4.obj \
+    $(_OBJ_DIR)\i386\tan.obj \
+    $(_OBJ_DIR)\i386\atan_pentium4.obj \
+    $(_OBJ_DIR)\i386\exp_pentium4.obj \
+    $(_OBJ_DIR)\i386\log10_pentium4.obj \
+    $(_OBJ_DIR)\i386\log_pentium4.obj \
+    $(_OBJ_DIR)\i386\modf_pentium4.obj \
+    $(_OBJ_DIR)\i386\pow_pentium4.obj \
+    $(_OBJ_DIR)\i386\87except.obj \
+    $(_OBJ_DIR)\i386\atan_table.obj \
+    $(_OBJ_DIR)\i386\filter.obj \
+    $(_OBJ_DIR)\i386\fpctrl.obj \
+    $(_OBJ_DIR)\i386\frnd.obj \
+    $(_OBJ_DIR)\i386\fsqrt.obj \
+    $(_OBJ_DIR)\i386\ieee87.obj \
+    $(_OBJ_DIR)\i386\libm_error.obj \
+    $(_OBJ_DIR)\i386\cpu_disp.obj \
+    $(_OBJ_DIR)\i386\filter_simd.obj \
+    $(_OBJ_DIR)\i386\xmmi2_fp_emul.obj \
+    $(_OBJ_DIR)\i386\xmmi_fp_emul.obj \
+    $(_OBJ_DIR)\i386\bessel.obj \
+    $(_OBJ_DIR)\i386\fpexcept.obj \
+    $(_OBJ_DIR)\i386\frexp.obj \
+    $(_OBJ_DIR)\i386\ieeemisc.obj \
+    $(_OBJ_DIR)\i386\matherr.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\ceil.obj \
+    $(_OBJ_DIR)\i386\fabs.obj \
+    $(_OBJ_DIR)\i386\floor.obj \
+    $(_OBJ_DIR)\i386\hypot.obj \
+    $(_OBJ_DIR)\i386\ldexp.obj \
+    $(_OBJ_DIR)\i386\modf.obj \
+    $(_OBJ_DIR)\i386\powhlp.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\filter.obj \
+    $(_OBJ_DIR)\ia64\fpctrl.obj \
+    $(_OBJ_DIR)\ia64\ieee.obj \
+    $(_OBJ_DIR)\ia64\libm_error.obj \
+    $(_OBJ_DIR)\ia64\tanhf.obj \
+    $(_OBJ_DIR)\ia64\bessel.obj \
+    $(_OBJ_DIR)\ia64\fpexcept.obj \
+    $(_OBJ_DIR)\ia64\frexp.obj \
+    $(_OBJ_DIR)\ia64\ieeemisc.obj \
+    $(_OBJ_DIR)\ia64\matherr.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\acos.obj \
+    $(_OBJ_DIR)\ia64\acosf.obj \
+    $(_OBJ_DIR)\ia64\asin.obj \
+    $(_OBJ_DIR)\ia64\asinf.obj \
+    $(_OBJ_DIR)\ia64\_atan.obj \
+    $(_OBJ_DIR)\ia64\atan2.obj \
+    $(_OBJ_DIR)\ia64\atan2f.obj \
+    $(_OBJ_DIR)\ia64\atanf.obj \
+    $(_OBJ_DIR)\ia64\_ceil.obj \
+    $(_OBJ_DIR)\ia64\ceilf.obj \
+    $(_OBJ_DIR)\ia64\cosh.obj \
+    $(_OBJ_DIR)\ia64\coshf.obj \
+    $(_OBJ_DIR)\ia64\_exp.obj \
+    $(_OBJ_DIR)\ia64\expf.obj \
+    $(_OBJ_DIR)\ia64\_fabs.obj \
+    $(_OBJ_DIR)\ia64\fabsf.obj \
+    $(_OBJ_DIR)\ia64\_floor.obj \
+    $(_OBJ_DIR)\ia64\floorf.obj \
+    $(_OBJ_DIR)\ia64\_fmod.obj \
+    $(_OBJ_DIR)\ia64\fmodf.obj \
+    $(_OBJ_DIR)\ia64\fpsr.obj \
+    $(_OBJ_DIR)\ia64\frnd.obj \
+    $(_OBJ_DIR)\ia64\huge.obj \
+    $(_OBJ_DIR)\ia64\_hypot.obj \
+    $(_OBJ_DIR)\ia64\hypotf.obj \
+    $(_OBJ_DIR)\ia64\isnan.obj \
+    $(_OBJ_DIR)\ia64\isnanf.obj \
+    $(_OBJ_DIR)\ia64\_ldexp.obj \
+    $(_OBJ_DIR)\ia64\ldexpf.obj \
+    $(_OBJ_DIR)\ia64\libm_atan2_reg.obj \
+    $(_OBJ_DIR)\ia64\libm_reduce.obj \
+    $(_OBJ_DIR)\ia64\libm_tan.obj \
+    $(_OBJ_DIR)\ia64\_log.obj \
+    $(_OBJ_DIR)\ia64\logb.obj \
+    $(_OBJ_DIR)\ia64\logbf.obj \
+    $(_OBJ_DIR)\ia64\logf.obj \
+    $(_OBJ_DIR)\ia64\_modf.obj \
+    $(_OBJ_DIR)\ia64\modff.obj \
+    $(_OBJ_DIR)\ia64\_pow.obj \
+    $(_OBJ_DIR)\ia64\powf.obj \
+    $(_OBJ_DIR)\ia64\rerun.obj \
+    $(_OBJ_DIR)\ia64\_sincos.obj \
+    $(_OBJ_DIR)\ia64\sincosf.obj \
+    $(_OBJ_DIR)\ia64\sinh.obj \
+    $(_OBJ_DIR)\ia64\sinhf.obj \
+    $(_OBJ_DIR)\ia64\_sqrt.obj \
+    $(_OBJ_DIR)\ia64\sqrtf.obj \
+    $(_OBJ_DIR)\ia64\_tan.obj \
+    $(_OBJ_DIR)\ia64\tanf.obj \
+    $(_OBJ_DIR)\ia64\powhlp.obj \
+    $(_OBJ_DIR)\ia64\tanh.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\fpsr.obj \
+    $(_OBJ_DIR)\amd64\huge.obj \
+    $(_OBJ_DIR)\amd64\ieee.obj \
+    $(_OBJ_DIR)\amd64\fpctrl.obj \
+    $(_OBJ_DIR)\amd64\bessel.obj \
+    $(_OBJ_DIR)\amd64\fpexcept.obj \
+    $(_OBJ_DIR)\amd64\frexp.obj \
+    $(_OBJ_DIR)\amd64\ieeemisc.obj \
+    $(_OBJ_DIR)\amd64\matherr.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\asincos.obj \
+    $(_OBJ_DIR)\amd64\atan.obj \
+    $(_OBJ_DIR)\amd64\ceil.obj \
+    $(_OBJ_DIR)\amd64\exp.obj \
+    $(_OBJ_DIR)\amd64\fabs.obj \
+    $(_OBJ_DIR)\amd64\floor.obj \
+    $(_OBJ_DIR)\amd64\fmod.obj \
+    $(_OBJ_DIR)\amd64\hypot.obj \
+    $(_OBJ_DIR)\amd64\ldexp.obj \
+    $(_OBJ_DIR)\amd64\log.obj \
+    $(_OBJ_DIR)\amd64\modf.obj \
+    $(_OBJ_DIR)\amd64\pow.obj \
+    $(_OBJ_DIR)\amd64\powhlp.obj \
+    $(_OBJ_DIR)\amd64\sincos.obj \
+    $(_OBJ_DIR)\amd64\sincosh.obj \
+    $(_OBJ_DIR)\amd64\sqrt.obj \
+    $(_OBJ_DIR)\amd64\tan.obj \
+    $(_OBJ_DIR)\amd64\tanh.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\bessel.obj \
+    $(_OBJ_DIR)\arm\fpexcept.obj \
+    $(_OBJ_DIR)\arm\frexp.obj \
+    $(_OBJ_DIR)\arm\ieeemisc.obj \
+    $(_OBJ_DIR)\arm\matherr.obj \
+    $(_OBJ_DIR)\arm\util.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,243 @@
+ faulth
+
+ Timestamp is 6b04f2a1 (Mon Nov 23 21:12:49 2026)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 000000dcH .idata$5                CODE
+ 0001:000000e0 00000678H .rdata                  CODE
+ 0001:00000758 00000064H .rdata$debug            CODE
+ 0001:000007c0 00000008H .rdata$sxdata           CODE
+ 0001:000007d0 00002860H .text                   CODE
+ 0001:00003030 00000050H .idata$2                CODE
+ 0001:00003080 00000014H .idata$3                CODE
+ 0001:00003094 000000dcH .idata$4                CODE
+ 0001:00003170 000003c2H .idata$6                CODE
+ 0001:00003540 00000061H .edata                  CODE
+ 0002:00000000 00000004H .CRT$XCA                DATA
+ 0002:00000004 00000004H .CRT$XCC                DATA
+ 0002:00000008 00000004H .CRT$XCZ                DATA
+ 0002:0000000c 00000004H .CRT$XIA                DATA
+ 0002:00000010 00000004H .CRT$XIZ                DATA
+ 0002:00000014 00000004H .CRT$XPA                DATA
+ 0002:00000018 00000004H .CRT$XPZ                DATA
+ 0002:0000001c 00000004H .CRT$XTA                DATA
+ 0002:00000020 00000004H .CRT$XTZ                DATA
+ 0002:00000030 00000050H .data                   DATA
+ 0002:00000080 00000100H .bss                    DATA
+ 0003:00000000 00000058H .rsrc$01                DATA
+ 0003:00000060 00000380H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0000:00000000       __except_list              00000000     <absolute>
+ 0000:00000002       ___safe_se_handler_count   00000002     <absolute>
+ 0001:00000000       __imp__GetModuleFileNameA@12 00401000     kernel32:KERNEL32.dll
+ 0001:00000004       __imp__SetEvent@4          00401004     kernel32:KERNEL32.dll
+ 0001:00000008       __imp__SetLastError@4      00401008     kernel32:KERNEL32.dll
+ 0001:0000000c       __imp__UnmapViewOfFile@4   0040100c     kernel32:KERNEL32.dll
+ 0001:00000010       __imp__ReleaseMutex@4      00401010     kernel32:KERNEL32.dll
+ 0001:00000014       __imp__WaitForMultipleObjects@16 00401014     kernel32:KERNEL32.dll
+ 0001:00000018       __imp__WaitForSingleObject@8 00401018     kernel32:KERNEL32.dll
+ 0001:0000001c       __imp__GetTickCount@0      0040101c     kernel32:KERNEL32.dll
+ 0001:00000020       __imp__CloseHandle@4       00401020     kernel32:KERNEL32.dll
+ 0001:00000024       __imp__CreateProcessA@40   00401024     kernel32:KERNEL32.dll
+ 0001:00000028       __imp__MultiByteToWideChar@24 00401028     kernel32:KERNEL32.dll
+ 0001:0000002c       __imp__lstrcpynA@12        0040102c     kernel32:KERNEL32.dll
+ 0001:00000030       __imp__GetCurrentThreadId@0 00401030     kernel32:KERNEL32.dll
+ 0001:00000034       __imp__GetCurrentProcessId@0 00401034     kernel32:KERNEL32.dll
+ 0001:00000038       __imp__MapViewOfFile@20    00401038     kernel32:KERNEL32.dll
+ 0001:0000003c       __imp__CreateFileMappingA@24 0040103c     kernel32:KERNEL32.dll
+ 0001:00000040       __imp__DuplicateHandle@28  00401040     kernel32:KERNEL32.dll
+ 0001:00000044       __imp__GetCurrentProcess@0 00401044     kernel32:KERNEL32.dll
+ 0001:00000048       __imp__CreateMutexA@12     00401048     kernel32:KERNEL32.dll
+ 0001:0000004c       __imp__GetLastError@0      0040104c     kernel32:KERNEL32.dll
+ 0001:00000050       __imp__CreateEventA@16     00401050     kernel32:KERNEL32.dll
+ 0001:00000054       __imp__HeapFree@12         00401054     kernel32:KERNEL32.dll
+ 0001:00000058       __imp__HeapAlloc@12        00401058     kernel32:KERNEL32.dll
+ 0001:0000005c       __imp__GetProcessHeap@0    0040105c     kernel32:KERNEL32.dll
+ 0001:00000060       __imp__GetVersionExA@4     00401060     kernel32:KERNEL32.dll
+ 0001:00000064       __imp__WideCharToMultiByte@32 00401064     kernel32:KERNEL32.dll
+ 0001:00000068       __imp__GetProcAddress@8    00401068     kernel32:KERNEL32.dll
+ 0001:0000006c       __imp__GetModuleHandleA@4  0040106c     kernel32:KERNEL32.dll
+ 0001:00000070       __imp__QueryPerformanceCounter@4 00401070     kernel32:KERNEL32.dll
+ 0001:00000074       __imp__GetSystemTimeAsFileTime@4 00401074     kernel32:KERNEL32.dll
+ 0001:00000078       __imp__TerminateProcess@8  00401078     kernel32:KERNEL32.dll
+ 0001:0000007c       __imp__SetUnhandledExceptionFilter@4 0040107c     kernel32:KERNEL32.dll
+ 0001:00000080       __imp__HeapReAlloc@16      00401080     kernel32:KERNEL32.dll
+ 0001:00000084       __imp__VirtualFree@12      00401084     kernel32:KERNEL32.dll
+ 0001:00000088       __imp__GetStringTypeW@16   00401088     kernel32:KERNEL32.dll
+ 0001:0000008c       __imp__GetStringTypeA@20   0040108c     kernel32:KERNEL32.dll
+ 0001:00000090       __imp__GetSystemInfo@4     00401090     kernel32:KERNEL32.dll
+ 0001:00000094       __imp__InterlockedExchange@8 00401094     kernel32:KERNEL32.dll
+ 0001:00000098       __imp__VirtualQuery@12     00401098     kernel32:KERNEL32.dll
+ 0001:0000009c       __imp__LCMapStringA@24     0040109c     kernel32:KERNEL32.dll
+ 0001:000000a0       __imp__LCMapStringW@24     004010a0     kernel32:KERNEL32.dll
+ 0001:000000a4       __imp__GetLocaleInfoA@16   004010a4     kernel32:KERNEL32.dll
+ 0001:000000a8       __imp__GetCPInfo@8         004010a8     kernel32:KERNEL32.dll
+ 0001:000000ac       __imp__Sleep@4             004010ac     kernel32:KERNEL32.dll
+ 0001:000000b0       __imp__VirtualProtect@16   004010b0     kernel32:KERNEL32.dll
+ 0001:000000b4       __imp__VirtualAlloc@16     004010b4     kernel32:KERNEL32.dll
+ 0001:000000b8       \177KERNEL32_NULL_THUNK_DATA 004010b8     kernel32:KERNEL32.dll
+ 0001:000000bc       __imp__wsprintfA           004010bc     user32:USER32.dll
+ 0001:000000c0       \177USER32_NULL_THUNK_DATA 004010c0     user32:USER32.dll
+ 0001:000000c4       __imp__VerQueryValueA@16   004010c4     version:VERSION.dll
+ 0001:000000c8       __imp__GetFileVersionInfoA@16 004010c8     version:VERSION.dll
+ 0001:000000cc       __imp__GetFileVersionInfoSizeA@8 004010cc     version:VERSION.dll
+ 0001:000000d0       \177VERSION_NULL_THUNK_DATA 004010d0     version:VERSION.dll
+ 0001:000000d4       __imp__RtlUnwind@16        004010d4     ntdll:ntdll.dll
+ 0001:000000d8       \177ntdll_NULL_THUNK_DATA  004010d8     ntdll:ntdll.dll
+ 0001:000000fc       _c_szDWDefServerI          004010fc     faulth.obj
+ 0001:00000114       _c_szDWBrand               00401114     faulth.obj
+ 0001:0000011c       _c_wzDWDefAppName          0040111c     faulth.obj
+ 0001:00000134       _c_wszDWCmdLineU           00401134     faulth.obj
+ 0001:0000015c       ??_C@_0BA@EAIKBMAK@Winsta0?2Default?$AA@ 0040115c     faulth.obj
+ 0001:0000016c       ??_C@_09OKJPFCFE@dwwin?4exe?$AA@ 0040116c     faulth.obj
+ 0001:00000178       ??_C@_01KICIPPFI@?2?$AA@   00401178     faulth.obj
+ 0001:0000017c       ??_C@_0M@GBHOMFHE@WININET?4DLL?$AA@ 0040117c     faulth.obj
+ 0001:00000188       ??_C@_11LOCGONAA@?$AA?$AA@ 00401188     faulth.obj
+ 0001:0000018c       ??_C@_0BJ@IGDPHONL@UnhandledExceptionFilter?$AA@ 0040118c     BufferOverflowU:gs_support.obj
+ 0001:000001a8       ??_C@_0N@MDJJJHMB@kernel32?4dll?$AA@ 004011a8     BufferOverflowU:gs_support.obj
+ 0001:000001b8       ??_C@_13NOLLCAOD@?$AA?$AA?$AA?$AA@ 004011b8     libc:a_map.obj
+ 0001:000001e8       ___newctype                004011e8     libc:ctype.obj
+ 0001:000004e8       __wctype                   004014e8     libc:ctype.obj
+ 0001:00000710       __load_config_used         00401710     libc:loadcfg.obj
+ 0001:000007c0       ___safe_se_handler_table   004017c0     <linker-defined>
+ 0001:00000839       _RolloverSubtract@8        00401839 f i faulth.obj
+ 0001:00000851       _MyGetModuleFileNameA@12   00401851 f   faulth.obj
+ 0001:00000879       _DllMain@12                00401879 f   faulth.obj
+ 0001:0000119a       _FAULTHCreate@0            0040219a f   faulth.obj
+ 0001:000011be       _FAULTHDelete@4            004021be f   faulth.obj
+ 0001:000011db       ___security_init_cookie    004021db f   BufferOverflowU:gs_support.obj
+ 0001:00001261       @__security_check_cookie@4 00402261 f   BufferOverflowU:secchk.obj
+ 0001:0000126f       ___report_gsfailure        0040226f f   BufferOverflowU:gs_report.obj
+ 0001:00001300       __SEH_prolog               00402300 f   libc:sehprolg.obj
+ 0001:0000133b       __SEH_epilog               0040233b f   libc:sehprolg.obj
+ 0001:00001354       __except_handler3          00402354 f   libc:exsup3.obj
+ 0001:0000143a       __seh_longjmp_unwind@4     0040243a f   libc:exsup3.obj
+ 0001:00001460       _strrchr                   00402460 f   libc:strrchr.obj
+ 0001:0000148d       __stricmp                  0040248d f   libc:stricmp.obj
+ 0001:000014d0       __global_unwind2           004024d0 f   libc:exsup.obj
+ 0001:00001512       __local_unwind2            00402512 f   libc:exsup.obj
+ 0001:0000156a       __NLG_Return2              0040256a     libc:exsup.obj
+ 0001:0000157a       __abnormal_termination     0040257a f   libc:exsup.obj
+ 0001:0000159d       __NLG_Notify1              0040259d f   libc:exsup.obj
+ 0001:000015a6       __NLG_Notify               004025a6 f   libc:exsup.obj
+ 0001:000015b9       __NLG_Dispatch             004025b9     libc:exsup.obj
+ 0001:000015be       __ValidateEH3RN            004025be f   libc:eh3valid.obj
+ 0001:000017e7       _tolower                   004027e7 f   libc:tolower.obj
+ 0001:000018c0       ___ascii_stricmp           004028c0 f   libc:_stricmp.obj
+ 0001:0000190e       ___crtLCMapStringA         0040290e f   libc:a_map.obj
+ 0001:00001cd5       __isctype                  00402cd5 f   libc:isctype.obj
+ 0001:00001d53       ___ansicp                  00402d53 f   libc:convrtcp.obj
+ 0001:00001d85       ___convertcp               00402d85 f   libc:convrtcp.obj
+ 0001:00001f51       _free                      00402f51 f   libc:free.obj
+ 0001:00001f89       @_malloc_crt@4             00402f89 f   libc:crtheap.obj
+ 0001:00001fc1       @_calloc_crt@8             00402fc1 f   libc:crtheap.obj
+ 0001:00001fff       __resetstkoflw             00402fff f   libc:resetstk.obj
+ 0001:000020f0       __alloca_probe             004030f0     libc:chkstk.obj
+ 0001:000020f0       __chkstk                   004030f0 f   libc:chkstk.obj
+ 0001:0000212d       ___crtGetStringTypeA       0040312d f   libc:a_str.obj
+ 0001:000022ef       _atol                      004032ef f   libc:atox.obj
+ 0001:0000236a       ___sbh_find_block          0040336a f   libc:sbheap.obj
+ 0001:00002395       ___sbh_free_block          00403395 f   libc:sbheap.obj
+ 0001:000026ad       ___sbh_alloc_new_region    004036ad f   libc:sbheap.obj
+ 0001:00002764       ___sbh_alloc_new_group     00403764 f   libc:sbheap.obj
+ 0001:0000286a       ___sbh_alloc_block         0040386a f   libc:sbheap.obj
+ 0001:00002b66       _V6_HeapAlloc              00403b66 f   libc:malloc.obj
+ 0001:00002b7c       _malloc                    00403b7c f   libc:malloc.obj
+ 0001:00002bf3       _calloc                    00403bf3 f   libc:calloc.obj
+ 0001:00002c80       __allmul                   00403c80 f   libc:llmul.obj
+ 0001:00002cc0       _memmove                   00403cc0 f   libc:memmove.obj
+ 0001:00002ffd       __callnewh                 00403ffd f   libc:handler.obj
+ 0001:00003018       _RtlUnwind@16              00404018 f   ntdll:ntdll.dll
+ 0001:0000301e       _VerQueryValueA@16         0040401e f   version:VERSION.dll
+ 0001:00003024       _GetFileVersionInfoA@16    00404024 f   version:VERSION.dll
+ 0001:0000302a       _GetFileVersionInfoSizeA@8 0040402a f   version:VERSION.dll
+ 0001:00003030       __IMPORT_DESCRIPTOR_KERNEL32 00404030     kernel32:KERNEL32.dll
+ 0001:00003044       __IMPORT_DESCRIPTOR_ntdll  00404044     ntdll:ntdll.dll
+ 0001:00003058       __IMPORT_DESCRIPTOR_VERSION 00404058     version:VERSION.dll
+ 0001:0000306c       __IMPORT_DESCRIPTOR_USER32 0040406c     user32:USER32.dll
+ 0001:00003080       __NULL_IMPORT_DESCRIPTOR   00404080     kernel32:KERNEL32.dll
+ 0002:00000000       ___xc_a                    00405000     libc:crt0init.obj
+ 0002:00000004       _pSecCookieInit            00405004     BufferOverflowU:gs_support.obj
+ 0002:00000008       ___xc_z                    00405008     libc:crt0init.obj
+ 0002:0000000c       ___xi_a                    0040500c     libc:crt0init.obj
+ 0002:00000010       ___xi_z                    00405010     libc:crt0init.obj
+ 0002:00000014       ___xp_a                    00405014     libc:crt0init.obj
+ 0002:00000018       ___xp_z                    00405018     libc:crt0init.obj
+ 0002:0000001c       ___xt_a                    0040501c     libc:crt0init.obj
+ 0002:00000020       ___xt_z                    00405020     libc:crt0init.obj
+ 0002:00000030       ___security_cookie         00405030     BufferOverflowU:gs_support.obj
+ 0002:00000040       __NLG_Destination          00405040     libc:exsup.obj
+ 0002:00000050       ___lc_clike                00405050     libc:nlsdata2.obj
+ 0002:00000054       __pctype                   00405054     libc:ctype.obj
+ 0002:00000058       __pwctype                  00405058     libc:ctype.obj
+ 0002:0000005c       ___mb_cur_max              0040505c     libc:nlsdata1.obj
+ 0002:00000060       ___decimal_point           00405060     libc:nlsdata1.obj
+ 0002:00000064       ___decimal_point_length    00405064     libc:nlsdata1.obj
+ 0002:00000070       __amblksiz                 00405070     libc:heapinit.obj
+ 0002:00000080       _g_hInstance               00405080     faulth.obj
+ 0002:000000d4       ___lc_handle               004050d4     libc:nlsdata2.obj
+ 0002:000000ec       ___lc_codepage             004050ec     libc:nlsdata2.obj
+ 0002:000000f0       ___lc_collate_cp           004050f0     libc:nlsdata2.obj
+ 0002:000000fc       _errno                     004050fc     libc:crt0dat.obj
+ 0002:00000100       __doserrno                 00405100     libc:crt0dat.obj
+ 0002:00000104       __umaskval                 00405104     libc:crt0dat.obj
+ 0002:00000108       __osplatform               00405108     libc:crt0dat.obj
+ 0002:0000010c       __osver                    0040510c     libc:crt0dat.obj
+ 0002:00000110       __winver                   00405110     libc:crt0dat.obj
+ 0002:00000114       __winmajor                 00405114     libc:crt0dat.obj
+ 0002:00000118       __winminor                 00405118     libc:crt0dat.obj
+ 0002:0000011c       ___argc                    0040511c     libc:crt0dat.obj
+ 0002:00000120       ___argv                    00405120     libc:crt0dat.obj
+ 0002:00000124       ___wargv                   00405124     libc:crt0dat.obj
+ 0002:00000128       __environ                  00405128     libc:crt0dat.obj
+ 0002:0000012c       ___initenv                 0040512c     libc:crt0dat.obj
+ 0002:00000130       __wenviron                 00405130     libc:crt0dat.obj
+ 0002:00000134       ___winitenv                00405134     libc:crt0dat.obj
+ 0002:00000138       __pgmptr                   00405138     libc:crt0dat.obj
+ 0002:0000013c       __wpgmptr                  0040513c     libc:crt0dat.obj
+ 0002:00000140       __exitflag                 00405140     libc:crt0dat.obj
+ 0002:00000144       __C_Termination_Done       00405144     libc:crt0dat.obj
+ 0002:00000148       __C_Exit_Done              00405148     libc:crt0dat.obj
+ 0002:0000014c       ?_pnhHeap@@3P6AHI@ZA       0040514c     libc:handler.obj
+ 0002:00000150       __newmode                  00405150     libc:_newmode.obj
+ 0002:00000154       ___gs_AltFailFunction      00405154     <common>
+ 0002:00000158       ___gs_pfUnhandledExceptionFilter 00405158     <common>
+ 0002:0000015c       ___sbh_pHeaderDefer        0040515c     <common>
+ 0002:00000160       ___sbh_cntHeaderList       00405160     <common>
+ 0002:00000164       ___sbh_pHeaderList         00405164     <common>
+ 0002:00000168       ___sbh_threshold           00405168     <common>
+ 0002:0000016c       ___sbh_pHeaderScan         0040516c     <common>
+ 0002:00000170       ___sbh_sizeHeaderList      00405170     <common>
+ 0002:00000174       ___sbh_indGroupDefer       00405174     <common>
+ 0002:00000178       __crtheap                  00405178     <common>
+ 0002:0000017c       ___active_heap             0040517c     <common>
+
+ entry point at        0001:00000879
+
+ Static symbols
+
+ 0001:000007d0       _plstrcpynW@12             004017d0 f   faulth.obj
+ 0001:0000088f       _StartDWException@20       0040188f f   faulth.obj
+ 0001:00000dd2       _FaultHandler@12           00401dd2 f   faulth.obj
+ 0001:00000e71       _FAULTHIsSupported@4       00401e71 f   faulth.obj
+ 0001:00000f9c       _FAULTHSetURLA@8           00401f9c f   faulth.obj
+ 0001:00000fc0       _FAULTHSetURLW@8           00401fc0 f   faulth.obj
+ 0001:00000fea       _FAULTHSetErrorTextA@8     00401fea f   faulth.obj
+ 0001:00001016       _FAULTHSetErrorTextW@8     00402016 f   faulth.obj
+ 0001:00001039       _FAULTHSetAdditionalFilesA@8 00402039 f   faulth.obj
+ 0001:00001065       _FAULTHSetAdditionalFilesW@8 00402065 f   faulth.obj
+ 0001:00001088       _FAULTHSetAppNameA@8       00402088 f   faulth.obj
+ 0001:000010b1       _FAULTHSetAppNameW@8       004020b1 f   faulth.obj
+ 0001:000010d1       _FAULTHSetLCID@8           004020d1 f   faulth.obj
+ 0001:000010e6       _FAULTHInit@4              004020e6 f   faulth.obj
+ 0001:00001455       $$$00003                   00402455 f   libc:exsup3.obj
+ 0001:000014d0       $$$00001                   004024d0 f   libc:exsup.obj
+ 0001:000014f0       $$$00003                   004024f0 f   libc:exsup.obj
+ 0001:000014f0       __unwind_handler           004024f0 f   libc:exsup.obj
+ 0001:00001512       $$$00005                   00402512 f   libc:exsup.obj
+ 0001:0000157a       $$$00007                   0040257a f   libc:exsup.obj
+ 0001:000015be       $$$00011                   004025be f   libc:exsup.obj

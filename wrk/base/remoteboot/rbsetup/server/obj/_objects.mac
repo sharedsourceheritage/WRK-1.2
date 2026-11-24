@@ -1,0 +1,53 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\resource.res \
+    $(_OBJ_DIR)\i386\automate.obj \
+    $(_OBJ_DIR)\i386\check.obj \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\utils.obj \
+    $(_OBJ_DIR)\i386\dialogs.obj \
+    $(_OBJ_DIR)\i386\dhcp.obj \
+    $(_OBJ_DIR)\i386\setup.obj \
+    $(_OBJ_DIR)\i386\syspart.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\resource.res \
+    $(_OBJ_DIR)\ia64\automate.obj \
+    $(_OBJ_DIR)\ia64\check.obj \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\utils.obj \
+    $(_OBJ_DIR)\ia64\dialogs.obj \
+    $(_OBJ_DIR)\ia64\dhcp.obj \
+    $(_OBJ_DIR)\ia64\setup.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\resource.res \
+    $(_OBJ_DIR)\amd64\automate.obj \
+    $(_OBJ_DIR)\amd64\check.obj \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\utils.obj \
+    $(_OBJ_DIR)\amd64\dialogs.obj \
+    $(_OBJ_DIR)\amd64\dhcp.obj \
+    $(_OBJ_DIR)\amd64\setup.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\resource.res \
+    $(_OBJ_DIR)\arm\automate.obj \
+    $(_OBJ_DIR)\arm\check.obj \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\utils.obj \
+    $(_OBJ_DIR)\arm\dialogs.obj \
+    $(_OBJ_DIR)\arm\dhcp.obj \
+    $(_OBJ_DIR)\arm\setup.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clusapi.res \
+    $(_OBJ_DIR)\i386\clusapi.obj \
+    $(_OBJ_DIR)\i386\ioctl.obj \
+    $(_OBJ_DIR)\i386\group.obj \
+    $(_OBJ_DIR)\i386\nodeapi.obj \
+    $(_OBJ_DIR)\i386\reconect.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\resrcapi.obj \
+    $(_OBJ_DIR)\i386\notify.obj \
+    $(_OBJ_DIR)\i386\network.obj \
+    $(_OBJ_DIR)\i386\intrface.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clusapi.res \
+    $(_OBJ_DIR)\ia64\clusapi.obj \
+    $(_OBJ_DIR)\ia64\ioctl.obj \
+    $(_OBJ_DIR)\ia64\group.obj \
+    $(_OBJ_DIR)\ia64\nodeapi.obj \
+    $(_OBJ_DIR)\ia64\reconect.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\resrcapi.obj \
+    $(_OBJ_DIR)\ia64\notify.obj \
+    $(_OBJ_DIR)\ia64\network.obj \
+    $(_OBJ_DIR)\ia64\intrface.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clusapi.res \
+    $(_OBJ_DIR)\amd64\clusapi.obj \
+    $(_OBJ_DIR)\amd64\ioctl.obj \
+    $(_OBJ_DIR)\amd64\group.obj \
+    $(_OBJ_DIR)\amd64\nodeapi.obj \
+    $(_OBJ_DIR)\amd64\reconect.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\resrcapi.obj \
+    $(_OBJ_DIR)\amd64\notify.obj \
+    $(_OBJ_DIR)\amd64\network.obj \
+    $(_OBJ_DIR)\amd64\intrface.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clusapi.res \
+    $(_OBJ_DIR)\arm\clusapi.obj \
+    $(_OBJ_DIR)\arm\ioctl.obj \
+    $(_OBJ_DIR)\arm\group.obj \
+    $(_OBJ_DIR)\arm\nodeapi.obj \
+    $(_OBJ_DIR)\arm\reconect.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\resrcapi.obj \
+    $(_OBJ_DIR)\arm\notify.obj \
+    $(_OBJ_DIR)\arm\network.obj \
+    $(_OBJ_DIR)\arm\intrface.obj
+
+PASS0_ARM_OBJECTS=
+

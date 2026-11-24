@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dll1.res \
+    $(_OBJ_DIR)\i386\dlldatay.obj \
+    $(_OBJ_DIR)\i386\dll1.obj \
+    $(_OBJ_DIR)\i386\dllmain.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dll1.res \
+    $(_OBJ_DIR)\ia64\dlldatay.obj \
+    $(_OBJ_DIR)\ia64\dll1.obj \
+    $(_OBJ_DIR)\ia64\dllmain.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dll1.res \
+    $(_OBJ_DIR)\amd64\dlldatay.obj \
+    $(_OBJ_DIR)\amd64\dll1.obj \
+    $(_OBJ_DIR)\amd64\dllmain.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dll1.res \
+    $(_OBJ_DIR)\arm\dlldatay.obj \
+    $(_OBJ_DIR)\arm\dll1.obj \
+    $(_OBJ_DIR)\arm\dllmain.obj
+
+PASS0_ARM_OBJECTS=
+

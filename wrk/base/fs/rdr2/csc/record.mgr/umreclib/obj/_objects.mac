@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\record.obj \
+    $(_OBJ_DIR)\i386\recordse.obj \
+    $(_OBJ_DIR)\i386\recchk.obj \
+    $(_OBJ_DIR)\i386\osutils.obj \
+    $(_OBJ_DIR)\i386\oslayeru.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\record.obj \
+    $(_OBJ_DIR)\ia64\recordse.obj \
+    $(_OBJ_DIR)\ia64\recchk.obj \
+    $(_OBJ_DIR)\ia64\osutils.obj \
+    $(_OBJ_DIR)\ia64\oslayeru.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\record.obj \
+    $(_OBJ_DIR)\amd64\recordse.obj \
+    $(_OBJ_DIR)\amd64\recchk.obj \
+    $(_OBJ_DIR)\amd64\osutils.obj \
+    $(_OBJ_DIR)\amd64\oslayeru.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\record.obj \
+    $(_OBJ_DIR)\arm\recordse.obj \
+    $(_OBJ_DIR)\arm\recchk.obj \
+    $(_OBJ_DIR)\arm\osutils.obj \
+    $(_OBJ_DIR)\arm\oslayeru.obj
+
+PASS0_ARM_OBJECTS=
+

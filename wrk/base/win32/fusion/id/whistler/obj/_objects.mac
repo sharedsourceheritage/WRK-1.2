@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\id.obj \
+    $(_OBJ_DIR)\i386\encdec.obj \
+    $(_OBJ_DIR)\i386\policy.obj \
+    $(_OBJ_DIR)\i386\sxsid.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\id.obj \
+    $(_OBJ_DIR)\ia64\encdec.obj \
+    $(_OBJ_DIR)\ia64\policy.obj \
+    $(_OBJ_DIR)\ia64\sxsid.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\id.obj \
+    $(_OBJ_DIR)\amd64\encdec.obj \
+    $(_OBJ_DIR)\amd64\policy.obj \
+    $(_OBJ_DIR)\amd64\sxsid.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\id.obj \
+    $(_OBJ_DIR)\arm\encdec.obj \
+    $(_OBJ_DIR)\arm\policy.obj \
+    $(_OBJ_DIR)\arm\sxsid.obj
+
+PASS0_ARM_OBJECTS=
+

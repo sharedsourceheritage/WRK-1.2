@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\vsstaskex.res \
+    $(_OBJ_DIR)\i386\basepage.obj \
+    $(_OBJ_DIR)\i386\ddxddv.obj \
+    $(_OBJ_DIR)\i386\vsstaskex.obj \
+    $(_OBJ_DIR)\i386\extobj.obj \
+    $(_OBJ_DIR)\i386\proplist.obj \
+    $(_OBJ_DIR)\i386\regext.obj \
+    $(_OBJ_DIR)\i386\resprop.obj \
+    $(_OBJ_DIR)\i386\dlghelp.obj \
+    $(_OBJ_DIR)\i386\helpdata.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\vsstaskex.res \
+    $(_OBJ_DIR)\ia64\basepage.obj \
+    $(_OBJ_DIR)\ia64\ddxddv.obj \
+    $(_OBJ_DIR)\ia64\vsstaskex.obj \
+    $(_OBJ_DIR)\ia64\extobj.obj \
+    $(_OBJ_DIR)\ia64\proplist.obj \
+    $(_OBJ_DIR)\ia64\regext.obj \
+    $(_OBJ_DIR)\ia64\resprop.obj \
+    $(_OBJ_DIR)\ia64\dlghelp.obj \
+    $(_OBJ_DIR)\ia64\helpdata.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\vsstaskex.res \
+    $(_OBJ_DIR)\amd64\basepage.obj \
+    $(_OBJ_DIR)\amd64\ddxddv.obj \
+    $(_OBJ_DIR)\amd64\vsstaskex.obj \
+    $(_OBJ_DIR)\amd64\extobj.obj \
+    $(_OBJ_DIR)\amd64\proplist.obj \
+    $(_OBJ_DIR)\amd64\regext.obj \
+    $(_OBJ_DIR)\amd64\resprop.obj \
+    $(_OBJ_DIR)\amd64\dlghelp.obj \
+    $(_OBJ_DIR)\amd64\helpdata.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\vsstaskex.res \
+    $(_OBJ_DIR)\arm\basepage.obj \
+    $(_OBJ_DIR)\arm\ddxddv.obj \
+    $(_OBJ_DIR)\arm\vsstaskex.obj \
+    $(_OBJ_DIR)\arm\extobj.obj \
+    $(_OBJ_DIR)\arm\proplist.obj \
+    $(_OBJ_DIR)\arm\regext.obj \
+    $(_OBJ_DIR)\arm\resprop.obj \
+    $(_OBJ_DIR)\arm\dlghelp.obj \
+    $(_OBJ_DIR)\arm\helpdata.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+

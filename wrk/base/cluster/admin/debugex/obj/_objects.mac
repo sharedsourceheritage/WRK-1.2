@@ -1,0 +1,56 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\resource.res \
+    $(_OBJ_DIR)\i386\basepage.obj \
+    $(_OBJ_DIR)\i386\debugex.obj \
+    $(_OBJ_DIR)\i386\dlghelps.obj \
+    $(_OBJ_DIR)\i386\extobj.obj \
+    $(_OBJ_DIR)\i386\helpdata.obj \
+    $(_OBJ_DIR)\i386\proplsts.obj \
+    $(_OBJ_DIR)\i386\regexts.obj \
+    $(_OBJ_DIR)\i386\resprop.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\resource.res \
+    $(_OBJ_DIR)\ia64\basepage.obj \
+    $(_OBJ_DIR)\ia64\debugex.obj \
+    $(_OBJ_DIR)\ia64\dlghelps.obj \
+    $(_OBJ_DIR)\ia64\extobj.obj \
+    $(_OBJ_DIR)\ia64\helpdata.obj \
+    $(_OBJ_DIR)\ia64\proplsts.obj \
+    $(_OBJ_DIR)\ia64\regexts.obj \
+    $(_OBJ_DIR)\ia64\resprop.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\resource.res \
+    $(_OBJ_DIR)\amd64\basepage.obj \
+    $(_OBJ_DIR)\amd64\debugex.obj \
+    $(_OBJ_DIR)\amd64\dlghelps.obj \
+    $(_OBJ_DIR)\amd64\extobj.obj \
+    $(_OBJ_DIR)\amd64\helpdata.obj \
+    $(_OBJ_DIR)\amd64\proplsts.obj \
+    $(_OBJ_DIR)\amd64\regexts.obj \
+    $(_OBJ_DIR)\amd64\resprop.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\resource.res \
+    $(_OBJ_DIR)\arm\basepage.obj \
+    $(_OBJ_DIR)\arm\debugex.obj \
+    $(_OBJ_DIR)\arm\dlghelps.obj \
+    $(_OBJ_DIR)\arm\extobj.obj \
+    $(_OBJ_DIR)\arm\helpdata.obj \
+    $(_OBJ_DIR)\arm\proplsts.obj \
+    $(_OBJ_DIR)\arm\regexts.obj \
+    $(_OBJ_DIR)\arm\resprop.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+

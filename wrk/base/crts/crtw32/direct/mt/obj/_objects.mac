@@ -1,0 +1,57 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\enable.obj \
+    $(_OBJ_DIR)\i386\drivemap.obj \
+    $(_OBJ_DIR)\i386\drivfree.obj \
+    $(_OBJ_DIR)\i386\findfile.obj \
+    $(_OBJ_DIR)\i386\findfi64.obj \
+    $(_OBJ_DIR)\i386\findf64.obj \
+    $(_OBJ_DIR)\i386\seterrm.obj \
+    $(_OBJ_DIR)\i386\slbeep.obj \
+    $(_OBJ_DIR)\i386\wfindfil.obj \
+    $(_OBJ_DIR)\i386\wfndfi64.obj \
+    $(_OBJ_DIR)\i386\wfndf64.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\drivemap.obj \
+    $(_OBJ_DIR)\ia64\drivfree.obj \
+    $(_OBJ_DIR)\ia64\findfile.obj \
+    $(_OBJ_DIR)\ia64\findfi64.obj \
+    $(_OBJ_DIR)\ia64\findf64.obj \
+    $(_OBJ_DIR)\ia64\seterrm.obj \
+    $(_OBJ_DIR)\ia64\slbeep.obj \
+    $(_OBJ_DIR)\ia64\wfindfil.obj \
+    $(_OBJ_DIR)\ia64\wfndfi64.obj \
+    $(_OBJ_DIR)\ia64\wfndf64.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\drivemap.obj \
+    $(_OBJ_DIR)\amd64\drivfree.obj \
+    $(_OBJ_DIR)\amd64\findfile.obj \
+    $(_OBJ_DIR)\amd64\findfi64.obj \
+    $(_OBJ_DIR)\amd64\findf64.obj \
+    $(_OBJ_DIR)\amd64\seterrm.obj \
+    $(_OBJ_DIR)\amd64\slbeep.obj \
+    $(_OBJ_DIR)\amd64\wfindfil.obj \
+    $(_OBJ_DIR)\amd64\wfndfi64.obj \
+    $(_OBJ_DIR)\amd64\wfndf64.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\drivemap.obj \
+    $(_OBJ_DIR)\arm\drivfree.obj \
+    $(_OBJ_DIR)\arm\findfile.obj \
+    $(_OBJ_DIR)\arm\findfi64.obj \
+    $(_OBJ_DIR)\arm\findf64.obj \
+    $(_OBJ_DIR)\arm\seterrm.obj \
+    $(_OBJ_DIR)\arm\slbeep.obj \
+    $(_OBJ_DIR)\arm\wfindfil.obj \
+    $(_OBJ_DIR)\arm\wfndfi64.obj \
+    $(_OBJ_DIR)\arm\wfndf64.obj
+
+PASS0_ARM_OBJECTS=
+

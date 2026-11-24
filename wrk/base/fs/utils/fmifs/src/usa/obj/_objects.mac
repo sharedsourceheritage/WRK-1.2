@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\fmifs.res \
+    $(_OBJ_DIR)\i386\fmifsmsg.obj \
+    $(_OBJ_DIR)\i386\format.obj \
+    $(_OBJ_DIR)\i386\label.obj \
+    $(_OBJ_DIR)\i386\diskcopy.obj \
+    $(_OBJ_DIR)\i386\fmifs.obj \
+    $(_OBJ_DIR)\i386\chkdsk.obj \
+    $(_OBJ_DIR)\i386\chkmsg.obj \
+    $(_OBJ_DIR)\i386\extend.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\fmifs.res \
+    $(_OBJ_DIR)\ia64\fmifsmsg.obj \
+    $(_OBJ_DIR)\ia64\format.obj \
+    $(_OBJ_DIR)\ia64\label.obj \
+    $(_OBJ_DIR)\ia64\diskcopy.obj \
+    $(_OBJ_DIR)\ia64\fmifs.obj \
+    $(_OBJ_DIR)\ia64\chkdsk.obj \
+    $(_OBJ_DIR)\ia64\chkmsg.obj \
+    $(_OBJ_DIR)\ia64\extend.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\fmifs.res \
+    $(_OBJ_DIR)\amd64\fmifsmsg.obj \
+    $(_OBJ_DIR)\amd64\format.obj \
+    $(_OBJ_DIR)\amd64\label.obj \
+    $(_OBJ_DIR)\amd64\diskcopy.obj \
+    $(_OBJ_DIR)\amd64\fmifs.obj \
+    $(_OBJ_DIR)\amd64\chkdsk.obj \
+    $(_OBJ_DIR)\amd64\chkmsg.obj \
+    $(_OBJ_DIR)\amd64\extend.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\fmifs.res \
+    $(_OBJ_DIR)\arm\fmifsmsg.obj \
+    $(_OBJ_DIR)\arm\format.obj \
+    $(_OBJ_DIR)\arm\label.obj \
+    $(_OBJ_DIR)\arm\diskcopy.obj \
+    $(_OBJ_DIR)\arm\fmifs.obj \
+    $(_OBJ_DIR)\arm\chkdsk.obj \
+    $(_OBJ_DIR)\arm\chkmsg.obj \
+    $(_OBJ_DIR)\arm\extend.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,96 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\umpnpmgr.res \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\osver.obj \
+    $(_OBJ_DIR)\i386\pnpsec.obj \
+    $(_OBJ_DIR)\i386\rconflist.obj \
+    $(_OBJ_DIR)\i386\rdevnode.obj \
+    $(_OBJ_DIR)\i386\revent.obj \
+    $(_OBJ_DIR)\i386\rhwprof.obj \
+    $(_OBJ_DIR)\i386\rlogconf.obj \
+    $(_OBJ_DIR)\i386\rmisc.obj \
+    $(_OBJ_DIR)\i386\rregprop.obj \
+    $(_OBJ_DIR)\i386\rresdes.obj \
+    $(_OBJ_DIR)\i386\rtravers.obj \
+    $(_OBJ_DIR)\i386\rutil.obj \
+    $(_OBJ_DIR)\i386\secutil.obj \
+    $(_OBJ_DIR)\i386\srventry.obj \
+    $(_OBJ_DIR)\i386\umpnpdat.obj \
+    $(_OBJ_DIR)\i386\pnp_s_stub.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\pnpmsg.h \
+    $(MC_SOURCEDIR)\pnpmsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\umpnpmgr.res \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\osver.obj \
+    $(_OBJ_DIR)\ia64\pnpsec.obj \
+    $(_OBJ_DIR)\ia64\rconflist.obj \
+    $(_OBJ_DIR)\ia64\rdevnode.obj \
+    $(_OBJ_DIR)\ia64\revent.obj \
+    $(_OBJ_DIR)\ia64\rhwprof.obj \
+    $(_OBJ_DIR)\ia64\rlogconf.obj \
+    $(_OBJ_DIR)\ia64\rmisc.obj \
+    $(_OBJ_DIR)\ia64\rregprop.obj \
+    $(_OBJ_DIR)\ia64\rresdes.obj \
+    $(_OBJ_DIR)\ia64\rtravers.obj \
+    $(_OBJ_DIR)\ia64\rutil.obj \
+    $(_OBJ_DIR)\ia64\secutil.obj \
+    $(_OBJ_DIR)\ia64\srventry.obj \
+    $(_OBJ_DIR)\ia64\umpnpdat.obj \
+    $(_OBJ_DIR)\ia64\pnp_s_stub.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\pnpmsg.h \
+    $(MC_SOURCEDIR)\pnpmsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\umpnpmgr.res \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\osver.obj \
+    $(_OBJ_DIR)\amd64\pnpsec.obj \
+    $(_OBJ_DIR)\amd64\rconflist.obj \
+    $(_OBJ_DIR)\amd64\rdevnode.obj \
+    $(_OBJ_DIR)\amd64\revent.obj \
+    $(_OBJ_DIR)\amd64\rhwprof.obj \
+    $(_OBJ_DIR)\amd64\rlogconf.obj \
+    $(_OBJ_DIR)\amd64\rmisc.obj \
+    $(_OBJ_DIR)\amd64\rregprop.obj \
+    $(_OBJ_DIR)\amd64\rresdes.obj \
+    $(_OBJ_DIR)\amd64\rtravers.obj \
+    $(_OBJ_DIR)\amd64\rutil.obj \
+    $(_OBJ_DIR)\amd64\secutil.obj \
+    $(_OBJ_DIR)\amd64\srventry.obj \
+    $(_OBJ_DIR)\amd64\umpnpdat.obj \
+    $(_OBJ_DIR)\amd64\pnp_s_stub.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\pnpmsg.h \
+    $(MC_SOURCEDIR)\pnpmsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\umpnpmgr.res \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\osver.obj \
+    $(_OBJ_DIR)\arm\pnpsec.obj \
+    $(_OBJ_DIR)\arm\rconflist.obj \
+    $(_OBJ_DIR)\arm\rdevnode.obj \
+    $(_OBJ_DIR)\arm\revent.obj \
+    $(_OBJ_DIR)\arm\rhwprof.obj \
+    $(_OBJ_DIR)\arm\rlogconf.obj \
+    $(_OBJ_DIR)\arm\rmisc.obj \
+    $(_OBJ_DIR)\arm\rregprop.obj \
+    $(_OBJ_DIR)\arm\rresdes.obj \
+    $(_OBJ_DIR)\arm\rtravers.obj \
+    $(_OBJ_DIR)\arm\rutil.obj \
+    $(_OBJ_DIR)\arm\secutil.obj \
+    $(_OBJ_DIR)\arm\srventry.obj \
+    $(_OBJ_DIR)\arm\umpnpdat.obj \
+    $(_OBJ_DIR)\arm\pnp_s_stub.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\pnpmsg.h \
+    $(MC_SOURCEDIR)\pnpmsg.rc
+

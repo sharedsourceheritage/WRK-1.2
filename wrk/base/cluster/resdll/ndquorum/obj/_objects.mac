@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\majoritynodeset.obj \
+    $(_OBJ_DIR)\i386\crs.obj \
+    $(_OBJ_DIR)\i386\fs.obj \
+    $(_OBJ_DIR)\i386\replay.obj \
+    $(_OBJ_DIR)\i386\undo.obj \
+    $(_OBJ_DIR)\i386\fsutil.obj \
+    $(_OBJ_DIR)\i386\pipe.obj \
+    $(_OBJ_DIR)\i386\setup.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\majoritynodeset.obj \
+    $(_OBJ_DIR)\ia64\crs.obj \
+    $(_OBJ_DIR)\ia64\fs.obj \
+    $(_OBJ_DIR)\ia64\replay.obj \
+    $(_OBJ_DIR)\ia64\undo.obj \
+    $(_OBJ_DIR)\ia64\fsutil.obj \
+    $(_OBJ_DIR)\ia64\pipe.obj \
+    $(_OBJ_DIR)\ia64\setup.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\majoritynodeset.obj \
+    $(_OBJ_DIR)\amd64\crs.obj \
+    $(_OBJ_DIR)\amd64\fs.obj \
+    $(_OBJ_DIR)\amd64\replay.obj \
+    $(_OBJ_DIR)\amd64\undo.obj \
+    $(_OBJ_DIR)\amd64\fsutil.obj \
+    $(_OBJ_DIR)\amd64\pipe.obj \
+    $(_OBJ_DIR)\amd64\setup.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\majoritynodeset.obj \
+    $(_OBJ_DIR)\arm\crs.obj \
+    $(_OBJ_DIR)\arm\fs.obj \
+    $(_OBJ_DIR)\arm\replay.obj \
+    $(_OBJ_DIR)\arm\undo.obj \
+    $(_OBJ_DIR)\arm\fsutil.obj \
+    $(_OBJ_DIR)\arm\pipe.obj \
+    $(_OBJ_DIR)\arm\setup.obj
+
+PASS0_ARM_OBJECTS=
+

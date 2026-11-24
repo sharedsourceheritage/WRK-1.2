@@ -4266,6 +4266,7 @@ typedef SID_AND_ATTRIBUTES_ARRAY *PSID_AND_ATTRIBUTES_ARRAY;
 #define DOMAIN_ALIAS_RID_LOGGING_USERS          (0x0000022FL)
 #define DOMAIN_ALIAS_RID_AUTHORIZATIONACCESS    (0x00000230L)
 #define DOMAIN_ALIAS_RID_TS_LICENSE_SERVERS     (0x00000231L)
+#define DOMAIN_ALIAS_RID_DCOM_USERS             (0x00000232L)
 
 
 
@@ -4332,6 +4333,7 @@ typedef enum {
     WinBuiltinPerfLoggingUsersSid               = 58,
     WinBuiltinAuthorizationAccessSid            = 59,
     WinBuiltinTerminalServerLicenseServersSid   = 60,
+    WinBuiltinDCOMUsersSid                      = 61,
 
 } WELL_KNOWN_SID_TYPE;
 
@@ -4385,7 +4387,7 @@ typedef enum {
 
 //
 //  Define an ACL and the ACE format.  The structure of an ACL header
-//  followed by one or more ACEs.  Pictorally the structure of an ACL header
+//  followed by one or more ACEs.  Pictorially the structure of an ACL header
 //  is as follows:
 //
 //       3 3 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1
@@ -4433,7 +4435,7 @@ typedef ACL *PACL;
 
 //
 //  The structure of an ACE is a common ace header followed by ace type
-//  specific data.  Pictorally the structure of the common ace header is
+//  specific data.  Pictorially the structure of the common ace header is
 //  as follows:
 //
 //       3 3 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1
@@ -4528,7 +4530,7 @@ typedef ACE_HEADER *PACE_HEADER;
 
 
 //
-//  We'll define the structure of the predefined ACE types.  Pictorally
+//  We'll define the structure of the predefined ACE types.  Pictorially
 //  the structure of the predefined ACE's is as follows:
 //
 //       3 3 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1
@@ -4789,14 +4791,14 @@ typedef WORD   SECURITY_DESCRIPTOR_CONTROL, *PSECURITY_DESCRIPTOR_CONTROL;
 //          SID pointed to by the Owner field was provided by a
 //          defaulting mechanism rather than explicitly provided by the
 //          original provider of the security descriptor.  This may
-//          affect the treatment of the SID with respect to inheritence
+//          affect the treatment of the SID with respect to inheritance
 //          of an owner.
 //
 //      SE_GROUP_DEFAULTED - This boolean flag, when set, indicates that the
 //          SID in the Group field was provided by a defaulting mechanism
 //          rather than explicitly provided by the original provider of
 //          the security descriptor.  This may affect the treatment of
-//          the SID with respect to inheritence of a primary group.
+//          the SID with respect to inheritance of a primary group.
 //
 //      SE_DACL_PRESENT - This boolean flag, when set, indicates that the
 //          security descriptor contains a discretionary ACL.  If this
@@ -4807,7 +4809,7 @@ typedef WORD   SECURITY_DESCRIPTOR_CONTROL, *PSECURITY_DESCRIPTOR_CONTROL;
 //          ACL pointed to by the Dacl field was provided by a defaulting
 //          mechanism rather than explicitly provided by the original
 //          provider of the security descriptor.  This may affect the
-//          treatment of the ACL with respect to inheritence of an ACL.
+//          treatment of the ACL with respect to inheritance of an ACL.
 //          This flag is ignored if the DaclPresent flag is not set.
 //
 //      SE_SACL_PRESENT - This boolean flag, when set,  indicates that the
@@ -4820,7 +4822,7 @@ typedef WORD   SECURITY_DESCRIPTOR_CONTROL, *PSECURITY_DESCRIPTOR_CONTROL;
 //          ACL pointed to by the Sacl field was provided by a defaulting
 //          mechanism rather than explicitly provided by the original
 //          provider of the security descriptor.  This may affect the
-//          treatment of the ACL with respect to inheritence of an ACL.
+//          treatment of the ACL with respect to inheritance of an ACL.
 //          This flag is ignored if the SaclPresent flag is not set.
 //
 //      SE_SELF_RELATIVE - This boolean flag, when set, indicates that the

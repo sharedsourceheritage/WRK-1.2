@@ -1,0 +1,128 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\access.obj \
+    $(_OBJ_DIR)\i386\chmod.obj \
+    $(_OBJ_DIR)\i386\chdir.obj \
+    $(_OBJ_DIR)\i386\dosmap.obj \
+    $(_OBJ_DIR)\i386\drive.obj \
+    $(_OBJ_DIR)\i386\fullpath.obj \
+    $(_OBJ_DIR)\i386\getcwd.obj \
+    $(_OBJ_DIR)\i386\getpid.obj \
+    $(_OBJ_DIR)\i386\mkdir.obj \
+    $(_OBJ_DIR)\i386\mterrno.obj \
+    $(_OBJ_DIR)\i386\rename.obj \
+    $(_OBJ_DIR)\i386\rmdir.obj \
+    $(_OBJ_DIR)\i386\stat.obj \
+    $(_OBJ_DIR)\i386\stat64.obj \
+    $(_OBJ_DIR)\i386\stati64.obj \
+    $(_OBJ_DIR)\i386\unlink.obj \
+    $(_OBJ_DIR)\i386\waccess.obj \
+    $(_OBJ_DIR)\i386\wchdir.obj \
+    $(_OBJ_DIR)\i386\wchmod.obj \
+    $(_OBJ_DIR)\i386\wfullpat.obj \
+    $(_OBJ_DIR)\i386\wgetcwd.obj \
+    $(_OBJ_DIR)\i386\wmkdir.obj \
+    $(_OBJ_DIR)\i386\wrename.obj \
+    $(_OBJ_DIR)\i386\wrmdir.obj \
+    $(_OBJ_DIR)\i386\wstat.obj \
+    $(_OBJ_DIR)\i386\wstat64.obj \
+    $(_OBJ_DIR)\i386\wstati64.obj \
+    $(_OBJ_DIR)\i386\wunlink.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\access.obj \
+    $(_OBJ_DIR)\ia64\chmod.obj \
+    $(_OBJ_DIR)\ia64\chdir.obj \
+    $(_OBJ_DIR)\ia64\dosmap.obj \
+    $(_OBJ_DIR)\ia64\drive.obj \
+    $(_OBJ_DIR)\ia64\fullpath.obj \
+    $(_OBJ_DIR)\ia64\getcwd.obj \
+    $(_OBJ_DIR)\ia64\getpid.obj \
+    $(_OBJ_DIR)\ia64\mkdir.obj \
+    $(_OBJ_DIR)\ia64\mterrno.obj \
+    $(_OBJ_DIR)\ia64\rename.obj \
+    $(_OBJ_DIR)\ia64\rmdir.obj \
+    $(_OBJ_DIR)\ia64\stat.obj \
+    $(_OBJ_DIR)\ia64\stat64.obj \
+    $(_OBJ_DIR)\ia64\stati64.obj \
+    $(_OBJ_DIR)\ia64\unlink.obj \
+    $(_OBJ_DIR)\ia64\waccess.obj \
+    $(_OBJ_DIR)\ia64\wchdir.obj \
+    $(_OBJ_DIR)\ia64\wchmod.obj \
+    $(_OBJ_DIR)\ia64\wfullpat.obj \
+    $(_OBJ_DIR)\ia64\wgetcwd.obj \
+    $(_OBJ_DIR)\ia64\wmkdir.obj \
+    $(_OBJ_DIR)\ia64\wrename.obj \
+    $(_OBJ_DIR)\ia64\wrmdir.obj \
+    $(_OBJ_DIR)\ia64\wstat.obj \
+    $(_OBJ_DIR)\ia64\wstat64.obj \
+    $(_OBJ_DIR)\ia64\wstati64.obj \
+    $(_OBJ_DIR)\ia64\wunlink.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\access.obj \
+    $(_OBJ_DIR)\amd64\chmod.obj \
+    $(_OBJ_DIR)\amd64\chdir.obj \
+    $(_OBJ_DIR)\amd64\dosmap.obj \
+    $(_OBJ_DIR)\amd64\drive.obj \
+    $(_OBJ_DIR)\amd64\fullpath.obj \
+    $(_OBJ_DIR)\amd64\getcwd.obj \
+    $(_OBJ_DIR)\amd64\getpid.obj \
+    $(_OBJ_DIR)\amd64\mkdir.obj \
+    $(_OBJ_DIR)\amd64\mterrno.obj \
+    $(_OBJ_DIR)\amd64\rename.obj \
+    $(_OBJ_DIR)\amd64\rmdir.obj \
+    $(_OBJ_DIR)\amd64\stat.obj \
+    $(_OBJ_DIR)\amd64\stat64.obj \
+    $(_OBJ_DIR)\amd64\stati64.obj \
+    $(_OBJ_DIR)\amd64\unlink.obj \
+    $(_OBJ_DIR)\amd64\waccess.obj \
+    $(_OBJ_DIR)\amd64\wchdir.obj \
+    $(_OBJ_DIR)\amd64\wchmod.obj \
+    $(_OBJ_DIR)\amd64\wfullpat.obj \
+    $(_OBJ_DIR)\amd64\wgetcwd.obj \
+    $(_OBJ_DIR)\amd64\wmkdir.obj \
+    $(_OBJ_DIR)\amd64\wrename.obj \
+    $(_OBJ_DIR)\amd64\wrmdir.obj \
+    $(_OBJ_DIR)\amd64\wstat.obj \
+    $(_OBJ_DIR)\amd64\wstat64.obj \
+    $(_OBJ_DIR)\amd64\wstati64.obj \
+    $(_OBJ_DIR)\amd64\wunlink.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\access.obj \
+    $(_OBJ_DIR)\arm\chmod.obj \
+    $(_OBJ_DIR)\arm\chdir.obj \
+    $(_OBJ_DIR)\arm\dosmap.obj \
+    $(_OBJ_DIR)\arm\drive.obj \
+    $(_OBJ_DIR)\arm\fullpath.obj \
+    $(_OBJ_DIR)\arm\getcwd.obj \
+    $(_OBJ_DIR)\arm\getpid.obj \
+    $(_OBJ_DIR)\arm\mkdir.obj \
+    $(_OBJ_DIR)\arm\mterrno.obj \
+    $(_OBJ_DIR)\arm\rename.obj \
+    $(_OBJ_DIR)\arm\rmdir.obj \
+    $(_OBJ_DIR)\arm\stat.obj \
+    $(_OBJ_DIR)\arm\stat64.obj \
+    $(_OBJ_DIR)\arm\stati64.obj \
+    $(_OBJ_DIR)\arm\unlink.obj \
+    $(_OBJ_DIR)\arm\waccess.obj \
+    $(_OBJ_DIR)\arm\wchdir.obj \
+    $(_OBJ_DIR)\arm\wchmod.obj \
+    $(_OBJ_DIR)\arm\wfullpat.obj \
+    $(_OBJ_DIR)\arm\wgetcwd.obj \
+    $(_OBJ_DIR)\arm\wmkdir.obj \
+    $(_OBJ_DIR)\arm\wrename.obj \
+    $(_OBJ_DIR)\arm\wrmdir.obj \
+    $(_OBJ_DIR)\arm\wstat.obj \
+    $(_OBJ_DIR)\arm\wstat64.obj \
+    $(_OBJ_DIR)\arm\wstati64.obj \
+    $(_OBJ_DIR)\arm\wunlink.obj
+
+PASS0_ARM_OBJECTS=
+

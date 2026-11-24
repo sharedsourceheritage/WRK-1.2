@@ -1,0 +1,40 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\app.res \
+    $(_OBJ_DIR)\i386\dfssetup.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\setupsvc.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\app.res \
+    $(_OBJ_DIR)\ia64\dfssetup.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\setupsvc.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\app.res \
+    $(_OBJ_DIR)\amd64\dfssetup.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\setupsvc.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\app.res \
+    $(_OBJ_DIR)\arm\dfssetup.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\setupsvc.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+

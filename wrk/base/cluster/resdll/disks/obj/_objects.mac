@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\disks.obj \
+    $(_OBJ_DIR)\i386\filter.obj \
+    $(_OBJ_DIR)\i386\scsi.obj \
+    $(_OBJ_DIR)\i386\arbitrat.obj \
+    $(_OBJ_DIR)\i386\newdisks.obj \
+    $(_OBJ_DIR)\i386\pnp.obj \
+    $(_OBJ_DIR)\i386\newmount.obj \
+    $(_OBJ_DIR)\i386\mountpoints.obj \
+    $(_OBJ_DIR)\i386\diskinfo.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\disks.obj \
+    $(_OBJ_DIR)\ia64\filter.obj \
+    $(_OBJ_DIR)\ia64\scsi.obj \
+    $(_OBJ_DIR)\ia64\arbitrat.obj \
+    $(_OBJ_DIR)\ia64\newdisks.obj \
+    $(_OBJ_DIR)\ia64\pnp.obj \
+    $(_OBJ_DIR)\ia64\newmount.obj \
+    $(_OBJ_DIR)\ia64\mountpoints.obj \
+    $(_OBJ_DIR)\ia64\diskinfo.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\disks.obj \
+    $(_OBJ_DIR)\amd64\filter.obj \
+    $(_OBJ_DIR)\amd64\scsi.obj \
+    $(_OBJ_DIR)\amd64\arbitrat.obj \
+    $(_OBJ_DIR)\amd64\newdisks.obj \
+    $(_OBJ_DIR)\amd64\pnp.obj \
+    $(_OBJ_DIR)\amd64\newmount.obj \
+    $(_OBJ_DIR)\amd64\mountpoints.obj \
+    $(_OBJ_DIR)\amd64\diskinfo.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\disks.obj \
+    $(_OBJ_DIR)\arm\filter.obj \
+    $(_OBJ_DIR)\arm\scsi.obj \
+    $(_OBJ_DIR)\arm\arbitrat.obj \
+    $(_OBJ_DIR)\arm\newdisks.obj \
+    $(_OBJ_DIR)\arm\pnp.obj \
+    $(_OBJ_DIR)\arm\newmount.obj \
+    $(_OBJ_DIR)\arm\mountpoints.obj \
+    $(_OBJ_DIR)\arm\diskinfo.obj
+
+PASS0_ARM_OBJECTS=
+

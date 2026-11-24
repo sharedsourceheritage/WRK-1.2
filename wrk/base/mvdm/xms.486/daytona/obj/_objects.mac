@@ -1,0 +1,41 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\xmsmem86.obj \
+    $(_OBJ_DIR)\i386\xms.obj \
+    $(_OBJ_DIR)\i386\xmsa20.obj \
+    $(_OBJ_DIR)\i386\xmsblock.obj \
+    $(_OBJ_DIR)\i386\xmsdisp.obj \
+    $(_OBJ_DIR)\i386\xmsmisc.obj \
+    $(_OBJ_DIR)\i386\xmsumb.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\xms.obj \
+    $(_OBJ_DIR)\ia64\xmsa20.obj \
+    $(_OBJ_DIR)\ia64\xmsblock.obj \
+    $(_OBJ_DIR)\ia64\xmsdisp.obj \
+    $(_OBJ_DIR)\ia64\xmsmisc.obj \
+    $(_OBJ_DIR)\ia64\xmsumb.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\xms.obj \
+    $(_OBJ_DIR)\amd64\xmsa20.obj \
+    $(_OBJ_DIR)\amd64\xmsblock.obj \
+    $(_OBJ_DIR)\amd64\xmsdisp.obj \
+    $(_OBJ_DIR)\amd64\xmsmisc.obj \
+    $(_OBJ_DIR)\amd64\xmsumb.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\xms.obj \
+    $(_OBJ_DIR)\arm\xmsa20.obj \
+    $(_OBJ_DIR)\arm\xmsblock.obj \
+    $(_OBJ_DIR)\arm\xmsdisp.obj \
+    $(_OBJ_DIR)\arm\xmsmisc.obj \
+    $(_OBJ_DIR)\arm\xmsumb.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clusdisk.res \
+    $(_OBJ_DIR)\i386\clusdisk.obj \
+    $(_OBJ_DIR)\i386\object.obj \
+    $(_OBJ_DIR)\i386\ezwrite.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clusdisk.res \
+    $(_OBJ_DIR)\ia64\clusdisk.obj \
+    $(_OBJ_DIR)\ia64\object.obj \
+    $(_OBJ_DIR)\ia64\ezwrite.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clusdisk.res \
+    $(_OBJ_DIR)\amd64\clusdisk.obj \
+    $(_OBJ_DIR)\amd64\object.obj \
+    $(_OBJ_DIR)\amd64\ezwrite.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clusdisk.res \
+    $(_OBJ_DIR)\arm\clusdisk.obj \
+    $(_OBJ_DIR)\arm\object.obj \
+    $(_OBJ_DIR)\arm\ezwrite.obj
+
+PASS0_ARM_OBJECTS=
+

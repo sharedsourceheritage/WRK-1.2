@@ -1,0 +1,100 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\predefh.obj \
+    $(_OBJ_DIR)\i386\regdkey.obj \
+    $(_OBJ_DIR)\i386\regclass.obj \
+    $(_OBJ_DIR)\i386\regcnreg.obj \
+    $(_OBJ_DIR)\i386\regdval.obj \
+    $(_OBJ_DIR)\i386\regekey.obj \
+    $(_OBJ_DIR)\i386\regeval.obj \
+    $(_OBJ_DIR)\i386\regkey.obj \
+    $(_OBJ_DIR)\i386\reglukey.obj \
+    $(_OBJ_DIR)\i386\regnckey.obj \
+    $(_OBJ_DIR)\i386\regqkey.obj \
+    $(_OBJ_DIR)\i386\regqmval.obj \
+    $(_OBJ_DIR)\i386\regqval.obj \
+    $(_OBJ_DIR)\i386\regrpc_client.obj \
+    $(_OBJ_DIR)\i386\regsckey.obj \
+    $(_OBJ_DIR)\i386\regsrkey.obj \
+    $(_OBJ_DIR)\i386\regsval.obj \
+    $(_OBJ_DIR)\i386\shutdown.obj \
+    $(_OBJ_DIR)\i386\support.obj \
+    $(_OBJ_DIR)\i386\shutinit.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\init.obj \
+    $(_OBJ_DIR)\ia64\predefh.obj \
+    $(_OBJ_DIR)\ia64\regdkey.obj \
+    $(_OBJ_DIR)\ia64\regclass.obj \
+    $(_OBJ_DIR)\ia64\regcnreg.obj \
+    $(_OBJ_DIR)\ia64\regdval.obj \
+    $(_OBJ_DIR)\ia64\regekey.obj \
+    $(_OBJ_DIR)\ia64\regeval.obj \
+    $(_OBJ_DIR)\ia64\regkey.obj \
+    $(_OBJ_DIR)\ia64\reglukey.obj \
+    $(_OBJ_DIR)\ia64\regnckey.obj \
+    $(_OBJ_DIR)\ia64\regqkey.obj \
+    $(_OBJ_DIR)\ia64\regqmval.obj \
+    $(_OBJ_DIR)\ia64\regqval.obj \
+    $(_OBJ_DIR)\ia64\regrpc_client.obj \
+    $(_OBJ_DIR)\ia64\regsckey.obj \
+    $(_OBJ_DIR)\ia64\regsrkey.obj \
+    $(_OBJ_DIR)\ia64\regsval.obj \
+    $(_OBJ_DIR)\ia64\shutdown.obj \
+    $(_OBJ_DIR)\ia64\support.obj \
+    $(_OBJ_DIR)\ia64\shutinit.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\init.obj \
+    $(_OBJ_DIR)\amd64\predefh.obj \
+    $(_OBJ_DIR)\amd64\regdkey.obj \
+    $(_OBJ_DIR)\amd64\regclass.obj \
+    $(_OBJ_DIR)\amd64\regcnreg.obj \
+    $(_OBJ_DIR)\amd64\regdval.obj \
+    $(_OBJ_DIR)\amd64\regekey.obj \
+    $(_OBJ_DIR)\amd64\regeval.obj \
+    $(_OBJ_DIR)\amd64\regkey.obj \
+    $(_OBJ_DIR)\amd64\reglukey.obj \
+    $(_OBJ_DIR)\amd64\regnckey.obj \
+    $(_OBJ_DIR)\amd64\regqkey.obj \
+    $(_OBJ_DIR)\amd64\regqmval.obj \
+    $(_OBJ_DIR)\amd64\regqval.obj \
+    $(_OBJ_DIR)\amd64\regrpc_client.obj \
+    $(_OBJ_DIR)\amd64\regsckey.obj \
+    $(_OBJ_DIR)\amd64\regsrkey.obj \
+    $(_OBJ_DIR)\amd64\regsval.obj \
+    $(_OBJ_DIR)\amd64\shutdown.obj \
+    $(_OBJ_DIR)\amd64\support.obj \
+    $(_OBJ_DIR)\amd64\shutinit.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\init.obj \
+    $(_OBJ_DIR)\arm\predefh.obj \
+    $(_OBJ_DIR)\arm\regdkey.obj \
+    $(_OBJ_DIR)\arm\regclass.obj \
+    $(_OBJ_DIR)\arm\regcnreg.obj \
+    $(_OBJ_DIR)\arm\regdval.obj \
+    $(_OBJ_DIR)\arm\regekey.obj \
+    $(_OBJ_DIR)\arm\regeval.obj \
+    $(_OBJ_DIR)\arm\regkey.obj \
+    $(_OBJ_DIR)\arm\reglukey.obj \
+    $(_OBJ_DIR)\arm\regnckey.obj \
+    $(_OBJ_DIR)\arm\regqkey.obj \
+    $(_OBJ_DIR)\arm\regqmval.obj \
+    $(_OBJ_DIR)\arm\regqval.obj \
+    $(_OBJ_DIR)\arm\regrpc_client.obj \
+    $(_OBJ_DIR)\arm\regsckey.obj \
+    $(_OBJ_DIR)\arm\regsrkey.obj \
+    $(_OBJ_DIR)\arm\regsval.obj \
+    $(_OBJ_DIR)\arm\shutdown.obj \
+    $(_OBJ_DIR)\arm\support.obj \
+    $(_OBJ_DIR)\arm\shutinit.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,112 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sis.res \
+    $(_OBJ_DIR)\i386\copyfile.obj \
+    $(_OBJ_DIR)\i386\cow.obj \
+    $(_OBJ_DIR)\i386\index.obj \
+    $(_OBJ_DIR)\i386\post.obj \
+    $(_OBJ_DIR)\i386\refcount.obj \
+    $(_OBJ_DIR)\i386\sis.obj \
+    $(_OBJ_DIR)\i386\sicalls.obj \
+    $(_OBJ_DIR)\i386\sicheck.obj \
+    $(_OBJ_DIR)\i386\siclnup.obj \
+    $(_OBJ_DIR)\i386\siclose.obj \
+    $(_OBJ_DIR)\i386\sicreate.obj \
+    $(_OBJ_DIR)\i386\sidebug.obj \
+    $(_OBJ_DIR)\i386\sifastio.obj \
+    $(_OBJ_DIR)\i386\sifsctl.obj \
+    $(_OBJ_DIR)\i386\siinfo.obj \
+    $(_OBJ_DIR)\i386\siinit.obj \
+    $(_OBJ_DIR)\i386\silock.obj \
+    $(_OBJ_DIR)\i386\silog.obj \
+    $(_OBJ_DIR)\i386\siread.obj \
+    $(_OBJ_DIR)\i386\sisuprt.obj \
+    $(_OBJ_DIR)\i386\siwrite.obj \
+    $(_OBJ_DIR)\i386\siinst.obj \
+    $(_OBJ_DIR)\i386\sitree.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sis.res \
+    $(_OBJ_DIR)\ia64\copyfile.obj \
+    $(_OBJ_DIR)\ia64\cow.obj \
+    $(_OBJ_DIR)\ia64\index.obj \
+    $(_OBJ_DIR)\ia64\post.obj \
+    $(_OBJ_DIR)\ia64\refcount.obj \
+    $(_OBJ_DIR)\ia64\sis.obj \
+    $(_OBJ_DIR)\ia64\sicalls.obj \
+    $(_OBJ_DIR)\ia64\sicheck.obj \
+    $(_OBJ_DIR)\ia64\siclnup.obj \
+    $(_OBJ_DIR)\ia64\siclose.obj \
+    $(_OBJ_DIR)\ia64\sicreate.obj \
+    $(_OBJ_DIR)\ia64\sidebug.obj \
+    $(_OBJ_DIR)\ia64\sifastio.obj \
+    $(_OBJ_DIR)\ia64\sifsctl.obj \
+    $(_OBJ_DIR)\ia64\siinfo.obj \
+    $(_OBJ_DIR)\ia64\siinit.obj \
+    $(_OBJ_DIR)\ia64\silock.obj \
+    $(_OBJ_DIR)\ia64\silog.obj \
+    $(_OBJ_DIR)\ia64\siread.obj \
+    $(_OBJ_DIR)\ia64\sisuprt.obj \
+    $(_OBJ_DIR)\ia64\siwrite.obj \
+    $(_OBJ_DIR)\ia64\siinst.obj \
+    $(_OBJ_DIR)\ia64\sitree.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sis.res \
+    $(_OBJ_DIR)\amd64\copyfile.obj \
+    $(_OBJ_DIR)\amd64\cow.obj \
+    $(_OBJ_DIR)\amd64\index.obj \
+    $(_OBJ_DIR)\amd64\post.obj \
+    $(_OBJ_DIR)\amd64\refcount.obj \
+    $(_OBJ_DIR)\amd64\sis.obj \
+    $(_OBJ_DIR)\amd64\sicalls.obj \
+    $(_OBJ_DIR)\amd64\sicheck.obj \
+    $(_OBJ_DIR)\amd64\siclnup.obj \
+    $(_OBJ_DIR)\amd64\siclose.obj \
+    $(_OBJ_DIR)\amd64\sicreate.obj \
+    $(_OBJ_DIR)\amd64\sidebug.obj \
+    $(_OBJ_DIR)\amd64\sifastio.obj \
+    $(_OBJ_DIR)\amd64\sifsctl.obj \
+    $(_OBJ_DIR)\amd64\siinfo.obj \
+    $(_OBJ_DIR)\amd64\siinit.obj \
+    $(_OBJ_DIR)\amd64\silock.obj \
+    $(_OBJ_DIR)\amd64\silog.obj \
+    $(_OBJ_DIR)\amd64\siread.obj \
+    $(_OBJ_DIR)\amd64\sisuprt.obj \
+    $(_OBJ_DIR)\amd64\siwrite.obj \
+    $(_OBJ_DIR)\amd64\siinst.obj \
+    $(_OBJ_DIR)\amd64\sitree.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sis.res \
+    $(_OBJ_DIR)\arm\copyfile.obj \
+    $(_OBJ_DIR)\arm\cow.obj \
+    $(_OBJ_DIR)\arm\index.obj \
+    $(_OBJ_DIR)\arm\post.obj \
+    $(_OBJ_DIR)\arm\refcount.obj \
+    $(_OBJ_DIR)\arm\sis.obj \
+    $(_OBJ_DIR)\arm\sicalls.obj \
+    $(_OBJ_DIR)\arm\sicheck.obj \
+    $(_OBJ_DIR)\arm\siclnup.obj \
+    $(_OBJ_DIR)\arm\siclose.obj \
+    $(_OBJ_DIR)\arm\sicreate.obj \
+    $(_OBJ_DIR)\arm\sidebug.obj \
+    $(_OBJ_DIR)\arm\sifastio.obj \
+    $(_OBJ_DIR)\arm\sifsctl.obj \
+    $(_OBJ_DIR)\arm\siinfo.obj \
+    $(_OBJ_DIR)\arm\siinit.obj \
+    $(_OBJ_DIR)\arm\silock.obj \
+    $(_OBJ_DIR)\arm\silog.obj \
+    $(_OBJ_DIR)\arm\siread.obj \
+    $(_OBJ_DIR)\arm\sisuprt.obj \
+    $(_OBJ_DIR)\arm\siwrite.obj \
+    $(_OBJ_DIR)\arm\siinst.obj \
+    $(_OBJ_DIR)\arm\sitree.obj
+
+PASS0_ARM_OBJECTS=
+

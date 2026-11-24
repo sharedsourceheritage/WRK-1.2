@@ -1,0 +1,76 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\adler32.obj \
+    $(_OBJ_DIR)\i386\compress.obj \
+    $(_OBJ_DIR)\i386\crc32.obj \
+    $(_OBJ_DIR)\i386\deflate.obj \
+    $(_OBJ_DIR)\i386\gzio.obj \
+    $(_OBJ_DIR)\i386\infblock.obj \
+    $(_OBJ_DIR)\i386\infcodes.obj \
+    $(_OBJ_DIR)\i386\inffast.obj \
+    $(_OBJ_DIR)\i386\inflate.obj \
+    $(_OBJ_DIR)\i386\inftrees.obj \
+    $(_OBJ_DIR)\i386\infutil.obj \
+    $(_OBJ_DIR)\i386\trees.obj \
+    $(_OBJ_DIR)\i386\uncompr.obj \
+    $(_OBJ_DIR)\i386\zutil.obj \
+    $(_OBJ_DIR)\i386\default_allocator.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\adler32.obj \
+    $(_OBJ_DIR)\ia64\compress.obj \
+    $(_OBJ_DIR)\ia64\crc32.obj \
+    $(_OBJ_DIR)\ia64\deflate.obj \
+    $(_OBJ_DIR)\ia64\gzio.obj \
+    $(_OBJ_DIR)\ia64\infblock.obj \
+    $(_OBJ_DIR)\ia64\infcodes.obj \
+    $(_OBJ_DIR)\ia64\inffast.obj \
+    $(_OBJ_DIR)\ia64\inflate.obj \
+    $(_OBJ_DIR)\ia64\inftrees.obj \
+    $(_OBJ_DIR)\ia64\infutil.obj \
+    $(_OBJ_DIR)\ia64\trees.obj \
+    $(_OBJ_DIR)\ia64\uncompr.obj \
+    $(_OBJ_DIR)\ia64\zutil.obj \
+    $(_OBJ_DIR)\ia64\default_allocator.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\adler32.obj \
+    $(_OBJ_DIR)\amd64\compress.obj \
+    $(_OBJ_DIR)\amd64\crc32.obj \
+    $(_OBJ_DIR)\amd64\deflate.obj \
+    $(_OBJ_DIR)\amd64\gzio.obj \
+    $(_OBJ_DIR)\amd64\infblock.obj \
+    $(_OBJ_DIR)\amd64\infcodes.obj \
+    $(_OBJ_DIR)\amd64\inffast.obj \
+    $(_OBJ_DIR)\amd64\inflate.obj \
+    $(_OBJ_DIR)\amd64\inftrees.obj \
+    $(_OBJ_DIR)\amd64\infutil.obj \
+    $(_OBJ_DIR)\amd64\trees.obj \
+    $(_OBJ_DIR)\amd64\uncompr.obj \
+    $(_OBJ_DIR)\amd64\zutil.obj \
+    $(_OBJ_DIR)\amd64\default_allocator.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\adler32.obj \
+    $(_OBJ_DIR)\arm\compress.obj \
+    $(_OBJ_DIR)\arm\crc32.obj \
+    $(_OBJ_DIR)\arm\deflate.obj \
+    $(_OBJ_DIR)\arm\gzio.obj \
+    $(_OBJ_DIR)\arm\infblock.obj \
+    $(_OBJ_DIR)\arm\infcodes.obj \
+    $(_OBJ_DIR)\arm\inffast.obj \
+    $(_OBJ_DIR)\arm\inflate.obj \
+    $(_OBJ_DIR)\arm\inftrees.obj \
+    $(_OBJ_DIR)\arm\infutil.obj \
+    $(_OBJ_DIR)\arm\trees.obj \
+    $(_OBJ_DIR)\arm\uncompr.obj \
+    $(_OBJ_DIR)\arm\zutil.obj \
+    $(_OBJ_DIR)\arm\default_allocator.obj
+
+PASS0_ARM_OBJECTS=
+

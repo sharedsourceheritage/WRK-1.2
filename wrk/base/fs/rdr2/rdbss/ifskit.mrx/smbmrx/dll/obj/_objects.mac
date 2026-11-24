@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\smbmrxnp.res \
+    $(_OBJ_DIR)\i386\dllmain.obj \
+    $(_OBJ_DIR)\i386\smbmrxnp.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\smbmrxnp.res \
+    $(_OBJ_DIR)\ia64\dllmain.obj \
+    $(_OBJ_DIR)\ia64\smbmrxnp.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\smbmrxnp.res \
+    $(_OBJ_DIR)\amd64\dllmain.obj \
+    $(_OBJ_DIR)\amd64\smbmrxnp.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\smbmrxnp.res \
+    $(_OBJ_DIR)\arm\dllmain.obj \
+    $(_OBJ_DIR)\arm\smbmrxnp.obj
+
+PASS0_ARM_OBJECTS=
+

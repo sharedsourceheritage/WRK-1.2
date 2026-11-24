@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\csrss.res \
+    $(_OBJ_DIR)\i386\csrss.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\csrss.res \
+    $(_OBJ_DIR)\ia64\csrss.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\csrss.res \
+    $(_OBJ_DIR)\amd64\csrss.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\csrss.res \
+    $(_OBJ_DIR)\arm\csrss.obj
+
+PASS0_ARM_OBJECTS=
+

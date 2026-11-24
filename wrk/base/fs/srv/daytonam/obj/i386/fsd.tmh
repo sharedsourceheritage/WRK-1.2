@@ -1,0 +1,547 @@
+//eb4e76906aa14c896b3a93c22957099b Generated File. Do not edit.
+// File created by WPP compiler version 0.01-Wed May 15 12:38:55 2002
+// on 11/24/2026 at 02:11:12 UTC from a template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\simple.tpl
+
+// PLEASE NOTE:
+//    Using simple.tpl for production environment without overriding
+//    WPP_ENABLED and WPP_LOGGER macro is NOT RECOMMENDED.
+//
+//    If WPP_ENABLED is not provided, the logging is always on
+//    If WPP_LOGGER is not provided, traces always go to the logger named stdout (if it is running)
+//
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\header.tpl
+
+#define WPP_KERNEL_MODE 
+#define WPP_THIS_FILE fsd_c
+
+#if !defined(WPP_KERNEL_MODE)
+#  include <windows.h>
+#  pragma warning(disable: 4201)
+#  include <wmistr.h>
+#  include <evntrace.h>
+#  define WPP_TRACE TraceMessage
+#else
+#define WPP_TRACE WmiTraceMessage
+#endif
+
+#if !defined(WPP_PRIVATE)
+#  define WPP_INLINE __inline
+#  define WPP_SELECT_ANY extern "C" __declspec(selectany)
+#else
+#  define WPP_INLINE static
+#  define WPP_SELECT_ANY static
+#endif
+
+__inline TRACEHANDLE WppQueryLogger(PCWSTR LoggerName)
+{
+    if (!LoggerName) {LoggerName = L"stdout";}
+    {
+#if defined(WPP_KERNEL_MODE)
+        ULONG ReturnLength ;
+        NTSTATUS Status ;
+        TRACEHANDLE TraceHandle ;
+        UNICODE_STRING  Buffer  ;
+
+        RtlInitUnicodeString(&Buffer, LoggerName);
+    
+        if ((Status = WmiQueryTraceInformation(TraceHandleByNameClass,
+                                                 (PVOID)&TraceHandle,
+                                                  sizeof(TraceHandle),
+                                                  &ReturnLength,
+                                                  (PVOID)&Buffer)) == STATUS_SUCCESS) {
+        return TraceHandle ;
+        }
+#else
+        ULONG status;
+        EVENT_TRACE_PROPERTIES LoggerInfo; 
+
+        ZeroMemory(&LoggerInfo, sizeof(LoggerInfo));
+        LoggerInfo.Wnode.BufferSize = sizeof(LoggerInfo);
+        LoggerInfo.Wnode.Flags = WNODE_FLAG_TRACED_GUID;
+        
+        status = QueryTraceW(0, LoggerName, &LoggerInfo);    
+        if (status == ERROR_SUCCESS || status == ERROR_MORE_DATA) {
+            return (TRACEHANDLE) LoggerInfo.Wnode.HistoricalContext;
+        }
+#endif
+    }
+    return 0;
+}
+
+
+ 
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\stdout.tpl
+
+#define WPP_LEVEL_LOGGER(LEVEL) // DoTraceMessage
+#define WPP_LOGGER() // KdPrint
+#define WPP_LOGGER() // SrvPrint0
+#define WPP_LOGGER() // SrvPrint1
+#define WPP_LOGGER() // SrvPrint2
+#define WPP_LOGGER() // SrvPrint3
+#define WPP_LOGGER() // SrvPrint4
+#ifndef WPP_LOGGER_ARG
+#  define WPP_LOGGER_ARG
+#endif
+
+#ifndef WPP_GET_LOGGER
+  #define WPP_GET_LOGGER WppGetLogger()
+  __inline TRACEHANDLE WppGetLogger() 
+  {
+      static TRACEHANDLE Logger;
+      if (Logger) {return Logger;}
+      return Logger = WppQueryLogger(0);
+  }
+#endif
+
+#ifndef WPP_ENABLED
+#  define WPP_ENABLED() 1
+#endif
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\trmacro.tpl
+//   expects:
+//      WPP_THIS_FILE defined (see header.tpl)
+//      WPP_LOGGER_ARG  defined
+//      WPP_GET_LOGGER  defined
+//      WPP_ENABLED() defined
+
+#ifndef NO_CHECK_FOR_NULL_STRING
+#ifndef WPP_CHECK_FOR_NULL_STRING
+#define WPP_CHECK_FOR_NULL_STRING 1
+#endif
+#endif
+
+#define WPP_EVAL(_value_) _value_
+#define WPP_(Id) WPP_EVAL(WPP_) ## WPP_EVAL(Id) ## WPP_EVAL(_) ## WPP_EVAL(WPP_THIS_FILE) ## WPP_EVAL(__LINE__)
+
+#if !defined(WPP_INLINE)
+#  define WPP_INLINE __inline
+#endif
+
+#if !defined(WPP_NO_ANNOTATIONS) 
+#if !defined(WPP_ANSI_ANNOTATION) 
+# define WPP_ANNOTATE_fsd_c1229	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1229 31 \"%0SrvFsdTdiReceiveHandler entered for endpoint 0x%10!p!, connection 0x%11!p!\" //  ", L"{", L"TdiEventContext, ItemPtr -- 10" , L"connection, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c128	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c128 10 \"%0sizeof(WORK_QUEUE) == %10!d!!\" //  ", L"{", L"sizeof( WORK_QUEUE ), ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c129	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c129 11 \"%0Fix the WORK_QUEUE structure to be multiple of CACHE_LINE_SIZE!\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c136	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c136 12 \"%0SRV: At DriverEntry\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c1426	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1426 32 \"%0FSD working on work context 0x%10!p!\" //  ", L"{", L"workContext, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c144	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c144 13 \"%0SrvFsdInitialize entered\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c1615	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1615 33 \"%0SRV: SrvPnpBindingHandler( %10!s!, %11!u! ) entered\" //  ", L"{", L"DeviceName, ItemPWString -- 10" , L"PnPOpcode, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c1620	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1620 34 \"%0SRV: attach to system process\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c1640	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1640 35 \"%0SRV: SrvPnpBindingHandler( %10!p!, %11!u! ) returning\" //  ", L"{", L"DeviceName, ItemPtr -- 10" , L"PnPOpcode, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c1670	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1670 36 \"%0SRV: SrvPnpPowerHandler( %10!s!, %11!u! )\" //  ", L"{", L"DeviceName, ItemPWString -- 10" , L"PnPEvent->NetEvent, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c1679	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1679 37 \"%0SRV: NetEventQueryPower BufferLength %10!u! (should be %11!u!)\" //  ", L"{", L"PnPEvent->BufferLength, ItemLong -- 10" , L"sizeof( powerState ), ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c1733	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1733 38 \"%0    Endpoint %10!X!, Connection %11!X!\" //  ", L"{", L"endpoint, ItemLong -- 10" , L"connection, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c1734	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1734 39 \"%0    SRV rejects power down request!\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c1755	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1755 40 \"%0    SrvPnpPowerHandler status %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c1809	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1809 41 \"%0No workitems for queue %10!p!\" //  ", L"{", L"(PVOID)(queue-SrvWorkQueues), ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c1816	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1816 42 \"%0SrvFsdGetReceiveWorkItem: new work context %10!p!\" //  ", L"{", L"workContext, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c1851	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1851 43 \"%0Looking for workitems on other processors\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c1881	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1881 44 \"%0SrvFsdGetReceiveWorkItem: new work context %10!p!\" //  ", L"{", L"workContext, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c1933	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1933 45 \"%0No workitems anywhere!\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c194	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c194 14 \"%0  Server device object: 0x%10!p!\" //  ", L"{", L"SrvDeviceObject, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c1954	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c1954 46 \"%0\tGot WORK_ITEM from processor %10!p!\" //  ", L"{", L"(PVOID)(queue - SrvWorkQueues), ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c2035	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2035 47 \"%0SrvFsdRequeueReceiveWorkItem entered\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2038	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2038 48 \"%0  Work context %10!p!, request buffer %11!p!\" //  ", L"{", L"WorkContext, ItemPtr -- 10" , L"WorkContext->RequestBuffer, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c2040	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2040 49 \"%0  IRP %10!p!, MDL %11!p!\" //  ", L"{", L"WorkContext->Irp, ItemPtr -- 10" , L"WorkContext->RequestBuffer->Mdl, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c2202	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2202 50 \"%0SrvFsdRestartSendOplockIItoNone: Oplock send complete.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c224	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c224 15 \"%0SrvFsdInitialize complete\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2283	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2283 51 \"%0SrvFsdRestartSmbComplete entered\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2355	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2355 52 \"%0SrvFsdRestartSmbComplete complete\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2399	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2399 53 \"%0SrvFsdRestartSmbComplete entered\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2502	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2502 54 \"%0SrvFsdRestartSmbComplete complete\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2548	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2548 55 \"%0SrvFsdServiceNeedResourceQueue: entered. WorkContext %10!p! , Connection = %11!p!.\" //  ", L"{", L"workContext, ItemPtr -- 10" , L"connection, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c2576	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2576 56 \"%0SrvFsdServiceNeedResourceQueue: rfcb %10!p! removed from OplockWorkList.\" //  ", L"{", L"rfcb, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c2594	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2594 57 \"%0SrvFsdServiceNeedResourceQueue: rfcb %10!p! closing.\" //  ", L"{", L"rfcb, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c263	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c263 16 \"%0Calling Smart Card DeRegister\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2639	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2639 58 \"%0SrvFsdServiceNeedResourceQueue: Reusing WorkContext block %10!p!.\" //  ", L"{", L"workContext, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c2651	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2651 59 \"%0SrvFsdServiceNeedResourceQueue: WorkContext block not used.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2683	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2683 60 \"%0SrvFsdServiceNeedResourceQueue: Sending oplock break.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2691	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2691 61 \"%0SrvFsdServiceNeedResourceQueue: Have ReceivePending.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2801	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2801 62 \"%0SrvFsdServiceNeedResourceQueue: WorkContext block used.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2847	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2847 63 \"%0SrvAddToNeedResourceQueue entered. connection = %10!p!, type %11!d!\" //  ", L"{", L"Connection, ItemPtr -- 10" , L"ResourceType, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c2868	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2868 64 \"%0SrvAddToNeedResourceQueue: connection closing. Not queued\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c2919	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2919 65 \"%0SrvAddToNeedResourceQueue: connection %10!p! inserted on the queue.\" //  ", L"{", L"Connection, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c2934	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c2934 66 \"%0SrvAddToNeedResourceQueue complete: NeedWorkItem = %10!d!\" //  ", L"{", L"Connection->CurrentWorkQueue->NeedWorkItem, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c326	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c326 17 \"%0SrvFsdIoCompletionRoutine entered for IRP 0x%10!p!\" //  ", L"{", L"Irp, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c347	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c347 18 \"%0FSD working on work context 0x%10!p!\" //  ", L"{", L"Context, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c406	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c406 19 \"%0SrvFsdSendCompletionRoutine entered for IRP 0x%10!p!\" //  ", L"{", L"Irp, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c426	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c426 20 \"%0FSD working on work context 0x%10!p!\" //  ", L"{", L"Context, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c480	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c480 21 \"%0SrvFsdOplockCompletionRoutine entered for IRP 0x%10!p!\" //  ", L"{", L"Irp, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c494	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c494 22 \"%0FSD working on work context 0x%10!p!\" //  ", L"{", L"Context, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c507	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c507 23 \"%0SrvFsdOplockCompletionRoutine: oplock retry event set for RFCB %10!p!\" //  ", L"{", L"rfcb, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c603	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c603 24 \"%0SrvFsdTdiConnectHandler entered for endpoint 0x%10!p!\" //  ", L"{", L"endpoint, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c693	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c693 25 \"%0SrvFsdTdiConnectHandler: no connection available\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_fsd_c750	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c750 26 \"%0SRV: Connection %10!x! is ACTIVE on free connection list!\" //  ", L"{", L"connection, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c754	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c754 27 \"%0SRV: Connection %10!x! has nonzero refcnt on free connection list!\" //  ", L"{", L"connection, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_fsd_c866	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c866 28 \"%0SrvFsdTdiConnectHandler accepting connection from %10!s! on connection %11!p!\" //  ", L"{", L"(PCSTRING)&connection->OemClientMachineNameString, ItemPString -- 10" , L"connection, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c979	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c979 29 \"%0SrvFsdTdiDisconnectHandler entered for endpoint 0x%10!p!, connection 0x%11!p!\" //  ", L"{", L"TdiEventContext, ItemPtr -- 10" , L"connection, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_fsd_c984	__annotation(L"TMF:", L"90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", L"#typev  fsd_c984 30 \"%0SrvFsdTdiDisconnectHandler received disconnect from %10!s! on connection %11!p!\" //  ", L"{", L"(PCSTRING)&connection->OemClientMachineNameString, ItemPString -- 10" , L"connection, ItemPtr -- 11" , L"}")
+#else
+# define WPP_ANNOTATE_fsd_c1229	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1229 31 \"%0SrvFsdTdiReceiveHandler entered for endpoint 0x%10!p!, connection 0x%11!p!\" //  ", "{", "TdiEventContext, ItemPtr -- 10" , "connection, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c128	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c128 10 \"%0sizeof(WORK_QUEUE) == %10!d!!\" //  ", "{", "sizeof( WORK_QUEUE ), ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c129	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c129 11 \"%0Fix the WORK_QUEUE structure to be multiple of CACHE_LINE_SIZE!\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c136	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c136 12 \"%0SRV: At DriverEntry\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c1426	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1426 32 \"%0FSD working on work context 0x%10!p!\" //  ", "{", "workContext, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c144	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c144 13 \"%0SrvFsdInitialize entered\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c1615	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1615 33 \"%0SRV: SrvPnpBindingHandler( %10!s!, %11!u! ) entered\" //  ", "{", "DeviceName, ItemPWString -- 10" , "PnPOpcode, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c1620	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1620 34 \"%0SRV: attach to system process\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c1640	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1640 35 \"%0SRV: SrvPnpBindingHandler( %10!p!, %11!u! ) returning\" //  ", "{", "DeviceName, ItemPtr -- 10" , "PnPOpcode, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c1670	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1670 36 \"%0SRV: SrvPnpPowerHandler( %10!s!, %11!u! )\" //  ", "{", "DeviceName, ItemPWString -- 10" , "PnPEvent->NetEvent, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c1679	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1679 37 \"%0SRV: NetEventQueryPower BufferLength %10!u! (should be %11!u!)\" //  ", "{", "PnPEvent->BufferLength, ItemLong -- 10" , "sizeof( powerState ), ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c1733	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1733 38 \"%0    Endpoint %10!X!, Connection %11!X!\" //  ", "{", "endpoint, ItemLong -- 10" , "connection, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c1734	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1734 39 \"%0    SRV rejects power down request!\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c1755	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1755 40 \"%0    SrvPnpPowerHandler status %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c1809	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1809 41 \"%0No workitems for queue %10!p!\" //  ", "{", "(PVOID)(queue-SrvWorkQueues), ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c1816	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1816 42 \"%0SrvFsdGetReceiveWorkItem: new work context %10!p!\" //  ", "{", "workContext, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c1851	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1851 43 \"%0Looking for workitems on other processors\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c1881	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1881 44 \"%0SrvFsdGetReceiveWorkItem: new work context %10!p!\" //  ", "{", "workContext, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c1933	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1933 45 \"%0No workitems anywhere!\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c194	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c194 14 \"%0  Server device object: 0x%10!p!\" //  ", "{", "SrvDeviceObject, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c1954	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c1954 46 \"%0\tGot WORK_ITEM from processor %10!p!\" //  ", "{", "(PVOID)(queue - SrvWorkQueues), ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c2035	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2035 47 \"%0SrvFsdRequeueReceiveWorkItem entered\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2038	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2038 48 \"%0  Work context %10!p!, request buffer %11!p!\" //  ", "{", "WorkContext, ItemPtr -- 10" , "WorkContext->RequestBuffer, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c2040	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2040 49 \"%0  IRP %10!p!, MDL %11!p!\" //  ", "{", "WorkContext->Irp, ItemPtr -- 10" , "WorkContext->RequestBuffer->Mdl, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c2202	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2202 50 \"%0SrvFsdRestartSendOplockIItoNone: Oplock send complete.\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c224	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c224 15 \"%0SrvFsdInitialize complete\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2283	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2283 51 \"%0SrvFsdRestartSmbComplete entered\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2355	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2355 52 \"%0SrvFsdRestartSmbComplete complete\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2399	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2399 53 \"%0SrvFsdRestartSmbComplete entered\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2502	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2502 54 \"%0SrvFsdRestartSmbComplete complete\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2548	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2548 55 \"%0SrvFsdServiceNeedResourceQueue: entered. WorkContext %10!p! , Connection = %11!p!.\" //  ", "{", "workContext, ItemPtr -- 10" , "connection, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c2576	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2576 56 \"%0SrvFsdServiceNeedResourceQueue: rfcb %10!p! removed from OplockWorkList.\" //  ", "{", "rfcb, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c2594	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2594 57 \"%0SrvFsdServiceNeedResourceQueue: rfcb %10!p! closing.\" //  ", "{", "rfcb, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c263	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c263 16 \"%0Calling Smart Card DeRegister\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2639	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2639 58 \"%0SrvFsdServiceNeedResourceQueue: Reusing WorkContext block %10!p!.\" //  ", "{", "workContext, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c2651	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2651 59 \"%0SrvFsdServiceNeedResourceQueue: WorkContext block not used.\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2683	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2683 60 \"%0SrvFsdServiceNeedResourceQueue: Sending oplock break.\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2691	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2691 61 \"%0SrvFsdServiceNeedResourceQueue: Have ReceivePending.\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2801	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2801 62 \"%0SrvFsdServiceNeedResourceQueue: WorkContext block used.\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2847	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2847 63 \"%0SrvAddToNeedResourceQueue entered. connection = %10!p!, type %11!d!\" //  ", "{", "Connection, ItemPtr -- 10" , "ResourceType, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c2868	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2868 64 \"%0SrvAddToNeedResourceQueue: connection closing. Not queued\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c2919	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2919 65 \"%0SrvAddToNeedResourceQueue: connection %10!p! inserted on the queue.\" //  ", "{", "Connection, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c2934	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c2934 66 \"%0SrvAddToNeedResourceQueue complete: NeedWorkItem = %10!d!\" //  ", "{", "Connection->CurrentWorkQueue->NeedWorkItem, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c326	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c326 17 \"%0SrvFsdIoCompletionRoutine entered for IRP 0x%10!p!\" //  ", "{", "Irp, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c347	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c347 18 \"%0FSD working on work context 0x%10!p!\" //  ", "{", "Context, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c406	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c406 19 \"%0SrvFsdSendCompletionRoutine entered for IRP 0x%10!p!\" //  ", "{", "Irp, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c426	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c426 20 \"%0FSD working on work context 0x%10!p!\" //  ", "{", "Context, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c480	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c480 21 \"%0SrvFsdOplockCompletionRoutine entered for IRP 0x%10!p!\" //  ", "{", "Irp, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c494	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c494 22 \"%0FSD working on work context 0x%10!p!\" //  ", "{", "Context, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c507	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c507 23 \"%0SrvFsdOplockCompletionRoutine: oplock retry event set for RFCB %10!p!\" //  ", "{", "rfcb, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c603	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c603 24 \"%0SrvFsdTdiConnectHandler entered for endpoint 0x%10!p!\" //  ", "{", "endpoint, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c693	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c693 25 \"%0SrvFsdTdiConnectHandler: no connection available\" //  ", "{", "}")
+# define WPP_ANNOTATE_fsd_c750	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c750 26 \"%0SRV: Connection %10!x! is ACTIVE on free connection list!\" //  ", "{", "connection, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c754	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c754 27 \"%0SRV: Connection %10!x! has nonzero refcnt on free connection list!\" //  ", "{", "connection, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_fsd_c866	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c866 28 \"%0SrvFsdTdiConnectHandler accepting connection from %10!s! on connection %11!p!\" //  ", "{", "(PCSTRING)&connection->OemClientMachineNameString, ItemPString -- 10" , "connection, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c979	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c979 29 \"%0SrvFsdTdiDisconnectHandler entered for endpoint 0x%10!p!, connection 0x%11!p!\" //  ", "{", "TdiEventContext, ItemPtr -- 10" , "connection, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_fsd_c984	__annotation("TMF:", "90764eeb-a16a-894c-6b3a-93c22957099b daytonam // SRC=fsd.c MJ= MN=", "#typev  fsd_c984 30 \"%0SrvFsdTdiDisconnectHandler received disconnect from %10!s! on connection %11!p!\" //  ", "{", "(PCSTRING)&connection->OemClientMachineNameString, ItemPString -- 10" , "connection, ItemPtr -- 11" , "}")
+#endif
+# define WPP_ANNOTATE WPP_(ANNOTATE),
+#else
+# define WPP_ANNOTATE 
+#endif
+
+#if 1
+static const GUID WPP_LOCAL_TraceGuids[] = { {0x90764eeb,0xa16a,0x894c,{0x6b,0x3a,0x93,0xc2,0x29,0x57,0x09,0x9b}}, };
+#endif
+
+#if !defined(WPP_TRACE_OPTIONS)
+enum {WPP_TRACE_OPTIONS = TRACE_MESSAGE_SEQUENCE   | TRACE_MESSAGE_GUID
+                        | TRACE_MESSAGE_SYSTEMINFO | TRACE_MESSAGE_TIMESTAMP };
+#endif
+
+#if !defined(WPP_LOGPAIR)
+# define WPP_LOGPAIR(_Size, _Addr)     (_Addr),((SIZE_T)_Size),
+#endif
+
+#define WPP_LOGTYPEVAL(_Type, _Value) WPP_LOGPAIR(sizeof(_Type), &(_Value))
+#define WPP_LOGTYPEPTR(_Value)        WPP_LOGPAIR(sizeof(*(_Value)), (_Value))
+
+// Marshalling macros.
+
+#if !defined(WPP_LOGASTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR(strlen(_value) + 1, _value )
+# else
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR( (_value)?strlen(_value) + 1:5, (_value)?(_value):"NULL" )
+# endif
+#endif
+
+#if !defined(WPP_LOGWSTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (wcslen(_value)+1) * sizeof(WCHAR), _value)
+# else
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (_value)?(wcslen(_value) + 1)* sizeof(WCHAR):5 * sizeof(WCHAR), (_value)?(_value):L"NULL") 
+# endif
+#endif
+
+#if !defined(WPP_LOGPGUID)
+# define WPP_LOGPGUID(_value) WPP_LOGPAIR( sizeof(GUID), (_value) )
+#endif
+
+
+#if !defined(WPP_LOGPSID)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( GetLengthSid(_value), (_value) )
+# else
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( (_value)? (IsValidSid(_value)? \
+                                                                        GetLengthSid(_value):5):5, \
+                                                                        (_value)? (IsValidSid(_value)?\
+                                                                        (_value):"NULL"):"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGCSTR)
+# define WPP_LOGCSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGUSTR)
+# define WPP_LOGUSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGPUSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPUSTR(_x) WPP_LOGUSTR(*(_x))
+#else
+# define WPP_LOGPUSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5*sizeof(WCHAR), (_x)?(*(_x)).Buffer:L"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGPCSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPCSTR(_x) WPP_LOGCSTR(*(_x))
+#else
+# define WPP_LOGPCSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5, (_x)?((const char *)(*(_x)).Buffer):"NULL")
+#endif
+#endif
+
+
+#if !defined(WPP_LOGSTDSTR)
+#define WPP_LOGSTDSTR(_value)  WPP_LOGPAIR( (_value).size()+1, (_value).c_str() )
+#endif
+
+WPP_INLINE void WPP_SF_(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id,  0); }
+WPP_INLINE void WPP_SF_D(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1)  0); }
+WPP_INLINE void WPP_SF_DD(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1, unsigned int _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1) WPP_LOGTYPEVAL(unsigned int,_a2)  0); }
+WPP_INLINE void WPP_SF_ZD(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1, unsigned int _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1) WPP_LOGTYPEVAL(unsigned int,_a2)  0); }
+WPP_INLINE void WPP_SF_d(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, signed int _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(signed int,_a1)  0); }
+WPP_INLINE void WPP_SF_q(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1)  0); }
+WPP_INLINE void WPP_SF_qD(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1, unsigned int _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1) WPP_LOGTYPEVAL(unsigned int,_a2)  0); }
+WPP_INLINE void WPP_SF_qd(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1, signed int _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1) WPP_LOGTYPEVAL(signed int,_a2)  0); }
+WPP_INLINE void WPP_SF_qq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1, const void* _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1) WPP_LOGTYPEVAL(const void*,_a2)  0); }
+WPP_INLINE void WPP_SF_zq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCSTRING _a1, const void* _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPCSTR(_a1) WPP_LOGTYPEVAL(const void*,_a2)  0); }
+#ifdef WPP_DEBUG
+#define WPP_CALL_fsd_c1229(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c128(MSG,a10) ((WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c129(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c136(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c1426(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c144(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c1615(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_ZD(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c1620(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c1640(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qD(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c1670(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_ZD(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c1679(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_DD(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c1733(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_DD(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c1734(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c1755(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c1809(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c1816(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c1851(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c1881(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 44,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c1933(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 45,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c194(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c1954(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 46,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c2035(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 47,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2038(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 48,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c2040(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 49,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c2202(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 50,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c224(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2283(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 51,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2355(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 52,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2399(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 53,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2502(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 54,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2548(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 55,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c2576(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 56,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c2594(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 57,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c263(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2639(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 58,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c2651(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 59,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2683(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 60,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2691(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 61,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2801(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 62,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2847(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qd(WPP_LOGGER() 63,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c2868(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 64,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c2919(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 65,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c2934(MSG,a10) ((WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 66,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c326(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c347(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c406(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c426(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c480(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c494(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c507(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c603(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c693(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_fsd_c750(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c754(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_fsd_c866(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_zq(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c979(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_fsd_c984(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_zq(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#else
+#define WPP_CALL_fsd_c1229(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c128(MSG,a10) (WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c129(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c136(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c1426(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c144(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c1615(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_ZD(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c1620(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c1640(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qD(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c1670(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_ZD(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c1679(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_DD(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c1733(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_DD(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c1734(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c1755(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c1809(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c1816(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c1851(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c1881(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 44,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c1933(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 45,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c194(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c1954(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 46,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c2035(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 47,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2038(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 48,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c2040(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 49,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c2202(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 50,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c224(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2283(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 51,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2355(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 52,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2399(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 53,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2502(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 54,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2548(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 55,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c2576(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 56,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c2594(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 57,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c263(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2639(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 58,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c2651(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 59,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2683(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 60,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2691(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 61,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2801(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 62,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2847(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qd(WPP_LOGGER() 63,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c2868(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 64,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c2919(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 65,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c2934(MSG,a10) (WPP_ENABLED()?WPP_SF_d(WPP_LOGGER() 66,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c326(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c347(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c406(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c426(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c480(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c494(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c507(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c603(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c693(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_fsd_c750(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c754(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_fsd_c866(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_zq(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c979(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_fsd_c984(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_zq(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#endif
+
+// NoMsgArgs
+
+#undef DoTraceMessage
+#define DoTraceMessage WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint0
+#define SrvPrint0 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint1
+#define SrvPrint1 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint2
+#define SrvPrint2 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint3
+#define SrvPrint3 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint4
+#define SrvPrint4 WPP_ANNOTATE WPP_(CALL)
+#undef KdPrint
+#define KdPrint(ARGS) WPP_ANNOTATE WPP_(CALL) ARGS
+// MsgArgs
+
+#ifdef WPP_DEBUG
+#else
+#endif
+
+
+/// more stuff
+
+

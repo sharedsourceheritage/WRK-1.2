@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\wowlist.res \
+    $(_OBJ_DIR)\i386\wowlist.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\wowlist.res \
+    $(_OBJ_DIR)\ia64\wowlist.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\wowlist.res \
+    $(_OBJ_DIR)\amd64\wowlist.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\wowlist.res \
+    $(_OBJ_DIR)\arm\wowlist.obj
+
+PASS0_ARM_OBJECTS=
+

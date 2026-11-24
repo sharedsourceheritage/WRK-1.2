@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\umdh.res \
+    $(_OBJ_DIR)\i386\dhcmp.obj \
+    $(_OBJ_DIR)\i386\heapwalk.obj \
+    $(_OBJ_DIR)\i386\miscellaneous.obj \
+    $(_OBJ_DIR)\i386\database.obj \
+    $(_OBJ_DIR)\i386\symbols.obj \
+    $(_OBJ_DIR)\i386\gc.obj \
+    $(_OBJ_DIR)\i386\umdh.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\umdh.res \
+    $(_OBJ_DIR)\ia64\dhcmp.obj \
+    $(_OBJ_DIR)\ia64\heapwalk.obj \
+    $(_OBJ_DIR)\ia64\miscellaneous.obj \
+    $(_OBJ_DIR)\ia64\database.obj \
+    $(_OBJ_DIR)\ia64\symbols.obj \
+    $(_OBJ_DIR)\ia64\gc.obj \
+    $(_OBJ_DIR)\ia64\umdh.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\umdh.res \
+    $(_OBJ_DIR)\amd64\dhcmp.obj \
+    $(_OBJ_DIR)\amd64\heapwalk.obj \
+    $(_OBJ_DIR)\amd64\miscellaneous.obj \
+    $(_OBJ_DIR)\amd64\database.obj \
+    $(_OBJ_DIR)\amd64\symbols.obj \
+    $(_OBJ_DIR)\amd64\gc.obj \
+    $(_OBJ_DIR)\amd64\umdh.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\umdh.res \
+    $(_OBJ_DIR)\arm\dhcmp.obj \
+    $(_OBJ_DIR)\arm\heapwalk.obj \
+    $(_OBJ_DIR)\arm\miscellaneous.obj \
+    $(_OBJ_DIR)\arm\database.obj \
+    $(_OBJ_DIR)\arm\symbols.obj \
+    $(_OBJ_DIR)\arm\gc.obj \
+    $(_OBJ_DIR)\arm\umdh.obj
+
+PASS0_ARM_OBJECTS=
+

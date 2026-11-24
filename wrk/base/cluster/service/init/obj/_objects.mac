@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clussvc.res \
+    $(_OBJ_DIR)\i386\service.obj \
+    $(_OBJ_DIR)\i386\ioctl.obj \
+    $(_OBJ_DIR)\i386\join.obj \
+    $(_OBJ_DIR)\i386\tstpoint.obj \
+    $(_OBJ_DIR)\i386\excprpt.obj \
+    $(_OBJ_DIR)\i386\restore.obj \
+    $(_OBJ_DIR)\i386\qfs.obj \
+    $(_OBJ_DIR)\i386\init.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clussvc.res \
+    $(_OBJ_DIR)\ia64\service.obj \
+    $(_OBJ_DIR)\ia64\ioctl.obj \
+    $(_OBJ_DIR)\ia64\join.obj \
+    $(_OBJ_DIR)\ia64\tstpoint.obj \
+    $(_OBJ_DIR)\ia64\excprpt.obj \
+    $(_OBJ_DIR)\ia64\restore.obj \
+    $(_OBJ_DIR)\ia64\qfs.obj \
+    $(_OBJ_DIR)\ia64\init.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clussvc.res \
+    $(_OBJ_DIR)\amd64\service.obj \
+    $(_OBJ_DIR)\amd64\ioctl.obj \
+    $(_OBJ_DIR)\amd64\join.obj \
+    $(_OBJ_DIR)\amd64\tstpoint.obj \
+    $(_OBJ_DIR)\amd64\excprpt.obj \
+    $(_OBJ_DIR)\amd64\restore.obj \
+    $(_OBJ_DIR)\amd64\qfs.obj \
+    $(_OBJ_DIR)\amd64\init.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clussvc.res \
+    $(_OBJ_DIR)\arm\service.obj \
+    $(_OBJ_DIR)\arm\ioctl.obj \
+    $(_OBJ_DIR)\arm\join.obj \
+    $(_OBJ_DIR)\arm\tstpoint.obj \
+    $(_OBJ_DIR)\arm\excprpt.obj \
+    $(_OBJ_DIR)\arm\restore.obj \
+    $(_OBJ_DIR)\arm\qfs.obj \
+    $(_OBJ_DIR)\arm\init.obj
+
+PASS0_ARM_OBJECTS=
+

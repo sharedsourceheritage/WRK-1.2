@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\expand.res \
+    $(_OBJ_DIR)\i386\args.obj \
+    $(_OBJ_DIR)\i386\expand.obj \
+    $(_OBJ_DIR)\i386\diamond.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\expand.res \
+    $(_OBJ_DIR)\ia64\args.obj \
+    $(_OBJ_DIR)\ia64\expand.obj \
+    $(_OBJ_DIR)\ia64\diamond.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\expand.res \
+    $(_OBJ_DIR)\amd64\args.obj \
+    $(_OBJ_DIR)\amd64\expand.obj \
+    $(_OBJ_DIR)\amd64\diamond.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\expand.res \
+    $(_OBJ_DIR)\arm\args.obj \
+    $(_OBJ_DIR)\arm\expand.obj \
+    $(_OBJ_DIR)\arm\diamond.obj
+
+PASS0_ARM_OBJECTS=
+

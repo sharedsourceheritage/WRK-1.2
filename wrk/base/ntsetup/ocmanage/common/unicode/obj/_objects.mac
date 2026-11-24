@@ -1,0 +1,72 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\oc.res \
+    $(_OBJ_DIR)\i386\dll.obj \
+    $(_OBJ_DIR)\i386\ocdskspc.obj \
+    $(_OBJ_DIR)\i386\ochelper.obj \
+    $(_OBJ_DIR)\i386\ocinterf.obj \
+    $(_OBJ_DIR)\i386\ocmanage.obj \
+    $(_OBJ_DIR)\i386\ocmisc.obj \
+    $(_OBJ_DIR)\i386\ocpage.obj \
+    $(_OBJ_DIR)\i386\ocsetup.obj \
+    $(_OBJ_DIR)\i386\ocstalon.obj \
+    $(_OBJ_DIR)\i386\ocstate.obj \
+    $(_OBJ_DIR)\i386\ocwizard.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\oc.res \
+    $(_OBJ_DIR)\ia64\dll.obj \
+    $(_OBJ_DIR)\ia64\ocdskspc.obj \
+    $(_OBJ_DIR)\ia64\ochelper.obj \
+    $(_OBJ_DIR)\ia64\ocinterf.obj \
+    $(_OBJ_DIR)\ia64\ocmanage.obj \
+    $(_OBJ_DIR)\ia64\ocmisc.obj \
+    $(_OBJ_DIR)\ia64\ocpage.obj \
+    $(_OBJ_DIR)\ia64\ocsetup.obj \
+    $(_OBJ_DIR)\ia64\ocstalon.obj \
+    $(_OBJ_DIR)\ia64\ocstate.obj \
+    $(_OBJ_DIR)\ia64\ocwizard.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\oc.res \
+    $(_OBJ_DIR)\amd64\dll.obj \
+    $(_OBJ_DIR)\amd64\ocdskspc.obj \
+    $(_OBJ_DIR)\amd64\ochelper.obj \
+    $(_OBJ_DIR)\amd64\ocinterf.obj \
+    $(_OBJ_DIR)\amd64\ocmanage.obj \
+    $(_OBJ_DIR)\amd64\ocmisc.obj \
+    $(_OBJ_DIR)\amd64\ocpage.obj \
+    $(_OBJ_DIR)\amd64\ocsetup.obj \
+    $(_OBJ_DIR)\amd64\ocstalon.obj \
+    $(_OBJ_DIR)\amd64\ocstate.obj \
+    $(_OBJ_DIR)\amd64\ocwizard.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\oc.res \
+    $(_OBJ_DIR)\arm\dll.obj \
+    $(_OBJ_DIR)\arm\ocdskspc.obj \
+    $(_OBJ_DIR)\arm\ochelper.obj \
+    $(_OBJ_DIR)\arm\ocinterf.obj \
+    $(_OBJ_DIR)\arm\ocmanage.obj \
+    $(_OBJ_DIR)\arm\ocmisc.obj \
+    $(_OBJ_DIR)\arm\ocpage.obj \
+    $(_OBJ_DIR)\arm\ocsetup.obj \
+    $(_OBJ_DIR)\arm\ocstalon.obj \
+    $(_OBJ_DIR)\arm\ocstate.obj \
+    $(_OBJ_DIR)\arm\ocwizard.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+

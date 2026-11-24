@@ -1,0 +1,64 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\apiinit.obj \
+    $(_OBJ_DIR)\i386\cluster.obj \
+    $(_OBJ_DIR)\i386\resource.obj \
+    $(_OBJ_DIR)\i386\enum.obj \
+    $(_OBJ_DIR)\i386\ioctl.obj \
+    $(_OBJ_DIR)\i386\group.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\node.obj \
+    $(_OBJ_DIR)\i386\network.obj \
+    $(_OBJ_DIR)\i386\intrface.obj \
+    $(_OBJ_DIR)\i386\notify.obj \
+    $(_OBJ_DIR)\i386\fixup.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\apiinit.obj \
+    $(_OBJ_DIR)\ia64\cluster.obj \
+    $(_OBJ_DIR)\ia64\resource.obj \
+    $(_OBJ_DIR)\ia64\enum.obj \
+    $(_OBJ_DIR)\ia64\ioctl.obj \
+    $(_OBJ_DIR)\ia64\group.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\node.obj \
+    $(_OBJ_DIR)\ia64\network.obj \
+    $(_OBJ_DIR)\ia64\intrface.obj \
+    $(_OBJ_DIR)\ia64\notify.obj \
+    $(_OBJ_DIR)\ia64\fixup.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\apiinit.obj \
+    $(_OBJ_DIR)\amd64\cluster.obj \
+    $(_OBJ_DIR)\amd64\resource.obj \
+    $(_OBJ_DIR)\amd64\enum.obj \
+    $(_OBJ_DIR)\amd64\ioctl.obj \
+    $(_OBJ_DIR)\amd64\group.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\node.obj \
+    $(_OBJ_DIR)\amd64\network.obj \
+    $(_OBJ_DIR)\amd64\intrface.obj \
+    $(_OBJ_DIR)\amd64\notify.obj \
+    $(_OBJ_DIR)\amd64\fixup.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\apiinit.obj \
+    $(_OBJ_DIR)\arm\cluster.obj \
+    $(_OBJ_DIR)\arm\resource.obj \
+    $(_OBJ_DIR)\arm\enum.obj \
+    $(_OBJ_DIR)\arm\ioctl.obj \
+    $(_OBJ_DIR)\arm\group.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\node.obj \
+    $(_OBJ_DIR)\arm\network.obj \
+    $(_OBJ_DIR)\arm\intrface.obj \
+    $(_OBJ_DIR)\arm\notify.obj \
+    $(_OBJ_DIR)\arm\fixup.obj
+
+PASS0_ARM_OBJECTS=
+

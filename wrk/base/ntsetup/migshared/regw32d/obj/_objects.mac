@@ -1,0 +1,38 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\regdblk.obj \
+    $(_OBJ_DIR)\i386\regdebug.obj \
+    $(_OBJ_DIR)\i386\regdkey.obj \
+    $(_OBJ_DIR)\i386\regdval.obj \
+    $(_OBJ_DIR)\i386\regdykey.obj \
+    $(_OBJ_DIR)\i386\regekey.obj \
+    $(_OBJ_DIR)\i386\regeval.obj \
+    $(_OBJ_DIR)\i386\regfinfo.obj \
+    $(_OBJ_DIR)\i386\regfkey.obj \
+    $(_OBJ_DIR)\i386\reghive.obj \
+    $(_OBJ_DIR)\i386\reginit.obj \
+    $(_OBJ_DIR)\i386\regkey.obj \
+    $(_OBJ_DIR)\i386\regknode.obj \
+    $(_OBJ_DIR)\i386\regkylst.obj \
+    $(_OBJ_DIR)\i386\regmem.obj \
+    $(_OBJ_DIR)\i386\regmisc.obj \
+    $(_OBJ_DIR)\i386\regqkey.obj \
+    $(_OBJ_DIR)\i386\regqmval.obj \
+    $(_OBJ_DIR)\i386\regqval.obj \
+    $(_OBJ_DIR)\i386\regsval.obj \
+    $(_OBJ_DIR)\i386\utilw32c.obj \
+    $(_OBJ_DIR)\i386\utilwinc.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

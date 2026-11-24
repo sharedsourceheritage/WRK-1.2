@@ -1,0 +1,96 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\eventlog.res \
+    $(_OBJ_DIR)\i386\eventlog.obj \
+    $(_OBJ_DIR)\i386\alert.obj \
+    $(_OBJ_DIR)\i386\config.obj \
+    $(_OBJ_DIR)\i386\control.obj \
+    $(_OBJ_DIR)\i386\copy.obj \
+    $(_OBJ_DIR)\i386\elfapi.obj \
+    $(_OBJ_DIR)\i386\elfdata.obj \
+    $(_OBJ_DIR)\i386\elflpc.obj \
+    $(_OBJ_DIR)\i386\elfrpc.obj \
+    $(_OBJ_DIR)\i386\elfsec.obj \
+    $(_OBJ_DIR)\i386\elfutil.obj \
+    $(_OBJ_DIR)\i386\file.obj \
+    $(_OBJ_DIR)\i386\memory.obj \
+    $(_OBJ_DIR)\i386\operate.obj \
+    $(_OBJ_DIR)\i386\logclear.obj \
+    $(_OBJ_DIR)\i386\terminat.obj \
+    $(_OBJ_DIR)\i386\elf_s.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\elfmsg.h \
+    $(MC_SOURCEDIR)\elfmsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\eventlog.res \
+    $(_OBJ_DIR)\ia64\eventlog.obj \
+    $(_OBJ_DIR)\ia64\alert.obj \
+    $(_OBJ_DIR)\ia64\config.obj \
+    $(_OBJ_DIR)\ia64\control.obj \
+    $(_OBJ_DIR)\ia64\copy.obj \
+    $(_OBJ_DIR)\ia64\elfapi.obj \
+    $(_OBJ_DIR)\ia64\elfdata.obj \
+    $(_OBJ_DIR)\ia64\elflpc.obj \
+    $(_OBJ_DIR)\ia64\elfrpc.obj \
+    $(_OBJ_DIR)\ia64\elfsec.obj \
+    $(_OBJ_DIR)\ia64\elfutil.obj \
+    $(_OBJ_DIR)\ia64\file.obj \
+    $(_OBJ_DIR)\ia64\memory.obj \
+    $(_OBJ_DIR)\ia64\operate.obj \
+    $(_OBJ_DIR)\ia64\logclear.obj \
+    $(_OBJ_DIR)\ia64\terminat.obj \
+    $(_OBJ_DIR)\ia64\elf_s.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\elfmsg.h \
+    $(MC_SOURCEDIR)\elfmsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\eventlog.res \
+    $(_OBJ_DIR)\amd64\eventlog.obj \
+    $(_OBJ_DIR)\amd64\alert.obj \
+    $(_OBJ_DIR)\amd64\config.obj \
+    $(_OBJ_DIR)\amd64\control.obj \
+    $(_OBJ_DIR)\amd64\copy.obj \
+    $(_OBJ_DIR)\amd64\elfapi.obj \
+    $(_OBJ_DIR)\amd64\elfdata.obj \
+    $(_OBJ_DIR)\amd64\elflpc.obj \
+    $(_OBJ_DIR)\amd64\elfrpc.obj \
+    $(_OBJ_DIR)\amd64\elfsec.obj \
+    $(_OBJ_DIR)\amd64\elfutil.obj \
+    $(_OBJ_DIR)\amd64\file.obj \
+    $(_OBJ_DIR)\amd64\memory.obj \
+    $(_OBJ_DIR)\amd64\operate.obj \
+    $(_OBJ_DIR)\amd64\logclear.obj \
+    $(_OBJ_DIR)\amd64\terminat.obj \
+    $(_OBJ_DIR)\amd64\elf_s.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\elfmsg.h \
+    $(MC_SOURCEDIR)\elfmsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\eventlog.res \
+    $(_OBJ_DIR)\arm\eventlog.obj \
+    $(_OBJ_DIR)\arm\alert.obj \
+    $(_OBJ_DIR)\arm\config.obj \
+    $(_OBJ_DIR)\arm\control.obj \
+    $(_OBJ_DIR)\arm\copy.obj \
+    $(_OBJ_DIR)\arm\elfapi.obj \
+    $(_OBJ_DIR)\arm\elfdata.obj \
+    $(_OBJ_DIR)\arm\elflpc.obj \
+    $(_OBJ_DIR)\arm\elfrpc.obj \
+    $(_OBJ_DIR)\arm\elfsec.obj \
+    $(_OBJ_DIR)\arm\elfutil.obj \
+    $(_OBJ_DIR)\arm\file.obj \
+    $(_OBJ_DIR)\arm\memory.obj \
+    $(_OBJ_DIR)\arm\operate.obj \
+    $(_OBJ_DIR)\arm\logclear.obj \
+    $(_OBJ_DIR)\arm\terminat.obj \
+    $(_OBJ_DIR)\arm\elf_s.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\elfmsg.h \
+    $(MC_SOURCEDIR)\elfmsg.rc
+

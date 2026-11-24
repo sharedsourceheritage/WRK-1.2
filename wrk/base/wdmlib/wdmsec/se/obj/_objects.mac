@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sesddl.obj \
+    $(_OBJ_DIR)\i386\seutil.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sesddl.obj \
+    $(_OBJ_DIR)\ia64\seutil.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sesddl.obj \
+    $(_OBJ_DIR)\amd64\seutil.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sesddl.obj \
+    $(_OBJ_DIR)\arm\seutil.obj
+
+PASS0_ARM_OBJECTS=
+

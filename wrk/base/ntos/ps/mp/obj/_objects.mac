@@ -1,0 +1,86 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\psctx386.obj \
+    $(_OBJ_DIR)\i386\psldt.obj \
+    $(_OBJ_DIR)\i386\psvdm.obj \
+    $(_OBJ_DIR)\i386\psspnd.obj \
+    $(_OBJ_DIR)\i386\pscid.obj \
+    $(_OBJ_DIR)\i386\psimpers.obj \
+    $(_OBJ_DIR)\i386\psinit.obj \
+    $(_OBJ_DIR)\i386\psdelete.obj \
+    $(_OBJ_DIR)\i386\psquery.obj \
+    $(_OBJ_DIR)\i386\create.obj \
+    $(_OBJ_DIR)\i386\kulookup.obj \
+    $(_OBJ_DIR)\i386\psquota.obj \
+    $(_OBJ_DIR)\i386\psctx.obj \
+    $(_OBJ_DIR)\i386\psopen.obj \
+    $(_OBJ_DIR)\i386\psjob.obj \
+    $(_OBJ_DIR)\i386\security.obj \
+    $(_OBJ_DIR)\i386\pshelper.obj \
+    $(_OBJ_DIR)\i386\psenum.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\psctxi64.obj \
+    $(_OBJ_DIR)\ia64\psldt.obj \
+    $(_OBJ_DIR)\ia64\psvdm.obj \
+    $(_OBJ_DIR)\ia64\psspnd.obj \
+    $(_OBJ_DIR)\ia64\pscid.obj \
+    $(_OBJ_DIR)\ia64\psimpers.obj \
+    $(_OBJ_DIR)\ia64\psinit.obj \
+    $(_OBJ_DIR)\ia64\psdelete.obj \
+    $(_OBJ_DIR)\ia64\psquery.obj \
+    $(_OBJ_DIR)\ia64\create.obj \
+    $(_OBJ_DIR)\ia64\kulookup.obj \
+    $(_OBJ_DIR)\ia64\psquota.obj \
+    $(_OBJ_DIR)\ia64\psctx.obj \
+    $(_OBJ_DIR)\ia64\psopen.obj \
+    $(_OBJ_DIR)\ia64\psjob.obj \
+    $(_OBJ_DIR)\ia64\security.obj \
+    $(_OBJ_DIR)\ia64\pshelper.obj \
+    $(_OBJ_DIR)\ia64\psenum.obj \
+    $(_OBJ_DIR)\ia64\pswrap.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\psctxamd64.obj \
+    $(_OBJ_DIR)\amd64\psldt.obj \
+    $(_OBJ_DIR)\amd64\psvdm.obj \
+    $(_OBJ_DIR)\amd64\psspnd.obj \
+    $(_OBJ_DIR)\amd64\pscid.obj \
+    $(_OBJ_DIR)\amd64\psimpers.obj \
+    $(_OBJ_DIR)\amd64\psinit.obj \
+    $(_OBJ_DIR)\amd64\psdelete.obj \
+    $(_OBJ_DIR)\amd64\psquery.obj \
+    $(_OBJ_DIR)\amd64\create.obj \
+    $(_OBJ_DIR)\amd64\kulookup.obj \
+    $(_OBJ_DIR)\amd64\psquota.obj \
+    $(_OBJ_DIR)\amd64\psctx.obj \
+    $(_OBJ_DIR)\amd64\psopen.obj \
+    $(_OBJ_DIR)\amd64\psjob.obj \
+    $(_OBJ_DIR)\amd64\security.obj \
+    $(_OBJ_DIR)\amd64\pshelper.obj \
+    $(_OBJ_DIR)\amd64\psenum.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\psspnd.obj \
+    $(_OBJ_DIR)\arm\pscid.obj \
+    $(_OBJ_DIR)\arm\psimpers.obj \
+    $(_OBJ_DIR)\arm\psinit.obj \
+    $(_OBJ_DIR)\arm\psdelete.obj \
+    $(_OBJ_DIR)\arm\psquery.obj \
+    $(_OBJ_DIR)\arm\create.obj \
+    $(_OBJ_DIR)\arm\kulookup.obj \
+    $(_OBJ_DIR)\arm\psquota.obj \
+    $(_OBJ_DIR)\arm\psctx.obj \
+    $(_OBJ_DIR)\arm\psopen.obj \
+    $(_OBJ_DIR)\arm\psjob.obj \
+    $(_OBJ_DIR)\arm\security.obj \
+    $(_OBJ_DIR)\arm\pshelper.obj \
+    $(_OBJ_DIR)\arm\psenum.obj
+
+PASS0_ARM_OBJECTS=
+

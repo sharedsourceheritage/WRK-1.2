@@ -1,0 +1,108 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\bowser.res \
+    $(_OBJ_DIR)\i386\announce.obj \
+    $(_OBJ_DIR)\i386\bowdata.obj \
+    $(_OBJ_DIR)\i386\bowbackp.obj \
+    $(_OBJ_DIR)\i386\bowelect.obj \
+    $(_OBJ_DIR)\i386\bowipx.obj \
+    $(_OBJ_DIR)\i386\bowmastr.obj \
+    $(_OBJ_DIR)\i386\bowname.obj \
+    $(_OBJ_DIR)\i386\bowsecur.obj \
+    $(_OBJ_DIR)\i386\bowtdi.obj \
+    $(_OBJ_DIR)\i386\bowtimer.obj \
+    $(_OBJ_DIR)\i386\bowutils.obj \
+    $(_OBJ_DIR)\i386\brsrvlst.obj \
+    $(_OBJ_DIR)\i386\domain.obj \
+    $(_OBJ_DIR)\i386\errorlog.obj \
+    $(_OBJ_DIR)\i386\fileinfo.obj \
+    $(_OBJ_DIR)\i386\fsctl.obj \
+    $(_OBJ_DIR)\i386\fsddisp.obj \
+    $(_OBJ_DIR)\i386\fspdisp.obj \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\mailslot.obj \
+    $(_OBJ_DIR)\i386\receive.obj \
+    $(_OBJ_DIR)\i386\workque.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\bowser.res \
+    $(_OBJ_DIR)\ia64\announce.obj \
+    $(_OBJ_DIR)\ia64\bowdata.obj \
+    $(_OBJ_DIR)\ia64\bowbackp.obj \
+    $(_OBJ_DIR)\ia64\bowelect.obj \
+    $(_OBJ_DIR)\ia64\bowipx.obj \
+    $(_OBJ_DIR)\ia64\bowmastr.obj \
+    $(_OBJ_DIR)\ia64\bowname.obj \
+    $(_OBJ_DIR)\ia64\bowsecur.obj \
+    $(_OBJ_DIR)\ia64\bowtdi.obj \
+    $(_OBJ_DIR)\ia64\bowtimer.obj \
+    $(_OBJ_DIR)\ia64\bowutils.obj \
+    $(_OBJ_DIR)\ia64\brsrvlst.obj \
+    $(_OBJ_DIR)\ia64\domain.obj \
+    $(_OBJ_DIR)\ia64\errorlog.obj \
+    $(_OBJ_DIR)\ia64\fileinfo.obj \
+    $(_OBJ_DIR)\ia64\fsctl.obj \
+    $(_OBJ_DIR)\ia64\fsddisp.obj \
+    $(_OBJ_DIR)\ia64\fspdisp.obj \
+    $(_OBJ_DIR)\ia64\init.obj \
+    $(_OBJ_DIR)\ia64\mailslot.obj \
+    $(_OBJ_DIR)\ia64\receive.obj \
+    $(_OBJ_DIR)\ia64\workque.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\bowser.res \
+    $(_OBJ_DIR)\amd64\announce.obj \
+    $(_OBJ_DIR)\amd64\bowdata.obj \
+    $(_OBJ_DIR)\amd64\bowbackp.obj \
+    $(_OBJ_DIR)\amd64\bowelect.obj \
+    $(_OBJ_DIR)\amd64\bowipx.obj \
+    $(_OBJ_DIR)\amd64\bowmastr.obj \
+    $(_OBJ_DIR)\amd64\bowname.obj \
+    $(_OBJ_DIR)\amd64\bowsecur.obj \
+    $(_OBJ_DIR)\amd64\bowtdi.obj \
+    $(_OBJ_DIR)\amd64\bowtimer.obj \
+    $(_OBJ_DIR)\amd64\bowutils.obj \
+    $(_OBJ_DIR)\amd64\brsrvlst.obj \
+    $(_OBJ_DIR)\amd64\domain.obj \
+    $(_OBJ_DIR)\amd64\errorlog.obj \
+    $(_OBJ_DIR)\amd64\fileinfo.obj \
+    $(_OBJ_DIR)\amd64\fsctl.obj \
+    $(_OBJ_DIR)\amd64\fsddisp.obj \
+    $(_OBJ_DIR)\amd64\fspdisp.obj \
+    $(_OBJ_DIR)\amd64\init.obj \
+    $(_OBJ_DIR)\amd64\mailslot.obj \
+    $(_OBJ_DIR)\amd64\receive.obj \
+    $(_OBJ_DIR)\amd64\workque.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\bowser.res \
+    $(_OBJ_DIR)\arm\announce.obj \
+    $(_OBJ_DIR)\arm\bowdata.obj \
+    $(_OBJ_DIR)\arm\bowbackp.obj \
+    $(_OBJ_DIR)\arm\bowelect.obj \
+    $(_OBJ_DIR)\arm\bowipx.obj \
+    $(_OBJ_DIR)\arm\bowmastr.obj \
+    $(_OBJ_DIR)\arm\bowname.obj \
+    $(_OBJ_DIR)\arm\bowsecur.obj \
+    $(_OBJ_DIR)\arm\bowtdi.obj \
+    $(_OBJ_DIR)\arm\bowtimer.obj \
+    $(_OBJ_DIR)\arm\bowutils.obj \
+    $(_OBJ_DIR)\arm\brsrvlst.obj \
+    $(_OBJ_DIR)\arm\domain.obj \
+    $(_OBJ_DIR)\arm\errorlog.obj \
+    $(_OBJ_DIR)\arm\fileinfo.obj \
+    $(_OBJ_DIR)\arm\fsctl.obj \
+    $(_OBJ_DIR)\arm\fsddisp.obj \
+    $(_OBJ_DIR)\arm\fspdisp.obj \
+    $(_OBJ_DIR)\arm\init.obj \
+    $(_OBJ_DIR)\arm\mailslot.obj \
+    $(_OBJ_DIR)\arm\receive.obj \
+    $(_OBJ_DIR)\arm\workque.obj
+
+PASS0_ARM_OBJECTS=
+

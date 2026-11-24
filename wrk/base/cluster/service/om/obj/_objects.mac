@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ominit.obj \
+    $(_OBJ_DIR)\i386\omlist.obj \
+    $(_OBJ_DIR)\i386\obmgmt.obj \
+    $(_OBJ_DIR)\i386\omlog.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ominit.obj \
+    $(_OBJ_DIR)\ia64\omlist.obj \
+    $(_OBJ_DIR)\ia64\obmgmt.obj \
+    $(_OBJ_DIR)\ia64\omlog.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ominit.obj \
+    $(_OBJ_DIR)\amd64\omlist.obj \
+    $(_OBJ_DIR)\amd64\obmgmt.obj \
+    $(_OBJ_DIR)\amd64\omlog.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ominit.obj \
+    $(_OBJ_DIR)\arm\omlist.obj \
+    $(_OBJ_DIR)\arm\obmgmt.obj \
+    $(_OBJ_DIR)\arm\omlog.obj
+
+PASS0_ARM_OBJECTS=
+

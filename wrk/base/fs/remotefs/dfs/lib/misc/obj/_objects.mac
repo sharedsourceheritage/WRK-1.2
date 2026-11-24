@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\pathmisc.obj \
+    $(_OBJ_DIR)\i386\dominfo.obj \
+    $(_OBJ_DIR)\i386\dfsmisc.obj \
+    $(_OBJ_DIR)\i386\packmisc.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\pathmisc.obj \
+    $(_OBJ_DIR)\ia64\dominfo.obj \
+    $(_OBJ_DIR)\ia64\dfsmisc.obj \
+    $(_OBJ_DIR)\ia64\packmisc.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\pathmisc.obj \
+    $(_OBJ_DIR)\amd64\dominfo.obj \
+    $(_OBJ_DIR)\amd64\dfsmisc.obj \
+    $(_OBJ_DIR)\amd64\packmisc.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\pathmisc.obj \
+    $(_OBJ_DIR)\arm\dominfo.obj \
+    $(_OBJ_DIR)\arm\dfsmisc.obj \
+    $(_OBJ_DIR)\arm\packmisc.obj
+
+PASS0_ARM_OBJECTS=
+

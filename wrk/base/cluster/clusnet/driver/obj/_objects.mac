@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clusnet.res \
+    $(_OBJ_DIR)\i386\clusnet.obj \
+    $(_OBJ_DIR)\i386\dispatch.obj \
+    $(_OBJ_DIR)\i386\resource.obj \
+    $(_OBJ_DIR)\i386\event.obj \
+    $(_OBJ_DIR)\i386\memlog.obj \
+    $(_OBJ_DIR)\i386\errorlog.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clusnet.res \
+    $(_OBJ_DIR)\ia64\clusnet.obj \
+    $(_OBJ_DIR)\ia64\dispatch.obj \
+    $(_OBJ_DIR)\ia64\resource.obj \
+    $(_OBJ_DIR)\ia64\event.obj \
+    $(_OBJ_DIR)\ia64\memlog.obj \
+    $(_OBJ_DIR)\ia64\errorlog.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clusnet.res \
+    $(_OBJ_DIR)\amd64\clusnet.obj \
+    $(_OBJ_DIR)\amd64\dispatch.obj \
+    $(_OBJ_DIR)\amd64\resource.obj \
+    $(_OBJ_DIR)\amd64\event.obj \
+    $(_OBJ_DIR)\amd64\memlog.obj \
+    $(_OBJ_DIR)\amd64\errorlog.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clusnet.res \
+    $(_OBJ_DIR)\arm\clusnet.obj \
+    $(_OBJ_DIR)\arm\dispatch.obj \
+    $(_OBJ_DIR)\arm\resource.obj \
+    $(_OBJ_DIR)\arm\event.obj \
+    $(_OBJ_DIR)\arm\memlog.obj \
+    $(_OBJ_DIR)\arm\errorlog.obj
+
+PASS0_ARM_OBJECTS=
+

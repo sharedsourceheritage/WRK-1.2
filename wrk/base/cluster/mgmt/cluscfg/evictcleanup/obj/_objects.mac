@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\evictcleanup.obj \
+    $(_OBJ_DIR)\i386\asyncevictcleanup.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\evictcleanup.obj \
+    $(_OBJ_DIR)\ia64\asyncevictcleanup.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\evictcleanup.obj \
+    $(_OBJ_DIR)\amd64\asyncevictcleanup.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\evictcleanup.obj \
+    $(_OBJ_DIR)\arm\asyncevictcleanup.obj
+
+PASS0_ARM_OBJECTS=
+

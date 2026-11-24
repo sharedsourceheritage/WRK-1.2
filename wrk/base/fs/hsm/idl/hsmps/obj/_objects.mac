@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\hsmps.res \
+    $(_OBJ_DIR)\i386\dlldata.obj \
+    $(_OBJ_DIR)\i386\hsmeng_p.obj \
+    $(_OBJ_DIR)\i386\metaint_p.obj \
+    $(_OBJ_DIR)\i386\tskint_p.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\hsmps.res \
+    $(_OBJ_DIR)\ia64\dlldata.obj \
+    $(_OBJ_DIR)\ia64\hsmeng_p.obj \
+    $(_OBJ_DIR)\ia64\metaint_p.obj \
+    $(_OBJ_DIR)\ia64\tskint_p.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\hsmps.res \
+    $(_OBJ_DIR)\amd64\dlldata.obj \
+    $(_OBJ_DIR)\amd64\hsmeng_p.obj \
+    $(_OBJ_DIR)\amd64\metaint_p.obj \
+    $(_OBJ_DIR)\amd64\tskint_p.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\hsmps.res \
+    $(_OBJ_DIR)\arm\dlldata.obj \
+    $(_OBJ_DIR)\arm\hsmeng_p.obj \
+    $(_OBJ_DIR)\arm\metaint_p.obj \
+    $(_OBJ_DIR)\arm\tskint_p.obj
+
+PASS0_ARM_OBJECTS=
+

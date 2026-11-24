@@ -1,0 +1,85 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\chkstk.obj \
+    $(_OBJ_DIR)\i386\fp8.obj \
+    $(_OBJ_DIR)\i386\_setargv.obj \
+    $(_OBJ_DIR)\i386\_wstargv.obj \
+    $(_OBJ_DIR)\i386\crt0dat.obj \
+    $(_OBJ_DIR)\i386\crt0fp.obj \
+    $(_OBJ_DIR)\i386\crt0init.obj \
+    $(_OBJ_DIR)\i386\crt0msg.obj \
+    $(_OBJ_DIR)\i386\mlock.obj \
+    $(_OBJ_DIR)\i386\stdargv.obj \
+    $(_OBJ_DIR)\i386\stdenvp.obj \
+    $(_OBJ_DIR)\i386\thread.obj \
+    $(_OBJ_DIR)\i386\threadex.obj \
+    $(_OBJ_DIR)\i386\tidtable.obj \
+    $(_OBJ_DIR)\i386\wild.obj \
+    $(_OBJ_DIR)\i386\wstdargv.obj \
+    $(_OBJ_DIR)\i386\wstdenvp.obj \
+    $(_OBJ_DIR)\i386\wwild.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\fp8.obj \
+    $(_OBJ_DIR)\ia64\_setargv.obj \
+    $(_OBJ_DIR)\ia64\_wstargv.obj \
+    $(_OBJ_DIR)\ia64\crt0dat.obj \
+    $(_OBJ_DIR)\ia64\crt0fp.obj \
+    $(_OBJ_DIR)\ia64\crt0init.obj \
+    $(_OBJ_DIR)\ia64\crt0msg.obj \
+    $(_OBJ_DIR)\ia64\mlock.obj \
+    $(_OBJ_DIR)\ia64\stdargv.obj \
+    $(_OBJ_DIR)\ia64\stdenvp.obj \
+    $(_OBJ_DIR)\ia64\thread.obj \
+    $(_OBJ_DIR)\ia64\threadex.obj \
+    $(_OBJ_DIR)\ia64\tidtable.obj \
+    $(_OBJ_DIR)\ia64\wild.obj \
+    $(_OBJ_DIR)\ia64\wstdargv.obj \
+    $(_OBJ_DIR)\ia64\wstdenvp.obj \
+    $(_OBJ_DIR)\ia64\wwild.obj \
+    $(_OBJ_DIR)\ia64\chkstk.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\chkstk.obj \
+    $(_OBJ_DIR)\amd64\_setargv.obj \
+    $(_OBJ_DIR)\amd64\_wstargv.obj \
+    $(_OBJ_DIR)\amd64\crt0dat.obj \
+    $(_OBJ_DIR)\amd64\crt0fp.obj \
+    $(_OBJ_DIR)\amd64\crt0init.obj \
+    $(_OBJ_DIR)\amd64\crt0msg.obj \
+    $(_OBJ_DIR)\amd64\mlock.obj \
+    $(_OBJ_DIR)\amd64\stdargv.obj \
+    $(_OBJ_DIR)\amd64\stdenvp.obj \
+    $(_OBJ_DIR)\amd64\thread.obj \
+    $(_OBJ_DIR)\amd64\threadex.obj \
+    $(_OBJ_DIR)\amd64\tidtable.obj \
+    $(_OBJ_DIR)\amd64\wild.obj \
+    $(_OBJ_DIR)\amd64\wstdargv.obj \
+    $(_OBJ_DIR)\amd64\wstdenvp.obj \
+    $(_OBJ_DIR)\amd64\wwild.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\_setargv.obj \
+    $(_OBJ_DIR)\arm\_wstargv.obj \
+    $(_OBJ_DIR)\arm\crt0dat.obj \
+    $(_OBJ_DIR)\arm\crt0fp.obj \
+    $(_OBJ_DIR)\arm\crt0init.obj \
+    $(_OBJ_DIR)\arm\crt0msg.obj \
+    $(_OBJ_DIR)\arm\mlock.obj \
+    $(_OBJ_DIR)\arm\stdargv.obj \
+    $(_OBJ_DIR)\arm\stdenvp.obj \
+    $(_OBJ_DIR)\arm\thread.obj \
+    $(_OBJ_DIR)\arm\threadex.obj \
+    $(_OBJ_DIR)\arm\tidtable.obj \
+    $(_OBJ_DIR)\arm\wild.obj \
+    $(_OBJ_DIR)\arm\wstdargv.obj \
+    $(_OBJ_DIR)\arm\wstdenvp.obj \
+    $(_OBJ_DIR)\arm\wwild.obj
+
+PASS0_ARM_OBJECTS=
+

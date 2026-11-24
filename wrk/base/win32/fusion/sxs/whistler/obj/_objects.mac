@@ -1,0 +1,128 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\actctxctb.obj \
+    $(_OBJ_DIR)\i386\actctxgen.obj \
+    $(_OBJ_DIR)\i386\actctxgenctxctb.obj \
+    $(_OBJ_DIR)\i386\asmmetadata.obj \
+    $(_OBJ_DIR)\i386\assemblyreference.obj \
+    $(_OBJ_DIR)\i386\cassemblyrecoveryinfo.obj \
+    $(_OBJ_DIR)\i386\cmemorystream.obj \
+    $(_OBJ_DIR)\i386\comclass.obj \
+    $(_OBJ_DIR)\i386\comclsidmap.obj \
+    $(_OBJ_DIR)\i386\comgoop.obj \
+    $(_OBJ_DIR)\i386\cominterface.obj \
+    $(_OBJ_DIR)\i386\comprogid.obj \
+    $(_OBJ_DIR)\i386\comtypelib.obj \
+    $(_OBJ_DIR)\i386\cresourcestream.obj \
+    $(_OBJ_DIR)\i386\csecuritymetadata.obj \
+    $(_OBJ_DIR)\i386\cstreamtap.obj \
+    $(_OBJ_DIR)\i386\cteestream.obj \
+    $(_OBJ_DIR)\i386\dllredir.obj \
+    $(_OBJ_DIR)\i386\dumpers.obj \
+    $(_OBJ_DIR)\i386\fileoper.obj \
+    $(_OBJ_DIR)\i386\filestream.obj \
+    $(_OBJ_DIR)\i386\gsgenctx.obj \
+    $(_OBJ_DIR)\i386\guidsectgen.obj \
+    $(_OBJ_DIR)\i386\sxsuninstall.obj \
+    $(_OBJ_DIR)\i386\hashfile.obj \
+    $(_OBJ_DIR)\i386\sxscabinet.obj \
+    $(_OBJ_DIR)\i386\sxsclrhelpers.obj \
+    $(_OBJ_DIR)\i386\sxsoleaut.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\actctxctb.obj \
+    $(_OBJ_DIR)\ia64\actctxgen.obj \
+    $(_OBJ_DIR)\ia64\actctxgenctxctb.obj \
+    $(_OBJ_DIR)\ia64\asmmetadata.obj \
+    $(_OBJ_DIR)\ia64\assemblyreference.obj \
+    $(_OBJ_DIR)\ia64\cassemblyrecoveryinfo.obj \
+    $(_OBJ_DIR)\ia64\cmemorystream.obj \
+    $(_OBJ_DIR)\ia64\comclass.obj \
+    $(_OBJ_DIR)\ia64\comclsidmap.obj \
+    $(_OBJ_DIR)\ia64\comgoop.obj \
+    $(_OBJ_DIR)\ia64\cominterface.obj \
+    $(_OBJ_DIR)\ia64\comprogid.obj \
+    $(_OBJ_DIR)\ia64\comtypelib.obj \
+    $(_OBJ_DIR)\ia64\cresourcestream.obj \
+    $(_OBJ_DIR)\ia64\csecuritymetadata.obj \
+    $(_OBJ_DIR)\ia64\cstreamtap.obj \
+    $(_OBJ_DIR)\ia64\cteestream.obj \
+    $(_OBJ_DIR)\ia64\dllredir.obj \
+    $(_OBJ_DIR)\ia64\dumpers.obj \
+    $(_OBJ_DIR)\ia64\fileoper.obj \
+    $(_OBJ_DIR)\ia64\filestream.obj \
+    $(_OBJ_DIR)\ia64\gsgenctx.obj \
+    $(_OBJ_DIR)\ia64\guidsectgen.obj \
+    $(_OBJ_DIR)\ia64\sxsuninstall.obj \
+    $(_OBJ_DIR)\ia64\hashfile.obj \
+    $(_OBJ_DIR)\ia64\sxscabinet.obj \
+    $(_OBJ_DIR)\ia64\sxsclrhelpers.obj \
+    $(_OBJ_DIR)\ia64\sxsoleaut.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\actctxctb.obj \
+    $(_OBJ_DIR)\amd64\actctxgen.obj \
+    $(_OBJ_DIR)\amd64\actctxgenctxctb.obj \
+    $(_OBJ_DIR)\amd64\asmmetadata.obj \
+    $(_OBJ_DIR)\amd64\assemblyreference.obj \
+    $(_OBJ_DIR)\amd64\cassemblyrecoveryinfo.obj \
+    $(_OBJ_DIR)\amd64\cmemorystream.obj \
+    $(_OBJ_DIR)\amd64\comclass.obj \
+    $(_OBJ_DIR)\amd64\comclsidmap.obj \
+    $(_OBJ_DIR)\amd64\comgoop.obj \
+    $(_OBJ_DIR)\amd64\cominterface.obj \
+    $(_OBJ_DIR)\amd64\comprogid.obj \
+    $(_OBJ_DIR)\amd64\comtypelib.obj \
+    $(_OBJ_DIR)\amd64\cresourcestream.obj \
+    $(_OBJ_DIR)\amd64\csecuritymetadata.obj \
+    $(_OBJ_DIR)\amd64\cstreamtap.obj \
+    $(_OBJ_DIR)\amd64\cteestream.obj \
+    $(_OBJ_DIR)\amd64\dllredir.obj \
+    $(_OBJ_DIR)\amd64\dumpers.obj \
+    $(_OBJ_DIR)\amd64\fileoper.obj \
+    $(_OBJ_DIR)\amd64\filestream.obj \
+    $(_OBJ_DIR)\amd64\gsgenctx.obj \
+    $(_OBJ_DIR)\amd64\guidsectgen.obj \
+    $(_OBJ_DIR)\amd64\sxsuninstall.obj \
+    $(_OBJ_DIR)\amd64\hashfile.obj \
+    $(_OBJ_DIR)\amd64\sxscabinet.obj \
+    $(_OBJ_DIR)\amd64\sxsclrhelpers.obj \
+    $(_OBJ_DIR)\amd64\sxsoleaut.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\actctxctb.obj \
+    $(_OBJ_DIR)\arm\actctxgen.obj \
+    $(_OBJ_DIR)\arm\actctxgenctxctb.obj \
+    $(_OBJ_DIR)\arm\asmmetadata.obj \
+    $(_OBJ_DIR)\arm\assemblyreference.obj \
+    $(_OBJ_DIR)\arm\cassemblyrecoveryinfo.obj \
+    $(_OBJ_DIR)\arm\cmemorystream.obj \
+    $(_OBJ_DIR)\arm\comclass.obj \
+    $(_OBJ_DIR)\arm\comclsidmap.obj \
+    $(_OBJ_DIR)\arm\comgoop.obj \
+    $(_OBJ_DIR)\arm\cominterface.obj \
+    $(_OBJ_DIR)\arm\comprogid.obj \
+    $(_OBJ_DIR)\arm\comtypelib.obj \
+    $(_OBJ_DIR)\arm\cresourcestream.obj \
+    $(_OBJ_DIR)\arm\csecuritymetadata.obj \
+    $(_OBJ_DIR)\arm\cstreamtap.obj \
+    $(_OBJ_DIR)\arm\cteestream.obj \
+    $(_OBJ_DIR)\arm\dllredir.obj \
+    $(_OBJ_DIR)\arm\dumpers.obj \
+    $(_OBJ_DIR)\arm\fileoper.obj \
+    $(_OBJ_DIR)\arm\filestream.obj \
+    $(_OBJ_DIR)\arm\gsgenctx.obj \
+    $(_OBJ_DIR)\arm\guidsectgen.obj \
+    $(_OBJ_DIR)\arm\sxsuninstall.obj \
+    $(_OBJ_DIR)\arm\hashfile.obj \
+    $(_OBJ_DIR)\arm\sxscabinet.obj \
+    $(_OBJ_DIR)\arm\sxsclrhelpers.obj \
+    $(_OBJ_DIR)\arm\sxsoleaut.obj
+
+PASS0_ARM_OBJECTS=
+

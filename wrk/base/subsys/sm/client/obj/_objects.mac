@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\smcsup.obj \
+    $(_OBJ_DIR)\i386\smstub.obj \
+    $(_OBJ_DIR)\i386\sm6432.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\smcsup.obj \
+    $(_OBJ_DIR)\ia64\smstub.obj \
+    $(_OBJ_DIR)\ia64\sm6432.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\smcsup.obj \
+    $(_OBJ_DIR)\amd64\smstub.obj \
+    $(_OBJ_DIR)\amd64\sm6432.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\smcsup.obj \
+    $(_OBJ_DIR)\arm\smstub.obj \
+    $(_OBJ_DIR)\arm\sm6432.obj
+
+PASS0_ARM_OBJECTS=
+

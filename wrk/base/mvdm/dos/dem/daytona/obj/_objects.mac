@@ -1,0 +1,84 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dem.obj \
+    $(_OBJ_DIR)\i386\demfcb.obj \
+    $(_OBJ_DIR)\i386\demdata.obj \
+    $(_OBJ_DIR)\i386\demdir.obj \
+    $(_OBJ_DIR)\i386\demdisp.obj \
+    $(_OBJ_DIR)\i386\demerror.obj \
+    $(_OBJ_DIR)\i386\demfile.obj \
+    $(_OBJ_DIR)\i386\demgset.obj \
+    $(_OBJ_DIR)\i386\demhndl.obj \
+    $(_OBJ_DIR)\i386\demioctl.obj \
+    $(_OBJ_DIR)\i386\demlock.obj \
+    $(_OBJ_DIR)\i386\demmisc.obj \
+    $(_OBJ_DIR)\i386\demmsg.obj \
+    $(_OBJ_DIR)\i386\demsrch.obj \
+    $(_OBJ_DIR)\i386\demdasd.obj \
+    $(_OBJ_DIR)\i386\demlabel.obj \
+    $(_OBJ_DIR)\i386\demlfn.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dem.obj \
+    $(_OBJ_DIR)\ia64\demfcb.obj \
+    $(_OBJ_DIR)\ia64\demdata.obj \
+    $(_OBJ_DIR)\ia64\demdir.obj \
+    $(_OBJ_DIR)\ia64\demdisp.obj \
+    $(_OBJ_DIR)\ia64\demerror.obj \
+    $(_OBJ_DIR)\ia64\demfile.obj \
+    $(_OBJ_DIR)\ia64\demgset.obj \
+    $(_OBJ_DIR)\ia64\demhndl.obj \
+    $(_OBJ_DIR)\ia64\demioctl.obj \
+    $(_OBJ_DIR)\ia64\demlock.obj \
+    $(_OBJ_DIR)\ia64\demmisc.obj \
+    $(_OBJ_DIR)\ia64\demmsg.obj \
+    $(_OBJ_DIR)\ia64\demsrch.obj \
+    $(_OBJ_DIR)\ia64\demdasd.obj \
+    $(_OBJ_DIR)\ia64\demlabel.obj \
+    $(_OBJ_DIR)\ia64\demlfn.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dem.obj \
+    $(_OBJ_DIR)\amd64\demfcb.obj \
+    $(_OBJ_DIR)\amd64\demdata.obj \
+    $(_OBJ_DIR)\amd64\demdir.obj \
+    $(_OBJ_DIR)\amd64\demdisp.obj \
+    $(_OBJ_DIR)\amd64\demerror.obj \
+    $(_OBJ_DIR)\amd64\demfile.obj \
+    $(_OBJ_DIR)\amd64\demgset.obj \
+    $(_OBJ_DIR)\amd64\demhndl.obj \
+    $(_OBJ_DIR)\amd64\demioctl.obj \
+    $(_OBJ_DIR)\amd64\demlock.obj \
+    $(_OBJ_DIR)\amd64\demmisc.obj \
+    $(_OBJ_DIR)\amd64\demmsg.obj \
+    $(_OBJ_DIR)\amd64\demsrch.obj \
+    $(_OBJ_DIR)\amd64\demdasd.obj \
+    $(_OBJ_DIR)\amd64\demlabel.obj \
+    $(_OBJ_DIR)\amd64\demlfn.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dem.obj \
+    $(_OBJ_DIR)\arm\demfcb.obj \
+    $(_OBJ_DIR)\arm\demdata.obj \
+    $(_OBJ_DIR)\arm\demdir.obj \
+    $(_OBJ_DIR)\arm\demdisp.obj \
+    $(_OBJ_DIR)\arm\demerror.obj \
+    $(_OBJ_DIR)\arm\demfile.obj \
+    $(_OBJ_DIR)\arm\demgset.obj \
+    $(_OBJ_DIR)\arm\demhndl.obj \
+    $(_OBJ_DIR)\arm\demioctl.obj \
+    $(_OBJ_DIR)\arm\demlock.obj \
+    $(_OBJ_DIR)\arm\demmisc.obj \
+    $(_OBJ_DIR)\arm\demmsg.obj \
+    $(_OBJ_DIR)\arm\demsrch.obj \
+    $(_OBJ_DIR)\arm\demdasd.obj \
+    $(_OBJ_DIR)\arm\demlabel.obj \
+    $(_OBJ_DIR)\arm\demlfn.obj
+
+PASS0_ARM_OBJECTS=
+

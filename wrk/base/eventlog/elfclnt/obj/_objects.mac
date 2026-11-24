@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\apistub.obj \
+    $(_OBJ_DIR)\i386\rpcbind.obj \
+    $(_OBJ_DIR)\i386\getconfg.obj \
+    $(_OBJ_DIR)\i386\elf_c.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\apistub.obj \
+    $(_OBJ_DIR)\ia64\rpcbind.obj \
+    $(_OBJ_DIR)\ia64\getconfg.obj \
+    $(_OBJ_DIR)\ia64\elf_c.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\apistub.obj \
+    $(_OBJ_DIR)\amd64\rpcbind.obj \
+    $(_OBJ_DIR)\amd64\getconfg.obj \
+    $(_OBJ_DIR)\amd64\elf_c.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\apistub.obj \
+    $(_OBJ_DIR)\arm\rpcbind.obj \
+    $(_OBJ_DIR)\arm\getconfg.obj \
+    $(_OBJ_DIR)\arm\elf_c.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,64 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clnetresex.res \
+    $(_OBJ_DIR)\i386\basepage.obj \
+    $(_OBJ_DIR)\i386\clnetresex.obj \
+    $(_OBJ_DIR)\i386\ddxddv.obj \
+    $(_OBJ_DIR)\i386\dhcp.obj \
+    $(_OBJ_DIR)\i386\dlghelp.obj \
+    $(_OBJ_DIR)\i386\extobj.obj \
+    $(_OBJ_DIR)\i386\helpdata.obj \
+    $(_OBJ_DIR)\i386\proplist.obj \
+    $(_OBJ_DIR)\i386\regext.obj \
+    $(_OBJ_DIR)\i386\wins.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clnetresex.res \
+    $(_OBJ_DIR)\ia64\basepage.obj \
+    $(_OBJ_DIR)\ia64\clnetresex.obj \
+    $(_OBJ_DIR)\ia64\ddxddv.obj \
+    $(_OBJ_DIR)\ia64\dhcp.obj \
+    $(_OBJ_DIR)\ia64\dlghelp.obj \
+    $(_OBJ_DIR)\ia64\extobj.obj \
+    $(_OBJ_DIR)\ia64\helpdata.obj \
+    $(_OBJ_DIR)\ia64\proplist.obj \
+    $(_OBJ_DIR)\ia64\regext.obj \
+    $(_OBJ_DIR)\ia64\wins.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clnetresex.res \
+    $(_OBJ_DIR)\amd64\basepage.obj \
+    $(_OBJ_DIR)\amd64\clnetresex.obj \
+    $(_OBJ_DIR)\amd64\ddxddv.obj \
+    $(_OBJ_DIR)\amd64\dhcp.obj \
+    $(_OBJ_DIR)\amd64\dlghelp.obj \
+    $(_OBJ_DIR)\amd64\extobj.obj \
+    $(_OBJ_DIR)\amd64\helpdata.obj \
+    $(_OBJ_DIR)\amd64\proplist.obj \
+    $(_OBJ_DIR)\amd64\regext.obj \
+    $(_OBJ_DIR)\amd64\wins.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clnetresex.res \
+    $(_OBJ_DIR)\arm\basepage.obj \
+    $(_OBJ_DIR)\arm\clnetresex.obj \
+    $(_OBJ_DIR)\arm\ddxddv.obj \
+    $(_OBJ_DIR)\arm\dhcp.obj \
+    $(_OBJ_DIR)\arm\dlghelp.obj \
+    $(_OBJ_DIR)\arm\extobj.obj \
+    $(_OBJ_DIR)\arm\helpdata.obj \
+    $(_OBJ_DIR)\arm\proplist.obj \
+    $(_OBJ_DIR)\arm\regext.obj \
+    $(_OBJ_DIR)\arm\wins.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\extobjid.h
+

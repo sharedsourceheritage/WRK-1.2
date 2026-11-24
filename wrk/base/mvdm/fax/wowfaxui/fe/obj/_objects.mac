@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\wowfaxui.res \
+    $(_OBJ_DIR)\i386\wfhelper.obj \
+    $(_OBJ_DIR)\i386\wfsheets.obj \
+    $(_OBJ_DIR)\i386\wfupgrad.obj \
+    $(_OBJ_DIR)\i386\wowfaxui.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\wowfaxui.res \
+    $(_OBJ_DIR)\ia64\wfhelper.obj \
+    $(_OBJ_DIR)\ia64\wfsheets.obj \
+    $(_OBJ_DIR)\ia64\wfupgrad.obj \
+    $(_OBJ_DIR)\ia64\wowfaxui.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\wowfaxui.res \
+    $(_OBJ_DIR)\amd64\wfhelper.obj \
+    $(_OBJ_DIR)\amd64\wfsheets.obj \
+    $(_OBJ_DIR)\amd64\wfupgrad.obj \
+    $(_OBJ_DIR)\amd64\wowfaxui.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\wowfaxui.res \
+    $(_OBJ_DIR)\arm\wfhelper.obj \
+    $(_OBJ_DIR)\arm\wfsheets.obj \
+    $(_OBJ_DIR)\arm\wfupgrad.obj \
+    $(_OBJ_DIR)\arm\wowfaxui.obj
+
+PASS0_ARM_OBJECTS=
+

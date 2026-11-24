@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\citracker.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\log.obj \
+    $(_OBJ_DIR)\i386\genscript.obj \
+    $(_OBJ_DIR)\i386\guids.obj \
+    $(_OBJ_DIR)\i386\activescriptsite.obj \
+    $(_OBJ_DIR)\i386\resourceobject.obj \
+    $(_OBJ_DIR)\i386\scriptresource.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\citracker.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\log.obj \
+    $(_OBJ_DIR)\ia64\genscript.obj \
+    $(_OBJ_DIR)\ia64\guids.obj \
+    $(_OBJ_DIR)\ia64\activescriptsite.obj \
+    $(_OBJ_DIR)\ia64\resourceobject.obj \
+    $(_OBJ_DIR)\ia64\scriptresource.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\citracker.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\log.obj \
+    $(_OBJ_DIR)\amd64\genscript.obj \
+    $(_OBJ_DIR)\amd64\guids.obj \
+    $(_OBJ_DIR)\amd64\activescriptsite.obj \
+    $(_OBJ_DIR)\amd64\resourceobject.obj \
+    $(_OBJ_DIR)\amd64\scriptresource.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\citracker.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\log.obj \
+    $(_OBJ_DIR)\arm\genscript.obj \
+    $(_OBJ_DIR)\arm\guids.obj \
+    $(_OBJ_DIR)\arm\activescriptsite.obj \
+    $(_OBJ_DIR)\arm\resourceobject.obj \
+    $(_OBJ_DIR)\arm\scriptresource.obj
+
+PASS0_ARM_OBJECTS=
+

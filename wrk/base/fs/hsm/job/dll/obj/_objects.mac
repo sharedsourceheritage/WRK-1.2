@@ -1,0 +1,92 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\job.res \
+    $(_OBJ_DIR)\i386\dlldatax.obj \
+    $(_OBJ_DIR)\i386\dlldataz.obj \
+    $(_OBJ_DIR)\i386\stdafx.obj \
+    $(_OBJ_DIR)\i386\hsmacrsc.obj \
+    $(_OBJ_DIR)\i386\hsmactn.obj \
+    $(_OBJ_DIR)\i386\hsmcrit.obj \
+    $(_OBJ_DIR)\i386\hsmjob.obj \
+    $(_OBJ_DIR)\i386\hsmjobcx.obj \
+    $(_OBJ_DIR)\i386\hsmjobdf.obj \
+    $(_OBJ_DIR)\i386\hsmjobwi.obj \
+    $(_OBJ_DIR)\i386\hsmphase.obj \
+    $(_OBJ_DIR)\i386\hsmpolcy.obj \
+    $(_OBJ_DIR)\i386\hsmrule.obj \
+    $(_OBJ_DIR)\i386\hsmrlstk.obj \
+    $(_OBJ_DIR)\i386\hsmscan.obj \
+    $(_OBJ_DIR)\i386\hsmsess.obj \
+    $(_OBJ_DIR)\i386\hsmsesst.obj \
+    $(_OBJ_DIR)\i386\job.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\job.res \
+    $(_OBJ_DIR)\ia64\dlldatax.obj \
+    $(_OBJ_DIR)\ia64\dlldataz.obj \
+    $(_OBJ_DIR)\ia64\stdafx.obj \
+    $(_OBJ_DIR)\ia64\hsmacrsc.obj \
+    $(_OBJ_DIR)\ia64\hsmactn.obj \
+    $(_OBJ_DIR)\ia64\hsmcrit.obj \
+    $(_OBJ_DIR)\ia64\hsmjob.obj \
+    $(_OBJ_DIR)\ia64\hsmjobcx.obj \
+    $(_OBJ_DIR)\ia64\hsmjobdf.obj \
+    $(_OBJ_DIR)\ia64\hsmjobwi.obj \
+    $(_OBJ_DIR)\ia64\hsmphase.obj \
+    $(_OBJ_DIR)\ia64\hsmpolcy.obj \
+    $(_OBJ_DIR)\ia64\hsmrule.obj \
+    $(_OBJ_DIR)\ia64\hsmrlstk.obj \
+    $(_OBJ_DIR)\ia64\hsmscan.obj \
+    $(_OBJ_DIR)\ia64\hsmsess.obj \
+    $(_OBJ_DIR)\ia64\hsmsesst.obj \
+    $(_OBJ_DIR)\ia64\job.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\job.res \
+    $(_OBJ_DIR)\amd64\dlldatax.obj \
+    $(_OBJ_DIR)\amd64\dlldataz.obj \
+    $(_OBJ_DIR)\amd64\stdafx.obj \
+    $(_OBJ_DIR)\amd64\hsmacrsc.obj \
+    $(_OBJ_DIR)\amd64\hsmactn.obj \
+    $(_OBJ_DIR)\amd64\hsmcrit.obj \
+    $(_OBJ_DIR)\amd64\hsmjob.obj \
+    $(_OBJ_DIR)\amd64\hsmjobcx.obj \
+    $(_OBJ_DIR)\amd64\hsmjobdf.obj \
+    $(_OBJ_DIR)\amd64\hsmjobwi.obj \
+    $(_OBJ_DIR)\amd64\hsmphase.obj \
+    $(_OBJ_DIR)\amd64\hsmpolcy.obj \
+    $(_OBJ_DIR)\amd64\hsmrule.obj \
+    $(_OBJ_DIR)\amd64\hsmrlstk.obj \
+    $(_OBJ_DIR)\amd64\hsmscan.obj \
+    $(_OBJ_DIR)\amd64\hsmsess.obj \
+    $(_OBJ_DIR)\amd64\hsmsesst.obj \
+    $(_OBJ_DIR)\amd64\job.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\job.res \
+    $(_OBJ_DIR)\arm\dlldatax.obj \
+    $(_OBJ_DIR)\arm\dlldataz.obj \
+    $(_OBJ_DIR)\arm\stdafx.obj \
+    $(_OBJ_DIR)\arm\hsmacrsc.obj \
+    $(_OBJ_DIR)\arm\hsmactn.obj \
+    $(_OBJ_DIR)\arm\hsmcrit.obj \
+    $(_OBJ_DIR)\arm\hsmjob.obj \
+    $(_OBJ_DIR)\arm\hsmjobcx.obj \
+    $(_OBJ_DIR)\arm\hsmjobdf.obj \
+    $(_OBJ_DIR)\arm\hsmjobwi.obj \
+    $(_OBJ_DIR)\arm\hsmphase.obj \
+    $(_OBJ_DIR)\arm\hsmpolcy.obj \
+    $(_OBJ_DIR)\arm\hsmrule.obj \
+    $(_OBJ_DIR)\arm\hsmrlstk.obj \
+    $(_OBJ_DIR)\arm\hsmscan.obj \
+    $(_OBJ_DIR)\arm\hsmsess.obj \
+    $(_OBJ_DIR)\arm\hsmsesst.obj \
+    $(_OBJ_DIR)\arm\job.obj
+
+PASS0_ARM_OBJECTS=
+

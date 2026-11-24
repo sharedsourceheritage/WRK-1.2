@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\hwdb.obj \
+    $(_OBJ_DIR)\i386\dllentry.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\hwdb.obj \
+    $(_OBJ_DIR)\ia64\dllentry.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\hwdb.obj \
+    $(_OBJ_DIR)\amd64\dllentry.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\hwdb.obj \
+    $(_OBJ_DIR)\arm\dllentry.obj
+
+PASS0_ARM_OBJECTS=
+

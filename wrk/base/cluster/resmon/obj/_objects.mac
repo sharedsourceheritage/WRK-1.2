@@ -1,0 +1,68 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\resmon.res \
+    $(_OBJ_DIR)\i386\evntlist.obj \
+    $(_OBJ_DIR)\i386\notify.obj \
+    $(_OBJ_DIR)\i386\poller.obj \
+    $(_OBJ_DIR)\i386\property.obj \
+    $(_OBJ_DIR)\i386\reslist.obj \
+    $(_OBJ_DIR)\i386\resmon.obj \
+    $(_OBJ_DIR)\i386\rmapi.obj \
+    $(_OBJ_DIR)\i386\excprpt.obj \
+    $(_OBJ_DIR)\i386\dlock.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\comres.h \
+    $(PASS0_HEADERDIR)\monmsg.h \
+    $(MC_SOURCEDIR)\monmsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\resmon.res \
+    $(_OBJ_DIR)\ia64\evntlist.obj \
+    $(_OBJ_DIR)\ia64\notify.obj \
+    $(_OBJ_DIR)\ia64\poller.obj \
+    $(_OBJ_DIR)\ia64\property.obj \
+    $(_OBJ_DIR)\ia64\reslist.obj \
+    $(_OBJ_DIR)\ia64\resmon.obj \
+    $(_OBJ_DIR)\ia64\rmapi.obj \
+    $(_OBJ_DIR)\ia64\excprpt.obj \
+    $(_OBJ_DIR)\ia64\dlock.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\comres.h \
+    $(PASS0_HEADERDIR)\monmsg.h \
+    $(MC_SOURCEDIR)\monmsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\resmon.res \
+    $(_OBJ_DIR)\amd64\evntlist.obj \
+    $(_OBJ_DIR)\amd64\notify.obj \
+    $(_OBJ_DIR)\amd64\poller.obj \
+    $(_OBJ_DIR)\amd64\property.obj \
+    $(_OBJ_DIR)\amd64\reslist.obj \
+    $(_OBJ_DIR)\amd64\resmon.obj \
+    $(_OBJ_DIR)\amd64\rmapi.obj \
+    $(_OBJ_DIR)\amd64\excprpt.obj \
+    $(_OBJ_DIR)\amd64\dlock.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\comres.h \
+    $(PASS0_HEADERDIR)\monmsg.h \
+    $(MC_SOURCEDIR)\monmsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\resmon.res \
+    $(_OBJ_DIR)\arm\evntlist.obj \
+    $(_OBJ_DIR)\arm\notify.obj \
+    $(_OBJ_DIR)\arm\poller.obj \
+    $(_OBJ_DIR)\arm\property.obj \
+    $(_OBJ_DIR)\arm\reslist.obj \
+    $(_OBJ_DIR)\arm\resmon.obj \
+    $(_OBJ_DIR)\arm\rmapi.obj \
+    $(_OBJ_DIR)\arm\excprpt.obj \
+    $(_OBJ_DIR)\arm\dlock.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\comres.h \
+    $(PASS0_HEADERDIR)\monmsg.h \
+    $(MC_SOURCEDIR)\monmsg.rc
+

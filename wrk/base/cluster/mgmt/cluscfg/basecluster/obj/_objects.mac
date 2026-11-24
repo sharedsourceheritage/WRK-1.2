@@ -1,0 +1,152 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\caction.obj \
+    $(_OBJ_DIR)\i386\cactionlist.obj \
+    $(_OBJ_DIR)\i386\cbaseclusteraction.obj \
+    $(_OBJ_DIR)\i386\cbaseclusteraddnode.obj \
+    $(_OBJ_DIR)\i386\cbaseclustercleanup.obj \
+    $(_OBJ_DIR)\i386\cbaseclusterform.obj \
+    $(_OBJ_DIR)\i386\cbaseclusterjoin.obj \
+    $(_OBJ_DIR)\i386\cbcainterface.obj \
+    $(_OBJ_DIR)\i386\cbstring.obj \
+    $(_OBJ_DIR)\i386\cclusdb.obj \
+    $(_OBJ_DIR)\i386\cclusdbcleanup.obj \
+    $(_OBJ_DIR)\i386\cclusdbform.obj \
+    $(_OBJ_DIR)\i386\cclusdbjoin.obj \
+    $(_OBJ_DIR)\i386\cclusdisk.obj \
+    $(_OBJ_DIR)\i386\cclusdiskcleanup.obj \
+    $(_OBJ_DIR)\i386\cclusdiskform.obj \
+    $(_OBJ_DIR)\i386\cclusdiskjoin.obj \
+    $(_OBJ_DIR)\i386\cclusnet.obj \
+    $(_OBJ_DIR)\i386\cclusnetcleanup.obj \
+    $(_OBJ_DIR)\i386\cclusnetcreate.obj \
+    $(_OBJ_DIR)\i386\cclussvc.obj \
+    $(_OBJ_DIR)\i386\cclussvcaccountconfig.obj \
+    $(_OBJ_DIR)\i386\cclussvccleanup.obj \
+    $(_OBJ_DIR)\i386\cclussvccreate.obj \
+    $(_OBJ_DIR)\i386\cenablethreadprivilege.obj \
+    $(_OBJ_DIR)\i386\cimpersonateuser.obj \
+    $(_OBJ_DIR)\i386\cnode.obj \
+    $(_OBJ_DIR)\i386\cnodecleanup.obj \
+    $(_OBJ_DIR)\i386\cnodeconfig.obj \
+    $(_OBJ_DIR)\i386\cregistrykey.obj \
+    $(_OBJ_DIR)\i386\cservice.obj \
+    $(_OBJ_DIR)\i386\cstrwrapper.obj \
+    $(_OBJ_DIR)\i386\cuuid.obj \
+    $(_OBJ_DIR)\i386\globalfuncs.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\caction.obj \
+    $(_OBJ_DIR)\ia64\cactionlist.obj \
+    $(_OBJ_DIR)\ia64\cbaseclusteraction.obj \
+    $(_OBJ_DIR)\ia64\cbaseclusteraddnode.obj \
+    $(_OBJ_DIR)\ia64\cbaseclustercleanup.obj \
+    $(_OBJ_DIR)\ia64\cbaseclusterform.obj \
+    $(_OBJ_DIR)\ia64\cbaseclusterjoin.obj \
+    $(_OBJ_DIR)\ia64\cbcainterface.obj \
+    $(_OBJ_DIR)\ia64\cbstring.obj \
+    $(_OBJ_DIR)\ia64\cclusdb.obj \
+    $(_OBJ_DIR)\ia64\cclusdbcleanup.obj \
+    $(_OBJ_DIR)\ia64\cclusdbform.obj \
+    $(_OBJ_DIR)\ia64\cclusdbjoin.obj \
+    $(_OBJ_DIR)\ia64\cclusdisk.obj \
+    $(_OBJ_DIR)\ia64\cclusdiskcleanup.obj \
+    $(_OBJ_DIR)\ia64\cclusdiskform.obj \
+    $(_OBJ_DIR)\ia64\cclusdiskjoin.obj \
+    $(_OBJ_DIR)\ia64\cclusnet.obj \
+    $(_OBJ_DIR)\ia64\cclusnetcleanup.obj \
+    $(_OBJ_DIR)\ia64\cclusnetcreate.obj \
+    $(_OBJ_DIR)\ia64\cclussvc.obj \
+    $(_OBJ_DIR)\ia64\cclussvcaccountconfig.obj \
+    $(_OBJ_DIR)\ia64\cclussvccleanup.obj \
+    $(_OBJ_DIR)\ia64\cclussvccreate.obj \
+    $(_OBJ_DIR)\ia64\cenablethreadprivilege.obj \
+    $(_OBJ_DIR)\ia64\cimpersonateuser.obj \
+    $(_OBJ_DIR)\ia64\cnode.obj \
+    $(_OBJ_DIR)\ia64\cnodecleanup.obj \
+    $(_OBJ_DIR)\ia64\cnodeconfig.obj \
+    $(_OBJ_DIR)\ia64\cregistrykey.obj \
+    $(_OBJ_DIR)\ia64\cservice.obj \
+    $(_OBJ_DIR)\ia64\cstrwrapper.obj \
+    $(_OBJ_DIR)\ia64\cuuid.obj \
+    $(_OBJ_DIR)\ia64\globalfuncs.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\caction.obj \
+    $(_OBJ_DIR)\amd64\cactionlist.obj \
+    $(_OBJ_DIR)\amd64\cbaseclusteraction.obj \
+    $(_OBJ_DIR)\amd64\cbaseclusteraddnode.obj \
+    $(_OBJ_DIR)\amd64\cbaseclustercleanup.obj \
+    $(_OBJ_DIR)\amd64\cbaseclusterform.obj \
+    $(_OBJ_DIR)\amd64\cbaseclusterjoin.obj \
+    $(_OBJ_DIR)\amd64\cbcainterface.obj \
+    $(_OBJ_DIR)\amd64\cbstring.obj \
+    $(_OBJ_DIR)\amd64\cclusdb.obj \
+    $(_OBJ_DIR)\amd64\cclusdbcleanup.obj \
+    $(_OBJ_DIR)\amd64\cclusdbform.obj \
+    $(_OBJ_DIR)\amd64\cclusdbjoin.obj \
+    $(_OBJ_DIR)\amd64\cclusdisk.obj \
+    $(_OBJ_DIR)\amd64\cclusdiskcleanup.obj \
+    $(_OBJ_DIR)\amd64\cclusdiskform.obj \
+    $(_OBJ_DIR)\amd64\cclusdiskjoin.obj \
+    $(_OBJ_DIR)\amd64\cclusnet.obj \
+    $(_OBJ_DIR)\amd64\cclusnetcleanup.obj \
+    $(_OBJ_DIR)\amd64\cclusnetcreate.obj \
+    $(_OBJ_DIR)\amd64\cclussvc.obj \
+    $(_OBJ_DIR)\amd64\cclussvcaccountconfig.obj \
+    $(_OBJ_DIR)\amd64\cclussvccleanup.obj \
+    $(_OBJ_DIR)\amd64\cclussvccreate.obj \
+    $(_OBJ_DIR)\amd64\cenablethreadprivilege.obj \
+    $(_OBJ_DIR)\amd64\cimpersonateuser.obj \
+    $(_OBJ_DIR)\amd64\cnode.obj \
+    $(_OBJ_DIR)\amd64\cnodecleanup.obj \
+    $(_OBJ_DIR)\amd64\cnodeconfig.obj \
+    $(_OBJ_DIR)\amd64\cregistrykey.obj \
+    $(_OBJ_DIR)\amd64\cservice.obj \
+    $(_OBJ_DIR)\amd64\cstrwrapper.obj \
+    $(_OBJ_DIR)\amd64\cuuid.obj \
+    $(_OBJ_DIR)\amd64\globalfuncs.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\caction.obj \
+    $(_OBJ_DIR)\arm\cactionlist.obj \
+    $(_OBJ_DIR)\arm\cbaseclusteraction.obj \
+    $(_OBJ_DIR)\arm\cbaseclusteraddnode.obj \
+    $(_OBJ_DIR)\arm\cbaseclustercleanup.obj \
+    $(_OBJ_DIR)\arm\cbaseclusterform.obj \
+    $(_OBJ_DIR)\arm\cbaseclusterjoin.obj \
+    $(_OBJ_DIR)\arm\cbcainterface.obj \
+    $(_OBJ_DIR)\arm\cbstring.obj \
+    $(_OBJ_DIR)\arm\cclusdb.obj \
+    $(_OBJ_DIR)\arm\cclusdbcleanup.obj \
+    $(_OBJ_DIR)\arm\cclusdbform.obj \
+    $(_OBJ_DIR)\arm\cclusdbjoin.obj \
+    $(_OBJ_DIR)\arm\cclusdisk.obj \
+    $(_OBJ_DIR)\arm\cclusdiskcleanup.obj \
+    $(_OBJ_DIR)\arm\cclusdiskform.obj \
+    $(_OBJ_DIR)\arm\cclusdiskjoin.obj \
+    $(_OBJ_DIR)\arm\cclusnet.obj \
+    $(_OBJ_DIR)\arm\cclusnetcleanup.obj \
+    $(_OBJ_DIR)\arm\cclusnetcreate.obj \
+    $(_OBJ_DIR)\arm\cclussvc.obj \
+    $(_OBJ_DIR)\arm\cclussvcaccountconfig.obj \
+    $(_OBJ_DIR)\arm\cclussvccleanup.obj \
+    $(_OBJ_DIR)\arm\cclussvccreate.obj \
+    $(_OBJ_DIR)\arm\cenablethreadprivilege.obj \
+    $(_OBJ_DIR)\arm\cimpersonateuser.obj \
+    $(_OBJ_DIR)\arm\cnode.obj \
+    $(_OBJ_DIR)\arm\cnodecleanup.obj \
+    $(_OBJ_DIR)\arm\cnodeconfig.obj \
+    $(_OBJ_DIR)\arm\cregistrykey.obj \
+    $(_OBJ_DIR)\arm\cservice.obj \
+    $(_OBJ_DIR)\arm\cstrwrapper.obj \
+    $(_OBJ_DIR)\arm\cuuid.obj \
+    $(_OBJ_DIR)\arm\globalfuncs.obj
+
+PASS0_ARM_OBJECTS=
+

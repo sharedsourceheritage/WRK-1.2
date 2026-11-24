@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ipaddr.res \
+    $(_OBJ_DIR)\i386\ipaddr.obj \
+    $(_OBJ_DIR)\i386\nteapi.obj \
+    $(_OBJ_DIR)\i386\util.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ipaddr.res \
+    $(_OBJ_DIR)\ia64\ipaddr.obj \
+    $(_OBJ_DIR)\ia64\nteapi.obj \
+    $(_OBJ_DIR)\ia64\util.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ipaddr.res \
+    $(_OBJ_DIR)\amd64\ipaddr.obj \
+    $(_OBJ_DIR)\amd64\nteapi.obj \
+    $(_OBJ_DIR)\amd64\util.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ipaddr.res \
+    $(_OBJ_DIR)\arm\ipaddr.obj \
+    $(_OBJ_DIR)\arm\nteapi.obj \
+    $(_OBJ_DIR)\arm\util.obj
+
+PASS0_ARM_OBJECTS=
+

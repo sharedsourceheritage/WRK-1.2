@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\netname.res \
+    $(_OBJ_DIR)\i386\namechk.obj \
+    $(_OBJ_DIR)\i386\nameutil.obj \
+    $(_OBJ_DIR)\i386\netname.obj \
+    $(_OBJ_DIR)\i386\crypto.obj \
+    $(_OBJ_DIR)\i386\upgrade.obj \
+    $(_OBJ_DIR)\i386\compobj.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\netname.res \
+    $(_OBJ_DIR)\ia64\namechk.obj \
+    $(_OBJ_DIR)\ia64\nameutil.obj \
+    $(_OBJ_DIR)\ia64\netname.obj \
+    $(_OBJ_DIR)\ia64\crypto.obj \
+    $(_OBJ_DIR)\ia64\upgrade.obj \
+    $(_OBJ_DIR)\ia64\compobj.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\netname.res \
+    $(_OBJ_DIR)\amd64\namechk.obj \
+    $(_OBJ_DIR)\amd64\nameutil.obj \
+    $(_OBJ_DIR)\amd64\netname.obj \
+    $(_OBJ_DIR)\amd64\crypto.obj \
+    $(_OBJ_DIR)\amd64\upgrade.obj \
+    $(_OBJ_DIR)\amd64\compobj.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\netname.res \
+    $(_OBJ_DIR)\arm\namechk.obj \
+    $(_OBJ_DIR)\arm\nameutil.obj \
+    $(_OBJ_DIR)\arm\netname.obj \
+    $(_OBJ_DIR)\arm\crypto.obj \
+    $(_OBJ_DIR)\arm\upgrade.obj \
+    $(_OBJ_DIR)\arm\compobj.obj
+
+PASS0_ARM_OBJECTS=
+

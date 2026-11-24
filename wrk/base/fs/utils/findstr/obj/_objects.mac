@@ -1,0 +1,40 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\findstr.res \
+    $(_OBJ_DIR)\i386\qmatch.obj \
+    $(_OBJ_DIR)\i386\recurse.obj \
+    $(_OBJ_DIR)\i386\findstr.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\fsmsg.h \
+    $(MC_SOURCEDIR)\fsmsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\findstr.res \
+    $(_OBJ_DIR)\ia64\qmatch.obj \
+    $(_OBJ_DIR)\ia64\recurse.obj \
+    $(_OBJ_DIR)\ia64\findstr.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\fsmsg.h \
+    $(MC_SOURCEDIR)\fsmsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\findstr.res \
+    $(_OBJ_DIR)\amd64\qmatch.obj \
+    $(_OBJ_DIR)\amd64\recurse.obj \
+    $(_OBJ_DIR)\amd64\findstr.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\fsmsg.h \
+    $(MC_SOURCEDIR)\fsmsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\findstr.res \
+    $(_OBJ_DIR)\arm\qmatch.obj \
+    $(_OBJ_DIR)\arm\recurse.obj \
+    $(_OBJ_DIR)\arm\findstr.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\fsmsg.h \
+    $(MC_SOURCEDIR)\fsmsg.rc
+

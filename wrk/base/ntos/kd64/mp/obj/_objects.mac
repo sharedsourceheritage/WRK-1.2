@@ -1,0 +1,65 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\kdtrap.obj \
+    $(_OBJ_DIR)\i386\kdcmsup.obj \
+    $(_OBJ_DIR)\i386\kdcpuapi.obj \
+    $(_OBJ_DIR)\i386\file.obj \
+    $(_OBJ_DIR)\i386\kdinit.obj \
+    $(_OBJ_DIR)\i386\kdbreak.obj \
+    $(_OBJ_DIR)\i386\kdlock.obj \
+    $(_OBJ_DIR)\i386\kdmove.obj \
+    $(_OBJ_DIR)\i386\kddbgio.obj \
+    $(_OBJ_DIR)\i386\kdapi.obj \
+    $(_OBJ_DIR)\i386\kddata.obj \
+    $(_OBJ_DIR)\i386\print.obj \
+    $(_OBJ_DIR)\i386\query.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\kdtrap.obj \
+    $(_OBJ_DIR)\ia64\kdcpuapi.obj \
+    $(_OBJ_DIR)\ia64\kdcmsup.obj \
+    $(_OBJ_DIR)\ia64\file.obj \
+    $(_OBJ_DIR)\ia64\kdinit.obj \
+    $(_OBJ_DIR)\ia64\kdbreak.obj \
+    $(_OBJ_DIR)\ia64\kdlock.obj \
+    $(_OBJ_DIR)\ia64\kdmove.obj \
+    $(_OBJ_DIR)\ia64\kddbgio.obj \
+    $(_OBJ_DIR)\ia64\kdapi.obj \
+    $(_OBJ_DIR)\ia64\kddata.obj \
+    $(_OBJ_DIR)\ia64\print.obj \
+    $(_OBJ_DIR)\ia64\query.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\kdtrap.obj \
+    $(_OBJ_DIR)\amd64\kdcmsup.obj \
+    $(_OBJ_DIR)\amd64\kdcpuapi.obj \
+    $(_OBJ_DIR)\amd64\file.obj \
+    $(_OBJ_DIR)\amd64\kdinit.obj \
+    $(_OBJ_DIR)\amd64\kdbreak.obj \
+    $(_OBJ_DIR)\amd64\kdlock.obj \
+    $(_OBJ_DIR)\amd64\kdmove.obj \
+    $(_OBJ_DIR)\amd64\kddbgio.obj \
+    $(_OBJ_DIR)\amd64\kdapi.obj \
+    $(_OBJ_DIR)\amd64\kddata.obj \
+    $(_OBJ_DIR)\amd64\print.obj \
+    $(_OBJ_DIR)\amd64\query.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\file.obj \
+    $(_OBJ_DIR)\arm\kdinit.obj \
+    $(_OBJ_DIR)\arm\kdbreak.obj \
+    $(_OBJ_DIR)\arm\kdlock.obj \
+    $(_OBJ_DIR)\arm\kdmove.obj \
+    $(_OBJ_DIR)\arm\kddbgio.obj \
+    $(_OBJ_DIR)\arm\kdapi.obj \
+    $(_OBJ_DIR)\arm\kddata.obj \
+    $(_OBJ_DIR)\arm\print.obj \
+    $(_OBJ_DIR)\arm\query.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,56 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\res.res \
+    $(_OBJ_DIR)\i386\fefb.obj \
+    $(_OBJ_DIR)\i386\fefont.obj \
+    $(_OBJ_DIR)\i386\fekbd.obj \
+    $(_OBJ_DIR)\i386\feldraw.obj \
+    $(_OBJ_DIR)\i386\fereg.obj \
+    $(_OBJ_DIR)\i386\fetext.obj \
+    $(_OBJ_DIR)\i386\fevga.obj \
+    $(_OBJ_DIR)\i386\fevideo.obj \
+    $(_OBJ_DIR)\i386\spddfe.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\res.res \
+    $(_OBJ_DIR)\ia64\fefb.obj \
+    $(_OBJ_DIR)\ia64\fefont.obj \
+    $(_OBJ_DIR)\ia64\fekbd.obj \
+    $(_OBJ_DIR)\ia64\feldraw.obj \
+    $(_OBJ_DIR)\ia64\fereg.obj \
+    $(_OBJ_DIR)\ia64\fetext.obj \
+    $(_OBJ_DIR)\ia64\fevga.obj \
+    $(_OBJ_DIR)\ia64\fevideo.obj \
+    $(_OBJ_DIR)\ia64\spddfe.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\res.res \
+    $(_OBJ_DIR)\amd64\fefb.obj \
+    $(_OBJ_DIR)\amd64\fefont.obj \
+    $(_OBJ_DIR)\amd64\fekbd.obj \
+    $(_OBJ_DIR)\amd64\feldraw.obj \
+    $(_OBJ_DIR)\amd64\fereg.obj \
+    $(_OBJ_DIR)\amd64\fetext.obj \
+    $(_OBJ_DIR)\amd64\fevga.obj \
+    $(_OBJ_DIR)\amd64\fevideo.obj \
+    $(_OBJ_DIR)\amd64\spddfe.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\res.res \
+    $(_OBJ_DIR)\arm\fefb.obj \
+    $(_OBJ_DIR)\arm\fefont.obj \
+    $(_OBJ_DIR)\arm\fekbd.obj \
+    $(_OBJ_DIR)\arm\feldraw.obj \
+    $(_OBJ_DIR)\arm\fereg.obj \
+    $(_OBJ_DIR)\arm\fetext.obj \
+    $(_OBJ_DIR)\arm\fevga.obj \
+    $(_OBJ_DIR)\arm\fevideo.obj \
+    $(_OBJ_DIR)\arm\spddfe.obj
+
+PASS0_ARM_OBJECTS=
+

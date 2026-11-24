@@ -1,0 +1,76 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\dbgtrack.obj \
+    $(_OBJ_DIR)\i386\basemem.obj \
+    $(_OBJ_DIR)\i386\unicode.obj \
+    $(_OBJ_DIR)\i386\strings.obj \
+    $(_OBJ_DIR)\i386\growbuf.obj \
+    $(_OBJ_DIR)\i386\growlist.obj \
+    $(_OBJ_DIR)\i386\poolmem.obj \
+    $(_OBJ_DIR)\i386\hash.obj \
+    $(_OBJ_DIR)\i386\basefile.obj \
+    $(_OBJ_DIR)\i386\exclist.obj \
+    $(_OBJ_DIR)\i386\blobs.obj \
+    $(_OBJ_DIR)\i386\objstr.obj \
+    $(_OBJ_DIR)\i386\wnd.obj \
+    $(_OBJ_DIR)\i386\strmap.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\dbgtrack.obj \
+    $(_OBJ_DIR)\ia64\basemem.obj \
+    $(_OBJ_DIR)\ia64\unicode.obj \
+    $(_OBJ_DIR)\ia64\strings.obj \
+    $(_OBJ_DIR)\ia64\growbuf.obj \
+    $(_OBJ_DIR)\ia64\growlist.obj \
+    $(_OBJ_DIR)\ia64\poolmem.obj \
+    $(_OBJ_DIR)\ia64\hash.obj \
+    $(_OBJ_DIR)\ia64\basefile.obj \
+    $(_OBJ_DIR)\ia64\exclist.obj \
+    $(_OBJ_DIR)\ia64\blobs.obj \
+    $(_OBJ_DIR)\ia64\objstr.obj \
+    $(_OBJ_DIR)\ia64\wnd.obj \
+    $(_OBJ_DIR)\ia64\strmap.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\dbgtrack.obj \
+    $(_OBJ_DIR)\amd64\basemem.obj \
+    $(_OBJ_DIR)\amd64\unicode.obj \
+    $(_OBJ_DIR)\amd64\strings.obj \
+    $(_OBJ_DIR)\amd64\growbuf.obj \
+    $(_OBJ_DIR)\amd64\growlist.obj \
+    $(_OBJ_DIR)\amd64\poolmem.obj \
+    $(_OBJ_DIR)\amd64\hash.obj \
+    $(_OBJ_DIR)\amd64\basefile.obj \
+    $(_OBJ_DIR)\amd64\exclist.obj \
+    $(_OBJ_DIR)\amd64\blobs.obj \
+    $(_OBJ_DIR)\amd64\objstr.obj \
+    $(_OBJ_DIR)\amd64\wnd.obj \
+    $(_OBJ_DIR)\amd64\strmap.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\dbgtrack.obj \
+    $(_OBJ_DIR)\arm\basemem.obj \
+    $(_OBJ_DIR)\arm\unicode.obj \
+    $(_OBJ_DIR)\arm\strings.obj \
+    $(_OBJ_DIR)\arm\growbuf.obj \
+    $(_OBJ_DIR)\arm\growlist.obj \
+    $(_OBJ_DIR)\arm\poolmem.obj \
+    $(_OBJ_DIR)\arm\hash.obj \
+    $(_OBJ_DIR)\arm\basefile.obj \
+    $(_OBJ_DIR)\arm\exclist.obj \
+    $(_OBJ_DIR)\arm\blobs.obj \
+    $(_OBJ_DIR)\arm\objstr.obj \
+    $(_OBJ_DIR)\arm\wnd.obj \
+    $(_OBJ_DIR)\arm\strmap.obj
+
+PASS0_ARM_OBJECTS=
+

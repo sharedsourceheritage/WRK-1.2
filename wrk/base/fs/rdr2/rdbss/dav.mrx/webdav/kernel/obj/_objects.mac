@@ -1,0 +1,80 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\mrxdav.res \
+    $(_OBJ_DIR)\i386\devfcb.obj \
+    $(_OBJ_DIR)\i386\fsctl.obj \
+    $(_OBJ_DIR)\i386\openclos.obj \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\netroot.obj \
+    $(_OBJ_DIR)\i386\srvcall.obj \
+    $(_OBJ_DIR)\i386\innerio.obj \
+    $(_OBJ_DIR)\i386\read.obj \
+    $(_OBJ_DIR)\i386\querydir.obj \
+    $(_OBJ_DIR)\i386\fileinfo.obj \
+    $(_OBJ_DIR)\i386\fcbfobx.obj \
+    $(_OBJ_DIR)\i386\write.obj \
+    $(_OBJ_DIR)\i386\cancel.obj \
+    $(_OBJ_DIR)\i386\infocach.obj \
+    $(_OBJ_DIR)\i386\ea.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\mrxdav.res \
+    $(_OBJ_DIR)\ia64\devfcb.obj \
+    $(_OBJ_DIR)\ia64\fsctl.obj \
+    $(_OBJ_DIR)\ia64\openclos.obj \
+    $(_OBJ_DIR)\ia64\init.obj \
+    $(_OBJ_DIR)\ia64\netroot.obj \
+    $(_OBJ_DIR)\ia64\srvcall.obj \
+    $(_OBJ_DIR)\ia64\innerio.obj \
+    $(_OBJ_DIR)\ia64\read.obj \
+    $(_OBJ_DIR)\ia64\querydir.obj \
+    $(_OBJ_DIR)\ia64\fileinfo.obj \
+    $(_OBJ_DIR)\ia64\fcbfobx.obj \
+    $(_OBJ_DIR)\ia64\write.obj \
+    $(_OBJ_DIR)\ia64\cancel.obj \
+    $(_OBJ_DIR)\ia64\infocach.obj \
+    $(_OBJ_DIR)\ia64\ea.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\mrxdav.res \
+    $(_OBJ_DIR)\amd64\devfcb.obj \
+    $(_OBJ_DIR)\amd64\fsctl.obj \
+    $(_OBJ_DIR)\amd64\openclos.obj \
+    $(_OBJ_DIR)\amd64\init.obj \
+    $(_OBJ_DIR)\amd64\netroot.obj \
+    $(_OBJ_DIR)\amd64\srvcall.obj \
+    $(_OBJ_DIR)\amd64\innerio.obj \
+    $(_OBJ_DIR)\amd64\read.obj \
+    $(_OBJ_DIR)\amd64\querydir.obj \
+    $(_OBJ_DIR)\amd64\fileinfo.obj \
+    $(_OBJ_DIR)\amd64\fcbfobx.obj \
+    $(_OBJ_DIR)\amd64\write.obj \
+    $(_OBJ_DIR)\amd64\cancel.obj \
+    $(_OBJ_DIR)\amd64\infocach.obj \
+    $(_OBJ_DIR)\amd64\ea.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\mrxdav.res \
+    $(_OBJ_DIR)\arm\devfcb.obj \
+    $(_OBJ_DIR)\arm\fsctl.obj \
+    $(_OBJ_DIR)\arm\openclos.obj \
+    $(_OBJ_DIR)\arm\init.obj \
+    $(_OBJ_DIR)\arm\netroot.obj \
+    $(_OBJ_DIR)\arm\srvcall.obj \
+    $(_OBJ_DIR)\arm\innerio.obj \
+    $(_OBJ_DIR)\arm\read.obj \
+    $(_OBJ_DIR)\arm\querydir.obj \
+    $(_OBJ_DIR)\arm\fileinfo.obj \
+    $(_OBJ_DIR)\arm\fcbfobx.obj \
+    $(_OBJ_DIR)\arm\write.obj \
+    $(_OBJ_DIR)\arm\cancel.obj \
+    $(_OBJ_DIR)\arm\infocach.obj \
+    $(_OBJ_DIR)\arm\ea.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\smbhc.res \
+    $(_OBJ_DIR)\i386\smbhc.obj \
+    $(_OBJ_DIR)\i386\smbsrv.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\smbhc.res \
+    $(_OBJ_DIR)\ia64\smbhc.obj \
+    $(_OBJ_DIR)\ia64\smbsrv.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\smbhc.res \
+    $(_OBJ_DIR)\amd64\smbhc.obj \
+    $(_OBJ_DIR)\amd64\smbsrv.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\smbhc.res \
+    $(_OBJ_DIR)\arm\smbhc.obj \
+    $(_OBJ_DIR)\arm\smbsrv.obj
+
+PASS0_ARM_OBJECTS=
+

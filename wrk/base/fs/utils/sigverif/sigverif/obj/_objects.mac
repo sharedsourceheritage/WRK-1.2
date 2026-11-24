@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sigverif.res \
+    $(_OBJ_DIR)\i386\advanced.obj \
+    $(_OBJ_DIR)\i386\browse.obj \
+    $(_OBJ_DIR)\i386\devnode.obj \
+    $(_OBJ_DIR)\i386\filelist.obj \
+    $(_OBJ_DIR)\i386\listview.obj \
+    $(_OBJ_DIR)\i386\logfile.obj \
+    $(_OBJ_DIR)\i386\progress.obj \
+    $(_OBJ_DIR)\i386\sigverif.obj \
+    $(_OBJ_DIR)\i386\verify.obj \
+    $(_OBJ_DIR)\i386\walkpath.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sigverif.res \
+    $(_OBJ_DIR)\ia64\advanced.obj \
+    $(_OBJ_DIR)\ia64\browse.obj \
+    $(_OBJ_DIR)\ia64\devnode.obj \
+    $(_OBJ_DIR)\ia64\filelist.obj \
+    $(_OBJ_DIR)\ia64\listview.obj \
+    $(_OBJ_DIR)\ia64\logfile.obj \
+    $(_OBJ_DIR)\ia64\progress.obj \
+    $(_OBJ_DIR)\ia64\sigverif.obj \
+    $(_OBJ_DIR)\ia64\verify.obj \
+    $(_OBJ_DIR)\ia64\walkpath.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sigverif.res \
+    $(_OBJ_DIR)\amd64\advanced.obj \
+    $(_OBJ_DIR)\amd64\browse.obj \
+    $(_OBJ_DIR)\amd64\devnode.obj \
+    $(_OBJ_DIR)\amd64\filelist.obj \
+    $(_OBJ_DIR)\amd64\listview.obj \
+    $(_OBJ_DIR)\amd64\logfile.obj \
+    $(_OBJ_DIR)\amd64\progress.obj \
+    $(_OBJ_DIR)\amd64\sigverif.obj \
+    $(_OBJ_DIR)\amd64\verify.obj \
+    $(_OBJ_DIR)\amd64\walkpath.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sigverif.res \
+    $(_OBJ_DIR)\arm\advanced.obj \
+    $(_OBJ_DIR)\arm\browse.obj \
+    $(_OBJ_DIR)\arm\devnode.obj \
+    $(_OBJ_DIR)\arm\filelist.obj \
+    $(_OBJ_DIR)\arm\listview.obj \
+    $(_OBJ_DIR)\arm\logfile.obj \
+    $(_OBJ_DIR)\arm\progress.obj \
+    $(_OBJ_DIR)\arm\sigverif.obj \
+    $(_OBJ_DIR)\arm\verify.obj \
+    $(_OBJ_DIR)\arm\walkpath.obj
+
+PASS0_ARM_OBJECTS=
+

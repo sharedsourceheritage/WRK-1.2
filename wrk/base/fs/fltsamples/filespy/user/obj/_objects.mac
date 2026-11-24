@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\fspyuser.res \
+    $(_OBJ_DIR)\i386\fspylog.obj \
+    $(_OBJ_DIR)\i386\fspyuser.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\fspyuser.res \
+    $(_OBJ_DIR)\ia64\fspylog.obj \
+    $(_OBJ_DIR)\ia64\fspyuser.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\fspyuser.res \
+    $(_OBJ_DIR)\amd64\fspylog.obj \
+    $(_OBJ_DIR)\amd64\fspyuser.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\fspyuser.res \
+    $(_OBJ_DIR)\arm\fspylog.obj \
+    $(_OBJ_DIR)\arm\fspyuser.obj
+
+PASS0_ARM_OBJECTS=
+

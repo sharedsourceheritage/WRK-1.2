@@ -1,0 +1,184 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cenvarg.obj \
+    $(_OBJ_DIR)\i386\fileinfo.obj \
+    $(_OBJ_DIR)\i386\dospawn.obj \
+    $(_OBJ_DIR)\i386\execl.obj \
+    $(_OBJ_DIR)\i386\execle.obj \
+    $(_OBJ_DIR)\i386\execlp.obj \
+    $(_OBJ_DIR)\i386\execlpe.obj \
+    $(_OBJ_DIR)\i386\execv.obj \
+    $(_OBJ_DIR)\i386\execve.obj \
+    $(_OBJ_DIR)\i386\execvp.obj \
+    $(_OBJ_DIR)\i386\execvpe.obj \
+    $(_OBJ_DIR)\i386\getproc.obj \
+    $(_OBJ_DIR)\i386\loaddll.obj \
+    $(_OBJ_DIR)\i386\spawnl.obj \
+    $(_OBJ_DIR)\i386\spawnle.obj \
+    $(_OBJ_DIR)\i386\spawnlp.obj \
+    $(_OBJ_DIR)\i386\spawnlpe.obj \
+    $(_OBJ_DIR)\i386\spawnv.obj \
+    $(_OBJ_DIR)\i386\spawnve.obj \
+    $(_OBJ_DIR)\i386\spawnvp.obj \
+    $(_OBJ_DIR)\i386\spawnvpe.obj \
+    $(_OBJ_DIR)\i386\system.obj \
+    $(_OBJ_DIR)\i386\wait.obj \
+    $(_OBJ_DIR)\i386\wcenvarg.obj \
+    $(_OBJ_DIR)\i386\wdospawn.obj \
+    $(_OBJ_DIR)\i386\wexecl.obj \
+    $(_OBJ_DIR)\i386\wexecle.obj \
+    $(_OBJ_DIR)\i386\wexeclp.obj \
+    $(_OBJ_DIR)\i386\wexeclpe.obj \
+    $(_OBJ_DIR)\i386\wexecv.obj \
+    $(_OBJ_DIR)\i386\wexecve.obj \
+    $(_OBJ_DIR)\i386\wexecvp.obj \
+    $(_OBJ_DIR)\i386\wexecvpe.obj \
+    $(_OBJ_DIR)\i386\wspawnl.obj \
+    $(_OBJ_DIR)\i386\wspawnle.obj \
+    $(_OBJ_DIR)\i386\wspawnlp.obj \
+    $(_OBJ_DIR)\i386\wspwnlpe.obj \
+    $(_OBJ_DIR)\i386\wspawnv.obj \
+    $(_OBJ_DIR)\i386\wspawnve.obj \
+    $(_OBJ_DIR)\i386\wspawnvp.obj \
+    $(_OBJ_DIR)\i386\wspwnvpe.obj \
+    $(_OBJ_DIR)\i386\wsystem.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cenvarg.obj \
+    $(_OBJ_DIR)\ia64\fileinfo.obj \
+    $(_OBJ_DIR)\ia64\dospawn.obj \
+    $(_OBJ_DIR)\ia64\execl.obj \
+    $(_OBJ_DIR)\ia64\execle.obj \
+    $(_OBJ_DIR)\ia64\execlp.obj \
+    $(_OBJ_DIR)\ia64\execlpe.obj \
+    $(_OBJ_DIR)\ia64\execv.obj \
+    $(_OBJ_DIR)\ia64\execve.obj \
+    $(_OBJ_DIR)\ia64\execvp.obj \
+    $(_OBJ_DIR)\ia64\execvpe.obj \
+    $(_OBJ_DIR)\ia64\getproc.obj \
+    $(_OBJ_DIR)\ia64\loaddll.obj \
+    $(_OBJ_DIR)\ia64\spawnl.obj \
+    $(_OBJ_DIR)\ia64\spawnle.obj \
+    $(_OBJ_DIR)\ia64\spawnlp.obj \
+    $(_OBJ_DIR)\ia64\spawnlpe.obj \
+    $(_OBJ_DIR)\ia64\spawnv.obj \
+    $(_OBJ_DIR)\ia64\spawnve.obj \
+    $(_OBJ_DIR)\ia64\spawnvp.obj \
+    $(_OBJ_DIR)\ia64\spawnvpe.obj \
+    $(_OBJ_DIR)\ia64\system.obj \
+    $(_OBJ_DIR)\ia64\wait.obj \
+    $(_OBJ_DIR)\ia64\wcenvarg.obj \
+    $(_OBJ_DIR)\ia64\wdospawn.obj \
+    $(_OBJ_DIR)\ia64\wexecl.obj \
+    $(_OBJ_DIR)\ia64\wexecle.obj \
+    $(_OBJ_DIR)\ia64\wexeclp.obj \
+    $(_OBJ_DIR)\ia64\wexeclpe.obj \
+    $(_OBJ_DIR)\ia64\wexecv.obj \
+    $(_OBJ_DIR)\ia64\wexecve.obj \
+    $(_OBJ_DIR)\ia64\wexecvp.obj \
+    $(_OBJ_DIR)\ia64\wexecvpe.obj \
+    $(_OBJ_DIR)\ia64\wspawnl.obj \
+    $(_OBJ_DIR)\ia64\wspawnle.obj \
+    $(_OBJ_DIR)\ia64\wspawnlp.obj \
+    $(_OBJ_DIR)\ia64\wspwnlpe.obj \
+    $(_OBJ_DIR)\ia64\wspawnv.obj \
+    $(_OBJ_DIR)\ia64\wspawnve.obj \
+    $(_OBJ_DIR)\ia64\wspawnvp.obj \
+    $(_OBJ_DIR)\ia64\wspwnvpe.obj \
+    $(_OBJ_DIR)\ia64\wsystem.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cenvarg.obj \
+    $(_OBJ_DIR)\amd64\fileinfo.obj \
+    $(_OBJ_DIR)\amd64\dospawn.obj \
+    $(_OBJ_DIR)\amd64\execl.obj \
+    $(_OBJ_DIR)\amd64\execle.obj \
+    $(_OBJ_DIR)\amd64\execlp.obj \
+    $(_OBJ_DIR)\amd64\execlpe.obj \
+    $(_OBJ_DIR)\amd64\execv.obj \
+    $(_OBJ_DIR)\amd64\execve.obj \
+    $(_OBJ_DIR)\amd64\execvp.obj \
+    $(_OBJ_DIR)\amd64\execvpe.obj \
+    $(_OBJ_DIR)\amd64\getproc.obj \
+    $(_OBJ_DIR)\amd64\loaddll.obj \
+    $(_OBJ_DIR)\amd64\spawnl.obj \
+    $(_OBJ_DIR)\amd64\spawnle.obj \
+    $(_OBJ_DIR)\amd64\spawnlp.obj \
+    $(_OBJ_DIR)\amd64\spawnlpe.obj \
+    $(_OBJ_DIR)\amd64\spawnv.obj \
+    $(_OBJ_DIR)\amd64\spawnve.obj \
+    $(_OBJ_DIR)\amd64\spawnvp.obj \
+    $(_OBJ_DIR)\amd64\spawnvpe.obj \
+    $(_OBJ_DIR)\amd64\system.obj \
+    $(_OBJ_DIR)\amd64\wait.obj \
+    $(_OBJ_DIR)\amd64\wcenvarg.obj \
+    $(_OBJ_DIR)\amd64\wdospawn.obj \
+    $(_OBJ_DIR)\amd64\wexecl.obj \
+    $(_OBJ_DIR)\amd64\wexecle.obj \
+    $(_OBJ_DIR)\amd64\wexeclp.obj \
+    $(_OBJ_DIR)\amd64\wexeclpe.obj \
+    $(_OBJ_DIR)\amd64\wexecv.obj \
+    $(_OBJ_DIR)\amd64\wexecve.obj \
+    $(_OBJ_DIR)\amd64\wexecvp.obj \
+    $(_OBJ_DIR)\amd64\wexecvpe.obj \
+    $(_OBJ_DIR)\amd64\wspawnl.obj \
+    $(_OBJ_DIR)\amd64\wspawnle.obj \
+    $(_OBJ_DIR)\amd64\wspawnlp.obj \
+    $(_OBJ_DIR)\amd64\wspwnlpe.obj \
+    $(_OBJ_DIR)\amd64\wspawnv.obj \
+    $(_OBJ_DIR)\amd64\wspawnve.obj \
+    $(_OBJ_DIR)\amd64\wspawnvp.obj \
+    $(_OBJ_DIR)\amd64\wspwnvpe.obj \
+    $(_OBJ_DIR)\amd64\wsystem.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cenvarg.obj \
+    $(_OBJ_DIR)\arm\fileinfo.obj \
+    $(_OBJ_DIR)\arm\dospawn.obj \
+    $(_OBJ_DIR)\arm\execl.obj \
+    $(_OBJ_DIR)\arm\execle.obj \
+    $(_OBJ_DIR)\arm\execlp.obj \
+    $(_OBJ_DIR)\arm\execlpe.obj \
+    $(_OBJ_DIR)\arm\execv.obj \
+    $(_OBJ_DIR)\arm\execve.obj \
+    $(_OBJ_DIR)\arm\execvp.obj \
+    $(_OBJ_DIR)\arm\execvpe.obj \
+    $(_OBJ_DIR)\arm\getproc.obj \
+    $(_OBJ_DIR)\arm\loaddll.obj \
+    $(_OBJ_DIR)\arm\spawnl.obj \
+    $(_OBJ_DIR)\arm\spawnle.obj \
+    $(_OBJ_DIR)\arm\spawnlp.obj \
+    $(_OBJ_DIR)\arm\spawnlpe.obj \
+    $(_OBJ_DIR)\arm\spawnv.obj \
+    $(_OBJ_DIR)\arm\spawnve.obj \
+    $(_OBJ_DIR)\arm\spawnvp.obj \
+    $(_OBJ_DIR)\arm\spawnvpe.obj \
+    $(_OBJ_DIR)\arm\system.obj \
+    $(_OBJ_DIR)\arm\wait.obj \
+    $(_OBJ_DIR)\arm\wcenvarg.obj \
+    $(_OBJ_DIR)\arm\wdospawn.obj \
+    $(_OBJ_DIR)\arm\wexecl.obj \
+    $(_OBJ_DIR)\arm\wexecle.obj \
+    $(_OBJ_DIR)\arm\wexeclp.obj \
+    $(_OBJ_DIR)\arm\wexeclpe.obj \
+    $(_OBJ_DIR)\arm\wexecv.obj \
+    $(_OBJ_DIR)\arm\wexecve.obj \
+    $(_OBJ_DIR)\arm\wexecvp.obj \
+    $(_OBJ_DIR)\arm\wexecvpe.obj \
+    $(_OBJ_DIR)\arm\wspawnl.obj \
+    $(_OBJ_DIR)\arm\wspawnle.obj \
+    $(_OBJ_DIR)\arm\wspawnlp.obj \
+    $(_OBJ_DIR)\arm\wspwnlpe.obj \
+    $(_OBJ_DIR)\arm\wspawnv.obj \
+    $(_OBJ_DIR)\arm\wspawnve.obj \
+    $(_OBJ_DIR)\arm\wspawnvp.obj \
+    $(_OBJ_DIR)\arm\wspwnvpe.obj \
+    $(_OBJ_DIR)\arm\wsystem.obj
+
+PASS0_ARM_OBJECTS=
+

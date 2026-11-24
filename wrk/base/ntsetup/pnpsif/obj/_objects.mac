@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\migrate.obj \
+    $(_OBJ_DIR)\i386\sif.obj \
+    $(_OBJ_DIR)\i386\restore.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\debug.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\migrate.obj \
+    $(_OBJ_DIR)\ia64\sif.obj \
+    $(_OBJ_DIR)\ia64\restore.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\debug.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\migrate.obj \
+    $(_OBJ_DIR)\amd64\sif.obj \
+    $(_OBJ_DIR)\amd64\restore.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\debug.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\migrate.obj \
+    $(_OBJ_DIR)\arm\sif.obj \
+    $(_OBJ_DIR)\arm\restore.obj \
+    $(_OBJ_DIR)\arm\util.obj \
+    $(_OBJ_DIR)\arm\debug.obj
+
+PASS0_ARM_OBJECTS=
+

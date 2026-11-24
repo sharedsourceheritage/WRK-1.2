@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\fatkd.res \
+    $(_OBJ_DIR)\i386\fatkd.obj \
+    $(_OBJ_DIR)\i386\udfs.obj \
+    $(_OBJ_DIR)\i386\udfsro.obj \
+    $(_OBJ_DIR)\i386\udfsrw.obj \
+    $(_OBJ_DIR)\i386\fat.obj \
+    $(_OBJ_DIR)\i386\cdfs.obj \
+    $(_OBJ_DIR)\i386\kdext.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\fatkd.res \
+    $(_OBJ_DIR)\ia64\fatkd.obj \
+    $(_OBJ_DIR)\ia64\udfs.obj \
+    $(_OBJ_DIR)\ia64\udfsro.obj \
+    $(_OBJ_DIR)\ia64\udfsrw.obj \
+    $(_OBJ_DIR)\ia64\fat.obj \
+    $(_OBJ_DIR)\ia64\cdfs.obj \
+    $(_OBJ_DIR)\ia64\kdext.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\fatkd.res \
+    $(_OBJ_DIR)\amd64\fatkd.obj \
+    $(_OBJ_DIR)\amd64\udfs.obj \
+    $(_OBJ_DIR)\amd64\udfsro.obj \
+    $(_OBJ_DIR)\amd64\udfsrw.obj \
+    $(_OBJ_DIR)\amd64\fat.obj \
+    $(_OBJ_DIR)\amd64\cdfs.obj \
+    $(_OBJ_DIR)\amd64\kdext.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\fatkd.res \
+    $(_OBJ_DIR)\arm\fatkd.obj \
+    $(_OBJ_DIR)\arm\udfs.obj \
+    $(_OBJ_DIR)\arm\udfsro.obj \
+    $(_OBJ_DIR)\arm\udfsrw.obj \
+    $(_OBJ_DIR)\arm\fat.obj \
+    $(_OBJ_DIR)\arm\cdfs.obj \
+    $(_OBJ_DIR)\arm\kdext.obj
+
+PASS0_ARM_OBJECTS=
+

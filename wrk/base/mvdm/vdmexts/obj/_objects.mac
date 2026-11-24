@@ -1,0 +1,95 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\vdmexts.res \
+    $(_OBJ_DIR)\i386\profile.obj \
+    $(_OBJ_DIR)\i386\vdmtib.obj \
+    $(_OBJ_DIR)\i386\regs.obj \
+    $(_OBJ_DIR)\i386\data.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\dib.obj \
+    $(_OBJ_DIR)\i386\disasm.obj \
+    $(_OBJ_DIR)\i386\dos.obj \
+    $(_OBJ_DIR)\i386\dpmi.obj \
+    $(_OBJ_DIR)\i386\heap.obj \
+    $(_OBJ_DIR)\i386\help.obj \
+    $(_OBJ_DIR)\i386\misc.obj \
+    $(_OBJ_DIR)\i386\platform.obj \
+    $(_OBJ_DIR)\i386\reflect.obj \
+    $(_OBJ_DIR)\i386\stack.obj \
+    $(_OBJ_DIR)\i386\sym.obj \
+    $(_OBJ_DIR)\i386\system.obj \
+    $(_OBJ_DIR)\i386\trace.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\wow.obj \
+    $(_OBJ_DIR)\i386\wowprof.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\vdmexts.res \
+    $(_OBJ_DIR)\ia64\data.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\dib.obj \
+    $(_OBJ_DIR)\ia64\disasm.obj \
+    $(_OBJ_DIR)\ia64\dos.obj \
+    $(_OBJ_DIR)\ia64\dpmi.obj \
+    $(_OBJ_DIR)\ia64\heap.obj \
+    $(_OBJ_DIR)\ia64\help.obj \
+    $(_OBJ_DIR)\ia64\misc.obj \
+    $(_OBJ_DIR)\ia64\platform.obj \
+    $(_OBJ_DIR)\ia64\reflect.obj \
+    $(_OBJ_DIR)\ia64\stack.obj \
+    $(_OBJ_DIR)\ia64\sym.obj \
+    $(_OBJ_DIR)\ia64\system.obj \
+    $(_OBJ_DIR)\ia64\trace.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\wow.obj \
+    $(_OBJ_DIR)\ia64\wowprof.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\vdmexts.res \
+    $(_OBJ_DIR)\amd64\data.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\dib.obj \
+    $(_OBJ_DIR)\amd64\disasm.obj \
+    $(_OBJ_DIR)\amd64\dos.obj \
+    $(_OBJ_DIR)\amd64\dpmi.obj \
+    $(_OBJ_DIR)\amd64\heap.obj \
+    $(_OBJ_DIR)\amd64\help.obj \
+    $(_OBJ_DIR)\amd64\misc.obj \
+    $(_OBJ_DIR)\amd64\platform.obj \
+    $(_OBJ_DIR)\amd64\reflect.obj \
+    $(_OBJ_DIR)\amd64\stack.obj \
+    $(_OBJ_DIR)\amd64\sym.obj \
+    $(_OBJ_DIR)\amd64\system.obj \
+    $(_OBJ_DIR)\amd64\trace.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\wow.obj \
+    $(_OBJ_DIR)\amd64\wowprof.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\vdmexts.res \
+    $(_OBJ_DIR)\arm\data.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\dib.obj \
+    $(_OBJ_DIR)\arm\disasm.obj \
+    $(_OBJ_DIR)\arm\dos.obj \
+    $(_OBJ_DIR)\arm\dpmi.obj \
+    $(_OBJ_DIR)\arm\heap.obj \
+    $(_OBJ_DIR)\arm\help.obj \
+    $(_OBJ_DIR)\arm\misc.obj \
+    $(_OBJ_DIR)\arm\platform.obj \
+    $(_OBJ_DIR)\arm\reflect.obj \
+    $(_OBJ_DIR)\arm\stack.obj \
+    $(_OBJ_DIR)\arm\sym.obj \
+    $(_OBJ_DIR)\arm\system.obj \
+    $(_OBJ_DIR)\arm\trace.obj \
+    $(_OBJ_DIR)\arm\util.obj \
+    $(_OBJ_DIR)\arm\wow.obj \
+    $(_OBJ_DIR)\arm\wowprof.obj
+
+PASS0_ARM_OBJECTS=
+

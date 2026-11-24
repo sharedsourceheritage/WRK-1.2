@@ -1,0 +1,450 @@
+//e640e69710a1322b24350517ffd3d6a0 Generated File. Do not edit.
+// File created by WPP compiler version 0.01-Wed May 15 12:38:55 2002
+// on 11/24/2026 at 02:11:12 UTC from a template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\simple.tpl
+
+// PLEASE NOTE:
+//    Using simple.tpl for production environment without overriding
+//    WPP_ENABLED and WPP_LOGGER macro is NOT RECOMMENDED.
+//
+//    If WPP_ENABLED is not provided, the logging is always on
+//    If WPP_LOGGER is not provided, traces always go to the logger named stdout (if it is running)
+//
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\header.tpl
+
+#define WPP_KERNEL_MODE 
+#define WPP_THIS_FILE smbopen_c
+
+#if !defined(WPP_KERNEL_MODE)
+#  include <windows.h>
+#  pragma warning(disable: 4201)
+#  include <wmistr.h>
+#  include <evntrace.h>
+#  define WPP_TRACE TraceMessage
+#else
+#define WPP_TRACE WmiTraceMessage
+#endif
+
+#if !defined(WPP_PRIVATE)
+#  define WPP_INLINE __inline
+#  define WPP_SELECT_ANY extern "C" __declspec(selectany)
+#else
+#  define WPP_INLINE static
+#  define WPP_SELECT_ANY static
+#endif
+
+__inline TRACEHANDLE WppQueryLogger(PCWSTR LoggerName)
+{
+    if (!LoggerName) {LoggerName = L"stdout";}
+    {
+#if defined(WPP_KERNEL_MODE)
+        ULONG ReturnLength ;
+        NTSTATUS Status ;
+        TRACEHANDLE TraceHandle ;
+        UNICODE_STRING  Buffer  ;
+
+        RtlInitUnicodeString(&Buffer, LoggerName);
+    
+        if ((Status = WmiQueryTraceInformation(TraceHandleByNameClass,
+                                                 (PVOID)&TraceHandle,
+                                                  sizeof(TraceHandle),
+                                                  &ReturnLength,
+                                                  (PVOID)&Buffer)) == STATUS_SUCCESS) {
+        return TraceHandle ;
+        }
+#else
+        ULONG status;
+        EVENT_TRACE_PROPERTIES LoggerInfo; 
+
+        ZeroMemory(&LoggerInfo, sizeof(LoggerInfo));
+        LoggerInfo.Wnode.BufferSize = sizeof(LoggerInfo);
+        LoggerInfo.Wnode.Flags = WNODE_FLAG_TRACED_GUID;
+        
+        status = QueryTraceW(0, LoggerName, &LoggerInfo);    
+        if (status == ERROR_SUCCESS || status == ERROR_MORE_DATA) {
+            return (TRACEHANDLE) LoggerInfo.Wnode.HistoricalContext;
+        }
+#endif
+    }
+    return 0;
+}
+
+
+ 
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\stdout.tpl
+
+#define WPP_LEVEL_LOGGER(LEVEL) // DoTraceMessage
+#define WPP_LOGGER() // KdPrint
+#define WPP_LOGGER() // SrvPrint0
+#define WPP_LOGGER() // SrvPrint1
+#define WPP_LOGGER() // SrvPrint2
+#define WPP_LOGGER() // SrvPrint3
+#define WPP_LOGGER() // SrvPrint4
+#ifndef WPP_LOGGER_ARG
+#  define WPP_LOGGER_ARG
+#endif
+
+#ifndef WPP_GET_LOGGER
+  #define WPP_GET_LOGGER WppGetLogger()
+  __inline TRACEHANDLE WppGetLogger() 
+  {
+      static TRACEHANDLE Logger;
+      if (Logger) {return Logger;}
+      return Logger = WppQueryLogger(0);
+  }
+#endif
+
+#ifndef WPP_ENABLED
+#  define WPP_ENABLED() 1
+#endif
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\trmacro.tpl
+//   expects:
+//      WPP_THIS_FILE defined (see header.tpl)
+//      WPP_LOGGER_ARG  defined
+//      WPP_GET_LOGGER  defined
+//      WPP_ENABLED() defined
+
+#ifndef NO_CHECK_FOR_NULL_STRING
+#ifndef WPP_CHECK_FOR_NULL_STRING
+#define WPP_CHECK_FOR_NULL_STRING 1
+#endif
+#endif
+
+#define WPP_EVAL(_value_) _value_
+#define WPP_(Id) WPP_EVAL(WPP_) ## WPP_EVAL(Id) ## WPP_EVAL(_) ## WPP_EVAL(WPP_THIS_FILE) ## WPP_EVAL(__LINE__)
+
+#if !defined(WPP_INLINE)
+#  define WPP_INLINE __inline
+#endif
+
+#if !defined(WPP_NO_ANNOTATIONS) 
+#if !defined(WPP_ANSI_ANNOTATION) 
+# define WPP_ANNOTATE_smbopen_c1002	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c1002 22 \"%0Unknown Information value in IO status block: 0x%10!p!\" //  ", L"{", L"(PVOID)(ioStatusBlock->Information), ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c1042	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c1042 23 \"%0SrvSmbOpenAndX: Illegal followon command: 0x%10!x!\" //  ", L"{", L"nextCommand, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c1071	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c1071 24 \"%0SrvSmbOpenAndX complete.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_smbopen_c1140	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c1140 25 \"%0SrvSmbOpen2: bad parameter byte counts: %10!ld! %11!ld!\" //  ", L"{", L"transaction->ParameterCount, ItemLong -- 10" , L"transaction->MaxParameterCount, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c1170	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c1170 26 \"%0EA list size bad: size =  %10!ld!, data sent was %11!ld!\" //  ", L"{", L"SmbGetUlong( &feaList->cbList ), ItemLong -- 10" , L"transaction->DataCount, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c1513	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c1513 27 \"%0SrvSmbOpen2: SrvQueryInformationFile failed: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c1682	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c1682 28 \"%0SrvSmbOpen2 complete.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_smbopen_c1743	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c1743 29 \"%0Create file and X request header at 0x%10!p!, response header at 0x%11!p!\" //  ", L"{", L"WorkContext->RequestHeader, ItemPtr -- 10" , L"WorkContext->ResponseHeader, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c1746	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c1746 30 \"%0Create file and X request parameters at 0x%10!p!, response parameters at 0x%11!p!\" //  ", L"{", L"WorkContext->RequestParameters, ItemPtr -- 10" , L"WorkContext->ResponseParameters, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c187	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c187 10 \"%0Open file request header at 0x%10!p!, response header at 0x%11!p!\" //  ", L"{", L"WorkContext->RequestHeader, ItemPtr -- 10" , L"WorkContext->ResponseHeader, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c190	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c190 11 \"%0Open file request parameters at 0x%10!p!, response parameters at 0x%11!p!\" //  ", L"{", L"WorkContext->RequestParameters, ItemPtr -- 10" , L"WorkContext->ResponseParameters, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c2115	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c2115 31 \"%0SrvSmbNtCreateAndX: SrvQueryNtInformationFile failed: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c2278	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c2278 32 \"%0SrvSmbNtCreateAndX: Illegal followon command: 0x%10!x!\" //  ", L"{", L"nextCommand, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c2308	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c2308 33 \"%0SrvSmbNtCreateAndX complete.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_smbopen_c2380	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c2380 34 \"%0SrvSmbCreateWithSdOrEa: bad parameter byte counts: %10!ld! %11!ld!\" //  ", L"{", L"transaction->ParameterCount, ItemLong -- 10" , L"transaction->MaxParameterCount, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c2410	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c2410 35 \"%0SrvSmbCreateWithSdOrEa: failed at line %10!u!\" //  ", L"{", L"__LINE__, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c2450	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c2450 36 \"%0SrvSmbCreateWithSdOrEa: failed at line %10!u!\" //  ", L"{", L"__LINE__, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c2452	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c2452 37 \"%0  eaLength %10!u!, sdLength %11!u!, DataCount %12!u!\" //  ", L"{", L"eaLength, ItemLong -- 10" , L"sdLength, ItemLong -- 11" , L"transaction->DataCount, ItemLong -- 12" , L"}")
+# define WPP_ANNOTATE_smbopen_c2728	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c2728 38 \"%0GenerateCreateWithSdOrEaResponse: SrvQueryNtInformationFile failed: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c2882	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c2882 39 \"%0SrvSmbOpen2 complete.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_smbopen_c2935	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c2935 40 \"%0Create file request header at 0x%10!p!, response header at 0x%11!p!\" //  ", L"{", L"WorkContext->RequestHeader, ItemPtr -- 10" , L"WorkContext->ResponseHeader, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c2938	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c2938 41 \"%0Create file request parameters at 0x%10!p!, response parameters at 0x%11!p!\" //  ", L"{", L"WorkContext->RequestParameters, ItemPtr -- 10" , L"WorkContext->ResponseParameters, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c3113	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c3113 42 \"%0Trying the smart card for %10!s!\" //  ", L"{", L"&rfcb->Mfcb->FileName, ItemPWString -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c3127	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c3127 43 \"%0%10!s! handled by Smart Card.  Handle %11!p!\" //  ", L"{", L"&rfcb->Mfcb->FileName, ItemPWString -- 10" , L"handle, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c3148	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c3148 44 \"%0SrvSmbCreate complete.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_smbopen_c3197	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c3197 45 \"%0Create temporary file request header at 0x%10!p!, response header at 0x%11!p!\" //  ", L"{", L"WorkContext->RequestHeader, ItemPtr -- 10" , L"WorkContext->ResponseHeader, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c3200	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c3200 46 \"%0Create temporary file request parameters at 0x%10!p!, response parameters at 0x%11!p!\" //  ", L"{", L"WorkContext->RequestParameters, ItemPtr -- 10" , L"WorkContext->ResponseParameters, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c3351	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c3351 47 \"%0SrvSmbCreateTemporary complete.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_smbopen_c371	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c371 12 \"%0GenerateOpenResponse: SrvQueryInformationFile failed: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c390	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c390 13 \"%0Trying the smart card for %10!s!\" //  ", L"{", L"&rfcb->Mfcb->FileName, ItemPWString -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c404	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c404 14 \"%0%10!s! handled by Smart Card.  Handle %11!p!\" //  ", L"{", L"&rfcb->Mfcb->FileName, ItemPWString -- 10" , L"handle, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c434	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c434 15 \"%0GenerateOpenResponse complete.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_smbopen_c477	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c477 16 \"%0Open file and X request header at 0x%10!p!, response header at 0x%11!p!\" //  ", L"{", L"WorkContext->RequestHeader, ItemPtr -- 10" , L"WorkContext->ResponseHeader, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c480	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c480 17 \"%0Open file and X request parameters at 0x%10!p!, response parameters at 0x%11!p!\" //  ", L"{", L"WorkContext->RequestParameters, ItemPtr -- 10" , L"WorkContext->ResponseParameters, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_smbopen_c503	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c503 18 \"%0SrvSmbOpenAndX: Invalid UID or TID\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_smbopen_c830	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c830 19 \"%0SrvSmbOpenAndX: SrvQueryInformationFile failed: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c850	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c850 20 \"%0Trying the smart card for %10!s!\" //  ", L"{", L"&rfcb->Mfcb->FileName, ItemPWString -- 10" , L"}")
+# define WPP_ANNOTATE_smbopen_c864	__annotation(L"TMF:", L"97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", L"#typev  smbopen_c864 21 \"%0%10!s! handled by Smart Card.  Handle %11!p!\" //  ", L"{", L"&rfcb->Mfcb->FileName, ItemPWString -- 10" , L"handle, ItemPtr -- 11" , L"}")
+#else
+# define WPP_ANNOTATE_smbopen_c1002	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c1002 22 \"%0Unknown Information value in IO status block: 0x%10!p!\" //  ", "{", "(PVOID)(ioStatusBlock->Information), ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c1042	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c1042 23 \"%0SrvSmbOpenAndX: Illegal followon command: 0x%10!x!\" //  ", "{", "nextCommand, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c1071	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c1071 24 \"%0SrvSmbOpenAndX complete.\" //  ", "{", "}")
+# define WPP_ANNOTATE_smbopen_c1140	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c1140 25 \"%0SrvSmbOpen2: bad parameter byte counts: %10!ld! %11!ld!\" //  ", "{", "transaction->ParameterCount, ItemLong -- 10" , "transaction->MaxParameterCount, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c1170	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c1170 26 \"%0EA list size bad: size =  %10!ld!, data sent was %11!ld!\" //  ", "{", "SmbGetUlong( &feaList->cbList ), ItemLong -- 10" , "transaction->DataCount, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c1513	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c1513 27 \"%0SrvSmbOpen2: SrvQueryInformationFile failed: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c1682	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c1682 28 \"%0SrvSmbOpen2 complete.\" //  ", "{", "}")
+# define WPP_ANNOTATE_smbopen_c1743	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c1743 29 \"%0Create file and X request header at 0x%10!p!, response header at 0x%11!p!\" //  ", "{", "WorkContext->RequestHeader, ItemPtr -- 10" , "WorkContext->ResponseHeader, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c1746	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c1746 30 \"%0Create file and X request parameters at 0x%10!p!, response parameters at 0x%11!p!\" //  ", "{", "WorkContext->RequestParameters, ItemPtr -- 10" , "WorkContext->ResponseParameters, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c187	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c187 10 \"%0Open file request header at 0x%10!p!, response header at 0x%11!p!\" //  ", "{", "WorkContext->RequestHeader, ItemPtr -- 10" , "WorkContext->ResponseHeader, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c190	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c190 11 \"%0Open file request parameters at 0x%10!p!, response parameters at 0x%11!p!\" //  ", "{", "WorkContext->RequestParameters, ItemPtr -- 10" , "WorkContext->ResponseParameters, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c2115	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c2115 31 \"%0SrvSmbNtCreateAndX: SrvQueryNtInformationFile failed: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c2278	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c2278 32 \"%0SrvSmbNtCreateAndX: Illegal followon command: 0x%10!x!\" //  ", "{", "nextCommand, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c2308	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c2308 33 \"%0SrvSmbNtCreateAndX complete.\" //  ", "{", "}")
+# define WPP_ANNOTATE_smbopen_c2380	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c2380 34 \"%0SrvSmbCreateWithSdOrEa: bad parameter byte counts: %10!ld! %11!ld!\" //  ", "{", "transaction->ParameterCount, ItemLong -- 10" , "transaction->MaxParameterCount, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c2410	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c2410 35 \"%0SrvSmbCreateWithSdOrEa: failed at line %10!u!\" //  ", "{", "__LINE__, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c2450	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c2450 36 \"%0SrvSmbCreateWithSdOrEa: failed at line %10!u!\" //  ", "{", "__LINE__, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c2452	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c2452 37 \"%0  eaLength %10!u!, sdLength %11!u!, DataCount %12!u!\" //  ", "{", "eaLength, ItemLong -- 10" , "sdLength, ItemLong -- 11" , "transaction->DataCount, ItemLong -- 12" , "}")
+# define WPP_ANNOTATE_smbopen_c2728	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c2728 38 \"%0GenerateCreateWithSdOrEaResponse: SrvQueryNtInformationFile failed: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c2882	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c2882 39 \"%0SrvSmbOpen2 complete.\" //  ", "{", "}")
+# define WPP_ANNOTATE_smbopen_c2935	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c2935 40 \"%0Create file request header at 0x%10!p!, response header at 0x%11!p!\" //  ", "{", "WorkContext->RequestHeader, ItemPtr -- 10" , "WorkContext->ResponseHeader, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c2938	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c2938 41 \"%0Create file request parameters at 0x%10!p!, response parameters at 0x%11!p!\" //  ", "{", "WorkContext->RequestParameters, ItemPtr -- 10" , "WorkContext->ResponseParameters, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c3113	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c3113 42 \"%0Trying the smart card for %10!s!\" //  ", "{", "&rfcb->Mfcb->FileName, ItemPWString -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c3127	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c3127 43 \"%0%10!s! handled by Smart Card.  Handle %11!p!\" //  ", "{", "&rfcb->Mfcb->FileName, ItemPWString -- 10" , "handle, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c3148	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c3148 44 \"%0SrvSmbCreate complete.\" //  ", "{", "}")
+# define WPP_ANNOTATE_smbopen_c3197	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c3197 45 \"%0Create temporary file request header at 0x%10!p!, response header at 0x%11!p!\" //  ", "{", "WorkContext->RequestHeader, ItemPtr -- 10" , "WorkContext->ResponseHeader, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c3200	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c3200 46 \"%0Create temporary file request parameters at 0x%10!p!, response parameters at 0x%11!p!\" //  ", "{", "WorkContext->RequestParameters, ItemPtr -- 10" , "WorkContext->ResponseParameters, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c3351	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c3351 47 \"%0SrvSmbCreateTemporary complete.\" //  ", "{", "}")
+# define WPP_ANNOTATE_smbopen_c371	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c371 12 \"%0GenerateOpenResponse: SrvQueryInformationFile failed: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c390	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c390 13 \"%0Trying the smart card for %10!s!\" //  ", "{", "&rfcb->Mfcb->FileName, ItemPWString -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c404	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c404 14 \"%0%10!s! handled by Smart Card.  Handle %11!p!\" //  ", "{", "&rfcb->Mfcb->FileName, ItemPWString -- 10" , "handle, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c434	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c434 15 \"%0GenerateOpenResponse complete.\" //  ", "{", "}")
+# define WPP_ANNOTATE_smbopen_c477	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c477 16 \"%0Open file and X request header at 0x%10!p!, response header at 0x%11!p!\" //  ", "{", "WorkContext->RequestHeader, ItemPtr -- 10" , "WorkContext->ResponseHeader, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c480	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c480 17 \"%0Open file and X request parameters at 0x%10!p!, response parameters at 0x%11!p!\" //  ", "{", "WorkContext->RequestParameters, ItemPtr -- 10" , "WorkContext->ResponseParameters, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_smbopen_c503	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c503 18 \"%0SrvSmbOpenAndX: Invalid UID or TID\" //  ", "{", "}")
+# define WPP_ANNOTATE_smbopen_c830	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c830 19 \"%0SrvSmbOpenAndX: SrvQueryInformationFile failed: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c850	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c850 20 \"%0Trying the smart card for %10!s!\" //  ", "{", "&rfcb->Mfcb->FileName, ItemPWString -- 10" , "}")
+# define WPP_ANNOTATE_smbopen_c864	__annotation("TMF:", "97e640e6-a110-2b32-2435-0517ffd3d6a0 daytonam // SRC=smbopen.c MJ= MN=", "#typev  smbopen_c864 21 \"%0%10!s! handled by Smart Card.  Handle %11!p!\" //  ", "{", "&rfcb->Mfcb->FileName, ItemPWString -- 10" , "handle, ItemPtr -- 11" , "}")
+#endif
+# define WPP_ANNOTATE WPP_(ANNOTATE),
+#else
+# define WPP_ANNOTATE 
+#endif
+
+#if 1
+static const GUID WPP_LOCAL_TraceGuids[] = { {0x97e640e6,0xa110,0x2b32,{0x24,0x35,0x05,0x17,0xff,0xd3,0xd6,0xa0}}, };
+#endif
+
+#if !defined(WPP_TRACE_OPTIONS)
+enum {WPP_TRACE_OPTIONS = TRACE_MESSAGE_SEQUENCE   | TRACE_MESSAGE_GUID
+                        | TRACE_MESSAGE_SYSTEMINFO | TRACE_MESSAGE_TIMESTAMP };
+#endif
+
+#if !defined(WPP_LOGPAIR)
+# define WPP_LOGPAIR(_Size, _Addr)     (_Addr),((SIZE_T)_Size),
+#endif
+
+#define WPP_LOGTYPEVAL(_Type, _Value) WPP_LOGPAIR(sizeof(_Type), &(_Value))
+#define WPP_LOGTYPEPTR(_Value)        WPP_LOGPAIR(sizeof(*(_Value)), (_Value))
+
+// Marshalling macros.
+
+#if !defined(WPP_LOGASTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR(strlen(_value) + 1, _value )
+# else
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR( (_value)?strlen(_value) + 1:5, (_value)?(_value):"NULL" )
+# endif
+#endif
+
+#if !defined(WPP_LOGWSTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (wcslen(_value)+1) * sizeof(WCHAR), _value)
+# else
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (_value)?(wcslen(_value) + 1)* sizeof(WCHAR):5 * sizeof(WCHAR), (_value)?(_value):L"NULL") 
+# endif
+#endif
+
+#if !defined(WPP_LOGPGUID)
+# define WPP_LOGPGUID(_value) WPP_LOGPAIR( sizeof(GUID), (_value) )
+#endif
+
+
+#if !defined(WPP_LOGPSID)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( GetLengthSid(_value), (_value) )
+# else
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( (_value)? (IsValidSid(_value)? \
+                                                                        GetLengthSid(_value):5):5, \
+                                                                        (_value)? (IsValidSid(_value)?\
+                                                                        (_value):"NULL"):"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGCSTR)
+# define WPP_LOGCSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGUSTR)
+# define WPP_LOGUSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGPUSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPUSTR(_x) WPP_LOGUSTR(*(_x))
+#else
+# define WPP_LOGPUSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5*sizeof(WCHAR), (_x)?(*(_x)).Buffer:L"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGPCSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPCSTR(_x) WPP_LOGCSTR(*(_x))
+#else
+# define WPP_LOGPCSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5, (_x)?((const char *)(*(_x)).Buffer):"NULL")
+#endif
+#endif
+
+
+#if !defined(WPP_LOGSTDSTR)
+#define WPP_LOGSTDSTR(_value)  WPP_LOGPAIR( (_value).size()+1, (_value).c_str() )
+#endif
+
+WPP_INLINE void WPP_SF_(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id,  0); }
+WPP_INLINE void WPP_SF_D(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1)  0); }
+WPP_INLINE void WPP_SF_DDD(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1, unsigned int _a2, unsigned int _a3)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1) WPP_LOGTYPEVAL(unsigned int,_a2) WPP_LOGTYPEVAL(unsigned int,_a3)  0); }
+WPP_INLINE void WPP_SF_L(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned long _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned long,_a1)  0); }
+WPP_INLINE void WPP_SF_Z(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1)  0); }
+WPP_INLINE void WPP_SF_Zq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1, const void* _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1) WPP_LOGTYPEVAL(const void*,_a2)  0); }
+WPP_INLINE void WPP_SF_ll(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, signed long _a1, signed long _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(signed long,_a1) WPP_LOGTYPEVAL(signed long,_a2)  0); }
+WPP_INLINE void WPP_SF_q(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1)  0); }
+WPP_INLINE void WPP_SF_qq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1, const void* _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1) WPP_LOGTYPEVAL(const void*,_a2)  0); }
+#ifdef WPP_DEBUG
+#define WPP_CALL_smbopen_c1002(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c1042(MSG,a10) ((WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c1071(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_smbopen_c1140(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_ll(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c1170(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_ll(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c1513(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c1682(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_smbopen_c1743(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c1746(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c187(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c190(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c2115(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c2278(MSG,a10) ((WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c2308(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_smbopen_c2380(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_ll(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c2410(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c2450(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c2452(MSG,a10,a11,a12) ((WPP_ENABLED()?WPP_SF_DDD(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12))) 
+#define WPP_CALL_smbopen_c2728(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c2882(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_smbopen_c2935(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c2938(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c3113(MSG,a10) ((WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c3127(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Zq(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c3148(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 44,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_smbopen_c3197(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 45,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c3200(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 46,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c3351(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 47,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_smbopen_c371(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c390(MSG,a10) ((WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c404(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Zq(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c434(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_smbopen_c477(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c480(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_smbopen_c503(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_smbopen_c830(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c850(MSG,a10) ((WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_smbopen_c864(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Zq(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#else
+#define WPP_CALL_smbopen_c1002(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c1042(MSG,a10) (WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c1071(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_smbopen_c1140(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_ll(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c1170(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_ll(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c1513(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c1682(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_smbopen_c1743(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c1746(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c187(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c190(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c2115(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c2278(MSG,a10) (WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c2308(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_smbopen_c2380(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_ll(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c2410(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c2450(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c2452(MSG,a10,a11,a12) (WPP_ENABLED()?WPP_SF_DDD(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0)
+#define WPP_CALL_smbopen_c2728(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c2882(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_smbopen_c2935(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c2938(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c3113(MSG,a10) (WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c3127(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Zq(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c3148(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 44,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_smbopen_c3197(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 45,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c3200(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 46,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c3351(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 47,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_smbopen_c371(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c390(MSG,a10) (WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c404(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Zq(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c434(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_smbopen_c477(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c480(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qq(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_smbopen_c503(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_smbopen_c830(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c850(MSG,a10) (WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_smbopen_c864(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Zq(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#endif
+
+// NoMsgArgs
+
+#undef DoTraceMessage
+#define DoTraceMessage WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint0
+#define SrvPrint0 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint1
+#define SrvPrint1 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint2
+#define SrvPrint2 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint3
+#define SrvPrint3 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint4
+#define SrvPrint4 WPP_ANNOTATE WPP_(CALL)
+#undef KdPrint
+#define KdPrint(ARGS) WPP_ANNOTATE WPP_(CALL) ARGS
+// MsgArgs
+
+#ifdef WPP_DEBUG
+#else
+#endif
+
+
+/// more stuff
+
+

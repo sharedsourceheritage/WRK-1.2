@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sysocmgr.res \
+    $(_OBJ_DIR)\i386\rsrcutil.obj \
+    $(_OBJ_DIR)\i386\setupdat.obj \
+    $(_OBJ_DIR)\i386\sysocmgr.obj \
+    $(_OBJ_DIR)\i386\wizard.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sysocmgr.res \
+    $(_OBJ_DIR)\ia64\rsrcutil.obj \
+    $(_OBJ_DIR)\ia64\setupdat.obj \
+    $(_OBJ_DIR)\ia64\sysocmgr.obj \
+    $(_OBJ_DIR)\ia64\wizard.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sysocmgr.res \
+    $(_OBJ_DIR)\amd64\rsrcutil.obj \
+    $(_OBJ_DIR)\amd64\setupdat.obj \
+    $(_OBJ_DIR)\amd64\sysocmgr.obj \
+    $(_OBJ_DIR)\amd64\wizard.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sysocmgr.res \
+    $(_OBJ_DIR)\arm\rsrcutil.obj \
+    $(_OBJ_DIR)\arm\setupdat.obj \
+    $(_OBJ_DIR)\arm\sysocmgr.obj \
+    $(_OBJ_DIR)\arm\wizard.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+

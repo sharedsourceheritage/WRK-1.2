@@ -1,10 +1,6 @@
 /*++
 
-Copyright (c) Microsoft Corporation. All rights reserved.
-
-You may only use this code if you agree to the terms of the Windows Research Kernel Source Code License agreement (see License.txt).
-If you do not agree to the terms, do not use the code.
-
+Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Module Name:
 
@@ -14,6 +10,12 @@ Abstract:
 
     This module contains the public header information (function prototypes,
     data and type declarations) for the Initialization Boot Video component.
+
+Author:
+
+    Erick Smith (ericks) 23-Mar-1998
+
+Revision History:
 
 --*/
 
@@ -40,19 +42,16 @@ VOID
     PUCHAR *Str
     );
 
-NTKERNELAPI
 VOID
 InbvNotifyDisplayOwnershipLost(
     INBV_RESET_DISPLAY_PARAMETERS ResetDisplayParameters
     );
 
-NTKERNELAPI
 VOID
 InbvInstallDisplayStringFilter(
     INBV_DISPLAY_STRING_FILTER DisplayStringFilter
     );
 
-NTKERNELAPI
 VOID
 InbvAcquireDisplayOwnership(
     VOID
@@ -64,7 +63,6 @@ InbvDriverInitialize(
     IN ULONG Count
     );
 
-NTKERNELAPI
 BOOLEAN
 InbvResetDisplay(
     );
@@ -76,7 +74,6 @@ InbvBitBlt(
     ULONG y
     );
 
-NTKERNELAPI
 VOID
 InbvSolidColorFill(
     ULONG x1,
@@ -86,7 +83,6 @@ InbvSolidColorFill(
     ULONG color
     );
 
-NTKERNELAPI
 BOOLEAN
 InbvDisplayString(
     PUCHAR Str
@@ -119,19 +115,16 @@ InbvSetProgressBarCoordinates(
     ULONG y
     );
 
-NTKERNELAPI
 VOID
 InbvEnableBootDriver(
     BOOLEAN bEnable
     );
 
-NTKERNELAPI
 BOOLEAN
 InbvEnableDisplayString(
     BOOLEAN bEnable
     );
 
-NTKERNELAPI
 BOOLEAN
 InbvIsBootDriverInstalled(
     VOID
@@ -177,13 +170,11 @@ InbvReleaseLock(
     VOID
     );
 
-NTKERNELAPI
 BOOLEAN
 InbvCheckDisplayOwnership(
     VOID
     );
 
-NTKERNELAPI
 VOID
 InbvSetScrollRegion(
     ULONG x1,
@@ -192,7 +183,6 @@ InbvSetScrollRegion(
     ULONG y2
     );
 
-NTKERNELAPI
 ULONG
 InbvSetTextColor(
     ULONG Color
@@ -255,4 +245,3 @@ InbvPortEnableFifo(
     );
     
 #endif
-

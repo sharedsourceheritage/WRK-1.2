@@ -1,0 +1,40 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\grovperf.res \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\grovperf.obj \
+    $(_OBJ_DIR)\i386\mutex.obj \
+    $(_OBJ_DIR)\i386\perfctrs.obj \
+    $(_OBJ_DIR)\i386\share.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\grovperf.res \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\grovperf.obj \
+    $(_OBJ_DIR)\ia64\mutex.obj \
+    $(_OBJ_DIR)\ia64\perfctrs.obj \
+    $(_OBJ_DIR)\ia64\share.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\grovperf.res \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\grovperf.obj \
+    $(_OBJ_DIR)\amd64\mutex.obj \
+    $(_OBJ_DIR)\amd64\perfctrs.obj \
+    $(_OBJ_DIR)\amd64\share.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\grovperf.res \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\grovperf.obj \
+    $(_OBJ_DIR)\arm\mutex.obj \
+    $(_OBJ_DIR)\arm\perfctrs.obj \
+    $(_OBJ_DIR)\arm\share.obj
+
+PASS0_ARM_OBJECTS=
+

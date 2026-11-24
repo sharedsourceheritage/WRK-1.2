@@ -1,0 +1,144 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cladmwiz.res \
+    $(_OBJ_DIR)\i386\app.obj \
+    $(_OBJ_DIR)\i386\arcreate.obj \
+    $(_OBJ_DIR)\i386\arname.obj \
+    $(_OBJ_DIR)\i386\artype.obj \
+    $(_OBJ_DIR)\i386\atlbasepropsheets.obj \
+    $(_OBJ_DIR)\i386\atlbasesheets.obj \
+    $(_OBJ_DIR)\i386\atlbasewizpages.obj \
+    $(_OBJ_DIR)\i386\atlbasewizs.obj \
+    $(_OBJ_DIR)\i386\atldbgwins.obj \
+    $(_OBJ_DIR)\i386\atlextdlls.obj \
+    $(_OBJ_DIR)\i386\atlutils.obj \
+    $(_OBJ_DIR)\i386\cladmwiz.obj \
+    $(_OBJ_DIR)\i386\clusappwiz.obj \
+    $(_OBJ_DIR)\i386\clusobjs.obj \
+    $(_OBJ_DIR)\i386\complete.obj \
+    $(_OBJ_DIR)\i386\entersubnet.obj \
+    $(_OBJ_DIR)\i386\excopers.obj \
+    $(_OBJ_DIR)\i386\grpadv.obj \
+    $(_OBJ_DIR)\i386\helpdata.obj \
+    $(_OBJ_DIR)\i386\proplists.obj \
+    $(_OBJ_DIR)\i386\resadv.obj \
+    $(_OBJ_DIR)\i386\tracetag.obj \
+    $(_OBJ_DIR)\i386\vsaccess.obj \
+    $(_OBJ_DIR)\i386\vsadv.obj \
+    $(_OBJ_DIR)\i386\vscreate.obj \
+    $(_OBJ_DIR)\i386\vsgroup.obj \
+    $(_OBJ_DIR)\i386\vsgrpname.obj \
+    $(_OBJ_DIR)\i386\welcome.obj \
+    $(_OBJ_DIR)\i386\wizobject.obj \
+    $(_OBJ_DIR)\i386\wizthread.obj \
+    $(_OBJ_DIR)\i386\workthreads.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cladmwiz.res \
+    $(_OBJ_DIR)\ia64\app.obj \
+    $(_OBJ_DIR)\ia64\arcreate.obj \
+    $(_OBJ_DIR)\ia64\arname.obj \
+    $(_OBJ_DIR)\ia64\artype.obj \
+    $(_OBJ_DIR)\ia64\atlbasepropsheets.obj \
+    $(_OBJ_DIR)\ia64\atlbasesheets.obj \
+    $(_OBJ_DIR)\ia64\atlbasewizpages.obj \
+    $(_OBJ_DIR)\ia64\atlbasewizs.obj \
+    $(_OBJ_DIR)\ia64\atldbgwins.obj \
+    $(_OBJ_DIR)\ia64\atlextdlls.obj \
+    $(_OBJ_DIR)\ia64\atlutils.obj \
+    $(_OBJ_DIR)\ia64\cladmwiz.obj \
+    $(_OBJ_DIR)\ia64\clusappwiz.obj \
+    $(_OBJ_DIR)\ia64\clusobjs.obj \
+    $(_OBJ_DIR)\ia64\complete.obj \
+    $(_OBJ_DIR)\ia64\entersubnet.obj \
+    $(_OBJ_DIR)\ia64\excopers.obj \
+    $(_OBJ_DIR)\ia64\grpadv.obj \
+    $(_OBJ_DIR)\ia64\helpdata.obj \
+    $(_OBJ_DIR)\ia64\proplists.obj \
+    $(_OBJ_DIR)\ia64\resadv.obj \
+    $(_OBJ_DIR)\ia64\tracetag.obj \
+    $(_OBJ_DIR)\ia64\vsaccess.obj \
+    $(_OBJ_DIR)\ia64\vsadv.obj \
+    $(_OBJ_DIR)\ia64\vscreate.obj \
+    $(_OBJ_DIR)\ia64\vsgroup.obj \
+    $(_OBJ_DIR)\ia64\vsgrpname.obj \
+    $(_OBJ_DIR)\ia64\welcome.obj \
+    $(_OBJ_DIR)\ia64\wizobject.obj \
+    $(_OBJ_DIR)\ia64\wizthread.obj \
+    $(_OBJ_DIR)\ia64\workthreads.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cladmwiz.res \
+    $(_OBJ_DIR)\amd64\app.obj \
+    $(_OBJ_DIR)\amd64\arcreate.obj \
+    $(_OBJ_DIR)\amd64\arname.obj \
+    $(_OBJ_DIR)\amd64\artype.obj \
+    $(_OBJ_DIR)\amd64\atlbasepropsheets.obj \
+    $(_OBJ_DIR)\amd64\atlbasesheets.obj \
+    $(_OBJ_DIR)\amd64\atlbasewizpages.obj \
+    $(_OBJ_DIR)\amd64\atlbasewizs.obj \
+    $(_OBJ_DIR)\amd64\atldbgwins.obj \
+    $(_OBJ_DIR)\amd64\atlextdlls.obj \
+    $(_OBJ_DIR)\amd64\atlutils.obj \
+    $(_OBJ_DIR)\amd64\cladmwiz.obj \
+    $(_OBJ_DIR)\amd64\clusappwiz.obj \
+    $(_OBJ_DIR)\amd64\clusobjs.obj \
+    $(_OBJ_DIR)\amd64\complete.obj \
+    $(_OBJ_DIR)\amd64\entersubnet.obj \
+    $(_OBJ_DIR)\amd64\excopers.obj \
+    $(_OBJ_DIR)\amd64\grpadv.obj \
+    $(_OBJ_DIR)\amd64\helpdata.obj \
+    $(_OBJ_DIR)\amd64\proplists.obj \
+    $(_OBJ_DIR)\amd64\resadv.obj \
+    $(_OBJ_DIR)\amd64\tracetag.obj \
+    $(_OBJ_DIR)\amd64\vsaccess.obj \
+    $(_OBJ_DIR)\amd64\vsadv.obj \
+    $(_OBJ_DIR)\amd64\vscreate.obj \
+    $(_OBJ_DIR)\amd64\vsgroup.obj \
+    $(_OBJ_DIR)\amd64\vsgrpname.obj \
+    $(_OBJ_DIR)\amd64\welcome.obj \
+    $(_OBJ_DIR)\amd64\wizobject.obj \
+    $(_OBJ_DIR)\amd64\wizthread.obj \
+    $(_OBJ_DIR)\amd64\workthreads.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cladmwiz.res \
+    $(_OBJ_DIR)\arm\app.obj \
+    $(_OBJ_DIR)\arm\arcreate.obj \
+    $(_OBJ_DIR)\arm\arname.obj \
+    $(_OBJ_DIR)\arm\artype.obj \
+    $(_OBJ_DIR)\arm\atlbasepropsheets.obj \
+    $(_OBJ_DIR)\arm\atlbasesheets.obj \
+    $(_OBJ_DIR)\arm\atlbasewizpages.obj \
+    $(_OBJ_DIR)\arm\atlbasewizs.obj \
+    $(_OBJ_DIR)\arm\atldbgwins.obj \
+    $(_OBJ_DIR)\arm\atlextdlls.obj \
+    $(_OBJ_DIR)\arm\atlutils.obj \
+    $(_OBJ_DIR)\arm\cladmwiz.obj \
+    $(_OBJ_DIR)\arm\clusappwiz.obj \
+    $(_OBJ_DIR)\arm\clusobjs.obj \
+    $(_OBJ_DIR)\arm\complete.obj \
+    $(_OBJ_DIR)\arm\entersubnet.obj \
+    $(_OBJ_DIR)\arm\excopers.obj \
+    $(_OBJ_DIR)\arm\grpadv.obj \
+    $(_OBJ_DIR)\arm\helpdata.obj \
+    $(_OBJ_DIR)\arm\proplists.obj \
+    $(_OBJ_DIR)\arm\resadv.obj \
+    $(_OBJ_DIR)\arm\tracetag.obj \
+    $(_OBJ_DIR)\arm\vsaccess.obj \
+    $(_OBJ_DIR)\arm\vsadv.obj \
+    $(_OBJ_DIR)\arm\vscreate.obj \
+    $(_OBJ_DIR)\arm\vsgroup.obj \
+    $(_OBJ_DIR)\arm\vsgrpname.obj \
+    $(_OBJ_DIR)\arm\welcome.obj \
+    $(_OBJ_DIR)\arm\wizobject.obj \
+    $(_OBJ_DIR)\arm\wizthread.obj \
+    $(_OBJ_DIR)\arm\workthreads.obj
+
+PASS0_ARM_OBJECTS=
+

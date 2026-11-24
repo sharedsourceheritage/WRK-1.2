@@ -1,0 +1,122 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\exsup.obj \
+    $(_OBJ_DIR)\i386\exsup2.obj \
+    $(_OBJ_DIR)\i386\exsup3.obj \
+    $(_OBJ_DIR)\i386\longjmp.obj \
+    $(_OBJ_DIR)\i386\setjmp.obj \
+    $(_OBJ_DIR)\i386\setjmp3.obj \
+    $(_OBJ_DIR)\i386\setjmpex.obj \
+    $(_OBJ_DIR)\i386\eh3valid.obj \
+    $(_OBJ_DIR)\i386\loadcfg.obj \
+    $(_OBJ_DIR)\i386\sehsupp.obj \
+    $(_OBJ_DIR)\i386\seccook.obj \
+    $(_OBJ_DIR)\i386\abs.obj \
+    $(_OBJ_DIR)\i386\bsearch.obj \
+    $(_OBJ_DIR)\i386\cmiscdat.obj \
+    $(_OBJ_DIR)\i386\ctype.obj \
+    $(_OBJ_DIR)\i386\div.obj \
+    $(_OBJ_DIR)\i386\ldiv.obj \
+    $(_OBJ_DIR)\i386\labs.obj \
+    $(_OBJ_DIR)\i386\lcnvinit.obj \
+    $(_OBJ_DIR)\i386\lconv.obj \
+    $(_OBJ_DIR)\i386\lfind.obj \
+    $(_OBJ_DIR)\i386\lsearch.obj \
+    $(_OBJ_DIR)\i386\makepath.obj \
+    $(_OBJ_DIR)\i386\nlsdata1.obj \
+    $(_OBJ_DIR)\i386\nlsdata2.obj \
+    $(_OBJ_DIR)\i386\nlsdata3.obj \
+    $(_OBJ_DIR)\i386\qsort.obj \
+    $(_OBJ_DIR)\i386\rand.obj \
+    $(_OBJ_DIR)\i386\rotl.obj \
+    $(_OBJ_DIR)\i386\rotr.obj \
+    $(_OBJ_DIR)\i386\setlocal.obj \
+    $(_OBJ_DIR)\i386\splitpat.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\abs.obj \
+    $(_OBJ_DIR)\ia64\bsearch.obj \
+    $(_OBJ_DIR)\ia64\cmiscdat.obj \
+    $(_OBJ_DIR)\ia64\ctype.obj \
+    $(_OBJ_DIR)\ia64\div.obj \
+    $(_OBJ_DIR)\ia64\ldiv.obj \
+    $(_OBJ_DIR)\ia64\labs.obj \
+    $(_OBJ_DIR)\ia64\lcnvinit.obj \
+    $(_OBJ_DIR)\ia64\lconv.obj \
+    $(_OBJ_DIR)\ia64\lfind.obj \
+    $(_OBJ_DIR)\ia64\lsearch.obj \
+    $(_OBJ_DIR)\ia64\makepath.obj \
+    $(_OBJ_DIR)\ia64\nlsdata1.obj \
+    $(_OBJ_DIR)\ia64\nlsdata2.obj \
+    $(_OBJ_DIR)\ia64\nlsdata3.obj \
+    $(_OBJ_DIR)\ia64\qsort.obj \
+    $(_OBJ_DIR)\ia64\rand.obj \
+    $(_OBJ_DIR)\ia64\rotl.obj \
+    $(_OBJ_DIR)\ia64\rotr.obj \
+    $(_OBJ_DIR)\ia64\setlocal.obj \
+    $(_OBJ_DIR)\ia64\splitpat.obj \
+    $(_OBJ_DIR)\ia64\cinitone.obj \
+    $(_OBJ_DIR)\ia64\jmpuwind.obj \
+    $(_OBJ_DIR)\ia64\longjmp.obj \
+    $(_OBJ_DIR)\ia64\miscs.obj \
+    $(_OBJ_DIR)\ia64\setjmp.obj \
+    $(_OBJ_DIR)\ia64\setjmpex.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\jmpuwind.obj \
+    $(_OBJ_DIR)\amd64\longjmp.obj \
+    $(_OBJ_DIR)\amd64\setjmp.obj \
+    $(_OBJ_DIR)\amd64\setjmpex.obj \
+    $(_OBJ_DIR)\amd64\chandler.obj \
+    $(_OBJ_DIR)\amd64\abs.obj \
+    $(_OBJ_DIR)\amd64\bsearch.obj \
+    $(_OBJ_DIR)\amd64\cmiscdat.obj \
+    $(_OBJ_DIR)\amd64\ctype.obj \
+    $(_OBJ_DIR)\amd64\div.obj \
+    $(_OBJ_DIR)\amd64\ldiv.obj \
+    $(_OBJ_DIR)\amd64\labs.obj \
+    $(_OBJ_DIR)\amd64\lcnvinit.obj \
+    $(_OBJ_DIR)\amd64\lconv.obj \
+    $(_OBJ_DIR)\amd64\lfind.obj \
+    $(_OBJ_DIR)\amd64\lsearch.obj \
+    $(_OBJ_DIR)\amd64\makepath.obj \
+    $(_OBJ_DIR)\amd64\nlsdata1.obj \
+    $(_OBJ_DIR)\amd64\nlsdata2.obj \
+    $(_OBJ_DIR)\amd64\nlsdata3.obj \
+    $(_OBJ_DIR)\amd64\qsort.obj \
+    $(_OBJ_DIR)\amd64\rand.obj \
+    $(_OBJ_DIR)\amd64\rotl.obj \
+    $(_OBJ_DIR)\amd64\rotr.obj \
+    $(_OBJ_DIR)\amd64\setlocal.obj \
+    $(_OBJ_DIR)\amd64\splitpat.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\abs.obj \
+    $(_OBJ_DIR)\arm\bsearch.obj \
+    $(_OBJ_DIR)\arm\cmiscdat.obj \
+    $(_OBJ_DIR)\arm\ctype.obj \
+    $(_OBJ_DIR)\arm\div.obj \
+    $(_OBJ_DIR)\arm\ldiv.obj \
+    $(_OBJ_DIR)\arm\labs.obj \
+    $(_OBJ_DIR)\arm\lcnvinit.obj \
+    $(_OBJ_DIR)\arm\lconv.obj \
+    $(_OBJ_DIR)\arm\lfind.obj \
+    $(_OBJ_DIR)\arm\lsearch.obj \
+    $(_OBJ_DIR)\arm\makepath.obj \
+    $(_OBJ_DIR)\arm\nlsdata1.obj \
+    $(_OBJ_DIR)\arm\nlsdata2.obj \
+    $(_OBJ_DIR)\arm\nlsdata3.obj \
+    $(_OBJ_DIR)\arm\qsort.obj \
+    $(_OBJ_DIR)\arm\rand.obj \
+    $(_OBJ_DIR)\arm\rotl.obj \
+    $(_OBJ_DIR)\arm\rotr.obj \
+    $(_OBJ_DIR)\arm\setlocal.obj \
+    $(_OBJ_DIR)\arm\splitpat.obj
+
+PASS0_ARM_OBJECTS=
+

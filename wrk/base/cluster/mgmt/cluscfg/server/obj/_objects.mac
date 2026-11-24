@@ -1,0 +1,108 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ccluscfgserver.obj \
+    $(_OBJ_DIR)\i386\ccluscfgnodeinfo.obj \
+    $(_OBJ_DIR)\i386\ccluscfgclusterinfo.obj \
+    $(_OBJ_DIR)\i386\cenumcluscfgmanagedresources.obj \
+    $(_OBJ_DIR)\i386\cphysicaldisk.obj \
+    $(_OBJ_DIR)\i386\cenumcluscfgnetworks.obj \
+    $(_OBJ_DIR)\i386\ccluscfgnetworkinfo.obj \
+    $(_OBJ_DIR)\i386\cenumphysicaldisks.obj \
+    $(_OBJ_DIR)\i386\cindexeddisk.obj \
+    $(_OBJ_DIR)\i386\ccluscfgcallback.obj \
+    $(_OBJ_DIR)\i386\ccluscfgipaddressinfo.obj \
+    $(_OBJ_DIR)\i386\cenumcluscfgipaddresses.obj \
+    $(_OBJ_DIR)\i386\wmihelpers.obj \
+    $(_OBJ_DIR)\i386\cclusproplist.obj \
+    $(_OBJ_DIR)\i386\ccluscfgpartitioninfo.obj \
+    $(_OBJ_DIR)\i386\cclusterutils.obj \
+    $(_OBJ_DIR)\i386\ccluscfgcapabilities.obj \
+    $(_OBJ_DIR)\i386\clocalquorum.obj \
+    $(_OBJ_DIR)\i386\cenumlocalquorum.obj \
+    $(_OBJ_DIR)\i386\cmajoritynodeset.obj \
+    $(_OBJ_DIR)\i386\cenummajoritynodeset.obj \
+    $(_OBJ_DIR)\i386\cunknownquorum.obj \
+    $(_OBJ_DIR)\i386\cenumunknownquorum.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ccluscfgserver.obj \
+    $(_OBJ_DIR)\ia64\ccluscfgnodeinfo.obj \
+    $(_OBJ_DIR)\ia64\ccluscfgclusterinfo.obj \
+    $(_OBJ_DIR)\ia64\cenumcluscfgmanagedresources.obj \
+    $(_OBJ_DIR)\ia64\cphysicaldisk.obj \
+    $(_OBJ_DIR)\ia64\cenumcluscfgnetworks.obj \
+    $(_OBJ_DIR)\ia64\ccluscfgnetworkinfo.obj \
+    $(_OBJ_DIR)\ia64\cenumphysicaldisks.obj \
+    $(_OBJ_DIR)\ia64\cindexeddisk.obj \
+    $(_OBJ_DIR)\ia64\ccluscfgcallback.obj \
+    $(_OBJ_DIR)\ia64\ccluscfgipaddressinfo.obj \
+    $(_OBJ_DIR)\ia64\cenumcluscfgipaddresses.obj \
+    $(_OBJ_DIR)\ia64\wmihelpers.obj \
+    $(_OBJ_DIR)\ia64\cclusproplist.obj \
+    $(_OBJ_DIR)\ia64\ccluscfgpartitioninfo.obj \
+    $(_OBJ_DIR)\ia64\cclusterutils.obj \
+    $(_OBJ_DIR)\ia64\ccluscfgcapabilities.obj \
+    $(_OBJ_DIR)\ia64\clocalquorum.obj \
+    $(_OBJ_DIR)\ia64\cenumlocalquorum.obj \
+    $(_OBJ_DIR)\ia64\cmajoritynodeset.obj \
+    $(_OBJ_DIR)\ia64\cenummajoritynodeset.obj \
+    $(_OBJ_DIR)\ia64\cunknownquorum.obj \
+    $(_OBJ_DIR)\ia64\cenumunknownquorum.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ccluscfgserver.obj \
+    $(_OBJ_DIR)\amd64\ccluscfgnodeinfo.obj \
+    $(_OBJ_DIR)\amd64\ccluscfgclusterinfo.obj \
+    $(_OBJ_DIR)\amd64\cenumcluscfgmanagedresources.obj \
+    $(_OBJ_DIR)\amd64\cphysicaldisk.obj \
+    $(_OBJ_DIR)\amd64\cenumcluscfgnetworks.obj \
+    $(_OBJ_DIR)\amd64\ccluscfgnetworkinfo.obj \
+    $(_OBJ_DIR)\amd64\cenumphysicaldisks.obj \
+    $(_OBJ_DIR)\amd64\cindexeddisk.obj \
+    $(_OBJ_DIR)\amd64\ccluscfgcallback.obj \
+    $(_OBJ_DIR)\amd64\ccluscfgipaddressinfo.obj \
+    $(_OBJ_DIR)\amd64\cenumcluscfgipaddresses.obj \
+    $(_OBJ_DIR)\amd64\wmihelpers.obj \
+    $(_OBJ_DIR)\amd64\cclusproplist.obj \
+    $(_OBJ_DIR)\amd64\ccluscfgpartitioninfo.obj \
+    $(_OBJ_DIR)\amd64\cclusterutils.obj \
+    $(_OBJ_DIR)\amd64\ccluscfgcapabilities.obj \
+    $(_OBJ_DIR)\amd64\clocalquorum.obj \
+    $(_OBJ_DIR)\amd64\cenumlocalquorum.obj \
+    $(_OBJ_DIR)\amd64\cmajoritynodeset.obj \
+    $(_OBJ_DIR)\amd64\cenummajoritynodeset.obj \
+    $(_OBJ_DIR)\amd64\cunknownquorum.obj \
+    $(_OBJ_DIR)\amd64\cenumunknownquorum.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ccluscfgserver.obj \
+    $(_OBJ_DIR)\arm\ccluscfgnodeinfo.obj \
+    $(_OBJ_DIR)\arm\ccluscfgclusterinfo.obj \
+    $(_OBJ_DIR)\arm\cenumcluscfgmanagedresources.obj \
+    $(_OBJ_DIR)\arm\cphysicaldisk.obj \
+    $(_OBJ_DIR)\arm\cenumcluscfgnetworks.obj \
+    $(_OBJ_DIR)\arm\ccluscfgnetworkinfo.obj \
+    $(_OBJ_DIR)\arm\cenumphysicaldisks.obj \
+    $(_OBJ_DIR)\arm\cindexeddisk.obj \
+    $(_OBJ_DIR)\arm\ccluscfgcallback.obj \
+    $(_OBJ_DIR)\arm\ccluscfgipaddressinfo.obj \
+    $(_OBJ_DIR)\arm\cenumcluscfgipaddresses.obj \
+    $(_OBJ_DIR)\arm\wmihelpers.obj \
+    $(_OBJ_DIR)\arm\cclusproplist.obj \
+    $(_OBJ_DIR)\arm\ccluscfgpartitioninfo.obj \
+    $(_OBJ_DIR)\arm\cclusterutils.obj \
+    $(_OBJ_DIR)\arm\ccluscfgcapabilities.obj \
+    $(_OBJ_DIR)\arm\clocalquorum.obj \
+    $(_OBJ_DIR)\arm\cenumlocalquorum.obj \
+    $(_OBJ_DIR)\arm\cmajoritynodeset.obj \
+    $(_OBJ_DIR)\arm\cenummajoritynodeset.obj \
+    $(_OBJ_DIR)\arm\cunknownquorum.obj \
+    $(_OBJ_DIR)\arm\cenumunknownquorum.obj
+
+PASS0_ARM_OBJECTS=
+

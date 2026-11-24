@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clusexts.res \
+    $(_OBJ_DIR)\i386\clusexts.obj \
+    $(_OBJ_DIR)\i386\omext.obj \
+    $(_OBJ_DIR)\i386\resext.obj \
+    $(_OBJ_DIR)\i386\leaksext.obj \
+    $(_OBJ_DIR)\i386\security.obj \
+    $(_OBJ_DIR)\i386\proplist.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clusexts.res \
+    $(_OBJ_DIR)\ia64\clusexts.obj \
+    $(_OBJ_DIR)\ia64\omext.obj \
+    $(_OBJ_DIR)\ia64\resext.obj \
+    $(_OBJ_DIR)\ia64\leaksext.obj \
+    $(_OBJ_DIR)\ia64\security.obj \
+    $(_OBJ_DIR)\ia64\proplist.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clusexts.res \
+    $(_OBJ_DIR)\amd64\clusexts.obj \
+    $(_OBJ_DIR)\amd64\omext.obj \
+    $(_OBJ_DIR)\amd64\resext.obj \
+    $(_OBJ_DIR)\amd64\leaksext.obj \
+    $(_OBJ_DIR)\amd64\security.obj \
+    $(_OBJ_DIR)\amd64\proplist.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clusexts.res \
+    $(_OBJ_DIR)\arm\clusexts.obj \
+    $(_OBJ_DIR)\arm\omext.obj \
+    $(_OBJ_DIR)\arm\resext.obj \
+    $(_OBJ_DIR)\arm\leaksext.obj \
+    $(_OBJ_DIR)\arm\security.obj \
+    $(_OBJ_DIR)\arm\proplist.obj
+
+PASS0_ARM_OBJECTS=
+

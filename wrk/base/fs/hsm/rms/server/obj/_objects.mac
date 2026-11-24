@@ -1,0 +1,100 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\rms.res \
+    $(_OBJ_DIR)\i386\rms.obj \
+    $(_OBJ_DIR)\i386\rmscartg.obj \
+    $(_OBJ_DIR)\i386\rmscelmt.obj \
+    $(_OBJ_DIR)\i386\rmschngr.obj \
+    $(_OBJ_DIR)\i386\rmsclien.obj \
+    $(_OBJ_DIR)\i386\rmsdrcls.obj \
+    $(_OBJ_DIR)\i386\rmsdrive.obj \
+    $(_OBJ_DIR)\i386\rmsdvice.obj \
+    $(_OBJ_DIR)\i386\rmsiport.obj \
+    $(_OBJ_DIR)\i386\rmslibry.obj \
+    $(_OBJ_DIR)\i386\rmslocat.obj \
+    $(_OBJ_DIR)\i386\rmsobjct.obj \
+    $(_OBJ_DIR)\i386\rmspartn.obj \
+    $(_OBJ_DIR)\i386\rmsreqst.obj \
+    $(_OBJ_DIR)\i386\rmsservr.obj \
+    $(_OBJ_DIR)\i386\rmssinfo.obj \
+    $(_OBJ_DIR)\i386\rmssslot.obj \
+    $(_OBJ_DIR)\i386\rmsmdset.obj \
+    $(_OBJ_DIR)\i386\rmsntms.obj \
+    $(_OBJ_DIR)\i386\stdafx.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\rms.res \
+    $(_OBJ_DIR)\ia64\rms.obj \
+    $(_OBJ_DIR)\ia64\rmscartg.obj \
+    $(_OBJ_DIR)\ia64\rmscelmt.obj \
+    $(_OBJ_DIR)\ia64\rmschngr.obj \
+    $(_OBJ_DIR)\ia64\rmsclien.obj \
+    $(_OBJ_DIR)\ia64\rmsdrcls.obj \
+    $(_OBJ_DIR)\ia64\rmsdrive.obj \
+    $(_OBJ_DIR)\ia64\rmsdvice.obj \
+    $(_OBJ_DIR)\ia64\rmsiport.obj \
+    $(_OBJ_DIR)\ia64\rmslibry.obj \
+    $(_OBJ_DIR)\ia64\rmslocat.obj \
+    $(_OBJ_DIR)\ia64\rmsobjct.obj \
+    $(_OBJ_DIR)\ia64\rmspartn.obj \
+    $(_OBJ_DIR)\ia64\rmsreqst.obj \
+    $(_OBJ_DIR)\ia64\rmsservr.obj \
+    $(_OBJ_DIR)\ia64\rmssinfo.obj \
+    $(_OBJ_DIR)\ia64\rmssslot.obj \
+    $(_OBJ_DIR)\ia64\rmsmdset.obj \
+    $(_OBJ_DIR)\ia64\rmsntms.obj \
+    $(_OBJ_DIR)\ia64\stdafx.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\rms.res \
+    $(_OBJ_DIR)\amd64\rms.obj \
+    $(_OBJ_DIR)\amd64\rmscartg.obj \
+    $(_OBJ_DIR)\amd64\rmscelmt.obj \
+    $(_OBJ_DIR)\amd64\rmschngr.obj \
+    $(_OBJ_DIR)\amd64\rmsclien.obj \
+    $(_OBJ_DIR)\amd64\rmsdrcls.obj \
+    $(_OBJ_DIR)\amd64\rmsdrive.obj \
+    $(_OBJ_DIR)\amd64\rmsdvice.obj \
+    $(_OBJ_DIR)\amd64\rmsiport.obj \
+    $(_OBJ_DIR)\amd64\rmslibry.obj \
+    $(_OBJ_DIR)\amd64\rmslocat.obj \
+    $(_OBJ_DIR)\amd64\rmsobjct.obj \
+    $(_OBJ_DIR)\amd64\rmspartn.obj \
+    $(_OBJ_DIR)\amd64\rmsreqst.obj \
+    $(_OBJ_DIR)\amd64\rmsservr.obj \
+    $(_OBJ_DIR)\amd64\rmssinfo.obj \
+    $(_OBJ_DIR)\amd64\rmssslot.obj \
+    $(_OBJ_DIR)\amd64\rmsmdset.obj \
+    $(_OBJ_DIR)\amd64\rmsntms.obj \
+    $(_OBJ_DIR)\amd64\stdafx.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\rms.res \
+    $(_OBJ_DIR)\arm\rms.obj \
+    $(_OBJ_DIR)\arm\rmscartg.obj \
+    $(_OBJ_DIR)\arm\rmscelmt.obj \
+    $(_OBJ_DIR)\arm\rmschngr.obj \
+    $(_OBJ_DIR)\arm\rmsclien.obj \
+    $(_OBJ_DIR)\arm\rmsdrcls.obj \
+    $(_OBJ_DIR)\arm\rmsdrive.obj \
+    $(_OBJ_DIR)\arm\rmsdvice.obj \
+    $(_OBJ_DIR)\arm\rmsiport.obj \
+    $(_OBJ_DIR)\arm\rmslibry.obj \
+    $(_OBJ_DIR)\arm\rmslocat.obj \
+    $(_OBJ_DIR)\arm\rmsobjct.obj \
+    $(_OBJ_DIR)\arm\rmspartn.obj \
+    $(_OBJ_DIR)\arm\rmsreqst.obj \
+    $(_OBJ_DIR)\arm\rmsservr.obj \
+    $(_OBJ_DIR)\arm\rmssinfo.obj \
+    $(_OBJ_DIR)\arm\rmssslot.obj \
+    $(_OBJ_DIR)\arm\rmsmdset.obj \
+    $(_OBJ_DIR)\arm\rmsntms.obj \
+    $(_OBJ_DIR)\arm\stdafx.obj
+
+PASS0_ARM_OBJECTS=
+

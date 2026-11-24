@@ -1,0 +1,116 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\backpack.obj \
+    $(_OBJ_DIR)\i386\cachesup.obj \
+    $(_OBJ_DIR)\i386\cancel.obj \
+    $(_OBJ_DIR)\i386\cleanup.obj \
+    $(_OBJ_DIR)\i386\close.obj \
+    $(_OBJ_DIR)\i386\create.obj \
+    $(_OBJ_DIR)\i386\devctrl.obj \
+    $(_OBJ_DIR)\i386\dirctrl.obj \
+    $(_OBJ_DIR)\i386\ea.obj \
+    $(_OBJ_DIR)\i386\fileinfo.obj \
+    $(_OBJ_DIR)\i386\flush.obj \
+    $(_OBJ_DIR)\i386\fsctrl.obj \
+    $(_OBJ_DIR)\i386\lockctrl.obj \
+    $(_OBJ_DIR)\i386\minirdr.obj \
+    $(_OBJ_DIR)\i386\ntexcept.obj \
+    $(_OBJ_DIR)\i386\ntdevfcb.obj \
+    $(_OBJ_DIR)\i386\nterrlog.obj \
+    $(_OBJ_DIR)\i386\ntfsd.obj \
+    $(_OBJ_DIR)\i386\ntfsp.obj \
+    $(_OBJ_DIR)\i386\ntinit.obj \
+    $(_OBJ_DIR)\i386\ntfastio.obj \
+    $(_OBJ_DIR)\i386\read.obj \
+    $(_OBJ_DIR)\i386\strtstop.obj \
+    $(_OBJ_DIR)\i386\volinfo.obj \
+    $(_OBJ_DIR)\i386\write.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\backpack.obj \
+    $(_OBJ_DIR)\ia64\cachesup.obj \
+    $(_OBJ_DIR)\ia64\cancel.obj \
+    $(_OBJ_DIR)\ia64\cleanup.obj \
+    $(_OBJ_DIR)\ia64\close.obj \
+    $(_OBJ_DIR)\ia64\create.obj \
+    $(_OBJ_DIR)\ia64\devctrl.obj \
+    $(_OBJ_DIR)\ia64\dirctrl.obj \
+    $(_OBJ_DIR)\ia64\ea.obj \
+    $(_OBJ_DIR)\ia64\fileinfo.obj \
+    $(_OBJ_DIR)\ia64\flush.obj \
+    $(_OBJ_DIR)\ia64\fsctrl.obj \
+    $(_OBJ_DIR)\ia64\lockctrl.obj \
+    $(_OBJ_DIR)\ia64\minirdr.obj \
+    $(_OBJ_DIR)\ia64\ntexcept.obj \
+    $(_OBJ_DIR)\ia64\ntdevfcb.obj \
+    $(_OBJ_DIR)\ia64\nterrlog.obj \
+    $(_OBJ_DIR)\ia64\ntfsd.obj \
+    $(_OBJ_DIR)\ia64\ntfsp.obj \
+    $(_OBJ_DIR)\ia64\ntinit.obj \
+    $(_OBJ_DIR)\ia64\ntfastio.obj \
+    $(_OBJ_DIR)\ia64\read.obj \
+    $(_OBJ_DIR)\ia64\strtstop.obj \
+    $(_OBJ_DIR)\ia64\volinfo.obj \
+    $(_OBJ_DIR)\ia64\write.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\backpack.obj \
+    $(_OBJ_DIR)\amd64\cachesup.obj \
+    $(_OBJ_DIR)\amd64\cancel.obj \
+    $(_OBJ_DIR)\amd64\cleanup.obj \
+    $(_OBJ_DIR)\amd64\close.obj \
+    $(_OBJ_DIR)\amd64\create.obj \
+    $(_OBJ_DIR)\amd64\devctrl.obj \
+    $(_OBJ_DIR)\amd64\dirctrl.obj \
+    $(_OBJ_DIR)\amd64\ea.obj \
+    $(_OBJ_DIR)\amd64\fileinfo.obj \
+    $(_OBJ_DIR)\amd64\flush.obj \
+    $(_OBJ_DIR)\amd64\fsctrl.obj \
+    $(_OBJ_DIR)\amd64\lockctrl.obj \
+    $(_OBJ_DIR)\amd64\minirdr.obj \
+    $(_OBJ_DIR)\amd64\ntexcept.obj \
+    $(_OBJ_DIR)\amd64\ntdevfcb.obj \
+    $(_OBJ_DIR)\amd64\nterrlog.obj \
+    $(_OBJ_DIR)\amd64\ntfsd.obj \
+    $(_OBJ_DIR)\amd64\ntfsp.obj \
+    $(_OBJ_DIR)\amd64\ntinit.obj \
+    $(_OBJ_DIR)\amd64\ntfastio.obj \
+    $(_OBJ_DIR)\amd64\read.obj \
+    $(_OBJ_DIR)\amd64\strtstop.obj \
+    $(_OBJ_DIR)\amd64\volinfo.obj \
+    $(_OBJ_DIR)\amd64\write.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\backpack.obj \
+    $(_OBJ_DIR)\arm\cachesup.obj \
+    $(_OBJ_DIR)\arm\cancel.obj \
+    $(_OBJ_DIR)\arm\cleanup.obj \
+    $(_OBJ_DIR)\arm\close.obj \
+    $(_OBJ_DIR)\arm\create.obj \
+    $(_OBJ_DIR)\arm\devctrl.obj \
+    $(_OBJ_DIR)\arm\dirctrl.obj \
+    $(_OBJ_DIR)\arm\ea.obj \
+    $(_OBJ_DIR)\arm\fileinfo.obj \
+    $(_OBJ_DIR)\arm\flush.obj \
+    $(_OBJ_DIR)\arm\fsctrl.obj \
+    $(_OBJ_DIR)\arm\lockctrl.obj \
+    $(_OBJ_DIR)\arm\minirdr.obj \
+    $(_OBJ_DIR)\arm\ntexcept.obj \
+    $(_OBJ_DIR)\arm\ntdevfcb.obj \
+    $(_OBJ_DIR)\arm\nterrlog.obj \
+    $(_OBJ_DIR)\arm\ntfsd.obj \
+    $(_OBJ_DIR)\arm\ntfsp.obj \
+    $(_OBJ_DIR)\arm\ntinit.obj \
+    $(_OBJ_DIR)\arm\ntfastio.obj \
+    $(_OBJ_DIR)\arm\read.obj \
+    $(_OBJ_DIR)\arm\strtstop.obj \
+    $(_OBJ_DIR)\arm\volinfo.obj \
+    $(_OBJ_DIR)\arm\write.obj
+
+PASS0_ARM_OBJECTS=
+

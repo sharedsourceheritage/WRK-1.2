@@ -1,0 +1,124 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\align.obj \
+    $(_OBJ_DIR)\i386\calloc.obj \
+    $(_OBJ_DIR)\i386\crtheap.obj \
+    $(_OBJ_DIR)\i386\expand.obj \
+    $(_OBJ_DIR)\i386\free.obj \
+    $(_OBJ_DIR)\i386\heapadd.obj \
+    $(_OBJ_DIR)\i386\heapchk.obj \
+    $(_OBJ_DIR)\i386\heapinit.obj \
+    $(_OBJ_DIR)\i386\heapmin.obj \
+    $(_OBJ_DIR)\i386\heapused.obj \
+    $(_OBJ_DIR)\i386\heapwalk.obj \
+    $(_OBJ_DIR)\i386\hpabort.obj \
+    $(_OBJ_DIR)\i386\malloc.obj \
+    $(_OBJ_DIR)\i386\msize.obj \
+    $(_OBJ_DIR)\i386\oldnew.obj \
+    $(_OBJ_DIR)\i386\_newmode.obj \
+    $(_OBJ_DIR)\i386\realloc.obj \
+    $(_OBJ_DIR)\i386\resetstk.obj \
+    $(_OBJ_DIR)\i386\sbheap.obj \
+    $(_OBJ_DIR)\i386\badalloc.obj \
+    $(_OBJ_DIR)\i386\delete.obj \
+    $(_OBJ_DIR)\i386\delete2.obj \
+    $(_OBJ_DIR)\i386\handler.obj \
+    $(_OBJ_DIR)\i386\new.obj \
+    $(_OBJ_DIR)\i386\new2.obj \
+    $(_OBJ_DIR)\i386\new_mode.obj \
+    $(_OBJ_DIR)\i386\setnewh.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\align.obj \
+    $(_OBJ_DIR)\ia64\calloc.obj \
+    $(_OBJ_DIR)\ia64\crtheap.obj \
+    $(_OBJ_DIR)\ia64\expand.obj \
+    $(_OBJ_DIR)\ia64\free.obj \
+    $(_OBJ_DIR)\ia64\heapadd.obj \
+    $(_OBJ_DIR)\ia64\heapchk.obj \
+    $(_OBJ_DIR)\ia64\heapinit.obj \
+    $(_OBJ_DIR)\ia64\heapmin.obj \
+    $(_OBJ_DIR)\ia64\heapused.obj \
+    $(_OBJ_DIR)\ia64\heapwalk.obj \
+    $(_OBJ_DIR)\ia64\hpabort.obj \
+    $(_OBJ_DIR)\ia64\malloc.obj \
+    $(_OBJ_DIR)\ia64\msize.obj \
+    $(_OBJ_DIR)\ia64\oldnew.obj \
+    $(_OBJ_DIR)\ia64\_newmode.obj \
+    $(_OBJ_DIR)\ia64\realloc.obj \
+    $(_OBJ_DIR)\ia64\resetstk.obj \
+    $(_OBJ_DIR)\ia64\sbheap.obj \
+    $(_OBJ_DIR)\ia64\badalloc.obj \
+    $(_OBJ_DIR)\ia64\delete.obj \
+    $(_OBJ_DIR)\ia64\delete2.obj \
+    $(_OBJ_DIR)\ia64\handler.obj \
+    $(_OBJ_DIR)\ia64\new.obj \
+    $(_OBJ_DIR)\ia64\new2.obj \
+    $(_OBJ_DIR)\ia64\new_mode.obj \
+    $(_OBJ_DIR)\ia64\setnewh.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\align.obj \
+    $(_OBJ_DIR)\amd64\calloc.obj \
+    $(_OBJ_DIR)\amd64\crtheap.obj \
+    $(_OBJ_DIR)\amd64\expand.obj \
+    $(_OBJ_DIR)\amd64\free.obj \
+    $(_OBJ_DIR)\amd64\heapadd.obj \
+    $(_OBJ_DIR)\amd64\heapchk.obj \
+    $(_OBJ_DIR)\amd64\heapinit.obj \
+    $(_OBJ_DIR)\amd64\heapmin.obj \
+    $(_OBJ_DIR)\amd64\heapused.obj \
+    $(_OBJ_DIR)\amd64\heapwalk.obj \
+    $(_OBJ_DIR)\amd64\hpabort.obj \
+    $(_OBJ_DIR)\amd64\malloc.obj \
+    $(_OBJ_DIR)\amd64\msize.obj \
+    $(_OBJ_DIR)\amd64\oldnew.obj \
+    $(_OBJ_DIR)\amd64\_newmode.obj \
+    $(_OBJ_DIR)\amd64\realloc.obj \
+    $(_OBJ_DIR)\amd64\resetstk.obj \
+    $(_OBJ_DIR)\amd64\sbheap.obj \
+    $(_OBJ_DIR)\amd64\badalloc.obj \
+    $(_OBJ_DIR)\amd64\delete.obj \
+    $(_OBJ_DIR)\amd64\delete2.obj \
+    $(_OBJ_DIR)\amd64\handler.obj \
+    $(_OBJ_DIR)\amd64\new.obj \
+    $(_OBJ_DIR)\amd64\new2.obj \
+    $(_OBJ_DIR)\amd64\new_mode.obj \
+    $(_OBJ_DIR)\amd64\setnewh.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\align.obj \
+    $(_OBJ_DIR)\arm\calloc.obj \
+    $(_OBJ_DIR)\arm\crtheap.obj \
+    $(_OBJ_DIR)\arm\expand.obj \
+    $(_OBJ_DIR)\arm\free.obj \
+    $(_OBJ_DIR)\arm\heapadd.obj \
+    $(_OBJ_DIR)\arm\heapchk.obj \
+    $(_OBJ_DIR)\arm\heapinit.obj \
+    $(_OBJ_DIR)\arm\heapmin.obj \
+    $(_OBJ_DIR)\arm\heapused.obj \
+    $(_OBJ_DIR)\arm\heapwalk.obj \
+    $(_OBJ_DIR)\arm\hpabort.obj \
+    $(_OBJ_DIR)\arm\malloc.obj \
+    $(_OBJ_DIR)\arm\msize.obj \
+    $(_OBJ_DIR)\arm\oldnew.obj \
+    $(_OBJ_DIR)\arm\_newmode.obj \
+    $(_OBJ_DIR)\arm\realloc.obj \
+    $(_OBJ_DIR)\arm\resetstk.obj \
+    $(_OBJ_DIR)\arm\sbheap.obj \
+    $(_OBJ_DIR)\arm\badalloc.obj \
+    $(_OBJ_DIR)\arm\delete.obj \
+    $(_OBJ_DIR)\arm\delete2.obj \
+    $(_OBJ_DIR)\arm\handler.obj \
+    $(_OBJ_DIR)\arm\new.obj \
+    $(_OBJ_DIR)\arm\new2.obj \
+    $(_OBJ_DIR)\arm\new_mode.obj \
+    $(_OBJ_DIR)\arm\setnewh.obj
+
+PASS0_ARM_OBJECTS=
+

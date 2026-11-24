@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\message.res
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\grovmsg.h \
+    $(MC_SOURCEDIR)\grovmsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\message.res
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\grovmsg.h \
+    $(MC_SOURCEDIR)\grovmsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\message.res
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\grovmsg.h \
+    $(MC_SOURCEDIR)\grovmsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\message.res
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\grovmsg.h \
+    $(MC_SOURCEDIR)\grovmsg.rc
+

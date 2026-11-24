@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\stampinf.res \
+    $(_OBJ_DIR)\i386\stampinf.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\stampinf.res \
+    $(_OBJ_DIR)\ia64\stampinf.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\stampinf.res \
+    $(_OBJ_DIR)\amd64\stampinf.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\stampinf.res \
+    $(_OBJ_DIR)\arm\stampinf.obj
+
+PASS0_ARM_OBJECTS=
+

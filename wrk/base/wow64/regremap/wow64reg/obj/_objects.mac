@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\regmisc.obj \
+    $(_OBJ_DIR)\i386\wowhndl.obj \
+    $(_OBJ_DIR)\i386\regremap.obj \
+    $(_OBJ_DIR)\i386\wow64reg.obj \
+    $(_OBJ_DIR)\i386\refhlpr.obj \
+    $(_OBJ_DIR)\i386\cleanup.obj \
+    $(_OBJ_DIR)\i386\reflectr.obj \
+    $(_OBJ_DIR)\i386\wow64ipc.obj \
+    $(_OBJ_DIR)\i386\typelib.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\regmisc.obj \
+    $(_OBJ_DIR)\ia64\wowhndl.obj \
+    $(_OBJ_DIR)\ia64\regremap.obj \
+    $(_OBJ_DIR)\ia64\wow64reg.obj \
+    $(_OBJ_DIR)\ia64\refhlpr.obj \
+    $(_OBJ_DIR)\ia64\cleanup.obj \
+    $(_OBJ_DIR)\ia64\reflectr.obj \
+    $(_OBJ_DIR)\ia64\wow64ipc.obj \
+    $(_OBJ_DIR)\ia64\typelib.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\regmisc.obj \
+    $(_OBJ_DIR)\amd64\wowhndl.obj \
+    $(_OBJ_DIR)\amd64\regremap.obj \
+    $(_OBJ_DIR)\amd64\wow64reg.obj \
+    $(_OBJ_DIR)\amd64\refhlpr.obj \
+    $(_OBJ_DIR)\amd64\cleanup.obj \
+    $(_OBJ_DIR)\amd64\reflectr.obj \
+    $(_OBJ_DIR)\amd64\wow64ipc.obj \
+    $(_OBJ_DIR)\amd64\typelib.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\regmisc.obj \
+    $(_OBJ_DIR)\arm\wowhndl.obj \
+    $(_OBJ_DIR)\arm\regremap.obj \
+    $(_OBJ_DIR)\arm\wow64reg.obj \
+    $(_OBJ_DIR)\arm\refhlpr.obj \
+    $(_OBJ_DIR)\arm\cleanup.obj \
+    $(_OBJ_DIR)\arm\reflectr.obj \
+    $(_OBJ_DIR)\arm\wow64ipc.obj \
+    $(_OBJ_DIR)\arm\typelib.obj
+
+PASS0_ARM_OBJECTS=
+

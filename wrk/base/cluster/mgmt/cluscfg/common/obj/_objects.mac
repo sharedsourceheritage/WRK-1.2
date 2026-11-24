@@ -1,0 +1,40 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clusterutils.obj \
+    $(_OBJ_DIR)\i386\ccluscfgcredentials.obj \
+    $(_OBJ_DIR)\i386\statusreports.obj \
+    $(_OBJ_DIR)\i386\criticalsection.obj \
+    $(_OBJ_DIR)\i386\encryptedbstr.obj \
+    $(_OBJ_DIR)\i386\nameutil.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clusterutils.obj \
+    $(_OBJ_DIR)\ia64\ccluscfgcredentials.obj \
+    $(_OBJ_DIR)\ia64\statusreports.obj \
+    $(_OBJ_DIR)\ia64\criticalsection.obj \
+    $(_OBJ_DIR)\ia64\encryptedbstr.obj \
+    $(_OBJ_DIR)\ia64\nameutil.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clusterutils.obj \
+    $(_OBJ_DIR)\amd64\ccluscfgcredentials.obj \
+    $(_OBJ_DIR)\amd64\statusreports.obj \
+    $(_OBJ_DIR)\amd64\criticalsection.obj \
+    $(_OBJ_DIR)\amd64\encryptedbstr.obj \
+    $(_OBJ_DIR)\amd64\nameutil.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clusterutils.obj \
+    $(_OBJ_DIR)\arm\ccluscfgcredentials.obj \
+    $(_OBJ_DIR)\arm\statusreports.obj \
+    $(_OBJ_DIR)\arm\criticalsection.obj \
+    $(_OBJ_DIR)\arm\encryptedbstr.obj \
+    $(_OBJ_DIR)\arm\nameutil.obj
+
+PASS0_ARM_OBJECTS=
+

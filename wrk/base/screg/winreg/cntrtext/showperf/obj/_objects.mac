@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\showperf.res \
+    $(_OBJ_DIR)\i386\showperf.obj \
+    $(_OBJ_DIR)\i386\mainwnd.obj \
+    $(_OBJ_DIR)\i386\maindlg.obj \
+    $(_OBJ_DIR)\i386\perfdata.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\showperf.res \
+    $(_OBJ_DIR)\ia64\showperf.obj \
+    $(_OBJ_DIR)\ia64\mainwnd.obj \
+    $(_OBJ_DIR)\ia64\maindlg.obj \
+    $(_OBJ_DIR)\ia64\perfdata.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\showperf.res \
+    $(_OBJ_DIR)\amd64\showperf.obj \
+    $(_OBJ_DIR)\amd64\mainwnd.obj \
+    $(_OBJ_DIR)\amd64\maindlg.obj \
+    $(_OBJ_DIR)\amd64\perfdata.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\showperf.res \
+    $(_OBJ_DIR)\arm\showperf.obj \
+    $(_OBJ_DIR)\arm\mainwnd.obj \
+    $(_OBJ_DIR)\arm\maindlg.obj \
+    $(_OBJ_DIR)\arm\perfdata.obj
+
+PASS0_ARM_OBJECTS=
+

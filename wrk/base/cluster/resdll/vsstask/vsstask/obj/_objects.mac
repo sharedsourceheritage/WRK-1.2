@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\vsstask.res \
+    $(_OBJ_DIR)\i386\vsstask.obj \
+    $(_OBJ_DIR)\i386\clres.obj \
+    $(_OBJ_DIR)\i386\cmgdcluscfginit.obj \
+    $(_OBJ_DIR)\i386\cmgdrestype.obj \
+    $(_OBJ_DIR)\i386\mgdresource.obj \
+    $(_OBJ_DIR)\i386\stringutils.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\mgdresource.h
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\vsstask.res \
+    $(_OBJ_DIR)\ia64\vsstask.obj \
+    $(_OBJ_DIR)\ia64\clres.obj \
+    $(_OBJ_DIR)\ia64\cmgdcluscfginit.obj \
+    $(_OBJ_DIR)\ia64\cmgdrestype.obj \
+    $(_OBJ_DIR)\ia64\mgdresource.obj \
+    $(_OBJ_DIR)\ia64\stringutils.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\mgdresource.h
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\vsstask.res \
+    $(_OBJ_DIR)\amd64\vsstask.obj \
+    $(_OBJ_DIR)\amd64\clres.obj \
+    $(_OBJ_DIR)\amd64\cmgdcluscfginit.obj \
+    $(_OBJ_DIR)\amd64\cmgdrestype.obj \
+    $(_OBJ_DIR)\amd64\mgdresource.obj \
+    $(_OBJ_DIR)\amd64\stringutils.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\mgdresource.h
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\vsstask.res \
+    $(_OBJ_DIR)\arm\vsstask.obj \
+    $(_OBJ_DIR)\arm\clres.obj \
+    $(_OBJ_DIR)\arm\cmgdcluscfginit.obj \
+    $(_OBJ_DIR)\arm\cmgdrestype.obj \
+    $(_OBJ_DIR)\arm\mgdresource.obj \
+    $(_OBJ_DIR)\arm\stringutils.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\mgdresource.h
+

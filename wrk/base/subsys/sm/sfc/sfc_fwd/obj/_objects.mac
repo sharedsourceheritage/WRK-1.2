@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sfc.res \
+    $(_OBJ_DIR)\i386\stub.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sfc.res \
+    $(_OBJ_DIR)\ia64\stub.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sfc.res \
+    $(_OBJ_DIR)\amd64\stub.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sfc.res \
+    $(_OBJ_DIR)\arm\stub.obj
+
+PASS0_ARM_OBJECTS=
+

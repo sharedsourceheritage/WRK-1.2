@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dmupdate.obj \
+    $(_OBJ_DIR)\i386\dminit.obj \
+    $(_OBJ_DIR)\i386\dmnotify.obj \
+    $(_OBJ_DIR)\i386\dmreg.obj \
+    $(_OBJ_DIR)\i386\dmsync.obj \
+    $(_OBJ_DIR)\i386\dmlog.obj \
+    $(_OBJ_DIR)\i386\dmlocal.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dmupdate.obj \
+    $(_OBJ_DIR)\ia64\dminit.obj \
+    $(_OBJ_DIR)\ia64\dmnotify.obj \
+    $(_OBJ_DIR)\ia64\dmreg.obj \
+    $(_OBJ_DIR)\ia64\dmsync.obj \
+    $(_OBJ_DIR)\ia64\dmlog.obj \
+    $(_OBJ_DIR)\ia64\dmlocal.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dmupdate.obj \
+    $(_OBJ_DIR)\amd64\dminit.obj \
+    $(_OBJ_DIR)\amd64\dmnotify.obj \
+    $(_OBJ_DIR)\amd64\dmreg.obj \
+    $(_OBJ_DIR)\amd64\dmsync.obj \
+    $(_OBJ_DIR)\amd64\dmlog.obj \
+    $(_OBJ_DIR)\amd64\dmlocal.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dmupdate.obj \
+    $(_OBJ_DIR)\arm\dminit.obj \
+    $(_OBJ_DIR)\arm\dmnotify.obj \
+    $(_OBJ_DIR)\arm\dmreg.obj \
+    $(_OBJ_DIR)\arm\dmsync.obj \
+    $(_OBJ_DIR)\arm\dmlog.obj \
+    $(_OBJ_DIR)\arm\dmlocal.obj
+
+PASS0_ARM_OBJECTS=
+

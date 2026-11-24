@@ -1,0 +1,40 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\devcon.res \
+    $(_OBJ_DIR)\i386\devcon.obj \
+    $(_OBJ_DIR)\i386\dump.obj \
+    $(_OBJ_DIR)\i386\cmds.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\devcon.res \
+    $(_OBJ_DIR)\ia64\devcon.obj \
+    $(_OBJ_DIR)\ia64\dump.obj \
+    $(_OBJ_DIR)\ia64\cmds.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\devcon.res \
+    $(_OBJ_DIR)\amd64\devcon.obj \
+    $(_OBJ_DIR)\amd64\dump.obj \
+    $(_OBJ_DIR)\amd64\cmds.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\devcon.res \
+    $(_OBJ_DIR)\arm\devcon.obj \
+    $(_OBJ_DIR)\arm\dump.obj \
+    $(_OBJ_DIR)\arm\cmds.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+

@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\winerror.res \
+    $(_OBJ_DIR)\i386\winerror.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\winerror.res \
+    $(_OBJ_DIR)\ia64\winerror.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\winerror.res \
+    $(_OBJ_DIR)\amd64\winerror.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\winerror.res \
+    $(_OBJ_DIR)\arm\winerror.obj
+
+PASS0_ARM_OBJECTS=
+

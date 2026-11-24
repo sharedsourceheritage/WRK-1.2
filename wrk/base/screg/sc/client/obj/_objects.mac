@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\svcctl_c.obj \
+    $(_OBJ_DIR)\i386\scapi.obj \
+    $(_OBJ_DIR)\i386\scwrap.obj \
+    $(_OBJ_DIR)\i386\scbind.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\svcctl_c.obj \
+    $(_OBJ_DIR)\ia64\scapi.obj \
+    $(_OBJ_DIR)\ia64\scwrap.obj \
+    $(_OBJ_DIR)\ia64\scbind.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\svcctl_c.obj \
+    $(_OBJ_DIR)\amd64\scapi.obj \
+    $(_OBJ_DIR)\amd64\scwrap.obj \
+    $(_OBJ_DIR)\amd64\scbind.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\svcctl_c.obj \
+    $(_OBJ_DIR)\arm\scapi.obj \
+    $(_OBJ_DIR)\arm\scwrap.obj \
+    $(_OBJ_DIR)\arm\scbind.obj
+
+PASS0_ARM_OBJECTS=
+

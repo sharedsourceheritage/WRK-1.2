@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cluscompresources.res \
+    $(_OBJ_DIR)\i386\cluscomp.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\dll.obj \
+    $(_OBJ_DIR)\i386\log.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cluscompresources.res \
+    $(_OBJ_DIR)\ia64\cluscomp.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\dll.obj \
+    $(_OBJ_DIR)\ia64\log.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cluscompresources.res \
+    $(_OBJ_DIR)\amd64\cluscomp.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\dll.obj \
+    $(_OBJ_DIR)\amd64\log.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cluscompresources.res \
+    $(_OBJ_DIR)\arm\cluscomp.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\dll.obj \
+    $(_OBJ_DIR)\arm\log.obj
+
+PASS0_ARM_OBJECTS=
+

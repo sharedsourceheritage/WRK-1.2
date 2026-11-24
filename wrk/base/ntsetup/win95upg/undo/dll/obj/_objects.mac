@@ -1,0 +1,27 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\undo.res \
+    $(_OBJ_DIR)\i386\interface.obj \
+    $(_OBJ_DIR)\i386\uninst.obj \
+    $(_OBJ_DIR)\i386\cleanup.obj \
+    $(_OBJ_DIR)\i386\validate.obj \
+    $(_OBJ_DIR)\i386\alert.obj \
+    $(_OBJ_DIR)\i386\com.obj \
+    $(_OBJ_DIR)\i386\diskcleaner.obj \
+    $(_OBJ_DIR)\i386\register.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\memmsg.h \
+    $(MC_SOURCEDIR)\memmsg.rc
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

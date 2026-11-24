@@ -1,0 +1,44 @@
+386_OBJECTS=
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\hsmeng.h \
+    $(PASS0_HEADERDIR)\metadef.h \
+    $(PASS0_HEADERDIR)\metaint.h \
+    $(PASS0_HEADERDIR)\metalib.h \
+    $(PASS0_HEADERDIR)\tskdef.h \
+    $(PASS0_HEADERDIR)\tskint.h \
+    $(PASS0_HEADERDIR)\tsklib.h
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\hsmeng.h \
+    $(PASS0_HEADERDIR)\metadef.h \
+    $(PASS0_HEADERDIR)\metaint.h \
+    $(PASS0_HEADERDIR)\metalib.h \
+    $(PASS0_HEADERDIR)\tskdef.h \
+    $(PASS0_HEADERDIR)\tskint.h \
+    $(PASS0_HEADERDIR)\tsklib.h
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\hsmeng.h \
+    $(PASS0_HEADERDIR)\metadef.h \
+    $(PASS0_HEADERDIR)\metaint.h \
+    $(PASS0_HEADERDIR)\metalib.h \
+    $(PASS0_HEADERDIR)\tskdef.h \
+    $(PASS0_HEADERDIR)\tskint.h \
+    $(PASS0_HEADERDIR)\tsklib.h
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\hsmeng.h \
+    $(PASS0_HEADERDIR)\metadef.h \
+    $(PASS0_HEADERDIR)\metaint.h \
+    $(PASS0_HEADERDIR)\metalib.h \
+    $(PASS0_HEADERDIR)\tskdef.h \
+    $(PASS0_HEADERDIR)\tskint.h \
+    $(PASS0_HEADERDIR)\tsklib.h
+

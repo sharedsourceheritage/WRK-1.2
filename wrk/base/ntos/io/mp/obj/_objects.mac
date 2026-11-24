@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ioguid.obj \
+    $(_OBJ_DIR)\i386\iovutil.obj \
+    $(_OBJ_DIR)\i386\netboot.obj \
+    $(_OBJ_DIR)\i386\sessnirp.obj \
+    $(_OBJ_DIR)\i386\trackirp.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ioguid.obj \
+    $(_OBJ_DIR)\ia64\iovutil.obj \
+    $(_OBJ_DIR)\ia64\netboot.obj \
+    $(_OBJ_DIR)\ia64\sessnirp.obj \
+    $(_OBJ_DIR)\ia64\trackirp.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ioguid.obj \
+    $(_OBJ_DIR)\amd64\iovutil.obj \
+    $(_OBJ_DIR)\amd64\netboot.obj \
+    $(_OBJ_DIR)\amd64\sessnirp.obj \
+    $(_OBJ_DIR)\amd64\trackirp.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ioguid.obj \
+    $(_OBJ_DIR)\arm\iovutil.obj \
+    $(_OBJ_DIR)\arm\netboot.obj \
+    $(_OBJ_DIR)\arm\sessnirp.obj \
+    $(_OBJ_DIR)\arm\trackirp.obj
+
+PASS0_ARM_OBJECTS=
+

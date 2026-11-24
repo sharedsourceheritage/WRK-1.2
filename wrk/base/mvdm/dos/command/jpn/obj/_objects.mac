@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cmd.obj \
+    $(_OBJ_DIR)\i386\cmddata.obj \
+    $(_OBJ_DIR)\i386\cmddisp.obj \
+    $(_OBJ_DIR)\i386\cmdexec.obj \
+    $(_OBJ_DIR)\i386\cmdexit.obj \
+    $(_OBJ_DIR)\i386\cmdmisc.obj \
+    $(_OBJ_DIR)\i386\cmdpif.obj \
+    $(_OBJ_DIR)\i386\cmdredir.obj \
+    $(_OBJ_DIR)\i386\cmdconf.obj \
+    $(_OBJ_DIR)\i386\cmdkeyb.obj \
+    $(_OBJ_DIR)\i386\cmdenv.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cmd.obj \
+    $(_OBJ_DIR)\ia64\cmddata.obj \
+    $(_OBJ_DIR)\ia64\cmddisp.obj \
+    $(_OBJ_DIR)\ia64\cmdexec.obj \
+    $(_OBJ_DIR)\ia64\cmdexit.obj \
+    $(_OBJ_DIR)\ia64\cmdmisc.obj \
+    $(_OBJ_DIR)\ia64\cmdpif.obj \
+    $(_OBJ_DIR)\ia64\cmdredir.obj \
+    $(_OBJ_DIR)\ia64\cmdconf.obj \
+    $(_OBJ_DIR)\ia64\cmdkeyb.obj \
+    $(_OBJ_DIR)\ia64\cmdenv.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cmd.obj \
+    $(_OBJ_DIR)\amd64\cmddata.obj \
+    $(_OBJ_DIR)\amd64\cmddisp.obj \
+    $(_OBJ_DIR)\amd64\cmdexec.obj \
+    $(_OBJ_DIR)\amd64\cmdexit.obj \
+    $(_OBJ_DIR)\amd64\cmdmisc.obj \
+    $(_OBJ_DIR)\amd64\cmdpif.obj \
+    $(_OBJ_DIR)\amd64\cmdredir.obj \
+    $(_OBJ_DIR)\amd64\cmdconf.obj \
+    $(_OBJ_DIR)\amd64\cmdkeyb.obj \
+    $(_OBJ_DIR)\amd64\cmdenv.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cmd.obj \
+    $(_OBJ_DIR)\arm\cmddata.obj \
+    $(_OBJ_DIR)\arm\cmddisp.obj \
+    $(_OBJ_DIR)\arm\cmdexec.obj \
+    $(_OBJ_DIR)\arm\cmdexit.obj \
+    $(_OBJ_DIR)\arm\cmdmisc.obj \
+    $(_OBJ_DIR)\arm\cmdpif.obj \
+    $(_OBJ_DIR)\arm\cmdredir.obj \
+    $(_OBJ_DIR)\arm\cmdconf.obj \
+    $(_OBJ_DIR)\arm\cmdkeyb.obj \
+    $(_OBJ_DIR)\arm\cmdenv.obj
+
+PASS0_ARM_OBJECTS=
+

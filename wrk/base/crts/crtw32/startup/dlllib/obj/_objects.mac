@@ -1,0 +1,30 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\atlssup.obj \
+    $(_OBJ_DIR)\i386\chkstk.obj \
+    $(_OBJ_DIR)\i386\fp8.obj \
+    $(_OBJ_DIR)\i386\dllmain.obj \
+    $(_OBJ_DIR)\i386\tlssup.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\fp8.obj \
+    $(_OBJ_DIR)\ia64\dllmain.obj \
+    $(_OBJ_DIR)\ia64\tlssup.obj \
+    $(_OBJ_DIR)\ia64\chkstk.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\chkstk.obj \
+    $(_OBJ_DIR)\amd64\dllmain.obj \
+    $(_OBJ_DIR)\amd64\tlssup.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dllmain.obj \
+    $(_OBJ_DIR)\arm\tlssup.obj
+
+PASS0_ARM_OBJECTS=
+

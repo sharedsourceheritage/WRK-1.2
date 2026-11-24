@@ -1,0 +1,40 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\smbclass.res \
+    $(_OBJ_DIR)\i386\smbclass.obj \
+    $(_OBJ_DIR)\i386\smbcpnp.obj \
+    $(_OBJ_DIR)\i386\smbcsrv.obj \
+    $(_OBJ_DIR)\i386\smbcalrm.obj \
+    $(_OBJ_DIR)\i386\smbcoprg.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\smbclass.res \
+    $(_OBJ_DIR)\ia64\smbclass.obj \
+    $(_OBJ_DIR)\ia64\smbcpnp.obj \
+    $(_OBJ_DIR)\ia64\smbcsrv.obj \
+    $(_OBJ_DIR)\ia64\smbcalrm.obj \
+    $(_OBJ_DIR)\ia64\smbcoprg.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\smbclass.res \
+    $(_OBJ_DIR)\amd64\smbclass.obj \
+    $(_OBJ_DIR)\amd64\smbcpnp.obj \
+    $(_OBJ_DIR)\amd64\smbcsrv.obj \
+    $(_OBJ_DIR)\amd64\smbcalrm.obj \
+    $(_OBJ_DIR)\amd64\smbcoprg.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\smbclass.res \
+    $(_OBJ_DIR)\arm\smbclass.obj \
+    $(_OBJ_DIR)\arm\smbcpnp.obj \
+    $(_OBJ_DIR)\arm\smbcsrv.obj \
+    $(_OBJ_DIR)\arm\smbcalrm.obj \
+    $(_OBJ_DIR)\arm\smbcoprg.obj
+
+PASS0_ARM_OBJECTS=
+

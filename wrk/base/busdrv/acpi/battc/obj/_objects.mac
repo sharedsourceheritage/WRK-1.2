@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\battc.res \
+    $(_OBJ_DIR)\i386\battc.obj \
+    $(_OBJ_DIR)\i386\bsrv.obj
+
+PASS0_386_OBJECTS= \
+    $(_OBJ_DIR)\i386\battc.mof \
+    $(_OBJ_DIR)\i386\battc.bmf
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\battc.res \
+    $(_OBJ_DIR)\ia64\battc.obj \
+    $(_OBJ_DIR)\ia64\bsrv.obj
+
+PASS0_IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\battc.mof \
+    $(_OBJ_DIR)\ia64\battc.bmf
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\battc.res \
+    $(_OBJ_DIR)\amd64\battc.obj \
+    $(_OBJ_DIR)\amd64\bsrv.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\battc.mof \
+    $(_OBJ_DIR)\amd64\battc.bmf
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\battc.res \
+    $(_OBJ_DIR)\arm\battc.obj \
+    $(_OBJ_DIR)\arm\bsrv.obj
+
+PASS0_ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\battc.mof \
+    $(_OBJ_DIR)\arm\battc.bmf
+

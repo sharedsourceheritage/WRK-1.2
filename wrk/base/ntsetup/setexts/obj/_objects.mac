@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ntsdexts.res \
+    $(_OBJ_DIR)\i386\ntsdexts.obj \
+    $(_OBJ_DIR)\i386\winnt32.obj \
+    $(_OBJ_DIR)\i386\crt.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ntsdexts.res \
+    $(_OBJ_DIR)\ia64\ntsdexts.obj \
+    $(_OBJ_DIR)\ia64\winnt32.obj \
+    $(_OBJ_DIR)\ia64\crt.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ntsdexts.res \
+    $(_OBJ_DIR)\amd64\ntsdexts.obj \
+    $(_OBJ_DIR)\amd64\winnt32.obj \
+    $(_OBJ_DIR)\amd64\crt.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ntsdexts.res \
+    $(_OBJ_DIR)\arm\ntsdexts.obj \
+    $(_OBJ_DIR)\arm\winnt32.obj \
+    $(_OBJ_DIR)\arm\crt.obj
+
+PASS0_ARM_OBJECTS=
+

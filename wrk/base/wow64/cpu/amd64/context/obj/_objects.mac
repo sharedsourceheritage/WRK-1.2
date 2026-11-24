@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\context.obj \
+    $(_OBJ_DIR)\i386\suspend.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\context.obj \
+    $(_OBJ_DIR)\ia64\suspend.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\context.obj \
+    $(_OBJ_DIR)\amd64\suspend.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\context.obj \
+    $(_OBJ_DIR)\arm\suspend.obj
+
+PASS0_ARM_OBJECTS=
+

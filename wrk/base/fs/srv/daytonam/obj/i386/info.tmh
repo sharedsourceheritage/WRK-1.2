@@ -1,0 +1,458 @@
+//af408727a5c3a30594cd720314dee106 Generated File. Do not edit.
+// File created by WPP compiler version 0.01-Wed May 15 12:38:55 2002
+// on 11/24/2026 at 02:11:12 UTC from a template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\simple.tpl
+
+// PLEASE NOTE:
+//    Using simple.tpl for production environment without overriding
+//    WPP_ENABLED and WPP_LOGGER macro is NOT RECOMMENDED.
+//
+//    If WPP_ENABLED is not provided, the logging is always on
+//    If WPP_LOGGER is not provided, traces always go to the logger named stdout (if it is running)
+//
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\header.tpl
+
+#define WPP_KERNEL_MODE 
+#define WPP_THIS_FILE info_c
+
+#if !defined(WPP_KERNEL_MODE)
+#  include <windows.h>
+#  pragma warning(disable: 4201)
+#  include <wmistr.h>
+#  include <evntrace.h>
+#  define WPP_TRACE TraceMessage
+#else
+#define WPP_TRACE WmiTraceMessage
+#endif
+
+#if !defined(WPP_PRIVATE)
+#  define WPP_INLINE __inline
+#  define WPP_SELECT_ANY extern "C" __declspec(selectany)
+#else
+#  define WPP_INLINE static
+#  define WPP_SELECT_ANY static
+#endif
+
+__inline TRACEHANDLE WppQueryLogger(PCWSTR LoggerName)
+{
+    if (!LoggerName) {LoggerName = L"stdout";}
+    {
+#if defined(WPP_KERNEL_MODE)
+        ULONG ReturnLength ;
+        NTSTATUS Status ;
+        TRACEHANDLE TraceHandle ;
+        UNICODE_STRING  Buffer  ;
+
+        RtlInitUnicodeString(&Buffer, LoggerName);
+    
+        if ((Status = WmiQueryTraceInformation(TraceHandleByNameClass,
+                                                 (PVOID)&TraceHandle,
+                                                  sizeof(TraceHandle),
+                                                  &ReturnLength,
+                                                  (PVOID)&Buffer)) == STATUS_SUCCESS) {
+        return TraceHandle ;
+        }
+#else
+        ULONG status;
+        EVENT_TRACE_PROPERTIES LoggerInfo; 
+
+        ZeroMemory(&LoggerInfo, sizeof(LoggerInfo));
+        LoggerInfo.Wnode.BufferSize = sizeof(LoggerInfo);
+        LoggerInfo.Wnode.Flags = WNODE_FLAG_TRACED_GUID;
+        
+        status = QueryTraceW(0, LoggerName, &LoggerInfo);    
+        if (status == ERROR_SUCCESS || status == ERROR_MORE_DATA) {
+            return (TRACEHANDLE) LoggerInfo.Wnode.HistoricalContext;
+        }
+#endif
+    }
+    return 0;
+}
+
+
+ 
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\stdout.tpl
+
+#define WPP_LEVEL_LOGGER(LEVEL) // DoTraceMessage
+#define WPP_LOGGER() // KdPrint
+#define WPP_LOGGER() // SrvPrint0
+#define WPP_LOGGER() // SrvPrint1
+#define WPP_LOGGER() // SrvPrint2
+#define WPP_LOGGER() // SrvPrint3
+#define WPP_LOGGER() // SrvPrint4
+#ifndef WPP_LOGGER_ARG
+#  define WPP_LOGGER_ARG
+#endif
+
+#ifndef WPP_GET_LOGGER
+  #define WPP_GET_LOGGER WppGetLogger()
+  __inline TRACEHANDLE WppGetLogger() 
+  {
+      static TRACEHANDLE Logger;
+      if (Logger) {return Logger;}
+      return Logger = WppQueryLogger(0);
+  }
+#endif
+
+#ifndef WPP_ENABLED
+#  define WPP_ENABLED() 1
+#endif
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\trmacro.tpl
+//   expects:
+//      WPP_THIS_FILE defined (see header.tpl)
+//      WPP_LOGGER_ARG  defined
+//      WPP_GET_LOGGER  defined
+//      WPP_ENABLED() defined
+
+#ifndef NO_CHECK_FOR_NULL_STRING
+#ifndef WPP_CHECK_FOR_NULL_STRING
+#define WPP_CHECK_FOR_NULL_STRING 1
+#endif
+#endif
+
+#define WPP_EVAL(_value_) _value_
+#define WPP_(Id) WPP_EVAL(WPP_) ## WPP_EVAL(Id) ## WPP_EVAL(_) ## WPP_EVAL(WPP_THIS_FILE) ## WPP_EVAL(__LINE__)
+
+#if !defined(WPP_INLINE)
+#  define WPP_INLINE __inline
+#endif
+
+#if !defined(WPP_NO_ANNOTATIONS) 
+#if !defined(WPP_ANSI_ANNOTATION) 
+# define WPP_ANNOTATE_info_c1280	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1280 10 \"%0Opening directory name: %10!s!\" //  ", L"{", L"&objectNameString, ItemPWString -- 10" , L"}")
+# define WPP_ANNOTATE_info_c1338	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1338 11 \"%0SrvQueryDirectoryFile: SrvIoCreateFile for dir %10!s! failed: %11!X!\" //  ", L"{", L"&objectNameString, ItemPWString -- 10" , L"status, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_info_c1350	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1350 12 \"%0SrvIoCreateFile succeeded, handle = %10!p!\" //  ", L"{", L"DirectoryInformation->DirectoryHandle, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_info_c1375	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1375 13 \"%0In BufferLength: %10!ld!, sizeof(): %11!ld!, ->BufferLength: %12!ld!\" //  ", L"{", L"BufferLength, ItemLong -- 10" , L"sizeof(SRV_DIRECTORY_INFORMATION), ItemLong -- 11" , L"DirectoryInformation->BufferLength, ItemLong -- 12" , L"}")
+# define WPP_ANNOTATE_info_c1466	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1466 14 \"%0Resuming search at file %10!s!, length %11!ld!, index %12!x!\" //  ", L"{", L"resumeName, ItemPWString -- 10" , L"resumeName->Length, ItemLong -- 11" , L"*ResumeFileIndex, ItemLong -- 12" , L"}")
+# define WPP_ANNOTATE_info_c1551	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1551 15 \"%0Skipped %10!s!, FileAttr: %11!x!, ISA: %12!x! ESA: %13!x!\" //  ", L"{", L"&name, ItemPWString -- 10" , L"(*currentEntry)->FileAttributes, ItemLong -- 11" , L"inclusiveSearchAttributes, ItemLong -- 12" , L"exclusiveSearchAttributes, ItemLong -- 13" , L"}")
+# define WPP_ANNOTATE_info_c1555	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1555 16 \"%0NL=%10!ld! D=%11!ld! RD=%12!ld! RDO=%13!ld!\" //  ", L"{", L"(*currentEntry)->FileNameLength, ItemLong -- 10" , L"(((*currentEntry)->FileAttributes &                              FILE_ATTRIBUTE_DIRECTORY) != 0), ItemLong -- 11" , L"returnDirectories, ItemLong -- 12" , L"returnDirectoriesOnly, ItemLong -- 13" , L"}")
+# define WPP_ANNOTATE_info_c1560	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1560 17 \"%0FLN=%10!ld!\" //  ", L"{", L"FilterLongNames, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_info_c1627	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1627 18 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_info_c1629	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1629 19 \"%0**** CALLING NTQUERYDIRECTORYFILE, file = %10!s!, length: %11!ld!\" //  ", L"{", L"actualString, ItemPWString -- 10" , L"actualString->Length, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_info_c1633	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1633 20 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_info_c1636	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1636 21 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_info_c1638	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1638 22 \"%0(*currentEntry)->NextEntryOffset == %10!ld!\" //  ", L"{", L"(*currentEntry)->NextEntryOffset, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_info_c1685	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1685 23 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_info_c1733	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1733 24 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_info_c1740	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1740 25 \"%0SrvQueryDirectoryFile: NtQueryDirectoryFile failed: %10!X!.\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_info_c1747	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1747 26 \"%0NtQueryDirectoryFile succeeded: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_info_c1767	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1767 27 \"%0First file name is %10!s!, length = %11!ld!\" //  ", L"{", L"&name, ItemPWString -- 10" , L"(*currentEntry)->FileNameLength, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_info_c1967	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1967 28 \"%0Matched: %10!s! and %11!s!\" //  ", L"{", L"FileName, ItemPWString -- 10" , L"&checkFileName, ItemPWString -- 11" , L"}")
+# define WPP_ANNOTATE_info_c1969	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c1969 29 \"%0No match: %10!s! and %11!s!\" //  ", L"{", L"FileName, ItemPWString -- 10" , L"&checkFileName, ItemPWString -- 11" , L"}")
+# define WPP_ANNOTATE_info_c2097	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c2097 30 \"%0In BufferLength: %10!ld!, sizeof(): %11!ld!, ->BufferLength: %12!ld!\" //  ", L"{", L"BufferLength, ItemLong -- 10" , L"sizeof(SRV_EA_INFORMATION), ItemLong -- 11" , L"EaInformation->BufferLength, ItemLong -- 12" , L"}")
+# define WPP_ANNOTATE_info_c2149	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c2149 31 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_info_c2192	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c2192 32 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_info_c2203	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c2203 33 \"%0NtQueryEaFile succeeded: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_info_c2263	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c2263 34 \"%0First EA name is %10!s!, length = %11!ld!\" //  ", L"{", L"(PCSTRING)&name, ItemPString -- 10" , L"(*currentEntry)->EaNameLength, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_info_c2934	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c2934 35 \"%0In BufferLength: %10!ld!, sizeof(): %11!ld!, ->BufferLength: %12!ld!\" //  ", L"{", L"BufferLength, ItemLong -- 10" , L"sizeof(SRV_DIRECTORY_INFORMATION), ItemLong -- 11" , L"DirectoryInformation->BufferLength, ItemLong -- 12" , L"}")
+# define WPP_ANNOTATE_info_c2977	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c2977 36 \"%0Resuming search at file %10!s!, length %11!ld!, index %12!x!\" //  ", L"{", L"resumeName, ItemPWString -- 10" , L"resumeName->Length, ItemLong -- 11" , L"*ResumeFileIndex, ItemLong -- 12" , L"}")
+# define WPP_ANNOTATE_info_c3030	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c3030 37 \"%0NL=%10!ld! D=%11!ld! RD=%12!ld! RDO=%13!ld!\" //  ", L"{", L"(*currentEntry)->FileNameLength, ItemLong -- 10" , L"(((*currentEntry)->FileAttributes &                              FILE_ATTRIBUTE_DIRECTORY) != 0), ItemLong -- 11" , L"returnDirectories, ItemLong -- 12" , L"returnDirectoriesOnly, ItemLong -- 13" , L"}")
+# define WPP_ANNOTATE_info_c3035	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c3035 38 \"%0FLN=%10!ld!\" //  ", L"{", L"FilterLongNames, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_info_c3103	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c3103 39 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_info_c3105	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c3105 40 \"%0**** CALLING NTQUERYDIRECTORYFILE, file = %10!s!, length: %11!ld!\" //  ", L"{", L"actualString, ItemPWString -- 10" , L"actualString->Length, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_info_c3109	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c3109 41 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_info_c3112	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c3112 42 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_info_c3114	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c3114 43 \"%0(*currentEntry)->NextEntryOffset == %10!ld!\" //  ", L"{", L"(*currentEntry)->NextEntryOffset, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_info_c3153	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c3153 44 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_info_c3160	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c3160 45 \"%0SrvQueryDirectoryFile: NtQueryDirectoryFile failed: %10!X!.\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_info_c3167	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c3167 46 \"%0NtQueryDirectoryFile succeeded: %10!X!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_info_c3187	__annotation(L"TMF:", L"278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", L"#typev  info_c3187 47 \"%0First file name is %10!s!, length = %11!ld!\" //  ", L"{", L"&name, ItemPWString -- 10" , L"(*currentEntry)->FileNameLength, ItemLong -- 11" , L"}")
+#else
+# define WPP_ANNOTATE_info_c1280	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1280 10 \"%0Opening directory name: %10!s!\" //  ", "{", "&objectNameString, ItemPWString -- 10" , "}")
+# define WPP_ANNOTATE_info_c1338	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1338 11 \"%0SrvQueryDirectoryFile: SrvIoCreateFile for dir %10!s! failed: %11!X!\" //  ", "{", "&objectNameString, ItemPWString -- 10" , "status, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_info_c1350	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1350 12 \"%0SrvIoCreateFile succeeded, handle = %10!p!\" //  ", "{", "DirectoryInformation->DirectoryHandle, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_info_c1375	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1375 13 \"%0In BufferLength: %10!ld!, sizeof(): %11!ld!, ->BufferLength: %12!ld!\" //  ", "{", "BufferLength, ItemLong -- 10" , "sizeof(SRV_DIRECTORY_INFORMATION), ItemLong -- 11" , "DirectoryInformation->BufferLength, ItemLong -- 12" , "}")
+# define WPP_ANNOTATE_info_c1466	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1466 14 \"%0Resuming search at file %10!s!, length %11!ld!, index %12!x!\" //  ", "{", "resumeName, ItemPWString -- 10" , "resumeName->Length, ItemLong -- 11" , "*ResumeFileIndex, ItemLong -- 12" , "}")
+# define WPP_ANNOTATE_info_c1551	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1551 15 \"%0Skipped %10!s!, FileAttr: %11!x!, ISA: %12!x! ESA: %13!x!\" //  ", "{", "&name, ItemPWString -- 10" , "(*currentEntry)->FileAttributes, ItemLong -- 11" , "inclusiveSearchAttributes, ItemLong -- 12" , "exclusiveSearchAttributes, ItemLong -- 13" , "}")
+# define WPP_ANNOTATE_info_c1555	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1555 16 \"%0NL=%10!ld! D=%11!ld! RD=%12!ld! RDO=%13!ld!\" //  ", "{", "(*currentEntry)->FileNameLength, ItemLong -- 10" , "(((*currentEntry)->FileAttributes &                              FILE_ATTRIBUTE_DIRECTORY) != 0), ItemLong -- 11" , "returnDirectories, ItemLong -- 12" , "returnDirectoriesOnly, ItemLong -- 13" , "}")
+# define WPP_ANNOTATE_info_c1560	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1560 17 \"%0FLN=%10!ld!\" //  ", "{", "FilterLongNames, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_info_c1627	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1627 18 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_info_c1629	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1629 19 \"%0**** CALLING NTQUERYDIRECTORYFILE, file = %10!s!, length: %11!ld!\" //  ", "{", "actualString, ItemPWString -- 10" , "actualString->Length, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_info_c1633	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1633 20 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_info_c1636	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1636 21 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_info_c1638	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1638 22 \"%0(*currentEntry)->NextEntryOffset == %10!ld!\" //  ", "{", "(*currentEntry)->NextEntryOffset, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_info_c1685	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1685 23 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_info_c1733	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1733 24 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_info_c1740	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1740 25 \"%0SrvQueryDirectoryFile: NtQueryDirectoryFile failed: %10!X!.\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_info_c1747	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1747 26 \"%0NtQueryDirectoryFile succeeded: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_info_c1767	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1767 27 \"%0First file name is %10!s!, length = %11!ld!\" //  ", "{", "&name, ItemPWString -- 10" , "(*currentEntry)->FileNameLength, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_info_c1967	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1967 28 \"%0Matched: %10!s! and %11!s!\" //  ", "{", "FileName, ItemPWString -- 10" , "&checkFileName, ItemPWString -- 11" , "}")
+# define WPP_ANNOTATE_info_c1969	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c1969 29 \"%0No match: %10!s! and %11!s!\" //  ", "{", "FileName, ItemPWString -- 10" , "&checkFileName, ItemPWString -- 11" , "}")
+# define WPP_ANNOTATE_info_c2097	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c2097 30 \"%0In BufferLength: %10!ld!, sizeof(): %11!ld!, ->BufferLength: %12!ld!\" //  ", "{", "BufferLength, ItemLong -- 10" , "sizeof(SRV_EA_INFORMATION), ItemLong -- 11" , "EaInformation->BufferLength, ItemLong -- 12" , "}")
+# define WPP_ANNOTATE_info_c2149	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c2149 31 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_info_c2192	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c2192 32 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_info_c2203	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c2203 33 \"%0NtQueryEaFile succeeded: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_info_c2263	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c2263 34 \"%0First EA name is %10!s!, length = %11!ld!\" //  ", "{", "(PCSTRING)&name, ItemPString -- 10" , "(*currentEntry)->EaNameLength, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_info_c2934	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c2934 35 \"%0In BufferLength: %10!ld!, sizeof(): %11!ld!, ->BufferLength: %12!ld!\" //  ", "{", "BufferLength, ItemLong -- 10" , "sizeof(SRV_DIRECTORY_INFORMATION), ItemLong -- 11" , "DirectoryInformation->BufferLength, ItemLong -- 12" , "}")
+# define WPP_ANNOTATE_info_c2977	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c2977 36 \"%0Resuming search at file %10!s!, length %11!ld!, index %12!x!\" //  ", "{", "resumeName, ItemPWString -- 10" , "resumeName->Length, ItemLong -- 11" , "*ResumeFileIndex, ItemLong -- 12" , "}")
+# define WPP_ANNOTATE_info_c3030	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c3030 37 \"%0NL=%10!ld! D=%11!ld! RD=%12!ld! RDO=%13!ld!\" //  ", "{", "(*currentEntry)->FileNameLength, ItemLong -- 10" , "(((*currentEntry)->FileAttributes &                              FILE_ATTRIBUTE_DIRECTORY) != 0), ItemLong -- 11" , "returnDirectories, ItemLong -- 12" , "returnDirectoriesOnly, ItemLong -- 13" , "}")
+# define WPP_ANNOTATE_info_c3035	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c3035 38 \"%0FLN=%10!ld!\" //  ", "{", "FilterLongNames, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_info_c3103	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c3103 39 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_info_c3105	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c3105 40 \"%0**** CALLING NTQUERYDIRECTORYFILE, file = %10!s!, length: %11!ld!\" //  ", "{", "actualString, ItemPWString -- 10" , "actualString->Length, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_info_c3109	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c3109 41 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_info_c3112	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c3112 42 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_info_c3114	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c3114 43 \"%0(*currentEntry)->NextEntryOffset == %10!ld!\" //  ", "{", "(*currentEntry)->NextEntryOffset, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_info_c3153	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c3153 44 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_info_c3160	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c3160 45 \"%0SrvQueryDirectoryFile: NtQueryDirectoryFile failed: %10!X!.\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_info_c3167	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c3167 46 \"%0NtQueryDirectoryFile succeeded: %10!X!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_info_c3187	__annotation("TMF:", "278740af-c3a5-05a3-94cd-720314dee106 daytonam // SRC=info.c MJ= MN=", "#typev  info_c3187 47 \"%0First file name is %10!s!, length = %11!ld!\" //  ", "{", "&name, ItemPWString -- 10" , "(*currentEntry)->FileNameLength, ItemLong -- 11" , "}")
+#endif
+# define WPP_ANNOTATE WPP_(ANNOTATE),
+#else
+# define WPP_ANNOTATE 
+#endif
+
+#if 1
+static const GUID WPP_LOCAL_TraceGuids[] = { {0x278740af,0xc3a5,0x05a3,{0x94,0xcd,0x72,0x03,0x14,0xde,0xe1,0x06}}, };
+#endif
+
+#if !defined(WPP_TRACE_OPTIONS)
+enum {WPP_TRACE_OPTIONS = TRACE_MESSAGE_SEQUENCE   | TRACE_MESSAGE_GUID
+                        | TRACE_MESSAGE_SYSTEMINFO | TRACE_MESSAGE_TIMESTAMP };
+#endif
+
+#if !defined(WPP_LOGPAIR)
+# define WPP_LOGPAIR(_Size, _Addr)     (_Addr),((SIZE_T)_Size),
+#endif
+
+#define WPP_LOGTYPEVAL(_Type, _Value) WPP_LOGPAIR(sizeof(_Type), &(_Value))
+#define WPP_LOGTYPEPTR(_Value)        WPP_LOGPAIR(sizeof(*(_Value)), (_Value))
+
+// Marshalling macros.
+
+#if !defined(WPP_LOGASTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR(strlen(_value) + 1, _value )
+# else
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR( (_value)?strlen(_value) + 1:5, (_value)?(_value):"NULL" )
+# endif
+#endif
+
+#if !defined(WPP_LOGWSTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (wcslen(_value)+1) * sizeof(WCHAR), _value)
+# else
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (_value)?(wcslen(_value) + 1)* sizeof(WCHAR):5 * sizeof(WCHAR), (_value)?(_value):L"NULL") 
+# endif
+#endif
+
+#if !defined(WPP_LOGPGUID)
+# define WPP_LOGPGUID(_value) WPP_LOGPAIR( sizeof(GUID), (_value) )
+#endif
+
+
+#if !defined(WPP_LOGPSID)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( GetLengthSid(_value), (_value) )
+# else
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( (_value)? (IsValidSid(_value)? \
+                                                                        GetLengthSid(_value):5):5, \
+                                                                        (_value)? (IsValidSid(_value)?\
+                                                                        (_value):"NULL"):"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGCSTR)
+# define WPP_LOGCSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGUSTR)
+# define WPP_LOGUSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGPUSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPUSTR(_x) WPP_LOGUSTR(*(_x))
+#else
+# define WPP_LOGPUSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5*sizeof(WCHAR), (_x)?(*(_x)).Buffer:L"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGPCSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPCSTR(_x) WPP_LOGCSTR(*(_x))
+#else
+# define WPP_LOGPCSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5, (_x)?((const char *)(*(_x)).Buffer):"NULL")
+#endif
+#endif
+
+
+#if !defined(WPP_LOGSTDSTR)
+#define WPP_LOGSTDSTR(_value)  WPP_LOGPAIR( (_value).size()+1, (_value).c_str() )
+#endif
+
+WPP_INLINE void WPP_SF_(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id,  0); }
+WPP_INLINE void WPP_SF_D(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1)  0); }
+WPP_INLINE void WPP_SF_Z(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1)  0); }
+WPP_INLINE void WPP_SF_ZD(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1, unsigned int _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1) WPP_LOGTYPEVAL(unsigned int,_a2)  0); }
+WPP_INLINE void WPP_SF_ZLLL(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1, unsigned long _a2, unsigned long _a3, unsigned long _a4)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1) WPP_LOGTYPEVAL(unsigned long,_a2) WPP_LOGTYPEVAL(unsigned long,_a3) WPP_LOGTYPEVAL(unsigned long,_a4)  0); }
+WPP_INLINE void WPP_SF_ZZ(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1, PCUNICODE_STRING _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1) WPP_LOGPUSTR(_a2)  0); }
+WPP_INLINE void WPP_SF_Zl(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1, signed long _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1) WPP_LOGTYPEVAL(signed long,_a2)  0); }
+WPP_INLINE void WPP_SF_ZlL(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCUNICODE_STRING _a1, signed long _a2, unsigned long _a3)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPUSTR(_a1) WPP_LOGTYPEVAL(signed long,_a2) WPP_LOGTYPEVAL(unsigned long,_a3)  0); }
+WPP_INLINE void WPP_SF_l(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, signed long _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(signed long,_a1)  0); }
+WPP_INLINE void WPP_SF_lll(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, signed long _a1, signed long _a2, signed long _a3)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(signed long,_a1) WPP_LOGTYPEVAL(signed long,_a2) WPP_LOGTYPEVAL(signed long,_a3)  0); }
+WPP_INLINE void WPP_SF_llll(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, signed long _a1, signed long _a2, signed long _a3, signed long _a4)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(signed long,_a1) WPP_LOGTYPEVAL(signed long,_a2) WPP_LOGTYPEVAL(signed long,_a3) WPP_LOGTYPEVAL(signed long,_a4)  0); }
+WPP_INLINE void WPP_SF_q(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1)  0); }
+WPP_INLINE void WPP_SF_zl(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCSTRING _a1, signed long _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPCSTR(_a1) WPP_LOGTYPEVAL(signed long,_a2)  0); }
+#ifdef WPP_DEBUG
+#define WPP_CALL_info_c1280(MSG,a10) ((WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_info_c1338(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_ZD(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_info_c1350(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_info_c1375(MSG,a10,a11,a12) ((WPP_ENABLED()?WPP_SF_lll(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12))) 
+#define WPP_CALL_info_c1466(MSG,a10,a11,a12) ((WPP_ENABLED()?WPP_SF_ZlL(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12))) 
+#define WPP_CALL_info_c1551(MSG,a10,a11,a12,a13) ((WPP_ENABLED()?WPP_SF_ZLLL(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0,a10,a11,a12,a13),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12,a13))) 
+#define WPP_CALL_info_c1555(MSG,a10,a11,a12,a13) ((WPP_ENABLED()?WPP_SF_llll(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0,a10,a11,a12,a13),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12,a13))) 
+#define WPP_CALL_info_c1560(MSG,a10) ((WPP_ENABLED()?WPP_SF_l(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_info_c1627(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_info_c1629(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Zl(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_info_c1633(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_info_c1636(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_info_c1638(MSG,a10) ((WPP_ENABLED()?WPP_SF_l(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_info_c1685(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_info_c1733(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_info_c1740(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_info_c1747(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_info_c1767(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Zl(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_info_c1967(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_ZZ(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_info_c1969(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_ZZ(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_info_c2097(MSG,a10,a11,a12) ((WPP_ENABLED()?WPP_SF_lll(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12))) 
+#define WPP_CALL_info_c2149(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_info_c2192(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_info_c2203(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_info_c2263(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_zl(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_info_c2934(MSG,a10,a11,a12) ((WPP_ENABLED()?WPP_SF_lll(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12))) 
+#define WPP_CALL_info_c2977(MSG,a10,a11,a12) ((WPP_ENABLED()?WPP_SF_ZlL(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12))) 
+#define WPP_CALL_info_c3030(MSG,a10,a11,a12,a13) ((WPP_ENABLED()?WPP_SF_llll(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0,a10,a11,a12,a13),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12,a13))) 
+#define WPP_CALL_info_c3035(MSG,a10) ((WPP_ENABLED()?WPP_SF_l(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_info_c3103(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_info_c3105(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Zl(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_info_c3109(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_info_c3112(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_info_c3114(MSG,a10) ((WPP_ENABLED()?WPP_SF_l(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_info_c3153(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 44,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_info_c3160(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 45,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_info_c3167(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 46,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_info_c3187(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Zl(WPP_LOGGER() 47,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#else
+#define WPP_CALL_info_c1280(MSG,a10) (WPP_ENABLED()?WPP_SF_Z(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_info_c1338(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_ZD(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_info_c1350(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_info_c1375(MSG,a10,a11,a12) (WPP_ENABLED()?WPP_SF_lll(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0)
+#define WPP_CALL_info_c1466(MSG,a10,a11,a12) (WPP_ENABLED()?WPP_SF_ZlL(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0)
+#define WPP_CALL_info_c1551(MSG,a10,a11,a12,a13) (WPP_ENABLED()?WPP_SF_ZLLL(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0,a10,a11,a12,a13),1:0)
+#define WPP_CALL_info_c1555(MSG,a10,a11,a12,a13) (WPP_ENABLED()?WPP_SF_llll(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0,a10,a11,a12,a13),1:0)
+#define WPP_CALL_info_c1560(MSG,a10) (WPP_ENABLED()?WPP_SF_l(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_info_c1627(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_info_c1629(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Zl(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_info_c1633(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_info_c1636(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_info_c1638(MSG,a10) (WPP_ENABLED()?WPP_SF_l(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_info_c1685(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_info_c1733(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_info_c1740(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_info_c1747(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_info_c1767(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Zl(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_info_c1967(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_ZZ(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_info_c1969(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_ZZ(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_info_c2097(MSG,a10,a11,a12) (WPP_ENABLED()?WPP_SF_lll(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0)
+#define WPP_CALL_info_c2149(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_info_c2192(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_info_c2203(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_info_c2263(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_zl(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_info_c2934(MSG,a10,a11,a12) (WPP_ENABLED()?WPP_SF_lll(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0)
+#define WPP_CALL_info_c2977(MSG,a10,a11,a12) (WPP_ENABLED()?WPP_SF_ZlL(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0)
+#define WPP_CALL_info_c3030(MSG,a10,a11,a12,a13) (WPP_ENABLED()?WPP_SF_llll(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0,a10,a11,a12,a13),1:0)
+#define WPP_CALL_info_c3035(MSG,a10) (WPP_ENABLED()?WPP_SF_l(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_info_c3103(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_info_c3105(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Zl(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_info_c3109(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_info_c3112(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_info_c3114(MSG,a10) (WPP_ENABLED()?WPP_SF_l(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_info_c3153(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 44,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_info_c3160(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 45,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_info_c3167(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 46,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_info_c3187(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Zl(WPP_LOGGER() 47,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#endif
+
+// NoMsgArgs
+
+#undef DoTraceMessage
+#define DoTraceMessage WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint0
+#define SrvPrint0 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint1
+#define SrvPrint1 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint2
+#define SrvPrint2 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint3
+#define SrvPrint3 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint4
+#define SrvPrint4 WPP_ANNOTATE WPP_(CALL)
+#undef KdPrint
+#define KdPrint(ARGS) WPP_ANNOTATE WPP_(CALL) ARGS
+// MsgArgs
+
+#ifdef WPP_DEBUG
+#else
+#endif
+
+
+/// more stuff
+
+

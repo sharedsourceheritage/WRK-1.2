@@ -1,0 +1,124 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clusrtl.res \
+    $(_OBJ_DIR)\i386\bufpool.obj \
+    $(_OBJ_DIR)\i386\clusrtl.obj \
+    $(_OBJ_DIR)\i386\eventlog.obj \
+    $(_OBJ_DIR)\i386\fixup.obj \
+    $(_OBJ_DIR)\i386\ipaddr.obj \
+    $(_OBJ_DIR)\i386\netcfg.obj \
+    $(_OBJ_DIR)\i386\netname.obj \
+    $(_OBJ_DIR)\i386\oscheck.obj \
+    $(_OBJ_DIR)\i386\queue.obj \
+    $(_OBJ_DIR)\i386\hash.obj \
+    $(_OBJ_DIR)\i386\regutil.obj \
+    $(_OBJ_DIR)\i386\rpc.obj \
+    $(_OBJ_DIR)\i386\security.obj \
+    $(_OBJ_DIR)\i386\tcpcfg.obj \
+    $(_OBJ_DIR)\i386\threadq.obj \
+    $(_OBJ_DIR)\i386\autostart.obj \
+    $(_OBJ_DIR)\i386\lananame.obj \
+    $(_OBJ_DIR)\i386\dbgrpt.obj \
+    $(_OBJ_DIR)\i386\rtlprop.obj \
+    $(_OBJ_DIR)\i386\inststat.obj \
+    $(_OBJ_DIR)\i386\registryvaluename.obj \
+    $(_OBJ_DIR)\i386\cleanup.obj \
+    $(_OBJ_DIR)\i386\notifications.obj \
+    $(_OBJ_DIR)\i386\vercheck.obj \
+    $(_OBJ_DIR)\i386\qfstrans.obj \
+    $(_OBJ_DIR)\i386\directoryutilities.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clusrtl.res \
+    $(_OBJ_DIR)\ia64\bufpool.obj \
+    $(_OBJ_DIR)\ia64\clusrtl.obj \
+    $(_OBJ_DIR)\ia64\eventlog.obj \
+    $(_OBJ_DIR)\ia64\fixup.obj \
+    $(_OBJ_DIR)\ia64\ipaddr.obj \
+    $(_OBJ_DIR)\ia64\netcfg.obj \
+    $(_OBJ_DIR)\ia64\netname.obj \
+    $(_OBJ_DIR)\ia64\oscheck.obj \
+    $(_OBJ_DIR)\ia64\queue.obj \
+    $(_OBJ_DIR)\ia64\hash.obj \
+    $(_OBJ_DIR)\ia64\regutil.obj \
+    $(_OBJ_DIR)\ia64\rpc.obj \
+    $(_OBJ_DIR)\ia64\security.obj \
+    $(_OBJ_DIR)\ia64\tcpcfg.obj \
+    $(_OBJ_DIR)\ia64\threadq.obj \
+    $(_OBJ_DIR)\ia64\autostart.obj \
+    $(_OBJ_DIR)\ia64\lananame.obj \
+    $(_OBJ_DIR)\ia64\dbgrpt.obj \
+    $(_OBJ_DIR)\ia64\rtlprop.obj \
+    $(_OBJ_DIR)\ia64\inststat.obj \
+    $(_OBJ_DIR)\ia64\registryvaluename.obj \
+    $(_OBJ_DIR)\ia64\cleanup.obj \
+    $(_OBJ_DIR)\ia64\notifications.obj \
+    $(_OBJ_DIR)\ia64\vercheck.obj \
+    $(_OBJ_DIR)\ia64\qfstrans.obj \
+    $(_OBJ_DIR)\ia64\directoryutilities.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clusrtl.res \
+    $(_OBJ_DIR)\amd64\bufpool.obj \
+    $(_OBJ_DIR)\amd64\clusrtl.obj \
+    $(_OBJ_DIR)\amd64\eventlog.obj \
+    $(_OBJ_DIR)\amd64\fixup.obj \
+    $(_OBJ_DIR)\amd64\ipaddr.obj \
+    $(_OBJ_DIR)\amd64\netcfg.obj \
+    $(_OBJ_DIR)\amd64\netname.obj \
+    $(_OBJ_DIR)\amd64\oscheck.obj \
+    $(_OBJ_DIR)\amd64\queue.obj \
+    $(_OBJ_DIR)\amd64\hash.obj \
+    $(_OBJ_DIR)\amd64\regutil.obj \
+    $(_OBJ_DIR)\amd64\rpc.obj \
+    $(_OBJ_DIR)\amd64\security.obj \
+    $(_OBJ_DIR)\amd64\tcpcfg.obj \
+    $(_OBJ_DIR)\amd64\threadq.obj \
+    $(_OBJ_DIR)\amd64\autostart.obj \
+    $(_OBJ_DIR)\amd64\lananame.obj \
+    $(_OBJ_DIR)\amd64\dbgrpt.obj \
+    $(_OBJ_DIR)\amd64\rtlprop.obj \
+    $(_OBJ_DIR)\amd64\inststat.obj \
+    $(_OBJ_DIR)\amd64\registryvaluename.obj \
+    $(_OBJ_DIR)\amd64\cleanup.obj \
+    $(_OBJ_DIR)\amd64\notifications.obj \
+    $(_OBJ_DIR)\amd64\vercheck.obj \
+    $(_OBJ_DIR)\amd64\qfstrans.obj \
+    $(_OBJ_DIR)\amd64\directoryutilities.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clusrtl.res \
+    $(_OBJ_DIR)\arm\bufpool.obj \
+    $(_OBJ_DIR)\arm\clusrtl.obj \
+    $(_OBJ_DIR)\arm\eventlog.obj \
+    $(_OBJ_DIR)\arm\fixup.obj \
+    $(_OBJ_DIR)\arm\ipaddr.obj \
+    $(_OBJ_DIR)\arm\netcfg.obj \
+    $(_OBJ_DIR)\arm\netname.obj \
+    $(_OBJ_DIR)\arm\oscheck.obj \
+    $(_OBJ_DIR)\arm\queue.obj \
+    $(_OBJ_DIR)\arm\hash.obj \
+    $(_OBJ_DIR)\arm\regutil.obj \
+    $(_OBJ_DIR)\arm\rpc.obj \
+    $(_OBJ_DIR)\arm\security.obj \
+    $(_OBJ_DIR)\arm\tcpcfg.obj \
+    $(_OBJ_DIR)\arm\threadq.obj \
+    $(_OBJ_DIR)\arm\autostart.obj \
+    $(_OBJ_DIR)\arm\lananame.obj \
+    $(_OBJ_DIR)\arm\dbgrpt.obj \
+    $(_OBJ_DIR)\arm\rtlprop.obj \
+    $(_OBJ_DIR)\arm\inststat.obj \
+    $(_OBJ_DIR)\arm\registryvaluename.obj \
+    $(_OBJ_DIR)\arm\cleanup.obj \
+    $(_OBJ_DIR)\arm\notifications.obj \
+    $(_OBJ_DIR)\arm\vercheck.obj \
+    $(_OBJ_DIR)\arm\qfstrans.obj \
+    $(_OBJ_DIR)\arm\directoryutilities.obj
+
+PASS0_ARM_OBJECTS=
+

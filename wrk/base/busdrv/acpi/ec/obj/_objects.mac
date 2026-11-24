@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\acpiec.res \
+    $(_OBJ_DIR)\i386\acpiec.obj \
+    $(_OBJ_DIR)\i386\eclowio.obj \
+    $(_OBJ_DIR)\i386\ecpnp.obj \
+    $(_OBJ_DIR)\i386\handlers.obj \
+    $(_OBJ_DIR)\i386\service.obj \
+    $(_OBJ_DIR)\i386\query.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\errlog.h \
+    $(MC_SOURCEDIR)\errlog.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\acpiec.res \
+    $(_OBJ_DIR)\ia64\acpiec.obj \
+    $(_OBJ_DIR)\ia64\eclowio.obj \
+    $(_OBJ_DIR)\ia64\ecpnp.obj \
+    $(_OBJ_DIR)\ia64\handlers.obj \
+    $(_OBJ_DIR)\ia64\service.obj \
+    $(_OBJ_DIR)\ia64\query.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\errlog.h \
+    $(MC_SOURCEDIR)\errlog.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\acpiec.res \
+    $(_OBJ_DIR)\amd64\acpiec.obj \
+    $(_OBJ_DIR)\amd64\eclowio.obj \
+    $(_OBJ_DIR)\amd64\ecpnp.obj \
+    $(_OBJ_DIR)\amd64\handlers.obj \
+    $(_OBJ_DIR)\amd64\service.obj \
+    $(_OBJ_DIR)\amd64\query.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\errlog.h \
+    $(MC_SOURCEDIR)\errlog.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\acpiec.res \
+    $(_OBJ_DIR)\arm\acpiec.obj \
+    $(_OBJ_DIR)\arm\eclowio.obj \
+    $(_OBJ_DIR)\arm\ecpnp.obj \
+    $(_OBJ_DIR)\arm\handlers.obj \
+    $(_OBJ_DIR)\arm\service.obj \
+    $(_OBJ_DIR)\arm\query.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\errlog.h \
+    $(MC_SOURCEDIR)\errlog.rc
+

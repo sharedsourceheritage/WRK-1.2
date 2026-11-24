@@ -1,0 +1,124 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clusterwmiprovider.res \
+    $(_OBJ_DIR)\i386\cluster.obj \
+    $(_OBJ_DIR)\i386\clusterapi.obj \
+    $(_OBJ_DIR)\i386\clusterenum.obj \
+    $(_OBJ_DIR)\i386\clustergroup.obj \
+    $(_OBJ_DIR)\i386\clusternetinterface.obj \
+    $(_OBJ_DIR)\i386\clusternetwork.obj \
+    $(_OBJ_DIR)\i386\clusternode.obj \
+    $(_OBJ_DIR)\i386\clusternodegroup.obj \
+    $(_OBJ_DIR)\i386\clusternoderes.obj \
+    $(_OBJ_DIR)\i386\clusterobjassoc.obj \
+    $(_OBJ_DIR)\i386\clusterwmiprovider.obj \
+    $(_OBJ_DIR)\i386\clusterresdepres.obj \
+    $(_OBJ_DIR)\i386\clusterresource.obj \
+    $(_OBJ_DIR)\i386\clusterresourcetype.obj \
+    $(_OBJ_DIR)\i386\clusterresnode.obj \
+    $(_OBJ_DIR)\i386\clustergroupnode.obj \
+    $(_OBJ_DIR)\i386\clusterrestyperes.obj \
+    $(_OBJ_DIR)\i386\clusterservice.obj \
+    $(_OBJ_DIR)\i386\eventprov.obj \
+    $(_OBJ_DIR)\i386\instanceprov.obj \
+    $(_OBJ_DIR)\i386\ntrkcomm.obj \
+    $(_OBJ_DIR)\i386\objectpath.obj \
+    $(_OBJ_DIR)\i386\proplist.obj \
+    $(_OBJ_DIR)\i386\provbase.obj \
+    $(_OBJ_DIR)\i386\provfactory.obj \
+    $(_OBJ_DIR)\i386\util.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clusterwmiprovider.res \
+    $(_OBJ_DIR)\ia64\cluster.obj \
+    $(_OBJ_DIR)\ia64\clusterapi.obj \
+    $(_OBJ_DIR)\ia64\clusterenum.obj \
+    $(_OBJ_DIR)\ia64\clustergroup.obj \
+    $(_OBJ_DIR)\ia64\clusternetinterface.obj \
+    $(_OBJ_DIR)\ia64\clusternetwork.obj \
+    $(_OBJ_DIR)\ia64\clusternode.obj \
+    $(_OBJ_DIR)\ia64\clusternodegroup.obj \
+    $(_OBJ_DIR)\ia64\clusternoderes.obj \
+    $(_OBJ_DIR)\ia64\clusterobjassoc.obj \
+    $(_OBJ_DIR)\ia64\clusterwmiprovider.obj \
+    $(_OBJ_DIR)\ia64\clusterresdepres.obj \
+    $(_OBJ_DIR)\ia64\clusterresource.obj \
+    $(_OBJ_DIR)\ia64\clusterresourcetype.obj \
+    $(_OBJ_DIR)\ia64\clusterresnode.obj \
+    $(_OBJ_DIR)\ia64\clustergroupnode.obj \
+    $(_OBJ_DIR)\ia64\clusterrestyperes.obj \
+    $(_OBJ_DIR)\ia64\clusterservice.obj \
+    $(_OBJ_DIR)\ia64\eventprov.obj \
+    $(_OBJ_DIR)\ia64\instanceprov.obj \
+    $(_OBJ_DIR)\ia64\ntrkcomm.obj \
+    $(_OBJ_DIR)\ia64\objectpath.obj \
+    $(_OBJ_DIR)\ia64\proplist.obj \
+    $(_OBJ_DIR)\ia64\provbase.obj \
+    $(_OBJ_DIR)\ia64\provfactory.obj \
+    $(_OBJ_DIR)\ia64\util.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clusterwmiprovider.res \
+    $(_OBJ_DIR)\amd64\cluster.obj \
+    $(_OBJ_DIR)\amd64\clusterapi.obj \
+    $(_OBJ_DIR)\amd64\clusterenum.obj \
+    $(_OBJ_DIR)\amd64\clustergroup.obj \
+    $(_OBJ_DIR)\amd64\clusternetinterface.obj \
+    $(_OBJ_DIR)\amd64\clusternetwork.obj \
+    $(_OBJ_DIR)\amd64\clusternode.obj \
+    $(_OBJ_DIR)\amd64\clusternodegroup.obj \
+    $(_OBJ_DIR)\amd64\clusternoderes.obj \
+    $(_OBJ_DIR)\amd64\clusterobjassoc.obj \
+    $(_OBJ_DIR)\amd64\clusterwmiprovider.obj \
+    $(_OBJ_DIR)\amd64\clusterresdepres.obj \
+    $(_OBJ_DIR)\amd64\clusterresource.obj \
+    $(_OBJ_DIR)\amd64\clusterresourcetype.obj \
+    $(_OBJ_DIR)\amd64\clusterresnode.obj \
+    $(_OBJ_DIR)\amd64\clustergroupnode.obj \
+    $(_OBJ_DIR)\amd64\clusterrestyperes.obj \
+    $(_OBJ_DIR)\amd64\clusterservice.obj \
+    $(_OBJ_DIR)\amd64\eventprov.obj \
+    $(_OBJ_DIR)\amd64\instanceprov.obj \
+    $(_OBJ_DIR)\amd64\ntrkcomm.obj \
+    $(_OBJ_DIR)\amd64\objectpath.obj \
+    $(_OBJ_DIR)\amd64\proplist.obj \
+    $(_OBJ_DIR)\amd64\provbase.obj \
+    $(_OBJ_DIR)\amd64\provfactory.obj \
+    $(_OBJ_DIR)\amd64\util.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clusterwmiprovider.res \
+    $(_OBJ_DIR)\arm\cluster.obj \
+    $(_OBJ_DIR)\arm\clusterapi.obj \
+    $(_OBJ_DIR)\arm\clusterenum.obj \
+    $(_OBJ_DIR)\arm\clustergroup.obj \
+    $(_OBJ_DIR)\arm\clusternetinterface.obj \
+    $(_OBJ_DIR)\arm\clusternetwork.obj \
+    $(_OBJ_DIR)\arm\clusternode.obj \
+    $(_OBJ_DIR)\arm\clusternodegroup.obj \
+    $(_OBJ_DIR)\arm\clusternoderes.obj \
+    $(_OBJ_DIR)\arm\clusterobjassoc.obj \
+    $(_OBJ_DIR)\arm\clusterwmiprovider.obj \
+    $(_OBJ_DIR)\arm\clusterresdepres.obj \
+    $(_OBJ_DIR)\arm\clusterresource.obj \
+    $(_OBJ_DIR)\arm\clusterresourcetype.obj \
+    $(_OBJ_DIR)\arm\clusterresnode.obj \
+    $(_OBJ_DIR)\arm\clustergroupnode.obj \
+    $(_OBJ_DIR)\arm\clusterrestyperes.obj \
+    $(_OBJ_DIR)\arm\clusterservice.obj \
+    $(_OBJ_DIR)\arm\eventprov.obj \
+    $(_OBJ_DIR)\arm\instanceprov.obj \
+    $(_OBJ_DIR)\arm\ntrkcomm.obj \
+    $(_OBJ_DIR)\arm\objectpath.obj \
+    $(_OBJ_DIR)\arm\proplist.obj \
+    $(_OBJ_DIR)\arm\provbase.obj \
+    $(_OBJ_DIR)\arm\provfactory.obj \
+    $(_OBJ_DIR)\arm\util.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\html2bmp.res \
+    $(_OBJ_DIR)\i386\filedialogex.obj \
+    $(_OBJ_DIR)\i386\html2bmp.obj \
+    $(_OBJ_DIR)\i386\htmlctrl.obj \
+    $(_OBJ_DIR)\i386\htmldlg.obj \
+    $(_OBJ_DIR)\i386\iparser.obj \
+    $(_OBJ_DIR)\i386\stdafx.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\html2bmp.res \
+    $(_OBJ_DIR)\ia64\filedialogex.obj \
+    $(_OBJ_DIR)\ia64\html2bmp.obj \
+    $(_OBJ_DIR)\ia64\htmlctrl.obj \
+    $(_OBJ_DIR)\ia64\htmldlg.obj \
+    $(_OBJ_DIR)\ia64\iparser.obj \
+    $(_OBJ_DIR)\ia64\stdafx.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\html2bmp.res \
+    $(_OBJ_DIR)\amd64\filedialogex.obj \
+    $(_OBJ_DIR)\amd64\html2bmp.obj \
+    $(_OBJ_DIR)\amd64\htmlctrl.obj \
+    $(_OBJ_DIR)\amd64\htmldlg.obj \
+    $(_OBJ_DIR)\amd64\iparser.obj \
+    $(_OBJ_DIR)\amd64\stdafx.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\html2bmp.res \
+    $(_OBJ_DIR)\arm\filedialogex.obj \
+    $(_OBJ_DIR)\arm\html2bmp.obj \
+    $(_OBJ_DIR)\arm\htmlctrl.obj \
+    $(_OBJ_DIR)\arm\htmldlg.obj \
+    $(_OBJ_DIR)\arm\iparser.obj \
+    $(_OBJ_DIR)\arm\stdafx.obj
+
+PASS0_ARM_OBJECTS=
+

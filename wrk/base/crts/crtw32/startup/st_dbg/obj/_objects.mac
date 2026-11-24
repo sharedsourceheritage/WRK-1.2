@@ -1,0 +1,118 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\atlssup.obj \
+    $(_OBJ_DIR)\i386\chkstk.obj \
+    $(_OBJ_DIR)\i386\fp8.obj \
+    $(_OBJ_DIR)\i386\_setargv.obj \
+    $(_OBJ_DIR)\i386\_wstargv.obj \
+    $(_OBJ_DIR)\i386\crt0.obj \
+    $(_OBJ_DIR)\i386\crt0dat.obj \
+    $(_OBJ_DIR)\i386\crt0fp.obj \
+    $(_OBJ_DIR)\i386\crt0init.obj \
+    $(_OBJ_DIR)\i386\crt0msg.obj \
+    $(_OBJ_DIR)\i386\dllcrt0.obj \
+    $(_OBJ_DIR)\i386\dllmain.obj \
+    $(_OBJ_DIR)\i386\mlock.obj \
+    $(_OBJ_DIR)\i386\stdargv.obj \
+    $(_OBJ_DIR)\i386\stdenvp.obj \
+    $(_OBJ_DIR)\i386\thread.obj \
+    $(_OBJ_DIR)\i386\threadex.obj \
+    $(_OBJ_DIR)\i386\tlssup.obj \
+    $(_OBJ_DIR)\i386\wcrt0.obj \
+    $(_OBJ_DIR)\i386\wild.obj \
+    $(_OBJ_DIR)\i386\wincrt0.obj \
+    $(_OBJ_DIR)\i386\wincmdln.obj \
+    $(_OBJ_DIR)\i386\wstdargv.obj \
+    $(_OBJ_DIR)\i386\wstdenvp.obj \
+    $(_OBJ_DIR)\i386\wwild.obj \
+    $(_OBJ_DIR)\i386\wwincrt0.obj \
+    $(_OBJ_DIR)\i386\wwncmdln.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\fp8.obj \
+    $(_OBJ_DIR)\ia64\_setargv.obj \
+    $(_OBJ_DIR)\ia64\_wstargv.obj \
+    $(_OBJ_DIR)\ia64\crt0.obj \
+    $(_OBJ_DIR)\ia64\crt0dat.obj \
+    $(_OBJ_DIR)\ia64\crt0fp.obj \
+    $(_OBJ_DIR)\ia64\crt0init.obj \
+    $(_OBJ_DIR)\ia64\crt0msg.obj \
+    $(_OBJ_DIR)\ia64\dllcrt0.obj \
+    $(_OBJ_DIR)\ia64\dllmain.obj \
+    $(_OBJ_DIR)\ia64\mlock.obj \
+    $(_OBJ_DIR)\ia64\stdargv.obj \
+    $(_OBJ_DIR)\ia64\stdenvp.obj \
+    $(_OBJ_DIR)\ia64\thread.obj \
+    $(_OBJ_DIR)\ia64\threadex.obj \
+    $(_OBJ_DIR)\ia64\tlssup.obj \
+    $(_OBJ_DIR)\ia64\wcrt0.obj \
+    $(_OBJ_DIR)\ia64\wild.obj \
+    $(_OBJ_DIR)\ia64\wincrt0.obj \
+    $(_OBJ_DIR)\ia64\wincmdln.obj \
+    $(_OBJ_DIR)\ia64\wstdargv.obj \
+    $(_OBJ_DIR)\ia64\wstdenvp.obj \
+    $(_OBJ_DIR)\ia64\wwild.obj \
+    $(_OBJ_DIR)\ia64\wwincrt0.obj \
+    $(_OBJ_DIR)\ia64\wwncmdln.obj \
+    $(_OBJ_DIR)\ia64\chkstk.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\chkstk.obj \
+    $(_OBJ_DIR)\amd64\_setargv.obj \
+    $(_OBJ_DIR)\amd64\_wstargv.obj \
+    $(_OBJ_DIR)\amd64\crt0.obj \
+    $(_OBJ_DIR)\amd64\crt0dat.obj \
+    $(_OBJ_DIR)\amd64\crt0fp.obj \
+    $(_OBJ_DIR)\amd64\crt0init.obj \
+    $(_OBJ_DIR)\amd64\crt0msg.obj \
+    $(_OBJ_DIR)\amd64\dllcrt0.obj \
+    $(_OBJ_DIR)\amd64\dllmain.obj \
+    $(_OBJ_DIR)\amd64\mlock.obj \
+    $(_OBJ_DIR)\amd64\stdargv.obj \
+    $(_OBJ_DIR)\amd64\stdenvp.obj \
+    $(_OBJ_DIR)\amd64\thread.obj \
+    $(_OBJ_DIR)\amd64\threadex.obj \
+    $(_OBJ_DIR)\amd64\tlssup.obj \
+    $(_OBJ_DIR)\amd64\wcrt0.obj \
+    $(_OBJ_DIR)\amd64\wild.obj \
+    $(_OBJ_DIR)\amd64\wincrt0.obj \
+    $(_OBJ_DIR)\amd64\wincmdln.obj \
+    $(_OBJ_DIR)\amd64\wstdargv.obj \
+    $(_OBJ_DIR)\amd64\wstdenvp.obj \
+    $(_OBJ_DIR)\amd64\wwild.obj \
+    $(_OBJ_DIR)\amd64\wwincrt0.obj \
+    $(_OBJ_DIR)\amd64\wwncmdln.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\_setargv.obj \
+    $(_OBJ_DIR)\arm\_wstargv.obj \
+    $(_OBJ_DIR)\arm\crt0.obj \
+    $(_OBJ_DIR)\arm\crt0dat.obj \
+    $(_OBJ_DIR)\arm\crt0fp.obj \
+    $(_OBJ_DIR)\arm\crt0init.obj \
+    $(_OBJ_DIR)\arm\crt0msg.obj \
+    $(_OBJ_DIR)\arm\dllcrt0.obj \
+    $(_OBJ_DIR)\arm\dllmain.obj \
+    $(_OBJ_DIR)\arm\mlock.obj \
+    $(_OBJ_DIR)\arm\stdargv.obj \
+    $(_OBJ_DIR)\arm\stdenvp.obj \
+    $(_OBJ_DIR)\arm\thread.obj \
+    $(_OBJ_DIR)\arm\threadex.obj \
+    $(_OBJ_DIR)\arm\tlssup.obj \
+    $(_OBJ_DIR)\arm\wcrt0.obj \
+    $(_OBJ_DIR)\arm\wild.obj \
+    $(_OBJ_DIR)\arm\wincrt0.obj \
+    $(_OBJ_DIR)\arm\wincmdln.obj \
+    $(_OBJ_DIR)\arm\wstdargv.obj \
+    $(_OBJ_DIR)\arm\wstdenvp.obj \
+    $(_OBJ_DIR)\arm\wwild.obj \
+    $(_OBJ_DIR)\arm\wwincrt0.obj \
+    $(_OBJ_DIR)\arm\wwncmdln.obj
+
+PASS0_ARM_OBJECTS=
+

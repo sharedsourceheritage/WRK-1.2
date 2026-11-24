@@ -1,0 +1,92 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\perfsprc.res \
+    $(_OBJ_DIR)\i386\dataexpr.obj \
+    $(_OBJ_DIR)\i386\dataimag.obj \
+    $(_OBJ_DIR)\i386\dataproc.obj \
+    $(_OBJ_DIR)\i386\datatdet.obj \
+    $(_OBJ_DIR)\i386\datathrd.obj \
+    $(_OBJ_DIR)\i386\dataheap.obj \
+    $(_OBJ_DIR)\i386\datajob.obj \
+    $(_OBJ_DIR)\i386\perfexpr.obj \
+    $(_OBJ_DIR)\i386\perfimag.obj \
+    $(_OBJ_DIR)\i386\perfproc.obj \
+    $(_OBJ_DIR)\i386\perftdet.obj \
+    $(_OBJ_DIR)\i386\perfthrd.obj \
+    $(_OBJ_DIR)\i386\perfsprc.obj \
+    $(_OBJ_DIR)\i386\perfva.obj \
+    $(_OBJ_DIR)\i386\perfjob.obj \
+    $(_OBJ_DIR)\i386\perfheap.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\procmsg.h \
+    $(MC_SOURCEDIR)\procmsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\perfsprc.res \
+    $(_OBJ_DIR)\ia64\dataexpr.obj \
+    $(_OBJ_DIR)\ia64\dataimag.obj \
+    $(_OBJ_DIR)\ia64\dataproc.obj \
+    $(_OBJ_DIR)\ia64\datatdet.obj \
+    $(_OBJ_DIR)\ia64\datathrd.obj \
+    $(_OBJ_DIR)\ia64\dataheap.obj \
+    $(_OBJ_DIR)\ia64\datajob.obj \
+    $(_OBJ_DIR)\ia64\perfexpr.obj \
+    $(_OBJ_DIR)\ia64\perfimag.obj \
+    $(_OBJ_DIR)\ia64\perfproc.obj \
+    $(_OBJ_DIR)\ia64\perftdet.obj \
+    $(_OBJ_DIR)\ia64\perfthrd.obj \
+    $(_OBJ_DIR)\ia64\perfsprc.obj \
+    $(_OBJ_DIR)\ia64\perfva.obj \
+    $(_OBJ_DIR)\ia64\perfjob.obj \
+    $(_OBJ_DIR)\ia64\perfheap.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\procmsg.h \
+    $(MC_SOURCEDIR)\procmsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\perfsprc.res \
+    $(_OBJ_DIR)\amd64\dataexpr.obj \
+    $(_OBJ_DIR)\amd64\dataimag.obj \
+    $(_OBJ_DIR)\amd64\dataproc.obj \
+    $(_OBJ_DIR)\amd64\datatdet.obj \
+    $(_OBJ_DIR)\amd64\datathrd.obj \
+    $(_OBJ_DIR)\amd64\dataheap.obj \
+    $(_OBJ_DIR)\amd64\datajob.obj \
+    $(_OBJ_DIR)\amd64\perfexpr.obj \
+    $(_OBJ_DIR)\amd64\perfimag.obj \
+    $(_OBJ_DIR)\amd64\perfproc.obj \
+    $(_OBJ_DIR)\amd64\perftdet.obj \
+    $(_OBJ_DIR)\amd64\perfthrd.obj \
+    $(_OBJ_DIR)\amd64\perfsprc.obj \
+    $(_OBJ_DIR)\amd64\perfva.obj \
+    $(_OBJ_DIR)\amd64\perfjob.obj \
+    $(_OBJ_DIR)\amd64\perfheap.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\procmsg.h \
+    $(MC_SOURCEDIR)\procmsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\perfsprc.res \
+    $(_OBJ_DIR)\arm\dataexpr.obj \
+    $(_OBJ_DIR)\arm\dataimag.obj \
+    $(_OBJ_DIR)\arm\dataproc.obj \
+    $(_OBJ_DIR)\arm\datatdet.obj \
+    $(_OBJ_DIR)\arm\datathrd.obj \
+    $(_OBJ_DIR)\arm\dataheap.obj \
+    $(_OBJ_DIR)\arm\datajob.obj \
+    $(_OBJ_DIR)\arm\perfexpr.obj \
+    $(_OBJ_DIR)\arm\perfimag.obj \
+    $(_OBJ_DIR)\arm\perfproc.obj \
+    $(_OBJ_DIR)\arm\perftdet.obj \
+    $(_OBJ_DIR)\arm\perfthrd.obj \
+    $(_OBJ_DIR)\arm\perfsprc.obj \
+    $(_OBJ_DIR)\arm\perfva.obj \
+    $(_OBJ_DIR)\arm\perfjob.obj \
+    $(_OBJ_DIR)\arm\perfheap.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\procmsg.h \
+    $(MC_SOURCEDIR)\procmsg.rc
+

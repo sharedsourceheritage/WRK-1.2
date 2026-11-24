@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\initodat.res \
+    $(_OBJ_DIR)\i386\initodat.obj \
+    $(_OBJ_DIR)\i386\common.obj \
+    $(_OBJ_DIR)\i386\fileutl.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\initodat.res \
+    $(_OBJ_DIR)\ia64\initodat.obj \
+    $(_OBJ_DIR)\ia64\common.obj \
+    $(_OBJ_DIR)\ia64\fileutl.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\initodat.res \
+    $(_OBJ_DIR)\amd64\initodat.obj \
+    $(_OBJ_DIR)\amd64\common.obj \
+    $(_OBJ_DIR)\amd64\fileutl.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\initodat.res \
+    $(_OBJ_DIR)\arm\initodat.obj \
+    $(_OBJ_DIR)\arm\common.obj \
+    $(_OBJ_DIR)\arm\fileutl.obj
+
+PASS0_ARM_OBJECTS=
+

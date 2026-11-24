@@ -1,0 +1,22 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\hwcomp.obj \
+    $(_OBJ_DIR)\i386\hwdlg.obj \
+    $(_OBJ_DIR)\i386\online.obj \
+    $(_OBJ_DIR)\i386\hwdisk.obj \
+    $(_OBJ_DIR)\i386\resenum.obj \
+    $(_OBJ_DIR)\i386\lib.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

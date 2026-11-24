@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sxstest_idl_i.obj \
+    $(_OBJ_DIR)\i386\sxstest_idl_p.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\sxstest_idl.h
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sxstest_idl_i.obj \
+    $(_OBJ_DIR)\ia64\sxstest_idl_p.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\sxstest_idl.h
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sxstest_idl_i.obj \
+    $(_OBJ_DIR)\amd64\sxstest_idl_p.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\sxstest_idl.h
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sxstest_idl_i.obj \
+    $(_OBJ_DIR)\arm\sxstest_idl_p.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\sxstest_idl.h
+

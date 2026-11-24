@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\siscomp.res \
+    $(_OBJ_DIR)\i386\siscomp.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\siscomp.res \
+    $(_OBJ_DIR)\ia64\siscomp.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\siscomp.res \
+    $(_OBJ_DIR)\amd64\siscomp.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\siscomp.res \
+    $(_OBJ_DIR)\arm\siscomp.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,24 @@
+386_OBJECTS=
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\rmsint.h \
+    $(PASS0_HEADERDIR)\rmslib.h
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\rmsint.h \
+    $(PASS0_HEADERDIR)\rmslib.h
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\rmsint.h \
+    $(PASS0_HEADERDIR)\rmslib.h
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\rmsint.h \
+    $(PASS0_HEADERDIR)\rmslib.h
+

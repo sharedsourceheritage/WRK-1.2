@@ -1,0 +1,479 @@
+ filespy
+
+ Timestamp is 6b04f29f (Mon Nov 23 21:12:47 2026)
+
+ Preferred load address is 00010000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00002460H .text                   CODE
+ 0002:00000000 000000f0H .idata$5                DATA
+ 0002:000000f0 000014c8H .rdata                  DATA
+ 0002:000015b8 00000073H .rdata$debug            DATA
+ 0002:00001630 00000004H .rdata$sxdata           DATA
+ 0003:00000000 00000040H .data                   DATA
+ 0003:00000040 00000ef0H .bss                    DATA
+ 0004:00000000 00002a7fH PAGE                    CODE
+ 0005:00000000 00000a2dH INIT                    CODE
+ 0005:00000a30 00000028H .idata$2                CODE
+ 0005:00000a58 00000014H .idata$3                CODE
+ 0005:00000a6c 000000f0H .idata$4                CODE
+ 0005:00000b5c 000004d2H .idata$6                CODE
+ 0006:00000000 00000058H .rsrc$01                DATA
+ 0006:00000060 00000388H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0000:00000001       ___safe_se_handler_count   00000001     <absolute>
+ 0001:00000000       _SpyPassThroughCompletion@12 00011000 f   filespy.obj
+ 0001:0000004e       _SpyFsControlCompletion@12 0001104e f   filespy.obj
+ 0001:000000b2       _SpyFastIoMdlReadComplete@12 000110b2 f   filespy.obj
+ 0001:00000158       _SpyFastIoMdlWriteComplete@16 00011158 f   filespy.obj
+ 0001:00000202       _SpyFastIoMdlReadCompleteCompressed@12 00011202 f   filespy.obj
+ 0001:000002a8       _SpyFastIoMdlWriteCompleteCompressed@16 000112a8 f   filespy.obj
+ 0001:00000352       _SpyPreFsFilterOperation@8 00011352 f   filespy.obj
+ 0001:000003a2       _SpyPostFsFilterOperation@12 000113a2 f   filespy.obj
+ 0001:000003fe       _SpyPassThrough@8          000113fe f   filespy.obj
+ 0001:000004f2       _SpyDispatch@8             000114f2 f   filespy.obj
+ 0001:0000056e       _SpyCreate@8               0001156e f   filespy.obj
+ 0001:000005f0       _SpyFsControlMountVolumeCompleteWorker@4 000115f0 f   filespy.obj
+ 0001:00000614       _SpyFsControlLoadFileSystemCompleteWorker@4 00011614 f   filespy.obj
+ 0001:00000634       _ExAllocateFromNPagedLookasideList@4 00011634 f i fspylib.obj
+ 0001:0000065c       _ExFreeToNPagedLookasideList@8 0001165c f i fspylib.obj
+ 0001:00000686       _SpyAllocateBuffer@12      00011686 f   fspylib.obj
+ 0001:000006d6       _SpyFreeBuffer@8           000116d6 f   fspylib.obj
+ 0001:000006f6       _SpyNewRecord@4            000116f6 f   fspylib.obj
+ 0001:000007a0       _SpyFreeRecord@4           000117a0 f   fspylib.obj
+ 0001:000007c4       _SpyLogFastIoStart@24      000117c4 f   fspylib.obj
+ 0001:00000874       _SpyLogPreFsFilterOperation@8 00011874 f   fspylib.obj
+ 0001:000008fc       _SpyLogPostFsFilterOperation@8 000118fc f   fspylib.obj
+ 0001:00000914       _SpyLog@4                  00011914 f   fspylib.obj
+ 0001:00000980       _SpyQueryCompletion@12     00011980 f   fspylib.obj
+ 0001:000009b2       _SpyGetLog@12              000119b2 f   fspylib.obj
+ 0001:00000aea       _SpyCloseControlDevice@0   00011aea f   fspylib.obj
+ 0001:00000b72       _SpyFindSubString@8        00011b72 f   fspylib.obj
+ 0001:00000bdc       _SpyStoreUserName@8        00011bdc f   fspylib.obj
+ 0001:00000c8c       _SpyDumpIrpOperation@8     00011c8c f   fspylib.obj
+ 0001:00000d40       _SpyDumpFastIoOperation@8  00011d40 f   fspylib.obj
+ 0001:00000dd4       _SpyDumpFsFilterOperation@8 00011dd4 f   fspylib.obj
+ 0001:00000e1c       _SpyLogFastIoComplete@8    00011e1c f   fspylib.obj
+ 0001:00000fd4       _SpyGetFullPathName@16     00011fd4 f   fspylib.obj
+ 0001:00001384       _SpyHashBucketLookup@8     00012384 f   fspyhash.obj
+ 0001:000013a0       _SpySetName@20             000123a0 f   fspyhash.obj
+ 0001:0000162c       _SpyNameDeleteAllNames@0   0001262c f   fspyhash.obj
+ 0001:0000168c       _SpyNameDelete@4           0001268c f   fspyhash.obj
+ 0001:00001700       _SpyLogIrp@8               00012700 f   fspyhash.obj
+ 0001:000017be       _SpyLogIrpCompletion@8     000127be f   fspyhash.obj
+ 0001:00001849       ___report_gsfailure        00012849 f   BufferOverflowK:gs_support.obj
+ 0001:0000185b       @__security_check_cookie@4 0001285b f   BufferOverflowK:secchk.obj
+ 0001:0000186a       _DbgPrint                  0001286a f   ntoskrnl:ntoskrnl.exe
+ 0001:00001870       __SEH_prolog               00012870 f   ntoskrnl:sehprolg.obj
+ 0001:000018ab       __SEH_epilog               000128ab f   ntoskrnl:sehprolg.obj
+ 0001:000018bc       __except_handler3          000128bc f   ntoskrnl:ntoskrnl.exe
+ 0001:000018c2       _DbgBreakPoint@0           000128c2 f   ntoskrnl:ntoskrnl.exe
+ 0001:000018c8       _PsGetVersion@16           000128c8 f   ntoskrnl:ntoskrnl.exe
+ 0001:000018ce       _PsGetCurrentThreadId@0    000128ce f   ntoskrnl:ntoskrnl.exe
+ 0001:000018d4       _PsGetCurrentProcessId@0   000128d4 f   ntoskrnl:ntoskrnl.exe
+ 0001:000018da       _KeGetCurrentThread@0      000128da f   ntoskrnl:ntoskrnl.exe
+ 0001:000018e0       _GetIrpName@20             000128e0 f   filespyLib:irpnames.obj
+ 0001:0000227e       _GetFastioName@8           0001327e f   filespyLib:fastionames.obj
+ 0001:000023d6       _GetFsFilterOperationName@8 000133d6 f   filespyLib:fsfilteroperationnames.obj
+ 0001:0000245a       _sprintf                   0001345a f   ntoskrnl:ntoskrnl.exe
+ 0002:00000000       __imp_@KfReleaseSpinLock@8 00014000     hal:HAL.dll
+ 0002:00000004       __imp_@ExAcquireFastMutex@4 00014004     hal:HAL.dll
+ 0002:00000008       __imp_@ExReleaseFastMutex@4 00014008     hal:HAL.dll
+ 0002:0000000c       __imp__KeGetCurrentIrql@0  0001400c     hal:HAL.dll
+ 0002:00000010       __imp_@KfAcquireSpinLock@4 00014010     hal:HAL.dll
+ 0002:00000014       \177HAL_NULL_THUNK_DATA    00014014     hal:HAL.dll
+ 0002:00000018       __imp__IoDetachDevice@4    00014018     ntoskrnl:ntoskrnl.exe
+ 0002:0000001c       __imp__ExFreePoolWithTag@8 0001401c     ntoskrnl:ntoskrnl.exe
+ 0002:00000020       __imp__ExAllocatePoolWithTag@12 00014020     ntoskrnl:ntoskrnl.exe
+ 0002:00000024       __imp___except_handler3    00014024     ntoskrnl:ntoskrnl.exe
+ 0002:00000028       __imp__KeWaitForSingleObject@20 00014028     ntoskrnl:ntoskrnl.exe
+ 0002:0000002c       __imp_@IofCallDriver@8     0001402c     ntoskrnl:ntoskrnl.exe
+ 0002:00000030       __imp__KeInitializeEvent@12 00014030     ntoskrnl:ntoskrnl.exe
+ 0002:00000034       __imp__IoCreateDevice@28   00014034     ntoskrnl:ntoskrnl.exe
+ 0002:00000038       __imp__IoRegisterFsRegistrationChange@8 00014038     ntoskrnl:ntoskrnl.exe
+ 0002:0000003c       __imp__ExInitializeNPagedLookasideList@28 0001403c     ntoskrnl:ntoskrnl.exe
+ 0002:00000040       __imp__IoDeleteSymbolicLink@4 00014040     ntoskrnl:ntoskrnl.exe
+ 0002:00000044       __imp__IoCreateSymbolicLink@8 00014044     ntoskrnl:ntoskrnl.exe
+ 0002:00000048       __imp__RtlInitUnicodeString@8 00014048     ntoskrnl:ntoskrnl.exe
+ 0002:0000004c       __imp__DbgBreakPoint@0     0001404c     ntoskrnl:ntoskrnl.exe
+ 0002:00000050       __imp_@InterlockedPopEntrySList@4 00014050     ntoskrnl:ntoskrnl.exe
+ 0002:00000054       __imp_@InterlockedPushEntrySList@8 00014054     ntoskrnl:ntoskrnl.exe
+ 0002:00000058       __imp__ZwClose@4           00014058     ntoskrnl:ntoskrnl.exe
+ 0002:0000005c       __imp__ZwQueryValueKey@24  0001405c     ntoskrnl:ntoskrnl.exe
+ 0002:00000060       __imp__ZwOpenKey@12        00014060     ntoskrnl:ntoskrnl.exe
+ 0002:00000064       __imp__MmGetSystemRoutineAddress@4 00014064     ntoskrnl:ntoskrnl.exe
+ 0002:00000068       __imp__PsGetVersion@16     00014068     ntoskrnl:ntoskrnl.exe
+ 0002:0000006c       __imp__PsGetCurrentThreadId@0 0001406c     ntoskrnl:ntoskrnl.exe
+ 0002:00000070       __imp__PsGetCurrentProcessId@0 00014070     ntoskrnl:ntoskrnl.exe
+ 0002:00000074       __imp__IoDeleteDevice@4    00014074     ntoskrnl:ntoskrnl.exe
+ 0002:00000078       __imp__IoAttachDeviceToDeviceStack@8 00014078     ntoskrnl:ntoskrnl.exe
+ 0002:0000007c       __imp__IoFreeIrp@4         0001407c     ntoskrnl:ntoskrnl.exe
+ 0002:00000080       __imp__KeGetCurrentThread@0 00014080     ntoskrnl:ntoskrnl.exe
+ 0002:00000084       __imp__IoAllocateIrp@8     00014084     ntoskrnl:ntoskrnl.exe
+ 0002:00000088       __imp_@ObfReferenceObject@4 00014088     ntoskrnl:ntoskrnl.exe
+ 0002:0000008c       __imp__KeDelayExecutionThread@12 0001408c     ntoskrnl:ntoskrnl.exe
+ 0002:00000090       __imp__RtlAppendUnicodeStringToString@8 00014090     ntoskrnl:ntoskrnl.exe
+ 0002:00000094       __imp__RtlCopyUnicodeString@8 00014094     ntoskrnl:ntoskrnl.exe
+ 0002:00000098       __imp__ObQueryNameString@16 00014098     ntoskrnl:ntoskrnl.exe
+ 0002:0000009c       __imp___wcsnicmp           0001409c     ntoskrnl:ntoskrnl.exe
+ 0002:000000a0       __imp__RtlEqualUnicodeString@12 000140a0     ntoskrnl:ntoskrnl.exe
+ 0002:000000a4       __imp__RtlAppendUnicodeToString@8 000140a4     ntoskrnl:ntoskrnl.exe
+ 0002:000000a8       __imp__wcslen              000140a8     ntoskrnl:ntoskrnl.exe
+ 0002:000000ac       __imp__swprintf            000140ac     ntoskrnl:ntoskrnl.exe
+ 0002:000000b0       __imp__IoGetTopLevelIrp@0  000140b0     ntoskrnl:ntoskrnl.exe
+ 0002:000000b4       __imp__IoGetBaseFileSystemDeviceObject@4 000140b4     ntoskrnl:ntoskrnl.exe
+ 0002:000000b8       __imp__ObReferenceObjectByHandle@24 000140b8     ntoskrnl:ntoskrnl.exe
+ 0002:000000bc       __imp__IoFileObjectType    000140bc     ntoskrnl:ntoskrnl.exe
+ 0002:000000bc       _IoFileObjectType          000140bc     ntoskrnl:ntoskrnl.exe
+ 0002:000000c0       __imp__ZwCreateFile@44     000140c0     ntoskrnl:ntoskrnl.exe
+ 0002:000000c4       __imp__RtlCompareUnicodeString@12 000140c4     ntoskrnl:ntoskrnl.exe
+ 0002:000000c8       _KeTickCount               000140c8     ntoskrnl:ntoskrnl.exe
+ 0002:000000c8       __imp__KeTickCount         000140c8     ntoskrnl:ntoskrnl.exe
+ 0002:000000cc       __imp__KeBugCheckEx@20     000140cc     ntoskrnl:ntoskrnl.exe
+ 0002:000000d0       __imp_@ObfDereferenceObject@4 000140d0     ntoskrnl:ntoskrnl.exe
+ 0002:000000d4       __imp_@IofCompleteRequest@8 000140d4     ntoskrnl:ntoskrnl.exe
+ 0002:000000d8       __imp__ExQueueWorkItem@8   000140d8     ntoskrnl:ntoskrnl.exe
+ 0002:000000dc       __imp__KeSetEvent@12       000140dc     ntoskrnl:ntoskrnl.exe
+ 0002:000000e0       __imp__KeQuerySystemTime@4 000140e0     ntoskrnl:ntoskrnl.exe
+ 0002:000000e4       __imp__DbgPrint            000140e4     ntoskrnl:ntoskrnl.exe
+ 0002:000000e8       __imp__sprintf             000140e8     ntoskrnl:ntoskrnl.exe
+ 0002:000000ec       \177ntoskrnl_NULL_THUNK_DATA 000140ec     ntoskrnl:ntoskrnl.exe
+ 0002:00000110       _DeviceTypeNames           00014110     filespy.obj
+ 0002:000001f8       ??_C@_04GCEDJCBL@KSEC?$AA@ 000141f8     filespy.obj
+ 0002:00000200       ??_C@_07OGMGBCDA@TERMSRV?$AA@ 00014200     filespy.obj
+ 0002:00000208       ??_C@_07NCHJACLF@SERENUM?$AA@ 00014208     filespy.obj
+ 0002:00000210       ??_C@_0L@IMADEEHP@DFS_VOLUME?$AA@ 00014210     filespy.obj
+ 0002:0000021c       ??_C@_0BA@KLKCCBLE@DFS_FILE_SYSTEM?$AA@ 0001421c     filespy.obj
+ 0002:0000022c       ??_C@_0BB@NGKBOGKH@FULLSCREEN_VIDEO?$AA@ 0001422c     filespy.obj
+ 0002:00000240       ??_C@_03DGOJDHIK@DVD?$AA@  00014240     filespy.obj
+ 0002:00000244       ??_C@_04JIOIFEDE@ACPI?$AA@ 00014244     filespy.obj
+ 0002:0000024c       ??_C@_09GADPFDIA@SMARTCARD?$AA@ 0001424c     filespy.obj
+ 0002:00000258       ??_C@_07JBPDPBBO@CHANGER?$AA@ 00014258     filespy.obj
+ 0002:00000260       ??_C@_02ONOHEKFL@KS?$AA@   00014260     filespy.obj
+ 0002:00000264       ??_C@_03LNAOLDLL@SMB?$AA@  00014264     filespy.obj
+ 0002:00000268       ??_C@_0N@NEOFLJDA@MASS_STORAGE?$AA@ 00014268     filespy.obj
+ 0002:00000278       ??_C@_03CJJGEMJ@VDM?$AA@   00014278     filespy.obj
+ 0002:0000027c       ??_C@_05KIDJHP@MODEM?$AA@  0001427c     filespy.obj
+ 0002:00000284       ??_C@_0N@LHGBHHJO@BUS_EXTENDER?$AA@ 00014284     filespy.obj
+ 0002:00000294       ??_C@_07OBBOAMON@BATTERY?$AA@ 00014294     filespy.obj
+ 0002:0000029c       ??_C@_0BD@EMLCGFJB@NETWORK_REDIRECTOR?$AA@ 0001429c     filespy.obj
+ 0002:000002b0       ??_C@_09MAEICDGH@8042_PORT?$AA@ 000142b0     filespy.obj
+ 0002:000002bc       ??_C@_08DIPGCGLF@WAVE_OUT?$AA@ 000142bc     filespy.obj
+ 0002:000002c8       ??_C@_07OPFJFDGH@WAVE_IN?$AA@ 000142c8     filespy.obj
+ 0002:000002d0       ??_C@_0N@PBJKBCBL@VIRTUAL_DISK?$AA@ 000142d0     filespy.obj
+ 0002:000002e0       ??_C@_05NEMPFMAF@VIDEO?$AA@ 000142e0     filespy.obj
+ 0002:000002e8       ??_C@_07NFANNNEC@UNKNOWN?$AA@ 000142e8     filespy.obj
+ 0002:000002f0       ??_C@_09MBLMILGL@TRANSPORT?$AA@ 000142f0     filespy.obj
+ 0002:000002fc       ??_C@_0BB@DFFIKBGL@TAPE_FILE_SYSTEM?$AA@ 000142fc     filespy.obj
+ 0002:00000310       ??_C@_04DGFEMLEB@TAPE?$AA@ 00014310     filespy.obj
+ 0002:00000318       ??_C@_07INMHEIIO@STREAMS?$AA@ 00014318     filespy.obj
+ 0002:00000320       ??_C@_05MEGDOMG@SOUND?$AA@ 00014320     filespy.obj
+ 0002:00000328       ??_C@_06PNALCGN@SCREEN?$AA@ 00014328     filespy.obj
+ 0002:00000330       ??_C@_0M@HGMPGFJK@SERIAL_PORT?$AA@ 00014330     filespy.obj
+ 0002:0000033c       ??_C@_0BC@DJNLMPGE@SERIAL_MOUSE_PORT?$AA@ 0001433c     filespy.obj
+ 0002:00000350       ??_C@_07JCEHNLEF@SCANNER?$AA@ 00014350     filespy.obj
+ 0002:00000358       ??_C@_07OJGHOEK@PRINTER?$AA@ 00014358     filespy.obj
+ 0002:00000360       ??_C@_0BB@LLEIHKHO@PHYSICAL_NETCARD?$AA@ 00014360     filespy.obj
+ 0002:00000374       ??_C@_0O@EHHHJMIC@PARALLEL_PORT?$AA@ 00014374     filespy.obj
+ 0002:00000384       ??_C@_04HIBGFPH@NULL?$AA@  00014384     filespy.obj
+ 0002:0000038c       ??_C@_0BE@CDGDPDPI@NETWORK_FILE_SYSTEM?$AA@ 0001438c     filespy.obj
+ 0002:000003a0       ??_C@_0BA@ILKFHMOL@NETWORK_BROWSER?$AA@ 000143a0     filespy.obj
+ 0002:000003b0       ??_C@_07BCBHNHNG@NETWORK?$AA@ 000143b0     filespy.obj
+ 0002:000003b8       ??_C@_0L@FNLPJOHJ@NAMED_PIPE?$AA@ 000143b8     filespy.obj
+ 0002:000003c4       ??_C@_0BD@EOOOABJI@MULTI_UNC_PROVIDER?$AA@ 000143c4     filespy.obj
+ 0002:000003d8       ??_C@_05DIHPFMEP@MOUSE?$AA@ 000143d8     filespy.obj
+ 0002:000003e0       ??_C@_08FFHOLIHD@MIDI_OUT?$AA@ 000143e0     filespy.obj
+ 0002:000003ec       ??_C@_07LKCDHOHC@MIDI_IN?$AA@ 000143ec     filespy.obj
+ 0002:000003f4       ??_C@_08HBHFDHPM@MAILSLOT?$AA@ 000143f4     filespy.obj
+ 0002:00000400       ??_C@_08NCLHDNBO@KEYBOARD?$AA@ 00014400     filespy.obj
+ 0002:0000040c       ??_C@_0M@GCCLKKJF@INPORT_PORT?$AA@ 0001440c     filespy.obj
+ 0002:00000418       ??_C@_0M@FLBCLFHO@FILE_SYSTEM?$AA@ 00014418     filespy.obj
+ 0002:00000424       ??_C@_0BB@ILPMJIKA@DISK_FILE_SYSTEM?$AA@ 00014424     filespy.obj
+ 0002:00000438       ??_C@_04PMFOHPL@DISK?$AA@  00014438     filespy.obj
+ 0002:00000440       ??_C@_03CPEMBAGM@DFS?$AA@  00014440     filespy.obj
+ 0002:00000444       ??_C@_08HOLHPLLP@DATALINK?$AA@ 00014444     filespy.obj
+ 0002:00000450       ??_C@_0L@ILAGCKGO@CONTROLLER?$AA@ 00014450     filespy.obj
+ 0002:0000045c       ??_C@_0BD@CABCIIMM@CD_ROM_FILE_SYSTEM?$AA@ 0001445c     filespy.obj
+ 0002:00000470       ??_C@_06GGOPGDJJ@CD_ROM?$AA@ 00014470     filespy.obj
+ 0002:00000478       ??_C@_04HLMOLJLL@BEEP?$AA@ 00014478     filespy.obj
+ 0002:0000047d       ??_C@_00CNPNBAHC@?$AA@     0001447d     filespy.obj
+ 0002:000004e4       ??_C@_1CK@JJIICGHN@?$AA?$FL?$AA?9?$AA?$DN?$AAO?$AAu?$AAt?$AA?5?$AAO?$AAf?$AA?5?$AAB?$AAu?$AAf?$AAf?$AAe?$AAr?$AAs?$AA?$DN?$AA?9?$AA?$FN@ 000144e4     fspyhash.obj
+ 0002:00000510       ??_C@_0BM@MLJFAGC@Unknown?5Irp?5major?5code?5?$CI?$CFu?$CJ?$AA@ 00014510     filespyLib:irpnames.obj
+ 0002:0000052c       ??_C@_0CE@OHHBNDAB@IRP_MN_QUERY_LEGACY_BUS_INFORMAT@ 0001452c     filespyLib:irpnames.obj
+ 0002:00000550       ??_C@_0BI@JJMGKCHF@IRP_MN_SURPRISE_REMOVAL?$AA@ 00014550     filespyLib:irpnames.obj
+ 0002:00000568       ??_C@_0CB@EEGIBKLH@IRP_MN_DEVICE_USAGE_NOTIFICATION@ 00014568     filespyLib:irpnames.obj
+ 0002:0000058c       ??_C@_0BN@FKLLPNEA@IRP_MN_QUERY_BUS_INFORMATION?$AA@ 0001458c     filespyLib:irpnames.obj
+ 0002:000005ac       ??_C@_0BO@CLJGNPDL@IRP_MN_QUERY_PNP_DEVICE_STATE?$AA@ 000145ac     filespyLib:irpnames.obj
+ 0002:000005cc       ??_C@_0BA@MPOLLMHD@IRP_MN_QUERY_ID?$AA@ 000145cc     filespyLib:irpnames.obj
+ 0002:000005dc       ??_C@_0BA@JCIHPHAO@IRP_MN_SET_LOCK?$AA@ 000145dc     filespyLib:irpnames.obj
+ 0002:000005ec       ??_C@_0N@KBDCJDGM@IRP_MN_EJECT?$AA@ 000145ec     filespyLib:irpnames.obj
+ 0002:000005fc       ??_C@_0BE@MNGKLJHO@IRP_MN_WRITE_CONFIG?$AA@ 000145fc     filespyLib:irpnames.obj
+ 0002:00000610       ??_C@_0BD@KCLCONNF@IRP_MN_READ_CONFIG?$AA@ 00014610     filespyLib:irpnames.obj
+ 0002:00000624       ??_C@_0CE@FFGNIHMK@IRP_MN_FILTER_RESOURCE_REQUIREME@ 00014624     filespyLib:irpnames.obj
+ 0002:00000648       ??_C@_0BJ@KBKMPMKH@IRP_MN_QUERY_DEVICE_TEXT?$AA@ 00014648     filespyLib:irpnames.obj
+ 0002:00000664       ??_C@_0CD@MPPOHAEF@IRP_MN_QUERY_RESOURCE_REQUIREMEN@ 00014664     filespyLib:irpnames.obj
+ 0002:00000688       ??_C@_0BH@BAILDNEP@IRP_MN_QUERY_RESOURCES?$AA@ 00014688     filespyLib:irpnames.obj
+ 0002:000006a0       ??_C@_0BK@FNPJPCCF@IRP_MN_QUERY_CAPABILITIES?$AA@ 000146a0     filespyLib:irpnames.obj
+ 0002:000006bc       ??_C@_0BH@NJFMIPMO@IRP_MN_QUERY_INTERFACE?$AA@ 000146bc     filespyLib:irpnames.obj
+ 0002:000006d4       ??_C@_0BO@EDNJKJCF@IRP_MN_QUERY_DEVICE_RELATIONS?$AA@ 000146d4     filespyLib:irpnames.obj
+ 0002:000006f4       ??_C@_0BK@IHBBLJPI@IRP_MN_CANCEL_STOP_DEVICE?$AA@ 000146f4     filespyLib:irpnames.obj
+ 0002:00000710       ??_C@_0BJ@DBBODAKD@IRP_MN_QUERY_STOP_DEVICE?$AA@ 00014710     filespyLib:irpnames.obj
+ 0002:0000072c       ??_C@_0BD@OKOEKPNG@IRP_MN_STOP_DEVICE?$AA@ 0001472c     filespyLib:irpnames.obj
+ 0002:00000740       ??_C@_0BM@NHOBKHFC@IRP_MN_CANCEL_REMOVE_DEVICE?$AA@ 00014740     filespyLib:irpnames.obj
+ 0002:0000075c       ??_C@_0BF@CIDCHGNK@IRP_MN_REMOVE_DEVICE?$AA@ 0001475c     filespyLib:irpnames.obj
+ 0002:00000774       ??_C@_0BL@BKMKKOEG@IRP_MN_QUERY_REMOVE_DEVICE?$AA@ 00014774     filespyLib:irpnames.obj
+ 0002:00000790       ??_C@_0BE@LNOGIHJB@IRP_MN_START_DEVICE?$AA@ 00014790     filespyLib:irpnames.obj
+ 0002:000007a4       ??_C@_0L@EACGAIIF@IRP_MJ_PNP?$AA@ 000147a4     filespyLib:irpnames.obj
+ 0002:000007b0       ??_C@_0BB@MFPKCKFI@IRP_MJ_SET_QUOTA?$AA@ 000147b0     filespyLib:irpnames.obj
+ 0002:000007c4       ??_C@_0BD@MDBGANBO@IRP_MJ_QUERY_QUOTA?$AA@ 000147c4     filespyLib:irpnames.obj
+ 0002:000007d8       ??_C@_0BF@HOMHCDN@IRP_MJ_DEVICE_CHANGE?$AA@ 000147d8     filespyLib:irpnames.obj
+ 0002:000007f0       ??_C@_0BG@BOODMHMA@IRP_MN_EXECUTE_METHOD?$AA@ 000147f0     filespyLib:irpnames.obj
+ 0002:00000808       ??_C@_0P@BLFCKDFF@IRP_MN_REGINFO?$AA@ 00014808     filespyLib:irpnames.obj
+ 0002:00000818       ??_C@_0BK@JHGPMMFH@IRP_MN_DISABLE_COLLECTION?$AA@ 00014818     filespyLib:irpnames.obj
+ 0002:00000834       ??_C@_0BJ@JANDPHON@IRP_MN_ENABLE_COLLECTION?$AA@ 00014834     filespyLib:irpnames.obj
+ 0002:00000850       ??_C@_0BG@MMHOCBEF@IRP_MN_DISABLE_EVENTS?$AA@ 00014850     filespyLib:irpnames.obj
+ 0002:00000868       ??_C@_0BF@KOMFOADK@IRP_MN_ENABLE_EVENTS?$AA@ 00014868     filespyLib:irpnames.obj
+ 0002:00000880       ??_C@_0BK@IOJCDGCI@IRP_MN_CHANGE_SINGLE_ITEM?$AA@ 00014880     filespyLib:irpnames.obj
+ 0002:0000089c       ??_C@_0BO@CADBFJCG@IRP_MN_CHANGE_SINGLE_INSTANCE?$AA@ 0001489c     filespyLib:irpnames.obj
+ 0002:000008bc       ??_C@_0BN@KPNLCOKD@IRP_MN_QUERY_SINGLE_INSTANCE?$AA@ 000148bc     filespyLib:irpnames.obj
+ 0002:000008dc       ??_C@_0BG@NJEOKIEF@IRP_MN_QUERY_ALL_DATA?$AA@ 000148dc     filespyLib:irpnames.obj
+ 0002:000008f4       ??_C@_0BG@JHIMGJML@IRP_MJ_SYSTEM_CONTROL?$AA@ 000148f4     filespyLib:irpnames.obj
+ 0002:0000090c       ??_C@_0BB@KEEBPEDL@IRP_MN_WAIT_WAKE?$AA@ 0001490c     filespyLib:irpnames.obj
+ 0002:00000920       ??_C@_0BG@HJCHODFP@IRP_MN_POWER_SEQUENCE?$AA@ 00014920     filespyLib:irpnames.obj
+ 0002:00000938       ??_C@_0BB@MOFGLKAE@IRP_MN_SET_POWER?$AA@ 00014938     filespyLib:irpnames.obj
+ 0002:0000094c       ??_C@_0BD@NCBACJCG@IRP_MN_QUERY_POWER?$AA@ 0001494c     filespyLib:irpnames.obj
+ 0002:00000960       ??_C@_0N@BGEEMFOO@IRP_MJ_POWER?$AA@ 00014960     filespyLib:irpnames.obj
+ 0002:00000970       ??_C@_0BE@MPINJCAP@IRP_MJ_SET_SECURITY?$AA@ 00014970     filespyLib:irpnames.obj
+ 0002:00000984       ??_C@_0BG@MIODHPEN@IRP_MJ_QUERY_SECURITY?$AA@ 00014984     filespyLib:irpnames.obj
+ 0002:0000099c       ??_C@_0BH@CKPKPKHL@IRP_MJ_CREATE_MAILSLOT?$AA@ 0001499c     filespyLib:irpnames.obj
+ 0002:000009b4       ??_C@_0P@JJLCIODE@IRP_MJ_CLEANUP?$AA@ 000149b4     filespyLib:irpnames.obj
+ 0002:000009c4       ??_C@_0M@HJJMODLF@IRP_MN_LOCK?$AA@ 000149c4     filespyLib:irpnames.obj
+ 0002:000009d0       ??_C@_0BF@FGHODAJO@IRP_MN_UNLOCK_SINGLE?$AA@ 000149d0     filespyLib:irpnames.obj
+ 0002:000009e8       ??_C@_0BC@EEJEOEPF@IRP_MN_UNLOCK_ALL?$AA@ 000149e8     filespyLib:irpnames.obj
+ 0002:000009fc       ??_C@_0BJ@BEAOPAEF@IRP_MN_UNLOCK_ALL_BY_KEY?$AA@ 000149fc     filespyLib:irpnames.obj
+ 0002:00000a18       ??_C@_0BE@LODBBEFP@IRP_MJ_LOCK_CONTROL?$AA@ 00014a18     filespyLib:irpnames.obj
+ 0002:00000a2c       ??_C@_0BA@CDMDNOAC@IRP_MJ_SHUTDOWN?$AA@ 00014a2c     filespyLib:irpnames.obj
+ 0002:00000a3c       ??_C@_0BP@ODEFGAEK@IRP_MJ_INTERNAL_DEVICE_CONTROL?$AA@ 00014a3c     filespyLib:irpnames.obj
+ 0002:00000a5c       ??_C@_0N@DBJPKKNJ@User?5request?$AA@ 00014a5c     filespyLib:irpnames.obj
+ 0002:00000a6c       ??_C@_0BC@FNIEFCHH@IRP_MN_SCSI_CLASS?$AA@ 00014a6c     filespyLib:irpnames.obj
+ 0002:00000a80       ??_C@_0BG@HAFCIBGJ@IRP_MJ_DEVICE_CONTROL?$AA@ 00014a80     filespyLib:irpnames.obj
+ 0002:00000a98       ??_C@_09NNEPFEMF@?$CFs?5?$CIUSER?$CJ?$AA@ 00014a98     filespyLib:irpnames.obj
+ 0002:00000aa4       ??_C@_0BF@GIODPGDG@FSCTL_READ_FROM_PLEX?$AA@ 00014aa4     filespyLib:irpnames.obj
+ 0002:00000abc       ??_C@_0BE@MHOANKLF@FSCTL_SET_ZERO_DATA?$AA@ 00014abc     filespyLib:irpnames.obj
+ 0002:00000ad0       ??_C@_0BG@DILCJPIH@FSCTL_SET_COMPRESSION?$AA@ 00014ad0     filespyLib:irpnames.obj
+ 0002:00000ae8       ??_C@_0BF@BFCME@FSCTL_SIS_LINK_FILES?$AA@ 00014ae8     filespyLib:irpnames.obj
+ 0002:00000b00       ??_C@_0O@NMPEGBPO@FSCTL_HSM_MSG?$AA@ 00014b00     filespyLib:irpnames.obj
+ 0002:00000b10       ??_C@_0P@FKNLLFHC@FSCTL_HSM_DATA?$AA@ 00014b10     filespyLib:irpnames.obj
+ 0002:00000b20       ??_C@_0BD@LPMGCELP@Unknown?5FSCTL?5?$CI?$CFu?$CJ?$AA@ 00014b20     filespyLib:irpnames.obj
+ 0002:00000b34       ??_C@_0BN@HOBNBAGI@FSCTL_QUERY_ALLOCATED_RANGES?$AA@ 00014b34     filespyLib:irpnames.obj
+ 0002:00000b54       ??_C@_0BI@CHMECJCG@FSCTL_QUERY_USN_JOURNAL?$AA@ 00014b54     filespyLib:irpnames.obj
+ 0002:00000b6c       ??_C@_0BJ@ECLFNOIA@FSCTL_DELETE_USN_JOURNAL?$AA@ 00014b6c     filespyLib:irpnames.obj
+ 0002:00000b88       ??_C@_0BC@BDIMECBO@FSCTL_MARK_HANDLE?$AA@ 00014b88     filespyLib:irpnames.obj
+ 0002:00000b9c       ??_C@_0BD@NLAKNFP@FSCTL_SIS_COPYFILE?$AA@ 00014b9c     filespyLib:irpnames.obj
+ 0002:00000bb0       ??_C@_0BC@HNCGMBHF@FSCTL_RECALL_FILE?$AA@ 00014bb0     filespyLib:irpnames.obj
+ 0002:00000bc4       ??_C@_0BE@OLNNHGME@FSCTL_FILE_PREFETCH?$AA@ 00014bc4     filespyLib:irpnames.obj
+ 0002:00000bd8       ??_C@_0BI@NOPIBPPL@FSCTL_SECURITY_ID_CHECK?$AA@ 00014bd8     filespyLib:irpnames.obj
+ 0002:00000bf0       ??_C@_0BE@CNNJNKPA@FSCTL_EXTEND_VOLUME?$AA@ 00014bf0     filespyLib:irpnames.obj
+ 0002:00000c04       ??_C@_0BF@LHKHLDGN@FSCTL_SET_ENCRYPTION?$AA@ 00014c04     filespyLib:irpnames.obj
+ 0002:00000c1c       ??_C@_0BK@FBLFEPJC@FSCTL_ENCRYPTION_FSCTL_IO?$AA@ 00014c1c     filespyLib:irpnames.obj
+ 0002:00000c38       ??_C@_0BK@PNIACGFD@FSCTL_WRITE_RAW_ENCRYPTED?$AA@ 00014c38     filespyLib:irpnames.obj
+ 0002:00000c54       ??_C@_0BJ@KCNNAHKO@FSCTL_READ_RAW_ENCRYPTED?$AA@ 00014c54     filespyLib:irpnames.obj
+ 0002:00000c70       ??_C@_0BJ@HCIBMLON@FSCTL_CREATE_USN_JOURNAL?$AA@ 00014c70     filespyLib:irpnames.obj
+ 0002:00000c8c       ??_C@_0BJ@DAKCPAOF@FSCTL_READ_FILE_USN_DATA?$AA@ 00014c8c     filespyLib:irpnames.obj
+ 0002:00000ca8       ??_C@_0BN@OAOBLFGK@FSCTL_WRITE_USN_CLOSE_RECORD?$AA@ 00014ca8     filespyLib:irpnames.obj
+ 0002:00000cc8       ??_C@_0BB@GCKNPIPC@FSCTL_SET_SPARSE?$AA@ 00014cc8     filespyLib:irpnames.obj
+ 0002:00000cdc       ??_C@_0BI@JHCMMOJN@FSCTL_SET_REPARSE_POINT?$AA@ 00014cdc     filespyLib:irpnames.obj
+ 0002:00000cf4       ??_C@_0BI@LCCHEFID@FSCTL_GET_REPARSE_POINT?$AA@ 00014cf4     filespyLib:irpnames.obj
+ 0002:00000d0c       ??_C@_0BL@EEGOBCHF@FSCTL_DELETE_REPARSE_POINT?$AA@ 00014d0c     filespyLib:irpnames.obj
+ 0002:00000d28       ??_C@_0BE@PDFCKBLG@FSCTL_ENUM_USN_DATA?$AA@ 00014d28     filespyLib:irpnames.obj
+ 0002:00000d3c       ??_C@_0BH@BAMGLKO@FSCTL_READ_USN_JOURNAL?$AA@ 00014d3c     filespyLib:irpnames.obj
+ 0002:00000d54       ??_C@_0BN@FKHEJOBG@FSCTL_SET_OBJECT_ID_EXTENDED?$AA@ 00014d54     filespyLib:irpnames.obj
+ 0002:00000d74       ??_C@_0BO@NHDNOHBL@FSCTL_CREATE_OR_GET_OBJECT_ID?$AA@ 00014d74     filespyLib:irpnames.obj
+ 0002:00000d94       ??_C@_0BH@FDDOHIAD@FSCTL_DELETE_OBJECT_ID?$AA@ 00014d94     filespyLib:irpnames.obj
+ 0002:00000dac       ??_C@_0BA@MGHNGGA@FSCTL_MOVE_FILE?$AA@ 00014dac     filespyLib:irpnames.obj
+ 0002:00000dbc       ??_C@_0BG@GCLGHABM@FSCTL_IS_VOLUME_DIRTY?$AA@ 00014dbc     filespyLib:irpnames.obj
+ 0002:00000dd4       ??_C@_0BN@GANKADHH@FSCTL_ALLOW_EXTENDED_DASD_IO?$AA@ 00014dd4     filespyLib:irpnames.obj
+ 0002:00000df4       ??_C@_0BI@JLMJPNG@FSCTL_FIND_FILES_BY_SID?$AA@ 00014df4     filespyLib:irpnames.obj
+ 0002:00000e0c       ??_C@_0BE@KEJDDJKI@FSCTL_SET_OBJECT_ID?$AA@ 00014e0c     filespyLib:irpnames.obj
+ 0002:00000e20       ??_C@_0BE@NLINIKNP@FSCTL_GET_OBJECT_ID?$AA@ 00014e20     filespyLib:irpnames.obj
+ 0002:00000e34       ??_C@_0BN@GLPGJCD@FSCTL_GET_RETRIEVAL_POINTERS?$AA@ 00014e34     filespyLib:irpnames.obj
+ 0002:00000e54       ??_C@_0BJ@DABLHGJC@FSCTL_INVALIDATE_VOLUMES?$AA@ 00014e54     filespyLib:irpnames.obj
+ 0002:00000e70       ??_C@_0BE@PHNBGBJH@FSCTL_QUERY_FAT_BPB?$AA@ 00014e70     filespyLib:irpnames.obj
+ 0002:00000e84       ??_C@_0BM@KLOPPLML@FSCTL_REQUEST_FILTER_OPLOCK?$AA@ 00014e84     filespyLib:irpnames.obj
+ 0002:00000ea0       ??_C@_0CA@JPMJJFCB@FSCTL_FILESYSTEM_GET_STATISTICS?$AA@ 00014ea0     filespyLib:irpnames.obj
+ 0002:00000ec0       ??_C@_0BL@NHILJKJE@FSCTL_GET_NTFS_VOLUME_DATA?$AA@ 00014ec0     filespyLib:irpnames.obj
+ 0002:00000edc       ??_C@_0BL@IKEJGJGF@FSCTL_GET_NTFS_FILE_RECORD?$AA@ 00014edc     filespyLib:irpnames.obj
+ 0002:00000ef8       ??_C@_0BI@LHFPGKFH@FSCTL_GET_VOLUME_BITMAP?$AA@ 00014ef8     filespyLib:irpnames.obj
+ 0002:00000f10       ??_C@_0BM@EPJHPJHO@FSCTL_OPLOCK_BREAK_ACK_NO_2?$AA@ 00014f10     filespyLib:irpnames.obj
+ 0002:00000f2c       ??_C@_0BG@IJKPMGKL@FSCTL_DISMOUNT_VOLUME?$AA@ 00014f2c     filespyLib:irpnames.obj
+ 0002:00000f44       ??_C@_0BI@ONJGMCKK@FSCTL_IS_VOLUME_MOUNTED?$AA@ 00014f44     filespyLib:irpnames.obj
+ 0002:00000f5c       ??_C@_0BI@EGDDJCOB@FSCTL_IS_PATHNAME_VALID?$AA@ 00014f5c     filespyLib:irpnames.obj
+ 0002:00000f74       ??_C@_0BI@PHNEAOAM@FSCTL_MARK_VOLUME_DIRTY?$AA@ 00014f74     filespyLib:irpnames.obj
+ 0002:00000f8c       ??_C@_0BP@EOBKAKAK@FSCTL_QUERY_RETRIEVAL_POINTERS?$AA@ 00014f8c     filespyLib:irpnames.obj
+ 0002:00000fac       ??_C@_0BG@KKEONJO@FSCTL_GET_COMPRESSION?$AA@ 00014fac     filespyLib:irpnames.obj
+ 0002:00000fc4       ??_C@_0BK@BMFOOMAJ@FSCTL_MARK_AS_SYSTEM_HIVE?$AA@ 00014fc4     filespyLib:irpnames.obj
+ 0002:00000fe0       ??_C@_0BE@JNHFBIHM@FSCTL_UNLOCK_VOLUME?$AA@ 00014fe0     filespyLib:irpnames.obj
+ 0002:00000ff4       ??_C@_0BN@CKIKJIIN@FSCTL_REQUEST_OPLOCK_LEVEL_1?$AA@ 00014ff4     filespyLib:irpnames.obj
+ 0002:00001014       ??_C@_0BN@BKHMLEO@FSCTL_REQUEST_OPLOCK_LEVEL_2?$AA@ 00015014     filespyLib:irpnames.obj
+ 0002:00001034       ??_C@_0BL@EBEINBEH@FSCTL_REQUEST_BATCH_OPLOCK?$AA@ 00015034     filespyLib:irpnames.obj
+ 0002:00001050       ??_C@_0BP@PEEHDOIG@FSCTL_OPLOCK_BREAK_ACKNOWLEDGE?$AA@ 00015050     filespyLib:irpnames.obj
+ 0002:00001070       ??_C@_0CA@PGLLHCLA@FSCTL_OPBATCH_ACK_CLOSE_PENDING?$AA@ 00015070     filespyLib:irpnames.obj
+ 0002:00001090       ??_C@_0BK@EGANPIBN@FSCTL_OPLOCK_BREAK_NOTIFY?$AA@ 00015090     filespyLib:irpnames.obj
+ 0002:000010ac       ??_C@_0BC@IMHPEAOP@FSCTL_LOCK_VOLUME?$AA@ 000150ac     filespyLib:irpnames.obj
+ 0002:000010c0       ??_C@_0BE@MGOLFGKJ@IRP_MN_MOUNT_VOLUME?$AA@ 000150c0     filespyLib:irpnames.obj
+ 0002:000010d4       ??_C@_0BF@KBCGJFAN@IRP_MN_VERIFY_VOLUME?$AA@ 000150d4     filespyLib:irpnames.obj
+ 0002:000010ec       ??_C@_0BI@NKNNJNHG@IRP_MN_LOAD_FILE_SYSTEM?$AA@ 000150ec     filespyLib:irpnames.obj
+ 0002:00001104       ??_C@_0BC@BLPBCBLF@IRP_MN_TRACK_LINK?$AA@ 00015104     filespyLib:irpnames.obj
+ 0002:00001118       ??_C@_0BL@MFHGBIDL@IRP_MJ_FILE_SYSTEM_CONTROL?$AA@ 00015118     filespyLib:irpnames.obj
+ 0002:00001134       ??_C@_0BH@EHEKJGMF@IRP_MN_QUERY_DIRECTORY?$AA@ 00015134     filespyLib:irpnames.obj
+ 0002:0000114c       ??_C@_0BP@OECDPIEJ@IRP_MN_NOTIFY_CHANGE_DIRECTORY?$AA@ 0001514c     filespyLib:irpnames.obj
+ 0002:0000116c       ??_C@_0BJ@NCGIANAN@IRP_MJ_DIRECTORY_CONTROL?$AA@ 0001516c     filespyLib:irpnames.obj
+ 0002:00001188       ??_C@_0BO@CJJMMMF@IRP_MJ_SET_VOLUME_INFORMATION?$AA@ 00015188     filespyLib:irpnames.obj
+ 0002:000011a8       ??_C@_0CA@FDGJPBOD@IRP_MJ_QUERY_VOLUME_INFORMATION?$AA@ 000151a8     filespyLib:irpnames.obj
+ 0002:000011c8       ??_C@_0BF@CBDAKCPM@IRP_MJ_FLUSH_BUFFERS?$AA@ 000151c8     filespyLib:irpnames.obj
+ 0002:000011e0       ??_C@_0O@FPNILENL@IRP_MJ_SET_EA?$AA@ 000151e0     filespyLib:irpnames.obj
+ 0002:000011f0       ??_C@_0BA@LFPMCNA@IRP_MJ_QUERY_EA?$AA@ 000151f0     filespyLib:irpnames.obj
+ 0002:00001200       ??_C@_0BH@GNAPBNMO@IRP_MJ_SET_INFORMATION?$AA@ 00015200     filespyLib:irpnames.obj
+ 0002:00001218       ??_C@_0BJ@FPMLIFJJ@IRP_MJ_QUERY_INFORMATION?$AA@ 00015218     filespyLib:irpnames.obj
+ 0002:00001234       ??_C@_0BI@CGAFDHII@IRP_MN_COMPLETE_MDL_DPC?$AA@ 00015234     filespyLib:irpnames.obj
+ 0002:0000124c       ??_C@_0BE@LBMGCDON@IRP_MN_COMPLETE_MDL?$AA@ 0001524c     filespyLib:irpnames.obj
+ 0002:00001260       ??_C@_0P@EGHKGJCN@IRP_MN_MDL_DPC?$AA@ 00015260     filespyLib:irpnames.obj
+ 0002:00001270       ??_C@_0BC@FMLOIDBP@IRP_MN_COMPRESSED?$AA@ 00015270     filespyLib:irpnames.obj
+ 0002:00001284       ??_C@_0BA@EEMALKGA@IRP_MN_COMPLETE?$AA@ 00015284     filespyLib:irpnames.obj
+ 0002:00001294       ??_C@_0L@JCCEBNFK@IRP_MN_MDL?$AA@ 00015294     filespyLib:irpnames.obj
+ 0002:000012a0       ??_C@_0L@HDJLEFLD@IRP_MN_DPC?$AA@ 000152a0     filespyLib:irpnames.obj
+ 0002:000012ac       ??_C@_0O@GCFBIHJK@IRP_MN_NORMAL?$AA@ 000152ac     filespyLib:irpnames.obj
+ 0002:000012bc       ??_C@_0N@DLJAMLBI@IRP_MJ_WRITE?$AA@ 000152bc     filespyLib:irpnames.obj
+ 0002:000012cc       ??_C@_0M@LJKCMGIA@IRP_MJ_READ?$AA@ 000152cc     filespyLib:irpnames.obj
+ 0002:000012d8       ??_C@_0N@FMCDOLCP@IRP_MJ_CLOSE?$AA@ 000152d8     filespyLib:irpnames.obj
+ 0002:000012e8       ??_C@_0BJ@MMKIHFHH@IRP_MJ_CREATE_NAMED_PIPE?$AA@ 000152e8     filespyLib:irpnames.obj
+ 0002:00001304       ??_C@_0O@LCBLIIOL@IRP_MJ_CREATE?$AA@ 00015304     filespyLib:irpnames.obj
+ 0002:00001314       ??_C@_0BO@HFPADMPO@Unknown?5FastIO?5operation?5?$CI?$CFu?$CJ?$AA@ 00015314     filespyLib:fastionames.obj
+ 0002:00001334       ??_C@_0L@LDODEINE@QUERY_OPEN?$AA@ 00015334     filespyLib:fastionames.obj
+ 0002:00001340       ??_C@_0BO@LNGKIFCK@MDL_WRITE_COMPLETE_COMPRESSED?$AA@ 00015340     filespyLib:fastionames.obj
+ 0002:00001360       ??_C@_0BC@KONDNMHN@PREPARE_MDL_WRITE?$AA@ 00015360     filespyLib:fastionames.obj
+ 0002:00001374       ??_C@_0BN@BFKNKNLH@MDL_READ_COMPLETE_COMPRESSED?$AA@ 00015374     filespyLib:fastionames.obj
+ 0002:00001394       ??_C@_0BB@IKHPCLLP@WRITE_COMPRESSED?$AA@ 00015394     filespyLib:fastionames.obj
+ 0002:000013a8       ??_C@_0BA@LPNMDDPF@READ_COMPRESSED?$AA@ 000153a8     filespyLib:fastionames.obj
+ 0002:000013b8       ??_C@_0BD@LAAGOKPM@MDL_WRITE_COMPLETE?$AA@ 000153b8     filespyLib:fastionames.obj
+ 0002:000013cc       ??_C@_09MBPIJBB@MDL_WRITE?$AA@ 000153cc     filespyLib:fastionames.obj
+ 0002:000013d8       ??_C@_0BC@KGMMHNIG@MDL_READ_COMPLETE?$AA@ 000153d8     filespyLib:fastionames.obj
+ 0002:000013ec       ??_C@_08OONLDPGL@MDL_READ?$AA@ 000153ec     filespyLib:fastionames.obj
+ 0002:000013f8       ??_C@_0BI@JODCIBCG@QUERY_NETWORK_OPEN_INFO?$AA@ 000153f8     filespyLib:fastionames.obj
+ 0002:00001410       ??_C@_0O@CDMFOIFA@DETACH_DEVICE?$AA@ 00015410     filespyLib:fastionames.obj
+ 0002:00001420       ??_C@_0P@JIFIOMKO@DEVICE_CONTROL?$AA@ 00015420     filespyLib:fastionames.obj
+ 0002:00001430       ??_C@_0BC@POIFGHMF@UNLOCK_ALL_BY_KEY?$AA@ 00015430     filespyLib:fastionames.obj
+ 0002:00001444       ??_C@_0L@HJCCKOJA@UNLOCK_ALL?$AA@ 00015444     filespyLib:fastionames.obj
+ 0002:00001450       ??_C@_0O@DAPGIIFO@UNLOCK_SINGLE?$AA@ 00015450     filespyLib:fastionames.obj
+ 0002:00001460       ??_C@_04GPIFAJG@LOCK?$AA@  00015460     filespyLib:fastionames.obj
+ 0002:00001468       ??_C@_0BE@LLIEPAHH@QUERY_STANDARD_INFO?$AA@ 00015468     filespyLib:fastionames.obj
+ 0002:0000147c       ??_C@_0BB@JBPMBEFF@QUERY_BASIC_INFO?$AA@ 0001547c     filespyLib:fastionames.obj
+ 0002:00001490       ??_C@_05BNMCNACD@WRITE?$AA@ 00015490     filespyLib:fastionames.obj
+ 0002:00001498       ??_C@_04DCIJFBLA@READ?$AA@ 00015498     filespyLib:fastionames.obj
+ 0002:000014a0       ??_C@_0BC@INPDFNEM@CHECK_IF_POSSIBLE?$AA@ 000154a0     filespyLib:fastionames.obj
+ 0002:000014b4       ??_C@_0BF@PHCFNLGB@RELEASE_FOR_CC_FLUSH?$AA@ 000154b4     filespyLib:fsfilteroperationnames.obj
+ 0002:000014cc       ??_C@_0BF@BEOPPJJ@ACQUIRE_FOR_CC_FLUSH?$AA@ 000154cc     filespyLib:fsfilteroperationnames.obj
+ 0002:000014e4       ??_C@_0BG@GNIPDLDF@RELEASE_FOR_MOD_WRITE?$AA@ 000154e4     filespyLib:fsfilteroperationnames.obj
+ 0002:000014fc       ??_C@_0BG@NOBPCKDP@ACQUIRE_FOR_MOD_WRITE?$AA@ 000154fc     filespyLib:fsfilteroperationnames.obj
+ 0002:00001514       ??_C@_0BJ@MCDBBHLC@RELEASE_FOR_SECTION_SYNC?$AA@ 00015514     filespyLib:fsfilteroperationnames.obj
+ 0002:00001530       ??_C@_0BJ@GMHACCID@ACQUIRE_FOR_SECTION_SYNC?$AA@ 00015530     filespyLib:fsfilteroperationnames.obj
+ 0002:0000154c       ??_C@_0CA@EOGNJGML@Unknown?5FsFilter?5operation?5?$CI?$CFu?$CJ?$AA@ 0001554c     filespyLib:fsfilteroperationnames.obj
+ 0002:00001570       __load_config_used         00015570     ntoskrnl:loadcfg.obj
+ 0002:00001630       ___safe_se_handler_table   00015630     <linker-defined>
+ 0003:00000000       _gFileSpyDebugLevel        00016000     filespy.obj
+ 0003:00000004       _gFileSpyAttachMode        00016004     filespy.obj
+ 0003:00000008       _gControlDeviceState       00016008     filespy.obj
+ 0003:0000000c       _gMaxRecordsToAllocate     0001600c     filespy.obj
+ 0003:00000010       _gMaxNamesToAllocate       00016010     filespy.obj
+ 0003:00000014       _SizeOfDeviceTypeNames     00016014     filespy.obj
+ 0003:00000018       _OutOfBuffers              00016018     fspyhash.obj
+ 0003:00000020       ___security_cookie         00016020     BufferOverflowK:gs_support.obj
+ 0003:00000024       _UnknownIrpMinor           00016024     filespyLib:irpnames.obj
+ 0003:00000040       _gLogSequenceNumber        00016040     filespy.obj
+ 0003:00000044       _gRecordsAllocated         00016044     filespy.obj
+ 0003:00000048       _gNamesAllocated           00016048     filespy.obj
+ 0003:0000004c       _gStaticBufferInUse        0001604c     filespy.obj
+ 0003:00000050       _gSpyDynamicFunctions      00016050     filespy.obj
+ 0003:00000070       _gSpyOsMajorVersion        00016070     filespy.obj
+ 0003:00000074       _gSpyOsMinorVersion        00016074     filespy.obj
+ 0003:00000080       _gHashTable                00016080     <common>
+ 0003:00000480       _gHashLockTable            00016480     <common>
+ 0003:00000680       _gHashCurrentCounters      00016680     <common>
+ 0003:00000880       _gHashMaxCounters          00016880     <common>
+ 0003:00000a80       _gStats                    00016a80     <common>
+ 0003:00000aac       _gFileSpyDriverObject      00016aac     <common>
+ 0003:00000ab0       _gOutputBufferList         00016ab0     <common>
+ 0003:00000ab8       _gControlDeviceObject      00016ab8     <common>
+ 0003:00000ac0       _gSpyDeviceExtensionList   00016ac0     <common>
+ 0003:00000ac8       _gLogSequenceLock          00016ac8     <common>
+ 0003:00000ae0       _gSpyDeviceExtensionListLock 00016ae0     <common>
+ 0003:00000b00       _gPagingIoString           00016b00     <common>
+ 0003:00000b20       _gOutOfMemoryBuffer        00016b20     <common>
+ 0003:00000e90       _gVolumeString             00016e90     <common>
+ 0003:00000ea0       _gFreeBufferList           00016ea0     <common>
+ 0003:00000f00       _gSpyAttachLock            00016f00     <common>
+ 0003:00000f20       _gControlDeviceStateLock   00016f20     <common>
+ 0003:00000f24       _gOutputBufferLock         00016f24     <common>
+ 0003:00000f28       _gOverrunString            00016f28     <common>
+ 0004:0000008a       _SpyFsNotification@8       0001708a f   filespy.obj
+ 0004:000001fc       _SpyFsControlMountVolumeComplete@12 000171fc f   filespy.obj
+ 0004:00000342       _SpyFsControlLoadFileSystemComplete@8 00017342 f   filespy.obj
+ 0004:000003ac       _SpyFastIoCheckIfPossible@32 000173ac f   filespy.obj
+ 0004:00000472       _SpyFastIoRead@32          00017472 f   filespy.obj
+ 0004:00000538       _SpyFastIoWrite@32         00017538 f   filespy.obj
+ 0004:000005f2       _SpyFastIoQueryBasicInfo@20 000175f2 f   filespy.obj
+ 0004:000006a6       _SpyFastIoQueryStandardInfo@20 000176a6 f   filespy.obj
+ 0004:0000075a       _SpyFastIoLock@36          0001775a f   filespy.obj
+ 0004:0000081e       _SpyFastIoUnlockSingle@28  0001781e f   filespy.obj
+ 0004:000008d8       _SpyFastIoUnlockAll@16     000178d8 f   filespy.obj
+ 0004:00000982       _SpyFastIoUnlockAllByKey@20 00017982 f   filespy.obj
+ 0004:00000a82       _SpyFastIoDetachDevice@8   00017a82 f   filespy.obj
+ 0004:00000b2a       _SpyFastIoQueryNetworkOpenInfo@20 00017b2a f   filespy.obj
+ 0004:00000bde       _SpyFastIoMdlRead@28       00017bde f   filespy.obj
+ 0004:00000c9e       _SpyFastIoPrepareMdlWrite@28 00017c9e f   filespy.obj
+ 0004:00000d5e       _SpyFastIoReadCompressed@40 00017d5e f   filespy.obj
+ 0004:00000e26       _SpyFastIoWriteCompressed@40 00017e26 f   filespy.obj
+ 0004:00000eee       _SpyFastIoQueryOpen@12     00017eee f   filespy.obj
+ 0004:00000fa8       _SpyCommonDeviceIoControl@24 00017fa8 f   filespy.obj
+ 0004:00001238       _SpyClose@8                00018238 f   filespy.obj
+ 0004:00001284       _SpyFastIoDeviceControl@36 00018284 f   filespy.obj
+ 0004:000013be       _SpyFsControlMountVolume@8 000183be f   filespy.obj
+ 0004:000015c4       _SpyFsControlLoadFileSystem@8 000185c4 f   filespy.obj
+ 0004:0000177a       _SpyFsControl@8            0001877a f   filespy.obj
+ 0004:00001812       _SpyAttachDeviceToDeviceStack@12 00018812 f   fspylib.obj
+ 0004:00001916       _SpyQueryFileSystemForFileName@20 00018916 f   fspylib.obj
+ 0004:00001a06       _SpyIsAttachedToDeviceW2K@8 00018a06 f   fspylib.obj
+ 0004:00001a4e       _SpyIsAttachedToDeviceWXPAndLater@8 00018a4e f   fspylib.obj
+ 0004:00001b04       _SpyAttachToMountedDevice@8 00018b04 f   fspylib.obj
+ 0004:00001be2       _SpyCleanupMountedDevice@4 00018be2 f   fspylib.obj
+ 0004:00001c70       _SpyAttachToDeviceOnDemandW2K@12 00018c70 f   fspylib.obj
+ 0004:00001d6a       _SpyDetachFromFileSystemDevice@4 00018d6a f   fspylib.obj
+ 0004:00001e22       _SpyGetAttachList@12       00018e22 f   fspylib.obj
+ 0004:00001ed2       _SpyGetObjectName@8        00018ed2 f   fspylib.obj
+ 0004:00001f22       _SpyGetBaseDeviceObjectName@8 00018f22 f   fspylib.obj
+ 0004:00001f46       _SpyIsAttachedToDevice@8   00018f46 f   fspylib.obj
+ 0004:00002018       _SpyAttachToDeviceOnDemandWXPAndLater@12 00019018 f   fspylib.obj
+ 0004:00002170       _SpyEnumerateFileSystemVolumes@8 00019170 f   fspylib.obj
+ 0004:0000234a       _SpyIsAttachedToDeviceByUserDeviceName@16 0001934a f   fspylib.obj
+ 0004:000024c4       _SpyAttachToDeviceOnDemand@12 000194c4 f   fspylib.obj
+ 0004:0000250c       _SpyStartLoggingDevice@4   0001950c f   fspylib.obj
+ 0004:000025a8       _SpyStopLoggingDevice@4    000195a8 f   fspylib.obj
+ 0004:000027fc       _SpyAttachToFileSystemDevice@8 000197fc f   fspylib.obj
+ 0004:00002a56       _SpyInitNamingEnvironment@0 00019a56 f   fspyhash.obj
+ 0004:00002a7c       _SpyInitDeviceNamingEnvironment@4 00019a7c f   fspyhash.obj
+ 0004:00002a7c       _SpyCleanupDeviceNamingEnvironment@4 00019a7c f   fspyhash.obj
+ 0005:000001e4       _DriverEntry@8             0001a1e4 f   filespy.obj
+ 0005:000005da       _SpyReadDriverParameters@4 0001a5da f   fspylib.obj
+ 0005:000008c2       _SpyLoadDynamicFunctions@0 0001a8c2 f   fspylib.obj
+ 0005:00000996       _SpyGetCurrentVersion@0    0001a996 f   fspylib.obj
+ 0005:000009fd       _GsDriverEntry@8           0001a9fd f   BufferOverflowK:gs_support.obj
+ 0005:00000a30       __IMPORT_DESCRIPTOR_ntoskrnl 0001aa30     ntoskrnl:ntoskrnl.exe
+ 0005:00000a44       __IMPORT_DESCRIPTOR_HAL    0001aa44     hal:HAL.dll
+ 0005:00000a58       __NULL_IMPORT_DESCRIPTOR   0001aa58     ntoskrnl:ntoskrnl.exe
+
+ entry point at        0005:000009fd
+
+ Static symbols
+

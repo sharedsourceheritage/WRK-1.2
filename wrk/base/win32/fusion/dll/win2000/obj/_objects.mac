@@ -1,0 +1,20 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sxs.res
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sxs.res
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sxs.res
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sxs.res
+
+PASS0_ARM_OBJECTS=
+

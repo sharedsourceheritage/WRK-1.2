@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\filespy.res \
+    $(_OBJ_DIR)\i386\filespy.obj \
+    $(_OBJ_DIR)\i386\fspylib.obj \
+    $(_OBJ_DIR)\i386\fspyctx.obj \
+    $(_OBJ_DIR)\i386\fspyhash.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\filespy.res \
+    $(_OBJ_DIR)\ia64\filespy.obj \
+    $(_OBJ_DIR)\ia64\fspylib.obj \
+    $(_OBJ_DIR)\ia64\fspyctx.obj \
+    $(_OBJ_DIR)\ia64\fspyhash.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\filespy.res \
+    $(_OBJ_DIR)\amd64\filespy.obj \
+    $(_OBJ_DIR)\amd64\fspylib.obj \
+    $(_OBJ_DIR)\amd64\fspyctx.obj \
+    $(_OBJ_DIR)\amd64\fspyhash.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\filespy.res \
+    $(_OBJ_DIR)\arm\filespy.obj \
+    $(_OBJ_DIR)\arm\fspylib.obj \
+    $(_OBJ_DIR)\arm\fspyctx.obj \
+    $(_OBJ_DIR)\arm\fspyhash.obj
+
+PASS0_ARM_OBJECTS=
+

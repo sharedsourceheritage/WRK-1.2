@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\pidinit.res \
+    $(_OBJ_DIR)\i386\pidinit.obj \
+    $(_OBJ_DIR)\i386\crcmodel.obj \
+    $(_OBJ_DIR)\i386\crc-32.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\pidinit.res \
+    $(_OBJ_DIR)\ia64\pidinit.obj \
+    $(_OBJ_DIR)\ia64\crcmodel.obj \
+    $(_OBJ_DIR)\ia64\crc-32.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\pidinit.res \
+    $(_OBJ_DIR)\amd64\pidinit.obj \
+    $(_OBJ_DIR)\amd64\crcmodel.obj \
+    $(_OBJ_DIR)\amd64\crc-32.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\pidinit.res \
+    $(_OBJ_DIR)\arm\pidinit.obj \
+    $(_OBJ_DIR)\arm\crcmodel.obj \
+    $(_OBJ_DIR)\arm\crc-32.obj
+
+PASS0_ARM_OBJECTS=
+

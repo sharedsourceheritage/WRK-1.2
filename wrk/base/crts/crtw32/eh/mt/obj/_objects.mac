@@ -1,0 +1,89 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\lowhelpr.obj \
+    $(_OBJ_DIR)\i386\ehprolog.obj \
+    $(_OBJ_DIR)\i386\ehprolg2.obj \
+    $(_OBJ_DIR)\i386\trnsctrl.obj \
+    $(_OBJ_DIR)\i386\ehvcccvb.obj \
+    $(_OBJ_DIR)\i386\ehvccctr.obj \
+    $(_OBJ_DIR)\i386\ehvecctr.obj \
+    $(_OBJ_DIR)\i386\ehvecdtr.obj \
+    $(_OBJ_DIR)\i386\ehveccvb.obj \
+    $(_OBJ_DIR)\i386\frame.obj \
+    $(_OBJ_DIR)\i386\hooks.obj \
+    $(_OBJ_DIR)\i386\rtti.obj \
+    $(_OBJ_DIR)\i386\stdexcpt.obj \
+    $(_OBJ_DIR)\i386\throw.obj \
+    $(_OBJ_DIR)\i386\typinfo.obj \
+    $(_OBJ_DIR)\i386\typname.obj \
+    $(_OBJ_DIR)\i386\unhandld.obj \
+    $(_OBJ_DIR)\i386\user.obj \
+    $(_OBJ_DIR)\i386\validate.obj \
+    $(_OBJ_DIR)\i386\xundname.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ehstate.obj \
+    $(_OBJ_DIR)\ia64\trnsctrl.obj \
+    $(_OBJ_DIR)\ia64\ehvcccvb.obj \
+    $(_OBJ_DIR)\ia64\ehvccctr.obj \
+    $(_OBJ_DIR)\ia64\ehvecctr.obj \
+    $(_OBJ_DIR)\ia64\ehvecdtr.obj \
+    $(_OBJ_DIR)\ia64\ehveccvb.obj \
+    $(_OBJ_DIR)\ia64\frame.obj \
+    $(_OBJ_DIR)\ia64\hooks.obj \
+    $(_OBJ_DIR)\ia64\rtti.obj \
+    $(_OBJ_DIR)\ia64\stdexcpt.obj \
+    $(_OBJ_DIR)\ia64\throw.obj \
+    $(_OBJ_DIR)\ia64\typinfo.obj \
+    $(_OBJ_DIR)\ia64\typname.obj \
+    $(_OBJ_DIR)\ia64\unhandld.obj \
+    $(_OBJ_DIR)\ia64\user.obj \
+    $(_OBJ_DIR)\ia64\validate.obj \
+    $(_OBJ_DIR)\ia64\xundname.obj \
+    $(_OBJ_DIR)\ia64\handlers.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ehstate.obj \
+    $(_OBJ_DIR)\amd64\trnsctrl.obj \
+    $(_OBJ_DIR)\amd64\ehvcccvb.obj \
+    $(_OBJ_DIR)\amd64\ehvccctr.obj \
+    $(_OBJ_DIR)\amd64\ehvecctr.obj \
+    $(_OBJ_DIR)\amd64\ehvecdtr.obj \
+    $(_OBJ_DIR)\amd64\ehveccvb.obj \
+    $(_OBJ_DIR)\amd64\frame.obj \
+    $(_OBJ_DIR)\amd64\hooks.obj \
+    $(_OBJ_DIR)\amd64\rtti.obj \
+    $(_OBJ_DIR)\amd64\stdexcpt.obj \
+    $(_OBJ_DIR)\amd64\throw.obj \
+    $(_OBJ_DIR)\amd64\typinfo.obj \
+    $(_OBJ_DIR)\amd64\typname.obj \
+    $(_OBJ_DIR)\amd64\unhandld.obj \
+    $(_OBJ_DIR)\amd64\user.obj \
+    $(_OBJ_DIR)\amd64\validate.obj \
+    $(_OBJ_DIR)\amd64\xundname.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ehvcccvb.obj \
+    $(_OBJ_DIR)\arm\ehvccctr.obj \
+    $(_OBJ_DIR)\arm\ehvecctr.obj \
+    $(_OBJ_DIR)\arm\ehvecdtr.obj \
+    $(_OBJ_DIR)\arm\ehveccvb.obj \
+    $(_OBJ_DIR)\arm\frame.obj \
+    $(_OBJ_DIR)\arm\hooks.obj \
+    $(_OBJ_DIR)\arm\rtti.obj \
+    $(_OBJ_DIR)\arm\stdexcpt.obj \
+    $(_OBJ_DIR)\arm\throw.obj \
+    $(_OBJ_DIR)\arm\typinfo.obj \
+    $(_OBJ_DIR)\arm\typname.obj \
+    $(_OBJ_DIR)\arm\unhandld.obj \
+    $(_OBJ_DIR)\arm\user.obj \
+    $(_OBJ_DIR)\arm\validate.obj \
+    $(_OBJ_DIR)\arm\xundname.obj
+
+PASS0_ARM_OBJECTS=
+

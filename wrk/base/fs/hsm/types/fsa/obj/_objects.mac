@@ -1,0 +1,32 @@
+386_OBJECTS=
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\fsaint.h \
+    $(PASS0_HEADERDIR)\fsalib.h \
+    $(PASS0_HEADERDIR)\fsadef.h \
+    $(PASS0_HEADERDIR)\fsaprv.h
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\fsaint.h \
+    $(PASS0_HEADERDIR)\fsalib.h \
+    $(PASS0_HEADERDIR)\fsadef.h \
+    $(PASS0_HEADERDIR)\fsaprv.h
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\fsaint.h \
+    $(PASS0_HEADERDIR)\fsalib.h \
+    $(PASS0_HEADERDIR)\fsadef.h \
+    $(PASS0_HEADERDIR)\fsaprv.h
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\fsaint.h \
+    $(PASS0_HEADERDIR)\fsalib.h \
+    $(PASS0_HEADERDIR)\fsadef.h \
+    $(PASS0_HEADERDIR)\fsaprv.h
+

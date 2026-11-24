@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\configclusapi.obj \
+    $(_OBJ_DIR)\i386\cproxycfgnodeinfo.obj \
+    $(_OBJ_DIR)\i386\cproxycfgclusterinfo.obj \
+    $(_OBJ_DIR)\i386\cproxycfgipaddressinfo.obj \
+    $(_OBJ_DIR)\i386\cproxycfgnetworkinfo.obj \
+    $(_OBJ_DIR)\i386\cenumcfgnetworks.obj \
+    $(_OBJ_DIR)\i386\cenumcfgresources.obj \
+    $(_OBJ_DIR)\i386\cresourcephysicaldisk.obj \
+    $(_OBJ_DIR)\i386\cresourcephysicaldiskpartition.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\configclusapi.obj \
+    $(_OBJ_DIR)\ia64\cproxycfgnodeinfo.obj \
+    $(_OBJ_DIR)\ia64\cproxycfgclusterinfo.obj \
+    $(_OBJ_DIR)\ia64\cproxycfgipaddressinfo.obj \
+    $(_OBJ_DIR)\ia64\cproxycfgnetworkinfo.obj \
+    $(_OBJ_DIR)\ia64\cenumcfgnetworks.obj \
+    $(_OBJ_DIR)\ia64\cenumcfgresources.obj \
+    $(_OBJ_DIR)\ia64\cresourcephysicaldisk.obj \
+    $(_OBJ_DIR)\ia64\cresourcephysicaldiskpartition.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\configclusapi.obj \
+    $(_OBJ_DIR)\amd64\cproxycfgnodeinfo.obj \
+    $(_OBJ_DIR)\amd64\cproxycfgclusterinfo.obj \
+    $(_OBJ_DIR)\amd64\cproxycfgipaddressinfo.obj \
+    $(_OBJ_DIR)\amd64\cproxycfgnetworkinfo.obj \
+    $(_OBJ_DIR)\amd64\cenumcfgnetworks.obj \
+    $(_OBJ_DIR)\amd64\cenumcfgresources.obj \
+    $(_OBJ_DIR)\amd64\cresourcephysicaldisk.obj \
+    $(_OBJ_DIR)\amd64\cresourcephysicaldiskpartition.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\configclusapi.obj \
+    $(_OBJ_DIR)\arm\cproxycfgnodeinfo.obj \
+    $(_OBJ_DIR)\arm\cproxycfgclusterinfo.obj \
+    $(_OBJ_DIR)\arm\cproxycfgipaddressinfo.obj \
+    $(_OBJ_DIR)\arm\cproxycfgnetworkinfo.obj \
+    $(_OBJ_DIR)\arm\cenumcfgnetworks.obj \
+    $(_OBJ_DIR)\arm\cenumcfgresources.obj \
+    $(_OBJ_DIR)\arm\cresourcephysicaldisk.obj \
+    $(_OBJ_DIR)\arm\cresourcephysicaldiskpartition.obj
+
+PASS0_ARM_OBJECTS=
+

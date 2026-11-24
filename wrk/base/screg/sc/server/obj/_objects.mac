@@ -1,0 +1,124 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\services.res \
+    $(_OBJ_DIR)\i386\svcctl_s.obj \
+    $(_OBJ_DIR)\i386\bootcfg.obj \
+    $(_OBJ_DIR)\i386\dataman.obj \
+    $(_OBJ_DIR)\i386\groupman.obj \
+    $(_OBJ_DIR)\i386\scopen.obj \
+    $(_OBJ_DIR)\i386\cfgapi.obj \
+    $(_OBJ_DIR)\i386\cfgapi2.obj \
+    $(_OBJ_DIR)\i386\control.obj \
+    $(_OBJ_DIR)\i386\crash.obj \
+    $(_OBJ_DIR)\i386\depend.obj \
+    $(_OBJ_DIR)\i386\driver.obj \
+    $(_OBJ_DIR)\i386\lock.obj \
+    $(_OBJ_DIR)\i386\lockapi.obj \
+    $(_OBJ_DIR)\i386\start.obj \
+    $(_OBJ_DIR)\i386\info.obj \
+    $(_OBJ_DIR)\i386\scansi.obj \
+    $(_OBJ_DIR)\i386\status.obj \
+    $(_OBJ_DIR)\i386\scaudit.obj \
+    $(_OBJ_DIR)\i386\scbsm.obj \
+    $(_OBJ_DIR)\i386\scconfig.obj \
+    $(_OBJ_DIR)\i386\scsec.obj \
+    $(_OBJ_DIR)\i386\account.obj \
+    $(_OBJ_DIR)\i386\sclastgood.obj \
+    $(_OBJ_DIR)\i386\svcctrl.obj \
+    $(_OBJ_DIR)\i386\services.obj \
+    $(_OBJ_DIR)\i386\ncevents.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\services.res \
+    $(_OBJ_DIR)\ia64\svcctl_s.obj \
+    $(_OBJ_DIR)\ia64\bootcfg.obj \
+    $(_OBJ_DIR)\ia64\dataman.obj \
+    $(_OBJ_DIR)\ia64\groupman.obj \
+    $(_OBJ_DIR)\ia64\scopen.obj \
+    $(_OBJ_DIR)\ia64\cfgapi.obj \
+    $(_OBJ_DIR)\ia64\cfgapi2.obj \
+    $(_OBJ_DIR)\ia64\control.obj \
+    $(_OBJ_DIR)\ia64\crash.obj \
+    $(_OBJ_DIR)\ia64\depend.obj \
+    $(_OBJ_DIR)\ia64\driver.obj \
+    $(_OBJ_DIR)\ia64\lock.obj \
+    $(_OBJ_DIR)\ia64\lockapi.obj \
+    $(_OBJ_DIR)\ia64\start.obj \
+    $(_OBJ_DIR)\ia64\info.obj \
+    $(_OBJ_DIR)\ia64\scansi.obj \
+    $(_OBJ_DIR)\ia64\status.obj \
+    $(_OBJ_DIR)\ia64\scaudit.obj \
+    $(_OBJ_DIR)\ia64\scbsm.obj \
+    $(_OBJ_DIR)\ia64\scconfig.obj \
+    $(_OBJ_DIR)\ia64\scsec.obj \
+    $(_OBJ_DIR)\ia64\account.obj \
+    $(_OBJ_DIR)\ia64\sclastgood.obj \
+    $(_OBJ_DIR)\ia64\svcctrl.obj \
+    $(_OBJ_DIR)\ia64\services.obj \
+    $(_OBJ_DIR)\ia64\ncevents.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\services.res \
+    $(_OBJ_DIR)\amd64\svcctl_s.obj \
+    $(_OBJ_DIR)\amd64\bootcfg.obj \
+    $(_OBJ_DIR)\amd64\dataman.obj \
+    $(_OBJ_DIR)\amd64\groupman.obj \
+    $(_OBJ_DIR)\amd64\scopen.obj \
+    $(_OBJ_DIR)\amd64\cfgapi.obj \
+    $(_OBJ_DIR)\amd64\cfgapi2.obj \
+    $(_OBJ_DIR)\amd64\control.obj \
+    $(_OBJ_DIR)\amd64\crash.obj \
+    $(_OBJ_DIR)\amd64\depend.obj \
+    $(_OBJ_DIR)\amd64\driver.obj \
+    $(_OBJ_DIR)\amd64\lock.obj \
+    $(_OBJ_DIR)\amd64\lockapi.obj \
+    $(_OBJ_DIR)\amd64\start.obj \
+    $(_OBJ_DIR)\amd64\info.obj \
+    $(_OBJ_DIR)\amd64\scansi.obj \
+    $(_OBJ_DIR)\amd64\status.obj \
+    $(_OBJ_DIR)\amd64\scaudit.obj \
+    $(_OBJ_DIR)\amd64\scbsm.obj \
+    $(_OBJ_DIR)\amd64\scconfig.obj \
+    $(_OBJ_DIR)\amd64\scsec.obj \
+    $(_OBJ_DIR)\amd64\account.obj \
+    $(_OBJ_DIR)\amd64\sclastgood.obj \
+    $(_OBJ_DIR)\amd64\svcctrl.obj \
+    $(_OBJ_DIR)\amd64\services.obj \
+    $(_OBJ_DIR)\amd64\ncevents.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\services.res \
+    $(_OBJ_DIR)\arm\svcctl_s.obj \
+    $(_OBJ_DIR)\arm\bootcfg.obj \
+    $(_OBJ_DIR)\arm\dataman.obj \
+    $(_OBJ_DIR)\arm\groupman.obj \
+    $(_OBJ_DIR)\arm\scopen.obj \
+    $(_OBJ_DIR)\arm\cfgapi.obj \
+    $(_OBJ_DIR)\arm\cfgapi2.obj \
+    $(_OBJ_DIR)\arm\control.obj \
+    $(_OBJ_DIR)\arm\crash.obj \
+    $(_OBJ_DIR)\arm\depend.obj \
+    $(_OBJ_DIR)\arm\driver.obj \
+    $(_OBJ_DIR)\arm\lock.obj \
+    $(_OBJ_DIR)\arm\lockapi.obj \
+    $(_OBJ_DIR)\arm\start.obj \
+    $(_OBJ_DIR)\arm\info.obj \
+    $(_OBJ_DIR)\arm\scansi.obj \
+    $(_OBJ_DIR)\arm\status.obj \
+    $(_OBJ_DIR)\arm\scaudit.obj \
+    $(_OBJ_DIR)\arm\scbsm.obj \
+    $(_OBJ_DIR)\arm\scconfig.obj \
+    $(_OBJ_DIR)\arm\scsec.obj \
+    $(_OBJ_DIR)\arm\account.obj \
+    $(_OBJ_DIR)\arm\sclastgood.obj \
+    $(_OBJ_DIR)\arm\svcctrl.obj \
+    $(_OBJ_DIR)\arm\services.obj \
+    $(_OBJ_DIR)\arm\ncevents.obj
+
+PASS0_ARM_OBJECTS=
+

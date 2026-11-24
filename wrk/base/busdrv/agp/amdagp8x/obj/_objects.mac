@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\amdagp8x.res \
+    $(_OBJ_DIR)\i386\init8x.obj \
+    $(_OBJ_DIR)\i386\gart8x.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\amdagp8x.res \
+    $(_OBJ_DIR)\ia64\init8x.obj \
+    $(_OBJ_DIR)\ia64\gart8x.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\amdagp8x.res \
+    $(_OBJ_DIR)\amd64\init8x.obj \
+    $(_OBJ_DIR)\amd64\gart8x.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\amdagp8x.res \
+    $(_OBJ_DIR)\arm\init8x.obj \
+    $(_OBJ_DIR)\arm\gart8x.obj
+
+PASS0_ARM_OBJECTS=
+

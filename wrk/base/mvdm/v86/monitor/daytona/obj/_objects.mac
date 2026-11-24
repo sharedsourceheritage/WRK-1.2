@@ -1,0 +1,23 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\fastpm.obj \
+    $(_OBJ_DIR)\i386\monitor.obj \
+    $(_OBJ_DIR)\i386\sas.obj \
+    $(_OBJ_DIR)\i386\spcstubs.obj \
+    $(_OBJ_DIR)\i386\thread.obj \
+    $(_OBJ_DIR)\i386\vdpm.obj \
+    $(_OBJ_DIR)\i386\int.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

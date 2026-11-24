@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\wow64exts.res \
+    $(_OBJ_DIR)\i386\filever.obj \
+    $(_OBJ_DIR)\i386\wow64exts.obj \
+    $(_OBJ_DIR)\i386\wrapper.obj \
+    $(_OBJ_DIR)\i386\log.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\wow64exts.res \
+    $(_OBJ_DIR)\ia64\filever.obj \
+    $(_OBJ_DIR)\ia64\wow64exts.obj \
+    $(_OBJ_DIR)\ia64\wrapper.obj \
+    $(_OBJ_DIR)\ia64\log.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\wow64exts.res \
+    $(_OBJ_DIR)\amd64\filever.obj \
+    $(_OBJ_DIR)\amd64\wow64exts.obj \
+    $(_OBJ_DIR)\amd64\wrapper.obj \
+    $(_OBJ_DIR)\amd64\log.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\wow64exts.res \
+    $(_OBJ_DIR)\arm\filever.obj \
+    $(_OBJ_DIR)\arm\wow64exts.obj \
+    $(_OBJ_DIR)\arm\wrapper.obj \
+    $(_OBJ_DIR)\arm\log.obj
+
+PASS0_ARM_OBJECTS=
+

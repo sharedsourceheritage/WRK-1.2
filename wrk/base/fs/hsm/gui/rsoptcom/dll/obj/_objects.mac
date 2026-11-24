@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\rsoptcom.res \
+    $(_OBJ_DIR)\i386\optcom.obj \
+    $(_OBJ_DIR)\i386\rsoptcom.obj \
+    $(_OBJ_DIR)\i386\stdafx.obj \
+    $(_OBJ_DIR)\i386\uninschk.obj \
+    $(_OBJ_DIR)\i386\uninstal.obj \
+    $(_OBJ_DIR)\i386\opcommon.obj \
+    $(_OBJ_DIR)\i386\ladate.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\rsoptcom.res \
+    $(_OBJ_DIR)\ia64\optcom.obj \
+    $(_OBJ_DIR)\ia64\rsoptcom.obj \
+    $(_OBJ_DIR)\ia64\stdafx.obj \
+    $(_OBJ_DIR)\ia64\uninschk.obj \
+    $(_OBJ_DIR)\ia64\uninstal.obj \
+    $(_OBJ_DIR)\ia64\opcommon.obj \
+    $(_OBJ_DIR)\ia64\ladate.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\rsoptcom.res \
+    $(_OBJ_DIR)\amd64\optcom.obj \
+    $(_OBJ_DIR)\amd64\rsoptcom.obj \
+    $(_OBJ_DIR)\amd64\stdafx.obj \
+    $(_OBJ_DIR)\amd64\uninschk.obj \
+    $(_OBJ_DIR)\amd64\uninstal.obj \
+    $(_OBJ_DIR)\amd64\opcommon.obj \
+    $(_OBJ_DIR)\amd64\ladate.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\rsoptcom.res \
+    $(_OBJ_DIR)\arm\optcom.obj \
+    $(_OBJ_DIR)\arm\rsoptcom.obj \
+    $(_OBJ_DIR)\arm\stdafx.obj \
+    $(_OBJ_DIR)\arm\uninschk.obj \
+    $(_OBJ_DIR)\arm\uninstal.obj \
+    $(_OBJ_DIR)\arm\opcommon.obj \
+    $(_OBJ_DIR)\arm\ladate.obj
+
+PASS0_ARM_OBJECTS=
+

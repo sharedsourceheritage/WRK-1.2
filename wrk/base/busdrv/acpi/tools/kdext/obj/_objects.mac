@@ -1,0 +1,84 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\acpi.res \
+    $(_OBJ_DIR)\i386\acpi.obj \
+    $(_OBJ_DIR)\i386\build.obj \
+    $(_OBJ_DIR)\i386\cmdarg.obj \
+    $(_OBJ_DIR)\i386\context.obj \
+    $(_OBJ_DIR)\i386\dump.obj \
+    $(_OBJ_DIR)\i386\flags.obj \
+    $(_OBJ_DIR)\i386\help.obj \
+    $(_OBJ_DIR)\i386\kdext.obj \
+    $(_OBJ_DIR)\i386\kdutil.obj \
+    $(_OBJ_DIR)\i386\resource.obj \
+    $(_OBJ_DIR)\i386\stack.obj \
+    $(_OBJ_DIR)\i386\strlib.obj \
+    $(_OBJ_DIR)\i386\table.obj \
+    $(_OBJ_DIR)\i386\uasmdata.obj \
+    $(_OBJ_DIR)\i386\ulist.obj \
+    $(_OBJ_DIR)\i386\unasm.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\acpi.res \
+    $(_OBJ_DIR)\ia64\acpi.obj \
+    $(_OBJ_DIR)\ia64\build.obj \
+    $(_OBJ_DIR)\ia64\cmdarg.obj \
+    $(_OBJ_DIR)\ia64\context.obj \
+    $(_OBJ_DIR)\ia64\dump.obj \
+    $(_OBJ_DIR)\ia64\flags.obj \
+    $(_OBJ_DIR)\ia64\help.obj \
+    $(_OBJ_DIR)\ia64\kdext.obj \
+    $(_OBJ_DIR)\ia64\kdutil.obj \
+    $(_OBJ_DIR)\ia64\resource.obj \
+    $(_OBJ_DIR)\ia64\stack.obj \
+    $(_OBJ_DIR)\ia64\strlib.obj \
+    $(_OBJ_DIR)\ia64\table.obj \
+    $(_OBJ_DIR)\ia64\uasmdata.obj \
+    $(_OBJ_DIR)\ia64\ulist.obj \
+    $(_OBJ_DIR)\ia64\unasm.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\acpi.res \
+    $(_OBJ_DIR)\amd64\acpi.obj \
+    $(_OBJ_DIR)\amd64\build.obj \
+    $(_OBJ_DIR)\amd64\cmdarg.obj \
+    $(_OBJ_DIR)\amd64\context.obj \
+    $(_OBJ_DIR)\amd64\dump.obj \
+    $(_OBJ_DIR)\amd64\flags.obj \
+    $(_OBJ_DIR)\amd64\help.obj \
+    $(_OBJ_DIR)\amd64\kdext.obj \
+    $(_OBJ_DIR)\amd64\kdutil.obj \
+    $(_OBJ_DIR)\amd64\resource.obj \
+    $(_OBJ_DIR)\amd64\stack.obj \
+    $(_OBJ_DIR)\amd64\strlib.obj \
+    $(_OBJ_DIR)\amd64\table.obj \
+    $(_OBJ_DIR)\amd64\uasmdata.obj \
+    $(_OBJ_DIR)\amd64\ulist.obj \
+    $(_OBJ_DIR)\amd64\unasm.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\acpi.res \
+    $(_OBJ_DIR)\arm\acpi.obj \
+    $(_OBJ_DIR)\arm\build.obj \
+    $(_OBJ_DIR)\arm\cmdarg.obj \
+    $(_OBJ_DIR)\arm\context.obj \
+    $(_OBJ_DIR)\arm\dump.obj \
+    $(_OBJ_DIR)\arm\flags.obj \
+    $(_OBJ_DIR)\arm\help.obj \
+    $(_OBJ_DIR)\arm\kdext.obj \
+    $(_OBJ_DIR)\arm\kdutil.obj \
+    $(_OBJ_DIR)\arm\resource.obj \
+    $(_OBJ_DIR)\arm\stack.obj \
+    $(_OBJ_DIR)\arm\strlib.obj \
+    $(_OBJ_DIR)\arm\table.obj \
+    $(_OBJ_DIR)\arm\uasmdata.obj \
+    $(_OBJ_DIR)\arm\ulist.obj \
+    $(_OBJ_DIR)\arm\unasm.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,80 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\fsa.res \
+    $(_OBJ_DIR)\i386\fsa.obj \
+    $(_OBJ_DIR)\i386\fsafltr.obj \
+    $(_OBJ_DIR)\i386\fsaftclt.obj \
+    $(_OBJ_DIR)\i386\fsaftrcl.obj \
+    $(_OBJ_DIR)\i386\fsaitem.obj \
+    $(_OBJ_DIR)\i386\fsaitemr.obj \
+    $(_OBJ_DIR)\i386\fsapost.obj \
+    $(_OBJ_DIR)\i386\fsaprem.obj \
+    $(_OBJ_DIR)\i386\fsarcvy.obj \
+    $(_OBJ_DIR)\i386\fsarsc.obj \
+    $(_OBJ_DIR)\i386\fsasrvr.obj \
+    $(_OBJ_DIR)\i386\fsatrace.obj \
+    $(_OBJ_DIR)\i386\fsatrunc.obj \
+    $(_OBJ_DIR)\i386\fsaunmdb.obj \
+    $(_OBJ_DIR)\i386\stdafx.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\fsa.res \
+    $(_OBJ_DIR)\ia64\fsa.obj \
+    $(_OBJ_DIR)\ia64\fsafltr.obj \
+    $(_OBJ_DIR)\ia64\fsaftclt.obj \
+    $(_OBJ_DIR)\ia64\fsaftrcl.obj \
+    $(_OBJ_DIR)\ia64\fsaitem.obj \
+    $(_OBJ_DIR)\ia64\fsaitemr.obj \
+    $(_OBJ_DIR)\ia64\fsapost.obj \
+    $(_OBJ_DIR)\ia64\fsaprem.obj \
+    $(_OBJ_DIR)\ia64\fsarcvy.obj \
+    $(_OBJ_DIR)\ia64\fsarsc.obj \
+    $(_OBJ_DIR)\ia64\fsasrvr.obj \
+    $(_OBJ_DIR)\ia64\fsatrace.obj \
+    $(_OBJ_DIR)\ia64\fsatrunc.obj \
+    $(_OBJ_DIR)\ia64\fsaunmdb.obj \
+    $(_OBJ_DIR)\ia64\stdafx.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\fsa.res \
+    $(_OBJ_DIR)\amd64\fsa.obj \
+    $(_OBJ_DIR)\amd64\fsafltr.obj \
+    $(_OBJ_DIR)\amd64\fsaftclt.obj \
+    $(_OBJ_DIR)\amd64\fsaftrcl.obj \
+    $(_OBJ_DIR)\amd64\fsaitem.obj \
+    $(_OBJ_DIR)\amd64\fsaitemr.obj \
+    $(_OBJ_DIR)\amd64\fsapost.obj \
+    $(_OBJ_DIR)\amd64\fsaprem.obj \
+    $(_OBJ_DIR)\amd64\fsarcvy.obj \
+    $(_OBJ_DIR)\amd64\fsarsc.obj \
+    $(_OBJ_DIR)\amd64\fsasrvr.obj \
+    $(_OBJ_DIR)\amd64\fsatrace.obj \
+    $(_OBJ_DIR)\amd64\fsatrunc.obj \
+    $(_OBJ_DIR)\amd64\fsaunmdb.obj \
+    $(_OBJ_DIR)\amd64\stdafx.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\fsa.res \
+    $(_OBJ_DIR)\arm\fsa.obj \
+    $(_OBJ_DIR)\arm\fsafltr.obj \
+    $(_OBJ_DIR)\arm\fsaftclt.obj \
+    $(_OBJ_DIR)\arm\fsaftrcl.obj \
+    $(_OBJ_DIR)\arm\fsaitem.obj \
+    $(_OBJ_DIR)\arm\fsaitemr.obj \
+    $(_OBJ_DIR)\arm\fsapost.obj \
+    $(_OBJ_DIR)\arm\fsaprem.obj \
+    $(_OBJ_DIR)\arm\fsarcvy.obj \
+    $(_OBJ_DIR)\arm\fsarsc.obj \
+    $(_OBJ_DIR)\arm\fsasrvr.obj \
+    $(_OBJ_DIR)\arm\fsatrace.obj \
+    $(_OBJ_DIR)\arm\fsatrunc.obj \
+    $(_OBJ_DIR)\arm\fsaunmdb.obj \
+    $(_OBJ_DIR)\arm\stdafx.obj
+
+PASS0_ARM_OBJECTS=
+

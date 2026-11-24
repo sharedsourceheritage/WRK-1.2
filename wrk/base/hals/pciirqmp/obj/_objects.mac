@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\pciirqmp.obj \
+    $(_OBJ_DIR)\i386\misc.obj \
+    $(_OBJ_DIR)\i386\compaq3.obj \
+    $(_OBJ_DIR)\i386\cpq1000.obj \
+    $(_OBJ_DIR)\i386\cpqosb.obj \
+    $(_OBJ_DIR)\i386\cx5520.obj \
+    $(_OBJ_DIR)\i386\eagle.obj \
+    $(_OBJ_DIR)\i386\m1523.obj \
+    $(_OBJ_DIR)\i386\m1533.obj \
+    $(_OBJ_DIR)\i386\mercury.obj \
+    $(_OBJ_DIR)\i386\nec.obj \
+    $(_OBJ_DIR)\i386\ns87560.obj \
+    $(_OBJ_DIR)\i386\optifire.obj \
+    $(_OBJ_DIR)\i386\optivip.obj \
+    $(_OBJ_DIR)\i386\sis5503.obj \
+    $(_OBJ_DIR)\i386\toshiba.obj \
+    $(_OBJ_DIR)\i386\triton.obj \
+    $(_OBJ_DIR)\i386\vesuvius.obj \
+    $(_OBJ_DIR)\i386\vlsi.obj \
+    $(_OBJ_DIR)\i386\vt586.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

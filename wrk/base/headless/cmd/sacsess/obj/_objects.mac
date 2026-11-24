@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sacsess.res \
+    $(_OBJ_DIR)\i386\redraw.obj \
+    $(_OBJ_DIR)\i386\secio.obj \
+    $(_OBJ_DIR)\i386\session.obj \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\scraper.obj \
+    $(_OBJ_DIR)\i386\vtutf8scraper.obj \
+    $(_OBJ_DIR)\i386\shell.obj \
+    $(_OBJ_DIR)\i386\utils.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\sacmsg.h \
+    $(MC_SOURCEDIR)\sacmsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sacsess.res \
+    $(_OBJ_DIR)\ia64\redraw.obj \
+    $(_OBJ_DIR)\ia64\secio.obj \
+    $(_OBJ_DIR)\ia64\session.obj \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\scraper.obj \
+    $(_OBJ_DIR)\ia64\vtutf8scraper.obj \
+    $(_OBJ_DIR)\ia64\shell.obj \
+    $(_OBJ_DIR)\ia64\utils.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\sacmsg.h \
+    $(MC_SOURCEDIR)\sacmsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sacsess.res \
+    $(_OBJ_DIR)\amd64\redraw.obj \
+    $(_OBJ_DIR)\amd64\secio.obj \
+    $(_OBJ_DIR)\amd64\session.obj \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\scraper.obj \
+    $(_OBJ_DIR)\amd64\vtutf8scraper.obj \
+    $(_OBJ_DIR)\amd64\shell.obj \
+    $(_OBJ_DIR)\amd64\utils.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\sacmsg.h \
+    $(MC_SOURCEDIR)\sacmsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sacsess.res \
+    $(_OBJ_DIR)\arm\redraw.obj \
+    $(_OBJ_DIR)\arm\secio.obj \
+    $(_OBJ_DIR)\arm\session.obj \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\scraper.obj \
+    $(_OBJ_DIR)\arm\vtutf8scraper.obj \
+    $(_OBJ_DIR)\arm\shell.obj \
+    $(_OBJ_DIR)\arm\utils.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\sacmsg.h \
+    $(MC_SOURCEDIR)\sacmsg.rc
+

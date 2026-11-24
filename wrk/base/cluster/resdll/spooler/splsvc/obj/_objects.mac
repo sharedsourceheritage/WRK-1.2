@@ -1,0 +1,40 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\splsvc.res \
+    $(_OBJ_DIR)\i386\splsvc.obj \
+    $(_OBJ_DIR)\i386\spooler.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\clusinfo.obj \
+    $(_OBJ_DIR)\i386\cleanup.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\splsvc.res \
+    $(_OBJ_DIR)\ia64\splsvc.obj \
+    $(_OBJ_DIR)\ia64\spooler.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\clusinfo.obj \
+    $(_OBJ_DIR)\ia64\cleanup.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\splsvc.res \
+    $(_OBJ_DIR)\amd64\splsvc.obj \
+    $(_OBJ_DIR)\amd64\spooler.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\clusinfo.obj \
+    $(_OBJ_DIR)\amd64\cleanup.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\splsvc.res \
+    $(_OBJ_DIR)\arm\splsvc.obj \
+    $(_OBJ_DIR)\arm\spooler.obj \
+    $(_OBJ_DIR)\arm\util.obj \
+    $(_OBJ_DIR)\arm\clusinfo.obj \
+    $(_OBJ_DIR)\arm\cleanup.obj
+
+PASS0_ARM_OBJECTS=
+

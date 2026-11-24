@@ -1,0 +1,92 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\wmi.obj \
+    $(_OBJ_DIR)\i386\register.obj \
+    $(_OBJ_DIR)\i386\api.obj \
+    $(_OBJ_DIR)\i386\notify.obj \
+    $(_OBJ_DIR)\i386\callouts.obj \
+    $(_OBJ_DIR)\i386\tracelog.obj \
+    $(_OBJ_DIR)\i386\traceapi.obj \
+    $(_OBJ_DIR)\i386\tracesup.obj \
+    $(_OBJ_DIR)\i386\secure.obj \
+    $(_OBJ_DIR)\i386\globalog.obj \
+    $(_OBJ_DIR)\i386\wmidata.obj \
+    $(_OBJ_DIR)\i386\dataprov.obj \
+    $(_OBJ_DIR)\i386\alloc.obj \
+    $(_OBJ_DIR)\i386\chunk.obj \
+    $(_OBJ_DIR)\i386\ds.obj \
+    $(_OBJ_DIR)\i386\consumer.obj \
+    $(_OBJ_DIR)\i386\enabdisa.obj \
+    $(_OBJ_DIR)\i386\smbios.obj \
+    $(_OBJ_DIR)\i386\mca.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\wmi.obj \
+    $(_OBJ_DIR)\ia64\register.obj \
+    $(_OBJ_DIR)\ia64\api.obj \
+    $(_OBJ_DIR)\ia64\notify.obj \
+    $(_OBJ_DIR)\ia64\callouts.obj \
+    $(_OBJ_DIR)\ia64\tracelog.obj \
+    $(_OBJ_DIR)\ia64\traceapi.obj \
+    $(_OBJ_DIR)\ia64\tracesup.obj \
+    $(_OBJ_DIR)\ia64\secure.obj \
+    $(_OBJ_DIR)\ia64\globalog.obj \
+    $(_OBJ_DIR)\ia64\wmidata.obj \
+    $(_OBJ_DIR)\ia64\dataprov.obj \
+    $(_OBJ_DIR)\ia64\alloc.obj \
+    $(_OBJ_DIR)\ia64\chunk.obj \
+    $(_OBJ_DIR)\ia64\ds.obj \
+    $(_OBJ_DIR)\ia64\consumer.obj \
+    $(_OBJ_DIR)\ia64\enabdisa.obj \
+    $(_OBJ_DIR)\ia64\smbios.obj \
+    $(_OBJ_DIR)\ia64\mca.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\wmi.obj \
+    $(_OBJ_DIR)\amd64\register.obj \
+    $(_OBJ_DIR)\amd64\api.obj \
+    $(_OBJ_DIR)\amd64\notify.obj \
+    $(_OBJ_DIR)\amd64\callouts.obj \
+    $(_OBJ_DIR)\amd64\tracelog.obj \
+    $(_OBJ_DIR)\amd64\traceapi.obj \
+    $(_OBJ_DIR)\amd64\tracesup.obj \
+    $(_OBJ_DIR)\amd64\secure.obj \
+    $(_OBJ_DIR)\amd64\globalog.obj \
+    $(_OBJ_DIR)\amd64\wmidata.obj \
+    $(_OBJ_DIR)\amd64\dataprov.obj \
+    $(_OBJ_DIR)\amd64\alloc.obj \
+    $(_OBJ_DIR)\amd64\chunk.obj \
+    $(_OBJ_DIR)\amd64\ds.obj \
+    $(_OBJ_DIR)\amd64\consumer.obj \
+    $(_OBJ_DIR)\amd64\enabdisa.obj \
+    $(_OBJ_DIR)\amd64\smbios.obj \
+    $(_OBJ_DIR)\amd64\mca.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\wmi.obj \
+    $(_OBJ_DIR)\arm\register.obj \
+    $(_OBJ_DIR)\arm\api.obj \
+    $(_OBJ_DIR)\arm\notify.obj \
+    $(_OBJ_DIR)\arm\callouts.obj \
+    $(_OBJ_DIR)\arm\tracelog.obj \
+    $(_OBJ_DIR)\arm\traceapi.obj \
+    $(_OBJ_DIR)\arm\tracesup.obj \
+    $(_OBJ_DIR)\arm\secure.obj \
+    $(_OBJ_DIR)\arm\globalog.obj \
+    $(_OBJ_DIR)\arm\wmidata.obj \
+    $(_OBJ_DIR)\arm\dataprov.obj \
+    $(_OBJ_DIR)\arm\alloc.obj \
+    $(_OBJ_DIR)\arm\chunk.obj \
+    $(_OBJ_DIR)\arm\ds.obj \
+    $(_OBJ_DIR)\arm\consumer.obj \
+    $(_OBJ_DIR)\arm\enabdisa.obj \
+    $(_OBJ_DIR)\arm\smbios.obj \
+    $(_OBJ_DIR)\arm\mca.obj
+
+PASS0_ARM_OBJECTS=
+

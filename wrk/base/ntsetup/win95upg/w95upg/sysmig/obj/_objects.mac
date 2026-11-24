@@ -1,0 +1,30 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sysmig.obj \
+    $(_OBJ_DIR)\i386\shares.obj \
+    $(_OBJ_DIR)\i386\olereg.obj \
+    $(_OBJ_DIR)\i386\condmsg.obj \
+    $(_OBJ_DIR)\i386\drives.obj \
+    $(_OBJ_DIR)\i386\userloop.obj \
+    $(_OBJ_DIR)\i386\mmedia.obj \
+    $(_OBJ_DIR)\i386\compacct.obj \
+    $(_OBJ_DIR)\i386\migmain.obj \
+    $(_OBJ_DIR)\i386\nicepath.obj \
+    $(_OBJ_DIR)\i386\timezone.obj \
+    $(_OBJ_DIR)\i386\betacfg.obj \
+    $(_OBJ_DIR)\i386\ras.obj \
+    $(_OBJ_DIR)\i386\dosmig95.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

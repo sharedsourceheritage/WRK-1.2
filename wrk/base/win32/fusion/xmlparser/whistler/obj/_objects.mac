@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\bufferedstream.obj \
+    $(_OBJ_DIR)\i386\charencoder.obj \
+    $(_OBJ_DIR)\i386\encodingstream.obj \
+    $(_OBJ_DIR)\i386\xmlhelper.obj \
+    $(_OBJ_DIR)\i386\xmlparser.obj \
+    $(_OBJ_DIR)\i386\xmlstream.obj \
+    $(_OBJ_DIR)\i386\_rawstack.obj \
+    $(_OBJ_DIR)\i386\_reference.obj \
+    $(_OBJ_DIR)\i386\xmlparsertest.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\bufferedstream.obj \
+    $(_OBJ_DIR)\ia64\charencoder.obj \
+    $(_OBJ_DIR)\ia64\encodingstream.obj \
+    $(_OBJ_DIR)\ia64\xmlhelper.obj \
+    $(_OBJ_DIR)\ia64\xmlparser.obj \
+    $(_OBJ_DIR)\ia64\xmlstream.obj \
+    $(_OBJ_DIR)\ia64\_rawstack.obj \
+    $(_OBJ_DIR)\ia64\_reference.obj \
+    $(_OBJ_DIR)\ia64\xmlparsertest.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\bufferedstream.obj \
+    $(_OBJ_DIR)\amd64\charencoder.obj \
+    $(_OBJ_DIR)\amd64\encodingstream.obj \
+    $(_OBJ_DIR)\amd64\xmlhelper.obj \
+    $(_OBJ_DIR)\amd64\xmlparser.obj \
+    $(_OBJ_DIR)\amd64\xmlstream.obj \
+    $(_OBJ_DIR)\amd64\_rawstack.obj \
+    $(_OBJ_DIR)\amd64\_reference.obj \
+    $(_OBJ_DIR)\amd64\xmlparsertest.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\bufferedstream.obj \
+    $(_OBJ_DIR)\arm\charencoder.obj \
+    $(_OBJ_DIR)\arm\encodingstream.obj \
+    $(_OBJ_DIR)\arm\xmlhelper.obj \
+    $(_OBJ_DIR)\arm\xmlparser.obj \
+    $(_OBJ_DIR)\arm\xmlstream.obj \
+    $(_OBJ_DIR)\arm\_rawstack.obj \
+    $(_OBJ_DIR)\arm\_reference.obj \
+    $(_OBJ_DIR)\arm\xmlparsertest.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\emsapi.res \
+    $(_OBJ_DIR)\i386\vtutf8chan.obj \
+    $(_OBJ_DIR)\i386\rawchan.obj \
+    $(_OBJ_DIR)\i386\cmdchan.obj \
+    $(_OBJ_DIR)\i386\channel.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\emsapi.res \
+    $(_OBJ_DIR)\ia64\vtutf8chan.obj \
+    $(_OBJ_DIR)\ia64\rawchan.obj \
+    $(_OBJ_DIR)\ia64\cmdchan.obj \
+    $(_OBJ_DIR)\ia64\channel.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\emsapi.res \
+    $(_OBJ_DIR)\amd64\vtutf8chan.obj \
+    $(_OBJ_DIR)\amd64\rawchan.obj \
+    $(_OBJ_DIR)\amd64\cmdchan.obj \
+    $(_OBJ_DIR)\amd64\channel.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\emsapi.res \
+    $(_OBJ_DIR)\arm\vtutf8chan.obj \
+    $(_OBJ_DIR)\arm\rawchan.obj \
+    $(_OBJ_DIR)\arm\cmdchan.obj \
+    $(_OBJ_DIR)\arm\channel.obj
+
+PASS0_ARM_OBJECTS=
+

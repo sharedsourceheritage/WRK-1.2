@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\loader.res \
+    $(_OBJ_DIR)\i386\cab.obj \
+    $(_OBJ_DIR)\i386\dialog.obj \
+    $(_OBJ_DIR)\i386\unpack.obj \
+    $(_OBJ_DIR)\i386\utils.obj \
+    $(_OBJ_DIR)\i386\winmain.obj \
+    $(_OBJ_DIR)\i386\lang.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\loader.res \
+    $(_OBJ_DIR)\ia64\cab.obj \
+    $(_OBJ_DIR)\ia64\dialog.obj \
+    $(_OBJ_DIR)\ia64\unpack.obj \
+    $(_OBJ_DIR)\ia64\utils.obj \
+    $(_OBJ_DIR)\ia64\winmain.obj \
+    $(_OBJ_DIR)\ia64\lang.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\loader.res \
+    $(_OBJ_DIR)\amd64\cab.obj \
+    $(_OBJ_DIR)\amd64\dialog.obj \
+    $(_OBJ_DIR)\amd64\unpack.obj \
+    $(_OBJ_DIR)\amd64\utils.obj \
+    $(_OBJ_DIR)\amd64\winmain.obj \
+    $(_OBJ_DIR)\amd64\lang.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\loader.res \
+    $(_OBJ_DIR)\arm\cab.obj \
+    $(_OBJ_DIR)\arm\dialog.obj \
+    $(_OBJ_DIR)\arm\unpack.obj \
+    $(_OBJ_DIR)\arm\utils.obj \
+    $(_OBJ_DIR)\arm\winmain.obj \
+    $(_OBJ_DIR)\arm\lang.obj
+
+PASS0_ARM_OBJECTS=
+

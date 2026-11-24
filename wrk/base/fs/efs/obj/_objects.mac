@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\efs.res \
+    $(_OBJ_DIR)\i386\efs.obj \
+    $(_OBJ_DIR)\i386\create.obj \
+    $(_OBJ_DIR)\i386\control.obj \
+    $(_OBJ_DIR)\i386\efsrtl.obj \
+    $(_OBJ_DIR)\i386\efsrtlsp.obj \
+    $(_OBJ_DIR)\i386\encrypt.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\efs.res \
+    $(_OBJ_DIR)\ia64\efs.obj \
+    $(_OBJ_DIR)\ia64\create.obj \
+    $(_OBJ_DIR)\ia64\control.obj \
+    $(_OBJ_DIR)\ia64\efsrtl.obj \
+    $(_OBJ_DIR)\ia64\efsrtlsp.obj \
+    $(_OBJ_DIR)\ia64\encrypt.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\efs.res \
+    $(_OBJ_DIR)\amd64\efs.obj \
+    $(_OBJ_DIR)\amd64\create.obj \
+    $(_OBJ_DIR)\amd64\control.obj \
+    $(_OBJ_DIR)\amd64\efsrtl.obj \
+    $(_OBJ_DIR)\amd64\efsrtlsp.obj \
+    $(_OBJ_DIR)\amd64\encrypt.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\efs.res \
+    $(_OBJ_DIR)\arm\efs.obj \
+    $(_OBJ_DIR)\arm\create.obj \
+    $(_OBJ_DIR)\arm\control.obj \
+    $(_OBJ_DIR)\arm\efsrtl.obj \
+    $(_OBJ_DIR)\arm\efsrtlsp.obj \
+    $(_OBJ_DIR)\arm\encrypt.obj
+
+PASS0_ARM_OBJECTS=
+

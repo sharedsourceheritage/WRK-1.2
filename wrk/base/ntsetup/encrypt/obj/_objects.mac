@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\setpwd.obj \
+    $(_OBJ_DIR)\i386\owf.obj \
+    $(_OBJ_DIR)\i386\encrypt.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\setpwd.obj \
+    $(_OBJ_DIR)\ia64\owf.obj \
+    $(_OBJ_DIR)\ia64\encrypt.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\setpwd.obj \
+    $(_OBJ_DIR)\amd64\owf.obj \
+    $(_OBJ_DIR)\amd64\encrypt.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\setpwd.obj \
+    $(_OBJ_DIR)\arm\owf.obj \
+    $(_OBJ_DIR)\arm\encrypt.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,108 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\isprint.obj \
+    $(_OBJ_DIR)\i386\culture.obj \
+    $(_OBJ_DIR)\i386\helpers.obj \
+    $(_OBJ_DIR)\i386\sxsexceptionhandling.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\formatting.obj \
+    $(_OBJ_DIR)\i386\fusionhashstring.obj \
+    $(_OBJ_DIR)\i386\fusionheap.obj \
+    $(_OBJ_DIR)\i386\fusionreg.obj \
+    $(_OBJ_DIR)\i386\fusionreg2.obj \
+    $(_OBJ_DIR)\i386\io.obj \
+    $(_OBJ_DIR)\i386\ntdllwrap.obj \
+    $(_OBJ_DIR)\i386\parser.obj \
+    $(_OBJ_DIR)\i386\regenumkeys.obj \
+    $(_OBJ_DIR)\i386\regenumvalues.obj \
+    $(_OBJ_DIR)\i386\regkey2.obj \
+    $(_OBJ_DIR)\i386\trace.obj \
+    $(_OBJ_DIR)\i386\xmlns.obj \
+    $(_OBJ_DIR)\i386\fusionsha1.obj \
+    $(_OBJ_DIR)\i386\bigpath.obj \
+    $(_OBJ_DIR)\i386\checksetupmode.obj \
+    $(_OBJ_DIR)\i386\fusioninitializecriticalsection.obj \
+    $(_OBJ_DIR)\i386\vseeport.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\isprint.obj \
+    $(_OBJ_DIR)\ia64\culture.obj \
+    $(_OBJ_DIR)\ia64\helpers.obj \
+    $(_OBJ_DIR)\ia64\sxsexceptionhandling.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\formatting.obj \
+    $(_OBJ_DIR)\ia64\fusionhashstring.obj \
+    $(_OBJ_DIR)\ia64\fusionheap.obj \
+    $(_OBJ_DIR)\ia64\fusionreg.obj \
+    $(_OBJ_DIR)\ia64\fusionreg2.obj \
+    $(_OBJ_DIR)\ia64\io.obj \
+    $(_OBJ_DIR)\ia64\ntdllwrap.obj \
+    $(_OBJ_DIR)\ia64\parser.obj \
+    $(_OBJ_DIR)\ia64\regenumkeys.obj \
+    $(_OBJ_DIR)\ia64\regenumvalues.obj \
+    $(_OBJ_DIR)\ia64\regkey2.obj \
+    $(_OBJ_DIR)\ia64\trace.obj \
+    $(_OBJ_DIR)\ia64\xmlns.obj \
+    $(_OBJ_DIR)\ia64\fusionsha1.obj \
+    $(_OBJ_DIR)\ia64\bigpath.obj \
+    $(_OBJ_DIR)\ia64\checksetupmode.obj \
+    $(_OBJ_DIR)\ia64\fusioninitializecriticalsection.obj \
+    $(_OBJ_DIR)\ia64\vseeport.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\isprint.obj \
+    $(_OBJ_DIR)\amd64\culture.obj \
+    $(_OBJ_DIR)\amd64\helpers.obj \
+    $(_OBJ_DIR)\amd64\sxsexceptionhandling.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\formatting.obj \
+    $(_OBJ_DIR)\amd64\fusionhashstring.obj \
+    $(_OBJ_DIR)\amd64\fusionheap.obj \
+    $(_OBJ_DIR)\amd64\fusionreg.obj \
+    $(_OBJ_DIR)\amd64\fusionreg2.obj \
+    $(_OBJ_DIR)\amd64\io.obj \
+    $(_OBJ_DIR)\amd64\ntdllwrap.obj \
+    $(_OBJ_DIR)\amd64\parser.obj \
+    $(_OBJ_DIR)\amd64\regenumkeys.obj \
+    $(_OBJ_DIR)\amd64\regenumvalues.obj \
+    $(_OBJ_DIR)\amd64\regkey2.obj \
+    $(_OBJ_DIR)\amd64\trace.obj \
+    $(_OBJ_DIR)\amd64\xmlns.obj \
+    $(_OBJ_DIR)\amd64\fusionsha1.obj \
+    $(_OBJ_DIR)\amd64\bigpath.obj \
+    $(_OBJ_DIR)\amd64\checksetupmode.obj \
+    $(_OBJ_DIR)\amd64\fusioninitializecriticalsection.obj \
+    $(_OBJ_DIR)\amd64\vseeport.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\isprint.obj \
+    $(_OBJ_DIR)\arm\culture.obj \
+    $(_OBJ_DIR)\arm\helpers.obj \
+    $(_OBJ_DIR)\arm\sxsexceptionhandling.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\formatting.obj \
+    $(_OBJ_DIR)\arm\fusionhashstring.obj \
+    $(_OBJ_DIR)\arm\fusionheap.obj \
+    $(_OBJ_DIR)\arm\fusionreg.obj \
+    $(_OBJ_DIR)\arm\fusionreg2.obj \
+    $(_OBJ_DIR)\arm\io.obj \
+    $(_OBJ_DIR)\arm\ntdllwrap.obj \
+    $(_OBJ_DIR)\arm\parser.obj \
+    $(_OBJ_DIR)\arm\regenumkeys.obj \
+    $(_OBJ_DIR)\arm\regenumvalues.obj \
+    $(_OBJ_DIR)\arm\regkey2.obj \
+    $(_OBJ_DIR)\arm\trace.obj \
+    $(_OBJ_DIR)\arm\xmlns.obj \
+    $(_OBJ_DIR)\arm\fusionsha1.obj \
+    $(_OBJ_DIR)\arm\bigpath.obj \
+    $(_OBJ_DIR)\arm\checksetupmode.obj \
+    $(_OBJ_DIR)\arm\fusioninitializecriticalsection.obj \
+    $(_OBJ_DIR)\arm\vseeport.obj
+
+PASS0_ARM_OBJECTS=
+

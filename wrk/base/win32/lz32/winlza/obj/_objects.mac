@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\buffers.obj \
+    $(_OBJ_DIR)\i386\compress.obj \
+    $(_OBJ_DIR)\i386\expand.obj \
+    $(_OBJ_DIR)\i386\header.obj \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\lzcommon.obj \
+    $(_OBJ_DIR)\i386\lzcomp.obj \
+    $(_OBJ_DIR)\i386\lzexp.obj \
+    $(_OBJ_DIR)\i386\utils.obj \
+    $(_OBJ_DIR)\i386\shstart.obj \
+    $(_OBJ_DIR)\i386\utilsnls.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\buffers.obj \
+    $(_OBJ_DIR)\ia64\compress.obj \
+    $(_OBJ_DIR)\ia64\expand.obj \
+    $(_OBJ_DIR)\ia64\header.obj \
+    $(_OBJ_DIR)\ia64\init.obj \
+    $(_OBJ_DIR)\ia64\lzcommon.obj \
+    $(_OBJ_DIR)\ia64\lzcomp.obj \
+    $(_OBJ_DIR)\ia64\lzexp.obj \
+    $(_OBJ_DIR)\ia64\utils.obj \
+    $(_OBJ_DIR)\ia64\shstart.obj \
+    $(_OBJ_DIR)\ia64\utilsnls.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\buffers.obj \
+    $(_OBJ_DIR)\amd64\compress.obj \
+    $(_OBJ_DIR)\amd64\expand.obj \
+    $(_OBJ_DIR)\amd64\header.obj \
+    $(_OBJ_DIR)\amd64\init.obj \
+    $(_OBJ_DIR)\amd64\lzcommon.obj \
+    $(_OBJ_DIR)\amd64\lzcomp.obj \
+    $(_OBJ_DIR)\amd64\lzexp.obj \
+    $(_OBJ_DIR)\amd64\utils.obj \
+    $(_OBJ_DIR)\amd64\shstart.obj \
+    $(_OBJ_DIR)\amd64\utilsnls.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\buffers.obj \
+    $(_OBJ_DIR)\arm\compress.obj \
+    $(_OBJ_DIR)\arm\expand.obj \
+    $(_OBJ_DIR)\arm\header.obj \
+    $(_OBJ_DIR)\arm\init.obj \
+    $(_OBJ_DIR)\arm\lzcommon.obj \
+    $(_OBJ_DIR)\arm\lzcomp.obj \
+    $(_OBJ_DIR)\arm\lzexp.obj \
+    $(_OBJ_DIR)\arm\utils.obj \
+    $(_OBJ_DIR)\arm\shstart.obj \
+    $(_OBJ_DIR)\arm\utilsnls.obj
+
+PASS0_ARM_OBJECTS=
+

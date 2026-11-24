@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ui.obj \
+    $(_OBJ_DIR)\i386\wizproc.obj \
+    $(_OBJ_DIR)\i386\wizdlg.obj \
+    $(_OBJ_DIR)\i386\prntsave.obj \
+    $(_OBJ_DIR)\i386\textview.obj \
+    $(_OBJ_DIR)\i386\report.obj \
+    $(_OBJ_DIR)\i386\copythrd.obj \
+    $(_OBJ_DIR)\i386\msgmgr.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

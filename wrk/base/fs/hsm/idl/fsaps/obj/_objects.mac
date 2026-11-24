@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\fsaps.res \
+    $(_OBJ_DIR)\i386\dlldata.obj \
+    $(_OBJ_DIR)\i386\fsaint_p.obj \
+    $(_OBJ_DIR)\i386\fsaprv_p.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\fsaps.res \
+    $(_OBJ_DIR)\ia64\dlldata.obj \
+    $(_OBJ_DIR)\ia64\fsaint_p.obj \
+    $(_OBJ_DIR)\ia64\fsaprv_p.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\fsaps.res \
+    $(_OBJ_DIR)\amd64\dlldata.obj \
+    $(_OBJ_DIR)\amd64\fsaint_p.obj \
+    $(_OBJ_DIR)\amd64\fsaprv_p.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\fsaps.res \
+    $(_OBJ_DIR)\arm\dlldata.obj \
+    $(_OBJ_DIR)\arm\fsaint_p.obj \
+    $(_OBJ_DIR)\arm\fsaprv_p.obj
+
+PASS0_ARM_OBJECTS=
+

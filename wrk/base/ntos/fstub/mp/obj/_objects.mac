@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\halfnc.obj \
+    $(_OBJ_DIR)\i386\drivesup.obj \
+    $(_OBJ_DIR)\i386\translate.obj \
+    $(_OBJ_DIR)\i386\ex.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\halfnc.obj \
+    $(_OBJ_DIR)\ia64\drivesup.obj \
+    $(_OBJ_DIR)\ia64\translate.obj \
+    $(_OBJ_DIR)\ia64\ex.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\halfnc.obj \
+    $(_OBJ_DIR)\amd64\drivesup.obj \
+    $(_OBJ_DIR)\amd64\translate.obj \
+    $(_OBJ_DIR)\amd64\ex.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\halfnc.obj \
+    $(_OBJ_DIR)\arm\drivesup.obj \
+    $(_OBJ_DIR)\arm\translate.obj \
+    $(_OBJ_DIR)\arm\ex.obj
+
+PASS0_ARM_OBJECTS=
+

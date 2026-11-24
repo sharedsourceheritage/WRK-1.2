@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\memdb.obj \
+    $(_OBJ_DIR)\i386\memdbex.obj \
+    $(_OBJ_DIR)\i386\bintree.obj \
+    $(_OBJ_DIR)\i386\hash.obj \
+    $(_OBJ_DIR)\i386\binvals.obj \
+    $(_OBJ_DIR)\i386\fileops.obj \
+    $(_OBJ_DIR)\i386\regops.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\memdb.obj \
+    $(_OBJ_DIR)\ia64\memdbex.obj \
+    $(_OBJ_DIR)\ia64\bintree.obj \
+    $(_OBJ_DIR)\ia64\hash.obj \
+    $(_OBJ_DIR)\ia64\binvals.obj \
+    $(_OBJ_DIR)\ia64\fileops.obj \
+    $(_OBJ_DIR)\ia64\regops.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\memdb.obj \
+    $(_OBJ_DIR)\amd64\memdbex.obj \
+    $(_OBJ_DIR)\amd64\bintree.obj \
+    $(_OBJ_DIR)\amd64\hash.obj \
+    $(_OBJ_DIR)\amd64\binvals.obj \
+    $(_OBJ_DIR)\amd64\fileops.obj \
+    $(_OBJ_DIR)\amd64\regops.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\memdb.obj \
+    $(_OBJ_DIR)\arm\memdbex.obj \
+    $(_OBJ_DIR)\arm\bintree.obj \
+    $(_OBJ_DIR)\arm\hash.obj \
+    $(_OBJ_DIR)\arm\binvals.obj \
+    $(_OBJ_DIR)\arm\fileops.obj \
+    $(_OBJ_DIR)\arm\regops.obj
+
+PASS0_ARM_OBJECTS=
+

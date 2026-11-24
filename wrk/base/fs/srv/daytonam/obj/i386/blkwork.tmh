@@ -1,0 +1,391 @@
+//4a8a724ed9c039fc28a653b05d0e3508 Generated File. Do not edit.
+// File created by WPP compiler version 0.01-Wed May 15 12:38:55 2002
+// on 11/24/2026 at 02:11:12 UTC from a template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\simple.tpl
+
+// PLEASE NOTE:
+//    Using simple.tpl for production environment without overriding
+//    WPP_ENABLED and WPP_LOGGER macro is NOT RECOMMENDED.
+//
+//    If WPP_ENABLED is not provided, the logging is always on
+//    If WPP_LOGGER is not provided, traces always go to the logger named stdout (if it is running)
+//
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\header.tpl
+
+#define WPP_KERNEL_MODE 
+#define WPP_THIS_FILE blkwork_c
+
+#if !defined(WPP_KERNEL_MODE)
+#  include <windows.h>
+#  pragma warning(disable: 4201)
+#  include <wmistr.h>
+#  include <evntrace.h>
+#  define WPP_TRACE TraceMessage
+#else
+#define WPP_TRACE WmiTraceMessage
+#endif
+
+#if !defined(WPP_PRIVATE)
+#  define WPP_INLINE __inline
+#  define WPP_SELECT_ANY extern "C" __declspec(selectany)
+#else
+#  define WPP_INLINE static
+#  define WPP_SELECT_ANY static
+#endif
+
+__inline TRACEHANDLE WppQueryLogger(PCWSTR LoggerName)
+{
+    if (!LoggerName) {LoggerName = L"stdout";}
+    {
+#if defined(WPP_KERNEL_MODE)
+        ULONG ReturnLength ;
+        NTSTATUS Status ;
+        TRACEHANDLE TraceHandle ;
+        UNICODE_STRING  Buffer  ;
+
+        RtlInitUnicodeString(&Buffer, LoggerName);
+    
+        if ((Status = WmiQueryTraceInformation(TraceHandleByNameClass,
+                                                 (PVOID)&TraceHandle,
+                                                  sizeof(TraceHandle),
+                                                  &ReturnLength,
+                                                  (PVOID)&Buffer)) == STATUS_SUCCESS) {
+        return TraceHandle ;
+        }
+#else
+        ULONG status;
+        EVENT_TRACE_PROPERTIES LoggerInfo; 
+
+        ZeroMemory(&LoggerInfo, sizeof(LoggerInfo));
+        LoggerInfo.Wnode.BufferSize = sizeof(LoggerInfo);
+        LoggerInfo.Wnode.Flags = WNODE_FLAG_TRACED_GUID;
+        
+        status = QueryTraceW(0, LoggerName, &LoggerInfo);    
+        if (status == ERROR_SUCCESS || status == ERROR_MORE_DATA) {
+            return (TRACEHANDLE) LoggerInfo.Wnode.HistoricalContext;
+        }
+#endif
+    }
+    return 0;
+}
+
+
+ 
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\stdout.tpl
+
+#define WPP_LEVEL_LOGGER(LEVEL) // DoTraceMessage
+#define WPP_LOGGER() // KdPrint
+#define WPP_LOGGER() // SrvPrint0
+#define WPP_LOGGER() // SrvPrint1
+#define WPP_LOGGER() // SrvPrint2
+#define WPP_LOGGER() // SrvPrint3
+#define WPP_LOGGER() // SrvPrint4
+#ifndef WPP_LOGGER_ARG
+#  define WPP_LOGGER_ARG
+#endif
+
+#ifndef WPP_GET_LOGGER
+  #define WPP_GET_LOGGER WppGetLogger()
+  __inline TRACEHANDLE WppGetLogger() 
+  {
+      static TRACEHANDLE Logger;
+      if (Logger) {return Logger;}
+      return Logger = WppQueryLogger(0);
+  }
+#endif
+
+#ifndef WPP_ENABLED
+#  define WPP_ENABLED() 1
+#endif
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\trmacro.tpl
+//   expects:
+//      WPP_THIS_FILE defined (see header.tpl)
+//      WPP_LOGGER_ARG  defined
+//      WPP_GET_LOGGER  defined
+//      WPP_ENABLED() defined
+
+#ifndef NO_CHECK_FOR_NULL_STRING
+#ifndef WPP_CHECK_FOR_NULL_STRING
+#define WPP_CHECK_FOR_NULL_STRING 1
+#endif
+#endif
+
+#define WPP_EVAL(_value_) _value_
+#define WPP_(Id) WPP_EVAL(WPP_) ## WPP_EVAL(Id) ## WPP_EVAL(_) ## WPP_EVAL(WPP_THIS_FILE) ## WPP_EVAL(__LINE__)
+
+#if !defined(WPP_INLINE)
+#  define WPP_INLINE __inline
+#endif
+
+#if !defined(WPP_NO_ANNOTATIONS) 
+#if !defined(WPP_ANSI_ANNOTATION) 
+# define WPP_ANNOTATE_blkwork_c1024	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c1024 27 \"%0  InitializeWorkItem: work item of 0x%10!x! bytes at 0x%11!p!\" //  ", L"{", L"WorkItemSize, ItemLong -- 10" , L"WorkItem, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_blkwork_c1025	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c1025 28 \"%0    Work Context: 0x%10!x! bytes at 0x%11!p!\" //  ", L"{", L"sizeof(WORK_CONTEXT), ItemLong -- 10" , L"workContext, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_blkwork_c1027	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c1027 29 \"%0    IRP: 0x%10!x! bytes at 0x%11!p!\" //  ", L"{", L"workContext->Irp->Size, ItemLong -- 10" , L"workContext->Irp, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_blkwork_c1030	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c1030 30 \"%0    Buffer Descriptor: 0x%10!x! bytes at 0x%11!p!\" //  ", L"{", L"sizeof(BUFFER), ItemLong -- 10" , L"workContext->RequestBuffer, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_blkwork_c1032	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c1032 31 \"%0    Full MDL: 0x%10!x! bytes at 0x%11!p!\" //  ", L"{", L"MdlSize, ItemLong -- 10" , L"workContext->RequestBuffer->Mdl, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_blkwork_c1035	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c1035 32 \"%0    Partial MDL: 0x%10!x! bytes at 0x%11!p!\" //  ", L"{", L"MdlSize, ItemLong -- 10" , L"workContext->ResponseBuffer->PartialMdl, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_blkwork_c1037	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c1037 33 \"%0    Buffer: 0x%10!x! bytes at 0x%11!p!\" //  ", L"{", L"workContext->RequestBuffer->BufferLength, ItemLong -- 10" , L"workContext->RequestBuffer->Buffer, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_blkwork_c1041	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c1041 34 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_blkwork_c1102	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c1102 35 \"%0Dereferencing WorkContext 0x%10!p!; new refcnt 0x%11!x!\" //  ", L"{", L"WorkContext, ItemPtr -- 10" , L"WorkContext->BlockHeader.ReferenceCount, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_blkwork_c1179	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c1179 36 \"%0Dereferencing WorkContext 0x%10!p!; new refcnt 0x%11!x!\" //  ", L"{", L"WorkContext, ItemPtr -- 10" , L"WorkContext->BlockHeader.ReferenceCount, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_blkwork_c174	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c174 10 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_blkwork_c175	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c175 11 \"%0  work item size = 0x%10!x! bytes\" //  ", L"{", L"workItemSize, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c176	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c176 12 \"%0  buffer size = 0x%10!x! bytes\" //  ", L"{", L"bufferSize, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c177	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c177 13 \"%0  Backfill size = 0x%10!x! bytes\" //  ", L"{", L"TransportHeaderSize, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c178	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c178 14 \"%0  number of work items = %10!ld!\" //  ", L"{", L"SrvInitialReceiveWorkItemCount, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c180	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c180 15 \"%0  total allocation = 0x%10!x! bytes\" //  ", L"{", L"totalSize, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c181	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c181 16 \"%0  wasted space = 0x%10!p! bytes\" //  ", L"{", L"(PVOID)(ROUND_TO_PAGES( totalSize ) - totalSize), ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c183	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c183 17 \"%0  amount saved over separate allocation = 0x%10!p! bytes\" //  ", L"{", L"(PVOID)(((ROUND_TO_PAGES( workItemSize ) +                            ROUND_TO_PAGES( bufferSize )) *                                              SrvInitialReceiveWorkItemCount) -                              ROUND_TO_PAGES( totalSize )), ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c246	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c246 18 \"%0buffer adjusted!! %10!p! offset %11!x! \" //  ", L"{", L"buffer, ItemPtr -- 10" , L"BYTE_OFFSET(buffer), ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_blkwork_c356	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c356 19 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_blkwork_c535	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c535 20 \"%0\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_blkwork_c717	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c717 21 \"%0Releasing initial work item block at 0x%10!p!\" //  ", L"{", L"SrvInitialWorkItemBlock, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c723	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c723 22 \"%0SrvFreeInitialWorkItems: Freed initial work item block at 0x%10!p!\" //  ", L"{", L"SrvInitialWorkItemBlock, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c763	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c763 23 \"%0Closing work item at 0x%10!p!\" //  ", L"{", L"WorkContext, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c778	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c778 24 \"%0SrvFreeNormalWorkItem: Freed Work Item block at 0x%10!p!\" //  ", L"{", L"WorkContext, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c822	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c822 25 \"%0Closing workitem at 0x%10!p!\" //  ", L"{", L"WorkContext, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_blkwork_c837	__annotation(L"TMF:", L"4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", L"#typev  blkwork_c837 26 \"%0SrvFreeRawModeWorkItem: Freed Work Item block at 0x%10!p!\" //  ", L"{", L"WorkContext, ItemPtr -- 10" , L"}")
+#else
+# define WPP_ANNOTATE_blkwork_c1024	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c1024 27 \"%0  InitializeWorkItem: work item of 0x%10!x! bytes at 0x%11!p!\" //  ", "{", "WorkItemSize, ItemLong -- 10" , "WorkItem, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_blkwork_c1025	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c1025 28 \"%0    Work Context: 0x%10!x! bytes at 0x%11!p!\" //  ", "{", "sizeof(WORK_CONTEXT), ItemLong -- 10" , "workContext, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_blkwork_c1027	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c1027 29 \"%0    IRP: 0x%10!x! bytes at 0x%11!p!\" //  ", "{", "workContext->Irp->Size, ItemLong -- 10" , "workContext->Irp, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_blkwork_c1030	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c1030 30 \"%0    Buffer Descriptor: 0x%10!x! bytes at 0x%11!p!\" //  ", "{", "sizeof(BUFFER), ItemLong -- 10" , "workContext->RequestBuffer, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_blkwork_c1032	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c1032 31 \"%0    Full MDL: 0x%10!x! bytes at 0x%11!p!\" //  ", "{", "MdlSize, ItemLong -- 10" , "workContext->RequestBuffer->Mdl, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_blkwork_c1035	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c1035 32 \"%0    Partial MDL: 0x%10!x! bytes at 0x%11!p!\" //  ", "{", "MdlSize, ItemLong -- 10" , "workContext->ResponseBuffer->PartialMdl, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_blkwork_c1037	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c1037 33 \"%0    Buffer: 0x%10!x! bytes at 0x%11!p!\" //  ", "{", "workContext->RequestBuffer->BufferLength, ItemLong -- 10" , "workContext->RequestBuffer->Buffer, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_blkwork_c1041	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c1041 34 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_blkwork_c1102	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c1102 35 \"%0Dereferencing WorkContext 0x%10!p!; new refcnt 0x%11!x!\" //  ", "{", "WorkContext, ItemPtr -- 10" , "WorkContext->BlockHeader.ReferenceCount, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_blkwork_c1179	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c1179 36 \"%0Dereferencing WorkContext 0x%10!p!; new refcnt 0x%11!x!\" //  ", "{", "WorkContext, ItemPtr -- 10" , "WorkContext->BlockHeader.ReferenceCount, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_blkwork_c174	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c174 10 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_blkwork_c175	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c175 11 \"%0  work item size = 0x%10!x! bytes\" //  ", "{", "workItemSize, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c176	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c176 12 \"%0  buffer size = 0x%10!x! bytes\" //  ", "{", "bufferSize, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c177	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c177 13 \"%0  Backfill size = 0x%10!x! bytes\" //  ", "{", "TransportHeaderSize, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c178	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c178 14 \"%0  number of work items = %10!ld!\" //  ", "{", "SrvInitialReceiveWorkItemCount, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c180	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c180 15 \"%0  total allocation = 0x%10!x! bytes\" //  ", "{", "totalSize, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c181	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c181 16 \"%0  wasted space = 0x%10!p! bytes\" //  ", "{", "(PVOID)(ROUND_TO_PAGES( totalSize ) - totalSize), ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c183	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c183 17 \"%0  amount saved over separate allocation = 0x%10!p! bytes\" //  ", "{", "(PVOID)(((ROUND_TO_PAGES( workItemSize ) +                            ROUND_TO_PAGES( bufferSize )) *                                              SrvInitialReceiveWorkItemCount) -                              ROUND_TO_PAGES( totalSize )), ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c246	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c246 18 \"%0buffer adjusted!! %10!p! offset %11!x! \" //  ", "{", "buffer, ItemPtr -- 10" , "BYTE_OFFSET(buffer), ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_blkwork_c356	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c356 19 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_blkwork_c535	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c535 20 \"%0\" //  ", "{", "}")
+# define WPP_ANNOTATE_blkwork_c717	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c717 21 \"%0Releasing initial work item block at 0x%10!p!\" //  ", "{", "SrvInitialWorkItemBlock, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c723	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c723 22 \"%0SrvFreeInitialWorkItems: Freed initial work item block at 0x%10!p!\" //  ", "{", "SrvInitialWorkItemBlock, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c763	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c763 23 \"%0Closing work item at 0x%10!p!\" //  ", "{", "WorkContext, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c778	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c778 24 \"%0SrvFreeNormalWorkItem: Freed Work Item block at 0x%10!p!\" //  ", "{", "WorkContext, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c822	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c822 25 \"%0Closing workitem at 0x%10!p!\" //  ", "{", "WorkContext, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_blkwork_c837	__annotation("TMF:", "4e728a4a-c0d9-fc39-28a6-53b05d0e3508 daytonam // SRC=blkwork.c MJ= MN=", "#typev  blkwork_c837 26 \"%0SrvFreeRawModeWorkItem: Freed Work Item block at 0x%10!p!\" //  ", "{", "WorkContext, ItemPtr -- 10" , "}")
+#endif
+# define WPP_ANNOTATE WPP_(ANNOTATE),
+#else
+# define WPP_ANNOTATE 
+#endif
+
+#if 1
+static const GUID WPP_LOCAL_TraceGuids[] = { {0x4e728a4a,0xc0d9,0xfc39,{0x28,0xa6,0x53,0xb0,0x5d,0x0e,0x35,0x08}}, };
+#endif
+
+#if !defined(WPP_TRACE_OPTIONS)
+enum {WPP_TRACE_OPTIONS = TRACE_MESSAGE_SEQUENCE   | TRACE_MESSAGE_GUID
+                        | TRACE_MESSAGE_SYSTEMINFO | TRACE_MESSAGE_TIMESTAMP };
+#endif
+
+#if !defined(WPP_LOGPAIR)
+# define WPP_LOGPAIR(_Size, _Addr)     (_Addr),((SIZE_T)_Size),
+#endif
+
+#define WPP_LOGTYPEVAL(_Type, _Value) WPP_LOGPAIR(sizeof(_Type), &(_Value))
+#define WPP_LOGTYPEPTR(_Value)        WPP_LOGPAIR(sizeof(*(_Value)), (_Value))
+
+// Marshalling macros.
+
+#if !defined(WPP_LOGASTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR(strlen(_value) + 1, _value )
+# else
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR( (_value)?strlen(_value) + 1:5, (_value)?(_value):"NULL" )
+# endif
+#endif
+
+#if !defined(WPP_LOGWSTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (wcslen(_value)+1) * sizeof(WCHAR), _value)
+# else
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (_value)?(wcslen(_value) + 1)* sizeof(WCHAR):5 * sizeof(WCHAR), (_value)?(_value):L"NULL") 
+# endif
+#endif
+
+#if !defined(WPP_LOGPGUID)
+# define WPP_LOGPGUID(_value) WPP_LOGPAIR( sizeof(GUID), (_value) )
+#endif
+
+
+#if !defined(WPP_LOGPSID)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( GetLengthSid(_value), (_value) )
+# else
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( (_value)? (IsValidSid(_value)? \
+                                                                        GetLengthSid(_value):5):5, \
+                                                                        (_value)? (IsValidSid(_value)?\
+                                                                        (_value):"NULL"):"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGCSTR)
+# define WPP_LOGCSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGUSTR)
+# define WPP_LOGUSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGPUSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPUSTR(_x) WPP_LOGUSTR(*(_x))
+#else
+# define WPP_LOGPUSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5*sizeof(WCHAR), (_x)?(*(_x)).Buffer:L"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGPCSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPCSTR(_x) WPP_LOGCSTR(*(_x))
+#else
+# define WPP_LOGPCSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5, (_x)?((const char *)(*(_x)).Buffer):"NULL")
+#endif
+#endif
+
+
+#if !defined(WPP_LOGSTDSTR)
+#define WPP_LOGSTDSTR(_value)  WPP_LOGPAIR( (_value).size()+1, (_value).c_str() )
+#endif
+
+WPP_INLINE void WPP_SF_(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id,  0); }
+WPP_INLINE void WPP_SF_L(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned long _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned long,_a1)  0); }
+WPP_INLINE void WPP_SF_Lq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned long _a1, const void* _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned long,_a1) WPP_LOGTYPEVAL(const void*,_a2)  0); }
+WPP_INLINE void WPP_SF_l(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, signed long _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(signed long,_a1)  0); }
+WPP_INLINE void WPP_SF_q(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1)  0); }
+WPP_INLINE void WPP_SF_qD(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1, unsigned int _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1) WPP_LOGTYPEVAL(unsigned int,_a2)  0); }
+WPP_INLINE void WPP_SF_qL(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1, unsigned long _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1) WPP_LOGTYPEVAL(unsigned long,_a2)  0); }
+#ifdef WPP_DEBUG
+#define WPP_CALL_blkwork_c1024(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_blkwork_c1025(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_blkwork_c1027(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_blkwork_c1030(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_blkwork_c1032(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_blkwork_c1035(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_blkwork_c1037(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_blkwork_c1041(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_blkwork_c1102(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qL(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_blkwork_c1179(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qL(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_blkwork_c174(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_blkwork_c175(MSG,a10) ((WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c176(MSG,a10) ((WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c177(MSG,a10) ((WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c178(MSG,a10) ((WPP_ENABLED()?WPP_SF_l(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c180(MSG,a10) ((WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c181(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c183(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c246(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qD(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_blkwork_c356(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_blkwork_c535(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_blkwork_c717(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c723(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c763(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c778(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c822(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_blkwork_c837(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#else
+#define WPP_CALL_blkwork_c1024(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_blkwork_c1025(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_blkwork_c1027(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_blkwork_c1030(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_blkwork_c1032(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_blkwork_c1035(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_blkwork_c1037(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_Lq(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_blkwork_c1041(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_blkwork_c1102(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qL(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_blkwork_c1179(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qL(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_blkwork_c174(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_blkwork_c175(MSG,a10) (WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c176(MSG,a10) (WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c177(MSG,a10) (WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c178(MSG,a10) (WPP_ENABLED()?WPP_SF_l(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c180(MSG,a10) (WPP_ENABLED()?WPP_SF_L(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c181(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c183(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c246(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qD(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_blkwork_c356(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_blkwork_c535(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_blkwork_c717(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c723(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c763(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c778(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c822(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_blkwork_c837(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#endif
+
+// NoMsgArgs
+
+#undef DoTraceMessage
+#define DoTraceMessage WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint0
+#define SrvPrint0 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint1
+#define SrvPrint1 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint2
+#define SrvPrint2 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint3
+#define SrvPrint3 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint4
+#define SrvPrint4 WPP_ANNOTATE WPP_(CALL)
+#undef KdPrint
+#define KdPrint(ARGS) WPP_ANNOTATE WPP_(CALL) ARGS
+// MsgArgs
+
+#ifdef WPP_DEBUG
+#else
+#endif
+
+
+/// more stuff
+
+

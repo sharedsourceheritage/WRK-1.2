@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\imirror.res \
+    $(_OBJ_DIR)\i386\imirror.obj \
+    $(_OBJ_DIR)\i386\ckmach.obj \
+    $(_OBJ_DIR)\i386\copy.obj \
+    $(_OBJ_DIR)\i386\findfile.obj \
+    $(_OBJ_DIR)\i386\mirror.obj \
+    $(_OBJ_DIR)\i386\regtool.obj \
+    $(_OBJ_DIR)\i386\regcopy.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\imirror.res \
+    $(_OBJ_DIR)\ia64\imirror.obj \
+    $(_OBJ_DIR)\ia64\ckmach.obj \
+    $(_OBJ_DIR)\ia64\copy.obj \
+    $(_OBJ_DIR)\ia64\findfile.obj \
+    $(_OBJ_DIR)\ia64\mirror.obj \
+    $(_OBJ_DIR)\ia64\regtool.obj \
+    $(_OBJ_DIR)\ia64\regcopy.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\imirror.res \
+    $(_OBJ_DIR)\amd64\imirror.obj \
+    $(_OBJ_DIR)\amd64\ckmach.obj \
+    $(_OBJ_DIR)\amd64\copy.obj \
+    $(_OBJ_DIR)\amd64\findfile.obj \
+    $(_OBJ_DIR)\amd64\mirror.obj \
+    $(_OBJ_DIR)\amd64\regtool.obj \
+    $(_OBJ_DIR)\amd64\regcopy.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\imirror.res \
+    $(_OBJ_DIR)\arm\imirror.obj \
+    $(_OBJ_DIR)\arm\ckmach.obj \
+    $(_OBJ_DIR)\arm\copy.obj \
+    $(_OBJ_DIR)\arm\findfile.obj \
+    $(_OBJ_DIR)\arm\mirror.obj \
+    $(_OBJ_DIR)\arm\regtool.obj \
+    $(_OBJ_DIR)\arm\regcopy.obj
+
+PASS0_ARM_OBJECTS=
+

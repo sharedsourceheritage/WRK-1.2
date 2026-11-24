@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\actctxdump.obj \
+    $(_OBJ_DIR)\i386\actctxstack.obj \
+    $(_OBJ_DIR)\i386\dumputils.obj \
+    $(_OBJ_DIR)\i386\dumpers.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\actctxdump.obj \
+    $(_OBJ_DIR)\ia64\actctxstack.obj \
+    $(_OBJ_DIR)\ia64\dumputils.obj \
+    $(_OBJ_DIR)\ia64\dumpers.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\actctxdump.obj \
+    $(_OBJ_DIR)\amd64\actctxstack.obj \
+    $(_OBJ_DIR)\amd64\dumputils.obj \
+    $(_OBJ_DIR)\amd64\dumpers.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\actctxdump.obj \
+    $(_OBJ_DIR)\arm\actctxstack.obj \
+    $(_OBJ_DIR)\arm\dumputils.obj \
+    $(_OBJ_DIR)\arm\dumpers.obj
+
+PASS0_ARM_OBJECTS=
+

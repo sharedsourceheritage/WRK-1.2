@@ -1,0 +1,108 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\resource.res \
+    $(_OBJ_DIR)\i386\sysprep.obj \
+    $(_OBJ_DIR)\i386\appldlg.obj \
+    $(_OBJ_DIR)\i386\callback.obj \
+    $(_OBJ_DIR)\i386\compat.obj \
+    $(_OBJ_DIR)\i386\compchk.obj \
+    $(_OBJ_DIR)\i386\complete.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\directory.obj \
+    $(_OBJ_DIR)\i386\errorlog.obj \
+    $(_OBJ_DIR)\i386\logging.obj \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\rsrcutil.obj \
+    $(_OBJ_DIR)\i386\setup.obj \
+    $(_OBJ_DIR)\i386\serverdlg.obj \
+    $(_OBJ_DIR)\i386\sif.obj \
+    $(_OBJ_DIR)\i386\summary.obj \
+    $(_OBJ_DIR)\i386\tasks.obj \
+    $(_OBJ_DIR)\i386\utils.obj \
+    $(_OBJ_DIR)\i386\web.obj \
+    $(_OBJ_DIR)\i386\welcome.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\resource.res \
+    $(_OBJ_DIR)\ia64\sysprep.obj \
+    $(_OBJ_DIR)\ia64\appldlg.obj \
+    $(_OBJ_DIR)\ia64\callback.obj \
+    $(_OBJ_DIR)\ia64\compat.obj \
+    $(_OBJ_DIR)\ia64\compchk.obj \
+    $(_OBJ_DIR)\ia64\complete.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\directory.obj \
+    $(_OBJ_DIR)\ia64\errorlog.obj \
+    $(_OBJ_DIR)\ia64\logging.obj \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\rsrcutil.obj \
+    $(_OBJ_DIR)\ia64\setup.obj \
+    $(_OBJ_DIR)\ia64\serverdlg.obj \
+    $(_OBJ_DIR)\ia64\sif.obj \
+    $(_OBJ_DIR)\ia64\summary.obj \
+    $(_OBJ_DIR)\ia64\tasks.obj \
+    $(_OBJ_DIR)\ia64\utils.obj \
+    $(_OBJ_DIR)\ia64\web.obj \
+    $(_OBJ_DIR)\ia64\welcome.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\resource.res \
+    $(_OBJ_DIR)\amd64\sysprep.obj \
+    $(_OBJ_DIR)\amd64\appldlg.obj \
+    $(_OBJ_DIR)\amd64\callback.obj \
+    $(_OBJ_DIR)\amd64\compat.obj \
+    $(_OBJ_DIR)\amd64\compchk.obj \
+    $(_OBJ_DIR)\amd64\complete.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\directory.obj \
+    $(_OBJ_DIR)\amd64\errorlog.obj \
+    $(_OBJ_DIR)\amd64\logging.obj \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\rsrcutil.obj \
+    $(_OBJ_DIR)\amd64\setup.obj \
+    $(_OBJ_DIR)\amd64\serverdlg.obj \
+    $(_OBJ_DIR)\amd64\sif.obj \
+    $(_OBJ_DIR)\amd64\summary.obj \
+    $(_OBJ_DIR)\amd64\tasks.obj \
+    $(_OBJ_DIR)\amd64\utils.obj \
+    $(_OBJ_DIR)\amd64\web.obj \
+    $(_OBJ_DIR)\amd64\welcome.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\resource.res \
+    $(_OBJ_DIR)\arm\sysprep.obj \
+    $(_OBJ_DIR)\arm\appldlg.obj \
+    $(_OBJ_DIR)\arm\callback.obj \
+    $(_OBJ_DIR)\arm\compat.obj \
+    $(_OBJ_DIR)\arm\compchk.obj \
+    $(_OBJ_DIR)\arm\complete.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\directory.obj \
+    $(_OBJ_DIR)\arm\errorlog.obj \
+    $(_OBJ_DIR)\arm\logging.obj \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\rsrcutil.obj \
+    $(_OBJ_DIR)\arm\setup.obj \
+    $(_OBJ_DIR)\arm\serverdlg.obj \
+    $(_OBJ_DIR)\arm\sif.obj \
+    $(_OBJ_DIR)\arm\summary.obj \
+    $(_OBJ_DIR)\arm\tasks.obj \
+    $(_OBJ_DIR)\arm\utils.obj \
+    $(_OBJ_DIR)\arm\web.obj \
+    $(_OBJ_DIR)\arm\welcome.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+

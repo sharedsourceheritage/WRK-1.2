@@ -1,0 +1,160 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cmd.res \
+    $(_OBJ_DIR)\i386\cbatch.obj \
+    $(_OBJ_DIR)\i386\cchcp.obj \
+    $(_OBJ_DIR)\i386\cclock.obj \
+    $(_OBJ_DIR)\i386\cdata.obj \
+    $(_OBJ_DIR)\i386\cdebug.obj \
+    $(_OBJ_DIR)\i386\cenv.obj \
+    $(_OBJ_DIR)\i386\cext.obj \
+    $(_OBJ_DIR)\i386\cfile.obj \
+    $(_OBJ_DIR)\i386\cinfo.obj \
+    $(_OBJ_DIR)\i386\cinit.obj \
+    $(_OBJ_DIR)\i386\ckeys.obj \
+    $(_OBJ_DIR)\i386\clex.obj \
+    $(_OBJ_DIR)\i386\cmd.obj \
+    $(_OBJ_DIR)\i386\cmem.obj \
+    $(_OBJ_DIR)\i386\cop.obj \
+    $(_OBJ_DIR)\i386\console.obj \
+    $(_OBJ_DIR)\i386\cother.obj \
+    $(_OBJ_DIR)\i386\cparse.obj \
+    $(_OBJ_DIR)\i386\cpath.obj \
+    $(_OBJ_DIR)\i386\cpparse.obj \
+    $(_OBJ_DIR)\i386\cpwork.obj \
+    $(_OBJ_DIR)\i386\csig.obj \
+    $(_OBJ_DIR)\i386\ctools1.obj \
+    $(_OBJ_DIR)\i386\ctools2.obj \
+    $(_OBJ_DIR)\i386\ctools3.obj \
+    $(_OBJ_DIR)\i386\del.obj \
+    $(_OBJ_DIR)\i386\dir.obj \
+    $(_OBJ_DIR)\i386\display.obj \
+    $(_OBJ_DIR)\i386\ffirst.obj \
+    $(_OBJ_DIR)\i386\hstoi.obj \
+    $(_OBJ_DIR)\i386\start.obj \
+    $(_OBJ_DIR)\i386\string.obj \
+    $(_OBJ_DIR)\i386\tree.obj \
+    $(_OBJ_DIR)\i386\readcon.obj \
+    $(_OBJ_DIR)\i386\complete.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cmd.res \
+    $(_OBJ_DIR)\ia64\cbatch.obj \
+    $(_OBJ_DIR)\ia64\cchcp.obj \
+    $(_OBJ_DIR)\ia64\cclock.obj \
+    $(_OBJ_DIR)\ia64\cdata.obj \
+    $(_OBJ_DIR)\ia64\cdebug.obj \
+    $(_OBJ_DIR)\ia64\cenv.obj \
+    $(_OBJ_DIR)\ia64\cext.obj \
+    $(_OBJ_DIR)\ia64\cfile.obj \
+    $(_OBJ_DIR)\ia64\cinfo.obj \
+    $(_OBJ_DIR)\ia64\cinit.obj \
+    $(_OBJ_DIR)\ia64\ckeys.obj \
+    $(_OBJ_DIR)\ia64\clex.obj \
+    $(_OBJ_DIR)\ia64\cmd.obj \
+    $(_OBJ_DIR)\ia64\cmem.obj \
+    $(_OBJ_DIR)\ia64\cop.obj \
+    $(_OBJ_DIR)\ia64\console.obj \
+    $(_OBJ_DIR)\ia64\cother.obj \
+    $(_OBJ_DIR)\ia64\cparse.obj \
+    $(_OBJ_DIR)\ia64\cpath.obj \
+    $(_OBJ_DIR)\ia64\cpparse.obj \
+    $(_OBJ_DIR)\ia64\cpwork.obj \
+    $(_OBJ_DIR)\ia64\csig.obj \
+    $(_OBJ_DIR)\ia64\ctools1.obj \
+    $(_OBJ_DIR)\ia64\ctools2.obj \
+    $(_OBJ_DIR)\ia64\ctools3.obj \
+    $(_OBJ_DIR)\ia64\del.obj \
+    $(_OBJ_DIR)\ia64\dir.obj \
+    $(_OBJ_DIR)\ia64\display.obj \
+    $(_OBJ_DIR)\ia64\ffirst.obj \
+    $(_OBJ_DIR)\ia64\hstoi.obj \
+    $(_OBJ_DIR)\ia64\start.obj \
+    $(_OBJ_DIR)\ia64\string.obj \
+    $(_OBJ_DIR)\ia64\tree.obj \
+    $(_OBJ_DIR)\ia64\readcon.obj \
+    $(_OBJ_DIR)\ia64\complete.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cmd.res \
+    $(_OBJ_DIR)\amd64\cbatch.obj \
+    $(_OBJ_DIR)\amd64\cchcp.obj \
+    $(_OBJ_DIR)\amd64\cclock.obj \
+    $(_OBJ_DIR)\amd64\cdata.obj \
+    $(_OBJ_DIR)\amd64\cdebug.obj \
+    $(_OBJ_DIR)\amd64\cenv.obj \
+    $(_OBJ_DIR)\amd64\cext.obj \
+    $(_OBJ_DIR)\amd64\cfile.obj \
+    $(_OBJ_DIR)\amd64\cinfo.obj \
+    $(_OBJ_DIR)\amd64\cinit.obj \
+    $(_OBJ_DIR)\amd64\ckeys.obj \
+    $(_OBJ_DIR)\amd64\clex.obj \
+    $(_OBJ_DIR)\amd64\cmd.obj \
+    $(_OBJ_DIR)\amd64\cmem.obj \
+    $(_OBJ_DIR)\amd64\cop.obj \
+    $(_OBJ_DIR)\amd64\console.obj \
+    $(_OBJ_DIR)\amd64\cother.obj \
+    $(_OBJ_DIR)\amd64\cparse.obj \
+    $(_OBJ_DIR)\amd64\cpath.obj \
+    $(_OBJ_DIR)\amd64\cpparse.obj \
+    $(_OBJ_DIR)\amd64\cpwork.obj \
+    $(_OBJ_DIR)\amd64\csig.obj \
+    $(_OBJ_DIR)\amd64\ctools1.obj \
+    $(_OBJ_DIR)\amd64\ctools2.obj \
+    $(_OBJ_DIR)\amd64\ctools3.obj \
+    $(_OBJ_DIR)\amd64\del.obj \
+    $(_OBJ_DIR)\amd64\dir.obj \
+    $(_OBJ_DIR)\amd64\display.obj \
+    $(_OBJ_DIR)\amd64\ffirst.obj \
+    $(_OBJ_DIR)\amd64\hstoi.obj \
+    $(_OBJ_DIR)\amd64\start.obj \
+    $(_OBJ_DIR)\amd64\string.obj \
+    $(_OBJ_DIR)\amd64\tree.obj \
+    $(_OBJ_DIR)\amd64\readcon.obj \
+    $(_OBJ_DIR)\amd64\complete.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cmd.res \
+    $(_OBJ_DIR)\arm\cbatch.obj \
+    $(_OBJ_DIR)\arm\cchcp.obj \
+    $(_OBJ_DIR)\arm\cclock.obj \
+    $(_OBJ_DIR)\arm\cdata.obj \
+    $(_OBJ_DIR)\arm\cdebug.obj \
+    $(_OBJ_DIR)\arm\cenv.obj \
+    $(_OBJ_DIR)\arm\cext.obj \
+    $(_OBJ_DIR)\arm\cfile.obj \
+    $(_OBJ_DIR)\arm\cinfo.obj \
+    $(_OBJ_DIR)\arm\cinit.obj \
+    $(_OBJ_DIR)\arm\ckeys.obj \
+    $(_OBJ_DIR)\arm\clex.obj \
+    $(_OBJ_DIR)\arm\cmd.obj \
+    $(_OBJ_DIR)\arm\cmem.obj \
+    $(_OBJ_DIR)\arm\cop.obj \
+    $(_OBJ_DIR)\arm\console.obj \
+    $(_OBJ_DIR)\arm\cother.obj \
+    $(_OBJ_DIR)\arm\cparse.obj \
+    $(_OBJ_DIR)\arm\cpath.obj \
+    $(_OBJ_DIR)\arm\cpparse.obj \
+    $(_OBJ_DIR)\arm\cpwork.obj \
+    $(_OBJ_DIR)\arm\csig.obj \
+    $(_OBJ_DIR)\arm\ctools1.obj \
+    $(_OBJ_DIR)\arm\ctools2.obj \
+    $(_OBJ_DIR)\arm\ctools3.obj \
+    $(_OBJ_DIR)\arm\del.obj \
+    $(_OBJ_DIR)\arm\dir.obj \
+    $(_OBJ_DIR)\arm\display.obj \
+    $(_OBJ_DIR)\arm\ffirst.obj \
+    $(_OBJ_DIR)\arm\hstoi.obj \
+    $(_OBJ_DIR)\arm\start.obj \
+    $(_OBJ_DIR)\arm\string.obj \
+    $(_OBJ_DIR)\arm\tree.obj \
+    $(_OBJ_DIR)\arm\readcon.obj \
+    $(_OBJ_DIR)\arm\complete.obj
+
+PASS0_ARM_OBJECTS=
+

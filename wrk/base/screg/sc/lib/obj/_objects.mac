@@ -1,0 +1,56 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\acctname.obj \
+    $(_OBJ_DIR)\i386\confparm.obj \
+    $(_OBJ_DIR)\i386\convert.obj \
+    $(_OBJ_DIR)\i386\packstr.obj \
+    $(_OBJ_DIR)\i386\path.obj \
+    $(_OBJ_DIR)\i386\scseclib.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\valid.obj \
+    $(_OBJ_DIR)\i386\sccrypt.obj \
+    $(_OBJ_DIR)\i386\strarray.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\acctname.obj \
+    $(_OBJ_DIR)\ia64\confparm.obj \
+    $(_OBJ_DIR)\ia64\convert.obj \
+    $(_OBJ_DIR)\ia64\packstr.obj \
+    $(_OBJ_DIR)\ia64\path.obj \
+    $(_OBJ_DIR)\ia64\scseclib.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\valid.obj \
+    $(_OBJ_DIR)\ia64\sccrypt.obj \
+    $(_OBJ_DIR)\ia64\strarray.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\acctname.obj \
+    $(_OBJ_DIR)\amd64\confparm.obj \
+    $(_OBJ_DIR)\amd64\convert.obj \
+    $(_OBJ_DIR)\amd64\packstr.obj \
+    $(_OBJ_DIR)\amd64\path.obj \
+    $(_OBJ_DIR)\amd64\scseclib.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\valid.obj \
+    $(_OBJ_DIR)\amd64\sccrypt.obj \
+    $(_OBJ_DIR)\amd64\strarray.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\acctname.obj \
+    $(_OBJ_DIR)\arm\confparm.obj \
+    $(_OBJ_DIR)\arm\convert.obj \
+    $(_OBJ_DIR)\arm\packstr.obj \
+    $(_OBJ_DIR)\arm\path.obj \
+    $(_OBJ_DIR)\arm\scseclib.obj \
+    $(_OBJ_DIR)\arm\util.obj \
+    $(_OBJ_DIR)\arm\valid.obj \
+    $(_OBJ_DIR)\arm\sccrypt.obj \
+    $(_OBJ_DIR)\arm\strarray.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\diskcopy.res \
+    $(_OBJ_DIR)\i386\diskcopy.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\diskcopy.res \
+    $(_OBJ_DIR)\ia64\diskcopy.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\diskcopy.res \
+    $(_OBJ_DIR)\amd64\diskcopy.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\diskcopy.res \
+    $(_OBJ_DIR)\arm\diskcopy.obj
+
+PASS0_ARM_OBJECTS=
+

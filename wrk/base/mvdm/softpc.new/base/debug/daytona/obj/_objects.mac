@@ -1,0 +1,45 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\debuggng.obj \
+    $(_OBJ_DIR)\i386\ega_dump.obj \
+    $(_OBJ_DIR)\i386\btrace.obj \
+    $(_OBJ_DIR)\i386\trace.obj \
+    $(_OBJ_DIR)\i386\profile.obj \
+    $(_OBJ_DIR)\i386\pigyoda.obj \
+    $(_OBJ_DIR)\i386\yoda.obj \
+    $(_OBJ_DIR)\i386\dasm.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\debuggng.obj \
+    $(_OBJ_DIR)\ia64\ega_dump.obj \
+    $(_OBJ_DIR)\ia64\btrace.obj \
+    $(_OBJ_DIR)\ia64\trace.obj \
+    $(_OBJ_DIR)\ia64\profile.obj \
+    $(_OBJ_DIR)\ia64\pigyoda.obj \
+    $(_OBJ_DIR)\ia64\yoda.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\debuggng.obj \
+    $(_OBJ_DIR)\amd64\ega_dump.obj \
+    $(_OBJ_DIR)\amd64\btrace.obj \
+    $(_OBJ_DIR)\amd64\trace.obj \
+    $(_OBJ_DIR)\amd64\profile.obj \
+    $(_OBJ_DIR)\amd64\pigyoda.obj \
+    $(_OBJ_DIR)\amd64\yoda.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\debuggng.obj \
+    $(_OBJ_DIR)\arm\ega_dump.obj \
+    $(_OBJ_DIR)\arm\btrace.obj \
+    $(_OBJ_DIR)\arm\trace.obj \
+    $(_OBJ_DIR)\arm\profile.obj \
+    $(_OBJ_DIR)\arm\pigyoda.obj \
+    $(_OBJ_DIR)\arm\yoda.obj
+
+PASS0_ARM_OBJECTS=
+

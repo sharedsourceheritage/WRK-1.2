@@ -1,0 +1,92 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sfc.res \
+    $(_OBJ_DIR)\i386\apicli.obj \
+    $(_OBJ_DIR)\i386\apisrv.obj \
+    $(_OBJ_DIR)\i386\btree.obj \
+    $(_OBJ_DIR)\i386\crypto.obj \
+    $(_OBJ_DIR)\i386\dirscan.obj \
+    $(_OBJ_DIR)\i386\dirwatch.obj \
+    $(_OBJ_DIR)\i386\eventlog.obj \
+    $(_OBJ_DIR)\i386\fileio.obj \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\restore.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\security.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\validate.obj \
+    $(_OBJ_DIR)\i386\exceppk.obj \
+    $(_OBJ_DIR)\i386\version.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sfc.res \
+    $(_OBJ_DIR)\ia64\apicli.obj \
+    $(_OBJ_DIR)\ia64\apisrv.obj \
+    $(_OBJ_DIR)\ia64\btree.obj \
+    $(_OBJ_DIR)\ia64\crypto.obj \
+    $(_OBJ_DIR)\ia64\dirscan.obj \
+    $(_OBJ_DIR)\ia64\dirwatch.obj \
+    $(_OBJ_DIR)\ia64\eventlog.obj \
+    $(_OBJ_DIR)\ia64\fileio.obj \
+    $(_OBJ_DIR)\ia64\init.obj \
+    $(_OBJ_DIR)\ia64\restore.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\security.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\validate.obj \
+    $(_OBJ_DIR)\ia64\exceppk.obj \
+    $(_OBJ_DIR)\ia64\version.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sfc.res \
+    $(_OBJ_DIR)\amd64\apicli.obj \
+    $(_OBJ_DIR)\amd64\apisrv.obj \
+    $(_OBJ_DIR)\amd64\btree.obj \
+    $(_OBJ_DIR)\amd64\crypto.obj \
+    $(_OBJ_DIR)\amd64\dirscan.obj \
+    $(_OBJ_DIR)\amd64\dirwatch.obj \
+    $(_OBJ_DIR)\amd64\eventlog.obj \
+    $(_OBJ_DIR)\amd64\fileio.obj \
+    $(_OBJ_DIR)\amd64\init.obj \
+    $(_OBJ_DIR)\amd64\restore.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\security.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\validate.obj \
+    $(_OBJ_DIR)\amd64\exceppk.obj \
+    $(_OBJ_DIR)\amd64\version.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sfc.res \
+    $(_OBJ_DIR)\arm\apicli.obj \
+    $(_OBJ_DIR)\arm\apisrv.obj \
+    $(_OBJ_DIR)\arm\btree.obj \
+    $(_OBJ_DIR)\arm\crypto.obj \
+    $(_OBJ_DIR)\arm\dirscan.obj \
+    $(_OBJ_DIR)\arm\dirwatch.obj \
+    $(_OBJ_DIR)\arm\eventlog.obj \
+    $(_OBJ_DIR)\arm\fileio.obj \
+    $(_OBJ_DIR)\arm\init.obj \
+    $(_OBJ_DIR)\arm\restore.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\security.obj \
+    $(_OBJ_DIR)\arm\util.obj \
+    $(_OBJ_DIR)\arm\validate.obj \
+    $(_OBJ_DIR)\arm\exceppk.obj \
+    $(_OBJ_DIR)\arm\version.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg.h \
+    $(MC_SOURCEDIR)\msg.rc
+

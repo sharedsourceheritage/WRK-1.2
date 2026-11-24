@@ -1,0 +1,116 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\vfbugcheck.obj \
+    $(_OBJ_DIR)\i386\vfddi.obj \
+    $(_OBJ_DIR)\i386\vfdeadlock.obj \
+    $(_OBJ_DIR)\i386\vfdebug.obj \
+    $(_OBJ_DIR)\i386\vfdevobj.obj \
+    $(_OBJ_DIR)\i386\vffileio.obj \
+    $(_OBJ_DIR)\i386\vffilter.obj \
+    $(_OBJ_DIR)\i386\vfhal.obj \
+    $(_OBJ_DIR)\i386\vfinit.obj \
+    $(_OBJ_DIR)\i386\vfirp.obj \
+    $(_OBJ_DIR)\i386\vfirpdb.obj \
+    $(_OBJ_DIR)\i386\vfirplog.obj \
+    $(_OBJ_DIR)\i386\vfgeneric.obj \
+    $(_OBJ_DIR)\i386\vfmajor.obj \
+    $(_OBJ_DIR)\i386\vfmessage.obj \
+    $(_OBJ_DIR)\i386\vfpacket.obj \
+    $(_OBJ_DIR)\i386\vfpnp.obj \
+    $(_OBJ_DIR)\i386\vfpower.obj \
+    $(_OBJ_DIR)\i386\vfprint.obj \
+    $(_OBJ_DIR)\i386\vfrandom.obj \
+    $(_OBJ_DIR)\i386\vfsettings.obj \
+    $(_OBJ_DIR)\i386\vfstack.obj \
+    $(_OBJ_DIR)\i386\vfutil.obj \
+    $(_OBJ_DIR)\i386\vfwmi.obj \
+    $(_OBJ_DIR)\i386\vfzwapi.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\vfbugcheck.obj \
+    $(_OBJ_DIR)\ia64\vfddi.obj \
+    $(_OBJ_DIR)\ia64\vfdeadlock.obj \
+    $(_OBJ_DIR)\ia64\vfdebug.obj \
+    $(_OBJ_DIR)\ia64\vfdevobj.obj \
+    $(_OBJ_DIR)\ia64\vffileio.obj \
+    $(_OBJ_DIR)\ia64\vffilter.obj \
+    $(_OBJ_DIR)\ia64\vfhal.obj \
+    $(_OBJ_DIR)\ia64\vfinit.obj \
+    $(_OBJ_DIR)\ia64\vfirp.obj \
+    $(_OBJ_DIR)\ia64\vfirpdb.obj \
+    $(_OBJ_DIR)\ia64\vfirplog.obj \
+    $(_OBJ_DIR)\ia64\vfgeneric.obj \
+    $(_OBJ_DIR)\ia64\vfmajor.obj \
+    $(_OBJ_DIR)\ia64\vfmessage.obj \
+    $(_OBJ_DIR)\ia64\vfpacket.obj \
+    $(_OBJ_DIR)\ia64\vfpnp.obj \
+    $(_OBJ_DIR)\ia64\vfpower.obj \
+    $(_OBJ_DIR)\ia64\vfprint.obj \
+    $(_OBJ_DIR)\ia64\vfrandom.obj \
+    $(_OBJ_DIR)\ia64\vfsettings.obj \
+    $(_OBJ_DIR)\ia64\vfstack.obj \
+    $(_OBJ_DIR)\ia64\vfutil.obj \
+    $(_OBJ_DIR)\ia64\vfwmi.obj \
+    $(_OBJ_DIR)\ia64\vfzwapi.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\vfbugcheck.obj \
+    $(_OBJ_DIR)\amd64\vfddi.obj \
+    $(_OBJ_DIR)\amd64\vfdeadlock.obj \
+    $(_OBJ_DIR)\amd64\vfdebug.obj \
+    $(_OBJ_DIR)\amd64\vfdevobj.obj \
+    $(_OBJ_DIR)\amd64\vffileio.obj \
+    $(_OBJ_DIR)\amd64\vffilter.obj \
+    $(_OBJ_DIR)\amd64\vfhal.obj \
+    $(_OBJ_DIR)\amd64\vfinit.obj \
+    $(_OBJ_DIR)\amd64\vfirp.obj \
+    $(_OBJ_DIR)\amd64\vfirpdb.obj \
+    $(_OBJ_DIR)\amd64\vfirplog.obj \
+    $(_OBJ_DIR)\amd64\vfgeneric.obj \
+    $(_OBJ_DIR)\amd64\vfmajor.obj \
+    $(_OBJ_DIR)\amd64\vfmessage.obj \
+    $(_OBJ_DIR)\amd64\vfpacket.obj \
+    $(_OBJ_DIR)\amd64\vfpnp.obj \
+    $(_OBJ_DIR)\amd64\vfpower.obj \
+    $(_OBJ_DIR)\amd64\vfprint.obj \
+    $(_OBJ_DIR)\amd64\vfrandom.obj \
+    $(_OBJ_DIR)\amd64\vfsettings.obj \
+    $(_OBJ_DIR)\amd64\vfstack.obj \
+    $(_OBJ_DIR)\amd64\vfutil.obj \
+    $(_OBJ_DIR)\amd64\vfwmi.obj \
+    $(_OBJ_DIR)\amd64\vfzwapi.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\vfbugcheck.obj \
+    $(_OBJ_DIR)\arm\vfddi.obj \
+    $(_OBJ_DIR)\arm\vfdeadlock.obj \
+    $(_OBJ_DIR)\arm\vfdebug.obj \
+    $(_OBJ_DIR)\arm\vfdevobj.obj \
+    $(_OBJ_DIR)\arm\vffileio.obj \
+    $(_OBJ_DIR)\arm\vffilter.obj \
+    $(_OBJ_DIR)\arm\vfhal.obj \
+    $(_OBJ_DIR)\arm\vfinit.obj \
+    $(_OBJ_DIR)\arm\vfirp.obj \
+    $(_OBJ_DIR)\arm\vfirpdb.obj \
+    $(_OBJ_DIR)\arm\vfirplog.obj \
+    $(_OBJ_DIR)\arm\vfgeneric.obj \
+    $(_OBJ_DIR)\arm\vfmajor.obj \
+    $(_OBJ_DIR)\arm\vfmessage.obj \
+    $(_OBJ_DIR)\arm\vfpacket.obj \
+    $(_OBJ_DIR)\arm\vfpnp.obj \
+    $(_OBJ_DIR)\arm\vfpower.obj \
+    $(_OBJ_DIR)\arm\vfprint.obj \
+    $(_OBJ_DIR)\arm\vfrandom.obj \
+    $(_OBJ_DIR)\arm\vfsettings.obj \
+    $(_OBJ_DIR)\arm\vfstack.obj \
+    $(_OBJ_DIR)\arm\vfutil.obj \
+    $(_OBJ_DIR)\arm\vfwmi.obj \
+    $(_OBJ_DIR)\arm\vfzwapi.obj
+
+PASS0_ARM_OBJECTS=
+

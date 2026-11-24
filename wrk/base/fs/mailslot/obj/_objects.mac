@@ -1,0 +1,120 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\msfs.res \
+    $(_OBJ_DIR)\i386\cleanup.obj \
+    $(_OBJ_DIR)\i386\close.obj \
+    $(_OBJ_DIR)\i386\create.obj \
+    $(_OBJ_DIR)\i386\createms.obj \
+    $(_OBJ_DIR)\i386\datasup.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\deviosup.obj \
+    $(_OBJ_DIR)\i386\dir.obj \
+    $(_OBJ_DIR)\i386\dpc.obj \
+    $(_OBJ_DIR)\i386\dumpsup.obj \
+    $(_OBJ_DIR)\i386\except.obj \
+    $(_OBJ_DIR)\i386\fileinfo.obj \
+    $(_OBJ_DIR)\i386\filobsup.obj \
+    $(_OBJ_DIR)\i386\fscontrl.obj \
+    $(_OBJ_DIR)\i386\msdata.obj \
+    $(_OBJ_DIR)\i386\msinit.obj \
+    $(_OBJ_DIR)\i386\prefxsup.obj \
+    $(_OBJ_DIR)\i386\read.obj \
+    $(_OBJ_DIR)\i386\readsup.obj \
+    $(_OBJ_DIR)\i386\seinfo.obj \
+    $(_OBJ_DIR)\i386\strucsup.obj \
+    $(_OBJ_DIR)\i386\verfysup.obj \
+    $(_OBJ_DIR)\i386\volinfo.obj \
+    $(_OBJ_DIR)\i386\write.obj \
+    $(_OBJ_DIR)\i386\writesup.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\msfs.res \
+    $(_OBJ_DIR)\ia64\cleanup.obj \
+    $(_OBJ_DIR)\ia64\close.obj \
+    $(_OBJ_DIR)\ia64\create.obj \
+    $(_OBJ_DIR)\ia64\createms.obj \
+    $(_OBJ_DIR)\ia64\datasup.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\deviosup.obj \
+    $(_OBJ_DIR)\ia64\dir.obj \
+    $(_OBJ_DIR)\ia64\dpc.obj \
+    $(_OBJ_DIR)\ia64\dumpsup.obj \
+    $(_OBJ_DIR)\ia64\except.obj \
+    $(_OBJ_DIR)\ia64\fileinfo.obj \
+    $(_OBJ_DIR)\ia64\filobsup.obj \
+    $(_OBJ_DIR)\ia64\fscontrl.obj \
+    $(_OBJ_DIR)\ia64\msdata.obj \
+    $(_OBJ_DIR)\ia64\msinit.obj \
+    $(_OBJ_DIR)\ia64\prefxsup.obj \
+    $(_OBJ_DIR)\ia64\read.obj \
+    $(_OBJ_DIR)\ia64\readsup.obj \
+    $(_OBJ_DIR)\ia64\seinfo.obj \
+    $(_OBJ_DIR)\ia64\strucsup.obj \
+    $(_OBJ_DIR)\ia64\verfysup.obj \
+    $(_OBJ_DIR)\ia64\volinfo.obj \
+    $(_OBJ_DIR)\ia64\write.obj \
+    $(_OBJ_DIR)\ia64\writesup.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\msfs.res \
+    $(_OBJ_DIR)\amd64\cleanup.obj \
+    $(_OBJ_DIR)\amd64\close.obj \
+    $(_OBJ_DIR)\amd64\create.obj \
+    $(_OBJ_DIR)\amd64\createms.obj \
+    $(_OBJ_DIR)\amd64\datasup.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\deviosup.obj \
+    $(_OBJ_DIR)\amd64\dir.obj \
+    $(_OBJ_DIR)\amd64\dpc.obj \
+    $(_OBJ_DIR)\amd64\dumpsup.obj \
+    $(_OBJ_DIR)\amd64\except.obj \
+    $(_OBJ_DIR)\amd64\fileinfo.obj \
+    $(_OBJ_DIR)\amd64\filobsup.obj \
+    $(_OBJ_DIR)\amd64\fscontrl.obj \
+    $(_OBJ_DIR)\amd64\msdata.obj \
+    $(_OBJ_DIR)\amd64\msinit.obj \
+    $(_OBJ_DIR)\amd64\prefxsup.obj \
+    $(_OBJ_DIR)\amd64\read.obj \
+    $(_OBJ_DIR)\amd64\readsup.obj \
+    $(_OBJ_DIR)\amd64\seinfo.obj \
+    $(_OBJ_DIR)\amd64\strucsup.obj \
+    $(_OBJ_DIR)\amd64\verfysup.obj \
+    $(_OBJ_DIR)\amd64\volinfo.obj \
+    $(_OBJ_DIR)\amd64\write.obj \
+    $(_OBJ_DIR)\amd64\writesup.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\msfs.res \
+    $(_OBJ_DIR)\arm\cleanup.obj \
+    $(_OBJ_DIR)\arm\close.obj \
+    $(_OBJ_DIR)\arm\create.obj \
+    $(_OBJ_DIR)\arm\createms.obj \
+    $(_OBJ_DIR)\arm\datasup.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\deviosup.obj \
+    $(_OBJ_DIR)\arm\dir.obj \
+    $(_OBJ_DIR)\arm\dpc.obj \
+    $(_OBJ_DIR)\arm\dumpsup.obj \
+    $(_OBJ_DIR)\arm\except.obj \
+    $(_OBJ_DIR)\arm\fileinfo.obj \
+    $(_OBJ_DIR)\arm\filobsup.obj \
+    $(_OBJ_DIR)\arm\fscontrl.obj \
+    $(_OBJ_DIR)\arm\msdata.obj \
+    $(_OBJ_DIR)\arm\msinit.obj \
+    $(_OBJ_DIR)\arm\prefxsup.obj \
+    $(_OBJ_DIR)\arm\read.obj \
+    $(_OBJ_DIR)\arm\readsup.obj \
+    $(_OBJ_DIR)\arm\seinfo.obj \
+    $(_OBJ_DIR)\arm\strucsup.obj \
+    $(_OBJ_DIR)\arm\verfysup.obj \
+    $(_OBJ_DIR)\arm\volinfo.obj \
+    $(_OBJ_DIR)\arm\write.obj \
+    $(_OBJ_DIR)\arm\writesup.obj
+
+PASS0_ARM_OBJECTS=
+

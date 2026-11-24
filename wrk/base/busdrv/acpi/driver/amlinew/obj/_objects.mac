@@ -1,0 +1,124 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\acpins.obj \
+    $(_OBJ_DIR)\i386\amldebug.obj \
+    $(_OBJ_DIR)\i386\amliapi.obj \
+    $(_OBJ_DIR)\i386\amlihook.obj \
+    $(_OBJ_DIR)\i386\amlitest.obj \
+    $(_OBJ_DIR)\i386\ctxt.obj \
+    $(_OBJ_DIR)\i386\cmdarg.obj \
+    $(_OBJ_DIR)\i386\data.obj \
+    $(_OBJ_DIR)\i386\debugger.obj \
+    $(_OBJ_DIR)\i386\heap.obj \
+    $(_OBJ_DIR)\i386\list.obj \
+    $(_OBJ_DIR)\i386\misc.obj \
+    $(_OBJ_DIR)\i386\namedobj.obj \
+    $(_OBJ_DIR)\i386\nsmod.obj \
+    $(_OBJ_DIR)\i386\object.obj \
+    $(_OBJ_DIR)\i386\parser.obj \
+    $(_OBJ_DIR)\i386\sched.obj \
+    $(_OBJ_DIR)\i386\sleep.obj \
+    $(_OBJ_DIR)\i386\strlib.obj \
+    $(_OBJ_DIR)\i386\sync.obj \
+    $(_OBJ_DIR)\i386\trace.obj \
+    $(_OBJ_DIR)\i386\type1op.obj \
+    $(_OBJ_DIR)\i386\type2op.obj \
+    $(_OBJ_DIR)\i386\uasmdata.obj \
+    $(_OBJ_DIR)\i386\unasm.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\acpilog.h \
+    $(MC_SOURCEDIR)\acpilog.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\acpins.obj \
+    $(_OBJ_DIR)\ia64\amldebug.obj \
+    $(_OBJ_DIR)\ia64\amliapi.obj \
+    $(_OBJ_DIR)\ia64\amlihook.obj \
+    $(_OBJ_DIR)\ia64\amlitest.obj \
+    $(_OBJ_DIR)\ia64\ctxt.obj \
+    $(_OBJ_DIR)\ia64\cmdarg.obj \
+    $(_OBJ_DIR)\ia64\data.obj \
+    $(_OBJ_DIR)\ia64\debugger.obj \
+    $(_OBJ_DIR)\ia64\heap.obj \
+    $(_OBJ_DIR)\ia64\list.obj \
+    $(_OBJ_DIR)\ia64\misc.obj \
+    $(_OBJ_DIR)\ia64\namedobj.obj \
+    $(_OBJ_DIR)\ia64\nsmod.obj \
+    $(_OBJ_DIR)\ia64\object.obj \
+    $(_OBJ_DIR)\ia64\parser.obj \
+    $(_OBJ_DIR)\ia64\sched.obj \
+    $(_OBJ_DIR)\ia64\sleep.obj \
+    $(_OBJ_DIR)\ia64\strlib.obj \
+    $(_OBJ_DIR)\ia64\sync.obj \
+    $(_OBJ_DIR)\ia64\trace.obj \
+    $(_OBJ_DIR)\ia64\type1op.obj \
+    $(_OBJ_DIR)\ia64\type2op.obj \
+    $(_OBJ_DIR)\ia64\uasmdata.obj \
+    $(_OBJ_DIR)\ia64\unasm.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\acpilog.h \
+    $(MC_SOURCEDIR)\acpilog.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\acpins.obj \
+    $(_OBJ_DIR)\amd64\amldebug.obj \
+    $(_OBJ_DIR)\amd64\amliapi.obj \
+    $(_OBJ_DIR)\amd64\amlihook.obj \
+    $(_OBJ_DIR)\amd64\amlitest.obj \
+    $(_OBJ_DIR)\amd64\ctxt.obj \
+    $(_OBJ_DIR)\amd64\cmdarg.obj \
+    $(_OBJ_DIR)\amd64\data.obj \
+    $(_OBJ_DIR)\amd64\debugger.obj \
+    $(_OBJ_DIR)\amd64\heap.obj \
+    $(_OBJ_DIR)\amd64\list.obj \
+    $(_OBJ_DIR)\amd64\misc.obj \
+    $(_OBJ_DIR)\amd64\namedobj.obj \
+    $(_OBJ_DIR)\amd64\nsmod.obj \
+    $(_OBJ_DIR)\amd64\object.obj \
+    $(_OBJ_DIR)\amd64\parser.obj \
+    $(_OBJ_DIR)\amd64\sched.obj \
+    $(_OBJ_DIR)\amd64\sleep.obj \
+    $(_OBJ_DIR)\amd64\strlib.obj \
+    $(_OBJ_DIR)\amd64\sync.obj \
+    $(_OBJ_DIR)\amd64\trace.obj \
+    $(_OBJ_DIR)\amd64\type1op.obj \
+    $(_OBJ_DIR)\amd64\type2op.obj \
+    $(_OBJ_DIR)\amd64\uasmdata.obj \
+    $(_OBJ_DIR)\amd64\unasm.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\acpilog.h \
+    $(MC_SOURCEDIR)\acpilog.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\acpins.obj \
+    $(_OBJ_DIR)\arm\amldebug.obj \
+    $(_OBJ_DIR)\arm\amliapi.obj \
+    $(_OBJ_DIR)\arm\amlihook.obj \
+    $(_OBJ_DIR)\arm\amlitest.obj \
+    $(_OBJ_DIR)\arm\ctxt.obj \
+    $(_OBJ_DIR)\arm\cmdarg.obj \
+    $(_OBJ_DIR)\arm\data.obj \
+    $(_OBJ_DIR)\arm\debugger.obj \
+    $(_OBJ_DIR)\arm\heap.obj \
+    $(_OBJ_DIR)\arm\list.obj \
+    $(_OBJ_DIR)\arm\misc.obj \
+    $(_OBJ_DIR)\arm\namedobj.obj \
+    $(_OBJ_DIR)\arm\nsmod.obj \
+    $(_OBJ_DIR)\arm\object.obj \
+    $(_OBJ_DIR)\arm\parser.obj \
+    $(_OBJ_DIR)\arm\sched.obj \
+    $(_OBJ_DIR)\arm\sleep.obj \
+    $(_OBJ_DIR)\arm\strlib.obj \
+    $(_OBJ_DIR)\arm\sync.obj \
+    $(_OBJ_DIR)\arm\trace.obj \
+    $(_OBJ_DIR)\arm\type1op.obj \
+    $(_OBJ_DIR)\arm\type2op.obj \
+    $(_OBJ_DIR)\arm\uasmdata.obj \
+    $(_OBJ_DIR)\arm\unasm.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\acpilog.h \
+    $(MC_SOURCEDIR)\acpilog.rc
+

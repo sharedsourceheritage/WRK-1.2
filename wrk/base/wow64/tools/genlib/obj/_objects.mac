@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\genmisc.obj \
+    $(_OBJ_DIR)\i386\redblack.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\genmisc.obj \
+    $(_OBJ_DIR)\ia64\redblack.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\genmisc.obj \
+    $(_OBJ_DIR)\amd64\redblack.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\genmisc.obj \
+    $(_OBJ_DIR)\arm\redblack.obj
+
+PASS0_ARM_OBJECTS=
+

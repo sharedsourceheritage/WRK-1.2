@@ -1,0 +1,80 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\init386.obj \
+    $(_OBJ_DIR)\i386\initdat.obj \
+    $(_OBJ_DIR)\i386\geninst.obj \
+    $(_OBJ_DIR)\i386\parseini.obj \
+    $(_OBJ_DIR)\i386\rules.obj \
+    $(_OBJ_DIR)\i386\cmboot.obj \
+    $(_OBJ_DIR)\i386\cmchek.obj \
+    $(_OBJ_DIR)\i386\cmdat.obj \
+    $(_OBJ_DIR)\i386\cmdat2.obj \
+    $(_OBJ_DIR)\i386\cmindex.obj \
+    $(_OBJ_DIR)\i386\cmname.obj \
+    $(_OBJ_DIR)\i386\cmvalue.obj \
+    $(_OBJ_DIR)\i386\cmtree.obj \
+    $(_OBJ_DIR)\i386\hivecell.obj \
+    $(_OBJ_DIR)\i386\hivechek.obj \
+    $(_OBJ_DIR)\i386\hiveinit.obj \
+    $(_OBJ_DIR)\i386\hivesum.obj \
+    $(_OBJ_DIR)\i386\hivemap.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\initia64.obj \
+    $(_OBJ_DIR)\ia64\initdat.obj \
+    $(_OBJ_DIR)\ia64\cmboot.obj \
+    $(_OBJ_DIR)\ia64\cmchek.obj \
+    $(_OBJ_DIR)\ia64\cmdat.obj \
+    $(_OBJ_DIR)\ia64\cmdat2.obj \
+    $(_OBJ_DIR)\ia64\cmindex.obj \
+    $(_OBJ_DIR)\ia64\cmname.obj \
+    $(_OBJ_DIR)\ia64\cmvalue.obj \
+    $(_OBJ_DIR)\ia64\cmtree.obj \
+    $(_OBJ_DIR)\ia64\hivecell.obj \
+    $(_OBJ_DIR)\ia64\hivechek.obj \
+    $(_OBJ_DIR)\ia64\hiveinit.obj \
+    $(_OBJ_DIR)\ia64\hivesum.obj \
+    $(_OBJ_DIR)\ia64\hivemap.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\initamd64.obj \
+    $(_OBJ_DIR)\amd64\initdat.obj \
+    $(_OBJ_DIR)\amd64\geninst.obj \
+    $(_OBJ_DIR)\amd64\parseini.obj \
+    $(_OBJ_DIR)\amd64\rules.obj \
+    $(_OBJ_DIR)\amd64\cmboot.obj \
+    $(_OBJ_DIR)\amd64\cmchek.obj \
+    $(_OBJ_DIR)\amd64\cmdat.obj \
+    $(_OBJ_DIR)\amd64\cmdat2.obj \
+    $(_OBJ_DIR)\amd64\cmindex.obj \
+    $(_OBJ_DIR)\amd64\cmname.obj \
+    $(_OBJ_DIR)\amd64\cmvalue.obj \
+    $(_OBJ_DIR)\amd64\cmtree.obj \
+    $(_OBJ_DIR)\amd64\hivecell.obj \
+    $(_OBJ_DIR)\amd64\hivechek.obj \
+    $(_OBJ_DIR)\amd64\hiveinit.obj \
+    $(_OBJ_DIR)\amd64\hivesum.obj \
+    $(_OBJ_DIR)\amd64\hivemap.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cmboot.obj \
+    $(_OBJ_DIR)\arm\cmchek.obj \
+    $(_OBJ_DIR)\arm\cmdat.obj \
+    $(_OBJ_DIR)\arm\cmdat2.obj \
+    $(_OBJ_DIR)\arm\cmindex.obj \
+    $(_OBJ_DIR)\arm\cmname.obj \
+    $(_OBJ_DIR)\arm\cmvalue.obj \
+    $(_OBJ_DIR)\arm\cmtree.obj \
+    $(_OBJ_DIR)\arm\hivecell.obj \
+    $(_OBJ_DIR)\arm\hivechek.obj \
+    $(_OBJ_DIR)\arm\hiveinit.obj \
+    $(_OBJ_DIR)\arm\hivesum.obj \
+    $(_OBJ_DIR)\arm\hivemap.obj
+
+PASS0_ARM_OBJECTS=
+

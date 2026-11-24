@@ -1,0 +1,64 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ielist.obj \
+    $(_OBJ_DIR)\i386\manvol.obj \
+    $(_OBJ_DIR)\i386\manvolls.obj \
+    $(_OBJ_DIR)\i386\prmrie.obj \
+    $(_OBJ_DIR)\i386\prmrlsrc.obj \
+    $(_OBJ_DIR)\i386\prmrlvl.obj \
+    $(_OBJ_DIR)\i386\prmrsts.obj \
+    $(_OBJ_DIR)\i386\prsched.obj \
+    $(_OBJ_DIR)\i386\rule.obj \
+    $(_OBJ_DIR)\i386\wzmnvlls.obj \
+    $(_OBJ_DIR)\i386\wzunmang.obj \
+    $(_OBJ_DIR)\i386\valwait.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ielist.obj \
+    $(_OBJ_DIR)\ia64\manvol.obj \
+    $(_OBJ_DIR)\ia64\manvolls.obj \
+    $(_OBJ_DIR)\ia64\prmrie.obj \
+    $(_OBJ_DIR)\ia64\prmrlsrc.obj \
+    $(_OBJ_DIR)\ia64\prmrlvl.obj \
+    $(_OBJ_DIR)\ia64\prmrsts.obj \
+    $(_OBJ_DIR)\ia64\prsched.obj \
+    $(_OBJ_DIR)\ia64\rule.obj \
+    $(_OBJ_DIR)\ia64\wzmnvlls.obj \
+    $(_OBJ_DIR)\ia64\wzunmang.obj \
+    $(_OBJ_DIR)\ia64\valwait.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ielist.obj \
+    $(_OBJ_DIR)\amd64\manvol.obj \
+    $(_OBJ_DIR)\amd64\manvolls.obj \
+    $(_OBJ_DIR)\amd64\prmrie.obj \
+    $(_OBJ_DIR)\amd64\prmrlsrc.obj \
+    $(_OBJ_DIR)\amd64\prmrlvl.obj \
+    $(_OBJ_DIR)\amd64\prmrsts.obj \
+    $(_OBJ_DIR)\amd64\prsched.obj \
+    $(_OBJ_DIR)\amd64\rule.obj \
+    $(_OBJ_DIR)\amd64\wzmnvlls.obj \
+    $(_OBJ_DIR)\amd64\wzunmang.obj \
+    $(_OBJ_DIR)\amd64\valwait.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ielist.obj \
+    $(_OBJ_DIR)\arm\manvol.obj \
+    $(_OBJ_DIR)\arm\manvolls.obj \
+    $(_OBJ_DIR)\arm\prmrie.obj \
+    $(_OBJ_DIR)\arm\prmrlsrc.obj \
+    $(_OBJ_DIR)\arm\prmrlvl.obj \
+    $(_OBJ_DIR)\arm\prmrsts.obj \
+    $(_OBJ_DIR)\arm\prsched.obj \
+    $(_OBJ_DIR)\arm\rule.obj \
+    $(_OBJ_DIR)\arm\wzmnvlls.obj \
+    $(_OBJ_DIR)\arm\wzunmang.obj \
+    $(_OBJ_DIR)\arm\valwait.obj
+
+PASS0_ARM_OBJECTS=
+

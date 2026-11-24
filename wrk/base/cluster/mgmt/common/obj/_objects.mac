@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\directoryutils.obj \
+    $(_OBJ_DIR)\i386\formaterrormessage.obj \
+    $(_OBJ_DIR)\i386\getcomputername.obj \
+    $(_OBJ_DIR)\i386\loadstring.obj \
+    $(_OBJ_DIR)\i386\registryutils.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\directoryutils.obj \
+    $(_OBJ_DIR)\ia64\formaterrormessage.obj \
+    $(_OBJ_DIR)\ia64\getcomputername.obj \
+    $(_OBJ_DIR)\ia64\loadstring.obj \
+    $(_OBJ_DIR)\ia64\registryutils.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\directoryutils.obj \
+    $(_OBJ_DIR)\amd64\formaterrormessage.obj \
+    $(_OBJ_DIR)\amd64\getcomputername.obj \
+    $(_OBJ_DIR)\amd64\loadstring.obj \
+    $(_OBJ_DIR)\amd64\registryutils.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\directoryutils.obj \
+    $(_OBJ_DIR)\arm\formaterrormessage.obj \
+    $(_OBJ_DIR)\arm\getcomputername.obj \
+    $(_OBJ_DIR)\arm\loadstring.obj \
+    $(_OBJ_DIR)\arm\registryutils.obj
+
+PASS0_ARM_OBJECTS=
+

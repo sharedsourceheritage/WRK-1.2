@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\createservices.obj \
+    $(_OBJ_DIR)\i386\postcfgmgr.obj \
+    $(_OBJ_DIR)\i386\postcreateservices.obj \
+    $(_OBJ_DIR)\i386\precreateservices.obj \
+    $(_OBJ_DIR)\i386\resourceentry.obj \
+    $(_OBJ_DIR)\i386\grouphandle.obj \
+    $(_OBJ_DIR)\i386\resourcetype.obj \
+    $(_OBJ_DIR)\i386\restypeservices.obj \
+    $(_OBJ_DIR)\i386\restypegenscript.obj \
+    $(_OBJ_DIR)\i386\restypemajoritynodeset.obj \
+    $(_OBJ_DIR)\i386\proplist.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\createservices.obj \
+    $(_OBJ_DIR)\ia64\postcfgmgr.obj \
+    $(_OBJ_DIR)\ia64\postcreateservices.obj \
+    $(_OBJ_DIR)\ia64\precreateservices.obj \
+    $(_OBJ_DIR)\ia64\resourceentry.obj \
+    $(_OBJ_DIR)\ia64\grouphandle.obj \
+    $(_OBJ_DIR)\ia64\resourcetype.obj \
+    $(_OBJ_DIR)\ia64\restypeservices.obj \
+    $(_OBJ_DIR)\ia64\restypegenscript.obj \
+    $(_OBJ_DIR)\ia64\restypemajoritynodeset.obj \
+    $(_OBJ_DIR)\ia64\proplist.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\createservices.obj \
+    $(_OBJ_DIR)\amd64\postcfgmgr.obj \
+    $(_OBJ_DIR)\amd64\postcreateservices.obj \
+    $(_OBJ_DIR)\amd64\precreateservices.obj \
+    $(_OBJ_DIR)\amd64\resourceentry.obj \
+    $(_OBJ_DIR)\amd64\grouphandle.obj \
+    $(_OBJ_DIR)\amd64\resourcetype.obj \
+    $(_OBJ_DIR)\amd64\restypeservices.obj \
+    $(_OBJ_DIR)\amd64\restypegenscript.obj \
+    $(_OBJ_DIR)\amd64\restypemajoritynodeset.obj \
+    $(_OBJ_DIR)\amd64\proplist.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\createservices.obj \
+    $(_OBJ_DIR)\arm\postcfgmgr.obj \
+    $(_OBJ_DIR)\arm\postcreateservices.obj \
+    $(_OBJ_DIR)\arm\precreateservices.obj \
+    $(_OBJ_DIR)\arm\resourceentry.obj \
+    $(_OBJ_DIR)\arm\grouphandle.obj \
+    $(_OBJ_DIR)\arm\resourcetype.obj \
+    $(_OBJ_DIR)\arm\restypeservices.obj \
+    $(_OBJ_DIR)\arm\restypegenscript.obj \
+    $(_OBJ_DIR)\arm\restypemajoritynodeset.obj \
+    $(_OBJ_DIR)\arm\proplist.obj
+
+PASS0_ARM_OBJECTS=
+

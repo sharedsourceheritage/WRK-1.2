@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cluscfgserver_i.obj \
+    $(_OBJ_DIR)\i386\cluscfgwizard_i.obj \
+    $(_OBJ_DIR)\i386\cluscfgguids.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cluscfgserver_i.obj \
+    $(_OBJ_DIR)\ia64\cluscfgwizard_i.obj \
+    $(_OBJ_DIR)\ia64\cluscfgguids.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cluscfgserver_i.obj \
+    $(_OBJ_DIR)\amd64\cluscfgwizard_i.obj \
+    $(_OBJ_DIR)\amd64\cluscfgguids.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cluscfgserver_i.obj \
+    $(_OBJ_DIR)\arm\cluscfgwizard_i.obj \
+    $(_OBJ_DIR)\arm\cluscfgguids.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\reg.res \
+    $(_OBJ_DIR)\i386\reg.obj \
+    $(_OBJ_DIR)\i386\copy.obj \
+    $(_OBJ_DIR)\i386\save.obj \
+    $(_OBJ_DIR)\i386\query.obj \
+    $(_OBJ_DIR)\i386\add.obj \
+    $(_OBJ_DIR)\i386\delete.obj \
+    $(_OBJ_DIR)\i386\compare.obj \
+    $(_OBJ_DIR)\i386\export.obj \
+    $(_OBJ_DIR)\i386\regporte.obj \
+    $(_OBJ_DIR)\i386\regdebug.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\reg.res \
+    $(_OBJ_DIR)\ia64\reg.obj \
+    $(_OBJ_DIR)\ia64\copy.obj \
+    $(_OBJ_DIR)\ia64\save.obj \
+    $(_OBJ_DIR)\ia64\query.obj \
+    $(_OBJ_DIR)\ia64\add.obj \
+    $(_OBJ_DIR)\ia64\delete.obj \
+    $(_OBJ_DIR)\ia64\compare.obj \
+    $(_OBJ_DIR)\ia64\export.obj \
+    $(_OBJ_DIR)\ia64\regporte.obj \
+    $(_OBJ_DIR)\ia64\regdebug.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\reg.res \
+    $(_OBJ_DIR)\amd64\reg.obj \
+    $(_OBJ_DIR)\amd64\copy.obj \
+    $(_OBJ_DIR)\amd64\save.obj \
+    $(_OBJ_DIR)\amd64\query.obj \
+    $(_OBJ_DIR)\amd64\add.obj \
+    $(_OBJ_DIR)\amd64\delete.obj \
+    $(_OBJ_DIR)\amd64\compare.obj \
+    $(_OBJ_DIR)\amd64\export.obj \
+    $(_OBJ_DIR)\amd64\regporte.obj \
+    $(_OBJ_DIR)\amd64\regdebug.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\reg.res \
+    $(_OBJ_DIR)\arm\reg.obj \
+    $(_OBJ_DIR)\arm\copy.obj \
+    $(_OBJ_DIR)\arm\save.obj \
+    $(_OBJ_DIR)\arm\query.obj \
+    $(_OBJ_DIR)\arm\add.obj \
+    $(_OBJ_DIR)\arm\delete.obj \
+    $(_OBJ_DIR)\arm\compare.obj \
+    $(_OBJ_DIR)\arm\export.obj \
+    $(_OBJ_DIR)\arm\regporte.obj \
+    $(_OBJ_DIR)\arm\regdebug.obj
+
+PASS0_ARM_OBJECTS=
+

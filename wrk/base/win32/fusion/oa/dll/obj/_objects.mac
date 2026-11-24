@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sxsoa.res \
+    $(_OBJ_DIR)\i386\sxsoapsi.obj \
+    $(_OBJ_DIR)\i386\sxsoai.obj \
+    $(_OBJ_DIR)\i386\dllmain.obj \
+    $(_OBJ_DIR)\i386\actctx.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sxsoa.res \
+    $(_OBJ_DIR)\ia64\sxsoapsi.obj \
+    $(_OBJ_DIR)\ia64\sxsoai.obj \
+    $(_OBJ_DIR)\ia64\dllmain.obj \
+    $(_OBJ_DIR)\ia64\actctx.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sxsoa.res \
+    $(_OBJ_DIR)\amd64\sxsoapsi.obj \
+    $(_OBJ_DIR)\amd64\sxsoai.obj \
+    $(_OBJ_DIR)\amd64\dllmain.obj \
+    $(_OBJ_DIR)\amd64\actctx.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sxsoa.res \
+    $(_OBJ_DIR)\arm\sxsoapsi.obj \
+    $(_OBJ_DIR)\arm\sxsoai.obj \
+    $(_OBJ_DIR)\arm\dllmain.obj \
+    $(_OBJ_DIR)\arm\actctx.obj
+
+PASS0_ARM_OBJECTS=
+

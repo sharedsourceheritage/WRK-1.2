@@ -1,0 +1,36 @@
+386_OBJECTS=
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\wsbdef.h \
+    $(PASS0_HEADERDIR)\wsbint.h \
+    $(PASS0_HEADERDIR)\wsblib.h \
+    $(PASS0_HEADERDIR)\wsberror.h \
+    $(MC_SOURCEDIR)\wsberror.rc
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\wsbdef.h \
+    $(PASS0_HEADERDIR)\wsbint.h \
+    $(PASS0_HEADERDIR)\wsblib.h \
+    $(PASS0_HEADERDIR)\wsberror.h \
+    $(MC_SOURCEDIR)\wsberror.rc
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\wsbdef.h \
+    $(PASS0_HEADERDIR)\wsbint.h \
+    $(PASS0_HEADERDIR)\wsblib.h \
+    $(PASS0_HEADERDIR)\wsberror.h \
+    $(MC_SOURCEDIR)\wsberror.rc
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\wsbdef.h \
+    $(PASS0_HEADERDIR)\wsbint.h \
+    $(PASS0_HEADERDIR)\wsblib.h \
+    $(PASS0_HEADERDIR)\wsberror.h \
+    $(MC_SOURCEDIR)\wsberror.rc
+

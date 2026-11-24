@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\perfctrs.res \
+    $(_OBJ_DIR)\i386\perfnbf.obj \
+    $(_OBJ_DIR)\i386\perfnbt.obj \
+    $(_OBJ_DIR)\i386\perftcp.obj \
+    $(_OBJ_DIR)\i386\perfdhcp.obj \
+    $(_OBJ_DIR)\i386\datanbf.obj \
+    $(_OBJ_DIR)\i386\datanbt.obj \
+    $(_OBJ_DIR)\i386\datatcp.obj \
+    $(_OBJ_DIR)\i386\datadhcp.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\perfctr.h \
+    $(MC_SOURCEDIR)\perfctr.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\perfctrs.res \
+    $(_OBJ_DIR)\ia64\perfnbf.obj \
+    $(_OBJ_DIR)\ia64\perfnbt.obj \
+    $(_OBJ_DIR)\ia64\perftcp.obj \
+    $(_OBJ_DIR)\ia64\perfdhcp.obj \
+    $(_OBJ_DIR)\ia64\datanbf.obj \
+    $(_OBJ_DIR)\ia64\datanbt.obj \
+    $(_OBJ_DIR)\ia64\datatcp.obj \
+    $(_OBJ_DIR)\ia64\datadhcp.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\perfctr.h \
+    $(MC_SOURCEDIR)\perfctr.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\perfctrs.res \
+    $(_OBJ_DIR)\amd64\perfnbf.obj \
+    $(_OBJ_DIR)\amd64\perfnbt.obj \
+    $(_OBJ_DIR)\amd64\perftcp.obj \
+    $(_OBJ_DIR)\amd64\perfdhcp.obj \
+    $(_OBJ_DIR)\amd64\datanbf.obj \
+    $(_OBJ_DIR)\amd64\datanbt.obj \
+    $(_OBJ_DIR)\amd64\datatcp.obj \
+    $(_OBJ_DIR)\amd64\datadhcp.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\perfctr.h \
+    $(MC_SOURCEDIR)\perfctr.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\perfctrs.res \
+    $(_OBJ_DIR)\arm\perfnbf.obj \
+    $(_OBJ_DIR)\arm\perfnbt.obj \
+    $(_OBJ_DIR)\arm\perftcp.obj \
+    $(_OBJ_DIR)\arm\perfdhcp.obj \
+    $(_OBJ_DIR)\arm\datanbf.obj \
+    $(_OBJ_DIR)\arm\datanbt.obj \
+    $(_OBJ_DIR)\arm\datatcp.obj \
+    $(_OBJ_DIR)\arm\datadhcp.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\perfctr.h \
+    $(MC_SOURCEDIR)\perfctr.rc
+

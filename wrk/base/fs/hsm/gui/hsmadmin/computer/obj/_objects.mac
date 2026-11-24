@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\hsmcom.obj \
+    $(_OBJ_DIR)\i386\prhsmcom.obj \
+    $(_OBJ_DIR)\i386\wzqstart.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\hsmcom.obj \
+    $(_OBJ_DIR)\ia64\prhsmcom.obj \
+    $(_OBJ_DIR)\ia64\wzqstart.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\hsmcom.obj \
+    $(_OBJ_DIR)\amd64\prhsmcom.obj \
+    $(_OBJ_DIR)\amd64\wzqstart.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\hsmcom.obj \
+    $(_OBJ_DIR)\arm\prhsmcom.obj \
+    $(_OBJ_DIR)\arm\wzqstart.obj
+
+PASS0_ARM_OBJECTS=
+

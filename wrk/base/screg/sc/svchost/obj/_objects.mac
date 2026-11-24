@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\svchost.res \
+    $(_OBJ_DIR)\i386\globals.obj \
+    $(_OBJ_DIR)\i386\memory.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\svchost.obj \
+    $(_OBJ_DIR)\i386\svcsnb.obj \
+    $(_OBJ_DIR)\i386\security.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\svchost.res \
+    $(_OBJ_DIR)\ia64\globals.obj \
+    $(_OBJ_DIR)\ia64\memory.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\svchost.obj \
+    $(_OBJ_DIR)\ia64\svcsnb.obj \
+    $(_OBJ_DIR)\ia64\security.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\svchost.res \
+    $(_OBJ_DIR)\amd64\globals.obj \
+    $(_OBJ_DIR)\amd64\memory.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\svchost.obj \
+    $(_OBJ_DIR)\amd64\svcsnb.obj \
+    $(_OBJ_DIR)\amd64\security.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\svchost.res \
+    $(_OBJ_DIR)\arm\globals.obj \
+    $(_OBJ_DIR)\arm\memory.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\svchost.obj \
+    $(_OBJ_DIR)\arm\svcsnb.obj \
+    $(_OBJ_DIR)\arm\security.obj
+
+PASS0_ARM_OBJECTS=
+

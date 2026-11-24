@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\unitext.res \
+    $(_OBJ_DIR)\i386\unitext.obj \
+    $(_OBJ_DIR)\i386\ututil.obj \
+    $(_OBJ_DIR)\i386\utmb2u.obj \
+    $(_OBJ_DIR)\i386\utu2mb.obj \
+    $(_OBJ_DIR)\i386\wargs.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\utmsgs.h \
+    $(MC_SOURCEDIR)\utmsgs.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\unitext.res \
+    $(_OBJ_DIR)\ia64\unitext.obj \
+    $(_OBJ_DIR)\ia64\ututil.obj \
+    $(_OBJ_DIR)\ia64\utmb2u.obj \
+    $(_OBJ_DIR)\ia64\utu2mb.obj \
+    $(_OBJ_DIR)\ia64\wargs.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\utmsgs.h \
+    $(MC_SOURCEDIR)\utmsgs.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\unitext.res \
+    $(_OBJ_DIR)\amd64\unitext.obj \
+    $(_OBJ_DIR)\amd64\ututil.obj \
+    $(_OBJ_DIR)\amd64\utmb2u.obj \
+    $(_OBJ_DIR)\amd64\utu2mb.obj \
+    $(_OBJ_DIR)\amd64\wargs.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\utmsgs.h \
+    $(MC_SOURCEDIR)\utmsgs.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\unitext.res \
+    $(_OBJ_DIR)\arm\unitext.obj \
+    $(_OBJ_DIR)\arm\ututil.obj \
+    $(_OBJ_DIR)\arm\utmb2u.obj \
+    $(_OBJ_DIR)\arm\utu2mb.obj \
+    $(_OBJ_DIR)\arm\wargs.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\utmsgs.h \
+    $(MC_SOURCEDIR)\utmsgs.rc
+

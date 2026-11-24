@@ -1,0 +1,68 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cachedat.obj \
+    $(_OBJ_DIR)\i386\cachesub.obj \
+    $(_OBJ_DIR)\i386\copysup.obj \
+    $(_OBJ_DIR)\i386\fssup.obj \
+    $(_OBJ_DIR)\i386\lazyrite.obj \
+    $(_OBJ_DIR)\i386\logsup.obj \
+    $(_OBJ_DIR)\i386\mdlsup.obj \
+    $(_OBJ_DIR)\i386\pinsup.obj \
+    $(_OBJ_DIR)\i386\prefboot.obj \
+    $(_OBJ_DIR)\i386\prefetch.obj \
+    $(_OBJ_DIR)\i386\prefparm.obj \
+    $(_OBJ_DIR)\i386\ccperf.obj \
+    $(_OBJ_DIR)\i386\vacbsup.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cachedat.obj \
+    $(_OBJ_DIR)\ia64\cachesub.obj \
+    $(_OBJ_DIR)\ia64\copysup.obj \
+    $(_OBJ_DIR)\ia64\fssup.obj \
+    $(_OBJ_DIR)\ia64\lazyrite.obj \
+    $(_OBJ_DIR)\ia64\logsup.obj \
+    $(_OBJ_DIR)\ia64\mdlsup.obj \
+    $(_OBJ_DIR)\ia64\pinsup.obj \
+    $(_OBJ_DIR)\ia64\prefboot.obj \
+    $(_OBJ_DIR)\ia64\prefetch.obj \
+    $(_OBJ_DIR)\ia64\prefparm.obj \
+    $(_OBJ_DIR)\ia64\ccperf.obj \
+    $(_OBJ_DIR)\ia64\vacbsup.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cachedat.obj \
+    $(_OBJ_DIR)\amd64\cachesub.obj \
+    $(_OBJ_DIR)\amd64\copysup.obj \
+    $(_OBJ_DIR)\amd64\fssup.obj \
+    $(_OBJ_DIR)\amd64\lazyrite.obj \
+    $(_OBJ_DIR)\amd64\logsup.obj \
+    $(_OBJ_DIR)\amd64\mdlsup.obj \
+    $(_OBJ_DIR)\amd64\pinsup.obj \
+    $(_OBJ_DIR)\amd64\prefboot.obj \
+    $(_OBJ_DIR)\amd64\prefetch.obj \
+    $(_OBJ_DIR)\amd64\prefparm.obj \
+    $(_OBJ_DIR)\amd64\ccperf.obj \
+    $(_OBJ_DIR)\amd64\vacbsup.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cachedat.obj \
+    $(_OBJ_DIR)\arm\cachesub.obj \
+    $(_OBJ_DIR)\arm\copysup.obj \
+    $(_OBJ_DIR)\arm\fssup.obj \
+    $(_OBJ_DIR)\arm\lazyrite.obj \
+    $(_OBJ_DIR)\arm\logsup.obj \
+    $(_OBJ_DIR)\arm\mdlsup.obj \
+    $(_OBJ_DIR)\arm\pinsup.obj \
+    $(_OBJ_DIR)\arm\prefboot.obj \
+    $(_OBJ_DIR)\arm\prefetch.obj \
+    $(_OBJ_DIR)\arm\prefparm.obj \
+    $(_OBJ_DIR)\arm\ccperf.obj \
+    $(_OBJ_DIR)\arm\vacbsup.obj
+
+PASS0_ARM_OBJECTS=
+

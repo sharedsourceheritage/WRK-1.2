@@ -1,0 +1,35 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\setlog.obj \
+    $(_OBJ_DIR)\i386\hooks.obj \
+    $(_OBJ_DIR)\i386\logging.obj \
+    $(_OBJ_DIR)\i386\perfdata.obj \
+    $(_OBJ_DIR)\i386\perfsup.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\setlog.obj \
+    $(_OBJ_DIR)\ia64\hooks.obj \
+    $(_OBJ_DIR)\ia64\logging.obj \
+    $(_OBJ_DIR)\ia64\perfdata.obj \
+    $(_OBJ_DIR)\ia64\perfsup.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\setlog.obj \
+    $(_OBJ_DIR)\amd64\hooks.obj \
+    $(_OBJ_DIR)\amd64\logging.obj \
+    $(_OBJ_DIR)\amd64\perfdata.obj \
+    $(_OBJ_DIR)\amd64\perfsup.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\hooks.obj \
+    $(_OBJ_DIR)\arm\logging.obj \
+    $(_OBJ_DIR)\arm\perfdata.obj \
+    $(_OBJ_DIR)\arm\perfsup.obj
+
+PASS0_ARM_OBJECTS=
+

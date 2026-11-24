@@ -1,0 +1,546 @@
+//dcf90d496f9efe8d40214f535c4905e3 Generated File. Do not edit.
+// File created by WPP compiler version 0.01-Wed May 15 12:38:55 2002
+// on 11/24/2026 at 02:11:12 UTC from a template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\simple.tpl
+
+// PLEASE NOTE:
+//    Using simple.tpl for production environment without overriding
+//    WPP_ENABLED and WPP_LOGGER macro is NOT RECOMMENDED.
+//
+//    If WPP_ENABLED is not provided, the logging is always on
+//    If WPP_LOGGER is not provided, traces always go to the logger named stdout (if it is running)
+//
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\header.tpl
+
+#define WPP_KERNEL_MODE 
+#define WPP_THIS_FILE ipx_c
+
+#if !defined(WPP_KERNEL_MODE)
+#  include <windows.h>
+#  pragma warning(disable: 4201)
+#  include <wmistr.h>
+#  include <evntrace.h>
+#  define WPP_TRACE TraceMessage
+#else
+#define WPP_TRACE WmiTraceMessage
+#endif
+
+#if !defined(WPP_PRIVATE)
+#  define WPP_INLINE __inline
+#  define WPP_SELECT_ANY extern "C" __declspec(selectany)
+#else
+#  define WPP_INLINE static
+#  define WPP_SELECT_ANY static
+#endif
+
+__inline TRACEHANDLE WppQueryLogger(PCWSTR LoggerName)
+{
+    if (!LoggerName) {LoggerName = L"stdout";}
+    {
+#if defined(WPP_KERNEL_MODE)
+        ULONG ReturnLength ;
+        NTSTATUS Status ;
+        TRACEHANDLE TraceHandle ;
+        UNICODE_STRING  Buffer  ;
+
+        RtlInitUnicodeString(&Buffer, LoggerName);
+    
+        if ((Status = WmiQueryTraceInformation(TraceHandleByNameClass,
+                                                 (PVOID)&TraceHandle,
+                                                  sizeof(TraceHandle),
+                                                  &ReturnLength,
+                                                  (PVOID)&Buffer)) == STATUS_SUCCESS) {
+        return TraceHandle ;
+        }
+#else
+        ULONG status;
+        EVENT_TRACE_PROPERTIES LoggerInfo; 
+
+        ZeroMemory(&LoggerInfo, sizeof(LoggerInfo));
+        LoggerInfo.Wnode.BufferSize = sizeof(LoggerInfo);
+        LoggerInfo.Wnode.Flags = WNODE_FLAG_TRACED_GUID;
+        
+        status = QueryTraceW(0, LoggerName, &LoggerInfo);    
+        if (status == ERROR_SUCCESS || status == ERROR_MORE_DATA) {
+            return (TRACEHANDLE) LoggerInfo.Wnode.HistoricalContext;
+        }
+#endif
+    }
+    return 0;
+}
+
+
+ 
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\stdout.tpl
+
+#define WPP_LEVEL_LOGGER(LEVEL) // DoTraceMessage
+#define WPP_LOGGER() // KdPrint
+#define WPP_LOGGER() // SrvPrint0
+#define WPP_LOGGER() // SrvPrint1
+#define WPP_LOGGER() // SrvPrint2
+#define WPP_LOGGER() // SrvPrint3
+#define WPP_LOGGER() // SrvPrint4
+#ifndef WPP_LOGGER_ARG
+#  define WPP_LOGGER_ARG
+#endif
+
+#ifndef WPP_GET_LOGGER
+  #define WPP_GET_LOGGER WppGetLogger()
+  __inline TRACEHANDLE WppGetLogger() 
+  {
+      static TRACEHANDLE Logger;
+      if (Logger) {return Logger;}
+      return Logger = WppQueryLogger(0);
+  }
+#endif
+
+#ifndef WPP_ENABLED
+#  define WPP_ENABLED() 1
+#endif
+
+// template J:\SphinxLogic\_git\OS\WRK-V1.2\tools\WppConfig\rev1\trmacro.tpl
+//   expects:
+//      WPP_THIS_FILE defined (see header.tpl)
+//      WPP_LOGGER_ARG  defined
+//      WPP_GET_LOGGER  defined
+//      WPP_ENABLED() defined
+
+#ifndef NO_CHECK_FOR_NULL_STRING
+#ifndef WPP_CHECK_FOR_NULL_STRING
+#define WPP_CHECK_FOR_NULL_STRING 1
+#endif
+#endif
+
+#define WPP_EVAL(_value_) _value_
+#define WPP_(Id) WPP_EVAL(WPP_) ## WPP_EVAL(Id) ## WPP_EVAL(_) ## WPP_EVAL(WPP_THIS_FILE) ## WPP_EVAL(__LINE__)
+
+#if !defined(WPP_INLINE)
+#  define WPP_INLINE __inline
+#endif
+
+#if !defined(WPP_NO_ANNOTATIONS) 
+#if !defined(WPP_ANSI_ANNOTATION) 
+# define WPP_ANNOTATE_ipx_c1569	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c1569 27 \"%0SRVIPX: request in progress\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c1591	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c1591 28 \"%0SRVIPX: resending response\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c2010	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2010 29 \"%0SRVIPX: Responding to sequenced request %10!x! mid=%11!x!, connection %12!p!\" //  ", L"{", L"SmbGetAlignedUshort(&header->SequenceNumber), ItemLong -- 10" , L"SmbGetAlignedUshort(&header->Mid), ItemLong -- 11" , L"connection, ItemPtr -- 12" , L"}")
+# define WPP_ANNOTATE_ipx_c2016	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2016 30 \"%0SRVIPX: parameters length %10!x!, max=%11!x!\" //  ", L"{", L"responseLength, ItemLong -- 10" , L"MAX_SAVED_RESPONSE_LENGTH, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_ipx_c2039	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2039 31 \"%0SRVIPX: transaction; saving long response\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c2050	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2050 32 \"%0SRVIPX: deallocating old response buffer %10!p!\" //  ", L"{", L"connection->LastResponse, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c2059	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2059 33 \"%0SRVIPX: new response buffer %10!p!\" //  ", L"{", L"connection->LastResponse, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c2068	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2068 34 \"%0SRVIPX: not a transaction; illegal long response\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c2092	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2092 35 \"%0SRVIPX: response fits in builtin response buffer\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c2097	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2097 36 \"%0SRVIPX: deallocating old response buffer %10!p!\" //  ", L"{", L"connection->LastResponse, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c2122	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2122 37 \"%0SRVIPX: Responding to unsequenced request mid=%10!x!\" //  ", L"{", L"SmbGetAlignedUshort(&header->Mid), ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c2372	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2372 38 \"%0SRVIPX: processing Negotiate\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c2505	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2505 39 \"%0SRVIPX: no free connections\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c2640	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2640 40 \"%0IpxRestartReceive accepting connection from %10!s! on connection %11!p!\" //  ", L"{", L"(PCSTRING)&connection->OemClientMachineNameString, ItemPString -- 10" , L"connection, ItemPtr -- 11" , L"}")
+# define WPP_ANNOTATE_ipx_c2659	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2659 41 \"%0SRVIPX: PurgeIpxConnections entered\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c2675	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2675 42 \"%0        no connection at table index %10!x!\" //  ", L"{", L"i, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c2677	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2677 43 \"%0        connection %10!p! has socket %11!x!\" //  ", L"{", L"connection, ItemPtr -- 10" , L"connection->IpxAddress.Socket, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_ipx_c2679	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2679 44 \"%0        connection %10!p! has state %11!x!\" //  ", L"{", L"connection, ItemPtr -- 10" , L"GET_BLOCK_STATE(connection), ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_ipx_c2692	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2692 45 \"%0SRVIPX: purging connection %10!p!\" //  ", L"{", L"connection, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c2709	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2709 46 \"%0SRVIPX: PurgeIpxConnections done\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c2762	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2762 47 \"%0SRVIPX: Negotiate received\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c2804	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2804 48 \"%0SRVIPX: Endpoint gone.  ignoring\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c2835	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2835 49 \"%0SRVIPX: Negotiate sent to wrong name!\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c2903	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2903 50 \"%0SRVIPX: Found stale connection %10!p!\" //  ", L"{", L"connection, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c2928	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2928 51 \"%0SRVIPX: found stale connection %10!p!\" //  ", L"{", L"connection, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c2952	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2952 52 \"%0SRVIPX: Found initializing connection %10!p!\" //  ", L"{", L"connection, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c2958	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c2958 53 \"%0        skipping index %10!x!: different address\" //  ", L"{", L"i, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c3015	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3015 54 \"%0SRVIPX: request in progress\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c3029	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3029 55 \"%0SRVIPX: resending response\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c3188	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3188 56 \"%0SrvIpxFastRestartRead: calling SmartCard Read for context %10!p!\" //  ", L"{", L"WorkContext, ItemPtr -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c3200	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3200 57 \"%0  SrvIpxFastRestartRead:  SmartCard Read returns TRUE\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c3207	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3207 58 \"%0  SrvIpxFastRestartRead:  SmartCard Read returns FALSE\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c3214	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3214 59 \"%0Read request; FID 0x%10!x!, count %11!ld!, offset %12!ld!\" //  ", L"{", L"rfcb->Fid, ItemLong -- 10" , L"SmbGetUshort( &request->Count ), ItemLong -- 11" , L"SmbGetUlong( &request->Offset ), ItemLong -- 12" , L"}")
+# define WPP_ANNOTATE_ipx_c3276	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3276 60 \"%0SrvIpxFastRestartRead complete.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c3284	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3284 61 \"%0FastIoRead threw exception %10!x!\" //  ", L"{", L"status, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c3341	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3341 62 \"%0SrvIpxFastRestartRead: copy read from file 0x%10!p!, offset %11!ld!, length %12!ld!, destination 0x%13!p!\" //  ", L"{", L"lfcb->FileObject, ItemPtr -- 10" , L"offset.LowPart, ItemLong -- 11" , L"readLength, ItemLong -- 12" , L"readAddress, ItemPtr -- 13" , L"}")
+# define WPP_ANNOTATE_ipx_c3360	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3360 63 \"%0SrvIpxFastRestartRead complete.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c341	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c341 10 \"%0NameDatagramHandler: Short packet %10!u! bytes\" //  ", L"{", L"BytesIndicated, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c3414	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3414 64 \"%0Read request; FID 0x%10!x!, count %11!ld!, offset %12!ld!\" //  ", L"{", L"SmbGetUshort( &request->Fid ), ItemLong -- 10" , L"SmbGetUshort( &request->Count ), ItemLong -- 11" , L"SmbGetUlong( &request->Offset ), ItemLong -- 12" , L"}")
+# define WPP_ANNOTATE_ipx_c355	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c355 11 \"%0NameDatagramHandler: type: %10!x!, name %11!s!, from %12!s!\" //  ", L"{", L"packet->Operation, ItemLong -- 10" , L"(PCSTRING)&string, ItemPString -- 11" , L"(PCSTRING)&srcString, ItemPString -- 12" , L"}")
+# define WPP_ANNOTATE_ipx_c362	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c362 12 \"%0SourceAddress too short.  Expecting %10!d! got %11!d!\" //  ", L"{", L"sizeof(IPX_ADDRESS_EXTENDED_FLAGS), ItemLong -- 10" , L"SourceAddressLength, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_ipx_c3688	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c3688 65 \"%0SrvIpxSmartCardReadComplete: %10!s! %11!p! Length %12!u!, New Position %13!u!\" //  ", L"{", L"command==SMB_COM_READ ? 'SMB_COM_READ' : 'SMB_COM_READ_MPX', ItemString -- 10" , L"Context, ItemPtr -- 11" , L"Length, ItemLong -- 12" , L"position.LowPart, ItemLong -- 13" , L"}")
+# define WPP_ANNOTATE_ipx_c371	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c371 13 \"%0  not for us\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c383	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c383 14 \"%0  we sent it!\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c405	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c405 15 \"%0  name in conflict!\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c419	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c419 16 \"%0  msg ID high bit not set.\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c423	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c423 17 \"%0  sending name recognized response!\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c666	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c666 18 \"%0Bad Sid:\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c669	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c669 19 \"%0Index >= tableSize (index %10!d!, size %11!d!)\" //  ", L"{", L"idIndex, ItemLong -- 10" , L"(USHORT)tableHeader->TableSize, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_ipx_c671	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c671 20 \"%0Owner == NULL\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c673	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c673 21 \"%0connection->Sid = %10!X!, sid = %11!X!\" //  ", L"{", L"connection->Sid, ItemLong -- 10" , L"sid, ItemLong -- 11" , L"}")
+# define WPP_ANNOTATE_ipx_c675	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c675 22 \"%0Connection blk state %10!X!\" //  ", L"{", L"GET_BLOCK_STATE( connection ), ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c756	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c756 23 \"%0SRVIPX: Bad sequence number; ignoring\" //  ", L"{", L"}")
+# define WPP_ANNOTATE_ipx_c775	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c775 24 \"%0SRVIPX: Receiving sequenced request %10!x!\" //  ", L"{", L"sequenceNumber, ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c817	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c817 25 \"%0SRVIPX: Receiving unsequenced request mid=%10!x!\" //  ", L"{", L"SmbGetUshort(&header->Mid), ItemLong -- 10" , L"}")
+# define WPP_ANNOTATE_ipx_c833	__annotation(L"TMF:", L"490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", L"#typev  ipx_c833 26 \"%0SRVIPX: Duplicate (queued) unsequenced request mid=%10!x!\" //  ", L"{", L"mid, ItemLong -- 10" , L"}")
+#else
+# define WPP_ANNOTATE_ipx_c1569	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c1569 27 \"%0SRVIPX: request in progress\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c1591	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c1591 28 \"%0SRVIPX: resending response\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c2010	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2010 29 \"%0SRVIPX: Responding to sequenced request %10!x! mid=%11!x!, connection %12!p!\" //  ", "{", "SmbGetAlignedUshort(&header->SequenceNumber), ItemLong -- 10" , "SmbGetAlignedUshort(&header->Mid), ItemLong -- 11" , "connection, ItemPtr -- 12" , "}")
+# define WPP_ANNOTATE_ipx_c2016	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2016 30 \"%0SRVIPX: parameters length %10!x!, max=%11!x!\" //  ", "{", "responseLength, ItemLong -- 10" , "MAX_SAVED_RESPONSE_LENGTH, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_ipx_c2039	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2039 31 \"%0SRVIPX: transaction; saving long response\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c2050	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2050 32 \"%0SRVIPX: deallocating old response buffer %10!p!\" //  ", "{", "connection->LastResponse, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c2059	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2059 33 \"%0SRVIPX: new response buffer %10!p!\" //  ", "{", "connection->LastResponse, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c2068	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2068 34 \"%0SRVIPX: not a transaction; illegal long response\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c2092	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2092 35 \"%0SRVIPX: response fits in builtin response buffer\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c2097	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2097 36 \"%0SRVIPX: deallocating old response buffer %10!p!\" //  ", "{", "connection->LastResponse, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c2122	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2122 37 \"%0SRVIPX: Responding to unsequenced request mid=%10!x!\" //  ", "{", "SmbGetAlignedUshort(&header->Mid), ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c2372	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2372 38 \"%0SRVIPX: processing Negotiate\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c2505	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2505 39 \"%0SRVIPX: no free connections\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c2640	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2640 40 \"%0IpxRestartReceive accepting connection from %10!s! on connection %11!p!\" //  ", "{", "(PCSTRING)&connection->OemClientMachineNameString, ItemPString -- 10" , "connection, ItemPtr -- 11" , "}")
+# define WPP_ANNOTATE_ipx_c2659	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2659 41 \"%0SRVIPX: PurgeIpxConnections entered\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c2675	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2675 42 \"%0        no connection at table index %10!x!\" //  ", "{", "i, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c2677	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2677 43 \"%0        connection %10!p! has socket %11!x!\" //  ", "{", "connection, ItemPtr -- 10" , "connection->IpxAddress.Socket, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_ipx_c2679	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2679 44 \"%0        connection %10!p! has state %11!x!\" //  ", "{", "connection, ItemPtr -- 10" , "GET_BLOCK_STATE(connection), ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_ipx_c2692	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2692 45 \"%0SRVIPX: purging connection %10!p!\" //  ", "{", "connection, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c2709	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2709 46 \"%0SRVIPX: PurgeIpxConnections done\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c2762	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2762 47 \"%0SRVIPX: Negotiate received\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c2804	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2804 48 \"%0SRVIPX: Endpoint gone.  ignoring\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c2835	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2835 49 \"%0SRVIPX: Negotiate sent to wrong name!\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c2903	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2903 50 \"%0SRVIPX: Found stale connection %10!p!\" //  ", "{", "connection, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c2928	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2928 51 \"%0SRVIPX: found stale connection %10!p!\" //  ", "{", "connection, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c2952	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2952 52 \"%0SRVIPX: Found initializing connection %10!p!\" //  ", "{", "connection, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c2958	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c2958 53 \"%0        skipping index %10!x!: different address\" //  ", "{", "i, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c3015	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3015 54 \"%0SRVIPX: request in progress\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c3029	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3029 55 \"%0SRVIPX: resending response\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c3188	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3188 56 \"%0SrvIpxFastRestartRead: calling SmartCard Read for context %10!p!\" //  ", "{", "WorkContext, ItemPtr -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c3200	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3200 57 \"%0  SrvIpxFastRestartRead:  SmartCard Read returns TRUE\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c3207	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3207 58 \"%0  SrvIpxFastRestartRead:  SmartCard Read returns FALSE\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c3214	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3214 59 \"%0Read request; FID 0x%10!x!, count %11!ld!, offset %12!ld!\" //  ", "{", "rfcb->Fid, ItemLong -- 10" , "SmbGetUshort( &request->Count ), ItemLong -- 11" , "SmbGetUlong( &request->Offset ), ItemLong -- 12" , "}")
+# define WPP_ANNOTATE_ipx_c3276	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3276 60 \"%0SrvIpxFastRestartRead complete.\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c3284	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3284 61 \"%0FastIoRead threw exception %10!x!\" //  ", "{", "status, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c3341	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3341 62 \"%0SrvIpxFastRestartRead: copy read from file 0x%10!p!, offset %11!ld!, length %12!ld!, destination 0x%13!p!\" //  ", "{", "lfcb->FileObject, ItemPtr -- 10" , "offset.LowPart, ItemLong -- 11" , "readLength, ItemLong -- 12" , "readAddress, ItemPtr -- 13" , "}")
+# define WPP_ANNOTATE_ipx_c3360	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3360 63 \"%0SrvIpxFastRestartRead complete.\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c341	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c341 10 \"%0NameDatagramHandler: Short packet %10!u! bytes\" //  ", "{", "BytesIndicated, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c3414	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3414 64 \"%0Read request; FID 0x%10!x!, count %11!ld!, offset %12!ld!\" //  ", "{", "SmbGetUshort( &request->Fid ), ItemLong -- 10" , "SmbGetUshort( &request->Count ), ItemLong -- 11" , "SmbGetUlong( &request->Offset ), ItemLong -- 12" , "}")
+# define WPP_ANNOTATE_ipx_c355	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c355 11 \"%0NameDatagramHandler: type: %10!x!, name %11!s!, from %12!s!\" //  ", "{", "packet->Operation, ItemLong -- 10" , "(PCSTRING)&string, ItemPString -- 11" , "(PCSTRING)&srcString, ItemPString -- 12" , "}")
+# define WPP_ANNOTATE_ipx_c362	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c362 12 \"%0SourceAddress too short.  Expecting %10!d! got %11!d!\" //  ", "{", "sizeof(IPX_ADDRESS_EXTENDED_FLAGS), ItemLong -- 10" , "SourceAddressLength, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_ipx_c3688	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c3688 65 \"%0SrvIpxSmartCardReadComplete: %10!s! %11!p! Length %12!u!, New Position %13!u!\" //  ", "{", "command==SMB_COM_READ ? 'SMB_COM_READ' : 'SMB_COM_READ_MPX', ItemString -- 10" , "Context, ItemPtr -- 11" , "Length, ItemLong -- 12" , "position.LowPart, ItemLong -- 13" , "}")
+# define WPP_ANNOTATE_ipx_c371	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c371 13 \"%0  not for us\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c383	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c383 14 \"%0  we sent it!\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c405	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c405 15 \"%0  name in conflict!\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c419	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c419 16 \"%0  msg ID high bit not set.\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c423	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c423 17 \"%0  sending name recognized response!\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c666	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c666 18 \"%0Bad Sid:\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c669	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c669 19 \"%0Index >= tableSize (index %10!d!, size %11!d!)\" //  ", "{", "idIndex, ItemLong -- 10" , "(USHORT)tableHeader->TableSize, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_ipx_c671	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c671 20 \"%0Owner == NULL\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c673	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c673 21 \"%0connection->Sid = %10!X!, sid = %11!X!\" //  ", "{", "connection->Sid, ItemLong -- 10" , "sid, ItemLong -- 11" , "}")
+# define WPP_ANNOTATE_ipx_c675	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c675 22 \"%0Connection blk state %10!X!\" //  ", "{", "GET_BLOCK_STATE( connection ), ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c756	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c756 23 \"%0SRVIPX: Bad sequence number; ignoring\" //  ", "{", "}")
+# define WPP_ANNOTATE_ipx_c775	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c775 24 \"%0SRVIPX: Receiving sequenced request %10!x!\" //  ", "{", "sequenceNumber, ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c817	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c817 25 \"%0SRVIPX: Receiving unsequenced request mid=%10!x!\" //  ", "{", "SmbGetUshort(&header->Mid), ItemLong -- 10" , "}")
+# define WPP_ANNOTATE_ipx_c833	__annotation("TMF:", "490df9dc-9e6f-8dfe-4021-4f535c4905e3 daytonam // SRC=ipx.c MJ= MN=", "#typev  ipx_c833 26 \"%0SRVIPX: Duplicate (queued) unsequenced request mid=%10!x!\" //  ", "{", "mid, ItemLong -- 10" , "}")
+#endif
+# define WPP_ANNOTATE WPP_(ANNOTATE),
+#else
+# define WPP_ANNOTATE 
+#endif
+
+#if 1
+static const GUID WPP_LOCAL_TraceGuids[] = { {0x490df9dc,0x9e6f,0x8dfe,{0x40,0x21,0x4f,0x53,0x5c,0x49,0x05,0xe3}}, };
+#endif
+
+#if !defined(WPP_TRACE_OPTIONS)
+enum {WPP_TRACE_OPTIONS = TRACE_MESSAGE_SEQUENCE   | TRACE_MESSAGE_GUID
+                        | TRACE_MESSAGE_SYSTEMINFO | TRACE_MESSAGE_TIMESTAMP };
+#endif
+
+#if !defined(WPP_LOGPAIR)
+# define WPP_LOGPAIR(_Size, _Addr)     (_Addr),((SIZE_T)_Size),
+#endif
+
+#define WPP_LOGTYPEVAL(_Type, _Value) WPP_LOGPAIR(sizeof(_Type), &(_Value))
+#define WPP_LOGTYPEPTR(_Value)        WPP_LOGPAIR(sizeof(*(_Value)), (_Value))
+
+// Marshalling macros.
+
+#if !defined(WPP_LOGASTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR(strlen(_value) + 1, _value )
+# else
+#  define WPP_LOGASTR(_value)  WPP_LOGPAIR( (_value)?strlen(_value) + 1:5, (_value)?(_value):"NULL" )
+# endif
+#endif
+
+#if !defined(WPP_LOGWSTR)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (wcslen(_value)+1) * sizeof(WCHAR), _value)
+# else
+#  define WPP_LOGWSTR(_value)  WPP_LOGPAIR( (_value)?(wcslen(_value) + 1)* sizeof(WCHAR):5 * sizeof(WCHAR), (_value)?(_value):L"NULL") 
+# endif
+#endif
+
+#if !defined(WPP_LOGPGUID)
+# define WPP_LOGPGUID(_value) WPP_LOGPAIR( sizeof(GUID), (_value) )
+#endif
+
+
+#if !defined(WPP_LOGPSID)
+# if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( GetLengthSid(_value), (_value) )
+# else
+# define WPP_LOGPSID(_value)  WPP_LOGPAIR( (_value)? (IsValidSid(_value)? \
+                                                                        GetLengthSid(_value):5):5, \
+                                                                        (_value)? (IsValidSid(_value)?\
+                                                                        (_value):"NULL"):"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGCSTR)
+# define WPP_LOGCSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGUSTR)
+# define WPP_LOGUSTR(_x) \
+    WPP_LOGPAIR( sizeof((_x).Length), &(_x).Length ) WPP_LOGPAIR( (_x).Length, (_x).Buffer )
+#endif
+
+#if !defined(WPP_LOGPUSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPUSTR(_x) WPP_LOGUSTR(*(_x))
+#else
+# define WPP_LOGPUSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5*sizeof(WCHAR), (_x)?(*(_x)).Buffer:L"NULL")
+#endif
+#endif
+
+#if !defined(WPP_LOGPCSTR)
+#if !defined(WPP_CHECK_FOR_NULL_STRING)
+# define WPP_LOGPCSTR(_x) WPP_LOGCSTR(*(_x))
+#else
+# define WPP_LOGPCSTR(_x) WPP_LOGPAIR( (_x)?sizeof((*(_x)).Length):sizeof((USHORT)0), (_x)? &(*(_x)).Length:L"NULL")\
+                          WPP_LOGPAIR( (_x)?(*(_x)).Length:5, (_x)?((const char *)(*(_x)).Buffer):"NULL")
+#endif
+#endif
+
+
+#if !defined(WPP_LOGSTDSTR)
+#define WPP_LOGSTDSTR(_value)  WPP_LOGPAIR( (_value).size()+1, (_value).c_str() )
+#endif
+
+WPP_INLINE void WPP_SF_(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id,  0); }
+WPP_INLINE void WPP_SF_D(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1)  0); }
+WPP_INLINE void WPP_SF_DD(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1, unsigned int _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1) WPP_LOGTYPEVAL(unsigned int,_a2)  0); }
+WPP_INLINE void WPP_SF_DDq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1, unsigned int _a2, const void* _a3)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1) WPP_LOGTYPEVAL(unsigned int,_a2) WPP_LOGTYPEVAL(const void*,_a3)  0); }
+WPP_INLINE void WPP_SF_Dzz(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned int _a1, PCSTRING _a2, PCSTRING _a3)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned int,_a1) WPP_LOGPCSTR(_a2) WPP_LOGPCSTR(_a3)  0); }
+WPP_INLINE void WPP_SF_Lll(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, unsigned long _a1, signed long _a2, signed long _a3)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(unsigned long,_a1) WPP_LOGTYPEVAL(signed long,_a2) WPP_LOGTYPEVAL(signed long,_a3)  0); }
+WPP_INLINE void WPP_SF_dd(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, signed int _a1, signed int _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(signed int,_a1) WPP_LOGTYPEVAL(signed int,_a2)  0); }
+WPP_INLINE void WPP_SF_q(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1)  0); }
+WPP_INLINE void WPP_SF_qD(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1, unsigned int _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1) WPP_LOGTYPEVAL(unsigned int,_a2)  0); }
+WPP_INLINE void WPP_SF_qllq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const void* _a1, signed long _a2, signed long _a3, const void* _a4)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGTYPEVAL(const void*,_a1) WPP_LOGTYPEVAL(signed long,_a2) WPP_LOGTYPEVAL(signed long,_a3) WPP_LOGTYPEVAL(const void*,_a4)  0); }
+WPP_INLINE void WPP_SF_sqDD(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, const char* _a1, const void* _a2, unsigned int _a3, unsigned int _a4)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGASTR(_a1) WPP_LOGTYPEVAL(const void*,_a2) WPP_LOGTYPEVAL(unsigned int,_a3) WPP_LOGTYPEVAL(unsigned int,_a4)  0); }
+WPP_INLINE void WPP_SF_zq(WPP_LOGGER_ARG unsigned short id, LPCGUID TraceGuid, PCSTRING _a1, const void* _a2)
+   { WPP_TRACE(WPP_GET_LOGGER, WPP_TRACE_OPTIONS, (LPGUID)TraceGuid, id, WPP_LOGPCSTR(_a1) WPP_LOGTYPEVAL(const void*,_a2)  0); }
+#ifdef WPP_DEBUG
+#define WPP_CALL_ipx_c1569(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c1591(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c2010(MSG,a10,a11,a12) ((WPP_ENABLED()?WPP_SF_DDq(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12))) 
+#define WPP_CALL_ipx_c2016(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_DD(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_ipx_c2039(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c2050(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c2059(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c2068(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c2092(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c2097(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c2122(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c2372(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c2505(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c2640(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_zq(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_ipx_c2659(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c2675(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c2677(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qD(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_ipx_c2679(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_qD(WPP_LOGGER() 44,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_ipx_c2692(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 45,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c2709(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 46,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c2762(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 47,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c2804(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 48,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c2835(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 49,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c2903(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 50,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c2928(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 51,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c2952(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 52,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c2958(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 53,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c3015(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 54,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c3029(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 55,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c3188(MSG,a10) ((WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 56,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c3200(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 57,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c3207(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 58,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c3214(MSG,a10,a11,a12) ((WPP_ENABLED()?WPP_SF_Lll(WPP_LOGGER() 59,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12))) 
+#define WPP_CALL_ipx_c3276(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 60,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c3284(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 61,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c3341(MSG,a10,a11,a12,a13) ((WPP_ENABLED()?WPP_SF_qllq(WPP_LOGGER() 62,WPP_LOCAL_TraceGuids+0,a10,a11,a12,a13),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12,a13))) 
+#define WPP_CALL_ipx_c3360(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 63,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c341(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c3414(MSG,a10,a11,a12) ((WPP_ENABLED()?WPP_SF_Lll(WPP_LOGGER() 64,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12))) 
+#define WPP_CALL_ipx_c355(MSG,a10,a11,a12) ((WPP_ENABLED()?WPP_SF_Dzz(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12))) 
+#define WPP_CALL_ipx_c362(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_dd(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_ipx_c3688(MSG,a10,a11,a12,a13) ((WPP_ENABLED()?WPP_SF_sqDD(WPP_LOGGER() 65,WPP_LOCAL_TraceGuids+0,a10,a11,a12,a13),1:0) \
+         , WPP_DEBUG((MSG,a10,a11,a12,a13))) 
+#define WPP_CALL_ipx_c371(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c383(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c405(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c419(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c423(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c666(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c669(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_dd(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_ipx_c671(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c673(MSG,a10,a11) ((WPP_ENABLED()?WPP_SF_DD(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0,a10,a11),1:0) \
+         , WPP_DEBUG((MSG,a10,a11))) 
+#define WPP_CALL_ipx_c675(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c756(MSG) ((WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0),1:0) \
+         , WPP_DEBUG((MSG))) 
+#define WPP_CALL_ipx_c775(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c817(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#define WPP_CALL_ipx_c833(MSG,a10) ((WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0) \
+         , WPP_DEBUG((MSG,a10))) 
+#else
+#define WPP_CALL_ipx_c1569(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 27,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c1591(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 28,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c2010(MSG,a10,a11,a12) (WPP_ENABLED()?WPP_SF_DDq(WPP_LOGGER() 29,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0)
+#define WPP_CALL_ipx_c2016(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_DD(WPP_LOGGER() 30,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_ipx_c2039(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 31,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c2050(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 32,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c2059(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 33,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c2068(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 34,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c2092(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 35,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c2097(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 36,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c2122(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 37,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c2372(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 38,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c2505(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 39,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c2640(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_zq(WPP_LOGGER() 40,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_ipx_c2659(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 41,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c2675(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 42,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c2677(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qD(WPP_LOGGER() 43,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_ipx_c2679(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_qD(WPP_LOGGER() 44,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_ipx_c2692(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 45,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c2709(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 46,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c2762(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 47,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c2804(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 48,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c2835(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 49,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c2903(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 50,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c2928(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 51,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c2952(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 52,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c2958(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 53,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c3015(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 54,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c3029(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 55,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c3188(MSG,a10) (WPP_ENABLED()?WPP_SF_q(WPP_LOGGER() 56,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c3200(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 57,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c3207(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 58,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c3214(MSG,a10,a11,a12) (WPP_ENABLED()?WPP_SF_Lll(WPP_LOGGER() 59,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0)
+#define WPP_CALL_ipx_c3276(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 60,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c3284(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 61,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c3341(MSG,a10,a11,a12,a13) (WPP_ENABLED()?WPP_SF_qllq(WPP_LOGGER() 62,WPP_LOCAL_TraceGuids+0,a10,a11,a12,a13),1:0)
+#define WPP_CALL_ipx_c3360(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 63,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c341(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 10,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c3414(MSG,a10,a11,a12) (WPP_ENABLED()?WPP_SF_Lll(WPP_LOGGER() 64,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0)
+#define WPP_CALL_ipx_c355(MSG,a10,a11,a12) (WPP_ENABLED()?WPP_SF_Dzz(WPP_LOGGER() 11,WPP_LOCAL_TraceGuids+0,a10,a11,a12),1:0)
+#define WPP_CALL_ipx_c362(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_dd(WPP_LOGGER() 12,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_ipx_c3688(MSG,a10,a11,a12,a13) (WPP_ENABLED()?WPP_SF_sqDD(WPP_LOGGER() 65,WPP_LOCAL_TraceGuids+0,a10,a11,a12,a13),1:0)
+#define WPP_CALL_ipx_c371(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 13,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c383(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 14,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c405(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 15,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c419(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 16,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c423(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 17,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c666(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 18,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c669(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_dd(WPP_LOGGER() 19,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_ipx_c671(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 20,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c673(MSG,a10,a11) (WPP_ENABLED()?WPP_SF_DD(WPP_LOGGER() 21,WPP_LOCAL_TraceGuids+0,a10,a11),1:0)
+#define WPP_CALL_ipx_c675(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 22,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c756(MSG) (WPP_ENABLED()?WPP_SF_(WPP_LOGGER() 23,WPP_LOCAL_TraceGuids+0),1:0)
+#define WPP_CALL_ipx_c775(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 24,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c817(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 25,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#define WPP_CALL_ipx_c833(MSG,a10) (WPP_ENABLED()?WPP_SF_D(WPP_LOGGER() 26,WPP_LOCAL_TraceGuids+0,a10),1:0)
+#endif
+
+// NoMsgArgs
+
+#undef DoTraceMessage
+#define DoTraceMessage WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint0
+#define SrvPrint0 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint1
+#define SrvPrint1 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint2
+#define SrvPrint2 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint3
+#define SrvPrint3 WPP_ANNOTATE WPP_(CALL)
+#undef SrvPrint4
+#define SrvPrint4 WPP_ANNOTATE WPP_(CALL)
+#undef KdPrint
+#define KdPrint(ARGS) WPP_ANNOTATE WPP_(CALL) ARGS
+// MsgArgs
+
+#ifdef WPP_DEBUG
+#else
+#endif
+
+
+/// more stuff
+
+

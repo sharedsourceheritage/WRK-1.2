@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\perflib.obj \
+    $(_OBJ_DIR)\i386\perfname.obj \
+    $(_OBJ_DIR)\i386\perfsec.obj \
+    $(_OBJ_DIR)\i386\utils.obj \
+    $(_OBJ_DIR)\i386\extlib.obj \
+    $(_OBJ_DIR)\i386\extinit.obj \
+    $(_OBJ_DIR)\i386\extquery.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\perflib.obj \
+    $(_OBJ_DIR)\ia64\perfname.obj \
+    $(_OBJ_DIR)\ia64\perfsec.obj \
+    $(_OBJ_DIR)\ia64\utils.obj \
+    $(_OBJ_DIR)\ia64\extlib.obj \
+    $(_OBJ_DIR)\ia64\extinit.obj \
+    $(_OBJ_DIR)\ia64\extquery.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\perflib.obj \
+    $(_OBJ_DIR)\amd64\perfname.obj \
+    $(_OBJ_DIR)\amd64\perfsec.obj \
+    $(_OBJ_DIR)\amd64\utils.obj \
+    $(_OBJ_DIR)\amd64\extlib.obj \
+    $(_OBJ_DIR)\amd64\extinit.obj \
+    $(_OBJ_DIR)\amd64\extquery.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\perflib.obj \
+    $(_OBJ_DIR)\arm\perfname.obj \
+    $(_OBJ_DIR)\arm\perfsec.obj \
+    $(_OBJ_DIR)\arm\utils.obj \
+    $(_OBJ_DIR)\arm\extlib.obj \
+    $(_OBJ_DIR)\arm\extinit.obj \
+    $(_OBJ_DIR)\arm\extquery.obj
+
+PASS0_ARM_OBJECTS=
+

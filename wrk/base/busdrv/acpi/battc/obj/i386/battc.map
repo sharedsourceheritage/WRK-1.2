@@ -1,0 +1,103 @@
+ battc
+
+ Timestamp is 6b04f2a1 (Mon Nov 23 21:12:49 2026)
+
+ Preferred load address is 00010000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00000980H .text                   CODE
+ 0002:00000000 00000078H .idata$5                DATA
+ 0002:00000080 000000acH .rdata                  DATA
+ 0002:0000012c 00000066H .rdata$debug            DATA
+ 0003:00000000 00000070H .data                   DATA
+ 0004:00000000 00000bb2H PAGE                    CODE
+ 0005:00000000 00000101H .edata                  DATA
+ 0006:00000000 00000030H INIT                    CODE
+ 0006:00000030 0000003cH .idata$2                CODE
+ 0006:0000006c 00000014H .idata$3                CODE
+ 0006:00000080 00000078H .idata$4                CODE
+ 0006:000000f8 00000258H .idata$6                CODE
+ 0007:00000000 000000c4H .rsrc$01                DATA
+ 0007:000000d0 000014a0H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0000:00000000       ___safe_se_handler_table   00000000     <absolute>
+ 0000:00000000       ___safe_se_handler_count   00000000     <absolute>
+ 0001:00000000       _BatteryClassStatusNotify@4 00010500 f   battc.obj
+ 0001:000000b8       _BatteryClassSystemControl@20 000105b8 f   battc.obj
+ 0001:000002a6       _BatteryClassQueryWmiDataBlock@28 000107a6 f   battc.obj
+ 0001:00000396       _BattCWmi@12               00010896 f   bsrv.obj
+ 0001:00000674       _BattCCompleteIrpQueue@8   00010b74 f   bsrv.obj
+ 0001:000006c6       _BattCQueueWorker@8        00010bc6 f   bsrv.obj
+ 0001:00000778       _BattCMiniportStatus@8     00010c78 f   bsrv.obj
+ 0001:0000079c       _BattCWorkerDpc@16         00010c9c f   bsrv.obj
+ 0001:000007cc       _BattCTagDpc@16            00010ccc f   bsrv.obj
+ 0001:0000080c       _BattCCancelStatus@8       00010d0c f   bsrv.obj
+ 0001:0000082e       _BattCCancelTag@8          00010d2e f   bsrv.obj
+ 0001:00000862       ___report_gsfailure        00010d62 f   BufferOverflowK:gs_support.obj
+ 0001:00000874       @__security_check_cookie@4 00010d74 f   BufferOverflowK:secchk.obj
+ 0001:00000890       __alldiv                   00010d90 f   wdm:lldiv.obj
+ 0001:00000940       __allmul                   00010e40 f   wdm:llmul.obj
+ 0001:00000974       _WmiSystemControl@16       00010e74 f   wmilib:WMILIB.SYS
+ 0001:0000097a       _WmiCompleteRequest@20     00010e7a f   wmilib:WMILIB.SYS
+ 0002:00000000       __imp_@ExAcquireFastMutex@4 00010e80     wdm:HAL.DLL
+ 0002:00000004       __imp_@ExReleaseFastMutex@4 00010e84     wdm:HAL.DLL
+ 0002:00000008       __imp__KeGetCurrentIrql@0  00010e88     wdm:HAL.DLL
+ 0002:0000000c       \177HAL_NULL_THUNK_DATA    00010e8c     wdm:HAL.DLL
+ 0002:00000010       __imp__KeInitializeDpc@12  00010e90     wdm:NTOSKRNL.EXE
+ 0002:00000014       __imp__KeInitializeTimer@4 00010e94     wdm:NTOSKRNL.EXE
+ 0002:00000018       __imp__ExFreePool@4        00010e98     wdm:NTOSKRNL.EXE
+ 0002:0000001c       __imp__ExAllocatePoolWithTag@12 00010e9c     wdm:NTOSKRNL.EXE
+ 0002:00000020       __imp__KeWaitForSingleObject@20 00010ea0     wdm:NTOSKRNL.EXE
+ 0002:00000024       __imp_@InterlockedDecrement@4 00010ea4     wdm:NTOSKRNL.EXE
+ 0002:00000028       __imp__KeInitializeEvent@12 00010ea8     wdm:NTOSKRNL.EXE
+ 0002:0000002c       __imp__RtlInitUnicodeString@8 00010eac     wdm:NTOSKRNL.EXE
+ 0002:00000030       __imp__IoRegisterDeviceInterface@16 00010eb0     wdm:NTOSKRNL.EXE
+ 0002:00000034       __imp_@IofCompleteRequest@8 00010eb4     wdm:NTOSKRNL.EXE
+ 0002:00000038       __imp__KeSetEvent@12       00010eb8     wdm:NTOSKRNL.EXE
+ 0002:0000003c       __imp_@InterlockedIncrement@4 00010ebc     wdm:NTOSKRNL.EXE
+ 0002:00000040       __imp_@InterlockedExchange@8 00010ec0     wdm:NTOSKRNL.EXE
+ 0002:00000044       __imp__IoReleaseCancelSpinLock@4 00010ec4     wdm:NTOSKRNL.EXE
+ 0002:00000048       __imp__IoAcquireCancelSpinLock@4 00010ec8     wdm:NTOSKRNL.EXE
+ 0002:0000004c       __imp__ExQueueWorkItem@8   00010ecc     wdm:NTOSKRNL.EXE
+ 0002:00000050       __imp__KeCancelTimer@4     00010ed0     wdm:NTOSKRNL.EXE
+ 0002:00000054       __imp__KeSetTimer@16       00010ed4     wdm:NTOSKRNL.EXE
+ 0002:00000058       __imp__KeTickCount         00010ed8     wdm:NTOSKRNL.EXE
+ 0002:00000058       _KeTickCount               00010ed8     wdm:NTOSKRNL.EXE
+ 0002:0000005c       __imp__KeQueryTimeIncrement@0 00010edc     wdm:NTOSKRNL.EXE
+ 0002:00000060       __imp__KeBugCheckEx@20     00010ee0     wdm:NTOSKRNL.EXE
+ 0002:00000064       __imp__IoSetDeviceInterfaceState@8 00010ee4     wdm:NTOSKRNL.EXE
+ 0002:00000068       \177NTOSKRNL_NULL_THUNK_DATA 00010ee8     wdm:NTOSKRNL.EXE
+ 0002:0000006c       __imp__WmiCompleteRequest@20 00010eec     wmilib:WMILIB.SYS
+ 0002:00000070       __imp__WmiSystemControl@16 00010ef0     wmilib:WMILIB.SYS
+ 0002:00000074       \177WMILIB_NULL_THUNK_DATA 00010ef4     wmilib:WMILIB.SYS
+ 0002:0000009c       _BATTERY_TAG_CHANGE_WMI_GUID 00010f1c     battc.obj
+ 0002:000000ac       _BATTERY_STATUS_CHANGE_WMI_GUID 00010f2c     battc.obj
+ 0002:000000bc       _BATTERY_STATIC_DATA_WMI_GUID 00010f3c     battc.obj
+ 0002:000000cc       _BATTERY_CYCLE_COUNT_WMI_GUID 00010f4c     battc.obj
+ 0002:000000dc       _BATTERY_FULL_CHARGED_CAPACITY_WMI_GUID 00010f5c     battc.obj
+ 0002:000000ec       _BATTERY_TEMPERATURE_WMI_GUID 00010f6c     battc.obj
+ 0002:000000fc       _BATTERY_RUNTIME_WMI_GUID  00010f7c     battc.obj
+ 0002:0000010c       _BATTERY_STATUS_WMI_GUID   00010f8c     battc.obj
+ 0002:0000011c       _GUID_DEVICE_BATTERY       00010f9c     battc.obj
+ 0003:00000000       _BattWmiGuidList           00011080     battc.obj
+ 0003:00000060       ___security_cookie         000110e0     BufferOverflowK:gs_support.obj
+ 0004:00000000       _DriverEntry@8             00011100 f   battc.obj
+ 0004:00000006       _BatteryClassInitializeDevice@8 00011106 f   battc.obj
+ 0004:00000190       _BatteryClassUnload@4      00011290 f   battc.obj
+ 0004:00000224       _BatteryClassIoctl@8       00011324 f   battc.obj
+ 0004:00000316       _BattCIoctl@12             00011416 f   bsrv.obj
+ 0004:000003c6       _BattCCheckStatusQueue@8   000114c6 f   bsrv.obj
+ 0004:00000754       _BattCCheckTagQueue@8      00011854 f   bsrv.obj
+ 0004:000009c4       _BattCWorkerThread@4       00011ac4 f   bsrv.obj
+ 0006:00000000       _GsDriverEntry@8           00011e80 f   BufferOverflowK:gs_support.obj
+ 0006:00000030       __IMPORT_DESCRIPTOR_NTOSKRNL 00011eb0     wdm:NTOSKRNL.EXE
+ 0006:00000044       __IMPORT_DESCRIPTOR_HAL    00011ec4     wdm:HAL.DLL
+ 0006:00000058       __IMPORT_DESCRIPTOR_WMILIB 00011ed8     wmilib:WMILIB.SYS
+ 0006:0000006c       __NULL_IMPORT_DESCRIPTOR   00011eec     wdm:NTOSKRNL.EXE
+
+ entry point at        0006:00000000
+
+ Static symbols
+

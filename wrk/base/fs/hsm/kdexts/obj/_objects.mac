@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\hsmkd.res \
+    $(_OBJ_DIR)\i386\filter.obj \
+    $(_OBJ_DIR)\i386\utils.obj \
+    $(_OBJ_DIR)\i386\help.obj \
+    $(_OBJ_DIR)\i386\hsmkd.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\hsmkd.res \
+    $(_OBJ_DIR)\ia64\filter.obj \
+    $(_OBJ_DIR)\ia64\utils.obj \
+    $(_OBJ_DIR)\ia64\help.obj \
+    $(_OBJ_DIR)\ia64\hsmkd.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\hsmkd.res \
+    $(_OBJ_DIR)\amd64\filter.obj \
+    $(_OBJ_DIR)\amd64\utils.obj \
+    $(_OBJ_DIR)\amd64\help.obj \
+    $(_OBJ_DIR)\amd64\hsmkd.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\hsmkd.res \
+    $(_OBJ_DIR)\arm\filter.obj \
+    $(_OBJ_DIR)\arm\utils.obj \
+    $(_OBJ_DIR)\arm\help.obj \
+    $(_OBJ_DIR)\arm\hsmkd.obj
+
+PASS0_ARM_OBJECTS=
+

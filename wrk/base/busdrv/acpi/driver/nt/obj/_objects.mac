@@ -1,0 +1,212 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\acpiosnt.res \
+    $(_OBJ_DIR)\i386\acpiosnt.obj \
+    $(_OBJ_DIR)\i386\amlisupp.obj \
+    $(_OBJ_DIR)\i386\buildsrc.obj \
+    $(_OBJ_DIR)\i386\bus.obj \
+    $(_OBJ_DIR)\i386\button.obj \
+    $(_OBJ_DIR)\i386\callback.obj \
+    $(_OBJ_DIR)\i386\cmbutton.obj \
+    $(_OBJ_DIR)\i386\dat.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\detect.obj \
+    $(_OBJ_DIR)\i386\devpower.obj \
+    $(_OBJ_DIR)\i386\dispatch.obj \
+    $(_OBJ_DIR)\i386\errlog.obj \
+    $(_OBJ_DIR)\i386\extlist.obj \
+    $(_OBJ_DIR)\i386\filter.obj \
+    $(_OBJ_DIR)\i386\get.obj \
+    $(_OBJ_DIR)\i386\gpe.obj \
+    $(_OBJ_DIR)\i386\idevice.obj \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\internal.obj \
+    $(_OBJ_DIR)\i386\interupt.obj \
+    $(_OBJ_DIR)\i386\irqarb.obj \
+    $(_OBJ_DIR)\i386\match.obj \
+    $(_OBJ_DIR)\i386\osnotify.obj \
+    $(_OBJ_DIR)\i386\ospower.obj \
+    $(_OBJ_DIR)\i386\pciinterface.obj \
+    $(_OBJ_DIR)\i386\pciopregion.obj \
+    $(_OBJ_DIR)\i386\processor.obj \
+    $(_OBJ_DIR)\i386\rangesup.obj \
+    $(_OBJ_DIR)\i386\reg.obj \
+    $(_OBJ_DIR)\i386\res_bios.obj \
+    $(_OBJ_DIR)\i386\res_cm.obj \
+    $(_OBJ_DIR)\i386\root.obj \
+    $(_OBJ_DIR)\i386\rtl.obj \
+    $(_OBJ_DIR)\i386\syspower.obj \
+    $(_OBJ_DIR)\i386\table.obj \
+    $(_OBJ_DIR)\i386\thermal.obj \
+    $(_OBJ_DIR)\i386\translate.obj \
+    $(_OBJ_DIR)\i386\vector.obj \
+    $(_OBJ_DIR)\i386\wake.obj \
+    $(_OBJ_DIR)\i386\wmilog.obj \
+    $(_OBJ_DIR)\i386\worker.obj \
+    $(_OBJ_DIR)\i386\acpidock.obj \
+    $(_OBJ_DIR)\i386\acpiirp.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\acpilog.h \
+    $(MC_SOURCEDIR)\acpilog.rc \
+    $(_OBJ_DIR)\i386\wmilog.mof \
+    $(_OBJ_DIR)\i386\wmilog.bmf
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\acpiosnt.res \
+    $(_OBJ_DIR)\ia64\acpiosnt.obj \
+    $(_OBJ_DIR)\ia64\amlisupp.obj \
+    $(_OBJ_DIR)\ia64\buildsrc.obj \
+    $(_OBJ_DIR)\ia64\bus.obj \
+    $(_OBJ_DIR)\ia64\button.obj \
+    $(_OBJ_DIR)\ia64\callback.obj \
+    $(_OBJ_DIR)\ia64\cmbutton.obj \
+    $(_OBJ_DIR)\ia64\dat.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\detect.obj \
+    $(_OBJ_DIR)\ia64\devpower.obj \
+    $(_OBJ_DIR)\ia64\dispatch.obj \
+    $(_OBJ_DIR)\ia64\errlog.obj \
+    $(_OBJ_DIR)\ia64\extlist.obj \
+    $(_OBJ_DIR)\ia64\filter.obj \
+    $(_OBJ_DIR)\ia64\get.obj \
+    $(_OBJ_DIR)\ia64\gpe.obj \
+    $(_OBJ_DIR)\ia64\idevice.obj \
+    $(_OBJ_DIR)\ia64\init.obj \
+    $(_OBJ_DIR)\ia64\internal.obj \
+    $(_OBJ_DIR)\ia64\interupt.obj \
+    $(_OBJ_DIR)\ia64\irqarb.obj \
+    $(_OBJ_DIR)\ia64\match.obj \
+    $(_OBJ_DIR)\ia64\osnotify.obj \
+    $(_OBJ_DIR)\ia64\ospower.obj \
+    $(_OBJ_DIR)\ia64\pciinterface.obj \
+    $(_OBJ_DIR)\ia64\pciopregion.obj \
+    $(_OBJ_DIR)\ia64\processor.obj \
+    $(_OBJ_DIR)\ia64\rangesup.obj \
+    $(_OBJ_DIR)\ia64\reg.obj \
+    $(_OBJ_DIR)\ia64\res_bios.obj \
+    $(_OBJ_DIR)\ia64\res_cm.obj \
+    $(_OBJ_DIR)\ia64\root.obj \
+    $(_OBJ_DIR)\ia64\rtl.obj \
+    $(_OBJ_DIR)\ia64\syspower.obj \
+    $(_OBJ_DIR)\ia64\table.obj \
+    $(_OBJ_DIR)\ia64\thermal.obj \
+    $(_OBJ_DIR)\ia64\translate.obj \
+    $(_OBJ_DIR)\ia64\vector.obj \
+    $(_OBJ_DIR)\ia64\wake.obj \
+    $(_OBJ_DIR)\ia64\wmilog.obj \
+    $(_OBJ_DIR)\ia64\worker.obj \
+    $(_OBJ_DIR)\ia64\acpidock.obj \
+    $(_OBJ_DIR)\ia64\acpiirp.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\acpilog.h \
+    $(MC_SOURCEDIR)\acpilog.rc \
+    $(_OBJ_DIR)\ia64\wmilog.mof \
+    $(_OBJ_DIR)\ia64\wmilog.bmf
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\acpiosnt.res \
+    $(_OBJ_DIR)\amd64\acpiosnt.obj \
+    $(_OBJ_DIR)\amd64\amlisupp.obj \
+    $(_OBJ_DIR)\amd64\buildsrc.obj \
+    $(_OBJ_DIR)\amd64\bus.obj \
+    $(_OBJ_DIR)\amd64\button.obj \
+    $(_OBJ_DIR)\amd64\callback.obj \
+    $(_OBJ_DIR)\amd64\cmbutton.obj \
+    $(_OBJ_DIR)\amd64\dat.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\detect.obj \
+    $(_OBJ_DIR)\amd64\devpower.obj \
+    $(_OBJ_DIR)\amd64\dispatch.obj \
+    $(_OBJ_DIR)\amd64\errlog.obj \
+    $(_OBJ_DIR)\amd64\extlist.obj \
+    $(_OBJ_DIR)\amd64\filter.obj \
+    $(_OBJ_DIR)\amd64\get.obj \
+    $(_OBJ_DIR)\amd64\gpe.obj \
+    $(_OBJ_DIR)\amd64\idevice.obj \
+    $(_OBJ_DIR)\amd64\init.obj \
+    $(_OBJ_DIR)\amd64\internal.obj \
+    $(_OBJ_DIR)\amd64\interupt.obj \
+    $(_OBJ_DIR)\amd64\irqarb.obj \
+    $(_OBJ_DIR)\amd64\match.obj \
+    $(_OBJ_DIR)\amd64\osnotify.obj \
+    $(_OBJ_DIR)\amd64\ospower.obj \
+    $(_OBJ_DIR)\amd64\pciinterface.obj \
+    $(_OBJ_DIR)\amd64\pciopregion.obj \
+    $(_OBJ_DIR)\amd64\processor.obj \
+    $(_OBJ_DIR)\amd64\rangesup.obj \
+    $(_OBJ_DIR)\amd64\reg.obj \
+    $(_OBJ_DIR)\amd64\res_bios.obj \
+    $(_OBJ_DIR)\amd64\res_cm.obj \
+    $(_OBJ_DIR)\amd64\root.obj \
+    $(_OBJ_DIR)\amd64\rtl.obj \
+    $(_OBJ_DIR)\amd64\syspower.obj \
+    $(_OBJ_DIR)\amd64\table.obj \
+    $(_OBJ_DIR)\amd64\thermal.obj \
+    $(_OBJ_DIR)\amd64\translate.obj \
+    $(_OBJ_DIR)\amd64\vector.obj \
+    $(_OBJ_DIR)\amd64\wake.obj \
+    $(_OBJ_DIR)\amd64\wmilog.obj \
+    $(_OBJ_DIR)\amd64\worker.obj \
+    $(_OBJ_DIR)\amd64\acpidock.obj \
+    $(_OBJ_DIR)\amd64\acpiirp.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\acpilog.h \
+    $(MC_SOURCEDIR)\acpilog.rc \
+    $(_OBJ_DIR)\amd64\wmilog.mof \
+    $(_OBJ_DIR)\amd64\wmilog.bmf
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\acpiosnt.res \
+    $(_OBJ_DIR)\arm\acpiosnt.obj \
+    $(_OBJ_DIR)\arm\amlisupp.obj \
+    $(_OBJ_DIR)\arm\buildsrc.obj \
+    $(_OBJ_DIR)\arm\bus.obj \
+    $(_OBJ_DIR)\arm\button.obj \
+    $(_OBJ_DIR)\arm\callback.obj \
+    $(_OBJ_DIR)\arm\cmbutton.obj \
+    $(_OBJ_DIR)\arm\dat.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\detect.obj \
+    $(_OBJ_DIR)\arm\devpower.obj \
+    $(_OBJ_DIR)\arm\dispatch.obj \
+    $(_OBJ_DIR)\arm\errlog.obj \
+    $(_OBJ_DIR)\arm\extlist.obj \
+    $(_OBJ_DIR)\arm\filter.obj \
+    $(_OBJ_DIR)\arm\get.obj \
+    $(_OBJ_DIR)\arm\gpe.obj \
+    $(_OBJ_DIR)\arm\idevice.obj \
+    $(_OBJ_DIR)\arm\init.obj \
+    $(_OBJ_DIR)\arm\internal.obj \
+    $(_OBJ_DIR)\arm\interupt.obj \
+    $(_OBJ_DIR)\arm\irqarb.obj \
+    $(_OBJ_DIR)\arm\match.obj \
+    $(_OBJ_DIR)\arm\osnotify.obj \
+    $(_OBJ_DIR)\arm\ospower.obj \
+    $(_OBJ_DIR)\arm\pciinterface.obj \
+    $(_OBJ_DIR)\arm\pciopregion.obj \
+    $(_OBJ_DIR)\arm\processor.obj \
+    $(_OBJ_DIR)\arm\rangesup.obj \
+    $(_OBJ_DIR)\arm\reg.obj \
+    $(_OBJ_DIR)\arm\res_bios.obj \
+    $(_OBJ_DIR)\arm\res_cm.obj \
+    $(_OBJ_DIR)\arm\root.obj \
+    $(_OBJ_DIR)\arm\rtl.obj \
+    $(_OBJ_DIR)\arm\syspower.obj \
+    $(_OBJ_DIR)\arm\table.obj \
+    $(_OBJ_DIR)\arm\thermal.obj \
+    $(_OBJ_DIR)\arm\translate.obj \
+    $(_OBJ_DIR)\arm\vector.obj \
+    $(_OBJ_DIR)\arm\wake.obj \
+    $(_OBJ_DIR)\arm\wmilog.obj \
+    $(_OBJ_DIR)\arm\worker.obj \
+    $(_OBJ_DIR)\arm\acpidock.obj \
+    $(_OBJ_DIR)\arm\acpiirp.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\acpilog.h \
+    $(MC_SOURCEDIR)\acpilog.rc \
+    $(_OBJ_DIR)\arm\wmilog.mof \
+    $(_OBJ_DIR)\arm\wmilog.bmf
+

@@ -1,0 +1,64 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\at_dma.obj \
+    $(_OBJ_DIR)\i386\cmosnt.obj \
+    $(_OBJ_DIR)\i386\ica.obj \
+    $(_OBJ_DIR)\i386\idetect.obj \
+    $(_OBJ_DIR)\i386\illegalp.obj \
+    $(_OBJ_DIR)\i386\qevnt.obj \
+    $(_OBJ_DIR)\i386\rom.obj \
+    $(_OBJ_DIR)\i386\timer.obj \
+    $(_OBJ_DIR)\i386\timestrb.obj \
+    $(_OBJ_DIR)\i386\dummy_nt.obj \
+    $(_OBJ_DIR)\i386\system.obj \
+    $(_OBJ_DIR)\i386\unexp_nt.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\at_dma.obj \
+    $(_OBJ_DIR)\ia64\cmosnt.obj \
+    $(_OBJ_DIR)\ia64\ica.obj \
+    $(_OBJ_DIR)\ia64\idetect.obj \
+    $(_OBJ_DIR)\ia64\illegalp.obj \
+    $(_OBJ_DIR)\ia64\qevnt.obj \
+    $(_OBJ_DIR)\ia64\rom.obj \
+    $(_OBJ_DIR)\ia64\timer.obj \
+    $(_OBJ_DIR)\ia64\timestrb.obj \
+    $(_OBJ_DIR)\ia64\dummy_nt.obj \
+    $(_OBJ_DIR)\ia64\system.obj \
+    $(_OBJ_DIR)\ia64\unexp_nt.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\at_dma.obj \
+    $(_OBJ_DIR)\amd64\cmosnt.obj \
+    $(_OBJ_DIR)\amd64\ica.obj \
+    $(_OBJ_DIR)\amd64\idetect.obj \
+    $(_OBJ_DIR)\amd64\illegalp.obj \
+    $(_OBJ_DIR)\amd64\qevnt.obj \
+    $(_OBJ_DIR)\amd64\rom.obj \
+    $(_OBJ_DIR)\amd64\timer.obj \
+    $(_OBJ_DIR)\amd64\timestrb.obj \
+    $(_OBJ_DIR)\amd64\dummy_nt.obj \
+    $(_OBJ_DIR)\amd64\system.obj \
+    $(_OBJ_DIR)\amd64\unexp_nt.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\at_dma.obj \
+    $(_OBJ_DIR)\arm\cmosnt.obj \
+    $(_OBJ_DIR)\arm\ica.obj \
+    $(_OBJ_DIR)\arm\idetect.obj \
+    $(_OBJ_DIR)\arm\illegalp.obj \
+    $(_OBJ_DIR)\arm\qevnt.obj \
+    $(_OBJ_DIR)\arm\rom.obj \
+    $(_OBJ_DIR)\arm\timer.obj \
+    $(_OBJ_DIR)\arm\timestrb.obj \
+    $(_OBJ_DIR)\arm\dummy_nt.obj \
+    $(_OBJ_DIR)\arm\system.obj \
+    $(_OBJ_DIR)\arm\unexp_nt.obj
+
+PASS0_ARM_OBJECTS=
+

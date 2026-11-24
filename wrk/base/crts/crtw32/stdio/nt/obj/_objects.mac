@@ -1,0 +1,120 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\_filbuf.obj \
+    $(_OBJ_DIR)\i386\_filwbuf.obj \
+    $(_OBJ_DIR)\i386\_flsbuf.obj \
+    $(_OBJ_DIR)\i386\_flswbuf.obj \
+    $(_OBJ_DIR)\i386\_getbuf.obj \
+    $(_OBJ_DIR)\i386\fgetwc.obj \
+    $(_OBJ_DIR)\i386\fgetwchr.obj \
+    $(_OBJ_DIR)\i386\fputwc.obj \
+    $(_OBJ_DIR)\i386\fputwchr.obj \
+    $(_OBJ_DIR)\i386\input.obj \
+    $(_OBJ_DIR)\i386\output.obj \
+    $(_OBJ_DIR)\i386\snprintf.obj \
+    $(_OBJ_DIR)\i386\snscanf.obj \
+    $(_OBJ_DIR)\i386\snwprint.obj \
+    $(_OBJ_DIR)\i386\snwscanf.obj \
+    $(_OBJ_DIR)\i386\sprintf.obj \
+    $(_OBJ_DIR)\i386\sscanf.obj \
+    $(_OBJ_DIR)\i386\swprintf.obj \
+    $(_OBJ_DIR)\i386\swscanf.obj \
+    $(_OBJ_DIR)\i386\ungetc.obj \
+    $(_OBJ_DIR)\i386\vsnprint.obj \
+    $(_OBJ_DIR)\i386\vsnwprnt.obj \
+    $(_OBJ_DIR)\i386\vsprintf.obj \
+    $(_OBJ_DIR)\i386\vswprint.obj \
+    $(_OBJ_DIR)\i386\winput.obj \
+    $(_OBJ_DIR)\i386\woutput.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\_filbuf.obj \
+    $(_OBJ_DIR)\ia64\_filwbuf.obj \
+    $(_OBJ_DIR)\ia64\_flsbuf.obj \
+    $(_OBJ_DIR)\ia64\_flswbuf.obj \
+    $(_OBJ_DIR)\ia64\_getbuf.obj \
+    $(_OBJ_DIR)\ia64\fgetwc.obj \
+    $(_OBJ_DIR)\ia64\fgetwchr.obj \
+    $(_OBJ_DIR)\ia64\fputwc.obj \
+    $(_OBJ_DIR)\ia64\fputwchr.obj \
+    $(_OBJ_DIR)\ia64\input.obj \
+    $(_OBJ_DIR)\ia64\output.obj \
+    $(_OBJ_DIR)\ia64\snprintf.obj \
+    $(_OBJ_DIR)\ia64\snscanf.obj \
+    $(_OBJ_DIR)\ia64\snwprint.obj \
+    $(_OBJ_DIR)\ia64\snwscanf.obj \
+    $(_OBJ_DIR)\ia64\sprintf.obj \
+    $(_OBJ_DIR)\ia64\sscanf.obj \
+    $(_OBJ_DIR)\ia64\swprintf.obj \
+    $(_OBJ_DIR)\ia64\swscanf.obj \
+    $(_OBJ_DIR)\ia64\ungetc.obj \
+    $(_OBJ_DIR)\ia64\vsnprint.obj \
+    $(_OBJ_DIR)\ia64\vsnwprnt.obj \
+    $(_OBJ_DIR)\ia64\vsprintf.obj \
+    $(_OBJ_DIR)\ia64\vswprint.obj \
+    $(_OBJ_DIR)\ia64\winput.obj \
+    $(_OBJ_DIR)\ia64\woutput.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\_filbuf.obj \
+    $(_OBJ_DIR)\amd64\_filwbuf.obj \
+    $(_OBJ_DIR)\amd64\_flsbuf.obj \
+    $(_OBJ_DIR)\amd64\_flswbuf.obj \
+    $(_OBJ_DIR)\amd64\_getbuf.obj \
+    $(_OBJ_DIR)\amd64\fgetwc.obj \
+    $(_OBJ_DIR)\amd64\fgetwchr.obj \
+    $(_OBJ_DIR)\amd64\fputwc.obj \
+    $(_OBJ_DIR)\amd64\fputwchr.obj \
+    $(_OBJ_DIR)\amd64\input.obj \
+    $(_OBJ_DIR)\amd64\output.obj \
+    $(_OBJ_DIR)\amd64\snprintf.obj \
+    $(_OBJ_DIR)\amd64\snscanf.obj \
+    $(_OBJ_DIR)\amd64\snwprint.obj \
+    $(_OBJ_DIR)\amd64\snwscanf.obj \
+    $(_OBJ_DIR)\amd64\sprintf.obj \
+    $(_OBJ_DIR)\amd64\sscanf.obj \
+    $(_OBJ_DIR)\amd64\swprintf.obj \
+    $(_OBJ_DIR)\amd64\swscanf.obj \
+    $(_OBJ_DIR)\amd64\ungetc.obj \
+    $(_OBJ_DIR)\amd64\vsnprint.obj \
+    $(_OBJ_DIR)\amd64\vsnwprnt.obj \
+    $(_OBJ_DIR)\amd64\vsprintf.obj \
+    $(_OBJ_DIR)\amd64\vswprint.obj \
+    $(_OBJ_DIR)\amd64\winput.obj \
+    $(_OBJ_DIR)\amd64\woutput.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\_filbuf.obj \
+    $(_OBJ_DIR)\arm\_filwbuf.obj \
+    $(_OBJ_DIR)\arm\_flsbuf.obj \
+    $(_OBJ_DIR)\arm\_flswbuf.obj \
+    $(_OBJ_DIR)\arm\_getbuf.obj \
+    $(_OBJ_DIR)\arm\fgetwc.obj \
+    $(_OBJ_DIR)\arm\fgetwchr.obj \
+    $(_OBJ_DIR)\arm\fputwc.obj \
+    $(_OBJ_DIR)\arm\fputwchr.obj \
+    $(_OBJ_DIR)\arm\input.obj \
+    $(_OBJ_DIR)\arm\output.obj \
+    $(_OBJ_DIR)\arm\snprintf.obj \
+    $(_OBJ_DIR)\arm\snscanf.obj \
+    $(_OBJ_DIR)\arm\snwprint.obj \
+    $(_OBJ_DIR)\arm\snwscanf.obj \
+    $(_OBJ_DIR)\arm\sprintf.obj \
+    $(_OBJ_DIR)\arm\sscanf.obj \
+    $(_OBJ_DIR)\arm\swprintf.obj \
+    $(_OBJ_DIR)\arm\swscanf.obj \
+    $(_OBJ_DIR)\arm\ungetc.obj \
+    $(_OBJ_DIR)\arm\vsnprint.obj \
+    $(_OBJ_DIR)\arm\vsnwprnt.obj \
+    $(_OBJ_DIR)\arm\vsprintf.obj \
+    $(_OBJ_DIR)\arm\vswprint.obj \
+    $(_OBJ_DIR)\arm\winput.obj \
+    $(_OBJ_DIR)\arm\woutput.obj
+
+PASS0_ARM_OBJECTS=
+

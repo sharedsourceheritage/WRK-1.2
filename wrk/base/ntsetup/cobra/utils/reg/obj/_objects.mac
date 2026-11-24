@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\regtrack.obj \
+    $(_OBJ_DIR)\i386\reg.obj \
+    $(_OBJ_DIR)\i386\regenum.obj \
+    $(_OBJ_DIR)\i386\tree.obj \
+    $(_OBJ_DIR)\i386\cache.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\regtrack.obj \
+    $(_OBJ_DIR)\ia64\reg.obj \
+    $(_OBJ_DIR)\ia64\regenum.obj \
+    $(_OBJ_DIR)\ia64\tree.obj \
+    $(_OBJ_DIR)\ia64\cache.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\regtrack.obj \
+    $(_OBJ_DIR)\amd64\reg.obj \
+    $(_OBJ_DIR)\amd64\regenum.obj \
+    $(_OBJ_DIR)\amd64\tree.obj \
+    $(_OBJ_DIR)\amd64\cache.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\regtrack.obj \
+    $(_OBJ_DIR)\arm\reg.obj \
+    $(_OBJ_DIR)\arm\regenum.obj \
+    $(_OBJ_DIR)\arm\tree.obj \
+    $(_OBJ_DIR)\arm\cache.obj
+
+PASS0_ARM_OBJECTS=
+

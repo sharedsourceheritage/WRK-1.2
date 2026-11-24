@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ntsdexts.res \
+    $(_OBJ_DIR)\i386\ntsdexts.obj \
+    $(_OBJ_DIR)\i386\hleak.obj \
+    $(_OBJ_DIR)\i386\secexts.obj \
+    $(_OBJ_DIR)\i386\leak.obj \
+    $(_OBJ_DIR)\i386\regexts.obj \
+    $(_OBJ_DIR)\i386\ext.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ntsdexts.res \
+    $(_OBJ_DIR)\ia64\ntsdexts.obj \
+    $(_OBJ_DIR)\ia64\hleak.obj \
+    $(_OBJ_DIR)\ia64\secexts.obj \
+    $(_OBJ_DIR)\ia64\leak.obj \
+    $(_OBJ_DIR)\ia64\regexts.obj \
+    $(_OBJ_DIR)\ia64\ext.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ntsdexts.res \
+    $(_OBJ_DIR)\amd64\ntsdexts.obj \
+    $(_OBJ_DIR)\amd64\hleak.obj \
+    $(_OBJ_DIR)\amd64\secexts.obj \
+    $(_OBJ_DIR)\amd64\leak.obj \
+    $(_OBJ_DIR)\amd64\regexts.obj \
+    $(_OBJ_DIR)\amd64\ext.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ntsdexts.res \
+    $(_OBJ_DIR)\arm\ntsdexts.obj \
+    $(_OBJ_DIR)\arm\hleak.obj \
+    $(_OBJ_DIR)\arm\secexts.obj \
+    $(_OBJ_DIR)\arm\leak.obj \
+    $(_OBJ_DIR)\arm\regexts.obj \
+    $(_OBJ_DIR)\arm\ext.obj
+
+PASS0_ARM_OBJECTS=
+

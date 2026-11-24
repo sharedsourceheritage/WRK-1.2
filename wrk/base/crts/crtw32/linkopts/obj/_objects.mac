@@ -1,0 +1,55 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\binmode.obj \
+    $(_OBJ_DIR)\i386\commode.obj \
+    $(_OBJ_DIR)\i386\newmode.obj \
+    $(_OBJ_DIR)\i386\noarg.obj \
+    $(_OBJ_DIR)\i386\noenv.obj \
+    $(_OBJ_DIR)\i386\setargv.obj \
+    $(_OBJ_DIR)\i386\smalheap.obj \
+    $(_OBJ_DIR)\i386\wsetargv.obj \
+    $(_OBJ_DIR)\i386\thrownew.obj \
+    $(_OBJ_DIR)\i386\fp10.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\binmode.obj \
+    $(_OBJ_DIR)\ia64\commode.obj \
+    $(_OBJ_DIR)\ia64\newmode.obj \
+    $(_OBJ_DIR)\ia64\noarg.obj \
+    $(_OBJ_DIR)\ia64\noenv.obj \
+    $(_OBJ_DIR)\ia64\setargv.obj \
+    $(_OBJ_DIR)\ia64\smalheap.obj \
+    $(_OBJ_DIR)\ia64\wsetargv.obj \
+    $(_OBJ_DIR)\ia64\thrownew.obj \
+    $(_OBJ_DIR)\ia64\fp10.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\binmode.obj \
+    $(_OBJ_DIR)\amd64\commode.obj \
+    $(_OBJ_DIR)\amd64\newmode.obj \
+    $(_OBJ_DIR)\amd64\noarg.obj \
+    $(_OBJ_DIR)\amd64\noenv.obj \
+    $(_OBJ_DIR)\amd64\setargv.obj \
+    $(_OBJ_DIR)\amd64\smalheap.obj \
+    $(_OBJ_DIR)\amd64\wsetargv.obj \
+    $(_OBJ_DIR)\amd64\thrownew.obj \
+    $(_OBJ_DIR)\amd64\fp10.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\binmode.obj \
+    $(_OBJ_DIR)\arm\commode.obj \
+    $(_OBJ_DIR)\arm\newmode.obj \
+    $(_OBJ_DIR)\arm\noarg.obj \
+    $(_OBJ_DIR)\arm\noenv.obj \
+    $(_OBJ_DIR)\arm\setargv.obj \
+    $(_OBJ_DIR)\arm\smalheap.obj \
+    $(_OBJ_DIR)\arm\wsetargv.obj \
+    $(_OBJ_DIR)\arm\thrownew.obj
+
+PASS0_ARM_OBJECTS=
+

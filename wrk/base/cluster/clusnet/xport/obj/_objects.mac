@@ -1,0 +1,80 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cdpinit.obj \
+    $(_OBJ_DIR)\i386\cdprecv.obj \
+    $(_OBJ_DIR)\i386\cdpsend.obj \
+    $(_OBJ_DIR)\i386\ccmp.obj \
+    $(_OBJ_DIR)\i386\cnpif.obj \
+    $(_OBJ_DIR)\i386\cnpmisc.obj \
+    $(_OBJ_DIR)\i386\cnpnet.obj \
+    $(_OBJ_DIR)\i386\cnpnode.obj \
+    $(_OBJ_DIR)\i386\cnprecv.obj \
+    $(_OBJ_DIR)\i386\cnpsend.obj \
+    $(_OBJ_DIR)\i386\cxaddr.obj \
+    $(_OBJ_DIR)\i386\cxdisp.obj \
+    $(_OBJ_DIR)\i386\cxinfo.obj \
+    $(_OBJ_DIR)\i386\cxinit.obj \
+    $(_OBJ_DIR)\i386\cxpnp.obj \
+    $(_OBJ_DIR)\i386\chbeat.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cdpinit.obj \
+    $(_OBJ_DIR)\ia64\cdprecv.obj \
+    $(_OBJ_DIR)\ia64\cdpsend.obj \
+    $(_OBJ_DIR)\ia64\ccmp.obj \
+    $(_OBJ_DIR)\ia64\cnpif.obj \
+    $(_OBJ_DIR)\ia64\cnpmisc.obj \
+    $(_OBJ_DIR)\ia64\cnpnet.obj \
+    $(_OBJ_DIR)\ia64\cnpnode.obj \
+    $(_OBJ_DIR)\ia64\cnprecv.obj \
+    $(_OBJ_DIR)\ia64\cnpsend.obj \
+    $(_OBJ_DIR)\ia64\cxaddr.obj \
+    $(_OBJ_DIR)\ia64\cxdisp.obj \
+    $(_OBJ_DIR)\ia64\cxinfo.obj \
+    $(_OBJ_DIR)\ia64\cxinit.obj \
+    $(_OBJ_DIR)\ia64\cxpnp.obj \
+    $(_OBJ_DIR)\ia64\chbeat.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cdpinit.obj \
+    $(_OBJ_DIR)\amd64\cdprecv.obj \
+    $(_OBJ_DIR)\amd64\cdpsend.obj \
+    $(_OBJ_DIR)\amd64\ccmp.obj \
+    $(_OBJ_DIR)\amd64\cnpif.obj \
+    $(_OBJ_DIR)\amd64\cnpmisc.obj \
+    $(_OBJ_DIR)\amd64\cnpnet.obj \
+    $(_OBJ_DIR)\amd64\cnpnode.obj \
+    $(_OBJ_DIR)\amd64\cnprecv.obj \
+    $(_OBJ_DIR)\amd64\cnpsend.obj \
+    $(_OBJ_DIR)\amd64\cxaddr.obj \
+    $(_OBJ_DIR)\amd64\cxdisp.obj \
+    $(_OBJ_DIR)\amd64\cxinfo.obj \
+    $(_OBJ_DIR)\amd64\cxinit.obj \
+    $(_OBJ_DIR)\amd64\cxpnp.obj \
+    $(_OBJ_DIR)\amd64\chbeat.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cdpinit.obj \
+    $(_OBJ_DIR)\arm\cdprecv.obj \
+    $(_OBJ_DIR)\arm\cdpsend.obj \
+    $(_OBJ_DIR)\arm\ccmp.obj \
+    $(_OBJ_DIR)\arm\cnpif.obj \
+    $(_OBJ_DIR)\arm\cnpmisc.obj \
+    $(_OBJ_DIR)\arm\cnpnet.obj \
+    $(_OBJ_DIR)\arm\cnpnode.obj \
+    $(_OBJ_DIR)\arm\cnprecv.obj \
+    $(_OBJ_DIR)\arm\cnpsend.obj \
+    $(_OBJ_DIR)\arm\cxaddr.obj \
+    $(_OBJ_DIR)\arm\cxdisp.obj \
+    $(_OBJ_DIR)\arm\cxinfo.obj \
+    $(_OBJ_DIR)\arm\cxinit.obj \
+    $(_OBJ_DIR)\arm\cxpnp.obj \
+    $(_OBJ_DIR)\arm\chbeat.obj
+
+PASS0_ARM_OBJECTS=
+

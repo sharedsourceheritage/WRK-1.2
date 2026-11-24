@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\smbshare.res \
+    $(_OBJ_DIR)\i386\smbshare.obj \
+    $(_OBJ_DIR)\i386\dumpsd.obj \
+    $(_OBJ_DIR)\i386\dfsmetaloc.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\smbshare.res \
+    $(_OBJ_DIR)\ia64\smbshare.obj \
+    $(_OBJ_DIR)\ia64\dumpsd.obj \
+    $(_OBJ_DIR)\ia64\dfsmetaloc.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\smbshare.res \
+    $(_OBJ_DIR)\amd64\smbshare.obj \
+    $(_OBJ_DIR)\amd64\dumpsd.obj \
+    $(_OBJ_DIR)\amd64\dfsmetaloc.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\smbshare.res \
+    $(_OBJ_DIR)\arm\smbshare.obj \
+    $(_OBJ_DIR)\arm\dumpsd.obj \
+    $(_OBJ_DIR)\arm\dfsmetaloc.obj
+
+PASS0_ARM_OBJECTS=
+

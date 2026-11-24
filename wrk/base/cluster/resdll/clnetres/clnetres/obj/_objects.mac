@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clnetres.res \
+    $(_OBJ_DIR)\i386\clnetres.obj \
+    $(_OBJ_DIR)\i386\dhcp.obj \
+    $(_OBJ_DIR)\i386\wins.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clnetres.res \
+    $(_OBJ_DIR)\ia64\clnetres.obj \
+    $(_OBJ_DIR)\ia64\dhcp.obj \
+    $(_OBJ_DIR)\ia64\wins.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clnetres.res \
+    $(_OBJ_DIR)\amd64\clnetres.obj \
+    $(_OBJ_DIR)\amd64\dhcp.obj \
+    $(_OBJ_DIR)\amd64\wins.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clnetres.res \
+    $(_OBJ_DIR)\arm\clnetres.obj \
+    $(_OBJ_DIR)\arm\dhcp.obj \
+    $(_OBJ_DIR)\arm\wins.obj
+
+PASS0_ARM_OBJECTS=
+

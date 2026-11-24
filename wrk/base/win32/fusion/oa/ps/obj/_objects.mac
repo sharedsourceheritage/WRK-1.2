@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dlldatax.obj \
+    $(_OBJ_DIR)\i386\sxsoapsi.obj \
+    $(_OBJ_DIR)\i386\sxsoapsp.obj \
+    $(_OBJ_DIR)\i386\sxsoaps.res
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dlldatax.obj \
+    $(_OBJ_DIR)\ia64\sxsoapsi.obj \
+    $(_OBJ_DIR)\ia64\sxsoapsp.obj \
+    $(_OBJ_DIR)\ia64\sxsoaps.res
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dlldatax.obj \
+    $(_OBJ_DIR)\amd64\sxsoapsi.obj \
+    $(_OBJ_DIR)\amd64\sxsoapsp.obj \
+    $(_OBJ_DIR)\amd64\sxsoaps.res
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dlldatax.obj \
+    $(_OBJ_DIR)\arm\sxsoapsi.obj \
+    $(_OBJ_DIR)\arm\sxsoapsp.obj \
+    $(_OBJ_DIR)\arm\sxsoaps.res
+
+PASS0_ARM_OBJECTS=
+

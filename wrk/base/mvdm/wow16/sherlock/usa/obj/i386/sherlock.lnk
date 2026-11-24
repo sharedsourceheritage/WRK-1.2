@@ -1,0 +1,5 @@
+USA\obj\i386\drwatson.obj USA\obj\i386\disasm.obj USA\obj\i386\getsym.obj USA\obj\i386\watson.obj USA\obj\i386\error.obj
+USA\obj\i386\drwatson.exe
+USA\obj\i386\drwatson.map
+/batch ..\lib\USA\libw ..\lib\slibcew ..\toolhelp\USA\obj\i386\toolhelp
+drwatson.def /ALIGN:16 /NOE /NOD /MAP;

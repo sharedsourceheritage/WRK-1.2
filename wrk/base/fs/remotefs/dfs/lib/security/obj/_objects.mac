@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\regsecurity.obj \
+    $(_OBJ_DIR)\i386\adsecurity.obj \
+    $(_OBJ_DIR)\i386\gensecurity.obj \
+    $(_OBJ_DIR)\i386\processsecurity.obj \
+    $(_OBJ_DIR)\i386\systemsecurity.obj \
+    $(_OBJ_DIR)\i386\authzsecurity.obj \
+    $(_OBJ_DIR)\i386\filesecurity.obj \
+    $(_OBJ_DIR)\i386\securitylogmacros.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\regsecurity.obj \
+    $(_OBJ_DIR)\ia64\adsecurity.obj \
+    $(_OBJ_DIR)\ia64\gensecurity.obj \
+    $(_OBJ_DIR)\ia64\processsecurity.obj \
+    $(_OBJ_DIR)\ia64\systemsecurity.obj \
+    $(_OBJ_DIR)\ia64\authzsecurity.obj \
+    $(_OBJ_DIR)\ia64\filesecurity.obj \
+    $(_OBJ_DIR)\ia64\securitylogmacros.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\regsecurity.obj \
+    $(_OBJ_DIR)\amd64\adsecurity.obj \
+    $(_OBJ_DIR)\amd64\gensecurity.obj \
+    $(_OBJ_DIR)\amd64\processsecurity.obj \
+    $(_OBJ_DIR)\amd64\systemsecurity.obj \
+    $(_OBJ_DIR)\amd64\authzsecurity.obj \
+    $(_OBJ_DIR)\amd64\filesecurity.obj \
+    $(_OBJ_DIR)\amd64\securitylogmacros.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\regsecurity.obj \
+    $(_OBJ_DIR)\arm\adsecurity.obj \
+    $(_OBJ_DIR)\arm\gensecurity.obj \
+    $(_OBJ_DIR)\arm\processsecurity.obj \
+    $(_OBJ_DIR)\arm\systemsecurity.obj \
+    $(_OBJ_DIR)\arm\authzsecurity.obj \
+    $(_OBJ_DIR)\arm\filesecurity.obj \
+    $(_OBJ_DIR)\arm\securitylogmacros.obj
+
+PASS0_ARM_OBJECTS=
+

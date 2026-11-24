@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\fusion_uuid.obj \
+    $(_OBJ_DIR)\i386\fuspriv_uuid.obj \
+    $(_OBJ_DIR)\i386\sxsapi_uuid.obj \
+    $(_OBJ_DIR)\i386\oleaut_uuid.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\fusion_uuid.obj \
+    $(_OBJ_DIR)\ia64\fuspriv_uuid.obj \
+    $(_OBJ_DIR)\ia64\sxsapi_uuid.obj \
+    $(_OBJ_DIR)\ia64\oleaut_uuid.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\fusion_uuid.obj \
+    $(_OBJ_DIR)\amd64\fuspriv_uuid.obj \
+    $(_OBJ_DIR)\amd64\sxsapi_uuid.obj \
+    $(_OBJ_DIR)\amd64\oleaut_uuid.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\fusion_uuid.obj \
+    $(_OBJ_DIR)\arm\fuspriv_uuid.obj \
+    $(_OBJ_DIR)\arm\sxsapi_uuid.obj \
+    $(_OBJ_DIR)\arm\oleaut_uuid.obj
+
+PASS0_ARM_OBJECTS=
+

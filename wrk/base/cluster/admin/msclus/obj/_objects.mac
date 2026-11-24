@@ -1,0 +1,92 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\msclus.res \
+    $(_OBJ_DIR)\i386\clusapp.obj \
+    $(_OBJ_DIR)\i386\clusdisk.obj \
+    $(_OBJ_DIR)\i386\cluskeys.obj \
+    $(_OBJ_DIR)\i386\clusneti.obj \
+    $(_OBJ_DIR)\i386\clusnetw.obj \
+    $(_OBJ_DIR)\i386\clusnode.obj \
+    $(_OBJ_DIR)\i386\clusres.obj \
+    $(_OBJ_DIR)\i386\clusresg.obj \
+    $(_OBJ_DIR)\i386\clusrest.obj \
+    $(_OBJ_DIR)\i386\cluster.obj \
+    $(_OBJ_DIR)\i386\clusterobject.obj \
+    $(_OBJ_DIR)\i386\msclus.obj \
+    $(_OBJ_DIR)\i386\partition.obj \
+    $(_OBJ_DIR)\i386\property.obj \
+    $(_OBJ_DIR)\i386\propertyvalue.obj \
+    $(_OBJ_DIR)\i386\proplsts.obj \
+    $(_OBJ_DIR)\i386\version.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\msclus.h
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\msclus.res \
+    $(_OBJ_DIR)\ia64\clusapp.obj \
+    $(_OBJ_DIR)\ia64\clusdisk.obj \
+    $(_OBJ_DIR)\ia64\cluskeys.obj \
+    $(_OBJ_DIR)\ia64\clusneti.obj \
+    $(_OBJ_DIR)\ia64\clusnetw.obj \
+    $(_OBJ_DIR)\ia64\clusnode.obj \
+    $(_OBJ_DIR)\ia64\clusres.obj \
+    $(_OBJ_DIR)\ia64\clusresg.obj \
+    $(_OBJ_DIR)\ia64\clusrest.obj \
+    $(_OBJ_DIR)\ia64\cluster.obj \
+    $(_OBJ_DIR)\ia64\clusterobject.obj \
+    $(_OBJ_DIR)\ia64\msclus.obj \
+    $(_OBJ_DIR)\ia64\partition.obj \
+    $(_OBJ_DIR)\ia64\property.obj \
+    $(_OBJ_DIR)\ia64\propertyvalue.obj \
+    $(_OBJ_DIR)\ia64\proplsts.obj \
+    $(_OBJ_DIR)\ia64\version.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msclus.h
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\msclus.res \
+    $(_OBJ_DIR)\amd64\clusapp.obj \
+    $(_OBJ_DIR)\amd64\clusdisk.obj \
+    $(_OBJ_DIR)\amd64\cluskeys.obj \
+    $(_OBJ_DIR)\amd64\clusneti.obj \
+    $(_OBJ_DIR)\amd64\clusnetw.obj \
+    $(_OBJ_DIR)\amd64\clusnode.obj \
+    $(_OBJ_DIR)\amd64\clusres.obj \
+    $(_OBJ_DIR)\amd64\clusresg.obj \
+    $(_OBJ_DIR)\amd64\clusrest.obj \
+    $(_OBJ_DIR)\amd64\cluster.obj \
+    $(_OBJ_DIR)\amd64\clusterobject.obj \
+    $(_OBJ_DIR)\amd64\msclus.obj \
+    $(_OBJ_DIR)\amd64\partition.obj \
+    $(_OBJ_DIR)\amd64\property.obj \
+    $(_OBJ_DIR)\amd64\propertyvalue.obj \
+    $(_OBJ_DIR)\amd64\proplsts.obj \
+    $(_OBJ_DIR)\amd64\version.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msclus.h
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\msclus.res \
+    $(_OBJ_DIR)\arm\clusapp.obj \
+    $(_OBJ_DIR)\arm\clusdisk.obj \
+    $(_OBJ_DIR)\arm\cluskeys.obj \
+    $(_OBJ_DIR)\arm\clusneti.obj \
+    $(_OBJ_DIR)\arm\clusnetw.obj \
+    $(_OBJ_DIR)\arm\clusnode.obj \
+    $(_OBJ_DIR)\arm\clusres.obj \
+    $(_OBJ_DIR)\arm\clusresg.obj \
+    $(_OBJ_DIR)\arm\clusrest.obj \
+    $(_OBJ_DIR)\arm\cluster.obj \
+    $(_OBJ_DIR)\arm\clusterobject.obj \
+    $(_OBJ_DIR)\arm\msclus.obj \
+    $(_OBJ_DIR)\arm\partition.obj \
+    $(_OBJ_DIR)\arm\property.obj \
+    $(_OBJ_DIR)\arm\propertyvalue.obj \
+    $(_OBJ_DIR)\arm\proplsts.obj \
+    $(_OBJ_DIR)\arm\version.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\msclus.h
+

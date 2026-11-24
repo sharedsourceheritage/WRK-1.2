@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\mmapi.obj \
+    $(_OBJ_DIR)\i386\message.obj \
+    $(_OBJ_DIR)\i386\srgpif.obj \
+    $(_OBJ_DIR)\i386\srgpos.obj \
+    $(_OBJ_DIR)\i386\srgpsm.obj \
+    $(_OBJ_DIR)\i386\srgputl.obj \
+    $(_OBJ_DIR)\i386\setprior.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\mmapi.obj \
+    $(_OBJ_DIR)\ia64\message.obj \
+    $(_OBJ_DIR)\ia64\srgpif.obj \
+    $(_OBJ_DIR)\ia64\srgpos.obj \
+    $(_OBJ_DIR)\ia64\srgpsm.obj \
+    $(_OBJ_DIR)\ia64\srgputl.obj \
+    $(_OBJ_DIR)\ia64\setprior.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\mmapi.obj \
+    $(_OBJ_DIR)\amd64\message.obj \
+    $(_OBJ_DIR)\amd64\srgpif.obj \
+    $(_OBJ_DIR)\amd64\srgpos.obj \
+    $(_OBJ_DIR)\amd64\srgpsm.obj \
+    $(_OBJ_DIR)\amd64\srgputl.obj \
+    $(_OBJ_DIR)\amd64\setprior.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\mmapi.obj \
+    $(_OBJ_DIR)\arm\message.obj \
+    $(_OBJ_DIR)\arm\srgpif.obj \
+    $(_OBJ_DIR)\arm\srgpos.obj \
+    $(_OBJ_DIR)\arm\srgpsm.obj \
+    $(_OBJ_DIR)\arm\srgputl.obj \
+    $(_OBJ_DIR)\arm\setprior.obj
+
+PASS0_ARM_OBJECTS=
+

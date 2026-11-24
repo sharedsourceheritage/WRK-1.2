@@ -1,0 +1,192 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\mup.res \
+    $(_OBJ_DIR)\i386\block.obj \
+    $(_OBJ_DIR)\i386\cleanup.obj \
+    $(_OBJ_DIR)\i386\close.obj \
+    $(_OBJ_DIR)\i386\create.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\forward.obj \
+    $(_OBJ_DIR)\i386\fscontrl.obj \
+    $(_OBJ_DIR)\i386\filobsup.obj \
+    $(_OBJ_DIR)\i386\io.obj \
+    $(_OBJ_DIR)\i386\lock.obj \
+    $(_OBJ_DIR)\i386\mupdata.obj \
+    $(_OBJ_DIR)\i386\mupinit.obj \
+    $(_OBJ_DIR)\i386\pool.obj \
+    $(_OBJ_DIR)\i386\regsup.obj \
+    $(_OBJ_DIR)\i386\attach.obj \
+    $(_OBJ_DIR)\i386\creds.obj \
+    $(_OBJ_DIR)\i386\dfsclose.obj \
+    $(_OBJ_DIR)\i386\dfscreat.obj \
+    $(_OBJ_DIR)\i386\dfsmrshl.obj \
+    $(_OBJ_DIR)\i386\dfsrtl.obj \
+    $(_OBJ_DIR)\i386\dnr.obj \
+    $(_OBJ_DIR)\i386\dfsdata.obj \
+    $(_OBJ_DIR)\i386\dfsfilob.obj \
+    $(_OBJ_DIR)\i386\dfsinit.obj \
+    $(_OBJ_DIR)\i386\fastio.obj \
+    $(_OBJ_DIR)\i386\fcbsup.obj \
+    $(_OBJ_DIR)\i386\fileinfo.obj \
+    $(_OBJ_DIR)\i386\fsctrl.obj \
+    $(_OBJ_DIR)\i386\fspdisp.obj \
+    $(_OBJ_DIR)\i386\know.obj \
+    $(_OBJ_DIR)\i386\log.obj \
+    $(_OBJ_DIR)\i386\logroot.obj \
+    $(_OBJ_DIR)\i386\minfo.obj \
+    $(_OBJ_DIR)\i386\mupwml.obj \
+    $(_OBJ_DIR)\i386\pkt.obj \
+    $(_OBJ_DIR)\i386\pktfsctl.obj \
+    $(_OBJ_DIR)\i386\pktsup.obj \
+    $(_OBJ_DIR)\i386\prefix.obj \
+    $(_OBJ_DIR)\i386\prefixp.obj \
+    $(_OBJ_DIR)\i386\provider.obj \
+    $(_OBJ_DIR)\i386\rpselect.obj \
+    $(_OBJ_DIR)\i386\strucsup.obj \
+    $(_OBJ_DIR)\i386\volinfo.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\mup.res \
+    $(_OBJ_DIR)\ia64\block.obj \
+    $(_OBJ_DIR)\ia64\cleanup.obj \
+    $(_OBJ_DIR)\ia64\close.obj \
+    $(_OBJ_DIR)\ia64\create.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\forward.obj \
+    $(_OBJ_DIR)\ia64\fscontrl.obj \
+    $(_OBJ_DIR)\ia64\filobsup.obj \
+    $(_OBJ_DIR)\ia64\io.obj \
+    $(_OBJ_DIR)\ia64\lock.obj \
+    $(_OBJ_DIR)\ia64\mupdata.obj \
+    $(_OBJ_DIR)\ia64\mupinit.obj \
+    $(_OBJ_DIR)\ia64\pool.obj \
+    $(_OBJ_DIR)\ia64\regsup.obj \
+    $(_OBJ_DIR)\ia64\attach.obj \
+    $(_OBJ_DIR)\ia64\creds.obj \
+    $(_OBJ_DIR)\ia64\dfsclose.obj \
+    $(_OBJ_DIR)\ia64\dfscreat.obj \
+    $(_OBJ_DIR)\ia64\dfsmrshl.obj \
+    $(_OBJ_DIR)\ia64\dfsrtl.obj \
+    $(_OBJ_DIR)\ia64\dnr.obj \
+    $(_OBJ_DIR)\ia64\dfsdata.obj \
+    $(_OBJ_DIR)\ia64\dfsfilob.obj \
+    $(_OBJ_DIR)\ia64\dfsinit.obj \
+    $(_OBJ_DIR)\ia64\fastio.obj \
+    $(_OBJ_DIR)\ia64\fcbsup.obj \
+    $(_OBJ_DIR)\ia64\fileinfo.obj \
+    $(_OBJ_DIR)\ia64\fsctrl.obj \
+    $(_OBJ_DIR)\ia64\fspdisp.obj \
+    $(_OBJ_DIR)\ia64\know.obj \
+    $(_OBJ_DIR)\ia64\log.obj \
+    $(_OBJ_DIR)\ia64\logroot.obj \
+    $(_OBJ_DIR)\ia64\minfo.obj \
+    $(_OBJ_DIR)\ia64\mupwml.obj \
+    $(_OBJ_DIR)\ia64\pkt.obj \
+    $(_OBJ_DIR)\ia64\pktfsctl.obj \
+    $(_OBJ_DIR)\ia64\pktsup.obj \
+    $(_OBJ_DIR)\ia64\prefix.obj \
+    $(_OBJ_DIR)\ia64\prefixp.obj \
+    $(_OBJ_DIR)\ia64\provider.obj \
+    $(_OBJ_DIR)\ia64\rpselect.obj \
+    $(_OBJ_DIR)\ia64\strucsup.obj \
+    $(_OBJ_DIR)\ia64\volinfo.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\mup.res \
+    $(_OBJ_DIR)\amd64\block.obj \
+    $(_OBJ_DIR)\amd64\cleanup.obj \
+    $(_OBJ_DIR)\amd64\close.obj \
+    $(_OBJ_DIR)\amd64\create.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\forward.obj \
+    $(_OBJ_DIR)\amd64\fscontrl.obj \
+    $(_OBJ_DIR)\amd64\filobsup.obj \
+    $(_OBJ_DIR)\amd64\io.obj \
+    $(_OBJ_DIR)\amd64\lock.obj \
+    $(_OBJ_DIR)\amd64\mupdata.obj \
+    $(_OBJ_DIR)\amd64\mupinit.obj \
+    $(_OBJ_DIR)\amd64\pool.obj \
+    $(_OBJ_DIR)\amd64\regsup.obj \
+    $(_OBJ_DIR)\amd64\attach.obj \
+    $(_OBJ_DIR)\amd64\creds.obj \
+    $(_OBJ_DIR)\amd64\dfsclose.obj \
+    $(_OBJ_DIR)\amd64\dfscreat.obj \
+    $(_OBJ_DIR)\amd64\dfsmrshl.obj \
+    $(_OBJ_DIR)\amd64\dfsrtl.obj \
+    $(_OBJ_DIR)\amd64\dnr.obj \
+    $(_OBJ_DIR)\amd64\dfsdata.obj \
+    $(_OBJ_DIR)\amd64\dfsfilob.obj \
+    $(_OBJ_DIR)\amd64\dfsinit.obj \
+    $(_OBJ_DIR)\amd64\fastio.obj \
+    $(_OBJ_DIR)\amd64\fcbsup.obj \
+    $(_OBJ_DIR)\amd64\fileinfo.obj \
+    $(_OBJ_DIR)\amd64\fsctrl.obj \
+    $(_OBJ_DIR)\amd64\fspdisp.obj \
+    $(_OBJ_DIR)\amd64\know.obj \
+    $(_OBJ_DIR)\amd64\log.obj \
+    $(_OBJ_DIR)\amd64\logroot.obj \
+    $(_OBJ_DIR)\amd64\minfo.obj \
+    $(_OBJ_DIR)\amd64\mupwml.obj \
+    $(_OBJ_DIR)\amd64\pkt.obj \
+    $(_OBJ_DIR)\amd64\pktfsctl.obj \
+    $(_OBJ_DIR)\amd64\pktsup.obj \
+    $(_OBJ_DIR)\amd64\prefix.obj \
+    $(_OBJ_DIR)\amd64\prefixp.obj \
+    $(_OBJ_DIR)\amd64\provider.obj \
+    $(_OBJ_DIR)\amd64\rpselect.obj \
+    $(_OBJ_DIR)\amd64\strucsup.obj \
+    $(_OBJ_DIR)\amd64\volinfo.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\mup.res \
+    $(_OBJ_DIR)\arm\block.obj \
+    $(_OBJ_DIR)\arm\cleanup.obj \
+    $(_OBJ_DIR)\arm\close.obj \
+    $(_OBJ_DIR)\arm\create.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\forward.obj \
+    $(_OBJ_DIR)\arm\fscontrl.obj \
+    $(_OBJ_DIR)\arm\filobsup.obj \
+    $(_OBJ_DIR)\arm\io.obj \
+    $(_OBJ_DIR)\arm\lock.obj \
+    $(_OBJ_DIR)\arm\mupdata.obj \
+    $(_OBJ_DIR)\arm\mupinit.obj \
+    $(_OBJ_DIR)\arm\pool.obj \
+    $(_OBJ_DIR)\arm\regsup.obj \
+    $(_OBJ_DIR)\arm\attach.obj \
+    $(_OBJ_DIR)\arm\creds.obj \
+    $(_OBJ_DIR)\arm\dfsclose.obj \
+    $(_OBJ_DIR)\arm\dfscreat.obj \
+    $(_OBJ_DIR)\arm\dfsmrshl.obj \
+    $(_OBJ_DIR)\arm\dfsrtl.obj \
+    $(_OBJ_DIR)\arm\dnr.obj \
+    $(_OBJ_DIR)\arm\dfsdata.obj \
+    $(_OBJ_DIR)\arm\dfsfilob.obj \
+    $(_OBJ_DIR)\arm\dfsinit.obj \
+    $(_OBJ_DIR)\arm\fastio.obj \
+    $(_OBJ_DIR)\arm\fcbsup.obj \
+    $(_OBJ_DIR)\arm\fileinfo.obj \
+    $(_OBJ_DIR)\arm\fsctrl.obj \
+    $(_OBJ_DIR)\arm\fspdisp.obj \
+    $(_OBJ_DIR)\arm\know.obj \
+    $(_OBJ_DIR)\arm\log.obj \
+    $(_OBJ_DIR)\arm\logroot.obj \
+    $(_OBJ_DIR)\arm\minfo.obj \
+    $(_OBJ_DIR)\arm\mupwml.obj \
+    $(_OBJ_DIR)\arm\pkt.obj \
+    $(_OBJ_DIR)\arm\pktfsctl.obj \
+    $(_OBJ_DIR)\arm\pktsup.obj \
+    $(_OBJ_DIR)\arm\prefix.obj \
+    $(_OBJ_DIR)\arm\prefixp.obj \
+    $(_OBJ_DIR)\arm\provider.obj \
+    $(_OBJ_DIR)\arm\rpselect.obj \
+    $(_OBJ_DIR)\arm\strucsup.obj \
+    $(_OBJ_DIR)\arm\volinfo.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,104 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\addnodeswizard.obj \
+    $(_OBJ_DIR)\i386\advanceddlg.obj \
+    $(_OBJ_DIR)\i386\analyzepage.obj \
+    $(_OBJ_DIR)\i386\cluscfg.obj \
+    $(_OBJ_DIR)\i386\clusdomainpage.obj \
+    $(_OBJ_DIR)\i386\commitpage.obj \
+    $(_OBJ_DIR)\i386\completionpage.obj \
+    $(_OBJ_DIR)\i386\createclusterwizard.obj \
+    $(_OBJ_DIR)\i386\csaccountpage.obj \
+    $(_OBJ_DIR)\i386\delimitediterator.obj \
+    $(_OBJ_DIR)\i386\detailsdlg.obj \
+    $(_OBJ_DIR)\i386\ipaddresspage.obj \
+    $(_OBJ_DIR)\i386\messagebox.obj \
+    $(_OBJ_DIR)\i386\namedcookie.obj \
+    $(_OBJ_DIR)\i386\quorumdlg.obj \
+    $(_OBJ_DIR)\i386\selnodepage.obj \
+    $(_OBJ_DIR)\i386\selnodespage.obj \
+    $(_OBJ_DIR)\i386\selnodespagecommon.obj \
+    $(_OBJ_DIR)\i386\summarypage.obj \
+    $(_OBJ_DIR)\i386\tasktreeview.obj \
+    $(_OBJ_DIR)\i386\welcomepage.obj \
+    $(_OBJ_DIR)\i386\wizardutils.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\addnodeswizard.obj \
+    $(_OBJ_DIR)\ia64\advanceddlg.obj \
+    $(_OBJ_DIR)\ia64\analyzepage.obj \
+    $(_OBJ_DIR)\ia64\cluscfg.obj \
+    $(_OBJ_DIR)\ia64\clusdomainpage.obj \
+    $(_OBJ_DIR)\ia64\commitpage.obj \
+    $(_OBJ_DIR)\ia64\completionpage.obj \
+    $(_OBJ_DIR)\ia64\createclusterwizard.obj \
+    $(_OBJ_DIR)\ia64\csaccountpage.obj \
+    $(_OBJ_DIR)\ia64\delimitediterator.obj \
+    $(_OBJ_DIR)\ia64\detailsdlg.obj \
+    $(_OBJ_DIR)\ia64\ipaddresspage.obj \
+    $(_OBJ_DIR)\ia64\messagebox.obj \
+    $(_OBJ_DIR)\ia64\namedcookie.obj \
+    $(_OBJ_DIR)\ia64\quorumdlg.obj \
+    $(_OBJ_DIR)\ia64\selnodepage.obj \
+    $(_OBJ_DIR)\ia64\selnodespage.obj \
+    $(_OBJ_DIR)\ia64\selnodespagecommon.obj \
+    $(_OBJ_DIR)\ia64\summarypage.obj \
+    $(_OBJ_DIR)\ia64\tasktreeview.obj \
+    $(_OBJ_DIR)\ia64\welcomepage.obj \
+    $(_OBJ_DIR)\ia64\wizardutils.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\addnodeswizard.obj \
+    $(_OBJ_DIR)\amd64\advanceddlg.obj \
+    $(_OBJ_DIR)\amd64\analyzepage.obj \
+    $(_OBJ_DIR)\amd64\cluscfg.obj \
+    $(_OBJ_DIR)\amd64\clusdomainpage.obj \
+    $(_OBJ_DIR)\amd64\commitpage.obj \
+    $(_OBJ_DIR)\amd64\completionpage.obj \
+    $(_OBJ_DIR)\amd64\createclusterwizard.obj \
+    $(_OBJ_DIR)\amd64\csaccountpage.obj \
+    $(_OBJ_DIR)\amd64\delimitediterator.obj \
+    $(_OBJ_DIR)\amd64\detailsdlg.obj \
+    $(_OBJ_DIR)\amd64\ipaddresspage.obj \
+    $(_OBJ_DIR)\amd64\messagebox.obj \
+    $(_OBJ_DIR)\amd64\namedcookie.obj \
+    $(_OBJ_DIR)\amd64\quorumdlg.obj \
+    $(_OBJ_DIR)\amd64\selnodepage.obj \
+    $(_OBJ_DIR)\amd64\selnodespage.obj \
+    $(_OBJ_DIR)\amd64\selnodespagecommon.obj \
+    $(_OBJ_DIR)\amd64\summarypage.obj \
+    $(_OBJ_DIR)\amd64\tasktreeview.obj \
+    $(_OBJ_DIR)\amd64\welcomepage.obj \
+    $(_OBJ_DIR)\amd64\wizardutils.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\addnodeswizard.obj \
+    $(_OBJ_DIR)\arm\advanceddlg.obj \
+    $(_OBJ_DIR)\arm\analyzepage.obj \
+    $(_OBJ_DIR)\arm\cluscfg.obj \
+    $(_OBJ_DIR)\arm\clusdomainpage.obj \
+    $(_OBJ_DIR)\arm\commitpage.obj \
+    $(_OBJ_DIR)\arm\completionpage.obj \
+    $(_OBJ_DIR)\arm\createclusterwizard.obj \
+    $(_OBJ_DIR)\arm\csaccountpage.obj \
+    $(_OBJ_DIR)\arm\delimitediterator.obj \
+    $(_OBJ_DIR)\arm\detailsdlg.obj \
+    $(_OBJ_DIR)\arm\ipaddresspage.obj \
+    $(_OBJ_DIR)\arm\messagebox.obj \
+    $(_OBJ_DIR)\arm\namedcookie.obj \
+    $(_OBJ_DIR)\arm\quorumdlg.obj \
+    $(_OBJ_DIR)\arm\selnodepage.obj \
+    $(_OBJ_DIR)\arm\selnodespage.obj \
+    $(_OBJ_DIR)\arm\selnodespagecommon.obj \
+    $(_OBJ_DIR)\arm\summarypage.obj \
+    $(_OBJ_DIR)\arm\tasktreeview.obj \
+    $(_OBJ_DIR)\arm\welcomepage.obj \
+    $(_OBJ_DIR)\arm\wizardutils.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\client.res \
+    $(_OBJ_DIR)\i386\davrpc_client.obj \
+    $(_OBJ_DIR)\i386\dllmain.obj \
+    $(_OBJ_DIR)\i386\midluser.obj \
+    $(_OBJ_DIR)\i386\provider.obj \
+    $(_OBJ_DIR)\i386\dllmain2.obj \
+    $(_OBJ_DIR)\i386\volclean.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\client.res \
+    $(_OBJ_DIR)\ia64\davrpc_client.obj \
+    $(_OBJ_DIR)\ia64\dllmain.obj \
+    $(_OBJ_DIR)\ia64\midluser.obj \
+    $(_OBJ_DIR)\ia64\provider.obj \
+    $(_OBJ_DIR)\ia64\dllmain2.obj \
+    $(_OBJ_DIR)\ia64\volclean.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\client.res \
+    $(_OBJ_DIR)\amd64\davrpc_client.obj \
+    $(_OBJ_DIR)\amd64\dllmain.obj \
+    $(_OBJ_DIR)\amd64\midluser.obj \
+    $(_OBJ_DIR)\amd64\provider.obj \
+    $(_OBJ_DIR)\amd64\dllmain2.obj \
+    $(_OBJ_DIR)\amd64\volclean.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\client.res \
+    $(_OBJ_DIR)\arm\davrpc_client.obj \
+    $(_OBJ_DIR)\arm\dllmain.obj \
+    $(_OBJ_DIR)\arm\midluser.obj \
+    $(_OBJ_DIR)\arm\provider.obj \
+    $(_OBJ_DIR)\arm\dllmain2.obj \
+    $(_OBJ_DIR)\arm\volclean.obj
+
+PASS0_ARM_OBJECTS=
+

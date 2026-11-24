@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\vsndblst.res \
+    $(_OBJ_DIR)\i386\dsp.obj \
+    $(_OBJ_DIR)\i386\fm.obj \
+    $(_OBJ_DIR)\i386\mixer.obj \
+    $(_OBJ_DIR)\i386\vsb.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\vsndblst.res \
+    $(_OBJ_DIR)\ia64\dsp.obj \
+    $(_OBJ_DIR)\ia64\fm.obj \
+    $(_OBJ_DIR)\ia64\mixer.obj \
+    $(_OBJ_DIR)\ia64\vsb.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\vsndblst.res \
+    $(_OBJ_DIR)\amd64\dsp.obj \
+    $(_OBJ_DIR)\amd64\fm.obj \
+    $(_OBJ_DIR)\amd64\mixer.obj \
+    $(_OBJ_DIR)\amd64\vsb.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\vsndblst.res \
+    $(_OBJ_DIR)\arm\dsp.obj \
+    $(_OBJ_DIR)\arm\fm.obj \
+    $(_OBJ_DIR)\arm\mixer.obj \
+    $(_OBJ_DIR)\arm\vsb.obj
+
+PASS0_ARM_OBJECTS=
+

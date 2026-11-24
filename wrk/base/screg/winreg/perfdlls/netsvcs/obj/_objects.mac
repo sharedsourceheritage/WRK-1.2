@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\perfnet.res \
+    $(_OBJ_DIR)\i386\datasrv.obj \
+    $(_OBJ_DIR)\i386\datasrvq.obj \
+    $(_OBJ_DIR)\i386\datardr.obj \
+    $(_OBJ_DIR)\i386\databrws.obj \
+    $(_OBJ_DIR)\i386\perfnet.obj \
+    $(_OBJ_DIR)\i386\perfsrv.obj \
+    $(_OBJ_DIR)\i386\perfrdr.obj \
+    $(_OBJ_DIR)\i386\perfbrws.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\netsvcmc.h \
+    $(MC_SOURCEDIR)\netsvcmc.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\perfnet.res \
+    $(_OBJ_DIR)\ia64\datasrv.obj \
+    $(_OBJ_DIR)\ia64\datasrvq.obj \
+    $(_OBJ_DIR)\ia64\datardr.obj \
+    $(_OBJ_DIR)\ia64\databrws.obj \
+    $(_OBJ_DIR)\ia64\perfnet.obj \
+    $(_OBJ_DIR)\ia64\perfsrv.obj \
+    $(_OBJ_DIR)\ia64\perfrdr.obj \
+    $(_OBJ_DIR)\ia64\perfbrws.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\netsvcmc.h \
+    $(MC_SOURCEDIR)\netsvcmc.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\perfnet.res \
+    $(_OBJ_DIR)\amd64\datasrv.obj \
+    $(_OBJ_DIR)\amd64\datasrvq.obj \
+    $(_OBJ_DIR)\amd64\datardr.obj \
+    $(_OBJ_DIR)\amd64\databrws.obj \
+    $(_OBJ_DIR)\amd64\perfnet.obj \
+    $(_OBJ_DIR)\amd64\perfsrv.obj \
+    $(_OBJ_DIR)\amd64\perfrdr.obj \
+    $(_OBJ_DIR)\amd64\perfbrws.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\netsvcmc.h \
+    $(MC_SOURCEDIR)\netsvcmc.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\perfnet.res \
+    $(_OBJ_DIR)\arm\datasrv.obj \
+    $(_OBJ_DIR)\arm\datasrvq.obj \
+    $(_OBJ_DIR)\arm\datardr.obj \
+    $(_OBJ_DIR)\arm\databrws.obj \
+    $(_OBJ_DIR)\arm\perfnet.obj \
+    $(_OBJ_DIR)\arm\perfsrv.obj \
+    $(_OBJ_DIR)\arm\perfrdr.obj \
+    $(_OBJ_DIR)\arm\perfbrws.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\netsvcmc.h \
+    $(MC_SOURCEDIR)\netsvcmc.rc
+

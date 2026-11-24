@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clussprt.res \
+    $(_OBJ_DIR)\i386\clussprt.obj \
+    $(_OBJ_DIR)\i386\rpc.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clussprt.res \
+    $(_OBJ_DIR)\ia64\clussprt.obj \
+    $(_OBJ_DIR)\ia64\rpc.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clussprt.res \
+    $(_OBJ_DIR)\amd64\clussprt.obj \
+    $(_OBJ_DIR)\amd64\rpc.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clussprt.res \
+    $(_OBJ_DIR)\arm\clussprt.obj \
+    $(_OBJ_DIR)\arm\rpc.obj
+
+PASS0_ARM_OBJECTS=
+

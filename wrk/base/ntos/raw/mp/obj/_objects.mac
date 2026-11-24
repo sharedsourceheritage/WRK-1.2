@@ -1,0 +1,56 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cleanup.obj \
+    $(_OBJ_DIR)\i386\close.obj \
+    $(_OBJ_DIR)\i386\create.obj \
+    $(_OBJ_DIR)\i386\fileinfo.obj \
+    $(_OBJ_DIR)\i386\fsctrl.obj \
+    $(_OBJ_DIR)\i386\strucsup.obj \
+    $(_OBJ_DIR)\i386\rawdisp.obj \
+    $(_OBJ_DIR)\i386\rawinit.obj \
+    $(_OBJ_DIR)\i386\readwrit.obj \
+    $(_OBJ_DIR)\i386\volinfo.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cleanup.obj \
+    $(_OBJ_DIR)\ia64\close.obj \
+    $(_OBJ_DIR)\ia64\create.obj \
+    $(_OBJ_DIR)\ia64\fileinfo.obj \
+    $(_OBJ_DIR)\ia64\fsctrl.obj \
+    $(_OBJ_DIR)\ia64\strucsup.obj \
+    $(_OBJ_DIR)\ia64\rawdisp.obj \
+    $(_OBJ_DIR)\ia64\rawinit.obj \
+    $(_OBJ_DIR)\ia64\readwrit.obj \
+    $(_OBJ_DIR)\ia64\volinfo.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cleanup.obj \
+    $(_OBJ_DIR)\amd64\close.obj \
+    $(_OBJ_DIR)\amd64\create.obj \
+    $(_OBJ_DIR)\amd64\fileinfo.obj \
+    $(_OBJ_DIR)\amd64\fsctrl.obj \
+    $(_OBJ_DIR)\amd64\strucsup.obj \
+    $(_OBJ_DIR)\amd64\rawdisp.obj \
+    $(_OBJ_DIR)\amd64\rawinit.obj \
+    $(_OBJ_DIR)\amd64\readwrit.obj \
+    $(_OBJ_DIR)\amd64\volinfo.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cleanup.obj \
+    $(_OBJ_DIR)\arm\close.obj \
+    $(_OBJ_DIR)\arm\create.obj \
+    $(_OBJ_DIR)\arm\fileinfo.obj \
+    $(_OBJ_DIR)\arm\fsctrl.obj \
+    $(_OBJ_DIR)\arm\strucsup.obj \
+    $(_OBJ_DIR)\arm\rawdisp.obj \
+    $(_OBJ_DIR)\arm\rawinit.obj \
+    $(_OBJ_DIR)\arm\readwrit.obj \
+    $(_OBJ_DIR)\arm\volinfo.obj
+
+PASS0_ARM_OBJECTS=
+

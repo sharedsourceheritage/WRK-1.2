@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\keyba.obj \
+    $(_OBJ_DIR)\i386\keybd_io.obj \
+    $(_OBJ_DIR)\i386\mouse.obj \
+    $(_OBJ_DIR)\i386\ppi.obj \
+    $(_OBJ_DIR)\i386\mouse_io.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\keyba.obj \
+    $(_OBJ_DIR)\ia64\keybd_io.obj \
+    $(_OBJ_DIR)\ia64\mouse.obj \
+    $(_OBJ_DIR)\ia64\ppi.obj \
+    $(_OBJ_DIR)\ia64\mouse_io.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\keyba.obj \
+    $(_OBJ_DIR)\amd64\keybd_io.obj \
+    $(_OBJ_DIR)\amd64\mouse.obj \
+    $(_OBJ_DIR)\amd64\ppi.obj \
+    $(_OBJ_DIR)\amd64\mouse_io.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\keyba.obj \
+    $(_OBJ_DIR)\arm\keybd_io.obj \
+    $(_OBJ_DIR)\arm\mouse.obj \
+    $(_OBJ_DIR)\arm\ppi.obj \
+    $(_OBJ_DIR)\arm\mouse_io.obj
+
+PASS0_ARM_OBJECTS=
+

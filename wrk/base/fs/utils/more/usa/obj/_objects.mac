@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\more.res \
+    $(_OBJ_DIR)\i386\argument.obj \
+    $(_OBJ_DIR)\i386\pager.obj \
+    $(_OBJ_DIR)\i386\more.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\more.res \
+    $(_OBJ_DIR)\ia64\argument.obj \
+    $(_OBJ_DIR)\ia64\pager.obj \
+    $(_OBJ_DIR)\ia64\more.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\more.res \
+    $(_OBJ_DIR)\amd64\argument.obj \
+    $(_OBJ_DIR)\amd64\pager.obj \
+    $(_OBJ_DIR)\amd64\more.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\more.res \
+    $(_OBJ_DIR)\arm\argument.obj \
+    $(_OBJ_DIR)\arm\pager.obj \
+    $(_OBJ_DIR)\arm\more.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,85 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\debug2.obj \
+    $(_OBJ_DIR)\i386\ioaccess.obj \
+    $(_OBJ_DIR)\i386\largeint.obj \
+    $(_OBJ_DIR)\i386\lzntx86.obj \
+    $(_OBJ_DIR)\i386\movemem.obj \
+    $(_OBJ_DIR)\i386\ntcurteb.obj \
+    $(_OBJ_DIR)\i386\divlarge.obj \
+    $(_OBJ_DIR)\i386\debug3.obj \
+    $(_OBJ_DIR)\i386\assert.obj \
+    $(_OBJ_DIR)\i386\bitmap.obj \
+    $(_OBJ_DIR)\i386\cnvint.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\imagedir.obj \
+    $(_OBJ_DIR)\i386\rtlimagentheader.obj \
+    $(_OBJ_DIR)\i386\checksum.obj \
+    $(_OBJ_DIR)\i386\compress.obj \
+    $(_OBJ_DIR)\i386\ldrreloc.obj \
+    $(_OBJ_DIR)\i386\lznt1.obj \
+    $(_OBJ_DIR)\i386\time.obj \
+    $(_OBJ_DIR)\i386\nlsxlat.obj \
+    $(_OBJ_DIR)\i386\xdecode.obj \
+    $(_OBJ_DIR)\i386\sertl.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\miscc.obj \
+    $(_OBJ_DIR)\ia64\assert.obj \
+    $(_OBJ_DIR)\ia64\bitmap.obj \
+    $(_OBJ_DIR)\ia64\cnvint.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\imagedir.obj \
+    $(_OBJ_DIR)\ia64\rtlimagentheader.obj \
+    $(_OBJ_DIR)\ia64\checksum.obj \
+    $(_OBJ_DIR)\ia64\compress.obj \
+    $(_OBJ_DIR)\ia64\ldrreloc.obj \
+    $(_OBJ_DIR)\ia64\lznt1.obj \
+    $(_OBJ_DIR)\ia64\time.obj \
+    $(_OBJ_DIR)\ia64\nlsxlat.obj \
+    $(_OBJ_DIR)\ia64\xdecode.obj \
+    $(_OBJ_DIR)\ia64\sertl.obj \
+    $(_OBJ_DIR)\ia64\capture.obj \
+    $(_OBJ_DIR)\ia64\debugstb.obj \
+    $(_OBJ_DIR)\ia64\largeint.obj \
+    $(_OBJ_DIR)\ia64\fillmem.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\assert.obj \
+    $(_OBJ_DIR)\amd64\bitmap.obj \
+    $(_OBJ_DIR)\amd64\cnvint.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\imagedir.obj \
+    $(_OBJ_DIR)\amd64\rtlimagentheader.obj \
+    $(_OBJ_DIR)\amd64\checksum.obj \
+    $(_OBJ_DIR)\amd64\compress.obj \
+    $(_OBJ_DIR)\amd64\ldrreloc.obj \
+    $(_OBJ_DIR)\amd64\lznt1.obj \
+    $(_OBJ_DIR)\amd64\time.obj \
+    $(_OBJ_DIR)\amd64\nlsxlat.obj \
+    $(_OBJ_DIR)\amd64\xdecode.obj \
+    $(_OBJ_DIR)\amd64\sertl.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\assert.obj \
+    $(_OBJ_DIR)\arm\bitmap.obj \
+    $(_OBJ_DIR)\arm\cnvint.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\imagedir.obj \
+    $(_OBJ_DIR)\arm\rtlimagentheader.obj \
+    $(_OBJ_DIR)\arm\checksum.obj \
+    $(_OBJ_DIR)\arm\compress.obj \
+    $(_OBJ_DIR)\arm\ldrreloc.obj \
+    $(_OBJ_DIR)\arm\lznt1.obj \
+    $(_OBJ_DIR)\arm\time.obj \
+    $(_OBJ_DIR)\arm\nlsxlat.obj \
+    $(_OBJ_DIR)\arm\xdecode.obj \
+    $(_OBJ_DIR)\arm\sertl.obj
+
+PASS0_ARM_OBJECTS=
+

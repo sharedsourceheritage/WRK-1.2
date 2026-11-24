@@ -1,0 +1,21 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\migisol.res \
+    $(_OBJ_DIR)\i386\migisol.obj \
+    $(_OBJ_DIR)\i386\sectorio.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\memmsg.h \
+    $(MC_SOURCEDIR)\memmsg.rc
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

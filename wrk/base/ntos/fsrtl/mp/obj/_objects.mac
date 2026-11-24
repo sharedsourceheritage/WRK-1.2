@@ -1,0 +1,80 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dbcsname.obj \
+    $(_OBJ_DIR)\i386\fastio.obj \
+    $(_OBJ_DIR)\i386\faulttol.obj \
+    $(_OBJ_DIR)\i386\filelock.obj \
+    $(_OBJ_DIR)\i386\filter.obj \
+    $(_OBJ_DIR)\i386\filtrctx.obj \
+    $(_OBJ_DIR)\i386\fsfilter.obj \
+    $(_OBJ_DIR)\i386\fsrtlpc.obj \
+    $(_OBJ_DIR)\i386\largemcb.obj \
+    $(_OBJ_DIR)\i386\name.obj \
+    $(_OBJ_DIR)\i386\notify.obj \
+    $(_OBJ_DIR)\i386\oplock.obj \
+    $(_OBJ_DIR)\i386\pnp.obj \
+    $(_OBJ_DIR)\i386\unc.obj \
+    $(_OBJ_DIR)\i386\tunnel.obj \
+    $(_OBJ_DIR)\i386\stackovf.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dbcsname.obj \
+    $(_OBJ_DIR)\ia64\fastio.obj \
+    $(_OBJ_DIR)\ia64\faulttol.obj \
+    $(_OBJ_DIR)\ia64\filelock.obj \
+    $(_OBJ_DIR)\ia64\filter.obj \
+    $(_OBJ_DIR)\ia64\filtrctx.obj \
+    $(_OBJ_DIR)\ia64\fsfilter.obj \
+    $(_OBJ_DIR)\ia64\fsrtlpc.obj \
+    $(_OBJ_DIR)\ia64\largemcb.obj \
+    $(_OBJ_DIR)\ia64\name.obj \
+    $(_OBJ_DIR)\ia64\notify.obj \
+    $(_OBJ_DIR)\ia64\oplock.obj \
+    $(_OBJ_DIR)\ia64\pnp.obj \
+    $(_OBJ_DIR)\ia64\unc.obj \
+    $(_OBJ_DIR)\ia64\tunnel.obj \
+    $(_OBJ_DIR)\ia64\stackovf.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dbcsname.obj \
+    $(_OBJ_DIR)\amd64\fastio.obj \
+    $(_OBJ_DIR)\amd64\faulttol.obj \
+    $(_OBJ_DIR)\amd64\filelock.obj \
+    $(_OBJ_DIR)\amd64\filter.obj \
+    $(_OBJ_DIR)\amd64\filtrctx.obj \
+    $(_OBJ_DIR)\amd64\fsfilter.obj \
+    $(_OBJ_DIR)\amd64\fsrtlpc.obj \
+    $(_OBJ_DIR)\amd64\largemcb.obj \
+    $(_OBJ_DIR)\amd64\name.obj \
+    $(_OBJ_DIR)\amd64\notify.obj \
+    $(_OBJ_DIR)\amd64\oplock.obj \
+    $(_OBJ_DIR)\amd64\pnp.obj \
+    $(_OBJ_DIR)\amd64\unc.obj \
+    $(_OBJ_DIR)\amd64\tunnel.obj \
+    $(_OBJ_DIR)\amd64\stackovf.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dbcsname.obj \
+    $(_OBJ_DIR)\arm\fastio.obj \
+    $(_OBJ_DIR)\arm\faulttol.obj \
+    $(_OBJ_DIR)\arm\filelock.obj \
+    $(_OBJ_DIR)\arm\filter.obj \
+    $(_OBJ_DIR)\arm\filtrctx.obj \
+    $(_OBJ_DIR)\arm\fsfilter.obj \
+    $(_OBJ_DIR)\arm\fsrtlpc.obj \
+    $(_OBJ_DIR)\arm\largemcb.obj \
+    $(_OBJ_DIR)\arm\name.obj \
+    $(_OBJ_DIR)\arm\notify.obj \
+    $(_OBJ_DIR)\arm\oplock.obj \
+    $(_OBJ_DIR)\arm\pnp.obj \
+    $(_OBJ_DIR)\arm\unc.obj \
+    $(_OBJ_DIR)\arm\tunnel.obj \
+    $(_OBJ_DIR)\arm\stackovf.obj
+
+PASS0_ARM_OBJECTS=
+

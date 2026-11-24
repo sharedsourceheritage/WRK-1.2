@@ -1,0 +1,80 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\perfos.res \
+    $(_OBJ_DIR)\i386\datasys.obj \
+    $(_OBJ_DIR)\i386\datacpu.obj \
+    $(_OBJ_DIR)\i386\datamem.obj \
+    $(_OBJ_DIR)\i386\datacach.obj \
+    $(_OBJ_DIR)\i386\dataobj.obj \
+    $(_OBJ_DIR)\i386\datapage.obj \
+    $(_OBJ_DIR)\i386\perfos.obj \
+    $(_OBJ_DIR)\i386\perfsys.obj \
+    $(_OBJ_DIR)\i386\perfcpu.obj \
+    $(_OBJ_DIR)\i386\perfmem.obj \
+    $(_OBJ_DIR)\i386\perfcach.obj \
+    $(_OBJ_DIR)\i386\perfobj.obj \
+    $(_OBJ_DIR)\i386\perfpage.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\perfosmc.h \
+    $(MC_SOURCEDIR)\perfosmc.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\perfos.res \
+    $(_OBJ_DIR)\ia64\datasys.obj \
+    $(_OBJ_DIR)\ia64\datacpu.obj \
+    $(_OBJ_DIR)\ia64\datamem.obj \
+    $(_OBJ_DIR)\ia64\datacach.obj \
+    $(_OBJ_DIR)\ia64\dataobj.obj \
+    $(_OBJ_DIR)\ia64\datapage.obj \
+    $(_OBJ_DIR)\ia64\perfos.obj \
+    $(_OBJ_DIR)\ia64\perfsys.obj \
+    $(_OBJ_DIR)\ia64\perfcpu.obj \
+    $(_OBJ_DIR)\ia64\perfmem.obj \
+    $(_OBJ_DIR)\ia64\perfcach.obj \
+    $(_OBJ_DIR)\ia64\perfobj.obj \
+    $(_OBJ_DIR)\ia64\perfpage.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\perfosmc.h \
+    $(MC_SOURCEDIR)\perfosmc.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\perfos.res \
+    $(_OBJ_DIR)\amd64\datasys.obj \
+    $(_OBJ_DIR)\amd64\datacpu.obj \
+    $(_OBJ_DIR)\amd64\datamem.obj \
+    $(_OBJ_DIR)\amd64\datacach.obj \
+    $(_OBJ_DIR)\amd64\dataobj.obj \
+    $(_OBJ_DIR)\amd64\datapage.obj \
+    $(_OBJ_DIR)\amd64\perfos.obj \
+    $(_OBJ_DIR)\amd64\perfsys.obj \
+    $(_OBJ_DIR)\amd64\perfcpu.obj \
+    $(_OBJ_DIR)\amd64\perfmem.obj \
+    $(_OBJ_DIR)\amd64\perfcach.obj \
+    $(_OBJ_DIR)\amd64\perfobj.obj \
+    $(_OBJ_DIR)\amd64\perfpage.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\perfosmc.h \
+    $(MC_SOURCEDIR)\perfosmc.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\perfos.res \
+    $(_OBJ_DIR)\arm\datasys.obj \
+    $(_OBJ_DIR)\arm\datacpu.obj \
+    $(_OBJ_DIR)\arm\datamem.obj \
+    $(_OBJ_DIR)\arm\datacach.obj \
+    $(_OBJ_DIR)\arm\dataobj.obj \
+    $(_OBJ_DIR)\arm\datapage.obj \
+    $(_OBJ_DIR)\arm\perfos.obj \
+    $(_OBJ_DIR)\arm\perfsys.obj \
+    $(_OBJ_DIR)\arm\perfcpu.obj \
+    $(_OBJ_DIR)\arm\perfmem.obj \
+    $(_OBJ_DIR)\arm\perfcach.obj \
+    $(_OBJ_DIR)\arm\perfobj.obj \
+    $(_OBJ_DIR)\arm\perfpage.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\perfosmc.h \
+    $(MC_SOURCEDIR)\perfosmc.rc
+

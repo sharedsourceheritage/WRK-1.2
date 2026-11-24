@@ -1,0 +1,40 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sacsvr.res \
+    $(_OBJ_DIR)\i386\saccmd.obj \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\handler.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\sacmsg.h \
+    $(MC_SOURCEDIR)\sacmsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sacsvr.res \
+    $(_OBJ_DIR)\ia64\saccmd.obj \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\handler.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\sacmsg.h \
+    $(MC_SOURCEDIR)\sacmsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sacsvr.res \
+    $(_OBJ_DIR)\amd64\saccmd.obj \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\handler.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\sacmsg.h \
+    $(MC_SOURCEDIR)\sacmsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sacsvr.res \
+    $(_OBJ_DIR)\arm\saccmd.obj \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\handler.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\sacmsg.h \
+    $(MC_SOURCEDIR)\sacmsg.rc
+

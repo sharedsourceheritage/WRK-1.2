@@ -1,0 +1,71 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\lpcmove.obj \
+    $(_OBJ_DIR)\i386\lpcinit.obj \
+    $(_OBJ_DIR)\i386\lpccreat.obj \
+    $(_OBJ_DIR)\i386\lpclistn.obj \
+    $(_OBJ_DIR)\i386\lpcconn.obj \
+    $(_OBJ_DIR)\i386\lpccompl.obj \
+    $(_OBJ_DIR)\i386\lpcsend.obj \
+    $(_OBJ_DIR)\i386\lpcrecv.obj \
+    $(_OBJ_DIR)\i386\lpcreply.obj \
+    $(_OBJ_DIR)\i386\lpcquery.obj \
+    $(_OBJ_DIR)\i386\lpcqueue.obj \
+    $(_OBJ_DIR)\i386\lpcclose.obj \
+    $(_OBJ_DIR)\i386\lpcpriv.obj \
+    $(_OBJ_DIR)\i386\lpclog.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\lpcmove.obj \
+    $(_OBJ_DIR)\ia64\lpcinit.obj \
+    $(_OBJ_DIR)\ia64\lpccreat.obj \
+    $(_OBJ_DIR)\ia64\lpclistn.obj \
+    $(_OBJ_DIR)\ia64\lpcconn.obj \
+    $(_OBJ_DIR)\ia64\lpccompl.obj \
+    $(_OBJ_DIR)\ia64\lpcsend.obj \
+    $(_OBJ_DIR)\ia64\lpcrecv.obj \
+    $(_OBJ_DIR)\ia64\lpcreply.obj \
+    $(_OBJ_DIR)\ia64\lpcquery.obj \
+    $(_OBJ_DIR)\ia64\lpcqueue.obj \
+    $(_OBJ_DIR)\ia64\lpcclose.obj \
+    $(_OBJ_DIR)\ia64\lpcpriv.obj \
+    $(_OBJ_DIR)\ia64\lpclog.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\lpcmove.obj \
+    $(_OBJ_DIR)\amd64\lpcinit.obj \
+    $(_OBJ_DIR)\amd64\lpccreat.obj \
+    $(_OBJ_DIR)\amd64\lpclistn.obj \
+    $(_OBJ_DIR)\amd64\lpcconn.obj \
+    $(_OBJ_DIR)\amd64\lpccompl.obj \
+    $(_OBJ_DIR)\amd64\lpcsend.obj \
+    $(_OBJ_DIR)\amd64\lpcrecv.obj \
+    $(_OBJ_DIR)\amd64\lpcreply.obj \
+    $(_OBJ_DIR)\amd64\lpcquery.obj \
+    $(_OBJ_DIR)\amd64\lpcqueue.obj \
+    $(_OBJ_DIR)\amd64\lpcclose.obj \
+    $(_OBJ_DIR)\amd64\lpcpriv.obj \
+    $(_OBJ_DIR)\amd64\lpclog.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\lpcinit.obj \
+    $(_OBJ_DIR)\arm\lpccreat.obj \
+    $(_OBJ_DIR)\arm\lpclistn.obj \
+    $(_OBJ_DIR)\arm\lpcconn.obj \
+    $(_OBJ_DIR)\arm\lpccompl.obj \
+    $(_OBJ_DIR)\arm\lpcsend.obj \
+    $(_OBJ_DIR)\arm\lpcrecv.obj \
+    $(_OBJ_DIR)\arm\lpcreply.obj \
+    $(_OBJ_DIR)\arm\lpcquery.obj \
+    $(_OBJ_DIR)\arm\lpcqueue.obj \
+    $(_OBJ_DIR)\arm\lpcclose.obj \
+    $(_OBJ_DIR)\arm\lpcpriv.obj \
+    $(_OBJ_DIR)\arm\lpclog.obj
+
+PASS0_ARM_OBJECTS=
+

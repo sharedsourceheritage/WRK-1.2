@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\compbatt.res \
+    $(_OBJ_DIR)\i386\compbatt.obj \
+    $(_OBJ_DIR)\i386\compmisc.obj \
+    $(_OBJ_DIR)\i386\comppnp.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\compbatt.res \
+    $(_OBJ_DIR)\ia64\compbatt.obj \
+    $(_OBJ_DIR)\ia64\compmisc.obj \
+    $(_OBJ_DIR)\ia64\comppnp.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\compbatt.res \
+    $(_OBJ_DIR)\amd64\compbatt.obj \
+    $(_OBJ_DIR)\amd64\compmisc.obj \
+    $(_OBJ_DIR)\amd64\comppnp.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\compbatt.res \
+    $(_OBJ_DIR)\arm\compbatt.obj \
+    $(_OBJ_DIR)\arm\compmisc.obj \
+    $(_OBJ_DIR)\arm\comppnp.obj
+
+PASS0_ARM_OBJECTS=
+

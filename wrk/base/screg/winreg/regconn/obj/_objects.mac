@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\regbind.obj \
+    $(_OBJ_DIR)\i386\shutcall.obj \
+    $(_OBJ_DIR)\i386\shutinit.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\regbind.obj \
+    $(_OBJ_DIR)\ia64\shutcall.obj \
+    $(_OBJ_DIR)\ia64\shutinit.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\regbind.obj \
+    $(_OBJ_DIR)\amd64\shutcall.obj \
+    $(_OBJ_DIR)\amd64\shutinit.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\regbind.obj \
+    $(_OBJ_DIR)\arm\shutcall.obj \
+    $(_OBJ_DIR)\arm\shutinit.obj
+
+PASS0_ARM_OBJECTS=
+

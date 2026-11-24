@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\hsmservr.res \
+    $(_OBJ_DIR)\i386\hsmconpt.obj \
+    $(_OBJ_DIR)\i386\hsmservr.obj \
+    $(_OBJ_DIR)\i386\stdafx.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\hsmservr.res \
+    $(_OBJ_DIR)\ia64\hsmconpt.obj \
+    $(_OBJ_DIR)\ia64\hsmservr.obj \
+    $(_OBJ_DIR)\ia64\stdafx.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\hsmservr.res \
+    $(_OBJ_DIR)\amd64\hsmconpt.obj \
+    $(_OBJ_DIR)\amd64\hsmservr.obj \
+    $(_OBJ_DIR)\amd64\stdafx.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\hsmservr.res \
+    $(_OBJ_DIR)\arm\hsmconpt.obj \
+    $(_OBJ_DIR)\arm\hsmservr.obj \
+    $(_OBJ_DIR)\arm\stdafx.obj
+
+PASS0_ARM_OBJECTS=
+

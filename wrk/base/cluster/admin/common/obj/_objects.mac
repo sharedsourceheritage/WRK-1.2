@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cluadmexhostsvr_i.obj \
+    $(_OBJ_DIR)\i386\admnetutils.obj \
+    $(_OBJ_DIR)\i386\cluswrap.obj \
+    $(_OBJ_DIR)\i386\restypeutils.obj \
+    $(_OBJ_DIR)\i386\quorumutils.obj \
+    $(_OBJ_DIR)\i386\ddxddv.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\cluadmexhostsvr.h
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cluadmexhostsvr_i.obj \
+    $(_OBJ_DIR)\ia64\admnetutils.obj \
+    $(_OBJ_DIR)\ia64\cluswrap.obj \
+    $(_OBJ_DIR)\ia64\restypeutils.obj \
+    $(_OBJ_DIR)\ia64\quorumutils.obj \
+    $(_OBJ_DIR)\ia64\ddxddv.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\cluadmexhostsvr.h
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cluadmexhostsvr_i.obj \
+    $(_OBJ_DIR)\amd64\admnetutils.obj \
+    $(_OBJ_DIR)\amd64\cluswrap.obj \
+    $(_OBJ_DIR)\amd64\restypeutils.obj \
+    $(_OBJ_DIR)\amd64\quorumutils.obj \
+    $(_OBJ_DIR)\amd64\ddxddv.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\cluadmexhostsvr.h
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cluadmexhostsvr_i.obj \
+    $(_OBJ_DIR)\arm\admnetutils.obj \
+    $(_OBJ_DIR)\arm\cluswrap.obj \
+    $(_OBJ_DIR)\arm\restypeutils.obj \
+    $(_OBJ_DIR)\arm\quorumutils.obj \
+    $(_OBJ_DIR)\arm\ddxddv.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\cluadmexhostsvr.h
+

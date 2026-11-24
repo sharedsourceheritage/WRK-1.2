@@ -1,0 +1,100 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\res.res \
+    $(_OBJ_DIR)\i386\batch.obj \
+    $(_OBJ_DIR)\i386\bootsect.obj \
+    $(_OBJ_DIR)\i386\cmds1.obj \
+    $(_OBJ_DIR)\i386\console.obj \
+    $(_OBJ_DIR)\i386\copy.obj \
+    $(_OBJ_DIR)\i386\curdir.obj \
+    $(_OBJ_DIR)\i386\dir.obj \
+    $(_OBJ_DIR)\i386\dispatch.obj \
+    $(_OBJ_DIR)\i386\expand.obj \
+    $(_OBJ_DIR)\i386\extprog.obj \
+    $(_OBJ_DIR)\i386\help.obj \
+    $(_OBJ_DIR)\i386\logon.obj \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\map.obj \
+    $(_OBJ_DIR)\i386\mbr.obj \
+    $(_OBJ_DIR)\i386\resource.obj \
+    $(_OBJ_DIR)\i386\services.obj \
+    $(_OBJ_DIR)\i386\util.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg1.h \
+    $(MC_SOURCEDIR)\msg1.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\res.res \
+    $(_OBJ_DIR)\ia64\batch.obj \
+    $(_OBJ_DIR)\ia64\bootsect.obj \
+    $(_OBJ_DIR)\ia64\cmds1.obj \
+    $(_OBJ_DIR)\ia64\console.obj \
+    $(_OBJ_DIR)\ia64\copy.obj \
+    $(_OBJ_DIR)\ia64\curdir.obj \
+    $(_OBJ_DIR)\ia64\dir.obj \
+    $(_OBJ_DIR)\ia64\dispatch.obj \
+    $(_OBJ_DIR)\ia64\expand.obj \
+    $(_OBJ_DIR)\ia64\extprog.obj \
+    $(_OBJ_DIR)\ia64\help.obj \
+    $(_OBJ_DIR)\ia64\logon.obj \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\map.obj \
+    $(_OBJ_DIR)\ia64\mbr.obj \
+    $(_OBJ_DIR)\ia64\resource.obj \
+    $(_OBJ_DIR)\ia64\services.obj \
+    $(_OBJ_DIR)\ia64\util.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg1.h \
+    $(MC_SOURCEDIR)\msg1.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\res.res \
+    $(_OBJ_DIR)\amd64\batch.obj \
+    $(_OBJ_DIR)\amd64\bootsect.obj \
+    $(_OBJ_DIR)\amd64\cmds1.obj \
+    $(_OBJ_DIR)\amd64\console.obj \
+    $(_OBJ_DIR)\amd64\copy.obj \
+    $(_OBJ_DIR)\amd64\curdir.obj \
+    $(_OBJ_DIR)\amd64\dir.obj \
+    $(_OBJ_DIR)\amd64\dispatch.obj \
+    $(_OBJ_DIR)\amd64\expand.obj \
+    $(_OBJ_DIR)\amd64\extprog.obj \
+    $(_OBJ_DIR)\amd64\help.obj \
+    $(_OBJ_DIR)\amd64\logon.obj \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\map.obj \
+    $(_OBJ_DIR)\amd64\mbr.obj \
+    $(_OBJ_DIR)\amd64\resource.obj \
+    $(_OBJ_DIR)\amd64\services.obj \
+    $(_OBJ_DIR)\amd64\util.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg1.h \
+    $(MC_SOURCEDIR)\msg1.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\res.res \
+    $(_OBJ_DIR)\arm\batch.obj \
+    $(_OBJ_DIR)\arm\bootsect.obj \
+    $(_OBJ_DIR)\arm\cmds1.obj \
+    $(_OBJ_DIR)\arm\console.obj \
+    $(_OBJ_DIR)\arm\copy.obj \
+    $(_OBJ_DIR)\arm\curdir.obj \
+    $(_OBJ_DIR)\arm\dir.obj \
+    $(_OBJ_DIR)\arm\dispatch.obj \
+    $(_OBJ_DIR)\arm\expand.obj \
+    $(_OBJ_DIR)\arm\extprog.obj \
+    $(_OBJ_DIR)\arm\help.obj \
+    $(_OBJ_DIR)\arm\logon.obj \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\map.obj \
+    $(_OBJ_DIR)\arm\mbr.obj \
+    $(_OBJ_DIR)\arm\resource.obj \
+    $(_OBJ_DIR)\arm\services.obj \
+    $(_OBJ_DIR)\arm\util.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\msg1.h \
+    $(MC_SOURCEDIR)\msg1.rc
+

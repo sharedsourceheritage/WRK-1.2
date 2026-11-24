@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ntoskrnl.res \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\anim.obj \
+    $(_OBJ_DIR)\i386\port.obj \
+    $(_OBJ_DIR)\i386\bootvid.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ntoskrnl.res \
+    $(_OBJ_DIR)\ia64\init.obj \
+    $(_OBJ_DIR)\ia64\anim.obj \
+    $(_OBJ_DIR)\ia64\port.obj \
+    $(_OBJ_DIR)\ia64\bootvid.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ntoskrnl.res \
+    $(_OBJ_DIR)\amd64\init.obj \
+    $(_OBJ_DIR)\amd64\anim.obj \
+    $(_OBJ_DIR)\amd64\port.obj \
+    $(_OBJ_DIR)\amd64\bootvid.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ntoskrnl.res \
+    $(_OBJ_DIR)\arm\init.obj \
+    $(_OBJ_DIR)\arm\anim.obj \
+    $(_OBJ_DIR)\arm\port.obj \
+    $(_OBJ_DIR)\arm\bootvid.obj
+
+PASS0_ARM_OBJECTS=
+

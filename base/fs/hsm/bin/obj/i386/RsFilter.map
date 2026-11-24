@@ -1,0 +1,323 @@
+ RsFilter
+
+ Timestamp is 6b04f2a0 (Mon Nov 23 21:12:48 2026)
+
+ Preferred load address is 00010000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00003ae2H .text                   CODE
+ 0002:00000000 000001acH .idata$5                DATA
+ 0002:000001b0 00000378H .rdata                  DATA
+ 0002:00000528 0000005eH .rdata$debug            DATA
+ 0002:00000590 00000004H .rdata$sxdata           DATA
+ 0003:00000000 0000001cH .data                   DATA
+ 0003:00000020 00000164H .bss                    DATA
+ 0004:00000000 0000cde8H PAGE                    CODE
+ 0005:00000000 000008e4H INIT                    CODE
+ 0005:000008e4 00000028H .idata$2                CODE
+ 0005:0000090c 00000014H .idata$3                CODE
+ 0005:00000920 000001acH .idata$4                CODE
+ 0005:00000acc 00000908H .idata$6                CODE
+ 0006:00000000 000000a0H .rsrc$01                DATA
+ 0006:000000a0 00001820H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0000:00000001       ___safe_se_handler_count   00000001     <absolute>
+ 0001:00000000       _RsPassThrough@8           00011000 f   rpfilter.obj
+ 0001:00000068       _RsOpenComplete@12         00011068 f   rpfilter.obj
+ 0001:000002b6       _RsRead@8                  000112b6 f   rpfilter.obj
+ 0001:00000624       _RsWrite@8                 00011624 f   rpfilter.obj
+ 0001:00000724       _RsMapUserBuffer@4         00011724 f   rpfilter.obj
+ 0001:00000778       _RsFastIoMdlReadComplete@12 00011778 f   rpfilter.obj
+ 0001:000007e6       _RsFastIoMdlReadCompleteCompressed@12 000117e6 f   rpfilter.obj
+ 0001:00000856       _RsFastIoMdlWriteCompleteCompressed@16 00011856 f   rpfilter.obj
+ 0001:000008b8       _RsAsyncCompletion@12      000118b8 f   rpfilter.obj
+ 0001:000008e0       _RsQueryInformationCompletion@12 000118e0 f   rpfilter.obj
+ 0001:00000a5e       _RsCreateCheck@12          00011a5e f   rpfilter.obj
+ 0001:0000107c       _RsCompleteIrp@12          0001207c f   rpfilfun.obj
+ 0001:00001104       _RsLogError@24             00012104 f   rpfilfun.obj
+ 0001:00001276       _RsSetCancelRoutine@8      00012276 f   rpfilfun.obj
+ 0001:000012b2       _RsClearCancelRoutine@4    000122b2 f   rpfilfun.obj
+ 0001:0000131c       _RsExceptionFilter@8       0001231c f   rpfilfun.obj
+ 0001:00001394       _RsInterlockedRemoveEntryList@8 00012394 f   rpfilfun.obj
+ 0001:000013be       _RsDequeuePacket@8         000123be f   rpfilfun.obj
+ 0001:000015dc       _RsIsFileObj@40            000125dc f   rpfilfun.obj
+ 0001:00001a42       _RsCompleteReads@4         00012a42 f   rpfilfun.obj
+ 0001:00001cc6       _RsRemoveIo@0              00012cc6 f   rpfilfun.obj
+ 0001:00001d5e       _RsCancelIo@0              00012d5e f   rpfilfun.obj
+ 0001:00001f88       _RsCancelWriteRecall@8     00012f88 f   rpfilfun.obj
+ 0001:00002188       _RsAddValidateObj@12       00013188 f   rpfilfun.obj
+ 0001:000022e0       _RsCancelIoIrp@8           000132e0 f   rpfilfun.obj
+ 0001:00002526       _RsCancelReadRecall@8      00013526 f   rpfilfun.obj
+ 0001:000028fe       _RsPartialData@32          000138fe f   rpfilfun.obj
+ 0001:00002e0e       _RsAddIo@4                 00013e0e f   rpfilfun.obj
+ 0001:00003292       _RsCompleteRecall@24       00014292 f   rpzw.obj
+ 0001:000037c0       _RsCacheSetMasterIrpCancelRoutine@8 000147c0 f   rpcache.obj
+ 0001:00003814       _RsCancelNoRecall@8        00014814 f   rpcache.obj
+ 0001:0000386a       _RsCacheReadCompletion@12  0001486a f   rpcache.obj
+ 0001:000038ec       _RsNoRecallMasterIrpCompletion@12 000148ec f   rpcache.obj
+ 0001:0000393a       _RsCacheGetNextQueuedRequest@4 0001493a f   rpcache.obj
+ 0001:00003986       _RsCacheCancelQueuedRequest@8 00014986 f   rpcache.obj
+ 0001:000039be       _RsCacheQueueRequestWithBuffer@12 000149be f   rpcache.obj
+ 0001:00003a20       ___report_gsfailure        00014a20 f   BufferOverflowK:gs_support.obj
+ 0001:00003a32       @__security_check_cookie@4 00014a32 f   BufferOverflowK:secchk.obj
+ 0001:00003a40       _DbgPrintEx                00014a40 f   ntoskrnl:ntoskrnl.exe
+ 0001:00003a48       __SEH_prolog               00014a48 f   ntoskrnl:sehprolg.obj
+ 0001:00003a83       __SEH_epilog               00014a83 f   ntoskrnl:sehprolg.obj
+ 0001:00003a94       __except_handler3          00014a94 f   ntoskrnl:ntoskrnl.exe
+ 0001:00003a9a       _DbgBreakPoint@0           00014a9a f   ntoskrnl:ntoskrnl.exe
+ 0001:00003aa0       _DbgPrint                  00014aa0 f   ntoskrnl:ntoskrnl.exe
+ 0001:00003aa6       __allshl                   00014aa6 f   ntoskrnl:ntoskrnl.exe
+ 0001:00003aac       _MmCanFileBeTruncated@8    00014aac f   ntoskrnl:ntoskrnl.exe
+ 0001:00003ab2       _KeGetCurrentThread@0      00014ab2 f   ntoskrnl:ntoskrnl.exe
+ 0001:00003ab8       _IoCreateFileSpecifyDeviceObjectHint@60 00014ab8 f   ntoskrnl:ntoskrnl.exe
+ 0001:00003abe       _PsGetCurrentThreadId@0    00014abe f   ntoskrnl:ntoskrnl.exe
+ 0001:00003ac4       __aullrem                  00014ac4 f   ntoskrnl:ntoskrnl.exe
+ 0001:00003aca       __allmul                   00014aca f   ntoskrnl:ntoskrnl.exe
+ 0001:00003ad0       __allrem                   00014ad0 f   ntoskrnl:ntoskrnl.exe
+ 0001:00003ad6       __local_unwind2            00014ad6 f   ntoskrnl:ntoskrnl.exe
+ 0001:00003adc       __alldiv                   00014adc f   ntoskrnl:ntoskrnl.exe
+ 0002:00000000       __imp_@ExAcquireFastMutex@4 00015000     hal:HAL.dll
+ 0002:00000004       __imp_@ExReleaseFastMutex@4 00015004     hal:HAL.dll
+ 0002:00000008       __imp_@KfAcquireSpinLock@4 00015008     hal:HAL.dll
+ 0002:0000000c       __imp_@KfReleaseSpinLock@8 0001500c     hal:HAL.dll
+ 0002:00000010       __imp__KeGetCurrentIrql@0  00015010     hal:HAL.dll
+ 0002:00000014       \177HAL_NULL_THUNK_DATA    00015014     hal:HAL.dll
+ 0002:00000018       __imp__MmMapLockedPagesSpecifyCache@24 00015018     ntoskrnl:ntoskrnl.exe
+ 0002:0000001c       __imp__IoFreeMdl@4         0001501c     ntoskrnl:ntoskrnl.exe
+ 0002:00000020       __imp__MmUnlockPages@4     00015020     ntoskrnl:ntoskrnl.exe
+ 0002:00000024       __imp___except_handler3    00015024     ntoskrnl:ntoskrnl.exe
+ 0002:00000028       __imp__IoDetachDevice@4    00015028     ntoskrnl:ntoskrnl.exe
+ 0002:0000002c       __imp__ExAcquireResourceSharedLite@8 0001502c     ntoskrnl:ntoskrnl.exe
+ 0002:00000030       __imp__KeLeaveCriticalRegion@0 00015030     ntoskrnl:ntoskrnl.exe
+ 0002:00000034       __imp_@ExReleaseResourceLite@4 00015034     ntoskrnl:ntoskrnl.exe
+ 0002:00000038       __imp__IoDeleteDevice@4    00015038     ntoskrnl:ntoskrnl.exe
+ 0002:0000003c       __imp__IoAttachDeviceToDeviceStack@8 0001503c     ntoskrnl:ntoskrnl.exe
+ 0002:00000040       __imp__IoCreateDevice@28   00015040     ntoskrnl:ntoskrnl.exe
+ 0002:00000044       __imp__ExAcquireResourceExclusiveLite@8 00015044     ntoskrnl:ntoskrnl.exe
+ 0002:00000048       __imp__KeEnterCriticalRegion@0 00015048     ntoskrnl:ntoskrnl.exe
+ 0002:0000004c       __imp__RtlCompareUnicodeString@12 0001504c     ntoskrnl:ntoskrnl.exe
+ 0002:00000050       __imp__ObQueryNameString@16 00015050     ntoskrnl:ntoskrnl.exe
+ 0002:00000054       __imp_@ObfDereferenceObject@4 00015054     ntoskrnl:ntoskrnl.exe
+ 0002:00000058       __imp__IoGetDeviceObjectPointer@16 00015058     ntoskrnl:ntoskrnl.exe
+ 0002:0000005c       __imp__RtlInitUnicodeString@8 0001505c     ntoskrnl:ntoskrnl.exe
+ 0002:00000060       __imp__FsRtlLookupPerStreamContextInternal@12 00015060     ntoskrnl:ntoskrnl.exe
+ 0002:00000064       __imp__KeResetEvent@4      00015064     ntoskrnl:ntoskrnl.exe
+ 0002:00000068       __imp__KeWaitForSingleObject@20 00015068     ntoskrnl:ntoskrnl.exe
+ 0002:0000006c       __imp__DbgBreakPoint@0     0001506c     ntoskrnl:ntoskrnl.exe
+ 0002:00000070       __imp__DbgPrint            00015070     ntoskrnl:ntoskrnl.exe
+ 0002:00000074       __imp_@ObfReferenceObject@4 00015074     ntoskrnl:ntoskrnl.exe
+ 0002:00000078       __imp___allshl             00015078     ntoskrnl:ntoskrnl.exe
+ 0002:0000007c       __imp__ExFreePoolWithTag@8 0001507c     ntoskrnl:ntoskrnl.exe
+ 0002:00000080       __imp__RtlQueryRegistryValues@20 00015080     ntoskrnl:ntoskrnl.exe
+ 0002:00000084       __imp__ExAllocatePoolWithTag@12 00015084     ntoskrnl:ntoskrnl.exe
+ 0002:00000088       __imp__memmove             00015088     ntoskrnl:ntoskrnl.exe
+ 0002:0000008c       __imp__RtlCompareMemory@12 0001508c     ntoskrnl:ntoskrnl.exe
+ 0002:00000090       __imp__MmProbeAndLockPages@12 00015090     ntoskrnl:ntoskrnl.exe
+ 0002:00000094       __imp__ProbeForWrite@12    00015094     ntoskrnl:ntoskrnl.exe
+ 0002:00000098       __imp__IoGetAttachedDevice@4 00015098     ntoskrnl:ntoskrnl.exe
+ 0002:0000009c       __imp__KeInitializeEvent@12 0001509c     ntoskrnl:ntoskrnl.exe
+ 0002:000000a0       __imp__IoCancelFileOpen@8  000150a0     ntoskrnl:ntoskrnl.exe
+ 0002:000000a4       __imp__KeClearEvent@4      000150a4     ntoskrnl:ntoskrnl.exe
+ 0002:000000a8       __imp__ProbeForRead@12     000150a8     ntoskrnl:ntoskrnl.exe
+ 0002:000000ac       __imp__MmCanFileBeTruncated@8 000150ac     ntoskrnl:ntoskrnl.exe
+ 0002:000000b0       __imp__SeSinglePrivilegeCheck@12 000150b0     ntoskrnl:ntoskrnl.exe
+ 0002:000000b4       __imp__KeInitializeSemaphore@12 000150b4     ntoskrnl:ntoskrnl.exe
+ 0002:000000b8       __imp__IoRegisterFsRegistrationChange@8 000150b8     ntoskrnl:ntoskrnl.exe
+ 0002:000000bc       __imp__ExInitializeResourceLite@4 000150bc     ntoskrnl:ntoskrnl.exe
+ 0002:000000c0       __imp__FsRtlRegisterFileSystemFilterCallbacks@8 000150c0     ntoskrnl:ntoskrnl.exe
+ 0002:000000c4       __imp__IoCreateSymbolicLink@8 000150c4     ntoskrnl:ntoskrnl.exe
+ 0002:000000c8       __imp__IoBuildDeviceIoControlRequest@36 000150c8     ntoskrnl:ntoskrnl.exe
+ 0002:000000cc       __imp__IoFreeIrp@4         000150cc     ntoskrnl:ntoskrnl.exe
+ 0002:000000d0       __imp__IoWriteErrorLogEntry@4 000150d0     ntoskrnl:ntoskrnl.exe
+ 0002:000000d4       __imp__IoAllocateErrorLogEntry@8 000150d4     ntoskrnl:ntoskrnl.exe
+ 0002:000000d8       __imp__IoAllocateMdl@20    000150d8     ntoskrnl:ntoskrnl.exe
+ 0002:000000dc       __imp__IoReleaseCancelSpinLock@4 000150dc     ntoskrnl:ntoskrnl.exe
+ 0002:000000e0       __imp__IoAcquireCancelSpinLock@4 000150e0     ntoskrnl:ntoskrnl.exe
+ 0002:000000e4       __imp__swprintf            000150e4     ntoskrnl:ntoskrnl.exe
+ 0002:000000e8       __imp__KeQuerySystemTime@4 000150e8     ntoskrnl:ntoskrnl.exe
+ 0002:000000ec       __imp__ExDeleteResourceLite@4 000150ec     ntoskrnl:ntoskrnl.exe
+ 0002:000000f0       __imp__KeGetCurrentThread@0 000150f0     ntoskrnl:ntoskrnl.exe
+ 0002:000000f4       __imp__IoAllocateIrp@8     000150f4     ntoskrnl:ntoskrnl.exe
+ 0002:000000f8       __imp__IoGetRelatedDeviceObject@4 000150f8     ntoskrnl:ntoskrnl.exe
+ 0002:000000fc       __imp__IoBuildAsynchronousFsdRequest@24 000150fc     ntoskrnl:ntoskrnl.exe
+ 0002:00000100       __imp__ZwClose@4           00015100     ntoskrnl:ntoskrnl.exe
+ 0002:00000104       __imp__KeUnstackDetachProcess@4 00015104     ntoskrnl:ntoskrnl.exe
+ 0002:00000108       __imp__KeStackAttachProcess@8 00015108     ntoskrnl:ntoskrnl.exe
+ 0002:0000010c       __imp__IoGetRequestorProcess@4 0001510c     ntoskrnl:ntoskrnl.exe
+ 0002:00000110       __imp__RtlAppendUnicodeStringToString@8 00015110     ntoskrnl:ntoskrnl.exe
+ 0002:00000114       __imp__RtlCopyUnicodeString@8 00015114     ntoskrnl:ntoskrnl.exe
+ 0002:00000118       __imp_@ExfInterlockedInsertTailList@12 00015118     ntoskrnl:ntoskrnl.exe
+ 0002:0000011c       __imp__IoQueryVolumeInformation@20 0001511c     ntoskrnl:ntoskrnl.exe
+ 0002:00000120       __imp__ObReferenceObjectByHandle@24 00015120     ntoskrnl:ntoskrnl.exe
+ 0002:00000124       _IoFileObjectType          00015124     ntoskrnl:ntoskrnl.exe
+ 0002:00000124       __imp__IoFileObjectType    00015124     ntoskrnl:ntoskrnl.exe
+ 0002:00000128       __imp__IoCreateFileSpecifyDeviceObjectHint@60 00015128     ntoskrnl:ntoskrnl.exe
+ 0002:0000012c       __imp__PsGetCurrentThreadId@0 0001512c     ntoskrnl:ntoskrnl.exe
+ 0002:00000130       __imp_@ExfInterlockedInsertHeadList@12 00015130     ntoskrnl:ntoskrnl.exe
+ 0002:00000134       __imp__MmProbeAndLockProcessPages@16 00015134     ntoskrnl:ntoskrnl.exe
+ 0002:00000138       __imp__KeReleaseSemaphore@16 00015138     ntoskrnl:ntoskrnl.exe
+ 0002:0000013c       __imp__RtlWriteRegistryValue@24 0001513c     ntoskrnl:ntoskrnl.exe
+ 0002:00000140       __imp__RtlIntegerToUnicodeString@12 00015140     ntoskrnl:ntoskrnl.exe
+ 0002:00000144       __imp__FsRtlInsertPerStreamContext@8 00015144     ntoskrnl:ntoskrnl.exe
+ 0002:00000148       __imp__strncpy             00015148     ntoskrnl:ntoskrnl.exe
+ 0002:0000014c       __imp__RtlCopyLuid@8       0001514c     ntoskrnl:ntoskrnl.exe
+ 0002:00000150       __imp__SeTokenIsAdmin@4    00015150     ntoskrnl:ntoskrnl.exe
+ 0002:00000154       __imp__RtlLengthSid@4      00015154     ntoskrnl:ntoskrnl.exe
+ 0002:00000158       __imp__SeQueryInformationToken@12 00015158     ntoskrnl:ntoskrnl.exe
+ 0002:0000015c       __imp__ZwOpenFile@24       0001515c     ntoskrnl:ntoskrnl.exe
+ 0002:00000160       __imp__IoCreateFile@56     00015160     ntoskrnl:ntoskrnl.exe
+ 0002:00000164       __imp__IoCancelIrp@4       00015164     ntoskrnl:ntoskrnl.exe
+ 0002:00000168       __imp_@ExfInterlockedRemoveHeadList@8 00015168     ntoskrnl:ntoskrnl.exe
+ 0002:0000016c       __imp__MmQuerySystemSize@0 0001516c     ntoskrnl:ntoskrnl.exe
+ 0002:00000170       __imp___aullrem            00015170     ntoskrnl:ntoskrnl.exe
+ 0002:00000174       __imp___allmul             00015174     ntoskrnl:ntoskrnl.exe
+ 0002:00000178       __imp__IoMakeAssociatedIrp@8 00015178     ntoskrnl:ntoskrnl.exe
+ 0002:0000017c       __imp___allrem             0001517c     ntoskrnl:ntoskrnl.exe
+ 0002:00000180       __imp___local_unwind2      00015180     ntoskrnl:ntoskrnl.exe
+ 0002:00000184       __imp___alldiv             00015184     ntoskrnl:ntoskrnl.exe
+ 0002:00000188       _KeTickCount               00015188     ntoskrnl:ntoskrnl.exe
+ 0002:00000188       __imp__KeTickCount         00015188     ntoskrnl:ntoskrnl.exe
+ 0002:0000018c       __imp__KeBugCheckEx@20     0001518c     ntoskrnl:ntoskrnl.exe
+ 0002:00000190       __imp__KeSetEvent@12       00015190     ntoskrnl:ntoskrnl.exe
+ 0002:00000194       __imp__DbgPrintEx          00015194     ntoskrnl:ntoskrnl.exe
+ 0002:00000198       __imp__FsRtlRemovePerStreamContext@12 00015198     ntoskrnl:ntoskrnl.exe
+ 0002:0000019c       __imp_@IofCompleteRequest@8 0001519c     ntoskrnl:ntoskrnl.exe
+ 0002:000001a0       __imp__wcslen              000151a0     ntoskrnl:ntoskrnl.exe
+ 0002:000001a4       __imp_@IofCallDriver@8     000151a4     ntoskrnl:ntoskrnl.exe
+ 0002:000001a8       \177ntoskrnl_NULL_THUNK_DATA 000151a8     ntoskrnl:ntoskrnl.exe
+ 0002:000001cc       _RP_MSFT_VENDOR_ID         000151cc     rpfilter.obj
+ 0002:000004e0       __load_config_used         000154e0     ntoskrnl:loadcfg.obj
+ 0002:00000590       ___safe_se_handler_table   00015590     <linker-defined>
+ 0003:00000000       _RsFileContextId           00016000     rpfilfun.obj
+ 0003:00000004       _RsFileObjId               00016004     rpfilfun.obj
+ 0003:00000008       _RsNoRecallReadId          00016008     rpfilfun.obj
+ 0003:0000000c       _RspCacheBlockSize         0001600c     rpcache.obj
+ 0003:00000010       _RspCacheMaxBuffers        00016010     rpcache.obj
+ 0003:00000014       _RspCacheMaxBuckets        00016014     rpcache.obj
+ 0003:00000018       ___security_cookie         00016018     BufferOverflowK:gs_support.obj
+ 0003:00000020       _ExtendedDebug             00016020     rpfilter.obj
+ 0003:00000024       _RsAllowRecalls            00016024     rpfilter.obj
+ 0003:00000028       _RsSkipFilesForLegacyBackup 00016028     rpfilter.obj
+ 0003:0000002c       _RsEnableLegacyAccessMethod 0001602c     rpfilter.obj
+ 0003:00000030       _RsUseUncachedNoRecall     00016030     rpfilter.obj
+ 0003:00000034       _RsFsaRequestCount         00016034     rpfilfun.obj
+ 0003:00000038       _RsDefaultTraceEntries     00016038     rpfilfun.obj
+ 0003:0000003c       _RsTraceControlBlock       0001603c     rpfilfun.obj
+ 0003:00000040       _RspCachePreAllocate       00016040     rpcache.obj
+ 0003:00000044       _RsNoRecallDefault         00016044     rpcache.obj
+ 0003:00000048       _RspCacheInitialized       00016048     rpcache.obj
+ 0003:00000060       _RspCacheLru               00016060     <common>
+ 0003:000000a4       _RspCacheBuckets           000160a4     <common>
+ 0003:000000c0       _RsFsaIoAvailableSemaphore 000160c0     <common>
+ 0003:000000d8       _RsValidateQHead           000160d8     <common>
+ 0003:000000e0       _RsValidateQueueLock       000160e0     <common>
+ 0003:000000e8       _RsFileContextQHead        000160e8     <common>
+ 0003:00000100       _RsFileContextQueueLock    00016100     <common>
+ 0003:00000120       _RsIoQHead                 00016120     <common>
+ 0003:00000128       _RsIoQueueLock             00016128     <common>
+ 0003:00000140       _FsLock                    00016140     <common>
+ 0003:00000178       _FsDeviceObject            00016178     <common>
+ 0003:0000017c       _FsDriverObject            0001617c     <common>
+ 0003:00000180       ___@@_PchSym_@00@UhksrmcoltrxUPtrgUlhUdipReBOCUdipUyzhvUuhUshnUurogviUlyqUrDIGUkxsOlyq@RsFilter 00016180     <common>
+ 0004:0000006e       _RsClose@8                 0001706e f   rpfilter.obj
+ 0004:0000016a       _RsCompleteRead@8          0001716a f   rpfilter.obj
+ 0004:0000024a       _RsShutdown@8              0001724a f   rpfilter.obj
+ 0004:000002ce       _RsCleanupFile@8           000172ce f   rpfilter.obj
+ 0004:000004c2       _RsFsNotification@8        000174c2 f   rpfilter.obj
+ 0004:0000084c       _RsFastIoCheckIfPossible@32 0001784c f   rpfilter.obj
+ 0004:00000924       _RsFastIoRead@32           00017924 f   rpfilter.obj
+ 0004:000009ae       _RsFastIoWrite@32          000179ae f   rpfilter.obj
+ 0004:00000a26       _RsFastIoQueryBasicInfo@20 00017a26 f   rpfilter.obj
+ 0004:00000ada       _RsFastIoQueryStandardInfo@20 00017ada f   rpfilter.obj
+ 0004:00000b3c       _RsFastIoLock@36           00017b3c f   rpfilter.obj
+ 0004:00000bac       _RsFastIoUnlockSingle@28   00017bac f   rpfilter.obj
+ 0004:00000c1a       _RsFastIoUnlockAll@16      00017c1a f   rpfilter.obj
+ 0004:00000c82       _RsFastIoUnlockAllByKey@20 00017c82 f   rpfilter.obj
+ 0004:00000ce6       _RsFastIoDeviceControl@36  00017ce6 f   rpfilter.obj
+ 0004:00000d5e       _RsFastIoDetachDevice@8    00017d5e f   rpfilter.obj
+ 0004:00000dc6       _RsFastIoQueryNetworkOpenInfo@20 00017dc6 f   rpfilter.obj
+ 0004:00000e2c       _RsFastIoMdlRead@28        00017e2c f   rpfilter.obj
+ 0004:00000eaa       _RsFastIoPrepareMdlWrite@28 00017eaa f   rpfilter.obj
+ 0004:00000f2c       _RsFastIoMdlWriteComplete@16 00017f2c f   rpfilter.obj
+ 0004:00000f96       _RsFastIoReadCompressed@40 00017f96 f   rpfilter.obj
+ 0004:0000101e       _RsFastIoWriteCompressed@40 0001801e f   rpfilter.obj
+ 0004:0000109c       _RsFastIoQueryOpen@12      0001809c f   rpfilter.obj
+ 0004:000010f0       _RsPostAcquireFileForSectionSynchronization@12 000180f0 f   rpfilter.obj
+ 0004:0000110a       _RsPostReleaseFileForSectionSynchronization@12 0001810a f   rpfilter.obj
+ 0004:0000155a       _RsRecallFile@4            0001855a f   rpfilter.obj
+ 0004:00001abe       _RsInitialize@0            00018abe f   rpfilter.obj
+ 0004:00001e1c       _RsRecallFsControl@8       00018e1c f   rpfilter.obj
+ 0004:00002272       _RsFsControlMount@8        00019272 f   rpfilter.obj
+ 0004:0000243c       _RsFsControlLoadFs@8       0001943c f   rpfilter.obj
+ 0004:00002532       _RsPreAcquireFileForSectionSynchronization@8 00019532 f   rpfilter.obj
+ 0004:00002658       _RsFsctlRecallFile@4       00019658 f   rpfilter.obj
+ 0004:00002704       _RsQueryInformation@8      00019704 f   rpfilter.obj
+ 0004:0000294a       _RsCreate@8                0001994a f   rpfilter.obj
+ 0004:00002f28       _RsFsControlUserFsRequest@8 00019f28 f   rpfilter.obj
+ 0004:00003604       _RsFsControl@8             0001a604 f   rpfilter.obj
+ 0004:00003694       _RsGetFileUsn@12           0001a694 f   rpfilfun.obj
+ 0004:00003820       _RsIsFastIoPossible@4      0001a820 f   rpfilfun.obj
+ 0004:00003a0c       _RsReleaseFileContext@4    0001aa0c f   rpfilfun.obj
+ 0004:00003dc6       _RsMakeContext@8           0001adc6 f   rpfilfun.obj
+ 0004:0000413a       _RsPreserveDates@4         0001b13a f   rpfilfun.obj
+ 0004:0000452c       _RsDoWrite@8               0001b52c f   rpfilfun.obj
+ 0004:000048b6       _RsAcquireFileContext@12   0001b8b6 f   rpfilfun.obj
+ 0004:00004c4a       _RsPartialWrite@24         0001bc4a f   rpfilfun.obj
+ 0004:00005100       _RsCompleteAllRequests@12  0001c100 f   rpfilfun.obj
+ 0004:000054fe       _RsGetRecallInfo@12        0001c4fe f   rpfilfun.obj
+ 0004:00005830       _RsWriteReparsePointData@4 0001c830 f   rpfilfun.obj
+ 0004:00005b60       _RsIsNoRecall@8            0001cb60 f   rpfilfun.obj
+ 0004:00005d5c       _RsGenerateDevicePath@8    0001cd5c f   rpfilfun.obj
+ 0004:00005fca       _RsGetFsaRequest@0         0001cfca f   rpfilfun.obj
+ 0004:00006192       _RsGetFileName@8           0001d192 f   rpfilfun.obj
+ 0004:000065c4       _RsGetFileId@8             0001d5c4 f   rpfilfun.obj
+ 0004:0000679c       _RsCheckVolumeReadOnly@8   0001d79c f   rpfilfun.obj
+ 0004:00006978       _RsQueueRecall@24          0001d978 f   rpfilfun.obj
+ 0004:00006c7a       _RsQueueNoRecallOpen@28    0001dc7a f   rpfilfun.obj
+ 0004:00006f64       _RsQueueRecallOpen@36      0001df64 f   rpfilfun.obj
+ 0004:00007168       _RsQueueCancel@8           0001e168 f   rpfilfun.obj
+ 0004:00007224       _RsFailAllRequests@8       0001e224 f   rpfilfun.obj
+ 0004:00007406       _RsCancelRecalls@0         0001e406 f   rpfilfun.obj
+ 0004:0000758c       _RsQueueValidate@4         0001e58c f   rpfilfun.obj
+ 0004:000076a4       _RsGetFileInfo@8           0001e6a4 f   rpfilfun.obj
+ 0004:00007866       _RsFreeFileObject@4        0001e866 f   rpfilfun.obj
+ 0004:00008126       _RsCheckRead@12            0001f126 f   rpfilfun.obj
+ 0004:00008ffe       _RsCheckWrite@12           0001fffe f   rpfilfun.obj
+ 0004:00009894       _RsLogValidateNeeded@4     00020894 f   rpfilfun.obj
+ 0004:00009a9c       _RsAddQueue@76             00020a9c f   rpfilfun.obj
+ 0004:00009ffa       _RsAddFileObj@16           00020ffa f   rpfilfun.obj
+ 0004:0000a414       _RsQueueNoRecall@40        00021414 f   rpfilfun.obj
+ 0004:0000a660       _RsGetUserInfo@8           00021660 f   rpsec.obj
+ 0004:0000a9e8       _RsMarkUsn@4               000219e8 f   rpzw.obj
+ 0004:0000ae7a       _RsOpenTarget@20           00021e7a f   rpzw.obj
+ 0004:0000b244       _RsDeleteReparsePoint@4    00022244 f   rpzw.obj
+ 0004:0000b5fe       _RsSetResetAttributes@12   000225fe f   rpzw.obj
+ 0004:0000b95a       _RsSetEndOfFile@12         0002295a f   rpzw.obj
+ 0004:0000bb4a       _RsTruncateFile@4          00022b4a f   rpzw.obj
+ 0004:0000bd1c       _RsSetPremigratedState@4   00022d1c f   rpzw.obj
+ 0004:0000be94       _RsCacheFsaPartialData@24  00022e94 f   rpcache.obj
+ 0004:0000bec6       _RsCacheAllocateBuffer@0   00022ec6 f   rpcache.obj
+ 0004:0000bf36       _RsInsertHeadLru@4         00022f36 f   rpcache.obj
+ 0004:0000bf6e       _RsInsertTailLru@4         00022f6e f   rpcache.obj
+ 0004:0000bfa6       _RsMoveFileBufferToTailLru@4 00022fa6 f   rpcache.obj
+ 0004:0000bfd4       _RsRemoveFromLru@4         00022fd4 f   rpcache.obj
+ 0004:0000c014       _RsfRemoveHeadLru@4        00023014 f   rpcache.obj
+ 0004:0000c152       _RsGetFileBuffer@40        00023152 f   rpcache.obj
+ 0004:0000c3a6       _RsCacheFsaIoComplete@8    000233a6 f   rpcache.obj
+ 0004:0000c5c6       _RsReadBlock@48            000235c6 f   rpcache.obj
+ 0004:0000c89c       _RsGetNoRecallData@36      0002389c f   rpcache.obj
+ 0005:0000012c       _DriverEntry@8             0002412c f   rpfilter.obj
+ 0005:000004bc       _RsTraceInitialize@4       000244bc f   rpfilfun.obj
+ 0005:00000604       _RsCacheGetParameters@0    00024604 f   rpcache.obj
+ 0005:00000798       _RsCacheInitialize@0       00024798 f   rpcache.obj
+ 0005:000008b4       _GsDriverEntry@8           000248b4 f   BufferOverflowK:gs_support.obj
+ 0005:000008e4       __IMPORT_DESCRIPTOR_ntoskrnl 000248e4     ntoskrnl:ntoskrnl.exe
+ 0005:000008f8       __IMPORT_DESCRIPTOR_HAL    000248f8     hal:HAL.dll
+ 0005:0000090c       __NULL_IMPORT_DESCRIPTOR   0002490c     ntoskrnl:ntoskrnl.exe
+
+ entry point at        0005:000008b4
+
+ Static symbols
+

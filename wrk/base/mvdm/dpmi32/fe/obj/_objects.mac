@@ -1,0 +1,82 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dpmi386.obj \
+    $(_OBJ_DIR)\i386\dpmimem.obj \
+    $(_OBJ_DIR)\i386\dosmem.obj \
+    $(_OBJ_DIR)\i386\dpmi32.obj \
+    $(_OBJ_DIR)\i386\dpmiint.obj \
+    $(_OBJ_DIR)\i386\dpmimscr.obj \
+    $(_OBJ_DIR)\i386\dpmiselr.obj \
+    $(_OBJ_DIR)\i386\buffer.obj \
+    $(_OBJ_DIR)\i386\data.obj \
+    $(_OBJ_DIR)\i386\int21map.obj \
+    $(_OBJ_DIR)\i386\int2f.obj \
+    $(_OBJ_DIR)\i386\int31.obj \
+    $(_OBJ_DIR)\i386\modesw.obj \
+    $(_OBJ_DIR)\i386\register.obj \
+    $(_OBJ_DIR)\i386\savestat.obj \
+    $(_OBJ_DIR)\i386\stack.obj \
+    $(_OBJ_DIR)\i386\vxd.obj \
+    $(_OBJ_DIR)\i386\xmem.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dosmem.obj \
+    $(_OBJ_DIR)\ia64\dpmi32.obj \
+    $(_OBJ_DIR)\ia64\dpmiint.obj \
+    $(_OBJ_DIR)\ia64\dpmimscr.obj \
+    $(_OBJ_DIR)\ia64\dpmiselr.obj \
+    $(_OBJ_DIR)\ia64\buffer.obj \
+    $(_OBJ_DIR)\ia64\data.obj \
+    $(_OBJ_DIR)\ia64\int21map.obj \
+    $(_OBJ_DIR)\ia64\int2f.obj \
+    $(_OBJ_DIR)\ia64\int31.obj \
+    $(_OBJ_DIR)\ia64\modesw.obj \
+    $(_OBJ_DIR)\ia64\register.obj \
+    $(_OBJ_DIR)\ia64\savestat.obj \
+    $(_OBJ_DIR)\ia64\stack.obj \
+    $(_OBJ_DIR)\ia64\vxd.obj \
+    $(_OBJ_DIR)\ia64\xmem.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dosmem.obj \
+    $(_OBJ_DIR)\amd64\dpmi32.obj \
+    $(_OBJ_DIR)\amd64\dpmiint.obj \
+    $(_OBJ_DIR)\amd64\dpmimscr.obj \
+    $(_OBJ_DIR)\amd64\dpmiselr.obj \
+    $(_OBJ_DIR)\amd64\buffer.obj \
+    $(_OBJ_DIR)\amd64\data.obj \
+    $(_OBJ_DIR)\amd64\int21map.obj \
+    $(_OBJ_DIR)\amd64\int2f.obj \
+    $(_OBJ_DIR)\amd64\int31.obj \
+    $(_OBJ_DIR)\amd64\modesw.obj \
+    $(_OBJ_DIR)\amd64\register.obj \
+    $(_OBJ_DIR)\amd64\savestat.obj \
+    $(_OBJ_DIR)\amd64\stack.obj \
+    $(_OBJ_DIR)\amd64\vxd.obj \
+    $(_OBJ_DIR)\amd64\xmem.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dosmem.obj \
+    $(_OBJ_DIR)\arm\dpmi32.obj \
+    $(_OBJ_DIR)\arm\dpmiint.obj \
+    $(_OBJ_DIR)\arm\dpmimscr.obj \
+    $(_OBJ_DIR)\arm\dpmiselr.obj \
+    $(_OBJ_DIR)\arm\buffer.obj \
+    $(_OBJ_DIR)\arm\data.obj \
+    $(_OBJ_DIR)\arm\int21map.obj \
+    $(_OBJ_DIR)\arm\int2f.obj \
+    $(_OBJ_DIR)\arm\int31.obj \
+    $(_OBJ_DIR)\arm\modesw.obj \
+    $(_OBJ_DIR)\arm\register.obj \
+    $(_OBJ_DIR)\arm\savestat.obj \
+    $(_OBJ_DIR)\arm\stack.obj \
+    $(_OBJ_DIR)\arm\vxd.obj \
+    $(_OBJ_DIR)\arm\xmem.obj
+
+PASS0_ARM_OBJECTS=
+

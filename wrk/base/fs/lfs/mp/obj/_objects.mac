@@ -1,0 +1,72 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cachesup.obj \
+    $(_OBJ_DIR)\i386\lbcbsup.obj \
+    $(_OBJ_DIR)\i386\lfsdata.obj \
+    $(_OBJ_DIR)\i386\logpgsup.obj \
+    $(_OBJ_DIR)\i386\logrcsup.obj \
+    $(_OBJ_DIR)\i386\lsnsup.obj \
+    $(_OBJ_DIR)\i386\querylog.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\restart.obj \
+    $(_OBJ_DIR)\i386\rstrtsup.obj \
+    $(_OBJ_DIR)\i386\strucsup.obj \
+    $(_OBJ_DIR)\i386\sysinit.obj \
+    $(_OBJ_DIR)\i386\verfysup.obj \
+    $(_OBJ_DIR)\i386\write.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cachesup.obj \
+    $(_OBJ_DIR)\ia64\lbcbsup.obj \
+    $(_OBJ_DIR)\ia64\lfsdata.obj \
+    $(_OBJ_DIR)\ia64\logpgsup.obj \
+    $(_OBJ_DIR)\ia64\logrcsup.obj \
+    $(_OBJ_DIR)\ia64\lsnsup.obj \
+    $(_OBJ_DIR)\ia64\querylog.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\restart.obj \
+    $(_OBJ_DIR)\ia64\rstrtsup.obj \
+    $(_OBJ_DIR)\ia64\strucsup.obj \
+    $(_OBJ_DIR)\ia64\sysinit.obj \
+    $(_OBJ_DIR)\ia64\verfysup.obj \
+    $(_OBJ_DIR)\ia64\write.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cachesup.obj \
+    $(_OBJ_DIR)\amd64\lbcbsup.obj \
+    $(_OBJ_DIR)\amd64\lfsdata.obj \
+    $(_OBJ_DIR)\amd64\logpgsup.obj \
+    $(_OBJ_DIR)\amd64\logrcsup.obj \
+    $(_OBJ_DIR)\amd64\lsnsup.obj \
+    $(_OBJ_DIR)\amd64\querylog.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\restart.obj \
+    $(_OBJ_DIR)\amd64\rstrtsup.obj \
+    $(_OBJ_DIR)\amd64\strucsup.obj \
+    $(_OBJ_DIR)\amd64\sysinit.obj \
+    $(_OBJ_DIR)\amd64\verfysup.obj \
+    $(_OBJ_DIR)\amd64\write.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cachesup.obj \
+    $(_OBJ_DIR)\arm\lbcbsup.obj \
+    $(_OBJ_DIR)\arm\lfsdata.obj \
+    $(_OBJ_DIR)\arm\logpgsup.obj \
+    $(_OBJ_DIR)\arm\logrcsup.obj \
+    $(_OBJ_DIR)\arm\lsnsup.obj \
+    $(_OBJ_DIR)\arm\querylog.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\restart.obj \
+    $(_OBJ_DIR)\arm\rstrtsup.obj \
+    $(_OBJ_DIR)\arm\strucsup.obj \
+    $(_OBJ_DIR)\arm\sysinit.obj \
+    $(_OBJ_DIR)\arm\verfysup.obj \
+    $(_OBJ_DIR)\arm\write.obj
+
+PASS0_ARM_OBJECTS=
+

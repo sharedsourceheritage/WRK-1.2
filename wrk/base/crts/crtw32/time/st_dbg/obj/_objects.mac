@@ -1,0 +1,152 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\asctime.obj \
+    $(_OBJ_DIR)\i386\clock.obj \
+    $(_OBJ_DIR)\i386\ctime.obj \
+    $(_OBJ_DIR)\i386\days.obj \
+    $(_OBJ_DIR)\i386\difftime.obj \
+    $(_OBJ_DIR)\i386\dtoxtime.obj \
+    $(_OBJ_DIR)\i386\ftime.obj \
+    $(_OBJ_DIR)\i386\gmtime.obj \
+    $(_OBJ_DIR)\i386\localtim.obj \
+    $(_OBJ_DIR)\i386\mktime.obj \
+    $(_OBJ_DIR)\i386\strftime.obj \
+    $(_OBJ_DIR)\i386\strdate.obj \
+    $(_OBJ_DIR)\i386\strtime.obj \
+    $(_OBJ_DIR)\i386\systime.obj \
+    $(_OBJ_DIR)\i386\time.obj \
+    $(_OBJ_DIR)\i386\timeset.obj \
+    $(_OBJ_DIR)\i386\tzset.obj \
+    $(_OBJ_DIR)\i386\utime.obj \
+    $(_OBJ_DIR)\i386\wcsftime.obj \
+    $(_OBJ_DIR)\i386\wasctime.obj \
+    $(_OBJ_DIR)\i386\wctime.obj \
+    $(_OBJ_DIR)\i386\wstrdate.obj \
+    $(_OBJ_DIR)\i386\wstrtime.obj \
+    $(_OBJ_DIR)\i386\wutime.obj \
+    $(_OBJ_DIR)\i386\ctime64.obj \
+    $(_OBJ_DIR)\i386\dtoxtm64.obj \
+    $(_OBJ_DIR)\i386\ftime64.obj \
+    $(_OBJ_DIR)\i386\gmtime64.obj \
+    $(_OBJ_DIR)\i386\loctim64.obj \
+    $(_OBJ_DIR)\i386\mktime64.obj \
+    $(_OBJ_DIR)\i386\time64.obj \
+    $(_OBJ_DIR)\i386\utime64.obj \
+    $(_OBJ_DIR)\i386\wctime64.obj \
+    $(_OBJ_DIR)\i386\wutime64.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\asctime.obj \
+    $(_OBJ_DIR)\ia64\clock.obj \
+    $(_OBJ_DIR)\ia64\ctime.obj \
+    $(_OBJ_DIR)\ia64\days.obj \
+    $(_OBJ_DIR)\ia64\difftime.obj \
+    $(_OBJ_DIR)\ia64\dtoxtime.obj \
+    $(_OBJ_DIR)\ia64\ftime.obj \
+    $(_OBJ_DIR)\ia64\gmtime.obj \
+    $(_OBJ_DIR)\ia64\localtim.obj \
+    $(_OBJ_DIR)\ia64\mktime.obj \
+    $(_OBJ_DIR)\ia64\strftime.obj \
+    $(_OBJ_DIR)\ia64\strdate.obj \
+    $(_OBJ_DIR)\ia64\strtime.obj \
+    $(_OBJ_DIR)\ia64\systime.obj \
+    $(_OBJ_DIR)\ia64\time.obj \
+    $(_OBJ_DIR)\ia64\timeset.obj \
+    $(_OBJ_DIR)\ia64\tzset.obj \
+    $(_OBJ_DIR)\ia64\utime.obj \
+    $(_OBJ_DIR)\ia64\wcsftime.obj \
+    $(_OBJ_DIR)\ia64\wasctime.obj \
+    $(_OBJ_DIR)\ia64\wctime.obj \
+    $(_OBJ_DIR)\ia64\wstrdate.obj \
+    $(_OBJ_DIR)\ia64\wstrtime.obj \
+    $(_OBJ_DIR)\ia64\wutime.obj \
+    $(_OBJ_DIR)\ia64\ctime64.obj \
+    $(_OBJ_DIR)\ia64\dtoxtm64.obj \
+    $(_OBJ_DIR)\ia64\ftime64.obj \
+    $(_OBJ_DIR)\ia64\gmtime64.obj \
+    $(_OBJ_DIR)\ia64\loctim64.obj \
+    $(_OBJ_DIR)\ia64\mktime64.obj \
+    $(_OBJ_DIR)\ia64\time64.obj \
+    $(_OBJ_DIR)\ia64\utime64.obj \
+    $(_OBJ_DIR)\ia64\wctime64.obj \
+    $(_OBJ_DIR)\ia64\wutime64.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\asctime.obj \
+    $(_OBJ_DIR)\amd64\clock.obj \
+    $(_OBJ_DIR)\amd64\ctime.obj \
+    $(_OBJ_DIR)\amd64\days.obj \
+    $(_OBJ_DIR)\amd64\difftime.obj \
+    $(_OBJ_DIR)\amd64\dtoxtime.obj \
+    $(_OBJ_DIR)\amd64\ftime.obj \
+    $(_OBJ_DIR)\amd64\gmtime.obj \
+    $(_OBJ_DIR)\amd64\localtim.obj \
+    $(_OBJ_DIR)\amd64\mktime.obj \
+    $(_OBJ_DIR)\amd64\strftime.obj \
+    $(_OBJ_DIR)\amd64\strdate.obj \
+    $(_OBJ_DIR)\amd64\strtime.obj \
+    $(_OBJ_DIR)\amd64\systime.obj \
+    $(_OBJ_DIR)\amd64\time.obj \
+    $(_OBJ_DIR)\amd64\timeset.obj \
+    $(_OBJ_DIR)\amd64\tzset.obj \
+    $(_OBJ_DIR)\amd64\utime.obj \
+    $(_OBJ_DIR)\amd64\wcsftime.obj \
+    $(_OBJ_DIR)\amd64\wasctime.obj \
+    $(_OBJ_DIR)\amd64\wctime.obj \
+    $(_OBJ_DIR)\amd64\wstrdate.obj \
+    $(_OBJ_DIR)\amd64\wstrtime.obj \
+    $(_OBJ_DIR)\amd64\wutime.obj \
+    $(_OBJ_DIR)\amd64\ctime64.obj \
+    $(_OBJ_DIR)\amd64\dtoxtm64.obj \
+    $(_OBJ_DIR)\amd64\ftime64.obj \
+    $(_OBJ_DIR)\amd64\gmtime64.obj \
+    $(_OBJ_DIR)\amd64\loctim64.obj \
+    $(_OBJ_DIR)\amd64\mktime64.obj \
+    $(_OBJ_DIR)\amd64\time64.obj \
+    $(_OBJ_DIR)\amd64\utime64.obj \
+    $(_OBJ_DIR)\amd64\wctime64.obj \
+    $(_OBJ_DIR)\amd64\wutime64.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\asctime.obj \
+    $(_OBJ_DIR)\arm\clock.obj \
+    $(_OBJ_DIR)\arm\ctime.obj \
+    $(_OBJ_DIR)\arm\days.obj \
+    $(_OBJ_DIR)\arm\difftime.obj \
+    $(_OBJ_DIR)\arm\dtoxtime.obj \
+    $(_OBJ_DIR)\arm\ftime.obj \
+    $(_OBJ_DIR)\arm\gmtime.obj \
+    $(_OBJ_DIR)\arm\localtim.obj \
+    $(_OBJ_DIR)\arm\mktime.obj \
+    $(_OBJ_DIR)\arm\strftime.obj \
+    $(_OBJ_DIR)\arm\strdate.obj \
+    $(_OBJ_DIR)\arm\strtime.obj \
+    $(_OBJ_DIR)\arm\systime.obj \
+    $(_OBJ_DIR)\arm\time.obj \
+    $(_OBJ_DIR)\arm\timeset.obj \
+    $(_OBJ_DIR)\arm\tzset.obj \
+    $(_OBJ_DIR)\arm\utime.obj \
+    $(_OBJ_DIR)\arm\wcsftime.obj \
+    $(_OBJ_DIR)\arm\wasctime.obj \
+    $(_OBJ_DIR)\arm\wctime.obj \
+    $(_OBJ_DIR)\arm\wstrdate.obj \
+    $(_OBJ_DIR)\arm\wstrtime.obj \
+    $(_OBJ_DIR)\arm\wutime.obj \
+    $(_OBJ_DIR)\arm\ctime64.obj \
+    $(_OBJ_DIR)\arm\dtoxtm64.obj \
+    $(_OBJ_DIR)\arm\ftime64.obj \
+    $(_OBJ_DIR)\arm\gmtime64.obj \
+    $(_OBJ_DIR)\arm\loctim64.obj \
+    $(_OBJ_DIR)\arm\mktime64.obj \
+    $(_OBJ_DIR)\arm\time64.obj \
+    $(_OBJ_DIR)\arm\utime64.obj \
+    $(_OBJ_DIR)\arm\wctime64.obj \
+    $(_OBJ_DIR)\arm\wutime64.obj
+
+PASS0_ARM_OBJECTS=
+

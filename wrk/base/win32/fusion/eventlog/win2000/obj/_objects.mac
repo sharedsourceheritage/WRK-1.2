@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\eventlog.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\eventlog.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\eventlog.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\eventlog.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+

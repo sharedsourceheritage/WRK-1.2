@@ -1,0 +1,76 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dfsutil.res \
+    $(_OBJ_DIR)\i386\dfsutil.obj \
+    $(_OBJ_DIR)\i386\dfsenumerate.obj \
+    $(_OBJ_DIR)\i386\dfsprocessroots.obj \
+    $(_OBJ_DIR)\i386\dfsblobanalyze.obj \
+    $(_OBJ_DIR)\i386\dfsreparse.obj \
+    $(_OBJ_DIR)\i386\flush.obj \
+    $(_OBJ_DIR)\i386\info.obj \
+    $(_OBJ_DIR)\i386\xmlengine.obj \
+    $(_OBJ_DIR)\i386\rename.obj \
+    $(_OBJ_DIR)\i386\misc.obj \
+    $(_OBJ_DIR)\i386\siteinformation.obj \
+    $(_OBJ_DIR)\i386\dfswin2k.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\dfsutil.res \
+    $(_OBJ_DIR)\ia64\dfsutil.obj \
+    $(_OBJ_DIR)\ia64\dfsenumerate.obj \
+    $(_OBJ_DIR)\ia64\dfsprocessroots.obj \
+    $(_OBJ_DIR)\ia64\dfsblobanalyze.obj \
+    $(_OBJ_DIR)\ia64\dfsreparse.obj \
+    $(_OBJ_DIR)\ia64\flush.obj \
+    $(_OBJ_DIR)\ia64\info.obj \
+    $(_OBJ_DIR)\ia64\xmlengine.obj \
+    $(_OBJ_DIR)\ia64\rename.obj \
+    $(_OBJ_DIR)\ia64\misc.obj \
+    $(_OBJ_DIR)\ia64\siteinformation.obj \
+    $(_OBJ_DIR)\ia64\dfswin2k.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\dfsutil.res \
+    $(_OBJ_DIR)\amd64\dfsutil.obj \
+    $(_OBJ_DIR)\amd64\dfsenumerate.obj \
+    $(_OBJ_DIR)\amd64\dfsprocessroots.obj \
+    $(_OBJ_DIR)\amd64\dfsblobanalyze.obj \
+    $(_OBJ_DIR)\amd64\dfsreparse.obj \
+    $(_OBJ_DIR)\amd64\flush.obj \
+    $(_OBJ_DIR)\amd64\info.obj \
+    $(_OBJ_DIR)\amd64\xmlengine.obj \
+    $(_OBJ_DIR)\amd64\rename.obj \
+    $(_OBJ_DIR)\amd64\misc.obj \
+    $(_OBJ_DIR)\amd64\siteinformation.obj \
+    $(_OBJ_DIR)\amd64\dfswin2k.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\dfsutil.res \
+    $(_OBJ_DIR)\arm\dfsutil.obj \
+    $(_OBJ_DIR)\arm\dfsenumerate.obj \
+    $(_OBJ_DIR)\arm\dfsprocessroots.obj \
+    $(_OBJ_DIR)\arm\dfsblobanalyze.obj \
+    $(_OBJ_DIR)\arm\dfsreparse.obj \
+    $(_OBJ_DIR)\arm\flush.obj \
+    $(_OBJ_DIR)\arm\info.obj \
+    $(_OBJ_DIR)\arm\xmlengine.obj \
+    $(_OBJ_DIR)\arm\rename.obj \
+    $(_OBJ_DIR)\arm\misc.obj \
+    $(_OBJ_DIR)\arm\siteinformation.obj \
+    $(_OBJ_DIR)\arm\dfswin2k.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\messages.h \
+    $(MC_SOURCEDIR)\messages.rc
+

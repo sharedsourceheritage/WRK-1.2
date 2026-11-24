@@ -1,0 +1,56 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cli.res \
+    $(_OBJ_DIR)\i386\stdafx.obj \
+    $(_OBJ_DIR)\i386\cli.obj \
+    $(_OBJ_DIR)\i386\cliutils.obj \
+    $(_OBJ_DIR)\i386\cliadmin.obj \
+    $(_OBJ_DIR)\i386\clivol.obj \
+    $(_OBJ_DIR)\i386\clifile.obj \
+    $(_OBJ_DIR)\i386\climedia.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\climsg.h \
+    $(MC_SOURCEDIR)\climsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cli.res \
+    $(_OBJ_DIR)\ia64\stdafx.obj \
+    $(_OBJ_DIR)\ia64\cli.obj \
+    $(_OBJ_DIR)\ia64\cliutils.obj \
+    $(_OBJ_DIR)\ia64\cliadmin.obj \
+    $(_OBJ_DIR)\ia64\clivol.obj \
+    $(_OBJ_DIR)\ia64\clifile.obj \
+    $(_OBJ_DIR)\ia64\climedia.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\climsg.h \
+    $(MC_SOURCEDIR)\climsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cli.res \
+    $(_OBJ_DIR)\amd64\stdafx.obj \
+    $(_OBJ_DIR)\amd64\cli.obj \
+    $(_OBJ_DIR)\amd64\cliutils.obj \
+    $(_OBJ_DIR)\amd64\cliadmin.obj \
+    $(_OBJ_DIR)\amd64\clivol.obj \
+    $(_OBJ_DIR)\amd64\clifile.obj \
+    $(_OBJ_DIR)\amd64\climedia.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\climsg.h \
+    $(MC_SOURCEDIR)\climsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cli.res \
+    $(_OBJ_DIR)\arm\stdafx.obj \
+    $(_OBJ_DIR)\arm\cli.obj \
+    $(_OBJ_DIR)\arm\cliutils.obj \
+    $(_OBJ_DIR)\arm\cliadmin.obj \
+    $(_OBJ_DIR)\arm\clivol.obj \
+    $(_OBJ_DIR)\arm\clifile.obj \
+    $(_OBJ_DIR)\arm\climedia.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\climsg.h \
+    $(MC_SOURCEDIR)\climsg.rc
+

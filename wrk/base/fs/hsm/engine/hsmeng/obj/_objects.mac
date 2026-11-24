@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\hsmeng.res \
+    $(_OBJ_DIR)\i386\stdafx.obj \
+    $(_OBJ_DIR)\i386\hsmeng.obj \
+    $(_OBJ_DIR)\i386\hsmserv.obj \
+    $(_OBJ_DIR)\i386\hsmcln.obj \
+    $(_OBJ_DIR)\i386\hsmdeflt.obj \
+    $(_OBJ_DIR)\i386\hsmmgdrs.obj \
+    $(_OBJ_DIR)\i386\hsmmgdrc.obj \
+    $(_OBJ_DIR)\i386\hsmstgpl.obj \
+    $(_OBJ_DIR)\i386\rswriter.obj \
+    $(_OBJ_DIR)\i386\mountmed.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\hsmeng.res \
+    $(_OBJ_DIR)\ia64\stdafx.obj \
+    $(_OBJ_DIR)\ia64\hsmeng.obj \
+    $(_OBJ_DIR)\ia64\hsmserv.obj \
+    $(_OBJ_DIR)\ia64\hsmcln.obj \
+    $(_OBJ_DIR)\ia64\hsmdeflt.obj \
+    $(_OBJ_DIR)\ia64\hsmmgdrs.obj \
+    $(_OBJ_DIR)\ia64\hsmmgdrc.obj \
+    $(_OBJ_DIR)\ia64\hsmstgpl.obj \
+    $(_OBJ_DIR)\ia64\rswriter.obj \
+    $(_OBJ_DIR)\ia64\mountmed.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\hsmeng.res \
+    $(_OBJ_DIR)\amd64\stdafx.obj \
+    $(_OBJ_DIR)\amd64\hsmeng.obj \
+    $(_OBJ_DIR)\amd64\hsmserv.obj \
+    $(_OBJ_DIR)\amd64\hsmcln.obj \
+    $(_OBJ_DIR)\amd64\hsmdeflt.obj \
+    $(_OBJ_DIR)\amd64\hsmmgdrs.obj \
+    $(_OBJ_DIR)\amd64\hsmmgdrc.obj \
+    $(_OBJ_DIR)\amd64\hsmstgpl.obj \
+    $(_OBJ_DIR)\amd64\rswriter.obj \
+    $(_OBJ_DIR)\amd64\mountmed.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\hsmeng.res \
+    $(_OBJ_DIR)\arm\stdafx.obj \
+    $(_OBJ_DIR)\arm\hsmeng.obj \
+    $(_OBJ_DIR)\arm\hsmserv.obj \
+    $(_OBJ_DIR)\arm\hsmcln.obj \
+    $(_OBJ_DIR)\arm\hsmdeflt.obj \
+    $(_OBJ_DIR)\arm\hsmmgdrs.obj \
+    $(_OBJ_DIR)\arm\hsmmgdrc.obj \
+    $(_OBJ_DIR)\arm\hsmstgpl.obj \
+    $(_OBJ_DIR)\arm\rswriter.obj \
+    $(_OBJ_DIR)\arm\mountmed.obj
+
+PASS0_ARM_OBJECTS=
+

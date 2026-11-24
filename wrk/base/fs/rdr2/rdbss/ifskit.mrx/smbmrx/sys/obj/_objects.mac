@@ -1,0 +1,148 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\smbmrx.res \
+    $(_OBJ_DIR)\i386\3connect.obj \
+    $(_OBJ_DIR)\i386\ea.obj \
+    $(_OBJ_DIR)\i386\devfcb.obj \
+    $(_OBJ_DIR)\i386\downlvli.obj \
+    $(_OBJ_DIR)\i386\downlvlo.obj \
+    $(_OBJ_DIR)\i386\fileinfo.obj \
+    $(_OBJ_DIR)\i386\fsctl.obj \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\locks.obj \
+    $(_OBJ_DIR)\i386\midatlas.obj \
+    $(_OBJ_DIR)\i386\mm.obj \
+    $(_OBJ_DIR)\i386\netroot.obj \
+    $(_OBJ_DIR)\i386\openclos.obj \
+    $(_OBJ_DIR)\i386\read.obj \
+    $(_OBJ_DIR)\i386\recursvc.obj \
+    $(_OBJ_DIR)\i386\rename.obj \
+    $(_OBJ_DIR)\i386\sessetup.obj \
+    $(_OBJ_DIR)\i386\smbadmin.obj \
+    $(_OBJ_DIR)\i386\smbcedb.obj \
+    $(_OBJ_DIR)\i386\smbcemid.obj \
+    $(_OBJ_DIR)\i386\smbpse.obj \
+    $(_OBJ_DIR)\i386\smbutils.obj \
+    $(_OBJ_DIR)\i386\smbxchng.obj \
+    $(_OBJ_DIR)\i386\sndrcv.obj \
+    $(_OBJ_DIR)\i386\srvcall.obj \
+    $(_OBJ_DIR)\i386\stuffer.obj \
+    $(_OBJ_DIR)\i386\transact.obj \
+    $(_OBJ_DIR)\i386\transprt.obj \
+    $(_OBJ_DIR)\i386\vcsndrcv.obj \
+    $(_OBJ_DIR)\i386\write.obj \
+    $(_OBJ_DIR)\i386\vnrcntxt.obj \
+    $(_OBJ_DIR)\i386\wmlkm.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\smbmrx.res \
+    $(_OBJ_DIR)\ia64\3connect.obj \
+    $(_OBJ_DIR)\ia64\ea.obj \
+    $(_OBJ_DIR)\ia64\devfcb.obj \
+    $(_OBJ_DIR)\ia64\downlvli.obj \
+    $(_OBJ_DIR)\ia64\downlvlo.obj \
+    $(_OBJ_DIR)\ia64\fileinfo.obj \
+    $(_OBJ_DIR)\ia64\fsctl.obj \
+    $(_OBJ_DIR)\ia64\init.obj \
+    $(_OBJ_DIR)\ia64\locks.obj \
+    $(_OBJ_DIR)\ia64\midatlas.obj \
+    $(_OBJ_DIR)\ia64\mm.obj \
+    $(_OBJ_DIR)\ia64\netroot.obj \
+    $(_OBJ_DIR)\ia64\openclos.obj \
+    $(_OBJ_DIR)\ia64\read.obj \
+    $(_OBJ_DIR)\ia64\recursvc.obj \
+    $(_OBJ_DIR)\ia64\rename.obj \
+    $(_OBJ_DIR)\ia64\sessetup.obj \
+    $(_OBJ_DIR)\ia64\smbadmin.obj \
+    $(_OBJ_DIR)\ia64\smbcedb.obj \
+    $(_OBJ_DIR)\ia64\smbcemid.obj \
+    $(_OBJ_DIR)\ia64\smbpse.obj \
+    $(_OBJ_DIR)\ia64\smbutils.obj \
+    $(_OBJ_DIR)\ia64\smbxchng.obj \
+    $(_OBJ_DIR)\ia64\sndrcv.obj \
+    $(_OBJ_DIR)\ia64\srvcall.obj \
+    $(_OBJ_DIR)\ia64\stuffer.obj \
+    $(_OBJ_DIR)\ia64\transact.obj \
+    $(_OBJ_DIR)\ia64\transprt.obj \
+    $(_OBJ_DIR)\ia64\vcsndrcv.obj \
+    $(_OBJ_DIR)\ia64\write.obj \
+    $(_OBJ_DIR)\ia64\vnrcntxt.obj \
+    $(_OBJ_DIR)\ia64\wmlkm.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\smbmrx.res \
+    $(_OBJ_DIR)\amd64\3connect.obj \
+    $(_OBJ_DIR)\amd64\ea.obj \
+    $(_OBJ_DIR)\amd64\devfcb.obj \
+    $(_OBJ_DIR)\amd64\downlvli.obj \
+    $(_OBJ_DIR)\amd64\downlvlo.obj \
+    $(_OBJ_DIR)\amd64\fileinfo.obj \
+    $(_OBJ_DIR)\amd64\fsctl.obj \
+    $(_OBJ_DIR)\amd64\init.obj \
+    $(_OBJ_DIR)\amd64\locks.obj \
+    $(_OBJ_DIR)\amd64\midatlas.obj \
+    $(_OBJ_DIR)\amd64\mm.obj \
+    $(_OBJ_DIR)\amd64\netroot.obj \
+    $(_OBJ_DIR)\amd64\openclos.obj \
+    $(_OBJ_DIR)\amd64\read.obj \
+    $(_OBJ_DIR)\amd64\recursvc.obj \
+    $(_OBJ_DIR)\amd64\rename.obj \
+    $(_OBJ_DIR)\amd64\sessetup.obj \
+    $(_OBJ_DIR)\amd64\smbadmin.obj \
+    $(_OBJ_DIR)\amd64\smbcedb.obj \
+    $(_OBJ_DIR)\amd64\smbcemid.obj \
+    $(_OBJ_DIR)\amd64\smbpse.obj \
+    $(_OBJ_DIR)\amd64\smbutils.obj \
+    $(_OBJ_DIR)\amd64\smbxchng.obj \
+    $(_OBJ_DIR)\amd64\sndrcv.obj \
+    $(_OBJ_DIR)\amd64\srvcall.obj \
+    $(_OBJ_DIR)\amd64\stuffer.obj \
+    $(_OBJ_DIR)\amd64\transact.obj \
+    $(_OBJ_DIR)\amd64\transprt.obj \
+    $(_OBJ_DIR)\amd64\vcsndrcv.obj \
+    $(_OBJ_DIR)\amd64\write.obj \
+    $(_OBJ_DIR)\amd64\vnrcntxt.obj \
+    $(_OBJ_DIR)\amd64\wmlkm.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\smbmrx.res \
+    $(_OBJ_DIR)\arm\3connect.obj \
+    $(_OBJ_DIR)\arm\ea.obj \
+    $(_OBJ_DIR)\arm\devfcb.obj \
+    $(_OBJ_DIR)\arm\downlvli.obj \
+    $(_OBJ_DIR)\arm\downlvlo.obj \
+    $(_OBJ_DIR)\arm\fileinfo.obj \
+    $(_OBJ_DIR)\arm\fsctl.obj \
+    $(_OBJ_DIR)\arm\init.obj \
+    $(_OBJ_DIR)\arm\locks.obj \
+    $(_OBJ_DIR)\arm\midatlas.obj \
+    $(_OBJ_DIR)\arm\mm.obj \
+    $(_OBJ_DIR)\arm\netroot.obj \
+    $(_OBJ_DIR)\arm\openclos.obj \
+    $(_OBJ_DIR)\arm\read.obj \
+    $(_OBJ_DIR)\arm\recursvc.obj \
+    $(_OBJ_DIR)\arm\rename.obj \
+    $(_OBJ_DIR)\arm\sessetup.obj \
+    $(_OBJ_DIR)\arm\smbadmin.obj \
+    $(_OBJ_DIR)\arm\smbcedb.obj \
+    $(_OBJ_DIR)\arm\smbcemid.obj \
+    $(_OBJ_DIR)\arm\smbpse.obj \
+    $(_OBJ_DIR)\arm\smbutils.obj \
+    $(_OBJ_DIR)\arm\smbxchng.obj \
+    $(_OBJ_DIR)\arm\sndrcv.obj \
+    $(_OBJ_DIR)\arm\srvcall.obj \
+    $(_OBJ_DIR)\arm\stuffer.obj \
+    $(_OBJ_DIR)\arm\transact.obj \
+    $(_OBJ_DIR)\arm\transprt.obj \
+    $(_OBJ_DIR)\arm\vcsndrcv.obj \
+    $(_OBJ_DIR)\arm\write.obj \
+    $(_OBJ_DIR)\arm\vnrcntxt.obj \
+    $(_OBJ_DIR)\arm\wmlkm.obj
+
+PASS0_ARM_OBJECTS=
+

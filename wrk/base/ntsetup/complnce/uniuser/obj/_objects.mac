@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\compliance.obj \
+    $(_OBJ_DIR)\i386\crcmodel.obj \
+    $(_OBJ_DIR)\i386\compchk.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\compliance.obj \
+    $(_OBJ_DIR)\ia64\crcmodel.obj \
+    $(_OBJ_DIR)\ia64\compchk.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\compliance.obj \
+    $(_OBJ_DIR)\amd64\crcmodel.obj \
+    $(_OBJ_DIR)\amd64\compchk.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\compliance.obj \
+    $(_OBJ_DIR)\arm\crcmodel.obj \
+    $(_OBJ_DIR)\arm\compchk.obj
+
+PASS0_ARM_OBJECTS=
+

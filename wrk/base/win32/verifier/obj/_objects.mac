@@ -1,0 +1,80 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\verifier.res \
+    $(_OBJ_DIR)\i386\verifier.obj \
+    $(_OBJ_DIR)\i386\thread.obj \
+    $(_OBJ_DIR)\i386\critsect.obj \
+    $(_OBJ_DIR)\i386\vspace.obj \
+    $(_OBJ_DIR)\i386\support.obj \
+    $(_OBJ_DIR)\i386\handle.obj \
+    $(_OBJ_DIR)\i386\heap.obj \
+    $(_OBJ_DIR)\i386\settings.obj \
+    $(_OBJ_DIR)\i386\tls.obj \
+    $(_OBJ_DIR)\i386\faults.obj \
+    $(_OBJ_DIR)\i386\hooks.obj \
+    $(_OBJ_DIR)\i386\deadlock.obj \
+    $(_OBJ_DIR)\i386\vrfsdk.obj \
+    $(_OBJ_DIR)\i386\logging.obj \
+    $(_OBJ_DIR)\i386\tracker.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\verifier.res \
+    $(_OBJ_DIR)\ia64\verifier.obj \
+    $(_OBJ_DIR)\ia64\thread.obj \
+    $(_OBJ_DIR)\ia64\critsect.obj \
+    $(_OBJ_DIR)\ia64\vspace.obj \
+    $(_OBJ_DIR)\ia64\support.obj \
+    $(_OBJ_DIR)\ia64\handle.obj \
+    $(_OBJ_DIR)\ia64\heap.obj \
+    $(_OBJ_DIR)\ia64\settings.obj \
+    $(_OBJ_DIR)\ia64\tls.obj \
+    $(_OBJ_DIR)\ia64\faults.obj \
+    $(_OBJ_DIR)\ia64\hooks.obj \
+    $(_OBJ_DIR)\ia64\deadlock.obj \
+    $(_OBJ_DIR)\ia64\vrfsdk.obj \
+    $(_OBJ_DIR)\ia64\logging.obj \
+    $(_OBJ_DIR)\ia64\tracker.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\verifier.res \
+    $(_OBJ_DIR)\amd64\verifier.obj \
+    $(_OBJ_DIR)\amd64\thread.obj \
+    $(_OBJ_DIR)\amd64\critsect.obj \
+    $(_OBJ_DIR)\amd64\vspace.obj \
+    $(_OBJ_DIR)\amd64\support.obj \
+    $(_OBJ_DIR)\amd64\handle.obj \
+    $(_OBJ_DIR)\amd64\heap.obj \
+    $(_OBJ_DIR)\amd64\settings.obj \
+    $(_OBJ_DIR)\amd64\tls.obj \
+    $(_OBJ_DIR)\amd64\faults.obj \
+    $(_OBJ_DIR)\amd64\hooks.obj \
+    $(_OBJ_DIR)\amd64\deadlock.obj \
+    $(_OBJ_DIR)\amd64\vrfsdk.obj \
+    $(_OBJ_DIR)\amd64\logging.obj \
+    $(_OBJ_DIR)\amd64\tracker.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\verifier.res \
+    $(_OBJ_DIR)\arm\verifier.obj \
+    $(_OBJ_DIR)\arm\thread.obj \
+    $(_OBJ_DIR)\arm\critsect.obj \
+    $(_OBJ_DIR)\arm\vspace.obj \
+    $(_OBJ_DIR)\arm\support.obj \
+    $(_OBJ_DIR)\arm\handle.obj \
+    $(_OBJ_DIR)\arm\heap.obj \
+    $(_OBJ_DIR)\arm\settings.obj \
+    $(_OBJ_DIR)\arm\tls.obj \
+    $(_OBJ_DIR)\arm\faults.obj \
+    $(_OBJ_DIR)\arm\hooks.obj \
+    $(_OBJ_DIR)\arm\deadlock.obj \
+    $(_OBJ_DIR)\arm\vrfsdk.obj \
+    $(_OBJ_DIR)\arm\logging.obj \
+    $(_OBJ_DIR)\arm\tracker.obj
+
+PASS0_ARM_OBJECTS=
+

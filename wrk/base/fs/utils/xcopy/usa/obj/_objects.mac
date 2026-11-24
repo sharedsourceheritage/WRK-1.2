@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\xcopy.res \
+    $(_OBJ_DIR)\i386\argument.obj \
+    $(_OBJ_DIR)\i386\support.obj \
+    $(_OBJ_DIR)\i386\xcopy.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\xcopy.res \
+    $(_OBJ_DIR)\ia64\argument.obj \
+    $(_OBJ_DIR)\ia64\support.obj \
+    $(_OBJ_DIR)\ia64\xcopy.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\xcopy.res \
+    $(_OBJ_DIR)\amd64\argument.obj \
+    $(_OBJ_DIR)\amd64\support.obj \
+    $(_OBJ_DIR)\amd64\xcopy.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\xcopy.res \
+    $(_OBJ_DIR)\arm\argument.obj \
+    $(_OBJ_DIR)\arm\support.obj \
+    $(_OBJ_DIR)\arm\xcopy.obj
+
+PASS0_ARM_OBJECTS=
+

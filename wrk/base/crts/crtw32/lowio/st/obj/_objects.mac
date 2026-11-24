@@ -1,0 +1,168 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cgets.obj \
+    $(_OBJ_DIR)\i386\cgetws.obj \
+    $(_OBJ_DIR)\i386\chsize.obj \
+    $(_OBJ_DIR)\i386\close.obj \
+    $(_OBJ_DIR)\i386\commit.obj \
+    $(_OBJ_DIR)\i386\cputs.obj \
+    $(_OBJ_DIR)\i386\creat.obj \
+    $(_OBJ_DIR)\i386\dup.obj \
+    $(_OBJ_DIR)\i386\dup2.obj \
+    $(_OBJ_DIR)\i386\eof.obj \
+    $(_OBJ_DIR)\i386\flength.obj \
+    $(_OBJ_DIR)\i386\fleni64.obj \
+    $(_OBJ_DIR)\i386\fstat.obj \
+    $(_OBJ_DIR)\i386\fstat64.obj \
+    $(_OBJ_DIR)\i386\fstati64.obj \
+    $(_OBJ_DIR)\i386\getch.obj \
+    $(_OBJ_DIR)\i386\getwch.obj \
+    $(_OBJ_DIR)\i386\initcon.obj \
+    $(_OBJ_DIR)\i386\ioinit.obj \
+    $(_OBJ_DIR)\i386\isatty.obj \
+    $(_OBJ_DIR)\i386\locking.obj \
+    $(_OBJ_DIR)\i386\lseek.obj \
+    $(_OBJ_DIR)\i386\lseeki64.obj \
+    $(_OBJ_DIR)\i386\mktemp.obj \
+    $(_OBJ_DIR)\i386\open.obj \
+    $(_OBJ_DIR)\i386\osfinfo.obj \
+    $(_OBJ_DIR)\i386\pipe.obj \
+    $(_OBJ_DIR)\i386\putch.obj \
+    $(_OBJ_DIR)\i386\putwch.obj \
+    $(_OBJ_DIR)\i386\read.obj \
+    $(_OBJ_DIR)\i386\setmode.obj \
+    $(_OBJ_DIR)\i386\tell.obj \
+    $(_OBJ_DIR)\i386\telli64.obj \
+    $(_OBJ_DIR)\i386\txtmode.obj \
+    $(_OBJ_DIR)\i386\wcreat.obj \
+    $(_OBJ_DIR)\i386\wmktemp.obj \
+    $(_OBJ_DIR)\i386\wopen.obj \
+    $(_OBJ_DIR)\i386\write.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cgets.obj \
+    $(_OBJ_DIR)\ia64\cgetws.obj \
+    $(_OBJ_DIR)\ia64\chsize.obj \
+    $(_OBJ_DIR)\ia64\close.obj \
+    $(_OBJ_DIR)\ia64\commit.obj \
+    $(_OBJ_DIR)\ia64\cputs.obj \
+    $(_OBJ_DIR)\ia64\creat.obj \
+    $(_OBJ_DIR)\ia64\dup.obj \
+    $(_OBJ_DIR)\ia64\dup2.obj \
+    $(_OBJ_DIR)\ia64\eof.obj \
+    $(_OBJ_DIR)\ia64\flength.obj \
+    $(_OBJ_DIR)\ia64\fleni64.obj \
+    $(_OBJ_DIR)\ia64\fstat.obj \
+    $(_OBJ_DIR)\ia64\fstat64.obj \
+    $(_OBJ_DIR)\ia64\fstati64.obj \
+    $(_OBJ_DIR)\ia64\getch.obj \
+    $(_OBJ_DIR)\ia64\getwch.obj \
+    $(_OBJ_DIR)\ia64\initcon.obj \
+    $(_OBJ_DIR)\ia64\ioinit.obj \
+    $(_OBJ_DIR)\ia64\isatty.obj \
+    $(_OBJ_DIR)\ia64\locking.obj \
+    $(_OBJ_DIR)\ia64\lseek.obj \
+    $(_OBJ_DIR)\ia64\lseeki64.obj \
+    $(_OBJ_DIR)\ia64\mktemp.obj \
+    $(_OBJ_DIR)\ia64\open.obj \
+    $(_OBJ_DIR)\ia64\osfinfo.obj \
+    $(_OBJ_DIR)\ia64\pipe.obj \
+    $(_OBJ_DIR)\ia64\putch.obj \
+    $(_OBJ_DIR)\ia64\putwch.obj \
+    $(_OBJ_DIR)\ia64\read.obj \
+    $(_OBJ_DIR)\ia64\setmode.obj \
+    $(_OBJ_DIR)\ia64\tell.obj \
+    $(_OBJ_DIR)\ia64\telli64.obj \
+    $(_OBJ_DIR)\ia64\txtmode.obj \
+    $(_OBJ_DIR)\ia64\wcreat.obj \
+    $(_OBJ_DIR)\ia64\wmktemp.obj \
+    $(_OBJ_DIR)\ia64\wopen.obj \
+    $(_OBJ_DIR)\ia64\write.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cgets.obj \
+    $(_OBJ_DIR)\amd64\cgetws.obj \
+    $(_OBJ_DIR)\amd64\chsize.obj \
+    $(_OBJ_DIR)\amd64\close.obj \
+    $(_OBJ_DIR)\amd64\commit.obj \
+    $(_OBJ_DIR)\amd64\cputs.obj \
+    $(_OBJ_DIR)\amd64\creat.obj \
+    $(_OBJ_DIR)\amd64\dup.obj \
+    $(_OBJ_DIR)\amd64\dup2.obj \
+    $(_OBJ_DIR)\amd64\eof.obj \
+    $(_OBJ_DIR)\amd64\flength.obj \
+    $(_OBJ_DIR)\amd64\fleni64.obj \
+    $(_OBJ_DIR)\amd64\fstat.obj \
+    $(_OBJ_DIR)\amd64\fstat64.obj \
+    $(_OBJ_DIR)\amd64\fstati64.obj \
+    $(_OBJ_DIR)\amd64\getch.obj \
+    $(_OBJ_DIR)\amd64\getwch.obj \
+    $(_OBJ_DIR)\amd64\initcon.obj \
+    $(_OBJ_DIR)\amd64\ioinit.obj \
+    $(_OBJ_DIR)\amd64\isatty.obj \
+    $(_OBJ_DIR)\amd64\locking.obj \
+    $(_OBJ_DIR)\amd64\lseek.obj \
+    $(_OBJ_DIR)\amd64\lseeki64.obj \
+    $(_OBJ_DIR)\amd64\mktemp.obj \
+    $(_OBJ_DIR)\amd64\open.obj \
+    $(_OBJ_DIR)\amd64\osfinfo.obj \
+    $(_OBJ_DIR)\amd64\pipe.obj \
+    $(_OBJ_DIR)\amd64\putch.obj \
+    $(_OBJ_DIR)\amd64\putwch.obj \
+    $(_OBJ_DIR)\amd64\read.obj \
+    $(_OBJ_DIR)\amd64\setmode.obj \
+    $(_OBJ_DIR)\amd64\tell.obj \
+    $(_OBJ_DIR)\amd64\telli64.obj \
+    $(_OBJ_DIR)\amd64\txtmode.obj \
+    $(_OBJ_DIR)\amd64\wcreat.obj \
+    $(_OBJ_DIR)\amd64\wmktemp.obj \
+    $(_OBJ_DIR)\amd64\wopen.obj \
+    $(_OBJ_DIR)\amd64\write.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cgets.obj \
+    $(_OBJ_DIR)\arm\cgetws.obj \
+    $(_OBJ_DIR)\arm\chsize.obj \
+    $(_OBJ_DIR)\arm\close.obj \
+    $(_OBJ_DIR)\arm\commit.obj \
+    $(_OBJ_DIR)\arm\cputs.obj \
+    $(_OBJ_DIR)\arm\creat.obj \
+    $(_OBJ_DIR)\arm\dup.obj \
+    $(_OBJ_DIR)\arm\dup2.obj \
+    $(_OBJ_DIR)\arm\eof.obj \
+    $(_OBJ_DIR)\arm\flength.obj \
+    $(_OBJ_DIR)\arm\fleni64.obj \
+    $(_OBJ_DIR)\arm\fstat.obj \
+    $(_OBJ_DIR)\arm\fstat64.obj \
+    $(_OBJ_DIR)\arm\fstati64.obj \
+    $(_OBJ_DIR)\arm\getch.obj \
+    $(_OBJ_DIR)\arm\getwch.obj \
+    $(_OBJ_DIR)\arm\initcon.obj \
+    $(_OBJ_DIR)\arm\ioinit.obj \
+    $(_OBJ_DIR)\arm\isatty.obj \
+    $(_OBJ_DIR)\arm\locking.obj \
+    $(_OBJ_DIR)\arm\lseek.obj \
+    $(_OBJ_DIR)\arm\lseeki64.obj \
+    $(_OBJ_DIR)\arm\mktemp.obj \
+    $(_OBJ_DIR)\arm\open.obj \
+    $(_OBJ_DIR)\arm\osfinfo.obj \
+    $(_OBJ_DIR)\arm\pipe.obj \
+    $(_OBJ_DIR)\arm\putch.obj \
+    $(_OBJ_DIR)\arm\putwch.obj \
+    $(_OBJ_DIR)\arm\read.obj \
+    $(_OBJ_DIR)\arm\setmode.obj \
+    $(_OBJ_DIR)\arm\tell.obj \
+    $(_OBJ_DIR)\arm\telli64.obj \
+    $(_OBJ_DIR)\arm\txtmode.obj \
+    $(_OBJ_DIR)\arm\wcreat.obj \
+    $(_OBJ_DIR)\arm\wmktemp.obj \
+    $(_OBJ_DIR)\arm\wopen.obj \
+    $(_OBJ_DIR)\arm\write.obj
+
+PASS0_ARM_OBJECTS=
+

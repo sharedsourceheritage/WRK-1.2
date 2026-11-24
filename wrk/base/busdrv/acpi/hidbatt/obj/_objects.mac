@@ -1,0 +1,48 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\hidbatt.res \
+    $(_OBJ_DIR)\i386\hidbatt.obj \
+    $(_OBJ_DIR)\i386\drvclass.obj \
+    $(_OBJ_DIR)\i386\hidbattio.obj \
+    $(_OBJ_DIR)\i386\ckhid.obj \
+    $(_OBJ_DIR)\i386\ckutils.obj \
+    $(_OBJ_DIR)\i386\hidbattpnp.obj \
+    $(_OBJ_DIR)\i386\cbattery.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\hidbatt.res \
+    $(_OBJ_DIR)\ia64\hidbatt.obj \
+    $(_OBJ_DIR)\ia64\drvclass.obj \
+    $(_OBJ_DIR)\ia64\hidbattio.obj \
+    $(_OBJ_DIR)\ia64\ckhid.obj \
+    $(_OBJ_DIR)\ia64\ckutils.obj \
+    $(_OBJ_DIR)\ia64\hidbattpnp.obj \
+    $(_OBJ_DIR)\ia64\cbattery.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\hidbatt.res \
+    $(_OBJ_DIR)\amd64\hidbatt.obj \
+    $(_OBJ_DIR)\amd64\drvclass.obj \
+    $(_OBJ_DIR)\amd64\hidbattio.obj \
+    $(_OBJ_DIR)\amd64\ckhid.obj \
+    $(_OBJ_DIR)\amd64\ckutils.obj \
+    $(_OBJ_DIR)\amd64\hidbattpnp.obj \
+    $(_OBJ_DIR)\amd64\cbattery.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\hidbatt.res \
+    $(_OBJ_DIR)\arm\hidbatt.obj \
+    $(_OBJ_DIR)\arm\drvclass.obj \
+    $(_OBJ_DIR)\arm\hidbattio.obj \
+    $(_OBJ_DIR)\arm\ckhid.obj \
+    $(_OBJ_DIR)\arm\ckutils.obj \
+    $(_OBJ_DIR)\arm\hidbattpnp.obj \
+    $(_OBJ_DIR)\arm\cbattery.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,38 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\migmain.obj \
+    $(_OBJ_DIR)\i386\usermig.obj \
+    $(_OBJ_DIR)\i386\wkstamig.obj \
+    $(_OBJ_DIR)\i386\migdlls.obj \
+    $(_OBJ_DIR)\i386\filemig.obj \
+    $(_OBJ_DIR)\i386\shllink.obj \
+    $(_OBJ_DIR)\i386\security.obj \
+    $(_OBJ_DIR)\i386\acctlist.obj \
+    $(_OBJ_DIR)\i386\domain.obj \
+    $(_OBJ_DIR)\i386\stf.obj \
+    $(_OBJ_DIR)\i386\inifiles.obj \
+    $(_OBJ_DIR)\i386\stftable.obj \
+    $(_OBJ_DIR)\i386\infparse.obj \
+    $(_OBJ_DIR)\i386\mmedia.obj \
+    $(_OBJ_DIR)\i386\progress.obj \
+    $(_OBJ_DIR)\i386\tapi.obj \
+    $(_OBJ_DIR)\i386\pcache.obj \
+    $(_OBJ_DIR)\i386\rasnt.obj \
+    $(_OBJ_DIR)\i386\dosmignt.obj \
+    $(_OBJ_DIR)\i386\shell.obj \
+    $(_OBJ_DIR)\i386\iniact.obj \
+    $(_OBJ_DIR)\i386\brfcase.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS=
+

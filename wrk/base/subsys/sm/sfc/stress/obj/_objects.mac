@@ -1,0 +1,24 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sfcstress.res \
+    $(_OBJ_DIR)\i386\test.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sfcstress.res \
+    $(_OBJ_DIR)\ia64\test.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sfcstress.res \
+    $(_OBJ_DIR)\amd64\test.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sfcstress.res \
+    $(_OBJ_DIR)\arm\test.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cscdll.obj \
+    $(_OBJ_DIR)\i386\loadperf.obj \
+    $(_OBJ_DIR)\i386\ocmanage.obj \
+    $(_OBJ_DIR)\i386\pidgen.obj \
+    $(_OBJ_DIR)\i386\setupapi.obj \
+    $(_OBJ_DIR)\i386\sfc.obj \
+    $(_OBJ_DIR)\i386\syssetup.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cscdll.obj \
+    $(_OBJ_DIR)\ia64\loadperf.obj \
+    $(_OBJ_DIR)\ia64\ocmanage.obj \
+    $(_OBJ_DIR)\ia64\pidgen.obj \
+    $(_OBJ_DIR)\ia64\setupapi.obj \
+    $(_OBJ_DIR)\ia64\sfc.obj \
+    $(_OBJ_DIR)\ia64\syssetup.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cscdll.obj \
+    $(_OBJ_DIR)\amd64\loadperf.obj \
+    $(_OBJ_DIR)\amd64\ocmanage.obj \
+    $(_OBJ_DIR)\amd64\pidgen.obj \
+    $(_OBJ_DIR)\amd64\setupapi.obj \
+    $(_OBJ_DIR)\amd64\sfc.obj \
+    $(_OBJ_DIR)\amd64\syssetup.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cscdll.obj \
+    $(_OBJ_DIR)\arm\loadperf.obj \
+    $(_OBJ_DIR)\arm\ocmanage.obj \
+    $(_OBJ_DIR)\arm\pidgen.obj \
+    $(_OBJ_DIR)\arm\setupapi.obj \
+    $(_OBJ_DIR)\arm\sfc.obj \
+    $(_OBJ_DIR)\arm\syssetup.obj
+
+PASS0_ARM_OBJECTS=
+

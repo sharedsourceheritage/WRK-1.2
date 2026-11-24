@@ -1,0 +1,136 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\nodefactory.obj \
+    $(_OBJ_DIR)\i386\ndpclassinfo.obj \
+    $(_OBJ_DIR)\i386\recover.obj \
+    $(_OBJ_DIR)\i386\parsepolicy.obj \
+    $(_OBJ_DIR)\i386\partialassemblyversion.obj \
+    $(_OBJ_DIR)\i386\pendingassembly.obj \
+    $(_OBJ_DIR)\i386\policystatement.obj \
+    $(_OBJ_DIR)\i386\probedassemblyinformation.obj \
+    $(_OBJ_DIR)\i386\protectionui.obj \
+    $(_OBJ_DIR)\i386\purevirt.obj \
+    $(_OBJ_DIR)\i386\query.obj \
+    $(_OBJ_DIR)\i386\simplefp.obj \
+    $(_OBJ_DIR)\i386\ssgenctx.obj \
+    $(_OBJ_DIR)\i386\strongname.obj \
+    $(_OBJ_DIR)\i386\strsectgen.obj \
+    $(_OBJ_DIR)\i386\sxsactctx.obj \
+    $(_OBJ_DIR)\i386\sxsasmcache.obj \
+    $(_OBJ_DIR)\i386\sxsasmname.obj \
+    $(_OBJ_DIR)\i386\sxsasmitem.obj \
+    $(_OBJ_DIR)\i386\sxsdebug.obj \
+    $(_OBJ_DIR)\i386\sxsinstall.obj \
+    $(_OBJ_DIR)\i386\sxsntrtl.obj \
+    $(_OBJ_DIR)\i386\sxspath.obj \
+    $(_OBJ_DIR)\i386\sxsprobe.obj \
+    $(_OBJ_DIR)\i386\sxsprotect.obj \
+    $(_OBJ_DIR)\i386\sxssfcscan.obj \
+    $(_OBJ_DIR)\i386\sxssfc_repairshortnames.obj \
+    $(_OBJ_DIR)\i386\sxsxmltree.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\windowclass.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\nodefactory.obj \
+    $(_OBJ_DIR)\ia64\ndpclassinfo.obj \
+    $(_OBJ_DIR)\ia64\recover.obj \
+    $(_OBJ_DIR)\ia64\parsepolicy.obj \
+    $(_OBJ_DIR)\ia64\partialassemblyversion.obj \
+    $(_OBJ_DIR)\ia64\pendingassembly.obj \
+    $(_OBJ_DIR)\ia64\policystatement.obj \
+    $(_OBJ_DIR)\ia64\probedassemblyinformation.obj \
+    $(_OBJ_DIR)\ia64\protectionui.obj \
+    $(_OBJ_DIR)\ia64\purevirt.obj \
+    $(_OBJ_DIR)\ia64\query.obj \
+    $(_OBJ_DIR)\ia64\simplefp.obj \
+    $(_OBJ_DIR)\ia64\ssgenctx.obj \
+    $(_OBJ_DIR)\ia64\strongname.obj \
+    $(_OBJ_DIR)\ia64\strsectgen.obj \
+    $(_OBJ_DIR)\ia64\sxsactctx.obj \
+    $(_OBJ_DIR)\ia64\sxsasmcache.obj \
+    $(_OBJ_DIR)\ia64\sxsasmname.obj \
+    $(_OBJ_DIR)\ia64\sxsasmitem.obj \
+    $(_OBJ_DIR)\ia64\sxsdebug.obj \
+    $(_OBJ_DIR)\ia64\sxsinstall.obj \
+    $(_OBJ_DIR)\ia64\sxsntrtl.obj \
+    $(_OBJ_DIR)\ia64\sxspath.obj \
+    $(_OBJ_DIR)\ia64\sxsprobe.obj \
+    $(_OBJ_DIR)\ia64\sxsprotect.obj \
+    $(_OBJ_DIR)\ia64\sxssfcscan.obj \
+    $(_OBJ_DIR)\ia64\sxssfc_repairshortnames.obj \
+    $(_OBJ_DIR)\ia64\sxsxmltree.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\windowclass.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\nodefactory.obj \
+    $(_OBJ_DIR)\amd64\ndpclassinfo.obj \
+    $(_OBJ_DIR)\amd64\recover.obj \
+    $(_OBJ_DIR)\amd64\parsepolicy.obj \
+    $(_OBJ_DIR)\amd64\partialassemblyversion.obj \
+    $(_OBJ_DIR)\amd64\pendingassembly.obj \
+    $(_OBJ_DIR)\amd64\policystatement.obj \
+    $(_OBJ_DIR)\amd64\probedassemblyinformation.obj \
+    $(_OBJ_DIR)\amd64\protectionui.obj \
+    $(_OBJ_DIR)\amd64\purevirt.obj \
+    $(_OBJ_DIR)\amd64\query.obj \
+    $(_OBJ_DIR)\amd64\simplefp.obj \
+    $(_OBJ_DIR)\amd64\ssgenctx.obj \
+    $(_OBJ_DIR)\amd64\strongname.obj \
+    $(_OBJ_DIR)\amd64\strsectgen.obj \
+    $(_OBJ_DIR)\amd64\sxsactctx.obj \
+    $(_OBJ_DIR)\amd64\sxsasmcache.obj \
+    $(_OBJ_DIR)\amd64\sxsasmname.obj \
+    $(_OBJ_DIR)\amd64\sxsasmitem.obj \
+    $(_OBJ_DIR)\amd64\sxsdebug.obj \
+    $(_OBJ_DIR)\amd64\sxsinstall.obj \
+    $(_OBJ_DIR)\amd64\sxsntrtl.obj \
+    $(_OBJ_DIR)\amd64\sxspath.obj \
+    $(_OBJ_DIR)\amd64\sxsprobe.obj \
+    $(_OBJ_DIR)\amd64\sxsprotect.obj \
+    $(_OBJ_DIR)\amd64\sxssfcscan.obj \
+    $(_OBJ_DIR)\amd64\sxssfc_repairshortnames.obj \
+    $(_OBJ_DIR)\amd64\sxsxmltree.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\windowclass.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\nodefactory.obj \
+    $(_OBJ_DIR)\arm\ndpclassinfo.obj \
+    $(_OBJ_DIR)\arm\recover.obj \
+    $(_OBJ_DIR)\arm\parsepolicy.obj \
+    $(_OBJ_DIR)\arm\partialassemblyversion.obj \
+    $(_OBJ_DIR)\arm\pendingassembly.obj \
+    $(_OBJ_DIR)\arm\policystatement.obj \
+    $(_OBJ_DIR)\arm\probedassemblyinformation.obj \
+    $(_OBJ_DIR)\arm\protectionui.obj \
+    $(_OBJ_DIR)\arm\purevirt.obj \
+    $(_OBJ_DIR)\arm\query.obj \
+    $(_OBJ_DIR)\arm\simplefp.obj \
+    $(_OBJ_DIR)\arm\ssgenctx.obj \
+    $(_OBJ_DIR)\arm\strongname.obj \
+    $(_OBJ_DIR)\arm\strsectgen.obj \
+    $(_OBJ_DIR)\arm\sxsactctx.obj \
+    $(_OBJ_DIR)\arm\sxsasmcache.obj \
+    $(_OBJ_DIR)\arm\sxsasmname.obj \
+    $(_OBJ_DIR)\arm\sxsasmitem.obj \
+    $(_OBJ_DIR)\arm\sxsdebug.obj \
+    $(_OBJ_DIR)\arm\sxsinstall.obj \
+    $(_OBJ_DIR)\arm\sxsntrtl.obj \
+    $(_OBJ_DIR)\arm\sxspath.obj \
+    $(_OBJ_DIR)\arm\sxsprobe.obj \
+    $(_OBJ_DIR)\arm\sxsprotect.obj \
+    $(_OBJ_DIR)\arm\sxssfcscan.obj \
+    $(_OBJ_DIR)\arm\sxssfc_repairshortnames.obj \
+    $(_OBJ_DIR)\arm\sxsxmltree.obj \
+    $(_OBJ_DIR)\arm\util.obj \
+    $(_OBJ_DIR)\arm\windowclass.obj
+
+PASS0_ARM_OBJECTS=
+

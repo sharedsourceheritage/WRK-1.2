@@ -1,0 +1,116 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\rxconnct.obj \
+    $(_OBJ_DIR)\i386\rxce.obj \
+    $(_OBJ_DIR)\i386\rxcecnct.obj \
+    $(_OBJ_DIR)\i386\rxcexmit.obj \
+    $(_OBJ_DIR)\i386\fcbstruc.obj \
+    $(_OBJ_DIR)\i386\lowio.obj \
+    $(_OBJ_DIR)\i386\shadow.obj \
+    $(_OBJ_DIR)\i386\rxtimer.obj \
+    $(_OBJ_DIR)\i386\rxworkq.obj \
+    $(_OBJ_DIR)\i386\prefix.obj \
+    $(_OBJ_DIR)\i386\resrcsup.obj \
+    $(_OBJ_DIR)\i386\buffring.obj \
+    $(_OBJ_DIR)\i386\rxcontx.obj \
+    $(_OBJ_DIR)\i386\rxdata.obj \
+    $(_OBJ_DIR)\i386\rxlog.obj \
+    $(_OBJ_DIR)\i386\rxtrace.obj \
+    $(_OBJ_DIR)\i386\rxdebug.obj \
+    $(_OBJ_DIR)\i386\scavengr.obj \
+    $(_OBJ_DIR)\i386\namcache.obj \
+    $(_OBJ_DIR)\i386\midatlas.obj \
+    $(_OBJ_DIR)\i386\fcbtable.obj \
+    $(_OBJ_DIR)\i386\rxcemm.obj \
+    $(_OBJ_DIR)\i386\rxtdi.obj \
+    $(_OBJ_DIR)\i386\tdihdlr.obj \
+    $(_OBJ_DIR)\i386\tdimisc.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\rxconnct.obj \
+    $(_OBJ_DIR)\ia64\rxce.obj \
+    $(_OBJ_DIR)\ia64\rxcecnct.obj \
+    $(_OBJ_DIR)\ia64\rxcexmit.obj \
+    $(_OBJ_DIR)\ia64\fcbstruc.obj \
+    $(_OBJ_DIR)\ia64\lowio.obj \
+    $(_OBJ_DIR)\ia64\shadow.obj \
+    $(_OBJ_DIR)\ia64\rxtimer.obj \
+    $(_OBJ_DIR)\ia64\rxworkq.obj \
+    $(_OBJ_DIR)\ia64\prefix.obj \
+    $(_OBJ_DIR)\ia64\resrcsup.obj \
+    $(_OBJ_DIR)\ia64\buffring.obj \
+    $(_OBJ_DIR)\ia64\rxcontx.obj \
+    $(_OBJ_DIR)\ia64\rxdata.obj \
+    $(_OBJ_DIR)\ia64\rxlog.obj \
+    $(_OBJ_DIR)\ia64\rxtrace.obj \
+    $(_OBJ_DIR)\ia64\rxdebug.obj \
+    $(_OBJ_DIR)\ia64\scavengr.obj \
+    $(_OBJ_DIR)\ia64\namcache.obj \
+    $(_OBJ_DIR)\ia64\midatlas.obj \
+    $(_OBJ_DIR)\ia64\fcbtable.obj \
+    $(_OBJ_DIR)\ia64\rxcemm.obj \
+    $(_OBJ_DIR)\ia64\rxtdi.obj \
+    $(_OBJ_DIR)\ia64\tdihdlr.obj \
+    $(_OBJ_DIR)\ia64\tdimisc.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\rxconnct.obj \
+    $(_OBJ_DIR)\amd64\rxce.obj \
+    $(_OBJ_DIR)\amd64\rxcecnct.obj \
+    $(_OBJ_DIR)\amd64\rxcexmit.obj \
+    $(_OBJ_DIR)\amd64\fcbstruc.obj \
+    $(_OBJ_DIR)\amd64\lowio.obj \
+    $(_OBJ_DIR)\amd64\shadow.obj \
+    $(_OBJ_DIR)\amd64\rxtimer.obj \
+    $(_OBJ_DIR)\amd64\rxworkq.obj \
+    $(_OBJ_DIR)\amd64\prefix.obj \
+    $(_OBJ_DIR)\amd64\resrcsup.obj \
+    $(_OBJ_DIR)\amd64\buffring.obj \
+    $(_OBJ_DIR)\amd64\rxcontx.obj \
+    $(_OBJ_DIR)\amd64\rxdata.obj \
+    $(_OBJ_DIR)\amd64\rxlog.obj \
+    $(_OBJ_DIR)\amd64\rxtrace.obj \
+    $(_OBJ_DIR)\amd64\rxdebug.obj \
+    $(_OBJ_DIR)\amd64\scavengr.obj \
+    $(_OBJ_DIR)\amd64\namcache.obj \
+    $(_OBJ_DIR)\amd64\midatlas.obj \
+    $(_OBJ_DIR)\amd64\fcbtable.obj \
+    $(_OBJ_DIR)\amd64\rxcemm.obj \
+    $(_OBJ_DIR)\amd64\rxtdi.obj \
+    $(_OBJ_DIR)\amd64\tdihdlr.obj \
+    $(_OBJ_DIR)\amd64\tdimisc.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\rxconnct.obj \
+    $(_OBJ_DIR)\arm\rxce.obj \
+    $(_OBJ_DIR)\arm\rxcecnct.obj \
+    $(_OBJ_DIR)\arm\rxcexmit.obj \
+    $(_OBJ_DIR)\arm\fcbstruc.obj \
+    $(_OBJ_DIR)\arm\lowio.obj \
+    $(_OBJ_DIR)\arm\shadow.obj \
+    $(_OBJ_DIR)\arm\rxtimer.obj \
+    $(_OBJ_DIR)\arm\rxworkq.obj \
+    $(_OBJ_DIR)\arm\prefix.obj \
+    $(_OBJ_DIR)\arm\resrcsup.obj \
+    $(_OBJ_DIR)\arm\buffring.obj \
+    $(_OBJ_DIR)\arm\rxcontx.obj \
+    $(_OBJ_DIR)\arm\rxdata.obj \
+    $(_OBJ_DIR)\arm\rxlog.obj \
+    $(_OBJ_DIR)\arm\rxtrace.obj \
+    $(_OBJ_DIR)\arm\rxdebug.obj \
+    $(_OBJ_DIR)\arm\scavengr.obj \
+    $(_OBJ_DIR)\arm\namcache.obj \
+    $(_OBJ_DIR)\arm\midatlas.obj \
+    $(_OBJ_DIR)\arm\fcbtable.obj \
+    $(_OBJ_DIR)\arm\rxcemm.obj \
+    $(_OBJ_DIR)\arm\rxtdi.obj \
+    $(_OBJ_DIR)\arm\tdihdlr.obj \
+    $(_OBJ_DIR)\arm\tdimisc.obj
+
+PASS0_ARM_OBJECTS=
+

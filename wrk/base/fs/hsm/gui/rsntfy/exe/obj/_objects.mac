@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\rsrecall.res \
+    $(_OBJ_DIR)\i386\clientob.obj \
+    $(_OBJ_DIR)\i386\note.obj \
+    $(_OBJ_DIR)\i386\rsrecall.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\rsrecall.res \
+    $(_OBJ_DIR)\ia64\clientob.obj \
+    $(_OBJ_DIR)\ia64\note.obj \
+    $(_OBJ_DIR)\ia64\rsrecall.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\rsrecall.res \
+    $(_OBJ_DIR)\amd64\clientob.obj \
+    $(_OBJ_DIR)\amd64\note.obj \
+    $(_OBJ_DIR)\amd64\rsrecall.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\rsrecall.res \
+    $(_OBJ_DIR)\arm\clientob.obj \
+    $(_OBJ_DIR)\arm\note.obj \
+    $(_OBJ_DIR)\arm\rsrecall.obj
+
+PASS0_ARM_OBJECTS=
+

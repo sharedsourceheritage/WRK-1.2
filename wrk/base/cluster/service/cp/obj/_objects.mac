@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cpinit.obj \
+    $(_OBJ_DIR)\i386\send.obj \
+    $(_OBJ_DIR)\i386\receive.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\notify.obj \
+    $(_OBJ_DIR)\i386\store.obj \
+    $(_OBJ_DIR)\i386\crypto.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cpinit.obj \
+    $(_OBJ_DIR)\ia64\send.obj \
+    $(_OBJ_DIR)\ia64\receive.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\notify.obj \
+    $(_OBJ_DIR)\ia64\store.obj \
+    $(_OBJ_DIR)\ia64\crypto.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cpinit.obj \
+    $(_OBJ_DIR)\amd64\send.obj \
+    $(_OBJ_DIR)\amd64\receive.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\notify.obj \
+    $(_OBJ_DIR)\amd64\store.obj \
+    $(_OBJ_DIR)\amd64\crypto.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cpinit.obj \
+    $(_OBJ_DIR)\arm\send.obj \
+    $(_OBJ_DIR)\arm\receive.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\notify.obj \
+    $(_OBJ_DIR)\arm\store.obj \
+    $(_OBJ_DIR)\arm\crypto.obj
+
+PASS0_ARM_OBJECTS=
+

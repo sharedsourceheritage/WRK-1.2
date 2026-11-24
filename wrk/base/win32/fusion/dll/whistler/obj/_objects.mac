@@ -1,0 +1,35 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\sxs.res \
+    $(_OBJ_DIR)\i386\exitprocasm.obj \
+    $(_OBJ_DIR)\i386\setunhandledexceptionfilterasm.obj \
+    $(_OBJ_DIR)\i386\termprocasm.obj \
+    $(_OBJ_DIR)\i386\exitproc.obj \
+    $(_OBJ_DIR)\i386\setunhandledexceptionfilter.obj \
+    $(_OBJ_DIR)\i386\termproc.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\sxs.res \
+    $(_OBJ_DIR)\ia64\exitproc.obj \
+    $(_OBJ_DIR)\ia64\setunhandledexceptionfilter.obj \
+    $(_OBJ_DIR)\ia64\termproc.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\sxs.res \
+    $(_OBJ_DIR)\amd64\exitproc.obj \
+    $(_OBJ_DIR)\amd64\setunhandledexceptionfilter.obj \
+    $(_OBJ_DIR)\amd64\termproc.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\sxs.res \
+    $(_OBJ_DIR)\arm\exitproc.obj \
+    $(_OBJ_DIR)\arm\setunhandledexceptionfilter.obj \
+    $(_OBJ_DIR)\arm\termproc.obj
+
+PASS0_ARM_OBJECTS=
+

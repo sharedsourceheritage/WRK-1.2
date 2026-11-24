@@ -1,0 +1,76 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\pnpisa.res \
+    $(_OBJ_DIR)\i386\data.obj \
+    $(_OBJ_DIR)\i386\dispatch.obj \
+    $(_OBJ_DIR)\i386\bus.obj \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\isolate.obj \
+    $(_OBJ_DIR)\i386\misc.obj \
+    $(_OBJ_DIR)\i386\convert.obj \
+    $(_OBJ_DIR)\i386\resource.obj \
+    $(_OBJ_DIR)\i386\translate.obj \
+    $(_OBJ_DIR)\i386\fdopnp.obj \
+    $(_OBJ_DIR)\i386\pdopnp.obj \
+    $(_OBJ_DIR)\i386\power.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\message.h \
+    $(MC_SOURCEDIR)\message.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\pnpisa.res \
+    $(_OBJ_DIR)\ia64\data.obj \
+    $(_OBJ_DIR)\ia64\dispatch.obj \
+    $(_OBJ_DIR)\ia64\bus.obj \
+    $(_OBJ_DIR)\ia64\init.obj \
+    $(_OBJ_DIR)\ia64\isolate.obj \
+    $(_OBJ_DIR)\ia64\misc.obj \
+    $(_OBJ_DIR)\ia64\convert.obj \
+    $(_OBJ_DIR)\ia64\resource.obj \
+    $(_OBJ_DIR)\ia64\translate.obj \
+    $(_OBJ_DIR)\ia64\fdopnp.obj \
+    $(_OBJ_DIR)\ia64\pdopnp.obj \
+    $(_OBJ_DIR)\ia64\power.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\message.h \
+    $(MC_SOURCEDIR)\message.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\pnpisa.res \
+    $(_OBJ_DIR)\amd64\data.obj \
+    $(_OBJ_DIR)\amd64\dispatch.obj \
+    $(_OBJ_DIR)\amd64\bus.obj \
+    $(_OBJ_DIR)\amd64\init.obj \
+    $(_OBJ_DIR)\amd64\isolate.obj \
+    $(_OBJ_DIR)\amd64\misc.obj \
+    $(_OBJ_DIR)\amd64\convert.obj \
+    $(_OBJ_DIR)\amd64\resource.obj \
+    $(_OBJ_DIR)\amd64\translate.obj \
+    $(_OBJ_DIR)\amd64\fdopnp.obj \
+    $(_OBJ_DIR)\amd64\pdopnp.obj \
+    $(_OBJ_DIR)\amd64\power.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\message.h \
+    $(MC_SOURCEDIR)\message.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\pnpisa.res \
+    $(_OBJ_DIR)\arm\data.obj \
+    $(_OBJ_DIR)\arm\dispatch.obj \
+    $(_OBJ_DIR)\arm\bus.obj \
+    $(_OBJ_DIR)\arm\init.obj \
+    $(_OBJ_DIR)\arm\isolate.obj \
+    $(_OBJ_DIR)\arm\misc.obj \
+    $(_OBJ_DIR)\arm\convert.obj \
+    $(_OBJ_DIR)\arm\resource.obj \
+    $(_OBJ_DIR)\arm\translate.obj \
+    $(_OBJ_DIR)\arm\fdopnp.obj \
+    $(_OBJ_DIR)\arm\pdopnp.obj \
+    $(_OBJ_DIR)\arm\power.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\message.h \
+    $(MC_SOURCEDIR)\message.rc
+

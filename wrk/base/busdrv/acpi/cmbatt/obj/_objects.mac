@@ -1,0 +1,40 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cmbatt.res \
+    $(_OBJ_DIR)\i386\cmbatt.obj \
+    $(_OBJ_DIR)\i386\cmexe.obj \
+    $(_OBJ_DIR)\i386\cmbpnp.obj \
+    $(_OBJ_DIR)\i386\cmhndlr.obj \
+    $(_OBJ_DIR)\i386\cmbwmi.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\cmbatt.res \
+    $(_OBJ_DIR)\ia64\cmbatt.obj \
+    $(_OBJ_DIR)\ia64\cmexe.obj \
+    $(_OBJ_DIR)\ia64\cmbpnp.obj \
+    $(_OBJ_DIR)\ia64\cmhndlr.obj \
+    $(_OBJ_DIR)\ia64\cmbwmi.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\cmbatt.res \
+    $(_OBJ_DIR)\amd64\cmbatt.obj \
+    $(_OBJ_DIR)\amd64\cmexe.obj \
+    $(_OBJ_DIR)\amd64\cmbpnp.obj \
+    $(_OBJ_DIR)\amd64\cmhndlr.obj \
+    $(_OBJ_DIR)\amd64\cmbwmi.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\cmbatt.res \
+    $(_OBJ_DIR)\arm\cmbatt.obj \
+    $(_OBJ_DIR)\arm\cmexe.obj \
+    $(_OBJ_DIR)\arm\cmbpnp.obj \
+    $(_OBJ_DIR)\arm\cmhndlr.obj \
+    $(_OBJ_DIR)\arm\cmbwmi.obj
+
+PASS0_ARM_OBJECTS=
+

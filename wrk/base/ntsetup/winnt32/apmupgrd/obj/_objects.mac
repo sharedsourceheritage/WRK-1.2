@@ -1,0 +1,32 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\apmupgrd.res \
+    $(_OBJ_DIR)\i386\apmupgrd.obj \
+    $(_OBJ_DIR)\i386\apmdetct.obj \
+    $(_OBJ_DIR)\i386\apmutils.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\apmupgrd.res \
+    $(_OBJ_DIR)\ia64\apmupgrd.obj \
+    $(_OBJ_DIR)\ia64\apmdetct.obj \
+    $(_OBJ_DIR)\ia64\apmutils.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\apmupgrd.res \
+    $(_OBJ_DIR)\amd64\apmupgrd.obj \
+    $(_OBJ_DIR)\amd64\apmdetct.obj \
+    $(_OBJ_DIR)\amd64\apmutils.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\apmupgrd.res \
+    $(_OBJ_DIR)\arm\apmupgrd.obj \
+    $(_OBJ_DIR)\arm\apmdetct.obj \
+    $(_OBJ_DIR)\arm\apmutils.obj
+
+PASS0_ARM_OBJECTS=
+

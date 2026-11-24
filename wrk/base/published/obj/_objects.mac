@@ -1,0 +1,40 @@
+386_OBJECTS=
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\ntstatus.h \
+    $(MC_SOURCEDIR)\ntstatus.rc \
+    $(PASS0_HEADERDIR)\winerror.h \
+    $(MC_SOURCEDIR)\winerror.rc \
+    $(_OBJ_DIR)\i386\wmicore.mof \
+    $(_OBJ_DIR)\i386\wmicore.bmf
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\ntstatus.h \
+    $(MC_SOURCEDIR)\ntstatus.rc \
+    $(PASS0_HEADERDIR)\winerror.h \
+    $(MC_SOURCEDIR)\winerror.rc \
+    $(_OBJ_DIR)\ia64\wmicore.mof \
+    $(_OBJ_DIR)\ia64\wmicore.bmf
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\ntstatus.h \
+    $(MC_SOURCEDIR)\ntstatus.rc \
+    $(PASS0_HEADERDIR)\winerror.h \
+    $(MC_SOURCEDIR)\winerror.rc \
+    $(_OBJ_DIR)\amd64\wmicore.mof \
+    $(_OBJ_DIR)\amd64\wmicore.bmf
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\ntstatus.h \
+    $(MC_SOURCEDIR)\ntstatus.rc \
+    $(PASS0_HEADERDIR)\winerror.h \
+    $(MC_SOURCEDIR)\winerror.rc \
+    $(_OBJ_DIR)\arm\wmicore.mof \
+    $(_OBJ_DIR)\arm\wmicore.bmf
+

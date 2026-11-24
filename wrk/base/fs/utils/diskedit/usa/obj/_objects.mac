@@ -1,0 +1,120 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\res.res \
+    $(_OBJ_DIR)\i386\attrio.obj \
+    $(_OBJ_DIR)\i386\chainio.obj \
+    $(_OBJ_DIR)\i386\clusio.obj \
+    $(_OBJ_DIR)\i386\crack.obj \
+    $(_OBJ_DIR)\i386\diskedit.obj \
+    $(_OBJ_DIR)\i386\edit.obj \
+    $(_OBJ_DIR)\i386\fileio.obj \
+    $(_OBJ_DIR)\i386\frsedit.obj \
+    $(_OBJ_DIR)\i386\frsio.obj \
+    $(_OBJ_DIR)\i386\gptedit.obj \
+    $(_OBJ_DIR)\i386\indxedit.obj \
+    $(_OBJ_DIR)\i386\io.obj \
+    $(_OBJ_DIR)\i386\rootio.obj \
+    $(_OBJ_DIR)\i386\secedit.obj \
+    $(_OBJ_DIR)\i386\secio.obj \
+    $(_OBJ_DIR)\i386\vscroll.obj \
+    $(_OBJ_DIR)\i386\bootedit.obj \
+    $(_OBJ_DIR)\i386\nbedit.obj \
+    $(_OBJ_DIR)\i386\partedit.obj \
+    $(_OBJ_DIR)\i386\recordpg.obj \
+    $(_OBJ_DIR)\i386\restarea.obj \
+    $(_OBJ_DIR)\i386\logreced.obj \
+    $(_OBJ_DIR)\i386\logrecio.obj \
+    $(_OBJ_DIR)\i386\atrlsted.obj \
+    $(_OBJ_DIR)\i386\secstr.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\res.res \
+    $(_OBJ_DIR)\ia64\attrio.obj \
+    $(_OBJ_DIR)\ia64\chainio.obj \
+    $(_OBJ_DIR)\ia64\clusio.obj \
+    $(_OBJ_DIR)\ia64\crack.obj \
+    $(_OBJ_DIR)\ia64\diskedit.obj \
+    $(_OBJ_DIR)\ia64\edit.obj \
+    $(_OBJ_DIR)\ia64\fileio.obj \
+    $(_OBJ_DIR)\ia64\frsedit.obj \
+    $(_OBJ_DIR)\ia64\frsio.obj \
+    $(_OBJ_DIR)\ia64\gptedit.obj \
+    $(_OBJ_DIR)\ia64\indxedit.obj \
+    $(_OBJ_DIR)\ia64\io.obj \
+    $(_OBJ_DIR)\ia64\rootio.obj \
+    $(_OBJ_DIR)\ia64\secedit.obj \
+    $(_OBJ_DIR)\ia64\secio.obj \
+    $(_OBJ_DIR)\ia64\vscroll.obj \
+    $(_OBJ_DIR)\ia64\bootedit.obj \
+    $(_OBJ_DIR)\ia64\nbedit.obj \
+    $(_OBJ_DIR)\ia64\partedit.obj \
+    $(_OBJ_DIR)\ia64\recordpg.obj \
+    $(_OBJ_DIR)\ia64\restarea.obj \
+    $(_OBJ_DIR)\ia64\logreced.obj \
+    $(_OBJ_DIR)\ia64\logrecio.obj \
+    $(_OBJ_DIR)\ia64\atrlsted.obj \
+    $(_OBJ_DIR)\ia64\secstr.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\res.res \
+    $(_OBJ_DIR)\amd64\attrio.obj \
+    $(_OBJ_DIR)\amd64\chainio.obj \
+    $(_OBJ_DIR)\amd64\clusio.obj \
+    $(_OBJ_DIR)\amd64\crack.obj \
+    $(_OBJ_DIR)\amd64\diskedit.obj \
+    $(_OBJ_DIR)\amd64\edit.obj \
+    $(_OBJ_DIR)\amd64\fileio.obj \
+    $(_OBJ_DIR)\amd64\frsedit.obj \
+    $(_OBJ_DIR)\amd64\frsio.obj \
+    $(_OBJ_DIR)\amd64\gptedit.obj \
+    $(_OBJ_DIR)\amd64\indxedit.obj \
+    $(_OBJ_DIR)\amd64\io.obj \
+    $(_OBJ_DIR)\amd64\rootio.obj \
+    $(_OBJ_DIR)\amd64\secedit.obj \
+    $(_OBJ_DIR)\amd64\secio.obj \
+    $(_OBJ_DIR)\amd64\vscroll.obj \
+    $(_OBJ_DIR)\amd64\bootedit.obj \
+    $(_OBJ_DIR)\amd64\nbedit.obj \
+    $(_OBJ_DIR)\amd64\partedit.obj \
+    $(_OBJ_DIR)\amd64\recordpg.obj \
+    $(_OBJ_DIR)\amd64\restarea.obj \
+    $(_OBJ_DIR)\amd64\logreced.obj \
+    $(_OBJ_DIR)\amd64\logrecio.obj \
+    $(_OBJ_DIR)\amd64\atrlsted.obj \
+    $(_OBJ_DIR)\amd64\secstr.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\res.res \
+    $(_OBJ_DIR)\arm\attrio.obj \
+    $(_OBJ_DIR)\arm\chainio.obj \
+    $(_OBJ_DIR)\arm\clusio.obj \
+    $(_OBJ_DIR)\arm\crack.obj \
+    $(_OBJ_DIR)\arm\diskedit.obj \
+    $(_OBJ_DIR)\arm\edit.obj \
+    $(_OBJ_DIR)\arm\fileio.obj \
+    $(_OBJ_DIR)\arm\frsedit.obj \
+    $(_OBJ_DIR)\arm\frsio.obj \
+    $(_OBJ_DIR)\arm\gptedit.obj \
+    $(_OBJ_DIR)\arm\indxedit.obj \
+    $(_OBJ_DIR)\arm\io.obj \
+    $(_OBJ_DIR)\arm\rootio.obj \
+    $(_OBJ_DIR)\arm\secedit.obj \
+    $(_OBJ_DIR)\arm\secio.obj \
+    $(_OBJ_DIR)\arm\vscroll.obj \
+    $(_OBJ_DIR)\arm\bootedit.obj \
+    $(_OBJ_DIR)\arm\nbedit.obj \
+    $(_OBJ_DIR)\arm\partedit.obj \
+    $(_OBJ_DIR)\arm\recordpg.obj \
+    $(_OBJ_DIR)\arm\restarea.obj \
+    $(_OBJ_DIR)\arm\logreced.obj \
+    $(_OBJ_DIR)\arm\logrecio.obj \
+    $(_OBJ_DIR)\arm\atrlsted.obj \
+    $(_OBJ_DIR)\arm\secstr.obj
+
+PASS0_ARM_OBJECTS=
+

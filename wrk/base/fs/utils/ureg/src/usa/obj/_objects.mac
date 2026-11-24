@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ureg.res \
+    $(_OBJ_DIR)\i386\regvalue.obj \
+    $(_OBJ_DIR)\i386\regkey.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\ureg.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ureg.res \
+    $(_OBJ_DIR)\ia64\regvalue.obj \
+    $(_OBJ_DIR)\ia64\regkey.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\ureg.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ureg.res \
+    $(_OBJ_DIR)\amd64\regvalue.obj \
+    $(_OBJ_DIR)\amd64\regkey.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\ureg.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ureg.res \
+    $(_OBJ_DIR)\arm\regvalue.obj \
+    $(_OBJ_DIR)\arm\regkey.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\ureg.obj
+
+PASS0_ARM_OBJECTS=
+

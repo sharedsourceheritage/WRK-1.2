@@ -1,0 +1,115 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\xsum.obj \
+    $(_OBJ_DIR)\i386\attrib.obj \
+    $(_OBJ_DIR)\i386\paction.obj \
+    $(_OBJ_DIR)\i386\pbatt.obj \
+    $(_OBJ_DIR)\i386\pidle.obj \
+    $(_OBJ_DIR)\i386\pinfo.obj \
+    $(_OBJ_DIR)\i386\poinit.obj \
+    $(_OBJ_DIR)\i386\podata.obj \
+    $(_OBJ_DIR)\i386\postate.obj \
+    $(_OBJ_DIR)\i386\pocall.obj \
+    $(_OBJ_DIR)\i386\poshtdwn.obj \
+    $(_OBJ_DIR)\i386\pwork.obj \
+    $(_OBJ_DIR)\i386\switch.obj \
+    $(_OBJ_DIR)\i386\notify.obj \
+    $(_OBJ_DIR)\i386\hiber.obj \
+    $(_OBJ_DIR)\i386\idle.obj \
+    $(_OBJ_DIR)\i386\misc.obj \
+    $(_OBJ_DIR)\i386\ntapi.obj \
+    $(_OBJ_DIR)\i386\sidle.obj \
+    $(_OBJ_DIR)\i386\suspend.obj \
+    $(_OBJ_DIR)\i386\sys.obj \
+    $(_OBJ_DIR)\i386\sysdev.obj \
+    $(_OBJ_DIR)\i386\thermal.obj \
+    $(_OBJ_DIR)\i386\throttle.obj \
+    $(_OBJ_DIR)\i386\volume.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\attrib.obj \
+    $(_OBJ_DIR)\ia64\paction.obj \
+    $(_OBJ_DIR)\ia64\pbatt.obj \
+    $(_OBJ_DIR)\ia64\pidle.obj \
+    $(_OBJ_DIR)\ia64\pinfo.obj \
+    $(_OBJ_DIR)\ia64\poinit.obj \
+    $(_OBJ_DIR)\ia64\podata.obj \
+    $(_OBJ_DIR)\ia64\postate.obj \
+    $(_OBJ_DIR)\ia64\pocall.obj \
+    $(_OBJ_DIR)\ia64\poshtdwn.obj \
+    $(_OBJ_DIR)\ia64\pwork.obj \
+    $(_OBJ_DIR)\ia64\switch.obj \
+    $(_OBJ_DIR)\ia64\notify.obj \
+    $(_OBJ_DIR)\ia64\hiber.obj \
+    $(_OBJ_DIR)\ia64\idle.obj \
+    $(_OBJ_DIR)\ia64\misc.obj \
+    $(_OBJ_DIR)\ia64\ntapi.obj \
+    $(_OBJ_DIR)\ia64\sidle.obj \
+    $(_OBJ_DIR)\ia64\suspend.obj \
+    $(_OBJ_DIR)\ia64\sys.obj \
+    $(_OBJ_DIR)\ia64\sysdev.obj \
+    $(_OBJ_DIR)\ia64\thermal.obj \
+    $(_OBJ_DIR)\ia64\throttle.obj \
+    $(_OBJ_DIR)\ia64\volume.obj \
+    $(_OBJ_DIR)\ia64\xsum.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\xsum.obj \
+    $(_OBJ_DIR)\amd64\attrib.obj \
+    $(_OBJ_DIR)\amd64\paction.obj \
+    $(_OBJ_DIR)\amd64\pbatt.obj \
+    $(_OBJ_DIR)\amd64\pidle.obj \
+    $(_OBJ_DIR)\amd64\pinfo.obj \
+    $(_OBJ_DIR)\amd64\poinit.obj \
+    $(_OBJ_DIR)\amd64\podata.obj \
+    $(_OBJ_DIR)\amd64\postate.obj \
+    $(_OBJ_DIR)\amd64\pocall.obj \
+    $(_OBJ_DIR)\amd64\poshtdwn.obj \
+    $(_OBJ_DIR)\amd64\pwork.obj \
+    $(_OBJ_DIR)\amd64\switch.obj \
+    $(_OBJ_DIR)\amd64\notify.obj \
+    $(_OBJ_DIR)\amd64\hiber.obj \
+    $(_OBJ_DIR)\amd64\idle.obj \
+    $(_OBJ_DIR)\amd64\misc.obj \
+    $(_OBJ_DIR)\amd64\ntapi.obj \
+    $(_OBJ_DIR)\amd64\sidle.obj \
+    $(_OBJ_DIR)\amd64\suspend.obj \
+    $(_OBJ_DIR)\amd64\sys.obj \
+    $(_OBJ_DIR)\amd64\sysdev.obj \
+    $(_OBJ_DIR)\amd64\thermal.obj \
+    $(_OBJ_DIR)\amd64\throttle.obj \
+    $(_OBJ_DIR)\amd64\volume.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\attrib.obj \
+    $(_OBJ_DIR)\arm\paction.obj \
+    $(_OBJ_DIR)\arm\pbatt.obj \
+    $(_OBJ_DIR)\arm\pidle.obj \
+    $(_OBJ_DIR)\arm\pinfo.obj \
+    $(_OBJ_DIR)\arm\poinit.obj \
+    $(_OBJ_DIR)\arm\podata.obj \
+    $(_OBJ_DIR)\arm\postate.obj \
+    $(_OBJ_DIR)\arm\pocall.obj \
+    $(_OBJ_DIR)\arm\poshtdwn.obj \
+    $(_OBJ_DIR)\arm\pwork.obj \
+    $(_OBJ_DIR)\arm\switch.obj \
+    $(_OBJ_DIR)\arm\notify.obj \
+    $(_OBJ_DIR)\arm\hiber.obj \
+    $(_OBJ_DIR)\arm\idle.obj \
+    $(_OBJ_DIR)\arm\misc.obj \
+    $(_OBJ_DIR)\arm\ntapi.obj \
+    $(_OBJ_DIR)\arm\sidle.obj \
+    $(_OBJ_DIR)\arm\suspend.obj \
+    $(_OBJ_DIR)\arm\sys.obj \
+    $(_OBJ_DIR)\arm\sysdev.obj \
+    $(_OBJ_DIR)\arm\thermal.obj \
+    $(_OBJ_DIR)\arm\throttle.obj \
+    $(_OBJ_DIR)\arm\volume.obj
+
+PASS0_ARM_OBJECTS=
+

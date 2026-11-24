@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\winntbb.res \
+    $(_OBJ_DIR)\i386\dllinit.obj \
+    $(_OBJ_DIR)\i386\info.obj \
+    $(_OBJ_DIR)\i386\addpath.obj \
+    $(_OBJ_DIR)\i386\billbrd.obj \
+    $(_OBJ_DIR)\i386\dibutil.obj \
+    $(_OBJ_DIR)\i386\animate.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\winntbb.res \
+    $(_OBJ_DIR)\ia64\dllinit.obj \
+    $(_OBJ_DIR)\ia64\info.obj \
+    $(_OBJ_DIR)\ia64\addpath.obj \
+    $(_OBJ_DIR)\ia64\billbrd.obj \
+    $(_OBJ_DIR)\ia64\dibutil.obj \
+    $(_OBJ_DIR)\ia64\animate.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\winntbb.res \
+    $(_OBJ_DIR)\amd64\dllinit.obj \
+    $(_OBJ_DIR)\amd64\info.obj \
+    $(_OBJ_DIR)\amd64\addpath.obj \
+    $(_OBJ_DIR)\amd64\billbrd.obj \
+    $(_OBJ_DIR)\amd64\dibutil.obj \
+    $(_OBJ_DIR)\amd64\animate.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\winntbb.res \
+    $(_OBJ_DIR)\arm\dllinit.obj \
+    $(_OBJ_DIR)\arm\info.obj \
+    $(_OBJ_DIR)\arm\addpath.obj \
+    $(_OBJ_DIR)\arm\billbrd.obj \
+    $(_OBJ_DIR)\arm\dibutil.obj \
+    $(_OBJ_DIR)\arm\animate.obj
+
+PASS0_ARM_OBJECTS=
+

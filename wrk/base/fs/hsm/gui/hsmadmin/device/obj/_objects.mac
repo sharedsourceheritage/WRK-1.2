@@ -1,0 +1,36 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ca.obj \
+    $(_OBJ_DIR)\i386\mese.obj \
+    $(_OBJ_DIR)\i386\prcar.obj \
+    $(_OBJ_DIR)\i386\prmedset.obj \
+    $(_OBJ_DIR)\i386\wzmedset.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ca.obj \
+    $(_OBJ_DIR)\ia64\mese.obj \
+    $(_OBJ_DIR)\ia64\prcar.obj \
+    $(_OBJ_DIR)\ia64\prmedset.obj \
+    $(_OBJ_DIR)\ia64\wzmedset.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ca.obj \
+    $(_OBJ_DIR)\amd64\mese.obj \
+    $(_OBJ_DIR)\amd64\prcar.obj \
+    $(_OBJ_DIR)\amd64\prmedset.obj \
+    $(_OBJ_DIR)\amd64\wzmedset.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ca.obj \
+    $(_OBJ_DIR)\arm\mese.obj \
+    $(_OBJ_DIR)\arm\prcar.obj \
+    $(_OBJ_DIR)\arm\prmedset.obj \
+    $(_OBJ_DIR)\arm\wzmedset.obj
+
+PASS0_ARM_OBJECTS=
+

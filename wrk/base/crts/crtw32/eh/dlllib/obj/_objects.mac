@@ -1,0 +1,38 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ehprolog.obj \
+    $(_OBJ_DIR)\i386\ehprolg2.obj \
+    $(_OBJ_DIR)\i386\ehvcccvb.obj \
+    $(_OBJ_DIR)\i386\ehvccctr.obj \
+    $(_OBJ_DIR)\i386\ehvecctr.obj \
+    $(_OBJ_DIR)\i386\ehvecdtr.obj \
+    $(_OBJ_DIR)\i386\ehveccvb.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ehvcccvb.obj \
+    $(_OBJ_DIR)\ia64\ehvccctr.obj \
+    $(_OBJ_DIR)\ia64\ehvecctr.obj \
+    $(_OBJ_DIR)\ia64\ehvecdtr.obj \
+    $(_OBJ_DIR)\ia64\ehveccvb.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ehvcccvb.obj \
+    $(_OBJ_DIR)\amd64\ehvccctr.obj \
+    $(_OBJ_DIR)\amd64\ehvecctr.obj \
+    $(_OBJ_DIR)\amd64\ehvecdtr.obj \
+    $(_OBJ_DIR)\amd64\ehveccvb.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ehvcccvb.obj \
+    $(_OBJ_DIR)\arm\ehvccctr.obj \
+    $(_OBJ_DIR)\arm\ehvecctr.obj \
+    $(_OBJ_DIR)\arm\ehvecdtr.obj \
+    $(_OBJ_DIR)\arm\ehveccvb.obj
+
+PASS0_ARM_OBJECTS=
+

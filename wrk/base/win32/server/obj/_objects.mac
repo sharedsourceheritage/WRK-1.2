@@ -1,0 +1,56 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\basesrv.res \
+    $(_OBJ_DIR)\i386\srvinit.obj \
+    $(_OBJ_DIR)\i386\srvtask.obj \
+    $(_OBJ_DIR)\i386\srvvdm.obj \
+    $(_OBJ_DIR)\i386\srvnls.obj \
+    $(_OBJ_DIR)\i386\srvini.obj \
+    $(_OBJ_DIR)\i386\srvacces.obj \
+    $(_OBJ_DIR)\i386\srvsxs.obj \
+    $(_OBJ_DIR)\i386\srvcmpat.obj \
+    $(_OBJ_DIR)\i386\mmapstm.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\basesrv.res \
+    $(_OBJ_DIR)\ia64\srvinit.obj \
+    $(_OBJ_DIR)\ia64\srvtask.obj \
+    $(_OBJ_DIR)\ia64\srvvdm.obj \
+    $(_OBJ_DIR)\ia64\srvnls.obj \
+    $(_OBJ_DIR)\ia64\srvini.obj \
+    $(_OBJ_DIR)\ia64\srvacces.obj \
+    $(_OBJ_DIR)\ia64\srvsxs.obj \
+    $(_OBJ_DIR)\ia64\srvcmpat.obj \
+    $(_OBJ_DIR)\ia64\mmapstm.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\basesrv.res \
+    $(_OBJ_DIR)\amd64\srvinit.obj \
+    $(_OBJ_DIR)\amd64\srvtask.obj \
+    $(_OBJ_DIR)\amd64\srvvdm.obj \
+    $(_OBJ_DIR)\amd64\srvnls.obj \
+    $(_OBJ_DIR)\amd64\srvini.obj \
+    $(_OBJ_DIR)\amd64\srvacces.obj \
+    $(_OBJ_DIR)\amd64\srvsxs.obj \
+    $(_OBJ_DIR)\amd64\srvcmpat.obj \
+    $(_OBJ_DIR)\amd64\mmapstm.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\basesrv.res \
+    $(_OBJ_DIR)\arm\srvinit.obj \
+    $(_OBJ_DIR)\arm\srvtask.obj \
+    $(_OBJ_DIR)\arm\srvvdm.obj \
+    $(_OBJ_DIR)\arm\srvnls.obj \
+    $(_OBJ_DIR)\arm\srvini.obj \
+    $(_OBJ_DIR)\arm\srvacces.obj \
+    $(_OBJ_DIR)\arm\srvsxs.obj \
+    $(_OBJ_DIR)\arm\srvcmpat.obj \
+    $(_OBJ_DIR)\arm\mmapstm.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,24 @@
+386_OBJECTS=
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\sxsoa.h \
+    $(PASS0_HEADERDIR)\sxsoaps.h
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\sxsoa.h \
+    $(PASS0_HEADERDIR)\sxsoaps.h
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\sxsoa.h \
+    $(PASS0_HEADERDIR)\sxsoaps.h
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\sxsoa.h \
+    $(PASS0_HEADERDIR)\sxsoaps.h
+

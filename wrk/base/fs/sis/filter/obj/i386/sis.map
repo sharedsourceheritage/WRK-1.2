@@ -1,0 +1,476 @@
+ sis
+
+ Timestamp is 6b04f29f (Mon Nov 23 21:12:47 2026)
+
+ Preferred load address is 00010000
+
+ Start         Length     Name                   Class
+ 0001:00000000 0000b9ccH .text                   CODE
+ 0002:00000000 00000224H .idata$5                DATA
+ 0002:00000230 000004b0H .rdata                  DATA
+ 0002:000006e0 00000060H .rdata$debug            DATA
+ 0002:00000740 00000004H .rdata$sxdata           DATA
+ 0003:00000000 0000000cH .data                   DATA
+ 0003:00000020 000000e4H .bss                    DATA
+ 0004:00000000 00000fbaH PAGE                    CODE
+ 0005:00000000 000002ccH INIT                    CODE
+ 0005:000002cc 00000028H .idata$2                CODE
+ 0005:000002f4 00000014H .idata$3                CODE
+ 0005:00000308 00000224H .idata$4                CODE
+ 0005:0000052c 00000bc4H .idata$6                CODE
+ 0006:00000000 00000058H .rsrc$01                DATA
+ 0006:00000060 000003a8H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0000:00000001       ___safe_se_handler_count   00000001     <absolute>
+ 0001:00000000       _SipCopyStream@24          00011000 f   copyfile.obj
+ 0001:000001c2       _SipCopyFileCreateDestinationFile@24 000111c2 f   copyfile.obj
+ 0001:000002c0       _SipFsCopyFile@8           000112c0 f   copyfile.obj
+ 0001:00000fe4       _SipOpenFileById@24        00011fe4 f   cow.obj
+ 0001:0000106a       _SipCompleteCopy@8         0001206a f   cow.obj
+ 0001:000010ba       _SiRetryFinalCopyWork@4    000120ba f   cow.obj
+ 0001:000010f2       _SiRetryFinalCopyDpc@16    000120f2 f   cow.obj
+ 0001:00001106       _SipFinalCopy@20           00012106 f   cow.obj
+ 0001:00001652       _SipCompleteCopyWork@16    00012652 f   cow.obj
+ 0001:00001844       _SiCopyThreadStart@4       00012844 f   cow.obj
+ 0001:000018b4       _SipIndicesFromReparseBuffer@32 000128b4 f   index.obj
+ 0001:0000197c       _SipIndicesIntoReparseBuffer@28 0001297c f   index.obj
+ 0001:00001a24       _SipIndexToFileName@20     00012a24 f   index.obj
+ 0001:00001b0a       _SipFileNameToIndex@8      00012b0a f   index.obj
+ 0001:00001b92       _SipOpenMaxIndexFile@8     00012b92 f   index.obj
+ 0001:00001c60       _SipAllocateIndices@4      00012c60 f   index.obj
+ 0001:00001e9e       _SipAllocateIndex@8        00012e9e f   index.obj
+ 0001:0000200c       _SipAssureMaxIndexFileOpen@4 0001300c f   index.obj
+ 0001:00002068       _SipLockUserBuffer@12      00013068 f   post.obj
+ 0001:000020e6       _SiFspDispatch@4           000130e6 f   post.obj
+ 0001:0000210e       _SiPrePostIrp@4            0001310e f   post.obj
+ 0001:00002148       _SipPostRequest@12         00013148 f   post.obj
+ 0001:000021b2       _SipDeleteCSFile@4         000131b2 f   refcount.obj
+ 0001:0000226a       _SipDeleteCSFileWork@4     0001326a f   refcount.obj
+ 0001:0000228c       _SipPrepareCSRefcountChange@16 0001328c f   refcount.obj
+ 0001:00002324       _SiDeleteAndSetCompletion@12 00013324 f   refcount.obj
+ 0001:00002376       _SipCheckBackpointer@12    00013376 f   refcount.obj
+ 0001:000027f0       _SipAddBackpointer@12      000137f0 f   refcount.obj
+ 0001:00002aa8       _SipRemoveBackpointer@16   00013aa8 f   refcount.obj
+ 0001:00002f02       _SipCompleteCSRefcountChangeForThread@24 00013f02 f   refcount.obj
+ 0001:0000300c       _SipCompleteCSRefcountChange@20 0001400c f   refcount.obj
+ 0001:0000302e       _SiPassThrough@8           0001402e f   sis.obj
+ 0001:0000304c       _SipCloseHandlesWork@4     0001404c f   sis.obj
+ 0001:000030b8       _SipOpenBackpointerStream@8 000140b8 f   sis.obj
+ 0001:00003172       _SipOpenCSFileWork@20      00014172 f   sis.obj
+ 0001:0000375a       _SipOpenCSFile@4           0001475a f   sis.obj
+ 0001:00003788       _SipMapUserBuffer@4        00014788 f   sis.obj
+ 0001:000037b0       _SipCloseHandles@12        000147b0 f   sis.obj
+ 0001:0000382a       _SipQueryInformationFileUsingGenericDevice@24 0001482a f   sicalls.obj
+ 0001:000038fe       _SiFlushBuffersCompleted@12 000148fe f   sicalls.obj
+ 0001:000038fe       _SiQueryInformationCompleted@12 000148fe f   sicalls.obj
+ 0001:000038fe       _SiSetInformationCompleted@12 000148fe f   sicalls.obj
+ 0001:0000392e       _SipSetInformationFileUsingGenericDevice@20 0001492e f   sicalls.obj
+ 0001:000039fa       _SiFsControlCompleted@12   000149fa f   sicalls.obj
+ 0001:00003a7a       _SipFsControlFileUsingGenericDevice@32 00014a7a f   sicalls.obj
+ 0001:00003c06       _SipFlushBuffersFile@8     00014c06 f   sicalls.obj
+ 0001:00003cb8       _SipQueryInformationFile@24 00014cb8 f   sicalls.obj
+ 0001:00003cdc       _SipSetInformationFile@20  00014cdc f   sicalls.obj
+ 0001:00003cfc       _SipFsControlFile@32       00014cfc f   sicalls.obj
+ 0001:00003d26       _SipVCInitFindFile@8       00014d26 f   sicheck.obj
+ 0001:00003dbc       _SipVCCloseFindFile@4      00014dbc f   sicheck.obj
+ 0001:00003de0       _SipVCFindNextFile@8       00014de0 f   sicheck.obj
+ 0001:00003e46       _SipComputeCSChecksum@16   00014e46 f   sicheck.obj
+ 0001:00003e8e       _SipVCGetNextCSFile@8      00014e8e f   sicheck.obj
+ 0001:00003f70       _SipVCMapBPStream@8        00014f70 f   sicheck.obj
+ 0001:00004012       _SipVCUnmapBPStream@4      00015012 f   sicheck.obj
+ 0001:00004032       _SipVCReadBP@12            00015032 f i sicheck.obj
+ 0001:00004058       _SipVCWriteBP@12           00015058 f i sicheck.obj
+ 0001:0000407e       _SipVCSort@4               0001507e f   sicheck.obj
+ 0001:00004186       _SipVCPhase1@4             00015186 f   sicheck.obj
+ 0001:000044a0       _SipRecheckPerLinks@8      000154a0 f   sicheck.obj
+ 0001:0000456a       _SipVCPhase2@8             0001556a f   sicheck.obj
+ 0001:0000476c       _SipVCPhase3@4             0001576c f   sicheck.obj
+ 0001:00004a24       _SiVolumeCheckThreadStart@4 00015a24 f   sicheck.obj
+ 0001:00004b66       _SipCheckVolume@4          00015b66 f   sicheck.obj
+ 0001:00004bea       _SipCheckOverwrite@12      00015bea f   siclnup.obj
+ 0001:00004d7a       _SiCleanup@8               00015d7a f   siclnup.obj
+ 0001:0000509a       _SiClose@8                 0001609a f   siclose.obj
+ 0001:000050e4       _SiDerefFileObjectWork@4   000160e4 f   sicreate.obj
+ 0001:00005100       _SiOplockBreakNotifyCompletion@12 00016100 f   sicreate.obj
+ 0001:00005192       _SiUnopenCompletion@12     00016192 f   sicreate.obj
+ 0001:00005192       _SiCleanupCompletion@12    00016192 f   siclnup.obj
+ 0001:00005192       _SiUserSetSISReparsePointCompletion@12 00016192 f   sifsctl.obj
+ 0001:00005192       _SiRenameOverCompletion@12 00016192 f   siinfo.obj
+ 0001:000051b0       _SipUnopenFileObject@8     000161b0 f   sicreate.obj
+ 0001:00005276       _SipDoesFileObjectDescribeAlternateStream@12 00016276 f   sicreate.obj
+ 0001:000052fa       _SiCreateCompletion@12     000162fa f   sicreate.obj
+ 0001:0000542a       _SiCreateCompletionStage2@12 0001642a f   sicreate.obj
+ 0001:00005456       _SipWaitForFinalCopy@8     00016456 f   sicreate.obj
+ 0001:000054d6       _SipAssureCSFileOpen@4     000164d6 f   sicreate.obj
+ 0001:0000557e       _SiOtherCreates@8          0001657e f   sicreate.obj
+ 0001:000055c2       _SiCreate@8                000165c2 f   sicreate.obj
+ 0001:00006612       _SiFastIoWrite@32          00017612 f   sifastio.obj
+ 0001:00006716       _SiFastIoQueryBasicInfo@20 00017716 f   sifastio.obj
+ 0001:000067b6       _SiFastIoQueryStandardInfo@20 000177b6 f   sifastio.obj
+ 0001:000067f2       _SiFastIoQueryNetworkOpenInfo@20 000177f2 f   sifastio.obj
+ 0001:00006892       _SiFastIoMdlReadComplete@12 00017892 f   sifastio.obj
+ 0001:00006900       _SiFastIoMdlReadCompleteCompressed@12 00017900 f   sifastio.obj
+ 0001:00006936       _SiFastIoMdlWriteCompleteCompressed@16 00017936 f   sifastio.obj
+ 0001:00006970       _SiDismountWork@4          00017970 f   sifsctl.obj
+ 0001:000069d2       _SiDismountVolumeCompletion@12 000179d2 f   sifsctl.obj
+ 0001:00006a08       _SipDismountVolume@8       00017a08 f   sifsctl.obj
+ 0001:00006a50       _SipUserSetSISReparsePoint@8 00017a50 f   sifsctl.obj
+ 0001:00006efc       _SipQueryAllocatedRanges@8 00017efc f   sifsctl.obj
+ 0001:000070a6       _SipLoadFsCompletion@12    000180a6 f   sifsctl.obj
+ 0001:000070a6       _SipMountCompletion@12     000180a6 f   sifsctl.obj
+ 0001:000070bc       _SiFsControl@8             000180bc f   sifsctl.obj
+ 0001:00007534       _SipRenameOverCheck@4      00018534 f   siinfo.obj
+ 0001:0000766c       _SipReplaceIfExistsRename@8 0001866c f   siinfo.obj
+ 0001:000078dc       _SiQueryBasicInfoCompletion@12 000188dc f   siinfo.obj
+ 0001:000078dc       _SiQueryAllInfoCompletion@12 000188dc f   siinfo.obj
+ 0001:000078f8       _SiQueryNetworkOpenInfoCompletion@12 000188f8 f   siinfo.obj
+ 0001:00007914       _SiQueryAttributeTagInfoCompletion@12 00018914 f   siinfo.obj
+ 0001:00007936       _SiQueryInfo@8             00018936 f   siinfo.obj
+ 0001:00007aa2       _SipTruncateScb@12         00018aa2 f   siinfo.obj
+ 0001:00007af8       _SipBeginDeleteModificationOperation@8 00018af8 f   siinfo.obj
+ 0001:00007b7a       _SipEndDeleteModificationOperation@8 00018b7a f   siinfo.obj
+ 0001:00007bce       _SiDeleteCompletion@12     00018bce f   siinfo.obj
+ 0001:00007c26       _SiSetEofCompletion@12     00018c26 f   siinfo.obj
+ 0001:00007cbc       _SiSetInfo@8               00018cbc f   siinfo.obj
+ 0001:00007e12       _SipCleanupDeviceExtension@4 00018e12 f   siinit.obj
+ 0001:00007e8a       _SipDetachFromFileSystemDevice@4 00018e8a f   siinit.obj
+ 0001:00007ed2       _SipGetObjectName@8        00018ed2 f   siinit.obj
+ 0001:00007f22       _SipGetBaseDeviceObjectName@8 00018f22 f   siinit.obj
+ 0001:00007f44       _SipAttachedToDevice@4     00018f44 f   siinit.obj
+ 0001:00007fc0       _SipPhase2Work@4           00018fc0 f   siinit.obj
+ 0001:00008318       _SipHandlePhase2@4         00019318 f   siinit.obj
+ 0001:000083d4       _SipInitializeDeviceExtension@4 000193d4 f   siinit.obj
+ 0001:000085ae       _SipAttachToMountedDevice@12 000195ae f   siinit.obj
+ 0001:0000861a       _SipEnumerateFileSystemVolumes@8 0001961a f   siinit.obj
+ 0001:00008798       _SipAttachToFileSystemDevice@8 00019798 f   siinit.obj
+ 0001:000088a6       _SiCompleteLockIrpRoutine@8 000198a6 f   silock.obj
+ 0001:000088b0       _SipMakeLogEntry@16        000198b0 f   silog.obj
+ 0001:000088b6       _SipOpenLogFile@4          000198b6 f   silog.obj
+ 0001:000088bc       _SiTrimLogs@4              000198bc f   silog.obj
+ 0001:000088c0       _SiLogTrimDpcRoutine@16    000198c0 f   silog.obj
+ 0001:000088c4       _SiReadUpdateRanges@4      000198c4 f   siread.obj
+ 0001:0000890e       _SiMultiReadCompletion@12  0001990e f   siread.obj
+ 0001:00008a7c       _SiReadCompletion@12       00019a7c f   siread.obj
+ 0001:00008b84       _SipWaitForOpbreak@8       00019b84 f   siread.obj
+ 0001:00008c0e       _SipCommonRead@12          00019c0e f   siread.obj
+ 0001:000091c6       _SiRead@8                  0001a1c6 f   siread.obj
+ 0001:00009208       _SipReferenceScb@8         0001a208 f   sisuprt.obj
+ 0001:0000923e       _SiPostedDereferenceScb@4  0001a23e f   sisuprt.obj
+ 0001:0000925c       _SipScbTreeCompare@8       0001a25c f   sisuprt.obj
+ 0001:000092a4       _SipReferencePerLink@4     0001a2a4 f   sisuprt.obj
+ 0001:000092d4       _SipUpdateLinkIndex@8      0001a2d4 f   sisuprt.obj
+ 0001:00009388       _SipPerLinkTreeCompare@8   0001a388 f   sisuprt.obj
+ 0001:000093ce       _SipLookupCSFile@12        0001a3ce f   sisuprt.obj
+ 0001:0000950e       _SipDereferenceCSFile@4    0001a50e f   sisuprt.obj
+ 0001:000095d2       _SipCSFileTreeCompare@8    0001a5d2 f   sisuprt.obj
+ 0001:00009690       _SipCreateEvent@12         0001a690 f   sisuprt.obj
+ 0001:00009708       _SipAddRangeToFaultedList@20 0001a708 f   sisuprt.obj
+ 0001:000097fe       _SipAddRangeToWrittenList@20 0001a7fe f   sisuprt.obj
+ 0001:000098ac       _SipGetRangeDirty@24       0001a8ac f   sisuprt.obj
+ 0001:00009a1a       _SipGetRangeEntry@24       0001aa1a f   sisuprt.obj
+ 0001:00009ac0       _SipAllocatePerFO@20       0001aac0 f   sisuprt.obj
+ 0001:00009b4c       _SipAcquireUFO@4           0001ab4c f   sisuprt.obj
+ 0001:00009b74       _SipReleaseUFO@4           0001ab74 f   sisuprt.obj
+ 0001:00009b8e       _SipAcquireCollisionLock@4 0001ab8e f   sisuprt.obj
+ 0001:00009bb6       _SipReleaseCollisionLock@4 0001abb6 f   sisuprt.obj
+ 0001:00009bcc       _SipAcquireBackpointerResource@12 0001abcc f   sisuprt.obj
+ 0001:00009c24       _SipReleaseBackpointerResource@4 0001ac24 f   sisuprt.obj
+ 0001:00009c54       _SipHandoffBackpointerResource@4 0001ac54 f   sisuprt.obj
+ 0001:00009c6e       _SipLookupPerLink@28       0001ac6e f   sisuprt.obj
+ 0001:00009dca       _SipDereferencePerLink@4   0001adca f   sisuprt.obj
+ 0001:00009e28       _SipIsFileObjectSIS@20     0001ae28 f   sisuprt.obj
+ 0001:00009ed4       _SipPrepareRefcountChangeAndAllocateNewPerLink@24 0001aed4 f   sisuprt.obj
+ 0001:00009f68       _SipLookupScb@36           0001af68 f   sisuprt.obj
+ 0001:0000a116       _SipDereferenceScb@8       0001b116 f   sisuprt.obj
+ 0001:0000a276       _SipEnumerateScbList@8     0001b276 f   sisuprt.obj
+ 0001:0000a2ee       _SiPostedFilterContextFreed@4 0001b2ee f   sisuprt.obj
+ 0001:0000a318       _SiFilterContextFreedCallback@4 0001b318 f   sisuprt.obj
+ 0001:0000a3bc       _SipCreatePerFO@12         0001b3bc f   sisuprt.obj
+ 0001:0000a4c6       _SipDeallocatePerFO@8      0001b4c6 f   sisuprt.obj
+ 0001:0000a536       _SipInitializePrimaryScb@16 0001b536 f   sisuprt.obj
+ 0001:0000a5d0       _SiWriteUpdateRanges@4     0001b5d0 f   siwrite.obj
+ 0001:0000a63c       _SipWriteCommonCompletion@16 0001b63c f   siwrite.obj
+ 0001:0000a77a       _SiWriteMdlCompletion@12   0001b77a f   siwrite.obj
+ 0001:0000a7fe       _SiWriteCompletion@12      0001b7fe f   siwrite.obj
+ 0001:0000a852       _SiWrite@8                 0001b852 f   siwrite.obj
+ 0001:0000a94c       _SipAbort@4                0001b94c f   siinst.obj
+ 0001:0000a96a       _SipRelinkFile@12          0001b96a f   siinst.obj
+ 0001:0000ab50       _SipMergeNormalFilesWork@4 0001bb50 f   siinst.obj
+ 0001:0000ae48       _SipMergeFiles@12          0001be48 f   siinst.obj
+ 0001:0000b380       _SipVerifyNoMap@12         0001c380 f   siinst.obj
+ 0001:0000b3ec       _SipMergeFileWithCSFile@12 0001c3ec f   siinst.obj
+ 0001:0000b6d8       _SipLinkFiles@8            0001c6d8 f   siinst.obj
+ 0001:0000b85c       _SipInitializeTree@8       0001c85c f   sitree.obj
+ 0001:0000b86e       _SipInsertElementTree@12   0001c86e f   sitree.obj
+ 0001:0000b8c4       _SipDeleteElementTree@8    0001c8c4 f   sitree.obj
+ 0001:0000b8d8       _SipLookupElementTree@8    0001c8d8 f   sitree.obj
+ 0001:0000b90f       ___report_gsfailure        0001c90f f   BufferOverflowK:gs_support.obj
+ 0001:0000b921       @__security_check_cookie@4 0001c921 f   BufferOverflowK:secchk.obj
+ 0001:0000b930       _MmCanFileBeTruncated@8    0001c930 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b938       __SEH_prolog               0001c938 f   ntoskrnl:sehprolg.obj
+ 0001:0000b973       __SEH_epilog               0001c973 f   ntoskrnl:sehprolg.obj
+ 0001:0000b984       __except_handler3          0001c984 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b98a       __allrem                   0001c98a f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b990       _KeGetCurrentThread@0      0001c990 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b996       _DbgPrint                  0001c996 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b99c       _PsGetCurrentThreadId@0    0001c99c f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b9a2       __alldiv                   0001c9a2 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b9a8       _IoAttachDeviceToDeviceStackSafe@12 0001c9a8 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b9ae       _IoGetDeviceAttachmentBaseRef@4 0001c9ae f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b9b4       _IoGetLowerDeviceObject@4  0001c9b4 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b9ba       _IoGetDiskDeviceObject@8   0001c9ba f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b9c0       _IoEnumerateDeviceObjectList@16 0001c9c0 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000b9c6       __allmul                   0001c9c6 f   ntoskrnl:ntoskrnl.exe
+ 0002:00000000       __imp_@KfAcquireSpinLock@4 0001d000     hal:HAL.dll
+ 0002:00000004       __imp_@KfReleaseSpinLock@8 0001d004     hal:HAL.dll
+ 0002:00000008       __imp_@ExAcquireFastMutex@4 0001d008     hal:HAL.dll
+ 0002:0000000c       __imp_@ExReleaseFastMutex@4 0001d00c     hal:HAL.dll
+ 0002:00000010       __imp__KeGetCurrentIrql@0  0001d010     hal:HAL.dll
+ 0002:00000014       \177HAL_NULL_THUNK_DATA    0001d014     hal:HAL.dll
+ 0002:00000018       __imp__ExAllocatePoolWithTag@12 0001d018     ntoskrnl:ntoskrnl.exe
+ 0002:0000001c       __imp__MmCanFileBeTruncated@8 0001d01c     ntoskrnl:ntoskrnl.exe
+ 0002:00000020       __imp__IoGetRelatedDeviceObject@4 0001d020     ntoskrnl:ntoskrnl.exe
+ 0002:00000024       __imp__ObReferenceObjectByHandle@24 0001d024     ntoskrnl:ntoskrnl.exe
+ 0002:00000028       _IoFileObjectType          0001d028     ntoskrnl:ntoskrnl.exe
+ 0002:00000028       __imp__IoFileObjectType    0001d028     ntoskrnl:ntoskrnl.exe
+ 0002:0000002c       __imp_@IofCompleteRequest@8 0001d02c     ntoskrnl:ntoskrnl.exe
+ 0002:00000030       __imp__RtlEqualUnicodeString@12 0001d030     ntoskrnl:ntoskrnl.exe
+ 0002:00000034       __imp__KeWaitForSingleObject@20 0001d034     ntoskrnl:ntoskrnl.exe
+ 0002:00000038       __imp__ExQueueWorkItem@8   0001d038     ntoskrnl:ntoskrnl.exe
+ 0002:0000003c       __imp__KeInitializeEvent@12 0001d03c     ntoskrnl:ntoskrnl.exe
+ 0002:00000040       __imp___except_handler3    0001d040     ntoskrnl:ntoskrnl.exe
+ 0002:00000044       __imp__ZwUnmapViewOfSection@8 0001d044     ntoskrnl:ntoskrnl.exe
+ 0002:00000048       __imp__ZwFlushVirtualMemory@16 0001d048     ntoskrnl:ntoskrnl.exe
+ 0002:0000004c       __imp__KeClearEvent@4      0001d04c     ntoskrnl:ntoskrnl.exe
+ 0002:00000050       __imp_@IofCallDriver@8     0001d050     ntoskrnl:ntoskrnl.exe
+ 0002:00000054       __imp__IoBuildSynchronousFsdRequest@28 0001d054     ntoskrnl:ntoskrnl.exe
+ 0002:00000058       __imp__ZwMapViewOfSection@40 0001d058     ntoskrnl:ntoskrnl.exe
+ 0002:0000005c       __imp__ZwCreateSection@28  0001d05c     ntoskrnl:ntoskrnl.exe
+ 0002:00000060       __imp___allrem             0001d060     ntoskrnl:ntoskrnl.exe
+ 0002:00000064       __imp__NtCreateFile@44     0001d064     ntoskrnl:ntoskrnl.exe
+ 0002:00000068       __imp__KeReleaseSemaphore@16 0001d068     ntoskrnl:ntoskrnl.exe
+ 0002:0000006c       __imp_@ExfInterlockedInsertTailList@12 0001d06c     ntoskrnl:ntoskrnl.exe
+ 0002:00000070       __imp__NtClose@4           0001d070     ntoskrnl:ntoskrnl.exe
+ 0002:00000074       __imp__NtFsControlFile@40  0001d074     ntoskrnl:ntoskrnl.exe
+ 0002:00000078       __imp__KeGetCurrentThread@0 0001d078     ntoskrnl:ntoskrnl.exe
+ 0002:0000007c       __imp__KeSetTimerEx@20     0001d07c     ntoskrnl:ntoskrnl.exe
+ 0002:00000080       __imp__KeInitializeDpc@12  0001d080     ntoskrnl:ntoskrnl.exe
+ 0002:00000084       __imp__KeInitializeTimer@4 0001d084     ntoskrnl:ntoskrnl.exe
+ 0002:00000088       __imp__KeSetEvent@12       0001d088     ntoskrnl:ntoskrnl.exe
+ 0002:0000008c       __imp_@ExfInterlockedRemoveHeadList@8 0001d08c     ntoskrnl:ntoskrnl.exe
+ 0002:00000090       __imp__DbgPrint            0001d090     ntoskrnl:ntoskrnl.exe
+ 0002:00000094       __imp__RtlAppendUnicodeToString@8 0001d094     ntoskrnl:ntoskrnl.exe
+ 0002:00000098       __imp__RtlFreeUnicodeString@4 0001d098     ntoskrnl:ntoskrnl.exe
+ 0002:0000009c       __imp__RtlStringFromGUID@8 0001d09c     ntoskrnl:ntoskrnl.exe
+ 0002:000000a0       __imp__RtlGUIDFromString@8 0001d0a0     ntoskrnl:ntoskrnl.exe
+ 0002:000000a4       __imp__ZwWriteFile@36      0001d0a4     ntoskrnl:ntoskrnl.exe
+ 0002:000000a8       __imp__ZwReadFile@36       0001d0a8     ntoskrnl:ntoskrnl.exe
+ 0002:000000ac       __imp__IoFreeMdl@4         0001d0ac     ntoskrnl:ntoskrnl.exe
+ 0002:000000b0       __imp__MmProbeAndLockPages@12 0001d0b0     ntoskrnl:ntoskrnl.exe
+ 0002:000000b4       __imp__IoAllocateMdl@20    0001d0b4     ntoskrnl:ntoskrnl.exe
+ 0002:000000b8       __imp__NtSetInformationFile@20 0001d0b8     ntoskrnl:ntoskrnl.exe
+ 0002:000000bc       __imp__IoFreeIrp@4         0001d0bc     ntoskrnl:ntoskrnl.exe
+ 0002:000000c0       __imp__MmUnlockPages@4     0001d0c0     ntoskrnl:ntoskrnl.exe
+ 0002:000000c4       __imp__IoBuildAsynchronousFsdRequest@24 0001d0c4     ntoskrnl:ntoskrnl.exe
+ 0002:000000c8       __imp__PsGetCurrentThreadId@0 0001d0c8     ntoskrnl:ntoskrnl.exe
+ 0002:000000cc       __imp___alldiv             0001d0cc     ntoskrnl:ntoskrnl.exe
+ 0002:000000d0       __imp__ExReleaseResourceForThreadLite@8 0001d0d0     ntoskrnl:ntoskrnl.exe
+ 0002:000000d4       __imp_@ExReleaseResourceLite@4 0001d0d4     ntoskrnl:ntoskrnl.exe
+ 0002:000000d8       __imp__ExAcquireResourceExclusiveLite@8 0001d0d8     ntoskrnl:ntoskrnl.exe
+ 0002:000000dc       __imp__NtWriteFile@36      0001d0dc     ntoskrnl:ntoskrnl.exe
+ 0002:000000e0       __imp__NtReadFile@36       0001d0e0     ntoskrnl:ntoskrnl.exe
+ 0002:000000e4       __imp__NtQueryInformationFile@20 0001d0e4     ntoskrnl:ntoskrnl.exe
+ 0002:000000e8       __imp__ExAcquireResourceSharedLite@8 0001d0e8     ntoskrnl:ntoskrnl.exe
+ 0002:000000ec       __imp__MmMapLockedPages@8  0001d0ec     ntoskrnl:ntoskrnl.exe
+ 0002:000000f0       __imp__ExSetResourceOwnerPointer@8 0001d0f0     ntoskrnl:ntoskrnl.exe
+ 0002:000000f4       __imp__IoAllocateIrp@8     0001d0f4     ntoskrnl:ntoskrnl.exe
+ 0002:000000f8       __imp__NtOpenFile@24       0001d0f8     ntoskrnl:ntoskrnl.exe
+ 0002:000000fc       __imp__NtQueryDirectoryFile@44 0001d0fc     ntoskrnl:ntoskrnl.exe
+ 0002:00000100       __imp__ZwSetInformationFile@20 0001d100     ntoskrnl:ntoskrnl.exe
+ 0002:00000104       __imp__ZwCreateFile@44     0001d104     ntoskrnl:ntoskrnl.exe
+ 0002:00000108       __imp__PsTerminateSystemThread@4 0001d108     ntoskrnl:ntoskrnl.exe
+ 0002:0000010c       __imp__PsCreateSystemThread@28 0001d10c     ntoskrnl:ntoskrnl.exe
+ 0002:00000110       __imp__RtlCopyUnicodeString@8 0001d110     ntoskrnl:ntoskrnl.exe
+ 0002:00000114       __imp__FsRtlFastUnlockAll@16 0001d114     ntoskrnl:ntoskrnl.exe
+ 0002:00000118       __imp__IoGetRequestorProcess@4 0001d118     ntoskrnl:ntoskrnl.exe
+ 0002:0000011c       __imp__KeLeaveCriticalRegion@0 0001d11c     ntoskrnl:ntoskrnl.exe
+ 0002:00000120       __imp__KeEnterCriticalRegion@0 0001d120     ntoskrnl:ntoskrnl.exe
+ 0002:00000124       __imp__ObReferenceObjectByPointer@16 0001d124     ntoskrnl:ntoskrnl.exe
+ 0002:00000128       __imp_@ObfReferenceObject@4 0001d128     ntoskrnl:ntoskrnl.exe
+ 0002:0000012c       __imp__FsRtlPrivateLock@48 0001d12c     ntoskrnl:ntoskrnl.exe
+ 0002:00000130       __imp__FsRtlFastUnlockSingle@32 0001d130     ntoskrnl:ntoskrnl.exe
+ 0002:00000134       __imp__FsRtlFastUnlockAllByKey@20 0001d134     ntoskrnl:ntoskrnl.exe
+ 0002:00000138       __imp__IoDeleteDevice@4    0001d138     ntoskrnl:ntoskrnl.exe
+ 0002:0000013c       __imp__IoDetachDevice@4    0001d13c     ntoskrnl:ntoskrnl.exe
+ 0002:00000140       __imp__ProbeForWrite@12    0001d140     ntoskrnl:ntoskrnl.exe
+ 0002:00000144       __imp__ProbeForRead@12     0001d144     ntoskrnl:ntoskrnl.exe
+ 0002:00000148       __imp__IoAttachDeviceToDeviceStackSafe@12 0001d148     ntoskrnl:ntoskrnl.exe
+ 0002:0000014c       __imp__IoCreateDevice@28   0001d14c     ntoskrnl:ntoskrnl.exe
+ 0002:00000150       __imp__FsRtlTruncateLargeMcb@12 0001d150     ntoskrnl:ntoskrnl.exe
+ 0002:00000154       __imp__ExDeleteResourceLite@4 0001d154     ntoskrnl:ntoskrnl.exe
+ 0002:00000158       __imp__ObQueryNameString@16 0001d158     ntoskrnl:ntoskrnl.exe
+ 0002:0000015c       __imp__IoGetDeviceAttachmentBaseRef@4 0001d15c     ntoskrnl:ntoskrnl.exe
+ 0002:00000160       __imp__IoGetLowerDeviceObject@4 0001d160     ntoskrnl:ntoskrnl.exe
+ 0002:00000164       __imp__IoGetAttachedDeviceReference@4 0001d164     ntoskrnl:ntoskrnl.exe
+ 0002:00000168       __imp__KeInitializeMutex@8 0001d168     ntoskrnl:ntoskrnl.exe
+ 0002:0000016c       __imp__ExInitializeResourceLite@4 0001d16c     ntoskrnl:ntoskrnl.exe
+ 0002:00000170       __imp__IoGetDiskDeviceObject@8 0001d170     ntoskrnl:ntoskrnl.exe
+ 0002:00000174       __imp__IoEnumerateDeviceObjectList@16 0001d174     ntoskrnl:ntoskrnl.exe
+ 0002:00000178       __imp__RtlCompareUnicodeString@12 0001d178     ntoskrnl:ntoskrnl.exe
+ 0002:0000017c       __imp__RtlInitUnicodeString@8 0001d17c     ntoskrnl:ntoskrnl.exe
+ 0002:00000180       __imp__KeInitializeTimerEx@8 0001d180     ntoskrnl:ntoskrnl.exe
+ 0002:00000184       __imp__IoRegisterFsRegistrationChange@8 0001d184     ntoskrnl:ntoskrnl.exe
+ 0002:00000188       __imp__KeInitializeSemaphore@12 0001d188     ntoskrnl:ntoskrnl.exe
+ 0002:0000018c       __imp__FsRtlProcessFileLock@12 0001d18c     ntoskrnl:ntoskrnl.exe
+ 0002:00000190       __imp___allmul             0001d190     ntoskrnl:ntoskrnl.exe
+ 0002:00000194       __imp__IoBuildPartialMdl@16 0001d194     ntoskrnl:ntoskrnl.exe
+ 0002:00000198       __imp__IoMakeAssociatedIrp@8 0001d198     ntoskrnl:ntoskrnl.exe
+ 0002:0000019c       __imp__FsRtlCheckLockForReadAccess@8 0001d19c     ntoskrnl:ntoskrnl.exe
+ 0002:000001a0       __imp__IoIsOperationSynchronous@4 0001d1a0     ntoskrnl:ntoskrnl.exe
+ 0002:000001a4       __imp_@KefReleaseSpinLockFromDpcLevel@4 0001d1a4     ntoskrnl:ntoskrnl.exe
+ 0002:000001a8       __imp_@KefAcquireSpinLockAtDpcLevel@4 0001d1a8     ntoskrnl:ntoskrnl.exe
+ 0002:000001ac       __imp__KeInitializeMutant@8 0001d1ac     ntoskrnl:ntoskrnl.exe
+ 0002:000001b0       __imp__IoGetStackLimits@8  0001d1b0     ntoskrnl:ntoskrnl.exe
+ 0002:000001b4       __imp__ExAcquireSharedStarveExclusive@8 0001d1b4     ntoskrnl:ntoskrnl.exe
+ 0002:000001b8       __imp__ZwCreateEvent@20    0001d1b8     ntoskrnl:ntoskrnl.exe
+ 0002:000001bc       __imp__FsRtlAddLargeMcbEntry@28 0001d1bc     ntoskrnl:ntoskrnl.exe
+ 0002:000001c0       __imp__FsRtlLookupLargeMcbEntry@32 0001d1c0     ntoskrnl:ntoskrnl.exe
+ 0002:000001c4       __imp__FsRtlRemoveLargeMcbEntry@20 0001d1c4     ntoskrnl:ntoskrnl.exe
+ 0002:000001c8       __imp__KeReleaseMutant@16  0001d1c8     ntoskrnl:ntoskrnl.exe
+ 0002:000001cc       __imp__KeReleaseMutex@8    0001d1cc     ntoskrnl:ntoskrnl.exe
+ 0002:000001d0       __imp__PsIsSystemThread@4  0001d1d0     ntoskrnl:ntoskrnl.exe
+ 0002:000001d4       __imp__FsRtlLookupPerStreamContextInternal@12 0001d1d4     ntoskrnl:ntoskrnl.exe
+ 0002:000001d8       __imp__FsRtlInitializeLargeMcb@8 0001d1d8     ntoskrnl:ntoskrnl.exe
+ 0002:000001dc       __imp__FsRtlInitializeFileLock@12 0001d1dc     ntoskrnl:ntoskrnl.exe
+ 0002:000001e0       __imp__FsRtlUninitializeLargeMcb@4 0001d1e0     ntoskrnl:ntoskrnl.exe
+ 0002:000001e4       __imp__FsRtlUninitializeFileLock@4 0001d1e4     ntoskrnl:ntoskrnl.exe
+ 0002:000001e8       __imp__FsRtlInsertPerStreamContext@8 0001d1e8     ntoskrnl:ntoskrnl.exe
+ 0002:000001ec       __imp__KeReadStateEvent@4  0001d1ec     ntoskrnl:ntoskrnl.exe
+ 0002:000001f0       __imp__ZwQueryInformationFile@20 0001d1f0     ntoskrnl:ntoskrnl.exe
+ 0002:000001f4       __imp__ExUuidCreate@4      0001d1f4     ntoskrnl:ntoskrnl.exe
+ 0002:000001f8       __imp__RtlSplay@4          0001d1f8     ntoskrnl:ntoskrnl.exe
+ 0002:000001fc       __imp__RtlDelete@4         0001d1fc     ntoskrnl:ntoskrnl.exe
+ 0002:00000200       __imp__KeTickCount         0001d200     ntoskrnl:ntoskrnl.exe
+ 0002:00000200       _KeTickCount               0001d200     ntoskrnl:ntoskrnl.exe
+ 0002:00000204       __imp__KeBugCheckEx@20     0001d204     ntoskrnl:ntoskrnl.exe
+ 0002:00000208       __imp__RtlAppendUnicodeStringToString@8 0001d208     ntoskrnl:ntoskrnl.exe
+ 0002:0000020c       __imp__IoCreateFile@56     0001d20c     ntoskrnl:ntoskrnl.exe
+ 0002:00000210       __imp__ExFreePoolWithTag@8 0001d210     ntoskrnl:ntoskrnl.exe
+ 0002:00000214       __imp__ZwClose@4           0001d214     ntoskrnl:ntoskrnl.exe
+ 0002:00000218       __imp__memmove             0001d218     ntoskrnl:ntoskrnl.exe
+ 0002:0000021c       __imp_@ObfDereferenceObject@4 0001d21c     ntoskrnl:ntoskrnl.exe
+ 0002:00000220       \177ntoskrnl_NULL_THUNK_DATA 0001d220     ntoskrnl:ntoskrnl.exe
+ 0002:00000278       ??_C@_1EM@FDODICLC@?$AA$?$AAE?$AAx?$AAt?$AAe?$AAn?$AAd?$AA?2?$AA$?$AAR?$AAe?$AAp?$AAa?$AAr?$AAs?$AAe?$AA?3?$AA$?$AAR?$AA?3@ 0001d278     sicheck.obj
+ 0002:00000300       _NtfsDataString            0001d300     siinit.obj
+ 0002:000003f0       ??_C@_04GCEDJCBL@KSEC?$AA@ 0001d3f0     siinit.obj
+ 0002:000003f8       ??_C@_07OGMGBCDA@TERMSRV?$AA@ 0001d3f8     siinit.obj
+ 0002:00000400       ??_C@_07NCHJACLF@SERENUM?$AA@ 0001d400     siinit.obj
+ 0002:00000408       ??_C@_0L@IMADEEHP@DFS_VOLUME?$AA@ 0001d408     siinit.obj
+ 0002:00000414       ??_C@_0BA@KLKCCBLE@DFS_FILE_SYSTEM?$AA@ 0001d414     siinit.obj
+ 0002:00000424       ??_C@_0BB@NGKBOGKH@FULLSCREEN_VIDEO?$AA@ 0001d424     siinit.obj
+ 0002:00000438       ??_C@_03DGOJDHIK@DVD?$AA@  0001d438     siinit.obj
+ 0002:0000043c       ??_C@_04JIOIFEDE@ACPI?$AA@ 0001d43c     siinit.obj
+ 0002:00000444       ??_C@_09GADPFDIA@SMARTCARD?$AA@ 0001d444     siinit.obj
+ 0002:00000450       ??_C@_07JBPDPBBO@CHANGER?$AA@ 0001d450     siinit.obj
+ 0002:00000458       ??_C@_02ONOHEKFL@KS?$AA@   0001d458     siinit.obj
+ 0002:0000045c       ??_C@_03LNAOLDLL@SMB?$AA@  0001d45c     siinit.obj
+ 0002:00000460       ??_C@_0N@NEOFLJDA@MASS_STORAGE?$AA@ 0001d460     siinit.obj
+ 0002:00000470       ??_C@_03CJJGEMJ@VDM?$AA@   0001d470     siinit.obj
+ 0002:00000474       ??_C@_05KIDJHP@MODEM?$AA@  0001d474     siinit.obj
+ 0002:0000047c       ??_C@_0N@LHGBHHJO@BUS_EXTENDER?$AA@ 0001d47c     siinit.obj
+ 0002:0000048c       ??_C@_07OBBOAMON@BATTERY?$AA@ 0001d48c     siinit.obj
+ 0002:00000494       ??_C@_0BD@EMLCGFJB@NETWORK_REDIRECTOR?$AA@ 0001d494     siinit.obj
+ 0002:000004a8       ??_C@_09MAEICDGH@8042_PORT?$AA@ 0001d4a8     siinit.obj
+ 0002:000004b4       ??_C@_08DIPGCGLF@WAVE_OUT?$AA@ 0001d4b4     siinit.obj
+ 0002:000004c0       ??_C@_07OPFJFDGH@WAVE_IN?$AA@ 0001d4c0     siinit.obj
+ 0002:000004c8       ??_C@_0N@PBJKBCBL@VIRTUAL_DISK?$AA@ 0001d4c8     siinit.obj
+ 0002:000004d8       ??_C@_05NEMPFMAF@VIDEO?$AA@ 0001d4d8     siinit.obj
+ 0002:000004e0       ??_C@_07NFANNNEC@UNKNOWN?$AA@ 0001d4e0     siinit.obj
+ 0002:000004e8       ??_C@_09MBLMILGL@TRANSPORT?$AA@ 0001d4e8     siinit.obj
+ 0002:000004f4       ??_C@_0BB@DFFIKBGL@TAPE_FILE_SYSTEM?$AA@ 0001d4f4     siinit.obj
+ 0002:00000508       ??_C@_04DGFEMLEB@TAPE?$AA@ 0001d508     siinit.obj
+ 0002:00000510       ??_C@_07INMHEIIO@STREAMS?$AA@ 0001d510     siinit.obj
+ 0002:00000518       ??_C@_05MEGDOMG@SOUND?$AA@ 0001d518     siinit.obj
+ 0002:00000520       ??_C@_06PNALCGN@SCREEN?$AA@ 0001d520     siinit.obj
+ 0002:00000528       ??_C@_0M@HGMPGFJK@SERIAL_PORT?$AA@ 0001d528     siinit.obj
+ 0002:00000534       ??_C@_0BC@DJNLMPGE@SERIAL_MOUSE_PORT?$AA@ 0001d534     siinit.obj
+ 0002:00000548       ??_C@_07JCEHNLEF@SCANNER?$AA@ 0001d548     siinit.obj
+ 0002:00000550       ??_C@_07OJGHOEK@PRINTER?$AA@ 0001d550     siinit.obj
+ 0002:00000558       ??_C@_0BB@LLEIHKHO@PHYSICAL_NETCARD?$AA@ 0001d558     siinit.obj
+ 0002:0000056c       ??_C@_0O@EHHHJMIC@PARALLEL_PORT?$AA@ 0001d56c     siinit.obj
+ 0002:0000057c       ??_C@_04HIBGFPH@NULL?$AA@  0001d57c     siinit.obj
+ 0002:00000584       ??_C@_0BE@CDGDPDPI@NETWORK_FILE_SYSTEM?$AA@ 0001d584     siinit.obj
+ 0002:00000598       ??_C@_0BA@ILKFHMOL@NETWORK_BROWSER?$AA@ 0001d598     siinit.obj
+ 0002:000005a8       ??_C@_07BCBHNHNG@NETWORK?$AA@ 0001d5a8     siinit.obj
+ 0002:000005b0       ??_C@_0L@FNLPJOHJ@NAMED_PIPE?$AA@ 0001d5b0     siinit.obj
+ 0002:000005bc       ??_C@_0BD@EOOOABJI@MULTI_UNC_PROVIDER?$AA@ 0001d5bc     siinit.obj
+ 0002:000005d0       ??_C@_05DIHPFMEP@MOUSE?$AA@ 0001d5d0     siinit.obj
+ 0002:000005d8       ??_C@_08FFHOLIHD@MIDI_OUT?$AA@ 0001d5d8     siinit.obj
+ 0002:000005e4       ??_C@_07LKCDHOHC@MIDI_IN?$AA@ 0001d5e4     siinit.obj
+ 0002:000005ec       ??_C@_08HBHFDHPM@MAILSLOT?$AA@ 0001d5ec     siinit.obj
+ 0002:000005f8       ??_C@_08NCLHDNBO@KEYBOARD?$AA@ 0001d5f8     siinit.obj
+ 0002:00000604       ??_C@_0M@GCCLKKJF@INPORT_PORT?$AA@ 0001d604     siinit.obj
+ 0002:00000610       ??_C@_0M@FLBCLFHO@FILE_SYSTEM?$AA@ 0001d610     siinit.obj
+ 0002:0000061c       ??_C@_0BB@ILPMJIKA@DISK_FILE_SYSTEM?$AA@ 0001d61c     siinit.obj
+ 0002:00000630       ??_C@_04PMFOHPL@DISK?$AA@  0001d630     siinit.obj
+ 0002:00000638       ??_C@_03CPEMBAGM@DFS?$AA@  0001d638     siinit.obj
+ 0002:0000063c       ??_C@_08HOLHPLLP@DATALINK?$AA@ 0001d63c     siinit.obj
+ 0002:00000648       ??_C@_0L@ILAGCKGO@CONTROLLER?$AA@ 0001d648     siinit.obj
+ 0002:00000654       ??_C@_0BD@CABCIIMM@CD_ROM_FILE_SYSTEM?$AA@ 0001d654     siinit.obj
+ 0002:00000668       ??_C@_06GGOPGDJJ@CD_ROM?$AA@ 0001d668     siinit.obj
+ 0002:00000670       ??_C@_04HLMOLJLL@BEEP?$AA@ 0001d670     siinit.obj
+ 0002:00000675       ??_C@_00CNPNBAHC@?$AA@     0001d675     siinit.obj
+ 0002:00000678       ??_C@_1M@FJMMMJAH@?$AA$?$AAD?$AAA?$AAT?$AAA?$AA?$AA@ 0001d678     siinit.obj
+ 0002:00000698       __load_config_used         0001d698     ntoskrnl:loadcfg.obj
+ 0002:00000740       ___safe_se_handler_table   0001d740     <linker-defined>
+ 0003:00000000       _reparseIndexDir           0001e000     sicheck.obj
+ 0003:00000008       ___security_cookie         0001e008     BufferOverflowK:gs_support.obj
+ 0003:00000020       _GCHEnableFastIo           0001e020     sis.obj
+ 0003:00000024       _FsNtfsDeviceObject        0001e024     sis.obj
+ 0003:00000028       _scEnableFastIo            0001e028     sifastio.obj
+ 0003:0000002c       _SisControlDeviceObject    0001e02c     siinit.obj
+ 0003:00000040       _SisDeviceAttachLock       0001e040     <common>
+ 0003:00000060       _LogTrimWorkItem           0001e060     <common>
+ 0003:00000080       _LogTrimDpc                0001e080     <common>
+ 0003:000000a0       _LogTrimTimer              0001e0a0     <common>
+ 0003:000000c8       _DeviceExtensionListHead   0001e0c8     <common>
+ 0003:000000d0       _DeviceExtensionListLock   0001e0d0     <common>
+ 0003:000000d4       _FsDriverObject            0001e0d4     <common>
+ 0003:000000e0       _CopySemaphore             0001e0e0     <common>
+ 0003:000000f4       _CopyListLock              0001e0f4     <common>
+ 0003:000000f8       _CopyList                  0001e0f8     <common>
+ 0003:00000100       ___@@_PchSym_@00@UhksrmcoltrxUPtrgUlhUdipReBOCUdipUyzhvUuhUhrhUurogviUlyqUrDIGUhrkOlyq@sis 0001e100     <common>
+ 0004:00000000       _SipBltRangeByObject@44    0001f000 f   cow.obj
+ 0004:00000234       _SipBltRange@44            0001f234 f   cow.obj
+ 0004:0000029e       _SiFastIoCheckIfPossible@32 0001f29e f   sifastio.obj
+ 0004:000002e4       _SiFastIoRead@32           0001f2e4 f   sifastio.obj
+ 0004:0000041a       _SiFastIoLock@36           0001f41a f   sifastio.obj
+ 0004:000004ea       _SiFastIoUnlockSingle@28   0001f4ea f   sifastio.obj
+ 0004:000005ae       _SiFastIoUnlockAll@16      0001f5ae f   sifastio.obj
+ 0004:00000658       _SiFastIoUnlockAllByKey@20 0001f658 f   sifastio.obj
+ 0004:00000700       _SiFastIoDeviceControl@36  0001f700 f   sifastio.obj
+ 0004:0000075e       _SiFastIoDetachDevice@8    0001f75e f   sifastio.obj
+ 0004:0000077e       _SiFastIoMdlRead@28        0001f77e f   sifastio.obj
+ 0004:00000848       _SiFastIoPrepareMdlWrite@28 0001f848 f   sifastio.obj
+ 0004:000008a0       _SiFastIoMdlWriteComplete@16 0001f8a0 f   sifastio.obj
+ 0004:000008f0       _SiFastIoReadCompressed@40 0001f8f0 f   sifastio.obj
+ 0004:00000952       _SiFastIoWriteCompressed@40 0001f952 f   sifastio.obj
+ 0004:000009b4       _SiFastIoQueryOpen@12      0001f9b4 f   sifastio.obj
+ 0004:000009fc       _SipFsNotification@8       0001f9fc f   siinit.obj
+ 0004:00000a56       _SiLockControl@8           0001fa56 f   silock.obj
+ 0004:00000ad8       _SipComputeChecksum@12     0001fad8 f   silog.obj
+ 0004:00000b8c       _SipCreateCSFileWork@4     0001fb8c f   siinst.obj
+ 0004:00000f22       _SipCreateCSFile@24        0001ff22 f   siinst.obj
+ 0005:00000030       _DriverEntry@8             00020030 f   siinit.obj
+ 0005:0000029c       _GsDriverEntry@8           0002029c f   BufferOverflowK:gs_support.obj
+ 0005:000002cc       __IMPORT_DESCRIPTOR_ntoskrnl 000202cc     ntoskrnl:ntoskrnl.exe
+ 0005:000002e0       __IMPORT_DESCRIPTOR_HAL    000202e0     hal:HAL.dll
+ 0005:000002f4       __NULL_IMPORT_DESCRIPTOR   000202f4     ntoskrnl:ntoskrnl.exe
+
+ entry point at        0005:0000029c
+
+ Static symbols
+
+ 0001:0000b81a       _FindNodeOrParent@12       0001c81a f   sitree.obj

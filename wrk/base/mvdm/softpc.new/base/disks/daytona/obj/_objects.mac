@@ -1,0 +1,56 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\floppy_i.obj \
+    $(_OBJ_DIR)\i386\diskbios.obj \
+    $(_OBJ_DIR)\i386\fdisk.obj \
+    $(_OBJ_DIR)\i386\fla.obj \
+    $(_OBJ_DIR)\i386\gfi.obj \
+    $(_OBJ_DIR)\i386\gfi_ibm.obj \
+    $(_OBJ_DIR)\i386\gfi_mpty.obj \
+    $(_OBJ_DIR)\i386\gfi_sflp.obj \
+    $(_OBJ_DIR)\i386\gfi_test.obj \
+    $(_OBJ_DIR)\i386\floppy.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\floppy_i.obj \
+    $(_OBJ_DIR)\ia64\diskbios.obj \
+    $(_OBJ_DIR)\ia64\fdisk.obj \
+    $(_OBJ_DIR)\ia64\fla.obj \
+    $(_OBJ_DIR)\ia64\gfi.obj \
+    $(_OBJ_DIR)\ia64\gfi_ibm.obj \
+    $(_OBJ_DIR)\ia64\gfi_mpty.obj \
+    $(_OBJ_DIR)\ia64\gfi_sflp.obj \
+    $(_OBJ_DIR)\ia64\gfi_test.obj \
+    $(_OBJ_DIR)\ia64\floppy.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\floppy_i.obj \
+    $(_OBJ_DIR)\amd64\diskbios.obj \
+    $(_OBJ_DIR)\amd64\fdisk.obj \
+    $(_OBJ_DIR)\amd64\fla.obj \
+    $(_OBJ_DIR)\amd64\gfi.obj \
+    $(_OBJ_DIR)\amd64\gfi_ibm.obj \
+    $(_OBJ_DIR)\amd64\gfi_mpty.obj \
+    $(_OBJ_DIR)\amd64\gfi_sflp.obj \
+    $(_OBJ_DIR)\amd64\gfi_test.obj \
+    $(_OBJ_DIR)\amd64\floppy.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\floppy_i.obj \
+    $(_OBJ_DIR)\arm\diskbios.obj \
+    $(_OBJ_DIR)\arm\fdisk.obj \
+    $(_OBJ_DIR)\arm\fla.obj \
+    $(_OBJ_DIR)\arm\gfi.obj \
+    $(_OBJ_DIR)\arm\gfi_ibm.obj \
+    $(_OBJ_DIR)\arm\gfi_mpty.obj \
+    $(_OBJ_DIR)\arm\gfi_sflp.obj \
+    $(_OBJ_DIR)\arm\gfi_test.obj \
+    $(_OBJ_DIR)\arm\floppy.obj
+
+PASS0_ARM_OBJECTS=
+

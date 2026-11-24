@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\csc.obj \
+    $(_OBJ_DIR)\i386\chunk.obj \
+    $(_OBJ_DIR)\i386\agntevnt.obj \
+    $(_OBJ_DIR)\i386\dconnect.obj \
+    $(_OBJ_DIR)\i386\readrite.obj \
+    $(_OBJ_DIR)\i386\transitn.obj \
+    $(_OBJ_DIR)\i386\cscdfs.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\csc.obj \
+    $(_OBJ_DIR)\ia64\chunk.obj \
+    $(_OBJ_DIR)\ia64\agntevnt.obj \
+    $(_OBJ_DIR)\ia64\dconnect.obj \
+    $(_OBJ_DIR)\ia64\readrite.obj \
+    $(_OBJ_DIR)\ia64\transitn.obj \
+    $(_OBJ_DIR)\ia64\cscdfs.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\csc.obj \
+    $(_OBJ_DIR)\amd64\chunk.obj \
+    $(_OBJ_DIR)\amd64\agntevnt.obj \
+    $(_OBJ_DIR)\amd64\dconnect.obj \
+    $(_OBJ_DIR)\amd64\readrite.obj \
+    $(_OBJ_DIR)\amd64\transitn.obj \
+    $(_OBJ_DIR)\amd64\cscdfs.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\csc.obj \
+    $(_OBJ_DIR)\arm\chunk.obj \
+    $(_OBJ_DIR)\arm\agntevnt.obj \
+    $(_OBJ_DIR)\arm\dconnect.obj \
+    $(_OBJ_DIR)\arm\readrite.obj \
+    $(_OBJ_DIR)\arm\transitn.obj \
+    $(_OBJ_DIR)\arm\cscdfs.obj
+
+PASS0_ARM_OBJECTS=
+

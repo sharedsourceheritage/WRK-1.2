@@ -1,0 +1,88 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ufat.res \
+    $(_OBJ_DIR)\i386\hashindx.obj \
+    $(_OBJ_DIR)\i386\cluster.obj \
+    $(_OBJ_DIR)\i386\eaheader.obj \
+    $(_OBJ_DIR)\i386\easet.obj \
+    $(_OBJ_DIR)\i386\entry.obj \
+    $(_OBJ_DIR)\i386\fat.obj \
+    $(_OBJ_DIR)\i386\fatdent.obj \
+    $(_OBJ_DIR)\i386\fatdir.obj \
+    $(_OBJ_DIR)\i386\fatsa.obj \
+    $(_OBJ_DIR)\i386\fatsachk.obj \
+    $(_OBJ_DIR)\i386\fatsacnv.obj \
+    $(_OBJ_DIR)\i386\fatvol.obj \
+    $(_OBJ_DIR)\i386\filedir.obj \
+    $(_OBJ_DIR)\i386\reloclus.obj \
+    $(_OBJ_DIR)\i386\rfatsa.obj \
+    $(_OBJ_DIR)\i386\rootdir.obj \
+    $(_OBJ_DIR)\i386\ufat.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ufat.res \
+    $(_OBJ_DIR)\ia64\hashindx.obj \
+    $(_OBJ_DIR)\ia64\cluster.obj \
+    $(_OBJ_DIR)\ia64\eaheader.obj \
+    $(_OBJ_DIR)\ia64\easet.obj \
+    $(_OBJ_DIR)\ia64\entry.obj \
+    $(_OBJ_DIR)\ia64\fat.obj \
+    $(_OBJ_DIR)\ia64\fatdent.obj \
+    $(_OBJ_DIR)\ia64\fatdir.obj \
+    $(_OBJ_DIR)\ia64\fatsa.obj \
+    $(_OBJ_DIR)\ia64\fatsachk.obj \
+    $(_OBJ_DIR)\ia64\fatsacnv.obj \
+    $(_OBJ_DIR)\ia64\fatvol.obj \
+    $(_OBJ_DIR)\ia64\filedir.obj \
+    $(_OBJ_DIR)\ia64\reloclus.obj \
+    $(_OBJ_DIR)\ia64\rfatsa.obj \
+    $(_OBJ_DIR)\ia64\rootdir.obj \
+    $(_OBJ_DIR)\ia64\ufat.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ufat.res \
+    $(_OBJ_DIR)\amd64\hashindx.obj \
+    $(_OBJ_DIR)\amd64\cluster.obj \
+    $(_OBJ_DIR)\amd64\eaheader.obj \
+    $(_OBJ_DIR)\amd64\easet.obj \
+    $(_OBJ_DIR)\amd64\entry.obj \
+    $(_OBJ_DIR)\amd64\fat.obj \
+    $(_OBJ_DIR)\amd64\fatdent.obj \
+    $(_OBJ_DIR)\amd64\fatdir.obj \
+    $(_OBJ_DIR)\amd64\fatsa.obj \
+    $(_OBJ_DIR)\amd64\fatsachk.obj \
+    $(_OBJ_DIR)\amd64\fatsacnv.obj \
+    $(_OBJ_DIR)\amd64\fatvol.obj \
+    $(_OBJ_DIR)\amd64\filedir.obj \
+    $(_OBJ_DIR)\amd64\reloclus.obj \
+    $(_OBJ_DIR)\amd64\rfatsa.obj \
+    $(_OBJ_DIR)\amd64\rootdir.obj \
+    $(_OBJ_DIR)\amd64\ufat.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ufat.res \
+    $(_OBJ_DIR)\arm\hashindx.obj \
+    $(_OBJ_DIR)\arm\cluster.obj \
+    $(_OBJ_DIR)\arm\eaheader.obj \
+    $(_OBJ_DIR)\arm\easet.obj \
+    $(_OBJ_DIR)\arm\entry.obj \
+    $(_OBJ_DIR)\arm\fat.obj \
+    $(_OBJ_DIR)\arm\fatdent.obj \
+    $(_OBJ_DIR)\arm\fatdir.obj \
+    $(_OBJ_DIR)\arm\fatsa.obj \
+    $(_OBJ_DIR)\arm\fatsachk.obj \
+    $(_OBJ_DIR)\arm\fatsacnv.obj \
+    $(_OBJ_DIR)\arm\fatvol.obj \
+    $(_OBJ_DIR)\arm\filedir.obj \
+    $(_OBJ_DIR)\arm\reloclus.obj \
+    $(_OBJ_DIR)\arm\rfatsa.obj \
+    $(_OBJ_DIR)\arm\rootdir.obj \
+    $(_OBJ_DIR)\arm\ufat.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,172 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clusterconfiguration.obj \
+    $(_OBJ_DIR)\i386\configconnection.obj \
+    $(_OBJ_DIR)\i386\connectioninfo.obj \
+    $(_OBJ_DIR)\i386\connectionmanager.obj \
+    $(_OBJ_DIR)\i386\connpointenum.obj \
+    $(_OBJ_DIR)\i386\cpicluscfgcallback.obj \
+    $(_OBJ_DIR)\i386\cpinotifyui.obj \
+    $(_OBJ_DIR)\i386\enumcookies.obj \
+    $(_OBJ_DIR)\i386\enumcpicccb.obj \
+    $(_OBJ_DIR)\i386\enumcpinotifyui.obj \
+    $(_OBJ_DIR)\i386\enumipaddresses.obj \
+    $(_OBJ_DIR)\i386\enumnodeinformation.obj \
+    $(_OBJ_DIR)\i386\enummanageablenetworks.obj \
+    $(_OBJ_DIR)\i386\enummanageableresources.obj \
+    $(_OBJ_DIR)\i386\ipaddressinfo.obj \
+    $(_OBJ_DIR)\i386\logger.obj \
+    $(_OBJ_DIR)\i386\logmanager.obj \
+    $(_OBJ_DIR)\i386\managedresource.obj \
+    $(_OBJ_DIR)\i386\managednetwork.obj \
+    $(_OBJ_DIR)\i386\middletierutils.obj \
+    $(_OBJ_DIR)\i386\nodeinformation.obj \
+    $(_OBJ_DIR)\i386\notificationmanager.obj \
+    $(_OBJ_DIR)\i386\objectmanager.obj \
+    $(_OBJ_DIR)\i386\servicemanager.obj \
+    $(_OBJ_DIR)\i386\standardinfo.obj \
+    $(_OBJ_DIR)\i386\taskanalyzecluster.obj \
+    $(_OBJ_DIR)\i386\taskanalyzeclusterbase.obj \
+    $(_OBJ_DIR)\i386\taskanalyzeclusterminconfig.obj \
+    $(_OBJ_DIR)\i386\taskcancelcleanup.obj \
+    $(_OBJ_DIR)\i386\taskcommitclusterchanges.obj \
+    $(_OBJ_DIR)\i386\taskcompareandpushinformation.obj \
+    $(_OBJ_DIR)\i386\taskgatherclusterinfo.obj \
+    $(_OBJ_DIR)\i386\taskgatherinformation.obj \
+    $(_OBJ_DIR)\i386\taskgathernodeinfo.obj \
+    $(_OBJ_DIR)\i386\taskgetdomains.obj \
+    $(_OBJ_DIR)\i386\taskmanager.obj \
+    $(_OBJ_DIR)\i386\taskpollingcallback.obj \
+    $(_OBJ_DIR)\i386\tasktracking.obj \
+    $(_OBJ_DIR)\i386\taskverifyipaddress.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clusterconfiguration.obj \
+    $(_OBJ_DIR)\ia64\configconnection.obj \
+    $(_OBJ_DIR)\ia64\connectioninfo.obj \
+    $(_OBJ_DIR)\ia64\connectionmanager.obj \
+    $(_OBJ_DIR)\ia64\connpointenum.obj \
+    $(_OBJ_DIR)\ia64\cpicluscfgcallback.obj \
+    $(_OBJ_DIR)\ia64\cpinotifyui.obj \
+    $(_OBJ_DIR)\ia64\enumcookies.obj \
+    $(_OBJ_DIR)\ia64\enumcpicccb.obj \
+    $(_OBJ_DIR)\ia64\enumcpinotifyui.obj \
+    $(_OBJ_DIR)\ia64\enumipaddresses.obj \
+    $(_OBJ_DIR)\ia64\enumnodeinformation.obj \
+    $(_OBJ_DIR)\ia64\enummanageablenetworks.obj \
+    $(_OBJ_DIR)\ia64\enummanageableresources.obj \
+    $(_OBJ_DIR)\ia64\ipaddressinfo.obj \
+    $(_OBJ_DIR)\ia64\logger.obj \
+    $(_OBJ_DIR)\ia64\logmanager.obj \
+    $(_OBJ_DIR)\ia64\managedresource.obj \
+    $(_OBJ_DIR)\ia64\managednetwork.obj \
+    $(_OBJ_DIR)\ia64\middletierutils.obj \
+    $(_OBJ_DIR)\ia64\nodeinformation.obj \
+    $(_OBJ_DIR)\ia64\notificationmanager.obj \
+    $(_OBJ_DIR)\ia64\objectmanager.obj \
+    $(_OBJ_DIR)\ia64\servicemanager.obj \
+    $(_OBJ_DIR)\ia64\standardinfo.obj \
+    $(_OBJ_DIR)\ia64\taskanalyzecluster.obj \
+    $(_OBJ_DIR)\ia64\taskanalyzeclusterbase.obj \
+    $(_OBJ_DIR)\ia64\taskanalyzeclusterminconfig.obj \
+    $(_OBJ_DIR)\ia64\taskcancelcleanup.obj \
+    $(_OBJ_DIR)\ia64\taskcommitclusterchanges.obj \
+    $(_OBJ_DIR)\ia64\taskcompareandpushinformation.obj \
+    $(_OBJ_DIR)\ia64\taskgatherclusterinfo.obj \
+    $(_OBJ_DIR)\ia64\taskgatherinformation.obj \
+    $(_OBJ_DIR)\ia64\taskgathernodeinfo.obj \
+    $(_OBJ_DIR)\ia64\taskgetdomains.obj \
+    $(_OBJ_DIR)\ia64\taskmanager.obj \
+    $(_OBJ_DIR)\ia64\taskpollingcallback.obj \
+    $(_OBJ_DIR)\ia64\tasktracking.obj \
+    $(_OBJ_DIR)\ia64\taskverifyipaddress.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clusterconfiguration.obj \
+    $(_OBJ_DIR)\amd64\configconnection.obj \
+    $(_OBJ_DIR)\amd64\connectioninfo.obj \
+    $(_OBJ_DIR)\amd64\connectionmanager.obj \
+    $(_OBJ_DIR)\amd64\connpointenum.obj \
+    $(_OBJ_DIR)\amd64\cpicluscfgcallback.obj \
+    $(_OBJ_DIR)\amd64\cpinotifyui.obj \
+    $(_OBJ_DIR)\amd64\enumcookies.obj \
+    $(_OBJ_DIR)\amd64\enumcpicccb.obj \
+    $(_OBJ_DIR)\amd64\enumcpinotifyui.obj \
+    $(_OBJ_DIR)\amd64\enumipaddresses.obj \
+    $(_OBJ_DIR)\amd64\enumnodeinformation.obj \
+    $(_OBJ_DIR)\amd64\enummanageablenetworks.obj \
+    $(_OBJ_DIR)\amd64\enummanageableresources.obj \
+    $(_OBJ_DIR)\amd64\ipaddressinfo.obj \
+    $(_OBJ_DIR)\amd64\logger.obj \
+    $(_OBJ_DIR)\amd64\logmanager.obj \
+    $(_OBJ_DIR)\amd64\managedresource.obj \
+    $(_OBJ_DIR)\amd64\managednetwork.obj \
+    $(_OBJ_DIR)\amd64\middletierutils.obj \
+    $(_OBJ_DIR)\amd64\nodeinformation.obj \
+    $(_OBJ_DIR)\amd64\notificationmanager.obj \
+    $(_OBJ_DIR)\amd64\objectmanager.obj \
+    $(_OBJ_DIR)\amd64\servicemanager.obj \
+    $(_OBJ_DIR)\amd64\standardinfo.obj \
+    $(_OBJ_DIR)\amd64\taskanalyzecluster.obj \
+    $(_OBJ_DIR)\amd64\taskanalyzeclusterbase.obj \
+    $(_OBJ_DIR)\amd64\taskanalyzeclusterminconfig.obj \
+    $(_OBJ_DIR)\amd64\taskcancelcleanup.obj \
+    $(_OBJ_DIR)\amd64\taskcommitclusterchanges.obj \
+    $(_OBJ_DIR)\amd64\taskcompareandpushinformation.obj \
+    $(_OBJ_DIR)\amd64\taskgatherclusterinfo.obj \
+    $(_OBJ_DIR)\amd64\taskgatherinformation.obj \
+    $(_OBJ_DIR)\amd64\taskgathernodeinfo.obj \
+    $(_OBJ_DIR)\amd64\taskgetdomains.obj \
+    $(_OBJ_DIR)\amd64\taskmanager.obj \
+    $(_OBJ_DIR)\amd64\taskpollingcallback.obj \
+    $(_OBJ_DIR)\amd64\tasktracking.obj \
+    $(_OBJ_DIR)\amd64\taskverifyipaddress.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clusterconfiguration.obj \
+    $(_OBJ_DIR)\arm\configconnection.obj \
+    $(_OBJ_DIR)\arm\connectioninfo.obj \
+    $(_OBJ_DIR)\arm\connectionmanager.obj \
+    $(_OBJ_DIR)\arm\connpointenum.obj \
+    $(_OBJ_DIR)\arm\cpicluscfgcallback.obj \
+    $(_OBJ_DIR)\arm\cpinotifyui.obj \
+    $(_OBJ_DIR)\arm\enumcookies.obj \
+    $(_OBJ_DIR)\arm\enumcpicccb.obj \
+    $(_OBJ_DIR)\arm\enumcpinotifyui.obj \
+    $(_OBJ_DIR)\arm\enumipaddresses.obj \
+    $(_OBJ_DIR)\arm\enumnodeinformation.obj \
+    $(_OBJ_DIR)\arm\enummanageablenetworks.obj \
+    $(_OBJ_DIR)\arm\enummanageableresources.obj \
+    $(_OBJ_DIR)\arm\ipaddressinfo.obj \
+    $(_OBJ_DIR)\arm\logger.obj \
+    $(_OBJ_DIR)\arm\logmanager.obj \
+    $(_OBJ_DIR)\arm\managedresource.obj \
+    $(_OBJ_DIR)\arm\managednetwork.obj \
+    $(_OBJ_DIR)\arm\middletierutils.obj \
+    $(_OBJ_DIR)\arm\nodeinformation.obj \
+    $(_OBJ_DIR)\arm\notificationmanager.obj \
+    $(_OBJ_DIR)\arm\objectmanager.obj \
+    $(_OBJ_DIR)\arm\servicemanager.obj \
+    $(_OBJ_DIR)\arm\standardinfo.obj \
+    $(_OBJ_DIR)\arm\taskanalyzecluster.obj \
+    $(_OBJ_DIR)\arm\taskanalyzeclusterbase.obj \
+    $(_OBJ_DIR)\arm\taskanalyzeclusterminconfig.obj \
+    $(_OBJ_DIR)\arm\taskcancelcleanup.obj \
+    $(_OBJ_DIR)\arm\taskcommitclusterchanges.obj \
+    $(_OBJ_DIR)\arm\taskcompareandpushinformation.obj \
+    $(_OBJ_DIR)\arm\taskgatherclusterinfo.obj \
+    $(_OBJ_DIR)\arm\taskgatherinformation.obj \
+    $(_OBJ_DIR)\arm\taskgathernodeinfo.obj \
+    $(_OBJ_DIR)\arm\taskgetdomains.obj \
+    $(_OBJ_DIR)\arm\taskmanager.obj \
+    $(_OBJ_DIR)\arm\taskpollingcallback.obj \
+    $(_OBJ_DIR)\arm\tasktracking.obj \
+    $(_OBJ_DIR)\arm\taskverifyipaddress.obj
+
+PASS0_ARM_OBJECTS=
+

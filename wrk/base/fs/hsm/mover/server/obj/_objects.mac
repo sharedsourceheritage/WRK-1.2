@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\mover.res \
+    $(_OBJ_DIR)\i386\dlldatax.obj \
+    $(_OBJ_DIR)\i386\stdafx.obj \
+    $(_OBJ_DIR)\i386\mover.obj \
+    $(_OBJ_DIR)\i386\nttapeio.obj \
+    $(_OBJ_DIR)\i386\ntfileio.obj \
+    $(_OBJ_DIR)\i386\filterio.obj \
+    $(_OBJ_DIR)\i386\mtfsessn.obj \
+    $(_OBJ_DIR)\i386\mtfapi.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\mover.res \
+    $(_OBJ_DIR)\ia64\dlldatax.obj \
+    $(_OBJ_DIR)\ia64\stdafx.obj \
+    $(_OBJ_DIR)\ia64\mover.obj \
+    $(_OBJ_DIR)\ia64\nttapeio.obj \
+    $(_OBJ_DIR)\ia64\ntfileio.obj \
+    $(_OBJ_DIR)\ia64\filterio.obj \
+    $(_OBJ_DIR)\ia64\mtfsessn.obj \
+    $(_OBJ_DIR)\ia64\mtfapi.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\mover.res \
+    $(_OBJ_DIR)\amd64\dlldatax.obj \
+    $(_OBJ_DIR)\amd64\stdafx.obj \
+    $(_OBJ_DIR)\amd64\mover.obj \
+    $(_OBJ_DIR)\amd64\nttapeio.obj \
+    $(_OBJ_DIR)\amd64\ntfileio.obj \
+    $(_OBJ_DIR)\amd64\filterio.obj \
+    $(_OBJ_DIR)\amd64\mtfsessn.obj \
+    $(_OBJ_DIR)\amd64\mtfapi.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\mover.res \
+    $(_OBJ_DIR)\arm\dlldatax.obj \
+    $(_OBJ_DIR)\arm\stdafx.obj \
+    $(_OBJ_DIR)\arm\mover.obj \
+    $(_OBJ_DIR)\arm\nttapeio.obj \
+    $(_OBJ_DIR)\arm\ntfileio.obj \
+    $(_OBJ_DIR)\arm\filterio.obj \
+    $(_OBJ_DIR)\arm\mtfsessn.obj \
+    $(_OBJ_DIR)\arm\mtfapi.obj
+
+PASS0_ARM_OBJECTS=
+

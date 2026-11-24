@@ -1,0 +1,32 @@
+386_OBJECTS=
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\jobdef.h \
+    $(PASS0_HEADERDIR)\jobint.h \
+    $(PASS0_HEADERDIR)\joblib.h \
+    $(PASS0_HEADERDIR)\jobprv.h
+
+IA64_OBJECTS=
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\jobdef.h \
+    $(PASS0_HEADERDIR)\jobint.h \
+    $(PASS0_HEADERDIR)\joblib.h \
+    $(PASS0_HEADERDIR)\jobprv.h
+
+AMD64_OBJECTS=
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\jobdef.h \
+    $(PASS0_HEADERDIR)\jobint.h \
+    $(PASS0_HEADERDIR)\joblib.h \
+    $(PASS0_HEADERDIR)\jobprv.h
+
+ARM_OBJECTS=
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\jobdef.h \
+    $(PASS0_HEADERDIR)\jobint.h \
+    $(PASS0_HEADERDIR)\joblib.h \
+    $(PASS0_HEADERDIR)\jobprv.h
+

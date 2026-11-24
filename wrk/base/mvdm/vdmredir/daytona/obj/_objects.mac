@@ -1,0 +1,80 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\vdmredir.res \
+    $(_OBJ_DIR)\i386\vrmslot.obj \
+    $(_OBJ_DIR)\i386\vrnmpipe.obj \
+    $(_OBJ_DIR)\i386\vrdisp.obj \
+    $(_OBJ_DIR)\i386\vrinit.obj \
+    $(_OBJ_DIR)\i386\vrmisc.obj \
+    $(_OBJ_DIR)\i386\vrnetapi.obj \
+    $(_OBJ_DIR)\i386\vrnetb.obj \
+    $(_OBJ_DIR)\i386\vrputil.obj \
+    $(_OBJ_DIR)\i386\vrremote.obj \
+    $(_OBJ_DIR)\i386\vrdlc5c.obj \
+    $(_OBJ_DIR)\i386\vrdlcpst.obj \
+    $(_OBJ_DIR)\i386\vrdlcbuf.obj \
+    $(_OBJ_DIR)\i386\vrdlcdbg.obj \
+    $(_OBJ_DIR)\i386\vrdebug.obj \
+    $(_OBJ_DIR)\i386\vrdll.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\vdmredir.res \
+    $(_OBJ_DIR)\ia64\vrmslot.obj \
+    $(_OBJ_DIR)\ia64\vrnmpipe.obj \
+    $(_OBJ_DIR)\ia64\vrdisp.obj \
+    $(_OBJ_DIR)\ia64\vrinit.obj \
+    $(_OBJ_DIR)\ia64\vrmisc.obj \
+    $(_OBJ_DIR)\ia64\vrnetapi.obj \
+    $(_OBJ_DIR)\ia64\vrnetb.obj \
+    $(_OBJ_DIR)\ia64\vrputil.obj \
+    $(_OBJ_DIR)\ia64\vrremote.obj \
+    $(_OBJ_DIR)\ia64\vrdlc5c.obj \
+    $(_OBJ_DIR)\ia64\vrdlcpst.obj \
+    $(_OBJ_DIR)\ia64\vrdlcbuf.obj \
+    $(_OBJ_DIR)\ia64\vrdlcdbg.obj \
+    $(_OBJ_DIR)\ia64\vrdebug.obj \
+    $(_OBJ_DIR)\ia64\vrdll.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\vdmredir.res \
+    $(_OBJ_DIR)\amd64\vrmslot.obj \
+    $(_OBJ_DIR)\amd64\vrnmpipe.obj \
+    $(_OBJ_DIR)\amd64\vrdisp.obj \
+    $(_OBJ_DIR)\amd64\vrinit.obj \
+    $(_OBJ_DIR)\amd64\vrmisc.obj \
+    $(_OBJ_DIR)\amd64\vrnetapi.obj \
+    $(_OBJ_DIR)\amd64\vrnetb.obj \
+    $(_OBJ_DIR)\amd64\vrputil.obj \
+    $(_OBJ_DIR)\amd64\vrremote.obj \
+    $(_OBJ_DIR)\amd64\vrdlc5c.obj \
+    $(_OBJ_DIR)\amd64\vrdlcpst.obj \
+    $(_OBJ_DIR)\amd64\vrdlcbuf.obj \
+    $(_OBJ_DIR)\amd64\vrdlcdbg.obj \
+    $(_OBJ_DIR)\amd64\vrdebug.obj \
+    $(_OBJ_DIR)\amd64\vrdll.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\vdmredir.res \
+    $(_OBJ_DIR)\arm\vrmslot.obj \
+    $(_OBJ_DIR)\arm\vrnmpipe.obj \
+    $(_OBJ_DIR)\arm\vrdisp.obj \
+    $(_OBJ_DIR)\arm\vrinit.obj \
+    $(_OBJ_DIR)\arm\vrmisc.obj \
+    $(_OBJ_DIR)\arm\vrnetapi.obj \
+    $(_OBJ_DIR)\arm\vrnetb.obj \
+    $(_OBJ_DIR)\arm\vrputil.obj \
+    $(_OBJ_DIR)\arm\vrremote.obj \
+    $(_OBJ_DIR)\arm\vrdlc5c.obj \
+    $(_OBJ_DIR)\arm\vrdlcpst.obj \
+    $(_OBJ_DIR)\arm\vrdlcbuf.obj \
+    $(_OBJ_DIR)\arm\vrdlcdbg.obj \
+    $(_OBJ_DIR)\arm\vrdebug.obj \
+    $(_OBJ_DIR)\arm\vrdll.obj
+
+PASS0_ARM_OBJECTS=
+

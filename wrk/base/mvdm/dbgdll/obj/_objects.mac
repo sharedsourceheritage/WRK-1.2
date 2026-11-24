@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ntvdmd.res \
+    $(_OBJ_DIR)\i386\dbgdll.obj \
+    $(_OBJ_DIR)\i386\brkpt.obj \
+    $(_OBJ_DIR)\i386\data.obj \
+    $(_OBJ_DIR)\i386\excptn.obj \
+    $(_OBJ_DIR)\i386\module.obj \
+    $(_OBJ_DIR)\i386\segment.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ntvdmd.res \
+    $(_OBJ_DIR)\ia64\dbgdll.obj \
+    $(_OBJ_DIR)\ia64\brkpt.obj \
+    $(_OBJ_DIR)\ia64\data.obj \
+    $(_OBJ_DIR)\ia64\excptn.obj \
+    $(_OBJ_DIR)\ia64\module.obj \
+    $(_OBJ_DIR)\ia64\segment.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ntvdmd.res \
+    $(_OBJ_DIR)\amd64\dbgdll.obj \
+    $(_OBJ_DIR)\amd64\brkpt.obj \
+    $(_OBJ_DIR)\amd64\data.obj \
+    $(_OBJ_DIR)\amd64\excptn.obj \
+    $(_OBJ_DIR)\amd64\module.obj \
+    $(_OBJ_DIR)\amd64\segment.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ntvdmd.res \
+    $(_OBJ_DIR)\arm\dbgdll.obj \
+    $(_OBJ_DIR)\arm\brkpt.obj \
+    $(_OBJ_DIR)\arm\data.obj \
+    $(_OBJ_DIR)\arm\excptn.obj \
+    $(_OBJ_DIR)\arm\module.obj \
+    $(_OBJ_DIR)\arm\segment.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ntoc.res \
+    $(_OBJ_DIR)\i386\ntoc.obj \
+    $(_OBJ_DIR)\i386\datetime.obj \
+    $(_OBJ_DIR)\i386\tapi.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\welcome.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\ntocmsg.h \
+    $(MC_SOURCEDIR)\ntocmsg.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ntoc.res \
+    $(_OBJ_DIR)\ia64\ntoc.obj \
+    $(_OBJ_DIR)\ia64\datetime.obj \
+    $(_OBJ_DIR)\ia64\tapi.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\welcome.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\ntocmsg.h \
+    $(MC_SOURCEDIR)\ntocmsg.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ntoc.res \
+    $(_OBJ_DIR)\amd64\ntoc.obj \
+    $(_OBJ_DIR)\amd64\datetime.obj \
+    $(_OBJ_DIR)\amd64\tapi.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\welcome.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\ntocmsg.h \
+    $(MC_SOURCEDIR)\ntocmsg.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ntoc.res \
+    $(_OBJ_DIR)\arm\ntoc.obj \
+    $(_OBJ_DIR)\arm\datetime.obj \
+    $(_OBJ_DIR)\arm\tapi.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\util.obj \
+    $(_OBJ_DIR)\arm\welcome.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\ntocmsg.h \
+    $(MC_SOURCEDIR)\ntocmsg.rc
+

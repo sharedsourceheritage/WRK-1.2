@@ -1,0 +1,68 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ntdlltrc.obj \
+    $(_OBJ_DIR)\i386\dcapi.obj \
+    $(_OBJ_DIR)\i386\mofapi.obj \
+    $(_OBJ_DIR)\i386\logapi.obj \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\umlog.obj \
+    $(_OBJ_DIR)\i386\logsup.obj \
+    $(_OBJ_DIR)\i386\request.obj \
+    $(_OBJ_DIR)\i386\dpapi.obj \
+    $(_OBJ_DIR)\i386\notify.obj \
+    $(_OBJ_DIR)\i386\tracelib.obj \
+    $(_OBJ_DIR)\i386\trcapi.obj \
+    $(_OBJ_DIR)\i386\guidapi.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ntdlltrc.obj \
+    $(_OBJ_DIR)\ia64\dcapi.obj \
+    $(_OBJ_DIR)\ia64\mofapi.obj \
+    $(_OBJ_DIR)\ia64\logapi.obj \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\umlog.obj \
+    $(_OBJ_DIR)\ia64\logsup.obj \
+    $(_OBJ_DIR)\ia64\request.obj \
+    $(_OBJ_DIR)\ia64\dpapi.obj \
+    $(_OBJ_DIR)\ia64\notify.obj \
+    $(_OBJ_DIR)\ia64\tracelib.obj \
+    $(_OBJ_DIR)\ia64\trcapi.obj \
+    $(_OBJ_DIR)\ia64\guidapi.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ntdlltrc.obj \
+    $(_OBJ_DIR)\amd64\dcapi.obj \
+    $(_OBJ_DIR)\amd64\mofapi.obj \
+    $(_OBJ_DIR)\amd64\logapi.obj \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\umlog.obj \
+    $(_OBJ_DIR)\amd64\logsup.obj \
+    $(_OBJ_DIR)\amd64\request.obj \
+    $(_OBJ_DIR)\amd64\dpapi.obj \
+    $(_OBJ_DIR)\amd64\notify.obj \
+    $(_OBJ_DIR)\amd64\tracelib.obj \
+    $(_OBJ_DIR)\amd64\trcapi.obj \
+    $(_OBJ_DIR)\amd64\guidapi.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ntdlltrc.obj \
+    $(_OBJ_DIR)\arm\dcapi.obj \
+    $(_OBJ_DIR)\arm\mofapi.obj \
+    $(_OBJ_DIR)\arm\logapi.obj \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\umlog.obj \
+    $(_OBJ_DIR)\arm\logsup.obj \
+    $(_OBJ_DIR)\arm\request.obj \
+    $(_OBJ_DIR)\arm\dpapi.obj \
+    $(_OBJ_DIR)\arm\notify.obj \
+    $(_OBJ_DIR)\arm\tracelib.obj \
+    $(_OBJ_DIR)\arm\trcapi.obj \
+    $(_OBJ_DIR)\arm\guidapi.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\fileutil.obj \
+    $(_OBJ_DIR)\i386\memory.obj \
+    $(_OBJ_DIR)\i386\miscutil.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\security.obj \
+    $(_OBJ_DIR)\i386\sputils.obj \
+    $(_OBJ_DIR)\i386\strtab.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\fileutil.obj \
+    $(_OBJ_DIR)\ia64\memory.obj \
+    $(_OBJ_DIR)\ia64\miscutil.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\security.obj \
+    $(_OBJ_DIR)\ia64\sputils.obj \
+    $(_OBJ_DIR)\ia64\strtab.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\fileutil.obj \
+    $(_OBJ_DIR)\amd64\memory.obj \
+    $(_OBJ_DIR)\amd64\miscutil.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\security.obj \
+    $(_OBJ_DIR)\amd64\sputils.obj \
+    $(_OBJ_DIR)\amd64\strtab.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\fileutil.obj \
+    $(_OBJ_DIR)\arm\memory.obj \
+    $(_OBJ_DIR)\arm\miscutil.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\security.obj \
+    $(_OBJ_DIR)\arm\sputils.obj \
+    $(_OBJ_DIR)\arm\strtab.obj
+
+PASS0_ARM_OBJECTS=
+

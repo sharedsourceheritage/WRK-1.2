@@ -1,0 +1,164 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\pci.res \
+    $(_OBJ_DIR)\i386\agpintrf.obj \
+    $(_OBJ_DIR)\i386\ar_busno.obj \
+    $(_OBJ_DIR)\i386\ar_memio.obj \
+    $(_OBJ_DIR)\i386\arb_comn.obj \
+    $(_OBJ_DIR)\i386\busintrf.obj \
+    $(_OBJ_DIR)\i386\busno.obj \
+    $(_OBJ_DIR)\i386\cardbus.obj \
+    $(_OBJ_DIR)\i386\config.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\devhere.obj \
+    $(_OBJ_DIR)\i386\device.obj \
+    $(_OBJ_DIR)\i386\dispatch.obj \
+    $(_OBJ_DIR)\i386\enum.obj \
+    $(_OBJ_DIR)\i386\fdo.obj \
+    $(_OBJ_DIR)\i386\guid.obj \
+    $(_OBJ_DIR)\i386\hookhal.obj \
+    $(_OBJ_DIR)\i386\id.obj \
+    $(_OBJ_DIR)\i386\ideintrf.obj \
+    $(_OBJ_DIR)\i386\init.obj \
+    $(_OBJ_DIR)\i386\intrface.obj \
+    $(_OBJ_DIR)\i386\lddintrf.obj \
+    $(_OBJ_DIR)\i386\locintrf.obj \
+    $(_OBJ_DIR)\i386\pciverifier.obj \
+    $(_OBJ_DIR)\i386\pdo.obj \
+    $(_OBJ_DIR)\i386\pmeintf.obj \
+    $(_OBJ_DIR)\i386\power.obj \
+    $(_OBJ_DIR)\i386\ppbridge.obj \
+    $(_OBJ_DIR)\i386\romimage.obj \
+    $(_OBJ_DIR)\i386\routintf.obj \
+    $(_OBJ_DIR)\i386\state.obj \
+    $(_OBJ_DIR)\i386\tr_comn.obj \
+    $(_OBJ_DIR)\i386\tr_irq.obj \
+    $(_OBJ_DIR)\i386\usage.obj \
+    $(_OBJ_DIR)\i386\utils.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\pcicodes.h \
+    $(MC_SOURCEDIR)\pcicodes.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\pci.res \
+    $(_OBJ_DIR)\ia64\agpintrf.obj \
+    $(_OBJ_DIR)\ia64\ar_busno.obj \
+    $(_OBJ_DIR)\ia64\ar_memio.obj \
+    $(_OBJ_DIR)\ia64\arb_comn.obj \
+    $(_OBJ_DIR)\ia64\busintrf.obj \
+    $(_OBJ_DIR)\ia64\busno.obj \
+    $(_OBJ_DIR)\ia64\cardbus.obj \
+    $(_OBJ_DIR)\ia64\config.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\devhere.obj \
+    $(_OBJ_DIR)\ia64\device.obj \
+    $(_OBJ_DIR)\ia64\dispatch.obj \
+    $(_OBJ_DIR)\ia64\enum.obj \
+    $(_OBJ_DIR)\ia64\fdo.obj \
+    $(_OBJ_DIR)\ia64\guid.obj \
+    $(_OBJ_DIR)\ia64\hookhal.obj \
+    $(_OBJ_DIR)\ia64\id.obj \
+    $(_OBJ_DIR)\ia64\ideintrf.obj \
+    $(_OBJ_DIR)\ia64\init.obj \
+    $(_OBJ_DIR)\ia64\intrface.obj \
+    $(_OBJ_DIR)\ia64\lddintrf.obj \
+    $(_OBJ_DIR)\ia64\locintrf.obj \
+    $(_OBJ_DIR)\ia64\pciverifier.obj \
+    $(_OBJ_DIR)\ia64\pdo.obj \
+    $(_OBJ_DIR)\ia64\pmeintf.obj \
+    $(_OBJ_DIR)\ia64\power.obj \
+    $(_OBJ_DIR)\ia64\ppbridge.obj \
+    $(_OBJ_DIR)\ia64\romimage.obj \
+    $(_OBJ_DIR)\ia64\routintf.obj \
+    $(_OBJ_DIR)\ia64\state.obj \
+    $(_OBJ_DIR)\ia64\tr_comn.obj \
+    $(_OBJ_DIR)\ia64\tr_irq.obj \
+    $(_OBJ_DIR)\ia64\usage.obj \
+    $(_OBJ_DIR)\ia64\utils.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\pcicodes.h \
+    $(MC_SOURCEDIR)\pcicodes.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\pci.res \
+    $(_OBJ_DIR)\amd64\agpintrf.obj \
+    $(_OBJ_DIR)\amd64\ar_busno.obj \
+    $(_OBJ_DIR)\amd64\ar_memio.obj \
+    $(_OBJ_DIR)\amd64\arb_comn.obj \
+    $(_OBJ_DIR)\amd64\busintrf.obj \
+    $(_OBJ_DIR)\amd64\busno.obj \
+    $(_OBJ_DIR)\amd64\cardbus.obj \
+    $(_OBJ_DIR)\amd64\config.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\devhere.obj \
+    $(_OBJ_DIR)\amd64\device.obj \
+    $(_OBJ_DIR)\amd64\dispatch.obj \
+    $(_OBJ_DIR)\amd64\enum.obj \
+    $(_OBJ_DIR)\amd64\fdo.obj \
+    $(_OBJ_DIR)\amd64\guid.obj \
+    $(_OBJ_DIR)\amd64\hookhal.obj \
+    $(_OBJ_DIR)\amd64\id.obj \
+    $(_OBJ_DIR)\amd64\ideintrf.obj \
+    $(_OBJ_DIR)\amd64\init.obj \
+    $(_OBJ_DIR)\amd64\intrface.obj \
+    $(_OBJ_DIR)\amd64\lddintrf.obj \
+    $(_OBJ_DIR)\amd64\locintrf.obj \
+    $(_OBJ_DIR)\amd64\pciverifier.obj \
+    $(_OBJ_DIR)\amd64\pdo.obj \
+    $(_OBJ_DIR)\amd64\pmeintf.obj \
+    $(_OBJ_DIR)\amd64\power.obj \
+    $(_OBJ_DIR)\amd64\ppbridge.obj \
+    $(_OBJ_DIR)\amd64\romimage.obj \
+    $(_OBJ_DIR)\amd64\routintf.obj \
+    $(_OBJ_DIR)\amd64\state.obj \
+    $(_OBJ_DIR)\amd64\tr_comn.obj \
+    $(_OBJ_DIR)\amd64\tr_irq.obj \
+    $(_OBJ_DIR)\amd64\usage.obj \
+    $(_OBJ_DIR)\amd64\utils.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\pcicodes.h \
+    $(MC_SOURCEDIR)\pcicodes.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\pci.res \
+    $(_OBJ_DIR)\arm\agpintrf.obj \
+    $(_OBJ_DIR)\arm\ar_busno.obj \
+    $(_OBJ_DIR)\arm\ar_memio.obj \
+    $(_OBJ_DIR)\arm\arb_comn.obj \
+    $(_OBJ_DIR)\arm\busintrf.obj \
+    $(_OBJ_DIR)\arm\busno.obj \
+    $(_OBJ_DIR)\arm\cardbus.obj \
+    $(_OBJ_DIR)\arm\config.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\devhere.obj \
+    $(_OBJ_DIR)\arm\device.obj \
+    $(_OBJ_DIR)\arm\dispatch.obj \
+    $(_OBJ_DIR)\arm\enum.obj \
+    $(_OBJ_DIR)\arm\fdo.obj \
+    $(_OBJ_DIR)\arm\guid.obj \
+    $(_OBJ_DIR)\arm\hookhal.obj \
+    $(_OBJ_DIR)\arm\id.obj \
+    $(_OBJ_DIR)\arm\ideintrf.obj \
+    $(_OBJ_DIR)\arm\init.obj \
+    $(_OBJ_DIR)\arm\intrface.obj \
+    $(_OBJ_DIR)\arm\lddintrf.obj \
+    $(_OBJ_DIR)\arm\locintrf.obj \
+    $(_OBJ_DIR)\arm\pciverifier.obj \
+    $(_OBJ_DIR)\arm\pdo.obj \
+    $(_OBJ_DIR)\arm\pmeintf.obj \
+    $(_OBJ_DIR)\arm\power.obj \
+    $(_OBJ_DIR)\arm\ppbridge.obj \
+    $(_OBJ_DIR)\arm\romimage.obj \
+    $(_OBJ_DIR)\arm\routintf.obj \
+    $(_OBJ_DIR)\arm\state.obj \
+    $(_OBJ_DIR)\arm\tr_comn.obj \
+    $(_OBJ_DIR)\arm\tr_irq.obj \
+    $(_OBJ_DIR)\arm\usage.obj \
+    $(_OBJ_DIR)\arm\utils.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\pcicodes.h \
+    $(MC_SOURCEDIR)\pcicodes.rc
+

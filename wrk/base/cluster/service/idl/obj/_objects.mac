@@ -1,0 +1,44 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\clusrpc_s.obj \
+    $(_OBJ_DIR)\i386\clusrpc_c.obj \
+    $(_OBJ_DIR)\i386\api_rpc_s.obj \
+    $(_OBJ_DIR)\i386\rm_rpc_c.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\clusrpc.h \
+    $(PASS0_HEADERDIR)\api_rpc.h \
+    $(PASS0_HEADERDIR)\rm_rpc.h
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\clusrpc_s.obj \
+    $(_OBJ_DIR)\ia64\clusrpc_c.obj \
+    $(_OBJ_DIR)\ia64\api_rpc_s.obj \
+    $(_OBJ_DIR)\ia64\rm_rpc_c.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\clusrpc.h \
+    $(PASS0_HEADERDIR)\api_rpc.h \
+    $(PASS0_HEADERDIR)\rm_rpc.h
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\clusrpc_s.obj \
+    $(_OBJ_DIR)\amd64\clusrpc_c.obj \
+    $(_OBJ_DIR)\amd64\api_rpc_s.obj \
+    $(_OBJ_DIR)\amd64\rm_rpc_c.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\clusrpc.h \
+    $(PASS0_HEADERDIR)\api_rpc.h \
+    $(PASS0_HEADERDIR)\rm_rpc.h
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\clusrpc_s.obj \
+    $(_OBJ_DIR)\arm\clusrpc_c.obj \
+    $(_OBJ_DIR)\arm\api_rpc_s.obj \
+    $(_OBJ_DIR)\arm\rm_rpc_c.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\clusrpc.h \
+    $(PASS0_HEADERDIR)\api_rpc.h \
+    $(PASS0_HEADERDIR)\rm_rpc.h
+

@@ -1,0 +1,60 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\reint.res \
+    $(_OBJ_DIR)\i386\ui.obj \
+    $(_OBJ_DIR)\i386\reint.obj \
+    $(_OBJ_DIR)\i386\utils.obj \
+    $(_OBJ_DIR)\i386\list.obj \
+    $(_OBJ_DIR)\i386\strings.obj \
+    $(_OBJ_DIR)\i386\shdchk.obj \
+    $(_OBJ_DIR)\i386\exports.obj \
+    $(_OBJ_DIR)\i386\api.obj \
+    $(_OBJ_DIR)\i386\ntstuff.obj \
+    $(_OBJ_DIR)\i386\csc_bmpu.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\reint.res \
+    $(_OBJ_DIR)\ia64\ui.obj \
+    $(_OBJ_DIR)\ia64\reint.obj \
+    $(_OBJ_DIR)\ia64\utils.obj \
+    $(_OBJ_DIR)\ia64\list.obj \
+    $(_OBJ_DIR)\ia64\strings.obj \
+    $(_OBJ_DIR)\ia64\shdchk.obj \
+    $(_OBJ_DIR)\ia64\exports.obj \
+    $(_OBJ_DIR)\ia64\api.obj \
+    $(_OBJ_DIR)\ia64\ntstuff.obj \
+    $(_OBJ_DIR)\ia64\csc_bmpu.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\reint.res \
+    $(_OBJ_DIR)\amd64\ui.obj \
+    $(_OBJ_DIR)\amd64\reint.obj \
+    $(_OBJ_DIR)\amd64\utils.obj \
+    $(_OBJ_DIR)\amd64\list.obj \
+    $(_OBJ_DIR)\amd64\strings.obj \
+    $(_OBJ_DIR)\amd64\shdchk.obj \
+    $(_OBJ_DIR)\amd64\exports.obj \
+    $(_OBJ_DIR)\amd64\api.obj \
+    $(_OBJ_DIR)\amd64\ntstuff.obj \
+    $(_OBJ_DIR)\amd64\csc_bmpu.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\reint.res \
+    $(_OBJ_DIR)\arm\ui.obj \
+    $(_OBJ_DIR)\arm\reint.obj \
+    $(_OBJ_DIR)\arm\utils.obj \
+    $(_OBJ_DIR)\arm\list.obj \
+    $(_OBJ_DIR)\arm\strings.obj \
+    $(_OBJ_DIR)\arm\shdchk.obj \
+    $(_OBJ_DIR)\arm\exports.obj \
+    $(_OBJ_DIR)\arm\api.obj \
+    $(_OBJ_DIR)\arm\ntstuff.obj \
+    $(_OBJ_DIR)\arm\csc_bmpu.obj
+
+PASS0_ARM_OBJECTS=
+

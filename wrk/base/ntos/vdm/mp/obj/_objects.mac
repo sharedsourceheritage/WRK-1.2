@@ -1,0 +1,33 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\vdmop0f.obj \
+    $(_OBJ_DIR)\i386\vdmoprnd.obj \
+    $(_OBJ_DIR)\i386\vdmentry.obj \
+    $(_OBJ_DIR)\i386\vdminit.obj \
+    $(_OBJ_DIR)\i386\vdmnpx.obj \
+    $(_OBJ_DIR)\i386\vdmfault.obj \
+    $(_OBJ_DIR)\i386\vdmprint.obj \
+    $(_OBJ_DIR)\i386\strtexec.obj \
+    $(_OBJ_DIR)\i386\rdwr.obj \
+    $(_OBJ_DIR)\i386\vdmtrace.obj \
+    $(_OBJ_DIR)\i386\vdmints.obj \
+    $(_OBJ_DIR)\i386\vdmtib.obj \
+    $(_OBJ_DIR)\i386\vdmuserrefs.obj \
+    $(_OBJ_DIR)\i386\vdm.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\vdm.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\vdm.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\vdm.obj
+
+PASS0_ARM_OBJECTS=
+

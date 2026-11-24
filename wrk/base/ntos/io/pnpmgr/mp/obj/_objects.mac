@@ -1,0 +1,174 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\pbiosa.obj \
+    $(_OBJ_DIR)\i386\pbiosc.obj \
+    $(_OBJ_DIR)\i386\assign.obj \
+    $(_OBJ_DIR)\i386\devices.obj \
+    $(_OBJ_DIR)\i386\devnode.obj \
+    $(_OBJ_DIR)\i386\devintrf.obj \
+    $(_OBJ_DIR)\i386\dockhwp.obj \
+    $(_OBJ_DIR)\i386\iofileutil.obj \
+    $(_OBJ_DIR)\i386\mapper.obj \
+    $(_OBJ_DIR)\i386\notify.obj \
+    $(_OBJ_DIR)\i386\pnpbusno.obj \
+    $(_OBJ_DIR)\i386\pnpcvrt.obj \
+    $(_OBJ_DIR)\i386\pnpdata.obj \
+    $(_OBJ_DIR)\i386\pnpdd.obj \
+    $(_OBJ_DIR)\i386\pnpdel.obj \
+    $(_OBJ_DIR)\i386\pnpdma.obj \
+    $(_OBJ_DIR)\i386\pnpeisa.obj \
+    $(_OBJ_DIR)\i386\pnpenum.obj \
+    $(_OBJ_DIR)\i386\pnpevent.obj \
+    $(_OBJ_DIR)\i386\pnpinit.obj \
+    $(_OBJ_DIR)\i386\pnpioapi.obj \
+    $(_OBJ_DIR)\i386\pnpirp.obj \
+    $(_OBJ_DIR)\i386\pnpirq.obj \
+    $(_OBJ_DIR)\i386\pnpmap.obj \
+    $(_OBJ_DIR)\i386\pnpmemio.obj \
+    $(_OBJ_DIR)\i386\pnppower.obj \
+    $(_OBJ_DIR)\i386\pnpres.obj \
+    $(_OBJ_DIR)\i386\pnprlist.obj \
+    $(_OBJ_DIR)\i386\pnpstart.obj \
+    $(_OBJ_DIR)\i386\pnpsubs.obj \
+    $(_OBJ_DIR)\i386\ppcddb.obj \
+    $(_OBJ_DIR)\i386\ppcontrol.obj \
+    $(_OBJ_DIR)\i386\pphandle.obj \
+    $(_OBJ_DIR)\i386\pphotswap.obj \
+    $(_OBJ_DIR)\i386\pplastgood.obj \
+    $(_OBJ_DIR)\i386\pppagepath.obj \
+    $(_OBJ_DIR)\i386\ppdrvdb.obj \
+    $(_OBJ_DIR)\i386\ppprofile.obj \
+    $(_OBJ_DIR)\i386\ppvutil.obj \
+    $(_OBJ_DIR)\i386\remlock.obj \
+    $(_OBJ_DIR)\i386\report.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\assign.obj \
+    $(_OBJ_DIR)\ia64\devices.obj \
+    $(_OBJ_DIR)\ia64\devnode.obj \
+    $(_OBJ_DIR)\ia64\devintrf.obj \
+    $(_OBJ_DIR)\ia64\dockhwp.obj \
+    $(_OBJ_DIR)\ia64\iofileutil.obj \
+    $(_OBJ_DIR)\ia64\mapper.obj \
+    $(_OBJ_DIR)\ia64\notify.obj \
+    $(_OBJ_DIR)\ia64\pnpbusno.obj \
+    $(_OBJ_DIR)\ia64\pnpcvrt.obj \
+    $(_OBJ_DIR)\ia64\pnpdata.obj \
+    $(_OBJ_DIR)\ia64\pnpdd.obj \
+    $(_OBJ_DIR)\ia64\pnpdel.obj \
+    $(_OBJ_DIR)\ia64\pnpdma.obj \
+    $(_OBJ_DIR)\ia64\pnpeisa.obj \
+    $(_OBJ_DIR)\ia64\pnpenum.obj \
+    $(_OBJ_DIR)\ia64\pnpevent.obj \
+    $(_OBJ_DIR)\ia64\pnpinit.obj \
+    $(_OBJ_DIR)\ia64\pnpioapi.obj \
+    $(_OBJ_DIR)\ia64\pnpirp.obj \
+    $(_OBJ_DIR)\ia64\pnpirq.obj \
+    $(_OBJ_DIR)\ia64\pnpmap.obj \
+    $(_OBJ_DIR)\ia64\pnpmemio.obj \
+    $(_OBJ_DIR)\ia64\pnppower.obj \
+    $(_OBJ_DIR)\ia64\pnpres.obj \
+    $(_OBJ_DIR)\ia64\pnprlist.obj \
+    $(_OBJ_DIR)\ia64\pnpstart.obj \
+    $(_OBJ_DIR)\ia64\pnpsubs.obj \
+    $(_OBJ_DIR)\ia64\ppcddb.obj \
+    $(_OBJ_DIR)\ia64\ppcontrol.obj \
+    $(_OBJ_DIR)\ia64\pphandle.obj \
+    $(_OBJ_DIR)\ia64\pphotswap.obj \
+    $(_OBJ_DIR)\ia64\pplastgood.obj \
+    $(_OBJ_DIR)\ia64\pppagepath.obj \
+    $(_OBJ_DIR)\ia64\ppdrvdb.obj \
+    $(_OBJ_DIR)\ia64\ppprofile.obj \
+    $(_OBJ_DIR)\ia64\ppvutil.obj \
+    $(_OBJ_DIR)\ia64\remlock.obj \
+    $(_OBJ_DIR)\ia64\report.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\assign.obj \
+    $(_OBJ_DIR)\amd64\devices.obj \
+    $(_OBJ_DIR)\amd64\devnode.obj \
+    $(_OBJ_DIR)\amd64\devintrf.obj \
+    $(_OBJ_DIR)\amd64\dockhwp.obj \
+    $(_OBJ_DIR)\amd64\iofileutil.obj \
+    $(_OBJ_DIR)\amd64\mapper.obj \
+    $(_OBJ_DIR)\amd64\notify.obj \
+    $(_OBJ_DIR)\amd64\pnpbusno.obj \
+    $(_OBJ_DIR)\amd64\pnpcvrt.obj \
+    $(_OBJ_DIR)\amd64\pnpdata.obj \
+    $(_OBJ_DIR)\amd64\pnpdd.obj \
+    $(_OBJ_DIR)\amd64\pnpdel.obj \
+    $(_OBJ_DIR)\amd64\pnpdma.obj \
+    $(_OBJ_DIR)\amd64\pnpeisa.obj \
+    $(_OBJ_DIR)\amd64\pnpenum.obj \
+    $(_OBJ_DIR)\amd64\pnpevent.obj \
+    $(_OBJ_DIR)\amd64\pnpinit.obj \
+    $(_OBJ_DIR)\amd64\pnpioapi.obj \
+    $(_OBJ_DIR)\amd64\pnpirp.obj \
+    $(_OBJ_DIR)\amd64\pnpirq.obj \
+    $(_OBJ_DIR)\amd64\pnpmap.obj \
+    $(_OBJ_DIR)\amd64\pnpmemio.obj \
+    $(_OBJ_DIR)\amd64\pnppower.obj \
+    $(_OBJ_DIR)\amd64\pnpres.obj \
+    $(_OBJ_DIR)\amd64\pnprlist.obj \
+    $(_OBJ_DIR)\amd64\pnpstart.obj \
+    $(_OBJ_DIR)\amd64\pnpsubs.obj \
+    $(_OBJ_DIR)\amd64\ppcddb.obj \
+    $(_OBJ_DIR)\amd64\ppcontrol.obj \
+    $(_OBJ_DIR)\amd64\pphandle.obj \
+    $(_OBJ_DIR)\amd64\pphotswap.obj \
+    $(_OBJ_DIR)\amd64\pplastgood.obj \
+    $(_OBJ_DIR)\amd64\pppagepath.obj \
+    $(_OBJ_DIR)\amd64\ppdrvdb.obj \
+    $(_OBJ_DIR)\amd64\ppprofile.obj \
+    $(_OBJ_DIR)\amd64\ppvutil.obj \
+    $(_OBJ_DIR)\amd64\remlock.obj \
+    $(_OBJ_DIR)\amd64\report.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\assign.obj \
+    $(_OBJ_DIR)\arm\devices.obj \
+    $(_OBJ_DIR)\arm\devnode.obj \
+    $(_OBJ_DIR)\arm\devintrf.obj \
+    $(_OBJ_DIR)\arm\dockhwp.obj \
+    $(_OBJ_DIR)\arm\iofileutil.obj \
+    $(_OBJ_DIR)\arm\mapper.obj \
+    $(_OBJ_DIR)\arm\notify.obj \
+    $(_OBJ_DIR)\arm\pnpbusno.obj \
+    $(_OBJ_DIR)\arm\pnpcvrt.obj \
+    $(_OBJ_DIR)\arm\pnpdata.obj \
+    $(_OBJ_DIR)\arm\pnpdd.obj \
+    $(_OBJ_DIR)\arm\pnpdel.obj \
+    $(_OBJ_DIR)\arm\pnpdma.obj \
+    $(_OBJ_DIR)\arm\pnpeisa.obj \
+    $(_OBJ_DIR)\arm\pnpenum.obj \
+    $(_OBJ_DIR)\arm\pnpevent.obj \
+    $(_OBJ_DIR)\arm\pnpinit.obj \
+    $(_OBJ_DIR)\arm\pnpioapi.obj \
+    $(_OBJ_DIR)\arm\pnpirp.obj \
+    $(_OBJ_DIR)\arm\pnpirq.obj \
+    $(_OBJ_DIR)\arm\pnpmap.obj \
+    $(_OBJ_DIR)\arm\pnpmemio.obj \
+    $(_OBJ_DIR)\arm\pnppower.obj \
+    $(_OBJ_DIR)\arm\pnpres.obj \
+    $(_OBJ_DIR)\arm\pnprlist.obj \
+    $(_OBJ_DIR)\arm\pnpstart.obj \
+    $(_OBJ_DIR)\arm\pnpsubs.obj \
+    $(_OBJ_DIR)\arm\ppcddb.obj \
+    $(_OBJ_DIR)\arm\ppcontrol.obj \
+    $(_OBJ_DIR)\arm\pphandle.obj \
+    $(_OBJ_DIR)\arm\pphotswap.obj \
+    $(_OBJ_DIR)\arm\pplastgood.obj \
+    $(_OBJ_DIR)\arm\pppagepath.obj \
+    $(_OBJ_DIR)\arm\ppdrvdb.obj \
+    $(_OBJ_DIR)\arm\ppprofile.obj \
+    $(_OBJ_DIR)\arm\ppvutil.obj \
+    $(_OBJ_DIR)\arm\remlock.obj \
+    $(_OBJ_DIR)\arm\report.obj
+
+PASS0_ARM_OBJECTS=
+

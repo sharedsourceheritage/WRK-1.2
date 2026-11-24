@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\smbrdr.res \
+    $(_OBJ_DIR)\i386\smbrdr.obj \
+    $(_OBJ_DIR)\i386\srfunc.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\smbrdr.res \
+    $(_OBJ_DIR)\ia64\smbrdr.obj \
+    $(_OBJ_DIR)\ia64\srfunc.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\smbrdr.res \
+    $(_OBJ_DIR)\amd64\smbrdr.obj \
+    $(_OBJ_DIR)\amd64\srfunc.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\smbrdr.res \
+    $(_OBJ_DIR)\arm\smbrdr.obj \
+    $(_OBJ_DIR)\arm\srfunc.obj
+
+PASS0_ARM_OBJECTS=
+

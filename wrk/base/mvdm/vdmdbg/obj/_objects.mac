@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\vdmdbg.res \
+    $(_OBJ_DIR)\i386\brkpt.obj \
+    $(_OBJ_DIR)\i386\dllentry.obj \
+    $(_OBJ_DIR)\i386\segment.obj \
+    $(_OBJ_DIR)\i386\sym.obj \
+    $(_OBJ_DIR)\i386\toolhelp.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\vdmdbg.obj \
+    $(_OBJ_DIR)\i386\wow.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\vdmdbg.res \
+    $(_OBJ_DIR)\ia64\brkpt.obj \
+    $(_OBJ_DIR)\ia64\dllentry.obj \
+    $(_OBJ_DIR)\ia64\segment.obj \
+    $(_OBJ_DIR)\ia64\sym.obj \
+    $(_OBJ_DIR)\ia64\toolhelp.obj \
+    $(_OBJ_DIR)\ia64\util.obj \
+    $(_OBJ_DIR)\ia64\vdmdbg.obj \
+    $(_OBJ_DIR)\ia64\wow.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\vdmdbg.res \
+    $(_OBJ_DIR)\amd64\brkpt.obj \
+    $(_OBJ_DIR)\amd64\dllentry.obj \
+    $(_OBJ_DIR)\amd64\segment.obj \
+    $(_OBJ_DIR)\amd64\sym.obj \
+    $(_OBJ_DIR)\amd64\toolhelp.obj \
+    $(_OBJ_DIR)\amd64\util.obj \
+    $(_OBJ_DIR)\amd64\vdmdbg.obj \
+    $(_OBJ_DIR)\amd64\wow.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\vdmdbg.res \
+    $(_OBJ_DIR)\arm\brkpt.obj \
+    $(_OBJ_DIR)\arm\dllentry.obj \
+    $(_OBJ_DIR)\arm\segment.obj \
+    $(_OBJ_DIR)\arm\sym.obj \
+    $(_OBJ_DIR)\arm\toolhelp.obj \
+    $(_OBJ_DIR)\arm\util.obj \
+    $(_OBJ_DIR)\arm\vdmdbg.obj \
+    $(_OBJ_DIR)\arm\wow.obj
+
+PASS0_ARM_OBJECTS=
+

@@ -1,0 +1,28 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\audit.res
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\msobjs.h \
+    $(MC_SOURCEDIR)\msobjs.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\audit.res
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msobjs.h \
+    $(MC_SOURCEDIR)\msobjs.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\audit.res
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\msobjs.h \
+    $(MC_SOURCEDIR)\msobjs.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\audit.res
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\msobjs.h \
+    $(MC_SOURCEDIR)\msobjs.rc
+

@@ -1,0 +1,52 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\mode.res \
+    $(_OBJ_DIR)\i386\argument.obj \
+    $(_OBJ_DIR)\i386\common.obj \
+    $(_OBJ_DIR)\i386\com.obj \
+    $(_OBJ_DIR)\i386\cons.obj \
+    $(_OBJ_DIR)\i386\lpt.obj \
+    $(_OBJ_DIR)\i386\redir.obj \
+    $(_OBJ_DIR)\i386\support.obj \
+    $(_OBJ_DIR)\i386\mode.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\mode.res \
+    $(_OBJ_DIR)\ia64\argument.obj \
+    $(_OBJ_DIR)\ia64\common.obj \
+    $(_OBJ_DIR)\ia64\com.obj \
+    $(_OBJ_DIR)\ia64\cons.obj \
+    $(_OBJ_DIR)\ia64\lpt.obj \
+    $(_OBJ_DIR)\ia64\redir.obj \
+    $(_OBJ_DIR)\ia64\support.obj \
+    $(_OBJ_DIR)\ia64\mode.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\mode.res \
+    $(_OBJ_DIR)\amd64\argument.obj \
+    $(_OBJ_DIR)\amd64\common.obj \
+    $(_OBJ_DIR)\amd64\com.obj \
+    $(_OBJ_DIR)\amd64\cons.obj \
+    $(_OBJ_DIR)\amd64\lpt.obj \
+    $(_OBJ_DIR)\amd64\redir.obj \
+    $(_OBJ_DIR)\amd64\support.obj \
+    $(_OBJ_DIR)\amd64\mode.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\mode.res \
+    $(_OBJ_DIR)\arm\argument.obj \
+    $(_OBJ_DIR)\arm\common.obj \
+    $(_OBJ_DIR)\arm\com.obj \
+    $(_OBJ_DIR)\arm\cons.obj \
+    $(_OBJ_DIR)\arm\lpt.obj \
+    $(_OBJ_DIR)\arm\redir.obj \
+    $(_OBJ_DIR)\arm\support.obj \
+    $(_OBJ_DIR)\arm\mode.obj
+
+PASS0_ARM_OBJECTS=
+

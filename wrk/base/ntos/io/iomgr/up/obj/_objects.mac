@@ -1,0 +1,136 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\arcsec.obj \
+    $(_OBJ_DIR)\i386\cancelapi.obj \
+    $(_OBJ_DIR)\i386\complete.obj \
+    $(_OBJ_DIR)\i386\create.obj \
+    $(_OBJ_DIR)\i386\devctrl.obj \
+    $(_OBJ_DIR)\i386\dev2dos.obj \
+    $(_OBJ_DIR)\i386\dumpctl.obj \
+    $(_OBJ_DIR)\i386\dir.obj \
+    $(_OBJ_DIR)\i386\errorlog.obj \
+    $(_OBJ_DIR)\i386\fsctrl.obj \
+    $(_OBJ_DIR)\i386\internal.obj \
+    $(_OBJ_DIR)\i386\iodata.obj \
+    $(_OBJ_DIR)\i386\ioinit.obj \
+    $(_OBJ_DIR)\i386\iosubs.obj \
+    $(_OBJ_DIR)\i386\ioverifier.obj \
+    $(_OBJ_DIR)\i386\ioperf.obj \
+    $(_OBJ_DIR)\i386\loadunld.obj \
+    $(_OBJ_DIR)\i386\lock.obj \
+    $(_OBJ_DIR)\i386\misc.obj \
+    $(_OBJ_DIR)\i386\objsup.obj \
+    $(_OBJ_DIR)\i386\open.obj \
+    $(_OBJ_DIR)\i386\parse.obj \
+    $(_OBJ_DIR)\i386\qsea.obj \
+    $(_OBJ_DIR)\i386\qsfs.obj \
+    $(_OBJ_DIR)\i386\qsinfo.obj \
+    $(_OBJ_DIR)\i386\qsquota.obj \
+    $(_OBJ_DIR)\i386\query.obj \
+    $(_OBJ_DIR)\i386\read.obj \
+    $(_OBJ_DIR)\i386\triage.obj \
+    $(_OBJ_DIR)\i386\write.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\arcsec.obj \
+    $(_OBJ_DIR)\ia64\cancelapi.obj \
+    $(_OBJ_DIR)\ia64\complete.obj \
+    $(_OBJ_DIR)\ia64\create.obj \
+    $(_OBJ_DIR)\ia64\devctrl.obj \
+    $(_OBJ_DIR)\ia64\dev2dos.obj \
+    $(_OBJ_DIR)\ia64\dumpctl.obj \
+    $(_OBJ_DIR)\ia64\dir.obj \
+    $(_OBJ_DIR)\ia64\errorlog.obj \
+    $(_OBJ_DIR)\ia64\fsctrl.obj \
+    $(_OBJ_DIR)\ia64\internal.obj \
+    $(_OBJ_DIR)\ia64\iodata.obj \
+    $(_OBJ_DIR)\ia64\ioinit.obj \
+    $(_OBJ_DIR)\ia64\iosubs.obj \
+    $(_OBJ_DIR)\ia64\ioverifier.obj \
+    $(_OBJ_DIR)\ia64\ioperf.obj \
+    $(_OBJ_DIR)\ia64\loadunld.obj \
+    $(_OBJ_DIR)\ia64\lock.obj \
+    $(_OBJ_DIR)\ia64\misc.obj \
+    $(_OBJ_DIR)\ia64\objsup.obj \
+    $(_OBJ_DIR)\ia64\open.obj \
+    $(_OBJ_DIR)\ia64\parse.obj \
+    $(_OBJ_DIR)\ia64\qsea.obj \
+    $(_OBJ_DIR)\ia64\qsfs.obj \
+    $(_OBJ_DIR)\ia64\qsinfo.obj \
+    $(_OBJ_DIR)\ia64\qsquota.obj \
+    $(_OBJ_DIR)\ia64\query.obj \
+    $(_OBJ_DIR)\ia64\read.obj \
+    $(_OBJ_DIR)\ia64\triage.obj \
+    $(_OBJ_DIR)\ia64\write.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\arcsec.obj \
+    $(_OBJ_DIR)\amd64\cancelapi.obj \
+    $(_OBJ_DIR)\amd64\complete.obj \
+    $(_OBJ_DIR)\amd64\create.obj \
+    $(_OBJ_DIR)\amd64\devctrl.obj \
+    $(_OBJ_DIR)\amd64\dev2dos.obj \
+    $(_OBJ_DIR)\amd64\dumpctl.obj \
+    $(_OBJ_DIR)\amd64\dir.obj \
+    $(_OBJ_DIR)\amd64\errorlog.obj \
+    $(_OBJ_DIR)\amd64\fsctrl.obj \
+    $(_OBJ_DIR)\amd64\internal.obj \
+    $(_OBJ_DIR)\amd64\iodata.obj \
+    $(_OBJ_DIR)\amd64\ioinit.obj \
+    $(_OBJ_DIR)\amd64\iosubs.obj \
+    $(_OBJ_DIR)\amd64\ioverifier.obj \
+    $(_OBJ_DIR)\amd64\ioperf.obj \
+    $(_OBJ_DIR)\amd64\loadunld.obj \
+    $(_OBJ_DIR)\amd64\lock.obj \
+    $(_OBJ_DIR)\amd64\misc.obj \
+    $(_OBJ_DIR)\amd64\objsup.obj \
+    $(_OBJ_DIR)\amd64\open.obj \
+    $(_OBJ_DIR)\amd64\parse.obj \
+    $(_OBJ_DIR)\amd64\qsea.obj \
+    $(_OBJ_DIR)\amd64\qsfs.obj \
+    $(_OBJ_DIR)\amd64\qsinfo.obj \
+    $(_OBJ_DIR)\amd64\qsquota.obj \
+    $(_OBJ_DIR)\amd64\query.obj \
+    $(_OBJ_DIR)\amd64\read.obj \
+    $(_OBJ_DIR)\amd64\triage.obj \
+    $(_OBJ_DIR)\amd64\write.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\arcsec.obj \
+    $(_OBJ_DIR)\arm\cancelapi.obj \
+    $(_OBJ_DIR)\arm\complete.obj \
+    $(_OBJ_DIR)\arm\create.obj \
+    $(_OBJ_DIR)\arm\devctrl.obj \
+    $(_OBJ_DIR)\arm\dev2dos.obj \
+    $(_OBJ_DIR)\arm\dumpctl.obj \
+    $(_OBJ_DIR)\arm\dir.obj \
+    $(_OBJ_DIR)\arm\errorlog.obj \
+    $(_OBJ_DIR)\arm\fsctrl.obj \
+    $(_OBJ_DIR)\arm\internal.obj \
+    $(_OBJ_DIR)\arm\iodata.obj \
+    $(_OBJ_DIR)\arm\ioinit.obj \
+    $(_OBJ_DIR)\arm\iosubs.obj \
+    $(_OBJ_DIR)\arm\ioverifier.obj \
+    $(_OBJ_DIR)\arm\ioperf.obj \
+    $(_OBJ_DIR)\arm\loadunld.obj \
+    $(_OBJ_DIR)\arm\lock.obj \
+    $(_OBJ_DIR)\arm\misc.obj \
+    $(_OBJ_DIR)\arm\objsup.obj \
+    $(_OBJ_DIR)\arm\open.obj \
+    $(_OBJ_DIR)\arm\parse.obj \
+    $(_OBJ_DIR)\arm\qsea.obj \
+    $(_OBJ_DIR)\arm\qsfs.obj \
+    $(_OBJ_DIR)\arm\qsinfo.obj \
+    $(_OBJ_DIR)\arm\qsquota.obj \
+    $(_OBJ_DIR)\arm\query.obj \
+    $(_OBJ_DIR)\arm\read.obj \
+    $(_OBJ_DIR)\arm\triage.obj \
+    $(_OBJ_DIR)\arm\write.obj
+
+PASS0_ARM_OBJECTS=
+

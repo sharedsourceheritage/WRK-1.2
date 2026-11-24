@@ -1,0 +1,124 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\main.obj \
+    $(_OBJ_DIR)\i386\unicode.obj \
+    $(_OBJ_DIR)\i386\file.obj \
+    $(_OBJ_DIR)\i386\ne.obj \
+    $(_OBJ_DIR)\i386\icons.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\strings.obj \
+    $(_OBJ_DIR)\i386\log.obj \
+    $(_OBJ_DIR)\i386\growbuf.obj \
+    $(_OBJ_DIR)\i386\growlist.obj \
+    $(_OBJ_DIR)\i386\poolmem.obj \
+    $(_OBJ_DIR)\i386\reg.obj \
+    $(_OBJ_DIR)\i386\regenum.obj \
+    $(_OBJ_DIR)\i386\regtrack.obj \
+    $(_OBJ_DIR)\i386\ipc.obj \
+    $(_OBJ_DIR)\i386\inf.obj \
+    $(_OBJ_DIR)\i386\version.obj \
+    $(_OBJ_DIR)\i386\strmap.obj \
+    $(_OBJ_DIR)\i386\linkpif.obj \
+    $(_OBJ_DIR)\i386\hash.obj \
+    $(_OBJ_DIR)\i386\infparse.obj \
+    $(_OBJ_DIR)\i386\safemode.obj \
+    $(_OBJ_DIR)\i386\cablib.obj \
+    $(_OBJ_DIR)\i386\cache.obj \
+    $(_OBJ_DIR)\i386\persist.obj \
+    $(_OBJ_DIR)\i386\movelist.obj \
+    $(_OBJ_DIR)\i386\app.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\main.obj \
+    $(_OBJ_DIR)\ia64\unicode.obj \
+    $(_OBJ_DIR)\ia64\file.obj \
+    $(_OBJ_DIR)\ia64\ne.obj \
+    $(_OBJ_DIR)\ia64\icons.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\strings.obj \
+    $(_OBJ_DIR)\ia64\log.obj \
+    $(_OBJ_DIR)\ia64\growbuf.obj \
+    $(_OBJ_DIR)\ia64\growlist.obj \
+    $(_OBJ_DIR)\ia64\poolmem.obj \
+    $(_OBJ_DIR)\ia64\reg.obj \
+    $(_OBJ_DIR)\ia64\regenum.obj \
+    $(_OBJ_DIR)\ia64\regtrack.obj \
+    $(_OBJ_DIR)\ia64\ipc.obj \
+    $(_OBJ_DIR)\ia64\inf.obj \
+    $(_OBJ_DIR)\ia64\version.obj \
+    $(_OBJ_DIR)\ia64\strmap.obj \
+    $(_OBJ_DIR)\ia64\linkpif.obj \
+    $(_OBJ_DIR)\ia64\hash.obj \
+    $(_OBJ_DIR)\ia64\infparse.obj \
+    $(_OBJ_DIR)\ia64\safemode.obj \
+    $(_OBJ_DIR)\ia64\cablib.obj \
+    $(_OBJ_DIR)\ia64\cache.obj \
+    $(_OBJ_DIR)\ia64\persist.obj \
+    $(_OBJ_DIR)\ia64\movelist.obj \
+    $(_OBJ_DIR)\ia64\app.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\main.obj \
+    $(_OBJ_DIR)\amd64\unicode.obj \
+    $(_OBJ_DIR)\amd64\file.obj \
+    $(_OBJ_DIR)\amd64\ne.obj \
+    $(_OBJ_DIR)\amd64\icons.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\strings.obj \
+    $(_OBJ_DIR)\amd64\log.obj \
+    $(_OBJ_DIR)\amd64\growbuf.obj \
+    $(_OBJ_DIR)\amd64\growlist.obj \
+    $(_OBJ_DIR)\amd64\poolmem.obj \
+    $(_OBJ_DIR)\amd64\reg.obj \
+    $(_OBJ_DIR)\amd64\regenum.obj \
+    $(_OBJ_DIR)\amd64\regtrack.obj \
+    $(_OBJ_DIR)\amd64\ipc.obj \
+    $(_OBJ_DIR)\amd64\inf.obj \
+    $(_OBJ_DIR)\amd64\version.obj \
+    $(_OBJ_DIR)\amd64\strmap.obj \
+    $(_OBJ_DIR)\amd64\linkpif.obj \
+    $(_OBJ_DIR)\amd64\hash.obj \
+    $(_OBJ_DIR)\amd64\infparse.obj \
+    $(_OBJ_DIR)\amd64\safemode.obj \
+    $(_OBJ_DIR)\amd64\cablib.obj \
+    $(_OBJ_DIR)\amd64\cache.obj \
+    $(_OBJ_DIR)\amd64\persist.obj \
+    $(_OBJ_DIR)\amd64\movelist.obj \
+    $(_OBJ_DIR)\amd64\app.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\main.obj \
+    $(_OBJ_DIR)\arm\unicode.obj \
+    $(_OBJ_DIR)\arm\file.obj \
+    $(_OBJ_DIR)\arm\ne.obj \
+    $(_OBJ_DIR)\arm\icons.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\strings.obj \
+    $(_OBJ_DIR)\arm\log.obj \
+    $(_OBJ_DIR)\arm\growbuf.obj \
+    $(_OBJ_DIR)\arm\growlist.obj \
+    $(_OBJ_DIR)\arm\poolmem.obj \
+    $(_OBJ_DIR)\arm\reg.obj \
+    $(_OBJ_DIR)\arm\regenum.obj \
+    $(_OBJ_DIR)\arm\regtrack.obj \
+    $(_OBJ_DIR)\arm\ipc.obj \
+    $(_OBJ_DIR)\arm\inf.obj \
+    $(_OBJ_DIR)\arm\version.obj \
+    $(_OBJ_DIR)\arm\strmap.obj \
+    $(_OBJ_DIR)\arm\linkpif.obj \
+    $(_OBJ_DIR)\arm\hash.obj \
+    $(_OBJ_DIR)\arm\infparse.obj \
+    $(_OBJ_DIR)\arm\safemode.obj \
+    $(_OBJ_DIR)\arm\cablib.obj \
+    $(_OBJ_DIR)\arm\cache.obj \
+    $(_OBJ_DIR)\arm\persist.obj \
+    $(_OBJ_DIR)\arm\movelist.obj \
+    $(_OBJ_DIR)\arm\app.obj
+
+PASS0_ARM_OBJECTS=
+

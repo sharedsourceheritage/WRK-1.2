@@ -1,0 +1,112 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\ifsutil.res \
+    $(_OBJ_DIR)\i386\bootreg.obj \
+    $(_OBJ_DIR)\i386\autoentr.obj \
+    $(_OBJ_DIR)\i386\autoreg.obj \
+    $(_OBJ_DIR)\i386\bigint.obj \
+    $(_OBJ_DIR)\i386\cache.obj \
+    $(_OBJ_DIR)\i386\cannedsd.obj \
+    $(_OBJ_DIR)\i386\dcache.obj \
+    $(_OBJ_DIR)\i386\digraph.obj \
+    $(_OBJ_DIR)\i386\drive.obj \
+    $(_OBJ_DIR)\i386\ifssys.obj \
+    $(_OBJ_DIR)\i386\ifsutil.obj \
+    $(_OBJ_DIR)\i386\intstack.obj \
+    $(_OBJ_DIR)\i386\mldcopy.obj \
+    $(_OBJ_DIR)\i386\mpmap.obj \
+    $(_OBJ_DIR)\i386\numset.obj \
+    $(_OBJ_DIR)\i386\rcache.obj \
+    $(_OBJ_DIR)\i386\rwcache.obj \
+    $(_OBJ_DIR)\i386\secrun.obj \
+    $(_OBJ_DIR)\i386\smsdtect.obj \
+    $(_OBJ_DIR)\i386\spaset.obj \
+    $(_OBJ_DIR)\i386\supera.obj \
+    $(_OBJ_DIR)\i386\tlink.obj \
+    $(_OBJ_DIR)\i386\volume.obj
+
+PASS0_386_OBJECTS=
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\ifsutil.res \
+    $(_OBJ_DIR)\ia64\bootreg.obj \
+    $(_OBJ_DIR)\ia64\autoentr.obj \
+    $(_OBJ_DIR)\ia64\autoreg.obj \
+    $(_OBJ_DIR)\ia64\bigint.obj \
+    $(_OBJ_DIR)\ia64\cache.obj \
+    $(_OBJ_DIR)\ia64\cannedsd.obj \
+    $(_OBJ_DIR)\ia64\dcache.obj \
+    $(_OBJ_DIR)\ia64\digraph.obj \
+    $(_OBJ_DIR)\ia64\drive.obj \
+    $(_OBJ_DIR)\ia64\ifssys.obj \
+    $(_OBJ_DIR)\ia64\ifsutil.obj \
+    $(_OBJ_DIR)\ia64\intstack.obj \
+    $(_OBJ_DIR)\ia64\mldcopy.obj \
+    $(_OBJ_DIR)\ia64\mpmap.obj \
+    $(_OBJ_DIR)\ia64\numset.obj \
+    $(_OBJ_DIR)\ia64\rcache.obj \
+    $(_OBJ_DIR)\ia64\rwcache.obj \
+    $(_OBJ_DIR)\ia64\secrun.obj \
+    $(_OBJ_DIR)\ia64\smsdtect.obj \
+    $(_OBJ_DIR)\ia64\spaset.obj \
+    $(_OBJ_DIR)\ia64\supera.obj \
+    $(_OBJ_DIR)\ia64\tlink.obj \
+    $(_OBJ_DIR)\ia64\volume.obj
+
+PASS0_IA64_OBJECTS=
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\ifsutil.res \
+    $(_OBJ_DIR)\amd64\bootreg.obj \
+    $(_OBJ_DIR)\amd64\autoentr.obj \
+    $(_OBJ_DIR)\amd64\autoreg.obj \
+    $(_OBJ_DIR)\amd64\bigint.obj \
+    $(_OBJ_DIR)\amd64\cache.obj \
+    $(_OBJ_DIR)\amd64\cannedsd.obj \
+    $(_OBJ_DIR)\amd64\dcache.obj \
+    $(_OBJ_DIR)\amd64\digraph.obj \
+    $(_OBJ_DIR)\amd64\drive.obj \
+    $(_OBJ_DIR)\amd64\ifssys.obj \
+    $(_OBJ_DIR)\amd64\ifsutil.obj \
+    $(_OBJ_DIR)\amd64\intstack.obj \
+    $(_OBJ_DIR)\amd64\mldcopy.obj \
+    $(_OBJ_DIR)\amd64\mpmap.obj \
+    $(_OBJ_DIR)\amd64\numset.obj \
+    $(_OBJ_DIR)\amd64\rcache.obj \
+    $(_OBJ_DIR)\amd64\rwcache.obj \
+    $(_OBJ_DIR)\amd64\secrun.obj \
+    $(_OBJ_DIR)\amd64\smsdtect.obj \
+    $(_OBJ_DIR)\amd64\spaset.obj \
+    $(_OBJ_DIR)\amd64\supera.obj \
+    $(_OBJ_DIR)\amd64\tlink.obj \
+    $(_OBJ_DIR)\amd64\volume.obj
+
+PASS0_AMD64_OBJECTS=
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\ifsutil.res \
+    $(_OBJ_DIR)\arm\bootreg.obj \
+    $(_OBJ_DIR)\arm\autoentr.obj \
+    $(_OBJ_DIR)\arm\autoreg.obj \
+    $(_OBJ_DIR)\arm\bigint.obj \
+    $(_OBJ_DIR)\arm\cache.obj \
+    $(_OBJ_DIR)\arm\cannedsd.obj \
+    $(_OBJ_DIR)\arm\dcache.obj \
+    $(_OBJ_DIR)\arm\digraph.obj \
+    $(_OBJ_DIR)\arm\drive.obj \
+    $(_OBJ_DIR)\arm\ifssys.obj \
+    $(_OBJ_DIR)\arm\ifsutil.obj \
+    $(_OBJ_DIR)\arm\intstack.obj \
+    $(_OBJ_DIR)\arm\mldcopy.obj \
+    $(_OBJ_DIR)\arm\mpmap.obj \
+    $(_OBJ_DIR)\arm\numset.obj \
+    $(_OBJ_DIR)\arm\rcache.obj \
+    $(_OBJ_DIR)\arm\rwcache.obj \
+    $(_OBJ_DIR)\arm\secrun.obj \
+    $(_OBJ_DIR)\arm\smsdtect.obj \
+    $(_OBJ_DIR)\arm\spaset.obj \
+    $(_OBJ_DIR)\arm\supera.obj \
+    $(_OBJ_DIR)\arm\tlink.obj \
+    $(_OBJ_DIR)\arm\volume.obj
+
+PASS0_ARM_OBJECTS=
+

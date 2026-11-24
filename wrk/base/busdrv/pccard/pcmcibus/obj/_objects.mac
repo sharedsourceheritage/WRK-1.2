@@ -1,0 +1,144 @@
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\pcmcia.res \
+    $(_OBJ_DIR)\i386\cb.obj \
+    $(_OBJ_DIR)\i386\cl.obj \
+    $(_OBJ_DIR)\i386\ctlr.obj \
+    $(_OBJ_DIR)\i386\data.obj \
+    $(_OBJ_DIR)\i386\db.obj \
+    $(_OBJ_DIR)\i386\debug.obj \
+    $(_OBJ_DIR)\i386\detect.obj \
+    $(_OBJ_DIR)\i386\dispatch.obj \
+    $(_OBJ_DIR)\i386\enum.obj \
+    $(_OBJ_DIR)\i386\fdopnp.obj \
+    $(_OBJ_DIR)\i386\fdopower.obj \
+    $(_OBJ_DIR)\i386\id.obj \
+    $(_OBJ_DIR)\i386\intrface.obj \
+    $(_OBJ_DIR)\i386\ioctl.obj \
+    $(_OBJ_DIR)\i386\o2m.obj \
+    $(_OBJ_DIR)\i386\opti.obj \
+    $(_OBJ_DIR)\i386\pcicsup.obj \
+    $(_OBJ_DIR)\i386\pcmcia.obj \
+    $(_OBJ_DIR)\i386\pdocb.obj \
+    $(_OBJ_DIR)\i386\pdopnp.obj \
+    $(_OBJ_DIR)\i386\pdopower.obj \
+    $(_OBJ_DIR)\i386\registry.obj \
+    $(_OBJ_DIR)\i386\ricoh.obj \
+    $(_OBJ_DIR)\i386\socket.obj \
+    $(_OBJ_DIR)\i386\tcicsup.obj \
+    $(_OBJ_DIR)\i386\ti.obj \
+    $(_OBJ_DIR)\i386\topic.obj \
+    $(_OBJ_DIR)\i386\tuples.obj \
+    $(_OBJ_DIR)\i386\utils.obj
+
+PASS0_386_OBJECTS= \
+    $(PASS0_HEADERDIR)\pcmciamc.h \
+    $(MC_SOURCEDIR)\pcmciamc.rc
+
+IA64_OBJECTS= \
+    $(_OBJ_DIR)\ia64\pcmcia.res \
+    $(_OBJ_DIR)\ia64\cb.obj \
+    $(_OBJ_DIR)\ia64\cl.obj \
+    $(_OBJ_DIR)\ia64\ctlr.obj \
+    $(_OBJ_DIR)\ia64\data.obj \
+    $(_OBJ_DIR)\ia64\db.obj \
+    $(_OBJ_DIR)\ia64\debug.obj \
+    $(_OBJ_DIR)\ia64\detect.obj \
+    $(_OBJ_DIR)\ia64\dispatch.obj \
+    $(_OBJ_DIR)\ia64\enum.obj \
+    $(_OBJ_DIR)\ia64\fdopnp.obj \
+    $(_OBJ_DIR)\ia64\fdopower.obj \
+    $(_OBJ_DIR)\ia64\id.obj \
+    $(_OBJ_DIR)\ia64\intrface.obj \
+    $(_OBJ_DIR)\ia64\ioctl.obj \
+    $(_OBJ_DIR)\ia64\o2m.obj \
+    $(_OBJ_DIR)\ia64\opti.obj \
+    $(_OBJ_DIR)\ia64\pcicsup.obj \
+    $(_OBJ_DIR)\ia64\pcmcia.obj \
+    $(_OBJ_DIR)\ia64\pdocb.obj \
+    $(_OBJ_DIR)\ia64\pdopnp.obj \
+    $(_OBJ_DIR)\ia64\pdopower.obj \
+    $(_OBJ_DIR)\ia64\registry.obj \
+    $(_OBJ_DIR)\ia64\ricoh.obj \
+    $(_OBJ_DIR)\ia64\socket.obj \
+    $(_OBJ_DIR)\ia64\tcicsup.obj \
+    $(_OBJ_DIR)\ia64\ti.obj \
+    $(_OBJ_DIR)\ia64\topic.obj \
+    $(_OBJ_DIR)\ia64\tuples.obj \
+    $(_OBJ_DIR)\ia64\utils.obj
+
+PASS0_IA64_OBJECTS= \
+    $(PASS0_HEADERDIR)\pcmciamc.h \
+    $(MC_SOURCEDIR)\pcmciamc.rc
+
+AMD64_OBJECTS= \
+    $(_OBJ_DIR)\amd64\pcmcia.res \
+    $(_OBJ_DIR)\amd64\cb.obj \
+    $(_OBJ_DIR)\amd64\cl.obj \
+    $(_OBJ_DIR)\amd64\ctlr.obj \
+    $(_OBJ_DIR)\amd64\data.obj \
+    $(_OBJ_DIR)\amd64\db.obj \
+    $(_OBJ_DIR)\amd64\debug.obj \
+    $(_OBJ_DIR)\amd64\detect.obj \
+    $(_OBJ_DIR)\amd64\dispatch.obj \
+    $(_OBJ_DIR)\amd64\enum.obj \
+    $(_OBJ_DIR)\amd64\fdopnp.obj \
+    $(_OBJ_DIR)\amd64\fdopower.obj \
+    $(_OBJ_DIR)\amd64\id.obj \
+    $(_OBJ_DIR)\amd64\intrface.obj \
+    $(_OBJ_DIR)\amd64\ioctl.obj \
+    $(_OBJ_DIR)\amd64\o2m.obj \
+    $(_OBJ_DIR)\amd64\opti.obj \
+    $(_OBJ_DIR)\amd64\pcicsup.obj \
+    $(_OBJ_DIR)\amd64\pcmcia.obj \
+    $(_OBJ_DIR)\amd64\pdocb.obj \
+    $(_OBJ_DIR)\amd64\pdopnp.obj \
+    $(_OBJ_DIR)\amd64\pdopower.obj \
+    $(_OBJ_DIR)\amd64\registry.obj \
+    $(_OBJ_DIR)\amd64\ricoh.obj \
+    $(_OBJ_DIR)\amd64\socket.obj \
+    $(_OBJ_DIR)\amd64\tcicsup.obj \
+    $(_OBJ_DIR)\amd64\ti.obj \
+    $(_OBJ_DIR)\amd64\topic.obj \
+    $(_OBJ_DIR)\amd64\tuples.obj \
+    $(_OBJ_DIR)\amd64\utils.obj
+
+PASS0_AMD64_OBJECTS= \
+    $(PASS0_HEADERDIR)\pcmciamc.h \
+    $(MC_SOURCEDIR)\pcmciamc.rc
+
+ARM_OBJECTS= \
+    $(_OBJ_DIR)\arm\pcmcia.res \
+    $(_OBJ_DIR)\arm\cb.obj \
+    $(_OBJ_DIR)\arm\cl.obj \
+    $(_OBJ_DIR)\arm\ctlr.obj \
+    $(_OBJ_DIR)\arm\data.obj \
+    $(_OBJ_DIR)\arm\db.obj \
+    $(_OBJ_DIR)\arm\debug.obj \
+    $(_OBJ_DIR)\arm\detect.obj \
+    $(_OBJ_DIR)\arm\dispatch.obj \
+    $(_OBJ_DIR)\arm\enum.obj \
+    $(_OBJ_DIR)\arm\fdopnp.obj \
+    $(_OBJ_DIR)\arm\fdopower.obj \
+    $(_OBJ_DIR)\arm\id.obj \
+    $(_OBJ_DIR)\arm\intrface.obj \
+    $(_OBJ_DIR)\arm\ioctl.obj \
+    $(_OBJ_DIR)\arm\o2m.obj \
+    $(_OBJ_DIR)\arm\opti.obj \
+    $(_OBJ_DIR)\arm\pcicsup.obj \
+    $(_OBJ_DIR)\arm\pcmcia.obj \
+    $(_OBJ_DIR)\arm\pdocb.obj \
+    $(_OBJ_DIR)\arm\pdopnp.obj \
+    $(_OBJ_DIR)\arm\pdopower.obj \
+    $(_OBJ_DIR)\arm\registry.obj \
+    $(_OBJ_DIR)\arm\ricoh.obj \
+    $(_OBJ_DIR)\arm\socket.obj \
+    $(_OBJ_DIR)\arm\tcicsup.obj \
+    $(_OBJ_DIR)\arm\ti.obj \
+    $(_OBJ_DIR)\arm\topic.obj \
+    $(_OBJ_DIR)\arm\tuples.obj \
+    $(_OBJ_DIR)\arm\utils.obj
+
+PASS0_ARM_OBJECTS= \
+    $(PASS0_HEADERDIR)\pcmciamc.h \
+    $(MC_SOURCEDIR)\pcmciamc.rc
+
